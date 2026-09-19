@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>寻找十倍系列——ST朗进(300594)深度分析</title>
+<style>
+  :root{
+    --ink:#1a1a1a; --sub:#555; --line:#e3e3e3; --accent:#b23b2e; --accent2:#1f5f8b;
+    --bg:#faf9f7; --card:#ffffff; --quote:#f4efe9;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",-apple-system,"Segoe UI",Roboto,sans-serif;
+    line-height:1.75; font-size:16px;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding:32px 22px 64px;}
+  header.masthead{
+    border-bottom:3px solid var(--accent); padding-bottom:18px; margin-bottom:8px;
+  }
+  h1{font-size:26px; line-height:1.4; margin:8px 0 6px; color:#111;}
+  .subtitle{color:var(--accent); font-weight:600; font-size:17px; margin:2px 0 12px;}
+  .meta{color:var(--sub); font-size:13px; margin-bottom:6px;}
+  h2{
+    font-size:21px; margin:34px 0 12px; padding:8px 12px; background:#20262e; color:#fff;
+    border-left:6px solid var(--accent); border-radius:2px;
+  }
+  h3{font-size:18px; margin:24px 0 8px; color:var(--accent2); border-left:4px solid var(--accent2); padding-left:10px;}
+  h4{font-size:16px; margin:16px 0 6px; color:#333;}
+  p{margin:10px 0;}
+  ul,ol{margin:8px 0 8px 4px; padding-left:24px;}
+  li{margin:5px 0;}
+  a{color:#0b63a5; text-decoration:none; border-bottom:1px dotted #8fb8d4;}
+  a:hover{color:#b23b2e; border-bottom-color:#b23b2e;}
+  table{border-collapse:collapse; width:100%; margin:12px 0; background:var(--card); font-size:14px;}
+  th,td{border:1px solid var(--line); padding:7px 9px; text-align:left; vertical-align:top;}
+  th{background:#f0ece5; font-weight:600; white-space:nowrap;}
+  tr:nth-child(even) td{background:#fbfaf8;}
+  blockquote{
+    margin:14px 0; padding:12px 16px; background:var(--quote); border-left:5px solid var(--accent);
+    color:#3d352a; font-size:15px; border-radius:2px;
+  }
+  blockquote p{margin:4px 0;}
+  .snap{
+    background:#fdf1ef; border:1px solid #f0c7bd; border-radius:6px; padding:14px 16px; margin:16px 0;
+  }
+  .snap table{background:#fffdfd;}
+  .tag{display:inline-block; font-size:12px; padding:1px 8px; border-radius:10px; margin-right:6px; color:#fff; background:#b23b2e;}
+  .tag.green{background:#2e7d46;} .tag.blue{background:#1f5f8b;} .tag.gray{background:#8a8a8a;}
+  .lead{font-size:17px; font-weight:600; color:#20262e;}
+  .small{font-size:13px; color:var(--sub);}
+  .danger{color:var(--accent); font-weight:600;}
+  .ok{color:#2e7d46; font-weight:600;}
+  .warn{color:#b9791c; font-weight:600;}
+  .src{color:#8a8a8a; font-size:12px;}
+  hr{border:none; border-top:1px solid var(--line); margin:26px 0;}
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  @media (max-width:680px){ .two-col{grid-template-columns:1fr;} h1{font-size:22px;} }
+  .footer{
+    margin-top:40px; padding:16px; background:#f3f1ec; border:1px dashed #ccc;
+    font-size:13px; color:#555; border-radius:4px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <h1>寻找十倍系列——ST朗进(300594)深度分析：主业没死、信誉垮了，实控人持股正被"拆骨"、控制权明稳实危</h1>
+  <div class="subtitle">资金占用4.15亿 → 内控否定 → 规范类ST → 处罚落地 → 债权人司法抵债拿走8.76%，一场"温水煮青蛙"式的控股权被动流失</div>
+  <div class="meta">
+    标的：山东朗进科技股份有限公司（ST朗进，300594.SZ）· 深交所创业板 · 基准日 2026-09-19 ·
+    方法论：王艳《寻找十倍系列 · 控制权变更驱动》· 本文为自用研究，不构成投资建议
+  </div>
+</header>
+
+<!-- ============ 岛主引言 ============ -->
+<h2>〇、岛主引言（三句话点题）</h2>
+<p class="lead">
+  ① <span class="danger">发生了什么</span>——一家有真实轨交空调主业、净资产7.31亿的创业板公司，因控股股东朗进集团及关联方累计<b>4.15亿元非经营性资金占用</b>，2025年内控审计被中兴华所出具<b>否定意见</b>，2026年4月30日起戴帽"ST"（<b>规范类"其他风险警示"、非*ST</b>，涨跌幅仍20%）。
+</p>
+<p class="lead">
+  ② <span class="danger">为什么危险</span>——它的死穴<b>不是业绩（营收7.81亿，远超1亿退市红线），而是"大股东缺钱+内控烂"</b>这条治理病：实控人团队通过一致行动协议拢共只拿得住约20%的筹码，控股股东股份长期被冻结/质押，正被债权人一纸法院调解书<b>硬生生"拆"走8.76%</b>，剩余股份66.45%仍冻结，控制权"嘴上没变、手上在失血"。
+</p>
+<p class="lead">
+  ③ <span class="danger">核心矛盾</span>——<b>主业死不了、退市大概率不触发，但"实控人还能不能守住、守住了又值不值得守"</b>：一边是"填窟窿—补内控—摘帽"的合规修复剧本，另一边是新二股东<b>中时控股（9.68%）</b>与实控人团队（12.16%）只差2.48个百分点的控制权缝隙。摘帽的开关只有一把：<b>2026年内控审计意见能否转正</b>；而真正的变量，是这之后谁会来"接盘"这张壳+资产。
+</p>
+
+<div class="snap">
+  <b>当日快照（2026-09-19 收盘）</b>
+  <table>
+    <tr><th>项目</th><th>数值</th><th>项目</th><th>数值</th></tr>
+    <tr><td>收盘价</td><td><b>15.01元</b>（+4.16%）</td><td>总市值</td><td><b>13.79亿元</b></td></tr>
+    <tr><td>昨收(09-18)</td><td>14.41元</td><td>流通市值</td><td>13.66亿元</td></tr>
+    <tr><td>总股本</td><td>9,187.34万股</td><td>流通股本</td><td>9,099.06万股</td></tr>
+    <tr><td>市净率 PB</td><td>1.89（LF）</td><td>每股净资产</td><td>7.96元</td></tr>
+    <tr><td>市盈率 PE-TTM</td><td>−15.49（亏损，失效）</td><td>52周区间</td><td>最高33.70 / 最低11.66</td></tr>
+  </table>
+  <span class="src">来源：<a href="https://stcn.com/quotes/index/sz300594.html">证券时报行情</a> · <a href="https://stockpage.10jqka.com.cn/300594/company/">同花顺F10</a> · <a href="https://xueqiu.com/S/SZ300594">雪球</a></span>
+</div>
+
+<!-- ============ 整体概括 ============ -->
+<h2>一、整体概括（结论先行）</h2>
+<ol>
+  <li><b>ST定性 = 规范类"其他风险警示"，不是*ST，也不是财务类。</b>触发条款是《创业板股票上市规则(2025修订)》<b>第9.4条第(四)项</b>——"最近一个会计年度内控审计被出具无法表示意见或否定意见"。根子就是控股股东资金占用。 <a href="http://disc.static.szse.cn/download/disc/disk03/finalpage/2026-04-29/a9c90b23-65b8-4afc-9588-d2be987c20de.PDF">来源①</a></li>
+  <li><b>"病根"已填、"处罚"已了、"内控整改"是最后一关。</b>占用款4.15亿已连本带息归还（2025年8月前）；《行政处罚决定书》(〔2026〕2号)于2026年1月落地，罚款合计1,015万元，且<b>明示不触及重大违法/规范类强制退市</b>。剩下唯一开关：<b>2026年内控审计能否转正</b>。 <a href="http://www.csrc.gov.cn/shandong/c104216/c7609485/content.shtml">来源②</a></li>
+  <li><b>控制权"名义未变、实质松动"。</b>2026-09-15控股股东朗进集团因民间借贷违约被法院调解，把<b>8,048,839股(8.76%)非交易过户给债权人中时控股抵债</b>，朗进集团持股20.72%→11.96%，实控人团队合计12.16%；中时控股升至9.68%列第二大股东。公告反复强调"实控人未变"，但两大阵营只差2.48个百分点。 <a href="https://data.eastmoney.com/notices/detail/300594/AN202609171829520497.html">来源③</a></li>
+  <li><b>主业"半死不活没死"：</b>营收7.81亿(2025)、2026H1 3.21亿，但归母净利连亏4年半（2022至2026H1累计约−1.97亿），毛利率从上市初的37-39%下移至21%中枢。<b>靠赛道预期撑估值、不靠当期利润。</b> <a href="https://static.cninfo.com.cn/finalpage/2026-08-27/1225511698.PDF">来源④</a></li>
+  <li><b>我的总判断：</b>这是一个<b>"资产+赛道+摘帽修复"的治理修复型标的</b>，不是纯壳、也不是垃圾。真正要赌的不是退不退市（大概率不退），而是<b>①2026内控转正摘帽的确立 ②债权人中时控股/外资等新筹码的意图 ③储能/液冷/热管理第二曲线能否兑现</b>。下文按"前世今生→四类红线→六步预判→六维拆解→壳价值→借壳红线→承诺包活口→财务体检→行情估值→核心矛盾"拆。</li>
+</ol>
+
+<!-- ============ 前世今生时间轴 ============ -->
+<h2>二、前世今生（时间轴）</h2>
+<table>
+  <tr><th style="width:120px">时间</th><th>事件</th><th>要点 / 来源</th></tr>
+  <tr><td>2019-06-21</td><td>创业板上市（东北证券保荐），发行价19.02元，募资净额3.77亿</td><td>上市第8交易日最高约49元，后长年破发 <a href="https://stockpage.10jqka.com.cn/300594/company/">来源</a></td></tr>
+  <tr><td>2021</td><td>盈利崩塌元年：归母净利从0.87亿断崖至0.05亿（YoY −93.7%），毛利率下移</td><td>Wind年度镜像 <a href="https://xueqiu.com/S/SZ300594">来源</a></td></tr>
+  <tr><td>2022–2025</td><td>连续四个会计年度亏损（归母 −5799万/−317万/−7640万/−1507万）</td><td>2024/2025年报三年列定稿 <a href="https://static.cninfo.com.cn/finalpage/2025-04-24/1223243601.PDF">来源</a></td></tr>
+  <tr><td>2024-02 起</td><td>朗进科技及6家子公司通过第三方与控股股东朗进集团等发生关联方<b>非经营性资金占用</b></td><td>累计发生额4.15亿 <a href="http://www.csrc.gov.cn/shandong/c104216/c7609485/content.shtml">来源</a></td></tr>
+  <tr><td>2024-04-26 起</td><td>二股东<b>浙江经建投</b>启动"持股5%以上股东公开征集转让"，此后每月进展公告、长达两年</td><td>受让方先后落定广州永金、青岛元德众允等 <a href="https://stcn.com/article/detail/3577634.html">来源</a></td></tr>
+  <tr><td>2024-06-14</td><td>收到山东证监局<b>警示函</b>（最早的监管信号）</td><td>警示函公告 <a href="https://www.cninfo.com.cn/new/disclosure/detail?stockCode=300594&announcementId=1220358956&orgId=gfbj0871452&announcementTime=2024-06-14">来源</a></td></tr>
+  <tr><td>2025-08-27</td><td>公司及实控人之一<b>李敬茂被证监会立案</b>（证监立案字0042025012/13号）；同日半年报披露占用款已连本带息归还</td><td>立案告知书 <a href="https://stcn.com/article/detail/3281438.html">来源</a></td></tr>
+  <tr><td>2025-12-16 / 17</td><td>山东证监局下发《行政处罚事先告知书》([2025]12号)</td><td>事先告知书 <a href="https://stcn.com/article/detail/3543360.html">来源</a></td></tr>
+  <tr><td>2026-01-15 / 16</td><td>《行政处罚决定书》([2026]2号)落地：公司罚250万、李敬茂440万、邱若龙120万、李敬恩105万、王绅宇/王智鑫各50万，<b>合计1,015万元</b>，当事人未申辩未听证、本案办结；同日深交所纪律处分(深证上〔2026〕43号)：公开谴责公司/李敬茂/邱若龙/李敬恩</td><td>决定书 <a href="https://static.cninfo.com.cn/finalpage/2026-01-16/1224936368.PDF">来源</a> · 深交所处分 <a href="http://finance.ce.cn/stock/gsgdbd/202601/t20260116_2707212.shtml">来源</a></td></tr>
+  <tr><td>2026-04-29 / 30</td><td>2025年报披露：内控审计<b>否定意见</b> → 4-29停牌1天、<b>4-30复牌起"朗进科技"更名"ST朗进"</b></td><td>风险警示提示性公告 <a href="http://disc.static.szse.cn/download/disc/disk03/finalpage/2026-04-29/a9c90b23-65b8-4afc-9588-d2be987c20de.PDF">来源</a></td></tr>
+  <tr><td>2026-08-27</td><td>2026半年报：营收3.21亿(−5.68%)、归母−4452万；披露控股股东2026H1新增占用1.11亿（已于2026-04-21前归还本金利息），但2024/2025废料占用约170万/360万<b>本息未还</b></td><td>半年报摘要 <a href="https://static.cninfo.com.cn/finalpage/2026-08-27/1225511698.PDF">来源</a></td></tr>
+  <tr><td>2026-09-02</td><td>临时股东大会补选非独立董事，新任内审部负责人<b>李巍</b>入董事会</td><td>进展公告 <a href="http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12582681">来源</a></td></tr>
+  <tr><td>2026-09-15 / 17</td><td>控股股东朗进集团依济南高新区法院(2026)鲁0191民初10205号调解书，<b>8.76%非交易过户给中时控股抵债</b>；朗进集团持股降为11.96%、中时控股升至9.68%</td><td>权益变动提示性公告 <a href="https://data.eastmoney.com/notices/detail/300594/AN202609171829520497.html">来源</a></td></tr>
+</table>
+
+<!-- ============ 四类退市红线 ============ -->
+<h2>三、四类退市红线判型（生死定级 + 自救空间 + 时间窗口）</h2>
+<table>
+  <tr><th>红线类型</th><th>创业板门槛</th><th>朗进现状（基准日）</th><th>判定</th></tr>
+  <tr>
+    <td><b>财务类 *ST/退市</b></td>
+    <td>最近一年净利润为负 <b>且</b> 营收&lt;1亿（组合指标）</td>
+    <td>2025营收<b>7.81亿</b>（远&gt;1亿）；净资产7.31亿&gt;0</td>
+    <td class="ok">不触发</td>
+  </tr>
+  <tr>
+    <td><b>交易类·面值/市值</b></td>
+    <td>连续20日收盘价&lt;1元 / 市值略低红线（3亿）</td>
+    <td>15.01元、市值13.79亿</td>
+    <td class="ok">不触发</td>
+  </tr>
+  <tr>
+    <td><b>规范类（本次触发源）</b></td>
+    <td>内控审计被出具<b>无法表示/否定意见</b>；资金占用、违规担保未在限期内整改</td>
+    <td>2025内控<b>否定意见</b>→已实施ST；占用款已还、存单质押已解除，但废料占用170万/360万<b>本息仍未还</b>，整改"进行中"</td>
+    <td class="warn">已触发(ST)；升级风险看2026内控</td>
+  </tr>
+  <tr>
+    <td><b>重大违法类</b></td>
+    <td>财务造假、欺诈发行等触及强制退市档</td>
+    <td>处罚=信披违规罚款250万(公司)，<b>决定书明示不触及规范类/重大违法强制退市</b></td>
+    <td class="ok">不触发</td>
+  </tr>
+</table>
+<p><b>生死定级：</b>中低退市风险——短期（未来12个月）<b>存续层面大概率不死</b>，但<b>规范类红线尚未彻底拔除</b>：若2026年内控审计再出否定/无法表示意见，或废料占用整改不彻底、出现新的资金占用/违规担保，ST不仅不摘反可能升级（规范类*ST 或面临终止上市问询）。</p>
+<p><b>自救空间：</b>①把废料占用170万+360万本息还掉（金额小、易办）；②2026年内控审计恢复标准无保留；③维持营收&gt;1亿红线（主业7.8亿规模有安全垫）。</p>
+<p><b>时间窗口：</b>2026年报约在<b>2027年4月</b>披露——届时内控意见转正，公司即具备向深交所申请<b>撤销其他风险警示</b>的条件；在此之前按月发进展公告（第9.9条）。<b>乐观：2027年二季度摘帽；悲观：内控二次否定，ST再挂一年。</b> <a href="http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12582681">来源</a></p>
+
+<!-- ============ 关键人物/实控人 ============ -->
+<h2>四、关键人物 / 实控人背景</h2>
+<table>
+  <tr><th>人物/主体</th><th>身份</th><th>关键信息</th></tr>
+  <tr><td><b>李敬茂</b></td><td>董事长、实际控制人之一、核心技术人员</td><td>1962年8月生，硕士，清华煤燃烧工程研究中心研究员出身；直接持股10.21万股(0.11%)；罚440万(实控人300万+主管140万)，<b>组织、指使资金占用并被公开谴责</b> <a href="https://stockpage.10jqka.com.cn/300594/company/">来源</a></td></tr>
+  <tr><td><b>李敬恩</b></td><td>副董事长、总经理、实际控制人之一</td><td>1973年12月生，直接持股8.1万股(0.09%)；罚105万、公开谴责 <a href="https://stockpage.10jqka.com.cn/300594/company/">来源</a></td></tr>
+  <tr><td><b>马筠</b></td><td>实际控制人之一</td><td>未直接持股；三人+朗进集团2025-12-30续签《一致行动人协议》构成一致行动人 <a href="https://www.cninfo.com.cn/new/disclosure/detail?stockCode=300594&announcementId=1224910559&orgId=gfbj0871452&announcementTime=2025-12-30">来源</a></td></tr>
+  <tr><td><b>青岛朗进集团</b></td><td>控股股东</td><td>2001年成立；原持股20.72%(1903.5万股，全冻结/其中1520万股质押)，2026-09-15过户后<b>剩11.96%(1098.62万股，730万股仍冻结=占所持66.45%)</b> <a href="https://data.eastmoney.com/notices/detail/300594/AN202609171829520497.html">来源</a></td></tr>
+  <tr><td><b>中时控股有限公司</b></td><td><b>新晋第二大股东(9.68%)</b></td><td>2021-09-14成立，注册资本3亿元，法人杨书宏，注册地济南（山东自贸区济南片区），经营范围"以自有资金投资/企业管理"；关联方"时拾商业管理(山东)"；民间借贷债权人，司法抵债受让8.76%，受让首发前股份<b>6个月内禁售</b> <a href="https://data.eastmoney.com/notices/detail/300594/AN202609171829520506.html">来源</a></td></tr>
+  <tr><td><b>浙江经建投</b></td><td>原第二大股东(地方国资)</td><td>浙江省经济建设投资有限公司（浙江省交通投资集团），2024年以来<b>持续公开征集转让减仓</b>，受让方落定广州永金乐水三号私募(8.05%)、青岛元德众允(5.01%)等——<b>国资在退、不在救</b> <a href="https://stcn.com/article/detail/3577634.html">来源</a></td></tr>
+</table>
+
+<p>前十大股东中还密集出现<b>高盛、UBS、摩根士丹利、花旗、美林国际</b>等外资QFII席位，以及<b>卢雯静(2.47%)</b>等自然人——筹码在持续换手，是典型的"外资+私募+债权人"混合接盘结构。 <a href="https://xueqiu.com/S/SZ300594">来源</a></p>
+
+<!-- ============ 怎么拿控制权 ============ -->
+<h2>五、怎么拿控制权（六步预判 + 工具清单）</h2>
+
+<h3>5.1 六步预判</h3>
+<table>
+  <tr><th style="width:110px">步骤</th><th>结论</th></tr>
+  <tr><td>① 抓病因</td><td>控股股东朗进集团<b>缺钱</b>→非经营性占用上市公司4.15亿→内控否定→ST。底子是"股东信用崩了"，不是"公司产能/技术崩了"。</td></tr>
+  <tr><td>② 判生死</td><td>短期死不了（营收7.81亿、净资产7.31亿、处罚已了结），<b>治理病>财务死</b>。真正的靴子是"控制权归属"，不是"退市"。</td></tr>
+  <tr><td>③ 锁救兵（五类画像）</td><td>
+    <b>・产业资本</b>：未见明确轨交/储能产业方举牌；<br>
+    <b>・资本套利者</b>：广州永金(8.05%)、青岛元德众允(5.01%)、外资QFII——<b>大概率是"摘帽+题材"的套利盘</b>；<br>
+    <b>・地方国资</b>：浙江经建投<b>正在退出</b>（非救兵）；<br>
+    <b>・原股东自救</b>：实控人团队仅12.16%且股份被冻/质押，<b>自救能力弱、只能被动挨打</b>；<br>
+    <b>・债权人</b>：<b>中时控股是当前最值得盯的"潜在新主"</b>——用司法调解拿到了9.68%，已是第二大股东。
+  </td></tr>
+  <tr><td>④ 拆路径</td><td>目前走的是<b>"被动司法处置"路径</b>（债权人起诉→法院调解→抵债过户），<b>未见</b>庭外重组/预重整/司法重整/控制权要约收购的动作。这是"温和型股东更替"，不是"休克式重整"。</td></tr>
+  <tr><td>⑤ 对比路径</td><td>对照王艳体系：<b>这不是"借壳重组"剧本</b>（无控制权变更、无资产注入），更接近<b>"实控人失血+债权人进场"的原股东被动让位</b>剧本。若后续中时控股增持至触发要约（30%）、或被产业方接管，剧本才会升级。</td></tr>
+  <tr><td>⑥ 备工具</td><td>已用工具：<b>司法裁定非交易过户（抵债）</b>、<b>公开征集协议转让</b>、<b>股份回购</b>(2025-11完成5,000万回购)。可用的11种取得股份方式（协议转让/大宗/二级增持/司法拍卖/要约/定增/表决权委托/一致行动协议/破产重整转股/股权激励/可转债）中，<b>表决权委托、定增、司法拍卖</b>是未来最可能被启用的后续工具。</td></tr>
+</table>
+
+<h3>5.2 意图与节奏推测（六维拆解）</h3>
+<table>
+  <tr><th style="width:150px">维度</th><th>判断</th></tr>
+  <tr><td>① 重组节奏</td><td><b>无重大资产重组</b>，只有"减持(浙江经建投)+抵债过户(中时控股)"两步棋。<b class="warn">节奏偏慢、渐进、无一次性换壳</b>。</td></tr>
+  <tr><td>② 新实控人背景与意图</td><td>中时控股：2021年新设的济南投资公司，3亿注册资本，无公开产业背景，法人杨书宏；公告称"无一致行动人、未来12个月无增减计划"。<b>意图不明、话术保守</b>——更像"债主先拿资产兜底、再观望"，而非立刻谋求实控。</td></tr>
+  <tr><td>③ 原业务质量</td><td>轨交空调为基本盘（自述"国内第一梯队、33城运营、在营4.5万台+海外8城1,100台"），但盈利疲软：毛利率21%、连亏4年半。<b class="warn">"壳里装的是真资产，只是不赚钱"</b>。</td></tr>
+  <tr><td>④ 承诺包活口</td><td>详见第六节——"实控人未变""无一致行动人""12个月无增减"三句话，<b>每句都留了活口</b>。</td></tr>
+  <tr><td>⑤ 全流程进度与行情映射</td><td>立案(2025-08，股价从高点下杀)→处罚(2026-01，利空出尽反抽)→ST(2026-04-30，再杀)→司法过户(2026-09，缩量反弹15.01)。52周区间33.70→11.66→15.01，<b>典型"利空耗散中的修复"</b>。</td></tr>
+  <tr><td>⑥ 运作特征与综合判断</td><td><b>"债权人挤兑式控股权被动流失"</b>：控股股东没能力还债→被法院一根根拆股权。温和、慢、且<b>新主不明确</b>。综合判断：短期是"摘帽修复"逻辑，中期是"控制权花落谁家"逻辑，长期才是"第二曲线"逻辑。</td></tr>
+</table>
+
+<!-- ============ 壳价值评估 ============ -->
+<h2>六、壳价值评估（一票否决 vs 可以救但要算账）</h2>
+<div class="two-col">
+  <div>
+    <h4 class="ok">✅ 一票否决项排查（都不触发）</h4>
+    <ul>
+      <li>重大违法强制退市？<b>否</b>（处罚定格为信披违规，明示不触及）</li>
+      <li>净资产归零/为负？<b>否</b>（7.31亿）</li>
+      <li>营收&lt;1亿财务红线？<b>否</b>（7.81亿）</li>
+      <li>审计无法表示意见/财报否定？<b>否</b>（财务报告为<b>带强调事项段无保留</b>，仅内控否定）</li>
+    </ul>
+  </div>
+  <div>
+    <h4 class="warn">⚠️ 可以救，但要算账（四手段）</h4>
+    <ul>
+      <li><b>换人</b>：实控人团队被罚+失血，中时控股9.68%逼近，<b>换/让是大概率选项，代价是股价</b></li>
+      <li><b>换业务</b>：储能液冷(55GWh出货)、第二曲线在推但未成利润</li>
+      <li><b>剥离差的业务</b>：暂无实质剥离动作</li>
+      <li><b>搞钱</b>：已回购5,000万、应收保理、融资租赁售后回租盘活现金流 <a href="https://www.cninfo.com.cn/new/disclosure/detail?stockCode=300594&announcementId=1225250544&orgId=gfbj0871452&announcementTime=2026-04-29">来源</a></li>
+    </ul>
+  </div>
+</div>
+<blockquote>
+  <b>壳价值一句话：</b>朗进的"壳"附加了<b>7.31亿真净资产 + 轨交空调主业 + 液冷/储能题材</b>，比纯空壳贵、但比好公司便宜（PB1.89）。对淘壳者而言，它是"<b>有资产的困境反转标的</b>"，不是"零成本壳"——所以接盘方需要付出真金白银，也正因如此，<b>中时控股这种"债权抵股、零现金成本进场"的路径，性价比最高</b>，值得高度关注。
+</blockquote>
+
+<!-- ============ 借壳/重大重组红线 ============ -->
+<h2>七、借壳 / 重大重组红线（四要件）与规避路径</h2>
+<ul>
+  <li><b>要件一 · 控制权变更：</b>目前<b>未发生</b>（实控人仍为李敬茂、李敬恩、马筠，一致行动12.16%）。<b class="warn">但已站在门槛上</b>——中时控股9.68%，若再增持2.48%即超越；或实控人剩余730万股冻结股再被司法处置，席位即易主。</li>
+  <li><b>要件二 · 注入资产达标（总资产/净资产/营收/发行股份等100%红线）：</b>目前<b>无任何资产注入</b>，不构成。</li>
+  <li><b>要件三 · 交易实质构成重组上市：</b>无重组动作，不构成。</li>
+  <li><b>要件四 · 规避路径：</b>①先内控转正摘帽 → ②稳定控制权（一致行动协议/表决权委托/定向增发）→ ③再谈注入，<b>分步走可避免一步触发借壳红线</b>。当前阶段公司走的是"<b>合规修复 + 被动让渡</b>"，距离"借壳"剧本尚远。</li>
+</ul>
+
+<!-- ============ 承诺包/报告书活口拆解 ============ -->
+<h2>八、承诺包 / 报告书逐条拆解（原话 vs 大白话+活口）</h2>
+<p class="small">标的当前没有"资产注入对赌承诺包"，最接近"承诺包"的是<span class="warn">简式权益变动报告书 + 权益变动提示性公告</span>里的关键表述，逐条把"活口"挖出来：</p>
+<table>
+  <tr><th style="width:44%">原话（公告摘录）</th><th>大白话 + 活口解读</th></tr>
+  <tr>
+    <td>"本次权益变动<b>不涉及控股股东主观意愿减持</b>，不触及要约收购，<b>未导致公司控股股东、实际控制人发生变更</b>"</td>
+    <td>大白话：是法院逼着过户的，不是我（朗进集团）想卖；理论上控制权没换人。<br><b>活口：</b>"未导致变更"是<b>结果陈述</b>，不是承诺。实控人只剩12.16%、二股东9.68%只差2.48点，<b>下次再被冻结/司法处置、或中时增持一步，这句话就得重写</b>。</td>
+  </tr>
+  <tr>
+    <td>中时控股："截至报告书签署日，<b>无一致行动人</b>"</td>
+    <td>大白话：现在我没有跟谁绑定联手。<br><b>活口：</b>报告书里自己披露了关联方<b>"时拾商业管理(山东)"</b>——一致行动关系只算"截至签署日"，且属于<b>可以通过补签协议随时改变</b>的事项，留足了后手。</td>
+  </tr>
+  <tr>
+    <td>中时控股："<b>尚未有其他明确计划、协议或安排</b>在未来十二个月内增加或减少…股份"</td>
+    <td>大白话：我暂不买卖。<br><b>活口：</b>"尚未有明确计划"是<b>标准免责句式</b>，只约束"未来12个月"且以"无明确计划"为前提——<b>新计划随时可生变</b>；再过6个月，其受让的首发前股份<b>禁售期一解除即可减持</b>，多空两个方向都留了门。</td>
+  </tr>
+  <tr>
+    <td>"本次过户的朗进集团所持股份为<b>首发前股份</b>，中时控股受让后<b>6个月内不得减持</b>"</td>
+    <td>大白话：至少6个月内锁仓。<br><b>活口：</b>锁定是<b>法定义务</b>不是承诺；"6个月"是底线不是上限，<b>到期后的动作才是真正意图试金石</b>。</td>
+  </tr>
+  <tr>
+    <td>公司："将至少<b>每月披露一次进展公告，直至相关情形消除</b>"（风险警示进展）</td>
+    <td>大白话：ST期间每月报一次内控/占用整改进展。<br><b>活口：</b>这是<b>程序性义务</b>，恰恰是观察窗口——<b>哪个月公告措辞从"整改中"变为"已整改完毕"，就是摘帽的前哨信号</b>。</td>
+  </tr>
+</table>
+
+<!-- ============ 财务体检 ============ -->
+<h2>九、财务体检（四张表核心 + 关键指标）</h2>
+<div class="snap">
+  <b>利润表核心（单位：亿元/万元，公司公告口径）</b>
+  <table>
+    <tr><th>期间</th><th>营业收入(亿)</th><th>归母净利(万)</th><th>扣非净利(万)</th><th>经营现金流(亿)</th><th>归母净资产(亿)</th></tr>
+    <tr><td>2021</td><td>6.76</td><td class="ok">+493</td><td>—</td><td>+0.44</td><td>9.36</td></tr>
+    <tr><td>2022</td><td>7.71</td><td class="danger">−5799</td><td class="danger">−6527</td><td class="danger">−2.99</td><td>8.98</td></tr>
+    <tr><td>2023</td><td>9.02</td><td class="danger">−317</td><td class="danger">−548</td><td class="danger">−0.76</td><td>9.25</td></tr>
+    <tr><td>2024</td><td>8.81</td><td class="danger">−7640</td><td class="danger">−8053</td><td class="danger">−1.02</td><td>8.40</td></tr>
+    <tr><td>2025</td><td>7.81</td><td class="danger">−1507</td><td class="danger">−1469</td><td class="ok">+1.70</td><td>7.75</td></tr>
+    <tr><td><b>2026H1</b></td><td><b>3.21</b>(−5.68%)</td><td class="danger"><b>−4452</b></td><td class="danger"><b>−4573</b></td><td class="danger">−0.49</td><td>7.31</td></tr>
+  </table>
+  <span class="src">来源：<a href="https://static.cninfo.com.cn/finalpage/2025-04-24/1223243601.PDF">2024年报三年列</a> · <a href="https://stcn.com/article/detail/3869493.html">2025年报(证券时报)</a> · <a href="https://static.cninfo.com.cn/finalpage/2026-08-27/1225511698.PDF">2026半年报摘要</a> · <a href="https://wap.stockstar.com/detail/RB2026091700035109">证券之星中报</a></span>
+</div>
+
+<h3>9.1 资产负债 / 现金流关键点（2026-06-30，Wind 累计口径，单位：亿元）</h3>
+<ul>
+  <li><b>货币资金 0.59亿 vs 短期借款 1.61亿</b>——<b class="danger">流动性吃紧</b>，账上现金盖不住短债。</li>
+  <li><b>应收账款 9.27亿</b>，占总资产(15.89亿)约<b>58%</b>——回款风险积聚，公司靠应收保理/融资租赁盘活。</li>
+  <li>总资产一年缩水：17.65亿(2025末)→15.89亿(2026H1)，<b>−9.94%</b>；负债率54.25%。</li>
+  <li>固定资产约2.01亿，商誉<b>0</b>——无商誉减值雷，资产偏"硬"。</li>
+</ul>
+
+<h3>9.2 关键指标体检</h3>
+<ul>
+  <li><b>毛利率</b>：上市初期37–39% → 2026H1<b>21.43%</b>，一路下行——赛道内卷、议价变弱。</li>
+  <li><b>扣非连亏4年半</b>：2022至2026H1扣非累计约−1.8亿，<b>主业尚未自证造血</b>。</li>
+  <li><b>其他应收款异动</b>：2025末1.27亿、较年初<b>+331%</b>（"关联方资金拆借"所致）——资金占用的后遗症指标，需持续盯。</li>
+  <li><b>三红灯</b>：扣非连亏、现金流大起大落（仅2025转正+1.70亿、2026H1又转负）、总资产缩水。</li>
+  <li><b>审计口径</b>：财务报告="带强调事项段无保留意见"，内控报告="否定意见"——<b>很多人误读成"财报否决"，其实财报是干净的</b>。</li>
+</ul>
+<blockquote><b>财务结论：</b>"资产是真的、利润是假的（为负）、现金流是抖的"。净资产7.31亿 + PB1.89 是它的安全垫，但盈利和现金流都在流血，价值锚在<b>赛道预期+治理修复</b>，不在当期报表。</blockquote>
+
+<!-- ============ 行情与估值 ============ -->
+<h2>十、行情与估值</h2>
+<table>
+  <tr><th>估值视角</th><th>判断</th></tr>
+  <tr><td>PB 1.89 / PS(TTM) 约1.74</td><td>亏损状态下<b>禁用PE</b>，用PB/PS：13.79亿市值对应净资产7.31亿，<b>不算贵、也不便宜</b>。对标盈利轨交配套（康尼机电/今创集团 PB约1.31）还有下行空间。</td></tr>
+  <tr><td>赛道期权</td><td>储能液冷(累计出货55GWh)、eVTOL低空热管理(样机试飞+AS9100D认证)、热泵烘干——<b>题材弹性大、均未量化成收入</b>。</td></tr>
+  <tr><td>筹码结构</td><td>外资QFII密集+债权人进场+国资退出，<b>换手充分、无单一大主力托盘</b>，波动会被放大。</td></tr>
+  <tr><td>事件驱动</td><td>①2026内控转正摘帽 ②中时控股后续增减持 ③投资者索赔赔付（账外或有负债）。</td></tr>
+</table>
+<blockquote>
+  <b>估值结论：</b>13.79亿、PB<2 的定价，本质上是在给"<b>摘帽修复 + 第二曲线期权</b>"计价，而不是给亏损主业计价。<b>向上弹性：内控转正+摘帽+液冷放量的三重共振；向下风险：内控二次否定+主业持续失血+索赔情绪扰动。</b>它是"赛道期权+摘帽"的高弹性博弈品种，不是价值配置品种。
+</blockquote>
+
+<!-- ============ 核心矛盾与综合判断 ============ -->
+<h2>十一、核心矛盾与综合判断</h2>
+<p><b>核心矛盾一句话：</b>朗进的生死不在"退不退市"（大概率不退），而在"<b>烂棋局里的好资产、谁来重新下这盘棋</b>"——实控人已信用破产且筹码失血，债权人中时控股零成本拿到9.68%却自称"无计划"，<b>治理修复(摘帽)是明线，控制权归属(谁接盘)是暗线</b>。</p>
+<h3>我的综合判断（①②③）</h3>
+<ol>
+  <li>① <b>它不是"保命型ST"，是"治理修复型ST"</b>：罚单已了、占用已还、主业还在，<b>最大价值是"重新定价"而非"救命"</b>。与纯壳ST（无资产、靠借壳）本质不同。</li>
+  <li>② <b>短期押"摘帽"、中期盯"中时控股"、长期等"第二曲线"</b>。2026年内控审计意见是唯一明确的短期开关；中时控股及其一致行动/增减持动作，是控制权暗线的观察点；液冷/储能订单能否转化为收入利润，决定它能不能脱离"题材股"标签。</li>
+  <li>③ <b>风险提醒（别接飞刀的三条）</b>：<span class="danger">别把"ST=便宜"当理由</span>（规范类ST的价值在治理修复，没修复就是飞刀）；<span class="danger">别把"处罚落地"当"摘帽在即"</span>（开关是2026内控意见，不到披露那天不算数）；<span class="danger">别把"液冷概念"当"液冷收入"</span>（涨停≠业绩）。</li>
+</ol>
+<blockquote>
+  <b>一句话定性：</b>ST朗进 = <b>"主业没死、治理有病、处罚已了、内控未愈、控制权明稳实危"</b>的治理修复型标的。适合看得懂"摘帽节奏 + 筹码博弈"的人小仓位博修复，不适合无脑抄底；4.15亿资金占用留下的教训，比它现在的股价更值得记住。
+</blockquote>
+
+<!-- ============ 待核实 ============ -->
+<h2>十二、待核实清单</h2>
+<ul class="small">
+  <li>中时控股及其关联方"时拾商业"的最终实控人/资金来源（公开工商可查，但未在本报告深挖——<b>【待核实】</b>）；</li>
+  <li>控股股东朗进集团剩余730万股冻结所对应的债务总额/债权人明细（<b>【待核实】</b>，直接影响下一笔过户时间）；</li>
+  <li>投资者虚假陈述索赔案件的索赔区间、预估赔付总额与计提口径（<b>【待核实】</b>，账外或有负债）；</li>
+  <li>轨交空调市占率、在手订单绝对金额、储能/液冷收入拆分与毛利率（公司未披露精确数字，<b>【待核实】</b>）；</li>
+  <li>2026年内控审计意见方向（<b>【待核实】</b>，需等2027-04年报）。</li>
+</ul>
+
+<!-- ============ 数据来源 ============ -->
+<h2>十三、数据来源（可点击核对）</h2>
+<ol>
+  <li><a href="http://disc.static.szse.cn/download/disc/disk03/finalpage/2026-04-29/a9c90b23-65b8-4afc-9588-d2be987c20de.PDF">关于公司股票交易将被实施其他风险警示暨股票停复牌的提示性公告（深交所，2026-04-29）</a></li>
+  <li><a href="http://www.csrc.gov.cn/shandong/c104216/c7609485/content.shtml">中国证监会山东监管局行政处罚决定书（〔2026〕2号）</a></li>
+  <li><a href="https://static.cninfo.com.cn/finalpage/2026-01-16/1224936368.PDF">关于公司及相关当事人收到《行政处罚决定书》的公告（巨潮，2026-01-16）</a></li>
+  <li><a href="http://finance.ce.cn/stock/gsgdbd/202601/t20260116_2707212.shtml">深交所纪律处分（深证上〔2026〕43号）· 中国经济网</a></li>
+  <li><a href="https://finance.sina.com.cn/roll/2026-01-15/doc-inhhmamt4662143.shtml">朗进科技及董事长李敬茂等被罚1015万元 · 中新经纬/新浪</a></li>
+  <li><a href="https://data.eastmoney.com/notices/detail/300594/AN202609171829520497.html">控股股东部分股份非交易过户暨权益变动提示性公告（2026-09-17）</a></li>
+  <li><a href="https://data.eastmoney.com/notices/detail/300594/AN202609171829520506.html">简式权益变动报告书（中时控股，2026-09-17）</a></li>
+  <li><a href="https://pdf.dfcfw.com/pdf/H2_AN202609171829520445_1.pdf">简式权益变动报告书（朗进集团、李敬茂、李敬恩、马筠，2026-09-17）</a></li>
+  <li><a href="http://www.cnstock.com/commonDetail/791938">中时控股受让朗进集团8.76%股份 · 上海证券报</a></li>
+  <li><a href="https://finance.sina.com.cn/stock/zqgd/2026-09-17/doc-iniscqxx4056215.shtml">朗进集团805万股司法调解过户 · 财中社/新浪财经</a></li>
+  <li><a href="https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-05-06/2b445dcd-8864-46dc-8385-3654cec686f5.PDF">被实施其他风险警示相关事项进展公告（2026-05-06）</a></li>
+  <li><a href="http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12582681">被实施其他风险警示相关事项进展公告（2026-09-03，占用款收回本息/内审负责人到位）</a></li>
+  <li><a href="https://static.cninfo.com.cn/finalpage/2026-09-03/1225546407.PDF">风险警示进展公告PDF（巨潮，2026-09-03）</a></li>
+  <li><a href="https://static.cninfo.com.cn/finalpage/2026-08-27/1225511698.PDF">2026年半年度报告摘要（2026-08-27）</a></li>
+  <li><a href="https://static.cninfo.com.cn/finalpage/2025-04-24/1223243601.PDF">2024年年度报告（2022-2024财务三年列定稿）</a></li>
+  <li><a href="https://stcn.com/article/detail/3869493.html">朗进科技2025年经营韧性凸显 · 证券时报</a></li>
+  <li><a href="http://m.zqrb.cn/gscy/gongsi/2026-04-29/A1777449711967.html">朗进科技2025年经营质量显著改善 · 证券日报</a></li>
+  <li><a href="https://stcn.com/article/detail/3281438.html">公司及实控人被证监会立案 · 证券时报（2025-08-27）</a></li>
+  <li><a href="https://stcn.com/article/detail/3543360.html">行政处罚事先告知书 · 证券时报（2025-12-16）</a></li>
+  <li><a href="https://stcn.com/article/detail/3284099.html">上半年扭亏+占用款归还 · 证券时报（2025-08-27）</a></li>
+  <li><a href="https://stcn.com/article/detail/3577634.html">浙江经建投协议转让进展 · 证券时报e公司（2026-01-08）</a></li>
+  <li><a href="https://www.chnfund.com/article/f253d73f-0703-eb5f-fd1e-3a22e3722e53">因内控否定意见被实施其他风险警示 · 中国基金报</a></li>
+  <li><a href="https://static.cninfo.com.cn/finalpage/2026-09-08/1225552925.PDF">控股股东部分股份被司法冻结公告（2026-09-08）</a></li>
+  <li><a href="https://static.cninfo.com.cn/finalpage/2026-08-20/1225486553.PDF">控股股东部分股份质押及司法冻结公告（2026-08-20）</a></li>
+  <li><a href="https://www.cninfo.com.cn/new/disclosure/detail?stockCode=300594&announcementId=1225250544&orgId=gfbj0871452&announcementTime=2026-04-29">应收账款保理业务公告（2026-04-29）</a></li>
+  <li><a href="https://www.cninfo.com.cn/new/disclosure/detail?stockCode=300594&announcementId=1224910559&orgId=gfbj0871452&announcementTime=2025-12-30">实际控制人续签《一致行动人协议》公告（2025-12-30）</a></li>
+  <li><a href="https://stcn.com/quotes/index/sz300594.html">行情快照 · 证券时报</a></li>
+  <li><a href="https://stockpage.10jqka.com.cn/300594/company/">公司资料/高管/股东 · 同花顺F10</a></li>
+  <li><a href="https://xueqiu.com/S/SZ300594">行情/估值 · 雪球</a></li>
+  <li><a href="https://wap.stockstar.com/detail/RB2026091700035109">2026中报核心数据 · 证券之星</a></li>
+</ol>
+<p class="src">另：本地底稿《ST朗进-300594-深度研究-20260919.md》《300594-ST朗进-深度研究-20260918.md》《300594-source_index.md(300条)》《Wind取数原始数据.json》作为交叉核对基础；Wind 对300594截面读数为第三方口径，财务数据最终以公司定期报告为准。</p>
+
+<div class="footer">
+（免责声明：本文内容仅为自用兼知识分享与逻辑分析，数据可能有错误或不及时，不构成任何投资建议。市场有风险，投资需谨慎。）
+</div>
+
+</div>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a></body>
+</html>
