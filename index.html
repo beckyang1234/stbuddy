@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ST Buddy · 个股深度研究</title>
+<style>
+  :root{
+    --bg:#f4f5f7; --card:#ffffff; --ink:#1c2733; --muted:#6b7684;
+    --line:#e6e8ec; --accent:#1a5276; --red:#c0392b; --orange:#e67e22;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Microsoft YaHei',-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px 60px}
+  header{background:linear-gradient(135deg,#12283b 0%,#1a5276 60%,#22608a 100%);color:#fff;padding:44px 20px 60px;margin-bottom:-30px}
+  .head-inner{max-width:1080px;margin:0 auto}
+  .brand{font-size:30px;font-weight:800;letter-spacing:1px}
+  .brand .dot{color:#e67e22}
+  .sub{margin-top:8px;font-size:14.5px;color:#cfe0ee}
+  .stats{margin-top:18px;display:flex;gap:26px;font-size:13.5px;color:#bcd0e0}
+  .stats b{color:#fff;font-size:18px;font-weight:700;margin-right:4px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 4px 18px rgba(20,40,60,.06);padding:20px 22px;margin-top:30px}
+  .search-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .search-box{flex:1;min-width:220px;position:relative}
+  .search-box input{width:100%;padding:12px 14px 12px 40px;font-size:15px;border:1px solid var(--line);border-radius:10px;outline:none;background:#fafbfc;transition:.15s}
+  .search-box input:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(26,82,118,.12)}
+  .search-box .ico{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:#9aa4b0}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{padding:8px 15px;font-size:13.5px;border:1px solid var(--line);border-radius:999px;background:#fff;color:#4a5560;cursor:pointer;user-select:none;transition:.12s}
+  .chip:hover{border-color:#b8c4d0}
+  .chip.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  .chip.red.active{background:var(--red);border-color:var(--red)}
+  .chip.orange.active{background:var(--orange);border-color:var(--orange)}
+  .label{font-size:12.5px;color:var(--muted);margin:16px 2px 8px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:14px}
+  .card{display:block;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 16px 14px;text-decoration:none;color:inherit;transition:.16s;position:relative;overflow:hidden}
+  .card:hover{border-color:#b8c4d0;box-shadow:0 8px 24px rgba(20,40,60,.10);transform:translateY(-2px)}
+  .card .bar{position:absolute;left:0;top:0;width:4px;height:100%}
+  .bar.st{background:var(--orange)}
+  .bar.xst{background:var(--red)}
+  .tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:6px}
+  .tag.xst{background:#fdedec;color:var(--red)}
+  .tag.st{background:#fdf3e7;color:#b96b0a}
+  .name{font-size:19px;font-weight:700;margin-top:8px}
+  .code{font-size:13px;color:var(--muted);margin-top:2px;font-family:Consolas,Menlo,monospace}
+  .meta{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12.5px;color:#98a2ae}
+  .exch{background:#f1f4f7;padding:1px 8px;border-radius:6px}
+  .empty{text-align:center;color:var(--muted);padding:40px 0;font-size:14.5px}
+  footer{max-width:1080px;margin:40px auto 0;padding:0 20px;color:#9aa4b0;font-size:12.5px;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <div class="head-inner">
+    <div class="brand">ST Buddy<span class="dot">.</span></div>
+    <div class="sub">个股深度研究 · 寻找十倍系列 · 控制权变更驱动</div>
+    <div class="stats">
+      <div><b id="count">0</b>篇研报</div>
+      <div>最近更新 <b id="latest">-</b></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="panel">
+    <div class="search-row">
+      <div class="search-box">
+        <span class="ico">🔍</span>
+        <input id="q" type="text" placeholder="搜索股票代码 / 名称 / 拼音，例如 600107 或 尔雅">
+      </div>
+    </div>
+    <div class="label">风险类别</div>
+    <div class="chips" id="catChips">
+      <div class="chip active" data-val="all">全部</div>
+      <div class="chip red" data-val="xst">＊ST（退市风险）</div>
+      <div class="chip orange" data-val="st">ST（其他风险）</div>
+    </div>
+    <div class="label">上市市场</div>
+    <div class="chips" id="exchChips">
+      <div class="chip active" data-val="all">全部</div>
+      <div class="chip" data-val="深">深交所</div>
+      <div class="chip" data-val="沪">上交所</div>
+    </div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" style="display:none">未找到匹配的个股，试试其他关键词。</div>
+</div>
+
+<footer>
+  本站内容为客观信息梳理，不构成任何投资建议。数据基准日以各研报内标注为准。
+  <br>ST Buddy · 个股深度研究
+</footer>
+
+<script>
+const STOCKS = [
+  {code:"002501", name:"利源", prefix:"*ST", exch:"深", date:"2026-09-19", py:"liyuan"},
+  {code:"002512", name:"达华", prefix:"ST",  exch:"深", date:"2026-09-19", py:"dahua"},
+  {code:"300245", name:"天玑", prefix:"ST",  exch:"深", date:"2026-09-19", py:"tianji"},
+  {code:"300352", name:"信源", prefix:"ST",  exch:"深", date:"2026-09-19", py:"xinyuan"},
+  {code:"300462", name:"华铭", prefix:"ST",  exch:"深", date:"2026-09-19", py:"huaming"},
+  {code:"300594", name:"朗进", prefix:"ST",  exch:"深", date:"2026-09-19", py:"langjin"},
+  {code:"301117", name:"佳缘", prefix:"ST",  exch:"深", date:"2026-09-19", py:"jiayuan"},
+  {code:"600107", name:"尔雅", prefix:"*ST", exch:"沪", date:"2026-09-19", py:"erya"},
+  {code:"688089", name:"嘉必优", prefix:"ST", exch:"沪", date:"2026-09-19", py:"jiabiyou"},
+  {code:"002055", name:"得润", prefix:"ST",  exch:"深", date:"2026-09-17", py:"derun"},
+  {code:"002743", name:"富煌", prefix:"ST",  exch:"深", date:"2026-09-16", py:"fuhuang"}
+];
+
+let state = {kw:"", cat:"all", exch:"all"};
+
+function matches(s){
+  const kw = state.kw.trim().toLowerCase();
+  if(kw){
+    const hay = (s.code + " " + s.name + " " + s.py).toLowerCase();
+    const hit = hay.includes(kw) || s.py.startsWith(kw) || s.code.startsWith(kw);
+    if(!hit) return false;
+  }
+  if(state.cat === "xst" && s.prefix !== "*ST") return false;
+  if(state.cat === "st" && s.prefix !== "ST") return false;
+  if(state.exch !== "all" && s.exch !== state.exch) return false;
+  return true;
+}
+
+function fullName(s){ return s.prefix + s.name; }
+
+function render(){
+  const list = STOCKS.filter(matches);
+  document.getElementById("count").textContent = STOCKS.length;
+  document.getElementById("latest").textContent = STOCKS.reduce((m,s)=> s.date > m ? s.date : m, "0");
+  const grid = document.getElementById("grid");
+  const empty = document.getElementById("empty");
+  grid.innerHTML = "";
+  if(list.length === 0){ empty.style.display = "block"; return; }
+  empty.style.display = "none";
+  list.forEach(s=>{
+    const isXst = s.prefix === "*ST";
+    const a = document.createElement("a");
+    a.className = "card";
+    a.href = "reports/" + s.code + ".html";
+    a.innerHTML =
+      '<div class="bar ' + (isXst?"xst":"st") + '"></div>' +
+      '<span class="tag ' + (isXst?"xst":"st") + '">' + s.prefix + '</span>' +
+      '<div class="name">' + fullName(s) + '</div>' +
+      '<div class="code">' + s.code + (s.exch==="深"?".SZ":".SH") + '</div>' +
+      '<div class="meta"><span>更新 ' + s.date + '</span><span class="exch">' + s.exch + '交所</span></div>';
+    grid.appendChild(a);
+  });
+}
+
+function bindChips(containerId, key){
+  const cont = document.getElementById(containerId);
+  cont.addEventListener("click", e=>{
+    const chip = e.target.closest(".chip");
+    if(!chip) return;
+    state[key] = chip.dataset.val;
+    Array.from(cont.children).forEach(c=>c.classList.remove("active"));
+    chip.classList.add("active");
+    render();
+  });
+}
+
+document.getElementById("q").addEventListener("input", e=>{ state.kw = e.target.value; render(); });
+bindChips("catChips", "cat");
+bindChips("exchChips", "exch");
+render();
+</script>
+</body>
+</html>
