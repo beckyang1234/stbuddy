@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>寻找十倍系列——ST嘉必优(688089)深度分析</title>
+<style>
+  :root{
+    --red:#c0392b;--darkred:#8e2417;--blue:#1a5276;--amber:#b9770e;
+    --bg:#fbfbf8;--line:#e3e0d8;--code:#f5f2ea;
+  }
+  *{box-sizing:border-box}
+  body{
+    font-family:'Microsoft YaHei','PingFang SC',-apple-system,'Segoe UI',sans-serif;
+    line-height:1.75;color:#232323;max-width:1000px;margin:0 auto;
+    padding:28px 26px 60px;background:var(--bg);
+  }
+  h1{font-size:25px;line-height:1.4;color:var(--darkred);border-bottom:3px solid var(--red);padding-bottom:10px;margin:8px 0 4px}
+  h2{font-size:20px;color:var(--blue);border-left:5px solid var(--red);padding-left:10px;margin-top:42px}
+  h3{font-size:17px;color:var(--amber);margin-top:28px}
+  h4{font-size:15px;color:#333;margin-top:18px;margin-bottom:6px}
+  p{margin:10px 0}
+  a{color:#21618c;text-decoration:none;border-bottom:1px dotted #9bb5c9}
+  a:hover{color:var(--red);border-bottom-color:var(--red)}
+  .meta{font-size:13px;color:#777;margin:2px 0 14px}
+  .toc{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 18px;font-size:13.5px;line-height:2.0;columns:2;column-gap:34px;margin:18px 0}
+  .toc b{display:block;columns:span all;color:var(--red);font-size:14px;margin-bottom:4px}
+  .toc a{display:block;border:none;color:#21618c}
+  .toc a:hover{color:var(--red)}
+  blockquote{
+    margin:12px 0;padding:8px 16px;border-left:4px solid #d4a373;background:#fff7ec;
+    color:#5a4632;border-radius:0 6px 6px 0;
+  }
+  .dq{background:#fdecea;border:1px solid #f5c6c0;border-radius:8px;padding:14px 18px;margin:14px 0}
+  .dq b{color:var(--darkred)}
+  .say{background:#eef6fb;border:1px solid #c4dcec;border-radius:8px;padding:12px 16px;margin:12px 0;color:#174b6b}
+  .say b{color:var(--blue)}
+  .warn{background:#fff8e6;border:1px solid #ecd9a0;border-radius:8px;padding:12px 16px;margin:12px 0;color:#6b5310}
+  .tblwrap{overflow-x:auto;margin:12px 0}
+  table{border-collapse:collapse;width:100%;font-size:13px;background:#fff}
+  th,td{border:1px solid #d8d4c8;padding:7px 10px;text-align:left;vertical-align:top}
+  th{background:#2c3e50;color:#fff;font-weight:600;white-space:nowrap}
+  tr:nth-child(even) td{background:#faf8f3}
+  td.num,th.num{text-align:right;white-space:nowrap}
+  .num{font-variant-numeric:tabular-nums}
+  .hl td{background:#fff3e0!important;font-weight:600}
+  .tag{display:inline-block;font-size:11.5px;padding:1px 8px;border-radius:10px;margin-right:6px;font-weight:600}
+  .tag.red{background:#fdecea;color:var(--red);border:1px solid #f0b9b3}
+  .tag.green{background:#eafaf1;color:#1e8449;border:1px solid #bfe8cf}
+  .tag.blue{background:#eaf2f8;color:var(--blue);border:1px solid #bbd7ec}
+  .tag.amber{background:#fef5e7;color:var(--amber);border:1px solid #ecd9a0}
+  code{background:var(--code);padding:1px 6px;border-radius:4px;font-size:12.5px;color:#8e3b2f}
+  .src{font-size:12px;color:#888;font-style:normal}
+  ul,ol{padding-left:24px}
+  li{margin:5px 0}
+  hr{border:none;border-top:1px dashed #ccc;margin:26px 0}
+  .foot{margin-top:40px;font-size:12.5px;color:#666;border-top:2px solid #ddd;padding-top:14px}
+  .disc{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 18px;font-size:13px;color:#555;margin-top:16px}
+  .sources li{margin:6px 0}
+  .sources .typ{display:inline-block;min-width:150px;font-weight:600;color:#555;margin-top:12px}
+  .sources a{font-size:13px}
+  sup{color:var(--red);font-weight:700}
+  .idx{font-size:12px;color:#999}
+  @media print{ .toc{display:none} body{max-width:none} }
+</style>
+</head>
+<body>
+
+<div class="meta">
+  <span class="tag red">寻找十倍系列</span><span class="tag blue">控制权变更驱动 · 例外样本</span>
+  <span class="idx">更新至 2026-09-19（周六）｜行情截至 2026-09-18 收盘</span>
+</div>
+
+<h1 id="top">寻找十倍系列——ST嘉必优(688089)深度分析：破净的"中国ARA之王"，被一场全球奶粉召回拖进ST——是事故，还是终局？</h1>
+<p class="meta">方法论参考：王艳《寻找十倍系列·控制权变更驱动》｜作者：王艳的逍遥岛｜本文为客观信息梳理，不构成投资建议。数据源：Wind(windproxy)＋公司定期报告/公告PDF（巨潮、上交所）＋权威媒体（新华社、上证报、证券时报、证券日报、财联社、中国经济网、新京报等），均已随文标注出处。</p>
+
+<div class="toc"><b>目录</b>
+<a href="#intro">✅ 岛主引言（结论先行）</a>
+<a href="#summary">整体概括（一页纸全貌）</a>
+<a href="#timeline">一、前世今生时间轴</a>
+<a href="#controller">二、关键人物 / 实控人</a>
+<a href="#control">三、怎么拿控制权（本案：无变更）</a>
+<a href="#intent">四、意图与节奏（六步预判）</a>
+<a href="#commit">五、承诺包拆解</a>
+<a href="#finance">六、财务体检（四表+六维）</a>
+<a href="#valuation">七、行情与估值（壳价值+借壳红线）</a>
+<a href="#verdict">八、核心矛盾与综合判断</a>
+<a href="#sources">九、数据来源</a>
+<a href="#disc">免责声明</a>
+</div>
+
+<!-- ================= 岛主引言 ================= -->
+<h2 id="intro">✅ 岛主引言（结论先行：先说生死，再讲故事）</h2>
+
+<p>把一只<strong>"资产负债表干净到不像ST"</strong>的科创板合成生物龙头放上台面，问题只剩三个——<strong>ARA出口信任危机何时解除？全年1亿营收红线守不守得住？破净的价格是不是赔率足够的位置？</strong>先把生死结论摆在前头：</p>
+
+<div class="dq">
+<p><strong>① 红线分类</strong>：<span class="tag red">其他风险警示（ST，非\*ST）</span>——唯一触发条款为《上海证券交易所科创板股票上市规则》第 12.9.1 条第一款第（四）项"公司生产经营活动受到严重影响且预计在 3 个月内不能恢复正常"（来源：<a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-25/688089_20260725_GSG1.pdf" target="_blank">《关于被实施其他风险警示暨停牌的公告》2026-019</a>）。<strong>不属于</strong>财务类、<strong>不属于</strong>规范类资金占用/违规担保、<strong>不属于</strong>重大违法类（判型见下表）。</p>
+<p><strong>② 生死定级</strong>：<span class="tag green">良性可逆、事件驱动型ST</span>——起因是 2026 年 1 月雀巢全球召回婴幼儿配方奶粉、2 月下旬欧盟对原产中国 ARA 油脂实施强化进口管控，公司"对生产经营计划进行适应性和阶段性调整"导致 2026 上半年收入暴跌 81%（来源：<a href="https://www.cls.cn/detail/2436787" target="_blank">财联社</a>｜<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">2026半年报摘要</a>）。技术、产能、客户关系并未损毁；<strong>唯一尾部风险</strong>只有一条：若 2026 年全年收入低于 1 亿元，将叠加财务类"退市风险警示"（\*ST）（来源：<a href="http://paper.cnstock.com/html/2026-07/25/content_2248444.htm" target="_blank">上证报·业绩预告原文</a>）。</p>
+<p><strong>③ 自救空间＋时间窗口</strong>：<span class="tag blue">不需要"救兵"式重整的ST</span>。控股股东武汉烯王持股 44.17%、零质押零冻结（来源：<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">2026半年报·前十大股东</a>）；这是个<strong>"无人来救、也无需来救"</strong>的样本，实控人易德伟团队干的是"供应链升级＋客户一对一恢复＋业务多元化"的正经自救（来源：<a href="http://data.eastmoney.com/notices/detail/688089/AN202608281828624548.html" target="_blank">进展公告2026-024</a>）。二级市场定价的是"恢复节奏"，不是"生存概率"——截至 2026-09-18 收盘市值 14.09 亿，<strong>低于账面归母净资产 15.31 亿（PB≈0.92），也低于 IPO 发行价 23.90 元的除权调整价</strong>（来源：<a href="https://www.stcn.com/quotes/index/sh688089.html" target="_blank">证券时报行情</a>｜<a href="http://finance.ce.cn/stock/gsgdbd/202609/t20260916_3217479.shtml" target="_blank">中国经济网</a>）。时间窗口：摘帽不挂钩年报周期，但"每月一报"的进展公告既是兑现清单也是倒计时。</p>
+</div>
+
+<h3>四类退市红线判型（王艳体系·动笔第一步）</h3>
+<div class="tblwrap"><table>
+<tr><th style="width:90px">红线类型</th><th>科创板触发条件</th><th>嘉必优现状（2025年报/2026中报定稿）</th><th style="width:110px">是否触及</th></tr>
+<tr><td><b>财务类</b></td><td>①利润总额/净利/扣非孰低为负且<strong>扣除后营收&lt;1亿</strong>（双创）；②期末净资产为负；③审计被出具<strong>保留/否定/无法表示意见</strong></td><td>2025 营收 5.63 亿、归母净资产 16.34 亿为正、审计为<b>带强调事项段的无保留意见</b>（非保留/否定/无法表示）——但 2026 全年若营收&lt;1亿将叠加\*ST（来源：<a href="https://static.cninfo.com.cn/finalpage/2026-04-23/1225156914.PDF" target="_blank">2025年报PDF</a>）</td><td class="num"><span class="tag amber">未触及<br>尾部唯一风险</span></td></tr>
+<tr><td><b>交易类</b></td><td>连续 20 日市值&lt;3亿（双创）/连续 20 日收盘价&lt;1元/股东数&lt;400</td><td>市值 14.09 亿、股东 9,467 户（来源：<a href="https://www.stcn.com/quotes/index/sh688089.html" target="_blank">证券时报</a>｜<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">半年报摘要</a>）</td><td class="num"><span class="tag green">否</span></td></tr>
+<tr><td><b>规范类</b></td><td>资金占用≥2亿或≥净资产30%、内控连续非标、控制权无序争夺等</td><td>中报明示无违规担保、无非经营性占用，公司及控股股东、实控人诚信良好无处罚（来源：<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">半年报摘要</a>）</td><td class="num"><span class="tag green">否</span></td></tr>
+<tr><td><b>重大违法类</b></td><td>欺诈发行/重大信披违法涉刑/财务造假达标</td><td>无立案、无处罚记录（来源：<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">半年报摘要</a>）</td><td class="num"><span class="tag green">否</span></td></tr>
+</table></div>
+
+<p class="say"><strong>一句话定调</strong>：这票与"主业烂掉、被掏空、资不抵债"的壳票走的是<b>完全相反</b>一条路——它是"好到被误伤"。与"控制权变更驱动"的标准剧本不同，<strong>这是方法论里的一类例外样本：壳经济学失效，真正的博弈变量不是"谁来接盘"，而是 ARA 出口链的恢复节奏。</strong></p>
+
+<!-- ================= 整体概括 ================= -->
+<h2 id="summary">整体概括（一页纸全貌）</h2>
+
+<div class="tblwrap"><table>
+<tr><th style="width:150px">项目</th><th>内容</th></tr>
+<tr><td><b>公司全称</b></td><td>嘉必优生物技术（武汉）股份有限公司（CABIO）</td></tr>
+<tr><td><b>证券代码 / 简称</b></td><td>688089 ／ <b>ST嘉必优</b>（扩位简称 ST嘉必优生物），变更前简称"嘉必优"</td></tr>
+<tr><td><b>交易所 / 板块</b></td><td>上海证券交易所 ／ <b>科创板</b>（湖北首家科创板公司、"科创板食品生物科技第一股"）</td></tr>
+<tr><td><b>主业</b></td><td>微生物合成法制备不饱和脂肪酸 ARA、藻油 DHA、SA（燕窝酸）、β-胡萝卜素、HMOs（母乳低聚糖）等营养素原料，下游用于婴配奶粉、膳食补充、特医食品</td></tr>
+<tr><td><b>实际控制人</b></td><td>易德伟（创始人、董事长兼总经理，直接持股 1.39%）</td></tr>
+<tr><td><b>控股股东</b></td><td>武汉烯王生物工程有限公司（持股 44.17%，零质押零冻结）</td></tr>
+<tr><td><b>ST 类型 / 触发条款</b></td><td>其他风险警示（ST，非\*ST）／ 科创板上市规则 12.9.1 条第一款第（四）项"生产经营活动受到严重影响且预计 3 个月内不能恢复正常"</td></tr>
+<tr><td><b>戴帽时点</b></td><td>2026-07-25 公告 → 07-27 停牌 → <b>07-28 复牌实施</b></td></tr>
+<tr><td><b>最新收盘（2026-09-18）</b></td><td>8.47 元（-0.24%），总市值 14.09 亿元，总股本 1.66 亿股（166,360,003 股）</td></tr>
+<tr><td><b>估值快照</b></td><td>PB≈0.92（对 2026-06-30 归母净资产 15.31 亿）；行情动态 PB 0.95、动态 PE 因亏损失真</td></tr>
+<tr><td><b>2026H1 财务</b></td><td>营收 0.58 亿（-81.22%）、归母 -1.01 亿、扣非 -1.00 亿、资产负债率 16.29%、研发占比 34.13%</td></tr>
+<tr><td><b>最新公告</b></td><td>2026-09-15 中科鸿基商业秘密案收到再审应诉通知（<a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-09-15/688089_20260915_3O2D.pdf" target="_blank">公告2026-025</a>）；2026-08-29 第一期 ST 进展公告</td></tr>
+</table></div>
+
+<!-- ================= 前世今生 ================= -->
+<h2 id="timeline">一、前世今生时间轴（1999 → 2026）</h2>
+
+<p>把嘉必优 26 年的"活法切换"串成线性叙事，落点就是：<strong>一家真实产能、真实客户、真实全球份额的细分寡头，怎么被一场外生监管冲击拖进了 ST。</strong></p>
+
+<div class="tblwrap"><table>
+<tr><th style="width:120px">时间</th><th>关键事件</th><th>股权 / 实控人 / 质地变化</th></tr>
+<tr><td>1999</td><td>国内第一条 ARA（花生四烯酸）产业化，前身技术源头起于此时（官网口径；股份公司主体 2004 年设立）。控股股东武汉烯王 1999-12-29 成立，易德伟任法人/董事长</td><td>创始人技术底色，易德伟团队起步</td></tr>
+<tr><td>2019-12</td><td>登陆科创板，发行价 23.90 元、发行 3,000 万股，募资总额 7.17 亿、净额 6.48 亿，保荐国泰君安（现国泰海通）；湖北首家科创板公司</td><td>发行后总股本 1.2 亿股；实控人易德伟</td></tr>
+<tr><td>2020-2023</td><td>婴配"新国标"红利期，收入从 3.12 亿（2019）爬升至 5 亿上下；2023-07 每 10 股转增 4 股派 3 元</td><td>总股本扩至约 1.68 亿股；持续分红</td></tr>
+<tr><td>2024-10-29</td><td>停牌筹划重大资产重组：拟收购<strong>上海欧易生物 63.2134% 股权</strong>（多组学+分子诊断，产业链上游），对价约 8.31 亿，评估增值率 441.23%，拟新增商誉约 7.21 亿</td><td>不构成重组上市、不导致实控人变更；11-12 复牌一字涨停收 24.90 元</td></tr>
+<tr><td>2025-08-29</td><td>方案两度调整、被上交所问询后，<strong>终止并撤回申请</strong>（"市场环境及标的业务情况较筹划初期已变化"）；终止时市值约 48.51 亿</td><td>商誉归零；承诺 1 个月内不筹划重组（早已到期）</td></tr>
+<tr><td>2025 年报<br>(2026-04-23)</td><td><strong>上市以来最好年份</strong>：营收 5.63 亿（+1.36%）、归母 1.44 亿（+15.7%）、扣非 1.27 亿（+27.0%）、经营现金流 2.70 亿、ROE 8.99%；审计出具<strong>带强调事项段的无保留意见</strong>——审计师已在年报里点名 2026 年初海外冲击的"不确定性"</td><td>ARA 收入 3.88 亿占比近七成；境外收入 1.88 亿；年报披露当日股价 -19.98% 跌停至 16.02 元</td></tr>
+<tr><td>2025-12-10<br>~2026-02-26</td><td>欧盟预警雀巢产品 cereulide（蜡样芽孢杆菌呕吐毒素）污染→雀巢全球召回（1 月 6 日 31 国、1 月 8 日扩展至至少 50 国）→原因指向"供应商 ARA 油质量问题"→<strong>欧盟 2026-02-25 前后将原产中国 ARA 油脂列入强化进口管控清单（条例 2026/459：逐批官方证书+实验室报告+50% 查验）</strong></td><td>帝斯曼-芬美意、润科生物先后声明"非我供应"，市场聚焦嘉必优；1-08 开盘跌超 13%</td></tr>
+<tr><td>2026Q1</td><td>客户观望+排产调整，Q1 营收仅 1,101 万元（-92.9%）</td><td>阶段性停摆，毛利率转负区间</td></tr>
+<tr><td>2026-07-24~28</td><td>半年度业绩预告（营收 5,500 万/-82.07%，归母约 -1.01 亿）并预告实施其他风险警示 → 07-28 复牌戴帽 <b>ST嘉必优</b>，复牌当日登上跌幅 15% 榜单</td><td>简称"嘉必优"→"ST嘉必优"</td></tr>
+<tr><td class="hl">2026-08-04<br>2026-08-22</td><td class="hl">回购专户 1,949,117 股全部注销（总股本 168,309,120→166,360,003 股）；半年报营收 5,759 万（-81.22%）、归母 -1.01 亿；同日计提减值 3,151.06 万元</td><td class="hl">筹码集中：股东户数 10,709→9,467（-11.6%）；大摩国际、金信基金逆势新进</td></tr>
+<tr><td>2026-08-29<br>~至今</td><td>第一期 ST 进展公告披露四条恢复措施（大健康客户率先恢复）；2026-09-15 中科鸿基案收到最高法再审应诉通知（二审胜诉不停止执行，敞口 515 万）</td><td>经营自救进行时；无任何新重组/新实控人信号</td></tr>
+</table></div>
+
+<blockquote>判断：这是一次教科书级的<b>"外生监管冲击"</b>——不是财务造假、不是掏空、不是主业技术溃败。但冲击传导链极长（客户信任→欧盟程序管控→生产排产），修复也需整条链逆向走完，这正是"预计 3 个月内不能恢复正常"条款的现实基础。</blockquote>
+
+<!-- ================= 关键人物 ================= -->
+<h2 id="controller">二、关键人物 / 实控人是谁</h2>
+
+<h3>易德伟与武汉烯王——一个不需要"救兵"的操盘手</h3>
+<ul>
+<li><strong>实际控制人：易德伟</strong>——公司创始人、董事长兼总经理（2026-05-13 业绩说明会阵容：董事长/总经理易德伟、财务负责人王华标、董秘易华荣、独董陈向东）。个人直接持股 233.14 万股（1.39%）<span class="src">（来源：<a href="http://sns.sseinfo.com/resources/images/upload/202605/2026051519060431453446498.pdf" target="_blank">投资者关系活动记录表 2026-05-13</a>｜<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">半年报摘要</a>）</span>。</li>
+<li><strong>控股股东：武汉烯王生物工程有限公司</strong>——1999-12-29 成立，法定代表人易德伟，主业为生物工程产业投资与企业管理；持股 <strong>7,434 万股（44.17%），零质押、零冻结</strong><span class="src">（来源：<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">半年报摘要</a>）</span>。</li>
+<li><strong>治理关系网</strong>：杜斌、王华标均为武汉烯王董事，同时分别是上市公司董事（持股 97.6 万股）与财务负责人（持股 110.8 万股）；公告披露<strong>杜斌、易德伟系连襟关系</strong>——典型"家族+创业伙伴"紧密结构<span class="src">（来源：<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">半年报摘要·关联关系说明</a>）</span>。</li>
+<li><strong>诚信与合规</strong>：报告期内公司及控股股东、实控人无未履行生效判决、无数额较大债务逾期、无违法违规受处罚<span class="src">（来源：<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">半年报摘要</a>）</span>。</li>
+<li><strong>产业资源盘点</strong>：未证券化资产方面，作为 ARA 全球寡头、发酵平台型企业，其 HMOs（LNnT 已获批、3'-SL/LNT 材料已提交）、发酵纤维素（已产业化）、发酵甘氨酸（10 吨级）均处于"技术已成熟、商业化在路上"的储备状态（见第五节承诺包拆解）。</li>
+</ul>
+
+<h3>前十大股东（2026-06-30 中报定稿）</h3>
+<div class="tblwrap"><table>
+<tr><th>排名</th><th>股东</th><th class="num">期末持股（股）</th><th class="num">比例</th><th>备注</th></tr>
+<tr><td class="num">1</td><td>武汉烯王生物工程有限公司</td><td class="num">74,340,000</td><td class="num">44.17%</td><td>控股股东，无质押冻结</td></tr>
+<tr><td class="num">2</td><td>魏春木</td><td class="num">4,962,010</td><td class="num">2.95%</td><td>其中 494.70 万股经信用账户（融资盘）</td></tr>
+<tr><td class="num">3</td><td>易德伟</td><td class="num">2,331,377</td><td class="num">1.39%</td><td>实控人</td></tr>
+<tr><td class="num">4</td><td>陈海杰</td><td class="num">1,500,000</td><td class="num">0.89%</td><td>二季度新进</td></tr>
+<tr><td class="num">5</td><td>张德成</td><td class="num">1,233,718</td><td class="num">0.73%</td><td>新进</td></tr>
+<tr><td class="num">6</td><td>招商银行-金信深圳成长灵活配置混合</td><td class="num">1,159,840</td><td class="num">0.69%</td><td><b>公募基金，二季度新进</b></td></tr>
+<tr><td class="num">7</td><td>王华标</td><td class="num">1,108,165</td><td class="num">0.66%</td><td>财务负责人</td></tr>
+<tr><td class="num">8</td><td>MORGAN STANLEY &amp; CO. INTERNATIONAL PLC.</td><td class="num">1,102,037</td><td class="num">0.65%</td><td><b>外资，二季度加仓 90.41 万股</b></td></tr>
+<tr><td class="num">9</td><td>杜斌</td><td class="num">976,383</td><td class="num">0.58%</td><td>董事（与易德伟连襟）</td></tr>
+<tr><td class="num">10</td><td>林高宇</td><td class="num">812,758</td><td class="num">0.48%</td><td>—</td></tr>
+</table></div>
+<p class="src">来源：<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">2026 年半年度报告摘要（前 10 名股东持股情况）</a></p>
+
+<p class="say"><strong>资金面三个信号</strong>：①股东户数从 3 月末 10,709 户降至 6 月末 9,467 户（-11.6%），筹码在崩盘中集中；②摩根士丹利国际与金信基金都在暴跌中<b>逆势进场</b>——外资自营＋境内公募同时出现在一只 ST 股前十大，说明机构把它当"事故错杀"而非"价值毁灭"定价；③二股东魏春木 494.7 万股走信用账户，是前十大中唯一杠杆筹码，需防被动波动。</p>
+
+<!-- ================= 怎么拿控制权 ================= -->
+<h2 id="control">三、怎么拿控制权（本案：控制权纹丝不动，无人来抢）</h2>
+
+<h3>③① 控制权现状：44.17% 高度锁定，市场根本没有"竞拍资格"</h3>
+<p>王艳体系关心的"怎么拿控制权"，在本案答案非常干脆：<strong>拿不到，也没人想拿。</strong>武汉烯王 44.17% 持股＋家族联襟治理结构，决定了控制权根本不在二级市场流通；零质押零冻结又意味着没有"司法拍卖/被动易主"的切口。这意味着五类救兵画像里的产业资本、资本套利者、地方国资<strong>三条路都无信号</strong>——不是没人发现这个"干净的壳"，而是<strong>这个壳不卖</strong>。</p>
+
+<h3>③② 唯一一场"未遂"的资本运作：2024-10 欧易生物收购（8.31 亿、441%、7.21 亿商誉）</h3>
+<ul>
+<li><strong>2024-10-29</strong> 停牌筹划重组 → <strong>11-12 复牌一字涨停（+19.98% 收 24.90 元）</strong>，市场为"合成生物+多组学"叙事买单<span class="src">（来源：<a href="http://finance.ce.cn/stock/gsgdbd/202509/t20250901_2460951.shtml" target="_blank">中国经济网</a>）</span>。</li>
+<li>标的上海欧易生物 63.2134% 股权，对价约 <strong>8.31 亿</strong>，评估增值率 <strong>441.23%</strong>，若完成新增商誉约 <strong>7.21 亿</strong>；构成重大资产重组+关联交易，但<b>不导致实控人变更、不构成重组上市</b><span class="src">（来源：<a href="https://m.bjnews.com.cn/detail/1756960986168679.html" target="_blank">新京报贝壳财经</a>｜<a href="https://static.cninfo.com.cn/finalpage/2025-08-30/1224626551.PDF" target="_blank">终止公告2025-061</a>）</span>。</li>
+<li><strong>2025-08-29 终止并撤回</strong>（"市场环境及标的公司业务运行情况较筹划初期已变化"）；终止时市值约 48.51 亿，此后股价连跌三日<span class="src">（来源：<a href="https://static.cninfo.com.cn/finalpage/2025-08-30/1224626551.PDF" target="_blank">终止公告2025-061</a>）</span>。</li>
+</ul>
+<blockquote>事后回望，这场终止是<b>双刃剑</b>：短期斩断"第二曲线"想象空间；但若 8.31 亿、441% 增值、7.21 亿商誉的收购在雀巢事件前落地，2026 上半年主业停摆叠加商誉减值，报表会难看到无法收场。<b>命运有时以"遗憾"的面目保护人。</b></blockquote>
+
+<h3>③③ 11+6 工具库在本案的唯一用武之地</h3>
+<p>王艳"11 种取得股份方式"里，本案实际用到的只有一种：<strong>回购注销（资本运作向的变相增厚）</strong>——2026-08-04 注销回购专户 1,949,117 股，总股本减为 166,360,003 股（来源：<a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-04/688089_20260804_TC1O.pdf" target="_blank">回购注销公告2026-020</a>）。协议转让、司法拍卖、要约、定增、债转股、举牌等其余十条路，<strong>在本案统统"不适用"</strong>——没有人需要为它取得股份，因为没人要换实控人。</p>
+
+<!-- ================= 意图与节奏 ================= -->
+<h2 id="intent">四、意图与节奏（六步预判）</h2>
+
+<p>用王艳六步预判框架推演这只 ST 的命运走向，结论与"重整型 ST"截然不同：</p>
+
+<div class="tblwrap"><table>
+<tr><th style="width:90px">六步</th><th style="width:130px">框架问题</th><th>本案结论</th></tr>
+<tr><td><b>① 抓病因</b></td><td>为什么被 ST？</td><td>经营/规范类"其他风险警示"——12.9.1（四）"生产经营受严重影响且 3 个月内不能恢复"，病根是 <b>2026 年初雀巢召回+欧盟 ARA 强化管控</b>导致的出口停摆，非造假、非掏空、非亏损到资不抵债。</td></tr>
+<tr><td><b>② 判生死</b></td><td>法律上还能不能救？</td><td><b>能救，且不紧迫</b>。当前未踩任何一条退市红线；唯一"生死开关"是 2026 全年营收是否&lt;1 亿（触发 \*ST）。H1 营收 5,759 万，只要下半年≥0.42 亿即可过线。</td></tr>
+<tr><td><b>③ 锁救兵</b></td><td>谁会来救？（五类画像）</td><td><b>原控股股东自救（正在进行时）</b>；产业资本/套利者/国资/债权人均无信号。详见下方"五类救兵画像"。</td></tr>
+<tr><td><b>④ 拆路径</b></td><td>通过什么途径救？</td><td><b>不涉及</b>。无需庭外重组/和解/预重整/司法重整任何一路——资产负债率 16.29%、净现金状态，没有债权人博弈、没有股权让渡。</td></tr>
+<tr><td><b>⑤ 对比路径</b></td><td>哪条路径最优？</td><td><b>只有一条"经营恢复"的窄路</b>：供应链升级→客户一对一解封→订单回补。没有"快慢路径"可选，恢复节奏由欧盟程序与客户认证进度决定。</td></tr>
+<tr><td><b>⑥ 备好工具</b></td><td>救世主有哪些武器？</td><td>管理层用的是"经营武器"（检测能力建设、多元化转产、新品产业化、回购注销），而非"股权武器"。11+6 工具大部分闲置。</td></tr>
+</table></div>
+
+<h3>五类救兵画像：为什么"无人来救、也无需来救"</h3>
+<ul>
+<li><strong>产业资本</strong>：无入局信号。公司本身就是细分产业龙头，不缺"被整合"的叙事。</li>
+<li><strong>资本套利者</strong>：无。市值 14 亿、无立案、股权干净——确实是"干净的壳"，但武汉烯王 44.17%＋家族治理，<b>控制权根本不在市场上</b>。</li>
+<li><strong>地方国资</strong>：无信号（武汉东湖高新区背景的合成生物平台未现身）。</li>
+<li><strong>原控股股东自救</strong>：<b>正在进行时</b>——回购注销、供应链升级、客户一对一、多元化转产，全是管理层在干。</li>
+<li><strong>债权人</strong>：不适用——负债率 16.29%，货币资金 1.87 亿 vs 短期借款 0.70 亿+长期借款 0.99 亿，无流动性危机。</li>
+</ul>
+
+<h3>恢复节奏：一份"每月打卡"的时间表</h3>
+<p>按科创板规则 12.9.5，被实施其他风险警示期间<strong>公司须至少每月披露 1 次进展公告</strong>（第一期 2026-08-29 已披露，来源：<a href="http://data.eastmoney.com/notices/detail/688089/AN202608281828624548.html" target="_blank">进展公告2026-024</a>）。这份"每月一报"既是兑现清单、也是倒计时——盯的就是：大健康客户恢复名单是否扩大、动物营养/美妆新订单是否落地、公司是否开始为"生产经营恢复正常"的摘帽申请铺路。</p>
+
+<div class="say"><strong>意图研判</strong>：实控人团队的意图明确且一致——不是卖壳、不是套现、不是装资产，而是<b>"技术平台续命+客户关系修复+多元化对冲"三线自救</b>。这决定了本报告的性质：<b>研究"恢复节奏"，而非"接盘故事"。</b></div>
+
+<!-- ================= 承诺包拆解 ================= -->
+<h2 id="commit">五、承诺包拆解（原话 vs 大白话）</h2>
+
+<p>本案没有"详式权益变动报告书"式的控制权承诺，但有四组"软承诺/进展承诺"，逐条拆：</p>
+
+<div class="tblwrap"><table>
+<tr><th style="width:200px">承诺原文 / 公司口径</th><th>大白话解读 + 活口在哪</th></tr>
+<tr><td>终止欧易生物交易时承诺<b>"1 个月内不筹划重大资产重组"</b>（2025-08-30 终止公告）</td><td>这是<b>短期锁承诺</b>，早已到期。至今无任何新重组动作——<b>别把"并购预期"当买入理由</b>。真正的活口是：承诺期满后公司<b>随时可能重启</b>，但目前零迹象。</td></tr>
+<tr><td>半年报/业绩预告："大健康业务核心客户率先恢复供货""关键客户一对一解决方案（邀请现场审核、新批次检测验证）"</td><td>进展性承诺，<b>每月进展公告是唯一可验证节点</b>。活口：恢复名单由各客户内部流程决定，公司说了不算，存在"恢复但很慢"的风险。</td></tr>
+<tr><td>"动物营养领域抓全球鱼油紧缺、藻油 DHA 替代需求，首批海外订单正在交付中""美妆个护与国际知名品牌合作加深"</td><td>多元化对冲承诺。活口：2025 年动物营养+美妆合计体量小（约 1.5 亿量级），<b>是方向不是当期堤坝</b>。</td></tr>
+<tr><td>"合成生物技术平台产业化成果转化：LNnT 获卫健委审批、3'-SL/LNT 材料已提交；发酵纤维素产业化、发酵甘氨酸 10 吨级"</td><td>技术牌照承诺。<b>已在兑现</b>（<a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-06-09/688089_20260609_ZQ4M.pdf" target="_blank">乳糖-N-新四糖获批公告</a>）。活口：获批≠放量，商业化节奏未给时间表。</td></tr>
+</table></div>
+
+<blockquote>拆解结论：本案<strong>没有硬性的"承诺期+对赌+锁定期"可以下注</strong>，只有"每月一次进展"的软兑现。因此它<b>不是靠承诺包驱动的标的，而是靠每个月的公告数据驱动的标的</b>——这正是它与控制权变更型十倍股最大的不同。</blockquote>
+
+<!-- ================= 财务体检 ================= -->
+<h2 id="finance">六、财务体检：一本"极干净"与"极难受"反差极大的账</h2>
+
+<div class="tblwrap"><table>
+<tr><th>年份</th><th class="num">营业收入<br>(亿)</th><th class="num">归母净利润<br>(亿)</th><th class="num">扣非归母净利<br>(亿)</th><th class="num">归母净资产<br>(亿)</th><th class="num">总资产<br>(亿)</th><th class="num">资产负债率</th><th class="num">经营现金流净额<br>(亿)</th></tr>
+<tr><td>2022</td><td class="num">4.33</td><td class="num">0.64</td><td class="num">0.31</td><td class="num">14.19</td><td class="num">16.11</td><td class="num">11.56%</td><td class="num">1.76</td></tr>
+<tr><td>2023</td><td class="num">4.44</td><td class="num">0.91</td><td class="num">0.62</td><td class="num">14.76</td><td class="num">16.11</td><td class="num">7.30%</td><td class="num">0.69</td></tr>
+<tr><td>2024</td><td class="num">5.56</td><td class="num">1.24</td><td class="num">1.00</td><td class="num">15.56</td><td class="num">16.87</td><td class="num">6.95%</td><td class="num">1.73</td></tr>
+<tr><td>2025</td><td class="num">5.63</td><td class="num">1.44</td><td class="num">1.27</td><td class="num">16.34</td><td class="num">18.60</td><td class="num">11.62%</td><td class="num">2.70</td></tr>
+<tr class="hl"><td><b>2026H1</b></td><td class="num"><b>0.58</b></td><td class="num"><b>−1.01</b></td><td class="num"><b>−1.00</b></td><td class="num"><b>15.31</b></td><td class="num"><b>18.37</b></td><td class="num"><b>16.29%</b></td><td class="num"><b>−0.08</b></td></tr>
+</table></div>
+<p class="src">来源：合并报表定稿数——2022/2023 取自 <a href="https://static.cninfo.com.cn/finalpage/2024-04-27/1219883430.PDF" target="_blank">2023 年报 PDF</a>，2024/2025 取自 <a href="https://static.cninfo.com.cn/finalpage/2026-04-23/1225156914.PDF" target="_blank">2025 年报 PDF</a>，2026H1 取自 <a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">2026 半年报摘要</a>。2026H1 精确值：营收 57,591,065.75 元 / 归母 -100,577,846.47 元 / 扣非 -100,128,602.36 元 / 经营现金流 -8,436,238.09 元。</p>
+
+<p><strong>勾稽自检（全部通过）</strong>：五期"负债合计+所有者权益合计=资产总计"逐期验证通过；2026H1 末归母净资产 15.31 亿＝期初 16.34 亿−归母净亏 1.01 亿−其他权益变动约 0.02 亿（股份支付/库存股，量级 0.13%）。口径说明：归母净资产≠所有者权益合计（含少数股东权益 2026H1 末 618.5 万）；2025 年归母净利 1.44 亿含<strong>帝斯曼和解补偿款等非经常收益约 2,000 万</strong>（营业外收入 2,003.7 万），扣非 1.27 亿更能代表主业<span class="src">（来源：<a href="https://static.cninfo.com.cn/finalpage/2026-04-23/1225156914.PDF" target="_blank">2025 年报</a>）</span>。</p>
+
+<p><strong>ST 三个红灯指标</strong>（扣非 / 净资产 / 现金流）体检结果：①扣非转负（H1 -1.00 亿，红灯亮起——主业停摆）；②净资产为正且仍厚（15.31 亿，绿灯）；③经营现金流 -844 万（黄灯——非灾难级，2022-2025 四年累计经营现金流约 6.88 亿，家底殷实）。三个灯只亮一个，<b>属"重症但不致命"</b>。</p>
+
+<h3>三处"反差"就是这家公司的全部戏剧性</h3>
+<p><strong>① 资产负债表"干净得不像 ST"</strong>：负债率 16.29%（全 A 最干净一档）；净现金状态（货币资金 1.87 亿 vs 短借 0.70 亿+长借 0.99 亿）；无商誉、无资金占用、无违规担保、无质押冻结。它的 ST 与"退市危机型 ST"完全不是一种病。</p>
+<p><strong>② 利润表"最难看的一个半年"</strong>：2026H1 毛利率 -22.47%——停摆期固定成本刚性所致（2025 年固定资产 8.78 亿、占总资产 47.2%，募投研发中心转固同比+75%），叠加计提减值 3,151 万<span class="src">（来源：<a href="https://stock.stockstar.com/RB2026082200016235.shtml" target="_blank">证券之星中报解读</a>｜<a href="https://stock.stockstar.com/RB2026082300001331.shtml" target="_blank">证券之星每周复盘</a>）</span>。</p>
+<p><strong>③ 现金流"缓冲垫还厚"</strong>：收入每停一个月，折旧和费用就多磨一刀，但账上现金足够撑很久——是为数不多"戴帽了但家底殷实"的科创板公司。</p>
+
+<h3>★科创板退市规则的重大差异（务必写进纪律）</h3>
+<p>与主板不同，本公司的戴帽条款"生产经营受严重影响"是<strong>科创 12.9.1（四）特有条款</strong>；而"学科创"公司的重心在<strong>研发与营收</strong>——2026H1 研发占比被分母坍塌<strong>被动推高至 34.13%</strong>（绝对投入仍在）。这类公司真正会踩的财务类红线是<b>"扣除后营收&lt;1 亿（双创版）＋亏损"</b>，而不是主板的 3 亿营收线。所以判断它生死，只盯着"全年 1 亿营收"这一个数字就够了<span class="src">（来源：<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">半年报摘要·研发占比 34.13%</a>）</span>。</p>
+
+<h3>科创板 ST 特殊交易规则（与主板截然不同）</h3>
+<ul>
+<li><strong>不进风险警示板</strong>：实施风险警示期间不进入上交所风险警示板、不适用风险警示板交易规定——<b>没有 5% 涨跌幅限制约束</b>；</li>
+<li><strong>涨跌幅仍为 20%</strong>；</li>
+<li><strong>单日买入上限 50 万股</strong>：竞价+大宗+盘后固定价格交易累计、普通账户与两融信用账户合并计算；</li>
+<li><strong>存在盘后固定价格交易</strong>（15:05-15:30，以收盘价成交，科创板特有，ST 期间仍可用）。</li>
+</ul>
+<p class="warn">一句话：<b>科创板 ST≠主板 ST</b>——波动率是主板风险警示股的 4 倍上限、买入有 50 万股/日"限流闸"、盘后还能按固定价成交。用主板 ST 肌肉记忆交易此票，会同时犯"低估波动"和"误判流动性"两个错（来源：<a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-25/688089_20260725_GSG1.pdf" target="_blank">戴帽公告原文</a>）。</p>
+
+<!-- ================= 行情与估值 ================= -->
+<h2 id="valuation">七、行情与估值（壳价值评估＋借壳红线）</h2>
+
+<h3>价格与市值快照（多源一致）</h3>
+<p><strong>2026-09-18 收盘 8.47 元（-0.24%），总市值 14.09 亿元，总股本 166,360,003 股</strong>。三方互证：证券时报行情页收盘 8.47 元 / 流通+总市值均为 14.09 亿 / 动态 PB 0.95 / 动态 PE -7.01（因亏损失真）（来源：<a href="https://www.stcn.com/quotes/index/sh688089.html" target="_blank">证券时报行情</a>）；上交所官网静态市盈率 9.80 倍（按 2025 年归母 1.44 亿计）；Wind 同日 PB_LF 0.948。复牌后（7-28 当日登跌幅 15% 榜单）至今处于<b>低位区</b>，破净状态。</p>
+
+<p><strong>亏损股不用 PE</strong>。三个可用口径：</p>
+<ul>
+<li><strong>PB ≈ 0.92</strong>（14.09 亿 ÷ 2026-06-30 归母净资产 15.31 亿；每股净资产 9.20 元）——<b>破净</b>，隐含"账面净资产打折"的清算折价，而非成长溢价；</li>
+<li><strong>PS(TTM) ≈ 4.49</strong>（14.09 亿 ÷ 滚动营收 3.14 亿＝2025 全年 5.63−2025H1 3.07+2026H1 0.58）——停摆期 PS 无参照系意义，恢复到 2025 体量则 PS 仅 2.5 倍；</li>
+<li><strong>静态 PE 9.8 倍</strong>（按 2025 归母 1.44 亿）——"假如 2026 什么都没发生"的镜像估值锚。</li>
+</ul>
+
+<h3>① 把它想成一个赌局（胜率 × 赔率）</h3>
+<p><strong>【看涨（正向）】</strong>①<b>摘帽事件权</b>：生产经营恢复即申请撤销，<b>不挂钩年报周期</b>——若三季度营收显著回升（单季回到 1 亿量级），四季度就可能见摘帽申请，快则 2026 年底、慢则 2027 上半年；②<b>盈利修复权</b>：假设 2027 恢复至 2025 中枢（归母 1.2-1.4 亿），给 20-25 倍 PE，对应市值 24-35 亿，较现价有 <b>70%-148% 空间</b>（参照系：终止欧易交易前市值 48.51 亿、2025-08-29；停牌前 35.21 亿、2024-10-28）；③<b>结构性托底</b>：破净+净现金+零质押+44.17% 锁定控股股东。</p>
+<p><strong>【看跌（反向）】</strong>①<b>\*ST 情形</b>：若 2026 全年扣除后营收&lt;1 亿（H1 仅 0.58 亿，需下半年≥0.42 亿，只要恢复到去年同期约 17% 即过线，但若客户认证持续拖延就不是"17%"的问题），叠加财务类退市风险警示，估值逻辑切回"退市博弈"，破净不构成保护；②<b>时间成本</b>：欧盟 50% 查验+逐批证书是长尾流程，戴帽每多一季，机会成本与情绪损耗都在累积；③<b>减值持续</b>：存货 1.95 亿+应收 1.56 亿仍在账上，H1 已计提 3,151 万，H2 恢复不畅将继续计提，侵蚀净资产。</p>
+
+<h3>② 壳价值评估：这是个"不需要救的壳"</h3>
+<div class="tblwrap"><table>
+<tr><th>壳评估维度</th><th>结论</th></tr>
+<tr><td>大股东主动/被动卖壳？</td><td><b>两者皆非</b>——不卖，也无被动卖点（无质押无冻结无退市诉讼）。</td></tr>
+<tr><td>一票否决项（重大违法/立案/交易类退市）</td><td><b>无</b>。四类红线无一触及。</td></tr>
+<tr><td>"可以救但要算账"项</td><td>不适用——没有需要"换业务/搞钱/换人"的红线问题要解决。</td></tr>
+<tr><td>壳价值区间</td><td>14.09 亿市值已<b>跌破 15.31 亿归母净资产</b>，处于"资产价值底部区"；但因控制权锁定，<b>壳价值无法变现、也不会被接盘</b>——下行有净资产托底、上行靠"恢复"而非"借壳"。可类比方法论中的"壳价值底线法"：干净+无立案+小市值，下行风险有限，上行靠注入预期——<b>只是本案的"注入预期"被换成了"恢复预期"</b>。</td></tr>
+</table></div>
+
+<h3>③ 借壳 / 重大重组红线与规避</h3>
+<p>对照王艳借壳四要件公式，<b>判断本案未来任何资产运作的合规边界</b>：①实控人是否变更——若易德伟/武汉烯王保持 44.17% 结构不变，<b>要件一不满足，永远不构成借壳</b>；②36 个月窗口——2024-10 那次欧易交易因"不导致实控人变更"天然避开借壳认定；③向新实控人买资产——本案不存在"新实控人"；④资产规模触线或主业根本变化——欧易交易 8.31 亿对价 vs 当时净资产，主要触发的是"重大资产重组（资产总额/营收/净资产任一项≥50%）"标准，<b>而非</b>重组上市。结论：<b>这只票的"资本运作剧本"已经被 2025-08 的终止按下暂停键，短期无重组通道打开信号</b>；若未来重启，最干净的路径仍是"不换实控人的普通重大重组"（避要件一），而非借壳。</p>
+
+<!-- ================= 核心矛盾 ================= -->
+<h2 id="verdict">八、核心矛盾与综合判断（六维拆解总结）</h2>
+
+<p class="dq"><strong>一句话核心矛盾：技术资产没崩、财务底子干净（好资产），但 ARA 出口链被欧盟程序性管控冻结（坏时点），价格已破净但破净≠必然兑现。</strong></p>
+
+<h3>六维拆解（本案适配版）</h3>
+<div class="tblwrap"><table>
+<tr><th style="width:150px">维度</th><th>结论（结论先行）</th></tr>
+<tr><td><b>① 重组节奏</b></td><td>唯一一次重组（欧易生物）已终止，<b>无新动作</b>；短期无重组/注入催化。可验证节点=每月 ST 进展公告＞10 月底三季报＞欧盟条例动态。</td></tr>
+<tr><td><b>② 实控人背景与意图</b></td><td>易德伟：创始人技术底色、44.17% 锁定、零质押；意图=经营自救（评级：<b>资产质量高×运作经验足×无卖壳动机</b>）。</td></tr>
+<tr><td><b>③ 原业务质量</b></td><td>ARA 全球寡头（与帝斯曼-芬美意掰过手腕且不落下风）、DHA/HMOs 技术平台仍在产出新牌照（LNnT 获批）；<b>停摆是"出口执照"问题，不是"技术溃败"</b>。</td></tr>
+<tr><td><b>④ 承诺包活口</b></td><td>无硬承诺包，只有"每月一报"的软兑现；已析出四组"软承诺"（见第五节），活口在"恢复却慢"。</td></tr>
+<tr><td><b>⑤ 进度与行情映射</b></td><td>股价已充分消化戴帽（复牌 -15% 榜、年报日 -20% 跌停、现破净）；机构（大摩国际、金信）逆势进场的信号说明<b>市场按"错杀"定价、而非"价值毁灭"</b>。</td></tr>
+<tr><td><b>⑥ 运作特征与综合判断</b></td><td>这不是一只"控制权变更驱动的十倍股"，而是一只"<b>事件驱动的恢复博弈股</b>"——成败关键变量 = 下半年营收能否过 1 亿红线 + 欧盟证书流程能否跑顺 + 2027 利润表能否修回 1 亿量级。</td></tr>
+</table></div>
+
+<h3>综合判断（赔率排序）</h3>
+<p>当前定价的本质是给一笔<b>"恢复进度不确定"的时间溢价</b>买单，而非"退市归零"的风险溢价（资产负债表不支持那种定价）。它适合做<strong>事件驱动型观察标的</strong>，不适合当"故事股"重仓赌方向。破净给了错误的容错空间，但<b>容错≠必然兑现</b>——若三季报营收仍在千万量级，1 亿红线将成为现实压力，科创板会用 \*ST 的方式重新给它定价。</p>
+
+<p class="say"><strong>盯三件事</strong>（可验证性×重要性排序）：①<b>每月末 ST 进展公告</b>（恢复供货客户名单是否扩大）；②<b>10 月底三季报</b>（单季营收量级，直接决定 1 亿红线成败）；③<b>欧盟实施条例 2026/459 修订信号</b>（程序墙是否松动）。三者至少两项向好，赔率才从"赌恢复"变成"赚恢复"。</p>
+
+<!-- ================= 数据来源 ================= -->
+<h2 id="sources">九、数据来源（全部链接，可点击核对）</h2>
+
+<ol class="sources">
+<li><span class="typ">公司公告（上交所科创板）</span></li>
+<li>· <a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-25/688089_20260725_GSG1.pdf" target="_blank">《关于被实施其他风险警示暨停牌的公告》（2026-019，2026-07-25，12.9.1（四）原文+科创板ST交易规则）</a></li>
+<li>· <a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-25/688089_20260725_DK1W.pdf" target="_blank">《2026年半年度业绩预告的自愿性披露公告》（2026-018，预告营收5,500万/归母约-1.01亿/^ST风险提示）</a></li>
+<li>· <a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-29/688089_20260829_LM78.pdf" target="_blank">《关于公司股票被实施其他风险警示的进展公告》（2026-024，四条恢复措施/每月披露义务）</a>（另见<a href="http://data.eastmoney.com/notices/detail/688089/AN202608281828624548.html" target="_blank">东方财富刊载全文</a>）</li>
+<li>· <a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-22/688089_20260822_6XPO.pdf" target="_blank">《2026年半年度报告》（2026-08-22）</a>；<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">《2026年半年度报告摘要》（主要会计数据+前十大股东+股东户数）</a></li>
+<li>· <a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-04/688089_20260804_TC1O.pdf" target="_blank">《关于实施回购股份注销暨股份变动的公告》（2026-020，注销1,949,117股/总股本166,360,003股）</a></li>
+<li>· <a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-09-15/688089_20260915_3O2D.pdf" target="_blank">《关于收到再审应诉通知书暨诉讼进展的公告》（2026-025，中科鸿基案最高法再审）</a></li>
+<li>· <a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-13/688089_20260813_3QBK.pdf" target="_blank">《关于独立董事辞职的公告》（2026-08-13）</a>；<a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-06-25/688089_20260625_6GZK.pdf" target="_blank">大信《非标准审计意见报告专项说明》</a>；<a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-06-09/688089_20260609_ZQ4M.pdf" target="_blank">《关于乳糖-N-新四糖获批的自愿性披露公告》</a></li>
+<li>· 上交所科创板公告列表：<a href="https://star.sse.com.cn/star/market/stocklist/info/announcement/index.shtml?COMPANY_CODE=688089" target="_blank">star.sse.com.cn…?COMPANY_CODE=688089</a></li>
+<li><span class="typ">定期报告（巨潮/上证报PDF）</span></li>
+<li>· <a href="https://static.cninfo.com.cn/finalpage/2026-04-23/1225156914.PDF" target="_blank">2025年年度报告（营收5.63亿/归母1.44亿/扣非1.27亿/归母净资产16.34亿/带强调事项段无保留意见/分产品分地区/帝斯曼补偿款附注）</a></li>
+<li>· <a href="https://static.cninfo.com.cn/finalpage/2024-04-27/1219883430.PDF" target="_blank">2023年年度报告（2022/2023年资产负债与权益勾稽数据）</a>；<a href="https://static.cninfo.com.cn/finalpage/2025-03-28/1222924654.PDF" target="_blank">2024年年度报告（2022年比较数据）</a></li>
+<li>· <a href="https://static.cninfo.com.cn/finalpage/2025-08-30/1224626551.PDF" target="_blank">《关于终止发行股份及支付现金购买资产并募集配套资金暨关联交易事项并撤回申请文件的提示性公告》（2025-061）</a></li>
+<li><span class="typ">权威媒体/官方文件</span></li>
+<li>· <a href="https://www.efsa.europa.eu/sites/default/files/2026-02/joint%20(EFSA%20and%20ECDC)%20Rapid%20Outbreak%20Assessment%20on%20the%20multi-country%20food-borne%20incident%20caused%20by%20cereulide%20and%20linked%20to%20infant%20formula%20products.pdf" target="_blank">欧盟EFSA/ECDC联合快速风险评估（2026-02-19，"瑞士公司C从中国生产商A经德国供应商B采购的ARA油被污染"）</a></li>
+<li>· <a href="https://www.europarl.europa.eu/doceo/document/E-10-2026-000600-ASW_EN.pdf" target="_blank">欧洲议会书面答复 E-000600/2026（2026-05-18，欧委会2025-12-10预警/2026-02-25通过强化管控/条例2026/459）</a></li>
+<li>· <a href="https://www.news.cn/world/20260107/17553dd84cfc4d91b09bc80c00f7942d/c.html" target="_blank">新华社《雀巢在31个国家和地区召回部分婴幼儿配方奶粉》（2026-01-07）</a></li>
+<li>· <a href="https://m.gmw.cn/2026-01/08/content_1304295926.htm" target="_blank">科技日报/光明网《雀巢紧急召回部分奶粉！两部门发声》（2026-01-08，召回扩至至少50国）</a></li>
+<li>· <a href="http://www.ce.cn/cysc/sp/bwzg/202601/t20260113_2698161.shtml" target="_blank">中国经济网《雀巢"预防性召回"奶粉事件是怎么回事？》（2026-01-13，上交所监管工作函/帝斯曼、润科声明）</a></li>
+<li>· <a href="http://www.cnr.cn/shanghai/tt/20260109/t20260109_527488100.shtml" target="_blank">央广网转第一财经《雀巢奶粉原料中测出致病风险物质》（2026-01-09，嘉必优卷入/1-08开盘跌超13%）</a></li>
+<li>· <a href="https://m.bjnews.com.cn/detail/1777274636169353.html" target="_blank">新京报《财报观察室｜欧洲奶粉召回事件收尾，嘉必优一季度业绩暴跌》（2026-04-27，Q1营收1101.42万/2025年ARA占比超68%/2-24欧盟管控）</a></li>
+<li>· <a href="https://www.cls.cn/detail/2436787" target="_blank">财联社《海外市场舆情和欧盟监管新规下生产经营"受创" 嘉必优将被ST》（2026-07-24）</a></li>
+<li>· <a href="https://www.nestle.com.cn/media/pressreleases/allpressreleases/20260423-three-month-sales-2026" target="_blank">雀巢中国《2026年前三个月财报》（2026-04-23，召回Q1完成/供应恢复）</a></li>
+<li>· <a href="http://sns.sseinfo.com/resources/images/upload/202605/2026051519060431453446498.pdf" target="_blank">嘉必优投资者关系活动记录表（2026-05-13，业绩说明会阵容/排产/产品核查口径/2-24欧盟管控）</a></li>
+<li>· <a href="https://m.bjnews.com.cn/detail/1756960986168679.html" target="_blank">新京报贝壳财经《嘉必优终止收购欧易生物，公司股价连跌三日》（8.31亿/441.23%增值/7.21亿商誉）</a>；<a href="http://finance.ce.cn/stock/gsgdbd/202509/t20250901_2460951.shtml" target="_blank">中国经济网《嘉必优终止买欧易生物股价跌5%》（复牌涨停24.90元）</a></li>
+<li>· <a href="https://stock.stockstar.com/RB2026082200016235.shtml" target="_blank">证券之星《ST嘉必优2026年中报解读》</a>；<a href="https://stock.stockstar.com/RB2026082300001331.shtml" target="_blank">证券之星《每周股票复盘：ST嘉必优上半年营收降81.22%》（减值3,151万）</a></li>
+<li><span class="typ">行情与公司资料</span></li>
+<li>· <a href="https://www.stcn.com/quotes/index/sh688089.html" target="_blank">证券时报e公司行情页（2026-09-18收盘8.47元/总市值14.09亿/动态PB 0.95/总股本1.66亿）</a></li>
+<li>· <a href="http://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=688089" target="_blank">上交所公司概况与行情（静态PE 9.80/2026-07-28跌幅榜）</a></li>
+<li>· <a href="http://finance.ce.cn/stock/gsgdbd/202609/t20260916_3217479.shtml" target="_blank">中国经济网《破发股ST嘉必优跌2.12% IPO募7亿国泰海通保荐》（发行价23.90元/募资7.17亿）</a>；<a href="https://www.cabio.cn/news/detail288.html" target="_blank">嘉必优官网《乘合成生物之风，走创新发展之路》（湖北首家科创板/第一家ARA/累计分红）</a></li>
+<li>· 报告基准：Wind(windproxy) 取数（688089.SH，2026-09-18 收盘截面及 2019-2025 年度 / 2025Q1-2026Q2 季度定稿序列）；信源索引 300 条（巨潮深链+PDF，另存 source_index）。</li>
+</ol>
+
+<!-- ================= 免责声明 ================= -->
+<div class="disc" id="disc">
+<p><strong>免责声明</strong></p>
+<p>（免责声明：本文内容仅为自用兼知识分享与逻辑分析，数据可能有错误或不及时，不构成任何投资建议。市场有风险，投资需谨慎。）</p>
+</div>
+
+<div class="foot">
+<p>ST嘉必优（688089）深度研究 · 王艳《寻找十倍系列·控制权变更驱动》例外样本 · 更新至 2026-09-19 · 行情截至 2026-09-18 收盘</p>
+<p><a href="#top">↑ 回顶部</a></p>
+</div>
+
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a></body>
+</html>
