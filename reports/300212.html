@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ST易录(300212)深度研究·王艳体</title>
+<style>
+  :root {
+    --red: #b01e23; --dark: #1a1a1a; --ink: #2b2b2b; --muted: #777;
+    --line: #e5e2d8; --bg: #fbfaf6; --card: #ffffff; --gold: #b8860b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+    line-height: 1.9; font-size: 16px; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 32px 20px 80px; }
+  header.site {
+    border-bottom: 3px solid var(--red); padding-bottom: 18px; margin-bottom: 26px;
+  }
+  header.site h1 { font-size: 30px; margin: 0 0 6px; color: var(--dark); letter-spacing: 1px; }
+  header.site .sub { color: var(--muted); font-size: 14px; }
+  .badge {
+    display: inline-block; background: var(--red); color: #fff; font-size: 13px;
+    padding: 2px 10px; border-radius: 3px; letter-spacing: 1px; margin-right: 6px;
+  }
+  h2 {
+    font-size: 22px; margin: 42px 0 14px; padding-left: 12px; color: var(--dark);
+    border-left: 5px solid var(--red); line-height: 1.4;
+  }
+  h3 { font-size: 18px; margin: 26px 0 10px; color: var(--dark); }
+  p { margin: 12px 0; }
+  strong { color: var(--dark); }
+  .red { color: var(--red); font-weight: bold; }
+  .gold { color: var(--gold); font-weight: bold; }
+  .kv {
+    background: var(--card); border: 1px solid var(--line); border-radius: 6px;
+    padding: 4px 0; margin: 18px 0; box-shadow: 0 1px 2px rgba(0,0,0,.03);
+  }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; background: var(--card); }
+  th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: #f3efe6; color: var(--dark); font-weight: 600; white-space: nowrap; }
+  tr:nth-child(even) td { background: #fdfcf9; }
+  table small { color: var(--muted); }
+  .quote {
+    background: #f7f3ea; border-left: 4px solid var(--gold); padding: 10px 14px;
+    margin: 14px 0; color: #5a4a2a; font-size: 15px;
+  }
+  blockquote.warn {
+    background: #fdf0ef; border-left: 4px solid var(--red); padding: 10px 14px;
+    margin: 14px 0; color: #7a2a2a; font-size: 15px;
+  }
+  a { color: #1460c0; text-decoration: none; border-bottom: 1px dotted #9bb8dd; }
+  a:hover { color: #b01e23; border-bottom-color: #b01e23; }
+  .src { font-size: 12px; color: var(--muted); margin-left: 2px; }
+  .foot { margin-top: 40px; }
+  .disclaimer {
+    margin-top: 34px; padding: 14px 16px; background: #efece4; border-radius: 6px;
+    color: #6a6558; font-size: 14px;
+  }
+  ol.src-list { padding-left: 22px; font-size: 14px; color: #444; }
+  ol.src-list li { margin: 6px 0; }
+  .tagline { font-style: italic; color: var(--muted); }
+</style>
+</head>
+<body><script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div class="wrap">
+
+<header class="site">
+  <div><span class="badge">寻找十倍系列 · 控制权变更/壳/重整驱动</span></div>
+  <h1>ST易录（300212）深度研究</h1>
+  <div class="sub">标的：*ST易录（北京易华录信息技术股份有限公司）｜华录集团 / 中国电科系数据湖与大数据存储公司｜深交所创业板</div>
+  <div class="sub tagline">更新至 2026-09-21</div>
+</header>
+
+<h2>岛主引言（结论先行）</h2>
+
+<p>先说三句话，把结论钉在墙上：</p>
+
+<p><strong class="red">第一句——红线分类：这是"财务类退市"里的"资不抵债"型标本。</strong>
+*ST易录的红线不是营收、不是审计意见，而是<strong>净资产为负</strong>。2025年年报经审计，归母净资产 <strong class="red">-19.53亿元</strong>，直接踩中《创业板股票上市规则》第10.3.1条第（二）项"经审计的期末净资产为负"，于是2026年4月28日晚披露年报当天，被深交所实施<strong>退市风险警示</strong>，股票简称从"易华录"变"*ST易录"；又因连续三年扣非前后净利润孰低均为负值、2025年度审计报告带"持续经营重大不确定性"段落，再叠加<strong>其他风险警示</strong>；同一天还挨了证监会<strong>立案告知书</strong>（涉嫌信息披露违法违规）。<a href="https://stcn.com/article/detail/3853071.html" target="_blank">来源</a></p>
+
+<p><strong class="red">第二句——生死定级：一脚踩进鬼门关，另一脚踩在央企救援梯上，属于"高危续命型"。</strong>
+到2026年6月30日，归母净资产亏到 <strong class="red">-22.64亿元</strong>，合并负债合计 <strong>90.26亿元</strong>、资产总计 <strong>76.54亿元</strong>，资产负债率 <strong class="red">117.9%</strong>；货币资金只剩 <strong>3.20亿元</strong>，短期借款高达 <strong>30.34亿元</strong>，多笔金融债务逾期、30余个银行账户（含基本户、募集资金专户）被冻结、募集资金专户被司法扣划2590.93万元。<a href="https://stock.stockstar.com/RB2026082700044385.shtml" target="_blank">来源</a>
+反转钥匙已插进锁孔：2026年5月19日北京一中院裁定<strong>启动预重整</strong>，8月20日定下重整投资人，9月14日<strong>签署《重整投资协议》</strong>，13家投资人拟合计出资 <strong class="gold">约25.31亿元</strong>。<a href="http://static.cninfo.com.cn/finalpage/2026-09-14/1225564292.PDF" target="_blank">来源</a> 生死，就看这25亿能不能在2026年内换成"净资产转正"。</p>
+
+<p><strong class="red">第三句——自救空间：这条命是"央企牌照+数据湖壳价值"撑起来的，但立案调查是最大X因素。</strong>
+三张底牌：①实控人<strong>中国电科</strong>、控股股东<strong>华录集团</strong>已公开表态"支持通过重整化解风险、保障国有资产保值增值"；②重整投资人里来了<strong>山东高速投资控股</strong>（带9240公里高速路网数据资源）和<strong>京合云（上海）</strong>（背后是布局AI算力的民企），"国资+产业资本"双保险；③公司手里攥着智慧交通、可信数据空间、蓝光存储等一堆央企数字化牌照和场景。最大不确定不是钱、不是人，而是<strong>证监会立案结论至今（2026-09-21）未出</strong>——公告原话"无法确定本次立案事项是否会对后续进入重整程序及重整实施产生影响"。一句话：<strong>壳能不能救活，一半靠25亿到账，一半靠立案这关过关。</strong></p>
+
+<div class="kv">
+<h3 style="margin:14px 14px 6px;">股价市值快照（基准日 2026-09-21）</h3>
+<table>
+  <tr><th>项目</th><th>数值</th><th>口径/说明</th></tr>
+  <tr><td>股票简称</td><td>*ST易录</td><td>原简称"易华录"，2026-04-28后戴帽</td></tr>
+  <tr><td>股票代码</td><td>300212.SZ</td><td>深交所创业板</td></tr>
+  <tr><td>最新价</td><td>7.91元</td><td>2026-09-21盘中，+0.13% <a href="https://www.egsea.com/quotation/stock-info/sz300212.html" target="_blank">来源</a></td></tr>
+  <tr><td>总股本 / 流通股本</td><td>7.20亿股 / 7.04亿股</td><td>注册资本7.1989亿元</td></tr>
+  <tr><td>总市值 / 流通市值</td><td>56.94亿 / 55.67亿</td><td>2026-09-21 <a href="https://stcn.com/quotes/index/sz300212.html" target="_blank">来源</a></td></tr>
+  <tr><td>市净率（动态）</td><td>-2.52倍</td><td>净资产为负，PB失效</td></tr>
+  <tr><td>市盈率TTM</td><td>-9.14倍</td><td>亏损，PE失效</td></tr>
+  <tr><td>股东户数</td><td>45,021户</td><td>截至2026-09-10</td></tr>
+  <tr><td>退市风险警示价</td><td>涨停9.41 / 跌停6.27</td><td>ST股5%涨跌停限制</td></tr>
+</table>
+</div>
+
+<blockquote class="warn">提醒一句：负净资产的公司，PB、PE全部失效。56.94亿市值买的是"重整成功的期权"，不是买净资产，更不是买盈利。</blockquote>
+
+<h2>前世今生时间轴</h2>
+
+<p>易华录是A股"央企IT平台"里活脱脱的教材：开局是亲儿子，中间膨胀成"数据湖"烧钱机器，现在是ICU病人。</p>
+
+<table>
+  <tr><th>时间</th><th>事件</th><th>大白话</th></tr>
+  <tr><td>1992-06</td><td>中国华录电子有限公司成立（华录集团前身）</td><td>大连起家，央企，主业数字音视频</td></tr>
+  <tr><td>2000-06</td><td>中国华录集团有限公司成立，注册资本18.36亿</td><td>国务院国资委直管央企</td></tr>
+  <tr><td>2001-04-30</td><td>北京易华录信息技术股份有限公司成立</td><td>华录集团的IT亲儿子</td></tr>
+  <tr><td>2011-05</td><td>创业板上市</td><td>早期智能交通（信控/交管）龙头，林拥军一手带大</td></tr>
+  <tr><td>2015</td><td>定增募资，切入政企数字化</td><td>扩张期</td></tr>
+  <tr><td>2016-2019</td><td>大干"数据湖"模式</td><td>各地合资建数据湖，重资产、长账期、高减值，埋下今天的雷</td></tr>
+  <tr><td>2023-04-03</td><td>剧透：华录集团正与中国电科筹划重组</td><td>央企整合提前漏风</td></tr>
+  <tr><td>2023-11-23</td><td>国务院国资委批准，华录集团股权无偿划入中国电科</td><td><strong>实控人变更为中国电科</strong> <a href="https://m.cnstock.com/commonDetail/40580" target="_blank">来源</a></td></tr>
+  <tr><td>2023</td><td>向特定对象发行股票募资约15.81亿元（5745.9万股 @27.51元/股）</td><td>央企整合前后一次"续命定增"，杯水车薪</td></tr>
+  <tr><td>2023-2025</td><td>连续三年巨亏：-18.9亿 → -28.6亿 → -27.2亿</td><td>净资产从+35.9亿跌到-19.5亿</td></tr>
+  <tr><td>2026-01-30</td><td>业绩预告：2025年预亏21.76亿~27.91亿</td><td><a href="https://stcn.com/article/detail/3622732.html" target="_blank">来源</a></td></tr>
+  <tr><td>2026-04-28</td><td>披露2025年报＋收立案告知书＋被实施退市风险警示</td><td><strong>一天三件事</strong></td></tr>
+  <tr><td>2026-05-15</td><td>债权人华路易云向北京一中院申请重整及预重整</td><td>4天后法院就批</td></tr>
+  <tr><td>2026-05-19</td><td>北京一中院裁定启动预重整（(2026)京01破申407号）</td><td><a href="https://stcn.com/article/detail/3921615.html" target="_blank">来源</a></td></tr>
+  <tr><td>2026-07-03</td><td>37家意向重整投资人报名</td><td>央企壳，抢的人不少</td></tr>
+  <tr><td>2026-08-20</td><td>确定产业赋能型投资人：山东高速联合体、京合云联合体</td><td>山东高速浮出水面</td></tr>
+  <tr><td>2026-08-25</td><td>2026半年报：营收1.89亿、归母-3.12亿、净资产-22.64亿</td><td>亏得少，但底子更空</td></tr>
+  <tr><td>2026-09-14</td><td>签署《重整投资协议》，13家投资人拟出资约25.31亿</td><td>关键一步，但"不代表正式进入重整程序"</td></tr>
+  <tr><td>2026-09-21</td><td>基准日，立案调查尚无结论性意见</td><td>最大X因素仍悬着</td></tr>
+</table>
+
+<h2>关键人物 / 实控人图谱</h2>
+
+<h3>1. 股权结构（到2026半年报）</h3>
+<table>
+  <tr><th>层级</th><th>名称</th><th>持股/控制</th><th>说明</th></tr>
+  <tr><td>实控人</td><td>中国电子科技集团有限公司（中国电科）</td><td>间接约33.94%</td><td>中央直接管理，持华录集团66.78%股权再间接控制 <a href="http://www.cnstock.com/commonDetail/40583" target="_blank">来源</a></td></tr>
+  <tr><td>控股股东</td><td>中国华录集团有限公司</td><td>直接31.83% + 间接2.27% = 34.10%</td><td>中央国有控股，法定代表人欧黎</td></tr>
+  <tr><td>一致行动人</td><td>华录资本控股有限公司</td><td>2.27%</td><td>华录集团全资子公司</td></tr>
+  <tr><td>前实控人</td><td>中国华录集团（原国务院国资委直管）</td><td>—</td><td>2023-11-23划入中国电科后降为"二级央企"</td></tr>
+</table>
+<p><strong>大白话：</strong>易华录现在是"中国电科—华录集团—易华录"三级架构。华录集团从"国资委亲儿子"降成"中国电科的儿子"，易华录变成<strong>中国电科第19家上市平台</strong>（海康威视、太极股份、电科网安、国睿科技等之外新增）。</p>
+
+<h3>2. 董事会/管理层关键人物</h3>
+<table>
+  <tr><th>姓名</th><th>角色</th><th>背景</th><th>看点</th></tr>
+  <tr><td>欧黎</td><td>党委书记、董事长（2024-06起）</td><td>电子科大博士，原中国电科26所所长、华录集团董事长</td><td><strong>中国电科派驻的"接管人"</strong></td></tr>
+  <tr><td>肖益</td><td>党委副书记、董事、总裁（法定代表人）</td><td>原太极股份副总裁/总裁一系</td><td>中国电科系职业经理人</td></tr>
+  <tr><td>满孝国</td><td>党委常委、财务总监、董秘</td><td>财政部山东监管局副处长出身，正高级会计师</td><td>财政部背景管钱</td></tr>
+  <tr><td>周福全</td><td>党委常委、董事、副总裁</td><td>原国富瑞数据系统总经理</td><td>管数据湖/存储实体</td></tr>
+  <tr><td class="red">林拥军</td><td>董事（2024-06卸任董事长/总裁）</td><td>清华硕士，2001年起易华录元老，2019-2024任董事长</td><td><strong>持股2.94%（2115.72万股）全部质押</strong>，2024年被"收编"让位</td></tr>
+  <tr><td>杜欣军</td><td>董事</td><td>原中国电科32所</td><td>中国电科系</td></tr>
+</table>
+<p><strong>大白话：</strong>2024年6月是分水岭——中国电科完成"换班"，把老人林拥军换下，派驻欧黎坐镇、太极股份出身的肖益当总裁，是央企整合后"削藩+接管"的标准动作。<strong>林拥军2115万股全部质押，是不能忽视的信号</strong>：老舵手自己资金链也紧，指望他"附身救主"不现实。</p>
+
+<h3>3. 债权人（申请人）——华路易云</h3>
+<p>注意债主身份：<strong class="red">华路易云科技有限公司，是公司的参股公司（联营企业）</strong>，又是年报里的应付账款大户（应付账款3.35亿）。发起重整申请的，是"半个自己人"。这是国资纾困/央企自救里最常见的<strong>"内部人点火"</strong>套路——用关联方债权人出面申请，把时间主动权攥在自己手里，避免被外部债权人"抢跑"推动破产清算。</p>
+
+<h2>怎么拿的控制权（两条控制权转移路径）</h2>
+
+<h3>第一段：无偿划转（2023）——央企整合，兵不血刃换老板</h3>
+<table>
+  <tr><th>要素</th><th>内容</th></tr>
+  <tr><td>方式</td><td><strong>行政无偿划转</strong>（非市场收购）</td></tr>
+  <tr><td>动作</td><td>国资委将所持华录集团股权无偿划入中国电科</td></tr>
+  <tr><td>结果</td><td>实控人由"华录集团"变更为"中国电科"</td></tr>
+  <tr><td>持股变化</td><td>华录集团直接+间接持股比例不变（约33.94%），只换"顶头上司"</td></tr>
+  <tr><td>表态度</td><td>中国电科承诺"12个月无增持/减持、无重大资产重组详计划、无改董事会计划"</td></tr>
+</table>
+<p><strong>大白话：</strong>不是市场化并购，是国务院一纸文件把华录整个"并"进中国电科。易华录头上的大股东没变，但"爷爷"从国资委变成中国电科。<strong>这种划转不花钱、不溢价、不换股，对股价本身几无刺激，但它决定了"谁来救"的基因</strong>——央企背景，是这口壳最硬的一块底牌。</p>
+
+<h3>第二段：破产重整（2026）——产业资本进场，控制权可能易主</h3>
+<table>
+  <tr><th>阶段</th><th>时间</th><th>事件</th></tr>
+  <tr><td>点火</td><td>2026-05-15</td><td>债权人华路易云申请重整+预重整</td></tr>
+  <tr><td>受理</td><td>2026-05-19</td><td>北京一中院启动预重整</td></tr>
+  <tr><td>管理</td><td>2026-05-29</td><td>金杜律所任临时管理人</td></tr>
+  <tr><td>招募</td><td>2026-06~08</td><td>公开招募，37家意向投资人</td></tr>
+  <tr><td>定人</td><td>2026-08-20</td><td>山东高速联合体、京合云联合体中选</td></tr>
+  <tr><td>签约</td><td>2026-09-14</td><td>签署《重整投资协议》，13家拟出资约25.31亿 <a href="https://news.iqilu.com/shandong/shandonggedi/20260918/5945555.shtml" target="_blank">来源</a></td></tr>
+</table>
+
+<h3>3. 重整投资结构（关键数字）</h3>
+<table>
+  <tr><th>投资人类别</th><th>家数</th><th>认购价</th><th>受让转增股</th><th>投资款</th></tr>
+  <tr><td>产业赋能型投资人</td><td>6家</td><td>4.10元/股</td><td>约4.96亿股</td><td>约20.32亿元</td></tr>
+  <tr><td>财务投资人</td><td>7家</td><td>6.75元/股</td><td>约0.74亿股</td><td>约5.00亿元</td></tr>
+  <tr><td><strong>合计</strong></td><td><strong>13家</strong></td><td>—</td><td><strong>约5.7亿股</strong></td><td><strong>约25.31亿元</strong></td></tr>
+</table>
+<p><strong>产业赋能型投资人（6家，两大阵营）：</strong>山东高速联合体（牵头：山东高速投资控股）指定<strong>济南佳富、泰安启重汇联</strong>；京合云联合体（牵头：京合云（上海）科技）指定<strong>芜湖长昱、泰安玻普、北京大有瑞祥、广州爱泉</strong>。</p>
+<p><strong>财务投资人（7家）：</strong>中国银河金融控股（银河资管）、厦门国际信托、广西金创华盈、广州国资系、北京云福易录、北京雅荣春芽、北京宸年易录等——中央金融企业+广西/厦门/广州国资+民营资本。</p>
+<p><strong>支付节奏：</strong>履约保证金=投资款的20%（产业）、30%（财务），签约后3个工作日内到账；<strong>全部重整投资款=法院裁定批准重整计划之日起5日内</strong>足额支付。</p>
+<p><strong>大白话：</strong>标准"资本公积转增股本+引入重整投资"打法。产业投资人用4.1元/股骨折价（远低于现价7.91元）拿4.96亿股，换20.32亿救命钱+产业资源；还额外共同出资<strong class="gold">6.27亿元设立有限责任公司，专项解决"增信函件"遗留事项</strong>——这6.27亿是纯"擦屁股钱"，是真金白银的兜底。</p>
+
+<h2>意图分析与节奏</h2>
+
+<h3>山东高速要什么？</h3>
+<p>山东高速投资要的不是一家亏损IT公司，而是<strong>智慧交通的数据入口和场景</strong>：集团体系内握着<strong>9240公里高速公路路网数据资源、高速绿色算力网、207对服务区、647个收费站</strong>；易华录做了二十多年交通大数据，有信控、交管、车路云一体化、泰国TOCC/香港信控/肯尼亚ITS等标杆项目和央企牌照。<a href="https://finance.sina.com.cn/stock/relnews/cn/2026-08-31/doc-iniqetnt4683705.shtml" target="_blank">来源</a> 逻辑：用便宜筹码，把易华录变成山东高速交通数据的"算力+数据要素运营"抓手。<strong>这是"产业协同型"重整，不是纯财务套利。</strong></p>
+
+<h3>京合云要什么？</h3>
+<p>京合云（上海）背后关联布局AI算力的民营资本（市场称"大京集团"），联合芜湖长昱等进场，看中的大概率是易华录手里的<strong>蓝光存储、算力基础设施、数据湖资产</strong>中"算力+存储"的部分，蹭AI算力叙事。</p>
+
+<h3>中国电科/华录集团的态度</h3>
+<p>公告原话：华录集团、中国电科"将支持易华录通过重整程序化解风险、优化资产负债结构、恢复持续经营能力""集聚相关资源，增强持续经营能力和核心竞争力，促进国有资产保值增值"。<strong>注意用词——是"支持"，不是"包办"。</strong>央企愿意背书站台，但钱主要靠山东高速们出，股权也可能因此被稀释。这是"续命"不是"控股保卫战"。</p>
+
+<h3>节奏倒计时（生死时间表）</h3>
+<table>
+  <tr><th>节点</th><th>预期/含义</th></tr>
+  <tr><td>2026-09-17前后</td><td>履约保证金（投资款20%/30%）交齐</td></tr>
+  <tr><td>待法院裁定</td><td>北京一中院裁定<strong>受理重整</strong>（预重整转正式），第一道大坎</td></tr>
+  <tr><td>受理后</td><td>重整计划草案提交、债权人会议表决</td></tr>
+  <tr><td>法院批准重整计划后 <strong>5日内</strong></td><td>25.31亿重整投资款<strong>全额到账</strong></td></tr>
+  <tr><td><strong>2026年报审计（2027年初）</strong></td><td><strong>期末净资产能否转正</strong>，决定是否终止上市</td></tr>
+</table>
+<p><strong>判断：</strong>重建投资款要到账，前提是"法院裁定批准重整计划"，而这一步受两件东西卡着——①证监会立案调查结论；②预重整→正式受理的时间。25.31亿<strong>不是已到账，是"签了合同、交了保证金、等法院点头才给钱"</strong>。到2026-09-21，这只票叫<strong>"三重前置条件锁死"：立案未结 → 受理未定 → 资金未到账</strong>。要赶在2026年报审计前完成净资产转正，窗口偏紧但不至于绝望——重整收益（债务重组利得+资本注入）一旦确认，净资产转正是"账面上能一次性拉回来"的。</p>
+
+<h2>承诺包"原话 vs 大白话"拆解</h2>
+
+<table>
+  <tr><th>承诺/表述（原话）</th><th>时间/来源</th><th>大白话翻译</th></tr>
+  <tr><td>"重组完成后，华录集团直接及间接持有公司的股权比例不发生变化"</td><td>2023-11-23</td><td>划转不换股，你手里股票一张不少，只换名义老板</td></tr>
+  <tr><td>中国电科"不存在未来12个月内继续增持/处置股份、重大资产重组、改董事会计划"</td><td>2023-11</td><td>央企爸爸说"先稳住不折腾"，但12个月后的事谁说得准</td></tr>
+  <tr><td>"承诺保持易华录人员、财务、机构、资产、业务独立"</td><td>2023-11收购报告书</td><td>防掏空的合规动作，不是施救承诺</td></tr>
+  <tr><td>避免同业竞争承诺</td><td>2011-05 IPO</td><td>老黄历</td></tr>
+  <tr><td>国富商通承诺7800万购股，逾期罚每天万分之三、超30天再罚780万</td><td>2018-08</td><td><strong class="red">至今未履行！</strong>补偿款+违约金+仲裁费未付，2025-08被申请强制清算</td></tr>
+  <tr><td>"将支持易华录通过重整化解风险……促进国有资产保值增值"</td><td>2026重整公告</td><td>精神支持+资源协调，<strong>没白纸黑字承诺兜底多少亿</strong></td></tr>
+  <tr><td>产业赋能型投资人"共同设立公司，出资6.27亿元专项解决增信函件事项"</td><td>2026-09-14</td><td>投资人拿便宜股票还额外掏钱擦历史屁股，<strong>真金白银的兜底</strong></td></tr>
+  <tr><td>"本次签署《重整投资协议》不代表公司正式进入重整程序，尚存在重大不确定性"</td><td>2026-09-14特别提示</td><td><strong>最硬免责声明</strong>：合同签了≠钱到手≠命保住</td></tr>
+  <tr><td>"如重整未顺利实施完毕，2026年度经审计期末净资产预计为负，股票将面临终止上市风险"</td><td>2026-09-14特别提示</td><td>退市倒计时条款</td></tr>
+</table>
+
+<blockquote class="warn">拆解结论：这份"承诺包"里真正值钱的活口只有一个——<strong>6.27亿增信专项+25.31亿重整投资款</strong>，触发硬币全压在"法院批准重整计划"一道闸上。央企的"支持"是背书不是担保，别把"支持"当"兜底"。国富商通那单2018年老承诺至今赖账，恰恰提醒：<strong>A股的承诺，落地才叫钱。</strong></blockquote>
+
+<h2>六维拆解</h2>
+
+<h3>维度①：重组节奏（这条命是什么精度的手术）</h3>
+<p><strong>定性：快，快到反常。</strong>5月15日申请、5月19日裁定启动预重整，<strong>4天</strong>，媒体用"仅隔4天获批"当标题。说明这桩重整是<strong>被"安排"好的</strong>——申请人是参股公司（联营企业）、债主是"自己人"，法院一路绿灯，招募4个月就签约。<strong>但难的是"正式受理"这道坎</strong>，立案结论一天不出，受理和重整计划批准都可能有变数。<strong>评分：节奏★★★★☆（前半程飞快），确定性★★★☆☆（后半程悬）。</strong></p>
+
+<h3>维度②：新实控人（重整投资人）意图</h3>
+<p>山东高速（产业型，要交通数据场景+算力落地，会真干活）；京合云（算力叙事型，要存储/算力资产，带来注入想象空间）；7家财务投资人（博重整收益，6.75元拿、现价7.91元，典型打折套利盘）；中国电科/华录集团（保牌护牌，要壳不退市）。<strong>判断：这是一组"产业方出力气、财务方出钱、央企站台"的组合，结构比单一民企接盘健康得多。</strong>山东高速这种量级的地方国资进场，本身就在传递"这壳值得救"的信号。</p>
+
+<h3>维度③：原业务（数据湖）质量盘点</h3>
+<table>
+  <tr><th>业务板块</th><th>2026H1收入</th><th>毛利率</th><th>质量点评</th></tr>
+  <tr><td>数字化系统及底座（智能交通/存储）</td><td>7535.20万（-58.70%）</td><td class="red">-54.26%</td><td>收缩重灾区，毛利巨幅为负，拖累核心</td></tr>
+  <tr><td>数据运营及服务</td><td>1.14亿（-8.62%）</td><td>34.25%</td><td>相对健康，唯一正毛利核心盘</td></tr>
+  <tr><td>整体</td><td>1.89亿（-38.39%）</td><td class="red">-1.02%</td><td>营收腰斩、毛利由正转负</td></tr>
+</table>
+<p>曾经的"数据湖"宏大叙事，本质是"重资产+政府项目+长账期+高减值"的黑洞，三年计提减值几十亿，把净资产从+35.9亿干到-22.6亿。<strong class="red">"数据湖"四个字，2024-2025年是估值杀手，不是引擎。</strong>现在留下的"可信数据空间"（池州、内江、增城、昭通4项目，规划6000多万）和交通数据资产化规模还小，撑不起主业，但<strong>给了重整方"数据要素"的想象空间——这是壳还能被看上的唯一产业理由。</strong></p>
+
+<h3>维度④：承诺包活口</h3>
+<p>见承诺包拆解。核心活口：25.31亿投资款+6.27亿增信专项，触发硬币"法院批准重整计划"。<strong>当前（2026-09-21）到账额≈0</strong>，只到了约投资款20%-30%的履约保证金层面（约5亿~7.6亿）。别被"25亿"迷惑，那是"承诺到账"，不是"已到账"。</p>
+
+<h3>维度⑤：行情映射</h3>
+<table>
+  <tr><th>指标</th><th>数值</th><th>解读</th></tr>
+  <tr><td>现价</td><td>7.91元</td><td>远高于产业4.1元、财务6.75元拿股价</td></tr>
+  <tr><td>总市值</td><td>56.94亿</td><td>买的是重整期权，不是基本面</td></tr>
+  <tr><td>近一周表现</td><td>涨超30%（异动）</td><td>与华电能源等同批被点名异动，游资+题材推动</td></tr>
+  <tr><td>涨跌停</td><td>9.41 / 6.27元</td><td>ST股5%涨跌停，波动被锁窄</td></tr>
+</table>
+<p><strong>判断：</strong>56.94亿市值、-2.52倍PB、-9.14倍PE，说明市场已完全按"壳+重整预期"定价，现价意味着<strong>已抢跑一大段</strong>。产业投资人4.1元拿的筹码，带"重整成功+资产注入"乐观预期。<strong>这种票短期是情绪和游资战场，长期是"重整能否落地"的一锤子买卖，中间没有模糊地带。</strong></p>
+
+<h3>维度⑥：综合判断</h3>
+<p>六维揉成一句话：<strong>这是一口"央企底子+产业方接盘+财务方掏钱"的高质量壳，但踩在"立案未决"和"时间窗口"两把刀上。</strong>三重利空（净资产为负、持续经营不确定、立案调查）和三重利好（央企背书、重整签约、25亿待入）同台，谁先落地谁做主。<strong class="red">定级：高危续命型，博的是"重整过会+净资产转正"的确定性事件，不是博业绩反转。</strong></p>
+
+<h2>壳经济学</h2>
+
+<h3>1. 这口壳值多少钱？</h3>
+<p>现价7.91元、总市值56.94亿，<strong>远高于"净壳价"</strong>。买它的不是"买壳装资产"的借壳方，而是<strong>重整投资人用资本公积转增，把壳当"债务重组+产业重塑"载体</strong>。它值钱的三样东西：①央企/中国电科牌照（数据要素、可信数据空间这类民企拿不到的场景）；②智慧交通二十年数据与技术积累（山东高速要的）；③转增股本的重整套利空间（产业4.1元、财务6.75元 vs 现价7.91元）。</p>
+
+<h3>2. 谁来救、怎么救、救到哪一步</h3>
+<table>
+  <tr><th>问题</th><th>答案</th></tr>
+  <tr><td>谁来救</td><td>明面：山东高速（产业）+京合云（算力）+7家财务（钱）；背后：中国电科/华录集团站台</td></tr>
+  <tr><td>怎么救</td><td>资本公积转增约5.7亿股 → 13家投资人25.31亿入股 → 6.27亿专项解决增信遗留 → 债务重组砍负债</td></tr>
+  <tr><td>救到哪一步</td><td>截至2026-09-21：预重整完成、投资协议已签、履约保证金缴付中；下一步"法院裁定受理"+"批准重整计划"</td></tr>
+  <tr><td>终极目标</td><td>2026年报净资产转正 → 摘掉退市风险 → 保壳成功</td></tr>
+</table>
+
+<h3>3. 壳买卖三句话结论</h3>
+<p>①这壳不便宜，但<strong>"央企壳+产业重整"是当前A股最稀缺的重组范式之一</strong>，山东高速肯出20亿，说明产业方认这个价。</p>
+<p>②风险不在估值，在流程——<strong>立案调查结不结、法院受理不受理、重整计划批不批</strong>，三重不确定叠在一个"2026年年报"的Deadline上。</p>
+<p>③对散户而言，这是<strong>"事件驱动+零和博弈"的牌桌</strong>，不是价值投资。你能赚的是"重整成功"瞬间的预期差；你能亏的是"立案暴雷/受理失败/退市"那一刀。</p>
+
+<h2 class="foot">数据来源</h2>
+<ol class="src-list">
+  <li>北京易华录2025年年度报告（审计报告：中勤万信，勤信审字【2026】第0773号，带持续经营重大不确定性段落的无保留意见），2026-04-29</li>
+  <li>北京易华录2026年半年度报告，2026-08-25</li>
+  <li>《关于签署重整投资协议的公告》（公告编号：2026-058）——<a href="http://static.cninfo.com.cn/finalpage/2026-09-14/1225564292.PDF" target="_blank">巨潮资讯网 2026-09-14</a></li>
+  <li>《关于招募重整投资人的进展公告》（公告编号：2026-053）——2026-08-20（深交所）</li>
+  <li>《关于法院决定对公司启动预重整的公告》（公告编号：2026-033）——2026-05-19</li>
+  <li><a href="https://m.cnstock.com/commonDetail/40580" target="_blank">华录集团与中国电科重组获准 易华录实控人将变更为中国电科</a>——上证报·中国证券网 2023-11-23</li>
+  <li><a href="http://www.cnstock.com/commonDetail/40583" target="_blank">中国电科与华录集团实施重组 数字产业"巨无霸"呼之欲出</a>——上海证券报 2023-11-24</li>
+  <li><a href="https://stcn.com/article/detail/3853071.html" target="_blank">易华录涉嫌信披违法违规被证监会立案 同日被实施退市风险警示</a>——证券时报·e公司 2026-04-28</li>
+  <li><a href="https://stcn.com/article/detail/3921615.html" target="_blank">债权人申请仅隔4天获批 *ST易录启动预重整</a>——每日经济新闻 2026-05-22</li>
+  <li><a href="https://news.iqilu.com/shandong/shandonggedi/20260918/5945555.shtml" target="_blank">*ST易录签署重整投资协议，山东高速联合体作为产业赋能投资人入局</a>——泰山财经/齐鲁网 2026-09-18</li>
+  <li><a href="https://stock.stockstar.com/RB2026082700044385.shtml" target="_blank">财报快递：*ST易录2026上半年营收降38%亏3.12亿，资不抵债、预重整</a>——证券之星 2026-08-27</li>
+  <li><a href="https://www.egsea.com/quotation/stock-info/sz300212.html" target="_blank">*ST易录 个股行情与快讯</a>——证券时报e公司 2026-09-21</li>
+  <li><a href="https://stcn.com/quotes/index/sz300212.html" target="_blank">*ST易录(sz300212)行情走势</a>——证券时报 2026-09-20</li>
+  <li><a href="https://finance.sina.com.cn/stock/aigc/zwyq/2026-08-25/doc-inipqaan2308759.shtml" target="_blank">*ST易录披露债务逾期进展：累计逾期规模达14549.48万元</a>——新浪财经 2026-08-25</li>
+  <li><a href="https://finance.sina.com.cn/stock/relnews/cn/2026-08-31/doc-iniqetnt4683705.shtml" target="_blank">山东高速欲入局易华录，智慧交通格局生变</a>——新浪财经 2026-08-31</li>
+  <li><a href="https://stcn.com/article/detail/3622732.html" target="_blank">易华录：2025年预亏21.76亿—27.91亿元</a>——证券时报 2026-01-30</li>
+  <li>联合资信关于北京易华录2024年度跟踪评级报告——联合资信 2024-06-17</li>
+  <li>《关于收到中国证券监督管理委员会立案告知书的公告》（公告编号：2026-027）——2026-04-28</li>
+</ol>
+
+<div class="disclaimer">（免责声明：本文内容仅为自用兼知识分享与逻辑分析，数据可能有错误或不及时，不构成任何投资建议。市场有风险，投资需谨慎。）</div>
+
+</div>
+</body>
+</html>
