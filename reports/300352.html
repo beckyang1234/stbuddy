@@ -17,7 +17,35 @@
     a{color:#2e86c1}
     table{display:table}
     .top{float:right;font-size:12px}
-    </style></head><body>
+    </style></head><body><script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
 <div class="top"><a href="#top">回顶部</a></div>
 <div id="top"></div>
 <div class="toc"><strong>目录</strong><a href="#ST信源300352_终端安全_17年市占率第一_的龙头_为什么会栽在一批发不出_1">ST信源300352：终端安全&quot;17年市占率第一&quot;的龙头，为什么会栽在一批发不出门的货上？</a><a href="#岛主引言_1">✅ 岛主引言</a><a href="#一_前世今生_一家_好公司_是怎么走到ST的_1">一、前世今生：一家&quot;好公司&quot;是怎么走到ST的</a><a href="#1996_2012_终端安全的开山者_1">1996-2012：终端安全的开山者</a><a href="#2016_一笔12_6亿的定增_埋下此后十年的主线_1">2016：一笔12.6亿的定增，埋下此后十年的主线</a><a href="#2019_2022_收入见顶_利润塌方_1">2019-2022：收入见顶，利润塌方</a><a href="#2023_一年微利_回光返照_1">2023：一年微利，回光返照</a><a href="#2024_实控人3_3亿元_变现_营收转折_1">2024：实控人3.3亿元&quot;变现&quot;+营收转折</a><a href="#2025_营收暴跌40_巨亏3_38亿_账实不符_暴雷_1">2025：营收暴跌40%、巨亏3.38亿、&quot;账实不符&quot;暴雷</a><a href="#2026_戴帽进行时_1">2026：戴帽进行时</a><a href="#二_为什么被ST_一次教科书级的_内控否定意见_诊断_1">二、为什么被ST：一次教科书级的&quot;内控否定意见&quot;诊断</a><a href="#类型诊断_规范类风险警示_不是_ST_1">类型诊断：规范类风险警示（不是\ST）</a><a href="#审计到底发现了什么_两个问题_都指向同一件事_1">审计到底发现了什么？两个问题，都指向同一件事</a><a href="#下一步的生死条款_倒计时怎么走_1">下一步的生死条款（倒计时怎么走）</a><a href="#为什么内控失效恰好发生在2025年_1">为什么内控失效恰好发生在2025年？</a><a href="#摘帽_升格条款对照表_盯住这张表做跟踪_1">摘帽/升格条款对照表（盯住这张表做跟踪）</a><a href="#三_谁在操盘_实控人林皓_创始人_减持者_出借人_1">三、谁在操盘：实控人林皓——创始人、减持者、出借人</a><a href="#林皓档案_多源核实_1">林皓档案（多源核实）</a><a href="#股权与质押冻结_基准日口径_1">股权与质押冻结（基准日口径）</a><a href="#救兵画像_目前没有救兵_只有创始人自救_1">救兵画像：目前没有救兵，只有创始人自救</a><a href="#徐自发_一年撤退的_唯一外部资本_1">徐自发：一年撤退的&quot;唯一外部资本&quot;</a><a href="#四_财务体检_龙头外壳下_一个失血十年的身体_1">四、财务体检：龙头外壳下，一个失血十年的身体</a><a href="#2026H1的边际变化_三降一稳_1">2026H1的边际变化：三降一稳</a><a href="#五_当前进展_自救三件事_件件都在做_件件都没做完_1">五、当前进展：自救三件事，件件都在做，件件都没做完</a><a href="#整改进展时间线_戴帽后逐月_1">整改进展时间线（戴帽后逐月）</a><a href="#六_估值与赌局_39_7亿市值_买的是什么_1">六、估值与赌局：39.7亿市值，买的是什么</a><a href="#七_风险清单与避坑提醒_1">七、风险清单与避坑提醒</a><a href="#八_结语_1">八、结语</a><a href="#附录_关键信源_可点击核对_1">附录 · 关键信源（可点击核对）</a><a href="#文末_多源交叉核对说明_1">文末·多源交叉核对说明</a></div>
