@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ST东智(002175)深度研究·王艳体</title>
+<style>
+  :root{
+    --bg:#f7f5f0; --card:#ffffff; --ink:#2b2b2b; --muted:#6b6b6b;
+    --accent:#b03a2e; --gold:#9a7b2d; --line:#e5e0d5;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
+    line-height:1.85; font-size:16px;
+  }
+  .wrap{max-width:900px; margin:0 auto; padding:28px 20px 60px;}
+  header.hero{
+    background:linear-gradient(135deg,#3a2f20,#6b3a2e); color:#fff;
+    border-radius:14px; padding:30px 30px 26px; margin-bottom:26px;
+  }
+  header.hero h1{margin:0 0 6px; font-size:26px; line-height:1.4;}
+  header.hero .sub{opacity:.92; font-size:15px;}
+  header.hero .meta{margin-top:12px; font-size:13px; opacity:.85;}
+  h2{
+    font-size:21px; color:var(--accent); border-left:5px solid var(--accent);
+    padding-left:12px; margin:42px 0 16px;
+  }
+  h3{font-size:17px; color:var(--gold); margin:26px 0 10px;}
+  p{margin:12px 0;}
+  .lead{
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:18px 20px; margin:18px 0;
+  }
+  .lead b{color:var(--accent);}
+  table{
+    width:100%; border-collapse:collapse; margin:16px 0; font-size:14px;
+    background:var(--card); border-radius:10px; overflow:hidden;
+    box-shadow:0 1px 4px rgba(0,0,0,.05);
+  }
+  th,td{border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top;}
+  th{background:#efe9dc; color:#4a3520; font-weight:600;}
+  tr:nth-child(even) td{background:#fbf9f4;}
+  .tag{display:inline-block; font-size:12px; padding:2px 9px; border-radius:20px; margin-right:6px;}
+  .tag-red{background:#fbe4e1; color:#b03a2e;}
+  .tag-green{background:#e3f2e5; color:#1e6b34;}
+  .tag-yellow{background:#fdf3d7; color:#8a6d1a;}
+  blockquote{
+    margin:16px 0; padding:12px 16px; border-left:4px solid var(--gold);
+    background:#fbf7ec; border-radius:0 8px 8px 0; color:#4a3b1f;
+  }
+  a{color:#1a5fb4; text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .src{font-size:13px; color:var(--muted);}
+  .conclusion{
+    background:#fff8f3; border:1px solid #f0d9c8; border-radius:12px;
+    padding:16px 18px; margin:14px 0;
+  }
+  .conclusion .three{font-size:15px; margin:9px 0;}
+  .snap{border:1px dashed var(--gold); border-radius:10px; padding:12px 16px; background:#fff;}
+  .foot{margin-top:44px; padding-top:18px; border-top:2px solid var(--line); color:#555;}
+  .disc{font-size:14px; color:#777; text-align:center; margin-top:20px;}
+  ol.src-list li{margin:6px 0; font-size:14px;}
+</style>
+</head>
+<body><script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div class="wrap">
+
+<header class="hero">
+  <h1>寻找十倍系列——*ST东智（002175）<br>PE大佬2.9元抄底入主，36个月"不注入"是真话还是缓兵之计？</h1>
+  <div class="sub">王艳的逍遥岛 · 控制权变更/壳/重整驱动</div>
+  <div class="meta">作者：王艳的逍遥岛 | 2026-09-21 (v20260921)</div>
+</header>
+
+<p><b>更新至 2026-09-21</b></p>
+
+<h2>岛主引言：三行结论先讲</h2>
+
+<div class="conclusion">
+  <div class="three"><span class="tag tag-red">红线分类</span><b>财务类退市风险警示（二次戴帽）</b>：*ST东智这次被戴帽，不是资不抵债、不是审计非标，而是踩了最经典的一条财务线——2025年度"利润总额/净利润/扣非孰低"为负（归母净利 <b>-3272.91万元</b>、扣非 <b>-3304.00万元</b>），且"扣除后营业收入"只有 <b>2.99亿元</b>，低于深交所主板 <b>3亿元</b>红线。公司股票于 2026年4月30日 起被实施退市风险警示，简称由"东方智造"变更为"*ST东智"。</div>
+  <div class="three"><span class="tag tag-green">生死定级</span><b>"可救"，且救兵已到位</b>：这是财务类红线里最"温柔"的一种，有 <b>1个完整会计年度</b>整改观察期。更关键的是，公司家底不差——2026半年报期末 <b>归母净资产7.79亿元</b>（为正）、<b>总资产9.77亿元</b>、<b>负债率仅19.5%</b>、<b>账面货币资金2.52亿元</b>，2025年报还是 <b>标准无保留意见</b>，无立案、无重大违法。一句话：壳是干净的、钱是有的、时间够一年。</div>
+  <div class="three"><span class="tag tag-yellow">自救空间</span><b>大，但关键变量尚未揭晓</b>：2026年7月22日，宁夏东泰能源集团（实控人王建英，北京疆亘资本董事长）以 <b>2.90元/股、总价5.47亿元</b> 受让14.76%股份完成过户，正式接盘。新主一上来就是一套组合拳：卖产业园（未来城三家公司，2219万）、卖过程装备（赛孚机械，2749万）、搞股权激励（考核2026年扣除后营收≥3.15亿~3.50亿）。但最大的悬念是公告里那句"东泰能源 <b>目前暂无在未来36个月内向公司注入关联资产</b>的重组计划"。</div>
+</div>
+
+<div class="snap"><b>快照（2026-09-21）</b>：现价约 <b>2.53元</b>，总市值约 <b>32.30亿元</b>，总股本12.77亿股。年内累计下跌约33%，戴帽后一度三个跌停。 <a href="https://egs.stcn.com/quotation/stock-info/sz002175.html" target="_blank">来源</a></div>
+
+<h2>一、前世今生：一家从"尺子厂"七次换活法的公司</h2>
+
+<p>*ST东智这个名字历史不长，但这家公司已是A股"改名狂魔"——从卖卡尺起家，到做数字电视、做动漫、搞重整、卖园区、再被PE大佬收购，二十年间换了七种活法。</p>
+
+<h3>1.1 时间轴：从广陆数测到*ST东智</h3>
+<table>
+  <thead><tr><th>时间</th><th>关键事件</th><th>股权/实控人变化</th><th>背后逻辑</th></tr></thead>
+  <tbody>
+    <tr><td>2001</td><td>桂林广陆数字测控技术有限公司整体变更为广陆数测股份公司</td><td>彭朋系（原实控人）</td><td>数显量具起家</td></tr>
+    <tr><td>2007.10</td><td>深交所主板上市（002175，"广陆数测"）</td><td>—</td><td>数显量具龙头之一</td></tr>
+    <tr><td>2014.4</td><td>收购中辉乾坤，切入数字电视运营</td><td>—</td><td>跨界文化传媒第一跳</td></tr>
+    <tr><td>2015.7</td><td>收购水木动画，更名"东方网络"</td><td>—</td><td>文化传媒+机床工具双主业</td></tr>
+    <tr><td>2018</td><td>2018年报被出具<b>无法表示意见</b></td><td>—</td><td>财务爆雷，文化传媒巨亏</td></tr>
+    <tr><td>2019</td><td>剥离文化传媒亏损子公司，聚焦量具</td><td>2019.1 彭朋→南通东柏；2019.9→无控股股东</td><td>卖壳自救</td></tr>
+    <tr><td>2020</td><td>巨亏10.75亿，净资产转负（-9.04亿）</td><td>—</td><td>资不抵债，濒临退市</td></tr>
+    <tr><td>2021.4-5</td><td>申请重整；2020年报净资产为负→退市风险警示（*ST东网）</td><td>—</td><td>桂林中院启动预重整</td></tr>
+    <tr><td>2021.5.26</td><td>桂林中院决定<b>预重整</b>，指定广西智迪尔破产清算有限公司为临时管理人</td><td>—</td><td>司法程序启动</td></tr>
+    <tr><td>2021.10.27/11.30</td><td>法院裁定受理重整、批准《重整计划》</td><td>重整投资人=<b>科翔高新技术发展有限公司</b></td><td>科翔高新入主</td></tr>
+    <tr><td>2021.12.31</td><td>桂林中院裁定重整计划<b>执行完毕</b></td><td>控股股东→科翔高新；实控人→宋小忠、范美蓉夫妇</td><td>重整收官</td></tr>
+    <tr><td>2022</td><td>更名"东方智造"（原东方网络）→摘帽摘星</td><td>—</td><td>重整后重生</td></tr>
+    <tr><td>2023.5</td><td>收购名客智造100%（智能物流分拣）</td><td>—</td><td>堆业务凑规模</td></tr>
+    <tr><td>2023.12</td><td>—</td><td><b>李斌</b>增资科翔控股1.3亿、持股51.22%→成为实控人</td><td>南通商人接棒</td></tr>
+    <tr><td>2025.11</td><td>收购南通赛孚机械70%（过程装备）</td><td>—</td><td>继续铺摊子</td></tr>
+    <tr><td>2025</td><td>亏损3273万、扣除后营收2.99亿&lt;3亿</td><td>—</td><td>触及退市红线</td></tr>
+    <tr><td>2025.12.19</td><td>拟4.00元/股转让1.83亿股给广西现代物流集团</td><td>拟更实控人→广西国资委</td><td>国资"半路接单"</td></tr>
+    <tr><td>2026.4.30</td><td><b>实施退市风险警示，简称改为"*ST东智"</b></td><td>—</td><td>二次戴帽</td></tr>
+    <tr><td>2026.5.15</td><td>广西国资交易<b>终止</b></td><td>科翔高新/李斌不变</td><td>国资退场</td></tr>
+    <tr><td>2026.6.26</td><td>与宁夏东泰能源集团签《股份转让协议》，2.90元/股</td><td>拟更实控人→王建英</td><td>PE大佬闪电接手</td></tr>
+    <tr><td>2026.7.22</td><td>1.885亿股（14.76%）<b>过户完成</b></td><td>控股股东→东泰能源；实控人→王建英</td><td>易主落地</td></tr>
+    <tr><td>2026.8.27-28</td><td>第九届董事会/高管换届，<b>王建英任董事长</b></td><td>新管理层到位</td><td>治理权交割</td></tr>
+    <tr><td>2026.9.14</td><td>拟出售赛孚机械70%（2749万）+推出限制性股票激励</td><td>—</td><td>清壳+绑业绩</td></tr>
+  </tbody>
+</table>
+
+<h3>1.2 三次"戴帽"与两次"重生"</h3>
+
+<p>这家公司身上至少背过 <b>两轮退市风险警示</b>：</p>
+<ul>
+  <li><b>第一轮（2019—2021）</b>：2018年报被出具无法表示意见、文化传媒板块巨亏，先"ST东网"，2020年净资产转负后于2021年5月进"*ST东网"，最终靠 <b>2021年破产重整</b>翻身——重整投资人科翔高新入主，2022年摘帽更名"东方智造"。 <a href="https://disc.static.szse.cn/disc/disk02/finalpage/2022-01-01/cb139e87-b329-489b-8175-61d407b2fdb6.PDF" target="_blank">来源</a></li>
+  <li><b>第二轮（2026至今）</b>：2025年主业亏损+扣除后营收跌破3亿，2026年4月30日二次戴帽"*ST东智"，这次靠的是 <b>易主（东泰能源/王建英）+清壳+业绩回补</b> 来解。</li>
+</ul>
+
+<blockquote>判断：这家公司不是第一次"濒死"，但每次都有人接。第一次是国家机器（重整）接，第二次是PE资本（疆亘系）接。<b>"壳始终有人要"</b>，是这个标的贯穿二十年的一条暗线。</blockquote>
+
+<h2>二、关键人物/实控人：王建英是谁？疆亘系凭什么接？</h2>
+
+<h3>2.1 王建英：水利系统出身的"特殊资产玩家"</h3>
+
+<p>据公告及工商信息，<b>王建英，1972年7月出生，中国籍，硕士学历</b>：1994—2002任中国水利水电建设集团经营办副主任；2007—2013任北京德瑞世通工业设备租赁有限公司总经理；此后长期任北京疆亘资本管理有限公司董事长、经理，并控制德瑞世通、北京远硕科技等一批公司。 <a href="https://m.tianyancha.com/organize/bc86816130" target="_blank">来源</a></p>
+
+<p>他 是<b>北京疆亘资本</b>的实控人兼董事长。疆亘资本官网自述：总部北京，上海、香港及哈萨克斯坦阿斯塔纳、澳大利亚珀斯、刚果（金）金沙萨、美国休斯敦等设分支机构，是"以股权投资、并购业务等为主的全球资产管理平台"，专注 <b>半导体、大数据与AI、新能源新材料、先进制造、医疗健康、海外资产及特殊资产处置</b>。公开投资事件包括图灵智算（量子计算）、瑞普晨创（干细胞再生医学）、孚能科技、奇安信等。 <a href="http://www.gagefinance.com/aboutus" target="_blank">来源</a></p>
+
+<blockquote>大白话翻译：这不是个搞尺子的实业家，是个 <b>"收资产—装资产—卖资产"的老手</b>，尤其擅长"特殊资产处置"这个赛道——而*ST壳，正是特殊资产里最标准的一类。</blockquote>
+
+<h3>2.2 东泰能源：宁夏石嘴山的"碳基储能材料"旗手</h3>
+
+<p>东泰能源（宁夏东泰能源集团有限公司），<b>成立于2007年，注册资本1.92亿元，注册地宁夏回族自治区石嘴山市</b>，业务性质 <b>煤基碳材料</b>，聚焦 <b>碳基储能材料、高端装备制造</b>两大领域。旗下有：</p>
+<ul>
+  <li><b>宁夏东泰摩孚碳基新材料</b>：MOFs（金属有机骨架）超级电容+硅碳锂电负极材料（新能源储能、动力电池）；</li>
+  <li><b>宁夏东泰极碳科技</b>：超高模量碳纤维+硬碳负极（算力中心高导热、航空航天轻量化、超高精度碳量具）；</li>
+  <li><b>宁夏东泰叠生化学科技</b>：稀土浮选剂、稀贵金属分选（战略矿产深加工）。</li>
+</ul>
+<p>财务体量（截至2025年末）：总资产约2.70亿元、所有者权益约2.17亿元、资产负债率约19.62%，2025年营收约1.31亿元、净利润约245.93万元。<b>王建英通过北京远硕科技</b>间接控制东泰能源 <b>65.15%</b>股权。 <a href="http://www.cnstock.com/commonDetail/736053" target="_blank">来源</a></p>
+
+<h3>2.3 一个关键信号："疆亘的产业 + 东智的尺子"</h3>
+
+<p>注意细节：东泰极碳的产品描述里写着"<b>超高精度碳量具装备</b>"——这跟上市公司的数显量具主业能对上话。碳纤维/碳基材料的"量具装备"与"数显量具"存在材料—装备协同的想象空间。</p>
+
+<blockquote>我的判断：王建英接盘，不是来当量具厂长，而是要一个 <b>"有干净壳、有量具底子、能讲碳基新材料/储能/算力故事"的深市主板平台</b>。疆亘手里攒了一堆半导体、新能源新材料、特殊资产项目的退出需求，一个A股平台是这些资产"证券化出口"的最佳插头。</blockquote>
+
+<h2>三、怎么拿控制权：两场失败的"前戏" + 一场27天完成的闪电战</h2>
+
+<h3>3.1 前奏一：广西国资4元/股"接单"又退单</h3>
+
+<p>2025年12月19日，科翔高新+李斌与 <b>广西现代物流集团</b>及其全资子公司广西桂物物流科技签《附条件生效的股份转让协议》：拟转让 <b>1.83亿股（14.33%），4.00元/股，总价7.32亿元</b>；实控人拟变更为<b>广西国资委</b>，科翔高新承诺放弃4.87%（62,210,042股）表决权。 <a href="https://disc.static.szse.cn/disc/disk03/finalpage/2026-05-16/b033672e-9612-4871-912b-0a2d3d3e06f7.PDF" target="_blank">来源</a></p>
+
+<p><b>结局</b>：2026年5月15日终止，公开说法"交易相关条件发生变化，且经多次协商仍未能达成一致"。市场普遍归因：公司2026年4月30日被戴帽*ST后，<b>国资"4元/股接一只刚被*ST的壳"审批阻力陡增</b>。 <a href="https://www.stcn.com/article/detail/3911825.html" target="_blank">来源</a></p>
+
+<blockquote>大白话：国资想4块钱"接"，结果这边先戴帽了，审批过不去，黄了。第一次救兵，卡在了"戴帽"上。</blockquote>
+
+<h3>3.2 前奏二：李斌"退场"蓄谋已久</h3>
+
+<p>李斌2023年12月才靠增资1.3亿获得科翔控股51.22%股权、坐上实控人位置——<b>入主刚两年多就急着卖壳</b>。背后是：科翔高新作为重整投资人2022—2024三年业绩承诺只完成15.54%（3885万 vs 承诺2.5亿），<b>自己还掏了2.11亿业绩补偿款</b>，早就想抽身。 <a href="https://stcn.com/article/detail/1854126.html" target="_blank">来源</a></p>
+
+<h3>3.3 正戏：东泰能源27天完成闪电接盘</h3>
+
+<table>
+  <thead><tr><th>时间</th><th>动作</th><th>要点</th></tr></thead>
+  <tbody>
+    <tr><td>2026.6.22</td><td>签署《意向协议》，停牌</td><td>东泰能源先交<b>3000万意向金</b></td></tr>
+    <tr><td>2026.6.26</td><td>签《股份转让协议》</td><td><b>1.885亿股（14.76%），2.90元/股，总价5.4665亿元</b></td></tr>
+    <tr><td>2026.6.30</td><td>复牌</td><td>股价一字涨停</td></tr>
+    <tr><td>2026.7.1</td><td>支付进度</td><td>累计付2亿元；科翔高新质押1.85亿股给东泰能源</td></tr>
+    <tr><td>2026.7.3</td><td>支付进度</td><td>累计付2.73325亿元；质押增至1.885亿股</td></tr>
+    <tr><td>2026.7.9/7.15</td><td>签《补充协议》《补充协议（二）》</td><td>交易细化</td></tr>
+    <tr><td>2026.7.22</td><td><b>过户完成</b>（带押过户）</td><td>东泰能源14.76%上位，实控人→王建英</td></tr>
+    <tr><td>2026.7.24</td><td>公告（2026-039）</td><td>控股股东/实控人正式变更</td></tr>
+  </tbody>
+</table>
+
+<p><b>三笔账要算清楚：</b></p>
+<ol>
+  <li><b>折价近三成"抄底"</b>：国资4.00元/股 vs 东泰能源2.90元/股，便宜27.5%；总价从7.32亿缩到5.47亿。</li>
+  <li><b>现价倒挂</b>：2.90元/股受让价，如今二级市场2.53元，王建英账面浮亏约13%——恰恰说明他不是来炒短线差价的。</li>
+  <li><b>支付结构</b>：9月《补充协议（三）》把尾款（原挂"2026业绩预告达标"）变成"无条件提前支付"，并终止原协议"2026年度业绩承诺/业绩补偿"条款。科翔高新拿钱走人、不再赌业绩，李斌彻底退场。 <a href="https://egs.stcn.com/news/detail/2341695.html" target="_blank">来源</a></li>
+</ol>
+
+<h2>四、意图分析与节奏：王建英到底要干什么？</h2>
+
+<h3>4.1 三个动作看意图</h3>
+<ul>
+  <li><b>动作一：清壳</b>——2026年8月中旬，拟将未来城建设/物业/兴华三家公司100%股权+剩余租赁权卖回给科翔高新，对价 <b>2219.13万元</b>（产业园业务）；2026年9月14日，拟将赛孚机械70%卖给原股东巍赛重工，对价 <b>2748.87万元</b>（原价买原价卖），全部现金、10月10日前付款。 <a href="http://www.cnstock.com/commonDetail/790005" target="_blank">来源</a></li>
+  <li><b>动作二：绑业绩</b>——推限制性股票激励，拟向17名激励对象授予3830.34万股（约3.00%）、授予价1.28元/股；考核"营收或扣除后营收"，2026年目标1.17倍（约3.50亿元）、触发值90%（约3.15亿元）。<a href="http://paper.cnstock.com/html/2026-09/15/content_2268868.htm" target="_blank">来源</a></li>
+  <li><b>动作三：改治理</b>——《补充协议（三）》把原定"科翔高新保留1名董事提名"改为全部董事由东泰能源提名；8月27日王建英任董事长，疆亘资本董事、总裁胡仲江入董事会。</li>
+</ul>
+
+<h3>4.2 意图研判：更像"产业资本借壳"而非"纯套利"</h3>
+<p>按王艳方法论"意图研判口诀"：国资征集→东泰能源2.9元折价接盘，且"受让资金自有资金≥50%、锁定60个月不转让、36个月不质押"——<b>是长线干活的姿势，不像短线套利</b>。"清壳"方向明确，回归"量具+智能制造"主线，为的是2026年报"扣除后营收"和"净利润"两条线双过。</p>
+
+<h3>4.3 时间表推演（唯一最优路径）</h3>
+<table>
+  <thead><tr><th>步骤</th><th>时间</th><th>操作</th><th>谁受益</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>2026.10.10前</td><td>东泰能源付清尾款4000万；赛孚、未来城款项回笼</td><td>科翔拿钱走人；上市公司回笼现金</td></tr>
+    <tr><td>2</td><td>2026年报（2027.4）</td><td>扣除后营收≥3亿+盈利→申请撤销退市风险警示</td><td>全股东（摘帽）</td></tr>
+    <tr><td>3</td><td>2027</td><td>股权激励考核兑现，量具+智能制造现金流转正</td><td>管理层、核心团队</td></tr>
+    <tr><td>4</td><td>2027—2029</td><td>36个月后注入疆亘系/东泰系碳基储能、半导体等资产（若成行）</td><td>新实控人+二级市场</td></tr>
+  </tbody>
+</table>
+
+<h2>五、承诺包："原话 vs 大白话"逐条拆解</h2>
+<p class="src">（承诺原文引自2026年6月29日《关于控股股东协议转让股权暨控制权拟发生变更的提示性公告》（2026-032）及补充协议，经媒体转述核对）</p>
+
+<h3>5.1 东泰能源（新控股股东）承诺</h3>
+<table>
+  <thead><tr><th>承诺原文</th><th>大白话</th><th>活口在哪</th></tr></thead>
+  <tbody>
+    <tr><td>"过户登记完成之日起<b>60个月内不对外转让</b>……不委托他人行使表决权、不就该等股份协议分割收益权"</td><td>5年内不能卖、不能把表决权给别人</td><td>自愿承诺，锁得够死，是长线信号</td></tr>
+    <tr><td>"过户完成之日起<b>36个月内不开展该等股份的质押、收益权转让</b>等权利受限操作"</td><td>3年内不能拿股去质押换钱</td><td>保证新主不缺钱、不爆仓</td></tr>
+    <tr><td>"东泰能源 <b>目前暂无</b>在未来<b>36个月内向公司或其子公司注入关联资产</b>的重组计划；如后续需要筹划，将严格履行法定程序"</td><td>"目前暂无"是时点快照，只锁"今天"不锁"明天"；且只限"关联资产"，不排除第三方资产</td><td><b>最大活口</b>：是"现在没计划"，不是"承诺3年不装"</td></tr>
+    <tr><td>"受让资金全部来源于自有或自筹资金，其中<b>自有资金不低于50%</b>，不存在代持、结构化安排"</td><td>钱是自己的（至少一半），没融资盘</td><td>合规背书，没过重杠杆</td></tr>
+  </tbody>
+</table>
+
+<h3>5.2 科翔高新（原控股股东）承诺</h3>
+<table>
+  <thead><tr><th>承诺原文</th><th>大白话</th><th>活口在哪</th></tr></thead>
+  <tbody>
+    <tr><td>"自过户完成之日起<b>36个月内不通过任何方式减持</b>其所持有的公司剩余股份"</td><td>剩下的4.44%（约5671万股）3年内不能卖</td><td>防止原股东砸盘，锁死旧股</td></tr>
+  </tbody>
+</table>
+
+<h3>5.3 补充协议（三）：把"对赌"彻底拆掉</h3>
+<table>
+  <thead><tr><th>原约定</th><th>补充协议（三）约定</th><th>解读</th></tr></thead>
+  <tbody>
+    <tr><td>尾款5466.50万元以"2026年业绩预告达标"为支付条件</td><td>生效后5个工作日支付1.24亿元，10月10日前付清剩余4000万，无条件</td><td>把"赌业绩"尾款变"加强制付款"，李斌脱钩拿钱走人</td></tr>
+    <tr><td>交割后1名非独董由科翔高新提名</td><td>全部董事均由东泰能源提名</td><td>旧股东治理权归零</td></tr>
+    <tr><td>原协议含上市公司2026年度业绩承诺/补偿条款</td><td>该条款<b>终止执行、不再具有法律约束力</b></td><td>新主不给旧股东"兜底业绩"抓手，也对2026业绩自负</td></tr>
+  </tbody>
+</table>
+
+<blockquote>核心结论：承诺包里唯一的"36个月不注入"是活口，而不是承诺。一个做特殊资产处置的PE大佬，买壳却"承诺3年不装资产"，这句话逻辑上本就撑不住——更合理的读法是：<b>现阶段先保壳摘帽，注入是"下一步的后手"，话术上留了随时启用的口子。</b></blockquote>
+
+<h2>六、六维拆解 + 财务体检 + 壳经济学</h2>
+
+<h3>6.1 六维拆解速览</h3>
+<table>
+  <thead><tr><th>维度</th><th>结论</th><th>关键证据</th></tr></thead>
+  <tbody>
+    <tr><td>① 重组节奏</td><td>快。停牌到过户仅27天，无卡壳</td><td>6.22意向→7.22过户；支付、解质押、带押过户一气呵成</td></tr>
+    <tr><td>② 新实控人</td><td>PE/特殊资产老手，自带碳基储能+半导体新材料资源</td><td>疆亘资本董事长；东泰能源碳基储能材料；"超高精度碳量具"协同</td></tr>
+    <tr><td>③ 原业务质量</td><td>"干净壳+一堆杂摊"；量具是真资产，园区/过程装备是杂摊</td><td>货币资金2.52亿；负债率19.5%；未来城、赛孚正在被清</td></tr>
+    <tr><td>④ 承诺包活口</td><td>"36个月不注入"是时点话术，有活口</td><td>见第五节</td></tr>
+    <tr><td>⑤ 行情映射</td><td>年内累跌约33%，戴帽后3跌停；易主后新增"超级电容"概念</td><td>现价2.53元、市值32.3亿；受让价2.90元倒挂</td></tr>
+    <tr><td>⑥ 综合判断</td><td>"先保命、后讲注入"；核心矛盾=2026年报两条线双过</td><td>股权激励考核2026年扣除后营收3.15~3.50亿</td></tr>
+  </tbody>
+</table>
+
+<h3>6.2 财务体检（合并口径，来自年报/半年报PDF）</h3>
+
+<table>
+  <caption style="text-align:left;font-weight:600;margin-bottom:4px;">利润表核心（单位：亿元）</caption>
+  <thead><tr><th>指标</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026H1</th></tr></thead>
+  <tbody>
+    <tr><td>营业收入</td><td>2.74</td><td>2.75</td><td>3.26</td><td>3.17</td><td>1.79</td></tr>
+    <tr><td>扣除后营业收入</td><td>—</td><td>—</td><td>—</td><td><b>2.99</b></td><td>—</td></tr>
+    <tr><td>归母净利润</td><td>+1.07</td><td>+0.44</td><td>+0.17</td><td><b>-0.33</b></td><td>+0.03</td></tr>
+    <tr><td>扣非净利润</td><td>+0.25</td><td>+0.008</td><td>+0.13</td><td><b>-0.33</b></td><td>+0.013</td></tr>
+    <tr><td>经营现金流净额</td><td>+0.46</td><td>+0.26</td><td>+0.56</td><td>+0.26</td><td><b>-0.40</b></td></tr>
+  </tbody>
+</table>
+<p class="src">2026H1：营收同比+18.67%、归母+310.98万元、扣非+133.81万元、经营现金流-3982.91万元。</p>
+
+<table>
+  <caption style="text-align:left;font-weight:600;margin-bottom:4px;">资产负债表核心（单位：亿元）</caption>
+  <thead><tr><th>指标</th><th>2024末</th><th>2025末</th><th>2026H1末</th></tr></thead>
+  <tbody>
+    <tr><td>总资产</td><td>7.61</td><td>10.50</td><td>9.77</td></tr>
+    <tr><td>归母净资产</td><td>5.96</td><td>7.76</td><td>7.79</td></tr>
+    <tr><td>负债合计</td><td>1.67</td><td>2.65</td><td>1.90</td></tr>
+    <tr><td>负债率</td><td>21.9%</td><td>25.3%</td><td><b>19.5%</b></td></tr>
+    <tr><td>货币资金</td><td>1.52</td><td>3.26</td><td>2.52</td></tr>
+  </tbody>
+</table>
+
+<p><b>三个红灯指标体检：</b></p>
+<ul>
+  <li><b>扣非净利润</b>：2023年仅+77.69万元（虚盈实亏）、2025年转-3304万 → <span class="tag tag-yellow">🟡</span>（主业本就在盈亏平衡线挣扎，2025年失守）；</li>
+  <li><b>净资产</b>：7.79亿为正、负债率19.5% → <span class="tag tag-green">🟢</span>（安全垫厚）；</li>
+  <li><b>经营现金流</b>：2026H1为-3983万（上年同期+1280万）→ <span class="tag tag-yellow">🟡</span>（半年为负，需盯全年）。</li>
+</ul>
+
+<blockquote>勾稽自检：2025末负债2.65亿+权益7.85亿=总资产10.50亿 ✓；2026H1末负债1.90亿+权益7.87亿=总资产9.77亿 ✓。2025归母净资产从5.96亿增至7.76亿，主因是当年收到的 2.11亿重整业绩补偿款计入资本公积，而非经营赚的——净资产"增厚"靠赔偿款，不是造血，这一点要警惕。</blockquote>
+
+<h3>6.3 壳经济学：32亿市值值不值得围观？</h3>
+<ul>
+  <li><b>壳的属性</b>：不是"净壳"，而是"有产有资的主业壳"（有量具主业、7.79亿净资产），属于救起来能持续造血的那种，比纯空壳值钱。</li>
+  <li><b>换手成本锚</b>：东泰能源2.90元/股×1.885亿股=5.47亿元，对应隐含整体估值约37亿元；现价2.53元对应32.3亿——现价已低于接盘方成本估值，下行空间被"5.47亿真金白银"部分托底。</li>
+  <li><b>下行风险</b>：若2026年报再触发（扣除后营收&lt;3亿 或 净利为负），财务类第2年直接退市，归零风险真实存在——这是唯一的"1→0"开关。</li>
+  <li><b>上行想象</b>：摘帽（估值修复）→ 碳基储能/算力/半导体资产注入预期（估值重定价）。36个月锁定期内，"注入"是唯一的灵魂。</li>
+</ul>
+
+<h3>6.4 逻辑漏洞与反方观点（照例泼冷水）</h3>
+<ol>
+  <li><b>"36个月不注入"若当真</b>：未来3年只是营收3亿、净利几百万的量具厂，撑不起32亿市值，PB 4倍已偏贵；</li>
+  <li><b>东泰能源体量太小</b>：总资产2.70亿、净利246万的主体，5.47亿买壳的自有资金≥50%（至少2.7亿），几乎等于其全部净资产，杠杆与腾挪空间存疑，需盯是否引入战投/定增；</li>
+  <li><b>2026营收达标靠什么</b>：半年才1.79亿，下半年要冲3.15~3.50亿压力不小；清掉赛孚、未来城后，量具+智能物流+镀膜能否顶上，是硬仗。</li>
+</ol>
+
+<h2>七、数据来源</h2>
+<ol class="src-list">
+  <li>《广西东方智造科技股份有限公司2026年半年度报告》（2026-08-29，巨潮资讯网/证券时报·e公司）— <a href="https://egs.stcn.com/quotation/stock-info/sz002175.html" target="_blank">来源</a></li>
+  <li>《广西东方智造科技股份有限公司2025年年度报告》（2026-04-29，巨潮资讯网）</li>
+  <li>《关于公司股票交易被实施退市风险警示暨股票停牌的公告》（2026-04-29）</li>
+  <li>《关于控股股东终止协议转让股份暨终止控制权变更事项的公告》（2026-05-15）— <a href="https://disc.static.szse.cn/disc/disk03/finalpage/2026-05-16/b033672e-9612-4871-912b-0a2d3d3e06f7.PDF" target="_blank">来源</a></li>
+  <li>《关于筹划控制权变更事项进展暨复牌的公告》（2026-06-30）— <a href="https://static.cninfo.com.cn/finalpage/2026-06-30/1225397592.PDF" target="_blank">来源</a></li>
+  <li>《关于股份协议转让完成过户登记及股份解除质押暨公司控制权发生变更的公告》（2026-07-24，公告编号2026-039）— <a href="http://paper.cnstock.com/html/2026-07/24/content_2248249.htm" target="_blank">来源</a></li>
+  <li>《国资入主折戟仅月余，002175火速觅得新主》（上海证券报·中国证券网，2026-06-30）— <a href="http://www.cnstock.com/commonDetail/736053" target="_blank">来源</a></li>
+  <li>《*ST东智，控制权变更终止》（证券时报网，2026-05-15）— <a href="https://www.stcn.com/article/detail/3911825.html" target="_blank">来源</a></li>
+  <li>《PE大佬入主后有新想法？*ST东智同步抛出多项计划》（证券时报·e公司，2026-09）— <a href="https://egs.stcn.com/news/detail/2341695.html" target="_blank">来源</a></li>
+  <li>《*ST东智再拟易主股价涨停抢跑 实控人李斌等拟套现5.5亿》（中国经济网，2026-06-30）— <a href="http://finance.ce.cn/stock/gsgdbd/202606/t20260630_3061367.shtml" target="_blank">来源</a></li>
+  <li>《东方智造业绩补偿"拉锯战"：控股股东承诺落空，约2亿元缺口待解》（每日经济新闻，2025-06-03）— <a href="https://stcn.com/article/detail/1854126.html" target="_blank">来源</a></li>
+  <li>《净利接连承压，东方智造实控人"退场"》（北京商报，2025-12-15）— <a href="https://xinwen.bjd.com.cn/content/s69402f77e4b06b6f7a7f8404.html" target="_blank">来源</a></li>
+  <li>《关于控股股东收到中国证监会广西监管局〈行政监管措施决定书〉的公告》（2025-06-17，公告编号2025-020）— <a href="https://paper.cnstock.com/html/2025-06/17/content_2081804.htm" target="_blank">来源</a></li>
+  <li>《东方时代网络传媒股份有限公司重整计划（草案）》（2021-09-22）— <a href="https://disc.static.szse.cn/disc/disk02/finalpage/2021-10-12/cc0d60e4-28eb-4089-990a-483757500375.PDF" target="_blank">来源</a></li>
+  <li>《东方时代网络传媒股份有限公司关于重整计划执行完毕的公告》（2022-01-01，公告编号2022-001）— <a href="https://disc.static.szse.cn/disc/disk02/finalpage/2022-01-01/cb139e87-b329-489b-8175-61d407b2fdb6.PDF" target="_blank">来源</a></li>
+  <li>《*ST东智：拟以2749万元出售赛孚机械70%股权》（上海证券报·中国证券网，2026-09-15）— <a href="http://www.cnstock.com/commonDetail/790005" target="_blank">来源</a></li>
+  <li>《第九届董事会第二次会议决议的公告》（2026-09-15，公告编号2026-052）— <a href="http://paper.cnstock.com/html/2026-09/15/content_2268868.htm" target="_blank">来源</a></li>
+  <li>北京疆亘资本管理有限公司官网（公司简介）— <a href="http://www.gagefinance.com/aboutus" target="_blank">来源</a></li>
+  <li>启信宝：北京疆亘资本管理有限公司— <a href="https://www.qixin.com/company/481613ca-75f4-4ae2-91d3-02245ee0bd85" target="_blank">来源</a></li>
+  <li>天眼查：疆亘资本（王建英履历）— <a href="https://m.tianyancha.com/organize/bc86816130" target="_blank">来源</a></li>
+</ol>
+
+<div class="foot">
+  <div class="disc">（免责声明：本文内容仅为自用兼知识分享与逻辑分析，数据可能有错误或不及时，不构成任何投资建议。市场有风险，投资需谨慎。）</div>
+</div>
+
+</div>
+</body>
+</html>
