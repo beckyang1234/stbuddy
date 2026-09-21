@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ST华鹏(603021)深度研究·王艳体</title>
+<style>
+  :root{
+    --bg:#fbf7f0; --card:#ffffff; --ink:#2a2622; --sub:#7a6f63;
+    --accent:#b3402a; --accent2:#1d5c84; --line:#e6ddd0;
+    --red:#b3402a; --green:#1d7a46; --amber:#b07a1f;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+    line-height:1.85; font-size:16px;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:32px 22px 80px;}
+  header{background:linear-gradient(135deg,#2a2622 0%,#4a3f34 60%,#7a5230 100%); color:#fdf8f0; padding:42px 30px; border-radius:14px; margin-bottom:28px;}
+  header h1{margin:0 0 10px; font-size:30px; letter-spacing:1px;}
+  header .sub{color:#e8dcc8; font-size:15px;}
+  header .tag{display:inline-block; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.3); padding:4px 12px; border-radius:20px; font-size:13px; margin-top:14px; margin-right:8px;}
+  h2{font-size:22px; border-left:6px solid var(--accent); padding-left:12px; margin:42px 0 16px; color:#2a2622;}
+  h3{font-size:18px; margin:26px 0 10px; color:#3a332c;}
+  p{margin:12px 0;}
+  strong{color:#1a1a1a;}
+  .red{color:var(--red); font-weight:700;}
+  .green{color:var(--green); font-weight:700;}
+  .amber{color:var(--amber); font-weight:700;}
+  .conclude{background:#fff6ee; border:1px solid #f0d9c4; border-left:5px solid var(--accent); border-radius:10px; padding:20px 22px; margin:18px 0;}
+  .conclude .line{margin:6px 0;}
+  .conclude .k{font-weight:700; color:var(--accent);}
+  .box{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin:16px 0; box-shadow:0 1px 3px rgba(0,0,0,.04);}
+  table{border-collapse:collapse; width:100%; margin:16px 0; font-size:14px; background:#fff;}
+  th,td{border:1px solid #dcd2c2; padding:9px 11px; text-align:left; vertical-align:top;}
+  th{background:#f2eadb; font-weight:700; white-space:nowrap;}
+  tr:nth-child(even) td{background:#faf6ee;}
+  table tr td:first-child{white-space:nowrap; font-weight:600;}
+  blockquote{margin:16px 0; padding:12px 18px; background:#f4f0e8; border-left:4px solid #c9b88f; color:#5c5347;}
+  a{color:var(--accent2); text-decoration:none; border-bottom:1px dotted var(--accent2);}
+  a:hover{border-bottom:1px solid var(--accent2);}
+  .src{font-size:13px; color:#8a7b66;}
+  .src a{margin:0 2px;}
+  .disclaimer{background:#efe9df; border:1px dashed #c9b88f; border-radius:10px; padding:16px 20px; margin-top:34px; color:#5c5347; font-size:14px;}
+  .small{font-size:13px; color:#8a7b66;}
+  ol.sources li{margin:7px 0; font-size:14px;}
+  hr{border:none; border-top:1px solid var(--line); margin:32px 0;}
+  .pill{display:inline-block; background:#f4ecdc; border:1px solid #dcd2c2; border-radius:14px; padding:2px 10px; font-size:13px; margin:2px 3px 2px 0;}
+</style>
+</head>
+<body><script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div class="wrap">
+
+<header>
+  <h1>ST华鹏(603021)深度研究</h1>
+  <div class="sub">山东华鹏玻璃股份有限公司 · 日用玻璃制品 · 山东 · 上交所主板 · 王艳"寻找十倍"体例</div>
+  <div>
+    <span class="tag">更新至 2026-09-21</span>
+    <span class="tag">数据基准：2025年报 / 2026半年报（定稿·合并口径）</span>
+    <span class="tag">红线分类：净资产倒挂型 *ST</span>
+  </div>
+</header>
+
+<p><span class="sub">更新至 2026-09-21。本文按《寻找十倍系列》方法论的"六步预判 + 六维拆解"框架展开，所有关键数字以2025年报、2026半年报定稿数为准，核心链路多源交叉核验。观点为个人研判，仅供知识分享与逻辑推演。</span></p>
+
+<h2>岛主引言：先给三行结论</h2>
+<div class="conclude">
+  <div class="line"><span class="k">① 红线分类——</span><span class="red">净资产倒挂型退市风险警示</span>。2025年末经审计归母净资产 <span class="red">-1.67亿</span>、所有者权益合计 -1.83亿、资产负债率 112.27%；2026半年报恶化至归母净资产 <span class="red">-2.42亿</span>、资产负债率 117.82%。触发线是《上交所股票上市规则》(2025年4月修订) <span class="red">第9.3.2条第(二)款</span>——"最近一个会计年度经审计的期末净资产为负值"。营收3.54亿虽在3亿红线之上，但净资产为负是独立触发、与营收无关；反而营收"踩线"成了交易所问询的靶子。<a href="http://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-30/603021_20260430_WL6H.pdf" target="_blank">来源</a></div>
+  <div class="line"><span class="k">② 生死定级——</span><span class="red">红灯高危，靠造血必死，靠外力一线生机。</span>2026年末经审计净资产若不能转正，直接触及终止上市。上半年已亏7471万、净资产从-1.67亿跌到-2.42亿，靠卖玻璃杯不可能填平（器皿毛利率-23.51%），只有<span class="red">债务豁免/债转股/资产处置利得/大股东输血</span>这一条路。官方2026-08-31口径"重组及债务化解<span class="red">暂未形成确定方案和时间安排</span>"——救命筹码还没上桌。</div>
+  <div class="line"><span class="k">③ 自救空间——</span>实控人还在牌桌上，但<span class="amber">只守不攻</span>。海科控股(杨晓宏)2026年给了9000万委托贷款、协助置换青岛银行1.8亿委托贷款，是"守"不是"攻"；从2022年赫邦化工借壳到2024年3月终止，再到如今净资产转正压力，每一步都是"低成本试错、不行就撤"的理性人打法。这让华鹏这个壳——<span class="amber">壳价值存在，救壳者的动机半真半假</span>。</div>
+</div>
+
+<h2>一、前世今生：一张时间轴表讲完五年</h2>
+<table>
+<thead><tr><th>时间</th><th>事件</th><th>关键数字 / 条款</th><th>意义</th></tr></thead>
+<tbody>
+<tr><td>2019-11-13</td><td>原实控人张德华转让8.42%给绿色投资(现"山东省绿色资本投资集团")，绿色投资持股16.48%；张德华承诺放弃20%表决权</td><td>山东省人民政府成为实控人</td><td>山东国资接盘，壳第一次换主</td></tr>
+<tr><td>2022-10-21</td><td>张德华将所持24.33%(7785.31万股)转让海科控股，总价5.52亿、每股7.09元(较停牌前5.65元溢价25.48%)；绿色投资恢复20%表决权</td><td>控股股东变更为海科控股，<span class="red">实控人变更为杨晓宏</span></td><td>壳第二次换主：国资→东营民营海科</td></tr>
+<tr><td>2022-10-21</td><td>与山东发展投资控股集团(山发控股)签《资产出售的意向性协议》</td><td>重组获批时未找到买家，山发兜底承接剩余全部资产/负债</td><td>老玻璃资产"退场"的兜底安排</td></tr>
+<tr><td>2022-10-22</td><td>重组预案：发行股份+现金购买赫邦化工100%股权(海科旗下氯碱)＋配套募资</td><td>现金支付比例≤15%；预计构成重组上市(借壳)</td><td>"腾笼换鸟"：玻璃→烧碱</td></tr>
+<tr><td>2023-01-17</td><td>7785万股份完成交割</td><td>海科持股24.33%落袋</td><td>控制权交割完成</td></tr>
+<tr><td>2023-03-28</td><td>董事会通过重组报告书(草案)</td><td>交易完成后海科持股升至约54.76%(不含配套募资)</td><td>借壳方案成型</td></tr>
+<tr><td>2023-04-20/04-28</td><td>股东大会通过；上交所受理</td><td>上证上审(并购重组)〔2023〕15号</td><td>进入审核</td></tr>
+<tr><td>2023-05-19</td><td>收到上交所审核问询函</td><td>(〔2023〕21号)</td><td>交易所连环追问</td></tr>
+<tr><td>2023-06→12</td><td>财务/评估资料到期两次中止审核，加期审计又恢复，8-30提交首轮回复</td><td>—</td><td>磕磕绊绊往前推</td></tr>
+<tr><td><span class="red">2024-03-01</span></td><td>董事会决议<span class="red">终止发行股份购买资产并撤回申请文件、签署终止协议</span></td><td>独立董事：历时较长、宏观/行业波动变化</td><td><span class="red">借壳重组正式流产</span></td></tr>
+<tr><td>2025-04-23</td><td>实施其他风险警示(ST)</td><td>连续3个会计年度扣非前后孰低为负＋2024年报审计显示持续经营能力存重大不确定性</td><td>简称"山东华鹏"→"ST华鹏"</td></tr>
+<tr><td>2025-07前后</td><td>子公司安庆华鹏因环保+窑炉末期停产大修(11月投产)</td><td>2025年营收下滑主因之一</td><td>主业又挨一刀</td></tr>
+<tr><td>2026-04-30</td><td>2025年报披露，净资产-1.67亿</td><td>触及9.3.2(二)，公告退市风险警示(编号2026-025)</td><td>4-30停牌1天</td></tr>
+<tr><td><span class="red">2026-05-06</span></td><td>实施退市风险警示(*ST)</td><td>简称"ST华鹏"→"*ST华鹏"，涨跌幅仍5%</td><td><span class="red">进入退市倒计时</span></td></tr>
+<tr><td>2026-05~08</td><td>海科9000万委托贷款；置换青岛银行1.8亿委托贷款；拟申请不超7亿综合授信</td><td>委托贷款≤5.5%/1年</td><td>大股东"输血"式自救</td></tr>
+<tr><td>2026-08-31</td><td>互动易回复：重组及债务化解暂未形成确定方案和时间安排</td><td>—</td><td>救命方案仍未落地</td></tr>
+<tr><td>2026-09-21</td><td>基准日</td><td>股价约5.45元，总市值约17.4亿</td><td>见"行情映射"</td></tr>
+</tbody>
+</table>
+
+<p><strong>一句话总结前半生：</strong>华鹏这个壳，2019年国资接、2022年海科接，每次换主都是冲着"装东西"来的，结果东西都没装成——海科时期的赫邦化工借壳装到一半，2024年3月自己喊停了。现在壳里剩下的还是荣成石岛那堆玻璃。</p>
+
+<h2>二、关键人物 / 实控人</h2>
+<h3>杨晓宏（实际控制人）</h3>
+<ul>
+<li><strong>身份：</strong>1965年6月生，山东东营人，高级工程师，山东海科控股有限公司董事长。</li>
+<li><strong>履历：</strong>东营区化工厂技术员、车间主任 → 东营石油化工厂生产科科长/副厂长/厂长 → 海科化工董事长 → 海科控股董事长。老石化人，不是财务型玩家。<a href="https://paper.cnstock.com/html/2023-03/29/content_1740940.htm" target="_blank">来源</a></li>
+<li><strong>背后的盘子：</strong>海科控股是东营头部民营化工集团，2022年以701亿营收排中国企业500强第327位/中国民企500强，业务横跨石化能源、新能源材料、特种化学品、消费与医药化学；旗下海科新源2022年创业板过会——杨晓宏一度一年内手握两家A股。<a href="https://company.cnstock.com/company/scp_gsxw/202210/4970696.htm" target="_blank">来源</a></li>
+<li><strong>对华鹏的态度：</strong>2022年花5.52亿买24.33%，本意把赫邦化工装进来借壳、玻璃打包给山东国资。2024年借壳失败后，既没继续砸钱做活壳、也没清仓走人，而是<span class="amber">停在24.33%当"低成本控股股东"</span>，2026年只肯给9000万委托贷款(还要抵押+子公司担保+≤5.5%利息)。<span class="red">典型的"进可攻、退可守"。</span></li>
+</ul>
+<h3>山东国资系（二股东 + 历史纠葛方）</h3>
+<ul>
+<li><strong>山东省绿色资本投资集团有限公司</strong>(原绿色投资/舜和资本一脉)持股16.48%，2019年接盘华鹏的国资主体，2022年让渡控制权后退居二股东，仍留16.48%、无质押。</li>
+<li><strong>山东发展投资控股集团(山发控股)</strong>：2022年10月签《资产出售意向性协议》要兜底承接玻璃资产的一方，也是现在跟华鹏打仲裁的对象。与绿色投资同属山东国资体系。</li>
+<li><strong>意义：</strong>山东国资让了控制权但<span class="amber">还没完全离场</span>——16.48%股份＋资产兜底协议＋仲裁纠葛，是华鹏未来命运里不可忽略的变量。</li>
+</ul>
+
+<h2>三、怎么拿的控制权：三步走的"借壳前置棋"</h2>
+<div class="box">
+<p><strong>第一步·老股转让换主(2022-10-21)：</strong>张德华把24.33%股份以5.52亿、7.09元/股卖断给海科控股，山东国资恢复让渡的20%表决权，海科以24.33%表决权上位控股股东，杨晓宏成实控人。<span class="red">老股转让与资产重组"相互独立、不互为前提"</span>——海科先花5.52亿把控制权拿到手。<a href="http://m.zqrb.cn/gscy/gongsi/2022-10-22/A1666393192327.html" target="_blank">来源</a></p>
+<p><strong>第二步·注入赫邦化工借壳(2022-10启动)：</strong>赫邦化工(东营，氯碱/烧碱/环氧氯丙烷，20万吨/年离子膜烧碱等四套装置)作价注入，构成重组上市。赫邦2020-2022营收8.26/12.26/14.63亿、扣非净利1674万/1.49亿/1.39亿，是块"能赚钱但传统周期"的资产。交易完成后海科持股升至54.76%。<a href="http://m.toutiao.com/group/7216263627790254596/" target="_blank">来源</a></p>
+<p><strong>第三步·老玻璃资产剥离给山东国资(兜底条款)：</strong>与山发控股签《资产出售意向性协议》，若重组获批时未找到买家，山发兜底承接剩余全部资产/负债。<span class="amber">这一步始终停留在"意向"，从未落地。</span></p>
+</div>
+<p><strong>结果：</strong>第一步落地(海科24.33%)、第二步走到2024年3月终止、第三步从未落地。<span class="red">今天的华鹏 = 换了主人、没装进新资产的空壳，还背着一身玻璃和一身债。</span></p>
+
+<h2>四、意图分析与节奏：杨晓宏到底想干嘛</h2>
+<p><strong>判断一：他买华鹏从来不是为玻璃，是为"壳+上市通道"。</strong>海科的化工资产单独IPO估值不高，借壳最省事。为这步花5.52亿拿老股，说明2022年是真金白银真想装。</p>
+<p><strong>判断二：2024年3月终止不是"谈崩"，是"及时止损"。</strong>独立董事原话"本次交易历时较长，宏观环境和行业环境发生了一定的波动和变化"。大白话：氯碱/烧碱行情2023-2024走弱，赫邦的故事没2022年那么性感了；借壳审核严、耗时长、还得把玻璃资产干净剥离——剥离那步一直悬着。<span class="red">与其被套牢，不如撤回文件保住赫邦这只下金蛋的资产，让壳自己扛。</span></p>
+<p><strong>判断三：终止之后他"守而不攻"，在等更低成本的机会。</strong>2026年只肯给9000万委托贷款(抵押+担保+≤5.5%利息)＋帮忙置换青岛银行1.8亿委托贷款，<span class="amber">本质是"我让壳别死在我手上、但我不额外押本金"</span>，跟"救活一个壳"的投入完全不是一个量级。</p>
+<p><strong>判断四(关键)：2026年净资产必须转正，这个坎他绕不过去。</strong>若*ST华鹏2026年末净资产再为负，直接终止上市，海科手里24.33%(按今日市值约4.2亿)归零。所以下半年他<span class="green">有动机</span>推动债务豁免/重整/注入，但<span class="red">是否愿意且能落地</span>是最大不确定性。官方2026-08-31口径"暂未形成确定方案"是清晰的冷信号。<a href="https://www.cls.cn/detail/xk/bb7bf5b0519a27060e1ad1c4e8917f79" target="_blank">来源</a></p>
+<div class="box">
+<p><strong>节奏预判（个人判断，非事实）：</strong>三季度到年报前，是净资产转正方案落地的最后窗口。可能的牌：①关联方债务豁免(8.02亿逾期本金部分豁免→大额营业外收入，一单即可转正)；②债转股；③政府/国资出面协调；④重启动资产注入但换"更快"的口径。任何一张牌打出，*ST华鹏都会脉冲式上涨；打不出来，就是退市前的缓慢阴跌。</p>
+</div>
+
+<h2>五、"承诺包"原话 vs 大白话拆解</h2>
+<p>海科控股2022-10-21收购时的三大承诺(履行期限"长期"，2025年报口径"是否及时严格履行：是")：</p>
+<table>
+<thead><tr><th>承诺类型</th><th>原话(摘要)</th><th>大白话</th><th>活口(壳经济学视角)</th></tr></thead>
+<tbody>
+<tr><td>解决同业竞争</td><td>"…竞争性资产/业务以公平、公允的市场价格，在适当时机<b>全部注入上市公司或对外转让</b>"</td><td>我家有跟上市公司撞车的业务，要么装进你、要么卖掉</td><td><span class="amber">全包最像"活口"的一句</span>，但前提是"同业竞争"——海科主业是石化/氯碱/新能源，跟玻璃八竿子打不着，这"注入"承诺<span class="red">基本锁死</span></td></tr>
+<tr><td>解决关联交易</td><td>"尽量避免新增非必要关联交易…按市场化原则和公允价格…履行回避表决义务"</td><td>我不利用关联交易掏空你</td><td>中性承诺，无资产注入义务</td></tr>
+<tr><td>独立性(资产/人员/财务/机构/业务)</td><td>"不违规占用上市公司资金…不以上市公司资产违规提供担保"</td><td>我不占你钱、不掏你资产</td><td>合规底线承诺，无注入义务</td></tr>
+</tbody>
+</table>
+<p><strong>一句话点评：</strong>海科的承诺包是<span class="red">"合规型承诺"，不是"资产注入型承诺"</span>。没有任何一条写着"我要把某某资产装进华鹏"或"我要保壳"。唯一沾边"注入"的四个字挂在"同业竞争"名下，而海科跟玻璃没有同业竞争。<span class="red">指望从《收购报告书》承诺里挖出"必定注入"的依据，是自欺欺人——承诺包里的活口，实际是死口。</span></p>
+
+<h2>六、六维拆解</h2>
+<h3>维度一：重组节奏（决定性维度）</h3>
+<ul>
+<li>赫邦化工借壳：2022-10启动 → <span class="red">2024-03-01终止</span>，已死。</li>
+<li>官方最新口径(2026-08-31)：<span class="red">"重组及债务化解暂未形成确定方案和时间安排"</span>。<a href="https://www.cls.cn/detail/xk/bb7bf5b0519a27060e1ad1c4e8917f79" target="_blank">来源</a></li>
+<li>破产重整：2025年报明确"不适用"(尚无重整)。</li>
+</ul>
+<p><strong>结论：</strong>现有节奏是"无节奏"。唯一一次真资本运作(借壳)流产了；现在既没有重整、也没有新重组方案。<span class="red">留给2026年净资产转正的时间，只剩一个季度。</span></p>
+
+<h3>维度二：新实控人意图（见第四节）</h3>
+<p>杨晓宏"守而不攻"：拿到控制权后借壳失败，如今只肯抵押式输血、不额外下注。<span class="amber">救壳动机存在(护住24.33%)，救壳决心存疑。</span></p>
+
+<h3>维度三：原业务（玻璃）质量</h3>
+<ul>
+<li><strong>基本盘：</strong>日用玻璃(器皿/瓶罐)，产能约25万吨，国内机制玻璃高脚杯龙头之一，"石岛"牌曾与Luminarc、Libbey、Rona同列，客户含张裕、长城、鲁花等。</li>
+<li><strong>基本盘是"亏钱的基本盘"：</strong>2025年营收3.58亿(-13.14%)、扣非-2.22亿；<span class="red">2025年器皿毛利率-23.51%、瓶罐毛利率13.41%</span>；经销毛利率17.72% vs 直销2.93%(异常反差被交易所点名"收入是否踩线/压货调节")。</li>
+<li><strong>2026H1：</strong>营收1.79亿(-1.10%)、扣非-7633万(-27.92%)，<span class="red">继续亏损且扩大</span>。</li>
+</ul>
+<p><strong>结论：</strong>玻璃是"现金流不崩但永远不赚"的负资产。<span class="red">靠它净资产转正，数学上不成立。</span></p>
+
+<h3>维度四：承诺包活口（见第五节）</h3>
+<p>无强制注入承诺，活口实际是死口。</p>
+
+<h3>维度五：行情映射（2026-09-21）</h3>
+<table>
+<tbody>
+<tr><td>现价</td><td>5.44~5.46元</td></tr>
+<tr><td>总市值 / 总股本</td><td>约17.4亿 / 3.20亿股(319,948,070股)</td></tr>
+<tr><td>52周区间</td><td>4.17 ~ 8.82元（现价处于中下部）</td></tr>
+<tr><td>每股净资产 / 市净率</td><td>-0.76元 / -7.2倍(负值)</td></tr>
+<tr><td>资产负债率</td><td>117.82%</td></tr>
+<tr><td>其他</td><td>市盈率TTM亏损；2026-08-18因日跌幅偏离值达7%上龙虎榜；换手率约0.9%</td></tr>
+</tbody>
+</table>
+<p><strong>映射逻辑：</strong>17~18亿市值对一个"净资产-2.4亿、年亏2亿、只剩一个季度自救"的*ST壳来说是<span class="red">贵价</span>——这价格已隐含市场对"保壳成功/重组"的提前押注。<span class="amber">这是标准的"退市博弈"定价，不是价值定价。</span>方案落空向4元下方回归空间不小，方案落地向8元上方冲的空间也存在。<a href="https://xueqiu.com/S/SH603021/" target="_blank">来源</a> <a href="https://www.stcn.com/quotes/index/sh603021.html" target="_blank">来源</a></p>
+
+<h3>维度六：综合判断（生死线推演）</h3>
+<ul>
+<li><strong>必死路线(概率较高)：</strong>2026年底净资产不能转正 → 触及终止上市 → 海科24.33%市值蒸发 → 玻璃资产进入处置/清算。</li>
+<li><strong>幸存路线(概率较低但有戏)：</strong>债务豁免/债转股/资产处置利得使净资产转正 → 摘星(*ST→ST) → 等待下一次真正裹挟资产来的救主。</li>
+<li><span class="red">一句话：*ST华鹏是"看主业不救、看海科犹豫、看自己无能为力"的三不管地带，唯一的题材是"净资产转正"这个冬天能不能翻盘。</span></li>
+</ul>
+
+<h2>七、壳经济学：这个壳值不值、值多少、谁来救</h2>
+<p><strong>壳的账面价值：</strong>股本3.20亿股，总市值约17.4亿；净资产-2.42亿(资不抵债)；未分配利润-11.97亿。<span class="red">从财务看，壳是负资产。</span></p>
+<p><strong>壳的市场价值(交易价值)：</strong>上交所主板壳＋国资历史背书＋荣成政府资源，若有真买家，对*ST主板壳的壳费预期通常落在数亿量级，但必须叠加"债务解决代价"。华鹏的隐性欠账是8.02亿逾期债务本金＋2.23亿利息违约金＋一堆诉讼冻结，<span class="red">谁接盘谁先吞下这10亿级债务包</span>——这才是壳费谈判里真正的沉没项。</p>
+<p><strong>谁来救？三个可能的救主排序：</strong></p>
+<ol>
+<li><span class="green">海科控股(杨晓宏)</span>——最顺理成章，但至今只肯"守"；把过剩资产/债务豁免整合进来，一单即可转正。</li>
+<li><span class="amber">山东国资(绿色资本投资/山发控股)</span>——16.48%还在、还欠华鹏旧账，但双方正打仲裁，关系冷却。</li>
+<li>第三方产业资本——前提是海科先让出控制权，目前看不到信号。</li>
+</ol>
+<p><strong>壳经济学结论：</strong>华鹏的"壳"有壳型(主板+国资渊源+地方政府关系)，但被10亿债务＋持续亏损深度负资产化。它是那种<span class="red">"救活了是翻倍甚至十倍的故事、救不活就归零"的极端不对称标的</span>——十倍想象的窗口还没关死，但先得过"净资产转正"这一关。这正是王艳"寻找十倍"框架里最典型的"控制权变更+资本运作未遂+生死倒计时"样本：<span class="red">十倍想象还在，但先得活过这个冬天。</span></p>
+
+<h2>八、遗留债务与诉讼清单（穷尽可能盘清）</h2>
+<table>
+<thead><tr><th>事项</th><th>对方</th><th>金额/诉求</th><th>状态</th></tr></thead>
+<tbody>
+<tr><td>逾期有息债务本金(关联公司)</td><td>关联方合计</td><td><span class="red">约8.02亿元</span>(截至2025-12-31)</td><td>逾期</td></tr>
+<tr><td>逾期债务对应利息/违约金</td><td>—</td><td>约1.78亿(2025末)/ 约2.23亿(2026-06-30)</td><td>滚雪球</td></tr>
+<tr><td>融资租赁起诉</td><td>山东发展绿色融资租赁</td><td>请求偿还租金1亿元及利息、违约金</td><td>已起诉</td></tr>
+<tr><td>借款合同纠纷诉讼</td><td>济南舜腾弘投资(有限合伙)</td><td>请求偿还借款本金<span class="red">4.286亿</span>及利息、违约金</td><td>已起诉</td></tr>
+<tr><td>仲裁(华鹏+海科为申请人)</td><td>山东发展投资控股集团(山发控股)</td><td>请求支付资产收购款14.05亿＋返还占用资金7000万及利息</td><td>2025-12-11裁决<span class="red">基本驳回</span>(仅山发付仲裁费400万)</td></tr>
+<tr><td>业绩补偿仲裁(华鹏为申请人)</td><td>天元信息原股东赵华刚等9人</td><td>业绩补偿款1496.87万＋利息</td><td>2025-04-25一审开庭，后续尚需二审，影响待定</td></tr>
+</tbody>
+</table>
+<p class="small">注：8.02亿逾期债务为本年末数；半年报提示"不排除其他关联方也向法院提起诉讼，继而引发资产拍卖、账户查封、业务停滞等风险"——债务敞口还有放大空间。<a href="http://paper.cnstock.com/html/2026-08/22/content_2257793.htm" target="_blank">来源</a></p>
+
+<h2>九、数据来源</h2>
+<p><strong>本地底稿（PDF，取定稿数，未改动既有文件）：</strong>2022-2025年报、2026半年报、历次发行股份购买资产审核问询函及回复、年报监管问询函回复等多轮。</p>
+<ol class="sources">
+<li>《关于实施退市风险警示并继续实施其他风险警示暨停牌的公告》2026-04-30（上交所）<br><a href="http://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-30/603021_20260430_WL6H.pdf" target="_blank">http://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-30/603021_20260430_WL6H.pdf</a></li>
+<li>《山东华鹏玻璃股份有限公司2026年半年度报告摘要》2026-08-22（上海证券报）<br><a href="http://paper.cnstock.com/html/2026-08/22/content_2257793.htm" target="_blank">http://paper.cnstock.com/html/2026-08/22/content_2257793.htm</a></li>
+<li>《山东华鹏2026年半年度报告》2026-08-22（上交所）<br><a href="http://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-22/603021_20260822_Q1GF.pdf" target="_blank">http://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-22/603021_20260822_Q1GF.pdf</a></li>
+<li>《注册制下"借壳"新案例：中国500强企业入主山东华鹏》2022-10-25（上海证券报）<br><a href="https://company.cnstock.com/company/scp_gsxw/202210/4970696.htm" target="_blank">https://company.cnstock.com/company/scp_gsxw/202210/4970696.htm</a></li>
+<li>《山东华鹏玻璃股份有限公司收购报告书摘要》2023-03-29（上海证券报）<br><a href="https://paper.cnstock.com/html/2023-03/29/content_1740940.htm" target="_blank">https://paper.cnstock.com/html/2023-03/29/content_1740940.htm</a></li>
+<li>《山东华鹏易主谋转型 赫邦化工将实现重组上市》2022-10-22（上海证券报）<br><a href="http://m.zqrb.cn/gscy/gongsi/2022-10-22/A1666393192327.html" target="_blank">http://m.zqrb.cn/gscy/gongsi/2022-10-22/A1666393192327.html</a></li>
+<li>《"民企500强"山东海科欲买山东华鹏》2022-10-25（山东商报/齐鲁网）<br><a href="http://news.iqilu.com/shandong/shandonggedi/20221025/5265083.shtml" target="_blank">http://news.iqilu.com/shandong/shandonggedi/20221025/5265083.shtml</a></li>
+<li>《山东华鹏：重组剥离现有业务 向烧碱、环氧氯丙烷等化学领域转型》2023-03-30（中证网）<br><a href="http://m.toutiao.com/group/7216263627790254596/" target="_blank">http://m.toutiao.com/group/7216263627790254596/</a></li>
+<li>《山东华鹏关于向威海银行等金融机构申请授信的公告／上海海科控股委托贷款暨关联交易公告》2026-04-18（上海证券报）<br><a href="http://paper.cnstock.com/html/2026-04/18/content_2201679.htm" target="_blank">http://paper.cnstock.com/html/2026-04/18/content_2201679.htm</a></li>
+<li>《山东华鹏2026年第一次临时股东会会议资料》2026-04-25（上交所）<br><a href="https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-25/603021_20260425_QJZS.pdf" target="_blank">https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-25/603021_20260425_QJZS.pdf</a></li>
+<li>*ST华鹏个股行情/总市值（证券时报 / 雪球 / 东方财富，2026-09-21）<br><a href="https://www.stcn.com/quotes/index/sh603021.html" target="_blank">https://www.stcn.com/quotes/index/sh603021.html</a> · <a href="https://xueqiu.com/S/SH603021/" target="_blank">https://xueqiu.com/S/SH603021/</a> · <a href="https://data.eastmoney.com/stockdata/603021.html" target="_blank">https://data.eastmoney.com/stockdata/603021.html</a></li>
+<li>《*ST华鹏：重组暂未形成确定方案和时间安排》2026-08-31（财联社）<br><a href="https://www.cls.cn/detail/xk/bb7bf5b0519a27060e1ad1c4e8917f79" target="_blank">https://www.cls.cn/detail/xk/bb7bf5b0519a27060e1ad1c4e8917f79</a></li>
+<li>《ST华鹏：公司股票将于5月6日被实施退市风险警示》2026-04-29（证券时报）<br><a href="https://www.stcn.com/article/detail/3871551.html" target="_blank">https://www.stcn.com/article/detail/3871551.html</a></li>
+</ol>
+
+<div class="disclaimer">（免责声明：本文内容仅为自用兼知识分享与逻辑分析，数据可能有错误或不及时，不构成任何投资建议。市场有风险，投资需谨慎。）</div>
+
+</div>
+</body>
+</html>
