@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ST禾信(688622)深度研究·王艳体</title>
+<style>
+  :root{
+    --ink:#1a2233; --sub:#5a6478; --line:#d8dee9; --bg:#fbfcfe;
+    --th:#223049; --thtx:#ffffff; --alt:#f1f5fa; --acc:#b0271e; --ac2:#0b5e9e; --warn:#8a5a00;
+  }
+  *{box-sizing:border-box;}
+  body{
+    font-family:"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;
+    color:var(--ink); background:var(--bg); line-height:1.85;
+    max-width:980px; margin:0 auto; padding:28px 34px 80px; font-size:16px;
+  }
+  h1{font-size:27px; text-align:center; margin:0 0 6px; letter-spacing:1px;}
+  h2{font-size:22px; color:var(--th); border-left:6px solid var(--acc); padding-left:12px; margin:42px 0 16px;}
+  h3{font-size:18px; color:var(--ac2); margin:28px 0 10px;}
+  .meta{text-align:center; color:var(--sub); font-size:14px; margin-bottom:30px;}
+  .verdict{background:#fff7f4; border:1.5px solid #eec5b6; border-radius:10px; padding:18px 22px; margin:18px 0;}
+  .verdict b{color:var(--acc);}
+  .conv-box{background:#fff; border:1px solid var(--line); border-radius:8px; padding:12px 18px; overflow-x:auto; margin:10px 0;}
+  table{border-collapse:collapse; width:100%; margin:16px 0; font-size:14px; background:#fff;}
+  th{background:var(--th); color:var(--thtx); padding:8px 10px; text-align:center; font-weight:600; border:1px solid #33405e;}
+  td{padding:7px 10px; border:1px solid var(--line); text-align:center; vertical-align:middle;}
+  tbody tr:nth-child(even){background:var(--alt);}
+  td.l{text-align:left;}
+  .r{color:var(--acc); font-weight:600;}
+  .g{color:#0a7d3c; font-weight:600;}
+  .o{color:var(--warn); font-weight:600;}
+  .vt{color:var(--acc);}
+  .ty{color:#6a4a8f;}
+  .note{font-size:13px; color:var(--sub);}
+  a{color:var(--ac2); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  ul,ol{padding-left:24px;}
+  li{margin:5px 0;}
+  .quote{background:#f4f7fb; border-left:3px solid var(--ac2); padding:10px 14px; margin:10px 0; font-size:14.5px; color:#24324d;}
+  .src{margin:20px 0 4px; font-size:14px; padding:10px 14px; border:1px dashed var(--line); background:#fff;}
+  .src li{margin:4px 0; font-size:13.5px;}
+  .disclaimer{color:#7a7a7a; font-size:14px; border-top:2px solid var(--line); margin-top:44px; padding-top:16px;}
+  .hl{background:#fff2c9; padding:0 4px;}
+  @media print{
+    body{max-width:none; padding:10mm;}
+    h2{page-break-before:auto;}
+    a{color:inherit; text-decoration:none;}
+    .src a::after{content:" (" attr(href) ")"; font-size:10px;}
+  }
+</style>
+</head>
+<body><script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+
+<h1>ST禾信（688622）深度研究·王艳体</h1>
+<div class="meta">广州禾信仪器股份有限公司 · 科创板质谱仪 → 拟并购「量子计算上游设备」 · 更新至 2026-09-21</div>
+
+<!-- ============ 岛主引言 ============ -->
+<h2>一、岛主引言：结论先行，三句话定生死</h2>
+
+<p>研究*ST禾信，先记住它的底细：<b>它不是一家传统“烂壳”，而是一家科创板质谱仪公司，正在借“发行股份买量子计算设备资产”这条明线，干一件“并购并表救壳”的活。</b>壳是它的肉身，量子概念是它的估值，重组过会是它的生死线。下面三句话把话挑明。</p>
+
+<div class="verdict">
+① <b>红线分类（抓病因）：</b>财务类退市风险警示（*ST）。触发《上海证券交易所科创板股票上市规则》第12.4.2条第一款第（一）项——2025年度经审计<b>扣非前后净利润孰低为负（-9,886.80万元）</b>、且<b>扣除与主营业务无关业务收入后的营业收入8,986.70万元 &lt; 1亿元</b>。公司股票 2026-04-29 停牌、<b>2026-04-30 复牌实施退市风险警示，简称「禾信仪器」变更为「*ST禾信」</b>（公告编号 2026-025）。
+</div>
+
+<div class="verdict">
+② <b>生死定级（判生死）：</b><b>“危而不死、抓手最硬”的财务类*ST。</b>三条更凌厉的红线——净资产为负、审计非标——<b>均未触碰</b>：2026-06-30 末所有者权益合计仍为正（2.59亿元）、归母净资产2.84亿元，2025年报经致同会计师事务所出具<b>标准无保留意见</b>、内控标准无保留。死穴只有一条：<b>老主业（质谱仪）2026H1仅营收3,469.92万、归母-1,943.80万，靠自身到不了1亿营收。</b>所以命悬在“重组过会”这一根绳上。
+</div>
+
+<div class="verdict">
+③ <b>自救空间（锁路径）：</b><b>空间大得很，而且是“阳谋”。</b>拟发行股份+现金购买<b>上海量羲技术56%股权（作价38,192万元）</b>+配套募资15,040万元，标的是一家给<b>超导量子计算机做“稀释制冷机、低温器件”</b>的上游设备商，2025H1营收7,079.61万、净利2,815.35万。<b>一旦并表，营收跨过1亿、净利扭亏，*ST摘帽的核心指标当场达标。</b>现处上交所并购重组审核中，2026-09-12/09-16 刚更新草案修订稿与问询函回复，过会是在争分夺秒的倒计时里推进。
+</div>
+
+<h3>股价 / 市值快照（基准日 2026-09-21）</h3>
+<div class="conv-box">
+<table>
+<thead><tr><th>指标</th><th>数值</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>最新收盘价</td><td class="r">130.24 元</td><td class="l">2026-09-18（周五）收盘，+6.60%</td></tr>
+<tr><td>总市值</td><td class="r">约 91.77 亿元</td><td class="l">总股本 7,046.55 万股 × 130.24 元</td></tr>
+<tr><td>总股本 / 流通股本</td><td>7,046.55 万股</td><td class="l">全流通；实收资本 70,465,521 元</td></tr>
+<tr><td>52 周区间</td><td class="o">65.50 ~ 166.03 元</td><td class="l">振幅极大，量子重组概念炒作特征明显</td></tr>
+<tr><td>市净率 / 每股净资产</td><td>32.29 倍 / 4.03 元</td><td class="l">PB 超 30 倍，全是“重组预期”溢价</td></tr>
+<tr><td>市盈率（TTM）/ 每股收益</td><td>亏损 / -1.37 元</td><td class="l">主业持续亏损</td></tr>
+<tr><td>股价台阶</td><td class="l" colspan="2">2024-11-05 复牌涨停 35.74 元 → 2026-05-29 116.98 元 → 2026-09-01 90.67 元 → 2026-09-18 130.24 元</td></tr>
+</tbody>
+</table>
+<p class="note">注：2026-09-21（周一）盘中一度冲高至 130.90 元后快速下杀，最低探至 105.20 元、盘中跌幅逾 9% 触发临时停牌，截至盘中一度报 118.00 元。日内巨振（振幅近 20%）是ST重组股情绪极端化的典型信号。</p>
+</div>
+
+<p><b>一句话岛主判断：</b>禾信本质上是“<b>一家质谱仪主业失血、靠并购一块量子设备资产续命的科创板壳</b>”。它不是等死的壳，是<b>拿着标准无保留意见、净资产仍为正、重组已推进到问询第三轮修订稿</b>的“主动求生壳”。赌它，赌的是两件事：<b>①重组能否在2026年内过会注册；②量羲技术的量子设备订单到底是不是真金白银。</b></p>
+
+<!-- ============ 前世今生时间轴 ============ -->
+<h2>二、前世今生：时间轴一张表看清</h2>
+
+<div class="conv-box">
+<table>
+<thead><tr><th style="width:105px">时间</th><th>事件</th><th style="width:150px">性质 / 关键点</th></tr></thead>
+<tbody>
+<tr><td>2021-09-13</td><td class="l">公司在科创板上市（688622），主营质谱仪研发、生产、销售与服务</td><td>上市即巅峰，随后连亏</td></tr>
+<tr><td>2023-2024</td><td class="l">2023营收3.66亿、归母-9,610.61万；2024营收2.03亿、归母-4,599.09万，持续亏损、营收腰斩</td><td class="o">主业持续失血</td></tr>
+<tr><td>2024-10-23</td><td class="l">停牌，筹划“发行股份+现金购买量羲技术控制权”重大资产重组</td><td>量子概念入场前夜</td></tr>
+<tr><td>2024-11-04</td><td class="l">第三届董事会第三十二次会议审议通过重组预案；发行价锁定 17.60 元/股</td><td class="r">定增价定格</td></tr>
+<tr><td>2024-11-05</td><td class="l">复牌，一字涨停，报 35.74 元（+20.01%）</td><td class="r">市场开始定价量子</td></tr>
+<tr><td>2024-12-31</td><td class="l">周振、傅忠《一致行动协议》到期，双方约定不再续签</td><td class="o">控制权变化的伏笔</td></tr>
+<tr><td>2025-01-01</td><td class="l">一致行动关系解除，实控人由“周振、傅忠”变更为“周振”（2025-01-03公告）</td><td class="r">实控人单核化</td></tr>
+<tr><td>2025-08-27</td><td class="l">上交所下发重组审核问询函（上证科审（并购重组）〔2025〕30号）</td><td>监管开始穿透</td></tr>
+<tr><td>2025-10/11</td><td class="l">多次披露问询函回复（修订稿）</td><td>拉锯战</td></tr>
+<tr><td>2026-03-31</td><td class="l">因财务资料过期，上交所对本次重组<span class="hl">中止审核</span></td><td class="o">进度一度中断</td></tr>
+<tr><td>2026-04-28</td><td class="l">披露《关于实施退市风险警示暨停牌的公告》</td><td class="r">戴帽操作落地</td></tr>
+<tr><td>2026-04-29</td><td class="l">停牌一天</td><td>—</td></tr>
+<tr><td>2026-04-30</td><td class="l">复牌并实施退市风险警示，简称「禾信仪器」→「*ST禾信」（涨跌幅仍为20%，不进入风险警示板）</td><td class="r">*ST 生效</td></tr>
+<tr><td>2026-05-29/30</td><td class="l">审计/评估基准日更新至2025-12-31，向交易所申请并获<span class="hl">恢复审核</span></td><td class="g">进程重启</td></tr>
+<tr><td>2026-06-02</td><td class="l">第四届董事会第十一次会议：标的56%股权对价 38,360 万→38,192 万；配套募资 24,640 万→15,040 万</td><td>方案微调（不构成重大调整）</td></tr>
+<tr><td>2026-06-18</td><td class="l">2026年第二次临时股东会审议通过调整后的重组方案</td><td>股东层面放行</td></tr>
+<tr><td>2026-09-12/16</td><td class="l">披露重组报告书（草案）修订稿、审核问询函回复修订稿、资产评估核查意见</td><td class="r">最新进度：仍在上交所审核中</td></tr>
+</tbody>
+</table>
+</div>
+
+<p><b>读表三句话：</b>①这部剧的“双主线”是：<b>控制权先完成单核化（傅忠退出一致行动）→ 紧接着推进量子资产并表</b>，节奏咬得很紧；②重组从2024-11启动，走到2026-09已经快<b>两年</b>，中间一次中止审核，说明<b>标的资产的问询有多轮、监管看得死死的</b>；③戴帽（2026-04-30）恰恰发生在重组恢复审核（2026-05-30）之前一个月，<b>“戴帽”与“重组过会”是一场与6个月财报周期抢跑的竞赛</b>。</p>
+
+<!-- ============ 关键人物 ============ -->
+<h2>三、关键人物 / 实控人：谁是老板、谁在接盘</h2>
+
+<div class="conv-box">
+<table>
+<thead><tr><th>人物/主体</th><th>身份</th><th>持股（2026-06-30）</th><th>岛主点评</th></tr></thead>
+<tbody>
+<tr><td>周振</td><td class="l">董事长、实控人，首席科学家</td><td>14,627,252股 / 20.76%</td><td class="l">质谱仪技术派，厦大分析化学博士、德国吉森大学背景；靠“一致行动解除”单核上位</td></tr>
+<tr><td>共青城同策投资</td><td class="l">周振实际控制的企业（其任执行事务合伙人）</td><td>6,040,000股 / 8.57%</td><td class="l">周振系合计 29.33% 表决权</td></tr>
+<tr><td>傅忠</td><td class="l">原控股股东/原实控人，已离任董事</td><td>9,465,447股 / 13.43%</td><td class="l">2024-03 因身体原因离任；2025-01-01 退出一致行动，出具“不谋求实控人”承诺</td></tr>
+<tr><td>吴明</td><td class="l">交易对方，量羲技术实控人（持股80%）</td><td>现无；(重组后预计 13,950,000股 / 约16.5%)</td><td class="l"><span class="r">唯一的“不承诺不谋求实控人”者，全剧最大的变量</span></td></tr>
+<tr><td>广州科金创投</td><td class="l">国有法人股东</td><td>3,871,129股 / 5.49%（<span class="o">司法冻结</span>）</td><td class="l">国资背景但股份被冻结，需留意其处置路径</td></tr>
+<tr><td>昆山国科创投</td><td class="l">国有法人股东</td><td>3,679,350股 / 5.22%</td><td class="l">2025年内减持271.29万股（-2,712,922股）</td></tr>
+</tbody>
+</table>
+<p class="note">股东户数：2025年末 4,477户 → 2026-06-30 2,895户，筹码快速集中，是典型的“重组博弈型”筹码结构。</p>
+</div>
+
+<div class="conv-box">
+<table>
+<thead><tr><th>排名</th><th>股东（2026-06-30）</th><th>持股数</th><th>比例</th><th>性质</th></tr></thead>
+<tbody>
+<tr><td>1</td><td class="l">周振</td><td>14,627,252</td><td>20.76%</td><td>境内自然人</td></tr>
+<tr><td>2</td><td class="l">傅忠</td><td>9,465,447</td><td>13.43%</td><td>境内自然人</td></tr>
+<tr><td>3</td><td class="l">共青城同策投资管理合伙企业（有限合伙）</td><td>6,040,000</td><td>8.57%</td><td>其他（周振实控）</td></tr>
+<tr><td>4</td><td class="l">广州科技金融创新投资控股有限公司</td><td>3,871,129</td><td>5.49%</td><td>国有法人（冻结）</td></tr>
+<tr><td>5</td><td class="l">昆山市国科创业投资有限公司</td><td>3,679,350</td><td>5.22%</td><td>国有法人</td></tr>
+<tr><td>6</td><td class="l">悦诚同心共享8号私募基金</td><td>1,114,567</td><td>1.58%</td><td>私募</td></tr>
+<tr><td>7</td><td class="l">悦诚同心共享10号私募基金</td><td>606,374</td><td>0.86%</td><td>私募</td></tr>
+<tr><td>8</td><td class="l">谭建文</td><td>495,063</td><td>0.70%</td><td>境内自然人</td></tr>
+<tr><td>9</td><td class="l">乾元胜意1号私募基金</td><td>493,212</td><td>0.70%</td><td>私募</td></tr>
+<tr><td>10</td><td class="l">黄薇</td><td>476,500</td><td>0.68%</td><td>境内自然人</td></tr>
+</tbody>
+</table>
+<p class="note">前十大持股小计约 40,868,894股，占总股本约 58.00%；结构分散，周振系（20.76%+8.57%=29.33%）为第一大表决权，但并非绝对控股。</p>
+<p class="note">2025年报前十大对比：高盛国际（933,259股/1.32%）、盈富泰克（691,436股/0.98%）、王正斌（669,891股/0.95%）在2026年上半年退出前十，被上述3只私募+自然人接替。</p>
+</div>
+
+<!-- ============ 怎么拿控制权 ============ -->
+<h2>四、怎么拿控制权：一次“和平分手式”的实控人单核化</h2>
+
+<p>禾信的实控人变化，不是常见的“举牌收购 / 股权转让 / 司法拍卖”，而是<b>“一致行动协议到期不续签 + 承诺包裹换稳定”的和平演变</b>。三条主线看清楚：</p>
+
+<ol>
+<li><b>时间线：</b>2016-01-01 周振、傅忠签《一致行动协议》（约定分歧时按周振意见决策），2019-01-01 续签，2019-08-27 签《补充协议》约定有效期六年、届满无异议自动延三年。<b>2024-12-31 双方出具告知函，不再续签，一致行动关系于 2025-01-01 起解除</b>。公告（2025-001）明确：解除后“控股股东、实际控制人由周振先生、傅忠先生变更为周振先生”。</li>
+<li><b>诱因：</b>公告自己说——2024-03 傅忠“因身体原因”申请离任，已无法继续参与经营。<b>大白话：二股东身体扛不住退了，一股东顺势收编，把“共同控制”改写成“单一控制”。</b></li>
+<li><b>配套“承诺包裹”：</b>为换得控制权稳定，一次性塞进四份承诺——<b>傅忠</b>出具“不谋求实控人地位”；<b>昆山国科、科金创投</b>出具“不谋求控制权”；<b>周振、傅忠</b>各自承诺“一致行动协议解除之日起12个月内不主动减持”。<b>大白话：大家都签“不抢章”的保证书，顺便给你锁一年不跑。</b></li>
+</ol>
+
+<div class="quote">
+<b>监管术语 → 大白话（控制权部分）：</b><br/>
+• “一致行动协议到期不再续签” = 两个合伙人把“表决绑定”的合同到点作废，股份不用交割、不用对价，只用一纸承诺完成控制权切换。<br/>
+• “不谋求实控人地位/不谋求控制权承诺” = 沉默的代价——签了字就不能再出手抢，是给新实控人上的“锁定保险”。<br/>
+• 关键活口：<b>这份“不谋求”承诺是有期限的（昆山国科/科金创投的承诺有效期“至其持有公司股份出售完毕之日”），而吴明（重组后二股东）压根没签。</b>
+</div>
+
+<p><b>岛主判断：</b>这次控制权切换的本质是——<b>在重组并表之前，先把“谁说了算”焊死</b>。因为下面即将发生的交易，会让一个外人（吴明）拿到约16.5%的股份成为第二大股东，若实控层内部还扯着“共同控制”的旧账，重组后的治理结构会非常难看。所以先做减法、再做加法，逻辑自洽。</p>
+
+<!-- ============ 意图分析 ============ -->
+<h2>五、意图分析与节奏推测：周振想干什么、吴明想干什么</h2>
+
+<h3>5.1 周振：保壳 + 双主业 + 抬高身价，三项意图叠加</h3>
+<ul>
+<li><b>保壳（最紧迫）：</b>老主业质谱仪靠政府采购吃饭，2025年营收只剩9,939万、2026H1 3,470万，<b>不注入资产，2026年报“营收&lt;1亿+亏损”会直接把科创板退市红牌亮出来</b>。并购并表是唯一能在12个月内把营收、利润两个指标同时打正的手段。</li>
+<li><b>双主业转型（第二层）：</b>量羲技术做“极低温极微弱信号测量调控设备（稀释制冷机、低温器件）”，是超导量子计算的<b>上游核心硬件</b>。周振的算盘是“环境监测质谱仪（旧，天花板低）+ 量子计算设备（新，估值高）”双轮。（来源于公司公告措辞“在原有质谱仪及技术服务主营业务的基础上，通过引入优质资产，丰富高端仪器设备产品品类”）</li>
+<li><b>抬高身价（第三层）：</b>发行价锁在17.60元，而现价已到130元。用“便宜股份买资产”本身就是对上市公司原股东的一次强利益绑定。</li>
+</ul>
+
+<h3>5.2 吴明：用一块“量子概念资产”换上市公司股票，是最大赢家候选人</h3>
+<ul>
+<li><b>交易结构：</b>吴明卖出量羲技术36%股权→获<b>股份对价24,552万元（发13,950,000股，17.60元/股）</b>；上海堰岛卖出20%→获<b>现金对价13,640万元</b>。吴明——量羲技术80%持股者——亲手把自己的一部分换成了上市公司16.5%的股票。</li>
+<li><b>账面暴利的算术：</b>吴明拿到的13,950,000股，按现价130.24元计<b>市值约18.17亿元</b>；而他注入的36%股权对应的评估值约 68,600万×36% ≈ 2.47亿元。<b>约7.3倍账面浮盈，且换来的是上市公司流通股（虽然锁定期）。</b></li>
+<li><b>最关键的一条：</b>上交所问询函明确追问“<b>吴明未出具不谋求实控人地位承诺函的原因，其是否有直接或间接谋求控制权的意向或安排</b>”。监管之眼已经盯上“这是不是变相借壳/曲线入主”。这是全案最大的<span class="hl">合规活口</span>。</li>
+</ul>
+
+<h3>5.3 是否构成“借壳（重组上市）”？官方口径与我的推测</h3>
+<div class="conv-box">
+<table>
+<thead><tr><th>判定维度</th><th>官方结论（独立财务顾问核查意见）</th><th>岛主补充</th></tr></thead>
+<tbody>
+<tr><td class="l">是否构成重组上市</td><td class="l">不构成《重组管理办法》第十三条重组上市</td><td>关键在于实控人认定</td></tr>
+<tr><td class="l">控制权是否变更</td><td class="l">近36个月实控人由“周振+傅忠”→“周振”，本次交易后仍为周振</td><td>把“傅忠退出”算作已发生变更，但接盘的是原共同实控人之一，非吴明</td></tr>
+<tr><td class="l">重组后股权</td><td class="l">周振系 24.47~24.58%；吴明 16.52~16.67%</td><td>吴明距周振系约8个百分点，暂无翻盘抓手</td></tr>
+<tr><td class="l">吴明是否承诺不谋求</td><td class="l">前五大股东中唯一未出承诺者</td><td class="o">这是“曲线入主”想象的全部来源</td></tr>
+</tbody>
+</table>
+</div>
+
+<p><b>岛主判断：</b>大概率<b>不构成借壳</b>（吴明持股16.5% vs 周振系24.5%，且实控人认定程序已理顺）。但“不构成借壳”≠“不想坐大”。我的推测是：<b>吴明眼下图的是“把量子资产高估值变现成上市公司股票”，中长期图的是在量子计算大浪潮里把禾信做成自己的资本平台</b>——“不承诺不谋求”就是给自己留着这条后路，进口袋可以，抢位子先按下不表。</p>
+
+<!-- ============ 六维拆解 ============ -->
+<h2>六、六维拆解：重组节奏 / 新实控人意图 / 原业务质量 / 承诺包活口 / 行情映射 / 综合判断</h2>
+
+<h3>维度① 重组节奏（时间就是命）</h3>
+<ul>
+<li>启动→问询→中止→恢复→调方案→股东会通过→第三轮修订稿，<b>两年里走了六七个坎</b>，说明标的资产“量子设备”的估值与收入确认被交易所反复追问。</li>
+<li><b>最硬的时间约束：</b>*ST 悬顶，2026年报必须在营收、利润上达标。若重组不能在2026年内完成<b>交割并表</b>，禾信就只剩老主业3,470万（半年）那点营收，几乎必被终止上市。</li>
+<li>节奏推测：<b>大概率在2026Q4冲刺过会+注册，年底前完成交割</b>——否则这出戏的“保壳”目的就落空了。监管也清楚，越是*ST，越不能拿“待重组”无限期吊着。</li>
+</ul>
+
+<h3>维度② 新实控人（周振）背景与意图</h3>
+<ul>
+<li>周振是质谱仪“科学家创业”路线（厦大博士+德国背景），技术出身、不做财务腾挪，导致公司账上净资产还能为正、审计意见一直干净——<b>这是这口壳“体面”的地方</b>。</li>
+<li>意图：不搞“卖壳跑路”，而搞“并购续命+转型”，<b>属于“防守型操盘手”</b>——好处是吃相不难看，坏处是“续命”依赖外部资产与外部审核。</li>
+</ul>
+
+<h3>维度③ 原业务（质谱仪）质量：失血、但骨头还在</h3>
+<div class="conv-box">
+<table>
+<thead><tr><th>指标</th><th>2023</th><th>2024</th><th>2025</th><th>2026H1</th></tr></thead>
+<tbody>
+<tr><td class="l">营业收入（万元）</td><td>36,617.90</td><td>20,250.91</td><td>9,939.26</td><td>3,469.92</td></tr>
+<tr><td class="l">同比增速</td><td>+30.66%</td><td>-44.69%</td><td>-50.92%</td><td>-34.30%</td></tr>
+<tr><td class="l">归母净利润（万元）</td><td>-9,610.61</td><td>-4,599.09</td><td>-9,480.18</td><td>-1,943.80</td></tr>
+<tr><td class="l">扣非净利润（万元）</td><td>-11,071.18</td><td>-6,309.96</td><td>-9,886.80</td><td>-2,079.82</td></tr>
+<tr><td class="l">经营现金流净额（万元）</td><td>-3,636.73</td><td>-821.32</td><td>920.52</td><td>-431.60</td></tr>
+</tbody>
+</table>
+<p class="note">营收连走下坡、连续三年亏损，2025年靠“战略收缩+控费”把现金流转正，但代价是收入腰斩。质谱仪主业天花板低、客户政府采购周期长，短期内指望它自救不现实。</p>
+</div>
+
+<h3>维度④ 承诺包 / 关键公告“原话 vs 大白话 + 活口”对照表</h3>
+<div class="conv-box">
+<table>
+<thead><tr><th style="width:150px">公告/条款</th><th>原话（关键摘录）</th><th>大白话</th><th style="width:160px">活口 / 暗门</th></tr></thead>
+<tbody>
+<tr>
+<td class="l">戴帽公告（2026-025）</td>
+<td class="l">“因2025年度扣非前后净利润孰低为负值，且扣除与主营业务无关业务收入后营业收入低于1亿元……实施退市风险警示”</td>
+<td>你营收不到1亿还亏钱，交易所给你贴*ST黄牌</td>
+<td>戴帽≠退市，还有一年抢救期</td>
+</tr>
+<tr>
+<td class="l">一致行动解除公告（2025-001）</td>
+<td class="l">“一致行动关系解除……实控人由周振先生、傅忠先生变更为周振先生”</td>
+<td>两股东“合伙表决”合同到期作废，周振独掌大权</td>
+<td>傅忠仍持13.43%，只是“不抢”，不是“消失”</td>
+</tr>
+<tr>
+<td class="l">吴明（交易对方）</td>
+<td class="l">前五大股东中唯一未出具“不谋求实控人地位承诺函”</td>
+<td>别人都签“不抢章”，只有他没有签</td>
+<td class="r">曲线入主的想象空间之源</td>
+</tr>
+<tr>
+<td class="l">业绩承诺</td>
+<td class="l">“标的公司2025—2027年净利润分别不低于3,500万元、5,000万元、6,500万元”，且附减值补偿</td>
+<td>赌标的三年合计至少赚1.5亿，不达标要赔</td>
+<td>有业绩+减值双补偿，是“买得放心”的一面</td>
+</tr>
+<tr>
+<td class="l">发行价</td>
+<td class="l">“发行价格17.60元/股，不低于定价基准日前60个交易日交易均价的80%”</td>
+<td>吴明拿股票的锁价只有17.6元，现价是它的7倍多</td>
+<td class="r">吴明账面浮盈巨大，锁定期一过即减持动机</td>
+</tr>
+<tr>
+<td class="l">募资用途调整</td>
+<td class="l">前期“补流及偿债9,520万”被调减为0；“本次交易的现金对价13,640万+中介费1,400万”</td>
+<td>监管/股东不让拿募资去还债，只准付对价和中介费</td>
+<td>资金腾挪被收紧，诚意增加</td>
+</tr>
+<tr>
+<td class="l">周振/傅忠锁定期承诺</td>
+<td class="l">“自一致行动协议解除之日起12个月内，不主动减持”</td>
+<td>解除行动关系后，两个大股东至少一年不跑</td>
+<td>2026-01-01 起即已解禁，减持窗口已打开</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3>维度⑤ 行情映射：量子概念 + *ST + 小盘，三重情绪共振</h3>
+<ul>
+<li>总股本仅7,046.55万股、现价130元却只有91.77亿市值，<b>科创板小盘+20%涨跌幅+ST重组预期</b>，是游资最爱的“高弹性”靶子。</li>
+<li>2024-11-05 复牌涨停35.74元 → 2026-06 前后冲到166.03元（52周高点）→ 近期回落震荡，<b>股价已脱离基本面，完全由“重组能不能过”和“量子板块热度”定价</b>。</li>
+<li>风险信号：2026-09-21 盘中振幅近20%、冲高130.90后快速下杀至105.20并临时停牌，<b>说明情绪已进入高位分歧区，追高者随时感受“打死人”的波动</b>。</li>
+</ul>
+
+<h3>维度⑥ 综合判断（核心结论）</h3>
+<div class="verdict">
+<b>编号①</b> 禾信是“<b>主业失血但底子尚可+量子资产注入大概率落地</b>”的组合体，属于A股*ST里<b>纠错能力和自救抓手都偏强</b>的一档。<br/>
+<b>编号②</b> 真正的胜负手在<b>“重组能否2026年内交割并表”与“量羲技术业绩能否兑现承诺”</b>，而两条都不在禾信自己手里。<br/>
+<b>编号③</b> 风险排序：<b>重组被否/终止 &gt; 交割延迟错过2026并表 &gt; 标的业绩变脸 &gt; 股价情绪退潮</b>。前三者直指退市风险，后者只是波动风险。
+</div>
+
+<!-- ============ 壳经济学 ============ -->
+<h2>七、壳经济学：这口壳还能不能救、怎么救</h2>
+
+<h3>7.1 能不能救：先看三道硬杠杠</h3>
+<div class="conv-box">
+<table>
+<thead><tr><th>红线</th><th>现状（2026-06-30 / 2025年报）</th><th>是否踩线</th><th>岛主点评</th></tr></thead>
+<tbody>
+<tr><td class="l">净资产是否为负</td><td class="l">所有者权益合计 2.59亿元（正）；归母净资产 2.84亿元</td><td class="g">未踩</td><td class="l">离“净资产为负”的红线还有厚垫</td></tr>
+<tr><td class="l">审计是否非标</td><td class="l">2025年报：标准无保留意见；内控标准无保留</td><td class="g">未踩</td><td class="l">这口壳“干净”，没有保留意见的历史包袱</td></tr>
+<tr><td class="l">营收&lt;1亿 / 持续亏损</td><td class="l">2025扣除后营收8,986.70万、扣非-9,886.80万；2026H1营收3,469.92万、归母-1,943.80万</td><td class="r">已踩（此为戴帽主因）</td><td class="l">唯一死穴，需靠并购并表破解</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>7.2 六步法预判（王艳体系）</h3>
+<ol>
+<li><b>抓病因：</b>质谱仪主业受政府采购周期收紧影响，营收坍塌+连年亏损，触发科创板财务类退市风险警示。</li>
+<li><b>判生死：</b>财务类*ST，净资产正+审计标准意见→非“净资产为负/非标”最凶险档，<b>属可救级</b>。</li>
+<li><b>锁救兵：</b>实控人周振（技术派）+ 交易对方吴明（量子设备商）——<b>本质是“引入产业资本+技术资本”自救</b>，而非传统ST的“找壳主/找国资接盘”。</li>
+<li><b>拆路径：</b><b>无需破产重整、无需债务和解</b>，走的是“<b>发行股份购买资产（重大资产重组）并表</b>”路线——这比庭外/预重整/司法重整更快、更体面，是科创板财务类*ST的“规范性解法”。</li>
+<li><b>六维拆解：</b>见第六节，核心结论为“重组节奏+标的业绩”是胜负手。</li>
+<li><b>壳经济学定论：</b>①可救；②唯一解=重组并表；③最坏解=若重组失败则退市（无传统“卖壳”转圜空间，因为科创板的“壳价值”正在萎缩，且拖不起时间）。</li>
+</ol>
+
+<div class="quote">
+<b>一句话壳经济学结论：</b>禾信这口壳的“壳价值”，不在ST博弈，而在“<b>上市公司牌照 + 科创板20%弹性 + 量子计算题材稀缺性</b>”三者的乘积。铭心自问一句：<b>如果量羲技术真值6.86亿且业绩承诺真能兑现，那么一家年净利5,000万-6,500万的量子设备公司并表后，禾信该值多少钱？</b>这是这出戏唯一的估值锚。反之，一切都建在“重组过会”这一根弦上。
+</div>
+
+<!-- ============ 数据来源 ============ -->
+<h2>八、数据来源（标题 + 日期 + 链接）</h2>
+<div class="src">
+<ul>
+<li>广州禾信仪器股份有限公司2026年半年度报告（2026-08-26，本地PDF底稿）</li>
+<li>广州禾信仪器股份有限公司2025年年度报告（2026-04-29，本地PDF底稿）</li>
+<li>《关于实施退市风险警示暨停牌的公告》（公告编号2026-025，2026-04-29）— <a href="http://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-29/688622_20260429_670I.pdf" target="_blank">上交所官网</a></li>
+<li>《股票交易异常波动暨风险提示性公告》（公告编号2026-030，2026-05-30）— <a href="https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-05-30/688622_20260530_O8LK.pdf" target="_blank">上交所官网</a></li>
+<li>《第四届董事会第十一次会议决议公告》（公告编号2026-032，2026-06-03）— <a href="https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-06-03/688622_20260603_APX8.pdf" target="_blank">上交所官网</a></li>
+<li>《关于本次交易方案调整不构成重大调整的公告》（公告编号2026-033，2026-06-03）— <a href="http://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-06-03/688622_20260603_QO0O.pdf" target="_blank">上交所官网</a></li>
+<li>《关于控股股东、实际控制人一致行动协议到期不再续签暨权益变动的提示性公告》（公告编号2025-001，2025-01-03）— <a href="https://data.eastmoney.com/notices/detail/688622/AN202501021641512703.html" target="_blank">东方财富</a></li>
+<li>《国泰君安证券关于本次交易不构成重组上市情形的核查意见》（2025-04）— <a href="http://file.finance.sina.com.cn/211.154.219.97:9494/MRGG/CNSESH_STOCK/2025/2025-4/2025-04-04/10847496.PDF" target="_blank">新浪财经</a></li>
+<li>《发行股份及支付现金购买资产并募集配套资金暨关联交易报告书（草案）（修订稿）》（2026-09-12）— <a href="https://stock.stockstar.com/notice/SN2026091200000621.shtml" target="_blank">证券之星</a></li>
+<li>《关于审核问询函的回复（修订稿）》（2026-09-16）— <a href="http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12606722" target="_blank">新浪财经</a></li>
+<li>《资产评估相关问题回复之专项核查意见》（2026-09-12）— <a href="http://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-09-12/688622_20260912_3J6Z.pdf" target="_blank">上交所官网</a></li>
+<li>《中同华评估报告（中同华评报字〔2026〕第070227号）》（2026-02-04）— <a href="http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?CompanyCode=80598516&gather=1&id=12360954" target="_blank">新浪财经</a></li>
+<li>《关于2025年年度报告的信息披露监管问询函的回复公告》（2026-07-03）— <a href="http://paper.cnstock.com/html/2026-07/03/content_2238917.htm" target="_blank">上海证券报</a></li>
+<li>禾信仪器重组方案披露（2025-04-07）— <a href="http://paper.cnstock.com/html/2025-04/07/content_2045417.htm" target="_blank">上海证券报</a></li>
+<li>“禾信仪器拟关联收购量羲技术控制权 复牌20CM涨停”（2024-11-05）— <a href="http://finance.ce.cn/stock/gsgdbd/202411/05/t20241105_39192708.shtml" target="_blank">中国经济网</a></li>
+<li>“禾信仪器拟收购量羲技术控股权 发行价格17.6元/股”（2024-11-05）— <a href="https://www.cs.com.cn/ssgs/gsxw/202411/t20241105_6451704.html" target="_blank">中证网</a></li>
+<li>“禾信仪器将被实施退市风险警示 4月30日起A股简称变更为*ST禾信并复牌”（2026-04-28）— <a href="http://finance.cnr.cn/ycbd/20260428/t20260428_527604194.shtml" target="_blank">央广网</a></li>
+<li>“一夜间，16家公司拟‘戴帽’”（2026-04-29）— <a href="http://www.cnstock.com/commonDetail/702204" target="_blank">上海证券报</a></li>
+<li>上海量羲技术有限公司工商信息 — <a href="https://m.qcc.com/firm/199e4d9ba917025b7e23685344cc3fa4.html" target="_blank">企查查</a> / <a href="https://www.qixin.com/company/67d13ede-f55a-4ab9-85a3-a9063411de3c" target="_blank">启信宝</a></li>
+<li>*ST禾信 行情报价页 — <a href="https://www.stcn.com/quotes/index/sh688622.html" target="_blank">证券时报</a> / <a href="https://xueqiu.com/S/SH688622/" target="_blank">雪球</a></li>
+<li>证券之星行情快报（2026-09-01，90.67元）— <a href="https://stock.stockstar.com/RB2026090100038244.shtml" target="_blank">证券之星</a></li>
+</ul>
+</div>
+
+<p class="disclaimer">（免责声明：本文内容仅为自用兼知识分享与逻辑分析，数据可能有错误或不及时，不构成任何投资建议。市场有风险，投资需谨慎。）</p>
+
+</body>
+</html>
