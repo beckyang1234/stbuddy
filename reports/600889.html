@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ST京化(600889)深度研究·王艳体</title>
+<style>
+  :root{
+    --bg:#f7f5f0; --card:#ffffff; --ink:#1f2733; --sub:#6b7280;
+    --line:#e5e0d5; --accent:#b0413e; --accent2:#2a6f97; --warn:#c07a1f;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    line-height:1.85;font-size:16px;}
+  .wrap{max-width:900px;margin:0 auto;padding:32px 20px 80px;}
+  header.hero{background:linear-gradient(135deg,#1f2733,#33415c);color:#fff;
+    border-radius:14px;padding:36px 30px;margin-bottom:28px;}
+  header.hero h1{font-size:26px;margin:0 0 8px;letter-spacing:1px;}
+  header.hero .sub{color:#cfd8e3;font-size:14px;}
+  header.hero .tag{display:inline-block;background:rgba(255,255,255,.14);
+    border-radius:20px;padding:2px 12px;font-size:12px;margin-right:8px;margin-top:12px;}
+  h2{font-size:21px;margin:44px 0 14px;padding-left:12px;border-left:5px solid var(--accent);
+    line-height:1.4;}
+  h3{font-size:18px;margin:30px 0 10px;color:#2a3244;}
+  p{margin:12px 0;}
+  .lede{background:var(--card);border-radius:12px;padding:20px 22px;
+    border:1px solid var(--line);box-shadow:0 1px 4px rgba(0,0,0,.04);}
+  .konclu{background:#fff8f0;border-left:4px solid var(--warn);border-radius:8px;
+    padding:14px 18px;margin:18px 0;}
+  .konclu b{color:var(--warn);}
+  table{border-collapse:collapse;width:100%;margin:16px 0;background:var(--card);
+    font-size:14px;border:1px solid var(--line);}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;}
+  th{background:#eef1f5;font-weight:600;white-space:nowrap;}
+  tr:nth-child(even) td{background:#faf9f6;}
+  .num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;}
+  a{color:var(--accent2);text-decoration:none;word-break:break-all;}
+  a:hover{text-decoration:underline;}
+  .src{font-size:12px;color:var(--sub);}
+  .callout{background:#eef6fb;border-left:4px solid var(--accent2);border-radius:8px;
+    padding:12px 16px;margin:14px 0;}
+  .riskbox{background:#fbeef0;border:1px solid #e7b8bc;border-radius:10px;padding:16px 18px;margin:20px 0;}
+  .quote{background:#f5f1e8;border-radius:8px;padding:10px 14px;color:#5a5246;font-size:14px;margin:12px 0;}
+  .timeline td:first-child{white-space:nowrap;color:var(--accent);font-weight:600;}
+  .foot{margin-top:50px;padding-top:20px;border-top:1px solid var(--line);color:var(--sub);font-size:13px;}
+  .small{font-size:13px;color:var(--sub);}
+  .hl{background:#fff3cd;padding:0 4px;border-radius:3px;}
+  ol,ul{padding-left:24px;}
+  li{margin:6px 0;}
+  @media(max-width:640px){body{font-size:15px;} table{font-size:12.5px;}}
+</style>
+</head>
+<body><script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div class="wrap">
+
+<header class="hero">
+  <h1>寻找十倍系列——*ST京化（600889）</h1>
+  <div class="sub">【南京国资"腾笼换鸟"：把60年化纤亏损厂换出去，把国产滚动功能部件单项冠军装进来，戴帽当天资产早tm已交割完】</div>
+  <div><span class="tag">王艳的逍遥岛 · 王艳体</span><span class="tag">更新至 2026-09-21</span><span class="tag">A股·上交所主板</span></div>
+</header>
+
+<p style="text-align:center;color:#888;font-size:13px;">点击蓝字 关注我们 · 人生缘何不逍遥，只因未到逍遥岛 · 逍遥人生=精神（国学）+财富（创业/投资/个人品牌）</p>
+
+<div class="lede">
+  <p><b>更新至 2026-09-21。</b>先说三行结论，再往下看。这家公司可能是你见过的"最不像ST的ST"——它被戴帽的那一天，那顶帽子背后真正的退市理由，在两个月前就已经被一笔交易"手术摘除"了。</p>
+
+  <div class="konclu">
+    <p style="margin-top:0;"><b>① 红线分类：财务类退市风险警示（*ST）。</b>2025年归母净利润 -9994.22万元、扣非 -1.83亿元，扣除与主业无关收入后营业收入 2.64亿元＜3亿元，触及《股票上市规则》9.3.2条第一款第（一）项"净利润孰低为负+营收＜3亿"。不是交易类、不是重大违法类、不是净资产为负、审计意见是<b>标准无保留</b>。</p>
+    <p><b>② 生死定级：已实质脱险的"财务类可救"档，不是等死的壳。</b>戴帽依据的是"2025年报（披露于2026-04-23）"，但救命的重组——资产置换置出化纤全部资产负债、置入南京工艺100%股份——<b>在2026-03-02就已交割完、2026-03-11新增股份已登记</b>。也就是说：先完成换胆，再被贴"病危"标签。2026H1营收4.34亿、归母净利4691万、经营现金流+1.44亿，2026年报大概率凭"营收＞3亿+盈利"摘帽。</p>
+    <p><b>③ 自救空间：一条已经走完的"国资内部资产整合"路径。</b>实控人自始至今都是<b>南京市国资委</b>，控股股东是南京国资平台<b>新工集团</b>。这不是外部"救世主"进场，而是南京市国资把自家亏损化纤厂"退市风险"当成契机，用一个动作同时解决三件事：保壳、把旗下高端装备资产证券化、把公司从"化纤"变成"滚动功能部件国产替代+人形机器人/工业母机"题材。</p>
+  </div>
+
+  <p>当前快照（2026-09-21 盘中）：股价 <b>13.40元</b>，总股本 5.87亿股，总市值 <b>78.60亿元</b>，流通市值 49.09亿元，市净率 4.98倍，每股净资产 2.69元；52周股价区间 12.71—18.84元。<a href="https://www.stcn.com/quotes/index/sh600889.html" target="_blank">来源·证券时报行情</a></p>
+  <p>现在的问题不是"它会不会退市"（基本不会），而是：<b>一只已经装进国产滚珠丝杠/导轨单项冠军、市值78.6亿的"*ST"标的，戴帽和"京化"这个新简称背后，到底给市场留了多少定价误差。往下拆。</b></p>
+</div>
+
+<h2>一、前世今生：一张时间轴，看懂"南京化纤→南京工艺"的整段长征</h2>
+
+<p>这家公司有60年历史，但它的"今生"其实只有半岁。把时间轴拉长，你会发现它一直在"换活法"：从国企化纤厂，到A股壳，再到今天借自己的壳装进另一个自己。</p>
+
+<table class="timeline">
+  <tr><th>时间</th><th>关键事件</th><th>股权/实控人变化</th><th>背后逻辑</th></tr>
+  <tr><td>1964年</td><td>前身"国营南京化学纤维厂"建成投产</td><td>纯国有</td><td>计划经济时代南京的化纤工业底子</td></tr>
+  <tr><td>1992-06-25</td><td>经南京市体改委批准，以部分经营性净资产折国有法人股5428.10万股+内部职工募股794.80万股改制设立股份公司</td><td>国有+职工持股</td><td>上市前的股份制改造</td></tr>
+  <tr><td>1996-03-08</td><td>公开发行2500万股，在上交所上市，简称"南京化纤"，代码600889，总股本9122.90万股</td><td>正式公众化</td><td>老牌的化纤上市国企</td></tr>
+  <tr><td>2006-09~11</td><td>股权分置改革（流通股东每10股获3.2股对价）</td><td>非流通股获流通权</td><td>全流通铺路</td></tr>
+  <tr><td>2009-11-02</td><td>控股股东南京轻纺产业（公司）有限公司持有的限售股份1.04亿股全部上市流通，实现全流通</td><td>控股股东：轻纺集团</td><td>国资持股进入可流动时代</td></tr>
+  <tr><td>2017-10-12</td><td>非公开发行获核准（证监许可[2017]1821号），向<b>新工集团</b>、南京国资混改基金等发5926.77万股 @6.36元/股，2018-04-09登记</td><td>控股股东变更为<b>南京新工投资集团</b>（实控人仍为南京市国资委）</td><td>南京国资内部"平台归集"，新工集团上位成为控股平台</td></tr>
+  <tr><td>2021年至今</td><td>化纤主业（粘胶短纤8万吨/年、莱赛尔4万吨/年、PET结构芯材20万方/年）连续亏损</td><td>无变化</td><td>行业下行+产能过剩，2021年起连续多年亏损，为戴帽埋雷</td></tr>
+  <tr><td>2025-05-12</td><td>签署《盈利预测补偿协议》；重组方案经董事会审议并披露</td><td>无变化</td><td>启动"资产置换+发股+现金"买南京工艺100%</td></tr>
+  <tr><td>2025-07-08</td><td>收到上交所审核问询函（上证上审（并购重组）〔2025〕47号），此后至12月多轮修订回复</td><td>无变化</td><td>交易所审慎问询：置入资产质量、评估、土地房产、关联交易</td></tr>
+  <tr><td>2025-12-08</td><td>签署《盈利预测补偿协议之补充协议》，新增"对拟置入资产（不含投资性房地产）净利润"的补充业绩承诺</td><td>无变化</td><td>为保中小股东利益、过会加码</td></tr>
+  <tr><td>2026-02-13</td><td>证监会批复同意（证监许可〔2026〕295号）</td><td>无变化</td><td>重组拿到注册批文</td></tr>
+  <tr><td>2026-03-02</td><td><b>标的资产交割完成</b>：南京工艺100%变更为南京化纤全资子公司；置出资产（全部资产负债）交割给新工集团</td><td>主营业务变更为滚动功能部件</td><td>换胆完成，退市风险实际解除</td></tr>
+  <tr><td>2026-03-11</td><td>发行股份购买资产新增股份1.92亿股登记（4.57元/股，191,671,909股）</td><td>新工集团及13名对象获股</td><td>对价支付完成</td></tr>
+  <tr><td>2026-04-22/24</td><td>2025年报披露；<b>04-23停牌一天，04-24起实施退市风险警示，简称由"南京化纤"变更为"*ST京化"</b>，涨跌幅5%</td><td>戴帽*ST</td><td>迟来的标签：报的是2025年化纤旧账，业务早换成新资产</td></tr>
+  <tr><td>2026-06-01/17</td><td>配套募资4.4亿元到账、新增股份2857.14万股登记（15.40元/股）</td><td>新工集团+工业母机产业投资基金等7名对象</td><td>募资到位，项目建设和补流</td></tr>
+  <tr><td>2026-08-24/09-10</td><td>拟变更公司名称，临时股东会审议通过变更名称及修订章程（新名称见雪球/东财F10为"南京工艺装备科技股份有限公司"）</td><td>无变化</td><td>彻底"去化纤化"，名称与主业对齐</td></tr>
+  <tr><td>2026-09-21</td><td>市值78.6亿，简称仍为*ST京化，静待2026年报摘帽</td><td>实控人仍为南京市国资委</td><td>观察点：摘帽兑现、募投产能、机器人订单</td></tr>
+</table>
+
+<p class="src">来源：《2025年年度报告》（2026-04-23，新浪财经转发）<a href="http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12140495" target="_blank">来源</a>；《关于公司股票被实施退市风险警示暨停牌的公告》（2026-04-23）<a href="http://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-23/600889_20260423_HKAI.pdf" target="_blank">来源</a>；《发行股份购买资产发行结果暨股本变动公告》（2026-03-14）<a href="http://paper.cnstock.com/html/2026-03/14/content_2188654.htm" target="_blank">来源</a>；上证路演中心投资者说明会（2025-05-26）<a href="https://roadshow.sseinfo.com/activityDetails/33888" target="_blank">来源</a>；财联社公告速递（2026-08-24、2026-09-10）<a href="https://www.cls.cn/stock?code=sh600889" target="_blank">来源</a>。</p>
+
+<p><b>一句话点破这条时间轴：</b>南京化纤从来不是一家"突然ST"的公司，它是一家<b>60年的老国企、30年的老上市壳</b>，化纤主业2021年起就撑不住了。南京国资没有走"破产重整"或"卖壳给外人"的路，而是走了最体面的路——<b>用自己的壳，装自己的资产，改了行，顺手把退市风险留给旧年报去"象征性地"记一笔</b>。</p>
+
+<h2>二、关键人物/实控人是谁：不是一个人，是一个"国资平台+一群产业股东"的组合</h2>
+
+<p>这单案子跟"个人IP式"的控制权变更完全不同。没有牛散、没有私募壳贩子、没有"神秘自然人"。它是一盘<i>地方国资主导、多家产业龙头和员工持股平台"陪跑"</i>的棋。</p>
+
+<h3>2.1 真正的操盘手：南京市国资委 + 新工集团</h3>
+<ul>
+  <li><b>实际控制人：南京市人民政府国有资产监督管理委员会</b>（自始至终未变）。</li>
+  <li><b>控股股东：南京新工投资集团有限责任公司（简称"新工集团"）</b>，南京市属国资投资平台。重组后直接持股1.63亿股（27.77%）；其一致行动人/控股子公司"新工基金"持股48,759,619股（8.31%）、"轻纺集团"持股2400万股（4.09%），三者合计约<b>40.17%</b>。<a href="http://paper.cnstock.com/html/2026-08/18/content_2255816.htm" target="_blank">来源·2026半年报摘要</a></li>
+  <li><b>现任董事长/法定代表人：汪爱清</b>（2026半年报列示"公司负责人汪爱清"，此前的陈建军时代已交接）。主体治理层已完成切换。</li>
+</ul>
+
+<h3>2.2 置入资产的原股东阵营——一张"南京高端装备顶配名单"</h3>
+<p>买进南京工艺100%的交易对手，其实就是南京工艺的原股东。名单本身就是故事（重组前持股→发行股份购买资产获得的对价/新增股份）：</p>
+<table>
+  <tr><th>交易对方</th><th class="num">原持南京工艺</th><th class="num">支付对价(万元)</th><th class="num">获发股(股)</th><th>身份/看点</th></tr>
+  <tr><td>新工集团</td><td class="num">52.98%</td><td class="num">85,124.09（抵置出资产72,927.12后）</td><td class="num">26,689,209</td><td>控股股东，锁36个月</td></tr>
+  <tr><td>新工基金</td><td class="num">13.87%</td><td class="num">22,283.15</td><td class="num">48,759,619</td><td>南京国资并购基金，锁36个月</td></tr>
+  <tr><td>机电集团</td><td class="num">2.40%</td><td class="num">3,847.99</td><td class="num">8,420,105</td><td>南京机电产业集团，锁36个月</td></tr>
+  <tr><td>亨升投资</td><td class="num">6.50%</td><td class="num">10,444.68</td><td class="num">22,854,873</td><td>上海亨升投资，锁12个月</td></tr>
+  <tr><td>和谐股份</td><td class="num">4.71%</td><td class="num">7,568.57</td><td class="num">16,561,416</td><td>江苏和谐科技<b>（质押1207万股）</b>，锁12个月</td></tr>
+  <tr><td>南京高发</td><td class="num">4.21%</td><td class="num">6,757.04</td><td class="num">14,785,635</td><td>南京高速齿轮产业，锁12个月</td></tr>
+  <tr><td>埃斯顿</td><td class="num">3.00%</td><td class="num">4,820.03</td><td class="num">10,547,105</td><td><b>南京埃斯顿自动化（A股机器人龙头）</b>，锁12个月</td></tr>
+  <tr><td>大桥机器</td><td class="num">2.74%</td><td class="num">4,397.79</td><td class="num">9,623,178</td><td>南京大桥机器，锁12个月</td></tr>
+  <tr><td>新合壹号/诚敬壹号/新合贰号/诚敬贰号</td><td class="num">7.20%（合计）</td><td class="num">8,617.75（含现金146.38）</td><td class="num">24,992,383</td><td>四个员工持股平台，锁12个月</td></tr>
+  <tr><td>巽浩投资</td><td class="num">1.75%</td><td class="num">2,811.84</td><td class="num">6,152,829</td><td>上海巽浩，锁12个月</td></tr>
+  <tr><td>上海渝华</td><td class="num">0.65%</td><td class="num">1,044.50</td><td class="num">2,285,557</td><td>上海渝华电话工程，锁12个月</td></tr>
+</table>
+<p class="src">来源：《发行股份购买资产发行结果暨股本变动公告》（2026-03-14）<a href="http://paper.cnstock.com/html/2026-03/14/content_2188654.htm" target="_blank">来源</a>；《2026年半年度报告》（2026-08-18）<a href="http://paper.cnstock.com/html/2026-08/18/content_2255816.htm" target="_blank">来源</a>。</p>
+
+<div class="callout">
+<p><b>我最看重的一个股东——埃斯顿。</b>南京工艺的产品（滚珠丝杠副、滚动导轨副、行星滚柱丝杠副）是工业机器人/人形机器人关节、数控机床进给系统的核心传动件，埃斯顿正是国产工业机器人龙头。埃斯顿既是南京工艺的<b>客户</b>（问询回复显示：向中微、埃斯顿实现批量配套），现在又以3.00%原持股身份换股成为上市公司股东（持股1.80%）。<b>"客户+股东"双重绑定</b>，这是我判断这单资产成色与产业协同的关键证据。</p>
+</div>
+
+<h2>三、怎么"拿控制权"：控制权没变，变的是"壳里装了什么"</h2>
+
+<p>这里要纠正一个最容易误读的地方：<b>这单交易从头到尾没有发生控制权变更，也不构成"借壳上市/重组上市"。</b></p>
+
+<div class="konclu">
+<p><b>借壳四要件逐一对照（打破一条即不构成借壳）：</b></p>
+<p>① <b>实控人变更</b>？——没有。南京工艺与新工集团本就是"同一控制"（实控人均为南京市国资委），合并前后控制权未变 → <b>要件一不成立</b>。<br>
+② 36个月内（自控制权变更登记起算）？——要件一不成立，此条无触发基础。<br>
+③ 向新实控人及其关联方买资产？——"新实控人"不存在，本次交易是"同一控制下企业合并"。<br>
+④ 资产规模触线或主业根本变化？——主业确实从化纤变成滚动功能部件，但借壳认定的前提（要件一）缺失。</p>
+<p><b>结论：不构成借壳，走的是"重大资产重组"普通通道。</b>置入资产作价16.07亿 vs 上市公司2024年末总资产12.41亿，占比超50%，构成重大资产重组，但因控制权未变，无需按IPO从严审核（等价于IPO的七维全查）。</p>
+</div>
+
+<p>那么"怎么拿到资产"的手法拆解如下：</p>
+<table>
+  <tr><th>交易要素</th><th>具体内容</th><th>大白话</th></tr>
+  <tr><td>交易结构</td><td>资产置换 + 发行股份 + 支付现金购买南京工艺100%股份 + 配套募资</td><td>把旧厂整个换出去，把新公司整个买进来，补差用股票+一点现金</td></tr>
+  <tr><td>置出资产</td><td>南京化纤截至评估基准日全部资产及负债，作价72,927.12万元（评估增值率30.84%），承接方为新工集团</td><td>新工集团把亏损的化纤旧家当原价接走（国资兜底）</td></tr>
+  <tr><td>置入资产</td><td>南京工艺100%股份，作价160,667.57万元（资产基础法，收益法160,190万，两者差额477.57万/差异率0.30%）</td><td>16.07亿买入滚动功能部件单项冠军</td></tr>
+  <tr><td>价差支付</td><td>差额87,740.45万元=股份对价87,594.07万（191,671,909股 @4.57元）+现金146.38万</td><td>几乎全用股票换，现金只给员工平台一点点（146.38万）</td></tr>
+  <tr><td>发行价格</td><td>4.57元/股=定价基准日前120个交易日交易均价5.71元的80%</td><td>按监管允许的底价发行，砍到8折</td></tr>
+  <tr><td>配套募资</td><td>28,571,428股 @15.40元/股，募资总额4.40亿元，净额4.26亿元；用途：支付现金对价146.38万+滚动功能部件国产化高端制造装备产业化项目+补流4400万</td><td>配套募资发行价比发股买资产价(4.57)高得多——15.40元，说明市场对注入后的估值预期抬升</td></tr>
+</table>
+
+<p class="src">来源：《发行股份购买资产发行结果暨股本变动公告》（2026-03-14）<a href="http://paper.cnstock.com/html/2026-03/14/content_2188654.htm" target="_blank">来源</a>；《重大资产置换、发行股份及支付现金购买资产并募集配套资金实施情况暨新增股份上市公告书》（2026-06-19）<a href="https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?CompanyCode=10000838&gather=1&id=12402572" target="_blank">来源</a>；审核问询函回复（2025-12-20修订稿）。</p>
+
+<div class="callout">
+<p><b>一个很有意思的价格信号：</b>买资产发股是4.57元/股，配套募资发股却是15.40元/股，相差3倍多。这背后的逻辑是——4.57是"资产置换的账面安排价"（底线价、把国资内部交易做平），15.40是"市场化定价、机构真金白银愿意付的钱"。配套募资的7名认购对象里，有"国器元禾-工业母机产业投资基金"这个国家级母基金（认购1376.62万股），还有诺德、财通、共同基金等。这批资金是用15.40元的成本进来的，而当前股价13.40元——<b>机构浮亏约13%，这本身就是一个"价格锚"</b>。</p>
+</div>
+
+<h2>四、意图分析与节奏推测：国资为什么这么干、下一步催化怎么排</h2>
+
+<h3>4.1 意图研判：一句话——这不是"救壳"，是"借壳里的自己"</h3>
+<p>按方法论口诀："国资征集→民营接盘=产业注入意图强；拍卖低价拿壳=套利需警惕；装入资产与主业协同=真整合。" 但本案是第四种：<b>地方国资→国有资产置换=股权财政+产业证券化的标准打法</b>。</p>
+<p>南京国资的账本很清楚：</p>
+<ol>
+  <li><b>保壳保平台：</b>南京化纤是30年上市老壳，退市了，南京少一个国资上市平台，还要赔上化纤厂几万从业人员的安置。</li>
+  <li><b>把优质资产证券化：</b>南京工艺是"机床工具行业滚动功能部件分行业连续9年收入第一"的隐形冠军、"工信部制造业单项冠军示范企业"、"首批国务院国资委科改示范企业"。让它独立IPO要排队、要穿透、要时间，塞进现成的壳，一步到位。</li>
+  <li><b>一箭三雕：</b>损壳（化纤）换优质资产入壳、戴帽风险消除、题材（国产替代+工业母机+人形机器人）立起来。</li>
+</ol>
+
+<h3>4.2 节奏与催化排序（按"可验证性×重要性"）</h3>
+<table>
+  <tr><th>排序</th><th>事件</th><th>预计/已发生时点</th><th>可验证性</th><th>说明</th></tr>
+  <tr><td>★已兑现1</td><td>重组交割+新增股份登记</td><td>2026-03 已完成</td><td>公告可查</td><td>换胆完成</td></tr>
+  <tr><td>★已兑现2</td><td>配套募资到位</td><td>2026-06 已完成</td><td>公告可查</td><td>4.4亿到位</td></tr>
+  <tr><td>◆进行中</td><td>公司名称变更（→"南京工艺装备科技"）</td><td>2026-09-10 股东会通过</td><td>公告可查</td><td>去化纤化收官</td></tr>
+  <tr><td>◆下一催化1</td><td><b>2026年报 + 申请撤销退市风险警示（摘帽）</b></td><td>预计2027年4月前后</td><td>公告可查</td><td>营收＞3亿且盈利即成，摘帽概率高</td></tr>
+  <tr><td>◆下一催化2</td><td>募投"滚动功能部件国产化高端装备产业化"产能释放</td><td>2026-2028</td><td>季报跟踪</td><td>对应业绩承诺期</td></tr>
+  <tr><td>◆下一催化3</td><td>人形机器人/工业母机订单（行星滚柱丝杠等）</td><td>持续跟踪</td><td>公告+产业新闻</td><td>题材兑现观察点</td></tr>
+  <tr><td>◆证伪点</td><td>业绩承诺不达标（承诺2026年5,390.44万、2027年5,477.08万等）</td><td>各年审计</td><td>年报可查</td><td>若连续不达标，估值逻辑动摇</td></tr>
+</table>
+
+<h3>4.3 业绩承诺的"唯一最优路径"判断</h3>
+<p>新工集团、新工基金、机电集团（国资三方）对<b>拟置入资产（不含投资性房地产）</b>作出了净利润补充承诺（2025-12-08补充协议），承诺口径为"扣非后归母净利润、且不含投资性房地产租金净收益"：</p>
+<table>
+  <tr><th>承诺年度</th><th class="num">2025年</th><th class="num">2026年</th><th class="num">2027年</th><th class="num">2028年</th></tr>
+  <tr><td>承诺净利润（万元）</td><td class="num">5,322.94</td><td class="num">5,390.44</td><td class="num">5,477.08</td><td class="num">5,524.49</td></tr>
+</table>
+<p class="src">来源：审核问询函回复（2025-12-20修订稿）"问题5·关于置入资产资产基础法评估"。</p>
+<div class="callout">
+<p><b>我的判断：</b>这个承诺值（年约5300-5500万）明显偏"保守底仓"。看2026H1：单靠合并日之后的南京工艺（期初至合并日净损益计入非经常性），扣非已做到2108万；而南京工艺2026年一季度单季扣非就达2581.77万，二季度单季扣非2901.08万。<b>按这个节奏，全年扣非大概率在1亿上下，远高于5390.44万承诺</b>。承诺的"垫底色"属性大于"约束力"，国资三方大概率不会触发补偿。真正要盯的不是承诺达不达，是<b>扣非能否稳定站上1亿、把78.6亿市值（对应约75-80倍动态PE）靠业绩消化掉</b>。</p>
+</div>
+
+<h2>五、承诺包"原话 vs 大白话"逐条拆解</h2>
+
+<p>这单子的承诺分两类：<b>一类是法定义务（锁定/禁售），一类是自愿承诺（业绩补偿、土地房产瑕疵兜底）</b>。方法论说透了——法定义务是"规定动作"，真正有"活口"可拆的是自愿承诺。</p>
+
+<table>
+  <tr><th>承诺方</th><th>承诺事项（原话要点）</th><th>大白话翻译+活口拆解</th></tr>
+  <tr>
+    <td>新工集团（控股股东）</td>
+    <td>因发行股份购买资产获得的股份锁定36个月；因配套募资获得的股份锁18个月</td>
+    <td>这是<b>法定锁定期</b>（收购办法/重组办法底价），不是"自愿不减持"承诺。锁定≠不重组、锁定≠永远不卖。<b>活口：</b>锁定到期后国资平台是否减持，取决于国资盘活诉求，是后续需盯的中期变量。</td>
+  </tr>
+  <tr>
+    <td>新工基金、机电集团</td>
+    <td>发行股份购买资产获股锁36个月</td>
+    <td>同为国资一致行动人，锁定期与控股股东对齐。</td>
+  </tr>
+  <tr>
+    <td>亨升投资、和谐股份、南京高发、埃斯顿、大桥机器、巽浩、上海渝华、四个员工平台</td>
+    <td>获股锁12个月（可上市交易时间2027-03-12）</td>
+    <td>产业股东+员工平台锁12个月。<b>活口：</b>2027年3月起这批约1.4亿股陆续解禁，是解禁减持的观察窗口。</td>
+  </tr>
+  <tr>
+    <td>新工集团、新工基金、机电集团</td>
+    <td>对投资性房地产、技术类无形资产（商标、专利、专有技术）作业绩承诺及减值补偿；《盈利预测补偿协议之补充协议》对拟置入资产（不含投资性房地产）净利润承诺（2025-2028）</td>
+    <td>这是<b>自愿承诺+监管指引强制要求</b>（资产基础法下对"收益法定价部分"必须对赌）。<b>活口：</b>承诺口径剔除了投资性房地产租金、且是"累积业绩 vs 累积承诺"的补偿形式；触发补偿的条件是累积实际＜累积承诺，单年不达标但累积达标则不触发。</td>
+  </tr>
+  <tr>
+    <td>新工集团等（南京工艺全体交易对方）</td>
+    <td>莫愁路329号土地房产瑕疵：土地使用年限内（2054-09-02前）若因瑕疵被要求补缴出让金、处罚或不能按评估假设收租造成的损失，按持股比例补偿</td>
+    <td>这是对"评估里的坑"（投资性房地产假设）的<b>兜底承诺</b>。活口：仅覆盖该地块，且有"原因—结果"限定，非该地块的损失不在此列。</td>
+  </tr>
+  <tr>
+    <td>南京工艺</td>
+    <td>保证本次交易提供信息真实、准确、完整</td>
+    <td>标准合规性承诺，无实质内容。</td>
+  </tr>
+</table>
+
+<p><b>活口总结：</b>这单子<b>没有"36个月内不注入资产/不重组"这类"卖预期"的自愿承诺</b>——因为它压根是一次性的资产全部置换，不是"先买壳、后再装资产"的分步戏。所以没有"后门式承诺"可拆。真正的"活口"在两头：<b>①解禁节奏（2027年3月起批量解禁）；②业绩承诺的"累积vs单年"口径</b>。</p>
+
+<h2>六、六维拆解（对标同大股份范式，结论先行）</h2>
+
+<h3>维度1 · 重组节奏：已走完，不是"卡壳"状态</h3>
+<p><b>结论：这是罕见的"已交割完成"的*ST，而非"推进中"的*ST。</b>关键节点全部落地：核准→交割（2026-03-02）→发股登记（03-11）→募资登记（06-17）。进度卡点不存在。剩下一件事是"等年报摘帽"。</p>
+
+<h3>维度2 · 新实控人意图：国资产业证券化的"真整合"，不是故事</h3>
+<p><b>结论：资产质量高、运作是国资平台标准动作、执行力强（一年内走完问询+注册+交割）。</b>南京工艺是国家级单项冠军、连续9年行业收入第一、国产滚珠丝杠/导轨排头兵，客户含埃斯顿、中微等。给新实控人（南京国资）评级：资产质量★★★★☆、运作经验★★★★★、执行力★★★★★。</p>
+
+<h3>维度3 · 原业务（化纤）质量：典型的"亏损主业+干净壳"</h3>
+<table>
+  <tr><th>指标</th><th class="num">2023年</th><th class="num">2024年</th><th class="num">2025年</th></tr>
+  <tr><td>营业收入（万元）</td><td class="num">47,403.69</td><td class="num">66,250.72</td><td class="num">30,052.21</td></tr>
+  <tr><td>归母净利润（万元）</td><td class="num">-18,494.32</td><td class="num">-44,872.22</td><td class="num">-9,994.22</td></tr>
+  <tr><td>扣非归母净利润（万元）</td><td class="num">-19,872.69</td><td class="num">-46,073.28</td><td class="num">-18,289.22</td></tr>
+  <tr><td>归母净资产（万元）</td><td class="num">87,245.92</td><td class="num">42,374.98</td><td class="num">32,410.73</td></tr>
+  <tr><td>资产负债率（%）</td><td class="num">43.09</td><td class="num">71.90</td><td class="num">75.04</td></tr>
+</table>
+<p>三年连亏、净资产从8.72亿一路缩到3.24亿、负债率冲到75%，营收2025年掉到3.01亿（扣除后2.64亿）——这就是戴帽的全部病因。但<b>它也是个"相对干净的壳"</b>：净资产为正（3.24亿，未资不抵债）、审计标准无保留、货币资金+经营资产可整体处置给新工集团承接。<b>转型是被动的（退市倒逼），但承接方是主动的（国资主动整合）。</b></p>
+
+<h3>维度4 · 承诺包活口：见第五节（要点：无"不注入资产"条款，活口在解禁节奏+累积口径）</h3>
+
+<h3>维度5 · 全流程进度与行情映射</h3>
+<p><b>结论：戴帽≠下跌主因。</b>看行情数据：*ST京化52周区间12.71—18.84元，当前13.40元处区间下半段。需要区分两件事：</p>
+<ul>
+  <li><b>戴帽前后：</b>2026-04-24戴帽时，重组已完成、主业已切换，市场早已price in，戴帽本身没造成崩跌（反而成为"利空出尽+题材股"的洗盘）。</li>
+  <li><b>随后走势：</b>2026年6-8月因"人形机器人"题材，*ST京化被多家媒体列为"扭亏为盈的人形机器人概念股"，一度冲高（52周高点18.84元），随后回落到13元一带。<b>近期缩量（换手率仅0.1%-0.2%）、主力资金净流出（9.14-9.18一周主力净流出432.30万元），是典型的题材退潮+ST股流动性陷阱</b>。</li>
+</ul>
+<p class="src">来源：证券之星本周盘点（2026-09-19）<a href="https://4g.stockstar.com/detail/RB2026091900007022" target="_blank">来源</a>；证券时报行情页<a href="https://www.stcn.com/quotes/index/sh600889.html" target="_blank">来源</a>。</p>
+
+<h3>维度6 · 运作特征与综合判断</h3>
+<p><b>操盘手法：</b>同一控制下的资产置换+发股+配套募资（定价4.57元发股换资产、15.40元配套募资），国有资产"腾笼换鸟"标准范式。<b>比同类快在哪：</b>国资同一控制、无外部战投谈判、无债转股折价，一年内走完问询到注册交割。<b>成败关键变量：</b>已经是一个"1"（过户完成），不是"0或1"的赌博题。<b>核心矛盾一句话：</b>资产是真好、交易也真落地，<b>但"*ST"标签+题材退潮+78.6亿市值（对应约75-80倍动态PE）三者叠加，形成了"基本面兑现"与"估值消化"的时间差</b>。</p>
+
+<h2>七、壳经济学：值不值得救？——它已经被救完了</h2>
+
+<p>按"壳进入市场两种情况"看：南京化纤属于<b>"大股东（南京国资）主动整合"</b>一类——风险可控、可尽调可谈条件，且已落地。</p>
+
+<table>
+  <tr><th>判断项</th><th>本案情况</th><th>结论</th></tr>
+  <tr><td>重大违法类红线</td><td>无；审计标准无保留，无立案调查</td><td>✅ 不踩</td></tr>
+  <tr><td>交易类红线（股价/市值/股东数）</td><td>股价13.4元、市值78.6亿、股东1.81万户</td><td>✅ 不踩</td></tr>
+  <tr><td>财务类·营收＜3亿</td><td>2025年触发，但重组已换业务</td><td>✅ 已解决（注入资产2026H1营收4.34亿）</td></tr>
+  <tr><td>财务类·净资产为负</td><td>2025年末归母净资产3.24亿（正）</td><td>✅ 不踩</td></tr>
+  <tr><td>财务类·审计非标</td><td>标准无保留</td><td>✅ 不踩</td></tr>
+  <tr><td>救壳方式</td><td>换业务（注入南京工艺）＋剥离差资产（化纤整体置出）＝长期根治</td><td>✅ 不是"短期续命"，是"脱胎换骨"</td></tr>
+</table>
+
+<div class="callout">
+<p><b>壳价值底线法：</b>这只票现在还能不能用"壳价值"衡量？用不了。它已经不是20亿小壳了，它是78.6亿的"科创板/主板装备股"。衡量它应该用<b>PB（4.98倍）+ 动态PE（约75-80倍）+ 滚动功能部件国产替代的成长性</b>。4.98倍PB放在一个净利率约10%、扣非有望站上1亿的单项冠军身上，贵不贵，见仁见智；但"靠壳底托底"的逻辑已经不成立，<b>下行保护来自业绩，不来自壳</b>。</p>
+</div>
+
+<h2>八、核心财务底稿（零缺项）</h2>
+
+<h3>8.1 2026年半年报（合并，同一控制下企业合并追溯调整口径）</h3>
+<table>
+  <tr><th>项目</th><th class="num">2026年1-6月（本报告期）</th><th class="num">2025年1-6月（调整后）</th></tr>
+  <tr><td>营业收入（元）</td><td class="num">434,474,835.71</td><td class="num">375,836,738.88</td></tr>
+  <tr><td>利润总额（元）</td><td class="num">51,055,499.40</td><td class="num">-43,427,670.57</td></tr>
+  <tr><td>归母净利润（元）</td><td class="num">46,911,276.10</td><td class="num">-54,986,823.76</td></tr>
+  <tr><td>扣非归母净利润（元）</td><td class="num">21,079,961.48</td><td class="num">-92,769,102.76</td></tr>
+  <tr><td>经营活动现金流净额（元）</td><td class="num">143,706,273.14</td><td class="num">-130,206,070.06</td></tr>
+  <tr><td>基本每股收益（元）</td><td class="num">0.08</td><td class="num">-0.10</td></tr>
+  <tr><td>加权平均净资产收益率（%）</td><td class="num">3.16</td><td class="num">-3.89</td></tr>
+  <tr><td>毛利率（%）</td><td class="num">28.25</td><td class="num">14.65</td></tr>
+</table>
+
+<h3>8.2 2026年6月30日合并资产负债表（合并口径）</h3>
+<table>
+  <tr><th>项目</th><th class="num">2026-06-30</th><th class="num">2025-12-31（调整后）</th></tr>
+  <tr><td>货币资金（元）</td><td class="num">635,223,720.07</td><td class="num">173,344,299.99</td></tr>
+  <tr><td>总资产（元）</td><td class="num">2,399,203,625.11</td><td class="num">3,005,157,646.88</td></tr>
+  <tr><td>负债合计（元）</td><td class="num">819,736,365.45</td><td class="num">1,559,383,699.38</td></tr>
+  <tr><td>归母净资产（元）</td><td class="num">1,579,467,259.66</td><td class="num">1,460,126,050.59</td></tr>
+  <tr><td>少数股东权益（元）</td><td class="num">—</td><td class="num">-14,352,103.09</td></tr>
+  <tr><td>所有者权益合计（元）</td><td class="num">1,579,467,259.66</td><td class="num">1,445,773,947.50</td></tr>
+  <tr><td>资产负债率（%）=负债合计/资产总计</td><td class="num">34.17</td><td class="num">51.89</td></tr>
+  <tr><td>股本（股）</td><td class="num">586,589,347</td><td class="num">366,346,010</td></tr>
+</table>
+<p class="small">注：①负债率=负债合计/资产总计（不含少数股东权益口径）；②"调整后"为同一控制下企业合并追溯调整后的期初数；③本表少数股东权益2026-06-30为"—"（当期合并已无负少数股东权益列示），2025-12-31调整后为-1,435.21万元，故归母净资产（14.60亿）≠所有者权益合计（14.46亿），口径需区分。</p>
+
+<h3>8.3 2025年度主要会计数据（定稿，重组前原口径）</h3>
+<table>
+  <tr><th>项目</th><th class="num">2025年</th><th class="num">2024年</th><th class="num">2023年</th></tr>
+  <tr><td>营业收入（元）</td><td class="num">300,522,131.60</td><td class="num">662,507,182.95</td><td class="num">474,036,949.24</td></tr>
+  <tr><td>扣除后营业收入（元）</td><td class="num">263,638,261.84</td><td class="num">646,621,864.80</td><td class="num">397,439,639.96</td></tr>
+  <tr><td>利润总额（元）</td><td class="num">-108,271,927.09</td><td class="num">-482,775,029.99</td><td class="num">-255,157,361.01</td></tr>
+  <tr><td>归母净利润（元）</td><td class="num">-99,942,245.70</td><td class="num">-448,722,188.63</td><td class="num">-184,943,158.18</td></tr>
+  <tr><td>扣非归母净利润（元）</td><td class="num">-182,892,171.05</td><td class="num">-460,732,753.67</td><td class="num">-198,726,890.57</td></tr>
+  <tr><td>经营现金流净额（元）</td><td class="num">-111,550,123.82</td><td class="num">-154,161,851.33</td><td class="num">-170,478,948.42</td></tr>
+  <tr><td>归母净资产（年末，元）</td><td class="num">324,107,307.92</td><td class="num">423,749,790.32</td><td class="num">872,459,182.98</td></tr>
+  <tr><td>总资产（年末，元）</td><td class="num">1,240,800,567.85</td><td class="num">1,484,439,601.39</td><td class="num">1,589,729,319.33</td></tr>
+  <tr><td>负债合计（年末，元）</td><td class="num">931,045,363.02</td><td class="num">1,067,334,791.95</td><td class="num">685,102,122.59</td></tr>
+  <tr><td>资产负债率（%）=负债合计/资产总计</td><td class="num">75.04</td><td class="num">71.90</td><td class="num">43.09</td></tr>
+</table>
+<p class="small">注：2023年末负债合计68,510.21万元取自《2024年年度报告》合并资产负债表（2023-12-31列），2024/2025年末负债取自《2025年年度报告》合并资产负债表。</p>
+
+<h3>8.4 置入资产（南京工艺）经营数据（审核问询函口径）</h3>
+<table>
+  <tr><th>项目</th><th class="num">2025年1-5月</th><th class="num">2024年度</th><th class="num">2023年度</th></tr>
+  <tr><td>营业总收入（万元，含租赁）</td><td class="num">20,181.10</td><td class="num">49,693.22</td><td class="num">49,316.97</td></tr>
+  <tr><td>净利润（万元）</td><td class="num">1,960.23</td><td class="num">41,009.43</td><td class="num">7,880.68</td></tr>
+</table>
+<p class="small">说明：南京工艺2024年度净利润4.10亿元含大额一次性非经常性收益——2024年因江东中路75号地块土地收储产生"无形资产处置利得9,796.95万元"并将21,504.56万元征收补偿款计入当期损益（营业外收入），故2024年为非正常高基数。<b>正常经营基准应看2023年净利7,880.68万元、2026Q1扣非2,581.77万元、2026Q2单季扣非2,901.08万元。</b></p>
+
+<div class="konclu">
+<p><b>财务三灯自检（方法论"三个红灯"）：</b>①扣非净利——2026H1为正（2108万），✅；②净资产——15.79亿为正，✅；③经营现金流——2026H1为+1.44亿，✅。三灯全绿。对照戴帽时的2025年则是三灯全红（扣非-1.83亿、资产持续缩水、现金流-1.12亿）。<b>一整套重组，把三盏红灯一次性全部翻绿。</b></p>
+</div>
+
+<h2>九、风险纪律与反方观点（逻辑漏洞自查）</h2>
+<div class="riskbox">
+<ol>
+  <li><b>估值消化风险（最大）：</b>13.40元、78.6亿市值，动态PE约75-80倍、PB 4.98倍。若扣非全年只落在1亿出头，这个估值没有安全垫；一旦"人形机器人"题材进一步退潮，随时有向PB中枢回归的压力。亏损股思维不可用"便宜"两个字。</li>
+  <li><b>摘帽≠上涨：</b>摘帽是"利空出尽+身份修复"，但市场可能早就price in（资产2026年3月就换了）。摘帽兑现当天，反而可能"见光死"。</li>
+  <li><b>解禁压力：</b>2027年3月起，13名对象约1.4亿股（发行股份购买资产，12个月锁定）陆续解禁，叠加控股股东部分股份更晚解禁，供给压力需提前记入。</li>
+  <li><b>业绩承诺的"累积口径"漏洞：</b>承诺是"累积实际 vs 累积承诺"，单年或前几年不达标但后面补上即不触发补偿，存在"前松后紧"的腾挪空间（虽国资大概率能完成）。</li>
+  <li><b>关联交易与独立性：</b>同一控制下合并、交易对手多为国资关联方，注入后关联交易、同业竞争、债权债务切割的干净程度，需持续看问询回复落地与年审。</li>
+  <li><b>2026年报审计口径：</b>2026半年报未经审计、追溯调整数据亦未经审计，正式摘帽要过2026年报审计关（若审计意见变化则摘帽受阻）。</li>
+</ol>
+</div>
+
+<h2>十、数据来源</h2>
+<div class="foot">
+<ol>
+  <li>《南京化纤股份有限公司2025年年度报告》——2026-04-23（巨潮/上交所，新浪财经转发）<a href="http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12140495" target="_blank">链接</a></li>
+  <li>《南京化纤2025年度财务报表审计报告书》（中兴华审字（2026）第020232号，标准无保留意见）——2026-04-23 <a href="http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12140498&stockid=600889" target="_blank">链接</a></li>
+  <li>《关于公司股票被实施退市风险警示暨停牌的公告》（公告编号2026-032）——2026-04-22/23 <a href="http://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-23/600889_20260423_HKAI.pdf" target="_blank">链接</a></li>
+  <li>证券时报《南京化纤：将被实施退市风险警示》——2026-04-22 <a href="https://www.stcn.com/article/detail/3779093.html" target="_blank">链接</a></li>
+  <li>《南京化纤股份有限公司2026年半年度报告》及《2026年半年度报告摘要》——2026-08-18 <a href="http://paper.cnstock.com/html/2026-08/18/content_2255816.htm" target="_blank">链接</a></li>
+  <li>《重大资产置换、发行股份及支付现金购买资产并募集配套资金暨关联交易之发行股份购买资产发行结果暨股本变动公告》（2026-014）——2026-03-14 <a href="http://paper.cnstock.com/html/2026-03/14/content_2188654.htm" target="_blank">链接</a></li>
+  <li>《…实施情况暨新增股份上市公告书》——2026-06-19 <a href="https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?CompanyCode=10000838&gather=1&id=12402572" target="_blank">链接</a></li>
+  <li>《审核问询函之回复报告（修订稿）》及中信证券/华泰联合核查意见、中兴华专项核查意见、江苏华信评估核查意见——2025-08-28、09-18、09-30、12-20 多轮修订（本地底稿PDF）</li>
+  <li>上证路演中心《南京化纤重大资产重组投资者说明会》——2025-05-26 <a href="https://roadshow.sseinfo.com/activityDetails/33888" target="_blank">链接</a></li>
+  <li>财联社公告速递（更名为南京工艺装备科技、募资现金管理等）——2026-08-24 至 09-18 <a href="https://www.cls.cn/stock?code=sh600889" target="_blank">链接</a></li>
+  <li>证券时报·e公司 / 行情页（股价市值）——2026-09-21 <a href="https://www.stcn.com/quotes/index/sh600889.html" target="_blank">链接</a></li>
+  <li>东方财富 PC F10（主要财务指标、资产负债率34.17%等交叉核验）<a href="https://emweb.securities.eastmoney.com/pc_hsf10/pages/index.html?type=web&code=sh600889" target="_blank">链接</a></li>
+  <li>证券之星《本周盘点(9.14-9.18)》（2026-09-19，主力资金/单季数据）<a href="https://4g.stockstar.com/detail/RB2026091900007022" target="_blank">链接</a></li>
+  <li>雪球个股页（52周区间/公司简介）<a href="https://xueqiu.com/S/SH600889" target="_blank">链接</a></li>
+</ol>
+</div>
+
+<div class="riskbox">
+<p style="text-align:center;margin:0;">（免责声明：本文内容仅为自用兼知识分享与逻辑分析，数据可能有错误或不及时，不构成任何投资建议。市场有风险，投资需谨慎。）</p>
+</div>
+
+</div>
+</body>
+</html>
