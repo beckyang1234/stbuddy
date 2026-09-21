@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ST启环(000826)深度研究·王艳体</title>
+<style>
+  :root{
+    --ink:#1a1a1a; --muted:#6b7280; --accent:#b91c1c; --line:#e5e7eb;
+    --bg:#fbfaf7; --card:#ffffff; --gold:#92400e;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"PingFang SC","Microsoft YaHei","Source Han Sans SC","Noto Sans CJK SC",sans-serif;
+    line-height:1.85; font-size:16px;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:40px 24px 80px;}
+  h1{font-size:30px; line-height:1.3; margin:0 0 6px; letter-spacing:1px;}
+  .meta{color:var(--muted); font-size:14px; margin-bottom:8px;}
+  .tagline{color:var(--gold); font-size:14px; margin-bottom:26px;}
+  h2{
+    font-size:22px; margin:44px 0 14px; padding-left:12px;
+    border-left:4px solid var(--accent); line-height:1.4;
+  }
+  h3{font-size:18px; margin:28px 0 10px; color:#111;}
+  p{margin:0 0 14px; text-align:justify;}
+  strong{color:#000;}
+  em{color:var(--accent); font-style:normal; font-weight:600;}
+  .conclusion{
+    background:linear-gradient(180deg,#fff7ed,#fffbf5);
+    border:1px solid #fcd9b8; border-radius:10px; padding:20px 22px; margin:0 0 30px;
+  }
+  .conclusion p{margin-bottom:10px;}
+  .conclusion .lead{font-weight:700; font-size:17px; color:var(--gold);}
+  blockquote{
+    margin:18px 0; padding:12px 18px; background:#f3f4f6;
+    border-left:4px solid #9ca3af; border-radius:6px; color:#374151; font-size:15px;
+  }
+  table{border-collapse:collapse; width:100%; margin:16px 0 22px; font-size:14px; background:var(--card);}
+  th,td{border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top;}
+  th{background:#faf3ed; color:#7c2d12; font-weight:600;}
+  tr:nth-child(even) td{background:#fcfcfb;}
+  a{color:#1d4ed8; text-decoration:none; border-bottom:1px dotted #93c5fd;}
+  a:hover{border-bottom:1px solid #1d4ed8;}
+  .src{font-size:13.5px; color:var(--muted);}
+  .src li{margin-bottom:7px; word-break:break-all;}
+  .src a{font-size:12.5px;}
+  .disc{
+    margin-top:40px; padding:16px 20px; border:1px dashed #d1d5db; border-radius:8px;
+    color:#4b5563; font-size:14px; background:#fafafa;
+  }
+  .note{background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:10px 14px; font-size:14px; color:#92400e; margin:12px 0;}
+  ol.risk{padding-left:22px;}
+  ol.risk li{margin-bottom:8px;}
+  @media(max-width:640px){ body{font-size:15px;} h1{font-size:24px;} table{font-size:12.5px;} th,td{padding:6px 7px;} }
+</style>
+</head>
+<body><script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div class="wrap">
+
+<h1>ST启环(000826) 深度研究·王艳体</h1>
+<div class="meta">更新至 2026-09-21 · 方法论：王艳《寻找十倍系列》——控制权变更/壳/重整驱动</div>
+<div class="tagline">启迪环境科技发展股份有限公司（000826.SZ，深交所主板）· 环保固废/环卫 · 前身桑德环境/启迪桑德</div>
+
+<div class="conclusion">
+  <p class="lead">开头三行结论：红线分类 / 生死定级 / 自救空间</p>
+  <p><strong>① 红线分类</strong>——财务类退市风险警示（*ST）叠加"其他风险警示"（ST）。主因是 <em>2025 年报经审计归母净资产 -23.20 亿元、首次转负</em>，触发《深圳证券交易所股票上市规则》9.3.1 条"净资产为负"，2026-04-30 起由"启迪环境"戴帽变更为"*ST启环"；叠加"连续三年扣非前后孰低为负 + 持续经营能力重大疑虑"触发的 9.8.1 条其他风险警示 <a href="https://disc.static.szse.cn/disc/disk03/finalpage/2026-04-29/9a931dcc-8e15-4da6-b385-c0e7911714c3.PDF" target="_blank">来源</a>。</p>
+  <p><strong>② 生死定级</strong>——高危但不必然退市。2026 半年报营收 19.38 亿（扣非后营收远高于 3 亿红线，营收类退市风险可排除），但归母净资产继续恶化为 <em>-26.87 亿</em>、资产负债率升至 <em>101.65%</em>、2025 年报已是"保留意见+持续经营重大不确定"。唯一生路 = 司法重整成功 + 净资产转正 + 2026 年报审计意见不再保留（<a href="http://paper.cnstock.com/html/2026-04/29/content_2210345.htm" target="_blank">来源</a>）。</p>
+  <p><strong>③ 自救空间</strong>——大，且"准白武士已签约到位"。宜昌国资（宜昌城发、宜昌创元国资合计持股 90% 的平台"三峡至喜公司"）已签产业投资协议（6.52 亿股 @1.20 元、7.824 亿元，2026-07-31 签署、08-12 生效），财务投资人再签 2.1 亿股 @1.31 元并现金解决 6365.49 万资金占用；重整完成后 <em>宜昌市人民政府国资委将成为实控人</em> <a href="http://www.cnstock.com/commonDetail/754045" target="_blank">来源</a>。</p>
+</div>
+
+<h2>岛主引言</h2>
+<p>先把话挑明：000826 不是面值退市股（股价 1.87 元，离 1 元线远得很），也不是市值退市股。它是被"净资产为负"这条硬规矩击穿的财务类退市风险警示股——2025 年报经大信会计师事务所审计，期末归属母公司净资产 -23.20 亿元，实打实首次转负，触发《深交所股票上市规则》第 9.3.1 条第（二）项，2026 年 4 月 30 日起变成"*ST启环"；同时因为最近三个会计年度扣非前后净利润孰低者均为负值、且 2025 年报审计报告对持续经营能力有重大疑虑，又被叠加实施"其他风险警示"。一句话：<strong>双帽加身，标准的"财务类生死局"。</strong></p>
+<p>戴帽不等于退市。真正要命的是《上市规则》9.3.12 条那张家"次年年报判死刑"的清单：若 2026 年报出现"净资产仍为负、被出具保留/无法表示/否定意见、利润三值孰低为负且扣除后营收<3 亿"等任一情形，直接终止上市。用当下数据对一对：2026 半年报营收 19.38 亿（营收膝斩风险基本排除），但净资产 -26.87 亿仍在恶化、2025 年报已经"保留意见+持续经营重大不确定"，两条硬伤都在。所以生路只有一条：<strong>司法重整成功——债转股压负债、投资人注资拉净资产、重整计划经法院批准、2026 年报审计出具非保留意见，才能摘星摘帽。</strong></p>
+<p>而启环最不一样的地方在于：别的 ST 壳还在"招募战投、满天传闻"，它投资人已经签约落地。2026 年 7 月 31 日签产业投资人（宜昌城发 60% + 宜昌创元国控 30% + 启迪未来投资（青岛）10% 合资架设"宜昌市三峡至喜科技有限公司"，6.52 亿股、1.20 元/股、7.824 亿现金），8 月 12 日宜昌市国资委批复生效，8 月 23 日财务投资人（6 家联合体）再签 2.1 亿股、1.31 元/股并现金解决 6365.49 万资金占用（8 月 25 日已到账）。重整完成后，宜昌市国资委将成为实控人——公司从"无控股股东、无实控人"的悬空态，一头扎进宜昌地级市国资怀里。我的定级：<strong>这是一只"财务类深坑 + 国资重整快落地 + 壳价极低"的高弹性事件驱动博弈票，不是价值股。</strong></p>
+
+<h2>一、前世今生：一只被反复改名换姓的老环保壳</h2>
+<p>000826 是 A 股最会"换马甲"的公司之一，光证券简称就换过五六次，每次换名背后都是一次控制权或主业的大转身。时间轴拉出来，你就能看懂它今天为什么躺在这里。</p>
+
+<table>
+<thead><tr><th>时间</th><th>事件</th><th>控制权/名称变化</th><th>一句话解读</th></tr></thead>
+<tbody>
+<tr><td>1993</td><td>经湖北体改委鄂改[1993]30号文批准，定向募集设立</td><td>原名"国投原宜磷化股份有限公司"</td><td>宜昌本地磷化国企改股份制</td></tr>
+<tr><td>1998-01</td><td>深交所上网发行3500万股，2月25日挂牌（000826）</td><td>发行后注册资本13961万元</td><td>深市主板老将（<a href="http://finance.ce.cn/stock/gsgdbd/202108/12/t20210812_36802732.shtml" target="_blank">来源</a>）</td></tr>
+<tr><td>2000年前后</td><td>连年亏损，沦为壳资源</td><td>"国投原宜"</td><td>磷化主业凋敝，被桑德看中</td></tr>
+<tr><td>2002-2005</td><td>桑德集团（文一波）收购/借壳国投原宜，2005年更名"合加资源"</td><td>实控人→文一波（桑德系）</td><td>民营环保龙头借壳入场（<a href="http://www.soundgroup.com/?newshow/id/2104.html" target="_blank">来源</a>）</td></tr>
+<tr><td>2010-04</td><td>更名"桑德环境"</td><td>合加资源→桑德环境</td><td>桑德把环保主业装进壳</td></tr>
+<tr><td>2015-09</td><td>桑德集团以69.90亿元转让2.52亿股（29.80%）给清华控股及一致行动人</td><td>实控人：文一波→清华控股；后更名"启迪桑德"</td><td>民营转校办产业，桑德套现69.9亿离场（<a href="http://finance.ce.cn/stock/gsgdbd/202203/11/t20220311_37394472.shtml" target="_blank">来源</a>）</td></tr>
+<tr><td>2019-04</td><td>文一波辞任董事长</td><td>桑德时代落幕</td><td>创始人谢幕</td></tr>
+<tr><td>2019-07</td><td>更名"启迪环境科技发展股份有限公司"</td><td>启迪桑德→启迪环境</td><td>打"能源+环保"旗号，董事长文辉（<a href="http://tus-est.com/News/detail/?ContentID=275" target="_blank">来源</a>）</td></tr>
+<tr><td>2020-12</td><td>清华控股公开转让启迪控股14.84%股份，合肥建投系与其并列第一大股东</td><td>→<strong>无实际控制人</strong></td><td>清华系退、合肥系进</td></tr>
+<tr><td>2021-2022</td><td>2021中报巨亏33-40亿、2022-02被证监会立案（信披违规）</td><td>城发环境"蛇吞象"吸收合并告吹</td><td>暴雷+重组流产，滑向深渊（<a href="http://finance.ce.cn/stock/gsgdbd/202203/11/t20220311_37394472.shtml" target="_blank">来源</a>）</td></tr>
+<tr><td>2024-12</td><td>第一大股东启迪科服11.64%被北京东城区法院司法拍卖过户</td><td>→<strong>无控股股东</strong></td><td>名义控股股东都散了</td></tr>
+<tr><td>2025-07</td><td>珠海启迪投资5.81%、珠海启迪绿源1.70%被拍卖过户</td><td>股权进一步瓦解</td><td>清华/启迪系持股被拆散</td></tr>
+<tr><td>2025-09</td><td>债权人宁波照泰申请重整+预重整；9-24宜昌中院决定启动预重整</td><td>指定启迪环境清算组为临时管理人</td><td>破产重整之门打开（<a href="https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-08-13/f68be57c-b5fc-4ca9-add9-83876fa3e9ac.PDF" target="_blank">来源</a>）</td></tr>
+<tr><td>2026-04-30</td><td>2025年报净资产转负，戴帽</td><td>启迪环境→<strong>*ST启环</strong></td><td>财务类退市风险警示落地</td></tr>
+<tr><td>2026-07-31</td><td>签产业投资人《重整投资协议》</td><td>三峡至喜公司将成控股股东</td><td>宜昌国资"认领"</td></tr>
+<tr><td>2026-08-12</td><td>宜昌市国资委批复，产业投资协议生效</td><td>实控人（待重整完成）→宜昌市国资委</td><td>国资入主靴子落地</td></tr>
+<tr><td>2026-08-23</td><td>签财务投资人《重整投资协议》</td><td>2.1亿股+解决占款</td><td>现金+占款清扫完毕</td></tr>
+</tbody>
+</table>
+
+<blockquote>一句话看懂时间轴：国投原宜（宜昌磷化国企壳）→ 文一波桑德借壳（民营环保）→ 69.9 亿卖给清华控股（校办产业）→ 清华系失血后再甩给合肥国资 + 启迪科服股份被司法拍卖 → 今日无主 + 净资产打穿 → 宜昌国资重整接盘。绕一大圈，这只壳从宜昌国资手里出去，最后又回到宜昌国资手里。</blockquote>
+
+<h2>二、关键人物 / 实控人现状</h2>
+<h3>1. 今日实控人：真空状态，等宜昌国资委补位</h3>
+<p>截至 2025-12-31（2026 半年报同口径），公司处于<strong>"无控股股东、无实际控制人"</strong>双真空状态。这是"前任们纷纷散场"的结果：清华控股（现天府清源）不再控制；启迪科服 11.64% 2024-12 被拍卖；珠海启迪系 7.51% 2025-07 被拍卖；桑德系 7.18% 全部质押+冻结且反复流拍。重整完成后确认的新主人是<strong>宜昌市人民政府国资委</strong>——这已白纸黑字签了协议并拿到国资委批复，不是传闻。</p>
+<h3>2. 前十大股东（2026-06-30，半年报口径）</h3>
+<table>
+<thead><tr><th>排名</th><th>股东</th><th>性质</th><th>持股比例</th><th>持股数(股)</th><th>状态/阵营</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>广州麒正企业管理合伙企业(有限合伙)</td><td>境内非国有法人</td><td>5.00%</td><td>71,267,588</td><td>2025司法拍卖接盘，2026-04拟减持（<a href="https://www.stcn.com/article/detail/3748618.html" target="_blank">来源</a>）</td></tr>
+<tr><td>2</td><td>天府清源控股有限公司（原清华控股）</td><td>国有法人</td><td>4.99%</td><td>71,084,278</td><td>清控系</td></tr>
+<tr><td>3</td><td>桑德集团有限公司</td><td>境内非国有法人</td><td>3.73%</td><td>53,137,780</td><td>桑德系；质押+冻结（全额）</td></tr>
+<tr><td>4</td><td>桑德投资控股有限公司</td><td>境内非国有法人</td><td>3.45%</td><td>49,200,773</td><td>桑德系；质押+冻结（全额）</td></tr>
+<tr><td>5</td><td>清控资产管理有限公司</td><td>国有法人</td><td>2.49%</td><td>35,542,139</td><td>清控系</td></tr>
+<tr><td>6</td><td>欧阳敦青</td><td>自然人</td><td>1.09%</td><td>15,516,500</td><td>—</td></tr>
+<tr><td>7</td><td>邵红</td><td>自然人</td><td>0.66%</td><td>9,404,600</td><td>—</td></tr>
+<tr><td>8</td><td>西藏清控资产管理有限公司</td><td>境内非国有法人</td><td>0.52%</td><td>7,373,026</td><td>清控系</td></tr>
+<tr><td>9</td><td>张柳青</td><td>自然人</td><td>0.46%</td><td>6,500,000</td><td>—</td></tr>
+<tr><td>10</td><td>姚瑞红</td><td>自然人</td><td>0.44%</td><td>6,218,100</td><td>—</td></tr>
+</tbody>
+</table>
+<p>关键点：清控系（天府清源+清控资产+西藏清控资产）为一致行动人，合计约 <strong>8.00%</strong>；桑德系（桑德集团+桑德投资）为一致行动人，合计约 <strong>7.18%</strong>，且全部质押+冻结、2026 年 6-7 月合计 5071.38 万股三次司法拍卖均流拍（<a href="http://paper.cnstock.com/html/2026-08/01/content_2251081.htm" target="_blank">来源</a>）；整体质押比例 7.18%（<a href="http://data.eastmoney.com/gpzy/detail/000826.html" target="_blank">来源</a>）；前十大合计持股不足 22%，股东户数 49,267 户。<strong>股权极度分散，为国资重整"清场"降低了出资人权益调整的阻力。</strong></p>
+
+<h2>三、怎么拿控制权——"国资重整入主"</h2>
+<p>启环不是被二级市场举牌、也不是协议转让接盘，而是走破产重整 + 资本公积转增 + 投资人受让这条 ST 股"官道"。</p>
+<h3>1. 触发器</h3>
+<p>2025-09-23，债权人宁波照泰能源设备有限公司以"不能清偿到期债务且明显缺乏清偿能力，但具有重整价值"为由申请重整+预重整；9-24 宜昌中院（2025）鄂 05 破申 37 号决定启动预重整，指定启迪环境清算组为临时管理人，此后三次延期（2025-12-23、2026-03-23、2026-06-23 各延三个月）。</p>
+<h3>2. 资本公积转增：上限 10 转 15</h3>
+<table>
+<thead><tr><th>转增股份去向</th><th>数量</th><th>价格</th><th>价款</th></tr></thead>
+<tbody>
+<tr><td>产业投资人（三峡至喜公司）</td><td>6.52 亿股</td><td>1.20 元/股</td><td>7.824 亿元</td></tr>
+<tr><td>财务投资人（6家联合体）</td><td>2.10 亿股</td><td>1.31 元/股</td><td>2.751 亿元</td></tr>
+<tr><td>其余转增股份</td><td colspan="3">待重整计划确认（预计用于债转股清偿/落实偿债资源）</td></tr>
+</tbody>
+</table>
+<p>产业投资人结构：<strong>三峡至喜公司 = 宜昌城发控股 60% + 宜昌创元国控 30% + 启迪未来投资（青岛）10%</strong>，国资合计 90%。重整后三峡至喜持股约 <strong>18.30%</strong> 成为控股股东。定价锚：签约日（2026-07-31）涨停收 1.73 元，产业投资人 1.20 元/股折价约 30%（<a href="http://www.cnstock.com/commonDetail/754045" target="_blank">来源</a>）。财务投资人：复利产业发展（深圳）、山西锦融投资、广东湘信圆方、湖北中科瑞兴二号、深圳农光启信、深圳培正启盛（<a href="https://pdf.dfcfw.com/pdf/H2_AN202608241828364229_1.pdf" target="_blank">来源</a>）。</p>
+<h3>3. 资金占用清扫 + 国资落地</h3>
+<p>财务投资人以现金解决 6365.49 万元非经营性资金占用（占款方为桑德集团下属桑顿新能源），2026-08-25 到账，大信出具专项核查报告确认解决完毕（<a href="http://www.cnfin.com/announ/detail/index.html" target="_blank">来源</a>）。2026-08-12 三峡至喜取得宜昌市国资委批复，产业投资协议满足生效条件。</p>
+<h3>4. 宜昌国资是谁？</h3>
+<p>"宜昌城发控股集团"（宜昌城发集团）是宜昌市国资委下属核心城投平台：2022 年整合组建，注册资本 200 亿元，截至 2024 年末总资产超 1600 亿元、AAA 主体信用评级，业务覆盖<strong>城市供水、污水处理、餐厨/厨余处理、城市公交、公园运营</strong>等民生服务，与启环的环卫、水务、固废主业高度重合（<a href="https://www.yccf.cn/jituanjianjie.html" target="_blank">来源</a>）。公司注册地就在宜昌（西陵区绿萝路 77 号），这是宜昌国资出手而非别人的结构性原因。</p>
+
+<h2>四、意图分析与节奏</h2>
+<h3>意图一：不是炒壳，是"国有资产 + 民生环保产业"整合</h3>
+<p>宜昌城发缺一块"上市资本平台 + 区域外运营能力"，而启环手里握着水务 34 个运营项目（污水 30 个+供水 4 个，设计规模合计约 294 万吨/日）、环卫年化合同 20.65 亿、垃圾焚烧 5600 吨/天等牌照和运营底盘。国资要的是把宜昌民生环保资产证券化、并借壳走出宜昌；壳里 23 亿多的净资产窟窿，用债转股+注资就能平掉，成本可控。</p>
+<h3>意图二：低价锁盘的确定性套利</h3>
+<p>1.20-1.31 元/股的投资人成本，对应一张重整成功后净资产转正、完成摘帽的"干净壳"。投资人锁到 18.30% 控股权，在国资产业注入预期下，二级市场给的重整成功溢价往往远高于 1.2 元。<strong>你要判断的是自己站在"投资人低价拿控股权——老股东被稀释扛风险——二级市场为重整成功溢价买单"这条链的哪一环。</strong></p>
+<h3>节奏：临门一脚，但还没吹哨</h3>
+<p>已完成：预重整启动 → 投资人招募 → 产业+财务投资协议签署并生效 → 占用清零 → 子公司合加新能源被裁定受理破产重整（2026-09-10）。未完成（截至 2026-09-21）：<strong>宜昌中院尚未正式裁定受理启迪环境本体的重整申请</strong>，公司仍处预重整；正式重整计划（出资人权益调整、清偿方案）尚未表决与批准（<a href="http://paper.cnstock.com/html/2026-09/11/content_2267613.htm" target="_blank">来源</a>）。这一脚是成败关键。接下来"受理重整 → 批准计划 → 净资产转正 → 摘星摘帽"每个里程碑都是催化节点；反之任何一关卡壳都是风险。</p>
+
+<h2>五、承诺包：原话 vs 大白话</h2>
+<h3>承诺 1：「本次重整完成后，三峡至喜公司将成为控股股东，宜昌市国资委将成为实际控制人。」</h3>
+<p><strong>大白话</strong>：壳的钥匙最终交到宜昌国资委手上，签字画押了的确定性承诺。但前提是"本次重整完成"，法院一日未受理批准，就还是"期权"。</p>
+<h3>承诺 2：「宜昌城发、宜昌创元国控、启迪未来按 60%/30%/10% 设立三峡至喜公司……受让转增股票 6.52 亿股，价格 1.20 元/股。」</h3>
+<p><strong>大白话</strong>：国资出 7.824 亿真金白银拿 18.30% 控股权，国资占款 90%；"启迪未来投资（青岛）"只占 10%，别被名字误导成清华系回归。1.20 元就是国资对这个壳的心理底价。</p>
+<h3>承诺 3：「财务投资人受让 2.1 亿股 @1.31 元，并负责以现金解决 6365.49 万元占用。」</h3>
+<p><strong>大白话</strong>：财务投资人出 2.751 亿买股，再额外掏 6365.49 万替桑顿新能源擦屁股还占款，上市公司一分没出。这是重整前的合规清障——不解决占款，法院不受理。</p>
+<h3>承诺 4（风险提示原话）：「若因重整失败被宣告破产，公司股票将面临被终止上市的风险。」</h3>
+<p><strong>大白话</strong>：国资进场≠一定成功。法院不受理、债权人否决方案、重整失败被宣告破产，任何一条走通，票就归零。这是所有 ST 重整股的底层条款。</p>
+<h3>承诺 5（董事会表态）：「以化解风险、撤销退市风险警示为核心，全力推进预重整及正式重整。」</h3>
+<p><strong>大白话</strong>：目标直白——把净资产做正、把审计意见洗干净，摘星摘帽。这就是你该锚定的终点判断。</p>
+
+<h2>六、六维拆解（王艳方法论）</h2>
+<table>
+<thead><tr><th style="width:110px">维度</th><th>判断</th></tr></thead>
+<tbody>
+<tr><td>① 重组节奏</td><td>进度约 60-70%：投资人落地是 70%，法院受理是 80%，计划批准 90%，摘帽 100%，当前卡在"受理"。债权体量大（涉诉待履行约 86.30 亿 + 未结诉讼 26.48 亿），债转股能否攒齐共识是最大变量。节奏偏积极，但要按"里程碑"下注、别按"速度"下注。</td></tr>
+<tr><td>② 新实控人意图</td><td>宜昌国资委 + 城发集团（1600 亿总资产、AAA、主业协同）是"产业型"非"资本型"，加分项。但地级市国资重整节奏和装资产时间表偏慢，别指望一步登天。</td></tr>
+<tr><td>③ 原业务质量</td><td>中上、值得救：2026H1 经营性现金流净额 +2.79 亿（2025 全年 +7.68 亿），环卫/水务/固废正常运营，环卫总合同约 268 亿。资产端能造血，负债端是黑洞（2026H1 财务费用 3.21 亿、营业外支出 1.36 亿、应收账款 44.90 亿）。债务一清，"活资产"就能转"赚钱资产"。</td></tr>
+<tr><td>④ 承诺包活口</td><td>所有承诺挂在"重整完成"这口活阀门上：法院受理 + 债权人会议通过 + 法院批准 + 执行完毕，四道门任何一道卡住即清零。</td></tr>
+<tr><td>⑤ 行情映射</td><td>事件脉冲型：2026-07-31 签产业投资人当天涨停（1.73 元），7-29/30/31 三日累计涨幅偏离超 20% 触发异动。52 周区间 1.29-3.05 元，当前 1.87-1.89 元、总市值约 26.65-26.94 亿（<a href="https://www.egsea.com/quotation/stock-info/sz000826.html" target="_blank">来源</a>）。适合潜伏里程碑，不适合追涨停。</td></tr>
+<tr><td>⑥ 综合判断</td><td>高危高弹。红线：财务类*ST+叠加ST；生死：2026 年报净资产须转正、审计意见须非保留；救兵：宜昌国资委（已签约注资）；路径：10 转 15 转增+债转股+国资受让控股。最大不确定性不是"谁来救"，而是"法院何时受理、债权方案能否通过"。</td></tr>
+</tbody>
+</table>
+
+<h2>七、壳经济学</h2>
+<h3>1. 估值锚</h3>
+<table>
+<thead><tr><th>指标</th><th>数值</th></tr></thead>
+<tbody>
+<tr><td>总股本</td><td>14.25 亿股</td></tr>
+<tr><td>股价（2026-09-18 收 / 09-21 盘中）</td><td>1.87 / 1.89 元</td></tr>
+<tr><td>总市值</td><td>约 26.65 亿 / 26.94 亿</td></tr>
+<tr><td>每股净资产（归母）</td><td>-1.89 元</td></tr>
+<tr><td>归母净资产</td><td>-26.87 亿（2026H1）</td></tr>
+<tr><td>资产负债率</td><td>101.65%（2026H1）/ 99.46%（2025）</td></tr>
+<tr><td>投资人成本锚</td><td>1.20-1.31 元/股</td></tr>
+</tbody>
+</table>
+<p>这家公司市场定价（26.65 亿市值）远超会计计价（净资产负 26.87 亿）。市场为它付的钱，本质是买一样东西：<strong>"宜昌国资重整成功的期权 + 重整后壳资源的稀缺牌照价值"。</strong></p>
+<h3>2. 转增与稀释：老股东必须算清的一笔账</h3>
+<p>10 转 15 满格转增后总股本约 35.63 亿股。产业投资人（6.52 亿股）+ 财务投资人（2.1 亿股）先切走 8.62 亿股，剩下约 12.76 亿股转增股大概率用于债转股清偿，债权人变新股东。<strong>老股东在重整后的股权比例会被大幅摊薄</strong>：你花 1.87 元买的 1 股，重整后对应"稀释后权益"要等重整计划摊开才算得清；投资人 1.20 元拿控股权，天然便宜约 36%（相对 1.87 元）。</p>
+<h3>3. 壳的稀缺性：保壳的极端紧迫性也是价值一部分</h3>
+<p>2026 年报就是生死判决。国资要保壳并受让 18.30% 控股权，就必须在年报出具前完成重整执行、净资产转正、占款/担保/逾期清干净。<strong>"时间 + 必须成功"的压力站在护壳一方</strong>——既意味着催化密集，也意味着"赶不上年报即功亏一篑"的达摩克利斯之剑悬顶。</p>
+
+<h2>八、数据来源</h2>
+<ol class="src">
+<li>启迪环境《2026年半年度报告》（2026-08-28，本地PDF，巨潮资讯网 http://www.cninfo.com.cn 同步披露）</li>
+<li>《关于公司股票交易被实施退市风险警示及其他风险警示暨停牌的公告》（2026-04-28，深交所）— <a href="https://disc.static.szse.cn/disc/disk03/finalpage/2026-04-29/9a931dcc-8e15-4da6-b385-c0e7911714c3.PDF" target="_blank">链接</a></li>
+<li>《启迪环境2025年年报相关计提与量化数据》（上海证券报，2026-04-29）— <a href="http://paper.cnstock.com/html/2026-04/29/content_2210345.htm" target="_blank">链接</a></li>
+<li>《启迪环境2025年年度报告摘要》（中国证券报B634，2026-04-29）— <a href="https://epaper.cs.com.cn/zgzqb/images/2026-04/29/B634/zqB63429.pdf" target="_blank">链接</a></li>
+<li>《启迪环境2025年度业绩预告》（2026-01-30，深交所）— <a href="https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-01-30/3736231b-a355-492c-b095-828ee74d2fd4.PDF" target="_blank">链接</a></li>
+<li>《000826，地方国资拟入主》（上海证券报·中国证券网，2026-08-01）— <a href="http://www.cnstock.com/commonDetail/754045" target="_blank">链接</a></li>
+<li>《关于公司预重整事项进展的公告(2026-063)》（深交所，2026-08-13）— <a href="https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-08-13/f68be57c-b5fc-4ca9-add9-83876fa3e9ac.PDF" target="_blank">链接</a></li>
+<li>《关于与财务投资人签署重整投资协议的公告》（巨潮资讯/东方财富，2026-08-24）— <a href="https://pdf.dfcfw.com/pdf/H2_AN202608241828364229_1.pdf" target="_blank">链接</a></li>
+<li>《关于资金占用事项解决完毕的公告》（上海清算所，2026-08-27）— <a href="http://www.cnfin.com/announ/detail/index.html" target="_blank">链接</a></li>
+<li>《关于法院裁定受理全资子公司破产重整的公告(2026-076)》（上海证券报，2026-09-11）— <a href="http://paper.cnstock.com/html/2026-09/11/content_2267613.htm" target="_blank">链接</a></li>
+<li>《未清偿到期债务 *ST启环全资子公司被裁定破产重整》（证券时报·e公司，2026-09-10）— <a href="https://www.stcn.com/article/detail/4180351.html" target="_blank">链接</a></li>
+<li>《关于持股5%以上股东部分股份第三次拍卖流拍的公告》（上海证券报，2026-08-01）— <a href="http://paper.cnstock.com/html/2026-08/01/content_2251081.htm" target="_blank">链接</a></li>
+<li>*ST启环行情/市值（证券时报·e公司、东方财富）— <a href="https://www.egsea.com/quotation/stock-info/sz000826.html" target="_blank">链接1</a> · <a href="https://data.eastmoney.com/gzfx/detail/000826.html" target="_blank">链接2</a></li>
+<li>《集团简介》（宜昌城发集团官网）— <a href="https://www.yccf.cn/jituanjianjie.html" target="_blank">链接</a></li>
+<li>《又一"蛇吞象"上演，启迪环境因何"贱卖"》（中国经济网，2021-08-12）— <a href="http://finance.ce.cn/stock/gsgdbd/202108/12/t20210812_36802732.shtml" target="_blank">链接</a></li>
+<li>《文一波：始于环保不止于环保》（桑德集团官网，2019-04-23）— <a href="http://www.soundgroup.com/?newshow/id/2104.html" target="_blank">链接</a></li>
+<li>《启迪环境更名为启迪环境》报道（中国证券报，2019-07-10）— <a href="http://tus-est.com/News/detail/?ContentID=275" target="_blank">链接</a></li>
+<li>《5.98万股东欲哭无泪！启迪环境涉嫌业绩"大洗澡"已被立案》（中国经济网，2022-03-11）— <a href="http://finance.ce.cn/stock/gsgdbd/202203/11/t20220311_37394472.shtml" target="_blank">链接</a></li>
+</ol>
+
+<div class="disc">
+（免责声明：本文内容仅为自用兼知识分享与逻辑分析，数据可能有错误或不及时，不构成任何投资建议。市场有风险，投资需谨慎。）
+</div>
+
+</div>
+</body>
+</html>
