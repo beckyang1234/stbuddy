@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ST汇洲(002122)深度研究·王艳体</title>
+<style>
+  :root{
+    --ink:#1a1a1a; --sub:#555; --mut:#8a8a8a; --line:#e3e0d8;
+    --paper:#faf8f2; --card:#ffffff; --accent:#8c1d18; --tag:#f1ece0;
+    --green:#0f6b3c; --red:#b02a2a; --blue:#1a4f8c; --amber:#9a6b0a;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",-apple-system,sans-serif;
+    line-height:1.85;font-size:16px;}
+  .wrap{max-width:960px;margin:0 auto;padding:32px 28px 64px;}
+  header.doc{border-bottom:3px solid var(--ink);padding-bottom:18px;margin-bottom:26px;}
+  header.doc h1{font-size:30px;margin:0 0 6px;letter-spacing:.5px;}
+  header.doc .meta{color:var(--mut);font-size:14px;}
+  h2{font-size:23px;margin:44px 0 14px;padding-left:12px;border-left:5px solid var(--accent);
+    line-height:1.4;}
+  h3{font-size:18px;margin:28px 0 10px;color:var(--blue);}
+  p{margin:12px 0;}
+  .lead{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);
+    padding:16px 20px;border-radius:6px;margin:18px 0;}
+  .lead p{margin:6px 0;}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.5px;background:var(--card);}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top;}
+  th{background:var(--tag);font-weight:600;white-space:nowrap;}
+  tr:nth-child(even) td{background:#fbfaf6;}
+  .hl{background:#fdf3e3 !important;font-weight:600;}
+  .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .tag{display:inline-block;background:var(--tag);border:1px solid var(--line);
+    padding:1px 8px;border-radius:4px;font-size:13px;color:var(--ink);}
+  .tag.red{background:#f6e2e2;border-color:#e2b9b9;color:var(--red);}
+  .tag.green{background:#e2f0e5;border-color:#b9d3bf;color:var(--green);}
+  .tag.amber{background:#f6ecd9;border-color:#e0cfab;color:var(--amber);}
+  blockquote{margin:14px 0;padding:10px 16px;background:#f4f1e8;border-left:4px solid var(--amber);
+    border-radius:4px;color:#3f3a30;}
+  blockquote p{margin:6px 0;}
+  .quote{font-style:italic;}
+  a{color:var(--blue);text-decoration:none;border-bottom:1px dotted var(--blue);}
+  a:hover{color:var(--accent);border-bottom-color:var(--accent);}
+  a.src{font-size:12.5px;color:#888;border-bottom:none;margin-left:4px;}
+  a.src:hover{color:var(--blue);}
+  ul{margin:10px 0;padding-left:22px;}
+  li{margin:6px 0;}
+  .verdict{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0;}
+  .verdict .box{flex:1 1 240px;border:1px solid var(--line);border-radius:8px;padding:14px 16px;background:var(--card);}
+  .verdict .box .k{font-size:13px;color:var(--mut);}
+  .verdict .box .v{font-size:16px;font-weight:700;margin-top:4px;}
+  .src-list{font-size:14px;}
+  .src-list li{margin:7px 0;}
+  .src-list .d{color:var(--mut);font-size:13px;}
+  footer.disc{margin-top:46px;padding-top:18px;border-top:2px solid var(--ink);
+    color:#444;font-size:14.5px;}
+  .small{font-size:13px;color:var(--mut);}
+  hr{border:none;border-top:1px solid var(--line);margin:26px 0;}
+</style>
+</head>
+<body><script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div class="wrap">
+
+<header class="doc">
+  <h1>ST汇洲(002122)深度研究·王艳体</h1>
+  <div class="meta">汇洲智能技术集团股份有限公司 ｜ 原天马股份 ｜ 深交所主板 002122 ｜ 更新至 2026-09-21<br>
+  依据 2025 年报、2026 半年报及公开公告/权威媒体报道交叉互证，取定稿数。</div>
+</header>
+
+<p class="small">本报告采用公众号"王艳的逍遥岛"《寻找十倍系列》方法论：抓病因→判生死→锁救兵→拆路径→六维拆解→壳经济学。</p>
+
+<!-- 引言 -->
+<section id="intro">
+<h2>岛主引言：先给结论，别绕弯子</h2>
+
+<div class="verdict">
+  <div class="box"><div class="k">红线分类</div><div class="v">ST（其他风险警示）<br><span class="tag">非 *ST 退市风险</span></div></div>
+  <div class="box"><div class="k">生死定级</div><div class="v" style="color:var(--green);">血条厚、无死相<br><span class="tag green">确定性活命</span></div></div>
+  <div class="box"><div class="k">自救空间</div><div class="v" style="color:var(--amber);">有主业、无实控人<br><span class="tag amber">缺操刀人</span></div></div>
+</div>
+
+<p><strong>红线分类：ST（其他风险警示），不是退市风险警示（*ST）。</strong>它是"违法处罚型 ST"，不是"净资产为负、主营空心化"那种要命的壳。</p>
+
+<p><strong>生死定级：血条厚、无死相，但也没有爆发相。</strong>净资产 21.17 亿、账面货币资金近 6 亿、负债率 37%，主营机床照常接单、AI 数据服务在放量，摘帽只是时间问题（2026 年 11 月 18 日满一年即可申请）。这是一只"肯定不会死、但眼下也看不出能涨十倍"的票。</p>
+
+<p><strong>自救空间：有主业、无实控人。</strong>这是个反常组合——壳里有真业务（齐重数控的重型机床 + 热热数据的大模型数据标注），但控制权层面是"三角制衡、谁说了都不算"的无实控人结构。真正卡住想象力的，不是退市风险，而是"没有人站出来把它往资本运作方向拧"。</p>
+
+<p>一句话：<strong>ST 汇洲是"历史恩怨已经翻篇、新账本还算干净"的半壳半实业股，摘帽确定性高、弹性取决于有没有新"操刀人"进场。</strong>在十倍股框架里，它目前停在"壳经济学第一层"——够便宜、不够有故事。</p>
+</section>
+
+<!-- 前世今生 -->
+<section id="history">
+<h2>一、前世今生：一部"三易其主+一破重整"的壳史</h2>
+
+<p>先把一句话说透：<strong>这只票的真实资本运作主线是马兴法→徐茂栋→破产重整→无实控人，跟徐翔没有半毛钱直接关系。</strong>网上把它归进"徐翔概念股"是张冠李戴——徐翔的泽熙系当年重仓的是文峰股份、大恒科技、宁波中百、华丽家族、康强电子那批，天马股份不在其中。天马股份的"资本运作"是另一拨人搞的：星河系的徐茂栋。</p>
+
+<h3>时间轴全景表</h3>
+<table>
+<thead><tr><th>时间</th><th>事件</th><th>简称</th><th>关键变化</th></tr></thead>
+<tbody>
+<tr><td>2002-11-18</td><td>马兴法（霍尔果斯天马创投 + 8 名自然人）发起设立</td><td>—</td><td>轴承起家</td></tr>
+<tr><td>2007-03-28</td><td>深交所主板上市</td><td>天马股份</td><td>轴承/机床/"天马轴承"品牌</td></tr>
+<tr><td>2016-12</td><td>控股股东、实控人变更：天马创投→喀什星河（徐茂栋）</td><td>天马股份</td><td>徐茂栋入主，随后剥离 5 家轴承资产</td></tr>
+<tr><td>2017-01~2018-04</td><td>徐茂栋/喀什星河期间：非经营资金占用、违规借款、违规担保</td><td>天马股份</td><td>埋下爆雷引线</td></tr>
+<tr><td>2018-09</td><td>未入账借款、银行账户被冻结 → 首次戴帽</td><td>ST天马</td><td>首轮"其他风险警示"</td></tr>
+<tr><td>2019-03</td><td>徐州睦德、喀什星河、徐茂栋协议解决资金占用</td><td>ST天马</td><td>四合聚力（原徐州乾顺承）登场</td></tr>
+<tr><td>2022-10-30</td><td>衢州中院裁定受理破产重整</td><td>*ST天马</td><td>叠加"退市风险警示"</td></tr>
+<tr><td>2022-12-06</td><td>衢州中院裁定批准重整计划</td><td>*ST天马</td><td>衢州系重整投资人入局</td></tr>
+<tr><td>2022-12-29</td><td>重整计划执行完毕</td><td>*ST天马</td><td>化债落地</td></tr>
+<tr><td>2023-01-10</td><td>撤销退市风险警示</td><td>ST天马</td><td>摘掉"退市"帽子</td></tr>
+<tr><td>2023-02-28</td><td>撤销其他风险警示</td><td>天马股份</td><td>全面摘帽</td></tr>
+<tr><td>2023-06-05</td><td>更名"汇洲智能技术集团"</td><td>汇洲智能</td><td>去"天马""轴承"标签</td></tr>
+<tr><td>2025-10-29</td><td>收《行政处罚事先告知书》（2019/2020 年报造假）</td><td>汇洲智能</td><td>二次戴帽导火索</td></tr>
+<tr class="hl"><td>2025-10-31</td><td>实施其他风险警示</td><td>ST汇洲</td><td>二次 ST，涨跌幅 10%→5%</td></tr>
+<tr><td>2025-11-18</td><td>收到正式《行政处罚决定书》</td><td>ST汇洲</td><td>摘帽计时起点</td></tr>
+<tr class="hl"><td>2026-11-18 起</td><td>满 12 个月，具备申请撤销 ST 条件</td><td>ST汇洲</td><td>摘帽窗口（预期）</td></tr>
+</tbody>
+</table>
+
+<p>读完这张表你就明白：<strong>这只票的历史包袱不在"现在"，而在"2016—2018 那两年徐茂栋留下的烂账"，以及 2019、2020 年并购进来的两家文化/数据公司为了冲业绩造的假。</strong>重整已于 2022 年把烂账洗掉了 90%，但 2019/2020 的假账是 2025 年才被浙江证监局翻出来处罚的，于是"第二顶 ST 帽"就扣上了。</p>
+</section>
+
+<!-- 实控人 -->
+<section id="controller">
+<h2>二、关键人物与实控人现状：一台"三权分立"的机器</h2>
+
+<h3>1. 无实际控制人，这是全篇最重要的一个事实</h3>
+<p>2025 年报白纸黑字写的是：<strong>"实际控制人性质：无实际控制人；实际控制人类型：不存在。"</strong></p>
+
+<p>控股股东是<strong>四合聚力信息科技集团有限公司</strong>（2019 年 9 月 26 日成立，前身"徐州乾顺承科技发展有限公司"），持股 12.42%，加上一致行动人全资子公司杭州和达四方（0.35%），合计 <strong>12.77%</strong>。</p>
+
+<p>四合聚力为什么"无实控人"？因为它内部是<strong>三个股东各持 1/3</strong>：</p>
+<table>
+<thead><tr><th>股东</th><th>背后控制人</th><th>角色</th></tr></thead>
+<tbody>
+<tr><td>陈友德</td><td>本人</td><td>四合聚力董事长</td></tr>
+<tr><td>上海国领资产管理</td><td>王俊、高岚夫妇</td><td>股东之一</td></tr>
+<tr><td>徐州宏健智能科技（原徐州宏开健）</td><td>陈为月</td><td>股东之一</td></tr>
+</tbody>
+</table>
+
+<p>三方之间<strong>无关联、无一致行动</strong>，任何一方都不能单独控制股东会（需过半数）、董事会（3 席各提名 1 名）、关键岗位（董事长、总经理、财务总监<strong>轮值</strong>）。于是结论就是：<strong>没有人说了算，上市公司层面也就没有实控人。</strong></p>
+
+<blockquote><p>大白话：这是一台"三权分立"的公司治理机器，刻意设计成"谁也吃不掉谁"。好处是杜绝了第二个徐茂栋式的一言堂；坏处是——<strong>没人有动力、有资格去发起一场大的资本运作。</strong></p></blockquote>
+
+<h3>2. 老股东没走干净</h3>
+<p>前十大股东里，有两位"化石级"人物值得记一笔：</p>
+<ul>
+<li><strong>马兴法（2.12%，4244 万股）</strong>：天马股份创始掌舵人，轴承时代的老东家，如今只剩个"情怀仓位"。</li>
+<li><strong>蒋根青（0.81%）</strong>：老股东，2026 年上半年还增持了 650 万股。</li>
+</ul>
+<p>现任董事长兼法定代表人<strong>武剑飞</strong>持股 0.46%（920 万股），是公司现任一把手，但注意——<strong>他正是这次 2019/2020 造假案里被浙江证监局罚款 250 万的"时任董事长、总经理"</strong>。这一点后面"意图分析"里要再拎出来讲。</p>
+</section>
+
+<!-- 控制权 -->
+<section id="acquisition">
+<h2>三、怎么拿的控制权：从"买壳"到"抢壳"，再到"无人认领的壳"</h2>
+
+<h3>第一棒：徐茂栋 2016 年"买壳"</h3>
+<p>2016 年 12 月，马兴法家族把控制权卖给喀什星河（徐茂栋）。徐是星河系（互联网创业投资背景）的操盘手，入主后干了两件事：一是把天马的老轴承资产陆续剥离（贵州天马虹山、成都天马精密、北京天马、杭州天马、浙江天马等五家"天马系"轴承子公司置出），把壳腾出来；二是往壳里装"故事"。</p>
+<p>问题就出在第二步：<strong>2017 年 1 月到 2018 年 4 月，徐茂栋/喀什星河通过"支付投资款、预付采购款、商业实质存疑的交易、违规关联交易"等形式，对上市公司搞非经营性资金占用，还以上市公司名义违规借款、违规担保。</strong><a class="src" href="http://file.finance.sina.com.cn/211.154.219.97:9494/MRGG/CNSESZ_STOCK/2022/2022-11/2022-11-11/8661613.PDF" target="_blank">[重整计划·出资人权益调整方案]</a>结果就是 2018 年 9 月公司银行账户被冻结、被查出未入账借款，直接触发第一轮 ST。</p>
+
+<h3>第二棒：2019 年四合聚力"接盘"</h3>
+<p>徐茂栋爆雷后，2019 年 3 月徐州睦德、喀什星河、徐茂栋三方协议解决资金占用，四合聚力（当时的徐州乾顺承）作为"白衣骑士"进场成为控股股东。四合聚力从诞生那天起，就带着"三股东各 1/3、无人独大"的基因。</p>
+
+<h3>第三棒：2022 年破产重整，衢州国资系"进场摘果子"</h3>
+<p>这是最精彩的一段。2022 年 6 月有债权人申请重整，10 月 30 日衢州中院裁定受理，公司股票立刻戴"退市风险警示"（*ST）。重整方案的核心是<strong>资本公积转增股本</strong><a class="src" href="http://epaper.stcn.com/con/202212/07/content_2408622.html" target="_blank">[裁定批准重整计划公告]</a>：</p>
+<ul>
+<li>原总股本 12.146 亿股，<strong>每 10 股转增约 6.30 股</strong>，转增 7.652 亿股，总股本扩到 19.84 亿股；</li>
+<li>转增股票<strong>不向原股东分配</strong>：3.459 亿股给债权人抵债，4.193 亿股由重整投资人受让；</li>
+<li>重整投资人掏 <strong>4.193 亿元现金</strong>，折合 <strong>1 元/股</strong> 拿进 4.193 亿股。</li>
+</ul>
+
+<p>两位重整投资人是谁？看穿透：</p>
+<table>
+<thead><tr><th>重整投资人</th><th>受让股份</th><th>现持股比例</th><th>背后实控人</th><th>出资人结构</th></tr></thead>
+<tbody>
+<tr><td>衢州智造祈爵</td><td>2.20 亿股</td><td>10.99%</td><td>郝继鑫</td><td>衢州启初智造 0.045% / <strong>衢州智造产业投资集团 22.717%</strong> / 海南祁爵科技 77.238%</td></tr>
+<tr><td>博厚明久（衢州）</td><td>1.993 亿股</td><td>9.96%</td><td>孟珊珊</td><td>江苏和厚序博 + 19 名成员</td></tr>
+</tbody>
+</table>
+
+<p><strong>注意那个"衢州智造产业投资集团有限公司"——这是衢州地方国资的身影。</strong>重整后公司注册地也迁到了浙江衢州常山县。这就是典型的"<strong>地方国资借破产重整低价拿壳 + 挽留就业/税收</strong>"的经典打法。</p>
+
+<p>还有一条硬约束：重整投资人承诺<strong>取得股份起 12 个月不减持、36 个月内不谋求实际控制权</strong>。<a class="src" href="http://epaper.zqrb.cn/html/2023-02/09/content_915508.htm" target="_blank">[重整后大股东持股提示性公告]</a>也就是说，衢州国资和博厚明久这些"有钱有血"的股东，眼下都<strong>不能明着抢控制权</strong>。</p>
+
+<h3>小结：控制权的"现在时"</h3>
+<blockquote><p>现在的 ST 汇洲，是一张<strong>"无人认领"的壳</strong>：马兴法还剩 2% 情怀仓；四合聚力 12.77% 但是三权分立、且<strong>股份几乎全质押给了天风天睿</strong>（2026 年 4 月 3 日，四合聚力把名下 2.486 亿股全部质押，占其持股的 100%、占总股本 12.42%）；衢州系重整投资人 36 个月不谋控制权的承诺还在锁定期。<strong>没有实控人 + 大股东股权全质押 + 国资不抢位 = 典型"格局未定、等着破局"的壳。</strong></p></blockquote>
+</section>
+
+<!-- 戴帽 -->
+<section id="st-reason">
+<h2>四、戴帽始末：为什么这一次是"违法处罚型 ST"</h2>
+
+<p>这一次 ST 的"病因"不是没钱，是<strong>历史年报造假被抓现行</strong>。</p>
+<p>2025 年 10 月 29 日，公司收到浙江证监局《行政处罚事先告知书》（浙处罚字〔2025〕17 号），查明<a class="src" href="https://disc.static.szse.cn/disc/disk03/finalpage/2025-10-30/0881051c-d67c-401d-aa7e-5985244c3861.PDF" target="_blank">[戴帽停复牌公告]</a>：</p>
+<ul>
+<li>控股子公司<strong>北京热热文化</strong>、<strong>北京中科华世</strong>开展虚假广告推广、著作权授权、视频审核、调研报告等<strong>无商业实质业务</strong>；</li>
+<li><strong>2019 年虚增收入 5990.19 万元（占当期 5.08%）、虚增利润总额 1415.84 万元（0.88%）</strong>；</li>
+<li><strong>2020 年虚增收入 9688.56 万元（13.42%）、虚增利润总额 1777.05 万元（8.72%）</strong>。</li>
+</ul>
+
+<p>依据《深交所股票上市规则（2025 年修订）》<strong>第 9.8.1 条第（八）项</strong>——"根据行政处罚事先告知书载明的事实，年报财务指标存在虚假记载"，触发<strong>其他风险警示</strong><a class="src" href="https://www.stcn.com/article/detail/3446797.html" target="_blank">[证券时报快讯]</a>：</p>
+<ul>
+<li>2025-10-30 停牌一天；</li>
+<li>2025-10-31 复牌，简称"汇洲智能"→"ST 汇洲"，日涨跌幅 10%→5%；</li>
+<li>罚款：公司 500 万，时任董事长/总经理武剑飞 250 万、时任副总/董事姜学谦 250 万、财务总监陈莹莹 150 万、董秘武宁 150 万（高管合计 800 万）。<a class="src" href="http://www.cnstock.com/commonDetail/572844" target="_blank">[上证报]</a><a class="src" href="http://m.zqrb.cn/gscy/gongsi/2025-10-31/A1761909071722.html" target="_blank">[证券日报]</a></li>
+</ul>
+
+<p>2025 年 11 月 18 日收到正式《行政处罚决定书》，<strong>摘帽计时从这一天起算</strong>。<a class="src" href="https://stcn.com/article/detail/3503288.html" target="_blank">[处罚决定书报道]</a>按规则，自行政处罚决定书作出之日起满 12 个月（即 <strong>2026 年 11 月 18 日</strong>）后，公司可向深交所申请撤销该风险警示（前提是没有新的合规问题）。</p>
+
+<blockquote><p>一口大白话：<strong>这次 ST 是"违法类 ST"，罚的是 2019/2020 那两张旧年报，跟 2025、2026 的经营无关。帽子能不能摘，主要看程序走完 + 后续不再出事，跟业绩扭不扭亏关系不大。</strong>这是理解这只票"生死"的关键。</p></blockquote>
+</section>
+
+<!-- 财务 -->
+<section id="finance">
+<h2>五、财务底子：账面不吓人，但盈利质量很"薄"</h2>
+
+<h3>1. 核心财务数据（定稿数）</h3>
+<table>
+<thead><tr><th>指标</th><th class="num">2025 年报</th><th class="num">2024 年报</th><th class="num">2026H1</th><th>H1 同比</th></tr></thead>
+<tbody>
+<tr><td>营业收入</td><td class="num hl">10.73 亿</td><td class="num">9.37 亿</td><td class="num hl">6.12 亿</td><td>+11.67%</td></tr>
+<tr><td>归母净利润</td><td class="num">4591.34 万</td><td class="num">-3.71 亿</td><td class="num hl" style="color:var(--red);">-7119.00 万</td><td>-474.92%</td></tr>
+<tr><td>扣非归母净利</td><td class="num">-3210.40 万</td><td class="num">-3.83 亿</td><td class="num">-1485.94 万</td><td>-183.19%</td></tr>
+<tr><td>经营现金流净额</td><td class="num">-5282.18 万</td><td class="num">-1758.82 万</td><td class="num">-5626.39 万</td><td>连续为负</td></tr>
+<tr><td>基本每股收益</td><td class="num">0.0229 元</td><td class="num">-0.1856 元</td><td class="num">-0.0356 元</td><td>—</td></tr>
+<tr><td>加权 ROE</td><td class="num">2.18%</td><td class="num">-17.74%</td><td class="num">-3.33%</td><td>—</td></tr>
+</tbody>
+</table>
+
+<h3>2. 资产负债表（2026 半年报合并口径）</h3>
+<table>
+<thead><tr><th>项目</th><th class="num">金额</th><th>项目</th><th class="num">金额</th></tr></thead>
+<tbody>
+<tr><td>总资产</td><td class="num">38.18 亿</td><td>负债合计</td><td class="num">14.13 亿</td></tr>
+<tr><td>货币资金</td><td class="num">5.95 亿</td><td>归母净资产</td><td class="num">21.17 亿</td></tr>
+<tr><td>资产负债率</td><td class="num">37.02%</td><td>所有者权益合计</td><td class="num">24.04 亿（含少数股东权益 2.87 亿）</td></tr>
+</tbody>
+</table>
+
+<p><strong>账是干净的</strong>：负债率不到四成，货币资金近 6 亿，没有商誉地雷（早年并购热热文化、中科华世的商誉在 2022 年已大额减值计提）。2025 年报审计意见是<strong>标准无保留意见</strong>（中兴财光华），内控审计也是<strong>标准无保留意见</strong>——审计师没在现在的账本上找麻烦。</p>
+
+<h3>3. 但 2026 上半年为什么突然亏 7119 万？</h3>
+<p>这是必须讲透的。2026H1 亏损<strong>不是主业崩了</strong>，而是<strong>一次性"补税 + 滞纳金"砸出来的</strong>。看非经常性损益明细：</p>
+<table>
+<thead><tr><th>项目</th><th class="num">金额</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>补缴土地增值税</td><td class="num" style="color:var(--red);">-3628.42 万</td><td>一次性</td></tr>
+<tr><td>社保及税收滞纳金</td><td class="num" style="color:var(--red);">-2333.68 万</td><td>齐重数控自查补税</td></tr>
+<tr class="hl"><td>非经常性损益合计</td><td class="num" style="color:var(--red);">-5633.06 万</td><td>—</td></tr>
+</tbody>
+</table>
+<p>事情是：控股子公司<strong>齐重数控</strong> 2026 年 5 月 30 日自查补缴税款 4160.89 万 + 滞纳金 1912.53 万，合计 <strong>6073.42 万</strong>，公司自己预计这会<strong>减少 2026 年归母净利润 5550.84 万</strong>。<a class="src" href="https://stcn.com/article/detail/3934738.html" target="_blank">[齐重数控补税公告]</a>再加上补缴土地增值税 3628 万，两项一砸，半年报自然就红了。</p>
+
+<blockquote><p>大白话：<strong>主业其实还在赚钱（扣非只亏 1486 万，主因是创投业务公允价值波动 + 补税），但"补税+滞纳金"这种一次性毒打把归母净利打成 -7119 万。</strong>这种亏损是"历史的欠账"，不是"生意的恶化"。</p></blockquote>
+
+<h3>4. 三个主业板块的真实成色</h3>
+<table>
+<thead><tr><th>板块</th><th>经营实体</th><th>2026H1 表现</th><th>判断</th></tr></thead>
+<tbody>
+<tr><td>高端装备制造（主轴）</td><td>齐重数控</td><td>收入 5.45 亿（+10.9%），新签订单 7.68 亿（<strong>+27.22%</strong>）</td><td><strong>真业务、有增长</strong>，工业母机/重型机床国产替代逻辑</td></tr>
+<tr><td>大模型数据服务</td><td>热热数据</td><td>收入 6606.8 万（<strong>+81.19%</strong>），在手订单含已交付超 1 亿</td><td>增速最快，是"新故事"，但体量还小</td></tr>
+<tr><td>创投服务与资产管理</td><td>多个基金平台</td><td>公允价值波动主导损益</td><td>利润"看天吃饭"，不带来稳定现金流</td></tr>
+</tbody>
+</table>
+<p><strong>结论：主业是"机床 + AI 数据"的双轮，机床是基本盘、AI 数据是想象点。</strong><a class="src" href="https://stcn.com/article/detail/4132441.html" target="_blank">[2026 半年报报道]</a>但这两块目前都还撑不起"十倍股"的估值故事——机床是传统重资产低毛利，AI 数据（热热数据标的才几亿收入体量）还在培育期。</p>
+</section>
+
+<!-- 六维 -->
+<section id="sixdim">
+<h2>六、六维拆解：十倍股的六个拷问</h2>
+
+<h3>维度一：重组节奏——"已重组的尾盘"</h3>
+<p>ST 汇洲<strong>已经走过一轮完整破产重整</strong>（2022 完成），血洗过一次，账清、人换、国资入局。这意味着：<strong>"重整预期"这个十倍股里最大的催化剂，已经用掉了。</strong>后面不会再有"破产重整重组上市"这一类的暴力预期，最多是"摘帽 + 可能的资产注入"这类温和预期。</p>
+
+<h3>维度二：新实控人意图——"没有新实控人"</h3>
+<p>这是最要命的一条。<strong>有控制权变更驱动的十倍股，前提是有一个"有诉求、有资源、敢下手"的新实控人。</strong>ST 汇洲现在是"无实控人"，四合聚力三权分立还被质押锁死，衢州国资受 36 个月不谋控制权承诺约束。<strong>没有"操刀人"，就没有"重组上市/借壳/资产注入"的剧本。</strong>谁会是下一个操刀人？目前看不到。</p>
+
+<h3>维度三：原业务质量——"中等偏上"</h3>
+<p>齐重数控的重型机床是<strong>真资产、真订单、真增长</strong>，这比纯空壳强太多。老"天马精密"（成都天马精密）那些轴承资产早被徐茂栋卖了。现在的业务质量给 6 分（10 分制）：能养活人、有国产替代概念，但毛利率低、吃周期。</p>
+
+<h3>维度四：承诺包活口——"有，但都是'别乱动'型承诺"</h3>
+<p>现有承诺全是"消极承诺"：12 个月不减持、36 个月不谋控制权。<strong>没有一条是"积极承诺"（比如注入资产、保业绩、保股价）。</strong>这意味着短期没有一个"逼公司兑现利好"的抓手。反而，<strong>控股股东四合聚力股权 100% 质押（给天风天睿），是个潜在风险点</strong>——只要股价大幅下跌，就可能触发被动减持甚至控制权被动变更，这是"惊吓"而非"惊喜"。</p>
+
+<h3>维度五：行情映射——"低价 + 低价位 + 摘帽日历"</h3>
+<ul>
+<li>股价 2.78 元附近，<strong>总市值 55.6 亿</strong>，市净率约 2.6 倍，PE(TTM) 为负；<a class="src" href="https://quote.cfi.cn/quote_002122.html" target="_blank">[中财网行情]</a><a class="src" href="https://stcn.com/quotes/index/sz002122.html" target="_blank">[证券时报行情]</a></li>
+<li>5% 涨跌幅限制（ST 属性）；</li>
+<li>摘帽日历明确：<strong>2026 年 11 月 18 日满一年可申请</strong>，是唯一一个"看得见的时间催化剂"；</li>
+<li>55 亿市值对一个年营收 10 亿、净资产 21 亿的公司不算便宜也不算贵，<strong>"壳价"层面 2.6 倍 PB 处于中性偏贵</strong>（真壳股通常 1-1.5 倍 PB 更有安全边际）。<a class="src" href="https://data.eastmoney.com/gzfx/detail/002122.html" target="_blank">[东方财富估值]</a></li>
+</ul>
+
+<h3>维度六：综合判断——"守成有余、进攻不足"</h3>
+<p><strong>结论一句话：这是一只"确定性摘帽、但缺乏十倍弹性"的标的。</strong>适合做"摘帽日历"的确定性套利，不适合做"十倍股"的重仓押注。它的十倍空间，必须等一个变量出现：<strong>出现一个有诉求的新实控人/操刀人，把机床或 AI 数据资产往"资产证券化、注入、重组"方向做动作。</strong>在这个变量出现之前，它就是"半壳半实业"的白开水。</p>
+</section>
+
+<!-- 壳经济学 -->
+<section id="shell">
+<h2>七、壳经济学：这张壳值多少钱、值不值救</h2>
+
+<p>用"王艳体"的壳价值评估三问来收尾：</p>
+<p><strong>1. 这张壳干不干净？</strong>干净。重整洗过债、审计无保留、无资金占用、无违规担保、无立案未结（处罚已落地），负债率 37%。<strong>是 A 股 ST 里少见的"干净壳"。</strong></p>
+<p><strong>2. 谁在救、救到哪一步了？</strong>已经救完了——2022 年重整就是"救"的动作，衢州国资 + 博厚明久出了 4.19 亿真金白银，债清了、人换了。<strong>眼下是"救完之后没人接手经营野心"的状态。</strong></p>
+<p><strong>3. 值不值得救/值不值得买？</strong>从"活下去"角度，它自己就能活；从"十倍"角度，它现在<strong>缺的不是钱，是故事和讲故事的人</strong>。55.6 亿市值、2.6 倍 PB，作为"摘帽套利"的赔率一般（涨跌幅才 5%，摘帽也未必大涨），作为"十倍股"的赔率要靠"新实控人"这一尚未出现的强催化剂。</p>
+
+<blockquote><p><strong>壳经济学结论：ST 汇洲是"已经被救干净的壳"，下一段的十倍逻辑，赌的不是"它会不会死"，而是"有没有新老板愿意把这张壳再炒热"。目前这个新老板还没出现。</strong></p></blockquote>
+</section>
+
+<!-- 数据来源 -->
+<section id="sources">
+<h2>八、数据来源</h2>
+<ol class="src-list">
+<li>《汇洲智能技术集团股份有限公司 2026 年半年度报告》（2026-08-27，公告编号 2026-039）<span class="d">巨潮资讯网/深交所（本地底稿 PDF）</span></li>
+<li>《汇洲智能技术集团股份有限公司 2025 年年度报告》（2026-04-20）<span class="d">巨潮资讯网/深交所（本地底稿 PDF）</span></li>
+<li>《关于公司股票交易被实施其他风险警示暨股票停复牌的提示性公告》（2025-10-30）<a href="https://disc.static.szse.cn/disc/disk03/finalpage/2025-10-30/0881051c-d67c-401d-aa7e-5985244c3861.PDF" target="_blank">链接</a></li>
+<li>证券日报网《连续两年虚增收入被罚 ST 汇洲复牌首日跌停》（2025-10-31）<a href="http://m.zqrb.cn/gscy/gongsi/2025-10-31/A1761909071722.html" target="_blank">链接</a></li>
+<li>上海证券报《财务造假！002122 被罚》（2025-10-30）<a href="http://www.cnstock.com/commonDetail/572844" target="_blank">链接</a></li>
+<li>证券时报《汇洲智能：公司股票将于 10 月 31 日起被实施其他风险警示》（2025-10-29）<a href="https://www.stcn.com/article/detail/3446797.html" target="_blank">链接</a></li>
+<li>都市快报《汇洲智能 今天戴上 ST 帽》（2025-10-31）<a href="https://mdaily.hangzhou.com.cn/dskb/2025/10/31/article_detail_2_20251031A141.html" target="_blank">链接</a></li>
+<li>证券时报/深圳商报《ST 汇洲涉嫌造假 被罚款 500 万元》（2025-11-20，处罚决定书）<a href="https://stcn.com/article/detail/3503288.html" target="_blank">链接</a></li>
+<li>《天马轴承集团股份有限公司重整计划草案之出资人权益调整方案》（2022-11）<a href="http://file.finance.sina.com.cn/211.154.219.97:9494/MRGG/CNSESZ_STOCK/2022/2022-11/2022-11-11/8661613.PDF" target="_blank">链接</a></li>
+<li>证券时报《关于法院裁定批准重整计划的公告》（2022-12-07，公告编号 2022-094）<a href="http://epaper.stcn.com/con/202212/07/content_2408622.html" target="_blank">链接</a></li>
+<li>证券日报《关于撤销退市风险警示并继续实施其他风险警示暨停牌公告》（2023-01-07，公告编号 2023-006）<a href="http://epaper.zqrb.cn/html/2023-01/07/content_908540.htm" target="_blank">链接</a></li>
+<li>证券日报《关于重整计划实施完成后大股东持股情况的提示性公告》（2023-02-09，公告编号 2023-020）<a href="http://epaper.zqrb.cn/html/2023-02/09/content_915508.htm" target="_blank">链接</a></li>
+<li>证券时报《关于变更公司名称、证券简称及经营范围暨完成工商变更登记的公告》（2023-06-03，公告编号 2023-064）<a href="http://epaper.stcn.com/con/202306/03/content_2489982.html" target="_blank">链接</a></li>
+<li>《汇洲智能技术集团股份有限公司 2023 年半年度报告摘要》（2023-08-31，公告编号 2023-077）<a href="https://disc.static.szse.cn/download/disc/disk03/finalpage/2023-08-31/62af986e-44ef-48bd-a9b0-eb2c96b4485b.PDF" target="_blank">链接</a></li>
+<li>证券时报行情页《ST 汇洲（sz002122）》（2026-09-21）<a href="https://stcn.com/quotes/index/sz002122.html" target="_blank">链接</a></li>
+<li>中财网行情《ST 汇洲（002122）》（2026-09-21）<a href="https://quote.cfi.cn/quote_002122.html" target="_blank">链接</a></li>
+<li>东方财富估值分析《ST 汇洲》（2026-09-18 收盘数据）<a href="https://data.eastmoney.com/gzfx/detail/002122.html" target="_blank">链接</a></li>
+<li>证券时报网《ST 汇洲：上半年营收稳健增长 高端装备与 AI 数据服务双轮发力》（2026-08-26）<a href="https://stcn.com/article/detail/4132441.html" target="_blank">链接</a></li>
+<li>证券时报·e 公司《ST 汇洲控股子公司齐重数控补缴 6073.42 万元税款》（2026-05-29）<a href="https://stcn.com/article/detail/3934738.html" target="_blank">链接</a></li>
+<li>人民财讯《汇洲智能全资子公司战略投资虚时科技（IntimeAI）》（2026-06-30）<a href="https://stcn.com/article/detail/3987958.html" target="_blank">链接</a></li>
+</ol>
+</section>
+
+<footer class="disc">
+（免责声明：本文内容仅为自用兼知识分享与逻辑分析，数据可能有错误或不及时，不构成任何投资建议。市场有风险，投资需谨慎。）
+</footer>
+
+</div>
+</body>
+</html>
