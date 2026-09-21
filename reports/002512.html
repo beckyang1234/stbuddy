@@ -17,7 +17,35 @@
     a{color:#2e86c1}
     table{display:table}
     .top{float:right;font-size:12px}
-    </style></head><body>
+    </style></head><body><script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
 <div class="top"><a href="#top">回顶部</a></div>
 <div id="top"></div>
 <div class="toc"><strong>目录</strong><a href="#ST达华002512_中国第一家握有Ka卫星轨位的民企_如今是一座_无主_的壳_1">ST达华002512：中国第一家握有Ka卫星轨位的民企，如今是一座&quot;无主&quot;的壳——中植系16%筹码等待变价，摘帽闹钟定在2027年4月</a><a href="#岛主引言_三行结论_1">✅ 岛主引言：三行结论</a><a href="#一_前世今生_从中山RFID小厂到福州_卫星壳_的16年_1">一、前世今生：从中山RFID小厂到福州&quot;卫星壳&quot;的16年</a><a href="#2010_2013_RFID起家_上市即巅峰的开始_1">2010-2013：RFID起家，上市即巅峰的开始</a><a href="#2016_2018_中植系入股_卫星梦_迁福州_1">2016-2018：中植系入股、卫星梦、迁福州</a><a href="#2019_2021_创始人爆仓_对簿仲裁_无主_诞生_1">2019-2021：创始人爆仓、对簿仲裁、&quot;无主&quot;诞生</a><a href="#2021_2024_陈融圣时代_7_95亿瞒报合同与福米豪赌_1">2021-2024：陈融圣时代——7.95亿瞒报合同与福米豪赌</a><a href="#2024_2026_东窗事发_戴帽_处罚落地_1">2024-2026：东窗事发、戴帽、处罚落地</a><a href="#二_为什么被ST_三宗罪_1780万罚单_一条摘帽闹钟_1">二、为什么被ST：三宗罪，1780万罚单，一条摘帽闹钟</a><a href="#类型诊断_1">类型诊断</a><a href="#三宗罪原文拆解_处罚决定书认定_1">三宗罪原文拆解（处罚决定书认定）</a><a href="#罚单与责任链_1">罚单与责任链</a><a href="#摘帽闹钟_最重要的时间表_1">摘帽闹钟（最重要的时间表）</a><a href="#三_谁在操盘_一座无主之壳上的四方势力_1">三、谁在操盘：一座无主之壳上的四方势力</a><a href="#前十大股东_2025年末_2025年报_1">前十大股东（2025年末，2025年报）</a><a href="#四方势力画像_1">四方势力画像</a><a href="#筹码面正在异动_1">筹码面正在异动</a><a href="#四_财务体检_18亿营收的_虚胖巨人_账上只剩7000万现金_1">四、财务体检：18亿营收的&quot;虚胖巨人&quot;，账上只剩7000万现金</a><a href="#三个红灯与两个黄灯_1">三个红灯与两个黄灯</a><a href="#主业还剩什么_1">主业还剩什么</a><a href="#五_当前进展_五条线的最新坐标_1">五、当前进展：五条线的最新坐标</a><a href="#六_估值与赌局_44亿市值_买的是哪一张牌_1">六、估值与赌局：44亿市值，买的是哪一张牌</a><a href="#七_风险清单_分级_与避坑提醒_1">七、风险清单（分级）与避坑提醒</a><a href="#八_结语_1">八、结语</a><a href="#附录_关键信源_可点击核对_1">附录 · 关键信源（可点击核对）</a><a href="#文末_多源交叉核对说明_1">文末 · 多源交叉核对说明</a></div>
