@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ST易联众(300096)深度研究·王艳体</title>
+<style>
+:root{
+  --ink:#1a1a1a; --sub:#555; --muted:#888; --line:#ddd; --accent:#8c1f1f;
+  --bg:#fffdf8; --zebra:#f6f3ec; --tablehead:#2c2c2c; --tableheadink:#fff;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0; padding:0; color:var(--ink); background:var(--bg);
+  font-family:"Songti SC","STSong","SimSun","Noto Serif SC",Georgia,"Times New Roman",serif;
+  line-height:1.85; font-size:16px;
+}
+.wrap{max-width:880px; margin:0 auto; padding:40px 28px 80px;}
+h1{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC","Source Han Sans SC",sans-serif; font-weight:700; font-size:27px; line-height:1.4; margin:0 0 6px;}
+.meta{font-family:"PingFang SC","Microsoft YaHei",sans-serif; color:var(--muted); font-size:13px; margin-bottom:34px; padding-bottom:18px; border-bottom:2px solid var(--ink);}
+h2{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif; font-weight:700; font-size:20px; margin:44px 0 14px; padding-left:12px; border-left:4px solid var(--accent);}
+h3{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif; font-weight:600; font-size:17px; margin:28px 0 10px; color:#333;}
+h4{font-size:15px; margin:20px 0 8px; color:#444;}
+p{margin:12px 0;}
+ul,ol{margin:10px 0 10px 4px; padding-left:22px;}
+li{margin:5px 0;}
+strong{color:#111;}
+em{font-style:normal; color:var(--accent); font-weight:700;}
+.red{color:var(--accent); font-weight:700;}
+.tag{display:inline-block; font-family:inherit; font-size:13px; color:#fff; background:var(--accent); padding:1px 8px; border-radius:3px; margin-right:6px;}
+.tag.gray{background:#666;}
+.callout{border:1px solid var(--accent); background:#fbf3f0; border-left:4px solid var(--accent); padding:14px 18px; margin:18px 0; border-radius:4px;}
+.callout.blue{border-color:#2c5f8a; background:#f0f6fb; border-left-color:#2c5f8a;}
+table{border-collapse:collapse; width:100%; margin:16px 0; font-size:14px; font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;}
+th,td{border:1px solid var(--line); padding:7px 9px; text-align:left; vertical-align:top;}
+thead th{background:var(--tablehead); color:var(--tableheadink); font-weight:600; white-space:nowrap;}
+tbody tr:nth-child(even){background:var(--zebra);}
+td.num{text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums;}
+.note{font-size:13px; color:var(--muted);}
+a{color:#1a56a0; text-decoration:none; border-bottom:1px dotted #1a56a0;}
+a:hover{color:#8c1f1f; border-bottom-color:#8c1f1f;}
+.hr{border:none; border-top:1px solid var(--line); margin:36px 0;}
+blockquote{margin:14px 0; padding:10px 16px; background:#f2f2ef; border-left:3px solid #999; color:#444; font-size:14.5px;}
+.verdict{font-family:"PingFang SC","Microsoft YaHei",sans-serif; font-weight:700; font-size:20px; color:var(--accent); margin:6px 0;}
+.leadbox{background:#fff; border:1.5px solid var(--ink); padding:18px 22px; margin:18px 0;}
+.src-list{font-size:13.5px;}
+.src-list li{margin:7px 0; word-break:break-all;}
+@media print{
+  body{background:#fff; font-size:12.5px;}
+  .wrap{max-width:100%; padding:0;}
+  a{color:#000; border:none;}
+  table{font-size:11px;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>ST易联众（300096.SZ）深度研究 · 王艳体</h1>
+<div class="meta">寻找十倍系列方法 · 控制权变更 / 壳 / 国资纾困驱动&nbsp;&nbsp;|&nbsp;&nbsp;更新时间：2026-09-21&nbsp;&nbsp;|&nbsp;&nbsp;本文为自用知识分享与逻辑推演，不构成任何投资建议</div>
+
+<hr class="hr">
+
+<h2>① 岛主引言：先把话说死</h2>
+
+<div class="leadbox">
+<p class="verdict">红线分类：规范类「其他风险警示（ST）」——不是 *ST，不是财务类、不是交易类、更不是重大违法类退市。</p>
+<p class="verdict">生死定级：已过「死亡关」，处于「排雷完成、摘帽待批」的收官档；唯一悬念是深交所何时盖章。</p>
+<p class="verdict">自救空间：救兵＝河南周口市国资，2.88亿元司法拍卖拿下控制权，「钱、资产、人、时间」四样基本到位；十倍股要看第二阶段国资是否注入资产。</p>
+</div>
+
+<p>先把结论摊开说：<strong>ST易联众这个 ST，不是「病入膏肓」的退市预备队，而是「换了东家的干净壳」</strong>。它被戴帽的原因很纯粹——原实控人张曦背着董事会、以自己的名义私设了约 5.5 亿元违规担保+一笔 6000 万、一笔 5000 万的违规借款，几年都没在公告里说，2023 年 11 月公司自查才炸出来，深交所按「违反规定程序对外担保情形严重」这条给它戴了 ST 帽。这条帽子属于「其他风险警示」，是四类退市红线里离生死线最远的一类。</p>
+
+<p>到 2026 年 9 月这个时点，三根「雷管」已经全部拆了：①5.5 亿担保被北京仲裁委裁定公司不担责、保证合同无效；②6000 万借款被苏州工业园区法院裁定撤诉、资金已清偿；③5000 万共同借款被杭州中院二审判决公司不担责、浙江高院再审驳回。立案调查也在 2026 年 7 月 8 日落了《行政处罚决定书》，厦门证监局白纸黑字写明「<strong>未触及重大违法强制退市的情形</strong>」。公司 2026 年 9 月 4 日已经向深交所正式申请摘帽。（来源见⑥）</p>
+
+<p>一句话：<em>这是一个「雷已拆完、只等盖章」的国资控盘标的</em>。要赚的不是「赌它不死」的排雷钱——那个钱在 2024-2025 年已经被人赚走了（股价从国资入主成本 4.14 元一路爬到 9.23 元）——而是赌河南周口国资接下来在这个「民生信息化牌照壳」上做不做第二篇大文章。</p>
+
+<h3>股价与市值快照（2026-09-18 收盘，最新交易日）</h3>
+<table>
+<thead><tr><th>项目</th><th>数值</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>收盘价</td><td class="num">9.23 元（+6.21%）</td><td>涨 0.54 元</td></tr>
+<tr><td>总股本</td><td class="num">4.30 亿股</td><td>已全流通</td></tr>
+<tr><td>总市值 / 流通市值</td><td class="num">39.69 亿 / 39.69 亿</td><td>市值＝9.23×4.30亿</td></tr>
+<tr><td>动态市盈率</td><td class="num">-41.66 倍</td><td>亏损，不给 PE</td></tr>
+<tr><td>动态市净率（PB）</td><td class="num">12.66 倍</td><td>9.23 ÷ 每股净资产0.729元</td></tr>
+<tr><td>PS（按2025营收）</td><td class="num">≈7.96 倍</td><td>39.69亿 ÷ 4.986亿营收</td></tr>
+<tr><td>换手率 / 成交额</td><td class="num">1.40% / 0.54 亿</td><td>当日</td></tr>
+</tbody>
+</table>
+<p class="note">数据来源：<a href="https://egs.stcn.com/quotation/stock-info/sz300096.html" target="_blank">证券时报·e公司个股页（2026-09-21 06:44，最新收盘 9.23）</a>、<a href="http://vip.stock.finance.sina.com.cn/corp/go.php/vCI_StockHolder/stockid/300096/displaytype/30.phtml" target="_blank">新浪财经个股页（2026-09-18 16:29 收盘价 9.23）</a>。两源互证一致。</p>
+
+<div class="callout blue">
+<p><strong>一句话定性（我判断）：</strong>这不是「十倍股已经走完」的票，也不是「随时会退市归零」的票，而是一张<strong>低风险已排雷、高弹性靠注入</strong>的牌。它的确定性（摘帽）已经基本定价，它的想象空间（国资资产注入／重组）还没被定价。真正要盯的不是 ST 的帽子，而是<a href="#sec5">⑤周口国资的意图</a>——它花 2.88 亿买下 16.19%，到底是想「要一个上市的壳」，还是「要一个做民生数字产业的平台」。</p>
+</div>
+
+<hr class="hr">
+
+<h2>② 前世今生：一步错，把一家部委级软件公司逼到戴帽</h2>
+
+<p>先看时间轴。这张表是理解全案的骨架，建议先扫一遍再往下读。</p>
+
+<table>
+<thead><tr><th>时间</th><th>关键事件</th><th>股权 / 实控人变化</th><th>背后逻辑</th></tr></thead>
+<tbody>
+<tr><td>2000-07</td><td>易联众成立，总部厦门</td><td>古培坚等创始团队</td><td>民生信息化起家</td></tr>
+<tr><td>2010</td><td>深交所创业板上市（300096）</td><td>—</td><td>人社/医保 IT 第一梯队</td></tr>
+<tr><td>2014-08</td><td>张曦出任董事长</td><td>张曦入局</td><td>资本换帅，埋雷开始</td></tr>
+<tr><td>2015-11</td><td>张曦受让原实控人古培坚 12.79% 股份（耗资 10.69 亿元）</td><td><strong>张曦成为控股股东、实控人</strong></td><td>厦大校友·资本强人入主</td></tr>
+<tr><td>2017-12</td><td>张曦通过兴业信托「兴运扶摇6号」增持 2150 万股（5%）</td><td>合计持股 9800 万股＝22.791%</td><td>股价高位加杠杆</td></tr>
+<tr><td>2018-02</td><td>张曦私自以公司名义向苏州诺金借款 6000 万（转入京发置业账户）</td><td>—</td><td><strong>违规借款①</strong>，构成非经营性资金占用</td></tr>
+<tr><td>2018-10</td><td>张曦私自以公司名义为京发置业 5.5 亿借款担保（占2017净资产71.61%）</td><td>—</td><td><strong>违规担保</strong>（后2020月/6月重新确认5.42亿/5.55亿）</td></tr>
+<tr><td>2021-03</td><td>张曦、张华芳私自以公司名义与高彩娥共同借款 5000 万</td><td>—</td><td><strong>违规借款②</strong></td></tr>
+<tr><td>2023-10-26/27</td><td>张曦 6960.67 万股首拍流拍（起拍 3.06 亿）</td><td>—</td><td>债权人质押式回购纠纷申请强制执行</td></tr>
+<tr><td>2023-11-16/17</td><td><strong>二拍成交</strong>：周口城发智能科技以 2.88 亿元、4.14 元/股竞得 16.19%</td><td>城发科技胜出</td><td>起拍价降到 2.44 亿，30 多轮竞价</td></tr>
+<tr><td>2023-11-28</td><td>公司自查公告：存在违规担保、违规借款</td><td>—</td><td>张曦多年隐瞒曝光</td></tr>
+<tr><td>2023-11-29</td><td>张曦收到证监会<strong>立案告知书</strong></td><td>—</td><td>监管介入</td></tr>
+<tr><td>2023-12-18</td><td>城发科技付清拍卖尾款</td><td>—</td><td>—</td></tr>
+<tr><td>2024-01-02</td><td><strong>深交所实施其他风险警示，简称变更为「ST易联众」</strong></td><td>城发科技完成过户，<strong>实控人变更为周口市财政局</strong></td><td>戴帽日</td></tr>
+<tr><td>2024-05-08</td><td>公司收到证监会<strong>立案告知书</strong>（信披违法违规）</td><td>—</td><td>—</td></tr>
+<tr><td>2024-08</td><td>北京仲裁委裁决：5.5 亿担保公司不担责</td><td>—</td><td>最大雷出清</td></tr>
+<tr><td>2025-08</td><td>杭州中院二审判决：5000 万共同借款公司不还款</td><td>—</td><td>第二雷出清</td></tr>
+<tr><td>2026-04-27</td><td>2025 年报披露：营收 4.99 亿、归母 4932 万扭亏</td><td>—</td><td>审计意见：带强调事项段无保留</td></tr>
+<tr><td>2026-06-12</td><td>厦门证监局《行政处罚事先告知书》</td><td>—</td><td>拟罚公司300万、张曦1750万+终身禁入</td></tr>
+<tr><td>2026-07-08</td><td>厦门证监局《行政处罚决定书》（〔2026〕6号）</td><td>—</td><td><strong>明确未触及重大违法强制退市</strong></td></tr>
+<tr><td>2026-08-26</td><td>2026 半年报披露：营收 1.82 亿、归母 -4764 万</td><td>—</td><td>主业回到亏损</td></tr>
+<tr><td>2026-09-04</td><td><strong>董事会通过，向深交所申请撤销其他风险警示（摘帽）</strong></td><td>—</td><td>尚需深交所审核</td></tr>
+</tbody>
+</table>
+
+<p class="note">时间轴来源：<a href="http://disc.static.szse.cn/download/disc/disk03/finalpage/2023-12-28/e482e65e-73e9-487e-bb87-81980e934941.PDF" target="_blank">《关于公司股票被实施其他风险警示暨公司股票停牌的提示性公告》（公告编号2023-085，深交所，2023-12-29）</a>、<a href="https://www.stcn.com/article/detail/1041068.html" target="_blank">证券时报《河南国资再出手 易联众或易主》（2023-11-20）</a>、<a href="https://www.stcn.com/article/detail/3960460.html" target="_blank">证券时报《2家A股公司，领罚单！》（2026-06-14）</a>、<a href="https://www.stcn.com/article/detail/4173626.html" target="_blank">证券时报《ST易联众，申请"摘帽"》（2026-09-05）</a>。</p>
+
+<p>这段历史的「病因」其实就一句话：<strong>一家资质极好的软件公司，落到了一个把上市公司当自家提款机、还一瞒就是五年的老板手里</strong>。张曦 2015 年花 10.69 亿买下控制权，2017 年又在高位通过信托计划加仓 5%，然后 2018-2021 年间连续三次「私盖公章」——为体外关联方担保、以公司名义借款、与妹妹共同借款，全程不履行董事会/股东大会程序、不披露。直到 2023 年 11 月公司自查才引爆，随后戴帽、立案、处罚一路砸下来。（来源：<a href="https://finance.sina.com.cn/wm/2026-06-16/doc-inicqsxv4475183.shtml" target="_blank">新浪财经/晋江经济报《张曦被罚1750万元，终身市场禁入》2026-06-16</a>、<a href="https://www.stcn.com/article/detail/3960460.html" target="_blank">证券时报 2026-06-14</a>）</p>
+
+<hr class="hr">
+
+<h2>③ 关键人物：到底是谁在控制这家公司</h2>
+
+<h3>现任实控人：周口市财政局（周口市国有资产监督管理局）</h3>
+<p>这是全案最关键的变量，也是和一般「ST 壳」最不一样的地方——<strong>新东家是纯正的河南地方国资，还是「市财政局」这种级别</strong>。</p>
+<ul>
+<li><strong>控股股东</strong>：周口城发智能科技有限公司（简称城发科技），持股 69,606,749 股＝<strong>16.19%</strong>，为第一大股东。</li>
+<li><strong>最终控制方</strong>：周口市财政局（周口市国有资产监督管理局）。</li>
+<li><strong>城发科技注册资本</strong>：3 亿元（2026 半年报口径）；其控股股东为「周口周城股权投资管理合伙企业（有限合伙）」。企查查/启信宝将其归入「<strong>周口城投发展集团</strong>」成员，标注为「市属国企」。</li>
+<li><strong>控股股东及其一致行动人合计持股</strong>：71,182,349 股＝<strong>16.55%</strong>（公司互动易回复口径）。</li>
+</ul>
+<p class="note">来源：<a href="https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-08-26/bac03ee0-0303-49b1-b4af-61b5535165fb.PDF" target="_blank">2026半年报·非经营性资金占用及其他关联资金往来汇总表（深交所，2026-08-26）</a>、<a href="https://disc.static.szse.cn/disc/disk03/finalpage/2024-03-25/c134db53-a6c9-4003-8f2b-f61ad2c1981b.PDF" target="_blank">北京市康达（长沙）律师事务所·详式权益变动报告书法律意见书（2024-03-25）</a>、<a href="https://irm.cninfo.com.cn/ircs/question/questionDetail?questionId=1762392612852064256" target="_blank">巨潮互动易回复（2024-07-04）</a>、<a href="https://www.qixin.com/publicly/9b3e88c2-7d51-4236-a9ea-88b734dafacd?section=questionAnswer" target="_blank">启信宝·易联众上市信息</a>。</p>
+
+<h3>隐藏信号：第二、三大股东是谁</h3>
+<table>
+<thead><tr><th>名次</th><th>股东</th><th>持股</th><th>占比</th><th>变动（2026Q2）</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>周口城发智能科技有限公司</td><td class="num">69,606,749</td><td class="num">16.19%</td><td>不变</td></tr>
+<tr><td>2</td><td><strong>莲花健康水业（深圳）有限公司</strong></td><td class="num">17,439,800</td><td class="num">4.06%</td><td class="red">+893.98万股（+105.17%）</td></tr>
+<tr><td>3</td><td>戚良季（自然人）</td><td class="num">14,940,000</td><td class="num">3.47%</td><td>+49.2万股</td></tr>
+<tr><td>4</td><td>何彬</td><td class="num">6,146,500</td><td class="num">1.43%</td><td>+50.07万股</td></tr>
+<tr><td>5</td><td>方勤华</td><td class="num">5,391,200</td><td class="num">1.25%</td><td>0</td></tr>
+<tr><td>6</td><td>吴小玲</td><td class="num">5,354,706</td><td class="num">1.25%</td><td>-58.14万股</td></tr>
+<tr><td>7</td><td>何芳华</td><td class="num">4,412,582</td><td class="num">1.03%</td><td>+30.91万股</td></tr>
+<tr><td>8</td><td>朱和平</td><td class="num">4,321,900</td><td class="num">1.01%</td><td>-4.31万股</td></tr>
+<tr><td>9</td><td>金莉莉</td><td class="num">3,765,600</td><td class="num">0.88%</td><td>-23.01万股</td></tr>
+<tr><td>10</td><td>蒋俊青（含融资融券账户）</td><td class="num">3,687,100</td><td class="num">0.86%</td><td>+49.1万股</td></tr>
+</tbody>
+</table>
+<p class="note">来源：2026半年报（前十大股东，报告期末 2026-06-30；股东采用数据一致，无质押/冻结标记）。<a href="http://emweb.eastmoney.com/PC_HSF10/ShareholderResearch/Index?type=web&code=SZ300096" target="_blank">东方财富股东研究</a>显示莲花健康水业（深圳）较上期 +8,939,800 股（+105.17%）。</p>
+
+<p>这里有两个值得用放大镜看的点：</p>
+<p><strong>第一，第二大股东「莲花健康水业（深圳）有限公司」在 2026 年二季度暴增 105% 增持到 4.06%。</strong>「莲花健康」这个牌子，河南周口本地人最熟——就是周口项城起家的莲花味精／莲花控股（600186，「莲花健康」品牌）。半年报前十大里没有直接出现「莲花控股股份」，但在更早一期的股东名单里，「莲花健康水业（深圳）」与「莲花控股股份有限公司」曾同时出现（合计约 850 万+750 万股）。到 2026-06-30，莲花系筹码明显在向「莲花健康水业（深圳）」集中。<strong>我判断</strong>：这大概率不是巧合，而是<strong>周口本地资本与周口国资的「同乡抱团」</strong>——国资拿控股权、本地产业资本跟投，为后续的资本运作搭班子。这是「救兵不只一个、而是一组」的信号。</p>
+<p><strong>第二，控股结构里有「周口城投发展集团」的影子。</strong>启信宝把易联众标注为「周口城投发展」集团成员、市属国企。这意味着城发科技背后不是一家孤零零的小平台，而是周口城投系——周口市属最大的城市投资平台之一。这种平台入主上市公司的标准动作，往往是「先收壳、后装资产」。</p>
+
+<h3>新董秘的履历，泄露了国资的走向</h3>
+<p>2026 年 9 月 4 日，公司同时公告聘任胡晓琼为董事会秘书。这条看起来不起眼，其实是<strong>拆解国资意图的关键拼图</strong>：胡晓琼曾任华创证券研究所机构销售、合规负责人、信息综合部总监，华创证券私募基金子公司金汇财富资本管理有限公司副总监，以及——<strong>周口创新投资集团有限公司总经理</strong>。（来源：<a href="http://emweb.eastmoney.com/pc_hsf10/NewsBulletin/Index?code=SZ300096" target="_blank">东方财富·公司公告《关于聘任董事会秘书的公告》2026-09-04</a>）</p>
+<p>「周口创新投资集团」是周口国资背景的投资平台。一个国资投资平台的总经理，被派到上市公司当董秘，<strong>在壳股语境里，这几乎等于在董事会里放了一个「资本运作专员」</strong>。董秘是信披和资本运作的中枢，这个人事安排，比任何一纸承诺都更能说明周口国资接下来的心思。</p>
+
+<hr class="hr">
+
+<h2>④ 怎么进来的：2.88 亿司法拍卖，国资的「捡漏式」拿壳</h2>
+
+<p>和那种「协议转让+表决权委托」的柔性拿控股权不同，周口国资进场的方式极其硬核——<strong>司法拍卖、一次拍死、夺了原实控人的股权</strong>。</p>
+
+<table>
+<thead><tr><th>要素</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td>竞买人</td><td>周口城发智能科技有限公司（实控人：周口市财政局）</td></tr>
+<tr><td>标的</td><td>张曦持有的 69,606,749 股（占总股本 16.19%）</td></tr>
+<tr><td>平台 / 时间</td><td>淘宝（阿里拍卖）司法拍卖，2023-11-16 10:00 至 11-17 10:00</td></tr>
+<tr><td>成交价</td><td class="num">288,395,218.00 元（≈2.88 亿元）</td></tr>
+<tr><td>折合每股</td><td class="num">4.14 元/股</td></tr>
+<tr><td>起拍价</td><td>首拍 3.06 亿流拍 → 二拍下调至 2.44 亿</td></tr>
+<tr><td>竞价过程</td><td>2 位竞买人、30 多轮竞价后成交</td></tr>
+<tr><td>款项</td><td>2023-12-18 付清尾款</td></tr>
+<tr><td>过户 / 实控人变更</td><td>2023-12 过户，2024-01 起实控人变更为周口市财政局</td></tr>
+</tbody>
+</table>
+<p class="note">来源：<a href="https://disc.static.szse.cn/disc/disk03/finalpage/2024-03-25/c134db53-a6c9-4003-8f2b-f61ad2c1981b.PDF" target="_blank">康达律师事务所·详式权益变动报告书法律意见书（明确成交价 288,395,218.00 元）</a>、<a href="https://www.stcn.com/article/detail/1041068.html" target="_blank">证券时报《河南国资再出手 易联众或易主》（2023-11-20）</a>、<a href="https://irm.cninfo.com.cn/ircs/question/questionDetail?questionId=1762392612852064256" target="_blank">巨潮互动易（2024-07-04）</a>。</p>
+
+<p>几个必须算清的账：</p>
+<p><strong>① 成本锚 4.14 元/股 vs 现价 9.23 元/股。</strong>周口国资这笔 2.88 亿的买壳钱，到今天（2026-09-21）账面上<strong>浮盈约 123%</strong>（不含资金成本和后续可能的增持）。这说明两件事：一是国资确实是「低价捡漏」进来的（二级市场公允价值附近、且远低于张曦当年 2015 年 10.69 亿入主的每股成本），二是<strong>现在追进去的人，成本比国资贵了一倍多，安全垫早就不是你的了</strong>。</p>
+<p><strong>② 为什么是周口？</strong>张曦是被债权人（质押式证券回购纠纷）申请司法拍卖强制的，不是周口国资主动去谈的。但河南这几年有一个明确的政策主线——<strong>「上市公司五年倍增行动」</strong>，要求全省上市公司总数破 200 家；而周口是河南人口大市、却是<strong>上市公司资源极度稀缺</strong>的地区。对周口财政局来说，花 2.88 亿在法拍里捡一个创业板上市公司控制权，是「补上市平台短板」的标准动作。证券时报同篇报道还列举了河南国资此前买入 GQY视讯、中威电子、金冠股份等一批上市公司控制权的前例，说明这是河南国资的「惯性操作」。（来源同上）</p>
+<p><strong>③ 一次拍死、不拖泥带水。</strong>张曦被拍卖后，剩余持股几乎清零（<strong>6968.16万－6960.6749万≈7.49万股</strong>），原实控人的股权问题被彻底切割。这比「原实控人还留着一部分股权、将来可能搅局」的同类案例干净得多——<strong>换血换得彻底，是国资后续敢做运作的前提</strong>。</p>
+
+<hr class="hr">
+
+<h2 id="sec5">⑤ 意图分析与节奏推测（六维拆解）</h2>
+
+<p>这一节是王艳体系的核心：判断「谁会来救、救到哪一步、值不值得赌」。我用六把刀拆。</p>
+
+<h3>维度一：重组节奏——「已经走完了九成五」</h3>
+<p>先用一张「进程表」定量化：</p>
+<table>
+<thead><tr><th>阶段</th><th>事项</th><th>状态</th></tr></thead>
+<tbody>
+<tr><td>换实控人</td><td>司法拍卖 16.19% → 周口国资</td><td class="red">✅ 已完成（2023-12过户）</td></tr>
+<tr><td>解除违规担保/借款</td><td>三案全部生效裁决/判决，公司不担责</td><td class="red">✅ 已完成（2024/2025）</td></tr>
+<tr><td>立案调查落地</td><td>行政处罚决定书，未触及重大违法退市</td><td class="red">✅ 已完成（2026-07-08）</td></tr>
+<tr><td>审计意见修复</td><td>保留→保留→带强调事项段无保留</td><td class="red">✅ 逐年改善（2026-04-25）</td></tr>
+<tr><td>摘帽</td><td>已向深交所申请撤销其他风险警示</td><td>🟡 待深交所审核（2026-09-04申请）</td></tr>
+<tr><td>主业扭亏</td><td>扣非持续为负</td><td>🔴 尚未解决</td></tr>
+<tr><td>资产注入／重组</td><td>尚无明确方案</td><td>⚪ 未启动（纯预期）</td></tr>
+</tbody>
+</table>
+<p><strong>节奏判断：</strong>摘帽只是时间问题——深交所对「违规担保已消除+处罚已落地+无新增ST情形」的摘帽申请，批复周期通常以周/月计，且公司三案证据链完整、有律师出具专项法律意见书背书。真正的「第二幕」（资本运作）连剧本都没公布，<strong>这就是十倍股逻辑的真空地带</strong>：确定性红利基本吃完，剩下的都是预期。</p>
+
+<h3>维度二：新实控人背景意图——「要壳」还是「要平台」</h3>
+<p>周口国资买壳，动机无非两种：</p>
+<ul>
+<li><strong>A. 纯壳逻辑（借壳/卖壳）</strong>：拿到上市资格，等一个第三方资产来借壳上市。</li>
+<li><strong>B. 平台逻辑（产业整合）</strong>：把易联众当周口发展民生数字产业、数字政府的上市抓手，往里装国资相关资产，或以其为主体做大本地数字产业板块。</li>
+</ul>
+<p><strong>我倾向 B，但 A 的期权还在。</strong>理由有三：其一，易联众的牌照/资质（医保、人社、卫健委的部委级承建商身份、医保码 12.5 亿用户、电子社保卡 11 亿领用）是「真资产」，不是壳公司那种只有上市资格的空盒子，国资不会愿意只把它当壳扔掉；其二，董秘人选自带「周口创新投资集团+券商私募」双重标签，说明国资在组建「投资+产业」的复合团队，而不是单纯找买家；其三，周口本地有莲花系资本同步增持，更像「本地产业+国资」生态抱团。但话说回来，<strong>国资入主 A 股后「先摘帽、后缓慢装资产、装不动就找下家」的案例也比比皆是，这里不能拍胸脯</strong>。</p>
+
+<h3>维度三：原业务质量——真业务，但「牌照很硬、利润很软」</h3>
+<p>易联众不是空壳，主业是<strong>人社、医保、医疗三大民生领域的信息化</strong>，拿的是「部委级」资质：</p>
+<ul>
+<li>国家医保信息平台 5 个核心子系统的承建商；医保码（医保电子凭证）全国激活超 12.5 亿人、接入 93 万家定点医药机构；</li>
+<li>全国人社政务服务平台主要承建商，承建电子社保卡、领用超 11.04 亿人；</li>
+<li>承建 20 多个省级医保信息平台、业务覆盖全国 31 省区+新疆兵团；</li>
+<li>医疗信息化产品进驻全国 400 多家二级以上医院（其中三甲 202 家）；</li>
+<li>近年主打「AI+人社/医保/医疗」，推出「智鼎天宫 AI 平台」「智鼎云帆行业大模型」。</li>
+</ul>
+<p class="note">业务描述来源：2026 半年报第三节「管理层讨论与分析」。</p>
+<p>但硬币的另一面是残酷的：<strong>这辆「牌照车」的利润表常年漏油</strong>。营收从 2023 年的 7.97 亿一路缩到 2025 年的 4.99 亿，扣非净利润连续为负（2024 -4862万、2025 -3187万、2026H1 -3611万）。2025 年那 4932 万的「扭亏」，本质是一次性的——主要是违规担保的「预计负债」被法院判决免责后<strong>冲回约 6920 万</strong>（预计负债从 7057.5万骤降到 135.6万，-98.08%）撑起来的，不是主业挣的。到 2026 年上半年，这笔一次性转回没了，归母净利立刻回到 -4764 万。（来源：<a href="https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-04-28/1110c49c-6b0d-4576-a403-f8794a4586c1.PDF" target="_blank">2025年度财务决算报告（深交所，含预计负债变动）</a>）</p>
+<p><strong>定性：</strong>这是一家「行业卡位好、但盈利模型弱、且被前老板折腾伤了元气」的公司。国资接过来第一步要做的不是讲故事，而是<strong>止住业务下滑、把利润做正</strong>。</p>
+
+<h3>维度四：承诺包活口——「活口」比「承诺」更值钱</h3>
+<p>详见下一节⑥的逐条对照表。这里先给结论：<strong>本案最大的定心丸不是承诺，而是厦门证监局在处罚决定书里那句「未触及重大违法强制退市的情形」</strong>——这句话从监管口径上把「重大违法退市」这条最致命的一票否决项直接焊死了。其次是审计意见的逐年修复轨迹，说明会计数据在「注水风险」上也在边际向好。</p>
+
+<h3>维度五：行情映射——摘帽预期已经被价格吃得差不多了</h3>
+<ul>
+<li><strong>国资成本 4.14 元 → 现价 9.23 元</strong>，一年多涨了 123%，摘帽这件事的价格发现早就完成了，甚至 9.23 元这个价位本身就包含了「即将摘帽」的充分预期。</li>
+<li><strong>PB 12.66 倍</strong>：对一家扣非连续亏损、净资产只有 3.14 亿的公司来说，这个估值完全不便宜，等于是「按摘帽成功+未来注入」来定价的。</li>
+<li><strong>PS 约 8 倍</strong>：按 5 亿营收算也不低。</li>
+<li><strong>结论</strong>：摘帽批复落地那天，可能只是「利好兑现」而非「利好爆发」；真正的第二波，必须由「国资下一步动作」触发。</li>
+</ul>
+
+<h3>维度六：运作特征综合判断</h3>
+<p>把六维收口成一句话：<strong>这是「地方财政纾困入主 + 排雷式自救」的典型样本，确定性极强、爆发力存疑。</strong>它属于「已经救活」的那一类，而不是「还在赌命」的那一类。对稳健资金，它是「等摘帽落袋」的确定事件；对十倍股猎手，它的十倍逻辑必须押在第二阶段（国资资产注入/借壳）上，而这一层的证据目前只有「董秘人事+莲花系增持」两个弱信号，<strong>尚无任何预案公告，属于「有想象、无实锤」</strong>。</p>
+
+<hr class="hr">
+
+<h2>⑥ 承诺包 / 关键公告逐条拆解（原话 vs 大白话 + 活口）</h2>
+
+<p>这一节把每个「关键表态」翻成大白话，并标出它给自己留的「活口」（后门）。</p>
+
+<table>
+<thead><tr><th style="width:24%">公告 / 事件</th><th style="width:38%">原文关键字</th><th style="width:38%">大白话 + 活口</th></tr></thead>
+<tbody>
+<tr>
+<td>2023-12-29 戴帽提示性公告（编号2023-085）</td>
+<td>触发《创业板上市规则》第9.4条第(五)项「向控股股东或其关联人提供资金或违反规定程序对外提供担保且情形严重」、第9.5条</td>
+<td><strong>大白话：</strong>公司违规给老板及关联方担保、借款，金额超千万且占净资产超5%，帽子是「违规担保款」，不是「亏钱款」。<strong>活口：</strong>条文本身就是「情形消除即可撤销」，为后来的摘帽留了门。</td>
+</tr>
+<tr>
+<td>2026-07-08 行政处罚决定书（〔2026〕6号）</td>
+<td>对易联众警告并罚300万；对张曦警告并罚1750万、终身市场禁入；张华芳140万、黄文灿100万、陈东红60万；「前述行政处罚未触及重大违法强制退市的情形」</td>
+<td><strong>大白话：</strong>罚的是「没把担保/借款如实披露」，不是罚公司主业造假；监管亲口说这不构成重大违法退市。<strong>活口：</strong>几乎没有——这句是最大确定性来源。</td>
+</tr>
+<tr>
+<td>2026-09-04 申请撤销其他风险警示</td>
+<td>「相关违规担保、违规借款事项已全部消除」「不存在应被实施其他风险警示的情形」</td>
+<td><strong>大白话：</strong>三根雷都拆完了，公司自己不戴帽了，主动申请脱帽。<strong>活口：</strong>「尚需深交所审核批准，能否获准存在不确定性」——章还没盖，时间不确定。</td>
+</tr>
+<tr>
+<td>2025 年报审计意见</td>
+<td>「带强调事项段的无保留意见」（德皓国际，2026-04-25）</td>
+<td><strong>大白话：</strong>会计师这次敢背书财报没大问题（从「保留意见」升级到「无保留」），但保留了一个「强调事项段」提醒你立案调查结论存在不确定性。<strong>活口：</strong>处罚决定书落地后，这个强调事项下一期大概率会被拿掉。</td>
+</tr>
+<tr>
+<td>2023-11-29 张曦、张华芳承诺函</td>
+<td>「除上述三笔事项外，不存在其他以公司名义违规担保、借款，不存在其他占用资金情形」</td>
+<td><strong>大白话：</strong>原老板+妹妹签字画押，说违规就这三笔，没别的了。<strong>活口：</strong>这是「人话」不是「审计结论」，且张曦已在被罚+终身禁入状态，其承诺可信度要打折扣。</td>
+</tr>
+<tr>
+<td>每月例行「进展公告」</td>
+<td>「股票将继续被实施其他风险警示」「每月披露一次进展，直至情形消除」</td>
+<td><strong>大白话：</strong>规则要求ST每月报平安。<strong>活口：</strong>这条链在摘帽前会一直存在，属于程序性披露。</td>
+</tr>
+</tbody>
+</table>
+
+<p class="note">来源：<a href="http://disc.static.szse.cn/download/disc/disk03/finalpage/2023-12-28/e482e65e-73e9-487e-bb87-81980e934941.PDF" target="_blank">2023-085戴帽公告</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-06-01/1225342870.PDF" target="_blank">进展公告（巨潮，2026-06-01）</a>、<a href="https://www.stcn.com/article/detail/3960460.html" target="_blank">证券时报·处罚详情（2026-06-14）</a>、<a href="http://www.cnfin.com/announ/detail/index.html?announ=lc&code=300096&dannoun=lcdetail&id=841881380216" target="_blank">福建天衡律所·摘帽法律意见书（深交所，2026-09-04）</a>、<a href="https://www.stcn.com/article/detail/4173626.html" target="_blank">证券时报·申请摘帽（2026-09-05）</a>。</p>
+
+<h3>三根「雷管」的拆除明细（这是「钱」和「资产」的核心）</h3>
+<table>
+<thead><tr><th>违规事项</th><th>金额</th><th>占比（违规当年净资产）</th><th>最终结果</th></tr></thead>
+<tbody>
+<tr><td>为京发置业 5.5 亿借款担保（张利云）</td><td class="num">5.5 亿（担保）</td><td class="num">71.61%（2017）</td><td>北京仲裁委裁决保证合同无效，公司不担责（2024-08）</td></tr>
+<tr><td>向苏州诺金借款</td><td class="num">6000 万</td><td class="num">8.06%（2016）</td><td>苏州工业园区法院裁定撤诉，已清偿</td></tr>
+<tr><td>与高彩娥共同借款</td><td class="num">5000 万</td><td class="num">5.72%（2019）</td><td>杭州中院二审判决公司不还款，浙江高院驳回再审（2025-08）</td></tr>
+</tbody>
+</table>
+<p class="note">来源：证券时报《2家A股公司，领罚单！》披露的证监会核实金额与占比；半年报「违规对外担保情况」表（5000万借款占最近一期经审计净资产13.84%、已解除）。</p>
+
+<hr class="hr">
+
+<h2>⑦ 壳经济学：值不值得救？（红黄绿灯）</h2>
+
+<h3>四类退市红线逐条对表</h3>
+<table>
+<thead><tr><th>红线类型</th><th>判定标准</th><th>ST易联众现状</th><th>灯</th></tr></thead>
+<tbody>
+<tr><td>重大违法类</td><td>财务造假/欺诈发行/重大违法强制退市</td><td>处罚决定书明确「未触及重大违法强制退市」</td><td class="red">🟢 已排除</td></tr>
+<tr><td>交易类</td><td>股价<1元、市值<3亿、股东<2000人</td><td>股价9.23元、市值39.69亿、股东1.23万户</td><td class="red">🟢 远离</td></tr>
+<tr><td>财务类（*ST）</td><td>净资产为负、营收<1亿＋净利为负等</td><td>归母净资产3.14亿（正）、营收1.82亿（>1亿红线）</td><td class="red">🟢 不构成</td></tr>
+<tr><td>规范类（本案ST）</td><td>违规担保/资金占用等「其他风险警示」</td><td>三案已解除，已申请撤销</td><td>🟡 待摘帽盖章</td></tr>
+</tbody>
+</table>
+<p><strong>结论先给：这壳值得救，而且「救」这件事基本已经救完了。</strong>重大违法（一票否决项）被监管亲口排除，财务类、交易类两条红线都离得远远的，剩下的规范类帽子已经在摘帽通道上。也就是说，<strong>本案不存在「一票否决」项，这是它区别于那些「立案中、资不抵债、随时退市」的*ST标的的根本之处</strong>。</p>
+
+<h3>值不值得「再往上赌」，要算三笔账</h3>
+<ol>
+<li><strong>算资产账</strong>：归母净资产 3.14 亿、货币资金 2.62 亿、总资产 8.42 亿、负债率 56.40%。资产是实的、干净的（无质押冻结、无资金占用），但也不厚——市值 39.69 亿是净资产的 12.66 倍，<strong>你付的每一块钱里，7 块多是给「摘帽+预期」的溢价，不是给资产的</strong>。</li>
+<li><strong>算时间账</strong>：摘帽是最近 1-2 个季度内大概率落地的确定性事件，但它是「尾声」不是「开始」；主业扭亏和资产注入没有时间表。时间窗口上，<strong>摘帽前的窗口已经接近关闭，摘帽后的真空期有多长，没人知道</strong>。</li>
+<li><strong>算催化账</strong>：能推动股价再上一个台阶的催化剂只有三个——①摘帽批复落地（兑现型，中性）；②国资增持/资产注入预案（想象型，真正的十倍引擎）；③业绩实质扭亏（基本面型，目前最弱）。<strong>三者里①近而弱、②远而强、③暂无。十倍股假设的唯一支点是②，而②当前没有实锤。</strong></li>
+</ol>
+
+<div class="callout">
+<p><strong>壳经济学总评</strong>：这不是「值不值得救」的问题——国资已经用 2.88 亿真金白银救完了。真正的命题是「该不该在这个价位、Bet 第二阶段」。我的判断是：<strong>把它当「确定性摘帽的排雷标的」看，逻辑已近尾声、赔率一般；把它当「周口国资上市平台十倍期权」看，有想象但缺证据，属于要等下一颗音符响起的票。</strong>做与不做，取决于你是要「确定的小钱」，还是要「不确定的大钱」。</p>
+</div>
+
+<hr class="hr">
+
+<h2>⑧ 数据来源</h2>
+<p class="note">口径说明：财务数据以 2026-08-26 披露的《2026年半年度报告》合并报表为第一口径（本期末=2026-06-30，上年度末=2025-12-31），利润类落在半年报「主要会计数据和财务指标」节；2025年度数据以《2025年度财务决算报告》《2025年年度报告摘要》交叉；股价/市值以证券时报·e公司与新浪财经双源互证（最新交易日 2026-09-18 收盘）。</p>
+
+<h3>主口径文件（落盘）</h3>
+<ul class="src-list">
+<li>《易联众信息技术股份有限公司 2026 年半年度报告》（2026-08-26，本地文件）：<code>中报\2026-08-26_2026年半年度报告.pdf</code></li>
+</ul>
+
+<h3>交易所 / 巨潮公告深链</h3>
+<ul class="src-list">
+<li>《关于公司股票被实施其他风险警示暨公司股票停牌的提示性公告》（公告编号2023-085，2023-12-29）— <a href="http://disc.static.szse.cn/download/disc/disk03/finalpage/2023-12-28/e482e65e-73e9-487e-bb87-81980e934941.PDF" target="_blank">深交所PDF</a></li>
+<li>《关于公司股票被实施其他风险警示相关事项的进展公告》（2026-06-01，巨潮资讯网）— <a href="http://static.cninfo.com.cn/finalpage/2026-06-01/1225342870.PDF" target="_blank">巨潮PDF</a></li>
+<li>《2026年半年度非经营性资金占用及其他关联资金往来情况汇总表》（2026-08-26）— <a href="https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-08-26/bac03ee0-0303-49b1-b4af-61b5535165fb.PDF" target="_blank">深交所PDF</a></li>
+<li>《福建天衡联合律师事务所关于申请撤销其他风险警示的法律意见书》（2026-09-04）— <a href="https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-09-04/20deadd4-600f-4a23-800d-43e03b12bd88.PDF" target="_blank">深交所PDF</a> / <a href="http://www.cnfin.com/announ/detail/index.html?announ=lc&code=300096&dannoun=lcdetail&id=841881380216" target="_blank">中财网转载</a></li>
+<li>《北京市康达（长沙）律师事务所·详式权益变动报告书法律意见书》（2024-03-25，含成交价288,395,218元）— <a href="https://disc.static.szse.cn/disc/disk03/finalpage/2024-03-25/c134db53-a6c9-4003-8f2b-f61ad2c1981b.PDF" target="_blank">深交所PDF</a></li>
+<li>《2025年度财务决算报告》（2026-04，含预计负债变动、主要财务数据）— <a href="https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-04-28/1110c49c-6b0d-4576-a403-f8794a4586c1.PDF" target="_blank">深交所PDF</a></li>
+<li>《2025年年度报告摘要》（公告编号2026-014）— <a href="https://epaper.stcn.com/pic/202604/28/9f621422d348f8ea14b40490fe680e98.pdf" target="_blank">证券时报PDF</a></li>
+</ul>
+
+<h3>权威媒体报道</h3>
+<ul class="src-list">
+<li>证券时报《ST易联众，申请"摘帽"》（孙宪超，2026-09-05）— <a href="https://www.stcn.com/article/detail/4173626.html" target="_blank">链接</a></li>
+<li>人民财讯《ST易联众：申请撤销对公司股票交易实施其他风险警示》（2026-09-04）— <a href="https://stcn.com/article/detail/4173196.html" target="_blank">链接</a></li>
+<li>证券时报《2家A股公司，领罚单！》（2026-06-14，含违规担保/借款金额与占比明细）— <a href="https://www.stcn.com/article/detail/3960460.html" target="_blank">链接</a></li>
+<li>新浪财经/晋江经济报《私设5.5亿元担保借款，多年隐瞒不报，张曦被罚1750万元，终身市场禁入》（2026-06-16）— <a href="https://finance.sina.com.cn/wm/2026-06-16/doc-inicqsxv4475183.shtml" target="_blank">链接</a></li>
+<li>证券时报《河南国资再出手 易联众或易主》（李小平，2023-11-20）— <a href="https://www.stcn.com/article/detail/1041068.html" target="_blank">链接</a>（同文纸版 2023-11-21 <a href="https://www.stcn.com/article/detail/1041285.html" target="_blank">链接</a>）</li>
+<li>人民财讯《ST易联众：2025年净利润4932.27万元 同比扭亏为盈》（2026-04-27）— <a href="https://www.stcn.com/article/detail/3830678.html" target="_blank">链接</a></li>
+<li>巨潮投资互动－持股成本及一致行动人回复（2024-07-04）— <a href="https://irm.cninfo.com.cn/ircs/question/questionDetail?questionId=1762392612852064256" target="_blank">链接</a></li>
+</ul>
+
+<h3>行情 / 股东 / 工商口径</h3>
+<ul class="src-list">
+<li>证券时报·e公司个股页（股价9.23元、市值39.69亿、PB12.66）— <a href="https://egs.stcn.com/quotation/stock-info/sz300096.html" target="_blank">链接</a></li>
+<li>证券时报投关主页（实控人：周口市财政局，最大股东：周口城发16.19%，股东户数12310户）— <a href="https://stcn.com/quotes/index/sz300096.html" target="_blank">链接</a></li>
+<li>新浪财经主要股东（2026-06-30，收盘价与股东）— <a href="http://vip.stock.finance.sina.com.cn/corp/go.php/vCI_StockHolder/stockid/300096/displaytype/30.phtml" target="_blank">链接</a></li>
+<li>东方财富·股东研究（莲花健康水业2026Q2增持+105.17%）— <a href="http://emweb.eastmoney.com/PC_HSF10/ShareholderResearch/Index?type=web&code=SZ300096" target="_blank">链接</a></li>
+<li>东方财富·公告列表（聘任董秘胡晓琼等，2026-09-04）— <a href="http://emweb.eastmoney.com/pc_hsf10/NewsBulletin/Index?code=SZ300096" target="_blank">链接</a></li>
+<li>企查查 / 启信宝·易联众工商信息（市属国企、周口城投发展集团成员）— <a href="https://m.qcc.com/firm/2a3666cd65855d81f9f8d09601003ea1.html" target="_blank">企查查</a> / <a href="https://www.qixin.com/publicly/9b3e88c2-7d51-4236-a9ea-88b734dafacd?section=questionAnswer" target="_blank">启信宝</a></li>
+</ul>
+
+<h3>口径差异备注（自检）</h3>
+<ul>
+<li><strong>利润口径差</strong>：2026H1「归母净利 -4763.85万」与「净利润总额 -5248.82万」相差即少数股东损益约 -485万；正文统一用归母口径，涉及时已注明。</li>
+<li><strong>股东口径差</strong>：新浪在更早一期列出「莲花健康水业（深圳）850万股 + 莲花控股股份750万股」两笔，而 2026-06-30 半年报前十大仅见「莲花健康水业（深圳）1743.98万股」，判断为莲花系筹码向同一主体集中，正文已提示为「疑似」而非定论。</li>
+<li><strong>勾稽自检</strong>：负债合计 4.7468亿 + 所有者权益合计 3.6695亿 ＝ 资产总计 8.4164亿 ✓；归母净资产 3.1351亿 ≠ 所有者权益合计（因含少数股东权益 0.5344亿）✓；负债率＝4.7468/8.4164＝56.40% ✓；PB＝9.23 ÷ (3.1351亿/4.30亿) ＝ 12.66 ✓（与e公司「动态市净率12.66」完全一致）。</li>
+</ul>
+
+<hr class="hr">
+
+<h2>⑨ 免责声明</h2>
+<p>（免责声明：本文内容仅为自用兼知识分享与逻辑分析，数据可能有错误或不及时，不构成任何投资建议。市场有风险，投资需谨慎。）</p>
+
+</div>
+</body>
+</html>
