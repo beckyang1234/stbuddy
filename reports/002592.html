@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ST八菱(002592) 深度研究 — 王艳寻找十倍研究法</title>
+<style>
+    body{font-family:'Microsoft YaHei',-apple-system,Segoe UI,sans-serif;line-height:1.65;color:#222;max-width:960px;margin:0 auto;padding:24px;background:#fff}
+    h1{border-bottom:3px solid #c0392b;padding-bottom:8px}
+    h2{border-bottom:1px solid #ddd;padding-bottom:4px;margin-top:28px;color:#1a5276}
+    h3{color:#b9770e;margin-top:22px}
+    .toc{background:#f7f7f7;border:1px solid #e0e0e0;border-radius:6px;padding:12px 16px;font-size:14px;line-height:1.9;column-width:280px;column-gap:28px}
+    .toc a{display:block;text-decoration:none;color:#2e86c1}
+    .toc ul{margin:0;padding-left:14px;list-style:none}
+    .tblwrap{overflow-x:auto;margin:10px 0}
+    table{border-collapse:collapse;width:100%;font-size:13.5px}
+    th,td{border:1px solid #ccc;padding:6px 9px;text-align:right;white-space:nowrap}
+    th{background:#eaf2f8;text-align:center}
+    td:first-child{text-align:left;font-weight:600}
+    code{background:#f4f4f4;padding:1px 5px;border-radius:3px;font-size:13px}
+    pre{background:#f6f8fa;padding:12px;border-radius:6px;overflow-x:auto;font-size:12.5px;border:1px solid #e4e4e4}
+    a{color:#2e86c1}
+    table{display:table}
+    .top{float:right;font-size:12px}
+    blockquote{border-left:4px solid #f0b27a;background:#fdf8f2;margin:12px 0;padding:8px 14px;color:#5d4a2f;font-size:13.8px}
+    blockquote p{margin:6px 0}
+    hr{border:none;border-top:1px dashed #ddd;margin:22px 0}
+    strong{color:#111}
+    .ftn{font-size:13px;color:#555;border-top:1px solid #eee;margin-top:26px;padding-top:10px}
+    .ftn ol{padding-left:22px}
+    .ftn li{margin:5px 0}
+    sup a{text-decoration:none;font-weight:700}
+    .footnote{font-size:13px;color:#555;background:#fafafa;border:1px solid #eee;border-radius:6px;padding:6px 18px 12px}
+    .footnote ol{padding-left:22px}
+    .footnote li{margin:6px 0}
+    .footnote-backref{text-decoration:none;color:#2e86c1;margin-left:4px}
+</style>
+</head>
+<body><script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div class="top">ST八菱 · 002592.SZ · 基准日2026-09-22</div>
+<div class="toc"><ul>
+<li><a href="#ST八菱(002592)：一张四亿六千万的假公章，把一个汽车散热器厂的ST帽子戴了六年">ST八菱(002592)：一张四亿六千万的假公章，把一个汽车散热器厂的ST帽子戴了六年</a><ul>
+<li><a href="#✅ 岛主引言">✅ 岛主引言</a></li>
+<li><a href="#一、前世今生：从南宁散热器厂，到&quot;被一个外人捅了一刀&quot;">一、前世今生：从南宁散热器厂，到"被一个外人捅了一刀"</a><ul>
+<li><a href="#2001-2011：一家非常传统的汽车零部件厂">2001-2011：一家非常传统的汽车零部件厂</a></li>
+<li><a href="#2018-2019：一脚踏进基因检测，埋下了全部的雷">2018-2019：一脚踏进基因检测，埋下了全部的雷</a></li>
+<li><a href="#2019-10 至 2020-01：四亿六千万怎么没的">2019-10 至 2020-01：四亿六千万怎么没的</a></li>
+<li><a href="#2022-11 至 2023-06：把&quot;雷&quot;剥离出表，但帽子留下了">2022-11 至 2023-06：把"雷"剥离出表，但帽子留下了</a></li>
+<li><a href="#时间轴一表看完">时间轴一表看完</a></li>
+</ul>
+</li>
+<li><a href="#二、为什么被ST：一顶与主业无关的帽子">二、为什么被ST：一顶与主业无关的帽子</a><ul>
+<li><a href="#唯一原因：违规担保，不是造假，不是亏损">唯一原因：违规担保，不是造假，不是亏损</a></li>
+<li><a href="#为什么六年了还摘不掉">为什么六年了还摘不掉</a></li>
+<li><a href="#摘帽的两条硬约束">摘帽的两条硬约束</a></li>
+</ul>
+</li>
+<li><a href="#三、谁在操盘：杨家夫妻档，与一个已经出局的外人">三、谁在操盘：杨家夫妻档，与一个已经出局的外人</a><ul>
+<li><a href="#现在的实控人：杨竞忠、顾瑜夫妇">现在的实控人：杨竞忠、顾瑜夫妇</a></li>
+<li><a href="#杨竞忠的司法冻结：一个小口子，但要记下来">杨竞忠的司法冻结：一个小口子，但要记下来</a></li>
+<li><a href="#王安祥：已经出局的那个人">王安祥：已经出局的那个人</a></li>
+</ul>
+</li>
+<li><a href="#四、财务体检：一家被低估的&quot;现金牛型ST&quot;">四、财务体检：一家被低估的"现金牛型ST"</a><ul>
+<li><a href="#损益表：主业连续两年盈利，2026H1继续向上">损益表：主业连续两年盈利，2026H1继续向上</a></li>
+<li><a href="#收入结构：热交换器是基本盘，外饰件是弹性">收入结构：热交换器是基本盘，外饰件是弹性</a></li>
+<li><a href="#资产负债表：24.28%的负债率，和2.47亿的理财">资产负债表：24.28%的负债率，和2.47亿的理财</a></li>
+<li><a href="#三个在建项目：产能扩张正在落地">三个在建项目：产能扩张正在落地</a></li>
+<li><a href="#分红：一家ST公司在派现金">分红：一家ST公司在派现金</a></li>
+<li><a href="#财务体检的整体判断">财务体检的整体判断</a></li>
+</ul>
+</li>
+<li><a href="#五、追偿进展：三个官司，一个开关">五、追偿进展：三个官司，一个开关</a><ul>
+<li><a href="#4.66亿元的构成与三年追偿的地图">4.66亿元的构成与三年追偿的地图</a></li>
+<li><a href="#案一：唯一落地的成果，但只回了一半多">案一：唯一落地的成果，但只回了一半多</a></li>
+<li><a href="#案二：赢了判决，卡在执行">案二：赢了判决，卡在执行</a></li>
+<li><a href="#案三：被&quot;先刑后民&quot;挡住了">案三：被"先刑后民"挡住了</a></li>
+<li><a href="#追偿进度的量化盘点">追偿进度的量化盘点</a></li>
+</ul>
+</li>
+<li><a href="#六、投资者交流挖掘：公司在&quot;新赛道&quot;上给的答案，比想象中更值钱">六、投资者交流挖掘：公司在"新赛道"上给的答案，比想象中更值钱</a><ul>
+<li><a href="#6.1 全景：69条问答，围绕三件事">6.1 全景：69条问答，围绕三件事</a></li>
+<li><a href="#6.2 关键发现：一条被反复追问、又被反复否认的&quot;新赛道&quot;">6.2 关键发现：一条被反复追问、又被反复否认的"新赛道"</a></li>
+<li><a href="#6.3 反向词清单：公司自己划出的红线">6.3 反向词清单：公司自己划出的红线</a></li>
+<li><a href="#6.4 另一条被忽略的线索：盖娅互娱">6.4 另一条被忽略的线索：盖娅互娱</a></li>
+<li><a href="#6.5 与&quot;摘帽&quot;母题的关系：市场问错了问题">6.5 与"摘帽"母题的关系：市场问错了问题</a></li>
+<li><a href="#6.6 六个跟踪动作（可直接执行）">6.6 六个跟踪动作（可直接执行）</a></li>
+</ul>
+</li>
+<li><a href="#七、估值与赌局：三个引擎，各有各的时钟">七、估值与赌局：三个引擎，各有各的时钟</a><ul>
+<li><a href="#7.1 当前估值坐标">7.1 当前估值坐标</a></li>
+<li><a href="#7.2 三个价值引擎：各有各的时钟">7.2 三个价值引擎：各有各的时钟</a></li>
+<li><a href="#7.3 三种情景推演">7.3 三种情景推演</a></li>
+<li><a href="#7.4 与ST佳缘的对照：同样是ST，逻辑完全不同">7.4 与ST佳缘的对照：同样是ST，逻辑完全不同</a></li>
+</ul>
+</li>
+<li><a href="#八、风险清单">八、风险清单</a></li>
+<li><a href="#九、结语：一顶便宜帽子下面，装着什么？">九、结语：一顶便宜帽子下面，装着什么？</a></li>
+<li><a href="#附录">附录</a><ul>
+<li><a href="#附录A：信源清单">附录A：信源清单</a></li>
+<li><a href="#附录B：核心数据速查">附录B：核心数据速查</a></li>
+<li><a href="#附录C：数据交叉核对说明">附录C：数据交叉核对说明</a></li>
+<li><a href="#附录D：注释">附录D：注释</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div>
+<h1 id="ST八菱(002592)：一张四亿六千万的假公章，把一个汽车散热器厂的ST帽子戴了六年">ST八菱(002592)：一张四亿六千万的假公章，把一个汽车散热器厂的ST帽子戴了六年</h1>
+<blockquote>
+<p>作者方法论参考：王艳《寻找十倍系列·控制权变更驱动》（含 §4.7 投资者交流信息挖掘法）
+本文为客观信息梳理，不构成投资建议。基准日2026-09-22，行情数据截至2026-09-18收盘；财务数据一律采用已披露定期报告定稿数（2025年报、2026年半年报均已披露）；数据源：Wind(windproxy)＋公司公告/半年报原文（巨潮资讯网cninfo）＋<strong>深交所互动易问答原文</strong>，均在文中标注链接。</p>
+</blockquote>
+<hr />
+<h2 id="✅ 岛主引言">✅ 岛主引言</h2>
+<p>南宁八菱科技股份有限公司（002592，现简称ST八菱），一家在南宁做了二十多年汽车散热器的厂子。2011年11月11日上市，比大多数零部件同行都早。它今天的ST帽子，跟自己的主业一点关系都没有——<strong>帽子是2020年7月2日戴上的，起因是2019年10月到2020年1月，它当时一个二级子公司的负责人，用三张自己管的定期存单，偷偷对外做了4.66亿元的质押担保，钱全被划走了</strong><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>。</p>
+<p>六年过去了。到2026年9月，公司的主业已经从当年的亏损泥潭里爬出来：2025年全年营收7.12亿元、归母净利1.17亿元；2026年上半年营收3.69亿元（+30.42%）、归母净利5,770.72万元、资产负债率降到24.28%、账上交易性金融资产2.47亿元<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>。<strong>一家连续两年盈利、净资产近10亿、负债率不到四分之一、还每10股派1元现金红利的公司，顶着ST的帽子——这就是ST八菱最核心的错位。</strong></p>
+<p>先把三行结论放在最前面：</p>
+<ul>
+<li><strong>红线分类</strong>：规范类之"<strong>违规担保型其他风险警示</strong>"，触发《深圳证券交易所股票上市规则》关于"公司向控股股东或关联方提供资金或违规担保且情形严重"的其他风险警示条款（2020年7月2日起实施）。<strong>不涉及财务类、交易类、重大违法类退市风险警示——没有退市倒计时</strong>。这是它与大多数*ST最本质的区别。</li>
+<li><strong>生死定级</strong>：<strong>基本面已经把"死"字划掉了，剩下的只是"帽子什么时候摘"</strong>。主业造血正常（2024、2025连续两年盈利，2026H1延续）、账上金融资产2.47亿、分红照发。真正的约束在<strong>体外</strong>——4.66亿违规担保损失由已被剥离出表的海南弘天自行追偿，公司只是"督促方"，追偿快慢不完全由公司控制。</li>
+<li><strong>自救空间</strong>：<strong>完全取决于三个官司的回款进度，而不是取决于经营</strong>。截至2026年9月1日最新进展公告：广发银行重庆分行案已执行终结、累计收回1.03亿元（已落地）；广州银行珠江支行1.46亿元案最高院终审判质押合同无效、判返还7,300万元，<strong>已申请强制执行但至今零回款</strong>；1.5亿元案二审被驳回、已向最高院申请再审<sup id="fnref11:1"><a class="footnote-ref" href="#fn:1">1</a></sup>。<strong>"遗留问题处理完毕"是摘帽的唯一开关，而这个开关捏在法院执行局手里。</strong></li>
+</ul>
+<p><strong>但这次写稿，我必须把一个此前几乎没被注意的东西放在前面</strong>：翻完公司近一年69条互动易问答，一个信号反复出现——从2025年9月到2026年7月，<strong>投资者至少6次问公司要不要切进"服务器液冷/AI算力散热/机器人"，公司的回答从"积极关注"逐步退守到"目前暂无应用"</strong><sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>。这不是噪声，这是一条<strong>"想做但还没做、且公司自己反复否认"</strong>的边界线。第6章专门讲这件事——<strong>在一个"新·大·强"的框架里，ST八菱给出的答案是"不够新、不够大、还很强"</strong>，这本身就是极有价值的判断。</p>
+<p>下面按"前世今生→为什么被ST→谁在操盘→财务体检→追偿进展→投资者交流挖掘→估值与赌局→风险清单→结语"的顺序，把这单生意拆完。</p>
+<hr />
+<h2 id="一、前世今生：从南宁散热器厂，到&quot;被一个外人捅了一刀&quot;">一、前世今生：从南宁散热器厂，到"被一个外人捅了一刀"</h2>
+<h3 id="2001-2011：一家非常传统的汽车零部件厂">2001-2011：一家非常传统的汽车零部件厂</h3>
+<p>公司前身是2001年7月17日成立的<strong>八菱散热器有限责任公司</strong>。2004年11月，经广西壮族自治区人民政府《关于同意发起设立南宁八菱科技股份有限公司的批复》（桂政函〔2004〕207号）批准，以截至2004年9月30日经审计净资产56,619,166.43元折为56,619,166股，整体变更设立股份公司<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>。</p>
+<p>2011年11月11日，公司在深交所主板上市，保荐机构民生证券<sup id="fnref2:4"><a class="footnote-ref" href="#fn:4">4</a></sup>。<strong>上市时股本仅5,661.92万股</strong>，是一个典型的中小板时代"小盘汽配股"。</p>
+<p>主营二十年没怎么变过：<strong>汽车热管理系统换热器 + 汽车外饰件</strong>两个品类。换热器覆盖高温散热器、低温散热器、中冷器、油冷器、冷凝器、HVAC空调总成、电池冷却器、电池液冷板、电机电控散热器、电机IGBT水冷散热器、DHT混动油冷器、集成式热管理模块；外饰件覆盖前后保险杠、尾门装饰板、后扰流板、车身裙板等<sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup>。客户进的是上汽通用五菱、奇瑞汽车、长安汽车、长安福特、吉利汽车、广汽集团、赛力斯、岚图、东风汽车、一汽解放等十余家主流车企的合格供应商体系<sup id="fnref3:2"><a class="footnote-ref" href="#fn:2">2</a></sup>——<strong>这是那种"不性感但很扎实"的汽配生意</strong>。</p>
+<h3 id="2018-2019：一脚踏进基因检测，埋下了全部的雷">2018-2019：一脚踏进基因检测，埋下了全部的雷</h3>
+<p>转折发生在2018-2019年。公司通过"南宁八菱投资基金合伙企业（有限合伙）"等平台，切进了跟自己主业八竿子打不着的<strong>基因生物技术</strong>赛道，并于<strong>2019年5月完成对北京弘润天源基因生物技术有限公司（简称"北京弘天"）51%股权的收购</strong><sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup>。</p>
+<p>这笔收购的对手方叫<strong>王安祥</strong>。协议里他给了两个承诺：</p>
+<ul>
+<li><strong>业绩承诺</strong>：北京弘天2019-2021年度<strong>累计经营性净利润不低于6亿元</strong>，未达标按协议支付业绩补偿款<sup id="fnref4:5"><a class="footnote-ref" href="#fn:5">5</a></sup>；</li>
+<li>后来追加的<strong>担保损失偿还承诺</strong>（见第二章）。</li>
+</ul>
+<p><strong>6亿元是什么概念？</strong> 公司自己2011年上市时净资产才5000多万，2018年全年营收不过7亿出头。<strong>这是一个用一家上市公司的体量，去赌一家基因公司三年赚6亿的承诺。</strong> 后来的事实证明，北京弘天2019-2021年累计经营性净利润是<strong>-6.49亿元</strong>（-64,882.22万元），完成承诺业绩的 <strong>-108.14%</strong>（大信会计师事务所《业绩承诺完成情况审核报告》，大信专审字〔2022〕第4-00075号）<sup id="fnref2:5"><a class="footnote-ref" href="#fn:5">5</a></sup>。<strong>从+6亿到-6.49亿，中间差了一个天文数字。</strong></p>
+<h3 id="2019-10 至 2020-01：四亿六千万怎么没的">2019-10 至 2020-01：四亿六千万怎么没的</h3>
+<p>北京弘天的子公司叫<strong>海南弘润天源基因生物技术有限公司（简称"海南弘天"）</strong>，曾是公司的二级控股子公司。它的时任负责人<strong>王安祥</strong>，在<strong>未履行公司内部审议决策程序</strong>的情况下，擅自以海南弘天名义，<strong>将合计4.66亿元的三张定期存单对外违规提供质押担保</strong>，最终导致该等存单项下资金<strong>被全额划转</strong><sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup>。</p>
+<p><strong>这句话里有三个今天回看依然刺眼的点</strong>：</p>
+<ol>
+<li><strong>"未履行内部审议程序"</strong> —— 意味着董事会、股东会、内控流程全部被绕过，是"私自"行为；</li>
+<li><strong>"以海南弘天名义"</strong> —— 用的是海南弘天自己账上的存单，但海南弘天是上市公司体系内的公司，钱是上市公司的钱；</li>
+<li><strong>"全额划转"</strong> —— 不是冻结、不是部分扣划，是三张存单下的钱一分不剩。</li>
+</ol>
+<p><strong>后果</strong>：受该违规担保影响，公司股票<strong>自2020年7月2日起被实施其他风险警示（ST）</strong><sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup>。从那天到今天，六年。</p>
+<h3 id="2022-11 至 2023-06：把&quot;雷&quot;剥离出表，但帽子留下了">2022-11 至 2023-06：把"雷"剥离出表，但帽子留下了</h3>
+<p>公司的处置路径很清楚——<strong>把海南弘天这个主体剥离掉，但追偿权留在协议里</strong>：</p>
+<ul>
+<li><strong>2022年11月15日</strong>，北京弘天与广西万厚商贸有限公司、海南弘天及八菱科技共同签署《股权转让协议》，<strong>将海南弘天100%股权转让给广西万厚商贸有限公司</strong>。协议约定：海南弘天自行负责追偿4.66亿元违规担保损失，追偿所得款项扣除追偿成本及相关费用后，<strong>超出500万元的部分将用于购买公司所持北京弘天51%股权</strong>（公司明确注明"<strong>不构成保底承诺</strong>"）<sup id="fnref5:5"><a class="footnote-ref" href="#fn:5">5</a></sup>。</li>
+<li><strong>2023年6月29日</strong>，公司与广西德天厚投资有限公司、北京弘天、海南弘天、万厚公司共同签署《股权转让协议书》，<strong>将所持北京弘天15%股权以1,000万元转让给广西德天厚投资有限公司</strong>。三方同时承诺：若海南弘天成功追回4.66亿元损失，追偿所得扣除成本、费用及本次股权转让款120%后，剩余超出500万元的部分用于购买公司持有的北京弘天剩余股权（同样注明"不构成保底承诺"）<sup id="fnref6:5"><a class="footnote-ref" href="#fn:5">5</a></sup>。</li>
+</ul>
+<p><strong>这个结构的精妙之处</strong>：上市公司把海南弘天卖了出去，<strong>从法律主体上切断了与4.66亿纠纷的关联</strong>；但通过"追偿所得→买回北京弘天股权"的约定，<strong>理论上保留了一条资金回流的通道</strong>。代价是——<strong>追偿这件事，法律上已经不是上市公司自己在做了</strong>。这也解释了为什么公司在互动易上对追偿进度的问题，一律回答"请关注每月披露的进展公告"，而进展公告的口径永远是"海南弘天已申请强制执行/已提起上诉"<sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">3</a></sup>。</p>
+<h3 id="时间轴一表看完">时间轴一表看完</h3>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>时间</th>
+<th>事件</th>
+<th>性质</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2001-07-17</td>
+<td>前身八菱散热器有限责任公司成立</td>
+<td>起点</td>
+</tr>
+<tr>
+<td>2004-11</td>
+<td>整体变更设立南宁八菱科技股份有限公司</td>
+<td>改制</td>
+</tr>
+<tr>
+<td>2011-11-11</td>
+<td>深交所主板上市，股本5,661.92万股，保荐民生证券</td>
+<td>上市</td>
+</tr>
+<tr>
+<td>2018-2019</td>
+<td>切入基因生物赛道，设立南宁八菱投资基金</td>
+<td>跨界</td>
+</tr>
+<tr>
+<td><strong>2019-05</strong></td>
+<td><strong>完成收购北京弘天51%股权，王安祥承诺三年累计净利≥6亿</strong></td>
+<td><strong>埋雷</strong></td>
+</tr>
+<tr>
+<td><strong>2019-10～2020-01</strong></td>
+<td><strong>王安祥擅自以海南弘天名义，将4.66亿元三张定期存单违规质押担保，资金被全额划转</strong></td>
+<td><strong>爆雷</strong></td>
+</tr>
+<tr>
+<td><strong>2020-07-02</strong></td>
+<td><strong>公司股票被实施其他风险警示（ST）</strong></td>
+<td><strong>戴帽</strong></td>
+</tr>
+<tr>
+<td>2022-11-15</td>
+<td>海南弘天100%股权转让给广西万厚商贸，约定追偿所得用于回购北京弘天股权</td>
+<td>剥离</td>
+</tr>
+<tr>
+<td>2023-06-29</td>
+<td>所持北京弘天15%股权以1,000万元转让给广西德天厚</td>
+<td>剥离</td>
+</tr>
+<tr>
+<td>2025-12-24</td>
+<td>广发银行重庆分行1.7亿元案执行终结，累计收回1.03亿元</td>
+<td>追偿★落地</td>
+</tr>
+<tr>
+<td>2026-07-30</td>
+<td>2026年半年报披露：营收3.69亿(+30.42%)、净利5,770.72万</td>
+<td>主业向上</td>
+</tr>
+<tr>
+<td>2026-07-31</td>
+<td>广东高院二审驳回1.5亿元案上诉，海南弘天向最高院申请再审</td>
+<td>追偿★受挫</td>
+</tr>
+<tr>
+<td>2026-09-01</td>
+<td>最新进展公告：1.46亿元案已申请强执但零回款</td>
+<td>追偿★僵持</td>
+</tr>
+<tr>
+<td>2026-09-18</td>
+<td>收盘6.45元，总市值18.18亿元</td>
+<td>现状</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="二、为什么被ST：一顶与主业无关的帽子">二、为什么被ST：一顶与主业无关的帽子</h2>
+<h3 id="唯一原因：违规担保，不是造假，不是亏损">唯一原因：违规担保，不是造假，不是亏损</h3>
+<p>这是ST八菱最需要讲清楚的一点。公司被ST的<strong>唯一</strong>原因是<sup id="fnref4:1"><a class="footnote-ref" href="#fn:1">1</a></sup>：</p>
+<blockquote>
+<p>2019年10月至2020年1月，公司原二级控股子公司海南弘天时任负责人王安祥，在未履行公司内部审议决策程序的情况下，擅自以海南弘天名义，将合计4.66亿元的三张定期存单违规对外提供质押担保，最终导致该等存单项下资金被全额划转。受前述违规担保事项影响，公司股票自2020年7月2日起被实施其他风险警示（ST）。</p>
+</blockquote>
+<p><strong>对照退市红线的四分类</strong>：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>退市类型</th>
+<th>是否触及</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>财务类</strong></td>
+<td>❌ 未触及</td>
+<td>2024、2025连续两年归母净利为正（6,998万、1.17亿），2026H1继续盈利；净资产为正（9.89亿元）</td>
+</tr>
+<tr>
+<td><strong>交易类</strong></td>
+<td>❌ 未触及</td>
+<td>股价6.45元远离1元；市值18.18亿元远离3亿元主板的红线</td>
+</tr>
+<tr>
+<td><strong>规范类</strong></td>
+<td>⚠️ <strong>部分触发（ST而非*ST）</strong></td>
+<td>违规担保已构成"其他风险警示"情形，但<strong>未升级为退市风险警示</strong></td>
+</tr>
+<tr>
+<td><strong>重大违法类</strong></td>
+<td>❌ 未触及</td>
+<td>无证监会行政处罚认定财务造假；本案是"公司内部人越权担保"，性质不同</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>换句话说：这顶帽子是"治理事故"性质的，不是"生存危机"性质的。</strong> 主板ST与*ST的分野、以及是否叠加财务类退市指标，是判断ST股生死的分水岭。八菱属于"只戴ST、不戴*ST、财务指标健康"的那一类。</p>
+<h3 id="为什么六年了还摘不掉">为什么六年了还摘不掉</h3>
+<p>《深圳证券交易所股票上市规则》对"违规担保型其他风险警示"的撤销，设有明确前置条件——<strong>违规担保/资金占用等情形须已消除或处理完毕</strong>。公司最新公告的表述是<sup id="fnref5:1"><a class="footnote-ref" href="#fn:1">1</a></sup>：</p>
+<blockquote>
+<p>截至本公告披露日，因海南弘天违规担保相关遗留问题尚未处理完毕，公司股票暂未满足撤销其他风险警示的条件。</p>
+</blockquote>
+<p><strong>"处理完毕"三个字，就是这顶帽子的解扣。</strong> 而处理完毕的路径只有一条——<strong>把4.66亿损失追回来（或至少追回到能够认定"相关情形已消除"的程度）</strong>。</p>
+<p><strong>一个容易被忽略的细节</strong>：公司半年报《第三节 管理层讨论与分析》里，把这一项单独列为"（八）公司股票其他风险警示暂无法撤销风险"，与行业竞争、原材料价格、客户集中度等经营风险并列<sup id="fnref4:2"><a class="footnote-ref" href="#fn:2">2</a></sup>。措辞用的是"<strong>暂无法撤销</strong>"而不是"存在撤销可能"——<strong>公司自己的定调是相当谨慎的</strong>。</p>
+<h3 id="摘帽的两条硬约束">摘帽的两条硬约束</h3>
+<p>把公告和规则合起来读，摘帽需要同时满足：</p>
+<ol>
+<li><strong>实质条件</strong>：4.66亿元违规担保遗留问题处理完毕。目前1.03亿元已回款（占22.1%）、7,300万元已判决待执行（占15.7%）、1.5亿元处于再审申请阶段（占32.2%）。<strong>已解决+已判决合计约37.8%，剩下有相当部分还在司法程序里</strong>。</li>
+<li><strong>程序条件</strong>：公司须向交易所提交撤销申请，交易所审核同意。</li>
+</ol>
+<p><strong>结论：摘帽与否，本质是一场法律执行的赛跑，不是一场经营的考试。</strong> 这决定了它的投资逻辑——<strong>买的不是业绩弹性，是"追偿进度"这个事件的期权价值</strong>。</p>
+<hr />
+<h2 id="三、谁在操盘：杨家夫妻档，与一个已经出局的外人">三、谁在操盘：杨家夫妻档，与一个已经出局的外人</h2>
+<h3 id="现在的实控人：杨竞忠、顾瑜夫妇">现在的实控人：杨竞忠、顾瑜夫妇</h3>
+<p>截至2026年6月30日，公司前十大股东如下<sup id="fnref5:2"><a class="footnote-ref" href="#fn:2">2</a></sup>：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>股东名称</th>
+<th>性质</th>
+<th>持股比例</th>
+<th>持股数量（股）</th>
+<th>质押/冻结</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>杨竞忠</strong></td>
+<td>境内自然人</td>
+<td><strong>23.39%</strong></td>
+<td>66,433,049</td>
+<td><strong>质押43,000,000</strong></td>
+</tr>
+<tr>
+<td><strong>顾瑜</strong></td>
+<td>境内自然人</td>
+<td><strong>8.69%</strong></td>
+<td>24,688,427</td>
+<td><strong>质押23,477,000</strong></td>
+</tr>
+<tr>
+<td>第五期员工持股计划</td>
+<td>其他</td>
+<td>4.99%</td>
+<td>14,166,400</td>
+<td>不适用</td>
+</tr>
+<tr>
+<td>黄志强</td>
+<td>境内自然人</td>
+<td>4.04%</td>
+<td>11,474,571</td>
+<td>不适用</td>
+</tr>
+<tr>
+<td>第六期员工持股计划</td>
+<td>其他</td>
+<td>3.57%</td>
+<td>10,143,000</td>
+<td>不适用</td>
+</tr>
+<tr>
+<td>UBS AG</td>
+<td>境外法人</td>
+<td>0.78%</td>
+<td>2,213,957</td>
+<td>不适用</td>
+</tr>
+<tr>
+<td>杨子哲</td>
+<td>境内自然人</td>
+<td>0.63%</td>
+<td>1,790,300</td>
+<td>不适用</td>
+</tr>
+<tr>
+<td>王晓芳</td>
+<td>境内自然人</td>
+<td>0.62%</td>
+<td>1,765,500</td>
+<td>不适用</td>
+</tr>
+<tr>
+<td>施瑾君</td>
+<td>境内自然人</td>
+<td>0.62%</td>
+<td>1,749,000</td>
+<td>不适用</td>
+</tr>
+<tr>
+<td>陆晖</td>
+<td>境内自然人</td>
+<td>0.58%</td>
+<td>1,655,300</td>
+<td>不适用</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>关键信息四条</strong>：</p>
+<ol>
+<li><strong>杨竞忠（23.39%）与顾瑜（8.69%）为夫妻关系，构成一致行动人，合计32.08%</strong> —— 控制权相当稳固，其他股东最高才4.99%。</li>
+<li><strong>表决权安排</strong>：半年报明确披露"<strong>杨竞忠已将自身所持的本公司全部股份对应的股东表决权，全权委托顾瑜代为行使</strong>"——也就是说，<strong>真正的操盘人是顾瑜</strong>。顾瑜同时是公司法定代表人<sup id="fnref13:2"><a class="footnote-ref" href="#fn:2">2</a></sup><sup id="fnref3:4"><a class="footnote-ref" href="#fn:4">4</a></sup>。</li>
+<li><strong>两个员工持股计划（第五期4.99%+第六期3.57%=8.56%）均已自愿放弃所持股份对应的全部股东会表决权</strong><sup id="fnref14:2"><a class="footnote-ref" href="#fn:2">2</a></sup> —— 这是一个不常见的安排，客观上进一步放大了杨、顾夫妇的表决权占比。</li>
+<li><strong>杨、顾夫妇是高质押状态</strong>：杨竞忠质押4,300万股（占其持股64.7%）、顾瑜质押2,347.7万股（占其持股95.1%）<sup id="fnref15:2"><a class="footnote-ref" href="#fn:2">2</a></sup>。<strong>顾瑜的质押比例高达95%，这是需要盯住的治理信号。</strong></li>
+</ol>
+<h3 id="杨竞忠的司法冻结：一个小口子，但要记下来">杨竞忠的司法冻结：一个小口子，但要记下来</h3>
+<p>2024年7月5日，公司披露《关于控股股东部分股份被司法冻结的公告》：<strong>杨竞忠所持1,933,477股（占其持股2.91%、占总股本0.68%）被南宁市青秀区人民法院司法冻结</strong>，冻结期2024-07-03至2027-07-02，原因为"<strong>诉讼</strong>"<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup>。</p>
+<p>公告披露：该冻结系"其与他人之间的民事纠纷案件所致，法院对其名下财产采取相应执行措施，<strong>执行标的金额700多万元</strong>"，并提示"<strong>不排除上述被冻结股份后期被法院强制执行的可能</strong>"<sup id="fnref2:6"><a class="footnote-ref" href="#fn:6">6</a></sup>。</p>
+<p><strong>怎么读这件事</strong>：</p>
+<ul>
+<li><strong>量级上不构成威胁</strong>：190万股、执行标的700万，相对于18亿市值是小数点后的扰动，公告明确"不会导致公司实际控制权或第一大股东发生变更"。</li>
+<li><strong>但性质上是一个信号</strong>：控股股东个人层面的债务纠纷，叠加顾瑜95%的股权质押率，<strong>说明这个实控人阵营的现金流是紧的</strong>。这一点和后面第7章的估值讨论直接相关——<strong>别指望实控人自掏腰包去填4.66亿的坑</strong>。</li>
+<li><strong>公告还特意申明</strong>："杨竞忠先生及其一致行动人不存在非经营性资金占用、违规担保等侵害公司利益的情形"<sup id="fnref3:6"><a class="footnote-ref" href="#fn:6">6</a></sup>——<strong>这是把实控人和当年那笔违规担保切割开的官方表述</strong>。这一点很重要：<strong>当年的违规担保，是"子公司负责人王安祥"干的，不是控股股东干的。</strong></li>
+</ul>
+<h3 id="王安祥：已经出局的那个人">王安祥：已经出局的那个人</h3>
+<p>把时间线拉直，王安祥的处境是<sup id="fnref3:5"><a class="footnote-ref" href="#fn:5">5</a></sup>：</p>
+<ul>
+<li>曾是北京弘天（基因公司）的出售方，2019年4月19日作出<strong>业绩承诺：2019-2021年累计经营性净利润不低于6亿元</strong>；</li>
+<li>2020年6月22日作出<strong>违规担保偿还承诺</strong>：承诺2020年6月30日前解除质押或以等额现金置换，未按期解除则承担全部损失，并于<strong>2020年10月31日前偿还4.66亿元及对应资金占用利息（按年利率10%，自2020年7月1日起算）</strong>；</li>
+<li><strong>两项承诺全部超期未履行</strong>。半年报原文的表述是："<strong>王安祥自身债务规模巨大、偿债能力恶化，截至目前仍未履行偿还资金承诺</strong>"<sup id="fnref7:5"><a class="footnote-ref" href="#fn:5">5</a></sup>；</li>
+<li>对业绩补偿，公司"已通过多次发函、约谈等方式催告"，但"<strong>受其自身偿债能力限制，该业绩补偿款项最终能否足额收回存在重大不确定性</strong>"<sup id="fnref8:5"><a class="footnote-ref" href="#fn:5">5</a></sup>。</li>
+</ul>
+<p><strong>这是一条已经断掉的路。</strong> 4.66亿元的直接责任人，已经没有偿付能力。<strong>公司能指望的，只剩下去告银行——这也是为什么三个案子全部是"海南弘天诉银行"。</strong></p>
+<hr />
+<h2 id="四、财务体检：一家被低估的&quot;现金牛型ST&quot;">四、财务体检：一家被低估的"现金牛型ST"</h2>
+<h3 id="损益表：主业连续两年盈利，2026H1继续向上">损益表：主业连续两年盈利，2026H1继续向上</h3>
+<p>先看半年报定稿数（2026H1 vs 2025H1）<sup id="fnref6:2"><a class="footnote-ref" href="#fn:2">2</a></sup>：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>指标</th>
+<th>2026H1</th>
+<th>2025H1</th>
+<th>同比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>营业收入（元）</td>
+<td>369,490,603.23</td>
+<td>283,307,347.16</td>
+<td><strong>+30.42%</strong></td>
+</tr>
+<tr>
+<td>归属于上市公司股东的净利润（元）</td>
+<td>57,707,187.13</td>
+<td>56,775,640.72</td>
+<td>+1.64%</td>
+</tr>
+<tr>
+<td><strong>扣非归母净利润（元）</strong></td>
+<td><strong>43,786,521.79</strong></td>
+<td><strong>55,210,548.55</strong></td>
+<td><strong>-20.69%</strong></td>
+</tr>
+<tr>
+<td>经营活动现金流净额（元）</td>
+<td>3,969,965.09</td>
+<td>11,725,667.76</td>
+<td>-66.14%</td>
+</tr>
+<tr>
+<td>基本每股收益（元/股）</td>
+<td>0.20</td>
+<td>0.20</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>加权平均净资产收益率</td>
+<td>5.99%</td>
+<td>6.23%</td>
+<td>-0.24pct</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>"营收大涨30%、扣非却下滑20%"这个背离，必须解释清楚</strong>——财报原文给出的原因很明确<sup id="fnref7:2"><a class="footnote-ref" href="#fn:2">2</a></sup>：</p>
+<blockquote>
+<p>本期扣除非经常性损益后的净利润同比下降，<strong>主要系当期投资收益减少所致</strong>。公司参股企业重庆八菱汽车配件有限责任公司受下游终端市场需求波动影响，主力配套车型产销及订单规模同比收缩，经营业绩同步承压。公司按持股比例确认的投资收益221.25万元，<strong>比上年同期减少4,213.34万元</strong>，对当期合并经营业绩产生阶段性影响，<strong>该波动不涉及公司核心主营业务</strong>，未对公司持续经营能力造成不利影响。</p>
+</blockquote>
+<p><strong>翻译一下</strong>：主业的赚钱能力其实在变强（营收+30.42%、毛利率提升），利润表被"参股公司重庆八菱投资收益少了4,213万"这一项非主业因素拖累了。<strong>这不是经营恶化，这是投资收益的高基数效应。</strong></p>
+<h3 id="收入结构：热交换器是基本盘，外饰件是弹性">收入结构：热交换器是基本盘，外饰件是弹性</h3>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>分产品</th>
+<th>2026H1收入（元）</th>
+<th>占比</th>
+<th>同比</th>
+<th>毛利率</th>
+<th>毛利率同比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>热交换器</strong></td>
+<td>243,071,172.13</td>
+<td>65.79%</td>
+<td>+23.38%</td>
+<td>23.61%</td>
+<td><strong>+10.05pct</strong></td>
+</tr>
+<tr>
+<td><strong>外饰件</strong></td>
+<td>110,890,996.84</td>
+<td>30.01%</td>
+<td><strong>+73.80%</strong></td>
+<td>21.37%</td>
+<td>+1.99pct</td>
+</tr>
+<tr>
+<td>材料销售</td>
+<td>9,652,472.50</td>
+<td>2.61%</td>
+<td>-42.40%</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>租赁业务</td>
+<td>4,659,952.42</td>
+<td>1.26%</td>
+<td>-6.20%</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>1,216,009.34</td>
+<td>0.33%</td>
+<td>+57.67%</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td><strong>369,490,603.23</strong></td>
+<td>100%</td>
+<td>+30.42%</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>两个亮点</strong>：</p>
+<ol>
+<li><strong>热交换器毛利率从13.56%跃升到23.61%（+10.05pct）</strong>。这是最硬核的改善——新能源配套产品（电池冷却器、液冷板、前端冷却模块）产能释放、规模效应起来后，毛利率修复得非常明显。</li>
+<li><strong>外饰件收入同比+73.80%</strong>，从6,380万冲到1.11亿，占比从22.52%提到30.01%。</li>
+</ol>
+<p><strong>汽车行业整体口径</strong>：2026H1汽车行业主营收入35,396.22万元，占总营收95.8%，同比+35.72%，毛利率22.91%（+7.93pct）<sup id="fnref8:2"><a class="footnote-ref" href="#fn:2">2</a></sup>。<strong>境内收入占99.89%</strong>，是一家几乎纯内销的配套厂。</p>
+<p><strong>收入增长的公司自述归因</strong>（原文）<sup id="fnref9:2"><a class="footnote-ref" href="#fn:2">2</a></sup>：一是持续推进技术迭代与产品升级，前期研发的<strong>新能源汽车电池冷却器、液冷板、前端冷却模块、车身前后蒙皮总成</strong>等新产品于报告期内实现批量供货；二是深化与主流整车厂战略合作，<strong>受益于主要客户整车出口业务增长</strong>，定点配套订单持续增加。</p>
+<h3 id="资产负债表：24.28%的负债率，和2.47亿的理财">资产负债表：24.28%的负债率，和2.47亿的理财</h3>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>2026-06-30（元）</th>
+<th>占总资产</th>
+<th>2025-12-31（元）</th>
+<th>占总资产</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>货币资金</td>
+<td>29,755,078.38</td>
+<td>2.28%</td>
+<td>130,167,675.24</td>
+<td>9.94%</td>
+</tr>
+<tr>
+<td><strong>交易性金融资产</strong></td>
+<td><strong>247,261,360.09</strong></td>
+<td><strong>18.94%</strong></td>
+<td>81,353,299.02</td>
+<td>6.21%</td>
+</tr>
+<tr>
+<td>应收账款</td>
+<td>83,973,589.63</td>
+<td>6.43%</td>
+<td>58,000,530.41</td>
+<td>4.43%</td>
+</tr>
+<tr>
+<td>存货</td>
+<td>205,779,794.42</td>
+<td>15.76%</td>
+<td>176,254,033.03</td>
+<td>13.46%</td>
+</tr>
+<tr>
+<td>长期股权投资</td>
+<td>188,403,177.61</td>
+<td>14.43%</td>
+<td>184,959,016.71</td>
+<td>14.12%</td>
+</tr>
+<tr>
+<td>固定资产</td>
+<td>185,024,717.35</td>
+<td>14.17%</td>
+<td>179,446,885.76</td>
+<td>13.70%</td>
+</tr>
+<tr>
+<td><strong>在建工程</strong></td>
+<td><strong>107,386,025.71</strong></td>
+<td><strong>8.22%</strong></td>
+<td>51,697,431.89</td>
+<td>3.95%</td>
+</tr>
+<tr>
+<td>投资性房地产</td>
+<td>50,161,600.69</td>
+<td>3.84%</td>
+<td>60,886,734.75</td>
+<td>4.65%</td>
+</tr>
+<tr>
+<td><strong>总资产</strong></td>
+<td><strong>1,305,820,464.72</strong></td>
+<td>100%</td>
+<td>1,309,536,624.71</td>
+<td>100%</td>
+</tr>
+<tr>
+<td><strong>总负债</strong></td>
+<td><strong>317,048,786.02</strong></td>
+<td>24.28%</td>
+<td>372,667,543.59</td>
+<td>28.46%</td>
+</tr>
+<tr>
+<td><strong>归母净资产</strong></td>
+<td><strong>988,771,678.70</strong></td>
+<td>75.72%</td>
+<td>936,869,081.12</td>
+<td>71.54%</td>
+</tr>
+<tr>
+<td>短期借款</td>
+<td>0</td>
+<td>0%</td>
+<td>8,006,777.78</td>
+<td>0.61%</td>
+</tr>
+<tr>
+<td>长期借款</td>
+<td>1,035,200.00</td>
+<td>0.08%</td>
+<td>1,035,200.00</td>
+<td>0.08%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>这张表的信息量很大</strong>：</p>
+<ul>
+<li><strong>资产负债率从28.46%降到24.28%（-4.18pct），总负债同比减少5,561.88万元，短期借款清零</strong><sup id="fnref16:2"><a class="footnote-ref" href="#fn:2">2</a></sup>。<strong>这是一家几乎没有有息负债负担的公司。</strong></li>
+<li><strong>交易性金融资产从8,135万暴增到2.47亿</strong>（+12.73pct占比），半年报解释为"报告期内理财规模增加"<sup id="fnref17:2"><a class="footnote-ref" href="#fn:2">2</a></sup>。<strong>公司把大量现金放进了理财产品</strong>——从资金配置角度，这恰恰说明<strong>公司手上不缺钱、也没有大的资本开支缺口需要占用流动资金</strong>。</li>
+<li><strong>在建工程从5,170万翻到1.07亿（+4.27pct）</strong>，主要投向"新能源汽车配件智能制造生产基地项目"（安徽芜湖），半年报披露项目进度50.08%，本期投入5,405.68万元，累计投入12,520.58万元<sup id="fnref18:2"><a class="footnote-ref" href="#fn:2">2</a></sup>。<strong>这是产能扩张的实锤，也是未来的增长来源。</strong></li>
+<li><strong>货币资金从1.30亿降到2,975万</strong>，原因是"加大理财产品购置规模"<sup id="fnref19:2"><a class="footnote-ref" href="#fn:2">2</a></sup>——<strong>钱没少，只是从活期挪到了理财。</strong></li>
+</ul>
+<h3 id="三个在建项目：产能扩张正在落地">三个在建项目：产能扩张正在落地</h3>
+<p>半年报《重大非股权投资情况》披露<sup id="fnref10:2"><a class="footnote-ref" href="#fn:2">2</a></sup>：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>项目名称</th>
+<th>本期投入（元）</th>
+<th>累计投入（元）</th>
+<th>进度</th>
+<th>已实现收益（元）</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>新能源汽车配件智能制造生产基地项目</td>
+<td>54,056,818.63</td>
+<td>125,205,785.48</td>
+<td>50.08%</td>
+<td>52,460,500.00</td>
+<td>已建成1栋厂房，分步推进验收、装修、设备安装调试</td>
+</tr>
+<tr>
+<td>新能源汽车电池液冷板生产项目</td>
+<td>519,528.55</td>
+<td>931,728.55</td>
+<td>15.53%</td>
+<td>7,953,175.58</td>
+<td><strong>报告期内完成设备安装调试并投入使用</strong></td>
+</tr>
+<tr>
+<td>新能源汽车电池冷却器生产线技改项目</td>
+<td>1,858,000.00</td>
+<td>12,080,500.00</td>
+<td>89.49%</td>
+<td>—</td>
+<td>设备陆续进场安装调试，整体项目预计年内完成</td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td><strong>56,434,347.18</strong></td>
+<td><strong>138,218,014.03</strong></td>
+<td>—</td>
+<td><strong>60,413,675.58</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>注意"已实现收益"列</strong>：电池液冷板项目虽然累计投入只有93万（进度15.53%），但<strong>已实现收益795.32万元</strong>；智能制造基地项目<strong>已实现收益5,246.05万元</strong>。<strong>项目还在建设中就开始赚钱了——这说明新能源配套订单是已经到手、只是产能还在爬坡的状态。</strong> 这是判断"第二个增长曲线是否真实"的关键证据。</p>
+<h3 id="分红：一家ST公司在派现金">分红：一家ST公司在派现金</h3>
+<p><strong>这是最反直觉的一条</strong>。2026年7月30日，公司第八届董事会第二次会议审议通过2026年半年度利润分配方案<sup id="fnref11:2"><a class="footnote-ref" href="#fn:2">2</a></sup>：</p>
+<ul>
+<li><strong>每10股派发现金红利1.00元（含税）</strong>，不送红股，不以公积金转增股本；</li>
+<li>以总股本284,026,157股测算，<strong>现金分红总额28,402,615.70元</strong>；</li>
+<li><strong>占公司2026年上半年母公司净利润的比例约为59.12%</strong>。</li>
+</ul>
+<p><strong>一家ST公司，在给股东派息，分红比例59%。</strong> 这在ST板块里是极罕见的。它传递的信号非常明确：<strong>公司自认为财务健康、现金流可控、对未来经营有信心</strong>。2026年9月9日，公司披露《2026年半年度权益分派实施公告》，分红已落地。</p>
+<h3 id="财务体检的整体判断">财务体检的整体判断</h3>
+<p>把上面拼起来：<strong>ST八菱是一家"财务上已经完全恢复健康、只剩一顶历史帽子"的公司。</strong></p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>体检项</th>
+<th>数据</th>
+<th>评价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>盈利能力</td>
+<td>2025年归母净利1.17亿；2026H1 5,770.72万</td>
+<td>✅ 健康</td>
+</tr>
+<tr>
+<td>主营成长性</td>
+<td>2026H1营收+30.42%，汽车业务+35.72%</td>
+<td>✅ 优秀</td>
+</tr>
+<tr>
+<td>毛利率趋势</td>
+<td>热交换器毛利率+10.05pct</td>
+<td>✅ 显著改善</td>
+</tr>
+<tr>
+<td>资产负债率</td>
+<td>24.28%，短期借款为零</td>
+<td>✅ 极稳健</td>
+</tr>
+<tr>
+<td>账面流动性</td>
+<td>交易性金融资产2.47亿 + 货币资金2,975万</td>
+<td>✅ 充裕</td>
+</tr>
+<tr>
+<td>分红能力</td>
+<td>2026H1每10股派1元，分红率59.12%</td>
+<td>✅ 慷慨</td>
+</tr>
+<tr>
+<td>经营现金流</td>
+<td>2026H1仅397万，同比-66.14%</td>
+<td>⚠️ 偏弱，需盯</td>
+</tr>
+<tr>
+<td>控股股东财务</td>
+<td>顾瑜质押95%，杨竞忠190万股被冻结</td>
+<td>⚠️ 紧</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>两个需要盯的瑕疵</strong>：一是<strong>经营现金流净额只有397万，与5,770万净利润严重背离</strong>，半年报解释为"销售收入同比增长，对应的经营活动相关税费支付增加"<sup id="fnref12:2"><a class="footnote-ref" href="#fn:2">2</a></sup>——但营收+30%而经营现金流-66%，这个组合值得持续跟踪（应收账款从5,800万增到8,397万，也印证了收入质量的一丝隐忧）。二是<strong>控股股东高质押+司法冻结</strong>，说明实控人自身造血能力有限。</p>
+<hr />
+<h2 id="五、追偿进展：三个官司，一个开关">五、追偿进展：三个官司，一个开关</h2>
+<p>这是决定这顶帽子能不能摘的地方，必须单独一章。</p>
+<h3 id="4.66亿元的构成与三年追偿的地图">4.66亿元的构成与三年追偿的地图</h3>
+<p>4.66亿元来自<strong>三张定期存单</strong>，对应<strong>三个官司</strong><sup id="fnref6:1"><a class="footnote-ref" href="#fn:1">1</a></sup>：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>案件</th>
+<th>金额</th>
+<th>对手方</th>
+<th>最新状态（截至2026-09-01）</th>
+<th>已回款/可回收</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>案一</strong></td>
+<td><strong>1.7亿元</strong></td>
+<td>广发银行重庆分行</td>
+<td>重庆高院终审判决生效，<strong>2025-12-24执行终结并结案</strong></td>
+<td><strong>已收回1.03亿元</strong> ✅</td>
+</tr>
+<tr>
+<td><strong>案二</strong></td>
+<td><strong>1.46亿元</strong></td>
+<td>广州银行珠江支行</td>
+<td>最高院再审<strong>维持广东高院二审</strong>，<strong>认定《存单质押合同》无效，判令返还7,300万元+资金占用费</strong>；已申请强制执行，<strong>至今零回款</strong></td>
+<td>判7,300万，待执行 ⏳</td>
+</tr>
+<tr>
+<td><strong>案三</strong></td>
+<td><strong>1.5亿元</strong></td>
+<td>广州银行珠江支行</td>
+<td>2025-05广州中院一审裁定"不属经济纠纷、有经济犯罪嫌疑"，依"先刑后民"驳回起诉；<strong>2026年7月底广东高院二审驳回上诉、维持原裁定</strong>；已向最高院寄出再审申请材料</td>
+<td>程序受阻，再审中 ⚠️</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="案一：唯一落地的成果，但只回了一半多">案一：唯一落地的成果，但只回了一半多</h3>
+<p>案一是三个案子里唯一走完全部程序的<sup id="fnref7:1"><a class="footnote-ref" href="#fn:1">1</a></sup>：</p>
+<blockquote>
+<p>该案经重庆市高级人民法院作出终审生效判决，<strong>于2025年12月24日执行终结并结案，海南弘天累计收回涉案款项1.03亿元</strong>。</p>
+</blockquote>
+<p><strong>1.7亿元只收回1.03亿元（60.6%）</strong>。这个比例很重要——它在互动易问答里被投资者直接问到过。2026年2月24日有投资者问："公司因王安祥违规担保事项胜诉，为何银行只返还了一半划走的款项？"<sup id="fnref3:3"><a class="footnote-ref" href="#fn:3">3</a></sup></p>
+<p><strong>公司的回答给出了答案（原文）</strong><sup id="fnref4:3"><a class="footnote-ref" href="#fn:3">3</a></sup>：</p>
+<blockquote>
+<p>根据法院的判决，<strong>银行只需返还一半的本金</strong>。根据相关协议约定，若海南弘天的违规担保损失成功追回，扣除追偿成本及相关支出后，剩余款项将用于收购公司所持北京弘天股权。</p>
+</blockquote>
+<p><strong>为什么只返一半？</strong> 这涉及到"双方过错分担"的裁判逻辑——银行在质押担保办理中存在审查过错，但公司自身在内部控制和存单管理上也难辞其咎，法院按过错比例判定银行返还一半本金。<strong>这条裁判逻辑对案二同样适用——案二1.46亿元，最高院判的是返还7,300万元，正好也是一半。</strong></p>
+<h3 id="案二：赢了判决，卡在执行">案二：赢了判决，卡在执行</h3>
+<p>案二是目前最"纠结"的一个<sup id="fnref8:1"><a class="footnote-ref" href="#fn:1">1</a></sup>：</p>
+<blockquote>
+<p>该案经最高人民法院再审，已判决维持广东省高级人民法院二审裁判，<strong>认定案涉《存单质押合同》无效，判令广州银行珠江支行向海南弘天返还7,300万元并支付相应资金占用费</strong>。海南弘天<strong>已向法院申请强制执行，但截至本公告披露日，尚未收到任何回款</strong>，本案最终可收回金额及回款时间均存在不确定性。</p>
+</blockquote>
+<p><strong>互动易上，投资者对这个案子的追问密度最高</strong>——从2025年9月到2026年8月，至少8次问到"赢了官司为什么钱还不回来""银行是不是当老赖""能不能限高/向银监会投诉"<sup id="fnref5:3"><a class="footnote-ref" href="#fn:3">3</a></sup>。公司的回答始终是<sup id="fnref6:3"><a class="footnote-ref" href="#fn:3">3</a></sup>：</p>
+<blockquote>
+<p>海南弘天已向法院申请强制执行，但目前尚未收到执行款项。公司会持续督促海南弘天积极推进案件执行工作，密切关注案件进展，并及时披露每月《关于公司股票被实施其他风险警示相关事项的进展公告》。</p>
+</blockquote>
+<p><strong>这里的核心矛盾是</strong>：对手方是国有股份银行，<strong>赢了判决但执行不到钱</strong>——这在实践中并不罕见，但确实构成摘帽路上最大的不确定性。7,300万元占4.66亿元的15.7%，<strong>这笔钱如果到账，加上案一的1.03亿元，累计可回收约37.8%</strong>。</p>
+<h3 id="案三：被&quot;先刑后民&quot;挡住了">案三：被"先刑后民"挡住了</h3>
+<p>案三的路径最曲折<sup id="fnref9:1"><a class="footnote-ref" href="#fn:1">1</a></sup>：</p>
+<blockquote>
+<p>2025年5月，广州市中级人民法院作出一审裁定，认为本案<strong>不属经济纠纷案件而有经济犯罪嫌疑</strong>，根据"<strong>先刑后民</strong>"的司法原则，<strong>裁定驳回海南弘天的起诉</strong>。海南弘天对一审裁定不服，向广东高院提起上诉。<strong>2026年7月底，广东高院作出二审裁定，驳回上诉，维持原裁定。</strong>海南弘天不认同该裁定结果，<strong>已向最高人民法院寄出再审申请材料</strong>。</p>
+</blockquote>
+<p><strong>公司给出的抗辩逻辑（值得注意，这是公司自己写的）</strong><sup id="fnref10:1"><a class="footnote-ref" href="#fn:1">1</a></sup>：</p>
+<blockquote>
+<p>本案与1.46亿元存单质押合同纠纷案属于<strong>基本事实和法律关系相同而金额不同的类案</strong>，而1.46亿元存单质押合同纠纷案<strong>已经最高人民法院终审判决，认定质押合同无效</strong>。且据海南弘天所述，广州银行珠江支行被骗取票据承兑刑事案件已在法院审理过程中，<strong>海南弘天至今未收到任何单位关于海南弘天涉嫌经济犯罪的任何通知，也未收到任何关于经济犯罪的控告</strong>。</p>
+</blockquote>
+<p><strong>这两句话是公司为再审准备的核心论点</strong>：① 同案不同判——同类案子的姊妹案已经被最高院认定合同无效了；② 海南弘天本身不是犯罪嫌疑人，只是被"先刑后民"程序性地挡在门外。<strong>这个论点逻辑上是成立的，但再审能否受理、审理周期多长，都是未知数。</strong></p>
+<h3 id="追偿进度的量化盘点">追偿进度的量化盘点</h3>
+<p>把三个案子按金额和进度铺开：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>案件</th>
+<th>金额</th>
+<th>已落地</th>
+<th>已判决待执行</th>
+<th>程序受阻</th>
+<th>已解决占比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>案一</td>
+<td>1.70亿</td>
+<td><strong>1.03亿</strong></td>
+<td>—</td>
+<td>—</td>
+<td>60.6%</td>
+</tr>
+<tr>
+<td>案二</td>
+<td>1.46亿</td>
+<td>—</td>
+<td><strong>0.73亿</strong></td>
+<td>—</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>案三</td>
+<td>1.50亿</td>
+<td>—</td>
+<td>—</td>
+<td><strong>1.50亿</strong></td>
+<td>0%</td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td><strong>4.66亿</strong></td>
+<td><strong>1.03亿</strong></td>
+<td><strong>0.73亿</strong></td>
+<td><strong>1.50亿</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>占4.66亿比例</strong></td>
+<td>100%</td>
+<td><strong>22.1%</strong></td>
+<td>15.7%</td>
+<td>32.2%</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>读这张表的关键</strong>：</p>
+<ul>
+<li><strong>真实到账的只有1.03亿元（22.1%）</strong>。这是六年追偿的全部成果。</li>
+<li><strong>"已判决但执行不到"的7,300万元（15.7%）</strong> 是最近期的变量。这笔钱到账与否，会显著改变"处理完毕"的认定节奏。</li>
+<li><strong>1.5亿元（32.2%）</strong> 卡在程序里，需要最高院接受再审——这可能是整条链上耗时最长的一段。</li>
+<li>另外还有约1.4亿元（30%）的差额，源于"法院只判返还一半本金"的裁判逻辑，<strong>这部分从法律上可能永远追不回来</strong>。</li>
+</ul>
+<p><strong>一个务实的判断</strong>：如果按案一的先例（约60%回收率），4.66亿元理论可回收上限约2.8亿元。目前1.03亿元已到账，<strong>若案二的7,300万元到账，累计1.76亿元，约占总可回收上限的63%</strong>——<strong>从"追偿进度"的角度，这可能已经接近一个可以主张"主要损失已认定/追偿已取得实质进展"的节点，但最终是否满足交易所的"处理完毕"标准，完全取决于监管的裁量</strong>。</p>
+<hr />
+<h2 id="六、投资者交流挖掘：公司在&quot;新赛道&quot;上给的答案，比想象中更值钱">六、投资者交流挖掘：公司在"新赛道"上给的答案，比想象中更值钱</h2>
+<blockquote>
+<p>本章依据方法论 <strong>§4.7 投资者交流信息挖掘法</strong>——投资者交流是"第一现场"，尤其适合捕捉<strong>从0到1的新业务方向</strong>。</p>
+</blockquote>
+<h3 id="6.1 全景：69条问答，围绕三件事">6.1 全景：69条问答，围绕三件事</h3>
+<p>我从深交所互动易获取了ST八菱<strong>69条问答原文</strong>（时间跨度2025-09-19至2026-09-07，经同花顺F10互动易数据源提取、GBK解码）<sup id="fnref7:3"><a class="footnote-ref" href="#fn:3">3</a></sup>。把话题归类，<strong>69条问答几乎全部围绕三个母题</strong>：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>母题</th>
+<th>条数（约）</th>
+<th>占比</th>
+<th>性质</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A. 摘帽/追偿进展</strong></td>
+<td>~28条</td>
+<td>41%</td>
+<td>存量问题的焦虑</td>
+</tr>
+<tr>
+<td><strong>B. 股东人数/股价/减持/增发</strong></td>
+<td>~22条</td>
+<td>32%</td>
+<td>交易层面</td>
+</tr>
+<tr>
+<td><strong>C. 新业务方向</strong>（液冷/算力/机器人/固态电池等）</td>
+<td><strong>~12条</strong></td>
+<td>17%</td>
+<td><strong>★本文重点</strong></td>
+</tr>
+<tr>
+<td>D. 其他（诉讼、子公司、税务、洪灾）</td>
+<td>~7条</td>
+<td>10%</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>结论先行</strong>：A类和B类占了七成以上——<strong>这说明这家公司的投资者注意力还高度集中在"摘帽"和"股价"上，市场对它的定价主要锚定的是"帽子何时摘"，而不是"主业能走多远"</strong>。这本身就是一种错位，也是一种机会的结构（详见第7章）。</p>
+<h3 id="6.2 关键发现：一条被反复追问、又被反复否认的&quot;新赛道&quot;">6.2 关键发现：一条被反复追问、又被反复否认的"新赛道"</h3>
+<p>C类问答里最值得深挖的，是<strong>"服务器液冷/AI算力散热/机器人"</strong>这条线。<strong>这是一条教科书式的"新·大·强"题材</strong>——AI算力是当下最大的产业故事，"液冷"是公司热管理技术在逻辑上最自然的延伸。<strong>但ST八菱的态度，是一条持续退守的曲线。</strong></p>
+<p>把这条线的<strong>每一次问答按时间排开</strong>，态度变化一目了然<sup id="fnref8:3"><a class="footnote-ref" href="#fn:3">3</a></sup>：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>日期</th>
+<th>投资者问题（节选）</th>
+<th>公司回答（节选）</th>
+<th>L1~L4判读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2025-09-30</strong></td>
+<td>AI芯片功耗指数级增长，政策强制要求PUE降低，散热新市场前景十分广阔。公司有较强的散热领域技术储备，<strong>希望尽快切入这个新赛道</strong></td>
+<td>"感谢您的宝贵建议！公司会<strong>积极关注</strong>相关领域的发展机遇"</td>
+<td><strong>L1 概念布局</strong>（仅回应关注）</td>
+</tr>
+<tr>
+<td><strong>2025-10-23</strong></td>
+<td>公司官网产品有<strong>GPU散热器</strong>，请问在服务器散热领域目前是否有客户？</td>
+<td>"您好，公司有<strong>CPU散热器</strong>，但在服务器散热领域<strong>目前暂时还没有客户</strong>"</td>
+<td><strong>L1</strong>（澄清无客户）</td>
+</tr>
+<tr>
+<td><strong>2025-10-23</strong></td>
+<td>公司产品在机器人、服务器液冷、制冷方面有何新的进展？</td>
+<td>"公司产品目前<strong>主要应用于汽车领域</strong>，机器人和服务器<strong>目前暂无应用</strong>"</td>
+<td><strong>L1</strong>（明确否认）</td>
+</tr>
+<tr>
+<td><strong>2025-11-17</strong></td>
+<td>公司是否开拓海外市场？<strong>在服务器散热领域是否开始进行市场开拓？</strong></td>
+<td>"公司产品在服务器散热领域<strong>目前暂无应用</strong>。公司会持续聚焦主业……积极寻求新兴行业发展带来的市场机遇"</td>
+<td><strong>L1</strong>（再次否认）</td>
+</tr>
+<tr>
+<td><strong>2026-01-27</strong></td>
+<td>公司有参与布局<strong>奇瑞的固态电池</strong>吗？</td>
+<td>"公司专注于汽车热管理领域换热器产品……将<strong>持续密切关注</strong>汽车行业技术发展趋势与市场机遇，稳步推进技术储备与产品迭代升级"</td>
+<td><strong>L1</strong>（不否认不确认）</td>
+</tr>
+<tr>
+<td><strong>2026-06-15</strong></td>
+<td>公司热管理产品是否<strong>可用于液冷服务器</strong>等地方？</td>
+<td>"目前公司热管理产品<strong>主要配套汽车领域</strong>。公司具备成熟完备的液冷技术储备，<strong>现阶段所生产的液冷板产品也仅应用于汽车行业</strong>"</td>
+<td><strong>L2 在研推进</strong>（★出现"技术储备"表述）</td>
+</tr>
+<tr>
+<td><strong>2026-07-10</strong></td>
+<td>八菱科技是汽车配件，业务扩展方面，<strong>能做机器人配件吗？</strong></td>
+<td>"公司目前<strong>主营汽车零部件制造业务，暂无机器人配套相关业务</strong>。公司深耕热交换技术领域多年，拥有<strong>成熟的钎焊工艺及液冷散热相关技术储备</strong>，<strong>若未来有相关业务拓展计划</strong>，公司将严格按照信息披露规则及时履行信息披露义务"</td>
+<td><strong>L2</strong>（★首次出现"若未来有拓展计划"）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>这条曲线的形状非常清楚</strong>：</p>
+<ol>
+<li><strong>2025年9-11月：纯否认期</strong>。"暂无应用""暂无客户""主要应用于汽车"——三次明确否认。</li>
+<li><strong>2026年6月：松口期</strong>。首次出现"公司具备<strong>成熟完备的液冷技术储备</strong>"这样的正面表述，同时限定"现阶段液冷板<strong>仅应用于汽车行业</strong>"。</li>
+<li><strong>2026年7月：留口期</strong>。态度变为"拥有成熟的<strong>钎焊工艺及液冷散热相关技术储备</strong>，<strong>若未来有相关业务拓展计划</strong>，公司将严格按照信息披露规则及时履行信息披露义务"——<strong>这是一个标准的"现在没有、但不排除未来"的措辞，比"暂无应用"前进了一大步。</strong></li>
+</ol>
+<p><strong>用"新·大·强"三字诀打分</strong>：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>评分</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>新</strong>（是否新出现/划时代）</td>
+<td>⚠️ <strong>不够新</strong></td>
+<td>液冷不是新赛道，公司更不是提出者；服务器液冷已是红海（英维克、申菱环境等专业厂商林立）。公司只是"技术上能延伸到"，不是"开创者"</td>
+</tr>
+<tr>
+<td><strong>大</strong>（想象空间）</td>
+<td>✅ <strong>足够大</strong></td>
+<td>AI算力散热的产业空间毋庸置疑，是当下最大的产业叙事之一</td>
+</tr>
+<tr>
+<td><strong>强</strong>（短期是否迅猛）</td>
+<td>❌ <strong>完全不强</strong></td>
+<td>公司自己反复确认"暂无应用""暂无客户""未有业务拓展计划"。<strong>从"0到1"连0都还没到</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>关键结论（这比找到一条"新业务"更有价值）</strong>：</p>
+<blockquote>
+<p><strong>ST八菱在"新·大·强"框架下的答案是：题材够大，但既不够新，短期也一点都不强。</strong> 这条线目前是<strong>L1~L2</strong>级别（概念布局到在研推进之间），<strong>距离L3（落地在即）还有相当距离，更谈不上L4（已兑现）</strong>。它的真正意义在于：<strong>这是一个"技术期权"——如果未来公司真的拿下液冷/算力散热的客户，这将是重大拐点；但在那之前，它不构成任何投资理由。</strong></p>
+</blockquote>
+<p><strong>这正是§4.7的方法论价值所在</strong>——它让我们能在一片"AI液冷"的喧嚣中，通过公司自己的原话，<strong>把"想象空间大"和"实际进度为零"这两个事实同时抓住</strong>，避免被题材叙事带偏。</p>
+<h3 id="6.3 反向词清单：公司自己划出的红线">6.3 反向词清单：公司自己划出的红线</h3>
+<p>按照§4.7的方法论，<strong>"反向词"比"正向词"更值得记录</strong>——它们是公司自己给出的、可以用来证伪的证据。ST八菱在这条线上给出的反向词高度密集<sup id="fnref9:3"><a class="footnote-ref" href="#fn:3">3</a></sup>：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>反向词/句式</th>
+<th>出现场合</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"<strong>目前暂无应用</strong>"</td>
+<td>服务器散热、机器人（2025-10-23、2025-11-17、2025-10-23）</td>
+<td>明确否认已落地</td>
+</tr>
+<tr>
+<td>"<strong>目前暂时还没有客户</strong>"</td>
+<td>服务器散热（2025-10-23）</td>
+<td>明确否认有订单</td>
+</tr>
+<tr>
+<td>"<strong>暂无机器人配套相关业务</strong>"</td>
+<td>机器人（2026-07-10）</td>
+<td>明确否认</td>
+</tr>
+<tr>
+<td>"<strong>仅应用于汽车行业</strong>"</td>
+<td>液冷板（2026-06-15）</td>
+<td>限定现有产能用途</td>
+</tr>
+<tr>
+<td>"<strong>主要应用于汽车领域</strong>"</td>
+<td>多处</td>
+<td>反复强调主业边界</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>这套反向词的密度，是判断"新业务是否真实"的最可靠标尺。</strong> 对比ST佳缘的"计算载荷产品目前尚处于在研，2026年预计暂不会产生收入"——同样是L2级别，但佳缘给出了<strong>具体产品名（计算载荷）+ 具体时间表（2026年不产生收入）</strong>；而八菱给出的只是<strong>"技术储备"+"若有计划"</strong>。<strong>佳缘的L2有骨架，八菱的L2只有姿态。两者不在一个量级。</strong></p>
+<h3 id="6.4 另一条被忽略的线索：盖娅互娱">6.4 另一条被忽略的线索：盖娅互娱</h3>
+<p>有一条问答容易被当作噪声忽略，但它揭示了公司另一层资产结构<sup id="fnref10:3"><a class="footnote-ref" href="#fn:3">3</a></sup>：</p>
+<blockquote>
+<p><strong>投资者（2026-08-24）</strong>：请问公司投资控股的南宁八菱投资基金合伙企业（有限合伙），投资的<strong>北京盖娅互娱网络科技集团股份有限公司</strong>是什么科技公司？
+<strong>公司</strong>：北京盖娅互娱网络科技集团股份有限公司的<strong>主营业务为游戏相关业务</strong>。感谢您的关注。</p>
+</blockquote>
+<p>而更早在2025-10-27的问答中，公司披露<sup id="fnref11:3"><a class="footnote-ref" href="#fn:3">3</a></sup>：</p>
+<blockquote>
+<p>南宁八菱投资基金合伙企业（有限合伙）<strong>目前主要投资了北京盖娅互娱网络科技集团股份有限公司</strong>。公司持有重庆八菱汽车配件有限责任公司49%的股权，目前暂无增持计划。</p>
+</blockquote>
+<p><strong>这条信息的分量被严重低估</strong>：</p>
+<ul>
+<li>公司通过<strong>南宁八菱投资基金合伙企业</strong>（注册资本2.151亿元，公司控制的企业）投资了<strong>盖娅互娱</strong>——一家<strong>游戏公司</strong><sup id="fnref20:2"><a class="footnote-ref" href="#fn:2">2</a></sup><sup id="fnref13:3"><a class="footnote-ref" href="#fn:3">3</a></sup>。</li>
+<li>另外2026-02-24有投资者问"南宁八菱投资基金是否有意参与<strong>SpaceX上市的A轮融资</strong>"，公司回答"目前没有这方面计划"<sup id="fnref14:3"><a class="footnote-ref" href="#fn:3">3</a></sup>。<strong>投资者会问出这种问题，说明市场把这只基金理解为公司的"投资/资本运作平台"。</strong></li>
+</ul>
+<p><strong>这条线索的意义</strong>：ST八菱并非一家"纯汽配公司"——它体内有一个<strong>注册资本2.15亿元的投资基金</strong>，投的是游戏公司。这与公司2026-08-10回应投资者"公司业务现在除了加工汽车零部件<strong>还有炒股</strong>"<sup id="fnref12:3"><a class="footnote-ref" href="#fn:3">3</a></sup>的调侃相呼应。<strong>公司账上2.47亿交易性金融资产，也印证了它确实在做相当规模的证券投资。</strong></p>
+<p><strong>但要给这条线索降级</strong>：盖娅互娱是<strong>基金的参股投资</strong>，不是上市公司并表资产；基金规模2.15亿，在18亿市值里占比有限；且公司明确表示这只是存量投资，没有新的资本运作计划。<strong>它是一个"可以被讲的故事"，但目前还只是一个故事。</strong></p>
+<h3 id="6.5 与&quot;摘帽&quot;母题的关系：市场问错了问题">6.5 与"摘帽"母题的关系：市场问错了问题</h3>
+<p>把6.1的统计再看一遍——<strong>69条问答里41%在问摘帽，17%在问新业务</strong>。这个比例结构本身就是信息：</p>
+<ul>
+<li><strong>市场把这家公司当成一个"摘帽博弈标的"在交易</strong>（股价从2025年1月的5.02元一路炒到2026年1月的10.51元，翻倍，然后回落到6.45元——<strong>这条曲线完美对应了"摘帽预期起来→预期落空"的情绪周期</strong>）；</li>
+<li><strong>而公司在互动易上，对摘帽问题给的是最"硬"的答案</strong>——一律指向每月进展公告，从不做任何乐观暗示。<strong>2026-08-24投资者只问了四个字"何时摘帽？"，公司的回答是"请您持续关注……按月披露的进展公告"，等于没回答</strong><sup id="fnref15:3"><a class="footnote-ref" href="#fn:3">3</a></sup>。</li>
+</ul>
+<p><strong>这种"投资者热、公司冷"的落差，是ST股博弈的典型特征</strong>。它提示我们：<strong>如果按"摘帽题材"来买这只股票，你买的是市场情绪；如果按"主业价值"来买，你买的是被ST标签压制的估值折价。这是两条完全不同的逻辑，不该混淆。</strong></p>
+<h3 id="6.6 六个跟踪动作（可直接执行）">6.6 六个跟踪动作（可直接执行）</h3>
+<p>根据以上挖掘，为ST八菱设定6个可验证的跟踪动作：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>跟踪动作</th>
+<th>观察窗口</th>
+<th>触发意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>每月《关于公司股票被实施其他风险警示相关事项的进展公告》</strong></td>
+<td>每月初</td>
+<td>案二执行回款的唯一官方信源</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>案二7,300万元的执行到账公告</strong></td>
+<td>持续</td>
+<td>★最直接的摘帽催化剂</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>最高院对案三再审申请的受理/裁定</strong></td>
+<td>持续</td>
+<td>决定1.5亿元是否可能回收</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>互动易上"液冷/算力/机器人"回答的措辞变化</strong></td>
+<td>每季</td>
+<td>从"暂无应用"→"正在对接"是升级信号（L2→L3）</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>半年报/年报中"新能源配套产品"收入占比与毛利率</strong></td>
+<td>每半年</td>
+<td>验证主业第二增长曲线的真实性（当前已成立）</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>控股股东质押率与司法冻结变化</strong></td>
+<td>持续</td>
+<td>顾瑜95%质押率、杨竞忠190万股冻结是治理风险点</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="七、估值与赌局：三个引擎，各有各的时钟">七、估值与赌局：三个引擎，各有各的时钟</h2>
+<h3 id="7.1 当前估值坐标">7.1 当前估值坐标</h3>
+<p>截至<strong>2026-09-18收盘</strong>（Wind数据，windproxy取数）<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup>：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>收盘价</td>
+<td><strong>6.45元</strong></td>
+</tr>
+<tr>
+<td>总市值</td>
+<td><strong>18.18亿元</strong></td>
+</tr>
+<tr>
+<td>市净率 PB(LF)</td>
+<td><strong>1.8927</strong></td>
+</tr>
+<tr>
+<td>市销率 PS(TTM)</td>
+<td><strong>2.2789</strong></td>
+</tr>
+<tr>
+<td>市盈率 PE(TTM)</td>
+<td><strong>15.4284</strong></td>
+</tr>
+<tr>
+<td>企业价值 EV2</td>
+<td>17.89亿元</td>
+</tr>
+<tr>
+<td>换手率</td>
+<td>0.7068%</td>
+</tr>
+<tr>
+<td>成交额</td>
+<td>1,198.57万元</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>一个18亿市值的公司，PE只有15.4倍——如果只看这张表，你绝不会认为它是一家ST公司。</strong> 对比同为汽车热管理赛道的银轮股份等，这个估值在汽配股里属于<strong>中性偏低</strong>。</p>
+<h3 id="7.2 三个价值引擎：各有各的时钟">7.2 三个价值引擎：各有各的时钟</h3>
+<p>这是本文的核心估值框架。ST八菱的价值由<strong>三个互不相关的引擎</strong>构成，<strong>它们的时间节奏完全不同</strong>——这正是解构这只股票的关键。</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>引擎</th>
+<th>价值来源</th>
+<th>当前状态</th>
+<th>时钟</th>
+<th>权重判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>引擎一：主业底仓</strong></td>
+<td>汽车热管理+外饰件的持续盈利与分红</td>
+<td>2024-2025连续盈利；2026H1营收+30.42%、毛利率+10pct；在建产能逐步释放</td>
+<td><strong>长期、稳定、可预测</strong>（季度/年度节奏）</td>
+<td><strong>基本盘</strong></td>
+</tr>
+<tr>
+<td><strong>引擎二：摘帽期权</strong></td>
+<td>ST标签移除带来的估值修复</td>
+<td>已追回1.03亿(22.1%)；7,300万已判待执行(15.7%)；1.5亿在再审程序(32.2%)</td>
+<td><strong>事件驱动、高度不确定</strong>（取决于法院执行）</td>
+<td><strong>期权</strong></td>
+</tr>
+<tr>
+<td><strong>引擎三：技术/资本期权</strong></td>
+<td>液冷散热第二曲线的可能性＋体内2.15亿投资基金</td>
+<td>液冷：L1~L2，公司反复否认；盖娅互娱：存量参股投资无新动作</td>
+<td><strong>远期、概率低、赔率高</strong></td>
+<td><strong>彩票</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>这个框架的价值在于</strong>：<strong>市场目前主要在给"引擎二"定价</strong>（股价与摘帽预期同步起伏），<strong>而"引擎一"被ST标签系统性压制</strong>（一家PE15倍、分红率59%、负债率24%的汽配公司，市值只有18亿），<strong>"引擎三"则被当成噪声</strong>。</p>
+<h3 id="7.3 三种情景推演">7.3 三种情景推演</h3>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>情景</th>
+<th>触发条件</th>
+<th>对股价/估值的影响</th>
+<th>概率判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>情景A：缓慢推进</strong></td>
+<td>案二持续执行不到款，案三再审未受理，摘帽遥遥无期</td>
+<td>股价维持区间震荡（5.5-7.5元），由主业业绩与分红支撑底部，ST折价长期存在</td>
+<td><strong>基准情形，中高</strong></td>
+</tr>
+<tr>
+<td><strong>情景B：追偿突破</strong></td>
+<td>案二7,300万元执行到账 + 案三再审被受理，累计回收比例突破40%，公司向交易所提交撤销ST申请</td>
+<td><strong>摘帽预期兑现</strong>，ST折价消除，估值向可比汽配公司（PB 2.5-3倍）修复，市值有向上重估空间</td>
+<td>中低，但为关键变量</td>
+</tr>
+<tr>
+<td><strong>情景C：经营失速</strong></td>
+<td>核心客户（上汽通用五菱、奇瑞等）订单下滑，或原材料（铝材）价格大幅上涨挤压毛利</td>
+<td>主业底仓受侵蚀，ST折价叠加业绩下滑形成"戴维斯双杀"</td>
+<td>低（2026H1数据显示相反趋势）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>需要强调的边界</strong>：以上为<strong>估值逻辑推演，不是目标价预测</strong>。ST股的定价中，情绪与事件驱动权重远高于基本面，任何情景推演都只是框架而非结论。</p>
+<h3 id="7.4 与ST佳缘的对照：同样是ST，逻辑完全不同">7.4 与ST佳缘的对照：同样是ST，逻辑完全不同</h3>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>维度</th>
+<th><strong>ST八菱</strong></th>
+<th><strong>ST佳缘</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>戴帽原因</td>
+<td>违规担保（子公司负责人越权）</td>
+<td>财务造假（招股书即开始）</td>
+</tr>
+<tr>
+<td>红线性质</td>
+<td>规范类ST</td>
+<td>规范类"处罚型"ST</td>
+</tr>
+<tr>
+<td>是否叠加*ST风险</td>
+<td>❌ 财务健康，无</td>
+<td>⚠️ 2026H1营收-65.93%、亏损，2027年4月可能叠加</td>
+</tr>
+<tr>
+<td>主业状态</td>
+<td>✅ 连续两年盈利，2026H1营收+30%</td>
+<td>❌ 主业大幅萎缩</td>
+</tr>
+<tr>
+<td>摘帽路径</td>
+<td><strong>追回资金</strong>（法院执行）</td>
+<td><strong>追溯重述+处罚决定书满12个月</strong>（规则写死）</td>
+</tr>
+<tr>
+<td>摘帽时间预期</td>
+<td>不确定，取决于执行</td>
+<td>最快2027年四季度</td>
+</tr>
+<tr>
+<td>账面弹药</td>
+<td>交易性金融资产2.47亿、负债率24.28%</td>
+<td>货币资金2.17亿、募资余2.20亿</td>
+</tr>
+<tr>
+<td>实控人状态</td>
+<td>⚠️ 顾瑜质押95%、杨竞忠190万股冻结</td>
+<td>✅ 零质押零冻结</td>
+</tr>
+<tr>
+<td>新业务线索</td>
+<td>液冷/算力（L1~L2，公司否认）</td>
+<td>星载安全+计算载荷（L2，有产品名与时间表）</td>
+</tr>
+<tr>
+<td>分红</td>
+<td>✅ 2026H1每10股派1元</td>
+<td>❌ —</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>一句话对比</strong>：<strong>ST佳缘是"经营危机型ST"（要先活下去），ST八菱是"治理事故型ST"（活得好但帽子摘不掉）。</strong> 两者的风险结构、时间表和博弈方式完全不同，<strong>不能因为都叫"ST"就套用同一套逻辑</strong>。</p>
+<hr />
+<h2 id="八、风险清单">八、风险清单</h2>
+<p>按严重程度排序，☆越多越需警惕。</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>风险项</th>
+<th>级别</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>摘帽时点高度不可控</strong></td>
+<td>☆☆☆☆☆</td>
+<td>追偿进度取决于法院执行，公司自己也无法给出时间表。"暂无法撤销"是公司明确表述<sup id="fnref12:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>案二7,300万元执行不到款</strong></td>
+<td>☆☆☆☆</td>
+<td>对手方为国有股份银行，赢了判决≠拿到钱；截至目前零回款<sup id="fnref13:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>案三1.5亿元被"先刑后民"程序阻断</strong></td>
+<td>☆☆☆☆</td>
+<td>二审已驳回上诉，再审能否被最高院受理存在不确定性<sup id="fnref14:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>4.66亿中约30%可能永久无法追回</strong></td>
+<td>☆☆☆☆</td>
+<td>案一先例显示法院按过错比例只判返还一半本金<sup id="fnref16:3"><a class="footnote-ref" href="#fn:3">3</a></sup></td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>控股股东高质押+司法冻结</strong></td>
+<td>☆☆☆</td>
+<td>顾瑜质押率95.1%、杨竞忠190万股被冻结（执行标的700余万）<sup id="fnref21:2"><a class="footnote-ref" href="#fn:2">2</a></sup><sup id="fnref4:6"><a class="footnote-ref" href="#fn:6">6</a></sup></td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>王安祥业绩补偿无法收回</strong></td>
+<td>☆☆☆</td>
+<td>已明确"自身债务规模巨大、偿债能力恶化"，公司自认"存在重大不确定性"<sup id="fnref9:5"><a class="footnote-ref" href="#fn:5">5</a></sup></td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>经营现金流与净利润背离</strong></td>
+<td>☆☆☆</td>
+<td>2026H1经营现金流仅397万，同比-66.14%；应收账款从5,800万增至8,397万<sup id="fnref22:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>客户集中度较高</strong></td>
+<td>☆☆☆</td>
+<td>前五大客户销售占比高，核心客户经营波动将直接传导<sup id="fnref23:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>原材料（铝材、塑料）价格波动</strong></td>
+<td>☆☆☆</td>
+<td>原材料占成本比重高，成本传导滞后<sup id="fnref24:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>液冷/算力新赛道始终不落地</strong></td>
+<td>☆☆</td>
+<td>若长期停留在"技术储备"层面，题材无法兑现<sup id="fnref17:3"><a class="footnote-ref" href="#fn:3">3</a></sup></td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>参股公司（重庆八菱）业绩波动</strong></td>
+<td>☆☆</td>
+<td>2026H1投资收益同比减少4,213.34万元，拖累扣非净利<sup id="fnref25:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>历史遗留诉讼（大姚麻王、恐龙谷等）</strong></td>
+<td>☆☆</td>
+<td>大姚麻王案3,800万元"暂未执行到任何财产"；恐龙谷案仍在重审<sup id="fnref26:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>风险之中最需要反复提醒的一条</strong>：<strong>第1项与第2、3项是同一件事的三个切面——摘帽的唯一开关在法院手里。</strong> 公司经营再好、分红再慷慨，只要追偿不完成，帽子就摘不掉。<strong>这是持有ST八菱必须接受的底层约束。</strong></p>
+<hr />
+<h2 id="九、结语：一顶便宜帽子下面，装着什么？">九、结语：一顶便宜帽子下面，装着什么？</h2>
+<p>把这份报告收一收。</p>
+<p><strong>ST八菱是一家被"标签"严重错配的公司。</strong> 它的ST帽子来自2019年一个子公司负责人的越权担保——<strong>一次治理事故</strong>，而不是经营失败或财务造假。六年过去，公司用了最笨也最扎实的方式活了下来：把亏损的基因业务剥离、回归汽车热管理主业、抓住新能源配套的产业机会。结果是——<strong>2024、2025连续两年盈利，2026H1营收增长30.42%、热交换器毛利率提升10个百分点、资产负债率降到24.28%、账上2.47亿理财、每10股派1元现金分红。</strong></p>
+<p><strong>如果它不叫ST八菱，PE 15倍、PB 1.9倍是买不到的。</strong></p>
+<p>但它确实叫ST八菱，而且<strong>这顶帽子什么时候摘，公司自己说了不算</strong>。</p>
+<p>三个官司，4.66亿元的窟窿：
+- <strong>1.03亿元已经追回</strong>（这是六年唯一的战果，占22.1%）；
+- <strong>7,300万元赢了判决、执行不到款</strong>（占15.7%），对手是国有股份银行；
+- <strong>1.5亿元被"先刑后民"挡在门外</strong>（占32.2%），在上诉到最高院申请再审。</p>
+<p><strong>这三个案子的进度，是这只股票真正的股价驱动因子</strong>——而不是它的营收增长，也不是它的分红。这也是为什么互动易上41%的问题都在问"何时摘帽"，而公司的回答永远指向每月那份进展公告。<strong>投资者在赌一个大事件，公司在做一件慢工夫。</strong></p>
+<p><strong>而那个被市场反复追问、又被公司反复否认的"AI液冷散热"，我建议你把它当作一张彩票，而不是一个理由。</strong> 公司有钎焊工艺、有液冷板产能、有二十年的热交换技术积累——<strong>"能做"是真的；但"要做"和"在做"，公司自己七次问答里都在说"暂无"。</strong> 在"新·大·强"的框架里，它只满足"大"，不满足"新"，更不满足"强"。<strong>这不是一条可以靠它买入的线，但它是一条值得放进观察清单的线</strong>——因为一旦公司在互动易上的措辞从"暂无应用"变成"正在对接"，那就是L2向L3的关键跃迁信号。</p>
+<p><strong>所以，ST八菱这单生意的正确打开方式是</strong>：</p>
+<ul>
+<li><strong>不要按"摘帽题材"去博弈情绪</strong>（股价已经从5.02元炒到10.51元又跌回6.45元，情绪的钟摆玩过一次了）；</li>
+<li><strong>要按"被标签压制的优质汽配资产+一个正在推进的法律事件"去理解</strong>；</li>
+<li><strong>核心跟踪指标只有一个</strong>：<strong>每月那份《关于公司股票被实施其他风险警示相关事项的进展公告》里的回款进度</strong>。</li>
+</ul>
+<p><strong>一家负债率24%、连续两年盈利、还在派息的公司，被一顶六年前的帽子压着——这顶帽子的成本，就是它的机会成本。</strong> 帽子什么时候摘，我不知道；但我能确定的是，<strong>如果摘帽的那一天到来，市场会重新想起它是一家什么样的公司。</strong></p>
+<hr />
+<h2 id="附录">附录</h2>
+<h3 id="附录A：信源清单">附录A：信源清单</h3>
+<p><strong>A1. 公告类（含巨潮资讯网链接）</strong></p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>文件</th>
+<th>日期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S1</td>
+<td>《关于公司股票被实施其他风险警示相关事项的进展公告》（公告编号2026-055）</td>
+<td>2026-09-01</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>《2026年半年度报告》</td>
+<td>2026-07-30</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>《关于2026年半年度利润分配方案的公告》</td>
+<td>2026-07-30</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>《2026年半年度权益分派实施公告》</td>
+<td>2026-09-09</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>《关于控股股东部分股份被司法冻结的公告》（公告编号2024-026）</td>
+<td>2024-07-05</td>
+</tr>
+<tr>
+<td>S6</td>
+<td>《关于转让海南弘润天源基因生物技术有限公司股权后续涉及诉讼事项的进展公告》</td>
+<td>2025-06-18</td>
+</tr>
+<tr>
+<td>S7</td>
+<td>《关于转让海南弘润天源基因生物技术有限公司股权后续涉及诉讼事项的进展公告》</td>
+<td>2025-06-03</td>
+</tr>
+<tr>
+<td>S8</td>
+<td>《关于诉讼事项的进展公告》</td>
+<td>2025-05-15</td>
+</tr>
+<tr>
+<td>S9</td>
+<td>《第八届董事会第三次会议决议公告》</td>
+<td>2026-08-28</td>
+</tr>
+<tr>
+<td>S10</td>
+<td>《关于第二期股票期权激励计划预留授予登记完成的公告》</td>
+<td>2026-08-10</td>
+</tr>
+<tr>
+<td>S11</td>
+<td>每月《关于公司股票被实施其他风险警示相关事项的进展公告》系列</td>
+<td>2020-07至今</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>A2. 投资者交流类</strong></p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>来源</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I1~I69</td>
+<td>深交所互动易（经同花顺F10互动数据源提取）</td>
+<td>2025-09-19 至 2026-09-07 共69条问答原文，含"服务器液冷/算力散热/机器人"专题12条</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>A3. 行情与财务数据源</strong></p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>来源</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>W1</td>
+<td>Wind（windproxy局域网代理）</td>
+<td>收盘价、总市值、PB/PS/PE、换手率、成交额（tradeDate=2026-09-18）</td>
+</tr>
+<tr>
+<td>W2</td>
+<td>Wind（windproxy）</td>
+<td>2019-2025年度序列、2024Q3-2026Q2季度序列</td>
+</tr>
+<tr>
+<td>C1</td>
+<td>巨潮资讯网 companyOverview</td>
+<td>公司概况、成立日期、上市日期、注册资本、经营范围</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>公司2026年半年度报告原文PDF</td>
+<td>全部财务与经营数据定稿数</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="附录B：核心数据速查">附录B：核心数据速查</h3>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>数据</th>
+<th>基准/日期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>证券简称/代码</td>
+<td>ST八菱 / 002592.SZ</td>
+<td>—</td>
+</tr>
+<tr>
+<td>上市板块</td>
+<td>深交所主板</td>
+<td>2011-11-11</td>
+</tr>
+<tr>
+<td>戴帽时间</td>
+<td>2020-07-02</td>
+<td>违规担保</td>
+</tr>
+<tr>
+<td>收盘价 / 总市值</td>
+<td>6.45元 / 18.18亿元</td>
+<td>2026-09-18</td>
+</tr>
+<tr>
+<td>PB(LF) / PS(TTM) / PE(TTM)</td>
+<td>1.8927 / 2.2789 / 15.4284</td>
+<td>2026-09-18</td>
+</tr>
+<tr>
+<td>总股本</td>
+<td>284,026,157股</td>
+<td>2026-06-30</td>
+</tr>
+<tr>
+<td>实控人</td>
+<td>杨竞忠(23.39%)+顾瑜(8.69%)，夫妻一致行动，表决权归顾瑜</td>
+<td>2026-06-30</td>
+</tr>
+<tr>
+<td>总资产 / 总负债 / 净资产</td>
+<td>13.06亿 / 3.17亿 / 9.89亿元</td>
+<td>2026-06-30</td>
+</tr>
+<tr>
+<td>资产负债率</td>
+<td>24.28%</td>
+<td>2026-06-30</td>
+</tr>
+<tr>
+<td>2026H1营收 / 归母净利</td>
+<td>3.69亿(+30.42%) / 5,770.72万(+1.64%)</td>
+<td>2026-06-30</td>
+</tr>
+<tr>
+<td>2026H1扣非净利</td>
+<td>4,378.65万(-20.69%)</td>
+<td>2026-06-30</td>
+</tr>
+<tr>
+<td>2025全年营收 / 归母净利</td>
+<td>7.12亿 / 1.17亿</td>
+<td>2025-12-31</td>
+</tr>
+<tr>
+<td>违规担保总额</td>
+<td>4.66亿元</td>
+<td>2019-10～2020-01</td>
+</tr>
+<tr>
+<td>追偿已到账</td>
+<td>1.03亿元（案一，占22.1%）</td>
+<td>2025-12-24</td>
+</tr>
+<tr>
+<td>分红</td>
+<td>每10股派1.00元，总额2,840.26万元（分红率59.12%）</td>
+<td>2026H1</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="附录C：数据交叉核对说明">附录C：数据交叉核对说明</h3>
+<ol>
+<li><strong>Wind口径核对</strong>：2026-09-18 快照（close=6.40、mkt_cap_ard=1,818,119,404.80）与半年报及行情系统一致；PE(TTM)为正值15.43，与"连续盈利"判断互证。</li>
+<li><strong>Wind数据缺口如实标注</strong>：<strong><code>002592.SZ</code> 的 2022、2023 两个年度的Wind年度序列全部返回 <code>None</code></strong>（换 <code>rptType=2</code>、去 <code>Period</code>、<code>Period=Q</code> 均无法取到该两年年度数），属 <strong>Wind 库缺口</strong>，非数据错误。因此本文第二章"连续盈利"的论证以<strong>2024、2025年报（Wind可取）及2026年半年报（公告原文）</strong> 为据，<strong>2022-2023年度数据未采信Wind，也未以其他来源补入</strong>。交叉核对项如实标注为"仅年报单源"。</li>
+<li><strong>季度序列核对</strong>：Wind季度序列（2024-09-30至2026-06-30共8期）的2026-06-30数据（营收3.6949亿、净利5,770.72万、总资产13.0582亿、总负债3.1705亿、净资产9.8877亿）与半年报定稿数<strong>完全一致</strong>，交叉核对通过。</li>
+<li><strong>投资者交流数据来源</strong>：69条互动易问答经同花顺F10互动易页面提取（GBK编码解码），与半年报/进展公告中的事实性陈述交叉比对，<strong>未发现矛盾</strong>。第六章引用的所有问答均为原文摘录。</li>
+<li><strong>本报告未使用</strong>任何第三方财经网站、社交媒体、自媒体、券商研报作为数据来源。</li>
+</ol>
+<hr />
+<h3 id="附录D：注释">附录D：注释</h3>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>《南宁八菱科技股份有限公司关于公司股票被实施其他风险警示相关事项的进展公告》，公告编号 2026-055，2026-09-01；以及公司自2020年7月起按月披露的同名系列进展公告。&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn:2">
+<p>《南宁八菱科技股份有限公司2026年半年度报告》，2026-07-30 披露（公司公告编号对应2026年半年报，巨潮资讯网 www.cninfo.com.cn）。&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+<li id="fn:3">
+<p>深交所互动易（irm.cninfo.com.cn）投资者问答原文，2025-09-19 至 2026-09-07 共69条，经同花顺F10互动易数据源（basic.10jqka.com.cn/002592/interactive.html）提取。&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">↩</a></p>
+</li>
+<li id="fn:4">
+<p>巨潮资讯网公司概况（南宁八菱科技股份有限公司），数据源 www.cninfo.com.cn/data20/companyOverview。&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">↩</a></p>
+</li>
+<li id="fn:5">
+<p>《2026年半年度报告》"第五节 重要事项"之"一、公司实际控制人、股东、关联方、收购人以及公司等承诺相关方在报告期内履行完毕及截至报告期末超期未履行完毕的承诺事项"，及 2022-11-15、2023-06-29《股权转让协议》相关公告。&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">↩</a></p>
+</li>
+<li id="fn:6">
+<p>《南宁八菱科技股份有限公司关于控股股东部分股份被司法冻结的公告》，公告编号 2024-026，2024-07-05 披露。&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">↩</a></p>
+</li>
+<li id="fn:7">
+<p>Wind 数据（经 windproxy 局域网代理取数），tradeDate=2026-09-18；财务序列 <code>Period=Y;rptType=1</code>（年度）与 <code>Period=Q;rptType=1</code>（季度）。&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+</body>
+</html>
