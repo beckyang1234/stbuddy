@@ -1,0 +1,2892 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ST路通(300555) 深度研究 — 王艳寻找十倍研究法 · 控制权变更驱动</title>
+<style>
+    *{box-sizing:border-box}
+    body{font-family:'Microsoft YaHei',-apple-system,Segoe UI,sans-serif;line-height:1.7;color:#1f2933;max-width:1080px;margin:0 auto;padding:28px 26px 60px;background:#fff}
+    h1{border-bottom:3px solid #c0392b;padding-bottom:10px;font-size:26px;margin-top:34px}
+    h1:first-of-type{margin-top:8px}
+    h2{border-bottom:1px solid #e3e8ee;padding-bottom:6px;margin-top:34px;color:#1a5276;font-size:21px}
+    h3{color:#b9770e;margin-top:24px;font-size:17px}
+    h4{color:#34495e;margin-top:18px;font-size:15px}
+    p{margin:10px 0}
+    .toc{background:#f7f9fb;border:1px solid #e3e8ee;border-radius:8px;padding:14px 18px;font-size:13.5px;line-height:1.85;column-width:300px;column-gap:30px;margin:18px 0 26px}
+    .toc a{display:block;text-decoration:none;color:#2e86c1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .toc a:hover{color:#c0392b;text-decoration:underline}
+    .toc ul{margin:0;padding-left:14px;list-style:none}
+    .tblwrap{overflow-x:auto;margin:12px 0;-webkit-overflow-scrolling:touch}
+    table{border-collapse:collapse;width:100%;font-size:13px;display:table}
+    th,td{border:1px solid #d6dde5;padding:6px 9px;text-align:right;vertical-align:top;white-space:nowrap}
+    th{background:#eaf2f8;text-align:center;font-weight:700;color:#1a5276}
+    td:first-child{text-align:left;font-weight:600;white-space:normal;min-width:120px}
+    td:nth-child(2){white-space:normal}
+    code{background:#f4f4f4;padding:1px 5px;border-radius:3px;font-size:12.5px;font-family:Consolas,Monaco,monospace;color:#c0392b}
+    pre{background:#f6f8fa;padding:13px 15px;border-radius:8px;overflow-x:auto;font-size:12.5px;border:1px solid #e4e4e4;line-height:1.55}
+    pre code{background:none;color:#1f2933;padding:0}
+    a{color:#2e86c1}
+    .top{float:right;font-size:12px;color:#7b8794;background:#f7f9fb;border:1px solid #e3e8ee;border-radius:20px;padding:4px 12px}
+    .hdr{margin-bottom:6px}
+    blockquote{border-left:4px solid #f0b27a;background:#fdf8f2;margin:14px 0;padding:10px 16px;color:#5d4a2f;font-size:13.6px;border-radius:0 6px 6px 0}
+    blockquote p{margin:6px 0}
+    blockquote strong{color:#8a4b08}
+    hr{border:none;border-top:1px dashed #d6dde5;margin:26px 0}
+    strong{color:#0f1419;font-weight:700}
+    em{color:#52606d}
+    ul,ol{padding-left:24px}
+    li{margin:5px 0}
+    @media print{
+      body{max-width:none;padding:0}
+      .top{display:none}
+      .toc{column-width:auto}
+      table{font-size:11px}
+      h1,h2{page-break-after:avoid}
+      .tblwrap{overflow:visible}
+      tr{page-break-inside:avoid}
+    }
+</style>
+</head>
+<body><script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div class="top">ST路通 · 300555.SZ · 基准日 2026-09-22</div>
+<ul>
+<li><a href="#ST路通（300555.SZ）深度研究">ST路通（300555.SZ）深度研究</a><ul>
+<li><a href="#岛主引言：三句话">岛主引言：三句话</a></li>
+</ul>
+</li>
+<li><a href="#第〇章 生死定级：先看会不会死，再看值不值得救">第〇章 生死定级：先看会不会死，再看值不值得救</a><ul>
+<li><a href="#0.1 创业板退市红线四分类核查表">0.1 创业板退市红线四分类核查表</a></li>
+<li><a href="#0.2 但红线只是&quot;暂时躲过&quot;——2026 年敏感性测算">0.2 但红线只是"暂时躲过"——2026 年敏感性测算</a><ul>
+<li><a href="#（1）2025 年为什么躲过了：只差 1,527.59 万元">（1）2025 年为什么躲过了：只差 1,527.59 万元</a></li>
+<li><a href="#（2）2026 年会怎样：三种情形的量化推演">（2）2026 年会怎样：三种情形的量化推演</a></li>
+</ul>
+</li>
+<li><a href="#0.3 摘帽路径：钱已还完，但卡在&quot;最后一步&quot;">0.3 摘帽路径：钱已还完，但卡在"最后一步"</a><ul>
+<li><a href="#（1）戴帽与清偿全链条">（1）戴帽与清偿全链条</a></li>
+<li><a href="#（2）摘帽的法定先决条件——公司自己的正式表述">（2）摘帽的法定先决条件——公司自己的正式表述</a></li>
+<li><a href="#（3）卡点在哪：投资者第 4 次追问的完整记录">（3）卡点在哪：投资者第 4 次追问的完整记录</a></li>
+<li><a href="#（4）摘帽的另一面：内控审计是&quot;非标准意见&quot;">（4）摘帽的另一面：内控审计是"非标准意见"</a></li>
+</ul>
+</li>
+<li><a href="#0.4 生死定级小结">0.4 生死定级小结</a></li>
+</ul>
+</li>
+<li><a href="#第一章 前世今生：从广电接入网设备商，到&quot;公章都要重新刻&quot;的 ST">第一章 前世今生：从广电接入网设备商，到"公章都要重新刻"的 ST</a><ul>
+<li><a href="#1.1 公司基本画像">1.1 公司基本画像</a></li>
+<li><a href="#1.2 完整时间轴（前世今生）">1.2 完整时间轴（前世今生）</a></li>
+<li><a href="#1.3 治理乱象专记：一份年报写下的&quot;夺权现场&quot;">1.3 治理乱象专记：一份年报写下的"夺权现场"</a></li>
+</ul>
+</li>
+<li><a href="#第二章 关键人物：吴世春是谁，他带了谁来">第二章 关键人物：吴世春是谁，他带了谁来</a><ul>
+<li><a href="#2.1 吴世春：从司法拍卖竞得第一笔股权，到被认定为实际控制人">2.1 吴世春：从司法拍卖竞得第一笔股权，到被认定为实际控制人</a></li>
+<li><a href="#2.2 梅花天使系全面入主：5 个关键岗位，4 个来自同一家机构">2.2 梅花天使系全面入主：5 个关键岗位，4 个来自同一家机构</a></li>
+<li><a href="#2.3 ⭐ 董事长谈文舒的对外任职：一份必须读三遍的名单">2.3 ⭐ 董事长谈文舒的对外任职：一份必须读三遍的名单</a></li>
+</ul>
+</li>
+<li><a href="#第三章 怎么进来的：一次司法拍卖 + 一轮二级市场增持，10.46% 拿下控制权">第三章 怎么进来的：一次司法拍卖 + 一轮二级市场增持，10.46% 拿下控制权</a><ul>
+<li><a href="#3.1 三条进入路径的成本对比">3.1 三条进入路径的成本对比</a></li>
+<li><a href="#3.2 为什么&quot;只花 6,288 万元&quot;就能控制一家上市公司？">3.2 为什么"只花 6,288 万元"就能控制一家上市公司？</a></li>
+</ul>
+</li>
+<li><a href="#第四章 意图分析与节奏推测：新主到底想干什么">第四章 意图分析与节奏推测：新主到底想干什么</a><ul>
+<li><a href="#4.1 先看&quot;钱&quot;：吴世春已经付出的沉没成本">4.1 先看"钱"：吴世春已经付出的沉没成本</a></li>
+<li><a href="#4.2 再看&quot;话&quot;：公司公开表述的逐级升温（四步递进）">4.2 再看"话"：公司公开表述的逐级升温（四步递进）</a></li>
+<li><a href="#4.3 再看&quot;人&quot;：36 家外部任职的能力圈半径">4.3 再看"人"：36 家外部任职的能力圈半径</a></li>
+<li><a href="#4.4 再看&quot;实际动作&quot;：吴世春入主后的资产端与子公司端变化">4.4 再看"实际动作"：吴世春入主后的资产端与子公司端变化</a><ul>
+<li><a href="#（1）已发生的实际动作清单">（1）已发生的实际动作清单</a></li>
+<li><a href="#（2）子公司经营实况">（2）子公司经营实况</a></li>
+<li><a href="#（3）经营端数据（2026H1）">（3）经营端数据（2026H1）</a></li>
+</ul>
+</li>
+<li><a href="#4.5 节奏推测：三条可能路径与时间窗口">4.5 节奏推测：三条可能路径与时间窗口</a></li>
+<li><a href="#4.6 意图分析小结">4.6 意图分析小结</a></li>
+</ul>
+</li>
+<li><a href="#第五章 承诺包逐条拆解：新主给自己上了多少&quot;锁&quot;">第五章 承诺包逐条拆解：新主给自己上了多少"锁"</a><ul>
+<li><a href="#5.1 吴世春全部承诺（7 + 1 + 1 项）">5.1 吴世春全部承诺（7 + 1 + 1 项）</a></li>
+<li><a href="#5.2 对比：林竹时代的承诺是怎么失效的">5.2 对比：林竹时代的承诺是怎么失效的</a></li>
+</ul>
+</li>
+<li><a href="#第六章 §4.7 投资者交流信息挖掘专章：第一现场里的&quot;青萍之末&quot;">第六章 §4.7 投资者交流信息挖掘专章：第一现场里的"青萍之末"</a><ul>
+<li><a href="#6.1 互动易 45 条全量结构分析">6.1 互动易 45 条全量结构分析</a></li>
+<li><a href="#6.2 ⭐ 三条&quot;新·大&quot;线索的原文与分级">6.2 ⭐ 三条"新·大"线索的原文与分级</a><ul>
+<li><a href="#线索一：航空航天（投资者主动提出，公司未否认并指向年报）">线索一：航空航天（投资者主动提出，公司未否认并指向年报）</a></li>
+<li><a href="#线索二 ⭐⭐⭐（核心发现）：半年报研发项目表新增 3 项 AI 智能体项目">线索二 ⭐⭐⭐（核心发现）：半年报研发项目表新增 3 项 AI 智能体项目</a></li>
+<li><a href="#线索三：投资者直接问&quot;资产注入&quot;，见证回复 4 次重复同一段话">线索三：投资者直接问"资产注入"，见证回复 4 次重复同一段话</a></li>
+</ul>
+</li>
+<li><a href="#6.3 筹码集中度：股东户数 8 个月减少 16.1%">6.3 筹码集中度：股东户数 8 个月减少 16.1%</a></li>
+<li><a href="#6.4 §4.7 专章结论">6.4 §4.7 专章结论</a></li>
+</ul>
+</li>
+<li><a href="#第七章 壳价值评估与三条路径推演">第七章 壳价值评估与三条路径推演</a><ul>
+<li><a href="#7.1 财务全景（一手数据，零估计）">7.1 财务全景（一手数据，零估计）</a><ul>
+<li><a href="#（1）主要会计数据（2023—2025 + 2026H1，公司定期报告原文）">（1）主要会计数据（2023—2025 + 2026H1，公司定期报告原文）</a></li>
+<li><a href="#（2）2019—2025 七年连续序列（Wind windproxy，rptDate 路径）">（2）2019—2025 七年连续序列（Wind windproxy，rptDate 路径）</a></li>
+<li><a href="#（3）2026H1 利润表关键行（一手原文）">（3）2026H1 利润表关键行（一手原文）</a></li>
+<li><a href="#（4）资产负债表韧性（2026-06-30）">（4）资产负债表韧性（2026-06-30）</a></li>
+<li><a href="#（5）应收账款（审计报告关键审计事项原文）">（5）应收账款（审计报告关键审计事项原文）</a></li>
+</ul>
+</li>
+<li><a href="#7.2 壳价值评估六维">7.2 壳价值评估六维</a></li>
+<li><a href="#7.3 三条路径的情景推演（含概率与观察指标）">7.3 三条路径的情景推演（含概率与观察指标）</a></li>
+<li><a href="#7.4 估值视角（仅陈述事实，不做投资建议）">7.4 估值视角（仅陈述事实，不做投资建议）</a></li>
+<li><a href="#7.5 未解问题清单（按重要性排序，供后续核验）">7.5 未解问题清单（按重要性排序，供后续核验）</a></li>
+</ul>
+</li>
+<li><a href="#第八章 数据来源与核验说明">第八章 数据来源与核验说明</a><ul>
+<li><a href="#8.1 一手信源（正文全部数字的出处）">8.1 一手信源（正文全部数字的出处）</a></li>
+<li><a href="#8.2 明确未采信 / 已标注待核的信息">8.2 明确未采信 / 已标注待核的信息</a></li>
+<li><a href="#8.3 方法论执行清单（对照王艳《寻找十倍》研究法）">8.3 方法论执行清单（对照王艳《寻找十倍》研究法）</a></li>
+</ul>
+</li>
+<li><a href="#第九章 一页纸结论">第九章 一页纸结论</a></li>
+<li><a href="#免责声明">免责声明</a></li>
+</ul>
+<h1 id="ST路通（300555.SZ）深度研究">ST路通（300555.SZ）深度研究</h1>
+<p><strong>——控制权变更驱动 · 壳价值与转型推演</strong></p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>证券简称 / 代码</td>
+<td>ST路通 / 300555.SZ（深交所创业板）</td>
+</tr>
+<tr>
+<td>公司全称</td>
+<td>无锡路通视信网络股份有限公司</td>
+</tr>
+<tr>
+<td>所属行业</td>
+<td>C39 计算机、通信和其他电子设备制造业（广电网络接入网设备 + 智慧物联应用）</td>
+</tr>
+<tr>
+<td>报告基准日</td>
+<td>2026-09-22</td>
+</tr>
+<tr>
+<td>行情基准</td>
+<td>2026-09-19 收盘 <strong>12.41 元</strong>；总市值 <strong>24.82 亿元</strong>（Wind）</td>
+</tr>
+<tr>
+<td>估值</td>
+<td>PB 6.2420 / PS_TTM 20.4448 / PE_TTM −27.0019 / EV2 24.4174 亿 / PCF_OCF_TTM −101.19（Wind，tradeDate=2026-09-19）</td>
+</tr>
+<tr>
+<td>研究框架</td>
+<td>王艳《寻找十倍》研究法 · 控制权变更驱动（六步预判 + 六维拆解 + 壳价值评估）</td>
+</tr>
+<tr>
+<td>核心信源</td>
+<td>2025 年年度报告（巨潮 id 1225227000）、2026 年半年度报告、2025 年度内控审计报告、深交所互动易 45 条、投资者关系活动记录表 IR2026-001、Wind（windproxy）</td>
+</tr>
+<tr>
+<td>数据纪律</td>
+<td>财务数字全部取自公司定期报告原文；Wind 仅用于行情与估值截面；<strong>无第三方财经平台/自媒体数据进入正文</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="岛主引言：三句话">岛主引言：三句话</h2>
+<p><strong>第一句——这不是"会不会死"的问题，是"死线还压在头上多久"的问题。</strong>
+ST 路通被戴帽的原因是<strong>规范类"资金占用型其他风险警示"</strong>（原实控人林竹及其关联方 2021 年 9 月—2022 年 7 月累计占用 <strong>15,580 万元</strong>），<strong>截至 2025 年 12 月 31 日已累计归还 15,580 万元、余额为 0</strong>，ST 的<strong>原因本身已经消除</strong>。但 2025 年<strong>营业收入扣除后金额 115,275,917.81 元，仅高出创业板财务类退市红线（1 亿元）1,527.59 万元</strong>；2026 年上半年营收 4,790.03 万元，<strong>若按简单年化仅约 9,580 万元——红线不是没有，是还压在头上</strong>。这是本案与 ST 八菱最根本的区别。</p>
+<p><strong>第二句——"谁会救它"这个问题，公司已经自己回答了半句。</strong>
+2026 年 5 月 20 日业绩说明会上，公司对"是否有优质资产注入打算"的官方回复是：<strong>"公司将严格遵循相关法律法规，规范开展战略投资与并购整合工作，推动新旧业务深度融合与协同发展……实现传统广电通信业务与新一代科技业务协同并进"</strong>——"<strong>并购整合</strong>"四个字是上市公司层面公开说出口的；同一场说明会中，"<strong>围绕相关领域推进产业合作、项目投资与资源整合，力争 2026 年内实现新突破</strong>"这句标准话术出现了 <strong>4 次</strong>。同时，现实中已经发生的是：<strong>新实控人吴世春自愿以自有资金代偿了 869.36 万元资金占用本金及利息 153.18 万元，并将追偿权无偿转让给上市公司</strong>——这是拿自己的钱替前任的窟窿兜底，不是"财务投资者"的手笔。</p>
+<p><strong>第三句——真正值得记录的，是"从 0 到 1"那一行。</strong>
+2025 年年度报告的研发项目表里<strong>完全没有</strong> AI 智能体相关项目；2026 年半年度报告的研发项目表里<strong>新增了三项</strong>——</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>新增研发项目</th>
+<th>进展</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>兼容多智能体软件的 AI 边缘计算网关盒子研发项目</td>
+<td><strong>试生产阶段</strong>（自研 LootomClaw / 开源 OpenClaw / Hermes 多类智能体软件适配，搭载本地 AI 推理引擎）</td>
+</tr>
+<tr>
+<td>基于多智能体协同的园区全域新型智慧安防系统研发项目</td>
+<td>设计阶段（以自研 LootomClaw 为核心驱动，完成<strong>无人机、机器人</strong>配套接口开发，落地天地一体化全域巡检）</td>
+</tr>
+<tr>
+<td>家庭智能网关型 AI 路由器研发项目</td>
+<td>设计阶段（融合 WiFi / 物联接入 / 视频存储 / 语音网关 / 私有 NAS / <strong>本地 AI 算力</strong>）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>"风起于青萍之末"——同一张表、相隔半年、多出三行，这就是最硬的证据形态。</strong> 定性：<strong>新 ✅ / 大 ✅ / 强 ❌</strong>，当前判 <strong>L1（概念布局）至 L2 前端（设计阶段）</strong>，唯一进入"试生产"的是 AI 边缘计算网关盒子。</p>
+<blockquote>
+<p><strong>阅读提示</strong>：本报告严格区分【公司已披露事实】/【本研究推算】/【待核实标注】三类内容。凡推算均给出算式与假设；凡不确定均加 ⚠️ 标注，不做任何猜测性填充。</p>
+</blockquote>
+<hr />
+<h1 id="第〇章 生死定级：先看会不会死，再看值不值得救">第〇章 生死定级：先看会不会死，再看值不值得救</h1>
+<blockquote>
+<p>研究方法论：<strong>十倍股的第一道门槛不是想象力，是"活到那一天"</strong>。本章按创业板退市规则四分类逐条核查，并对 2026 年财务类红线做敏感性测算。</p>
+</blockquote>
+<h2 id="0.1 创业板退市红线四分类核查表">0.1 创业板退市红线四分类核查表</h2>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>红线类别</th>
+<th>创业板具体标准</th>
+<th>ST路通实测（2025 年度）</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① 财务类（组合指标）</strong></td>
+<td>利润总额 / 净利润 / 扣非净利润<strong>三者孰低为负</strong> <strong>且</strong> 营业收入（<strong>扣除后</strong>）&lt; 1 亿元</td>
+<td>三者孰低 = 扣非 <strong>−94,848,639.86</strong>（负 ✅）<br>营业收入扣除后 = <strong>115,275,917.81 元 &gt; 1 亿元</strong>（❌）</td>
+<td><strong>未触发</strong>（组合条件只满足一半）</td>
+</tr>
+<tr>
+<td><strong>② 财务类（净资产）</strong></td>
+<td>期末净资产（归母）为负</td>
+<td>归母净资产 <strong>419,155,835.75 元</strong>（正）</td>
+<td><strong>未触发</strong></td>
+</tr>
+<tr>
+<td><strong>③ 财务类（审计意见）</strong></td>
+<td>年报被出具<strong>无法表示意见 / 否定意见</strong></td>
+<td>2025 年财务报表审计意见 = <strong>标准的无保留意见</strong>（大信会计师事务所，大信审字[2026]第5-00067号，2026-04-27 签署，签字 凡章、王金云）</td>
+<td><strong>未触发</strong></td>
+</tr>
+<tr>
+<td><strong>④ 财务类（持续经营）</strong></td>
+<td>最近三个会计年度扣非前后孰低均为负 <strong>且</strong> 最近一年审计报告显示持续经营能力存在不确定性</td>
+<td>三个会计年度孰低均为负 = <strong>是</strong>；但年报勾选"最近一年审计报告显示持续经营能力存在不确定性" = <strong>否</strong></td>
+<td><strong>未触发</strong>（公司勾选"否"，审计报告未含持续经营重大不确定性段落）</td>
+</tr>
+<tr>
+<td><strong>⑤ 交易类</strong></td>
+<td>连续 20 个交易日收盘价均低于 1 元 / 市值均低于 3 亿元</td>
+<td>12.41 元；市值 24.82 亿元（2026-09-19）</td>
+<td><strong>远离红线</strong></td>
+</tr>
+<tr>
+<td><strong>⑥ 规范类</strong></td>
+<td>信息披露或规范运作存在重大缺陷且拒不改正；或控股股东资金占用等未按期解决</td>
+<td>占用已全额归还、余额 0；三次江苏证监局监管措施<strong>均已按期整改</strong></td>
+<td><strong>未触发</strong>（历史问题已闭环）</td>
+</tr>
+<tr>
+<td><strong>⑦ 重大违法类</strong></td>
+<td>财务造假 / 重大信息披露违法达到量化标准</td>
+<td>2022-12-30 收到江苏证监局《行政处罚决定书》〔2022〕10 号，事由为 <strong>2021 年年报及 2022 年半年报重大遗漏（未及时披露资金占用）</strong>，非财务造假</td>
+<td><strong>未触发</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>公司口径自证</strong>：2025 年年度报告"第五节 重要事项"之"<strong>九、年度报告披露后面临退市情况</strong>"——勾选 <strong>□适用 ☑不适用</strong>。公司在法律形式上明确否认年报披露后面临退市。</p>
+<p><strong>结论一：ST 是真 ST（规范类·资金占用型），但 2025 年报披露后并未触发任何一类退市风险警示。</strong> 当前 ST 的<strong>唯一成因</strong>是 2023 年 2 月 1 日起实施的其他风险警示，且<strong>成因已被清除，只是帽子还没摘</strong>。</p>
+<h2 id="0.2 但红线只是&quot;暂时躲过&quot;——2026 年敏感性测算">0.2 但红线只是"暂时躲过"——2026 年敏感性测算</h2>
+<h3 id="（1）2025 年为什么躲过了：只差 1,527.59 万元">（1）2025 年为什么躲过了：只差 1,527.59 万元</h3>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>项目（元）</th>
+<th>2025 年</th>
+<th>2024 年</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>营业收入</td>
+<td>116,256,097.56</td>
+<td>177,099,747.09</td>
+</tr>
+<tr>
+<td>扣除项目合计</td>
+<td>980,179.75</td>
+<td>2,206,497.45</td>
+</tr>
+<tr>
+<td>↳ 正常经营之外的其他业务收入（维修/材料销售/租金等）</td>
+<td>600,839.84</td>
+<td>2,206,497.45</td>
+</tr>
+<tr>
+<td>↳ <strong>本年度及上一年度新增贸易业务收入</strong></td>
+<td>379,339.91</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td><strong>营业收入扣除后金额</strong></td>
+<td><strong>115,275,917.81</strong></td>
+<td><strong>174,893,249.64</strong></td>
+</tr>
+<tr>
+<td>扣除项/营业收入比重</td>
+<td>0.84%</td>
+<td>1.25%</td>
+</tr>
+<tr>
+<td><strong>距 1 亿元红线的余量</strong></td>
+<td><strong>+15,275,917.81</strong></td>
+<td>+74,893,249.64</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>关键观察</strong>：红线是"营业收入<strong>扣除后</strong> &lt; 1 亿元"。2025 年扣除后 1.1528 亿元，<strong>安全垫 1,527.59 万元，相当于当年营收的 1.31%</strong>。这个安全垫薄到几乎不具备容忍度。</p>
+<h3 id="（2）2026 年会怎样：三种情形的量化推演">（2）2026 年会怎样：三种情形的量化推演</h3>
+<p><strong>已知</strong>：2026H1 营业收入 47,900,311.16 元（同比 +12.03%，增加 514.37 万元）。
+<strong>已知</strong>：2025 年营收 116,256,097.56 元，其中 2025H1 为 42,756,574.07 元（占全年 36.78%）、2025H2 为 73,499,523.49 元（占 63.22%）——<strong>公司收入高度集中于下半年，Q4 尤甚</strong>：2025 年 Q1 2,496.79 万 / Q2 1,778.87 万 / Q3 2,016.24 万 / <strong>Q4 5,333.71 万（占全年 45.9%）</strong>。</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>情形</th>
+<th>假设</th>
+<th>2026 全年营收推算</th>
+<th>扣除后（按 1% 扣除率）</th>
+<th>是否触发</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>悲观</strong></td>
+<td>H2 与 H1 持平（简单年化）</td>
+<td>95,800,622 元（≈0.958 亿）</td>
+<td>≈94,842,616 元</td>
+<td><strong>触发</strong> ⚠️</td>
+</tr>
+<tr>
+<td><strong>中性</strong></td>
+<td>保持 2025 年 H1/H2 季节性结构（H1 占 36.78%）</td>
+<td>47,900,311.16 ÷ 36.78% ≈ <strong>130,240,000 元</strong></td>
+<td>≈128,938,000 元</td>
+<td>不触发</td>
+</tr>
+<tr>
+<td><strong>逆推临界</strong></td>
+<td>全年扣除后恰好 = 1 亿元</td>
+<td>需营收 ≥ 101,010,101 元</td>
+<td>100,000,000 元</td>
+<td>临界</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>逆推临界条件（本研究推算，关键）</strong>：</p>
+<blockquote>
+<p>要让 2026 年<strong>不</strong>触发财务类退市，公司全年营收须 ≥ <strong>1.0101 亿元</strong>。
+已知 2026H1 已实现 <strong>4,790.03 万元</strong>，则 <strong>2026H2 必须做到 ≥ 5,310.98 万元</strong>。
+2025H2 实际为 <strong>7,349.95 万元</strong> → 即 <strong>2026H2 同比最多可下滑 27.74%，一旦下滑超过这个幅度，红线即被击穿</strong>。</p>
+</blockquote>
+<p><strong>风险点提示</strong>：
+- 2026H1 综合毛利率 <strong>10.74%</strong>，同比下降 <strong>4.16 个百分点</strong>；其中网络设备制造毛利率仅 <strong>6.05%</strong>（同比 −6.14pct），港澳台业务毛利率 <strong>−1.75%</strong>（收入 619.49 万元、成本 630.33 万元，<strong>做一笔亏一笔</strong>）。<strong>增收不增利、且增收部分来自亏损业务</strong>，是这份半年报最刺眼的地方。
+- 2026H1 经营活动现金流净额 <strong>−15,737,410.31 元</strong>（同比变动 −1,159.59%），2025 年全年亦为 <strong>−10,040,401.38 元</strong>。<strong>主业在失血</strong>。
+- ⚠️ 2025 年审计报告将"<strong>收入确认</strong>"列为<strong>关键审计事项</strong>，明确表述"鉴于营业收入是路通视信的关键业绩指标之一，从而存在管理层为了达到特定目标或期望而操纵收入确认时点的固有风险"。<strong>在退市红线压顶的背景下，这条 KAM 的含义需要额外加权</strong>。
+- 2026-04-27 董事会审议通过《关于前期会计差错更正的议案》（公告编号 2026-036），对 2025Q1 / 2025 半年报 / 2025Q3 经营数据进行更正。半年报显示 2025H1 归母净利润存在"调整前 −21,866,801.79 / 调整后 −21,949,166.84"两个口径，<strong>2025H1 经营活动现金流亦由调整前的 +576,417.06 元更正为调整后的 −1,249,404.72 元</strong>。⚠️ 收入与现金流口径曾出现需要更正的情形，属<strong>内控层面的警示信号</strong>。</p>
+<h2 id="0.3 摘帽路径：钱已还完，但卡在&quot;最后一步&quot;">0.3 摘帽路径：钱已还完，但卡在"最后一步"</h2>
+<h3 id="（1）戴帽与清偿全链条">（1）戴帽与清偿全链条</h3>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>时间</th>
+<th>事项</th>
+<th>金额 / 依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2021-09 ~ 2022-07</td>
+<td>原实控人林竹及其关联方以<strong>预付货款、对外股权投资、支付投资意向金</strong>名义，通过中间方将公司资金划转至相关关联人银行账户</td>
+<td>累计发生占用 <strong>15,580 万元</strong></td>
+</tr>
+<tr>
+<td>2022-12-30</td>
+<td>收到江苏证监局《行政处罚决定书》〔2022〕10 号（2021 年年报、2022 年半年报重大遗漏）</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>2023-02-01</strong></td>
+<td><strong>起被实施其他风险警示（ST）</strong></td>
+<td>资金占用型</td>
+</tr>
+<tr>
+<td>2025-12-25</td>
+<td>吴世春出具《关于代偿资金占用款项的承诺》，承诺自愿以自有资金全额代偿 8,693,594.34 元本金及利息，并于 2025-12-30 前分次支付</td>
+<td>本金 869.36 万元</td>
+</tr>
+<tr>
+<td>2025-12-27</td>
+<td><strong>公司实际收到吴世春代偿本金 8,693,594.34 元 + 利息 1,531,799.31 元 = 10,225,393.65 元</strong>；追偿权无偿转让给上市公司</td>
+<td>合计 1,022.54 万元</td>
+</tr>
+<tr>
+<td>截至 2025-12-31</td>
+<td>原实控人及其关联方<strong>累计归还占用资金 15,580 万元，尚未归还金额 0 万元</strong></td>
+<td>余额清零</td>
+</tr>
+<tr>
+<td>2026-04-27</td>
+<td>2025 年年度报告经第五届董事会第二十七次会议审议；审计报告签署日 2026-04-27</td>
+<td>大信审字[2026]第5-00067号</td>
+</tr>
+<tr>
+<td>2026-04-29</td>
+<td>2025 年年度报告在巨潮资讯网披露（公告编号 1225227000，据巨潮静态文件路径日期）</td>
+<td>标准无保留意见</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>2025 年报资金占用明细表（口径澄清，避免与"15,580 万"混淆）</strong>：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>股东/关联人</th>
+<th>占用时间</th>
+<th>发生原因</th>
+<th>期初数（万元）</th>
+<th>报告期偿还（万元）</th>
+<th>期末数（万元）</th>
+<th>占最近一期经审计净资产比例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>宁波余姚云城人工智能科技有限公司</td>
+<td>2021-12-29</td>
+<td>以预付货款、对外股权投资或支付投资诚意金名义，通过中间方完成资金占用</td>
+<td>1,101.77</td>
+<td>1,101.77</td>
+<td>0</td>
+<td>2.58%</td>
+</tr>
+<tr>
+<td>宁波余姚云城人工智能科技有限公司</td>
+<td>2022-07-14</td>
+<td>同上</td>
+<td>1,698.18</td>
+<td>1,698.18</td>
+<td>0</td>
+<td>3.98%</td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td></td>
+<td></td>
+<td><strong>2,799.95</strong></td>
+<td><strong>2,799.95</strong></td>
+<td><strong>0</strong></td>
+<td><strong>6.56%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>口径说明（重要）</strong>：<strong>15,580 万元 = 2021-09~2022-07 累计发生额</strong>（已在 2022—2025 年间陆续归还完毕），出处为 2025 年年度报告所载内控审计报告强调事项段原文；<strong>2,799.95 万元 = 2025-01-01 时点的未归还余额</strong>（在 2025 年度内一次性清偿）。两个数字不矛盾，切勿混用。年报注明：宁波余姚云城人工智能科技有限公司系"原关联自然人担任高级管理人员的公司，因原关联自然人离任已超过 1 年，该公司不再作为本公司关联方"。</p>
+</blockquote>
+<h3 id="（2）摘帽的法定先决条件——公司自己的正式表述">（2）摘帽的法定先决条件——公司自己的正式表述</h3>
+<p>公司在互动易（2026-07-15）与业绩说明会（2026-05-20）中<strong>逐字重复</strong>的正式表述：</p>
+<blockquote>
+<p>"公司将依据《深圳证券交易所创业板股票上市规则》的相关规定，<strong>委托会计师就前期公司原实际控制人及其关联方偿还情况及现实际控制人现金代为偿还情况进行核实，在取得会计师出具的专项审核报告后</strong>，向深圳证券交易所申请撤销其他风险警示。<strong>前述先决条件能否得到满足、审批程序能否获得通过尚存在不确定性</strong>，公司将根据后续情况及时履行信息披露义务。"</p>
+</blockquote>
+<p>即 <strong>摘帽 = 会计师专项审核报告 → 董事会审议 → 向深交所申请 → 深交所审核</strong>，其中<strong>"取得会计师专项审核报告"是唯一尚未被公司公开确认完成的前置环节</strong>。</p>
+<h3 id="（3）卡点在哪：投资者第 4 次追问的完整记录">（3）卡点在哪：投资者第 4 次追问的完整记录</h3>
+<p><strong>这是本报告最值得逐字读出的一段</strong>——2026-05-20 业绩说明会第 4 问，一位小股东把全链条摊开：</p>
+<blockquote>
+<p>"截至 2026 年 5 月 18 日，ST 路通（300555）尚未正式提交摘帽申请。
+<strong>一、戴帽原因</strong>：2023 年 2 月 1 日起被 ST，原实控人非经营性资金占用。
+<strong>二、摘帽硬条件（已全部满足）</strong>：2025-12-27 新实控人吴世春全额代偿本息 1022.54 万元，占用清零；2026-04-21 2025 年报标准无保留意见，内控无否定意见；会计师已出具资金占用专项审核报告（关键前置）；无新增违规担保、立案调查等风险事项。
+<strong>三、当前卡点（仅剩一步）</strong>：公司尚未召开董事会正式向深交所提交撤销其他风险警示申请。控制权相关诉讼不构成实质障碍，不影响摘帽申请与审批。
+……公司为什么至今没有组织召开董事会审议通过摘帽申请？具体是什么原因？公司计划什么时候组织召开审议此事项？"</p>
+</blockquote>
+<p><strong>公司回复（全文）</strong>：</p>
+<blockquote>
+<p>"您好，公司正有序推进相关事宜，申请撤销其他风险警示的程序公司会严格按照《深圳证券交易所创业板股票上市规则（2026 年修订）》的规定进行，后续公司将按照监管规定及时履行信息披露义务，请您关注公司公告。"</p>
+</blockquote>
+<p><strong>判读（本研究）</strong>：
+1. ⚠️ 投资者所述"<strong>2026-04-21 2025 年报标准无保留意见</strong>"与公司披露口径（董事会 2026-04-27、审计报告签署 2026-04-27、年报披露 2026-04-29）<strong>日期不符</strong>，本报告<strong>不采信</strong>该日期，仅采信"标准无保留意见"这一结论（已由审计报告原文核实）。
+2. ⚠️ 投资者所述"<strong>会计师已出具资金占用专项审核报告</strong>"属于<strong>投资者主张</strong>，公司在互动易与业绩说明会中<strong>从未确认</strong>，且在 2026-04-07、2026-06-16、2026-07-15 三次问答中均未正面回应"是否已委托会计师""报告何时出具"。<strong>本报告不采信该主张</strong>，仅记录其存在。
+3. <strong>可以确认的是</strong>：截至 2026-09-22，公司<strong>未公告</strong>董事会审议通过撤销其他风险警示申请，<strong>未公告</strong>取得专项审核报告。公司在 45 条互动易回复中对"何时申报摘帽""是否已委托会计师"三类追问<strong>共 12 次</strong>给出了高度同质的回避性回答（详见第六章）。</p>
+<h3 id="（4）摘帽的另一面：内控审计是&quot;非标准意见&quot;">（4）摘帽的另一面：内控审计是"非标准意见"</h3>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>审计项目</th>
+<th>2025 年度</th>
+<th>2024 年度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>财务报表审计意见</strong></td>
+<td>✅ <strong>标准的无保留意见</strong></td>
+<td>⚠️ <strong>带强调事项段的无保留意见</strong>（中审亚太会计师事务所）</td>
+</tr>
+<tr>
+<td><strong>内部控制审计意见</strong></td>
+<td>⚠️ <strong>带强调事项段的无保留意见</strong>（大信）</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>非财务报告内部控制重大缺陷</strong></td>
+<td><strong>4 个</strong>（涉①资金占用已整改 ②张继荣诉讼未及时披露已撤诉）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>会计师事务所</td>
+<td><strong>大信会计师事务所（特殊普通合伙）</strong>，报酬 78 万元（含内控审计 10 万元），<strong>审计服务连续年限 1 年</strong></td>
+<td>中审亚太 → <strong>已变更</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>会计师事务所变更程序</strong>：2025-12-12 第五届董事会第二十二次会议审议《关于拟变更会计师事务所的议案》（公告编号 2025-123）→ 2025-12-29 2025 年第三次临时股东会审议通过（公告编号 2025-130）。<strong>年报自述"是否在审计期间改聘会计师事务所：□是 ☑否"</strong>。</p>
+<p><strong>判读</strong>：
+- ✅ <strong>好消息</strong>：2025 年财报审计意见由 2024 年的"带强调事项段"升级为<strong>标准无保留意见</strong>，这是摘帽与避免审计类退市的硬支撑。
+- ⚠️ <strong>需要盯住的</strong>：<strong>内控审计仍是"带强调事项段"</strong>，且非财务报告内控存在 4 个重大缺陷。按规则，撤销其他风险警示需要公司内控与规范运作层面的完整闭环——<strong>内控非标意见是摘帽审核中真实存在的关注点</strong>。</p>
+<h2 id="0.4 生死定级小结">0.4 生死定级小结</h2>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>评级</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>法律形式上的退市风险</td>
+<td><strong>低</strong></td>
+<td>四类红线均未触发；公司勾选"年报披露后不面临退市"；财报标准无保留意见</td>
+</tr>
+<tr>
+<td>实质经营上的退市风险</td>
+<td><strong>中高</strong></td>
+<td>2025 扣除后营收仅超红线 1,527.59 万元；2026H2 若同比下滑 &gt;27.74% 即击穿；主业毛利率 10.74%、经营现金流连续为负</td>
+</tr>
+<tr>
+<td>摘帽确定性</td>
+<td><strong>中</strong></td>
+<td>成因已清除（钱还完、余额 0）；卡在"会计师专项审核报告 → 董事会 → 申请"这一条公司从未公开确认完成的链条上</td>
+</tr>
+<tr>
+<td>内控与合规残留</td>
+<td><strong>中</strong></td>
+<td>内控审计非标 + 4 个重大缺陷；前期会计差错更正；三次江苏证监局监管措施</td>
+</tr>
+<tr>
+<td><strong>综合定级</strong></td>
+<td><strong>"活着的壳，且正在换芯"</strong></td>
+<td>ST 原因已消除但帽子未摘；转型窗口与退市红线在同一时间轴上赛跑</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h1 id="第一章 前世今生：从广电接入网设备商，到&quot;公章都要重新刻&quot;的 ST">第一章 前世今生：从广电接入网设备商，到"公章都要重新刻"的 ST</h1>
+<h2 id="1.1 公司基本画像">1.1 公司基本画像</h2>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全称</td>
+<td>无锡路通视信网络股份有限公司</td>
+</tr>
+<tr>
+<td>成立 / 上市</td>
+<td>2007 年设立（路通网络成立于 2006-08-09）；2016 年 10 月 IPO（创业板）</td>
+</tr>
+<tr>
+<td>主营</td>
+<td>① 宽带网络智能连接（广电网络传输接入设备：FTTH、HFC、EOC、PON、5G CPE 等）② 智慧物联应用（智慧旅游、应急广播、雪亮工程、数字孪生、智慧园区、智慧照明、智慧养老）</td>
+</tr>
+<tr>
+<td>客户</td>
+<td>广电网络运营商为主，已拓展至其他通信运营商及政企客户（ToB / ToG）</td>
+</tr>
+<tr>
+<td>行业定位</td>
+<td>广电接入网领域"行业领军企业之一"（年报自述）；掌握 FTTH+EOC、10G EPON+HINOC、XGPON+WiFi6、5G+WiFi6 等"跨技术路线"一体化产品</td>
+</tr>
+<tr>
+<td>知识产权</td>
+<td>169 项专利、180 项软件著作权；多名技术人员参与 3 项国家标准、4 项行业标准、2 项行业规范制定（截至 2026-06-30）</td>
+</tr>
+<tr>
+<td>总股本</td>
+<td>约 2.0006 亿股（据"吴世春 20,926,471 股 = 10.46%"反算）</td>
+</tr>
+<tr>
+<td>主要子公司</td>
+<td>江苏路通物联科技有限公司（持股 51%，2017 年 1,530 万元现金收购智天下 51% 股权；智慧旅游实施主体）、无锡路通网络技术有限公司（持股 100%，智能网络综合布线/动环网管实施主体）</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="1.2 完整时间轴（前世今生）">1.2 完整时间轴（前世今生）</h2>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>时间</th>
+<th>事件</th>
+<th>性质</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2016-10-18</td>
+<td>创业板 IPO 上市</td>
+<td>起点</td>
+</tr>
+<tr>
+<td>2021-05-07</td>
+<td>华晟云城系（宁波余姚华晟云城智慧城市运营科技有限公司、林竹、华晟科技（广州））出具<strong>保证上市公司独立性 / 同业竞争 / 关联交易</strong>三项承诺</td>
+<td>控制权取得</td>
+</tr>
+<tr>
+<td>2021-07-20</td>
+<td>贾清与华晟云城签署《股份转让协议》，<strong>贾清将其所持股份表决权委托予华晟云城</strong>（自交割日起 18 个月内不减持、不可撤销委托；满 18 个月后委托至贾清不再持股之日止）</td>
+<td>控制权取得</td>
+</tr>
+<tr>
+<td><strong>2021-09 ~ 2022-07</strong></td>
+<td><strong>原实控人林竹及其关联方以预付货款/对外股权投资/支付投资意向金名义，通过中间方累计占用上市公司资金 15,580 万元</strong></td>
+<td>☠️ 戴帽根因</td>
+</tr>
+<tr>
+<td>2022-12-30</td>
+<td>收到江苏证监局《行政处罚决定书》〔2022〕10 号（2021 年年报、2022 年半年报存在重大遗漏，未及时披露关联交易）</td>
+<td>监管处罚</td>
+</tr>
+<tr>
+<td><strong>2023-02-01</strong></td>
+<td><strong>股票被实施其他风险警示（ST）</strong></td>
+<td>戴帽</td>
+</tr>
+<tr>
+<td>2024-02-19</td>
+<td>股东仇一兵<strong>未提前 3 个交易日公告即集中竞价减持 1,000 股</strong>，违反减持规定；2024-04-12 收到江苏证监局警示函〔2024〕57 号</td>
+<td>治理瑕疵</td>
+</tr>
+<tr>
+<td>2024-12</td>
+<td>新设北京路通众合智能科技有限公司（2025-03 完成实缴纳入合并）</td>
+<td>前任管理层动作</td>
+</tr>
+<tr>
+<td>2025-01 / 2025-02</td>
+<td>新设路通数联（广州）供应链科技、路通数联（北京）信息技术</td>
+<td>同上</td>
+</tr>
+<tr>
+<td><strong>2025-03-12</strong></td>
+<td>路通视信、路通网络与<strong>张继荣保证合同纠纷案（涉案 11,142.43 万元）原告撤诉</strong>（公告 2025-018）</td>
+<td>重大诉讼解除</td>
+</tr>
+<tr>
+<td><strong>2025-03-17~18</strong></td>
+<td><strong>华晟云城所持 14,875,071 股（7.44%）在阿里巴巴司法拍卖平台拍卖，吴世春竞得并完成过户</strong></td>
+<td>⭐ 控制权变更起点</td>
+</tr>
+<tr>
+<td><strong>2025-04-09</strong></td>
+<td>吴世春公告增持计划：<strong>6 个月内</strong>通过集中竞价增持，承诺增持期间及法定期限内不减持</td>
+<td>⭐</td>
+</tr>
+<tr>
+<td>2025-04-09 ~ 2025-10-09</td>
+<td>吴世春集中竞价增持 <strong>6,051,400 股（3.02%）</strong>，耗资 <strong>6,288.64 万元</strong>；合计持股 <strong>20,926,471 股（10.46%）</strong>。承诺<strong>已履行完毕</strong></td>
+<td>⭐</td>
+</tr>
+<tr>
+<td>2025-06-09</td>
+<td>江苏证监局<strong>警示函</strong>（公司、林竹、黄茂钦、邱京卫、付新悦）</td>
+<td>监管措施</td>
+</tr>
+<tr>
+<td>2025-06-23</td>
+<td>江苏证监局<strong>责令改正</strong>（公司）+ <strong>警示函</strong>（邱京卫）</td>
+<td>监管措施</td>
+</tr>
+<tr>
+<td><strong>2025-07-01</strong></td>
+<td><strong>余姚法院裁定华晟云城破产清算</strong>（管理人：浙江德威会计师事务所）</td>
+<td>⭐ 旧主退场</td>
+</tr>
+<tr>
+<td>2025-08</td>
+<td>注销北京智城谱华科技有限责任公司（不再纳入合并范围）</td>
+<td>清理</td>
+</tr>
+<tr>
+<td>2025-09</td>
+<td>新设广州路通芯云科技有限公司 → <strong>2025-12 注销</strong></td>
+<td>前任管理层"新设即注销"</td>
+</tr>
+<tr>
+<td>2025-10-20</td>
+<td>江苏证监局<strong>责令改正</strong>（公司）+ <strong>警示函</strong>（邱京卫）</td>
+<td>监管措施</td>
+</tr>
+<tr>
+<td><strong>2025-11-07</strong></td>
+<td><strong>第二次临时股东大会：前任董事长邱京卫无正当理由宣布取消会议并离场；19:00 后现场股东以 17,451,089 股（58.1589%）推举独立董事黄远征任主持人继续开会</strong>（现场出席 20 名股东 / 30,005,889 股 / 15.0029%）。会议<strong>罢免邱京卫、付新悦董事职务</strong>；<strong>解聘顾忠辉（总经理）、付新悦、王璐敏（副总）</strong></td>
+<td>⭐⭐ 治理夺权现场</td>
+</tr>
+<tr>
+<td>2025-11-12</td>
+<td>公告<strong>原公章、证照作废并补办</strong>。年报披露："2025 年 11 月 7 日第二次临时股东大会后，因董事和高管变动，存在<strong>非法占有公章、证件、营业执照等和职务侵占的嫌疑</strong>"</td>
+<td>⭐⭐ 治理乱象</td>
+</tr>
+<tr>
+<td>2025-11-07</td>
+<td>谈文舒出任董事、董事长、代董事会秘书</td>
+<td>⭐ 新管理层</td>
+</tr>
+<tr>
+<td>2025-11-21</td>
+<td>公司撤诉：与吴世春、顾纪明、尹冠民、庄小正、蒋秀军、萍乡汇德<strong>证券纠纷</strong>（涉案 0 万元）；与吴世春、曾庆川、符玉霞<strong>损害公司利益责任纠纷</strong>（涉案 250 万元）（公告 2025-112）</td>
+<td>诉讼出清</td>
+</tr>
+<tr>
+<td>2025-12-02</td>
+<td>张美艳离任宁波梅花天使投资管理有限公司监事（年报"在其他单位任职"栏列示起止日 2014-04-28 ~ 2025-12-02）</td>
+<td>人事</td>
+</tr>
+<tr>
+<td>2025-12-12</td>
+<td>董事会审议《关于拟变更会计师事务所的议案》（公告 2025-123）</td>
+<td>审计</td>
+</tr>
+<tr>
+<td><strong>2025-12-25</strong></td>
+<td>吴世春出具<strong>代偿承诺</strong>（本金 8,693,594.34 元及利息，2025-12-30 前付清，追偿权无偿转让）</td>
+<td>⭐⭐ 兜底</td>
+</tr>
+<tr>
+<td><strong>2025-12-27</strong></td>
+<td>公司实际收到代偿款合计 <strong>10,225,393.65 元</strong></td>
+<td>⭐⭐ 占用清零</td>
+</tr>
+<tr>
+<td>2025-12-29</td>
+<td>2025 年第三次临时股东会通过变更会计师事务所（公告 2025-130）；于涛当选董事</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2025-12-31</td>
+<td>原实控人及其关联方<strong>累计归还 15,580 万元，尚未归还金额 0</strong></td>
+<td>✅ 闭环</td>
+</tr>
+<tr>
+<td>2026-01-26</td>
+<td><strong>投服中心（中证中小投资者服务中心）诉林竹等 10 方及路通视信损害公司利益责任纠纷（869.36 万元）二审调解，《民事调解书》已履行完毕</strong>（公告 2026-007）</td>
+<td>诉讼出清</td>
+</tr>
+<tr>
+<td>2026-02-06</td>
+<td>高翔出任董事；王晓芳离任。<strong>公告实际控制人由林竹变更为吴世春</strong></td>
+<td>⭐⭐ 定名</td>
+</tr>
+<tr>
+<td>2026-02-25</td>
+<td>披露《关于重大诉讼事项的公告》（公告 2026-022）（公司回复：<strong>该诉讼与公司其他风险警示情况无关</strong>）</td>
+<td>诉讼</td>
+</tr>
+<tr>
+<td>2026-04-27</td>
+<td>第五届董事会第二十七次会议审议通过《关于前期会计差错更正的议案》（公告 2026-036）；2025 年年度报告审议通过</td>
+<td>⚠️ 差错更正</td>
+</tr>
+<tr>
+<td>2026-04-29</td>
+<td>2025 年年度报告披露（大信审字[2026]第5-00067号，标准无保留意见）</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>2026-06-05</td>
+<td>披露两起新增诉讼（许良才、星汉创新（深圳）诉公司决议撤销纠纷，案号（2026）苏 0211 民初 8399 号 / 8396 号）</td>
+<td>诉讼</td>
+</tr>
+<tr>
+<td>2026-08-20</td>
+<td>2026 年半年度报告披露。<strong>研发项目表新增 3 项 AI 智能体相关项目</strong></td>
+<td>⭐⭐⭐ 从 0 到 1</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="1.3 治理乱象专记：一份年报写下的&quot;夺权现场&quot;">1.3 治理乱象专记：一份年报写下的"夺权现场"</h2>
+<p>这是本案最不像"正常上市公司"的部分，也是理解"为什么摘帽卡住"的关键背景。2025 年年度报告与半年报共同勾勒出如下事实链（<strong>均为公司自己披露</strong>）：</p>
+<p><strong>（一）股东大会现场被取消，股东自行推举主持人继续开会</strong>
+- 2025-11-07 第二次临时股东大会，前任董事长<strong>邱京卫无正当理由宣布取消会议并离场</strong>；
+- 19:00 后，现场股东以 <strong>17,451,089 股（占出席会议有表决权股份 58.1589%）</strong> 推举<strong>独立董事黄远征</strong>任主持人，<strong>继续召开会议</strong>；
+- 现场出席股东 20 名、代表 <strong>30,005,889 股（15.0029%）</strong>。</p>
+<p><strong>（二）公章证照争夺</strong>
+- 年报原文："2025 年 11 月 7 日第二次临时股东大会后，因董事和高管变动，<strong>存在非法占有公章、证件、营业执照等和职务侵占的嫌疑</strong>"；
+- 2025-11-12 公告<strong>原公章、证照作废并补办</strong>。</p>
+<p><strong>（三）三起"决议撤销纠纷"诉讼（均针对 2025-11-07 会议效力）</strong></p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>原告</th>
+<th>案号</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>林由帅、蔡伟国</td>
+<td>—</td>
+<td><strong>一审判决驳回原告全部请求</strong>；二审尚未开庭</td>
+</tr>
+<tr>
+<td>许良才</td>
+<td>（2026）苏 0211 民初 8399 号</td>
+<td>2026-06-05 披露；尚未开庭</td>
+</tr>
+<tr>
+<td>星汉创新（深圳）企业管理企业（有限合伙）</td>
+<td>（2026）苏 0211 民初 8396 号</td>
+<td>2026-06-05 披露；尚未开庭</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>（四）监管措施三次连击</strong>：2025-06-09（警示函，公司+林竹+黄茂钦+邱京卫+付新悦）、2025-06-23（责令改正公司 + 警示函邱京卫）、2025-10-20（责令改正公司 + 警示函邱京卫）。</p>
+<p><strong>（五）董监高内部异议被记入年报</strong>：年报披露 <strong>5 名董监高</strong>对《关于股东提议召开临时股东大会的议案》等议案提出异议。</p>
+<p><strong>（六）董监高薪酬与业绩背离</strong>：2025 年董监高薪酬合计 <strong>583.97 万元</strong>，其中付新悦 <strong>125.67 万元</strong>、王璐敏 <strong>125.76 万元</strong>系<strong>协商解除劳动合同的一次性经济补偿</strong>。2026-05-08 互动易投资者质询"高管薪酬总额增长率远超业绩增长率"，公司回复确认系协商解除劳动合同并支付一次性补偿，剔除该影响后平均薪酬略有下降。</p>
+<p><strong>（七）前期会计差错更正</strong>：2026-04-27 董事会审计委员会、独立董事专门会议、董事会三级审议通过《关于前期会计差错更正的议案》，更正 2025Q1 / 2025 半年报 / 2025Q3 数据，依据《企业会计准则第 28 号》及《公开发行证券的公司信息披露编报规则第 19 号》（公告 2026-036）。<strong>半年报同时列示 2025H1 调整前/调整后两套口径</strong>（如经营活动现金流：调整前 +576,417.06 元 → 调整后 −1,249,404.72 元）。</p>
+<blockquote>
+<p><strong>本章判读</strong>：ST 路通的 2025 年是一出<strong>完整的控制权移交剧</strong>——旧主（华晟云城）破产清算、旧管理层（邱京卫系）在股东大会现场掀桌、公章被扣、三起诉讼缠斗、监管三次出手、会计师被更换。<strong>而新主（吴世春—梅花天使系）是在这个废墟上把账还清、把人换掉、把公章重刻的。</strong> 这件事的意义在于：它同时构成了<strong>风险（治理残留）</strong>和<strong>机会（新主已付出沉没成本，必然要继续走下去）</strong>。</p>
+</blockquote>
+<hr />
+<h1 id="第二章 关键人物：吴世春是谁，他带了谁来">第二章 关键人物：吴世春是谁，他带了谁来</h1>
+<h2 id="2.1 吴世春：从司法拍卖竞得第一笔股权，到被认定为实际控制人">2.1 吴世春：从司法拍卖竞得第一笔股权，到被认定为实际控制人</h2>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>身份</td>
+<td><strong>境内自然人</strong></td>
+</tr>
+<tr>
+<td>与上市公司的关系</td>
+<td>控股股东、<strong>实际控制人</strong>（2026-02-06 公告变更）</td>
+</tr>
+<tr>
+<td>首次持股时点</td>
+<td><strong>2025-03-17~18 阿里巴巴司法拍卖平台竞得</strong>华晟云城所持 14,875,071 股（7.44%）并完成过户</td>
+</tr>
+<tr>
+<td>二级市场增持</td>
+<td>2025-04-09 ~ 2025-10-09 集中竞价增持 <strong>6,051,400 股（3.02%）</strong>，耗资 <strong>6,288.64 万元</strong></td>
+</tr>
+<tr>
+<td>合计持股（2026-06-30）</td>
+<td><strong>20,926,471 股 / 10.46%</strong>（无限售条件股份 20,926,471 股）</td>
+</tr>
+<tr>
+<td><strong>质押情况</strong></td>
+<td><strong>质押 15,694,853 股</strong>（占其持股的 <strong>75.00%</strong>）⚠️</td>
+</tr>
+<tr>
+<td>承诺包</td>
+<td>2025-03-31 出具<strong>人员独立 / 资产独立 / 财务独立 / 机构独立 / 业务独立 / 避免同业竞争 / 减少和规范关联交易</strong>共 7 份承诺函；2025-04-09 出具股份增持计划承诺；<strong>2025-12-25 出具代偿资金占用款项承诺</strong></td>
+</tr>
+<tr>
+<td>与梅花天使系的关系</td>
+<td>⚠️ <strong>上市公司公告未直接披露吴世春与"梅花创投/梅花天使"的法律关系</strong>。间接证据：① 新任董事长谈文舒、董事高翔、财务总监张美艳<strong>均出自宁波梅花天使投资管理有限公司</strong>；② 深交所互动易投资者多次称其为"梅花创投吴总"（如 2026-08-14、2025-12-22）。<strong>本报告按"吴世春—梅花天使系"关联关系表述，性质为间接证据，待权威披露确认。</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>买入成本估算（本研究推算）</strong>：
+- 集中竞价增持部分：6,051,400 股 / 6,288.64 万元 → <strong>均价约 10.39 元/股</strong>
+- 司法拍卖部分：⚠️ 拍得价格未在年报中取得 ⚠️，<strong>待补</strong>
+- 以 2026-09-19 收盘 12.41 元计：竞拍部分与增持部分<strong>均处浮盈状态</strong>（增持部分约浮盈 <strong>+19.4%</strong>）</p>
+<p><strong>控制权认定依据（《上市公司收购管理办法》第 84 条）</strong>：</p>
+<blockquote>
+<p>吴世春<strong>仅持 10.46%</strong> 即被认定为实际控制人。适用情形为：
+<strong>（三）投资者通过实际支配上市公司股份表决权能够决定公司董事会半数以上成员选任</strong>——董事会 5 席中 <strong>3 席系吴世春提名</strong>（谈文舒 2025-11-07、于涛 2025-12-29、高翔 2026-02-06）；
+<strong>（四）投资者依其可实际支配的上市公司股份表决权足以对股东会决议产生重大影响</strong>。</p>
+<p><strong>这是本案第一个"资本运作向"的关键信号</strong>：<strong>10.46% 就能控制一家创业板公司</strong>，说明这家公司的<strong>股权极度分散、原控股股东已出局、且无其他强势股东能与新主抗衡</strong>——<strong>控制权成本极低，正是壳价值评估中最值钱的一项</strong>。</p>
+</blockquote>
+<h2 id="2.2 梅花天使系全面入主：5 个关键岗位，4 个来自同一家机构">2.2 梅花天使系全面入主：5 个关键岗位，4 个来自同一家机构</h2>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>职务</th>
+<th>出生年</th>
+<th>背景</th>
+<th>任上市公司职务起始</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>谈文舒</strong></td>
+<td><strong>董事长、代董事会秘书</strong></td>
+<td>1979-03</td>
+<td>硕士。<strong>2020-08 至今任宁波梅花天使投资管理有限公司合伙人</strong></td>
+<td>2025-11</td>
+</tr>
+<tr>
+<td><strong>于涛</strong></td>
+<td><strong>董事、总经理</strong></td>
+<td>1981-12</td>
+<td>硕士。曾任无锡路通网络技术有限公司总经理、北京智诚谱华科技有限责任公司董事</td>
+<td>2025-11（总经理）/ 2025-12（董事）</td>
+</tr>
+<tr>
+<td><strong>高翔</strong></td>
+<td><strong>董事</strong></td>
+<td>1985-08</td>
+<td>中共党员，美国福特汉姆大学法学硕士，法律职业资格。历任北京大成律所资本市场部律师、北京伯乐纵横基金法务总监、北京蜜莱坞网络科技战投部法务总监。<strong>现任宁波梅花天使投资管理有限公司合伙人、合规风控负责人</strong></td>
+<td>2026-02</td>
+</tr>
+<tr>
+<td><strong>张美艳</strong></td>
+<td><strong>副总经理、财务总监</strong></td>
+<td>1972-12</td>
+<td>注册会计师。曾任北京中会信诚会计师事务所合伙人、<strong>宁波梅花天使投资管理有限公司投后副总裁</strong>、中关村联合创新（北京）生物科技财务总监、北京贵格教育咨询财务总监</td>
+<td>2025-12 前后</td>
+</tr>
+<tr>
+<td>黄远征</td>
+<td>独立董事</td>
+<td>1966-12</td>
+<td>浙大机械制造研究生、北大 MBA。2023 年至今在中国科学院虚拟经济与数据科学研究中心任特聘研究员；<strong>2025-11-07 会议现场被股东推举为主持人</strong></td>
+<td>2024-10</td>
+</tr>
+<tr>
+<td>汤四新</td>
+<td>独立董事</td>
+<td>1967-11</td>
+<td>博士，会计学教授，现任广东金融学院（年报载）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>张心林</td>
+<td>副总经理</td>
+<td>1986-09</td>
+<td>曾任开元教育科技集团总经理助理、长沙麓元能材科技总经理</td>
+<td>—</td>
+</tr>
+<tr>
+<td>庄小正</td>
+<td>副总经理</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>赖一松</td>
+<td>副总经理</td>
+<td>1983-04</td>
+<td>2014-06 创办江苏路通物联科技（原智天下），任总经理；现任公司副总经理兼路通物联总经理</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>关键观察</strong>：
+- <strong>董事长（谈文舒）+ 董事（高翔）+ 财务总监（张美艳）三人同出宁波梅花天使投资管理有限公司</strong>，且高翔为<strong>合规风控负责人</strong>、张美艳为<strong>注册会计师</strong>——<strong>"投资机构合伙人 + 合规风控负责人 + 注册会计师"这一组合进入上市公司核心岗位，功能指向非常明确：为后续资本运作做合规与财务的双重准备。</strong>
+- 黄远征（独立董事）在 2025-11-07 的"夺权会议"中<strong>被现场股东推举为主持人</strong>——<strong>独董在新主的控制权取得过程中扮演了实际角色</strong>，这一点在常规案例中罕见。</p>
+<h2 id="2.3 ⭐ 董事长谈文舒的对外任职：一份必须读三遍的名单">2.3 ⭐ 董事长谈文舒的对外任职：一份必须读三遍的名单</h2>
+<p>年报"在其他单位任职情况"栏显示，<strong>谈文舒同时在 36 家公司</strong>担任董事/监事（<strong>除宁波梅花天使投资管理有限公司外，在其他单位均"不领取报酬津贴"</strong>）。</p>
+<p><strong>与"新·大·强"直接相关的 4 家（本研究精选）</strong>：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>公司名称</th>
+<th>谈文舒职务</th>
+<th>起始日</th>
+<th>业务方向（本研究注释）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>星移联信航天科技（无锡）有限公司</strong></td>
+<td>董事</td>
+<td><strong>2021-12-15</strong></td>
+<td>航天 / 卫星通信方向，"无锡"属地与上市公司同城</td>
+</tr>
+<tr>
+<td><strong>数字太空（北京）科技股份公司</strong></td>
+<td>董事</td>
+<td>2019-11-06</td>
+<td>太空 / 卫星数据方向</td>
+</tr>
+<tr>
+<td><strong>科比特创新科技股份有限公司</strong></td>
+<td>董事</td>
+<td><strong>2024-10-14</strong></td>
+<td>工业无人机（"天地一体化巡检"所需终端）</td>
+</tr>
+<tr>
+<td><strong>北京瑞达恩科技股份有限公司</strong></td>
+<td>董事</td>
+<td><strong>2025-01-13</strong></td>
+<td>低空防御 / 雷达</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>其他覆盖</strong>：新能源、半导体、生物科技、AI、信息科技（如北京亿采信息科技发展股份有限公司）等，合计 36 家。</p>
+<blockquote>
+<p>⚠️⚠️ <strong>必须写死的边界（本报告最重要的风险提示之一）</strong>：
+<strong>上述均为谈文舒个人（作为梅花天使合伙人）在体外公司的任职，不是上市公司的资产，也不构成任何注入承诺。</strong>
+1. 年报明确"在其他单位<strong>是否领取报酬津贴：否</strong>"（仅宁波梅花天使一家为"是"）——即这些任职多为投资人派驻董事席位，<strong>上市公司与其没有股权或业务关系</strong>；
+2. 没有任何公告、承诺函或互动易回复提及将上述公司资产注入 ST 路通；
+3. <strong>绝不能据此写成"公司将注入航天资产/无人机资产"</strong>。这只能作为<strong>"新主团队的能力圈与资源半径"</strong>的旁证使用。</p>
+<p><strong>正确的用法</strong>：当投资者在 2026-06-16 问"公司地处无锡，无锡是江苏重点打造的<strong>航空航天产业集群</strong>，公司未来有没有这方面布局？"时，公司的回答是"<strong>有关公司未来经营规划请参见……《2025 年年度报告》'十一、公司未来发展的展望'</strong>"——<strong>没有否认，而是把提问者指向年报的转型章节</strong>。这是"线索 + 指向"的组合，而不是答案。</p>
+</blockquote>
+<hr />
+<h1 id="第三章 怎么进来的：一次司法拍卖 + 一轮二级市场增持，10.46% 拿下控制权">第三章 怎么进来的：一次司法拍卖 + 一轮二级市场增持，10.46% 拿下控制权</h1>
+<h2 id="3.1 三条进入路径的成本对比">3.1 三条进入路径的成本对比</h2>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>路径</th>
+<th>时间</th>
+<th>股数</th>
+<th>占比</th>
+<th>成本</th>
+<th>均价</th>
+<th>性质</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① 司法拍卖竞得</strong></td>
+<td>2025-03-17~18</td>
+<td>14,875,071 股</td>
+<td>7.44%</td>
+<td>⚠️ 未取得</td>
+<td>⚠️ 待补</td>
+<td>从<strong>破产清算的旧控股股东</strong>手中拍得</td>
+</tr>
+<tr>
+<td><strong>② 二级市场集中竞价增持</strong></td>
+<td>2025-04-09 ~ 2025-10-09</td>
+<td>6,051,400 股</td>
+<td>3.02%</td>
+<td><strong>6,288.64 万元</strong></td>
+<td><strong>≈10.39 元/股</strong></td>
+<td>承诺期内完成，已履行完毕</td>
+</tr>
+<tr>
+<td><strong>③ 合计</strong></td>
+<td>—</td>
+<td><strong>20,926,471 股</strong></td>
+<td><strong>10.46%</strong></td>
+<td>≥6,288.64 万元</td>
+<td>—</td>
+<td>第一大股东 + 实际控制人</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>成本对照（关键）</strong>：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>关键日期</th>
+<th>收盘价（Wind）</th>
+<th>距增持均价 10.39 元</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025-03-17（拍卖起始日）</td>
+<td>9.93 元</td>
+<td>−4.4%</td>
+</tr>
+<tr>
+<td>2025-03-18（拍卖日）</td>
+<td>9.41 元</td>
+<td>−9.4%</td>
+</tr>
+<tr>
+<td>2025-04-07（复牌/跳空日）</td>
+<td><strong>8.33 元</strong></td>
+<td>−19.8%</td>
+</tr>
+<tr>
+<td><strong>2025-04-09（增持起始日）</strong></td>
+<td><strong>8.55 元</strong></td>
+<td>−17.7%</td>
+</tr>
+<tr>
+<td>2025-12-25（代偿承诺公告日）</td>
+<td>15.26 元</td>
+<td>+46.9%</td>
+</tr>
+<tr>
+<td>2025-12-29（2025 年区间高点）</td>
+<td><strong>15.35 元</strong></td>
+<td>+47.7%</td>
+</tr>
+<tr>
+<td>2026-01-16（区间最高）</td>
+<td><strong>16.02 元</strong></td>
+<td>+54.2%</td>
+</tr>
+<tr>
+<td>2026-02-06（实控人变更公告日）</td>
+<td>14.31 元</td>
+<td>+37.7%</td>
+</tr>
+<tr>
+<td>2026-04-29（2025 年报披露日）</td>
+<td>13.45 元</td>
+<td>+29.5%</td>
+</tr>
+<tr>
+<td>2026-08-28（2026 半年报披露日）</td>
+<td>12.68 元</td>
+<td>+22.0%</td>
+</tr>
+<tr>
+<td><strong>2026-09-19（最新）</strong></td>
+<td><strong>12.41 元</strong></td>
+<td><strong>+19.4%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>股价全区间统计（Wind，2025-01-02 ~ 2026-09-18，417 个交易日）</strong>：
+- <strong>区间最高：2026-01-16，16.02 元</strong>
+- <strong>区间最低：2025-01-23，8.02 元</strong>
+- 2025 年：首 8.62 元 → 低 8.02 元（01-23）→ 高 15.35 元（12-29）→ 末 14.66 元（<strong>全年上涨约 70%</strong>）
+- 2026 年：首 14.39 元 → 高 16.02 元（01-16）→ 低 11.71 元（06-11）→ 末 12.41 元
+- <strong>距区间最高回撤 −22.53%</strong></p>
+<p><strong>月度收盘（Wind）</strong>：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>月份</th>
+<th>收盘</th>
+<th>月份</th>
+<th>收盘</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025-01</td>
+<td>8.29</td>
+<td>2026-01</td>
+<td>14.53</td>
+</tr>
+<tr>
+<td>2025-02</td>
+<td>8.67</td>
+<td>2026-02</td>
+<td>14.01</td>
+</tr>
+<tr>
+<td>2025-03</td>
+<td>10.26</td>
+<td>2026-03</td>
+<td>12.37</td>
+</tr>
+<tr>
+<td>2025-04</td>
+<td>10.03</td>
+<td>2026-04</td>
+<td>13.47</td>
+</tr>
+<tr>
+<td>2025-05</td>
+<td>11.42</td>
+<td>2026-05</td>
+<td>13.12</td>
+</tr>
+<tr>
+<td>2025-06</td>
+<td>10.59</td>
+<td>2026-06</td>
+<td>12.68</td>
+</tr>
+<tr>
+<td>2025-07</td>
+<td>9.82</td>
+<td>2026-07</td>
+<td>12.20</td>
+</tr>
+<tr>
+<td>2025-08</td>
+<td>10.59</td>
+<td>2026-08</td>
+<td>12.85</td>
+</tr>
+<tr>
+<td>2025-09</td>
+<td>10.32</td>
+<td>2026-09-18</td>
+<td>12.41</td>
+</tr>
+<tr>
+<td>2025-10</td>
+<td>12.05</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2025-11</td>
+<td>12.72</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2025-12</td>
+<td>14.66</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>读图要点</strong>：<strong>股价的两次跃升，都对应控制权事件而非业绩事件</strong>——① 2025 年 3—5 月（司法拍卖 + 增持进场，8.3→11.4 元）；② 2025 年 10—12 月（董事会改组 + 代偿兜底 + 实控人即将定名，10.3→15.35 元）。2026 年 1 月 16 日创下 16.02 元高点后，至今处于<strong>回撤整理</strong>状态。<strong>市场为"吴世春入主"给出的溢价已经一次性给过，现在是等兑现的阶段。</strong></p>
+</blockquote>
+<h2 id="3.2 为什么&quot;只花 6,288 万元&quot;就能控制一家上市公司？">3.2 为什么"只花 6,288 万元"就能控制一家上市公司？</h2>
+<p>拆解这道算术题，答案是三个条件同时具备：</p>
+<ol>
+<li><strong>原控股股东的股权在司法拍卖平台上被打散</strong>：华晟云城所持 14,875,071 股（7.44%）被强制拍卖，吴世春以市场价竞得，<strong>无需向原控股股东支付控制权溢价</strong>；</li>
+<li><strong>原控股股东彻底出局</strong>：2025-07-01 <strong>余姚法院裁定华晟云城破产清算</strong>（管理人：浙江德威会计师事务所）——<strong>旧主已无能力也无意愿反扑</strong>；</li>
+<li><strong>股权结构天然分散、且无第二强势股东</strong>：</li>
+</ol>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>股东（2026-06-30）</th>
+<th>持股比例</th>
+<th>股数</th>
+<th>变动</th>
+<th>质押/冻结</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>吴世春</strong></td>
+<td><strong>10.46%</strong></td>
+<td>20,926,471</td>
+<td>0</td>
+<td><strong>质押 15,694,853</strong></td>
+</tr>
+<tr>
+<td>贾清</td>
+<td>6.28%</td>
+<td>12,550,600</td>
+<td>0</td>
+<td><strong>冻结 12,550,600（全部冻结）</strong></td>
+</tr>
+<tr>
+<td>吴爱军</td>
+<td>4.99%</td>
+<td>9,999,900</td>
+<td><strong>−226,312（减持中）</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>孟庆亮</td>
+<td>4.32%</td>
+<td>8,637,600</td>
+<td><strong>+1,459,300（增持）</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>陈赞</td>
+<td>3.01%</td>
+<td>6,015,800</td>
+<td><strong>+668,900（增持）</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>萍乡汇德企业管理中心（有限合伙）</td>
+<td>2.00%</td>
+<td>3,995,000</td>
+<td><strong>−810,000（减持）</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>顾纪明</td>
+<td>1.96%</td>
+<td>3,914,727</td>
+<td>0</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>报告期末普通股股东总数</strong></td>
+<td>—</td>
+<td><strong>5,591 户</strong></td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>贾清的悬案（必须单独提示）</strong>：贾清持股 6.28%（12,550,600 股）<strong>已全部被司法冻结</strong>。其表决权曾依 2021-07-20《股份转让协议》<strong>委托给华晟云城</strong>；2026-07-01 贾清单方通知解除委托，<strong>华晟云城破产管理人于 2026-07-07 回函拒绝</strong>，争议未决。2026-07-02 该笔股份<strong>解除司法冻结</strong>。</p>
+<blockquote>
+<p><strong>判读</strong>：贾清 6.28% 是这家公司<strong>唯一一块体量与吴世春（10.46%）可比的股权</strong>。若其表决权归属与处置方式发生变化，<strong>理论上存在股权结构再洗牌的可能</strong>。但贾清股份曾长期冻结、且已与破产管理人发生争议，短期内构成实际威胁的概率不高，<strong>属需持续跟踪的观察项，而非当下风险</strong>。</p>
+</blockquote>
+<hr />
+<h1 id="第四章 意图分析与节奏推测：新主到底想干什么">第四章 意图分析与节奏推测：新主到底想干什么</h1>
+<h2 id="4.1 先看&quot;钱&quot;：吴世春已经付出的沉没成本">4.1 先看"钱"：吴世春已经付出的沉没成本</h2>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>支出项</th>
+<th>金额</th>
+<th>性质</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>司法拍卖竞得 14,875,071 股（7.44%）</td>
+<td>⚠️ 未取得</td>
+<td>取得第一大股东地位</td>
+</tr>
+<tr>
+<td>二级市场增持 6,051,400 股</td>
+<td><strong>6,288.64 万元</strong></td>
+<td>取得实际控制人地位（均价 ≈10.39 元）</td>
+</tr>
+<tr>
+<td><strong>代偿资金占用本金及利息</strong></td>
+<td><strong>1,022.54 万元</strong>（本金 869.36 万 + 利息 153.18 万）</td>
+<td><strong>用自有资金替前任兜底</strong></td>
+</tr>
+<tr>
+<td><strong>合计已确证支出</strong></td>
+<td><strong>≥7,311.18 万元</strong></td>
+<td>不含拍卖对价</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>这笔账的意义</strong>：
+- <strong>代偿 1,022.54 万元这件事，在财务上完全不是必要的</strong>——占用方是"宁波余姚云城人工智能科技有限公司"（原关联自然人控制的体外公司），<strong>吴世春并非法定清偿义务人</strong>。他选择<strong>自愿以自有资金代偿，并把追偿权无偿转让给上市公司</strong>，等于<strong>花钱买"干净"</strong>。
+- 而在二级市场，吴世春 6,051,400 股已投入约 6,288.64 万元（均价 ≈10.39 元）。
+- <strong>两者相加，吴世春已在"壳的净化"上投入超过 7,311 万元——且明确表态"增持期间不减持"。</strong> 对一位以投资机构合伙人身份入场的买方而言，<strong>这是典型的"必须把后面的戏唱下去"的成本结构</strong>。</p>
+<h2 id="4.2 再看&quot;话&quot;：公司公开表述的逐级升温（四步递进）">4.2 再看"话"：公司公开表述的逐级升温（四步递进）</h2>
+<p>本报告按时间顺序列出<strong>上市公司层面可查的全部转型表述</strong>，措辞的强度是<strong>逐级上升</strong>的：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>时点</th>
+<th>出处</th>
+<th>原文措辞</th>
+<th>强度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2026-04-29</strong></td>
+<td>2025 年年度报告"十一、公司未来发展的展望"</td>
+<td>加快<strong>算力路由</strong>、新一代宽带接入、国产化器件、<strong>北斗通信</strong>相关产品的研发与落地；在<strong>智慧物联、算力通信、北斗应用</strong>等创新业务方向加大拓展力度；"力争 2026 年内实现新突破"；行业趋势点名"结构性增长机会将集中于 <strong>5G 融合、超高清、AI 赋能</strong>及智慧广电等垂直应用领域"</td>
+<td>★★ 战略方向</td>
+</tr>
+<tr>
+<td><strong>2026-05-20</strong></td>
+<td>业绩说明会（IR2026-001）问 1 / 2 / 7</td>
+<td>"公司将在<strong>智慧物联、算力通信、北斗应用</strong>等创新业务方向加大拓展力度……公司将严格按照相关法律、法规的要求，<strong>围绕相关领域推进产业合作、项目投资与资源整合，力争 2026 年内实现新突破</strong>"（同一段话出现 <strong>4 次</strong>）</td>
+<td>★★★ 产业合作 + 项目投资 + 资源整合</td>
+</tr>
+<tr>
+<td><strong>2026-05-20</strong></td>
+<td>业绩说明会（IR2026-001）问 12</td>
+<td>"公司将严格遵循相关法律法规，<strong>规范开展战略投资与并购整合工作</strong>，推动<strong>新旧业务深度融合与协同发展</strong>……实现<strong>传统广电通信业务与新一代科技业务协同并进</strong>、收入结构持续优化、发展质量稳步提升"</td>
+<td>★★★★ <strong>"并购整合"四字明写</strong></td>
+</tr>
+<tr>
+<td><strong>2026-05-20</strong></td>
+<td>业绩说明会（IR2026-001）问 13</td>
+<td>2026 年围绕"稳经营、控风险、提质量、促转型"总体思路，重点推进经营管理、研发创新、市场拓展、<strong>战略投资</strong>、合规治理与组织人才等<strong>六大方面工作</strong></td>
+<td>★★★ 战略投资列为六大工作之一</td>
+</tr>
+<tr>
+<td><strong>2026-08-28</strong></td>
+<td>2026 年半年度报告"风险因素"第 5 条</td>
+<td>"公司推进<strong>业务转型与战略投资</strong>，涉及新行业、新技术、新团队，存在项目进度、协同效应、投后管理、市场拓展不及预期的风险"</td>
+<td>★★★★ <strong>公司自陈正在推进转型与战略投资</strong>（以风险提示口吻）</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>本章第一个重要判读</strong>：<strong>"并购整合"这个词，是上市公司在公开的、有编号的、有录音可查的投资者关系活动记录表中说出来的</strong>（IR2026-001，2026-05-20，接待人含董事长谈文舒、总经理于涛、财务总监张美艳）。它当然不是承诺，也带着大量限定语（"严格遵循相关法律法规""风险可控、合规先行"），<strong>但对于一个 ST 壳而言，这已经是"意图"这件事在公司层面能给出的最高强度表述</strong>。</p>
+<p><strong>本章第二个重要判读</strong>：<strong>半年报把"战略转型、产业投资及新业务拓展"直接写进风险因素第 5 条</strong>，且用"<strong>涉及新行业、新技术、新团队</strong>"来描述——这是<strong>公司用风险语言承认了正在做的事</strong>。按研究方法论，<strong>风险提示的措辞强度，往往是"事情真实程度"的镜像</strong>。</p>
+</blockquote>
+<h2 id="4.3 再看&quot;人&quot;：36 家外部任职的能力圈半径">4.3 再看"人"：36 家外部任职的能力圈半径</h2>
+<p>（详见第 2.3 节）新主团队的能力圈覆盖：<strong>航天/卫星通信（星移联信、数字太空）、工业无人机（科比特）、低空防御/雷达（瑞达恩）、AI、半导体、新能源、生物科技</strong>。</p>
+<p><strong>这里必须做一次严格的口径分离</strong>：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>性质</th>
+<th>能否直接推论"注入"</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>谈文舒在星移联信航天科技（无锡）任董事</td>
+<td><strong>个人任职</strong>，且"不领取报酬"</td>
+<td>❌ 不能</td>
+</tr>
+<tr>
+<td>上市公司年报"未来发展的展望"提北斗通信</td>
+<td><strong>公司战略</strong></td>
+<td>⚠️ 仅方向</td>
+</tr>
+<tr>
+<td>业绩说明会提"并购整合"</td>
+<td><strong>公司公开表述</strong></td>
+<td>⚠️ 仅意图</td>
+</tr>
+<tr>
+<td>2026 半年报新增 3 项 AI 智能体研发项目</td>
+<td><strong>公司实际研发投入</strong></td>
+<td>✅ <strong>已发生的"从 0 到 1"</strong></td>
+</tr>
+<tr>
+<td>设立北京路通数维科技有限公司（2026-02-06，注册资本 100 万元）</td>
+<td><strong>公司实际设立子公司</strong></td>
+<td>✅ 已发生（但规模微小）</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="4.4 再看&quot;实际动作&quot;：吴世春入主后的资产端与子公司端变化">4.4 再看"实际动作"：吴世春入主后的资产端与子公司端变化</h2>
+<h3 id="（1）已发生的实际动作清单">（1）已发生的实际动作清单</h3>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>时间</th>
+<th>动作</th>
+<th>性质判读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-02-06</td>
+<td>设立全资子公司<strong>北京路通数维科技有限公司</strong>（注册资本仅 <strong>100 万元</strong>，北京朝阳区，经营范围含计算机软硬件、通信设备、信息系统集成、安全自动化监控）</td>
+<td><strong>常规布局，非资产注入载体</strong>（100 万元注册资本体量过小，不足以承载重资产注入）</td>
+</tr>
+<tr>
+<td>2026-01-07 / 2026-03-16</td>
+<td>子公司路通物联工商变更</td>
+<td>常规</td>
+</tr>
+<tr>
+<td>—</td>
+<td><strong>路通网络减资：6,000 万元 → 297 万元</strong></td>
+<td>⚠️ 存量资产收缩</td>
+</tr>
+<tr>
+<td>—</td>
+<td><strong>注销路通数联（广州）供应链科技有限公司</strong></td>
+<td>清理前任管理层设立的公司</td>
+</tr>
+<tr>
+<td>2025-08</td>
+<td>注销北京智城谱华科技有限责任公司</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>2025-12</td>
+<td>注销余姚路通网络科技发展有限公司</td>
+<td>同上</td>
+</tr>
+<tr>
+<td><strong>2025-12 起</strong></td>
+<td><strong>北京路通众合智能科技有限公司"公司实际无能力主导该公司的日常经营管理，对其无控制权，不再纳入合并范围"</strong></td>
+<td>⚠️ <strong>失去控制权</strong>（年报原文），属清理动作</td>
+</tr>
+<tr>
+<td>2025-06</td>
+<td>路通数联（北京）信息技术有限公司<strong>撤资退出</strong></td>
+<td>同上</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>前任管理层 2025 年的"新设即注销"模式（合计 4 家）</strong>：北京路通众合（2024-12 设 → 2025-12 失控）、路通数联广州（2025-01 设 → 注销）、路通数联北京（2025-02 设 → 2025-06 撤资）、广州路通芯云（2025-09 设 → 2025-12 注销）。</p>
+<blockquote>
+<p><strong>这是一条容易被忽略但很有信息量的线索</strong>：<strong>前任管理层在 2025 年密集设立又注销/失控了 4 家子公司</strong>。这类"设立—实缴—短期即处置"的操作，在 ST 公司的语境下通常指向<strong>收入确认与合并范围的操作空间</strong>（考虑到 2025 年审计将"收入确认"列为关键审计事项，且 2026 年发生前期会计差错更正，<strong>本报告将其列为需持续关注的观察项，不做定性指控</strong>）。</p>
+</blockquote>
+<h3 id="（2）子公司经营实况">（2）子公司经营实况</h3>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>子公司</th>
+<th>持股</th>
+<th>2025 年业绩</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>江苏路通物联科技</strong>（智慧旅游实施主体）</td>
+<td>51%</td>
+<td>营业收入 <strong>2,161.34 万元</strong>（同比 <strong>−56.17%</strong>，主因上期衡水湖项目确认收入）；净利润 <strong>4.42 万元</strong>（同比 <strong>−96.62%</strong>）</td>
+<td>2017 年以 1,530 万元现金收购智天下 51% 股权，2017-09-01 起纳入合并</td>
+</tr>
+<tr>
+<td><strong>无锡路通网络技术</strong>（智能网络综合布线 / 动环网管）</td>
+<td>100%</td>
+<td>净利润同比减少 <strong>227.09 万元</strong>（主因管理费用、财务费用增加）</td>
+<td>2006-08-09 成立；2021-09 注册资本增至 6,000 万元，后减资至 297 万元</td>
+</tr>
+<tr>
+<td>路通物联 2026H1</td>
+<td>51%</td>
+<td>营收 <strong>229.65 万元</strong>、净利 <strong>−122.93 万元</strong>（⚠️ 据前期研究记录，本次未在半年报抽取文件中二次复核）</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="（3）经营端数据（2026H1）">（3）经营端数据（2026H1）</h3>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中标订单</td>
+<td><strong>1,375 条 / 5,970.00 万元</strong>（占当期营业收入 <strong>124.63%</strong>）</td>
+</tr>
+<tr>
+<td>设备产能 / 销量</td>
+<td>产能 110 万台；销量 <strong>96.51 万台</strong>（国内，销售收入 4,226.50 万元，正常回款中）</td>
+</tr>
+<tr>
+<td>分行业收入</td>
+<td>网络设备制造 25,953,396.29（毛利率 <strong>6.05%</strong>）｜物联网应用及技术服务 21,624,088.25（毛利率 <strong>15.56%</strong>）</td>
+</tr>
+<tr>
+<td>分产品收入</td>
+<td>网络传输系统 25,953,396.31（毛利率 5.28%）｜智慧物联应用 16,311,579.14（毛利率 <strong>22.80%</strong>）｜技术服务 5,312,509.09（毛利率 <strong>−2.91%</strong>）</td>
+</tr>
+<tr>
+<td>分地区收入</td>
+<td>华东 27,535,841.45（8.66%）｜华北 6,024,584.05（9.49%，同比 <strong>+3,035.78%</strong>）｜<strong>港澳台 6,194,907.12（毛利率 −1.75%，同比 +100%）</strong>｜西南 2,261,877.35（34.17%）｜华南 1,275,485.85（48.25%）</td>
+</tr>
+<tr>
+<td>国外及港澳台收入</td>
+<td>同比增加 635.59 万元，<strong>同比 +5,727.10%</strong></td>
+</tr>
+<tr>
+<td>有息负债</td>
+<td><strong>短期借款 0 / 长期借款 0</strong>（零有息负债）</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="4.5 节奏推测：三条可能路径与时间窗口">4.5 节奏推测：三条可能路径与时间窗口</h2>
+<p><strong>路径 A —— 「先摘帽，再动资产」（概率最高）</strong>
+- 逻辑：摘帽是<strong>一切资本运作的前置条件</strong>（ST 状态下的发行股份购买资产、配套融资、估值谈判都受严重约束）；
+- 时间窗口推断：<strong>专项审核报告 → 董事会审议 → 向深交所申请 → 审核</strong>。公司自 2025-12-27 收妥代偿款起，至 2026-09-22 已近 <strong>9 个月</strong>未公告任何环节完成；
+- 观察指标：① 董事会审议《关于申请撤销其他风险警示的议案》公告；② 会计师专项审核报告（标题通常为《关于……资金占用及清偿情况的专项审核报告》）；③ 深交所撤销其他风险警示决定。
+- <strong>关键提示</strong>：公司对"是否已委托会计师"的三次直接追问均未正面回答（2026-04-07、2026-06-16、2026-07-15），<strong>在 45 条互动易回复中，"委托会计师"这一表述始终以"将"字出现（未来时）</strong>。</p>
+<p><strong>路径 B —— 「保营收 + 同步铺新业务」（正在发生）</strong>
+- 逻辑：2026 年财务类红线是<strong>当期最紧迫的约束</strong>，公司必须先把"扣除后营收 ≥ 1 亿"守住；
+- 证据：① 2026H1 营收同比 +12.03%（增收 514.37 万元）；② 国外及港澳台收入暴增 5,727.10%（但<strong>毛利率 −1.75%，不赚钱</strong>）；③ 3 项 AI 智能体研发项目进入半年报表（1 项"试生产"）；
+- <strong>隐含风险</strong>：为保营收而接低毛利甚至负毛利订单（如港澳台业务），会<strong>进一步压低本已只有 10.74% 的综合毛利率</strong>。</p>
+<p><strong>路径 C —— 「产业合作/投资/资源整合」（公司口径指向，尚未见实质公告）</strong>
+- 逻辑：业绩说明会"并购整合""产业合作、项目投资与资源整合"的表述；
+- 现状：<strong>截至 2026-09-22，公司未公告任何重大资产重组、收购、对外投资（除 100 万元注册资本的北京路通数维）、或战略性合作协议</strong>；
+- 观察指标：① 重大资产重组停牌公告；② 对外投资/设立产业基金公告；③ 与梅花天使系已投企业的业务合作协议。</p>
+<h2 id="4.6 意图分析小结">4.6 意图分析小结</h2>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>评级</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>新主是否"真想干"</td>
+<td><strong>强</strong></td>
+<td>已投入 ≥7,311.18 万元（不含拍卖对价）+ 自愿代偿 1,022.54 万元 + 承诺不减持</td>
+</tr>
+<tr>
+<td>新主是否有"干的能力"</td>
+<td><strong>强</strong></td>
+<td>梅花天使系 3 人进董事会/高管（合伙人 + 合规风控负责人 + 注册会计师）；董事长体外任职覆盖航天/无人机/低空防御</td>
+</tr>
+<tr>
+<td>是否有"已发生的实质动作"</td>
+<td><strong>中</strong></td>
+<td>3 项 AI 研发项目（1 项试生产）+ 设立北京路通数维（100 万元，体量小）+ 清理 4 家前任子公司</td>
+</tr>
+<tr>
+<td>是否有"资产注入的公开路径"</td>
+<td><strong>弱至中</strong></td>
+<td>仅口头表述（"并购整合"），无停牌、无重组预案、无标的</td>
+</tr>
+<tr>
+<td><strong>综合</strong></td>
+<td><strong>"意图明确、能力具备、动作刚起步"</strong></td>
+<td>最可能的顺序是"<strong>摘帽 → 保营收 → 产业整合</strong>"，三件事必须串行，任何一环卡住都会拖慢下一环</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h1 id="第五章 承诺包逐条拆解：新主给自己上了多少&quot;锁&quot;">第五章 承诺包逐条拆解：新主给自己上了多少"锁"</h1>
+<blockquote>
+<p>承诺包是判断"新主是玩票还是动真格"的硬证据——<strong>承诺越多、越具体、越有约束力，说明越不敢轻易半途而废</strong>。</p>
+</blockquote>
+<h2 id="5.1 吴世春全部承诺（7 + 1 + 1 项）">5.1 吴世春全部承诺（7 + 1 + 1 项）</h2>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>承诺类型</th>
+<th>出具时间</th>
+<th>承诺期限</th>
+<th>核心内容（摘录）</th>
+<th>履行情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>关于人员独立的承诺</strong></td>
+<td>2025-03-31</td>
+<td>长期</td>
+<td>保证上市公司总经理、副总经理、财务负责人、董秘等高管<strong>专职在上市公司工作并领薪</strong>，不在承诺人及其控制的企业中兼职担任高管；财务人员独立；<strong>承诺人未来推荐出任上市公司董监高的人选均通过合法程序进行，不干预上市公司董事会和股东大会做出的人事任免决定</strong></td>
+<td>正在履行</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>关于资产独立的承诺</strong></td>
+<td>2025-03-31</td>
+<td>长期</td>
+<td>保证上市公司具有与经营有关的业务体系和独立完整资产；<strong>不违规占用公司资产、资金及其他资源，不以上市公司资产为承诺人及其控制的企业债务提供担保</strong></td>
+<td>正在履行</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>关于财务独立的承诺</strong></td>
+<td>2025-03-31</td>
+<td>长期</td>
+<td>独立财务会计部门/核算体系/管理制度；财务决策独立；<strong>不与承诺人及其控制的企业共用银行账户</strong></td>
+<td>正在履行</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>关于机构独立的承诺</strong></td>
+<td>2025-03-31</td>
+<td>长期</td>
+<td>法人治理结构完善并与承诺人控制企业的机构完全分开；办公机构和生产经营场所完全分开；<strong>保证股东大会、董事会、独董、监事会、高管依法独立行使职权</strong></td>
+<td>正在履行</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>关于业务独立承诺</strong></td>
+<td>2025-03-31</td>
+<td>长期</td>
+<td>保证上市公司拥有独立开展经营活动的资产、人员、资质和能力；<strong>除依法行使股东权利和履行任职职责外，不对上市公司业务活动进行干预</strong>；避免从事与上市公司主营业务实质性竞争的业务；尽量减少关联交易并按市场化原则公允操作</td>
+<td>正在履行</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>避免同业竞争的承诺</strong></td>
+<td>2025-03-31</td>
+<td>长期</td>
+<td>承诺人及其控制公司未直接或间接从事与上市公司构成竞争的业务；<strong>未来从第三方获得的商业机会若与上市公司业务构成实质性竞争，将立即通知上市公司并尽力将该等商业机会让与上市公司</strong>；<strong>在上市公司于国内证券交易所上市期间且承诺人为第一大股东期间持续有效且不可撤销</strong></td>
+<td>正在履行</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>关于减少和规范关联交易的承诺</strong></td>
+<td>2025-03-31</td>
+<td>长期</td>
+<td>尽量减少、避免不必要的关联交易；<strong>不违规占用或转移上市公司资金、资产及其他资源，或要求上市公司违规为承诺人及控制的企业提供担保</strong>；在承诺人作为第一大股东期间<strong>持续有效且不可撤销</strong></td>
+<td>正在履行</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>关于股份增持计划的承诺</strong></td>
+<td>2025-04-09</td>
+<td>2025-04-09 ~ 2025-10-09</td>
+<td>承诺在增持计划实施期限内完成增持；<strong>承诺在增持期间及法定期限内不减持公司股份</strong>；严格遵守证监会及深交所关于股份锁定期限的安排</td>
+<td>✅ <strong>履行完毕</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>⭐ 关于代偿资金占用款项的承诺</strong></td>
+<td><strong>2025-12-25</strong></td>
+<td>不适用</td>
+<td><strong>承诺自愿以自有资金代资金占用方全额偿还资金占用本金 8,693,594.34 元及相应利息，并于 2025-12-30 前将代偿款项分次支付至上市公司指定账户；自偿还款项支付至上市公司账户之日起，因自愿代偿行为而对资金占用方依法享有的全部追偿权无偿转让给路通视信公司</strong></td>
+<td>✅ <strong>履行完毕</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>关于承诺表勾选的细节</strong>：年报"承诺是否按时履行"栏勾选 <strong>"否"</strong>，但"如承诺超期未履行完毕的……未完成履行的具体原因及下一步的工作计划"栏填写 <strong>"无"</strong>。⚠️ <strong>本研究认为该勾选与内容矛盾</strong>（所有列示承诺均标注"正在履行"或"履行完毕"，且未完成原因填"无"），<strong>可能为填报口径瑕疵，本报告不据此作出承诺违约的判断，仅标注该矛盾供核查</strong>。</p>
+<h2 id="5.2 对比：林竹时代的承诺是怎么失效的">5.2 对比：林竹时代的承诺是怎么失效的</h2>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>承诺方</th>
+<th>承诺类型</th>
+<th>履行情况（年报原文）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>宁波余姚华晟云城智慧城市运营科技有限公司、<strong>林竹</strong>、华晟科技（广州）</td>
+<td>关于保证上市公司独立性的承诺（含"<strong>保证不违规占用上市公司的资金、资产及其他资源</strong>"）</td>
+<td>⚠️ <strong>"非经营性资金占用形成的关联交易，原实际控制人林竹未严格履行该承诺"</strong></td>
+</tr>
+<tr>
+<td>同上</td>
+<td>关于关联交易的承诺（含"<strong>不通过关联交易取得任何不正当的利益</strong>"）</td>
+<td>⚠️ 同上，未严格履行</td>
+</tr>
+<tr>
+<td>贾清</td>
+<td>表决权委托承诺（18 个月内不减持、不可撤销委托予华晟云城；满 18 个月后委托至贾清不再持股之日止）</td>
+<td>"正在履行"（<strong>但目前贾清已单方通知解除委托，华晟云城破产管理人拒绝，争议中</strong> ⚠️）</td>
+</tr>
+<tr>
+<td>仇一兵、顾纪明、贾清、尹冠民</td>
+<td>股份减持承诺</td>
+<td>⚠️ <strong>仇一兵未严格履行</strong>（2024-02-19 未提前 3 交易日公告即减持 1,000 股，2024-04-12 收江苏证监局警示函〔2024〕57 号）</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>对照判读</strong>：<strong>上一任实控人林竹写下的"保证不违规占用上市公司资金"承诺，最后成了 15,580 万元资金占用的直接反讽。</strong> 吴世春的 7 份独立性/同业竞争/关联交易承诺在文本上与林竹的<strong>高度同构</strong>——<strong>承诺本身不构成安全垫，承诺的兑付能力才构成</strong>。差别在于：吴世春已经<strong>用 1,022.54 万元真金白银</strong>证明了一次（代偿），而林竹没有。</p>
+<p><strong>另需注意的"锁"的反面</strong>：吴世春持股的 <strong>75.00%（15,694,853 股 / 20,926,471 股）已被质押</strong>。质押本身不一定是负面（可为融资），但在股价下跌时可能触发平仓风险，且<strong>质押会限制其后续增持的空间</strong>。⚠️ 质押权人、融资金额、平仓线均未在年报中披露，<strong>标注待补</strong>。</p>
+</blockquote>
+<hr />
+<h1 id="第六章 §4.7 投资者交流信息挖掘专章：第一现场里的&quot;青萍之末&quot;">第六章 §4.7 投资者交流信息挖掘专章：第一现场里的"青萍之末"</h1>
+<blockquote>
+<p><strong>方法论</strong>：定期报告是<strong>已发生事实的存档</strong>，投资者交流是<strong>正在发生事实的第一现场</strong>。本章对 45 条深交所互动易问答 + 1 份业绩说明会记录（IR2026-001）做全量判读，并按 L1~L4 分级。</p>
+</blockquote>
+<h2 id="6.1 互动易 45 条全量结构分析">6.1 互动易 45 条全量结构分析</h2>
+<p><strong>数据源</strong>：同花顺 F10 互动易页面（<code>basic.10jqka.com.cn/300555/interactive.html</code>），共 <strong>45 条</strong>，时间跨度 <strong>2025-10-15 ~ 2026-09-03</strong>。</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>提问主题</th>
+<th>条数</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>股东户数</td>
+<td>~31 条</td>
+<td>~69%</td>
+</tr>
+<tr>
+<td>摘帽进度 / 会计师专项审核</td>
+<td>~11 条</td>
+<td>~24%</td>
+</tr>
+<tr>
+<td>诉讼影响</td>
+<td>2 条</td>
+<td>~4%</td>
+</tr>
+<tr>
+<td>转型 / 布局 / 资产注入</td>
+<td>3 条</td>
+<td>~7%</td>
+</tr>
+<tr>
+<td>高管薪酬</td>
+<td>1 条</td>
+<td>~2%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>回复风格判读</strong>：<strong>回避性极强</strong>。公司对"何时申报摘帽""是否已委托会计师""具体时间表"三类追问，给出了 12 次高度同质的回答，集中在以下四句话术：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>话术</th>
+<th>出现场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"公司正按照相关规则和要求，积极、有序地推进经营和管理"</td>
+<td>2026-07-15（问 10）等</td>
+</tr>
+<tr>
+<td>"公司正在积极努力，依法依规推进相关工作；<strong>希望稳扎稳打、行稳致远</strong>"</td>
+<td>2026-07-15（问 12）</td>
+</tr>
+<tr>
+<td>"公司管理层坚持<strong>长期主义</strong>，积极努力，依法依规推进各项工作"</td>
+<td>2026-07-15（问 15）</td>
+</tr>
+<tr>
+<td>"公司将依据……<strong>委托会计师</strong>就前期公司原实际控制人及其关联方偿还情况及现实际控制人现金代为偿还情况进行核实，在<strong>取得会计师出具的专项审核报告后</strong>，向深圳证券交易所申请撤销其他风险警示"</td>
+<td>2026-06-22（问 19）、2026-07-15（问 9）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>⚠️ 关键语言证据</strong>：2026-07-15 问 12 投资者直接质问"根据相关规定，'<strong>将</strong>'委托会计师。请问公司到现在<strong>还没有</strong>委托会计师吗？占款已经还完近半年，为什么还不委托会计师做专项审计报告呢？"——<strong>公司回复未否认"尚未委托"</strong>，仅答"公司正在积极努力，依法依规推进相关工作；希望稳扎稳打、行稳致远"。</p>
+<p><strong>⚠️ 反向证据（必须记录）</strong>：2026-07-15 问 15 投资者提出"<strong>占用资金专项审计报告已在 4 月 29 日已由会计事务所出具并公开披露了</strong>"——<strong>公司未确认，亦未否认</strong>，仅答"公司管理层坚持长期主义"。<strong>本研究据此判定：截至 2026-09-22，"专项审核报告是否已出具"在公开信息中处于'未证实'状态。</strong></p>
+<h2 id="6.2 ⭐ 三条&quot;新·大&quot;线索的原文与分级">6.2 ⭐ 三条"新·大"线索的原文与分级</h2>
+<h3 id="线索一：航空航天（投资者主动提出，公司未否认并指向年报）">线索一：航空航天（投资者主动提出，公司未否认并指向年报）</h3>
+<blockquote>
+<p><strong>投资者（2026-06-16 11:45）</strong>："董秘你好，公司地处无锡，无锡是江苏重点打造的<strong>航空航天产业集群</strong>，公司未来有没有这方面布局？希望公司加快转型"</p>
+<p><strong>公司答</strong>："尊敬的投资者，您好，<strong>有关公司未来经营规划请参见公司在巨潮网披露的《2025 年年度报告》'第三节管理层讨论与分析'之'十一、公司未来发展的展望'</strong>。感谢您的关注！"</p>
+</blockquote>
+<p><strong>判读</strong>：<strong>公司没有说"没有这方面布局"</strong>，也没有说"有"，而是把提问者<strong>指向了年报的转型章节</strong>。这是一种精心设计的"不否认 + 指向性"回答。<strong>指向的年报章节内容</strong>正是：加快<strong>算力路由</strong>、国产化器件、<strong>北斗通信</strong>相关产品研发与落地；在<strong>智慧物联、算力通信、北斗应用</strong>等创新业务方向加大拓展力度；"力争 2026 年内实现新突破"。</p>
+<p><strong>分级：L1（概念布局）</strong> —— 属方向表述，无投入、无订单、无产品。</p>
+<h3 id="线索二 ⭐⭐⭐（核心发现）：半年报研发项目表新增 3 项 AI 智能体项目">线索二 ⭐⭐⭐（核心发现）：半年报研发项目表<strong>新增 3 项 AI 智能体项目</strong></h3>
+<p><strong>这是本报告认定的"风起于青萍之末"教科书样本——证据形态是"两张表之间的差集"：</strong></p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>2025 年年度报告（2026-04-29 披露）</th>
+<th>2026 年半年度报告（2026-08-28 披露）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>研发项目总数</td>
+<td>17 项</td>
+<td>20 项</td>
+</tr>
+<tr>
+<td>含 AI 智能体项目</td>
+<td><strong>0 项</strong></td>
+<td><strong>3 项（新增）</strong></td>
+</tr>
+<tr>
+<td>全部既有项目进展</td>
+<td>绝大多数为"<strong>投放市场并持续改进阶段</strong>"</td>
+<td>同</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>3 项新增项目的完整原文（半年报"研发投入情况"表）</strong>：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>项目名称</th>
+<th>项目目的（摘要）</th>
+<th><strong>进展</strong></th>
+<th>拟达到的目标（摘要）</th>
+<th>预计对未来发展的影响（摘要）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>兼容多智能体软件的 AI 边缘计算网关盒子研发项目</strong></td>
+<td>当前智能体云端部署存在<strong>时延过高、数据外发泄密隐患</strong>，PC、移动端部署又存在安全隐患，为各种垂类应用提供<strong>边缘调度载体</strong></td>
+<td><strong>⭐ 试生产阶段</strong></td>
+<td>自主研发网关软硬件，实现<strong>自研 LootomClaw、开源 OpenClaw、Hermes 多类智能体软件适配、一键快速部署</strong>；<strong>搭载本地 AI 推理引擎</strong>，支持多设备协议接入与<strong>多智能体自主协同调度</strong>，输出标准化量产方案，适配多行业场景，满足现场<strong>安全隔离、低时延、离线独立作业</strong>需求</td>
+<td><strong>打通智能体软硬件一体化产业链，补齐边缘计算产品序列</strong>，丰富整体解决方案能力，持续拓展行业垂类应用业务</td>
+</tr>
+<tr>
+<td><strong>基于多智能体协同的园区全域新型智慧安防系统研发项目</strong></td>
+<td>推动治理从<strong>被动监控</strong>向<strong>主动预判、全域巡检、快速闭环处置</strong>迭代升级</td>
+<td>设计阶段</td>
+<td>以<strong>自研 LootomClaw 智能体软件为核心驱动</strong>，完成<strong>无人机、机器人</strong>配套接口开发，落地<strong>天地一体化全域巡检</strong>体系；实现设备自动联动、风险智能识别、告警一键下发、处置全程留痕，形成可复制规模化推广的多智能体协同数智园区全域安防解决方案</td>
+<td><strong>攻克多智能体协同、具身智能联动等核心技术</strong>，构建差异化技术壁垒，完善公司智慧园区产品线</td>
+</tr>
+<tr>
+<td><strong>家庭智能网关型 AI 路由器研发项目</strong></td>
+<td>实现融合化、多应用平台融合，打造<strong>一站式全屋数智家庭中枢</strong></td>
+<td>设计阶段</td>
+<td>研发一体化 AI 路由终端，融合 <strong>WiFi、物联接入、视频存储、语音网关、私有 NAS 及本地 AI 算力</strong>，并搭载<strong>自研 LootomClaw 智能体软件</strong>，简化家庭智能化部署，一站式满足家庭网络连接、智慧家居控制、影音娱乐、本地数据安全</td>
+<td>打造一站式全屋数智家庭中枢</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>另有既有的 AI 能力（已在市场，属 L3）</strong>：2026 半年报载"公司积极布局 AI 领域，团队<strong>自研的'路通 AI 文旅大模型'不断升级，已成功接入 DeepSeek 大模型引擎</strong>，通过人工智能技术为客户提供智能化解决方案"；智慧旅游核心软件产品包含"全场景智慧旅游平台、业务融合中台、<strong>景区 AI 智能体</strong>"。</p>
+<p><strong>L1~L4 分级判定</strong>：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>分级</th>
+<th>判定依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>路通 AI 文旅大模型（接入 DeepSeek）</td>
+<td><strong>L3（落地在即）~ 已兑现</strong></td>
+<td>公司表述为"已成功接入""为客户提供智能化解决方案"，非"在研"</td>
+</tr>
+<tr>
+<td>智慧旅游"景区 AI 智能体"</td>
+<td><strong>L2~L3</strong></td>
+<td>已列入核心软件产品清单</td>
+</tr>
+<tr>
+<td><strong>AI 边缘计算网关盒子（LootomClaw）</strong></td>
+<td>⭐ <strong>L2 后端（试生产阶段）</strong></td>
+<td><strong>唯一进入"试生产"的新项目</strong>；研发投入 672.16 万元中一部分指向"AI 类智能软硬件产品"</td>
+</tr>
+<tr>
+<td>多智能体协同园区安防（含无人机/机器人）</td>
+<td><strong>L1~L2 前端（设计阶段）</strong></td>
+<td>设计阶段，接口开发完成但未试产</td>
+</tr>
+<tr>
+<td>家庭智能网关型 AI 路由器</td>
+<td><strong>L1~L2 前端（设计阶段）</strong></td>
+<td>设计阶段</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>反向词证伪检查（逐项过筛）</strong>：
+- ✅ 三项新增项目均<strong>未出现</strong>"尚处于在研""暂无应用""暂不会产生收入""请注意风险"等证伪词；
+- ✅ 但三项均<strong>未披露</strong>目标订单、意向客户、预计收入、量产时间表——<strong>收入从 0 到 1 的路径尚未可见</strong>；
+- ⚠️ 研发投入总额在<strong>下降</strong>：2026H1 研发投入 6,721,622.40 元（<strong>−41.03%</strong>），年报口径亦从 2024 年 22,037,012.64 元降至 2025 年 16,863,651.25 元；研发人员 65 人（占 28.63%）。⚠️ 公司解释 2026H1 下降"主要系合并范围变动"（半年报原文）。<strong>即新增 3 个 AI 项目的同时，总研发投入在压缩——这是"集中火力"还是"缺钱"，需要继续观察。</strong></p>
+<p><strong>新增研发项目的连带线索</strong>：半年报载公司拥有 <strong>169 项专利、180 项软件著作权</strong>；报告期内<strong>原始获得专利 9 项</strong>（实用新型 3 项、外观专利 6 项）、<strong>软件著作权 3 项</strong>。⚠️ 3 项新增软著是否含 LootomClaw 相关，未在半年报中列明，<strong>标注待补</strong>。</p>
+<h3 id="线索三：投资者直接问&quot;资产注入&quot;，见证回复 4 次重复同一段话">线索三：投资者直接问"资产注入"，见证回复 4 次重复同一段话</h3>
+<blockquote>
+<p><strong>投资者（2026-05-20 业绩说明会 问 2）</strong>："<strong>因为看好大股东吴世春，所以很关注是否有什么优质资产注入的打算？</strong>"
+<strong>公司答</strong>："……3、公司将严格按照监管要求履行决策程序及信息披露义务，相关事项请以公司公告为准。"</p>
+<p><strong>投资者（2026-05-20 问 12）</strong>："公司现有业务都是些正在萎缩的一些传统业务，靠这些传统业务挤牙膏式找到增量增长曲线，难于上青天，公司管理层有什么更宏大叙事和战略规划？"
+<strong>公司答</strong>："公司将严格遵循相关法律法规，<strong>规范开展战略投资与并购整合工作</strong>，推动新旧业务深度融合与协同发展。公司将坚持战略清晰、风险可控、合规先行、稳健落地的原则，保持战略定力，实现<strong>传统广电通信业务与新一代科技业务协同并进</strong>、收入结构持续优化、发展质量稳步提升的良好局面，推动公司高质量可持续发展。"</p>
+</blockquote>
+<p><strong>分级：L1（概念布局）</strong> —— 无标的、无方案、无时间表，但<strong>措辞已含"并购整合"</strong>。</p>
+<h2 id="6.3 筹码集中度：股东户数 8 个月减少 16.1%">6.3 筹码集中度：股东户数 8 个月减少 16.1%</h2>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>日期</th>
+<th>股东户数</th>
+<th>数据来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025-09-30</td>
+<td>约 <strong>6,200</strong> 户（"0.62 万户"）</td>
+<td>互动易 2025-10-15</td>
+</tr>
+<tr>
+<td>2025-10-10</td>
+<td>约 <strong>6,100</strong> 户（"0.61 万户"）</td>
+<td>互动易 2025-10-24</td>
+</tr>
+<tr>
+<td>2025-11-10</td>
+<td><strong>6,469</strong> 户</td>
+<td>互动易 2025-12-02</td>
+</tr>
+<tr>
+<td>2025-11-28</td>
+<td>约 <strong>6,527</strong> 户</td>
+<td>互动易 2025-12-02/03</td>
+</tr>
+<tr>
+<td>2025-12-19</td>
+<td><strong>6,496</strong> 户</td>
+<td>互动易 2025-12-26</td>
+</tr>
+<tr>
+<td>2026-01-30</td>
+<td><strong>6,202</strong> 户</td>
+<td>互动易 2026-02-25</td>
+</tr>
+<tr>
+<td>2026-02-13</td>
+<td><strong>6,247</strong> 户</td>
+<td>互动易 2026-02-25</td>
+</tr>
+<tr>
+<td>2026-03-10</td>
+<td><strong>5,969</strong> 户</td>
+<td>互动易 2026-03-24</td>
+</tr>
+<tr>
+<td>2026-04-30</td>
+<td><strong>5,930</strong> 户</td>
+<td>互动易 2026-05-08</td>
+</tr>
+<tr>
+<td>2026-05-08</td>
+<td><strong>5,874</strong> 户</td>
+<td>业绩说明会 IR2026-001 问 14</td>
+</tr>
+<tr>
+<td>2026-05-20</td>
+<td><strong>5,815</strong> 户</td>
+<td>互动易 2026-06-16</td>
+</tr>
+<tr>
+<td>2026-05-29</td>
+<td><strong>5,687</strong> 户</td>
+<td>互动易 2026-06-16/22</td>
+</tr>
+<tr>
+<td>2026-06-10</td>
+<td><strong>5,635</strong> 户</td>
+<td>互动易 2026-06-22</td>
+</tr>
+<tr>
+<td><strong>2026-06-30</strong></td>
+<td><strong>5,591 户</strong></td>
+<td><strong>2026 年半年度报告</strong></td>
+</tr>
+<tr>
+<td>2026-07-10</td>
+<td><strong>5,552</strong> 户</td>
+<td>互动易 2026-07-15</td>
+</tr>
+<tr>
+<td>2026-07-20</td>
+<td><strong>5,441</strong> 户</td>
+<td>互动易 2026-08-04</td>
+</tr>
+<tr>
+<td>2026-07-31</td>
+<td><strong>5,433</strong> 户</td>
+<td>互动易 2026-08-14/26</td>
+</tr>
+<tr>
+<td>2026-08-10</td>
+<td><strong>5,395</strong> 户</td>
+<td>互动易 2026-08-14</td>
+</tr>
+<tr>
+<td>2026-08-20</td>
+<td><strong>5,476</strong> 户</td>
+<td>互动易 2026-08-26</td>
+</tr>
+<tr>
+<td><strong>2026-08-31</strong></td>
+<td><strong>5,434 户</strong></td>
+<td><strong>互动易 2026-09-03</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>判读</strong>：
+- 从 2025-11-28 的 <strong>6,527 户</strong> 降至 2026-08-31 的 <strong>5,434 户</strong>，<strong>减少 1,093 户（−16.75%）</strong>，<strong>筹码持续集中</strong>；
+- 与十大股东的增减持<strong>方向一致</strong>：孟庆亮 <strong>+1,459,300 股</strong>、陈赞 <strong>+668,900 股</strong>（增持），吴爱军 <strong>−226,312 股</strong>、萍乡汇德 <strong>−810,000 股</strong>（减持），吴世春<strong>持平</strong>；
+- <strong>吴世春本人自 2025-10-09 增持计划完成后未再增持</strong>（2026-06-30 持股 20,926,471 股，报告期内增减变动 0）。</p>
+<h2 id="6.4 §4.7 专章结论">6.4 §4.7 专章结论</h2>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>有没有"从 0 到 1"的新业务？</td>
+<td><strong>有，且证据形态硬</strong>：2025 年报研发表 0 项 → 2026 半年报 3 项 AI 智能体项目，其中 1 项<strong>试生产阶段</strong></td>
+</tr>
+<tr>
+<td>"新"够不够？</td>
+<td><strong>够</strong>（AI 边缘计算 + 多智能体协同 + 具身智能联动/无人机机器人 + 本地 AI 算力）</td>
+</tr>
+<tr>
+<td>"大"够不够？</td>
+<td><strong>够</strong>（AI 边缘网关、园区全域安防、全屋数智中枢三条产品线；叠加公司"算力通信/算力路由/北斗应用"的战略表述）</td>
+</tr>
+<tr>
+<td>"强"够不够？</td>
+<td><strong>不够</strong>（❌）—— 3 项均无订单、无客户、无收入指引；研发投入总额同比 <strong>−41.03%</strong>；唯一"试生产"项目无量产时间表</td>
+</tr>
+<tr>
+<td>综合分级</td>
+<td><strong>L1 ~ L2 前端</strong>（除"路通 AI 文旅大模型"已接入 DeepSeek 属 L3）</td>
+</tr>
+<tr>
+<td>最值得记住的方法论</td>
+<td><strong>"同一张表、相隔半年、多出三行"——这就是"风起于青萍之末"最可靠的可观测形态。</strong>比任何投资者问答都硬。</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h1 id="第七章 壳价值评估与三条路径推演">第七章 壳价值评估与三条路径推演</h1>
+<h2 id="7.1 财务全景（一手数据，零估计）">7.1 财务全景（一手数据，零估计）</h2>
+<h3 id="（1）主要会计数据（2023—2025 + 2026H1，公司定期报告原文）">（1）主要会计数据（2023—2025 + 2026H1，公司定期报告原文）</h3>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>指标</th>
+<th>2023 年</th>
+<th>2024 年</th>
+<th>2025 年</th>
+<th>2026H1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>营业收入（元）</td>
+<td>182,113,702.05</td>
+<td>177,099,747.09</td>
+<td><strong>116,256,097.56</strong><br>（−34.36%）</td>
+<td><strong>47,900,311.16</strong><br>（+12.03%）</td>
+</tr>
+<tr>
+<td>营业收入扣除后金额（元）</td>
+<td>—</td>
+<td>174,893,249.64</td>
+<td><strong>115,275,917.81</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>归属于上市公司股东的净利润（元）</td>
+<td>−34,456,996.60</td>
+<td>−58,103,305.38<br>（−58.92%）</td>
+<td><strong>−92,339,283.95</strong></td>
+<td><strong>−21,529,231.82</strong><br>（亏损收窄 1.91%）</td>
+</tr>
+<tr>
+<td>扣非归母净利润（元）</td>
+<td>−44,397,462.67</td>
+<td>−61,446,249.40<br>（−54.36%）</td>
+<td><strong>−94,848,639.86</strong></td>
+<td><strong>−24,226,139.97</strong><br>（+0.48%）</td>
+</tr>
+<tr>
+<td>经营活动现金流净额（元）</td>
+<td>−8,233,606.69</td>
+<td>39,538,111.92<br>（−125.39%）</td>
+<td><strong>−10,040,401.38</strong></td>
+<td><strong>−15,737,410.31</strong><br>（−1,159.59%）</td>
+</tr>
+<tr>
+<td>基本每股收益（元/股）</td>
+<td>−0.1723</td>
+<td>−0.2905</td>
+<td><strong>−0.4617</strong></td>
+<td>−0.1076</td>
+</tr>
+<tr>
+<td>稀释每股收益（元/股）</td>
+<td>−0.1723</td>
+<td>−0.2905</td>
+<td>−0.4617</td>
+<td>−0.1076</td>
+</tr>
+<tr>
+<td>加权平均净资产收益率</td>
+<td>−5.85%</td>
+<td>−10.75%</td>
+<td><strong>−19.84%</strong></td>
+<td>−5.27%</td>
+</tr>
+<tr>
+<td>资产总额（元）</td>
+<td>690,525,460.03</td>
+<td>598,309,271.44<br>（−14.74%）</td>
+<td><strong>510,107,327.76</strong></td>
+<td><strong>486,393,422.68</strong>（−4.65%）</td>
+</tr>
+<tr>
+<td><strong>归属于上市公司股东的净资产（元）</strong></td>
+<td>569,598,425.08</td>
+<td>511,495,119.70<br>（−18.05%）</td>
+<td><strong>419,155,835.75</strong></td>
+<td><strong>397,626,603.93</strong><br>（−5.14%）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>口径核验记录（本报告完成的交叉校验）</strong>：
+- ✅ 2025 年末归母净资产 <strong>419,155,835.75</strong> 与 2026H1 期初数<strong>完全一致</strong>（半年报列示"397,626,603.93 / 419,155,835.75 / 419,155,835.75"三栏，后两栏为期初调整前后）；
+- ✅ 2026H1 归母净资产较期初 −5.14% 的计算可复现：<code>397,626,603.93 ÷ 419,155,835.75 − 1 = −5.14%</code>；
+- ✅ 2026H1 营收同比 +12.03% 可复现：<code>47,900,311.16 ÷ 42,756,574.07 − 1 = +12.03%</code>；
+- ✅ 总股本约 <strong>2.0006 亿股</strong>（由 <code>20,926,471 ÷ 10.46%</code> 反算），EPS 可复现：<code>−21,529,231.82 ÷ 200,061,291 ≈ −0.1076</code>；
+- ⚠️ <strong>Wind 的 <code>tot_equity</code>（426,594,777.44）是合并口径（含少数股东权益 7,438,941.69 元），不等于归母净资产</strong>。本报告一律采用<strong>归母口径</strong>，避免口径混用。</p>
+<h3 id="（2）2019—2025 七年连续序列（Wind windproxy，rptDate 路径）">（2）2019—2025 七年连续序列（Wind windproxy，<code>rptDate</code> 路径）</h3>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>年度</th>
+<th>营业总收入（元）</th>
+<th>营业总成本（元）<br><em>含信用及资产减值损失</em></th>
+<th>净利润（元）<br><em>含少数股东</em></th>
+<th>研发费用（元）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>263,782,163.09</td>
+<td>269,154,093.47</td>
+<td><strong>+5,128,430.11</strong></td>
+<td>15,157,765.68</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>187,956,396.16</td>
+<td>196,062,878.38</td>
+<td><strong>+4,097,834.92</strong></td>
+<td>14,500,304.08</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>192,260,289.14</td>
+<td>223,849,281.03</td>
+<td>−14,996,549.29</td>
+<td>13,580,779.32</td>
+</tr>
+<tr>
+<td><strong>2022</strong></td>
+<td><strong>213,512,180.55</strong></td>
+<td><strong>241,418,087.13</strong></td>
+<td><strong>−18,035,143.55</strong></td>
+<td>17,515,251.99</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>182,113,702.05</td>
+<td>232,395,616.86</td>
+<td>−36,953,868.75</td>
+<td>22,027,823.06</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>177,099,747.09</td>
+<td>250,312,552.03</td>
+<td>−57,489,986.92</td>
+<td>22,037,012.64</td>
+</tr>
+<tr>
+<td>2025</td>
+<td>116,256,097.56</td>
+<td>218,747,004.78</td>
+<td>−97,913,692.42</td>
+<td>16,863,651.25</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>⚠️ 数据补盲说明（本报告完成的关键补缺）</strong>：
+- Wind 年度序列（<code>Period=Y;rptType=1</code>）在 <strong>2022、2023 两年返回全 <code>None</code></strong>（本标的专属库缺口）；
+- 本报告改用 <strong><code>wss(..., "rptDate=YYYY1231;rptType=1")</code> 路径逐年度单取</strong>，<strong>成功补齐 2019—2025 全部 7 年、零缺口</strong>；
+- ✅ <strong>口径核验</strong>：Wind <code>tot_oper_rev</code> 与年报"营业总收入"<strong>逐年精确一致</strong>；Wind <code>tot_oper_cost</code> 经核验 = <strong>营业总成本 + 信用减值损失 + 资产减值损失</strong>（如 2025 年：<code>170,882,999.62 + 35,221,147.13 + 12,642,858.03 = 218,747,004.78</code> ✔）；Wind <code>rd_exp</code> 与年报"研发费用"一致（2025 年 16,863,651.25 ✔）；
+- ⚠️ Wind <code>net_profit_attr_p</code> / <code>tot_equity_attr_p</code> / <code>ocf</code> / <code>net_profit_deducted</code> / <code>roe_waa</code> / <code>eps_basic</code> 等字段在本机 windproxy 白名单中<strong>返回 "invalid indicators"</strong>，<strong>不可用</strong>。故归母口径、经营现金流、EPS、ROE 一律取自公司定期报告原文（上表第（1）节）。</p>
+<p><strong>序列读出的三个事实</strong>：
+1. <strong>营收规模七年缩水 56%</strong>：2019 年 2.638 亿元 → 2025 年 1.163 亿元；
+2. <strong>亏损在加速</strong>：2021 年首亏 −0.15 亿 → 2025 年 −0.98 亿（净利润口径）；
+3. <strong>但 2025 年的巨额亏损有"一次性"成分</strong>：</p>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>2025 年亏损拆解</th>
+<th>金额（元）</th>
+<th>占归母亏损</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>归母净利润</td>
+<td>−92,339,283.95</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>其中：<strong>信用减值损失</strong></td>
+<td><strong>−35,221,147.13</strong></td>
+<td><strong>38.1%</strong></td>
+</tr>
+<tr>
+<td>其中：<strong>资产减值损失</strong></td>
+<td><strong>−12,642,858.03</strong></td>
+<td><strong>13.7%</strong></td>
+</tr>
+<tr>
+<td>其中：管理费用（同比 +65.8%，增 1,898.71 万元）</td>
+<td>−47,829,040.89</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>减值合计</strong></td>
+<td><strong>−47,864,005.16</strong></td>
+<td><strong>51.8%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>⭐ 这是理解 2026 年走向的最重要一句话：2025 年超过一半的亏损来自减值计提（−4,786.40 万元），而不是经营性失血。</strong> 而 2026H1 信用减值损失与资产减值损失<strong>均为转回</strong>（+1,216,842.69 / +533,371.02），叠加管理费用从 1,967.98 万元降至 1,697.44 万元、研发费用从 1,139.78 万元降至 672.16 万元，<strong>这正是 2026H1 亏损收窄（归母 −1.91%、扣非 +0.48%、利润总额 +20.25%）的原因</strong>。<strong>若 2026 年末不再发生大额减值计提，归母亏损有望明显低于 2025 年。</strong></p>
+</blockquote>
+<h3 id="（3）2026H1 利润表关键行（一手原文）">（3）2026H1 利润表关键行（一手原文）</h3>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>项目（元）</th>
+<th>2026H1</th>
+<th>2025H1</th>
+<th>变动</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>营业总收入</td>
+<td><strong>47,900,311.16</strong></td>
+<td>42,756,574.07</td>
+<td><strong>+12.03%</strong></td>
+</tr>
+<tr>
+<td>营业总成本</td>
+<td>73,905,162.37</td>
+<td>73,626,471.70</td>
+<td>+0.38%</td>
+</tr>
+<tr>
+<td>↳ 营业成本</td>
+<td>42,755,918.01</td>
+<td>36,385,821.31</td>
+<td><strong>+17.51%</strong></td>
+</tr>
+<tr>
+<td>↳ 税金及附加</td>
+<td>703,591.96</td>
+<td>733,570.36</td>
+<td>−4.09%</td>
+</tr>
+<tr>
+<td>↳ 销售费用</td>
+<td>6,967,101.24</td>
+<td>6,038,059.05</td>
+<td>+15.39%</td>
+</tr>
+<tr>
+<td>↳ 管理费用</td>
+<td>16,974,386.59</td>
+<td>19,679,759.16</td>
+<td>−13.75%</td>
+</tr>
+<tr>
+<td>↳ <strong>研发费用</strong></td>
+<td><strong>6,721,622.40</strong></td>
+<td>11,397,796.60</td>
+<td><strong>−41.03%</strong></td>
+</tr>
+<tr>
+<td>↳ 财务费用</td>
+<td>−217,457.83</td>
+<td>−608,534.78</td>
+<td>—</td>
+</tr>
+<tr>
+<td>信用减值损失</td>
+<td><strong>+1,216,842.69</strong>（转回）</td>
+<td>+1,003,009.45（转回）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>资产减值损失</td>
+<td><strong>+533,371.02</strong>（转回）</td>
+<td>−1,213,747.63</td>
+<td>—</td>
+</tr>
+<tr>
+<td>营业利润</td>
+<td>−23,589,208.30</td>
+<td>−28,640,352.50</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>综合毛利率</strong></td>
+<td><strong>10.74%</strong></td>
+<td>14.90%</td>
+<td><strong>−4.16pct</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="（4）资产负债表韧性（2026-06-30）">（4）资产负债表韧性（2026-06-30）</h3>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>金额（元）</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>货币资金</td>
+<td><strong>40,498,619.19</strong></td>
+<td>8.33%（期初 78,449,091.15）⚠️ <strong>较期初下降 48.4%</strong></td>
+</tr>
+<tr>
+<td>交易性金融资产</td>
+<td><strong>26,381,961.94</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>短期借款</td>
+<td><strong>0</strong></td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>长期借款</td>
+<td><strong>0</strong></td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>资产总额</td>
+<td>486,393,422.68</td>
+<td>—</td>
+</tr>
+<tr>
+<td>归母净资产</td>
+<td>397,626,603.93</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>读表要点</strong>：<strong>零有息负债 + 货币资金 4,050 万 + 交易性金融资产 2,638 万 = 可动用流动性约 6,688 万元</strong>，对一个市值 24.82 亿元、年营收 1.16 亿元的壳而言，<strong>资产负债表是"干净"的</strong>——没有债务雷、没有负债驱动的偿债压力。⚠️ 但<strong>货币资金半年减少 3,795 万元（−48.4%），叠加经营现金流 −1,574 万元</strong>，<strong>流动性在加速消耗</strong>，这是需要在 2026 年三季报重点核验的项。</p>
+</blockquote>
+<h3 id="（5）应收账款（审计报告关键审计事项原文）">（5）应收账款（审计报告关键审计事项原文）</h3>
+<blockquote>
+<p>截至 2025 年 12 月 31 日，路通视信<strong>应收账款余额 3.58 亿元，坏账准备余额 1.47 亿元，应收账款账面价值 2.11 亿元</strong>。</p>
+</blockquote>
+<p>⚠️ <strong>坏账准备率约 41.1%</strong>；应收账款账面价值 2.11 亿元 <strong>≈ 归母净资产 4.19 亿元的 50.4%</strong>——<strong>这家公司的资产表里，一半以上的家当是"还没收到的货款"</strong>。公司客户以广电及政企类客户为主，回款周期长。<strong>这是"净资产质量"上最需要打问号的地方</strong>（2026H1 信用减值转回，需在三季报/年报持续核验其合理性）。</p>
+<h2 id="7.2 壳价值评估六维">7.2 壳价值评估六维</h2>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>评估</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① 股本与市值适配度</strong></td>
+<td><strong>优</strong></td>
+<td>总股本约 <strong>2.0006 亿股</strong>，市值 <strong>24.82 亿元</strong>。<strong>股本小、市值低——对注入方而言，同等估值资产可换取的持股比例高，摊薄压力小</strong></td>
+</tr>
+<tr>
+<td><strong>② 控制权牢靠度</strong></td>
+<td><strong>中上</strong></td>
+<td>吴世春仅 10.46% 即控制 5 席中 3 席；旧主（华晟云城）<strong>已破产清算</strong>，无力反扑；但 ⚠️ <strong>其持股 75.00% 已质押</strong>，且第二大股东贾清 6.28% 表决权归属争议未决</td>
+</tr>
+<tr>
+<td><strong>③ 资产负债干净度</strong></td>
+<td><strong>优（但净资产质量存疑）</strong></td>
+<td><strong>零有息负债</strong>；无违规对外担保（年报勾选"不适用"）；无优先股、无债券、报告期无股份回购。⚠️ 但应收账款账面价值 2.11 亿元占总资产 41%、占归母净资产 50%，坏账准备率 41.1%</td>
+</tr>
+<tr>
+<td><strong>④ 业务可剥离度</strong></td>
+<td><strong>中上</strong></td>
+<td>广电接入网设备 + 智慧物联两条业务线均为轻资产（产能 110 万台但设备类固定资产占比不高）；2025—2026 年已清理 4 家子公司，<strong>剥离通道已被验证可行</strong></td>
+</tr>
+<tr>
+<td><strong>⑤ 历史包袱清理度</strong></td>
+<td><strong>中上</strong></td>
+<td>资金占用<strong>全额清偿、余额 0</strong>；三大诉讼（张继荣 11,142.43 万、宁波云城侵权 869.36 万、投服中心案 869.36 万）<strong>均已撤诉或调解履行完毕</strong>；⚠️ 残留：<strong>内控审计非标 + 4 个重大缺陷</strong>、<strong>3 起决议撤销纠纷诉讼（一审均驳回原告，二审中）</strong>、<strong>母公司未达重大诉讼标准的其他案件汇总 3,648.72 万元仍在审</strong></td>
+</tr>
+<tr>
+<td><strong>⑥ 政策与赛道</strong></td>
+<td><strong>中上</strong></td>
+<td>广电"全国一网""一省一网"整合 + 5G NR 规模商用 + 算力网络基础设施 + 信创国产化 + 北斗应用 + AI 赋能（年报点名"结构性增长机会将集中于 5G 融合、超高清、AI 赋能及智慧广电"）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>壳价值综合结论</strong>：<strong>这是一只"股本小、市值低、负债干净、旧主出局、诉讼已清、新主已付沉没成本"的壳，六个维度中没有一项为"差"。</strong> 唯一的硬伤是<strong>主业持续失血 + 退市红线就在脚下</strong>——<strong>壳本身值钱，但撑住壳的时间窗口有限</strong>。</p>
+<h2 id="7.3 三条路径的情景推演（含概率与观察指标）">7.3 三条路径的情景推演（含概率与观察指标）</h2>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>情景</th>
+<th>内容</th>
+<th>我给的权重</th>
+<th>关键观察指标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A. 摘帽 + 保营收（基准情景）</strong></td>
+<td>2026 年内取得专项审核报告 → 董事会审议 → 申请摘帽；同时通过既有订单（2026H1 中标 5,970 万元 / 占当期营收 124.63%）保住 2026 年扣除后营收 &gt; 1 亿元</td>
+<td><strong>55%</strong></td>
+<td>① 董事会审议撤销风险警示公告；② 三季报营收与扣除后营收；③ 2025 年报口径"期初+新生效订单"的落地率</td>
+</tr>
+<tr>
+<td><strong>B. 摘帽 + 产业整合（乐观情景）</strong></td>
+<td>在 A 的基础上，落地"产业合作/项目投资/资源整合"，出现重大资产重组预案或战略性对外投资</td>
+<td><strong>20%</strong></td>
+<td>① 停牌 / 重组预案；② 对外投资公告；③ 与梅花天使系已投企业的业务合作协议；④ AI 边缘网关盒子的量产与订单公告</td>
+</tr>
+<tr>
+<td><strong>C. 转型未达预期 / 营收击穿红线（悲观情景）</strong></td>
+<td>2026H2 营收同比下滑超 27.74%，导致 2026 年扣除后营收 &lt; 1 亿元，叠加三者孰低为负 → <strong>2026 年报后触发财务类退市风险警示（*ST）</strong></td>
+<td><strong>25%</strong></td>
+<td>① 三季报单季营收（尤其 Q3 是否延续 Q2 的 1,778.87 万元低点）；② 港澳台等负毛利业务的规模变化；③ Q4 收入确认的审计关注</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>情景 C 的触发算式（本研究推算，全文最关键的一条量化红线）</strong>：</p>
+<pre><code>2026 年触发财务类退市 ⟺ ① 利润总额 / 净利润 / 扣非孰低为负（几乎确定）
+                     且 ② 2026 年营业收入扣除后 &lt; 100,000,000 元
+
+已知 2026H1 营收 = 47,900,311.16 元
+所需 2026H2 营收 ≥ 101,010,101 − 47,900,311 = 53,109,790 元   （按 1% 扣除率）
+2025H2 实际营收 = 73,499,523.49 元
+⟹ 2026H2 同比下滑上限 = 1 − 53,109,790 ÷ 73,499,523 = 27.74%
+</code></pre>
+<p><strong>即：2026 年下半年营收同比下滑若超过 27.74%，公司将在 2026 年年报披露后被实施退市风险警示（*ST）。</strong></p>
+<h2 id="7.4 估值视角（仅陈述事实，不做投资建议）">7.4 估值视角（仅陈述事实，不做投资建议）</h2>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>收盘价（2026-09-19）</td>
+<td>12.41 元</td>
+<td>距区间最高 16.02 元（2026-01-16）<strong>回撤 −22.53%</strong></td>
+</tr>
+<tr>
+<td>总市值</td>
+<td>24.82 亿元</td>
+<td>Wind</td>
+</tr>
+<tr>
+<td>PB（LF）</td>
+<td><strong>6.2420</strong></td>
+<td>对应归母净资产 3.98 亿元</td>
+</tr>
+<tr>
+<td>PS_TTM</td>
+<td><strong>20.4448</strong></td>
+<td>对应 TTM 营业收入约 1.21 亿元</td>
+</tr>
+<tr>
+<td>PE_TTM</td>
+<td><strong>−27.0019</strong></td>
+<td>亏损，无意义</td>
+</tr>
+<tr>
+<td>EV2</td>
+<td>24.4174 亿元</td>
+<td>—</td>
+</tr>
+<tr>
+<td>PCF_OCF_TTM</td>
+<td><strong>−101.19</strong></td>
+<td>经营现金流为负</td>
+</tr>
+<tr>
+<td>2026H1 每股净资产（推算）</td>
+<td>约 1.99 元</td>
+<td><code>397,626,603.93 ÷ 200,061,291</code></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>客观陈述</strong>：<strong>PB 6.24 倍、PS 20.44 倍——以主业盈利能力衡量，当前估值中几乎不包含任何基本面成分，全部是"控制权变更 + 转型/注入预期"的定价</strong>。这意味着：<strong>任何一件预期落空（摘帽延后、营收击穿、转型无声），价格的下修空间都很大；反之，任何一件超预期（重组停牌、订单公告、AI 产品量产），价格的上修弹性同样很大。</strong> 这是一个<strong>高波动、事件驱动型的定价结构</strong>，而非价值型定价结构。</p>
+</blockquote>
+<h2 id="7.5 未解问题清单（按重要性排序，供后续核验）">7.5 未解问题清单（按重要性排序，供后续核验）</h2>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>问题</th>
+<th>为何重要</th>
+<th>核验路径</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>会计师专项审核报告是否已出具？</strong> 公司 3 次被直接追问均未正面回答，且始终以"将委托"表述</td>
+<td><strong>决定摘帽时点，进而决定一切后续运作的启动时点</strong></td>
+<td>巨潮公告检索；深交所互动易再问；三季报"重要事项"栏</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>吴世春司法拍卖 14,875,071 股的实际成交价？</strong></td>
+<td>用于测算其真实成本与盈亏平衡价</td>
+<td>阿里巴巴司法拍卖平台记录（2025-03-17~18）；详式权益变动报告书</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>15,694,853 股质押的质押权人、融资金额、平仓线？</strong></td>
+<td>质押率 75.00%，涉及控制权稳定性</td>
+<td>权益变动/质押相关公告；中登数据</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>贾清 6.28% 表决权争议的进展与结局？</strong></td>
+<td>唯一与吴世春体量可比的股权，涉股权结构再洗牌可能</td>
+<td>2026-07-01 解除通知、2026-07-07 破产管理人回函之后的公告</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>3 起决议撤销纠纷的二审结果？</strong></td>
+<td>若 2025-11-07 会议决议被撤销，董监高构成的合法性受挑战</td>
+<td>半年报诉讼表更新；（2026）苏 0211 民初 8399/8396 号</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>母公司其他未达重大标准诉讼汇总 3,648.72 万元的构成与进展？</strong></td>
+<td>潜在赔付与资产司法处置风险</td>
+<td>年报/半年报"重大诉讼"表；裁判文书网</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>内控 4 个重大缺陷的整改完成证据？</strong></td>
+<td>摘帽审核的关注点</td>
+<td>2026 年度内控审计报告；内控评价报告</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>3 项 AI 智能体研发项目的投入、牵头人、客户验证进度？</strong></td>
+<td><strong>决定"新·大"能否从 L2 走到 L3/L4</strong></td>
+<td>三季报/年报研发表进展栏变化；新增专利与软著明细；公司公告</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>LootomClaw 的商标/软著/专利是否已申请？归属上市公司还是体外？</strong></td>
+<td><strong>若 IP 在体外，则"从 0 到 1"的价值不属于上市公司</strong></td>
+<td>国家知识产权局商标/专利检索；半年报软著新增明细</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>北京路通数维科技（100 万元注册资本）后续是否增资或承接实际业务？</strong></td>
+<td>判断其是"布局"还是"注入载体"</td>
+<td>工商变更信息；对外投资公告</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>2022 年归母净利润、扣非净利润、经营现金流、归母净资产</strong></td>
+<td>补齐七年归母口径序列</td>
+<td>2022 年年度报告 / 2023 年年度报告"上年数"</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>2021—2022 年被占用 15,580 万元的逐年归还时间表</strong></td>
+<td>用于理解为何 2025 年初仍余 2,799.95 万元</td>
+<td>2022—2024 年历年"资金占用"专项披露</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h1 id="第八章 数据来源与核验说明">第八章 数据来源与核验说明</h1>
+<h2 id="8.1 一手信源（正文全部数字的出处）">8.1 一手信源（正文全部数字的出处）</h2>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>信源</th>
+<th>具体文件 / 路径</th>
+<th>用途</th>
+<th>取得方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2025 年年度报告</strong></td>
+<td>巨潮公告编号 <strong>1225227000</strong>，246 页，1,372,988 字节</td>
+<td>主要会计数据、分季度指标、收入扣除表、研发项目表、董监高及对外任职、承诺表、资金占用明细、审计报告、内控评价、诉讼表、合并范围变化、子公司情况、未来发展展望</td>
+<td>巨潮静态直链 <code>http://static.cninfo.com.cn/finalpage/2026-04-29/1225227000.PDF</code>（<strong>注：日期须用披露日，2026-04-28 返回 404</strong>），PyMuPDF 逐页抽取</td>
+</tr>
+<tr>
+<td><strong>2026 年半年度报告</strong></td>
+<td><code>C:\Users\yangj\Nutstore\1\垦禾-yjf\个股研究\300555.SZ ST路通\中报\2026-08-28_2026年半年度报告.pdf</code>，186 页</td>
+<td>2026H1 三表、分产品/分地区收入、研发项目表（3 项新增 AI 项目）、股东结构、现金流量表、合并利润表</td>
+<td>PyMuPDF 逐页抽取</td>
+</tr>
+<tr>
+<td><strong>2025 年度内部控制审计报告（大信）</strong></td>
+<td>载于 2025 年年度报告</td>
+<td>15,580 万元占用累计发生/累计归还原文、非财务报告内控重大缺陷 4 个</td>
+<td>同上</td>
+</tr>
+<tr>
+<td><strong>2025 年度财务报表审计报告（大信审字[2026]第5-00067号）</strong></td>
+<td>载于 2025 年年度报告第 108—111 页</td>
+<td>审计意见类型（标准无保留）、关键审计事项（收入确认、应收账款坏账准备）、签署日期与签字会计师</td>
+<td>同上</td>
+</tr>
+<tr>
+<td><strong>深交所互动易问答 45 条</strong></td>
+<td><code>basic.10jqka.com.cn/300555/interactive.html</code></td>
+<td>摘帽进度、股东户数、航空航天提问、转型提问</td>
+<td>页面内嵌 JSON 括号配平解析（<strong>字段 <code>question</code> / <code>reply</code>；注意 <code>answer</code> 字段是证券简称，非答案</strong>）</td>
+</tr>
+<tr>
+<td><strong>投资者关系活动记录表 IR2026-001</strong></td>
+<td>2026-05-20 业绩说明会（公告 ID 1225319831）</td>
+<td>"并购整合""产业合作、项目投资与资源整合"表述原文；"2026-05-18 尚未提交摘帽申请"；问 4 全链条陈述</td>
+<td>westock <code>data_notice</code>（mode=detail）</td>
+</tr>
+<tr>
+<td><strong>Wind（windproxy 局域网代理）</strong></td>
+<td><code>http://192.168.1.20:8000</code></td>
+<td>估值截面（tradeDate=2026-09-19）、2019—2025 年度财务序列（<code>rptDate</code> 路径）、2024Q2—2026Q2 季度序列、2025-01-02 ~ 2026-09-18 日收盘价序列</td>
+<td>客户端 <code>windproxy</code> python API，调用前清空 <code>*_PROXY</code> 环境变量并设 <code>NO_PROXY="*"</code></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="8.2 明确未采信 / 已标注待核的信息">8.2 明确未采信 / 已标注待核的信息</h2>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>信息</th>
+<th>来源</th>
+<th>本报告处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"2026-04-21 2025 年报标准无保留意见"</td>
+<td>投资者在业绩说明会的自述</td>
+<td>❌ <strong>不采信</strong>（与公司披露的 2026-04-27 董事会/审计报告签署日、2026-04-29 披露日不符）；仅采信"标准无保留意见"这一结论（已由审计报告原文核实）</td>
+</tr>
+<tr>
+<td>"会计师已出具资金占用专项审核报告（关键前置）"</td>
+<td>投资者在业绩说明会的自述</td>
+<td>⚠️ <strong>不采信，仅记录</strong>。公司在互动易与业绩说明会中从未确认该事项</td>
+</tr>
+<tr>
+<td>"2025 年 12 月 27 日全额代偿本息 1022.54 万元，占用清零"</td>
+<td>投资者自述</td>
+<td>✅ <strong>采信</strong>（与年报"2025-12-27 收到吴世春代偿本金 8,693,594.34 元、利息 1,531,799.99 元，总计 10,225,393.65 元"一致，合计 1,022.54 万元 ✔）</td>
+</tr>
+<tr>
+<td>吴世春与"梅花创投/梅花天使"的关系</td>
+<td>互动易投资者称呼</td>
+<td>⚠️ <strong>标注为间接证据</strong>，上市公司公告未直接披露</td>
+</tr>
+<tr>
+<td>谈文舒 36 家体外任职公司的业务方向注释</td>
+<td>本研究依据公司名称推断</td>
+<td>⚠️ <strong>标注为"本研究注释"</strong>，非公告原文</td>
+</tr>
+<tr>
+<td>2025 年"承诺是否按时履行：否"与"未完成原因：无"的矛盾</td>
+<td>年报承诺表</td>
+<td>⚠️ <strong>标注矛盾，不据此判断违约</strong></td>
+</tr>
+<tr>
+<td>2022 年归母净利润 / 扣非 / 经营现金流 / 归母净资产</td>
+<td>—</td>
+<td>⚠️ <strong>未取得</strong>。归母口径的七年序列在 2022 年缺项（Wind 白名单不含归母字段；2022 年报未下载）。<strong>标注为缺口，不用 Wind 净利润口径冒充归母口径</strong></td>
+</tr>
+<tr>
+<td>吴世春司法拍卖成交价</td>
+<td>—</td>
+<td>⚠️ <strong>未取得</strong>，标注待补</td>
+</tr>
+<tr>
+<td>质押 15,694,853 股的质押权人与平仓线</td>
+<td>—</td>
+<td>⚠️ <strong>未取得</strong>，标注待补</td>
+</tr>
+<tr>
+<td>路通物联 2026H1 营收 229.65 万元 / 净利 −122.93 万元</td>
+<td>前期研究记录</td>
+<td>⚠️ <strong>本次未在抽取文件中二次复核</strong>，标注为待复核</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="8.3 方法论执行清单（对照王艳《寻找十倍》研究法）">8.3 方法论执行清单（对照王艳《寻找十倍》研究法）</h2>
+<div class="tblwrap"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>执行情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>六步预判</strong></td>
+<td>① 确认标的身份与红线分类 ✅ ② 穿透新旧实控人与控制权取得路径 ✅ ③ 拆解资金占用与清偿闭环 ✅ ④ 核查审计意见与内控缺陷 ✅ ⑤ 挖掘投资者交流"第一现场" ✅ ⑥ 量化财务类退市红线并做敏感性测算 ✅</td>
+</tr>
+<tr>
+<td><strong>六维拆解</strong></td>
+<td>控制权牢靠度 / 股本市值适配度 / 资产负债干净度 / 业务可剥离度 / 历史包袱清理度 / 政策与赛道 ✅（第 7.2 节）</td>
+</tr>
+<tr>
+<td><strong>壳价值评估</strong></td>
+<td>六维全部评级；识别"股本小、市值低、负债干净、旧主出局、诉讼已清"五项优势 + "退市红线在脚下"一项硬伤 ✅</td>
+</tr>
+<tr>
+<td><strong>§4.7 投资者交流信息挖掘法</strong></td>
+<td>45 条互动易 + 1 份业绩说明会全量判读；L1~L4 分级；反向词证伪；股东户数趋势 ✅（第六章）</td>
+</tr>
+<tr>
+<td><strong>§11.7 数据补盲与穷尽核实</strong></td>
+<td>补齐 Wind 缺失的 2022 年数据（改用 <code>rptDate</code> 路径）；补齐业绩说明会记录；核验归母 vs 合并口径；核验利润表成本口径；完成 6 项可复现计算校验 ✅</td>
+</tr>
+<tr>
+<td><strong>§11.8 财务表格零缺项零估计</strong></td>
+<td>✅ 已列示数字 100% 来自定期报告原文并标注来源；⚠️ 唯一缺口（2022 年归母口径）已显式标注，未做任何估算填充</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h1 id="第九章 一页纸结论">第九章 一页纸结论</h1>
+<p><strong>这家公司是什么</strong>：一家做广电接入网设备和智慧物联应用的创业板公司，2021—2022 年被原实控人林竹占用 15,580 万元，2023-02-01 戴 ST 帽；2025 年 3 月新旧交替（旧主华晟云城破产清算、新主吴世春 10.46% 拿下控制权），2025-12-27 占用全额清零，2026-02-06 实控人正式变更。</p>
+<p><strong>三句话结论</strong>：</p>
+<ol>
+<li>
+<p><strong>ST 是真 ST，但成因已消除</strong>——规范类资金占用型，15,580 万元全额归还、余额 0；2025 年财报审计意见为<strong>标准无保留意见</strong>，四类退市红线均未触发。<strong>摘帽只剩"专项审核报告 → 董事会 → 申请"这最后一段，但公司 3 次被直接追问都未正面回答是否已委托会计师。</strong></p>
+</li>
+<li>
+<p><strong>死线还压在头上</strong>——2025 年营业收入扣除后 1.1528 亿元，仅超创业板 1 亿元红线 <strong>1,527.59 万元</strong>；<strong>2026H2 营收同比下滑若超过 27.74%，2026 年报后即触发财务类退市风险警示（*ST）</strong>。2026H1 综合毛利率仅 10.74%（同比 −4.16pct），经营现金流 −1,574 万元，主业仍在失血。</p>
+</li>
+<li>
+<p><strong>"谁会救它"这件事，公司自己说了半句</strong>——业绩说明会（IR2026-001）明写"<strong>规范开展战略投资与并购整合工作</strong>""围绕相关领域推进<strong>产业合作、项目投资与资源整合</strong>，力争 2026 年内实现新突破"（后者重复 4 次）；新主吴世春<strong>自愿用自有资金代偿 1,022.54 万元并放弃追偿权</strong>；<strong>最硬的证据是半年报研发表新增 3 项 AI 智能体项目，其中"兼容多智能体软件的 AI 边缘计算网关盒子"已进入试生产阶段——而 2025 年报里一项都没有。</strong></p>
+</li>
+</ol>
+<p><strong>定性</strong>：<strong>新 ✅ / 大 ✅ / 强 ❌，判 L1~L2 前端。</strong></p>
+<p><strong>最值得记住的一句话（方法论）</strong>：</p>
+<blockquote>
+<p><strong>"风起于青萍之末"在定期报告里最可靠的可观测形态，不是公司说了什么，而是两张研发项目表之间的差集。</strong> 2025 年报 17 项、2026 半年报 20 项，多出来的那三行，就是这家公司未来所有想象力的起点。</p>
+</blockquote>
+<p><strong>必须守住的边界</strong>：</p>
+<blockquote>
+<p>董事长谈文舒在<strong>星移联信航天科技（无锡）/ 数字太空（北京）/ 科比特创新（无人机）/ 北京瑞达恩（低空防御）</strong>担任董事，是<strong>其个人（作为梅花天使合伙人）的体外任职，年报明确"在其他单位是否领取报酬津贴：否"，不是上市公司资产，不构成任何注入承诺</strong>。<strong>不得据此推论"公司将注入航天/无人机资产"。</strong></p>
+</blockquote>
+<hr />
+<h1 id="免责声明">免责声明</h1>
+<ol>
+<li>本报告为<strong>研究记录与方法论实践</strong>，基于<strong>公司公开披露的定期报告、审计报告、深交所互动易问答、投资者关系活动记录表及 Wind 金融终端数据</strong>编制，<strong>不构成任何投资建议、要约或要约邀请</strong>。</li>
+<li>报告中标注为【本研究推算】的内容（含第〇章敏感性测算、第三章买入成本推算、第七章情景权重与触发算式）<strong>均为基于公开数据的研究推演，包含假设，不构成事实陈述</strong>；假设条件已在文中逐项列明。</li>
+<li>报告中标注 ⚠️ 的内容为<strong>未取得、未采信或存在矛盾的信息</strong>，已于第八章逐项列示，<strong>未做任何估算性填充</strong>。</li>
+<li><strong>本报告不构成对任何主体（含上市公司、其股东、董事、高级管理人员及关联方）的指控或定性判断。</strong> 凡涉及诉讼、监管措施、会计差错更正、子公司合并范围变动等事项，均为<strong>转述公司公开披露的原文事实</strong>，其法律性质以监管机构与司法机关的最终认定为准。</li>
+<li>ST/<em>ST 类标的具有</em><em>高波动、高不确定性、可能面临退市</em>*的特征，请投资者独立判断并自行承担风险。</li>
+<li>本报告基准日为 <strong>2026-09-22</strong>，行情基准日为 <strong>2026-09-19</strong>。此后发生的任何事项，本报告不予更新。</li>
+</ol>
+<hr />
+<p><em>报告完成时间：2026-09-22 ｜ 研究框架：王艳《寻找十倍》研究法 · 控制权变更驱动 ｜ 数据源：公司定期报告原文 + Wind（windproxy）</em></p>
+</body>
+</html>
