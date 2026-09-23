@@ -1,67 +1,76 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>寻找十倍系列——ST嘉必优(688089)深度分析</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ST嘉必优(688089.SH) 深度研究 v20260922</title>
 <style>
-  :root{
-    --red:#c0392b;--darkred:#8e2417;--blue:#1a5276;--amber:#b9770e;
-    --bg:#fbfbf8;--line:#e3e0d8;--code:#f5f2ea;
-  }
-  *{box-sizing:border-box}
-  body{
-    font-family:'Microsoft YaHei','PingFang SC',-apple-system,'Segoe UI',sans-serif;
-    line-height:1.75;color:#232323;max-width:1000px;margin:0 auto;
-    padding:28px 26px 60px;background:var(--bg);
-  }
-  h1{font-size:25px;line-height:1.4;color:var(--darkred);border-bottom:3px solid var(--red);padding-bottom:10px;margin:8px 0 4px}
-  h2{font-size:20px;color:var(--blue);border-left:5px solid var(--red);padding-left:10px;margin-top:42px}
-  h3{font-size:17px;color:var(--amber);margin-top:28px}
-  h4{font-size:15px;color:#333;margin-top:18px;margin-bottom:6px}
-  p{margin:10px 0}
-  a{color:#21618c;text-decoration:none;border-bottom:1px dotted #9bb5c9}
-  a:hover{color:var(--red);border-bottom-color:var(--red)}
-  .meta{font-size:13px;color:#777;margin:2px 0 14px}
-  .toc{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 18px;font-size:13.5px;line-height:2.0;columns:2;column-gap:34px;margin:18px 0}
-  .toc b{display:block;columns:span all;color:var(--red);font-size:14px;margin-bottom:4px}
-  .toc a{display:block;border:none;color:#21618c}
-  .toc a:hover{color:var(--red)}
-  blockquote{
-    margin:12px 0;padding:8px 16px;border-left:4px solid #d4a373;background:#fff7ec;
-    color:#5a4632;border-radius:0 6px 6px 0;
-  }
-  .dq{background:#fdecea;border:1px solid #f5c6c0;border-radius:8px;padding:14px 18px;margin:14px 0}
-  .dq b{color:var(--darkred)}
-  .say{background:#eef6fb;border:1px solid #c4dcec;border-radius:8px;padding:12px 16px;margin:12px 0;color:#174b6b}
-  .say b{color:var(--blue)}
-  .warn{background:#fff8e6;border:1px solid #ecd9a0;border-radius:8px;padding:12px 16px;margin:12px 0;color:#6b5310}
-  .tblwrap{overflow-x:auto;margin:12px 0}
-  table{border-collapse:collapse;width:100%;font-size:13px;background:#fff}
-  th,td{border:1px solid #d8d4c8;padding:7px 10px;text-align:left;vertical-align:top}
-  th{background:#2c3e50;color:#fff;font-weight:600;white-space:nowrap}
-  tr:nth-child(even) td{background:#faf8f3}
-  td.num,th.num{text-align:right;white-space:nowrap}
-  .num{font-variant-numeric:tabular-nums}
-  .hl td{background:#fff3e0!important;font-weight:600}
-  .tag{display:inline-block;font-size:11.5px;padding:1px 8px;border-radius:10px;margin-right:6px;font-weight:600}
-  .tag.red{background:#fdecea;color:var(--red);border:1px solid #f0b9b3}
-  .tag.green{background:#eafaf1;color:#1e8449;border:1px solid #bfe8cf}
-  .tag.blue{background:#eaf2f8;color:var(--blue);border:1px solid #bbd7ec}
-  .tag.amber{background:#fef5e7;color:var(--amber);border:1px solid #ecd9a0}
-  code{background:var(--code);padding:1px 6px;border-radius:4px;font-size:12.5px;color:#8e3b2f}
-  .src{font-size:12px;color:#888;font-style:normal}
-  ul,ol{padding-left:24px}
-  li{margin:5px 0}
-  hr{border:none;border-top:1px dashed #ccc;margin:26px 0}
-  .foot{margin-top:40px;font-size:12.5px;color:#666;border-top:2px solid #ddd;padding-top:14px}
-  .disc{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 18px;font-size:13px;color:#555;margin-top:16px}
-  .sources li{margin:6px 0}
-  .sources .typ{display:inline-block;min-width:150px;font-weight:600;color:#555;margin-top:12px}
-  .sources a{font-size:13px}
-  sup{color:var(--red);font-weight:700}
-  .idx{font-size:12px;color:#999}
-  @media print{ .toc{display:none} body{max-width:none} }
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#f5f7f6;color:#1e2723;
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Hiragino Sans GB",sans-serif;
+ font-size:16px;line-height:1.86;letter-spacing:.01em}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px 80px}
+header.top{background:linear-gradient(135deg,#0f3d3e 0%,#14634f 55%,#1f8a5f 100%);color:#fff;padding:46px 20px 40px}
+header.top .inner{max-width:980px;margin:0 auto}
+header.top h1{font-size:26px;line-height:1.46;margin:0 0 14px;font-weight:800;letter-spacing:-.01em}
+header.top .meta{font-size:13.5px;opacity:.95;line-height:2}
+header.top .meta b{background:rgba(255,255,255,.18);padding:2px 8px;border-radius:4px;font-weight:600}
+main{background:#fff;border-radius:0 0 12px 12px;padding:36px 42px 56px;
+ box-shadow:0 2px 18px rgba(15,23,42,.07);margin-top:-1px}
+h1{display:none}
+h2{font-size:22px;margin:46px 0 16px;padding:12px 0 12px 16px;border-left:5px solid #14634f;
+ background:linear-gradient(90deg,#eef8f4 0%,rgba(238,248,244,0) 92%);border-radius:0 6px 6px 0;font-weight:800;letter-spacing:-.01em}
+h3{font-size:17.5px;margin:30px 0 12px;padding-bottom:8px;border-bottom:1px dashed #e2e8e5;color:#0f3d3e;font-weight:700}
+p{margin:12px 0}
+strong{color:#0f3d3e;font-weight:700}
+a{color:#12603f;text-decoration:none;border-bottom:1px solid rgba(18,96,63,.30);word-break:break-all}
+a:hover{background:#eef8f4;border-bottom-color:#12603f}
+ul,ol{padding-left:24px;margin:12px 0}
+li{margin:6px 0}
+blockquote{margin:16px 0;padding:14px 18px;background:#fbfaf4;border-left:4px solid #c9a227;border-radius:0 6px 6px 0;color:#3d3a33}
+blockquote p{margin:8px 0}
+blockquote strong{color:#8a6d0b}
+hr{border:0;height:1px;background:linear-gradient(90deg,#e2e8e5,#f2f6f4);margin:40px 0}
+code{background:#eef2f0;padding:2px 6px;border-radius:4px;font-size:13.5px;
+ font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Courier New",monospace;color:#9d174d;word-break:break-all}
+pre{background:#131c19;color:#e6edf3;padding:16px 18px;border-radius:8px;overflow-x:auto;line-height:1.6}
+pre code{background:none;color:inherit;padding:0;font-size:13px}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px;display:block;overflow-x:auto}
+table thead th{background:#0f3d3e;color:#fff;font-weight:700;text-align:left;
+ padding:10px 12px;border:1px solid #0b2e2f;white-space:nowrap;font-size:13.5px}
+table tbody td{padding:9px 12px;border:1px solid #e2e8e5;vertical-align:top;background:#fff}
+table tbody tr:nth-child(even) td{background:#fafcfb}
+table tbody tr:hover td{background:#f1f8f5}
+sup.fn a{font-size:11px;padding:0 2px;border:0;color:#1f8a5f;font-weight:700}
+sup.fn a:hover{background:none;color:#0f3d3e;text-decoration:underline}
+nav.toc{background:#fafcfb;border:1px solid #e2e8e5;border-radius:10px;padding:20px 24px;margin:26px 0 30px}
+nav.toc .toc-t{font-weight:800;color:#0f3d3e;font-size:15px;margin-bottom:10px;letter-spacing:.04em}
+nav.toc ol{list-style:none;padding:0;margin:0;columns:2;column-gap:28px}
+nav.toc li{margin:5px 0;break-inside:avoid}
+nav.toc li.t3{padding-left:16px;font-size:13.5px}
+nav.toc a{color:#33413c;border:0;font-size:14px}
+nav.toc a:hover{color:#14634f;background:none}
+section.footnotes{margin-top:46px;padding-top:8px;border-top:2px solid #e2e8e5}
+section.footnotes ol.fnlist{padding-left:22px;font-size:13.5px;color:#3d4a44;line-height:1.8}
+section.footnotes ol.fnlist li{margin:8px 0;word-break:break-all}
+section.footnotes ol.fnlist a{color:#12603f}
+a.fnback{border:0;font-size:12px;color:#8aa39a !important}
+footer{border-top:1px solid #e2e8e5;margin-top:40px;padding-top:22px;font-size:13px;color:#6b7280}
+@media(max-width:720px){
+ header.top h1{font-size:20px}
+ main{padding:24px 18px 40px;border-radius:0 0 8px 8px}
+ h2{font-size:19px}
+ table{font-size:13px}
+ nav.toc ol{columns:1}
+}
+@media print{
+ body{background:#fff;font-size:12.5px}
+ header.top{background:#0f3d3e !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ main{box-shadow:none;padding:0}
+ h2{page-break-after:avoid}
+ table,blockquote{page-break-inside:avoid}
+}
 </style>
 </head>
 <body><script id="sbgatescript">
@@ -93,315 +102,2987 @@
   else document.addEventListener('DOMContentLoaded', build);
 })();
 </script>
-
+<header class="top"><div class="inner">
+<h1>寻找十倍系列——ST嘉必优(688089.SH)：破净的"中国 ARA 之王"，不需要救兵，但还没有第二条曲线</h1>
 <div class="meta">
-  <span class="tag red">寻找十倍系列</span><span class="tag blue">控制权变更驱动 · 例外样本</span>
-  <span class="idx">更新至 2026-09-19（周六）｜行情截至 2026-09-18 收盘</span>
+<b>更新至 2026-09-22</b>　｜　行情基准：2026-09-22 收盘　｜　王艳的逍遥岛<br>
+股价 <b>8.65 元</b>　市值 <b>14.39 亿元</b>　PB(LF) <b>0.9682</b>　PS(TTM) <b>4.5829</b>　换手率 <b>0.501%</b>　资产负债率 <b>16.29%</b>
 </div>
+</div></header>
+<div class="wrap"><main>
+<h1>ST嘉必优(688089)：破净的"中国ARA之王"——不需要救兵，但还没有第二条曲线</h1>
+<blockquote>
+<p>方法论参考：王艳《寻找十倍系列·控制权变更驱动》（六步预判＋六维拆解＋§4.7 投资者交流信息挖掘法）<br>
+版本：更新至 <strong>2026-09-22</strong>（上一版 2026-09-19）<br>
+数据源：公司定期报告与公告 PDF（巨潮资讯网、上交所）＋上证 e 互动/投资者关系活动记录表（公司官方披露渠道）＋Wind(windproxy)＋权威媒体（新华社、央广网、财联社、上海证券报、证券日报、中国经济网等）。全文数据均标注出处，见文末信源索引与附录。<br>
+本文为客观信息梳理，不构成投资建议。</p>
+</blockquote>
+<hr>
+<nav class="toc"><div class="toc-t">目录</div><ol>
+<li class="t2"><a href="#h-2-0">✅ 岛主引言</a></li>
+<li class="t2"><a href="#h-2-1">一、前世今生：从"国内第一家 ARA"到全球召回的震中</a></li>
+<li class="t3"><a href="#h-3-2">1999-2019：中国 ARA 的拓荒者，湖北科创板第一股</a></li>
+<li class="t3"><a href="#h-3-3">2020-2024：新国标红利、股本扩张与一次未遂的转型豪赌</a></li>
+<li class="t3"><a href="#h-3-4">2025：历史最好的年份，也是暴风眼前的最后平静</a></li>
+<li class="t3"><a href="#h-3-5">2026-01 至 07：从全球召回到戴帽的完整链条</a></li>
+<li class="t2"><a href="#h-2-6">二、关键人物：易德伟与武汉烯王——一个把"熬"当作策略的创始人</a></li>
+<li class="t3"><a href="#h-3-7">2.1 实际控制人档案</a></li>
+<li class="t3"><a href="#h-3-8">2.2 关键人物"成本锚"核查：一个不可用的指标，和三个可用的替代证据</a></li>
+<li class="t3"><a href="#h-3-9">2.3 前十大股东（2026-06-30 中报定稿）[3]</a></li>
+<li class="t2"><a href="#h-2-10">三、控制权结构：本案"控制权从未变更"，六维框架要做同构替换</a></li>
+<li class="t3"><a href="#h-3-11">3.1 五类救兵画像：为什么这个票"无人来救、也无需来救"</a></li>
+<li class="t3"><a href="#h-3-12">3.2 重组管道现状：一条已关闭，一条仍开着</a></li>
+<li class="t2"><a href="#h-2-13">四、意图分析与节奏推测：把"恢复"拆成可验证的四段</a></li>
+<li class="t3"><a href="#h-3-14">4.1 恢复链条的四段拆解</a></li>
+<li class="t3"><a href="#h-3-15">4.2 关键时间锚（全部来自公司自己披露的规则与文件）</a></li>
+<li class="t3"><a href="#h-3-16">4.3 与"新·大·强"三字诀的对撞：本书最锋利的一段</a></li>
+<li class="t2"><a href="#h-2-17">五、规则约束与制度锁拆解（替代"承诺包活口"）</a></li>
+<li class="t3"><a href="#h-3-18">5.1 触发条款与摘帽路径（规则与公告原文）</a></li>
+<li class="t3"><a href="#h-3-19">5.2 科创板 ST 的四重制度约束（与主板截然不同）</a></li>
+<li class="t3"><a href="#h-3-20">5.3 制度锁清单：什么被锁死，什么没被锁</a></li>
+<li class="t3"><a href="#h-3-21">5.4 三份仍在存续的书面承诺</a></li>
+<li class="t3"><a href="#h-3-22">5.5 一个不容忽略的动作：戴帽前夜的会计估计变更</a></li>
+<li class="t2"><a href="#h-2-23">六、业务与财务</a></li>
+<li class="t3"><a href="#h-3-24">6.1 主营业务与产品矩阵</a></li>
+<li class="t3"><a href="#h-3-25">6.2 七期财务总表（2021-2026H1，全部取自定期报告原文）</a></li>
+<li class="t3"><a href="#h-3-26">6.3 2026H1 财务深度体检</a></li>
+<li class="t3"><a href="#h-3-27">6.4 存货与减值：一份非常"诚实"的报表</a></li>
+<li class="t3"><a href="#h-3-28">6.5 客户与供应商：一条"寡头客户 + 寡头对手"的链条</a></li>
+<li class="t3"><a href="#h-3-29">6.6 募集资金：一个"已经用光"的对照组</a></li>
+<li class="t2"><a href="#h-2-30">七、★ §4.7 投资者交流信息挖掘专章</a></li>
+<li class="t3"><a href="#h-3-31">7.1 三路信源全景（含一条关键负发现）</a></li>
+<li class="t3"><a href="#h-3-32">7.2 十六条记录表时间轴：叙事演进史</a></li>
+<li class="t3"><a href="#h-3-33">7.3 关键问答逐条判读（L1~L4 四级分级）</a></li>
+<li class="t3"><a href="#h-3-34">7.4 四条新方向的"称重"：用交流信源给叙事配重量</a></li>
+<li class="t3"><a href="#h-3-35">7.5 一个"可验证的抓手"：把四条方向排进时间表</a></li>
+<li class="t3"><a href="#h-3-36">7.6 一句话总结本章</a></li>
+<li class="t2"><a href="#h-2-37">八、控制权六维拆解（同构替换后的打分）</a></li>
+<li class="t3"><a href="#h-3-38">8.1 六维里最需要展开的两维</a></li>
+<li class="t3"><a href="#h-3-39">8.2 综合判断</a></li>
+<li class="t2"><a href="#h-2-40">九、壳价值评估与赔率测算</a></li>
+<li class="t3"><a href="#h-3-41">9.1 壳价值三要素：本案的"壳"值多少钱？</a></li>
+<li class="t3"><a href="#h-3-42">9.2 估值的三个锚</a></li>
+<li class="t3"><a href="#h-3-43">9.3 三种情景推演</a></li>
+<li class="t3"><a href="#h-3-44">9.4 同业对照：它是六家里唯一破净的</a></li>
+<li class="t3"><a href="#h-3-45">9.5 壳价值评估的最终结论</a></li>
+<li class="t2"><a href="#h-2-46">十、数据来源</a></li>
+<li class="t2"><a href="#h-2-47">信源索引（脚注定义）</a></li>
+<li class="t2"><a href="#h-2-48">附录 A：关键财务表（勾稽自检版）</a></li>
+<li class="t2"><a href="#h-2-49">附录 B：事件与时间轴</a></li>
+<li class="t2"><a href="#h-2-50">附录 C：未核实与存疑清单（供人工复核）</a></li>
+<li class="t2"><a href="#h-2-51">附录 D：逻辑漏洞与反方观点</a></li>
+<li class="t2"><a href="#h-2-52">附录 E：关键公告直链（交付前已逐条实测 HTTP 200）</a></li>
+<li class="t2"><a href="#h-2-53">免责声明</a></li>
+<li class="t2"><a href="#h-fn">信源索引（脚注）</a></li>
+</ol></nav>
 
-<h1 id="top">寻找十倍系列——ST嘉必优(688089)深度分析：破净的"中国ARA之王"，被一场全球奶粉召回拖进ST——是事故，还是终局？</h1>
-<p class="meta">方法论参考：王艳《寻找十倍系列·控制权变更驱动》｜作者：王艳的逍遥岛｜本文为客观信息梳理，不构成投资建议。数据源：Wind(windproxy)＋公司定期报告/公告PDF（巨潮、上交所）＋权威媒体（新华社、上证报、证券时报、证券日报、财联社、中国经济网、新京报等），均已随文标注出处。</p>
-
-<div class="toc"><b>目录</b>
-<a href="#intro">✅ 岛主引言（结论先行）</a>
-<a href="#summary">整体概括（一页纸全貌）</a>
-<a href="#timeline">一、前世今生时间轴</a>
-<a href="#controller">二、关键人物 / 实控人</a>
-<a href="#control">三、怎么拿控制权（本案：无变更）</a>
-<a href="#intent">四、意图与节奏（六步预判）</a>
-<a href="#commit">五、承诺包拆解</a>
-<a href="#finance">六、财务体检（四表+六维）</a>
-<a href="#valuation">七、行情与估值（壳价值+借壳红线）</a>
-<a href="#verdict">八、核心矛盾与综合判断</a>
-<a href="#sources">九、数据来源</a>
-<a href="#disc">免责声明</a>
-</div>
-
-<!-- ================= 岛主引言 ================= -->
-<h2 id="intro">✅ 岛主引言（结论先行：先说生死，再讲故事）</h2>
-
-<p>把一只<strong>"资产负债表干净到不像ST"</strong>的科创板合成生物龙头放上台面，问题只剩三个——<strong>ARA出口信任危机何时解除？全年1亿营收红线守不守得住？破净的价格是不是赔率足够的位置？</strong>先把生死结论摆在前头：</p>
-
-<div class="dq">
-<p><strong>① 红线分类</strong>：<span class="tag red">其他风险警示（ST，非\*ST）</span>——唯一触发条款为《上海证券交易所科创板股票上市规则》第 12.9.1 条第一款第（四）项"公司生产经营活动受到严重影响且预计在 3 个月内不能恢复正常"（来源：<a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-25/688089_20260725_GSG1.pdf" target="_blank">《关于被实施其他风险警示暨停牌的公告》2026-019</a>）。<strong>不属于</strong>财务类、<strong>不属于</strong>规范类资金占用/违规担保、<strong>不属于</strong>重大违法类（判型见下表）。</p>
-<p><strong>② 生死定级</strong>：<span class="tag green">良性可逆、事件驱动型ST</span>——起因是 2026 年 1 月雀巢全球召回婴幼儿配方奶粉、2 月下旬欧盟对原产中国 ARA 油脂实施强化进口管控，公司"对生产经营计划进行适应性和阶段性调整"导致 2026 上半年收入暴跌 81%（来源：<a href="https://www.cls.cn/detail/2436787" target="_blank">财联社</a>｜<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">2026半年报摘要</a>）。技术、产能、客户关系并未损毁；<strong>唯一尾部风险</strong>只有一条：若 2026 年全年收入低于 1 亿元，将叠加财务类"退市风险警示"（\*ST）（来源：<a href="http://paper.cnstock.com/html/2026-07/25/content_2248444.htm" target="_blank">上证报·业绩预告原文</a>）。</p>
-<p><strong>③ 自救空间＋时间窗口</strong>：<span class="tag blue">不需要"救兵"式重整的ST</span>。控股股东武汉烯王持股 44.17%、零质押零冻结（来源：<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">2026半年报·前十大股东</a>）；这是个<strong>"无人来救、也无需来救"</strong>的样本，实控人易德伟团队干的是"供应链升级＋客户一对一恢复＋业务多元化"的正经自救（来源：<a href="http://data.eastmoney.com/notices/detail/688089/AN202608281828624548.html" target="_blank">进展公告2026-024</a>）。二级市场定价的是"恢复节奏"，不是"生存概率"——截至 2026-09-18 收盘市值 14.09 亿，<strong>低于账面归母净资产 15.31 亿（PB≈0.92），也低于 IPO 发行价 23.90 元的除权调整价</strong>（来源：<a href="https://www.stcn.com/quotes/index/sh688089.html" target="_blank">证券时报行情</a>｜<a href="http://finance.ce.cn/stock/gsgdbd/202609/t20260916_3217479.shtml" target="_blank">中国经济网</a>）。时间窗口：摘帽不挂钩年报周期，但"每月一报"的进展公告既是兑现清单也是倒计时。</p>
-</div>
-
-<h3>四类退市红线判型（王艳体系·动笔第一步）</h3>
-<div class="tblwrap"><table>
-<tr><th style="width:90px">红线类型</th><th>科创板触发条件</th><th>嘉必优现状（2025年报/2026中报定稿）</th><th style="width:110px">是否触及</th></tr>
-<tr><td><b>财务类</b></td><td>①利润总额/净利/扣非孰低为负且<strong>扣除后营收&lt;1亿</strong>（双创）；②期末净资产为负；③审计被出具<strong>保留/否定/无法表示意见</strong></td><td>2025 营收 5.63 亿、归母净资产 16.34 亿为正、审计为<b>带强调事项段的无保留意见</b>（非保留/否定/无法表示）——但 2026 全年若营收&lt;1亿将叠加\*ST（来源：<a href="https://static.cninfo.com.cn/finalpage/2026-04-23/1225156914.PDF" target="_blank">2025年报PDF</a>）</td><td class="num"><span class="tag amber">未触及<br>尾部唯一风险</span></td></tr>
-<tr><td><b>交易类</b></td><td>连续 20 日市值&lt;3亿（双创）/连续 20 日收盘价&lt;1元/股东数&lt;400</td><td>市值 14.09 亿、股东 9,467 户（来源：<a href="https://www.stcn.com/quotes/index/sh688089.html" target="_blank">证券时报</a>｜<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">半年报摘要</a>）</td><td class="num"><span class="tag green">否</span></td></tr>
-<tr><td><b>规范类</b></td><td>资金占用≥2亿或≥净资产30%、内控连续非标、控制权无序争夺等</td><td>中报明示无违规担保、无非经营性占用，公司及控股股东、实控人诚信良好无处罚（来源：<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">半年报摘要</a>）</td><td class="num"><span class="tag green">否</span></td></tr>
-<tr><td><b>重大违法类</b></td><td>欺诈发行/重大信披违法涉刑/财务造假达标</td><td>无立案、无处罚记录（来源：<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">半年报摘要</a>）</td><td class="num"><span class="tag green">否</span></td></tr>
-</table></div>
-
-<p class="say"><strong>一句话定调</strong>：这票与"主业烂掉、被掏空、资不抵债"的壳票走的是<b>完全相反</b>一条路——它是"好到被误伤"。与"控制权变更驱动"的标准剧本不同，<strong>这是方法论里的一类例外样本：壳经济学失效，真正的博弈变量不是"谁来接盘"，而是 ARA 出口链的恢复节奏。</strong></p>
-
-<!-- ================= 整体概括 ================= -->
-<h2 id="summary">整体概括（一页纸全貌）</h2>
-
-<div class="tblwrap"><table>
-<tr><th style="width:150px">项目</th><th>内容</th></tr>
-<tr><td><b>公司全称</b></td><td>嘉必优生物技术（武汉）股份有限公司（CABIO）</td></tr>
-<tr><td><b>证券代码 / 简称</b></td><td>688089 ／ <b>ST嘉必优</b>（扩位简称 ST嘉必优生物），变更前简称"嘉必优"</td></tr>
-<tr><td><b>交易所 / 板块</b></td><td>上海证券交易所 ／ <b>科创板</b>（湖北首家科创板公司、"科创板食品生物科技第一股"）</td></tr>
-<tr><td><b>主业</b></td><td>微生物合成法制备不饱和脂肪酸 ARA、藻油 DHA、SA（燕窝酸）、β-胡萝卜素、HMOs（母乳低聚糖）等营养素原料，下游用于婴配奶粉、膳食补充、特医食品</td></tr>
-<tr><td><b>实际控制人</b></td><td>易德伟（创始人、董事长兼总经理，直接持股 1.39%）</td></tr>
-<tr><td><b>控股股东</b></td><td>武汉烯王生物工程有限公司（持股 44.17%，零质押零冻结）</td></tr>
-<tr><td><b>ST 类型 / 触发条款</b></td><td>其他风险警示（ST，非\*ST）／ 科创板上市规则 12.9.1 条第一款第（四）项"生产经营活动受到严重影响且预计 3 个月内不能恢复正常"</td></tr>
-<tr><td><b>戴帽时点</b></td><td>2026-07-25 公告 → 07-27 停牌 → <b>07-28 复牌实施</b></td></tr>
-<tr><td><b>最新收盘（2026-09-18）</b></td><td>8.47 元（-0.24%），总市值 14.09 亿元，总股本 1.66 亿股（166,360,003 股）</td></tr>
-<tr><td><b>估值快照</b></td><td>PB≈0.92（对 2026-06-30 归母净资产 15.31 亿）；行情动态 PB 0.95、动态 PE 因亏损失真</td></tr>
-<tr><td><b>2026H1 财务</b></td><td>营收 0.58 亿（-81.22%）、归母 -1.01 亿、扣非 -1.00 亿、资产负债率 16.29%、研发占比 34.13%</td></tr>
-<tr><td><b>最新公告</b></td><td>2026-09-15 中科鸿基商业秘密案收到再审应诉通知（<a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-09-15/688089_20260915_3O2D.pdf" target="_blank">公告2026-025</a>）；2026-08-29 第一期 ST 进展公告</td></tr>
-</table></div>
-
-<!-- ================= 前世今生 ================= -->
-<h2 id="timeline">一、前世今生时间轴（1999 → 2026）</h2>
-
-<p>把嘉必优 26 年的"活法切换"串成线性叙事，落点就是：<strong>一家真实产能、真实客户、真实全球份额的细分寡头，怎么被一场外生监管冲击拖进了 ST。</strong></p>
-
-<div class="tblwrap"><table>
-<tr><th style="width:120px">时间</th><th>关键事件</th><th>股权 / 实控人 / 质地变化</th></tr>
-<tr><td>1999</td><td>国内第一条 ARA（花生四烯酸）产业化，前身技术源头起于此时（官网口径；股份公司主体 2004 年设立）。控股股东武汉烯王 1999-12-29 成立，易德伟任法人/董事长</td><td>创始人技术底色，易德伟团队起步</td></tr>
-<tr><td>2019-12</td><td>登陆科创板，发行价 23.90 元、发行 3,000 万股，募资总额 7.17 亿、净额 6.48 亿，保荐国泰君安（现国泰海通）；湖北首家科创板公司</td><td>发行后总股本 1.2 亿股；实控人易德伟</td></tr>
-<tr><td>2020-2023</td><td>婴配"新国标"红利期，收入从 3.12 亿（2019）爬升至 5 亿上下；2023-07 每 10 股转增 4 股派 3 元</td><td>总股本扩至约 1.68 亿股；持续分红</td></tr>
-<tr><td>2024-10-29</td><td>停牌筹划重大资产重组：拟收购<strong>上海欧易生物 63.2134% 股权</strong>（多组学+分子诊断，产业链上游），对价约 8.31 亿，评估增值率 441.23%，拟新增商誉约 7.21 亿</td><td>不构成重组上市、不导致实控人变更；11-12 复牌一字涨停收 24.90 元</td></tr>
-<tr><td>2025-08-29</td><td>方案两度调整、被上交所问询后，<strong>终止并撤回申请</strong>（"市场环境及标的业务情况较筹划初期已变化"）；终止时市值约 48.51 亿</td><td>商誉归零；承诺 1 个月内不筹划重组（早已到期）</td></tr>
-<tr><td>2025 年报<br>(2026-04-23)</td><td><strong>上市以来最好年份</strong>：营收 5.63 亿（+1.36%）、归母 1.44 亿（+15.7%）、扣非 1.27 亿（+27.0%）、经营现金流 2.70 亿、ROE 8.99%；审计出具<strong>带强调事项段的无保留意见</strong>——审计师已在年报里点名 2026 年初海外冲击的"不确定性"</td><td>ARA 收入 3.88 亿占比近七成；境外收入 1.88 亿；年报披露当日股价 -19.98% 跌停至 16.02 元</td></tr>
-<tr><td>2025-12-10<br>~2026-02-26</td><td>欧盟预警雀巢产品 cereulide（蜡样芽孢杆菌呕吐毒素）污染→雀巢全球召回（1 月 6 日 31 国、1 月 8 日扩展至至少 50 国）→原因指向"供应商 ARA 油质量问题"→<strong>欧盟 2026-02-25 前后将原产中国 ARA 油脂列入强化进口管控清单（条例 2026/459：逐批官方证书+实验室报告+50% 查验）</strong></td><td>帝斯曼-芬美意、润科生物先后声明"非我供应"，市场聚焦嘉必优；1-08 开盘跌超 13%</td></tr>
-<tr><td>2026Q1</td><td>客户观望+排产调整，Q1 营收仅 1,101 万元（-92.9%）</td><td>阶段性停摆，毛利率转负区间</td></tr>
-<tr><td>2026-07-24~28</td><td>半年度业绩预告（营收 5,500 万/-82.07%，归母约 -1.01 亿）并预告实施其他风险警示 → 07-28 复牌戴帽 <b>ST嘉必优</b>，复牌当日登上跌幅 15% 榜单</td><td>简称"嘉必优"→"ST嘉必优"</td></tr>
-<tr><td class="hl">2026-08-04<br>2026-08-22</td><td class="hl">回购专户 1,949,117 股全部注销（总股本 168,309,120→166,360,003 股）；半年报营收 5,759 万（-81.22%）、归母 -1.01 亿；同日计提减值 3,151.06 万元</td><td class="hl">筹码集中：股东户数 10,709→9,467（-11.6%）；大摩国际、金信基金逆势新进</td></tr>
-<tr><td>2026-08-29<br>~至今</td><td>第一期 ST 进展公告披露四条恢复措施（大健康客户率先恢复）；2026-09-15 中科鸿基案收到最高法再审应诉通知（二审胜诉不停止执行，敞口 515 万）</td><td>经营自救进行时；无任何新重组/新实控人信号</td></tr>
-</table></div>
-
-<blockquote>判断：这是一次教科书级的<b>"外生监管冲击"</b>——不是财务造假、不是掏空、不是主业技术溃败。但冲击传导链极长（客户信任→欧盟程序管控→生产排产），修复也需整条链逆向走完，这正是"预计 3 个月内不能恢复正常"条款的现实基础。</blockquote>
-
-<!-- ================= 关键人物 ================= -->
-<h2 id="controller">二、关键人物 / 实控人是谁</h2>
-
-<h3>易德伟与武汉烯王——一个不需要"救兵"的操盘手</h3>
+<h2 id="h-2-0">✅ 岛主引言</h2>
+<p><strong>三行结论（先说生死，再讲故事）：</strong></p>
 <ul>
-<li><strong>实际控制人：易德伟</strong>——公司创始人、董事长兼总经理（2026-05-13 业绩说明会阵容：董事长/总经理易德伟、财务负责人王华标、董秘易华荣、独董陈向东）。个人直接持股 233.14 万股（1.39%）<span class="src">（来源：<a href="http://sns.sseinfo.com/resources/images/upload/202605/2026051519060431453446498.pdf" target="_blank">投资者关系活动记录表 2026-05-13</a>｜<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">半年报摘要</a>）</span>。</li>
-<li><strong>控股股东：武汉烯王生物工程有限公司</strong>——1999-12-29 成立，法定代表人易德伟，主业为生物工程产业投资与企业管理；持股 <strong>7,434 万股（44.17%），零质押、零冻结</strong><span class="src">（来源：<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">半年报摘要</a>）</span>。</li>
-<li><strong>治理关系网</strong>：杜斌、王华标均为武汉烯王董事，同时分别是上市公司董事（持股 97.6 万股）与财务负责人（持股 110.8 万股）；公告披露<strong>杜斌、易德伟系连襟关系</strong>——典型"家族+创业伙伴"紧密结构<span class="src">（来源：<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">半年报摘要·关联关系说明</a>）</span>。</li>
-<li><strong>诚信与合规</strong>：报告期内公司及控股股东、实控人无未履行生效判决、无数额较大债务逾期、无违法违规受处罚<span class="src">（来源：<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">半年报摘要</a>）</span>。</li>
-<li><strong>产业资源盘点</strong>：未证券化资产方面，作为 ARA 全球寡头、发酵平台型企业，其 HMOs（LNnT 已获批、3'-SL/LNT 材料已提交）、发酵纤维素（已产业化）、发酵甘氨酸（10 吨级）均处于"技术已成熟、商业化在路上"的储备状态（见第五节承诺包拆解）。</li>
+<li>
+<p><strong>① 这不是"生死帽"，是"时钟帽"，而且时钟走得比想象的慢。</strong> 触发条款是《上海证券交易所科创板股票上市规则》第 12.9.1 条第一款第（四）项——"公司生产经营活动受到严重影响且预计在 3 个月内不能恢复正常"<sup class="fn"><a href="#fn-1" id="fnref-1">[1]</a></sup>。<strong>四类退市红线逐项排查：财务类、交易类、规范类、重大违法类——当前一个都不成立</strong>（2025 年末归母净资产 16.34 亿元为正、营收 5.63 亿元远超 1 亿元红线、审计为带强调事项段的<strong>无保留</strong>意见；市值 14.39 亿元；无资金占用、无违规担保、无立案<sup class="fn"><a href="#fn-2" id="fnref-2">[2]</a></sup><sup class="fn"><a href="#fn-3" id="fnref-3">[3]</a></sup>）。<strong>唯一的生死开关是一条</strong>：若 2026 年全年扣除后营收低于 1 亿元，将叠加财务类退市风险警示（*ST）。</p>
+</li>
+<li>
+<p><strong>② 但恢复进度条在 9 月停了。</strong> 按科创板规则，风险警示期间公司须<strong>至少每月披露一次进展公告</strong><sup class="fn"><a href="#fn-1" id="fnref-1">[1]</a></sup>——<strong>第一期（2026-08-29）已出，截至 2026-09-22 第二期未出</strong>；投资者关系活动记录表<strong>最后一份停在 2026-05-18</strong>；上证 e 互动<strong>最后一条问答停在 2026-08-27</strong><sup class="fn"><a href="#fn-4" id="fnref-4">[4]</a></sup><sup class="fn"><a href="#fn-5" id="fnref-5">[5]</a></sup><sup class="fn"><a href="#fn-6" id="fnref-6">[6]</a></sup>。三个信源同时"零新增"，这不是隐瞒，而是<strong>这家公司当前确实没有任何新的、可说的进展</strong>。2026H1 营收 5,759.11 万元（-81.22%）、归母净利 <strong>-1.0058 亿元</strong>（含少数股东口径 -1.0383 亿元），每一条曲线都在等一个"恢复"。</p>
+</li>
+<li>
+<p><strong>③ 核心矛盾：资产负债表干净得不像 ST，但四条"第二曲线"没有一条是"新"的。</strong> 负债率 16.29%、货币资金覆盖有息负债、零质押、零商誉、上市以来累计现金分红超 2.43 亿元<sup class="fn"><a href="#fn-2" id="fnref-2">[2]</a></sup><sup class="fn"><a href="#fn-7" id="fnref-7">[7]</a></sup>。可它摆在桌面上的四条新方向——<strong>HMOs（母乳低聚糖）、燕窝酸 SA 美妆、动物营养（宠物＋水产）、AI＋合成生物</strong>——<strong>全部是 ARA 主业技术平台的横向延伸，而不是"从 0 到 1"的划时代物种</strong>。用方法论的三字诀量：<strong>新 ⚠️（延伸而非开创）、大 ✅（HMOs 确有卫健委批准的品类扩容空间）、强 ❌（公司原话仍是"正在推进相关下游客户准入流程""将逐步提升""收获诸多客户合作意向"）</strong>。</p>
+</li>
 </ul>
-
-<h3>前十大股东（2026-06-30 中报定稿）</h3>
-<div class="tblwrap"><table>
-<tr><th>排名</th><th>股东</th><th class="num">期末持股（股）</th><th class="num">比例</th><th>备注</th></tr>
-<tr><td class="num">1</td><td>武汉烯王生物工程有限公司</td><td class="num">74,340,000</td><td class="num">44.17%</td><td>控股股东，无质押冻结</td></tr>
-<tr><td class="num">2</td><td>魏春木</td><td class="num">4,962,010</td><td class="num">2.95%</td><td>其中 494.70 万股经信用账户（融资盘）</td></tr>
-<tr><td class="num">3</td><td>易德伟</td><td class="num">2,331,377</td><td class="num">1.39%</td><td>实控人</td></tr>
-<tr><td class="num">4</td><td>陈海杰</td><td class="num">1,500,000</td><td class="num">0.89%</td><td>二季度新进</td></tr>
-<tr><td class="num">5</td><td>张德成</td><td class="num">1,233,718</td><td class="num">0.73%</td><td>新进</td></tr>
-<tr><td class="num">6</td><td>招商银行-金信深圳成长灵活配置混合</td><td class="num">1,159,840</td><td class="num">0.69%</td><td><b>公募基金，二季度新进</b></td></tr>
-<tr><td class="num">7</td><td>王华标</td><td class="num">1,108,165</td><td class="num">0.66%</td><td>财务负责人</td></tr>
-<tr><td class="num">8</td><td>MORGAN STANLEY &amp; CO. INTERNATIONAL PLC.</td><td class="num">1,102,037</td><td class="num">0.65%</td><td><b>外资，二季度加仓 90.41 万股</b></td></tr>
-<tr><td class="num">9</td><td>杜斌</td><td class="num">976,383</td><td class="num">0.58%</td><td>董事（与易德伟连襟）</td></tr>
-<tr><td class="num">10</td><td>林高宇</td><td class="num">812,758</td><td class="num">0.48%</td><td>—</td></tr>
-</table></div>
-<p class="src">来源：<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">2026 年半年度报告摘要（前 10 名股东持股情况）</a></p>
-
-<p class="say"><strong>资金面三个信号</strong>：①股东户数从 3 月末 10,709 户降至 6 月末 9,467 户（-11.6%），筹码在崩盘中集中；②摩根士丹利国际与金信基金都在暴跌中<b>逆势进场</b>——外资自营＋境内公募同时出现在一只 ST 股前十大，说明机构把它当"事故错杀"而非"价值毁灭"定价；③二股东魏春木 494.7 万股走信用账户，是前十大中唯一杠杆筹码，需防被动波动。</p>
-
-<!-- ================= 怎么拿控制权 ================= -->
-<h2 id="control">三、怎么拿控制权（本案：控制权纹丝不动，无人来抢）</h2>
-
-<h3>③① 控制权现状：44.17% 高度锁定，市场根本没有"竞拍资格"</h3>
-<p>王艳体系关心的"怎么拿控制权"，在本案答案非常干脆：<strong>拿不到，也没人想拿。</strong>武汉烯王 44.17% 持股＋家族联襟治理结构，决定了控制权根本不在二级市场流通；零质押零冻结又意味着没有"司法拍卖/被动易主"的切口。这意味着五类救兵画像里的产业资本、资本套利者、地方国资<strong>三条路都无信号</strong>——不是没人发现这个"干净的壳"，而是<strong>这个壳不卖</strong>。</p>
-
-<h3>③② 唯一一场"未遂"的资本运作：2024-10 欧易生物收购（8.31 亿、441%、7.21 亿商誉）</h3>
+<p>把一只"资产负债表干净到不像 ST"的科创板合成生物龙头放上台面，问题只剩三个：<strong>ARA 出口信任危机何时解除？全年 1 亿营收红线守不守得住？破净的价格是不是赔率足够的位置？</strong></p>
+<p>下面按新方法论的标准骨架展开：<strong>前世今生 → 关键人物 → 控制权结构（本案"控制权从未变更"，做同构替换）→ 意图分析与节奏推测 → 规则约束与制度锁拆解（替代"承诺包活口"）→ 业务与财务 → ★§4.7 投资者交流信息挖掘专章 → 控制权六维拆解（同构替换）→ 壳价值评估 → 数据来源 → 附录</strong>。</p>
+<hr>
+<h2 id="h-2-1">一、前世今生：从"国内第一家 ARA"到全球召回的震中</h2>
+<h3 id="h-3-2">1999-2019：中国 ARA 的拓荒者，湖北科创板第一股</h3>
+<p>嘉必优生物技术（武汉）股份有限公司的前身诞生于 1999 年，是<strong>国内第一家 ARA（花生四烯酸）研发生产企业</strong>，也是中国最早以微生物合成法生产多不饱和脂肪酸及脂溶性营养素的高新技术企业之一；二十多年里先后完成 DHA、β-胡萝卜素、SA（燕窝酸）等原料的产业化<sup class="fn"><a href="#fn-8" id="fnref-8">[8]</a></sup>。控股股东武汉烯王生物工程有限公司成立于 1999 年 12 月 29 日，法定代表人易德伟，目前主业为生物工程产业投资和企业管理<sup class="fn"><a href="#fn-3" id="fnref-3">[3]</a></sup>——这是一家"创始人技术底色"极浓的公司。</p>
 <ul>
-<li><strong>2024-10-29</strong> 停牌筹划重组 → <strong>11-12 复牌一字涨停（+19.98% 收 24.90 元）</strong>，市场为"合成生物+多组学"叙事买单<span class="src">（来源：<a href="http://finance.ce.cn/stock/gsgdbd/202509/t20250901_2460951.shtml" target="_blank">中国经济网</a>）</span>。</li>
-<li>标的上海欧易生物 63.2134% 股权，对价约 <strong>8.31 亿</strong>，评估增值率 <strong>441.23%</strong>，若完成新增商誉约 <strong>7.21 亿</strong>；构成重大资产重组+关联交易，但<b>不导致实控人变更、不构成重组上市</b><span class="src">（来源：<a href="https://m.bjnews.com.cn/detail/1756960986168679.html" target="_blank">新京报贝壳财经</a>｜<a href="https://static.cninfo.com.cn/finalpage/2025-08-30/1224626551.PDF" target="_blank">终止公告2025-061</a>）</span>。</li>
-<li><strong>2025-08-29 终止并撤回</strong>（"市场环境及标的公司业务运行情况较筹划初期已变化"）；终止时市值约 48.51 亿，此后股价连跌三日<span class="src">（来源：<a href="https://static.cninfo.com.cn/finalpage/2025-08-30/1224626551.PDF" target="_blank">终止公告2025-061</a>）</span>。</li>
+<li><strong>2019 年 12 月 19 日</strong>，嘉必优登陆上交所科创板，发行价 23.90 元/股、发行 3,000 万股（发行后总股本 1.2 亿股），募集资金总额 7.17 亿元、净额 6.48 亿元，保荐机构国泰君安（现国泰海通）<sup class="fn"><a href="#fn-9" id="fnref-9">[9]</a></sup><sup class="fn"><a href="#fn-10" id="fnref-10">[10]</a></sup>。它是<strong>湖北省首家科创板上市公司，也是"科创板食品生物科技第一股"</strong><sup class="fn"><a href="#fn-8" id="fnref-8">[8]</a></sup>。上市以来累计现金分红<strong>已连续 6 年</strong>实施，累计分红总额<strong>超过 24,258.95 万元</strong>（公司 2025-12 投资者交流口径）<sup class="fn"><a href="#fn-7" id="fnref-7">[7]</a></sup>。</li>
+<li>为什么 ARA 值钱？它是婴幼儿配方奶粉的<strong>强制性/普遍性添加营养素</strong>，对婴幼儿大脑和神经发育至关重要；全球主要生产商长期只有帝斯曼-芬美意、嘉必优、润科生物等少数几家<sup class="fn"><a href="#fn-11" id="fnref-11">[11]</a></sup>——一个典型的高壁垒、寡头格局的发酵产业。嘉必优的客户覆盖国内外主流乳企，国际市场以雀巢、达能等龙头为主<sup class="fn"><a href="#fn-12" id="fnref-12">[12]</a></sup>。</li>
 </ul>
-<blockquote>事后回望，这场终止是<b>双刃剑</b>：短期斩断"第二曲线"想象空间；但若 8.31 亿、441% 增值、7.21 亿商誉的收购在雀巢事件前落地，2026 上半年主业停摆叠加商誉减值，报表会难看到无法收场。<b>命运有时以"遗憾"的面目保护人。</b></blockquote>
-
-<h3>③③ 11+6 工具库在本案的唯一用武之地</h3>
-<p>王艳"11 种取得股份方式"里，本案实际用到的只有一种：<strong>回购注销（资本运作向的变相增厚）</strong>——2026-08-04 注销回购专户 1,949,117 股，总股本减为 166,360,003 股（来源：<a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-04/688089_20260804_TC1O.pdf" target="_blank">回购注销公告2026-020</a>）。协议转让、司法拍卖、要约、定增、债转股、举牌等其余十条路，<strong>在本案统统"不适用"</strong>——没有人需要为它取得股份，因为没人要换实控人。</p>
-
-<!-- ================= 意图与节奏 ================= -->
-<h2 id="intent">四、意图与节奏（六步预判）</h2>
-
-<p>用王艳六步预判框架推演这只 ST 的命运走向，结论与"重整型 ST"截然不同：</p>
-
-<div class="tblwrap"><table>
-<tr><th style="width:90px">六步</th><th style="width:130px">框架问题</th><th>本案结论</th></tr>
-<tr><td><b>① 抓病因</b></td><td>为什么被 ST？</td><td>经营/规范类"其他风险警示"——12.9.1（四）"生产经营受严重影响且 3 个月内不能恢复"，病根是 <b>2026 年初雀巢召回+欧盟 ARA 强化管控</b>导致的出口停摆，非造假、非掏空、非亏损到资不抵债。</td></tr>
-<tr><td><b>② 判生死</b></td><td>法律上还能不能救？</td><td><b>能救，且不紧迫</b>。当前未踩任何一条退市红线；唯一"生死开关"是 2026 全年营收是否&lt;1 亿（触发 \*ST）。H1 营收 5,759 万，只要下半年≥0.42 亿即可过线。</td></tr>
-<tr><td><b>③ 锁救兵</b></td><td>谁会来救？（五类画像）</td><td><b>原控股股东自救（正在进行时）</b>；产业资本/套利者/国资/债权人均无信号。详见下方"五类救兵画像"。</td></tr>
-<tr><td><b>④ 拆路径</b></td><td>通过什么途径救？</td><td><b>不涉及</b>。无需庭外重组/和解/预重整/司法重整任何一路——资产负债率 16.29%、净现金状态，没有债权人博弈、没有股权让渡。</td></tr>
-<tr><td><b>⑤ 对比路径</b></td><td>哪条路径最优？</td><td><b>只有一条"经营恢复"的窄路</b>：供应链升级→客户一对一解封→订单回补。没有"快慢路径"可选，恢复节奏由欧盟程序与客户认证进度决定。</td></tr>
-<tr><td><b>⑥ 备好工具</b></td><td>救世主有哪些武器？</td><td>管理层用的是"经营武器"（检测能力建设、多元化转产、新品产业化、回购注销），而非"股权武器"。11+6 工具大部分闲置。</td></tr>
-</table></div>
-
-<h3>五类救兵画像：为什么"无人来救、也无需来救"</h3>
+<blockquote>
+<p>结论：这不是概念公司，是<strong>有真实产能、真实客户、真实全球份额的细分寡头</strong>。它后来的 ST，性质上与"主业烂掉的壳"完全不同。</p>
+</blockquote>
+<h3 id="h-3-3">2020-2024：新国标红利、股本扩张与一次未遂的转型豪赌</h3>
+<p>上市后公司收入从 3.12 亿元（2019）爬到 5.56 亿元（2024），2023 年经历短暂调整（见第六节财务表）。2023 年 7 月实施每 10 股转增 4 股派 3 元，总股本由 1.2 亿股扩至 1.68 亿股（含股份支付归属后为 168,309,120 股）<sup class="fn"><a href="#fn-9" id="fnref-9">[9]</a></sup><sup class="fn"><a href="#fn-13" id="fnref-13">[13]</a></sup>；2023、2024 年度各每 10 股派 2 元（各派现 3,366.18 万元）<sup class="fn"><a href="#fn-14" id="fnref-14">[14]</a></sup><sup class="fn"><a href="#fn-15" id="fnref-15">[15]</a></sup>；2025 年度不分配。</p>
+<p>真正的剧情转折在 2024 年 10 月：</p>
 <ul>
-<li><strong>产业资本</strong>：无入局信号。公司本身就是细分产业龙头，不缺"被整合"的叙事。</li>
-<li><strong>资本套利者</strong>：无。市值 14 亿、无立案、股权干净——确实是"干净的壳"，但武汉烯王 44.17%＋家族治理，<b>控制权根本不在市场上</b>。</li>
-<li><strong>地方国资</strong>：无信号（武汉东湖高新区背景的合成生物平台未现身）。</li>
-<li><strong>原控股股东自救</strong>：<b>正在进行时</b>——回购注销、供应链升级、客户一对一、多元化转产，全是管理层在干。</li>
-<li><strong>债权人</strong>：不适用——负债率 16.29%，货币资金 1.87 亿 vs 短期借款 0.70 亿+长期借款 0.99 亿，无流动性危机。</li>
+<li><strong>2024 年 10 月 29 日</strong>，公司停牌筹划重大资产重组；<strong>11 月 12 日复牌一字涨停（+19.98%，收 24.90 元）</strong>——市场为"合成生物＋多组学"的叙事买单<sup class="fn"><a href="#fn-16" id="fnref-16">[16]</a></sup><sup class="fn"><a href="#fn-17" id="fnref-17">[17]</a></sup>。</li>
+<li>标的是<strong>上海欧易生物医学科技有限公司 63.2134% 股权</strong>（多组学分析技术服务＋分子诊断产品，位于嘉必优产业链上游），交易价格约 <strong>8.31 亿元</strong>，发行股份及支付现金支付＋配套募资；评估增值率高达 <strong>441.23%</strong>，若完成将新增商誉约 <strong>7.21 亿元</strong>（对当时账面几乎零商誉的嘉必优而言是重量级）<sup class="fn"><a href="#fn-16" id="fnref-16">[16]</a></sup><sup class="fn"><a href="#fn-18" id="fnref-18">[18]</a></sup>。交易构成重大资产重组＋关联交易，但不导致实控人变更、不构成重组上市<sup class="fn"><a href="#fn-19" id="fnref-19">[19]</a></sup>。</li>
+<li>方案两度调整、被上交所问询后，<strong>2025 年 8 月 29 日公司宣布终止并撤回申请</strong>，官方理由是"市场环境及标的公司的业务运行情况较本次交易筹划初期已发生一定变化"<sup class="fn"><a href="#fn-19" id="fnref-19">[19]</a></sup><sup class="fn"><a href="#fn-20" id="fnref-20">[20]</a></sup>；股价连跌三日<sup class="fn"><a href="#fn-18" id="fnref-18">[18]</a></sup>。终止时（2025-08-29）公司市值约 48.51 亿元<sup class="fn"><a href="#fn-18" id="fnref-18">[18]</a></sup>。</li>
 </ul>
-
-<h3>恢复节奏：一份"每月打卡"的时间表</h3>
-<p>按科创板规则 12.9.5，被实施其他风险警示期间<strong>公司须至少每月披露 1 次进展公告</strong>（第一期 2026-08-29 已披露，来源：<a href="http://data.eastmoney.com/notices/detail/688089/AN202608281828624548.html" target="_blank">进展公告2026-024</a>）。这份"每月一报"既是兑现清单、也是倒计时——盯的就是：大健康客户恢复名单是否扩大、动物营养/美妆新订单是否落地、公司是否开始为"生产经营恢复正常"的摘帽申请铺路。</p>
-
-<div class="say"><strong>意图研判</strong>：实控人团队的意图明确且一致——不是卖壳、不是套现、不是装资产，而是<b>"技术平台续命+客户关系修复+多元化对冲"三线自救</b>。这决定了本报告的性质：<b>研究"恢复节奏"，而非"接盘故事"。</b></div>
-
-<!-- ================= 承诺包拆解 ================= -->
-<h2 id="commit">五、承诺包拆解（原话 vs 大白话）</h2>
-
-<p>本案没有"详式权益变动报告书"式的控制权承诺，但有四组"软承诺/进展承诺"，逐条拆：</p>
-
-<div class="tblwrap"><table>
-<tr><th style="width:200px">承诺原文 / 公司口径</th><th>大白话解读 + 活口在哪</th></tr>
-<tr><td>终止欧易生物交易时承诺<b>"1 个月内不筹划重大资产重组"</b>（2025-08-30 终止公告）</td><td>这是<b>短期锁承诺</b>，早已到期。至今无任何新重组动作——<b>别把"并购预期"当买入理由</b>。真正的活口是：承诺期满后公司<b>随时可能重启</b>，但目前零迹象。</td></tr>
-<tr><td>半年报/业绩预告："大健康业务核心客户率先恢复供货""关键客户一对一解决方案（邀请现场审核、新批次检测验证）"</td><td>进展性承诺，<b>每月进展公告是唯一可验证节点</b>。活口：恢复名单由各客户内部流程决定，公司说了不算，存在"恢复但很慢"的风险。</td></tr>
-<tr><td>"动物营养领域抓全球鱼油紧缺、藻油 DHA 替代需求，首批海外订单正在交付中""美妆个护与国际知名品牌合作加深"</td><td>多元化对冲承诺。活口：2025 年动物营养+美妆合计体量小（约 1.5 亿量级），<b>是方向不是当期堤坝</b>。</td></tr>
-<tr><td>"合成生物技术平台产业化成果转化：LNnT 获卫健委审批、3'-SL/LNT 材料已提交；发酵纤维素产业化、发酵甘氨酸 10 吨级"</td><td>技术牌照承诺。<b>已在兑现</b>（<a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-06-09/688089_20260609_ZQ4M.pdf" target="_blank">乳糖-N-新四糖获批公告</a>）。活口：获批≠放量，商业化节奏未给时间表。</td></tr>
-</table></div>
-
-<blockquote>拆解结论：本案<strong>没有硬性的"承诺期+对赌+锁定期"可以下注</strong>，只有"每月一次进展"的软兑现。因此它<b>不是靠承诺包驱动的标的，而是靠每个月的公告数据驱动的标的</b>——这正是它与控制权变更型十倍股最大的不同。</blockquote>
-
-<!-- ================= 财务体检 ================= -->
-<h2 id="finance">六、财务体检：一本"极干净"与"极难受"反差极大的账</h2>
-
-<div class="tblwrap"><table>
-<tr><th>年份</th><th class="num">营业收入<br>(亿)</th><th class="num">归母净利润<br>(亿)</th><th class="num">扣非归母净利<br>(亿)</th><th class="num">归母净资产<br>(亿)</th><th class="num">总资产<br>(亿)</th><th class="num">资产负债率</th><th class="num">经营现金流净额<br>(亿)</th></tr>
-<tr><td>2022</td><td class="num">4.33</td><td class="num">0.64</td><td class="num">0.31</td><td class="num">14.19</td><td class="num">16.11</td><td class="num">11.56%</td><td class="num">1.76</td></tr>
-<tr><td>2023</td><td class="num">4.44</td><td class="num">0.91</td><td class="num">0.62</td><td class="num">14.76</td><td class="num">16.11</td><td class="num">7.30%</td><td class="num">0.69</td></tr>
-<tr><td>2024</td><td class="num">5.56</td><td class="num">1.24</td><td class="num">1.00</td><td class="num">15.56</td><td class="num">16.87</td><td class="num">6.95%</td><td class="num">1.73</td></tr>
-<tr><td>2025</td><td class="num">5.63</td><td class="num">1.44</td><td class="num">1.27</td><td class="num">16.34</td><td class="num">18.60</td><td class="num">11.62%</td><td class="num">2.70</td></tr>
-<tr class="hl"><td><b>2026H1</b></td><td class="num"><b>0.58</b></td><td class="num"><b>−1.01</b></td><td class="num"><b>−1.00</b></td><td class="num"><b>15.31</b></td><td class="num"><b>18.37</b></td><td class="num"><b>16.29%</b></td><td class="num"><b>−0.08</b></td></tr>
-</table></div>
-<p class="src">来源：合并报表定稿数——2022/2023 取自 <a href="https://static.cninfo.com.cn/finalpage/2024-04-27/1219883430.PDF" target="_blank">2023 年报 PDF</a>，2024/2025 取自 <a href="https://static.cninfo.com.cn/finalpage/2026-04-23/1225156914.PDF" target="_blank">2025 年报 PDF</a>，2026H1 取自 <a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">2026 半年报摘要</a>。2026H1 精确值：营收 57,591,065.75 元 / 归母 -100,577,846.47 元 / 扣非 -100,128,602.36 元 / 经营现金流 -8,436,238.09 元。</p>
-
-<p><strong>勾稽自检（全部通过）</strong>：五期"负债合计+所有者权益合计=资产总计"逐期验证通过；2026H1 末归母净资产 15.31 亿＝期初 16.34 亿−归母净亏 1.01 亿−其他权益变动约 0.02 亿（股份支付/库存股，量级 0.13%）。口径说明：归母净资产≠所有者权益合计（含少数股东权益 2026H1 末 618.5 万）；2025 年归母净利 1.44 亿含<strong>帝斯曼和解补偿款等非经常收益约 2,000 万</strong>（营业外收入 2,003.7 万），扣非 1.27 亿更能代表主业<span class="src">（来源：<a href="https://static.cninfo.com.cn/finalpage/2026-04-23/1225156914.PDF" target="_blank">2025 年报</a>）</span>。</p>
-
-<p><strong>ST 三个红灯指标</strong>（扣非 / 净资产 / 现金流）体检结果：①扣非转负（H1 -1.00 亿，红灯亮起——主业停摆）；②净资产为正且仍厚（15.31 亿，绿灯）；③经营现金流 -844 万（黄灯——非灾难级，2022-2025 四年累计经营现金流约 6.88 亿，家底殷实）。三个灯只亮一个，<b>属"重症但不致命"</b>。</p>
-
-<h3>三处"反差"就是这家公司的全部戏剧性</h3>
-<p><strong>① 资产负债表"干净得不像 ST"</strong>：负债率 16.29%（全 A 最干净一档）；净现金状态（货币资金 1.87 亿 vs 短借 0.70 亿+长借 0.99 亿）；无商誉、无资金占用、无违规担保、无质押冻结。它的 ST 与"退市危机型 ST"完全不是一种病。</p>
-<p><strong>② 利润表"最难看的一个半年"</strong>：2026H1 毛利率 -22.47%——停摆期固定成本刚性所致（2025 年固定资产 8.78 亿、占总资产 47.2%，募投研发中心转固同比+75%），叠加计提减值 3,151 万<span class="src">（来源：<a href="https://stock.stockstar.com/RB2026082200016235.shtml" target="_blank">证券之星中报解读</a>｜<a href="https://stock.stockstar.com/RB2026082300001331.shtml" target="_blank">证券之星每周复盘</a>）</span>。</p>
-<p><strong>③ 现金流"缓冲垫还厚"</strong>：收入每停一个月，折旧和费用就多磨一刀，但账上现金足够撑很久——是为数不多"戴帽了但家底殷实"的科创板公司。</p>
-
-<h3>★科创板退市规则的重大差异（务必写进纪律）</h3>
-<p>与主板不同，本公司的戴帽条款"生产经营受严重影响"是<strong>科创 12.9.1（四）特有条款</strong>；而"学科创"公司的重心在<strong>研发与营收</strong>——2026H1 研发占比被分母坍塌<strong>被动推高至 34.13%</strong>（绝对投入仍在）。这类公司真正会踩的财务类红线是<b>"扣除后营收&lt;1 亿（双创版）＋亏损"</b>，而不是主板的 3 亿营收线。所以判断它生死，只盯着"全年 1 亿营收"这一个数字就够了<span class="src">（来源：<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">半年报摘要·研发占比 34.13%</a>）</span>。</p>
-
-<h3>科创板 ST 特殊交易规则（与主板截然不同）</h3>
-<ul>
-<li><strong>不进风险警示板</strong>：实施风险警示期间不进入上交所风险警示板、不适用风险警示板交易规定——<b>没有 5% 涨跌幅限制约束</b>；</li>
-<li><strong>涨跌幅仍为 20%</strong>；</li>
-<li><strong>单日买入上限 50 万股</strong>：竞价+大宗+盘后固定价格交易累计、普通账户与两融信用账户合并计算；</li>
-<li><strong>存在盘后固定价格交易</strong>（15:05-15:30，以收盘价成交，科创板特有，ST 期间仍可用）。</li>
-</ul>
-<p class="warn">一句话：<b>科创板 ST≠主板 ST</b>——波动率是主板风险警示股的 4 倍上限、买入有 50 万股/日"限流闸"、盘后还能按固定价成交。用主板 ST 肌肉记忆交易此票，会同时犯"低估波动"和"误判流动性"两个错（来源：<a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-25/688089_20260725_GSG1.pdf" target="_blank">戴帽公告原文</a>）。</p>
-
-<!-- ================= 行情与估值 ================= -->
-<h2 id="valuation">七、行情与估值（壳价值评估＋借壳红线）</h2>
-
-<h3>价格与市值快照（多源一致）</h3>
-<p><strong>2026-09-18 收盘 8.47 元（-0.24%），总市值 14.09 亿元，总股本 166,360,003 股</strong>。三方互证：证券时报行情页收盘 8.47 元 / 流通+总市值均为 14.09 亿 / 动态 PB 0.95 / 动态 PE -7.01（因亏损失真）（来源：<a href="https://www.stcn.com/quotes/index/sh688089.html" target="_blank">证券时报行情</a>）；上交所官网静态市盈率 9.80 倍（按 2025 年归母 1.44 亿计）；Wind 同日 PB_LF 0.948。复牌后（7-28 当日登跌幅 15% 榜单）至今处于<b>低位区</b>，破净状态。</p>
-
-<p><strong>亏损股不用 PE</strong>。三个可用口径：</p>
-<ul>
-<li><strong>PB ≈ 0.92</strong>（14.09 亿 ÷ 2026-06-30 归母净资产 15.31 亿；每股净资产 9.20 元）——<b>破净</b>，隐含"账面净资产打折"的清算折价，而非成长溢价；</li>
-<li><strong>PS(TTM) ≈ 4.49</strong>（14.09 亿 ÷ 滚动营收 3.14 亿＝2025 全年 5.63−2025H1 3.07+2026H1 0.58）——停摆期 PS 无参照系意义，恢复到 2025 体量则 PS 仅 2.5 倍；</li>
-<li><strong>静态 PE 9.8 倍</strong>（按 2025 归母 1.44 亿）——"假如 2026 什么都没发生"的镜像估值锚。</li>
-</ul>
-
-<h3>① 把它想成一个赌局（胜率 × 赔率）</h3>
-<p><strong>【看涨（正向）】</strong>①<b>摘帽事件权</b>：生产经营恢复即申请撤销，<b>不挂钩年报周期</b>——若三季度营收显著回升（单季回到 1 亿量级），四季度就可能见摘帽申请，快则 2026 年底、慢则 2027 上半年；②<b>盈利修复权</b>：假设 2027 恢复至 2025 中枢（归母 1.2-1.4 亿），给 20-25 倍 PE，对应市值 24-35 亿，较现价有 <b>70%-148% 空间</b>（参照系：终止欧易交易前市值 48.51 亿、2025-08-29；停牌前 35.21 亿、2024-10-28）；③<b>结构性托底</b>：破净+净现金+零质押+44.17% 锁定控股股东。</p>
-<p><strong>【看跌（反向）】</strong>①<b>\*ST 情形</b>：若 2026 全年扣除后营收&lt;1 亿（H1 仅 0.58 亿，需下半年≥0.42 亿，只要恢复到去年同期约 17% 即过线，但若客户认证持续拖延就不是"17%"的问题），叠加财务类退市风险警示，估值逻辑切回"退市博弈"，破净不构成保护；②<b>时间成本</b>：欧盟 50% 查验+逐批证书是长尾流程，戴帽每多一季，机会成本与情绪损耗都在累积；③<b>减值持续</b>：存货 1.95 亿+应收 1.56 亿仍在账上，H1 已计提 3,151 万，H2 恢复不畅将继续计提，侵蚀净资产。</p>
-
-<h3>② 壳价值评估：这是个"不需要救的壳"</h3>
-<div class="tblwrap"><table>
-<tr><th>壳评估维度</th><th>结论</th></tr>
-<tr><td>大股东主动/被动卖壳？</td><td><b>两者皆非</b>——不卖，也无被动卖点（无质押无冻结无退市诉讼）。</td></tr>
-<tr><td>一票否决项（重大违法/立案/交易类退市）</td><td><b>无</b>。四类红线无一触及。</td></tr>
-<tr><td>"可以救但要算账"项</td><td>不适用——没有需要"换业务/搞钱/换人"的红线问题要解决。</td></tr>
-<tr><td>壳价值区间</td><td>14.09 亿市值已<b>跌破 15.31 亿归母净资产</b>，处于"资产价值底部区"；但因控制权锁定，<b>壳价值无法变现、也不会被接盘</b>——下行有净资产托底、上行靠"恢复"而非"借壳"。可类比方法论中的"壳价值底线法"：干净+无立案+小市值，下行风险有限，上行靠注入预期——<b>只是本案的"注入预期"被换成了"恢复预期"</b>。</td></tr>
-</table></div>
-
-<h3>③ 借壳 / 重大重组红线与规避</h3>
-<p>对照王艳借壳四要件公式，<b>判断本案未来任何资产运作的合规边界</b>：①实控人是否变更——若易德伟/武汉烯王保持 44.17% 结构不变，<b>要件一不满足，永远不构成借壳</b>；②36 个月窗口——2024-10 那次欧易交易因"不导致实控人变更"天然避开借壳认定；③向新实控人买资产——本案不存在"新实控人"；④资产规模触线或主业根本变化——欧易交易 8.31 亿对价 vs 当时净资产，主要触发的是"重大资产重组（资产总额/营收/净资产任一项≥50%）"标准，<b>而非</b>重组上市。结论：<b>这只票的"资本运作剧本"已经被 2025-08 的终止按下暂停键，短期无重组通道打开信号</b>；若未来重启，最干净的路径仍是"不换实控人的普通重大重组"（避要件一），而非借壳。</p>
-
-<!-- ================= 核心矛盾 ================= -->
-<h2 id="verdict">八、核心矛盾与综合判断（六维拆解总结）</h2>
-
-<p class="dq"><strong>一句话核心矛盾：技术资产没崩、财务底子干净（好资产），但 ARA 出口链被欧盟程序性管控冻结（坏时点），价格已破净但破净≠必然兑现。</strong></p>
-
-<h3>六维拆解（本案适配版）</h3>
-<div class="tblwrap"><table>
-<tr><th style="width:150px">维度</th><th>结论（结论先行）</th></tr>
-<tr><td><b>① 重组节奏</b></td><td>唯一一次重组（欧易生物）已终止，<b>无新动作</b>；短期无重组/注入催化。可验证节点=每月 ST 进展公告＞10 月底三季报＞欧盟条例动态。</td></tr>
-<tr><td><b>② 实控人背景与意图</b></td><td>易德伟：创始人技术底色、44.17% 锁定、零质押；意图=经营自救（评级：<b>资产质量高×运作经验足×无卖壳动机</b>）。</td></tr>
-<tr><td><b>③ 原业务质量</b></td><td>ARA 全球寡头（与帝斯曼-芬美意掰过手腕且不落下风）、DHA/HMOs 技术平台仍在产出新牌照（LNnT 获批）；<b>停摆是"出口执照"问题，不是"技术溃败"</b>。</td></tr>
-<tr><td><b>④ 承诺包活口</b></td><td>无硬承诺包，只有"每月一报"的软兑现；已析出四组"软承诺"（见第五节），活口在"恢复却慢"。</td></tr>
-<tr><td><b>⑤ 进度与行情映射</b></td><td>股价已充分消化戴帽（复牌 -15% 榜、年报日 -20% 跌停、现破净）；机构（大摩国际、金信）逆势进场的信号说明<b>市场按"错杀"定价、而非"价值毁灭"</b>。</td></tr>
-<tr><td><b>⑥ 运作特征与综合判断</b></td><td>这不是一只"控制权变更驱动的十倍股"，而是一只"<b>事件驱动的恢复博弈股</b>"——成败关键变量 = 下半年营收能否过 1 亿红线 + 欧盟证书流程能否跑顺 + 2027 利润表能否修回 1 亿量级。</td></tr>
-</table></div>
-
-<h3>综合判断（赔率排序）</h3>
-<p>当前定价的本质是给一笔<b>"恢复进度不确定"的时间溢价</b>买单，而非"退市归零"的风险溢价（资产负债表不支持那种定价）。它适合做<strong>事件驱动型观察标的</strong>，不适合当"故事股"重仓赌方向。破净给了错误的容错空间，但<b>容错≠必然兑现</b>——若三季报营收仍在千万量级，1 亿红线将成为现实压力，科创板会用 \*ST 的方式重新给它定价。</p>
-
-<p class="say"><strong>盯三件事</strong>（可验证性×重要性排序）：①<b>每月末 ST 进展公告</b>（恢复供货客户名单是否扩大）；②<b>10 月底三季报</b>（单季营收量级，直接决定 1 亿红线成败）；③<b>欧盟实施条例 2026/459 修订信号</b>（程序墙是否松动）。三者至少两项向好，赔率才从"赌恢复"变成"赚恢复"。</p>
-
-<!-- ================= 数据来源 ================= -->
-<h2 id="sources">九、数据来源（全部链接，可点击核对）</h2>
-
-<ol class="sources">
-<li><span class="typ">公司公告（上交所科创板）</span></li>
-<li>· <a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-25/688089_20260725_GSG1.pdf" target="_blank">《关于被实施其他风险警示暨停牌的公告》（2026-019，2026-07-25，12.9.1（四）原文+科创板ST交易规则）</a></li>
-<li>· <a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-25/688089_20260725_DK1W.pdf" target="_blank">《2026年半年度业绩预告的自愿性披露公告》（2026-018，预告营收5,500万/归母约-1.01亿/^ST风险提示）</a></li>
-<li>· <a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-29/688089_20260829_LM78.pdf" target="_blank">《关于公司股票被实施其他风险警示的进展公告》（2026-024，四条恢复措施/每月披露义务）</a>（另见<a href="http://data.eastmoney.com/notices/detail/688089/AN202608281828624548.html" target="_blank">东方财富刊载全文</a>）</li>
-<li>· <a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-22/688089_20260822_6XPO.pdf" target="_blank">《2026年半年度报告》（2026-08-22）</a>；<a href="https://pdf.dfcfw.com/pdf/H2_AN202608211828271506_1.pdf" target="_blank">《2026年半年度报告摘要》（主要会计数据+前十大股东+股东户数）</a></li>
-<li>· <a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-04/688089_20260804_TC1O.pdf" target="_blank">《关于实施回购股份注销暨股份变动的公告》（2026-020，注销1,949,117股/总股本166,360,003股）</a></li>
-<li>· <a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-09-15/688089_20260915_3O2D.pdf" target="_blank">《关于收到再审应诉通知书暨诉讼进展的公告》（2026-025，中科鸿基案最高法再审）</a></li>
-<li>· <a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-13/688089_20260813_3QBK.pdf" target="_blank">《关于独立董事辞职的公告》（2026-08-13）</a>；<a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-06-25/688089_20260625_6GZK.pdf" target="_blank">大信《非标准审计意见报告专项说明》</a>；<a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-06-09/688089_20260609_ZQ4M.pdf" target="_blank">《关于乳糖-N-新四糖获批的自愿性披露公告》</a></li>
-<li>· 上交所科创板公告列表：<a href="https://star.sse.com.cn/star/market/stocklist/info/announcement/index.shtml?COMPANY_CODE=688089" target="_blank">star.sse.com.cn…?COMPANY_CODE=688089</a></li>
-<li><span class="typ">定期报告（巨潮/上证报PDF）</span></li>
-<li>· <a href="https://static.cninfo.com.cn/finalpage/2026-04-23/1225156914.PDF" target="_blank">2025年年度报告（营收5.63亿/归母1.44亿/扣非1.27亿/归母净资产16.34亿/带强调事项段无保留意见/分产品分地区/帝斯曼补偿款附注）</a></li>
-<li>· <a href="https://static.cninfo.com.cn/finalpage/2024-04-27/1219883430.PDF" target="_blank">2023年年度报告（2022/2023年资产负债与权益勾稽数据）</a>；<a href="https://static.cninfo.com.cn/finalpage/2025-03-28/1222924654.PDF" target="_blank">2024年年度报告（2022年比较数据）</a></li>
-<li>· <a href="https://static.cninfo.com.cn/finalpage/2025-08-30/1224626551.PDF" target="_blank">《关于终止发行股份及支付现金购买资产并募集配套资金暨关联交易事项并撤回申请文件的提示性公告》（2025-061）</a></li>
-<li><span class="typ">权威媒体/官方文件</span></li>
-<li>· <a href="https://www.efsa.europa.eu/sites/default/files/2026-02/joint%20(EFSA%20and%20ECDC)%20Rapid%20Outbreak%20Assessment%20on%20the%20multi-country%20food-borne%20incident%20caused%20by%20cereulide%20and%20linked%20to%20infant%20formula%20products.pdf" target="_blank">欧盟EFSA/ECDC联合快速风险评估（2026-02-19，"瑞士公司C从中国生产商A经德国供应商B采购的ARA油被污染"）</a></li>
-<li>· <a href="https://www.europarl.europa.eu/doceo/document/E-10-2026-000600-ASW_EN.pdf" target="_blank">欧洲议会书面答复 E-000600/2026（2026-05-18，欧委会2025-12-10预警/2026-02-25通过强化管控/条例2026/459）</a></li>
-<li>· <a href="https://www.news.cn/world/20260107/17553dd84cfc4d91b09bc80c00f7942d/c.html" target="_blank">新华社《雀巢在31个国家和地区召回部分婴幼儿配方奶粉》（2026-01-07）</a></li>
-<li>· <a href="https://m.gmw.cn/2026-01/08/content_1304295926.htm" target="_blank">科技日报/光明网《雀巢紧急召回部分奶粉！两部门发声》（2026-01-08，召回扩至至少50国）</a></li>
-<li>· <a href="http://www.ce.cn/cysc/sp/bwzg/202601/t20260113_2698161.shtml" target="_blank">中国经济网《雀巢"预防性召回"奶粉事件是怎么回事？》（2026-01-13，上交所监管工作函/帝斯曼、润科声明）</a></li>
-<li>· <a href="http://www.cnr.cn/shanghai/tt/20260109/t20260109_527488100.shtml" target="_blank">央广网转第一财经《雀巢奶粉原料中测出致病风险物质》（2026-01-09，嘉必优卷入/1-08开盘跌超13%）</a></li>
-<li>· <a href="https://m.bjnews.com.cn/detail/1777274636169353.html" target="_blank">新京报《财报观察室｜欧洲奶粉召回事件收尾，嘉必优一季度业绩暴跌》（2026-04-27，Q1营收1101.42万/2025年ARA占比超68%/2-24欧盟管控）</a></li>
-<li>· <a href="https://www.cls.cn/detail/2436787" target="_blank">财联社《海外市场舆情和欧盟监管新规下生产经营"受创" 嘉必优将被ST》（2026-07-24）</a></li>
-<li>· <a href="https://www.nestle.com.cn/media/pressreleases/allpressreleases/20260423-three-month-sales-2026" target="_blank">雀巢中国《2026年前三个月财报》（2026-04-23，召回Q1完成/供应恢复）</a></li>
-<li>· <a href="http://sns.sseinfo.com/resources/images/upload/202605/2026051519060431453446498.pdf" target="_blank">嘉必优投资者关系活动记录表（2026-05-13，业绩说明会阵容/排产/产品核查口径/2-24欧盟管控）</a></li>
-<li>· <a href="https://m.bjnews.com.cn/detail/1756960986168679.html" target="_blank">新京报贝壳财经《嘉必优终止收购欧易生物，公司股价连跌三日》（8.31亿/441.23%增值/7.21亿商誉）</a>；<a href="http://finance.ce.cn/stock/gsgdbd/202509/t20250901_2460951.shtml" target="_blank">中国经济网《嘉必优终止买欧易生物股价跌5%》（复牌涨停24.90元）</a></li>
-<li>· <a href="https://stock.stockstar.com/RB2026082200016235.shtml" target="_blank">证券之星《ST嘉必优2026年中报解读》</a>；<a href="https://stock.stockstar.com/RB2026082300001331.shtml" target="_blank">证券之星《每周股票复盘：ST嘉必优上半年营收降81.22%》（减值3,151万）</a></li>
-<li><span class="typ">行情与公司资料</span></li>
-<li>· <a href="https://www.stcn.com/quotes/index/sh688089.html" target="_blank">证券时报e公司行情页（2026-09-18收盘8.47元/总市值14.09亿/动态PB 0.95/总股本1.66亿）</a></li>
-<li>· <a href="http://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=688089" target="_blank">上交所公司概况与行情（静态PE 9.80/2026-07-28跌幅榜）</a></li>
-<li>· <a href="http://finance.ce.cn/stock/gsgdbd/202609/t20260916_3217479.shtml" target="_blank">中国经济网《破发股ST嘉必优跌2.12% IPO募7亿国泰海通保荐》（发行价23.90元/募资7.17亿）</a>；<a href="https://www.cabio.cn/news/detail288.html" target="_blank">嘉必优官网《乘合成生物之风，走创新发展之路》（湖北首家科创板/第一家ARA/累计分红）</a></li>
-<li>· 报告基准：Wind(windproxy) 取数（688089.SH，2026-09-18 收盘截面及 2019-2025 年度 / 2025Q1-2026Q2 季度定稿序列）；信源索引 300 条（巨潮深链+PDF，另存 source_index）。</li>
+<blockquote>
+<p>事后看，这次终止是<strong>双刃剑</strong>：短期斩断了"第二曲线"的想象空间（股价从 40 亿+市值平台回落）；但放在 2026 年回望——若 8.31 亿、441%增值、7.21 亿商誉的收购在雀巢事件前完成，2026 年上半年主业停摆叠加商誉减值，报表会难看到无法收场。<strong>命运有时以"遗憾"的面目保护人。</strong></p>
+</blockquote>
+<h3 id="h-3-4">2025：历史最好的年份，也是暴风眼前的最后平静</h3>
+<p>2025 年报（2026-04-23 披露）：营收 5.63 亿元（+1.36%）、归母净利 <strong>1.44 亿元（+15.7%）</strong>、扣非 1.27 亿元（+27.0%）、经营现金流 2.70 亿元（+56.1%）、归母净资产 16.34 亿元，加权 ROE 8.99%<sup class="fn"><a href="#fn-21" id="fnref-21">[21]</a></sup>。分产品看：<strong>ARA 收入 3.88 亿元（毛利率 46.74%）约占主营七成，藻油 DHA 收入 1.24 亿元（+13.53%，毛利率 55.73%）</strong>，境外收入 1.88 亿元、毛利率 63.09%<sup class="fn"><a href="#fn-21" id="fnref-21">[21]</a></sup>。公司口径的综合毛利率<strong>从 2024 年的 43.61% 提升至 2025 年的 47.70%</strong>（2026-07-09 上证 e 互动原文）<sup class="fn"><a href="#fn-22" id="fnref-22">[22]</a></sup>。</p>
+<p>有个耐人寻味的细节：2024、2025 年营业外收入各约 2,000 万元，<strong>主要系公司当年诉讼帝斯曼关于 ARA 专利无效事项达成和解后，帝斯曼未按《和解协议》《专利许可协议》《加工及供货协议》采购约定量 ARA 油脂而支付的现金补偿</strong><sup class="fn"><a href="#fn-23" id="fnref-23">[23]</a></sup>——在知识产权与商务关系上，这家公司与全球巨头掰过手腕且不落下风。</p>
+<p>大信会计师事务所对 2025 年报出具的是<strong>带强调事项段的无保留意见</strong>：提醒资产负债表日至审计报告日期间（即 2026 年初），公司因"海外市场舆情和监管新要求"对生产经营计划进行适应性调整，"对贵公司当期营业收入、经营现金流及盈利水平产生了重大影响……截至审计报告日，该事项所带来的影响仍存在不确定性"<sup class="fn"><a href="#fn-21" id="fnref-21">[21]</a></sup>。<strong>审计师在年报里已经把雷点了名。</strong></p>
+<h3 id="h-3-5">2026-01 至 07：从全球召回到戴帽的完整链条</h3>
+<p>把这段链条摊开，每一步都有因果：</p>
+<ol>
+<li><strong>2025-12-10</strong>：欧盟委员会被预警荷兰雀巢公司产品 cereulide（蜡样芽孢杆菌呕吐毒素）污染，雀巢当日即在 16 个欧洲国家召回 25 个批次<sup class="fn"><a href="#fn-24" id="fnref-24">[24]</a></sup>。</li>
+<li><strong>2026-01-05/06</strong>：雀巢升级为<strong>全球 31 个国家和地区</strong>召回部分批次婴幼儿配方奶粉，原因指向"供应商提供的花生四烯酸（ARA）油及相关油脂混合物存在质量问题"，可能含蜡样芽孢杆菌；雀巢中国随后召回涉及中国大陆渠道的 71 个批次<sup class="fn"><a href="#fn-25" id="fnref-25">[25]</a></sup><sup class="fn"><a href="#fn-26" id="fnref-26">[26]</a></sup>。<strong>1 月 8 日，嘉必优开盘跌超 13%</strong><sup class="fn"><a href="#fn-11" id="fnref-11">[11]</a></sup>——市场直接把它定位为"涉事 ARA 供应商"。公司在投资者互动中确认产品已送检，并称其产品"交付客户时均符合相关食品安全标准、客户合同验收指标及进口国适用标准"<sup class="fn"><a href="#fn-12" id="fnref-12">[12]</a></sup><sup class="fn"><a href="#fn-27" id="fnref-27">[27]</a></sup>。</li>
+<li><strong>2026-02-24</strong>：欧盟发布 <strong>(EU) 2026/459 条例</strong>（公司记录表原文引用该编号并注明日期为 2 月 24 日），将原产于中国的花生四烯酸油列入<strong>强化管控清单</strong>，每批货物须附中国官方出具的无蜡芽孢杆菌毒素证书及实验室分析报告，并接受 50% 频率的货物查验<sup class="fn"><a href="#fn-5" id="fnref-5">[5]</a></sup><sup class="fn"><a href="#fn-24" id="fnref-24">[24]</a></sup>。实务上以 2026-02-25/26 通过并实施为媒体口径<sup class="fn"><a href="#fn-28" id="fnref-28">[28]</a></sup>。</li>
+<li><strong>2026 年一季度</strong>：客户观望＋生产计划调整，Q1 营收 <strong>1,101.42 万元</strong>（-92.9%）、净利润 -4,511.43 万元（Wind 季度定稿口径）<sup class="fn"><a href="#fn-29" id="fnref-29">[29]</a></sup>；公司称"目前工厂根据市场订单排产"<sup class="fn"><a href="#fn-5" id="fnref-5">[5]</a></sup>。</li>
+<li><strong>2026-04-23</strong>，2025 年报披露当日股价 <strong>-19.98% 跌停至 16.02 元</strong><sup class="fn"><a href="#fn-30" id="fnref-30">[30]</a></sup>——年报确认了"强调事项"的严重性。</li>
+<li><strong>2026-07-24 晚</strong>，公司公告半年度业绩预告并同步提示：生产经营受严重影响且预计 3 个月内不能恢复正常，<strong>将被实施其他风险警示</strong><sup class="fn"><a href="#fn-28" id="fnref-28">[28]</a></sup>；<strong>7 月 27 日停牌、7 月 28 日复牌即戴帽"ST嘉必优"</strong><sup class="fn"><a href="#fn-1" id="fnref-1">[1]</a></sup>。<strong>复牌当日收盘 7.95 元、跌 -20.02%</strong>（前收盘 9.94 元），全天一字跌停<sup class="fn"><a href="#fn-29" id="fnref-29">[29]</a></sup>。</li>
+<li><strong>2026-08-22</strong>中报落地：上半年营收 <strong>5,759.11 万元（-81.22%）</strong>、归母净利 <strong>-1.01 亿元（-193.17%）</strong>、扣非 -1.00 亿元（-200.21%）<sup class="fn"><a href="#fn-2" id="fnref-2">[2]</a></sup>；同日公告对 2026 年半年度<strong>计提信用及资产减值准备 3,151.06 万元</strong>（信用减值 546.7 万元＋存货跌价 2,604.3 万元）<sup class="fn"><a href="#fn-31" id="fnref-31">[31]</a></sup>。</li>
+<li><strong>2026-09-15</strong>，公司披露收到最高人民法院再审应诉通知书——中科鸿基就 SA（燕窝酸）商业秘密案申请再审<sup class="fn"><a href="#fn-32" id="fnref-32">[32]</a></sup>（详见第五节、第七节）。</li>
 </ol>
-
-<!-- ================= 免责声明 ================= -->
-<div class="disc" id="disc">
-<p><strong>免责声明</strong></p>
-<p>（免责声明：本文内容仅为自用兼知识分享与逻辑分析，数据可能有错误或不及时，不构成任何投资建议。市场有风险，投资需谨慎。）</p>
-</div>
-
-<div class="foot">
-<p>ST嘉必优（688089）深度研究 · 王艳《寻找十倍系列·控制权变更驱动》例外样本 · 更新至 2026-09-19 · 行情截至 2026-09-18 收盘</p>
-<p><a href="#top">↑ 回顶部</a></p>
-</div>
-
-<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a></body>
+<blockquote>
+<p>判断：<strong>这是一次教科书级的"外生监管冲击"，不是财务造假、不是掏空、不是主业技术溃败。</strong> 但冲击的传导链条极长——从"客户信任"到"欧盟程序性管控"再到"生产排产"——修复也需要一整条链条逆向走完，这就是"预计 3 个月内不能恢复正常"条款的现实基础。</p>
+</blockquote>
+<hr>
+<h2 id="h-2-6">二、关键人物：易德伟与武汉烯王——一个把"熬"当作策略的创始人</h2>
+<h3 id="h-3-7">2.1 实际控制人档案</h3>
+<ul>
+<li><strong>实际控制人：易德伟</strong>——公司创始人、<strong>董事长兼总经理</strong>（2026-05-13 业绩说明会参会阵容：董事长/总经理易德伟、财务负责人王华标、董事会秘书易华荣、独立董事陈向东）<sup class="fn"><a href="#fn-5" id="fnref-5">[5]</a></sup>。个人直接持股 <strong>233.14 万股（1.39%）</strong><sup class="fn"><a href="#fn-3" id="fnref-3">[3]</a></sup>。</li>
+<li><strong>控股股东：武汉烯王生物工程有限公司</strong>——1999 年 12 月 29 日成立，法定代表人易德伟，目前主业为生物工程产业投资和企业管理，持股 <strong>74,340,000 股（44.17%）</strong>，<strong>零质押、零冻结</strong><sup class="fn"><a href="#fn-3" id="fnref-3">[3]</a></sup>。</li>
+<li><strong>治理关系网</strong>：杜斌、王华标均为武汉烯王董事，同时分别是上市公司董事（持股 97.64 万股）与财务负责人（持股 110.82 万股，主管会计工作）；公告披露<strong>杜斌、易德伟系连襟关系</strong><sup class="fn"><a href="#fn-3" id="fnref-3">[3]</a></sup>——典型的"家族＋创业伙伴"紧密结构。</li>
+<li><strong>诚信与合规</strong>：报告期内公司及控股股东、实控人<strong>无未履行生效判决、无数额较大债务逾期，无违法违规受处罚情形</strong><sup class="fn"><a href="#fn-2" id="fnref-2">[2]</a></sup><sup class="fn"><a href="#fn-3" id="fnref-3">[3]</a></sup>。注意：2024-05-16 曾披露《关于收到湖北证监局警示函的公告》<sup class="fn"><a href="#fn-4" id="fnref-4">[4]</a></sup>——属历史小瑕疵，与本次戴帽无关，不作定性。</li>
+</ul>
+<h3 id="h-3-8">2.2 关键人物"成本锚"核查：一个不可用的指标，和三个可用的替代证据</h3>
+<p>方法论 §4.7.4c 的"成本锚＋质押率"双指标法针对<strong>控制权变更型</strong>标的（新实控人买入成本 vs 现价）。本案属"<strong>控制权从未变更型</strong>"——创始人自持 27 年、原始股成本无法衡量（且账面早已为负），<strong>成本锚在这里失效</strong>。替代证据有三条，且方向一致：</p>
+<table>
+<thead>
+<tr>
+<th>替代证据</th>
+<th>具体事实</th>
+<th>读数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① 零质押</strong></td>
+<td>控股股东武汉烯王 7,434 万股<strong>零质押、零冻结</strong>；实控人易德伟个人持股亦无质押记录<sup class="fn"><a href="#fn-3" id="fnref-3">[3]</a></sup></td>
+<td><strong>没有任何"股价下跌→补质押"的强制卖压链条</strong>。这既是"没有杠杆风险"，也意味着<strong>没有"被迫自救"的动机</strong>——与 ST天玑（苏博浮亏 51%、质押 73%、被迫性强）恰好相反</td>
+</tr>
+<tr>
+<td><strong>② 主动回购注销</strong></td>
+<td>第一期回购 789,128 股、金额 1,516.48 万元（已注销）；第二期回购 1,949,117 股，<strong>2026-08-04 全部注销</strong>，总股本由 168,309,120 股减至 <strong>166,360,003 股</strong><sup class="fn"><a href="#fn-33" id="fnref-33">[33]</a></sup><sup class="fn"><a href="#fn-34" id="fnref-34">[34]</a></sup><sup class="fn"><a href="#fn-7" id="fnref-7">[7]</a></sup></td>
+<td><strong>真金白银减少注册资本</strong>，是"创始人视角认为股价被低估"的硬证据（注销而非用于激励，说明不是为了省激励成本）</td>
+</tr>
+<tr>
+<td><strong>③ 六大客户关系的"人质效应"</strong></td>
+<td>公司深绑雀巢、达能、飞鹤、伊利、澳优、雅培等；2025 年境外收入 1.88 亿元、毛利率 63.09%<sup class="fn"><a href="#fn-21" id="fnref-21">[21]</a></sup></td>
+<td>创始人<strong>必须把这条链条救回来</strong>——ARA 出口是这家公司唯一的现金牛，客户关系一旦永久流失，27 年的技术积累将无处变现</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>一句话</strong>：ST天玑的实控人是"<strong>被迫自救</strong>"（成本倒挂＋高质押）；ST嘉必优的实控人是"<strong>主动自救也没别的选择</strong>"（零杠杆，但主业就是唯一资产）。两者动机强度不同，但都指向同一个结论——<strong>这个老板不会跑，也不打算讲故事换钱，他只能等认证、等恢复</strong>。</p>
+</blockquote>
+<h3 id="h-3-9">2.3 前十大股东（2026-06-30 中报定稿）<sup class="fn"><a href="#fn-3" id="fnref-3">[3]</a></sup></h3>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>股东</th>
+<th>期末持股（股）</th>
+<th>比例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>武汉烯王生物工程有限公司</td>
+<td>74,340,000</td>
+<td>44.17%</td>
+<td>控股股东，无质押冻结</td>
+</tr>
+<tr>
+<td>2</td>
+<td>魏春木</td>
+<td>4,962,010</td>
+<td>2.95%</td>
+<td>其中 494.70 万股经信用账户持有（融资盘）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>易德伟</td>
+<td>2,331,377</td>
+<td>1.39%</td>
+<td>实控人</td>
+</tr>
+<tr>
+<td>4</td>
+<td>陈海杰</td>
+<td>1,500,000</td>
+<td>0.89%</td>
+<td>二季度新进</td>
+</tr>
+<tr>
+<td>5</td>
+<td>张德成</td>
+<td>1,233,718</td>
+<td>0.73%</td>
+<td>新进</td>
+</tr>
+<tr>
+<td>6</td>
+<td>招商银行-金信深圳成长灵活配置混合</td>
+<td>1,159,840</td>
+<td>0.69%</td>
+<td><strong>公募基金，二季度新进</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>王华标</td>
+<td>1,108,165</td>
+<td>0.66%</td>
+<td>财务负责人</td>
+</tr>
+<tr>
+<td>8</td>
+<td>MORGAN STANLEY &amp; CO. INTERNATIONAL PLC.</td>
+<td>1,102,037</td>
+<td>0.65%</td>
+<td><strong>外资，二季度加仓 90.41 万股</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>杜斌</td>
+<td>976,383</td>
+<td>0.58%</td>
+<td>董事</td>
+</tr>
+<tr>
+<td>10</td>
+<td>林高宇</td>
+<td>812,758</td>
+<td>0.48%</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>资金面的三个信号</strong>：①股东户数从 3 月末 10,709 户降至 6 月末 <strong>9,467 户（-11.6%）</strong>，筹码在崩盘途中集中<sup class="fn"><a href="#fn-2" id="fnref-2">[2]</a></sup><sup class="fn"><a href="#fn-29" id="fnref-29">[29]</a></sup>；②<strong>摩根士丹利国际与金信基金都在暴跌中逆势进场</strong>——外资自营＋境内公募同时出现在一只 ST 股前十大，说明机构把它当"事故错杀"而非"价值毁灭"来定价（<strong>但需注意：这是 6 月末持仓，7 月末戴帽后是否还在，要等三季报才能验证</strong>）；③二股东魏春木 494.7 万股走信用账户，是前十大中唯一的杠杆筹码，需防其被动波动。</p>
+<hr>
+<h2 id="h-2-10">三、控制权结构：本案"控制权从未变更"，六维框架要做同构替换</h2>
+<p>方法论 §4.1~§4.6 的六维拆解，是为"<strong>控制权正在变更</strong>"的标的（同大股份范式）设计的。嘉必优的情况完全不同——<strong>控制权自 1999 年至今没有变过，也不在市场上</strong>。因此本节按 ST佳缘 案确立的"同构替换"原则，把六维映射为本案真正重要的六个问题：</p>
+<table>
+<thead>
+<tr>
+<th>原六维</th>
+<th>本案的同构替换</th>
+<th>本案答案（结论先行）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4.1 重组节奏</td>
+<td><strong>摘帽节奏</strong></td>
+<td>摘帽不挂钩年报周期，<strong>"触及情形消除"即可申请</strong>；但 9 月第二期进展公告未出、记录表停更，<strong>恢复节奏比市场预期慢</strong></td>
+</tr>
+<tr>
+<td>4.2 新实控人背景与意图</td>
+<td><strong>原实控人处境与意愿</strong></td>
+<td>创始人自持 44.17%（通过武汉烯王）＋1.39%（个人），零质押、主动回购注销——<strong>意愿强、杠杆零</strong></td>
+</tr>
+<tr>
+<td>4.3 上市公司原业务质量</td>
+<td><strong>主业受损的性质</strong>（外生 vs 内生）</td>
+<td><strong>外生事件冲击</strong>：技术、产能、客户关系未损毁；受损的是"出口合规资格"和"客户信心"</td>
+</tr>
+<tr>
+<td>4.4 承诺包活口拆解</td>
+<td><strong>规则约束与制度锁拆解</strong></td>
+<td>科创板 ST 不锁发股买资产（本案审计意见为无保留，非保留/否定/无法表示）——<strong>资本运作通道未被封死</strong>（详见第五节）</td>
+</tr>
+<tr>
+<td>4.5 全流程进度与行情映射</td>
+<td><strong>行情映射与流动性</strong></td>
+<td>戴帽首日 -20.02%、区间最低后复权 10.377（2026-07-30）；<strong>9 月以来日均成交额降至千万级以下</strong>（9-22 仅 720.6 万元、换手 0.501%）<sup class="fn"><a href="#fn-29" id="fnref-29">[29]</a></sup></td>
+</tr>
+<tr>
+<td>4.6 运作特征与综合判断</td>
+<td><strong>一句话核心矛盾</strong></td>
+<td><strong>"不需要救兵，但也没有第二条曲线"</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-3-11">3.1 五类救兵画像：为什么这个票"无人来救、也无需来救"</h3>
+<p>用方法论的救兵框架扫一遍，结论很特殊：</p>
+<ul>
+<li><strong>产业资本</strong>：无入局信号。公司主业本身就是细分产业龙头，不缺"被整合"的逻辑；若出现帝斯曼-芬美意等同业整合意向，属重大变量但目前零信号；</li>
+<li><strong>资本套利者</strong>：无。市值 14.39 亿元、无立案、股权干净，是"干净的壳"没错——但<strong>武汉烯王 44.17% 的持股比例＋家族治理结构，决定了控制权根本不在市场上</strong>；</li>
+<li><strong>地方国资</strong>：无信号（武汉东湖高新区背景的合成生物产业平台未现身）；</li>
+<li><strong>原控股股东自救</strong>：<strong>正在进行时</strong>——回购注销、供应链升级、客户一对一、多元化转产，全是管理层在干；</li>
+<li><strong>债权人</strong>：不适用——负债率 16.29%，货币资金 1.87 亿元 vs 短期借款 0.70 亿元＋长期借款 0.99 亿元，净现金状态，无流动性危机<sup class="fn"><a href="#fn-2" id="fnref-2">[2]</a></sup>。</li>
+</ul>
+<blockquote>
+<p>判断：<strong>壳经济学在这里失效。</strong>"谁来救、怎么救、救到哪一步"的三连问，答案是：不需要救，需要的是<strong>时间与信任修复</strong>。真正的博弈变量不是控制权，而是 ARA 出口链的恢复节奏。</p>
+</blockquote>
+<h3 id="h-3-12">3.2 重组管道现状：一条已关闭，一条仍开着</h3>
+<ul>
+<li><strong>已关闭</strong>：欧易生物交易 2025-08-29 终止并撤回申请，公司当时承诺 1 个月内不筹划重大资产重组（早已到期）<sup class="fn"><a href="#fn-19" id="fnref-19">[19]</a></sup>。截至 2026-09-22，<strong>无任何新重组动作</strong><sup class="fn"><a href="#fn-4" id="fnref-4">[4]</a></sup>。</li>
+<li><strong>仍开着</strong>：<strong>科创板 ST 不构成"不得发行股份购买资产"的障碍</strong>——该限制针对的是"最近一年一期审计意见为保留/否定/无法表示意见"的情形（科创板上市规则及重大资产重组审核规则），<strong>嘉必优 2025 年审计意见为带强调事项段的"无保留意见"，2026 半年报未经审计</strong><sup class="fn"><a href="#fn-21" id="fnref-21">[21]</a></sup><sup class="fn"><a href="#fn-2" id="fnref-2">[2]</a></sup>。<strong>这一点与 ST信源（内控否定意见）、ST天玑（内控否定意见）有本质区别——后两者在 ST 期间资本运作通道被规则锁死，嘉必优没有被锁。</strong></li>
+<li><strong>2026-05-13 公司口径</strong>：被问及"是否考虑上下游并购重组计划"时答"公司将根据法规，<strong>合理运用各种资本运作工具</strong>，构建开放共赢的产业生态，助力实现战略落地。具体情况请以公司公告为准"<sup class="fn"><a href="#fn-5" id="fnref-5">[5]</a></sup>——<strong>这是戴帽前最后一次就资本运作表态，措辞是开放式的</strong>。</li>
+</ul>
+<hr>
+<h2 id="h-2-13">四、意图分析与节奏推测：把"恢复"拆成可验证的四段</h2>
+<p>本案没有"新实控人意图"可猜，但有<strong>一条必须自己走完的恢复链条</strong>。把它拆成四段，每段都有自己的验证点和时间锚——这才是本案真正的"意图分析"。</p>
+<h3 id="h-3-14">4.1 恢复链条的四段拆解</h3>
+<table>
+<thead>
+<tr>
+<th>段</th>
+<th>内容</th>
+<th>当前状态（截至 2026-09-22）</th>
+<th>可验证抓手</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① 生产端</strong></td>
+<td>工厂能否按最高标准稳定生产</td>
+<td>✅ <strong>已完成</strong>。公司口径："生产端目前公司所产产品能够符合目前国内外最新最严格检测要求"；"目前工厂根据市场订单排产"（2026-05-13）；进展公告"所产产品能够符合国内外最新检测要求"<sup class="fn"><a href="#fn-5" id="fnref-5">[5]</a></sup><sup class="fn"><a href="#fn-7" id="fnref-7">[7]</a></sup></td>
+<td>半年报存货结构；后续记录表口径</td>
+</tr>
+<tr>
+<td><strong>② 合规端</strong></td>
+<td>中国官方证书＋实验室报告的逐批出具流程</td>
+<td>⚠️ <strong>在跑，但慢</strong>。"围绕全链条风险监控优化，通过全面技术研究、检测能力建设、<strong>企业标准科研攻关</strong>等系统性举措"<sup class="fn"><a href="#fn-5" id="fnref-5">[5]</a></sup><sup class="fn"><a href="#fn-7" id="fnref-7">[7]</a></sup></td>
+<td>欧盟 (EU) 2026/459 的任何修订信号</td>
+</tr>
+<tr>
+<td><strong>③ 客户认证端</strong></td>
+<td>逐家客户的重新审核、检测验证、恢复供货</td>
+<td>⚠️ <strong>部分恢复</strong>。"邀请客户现场审核、对新批次产品检测验证，<strong>部分大健康业务客户已恢复稳定供货</strong>"（2026-08-29 进展公告）<sup class="fn"><a href="#fn-7" id="fnref-7">[7]</a></sup></td>
+<td><strong>每月进展公告的客户名单变化</strong>（核心 KPI）</td>
+</tr>
+<tr>
+<td><strong>④ 收入端</strong></td>
+<td>恢复到能过 1 亿元红线</td>
+<td>❌ <strong>未达标</strong>。H1 仅 5,759.11 万元，<strong>下半年需 ≥4,241 万元</strong>才能过线<sup class="fn"><a href="#fn-2" id="fnref-2">[2]</a></sup></td>
+<td>10 月底三季报单季营收量级</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>把这张表和股价对齐</strong>：股价已经在为"①已完成"付钱（破净、PB 0.968），但<strong>尚未为"③部分恢复"付钱</strong>（因为没有名单、没有数字）。这正是"恢复节奏"与"股价"之间的价差所在。</p>
+</blockquote>
+<h3 id="h-3-15">4.2 关键时间锚（全部来自公司自己披露的规则与文件）</h3>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>事件</th>
+<th>性质</th>
+<th>可验证性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>每月末前后</strong></td>
+<td>ST 进展公告（规则强制，至少每月一次）</td>
+<td>★★★ 最高频信源</td>
+<td>出/不出、内容变化</td>
+</tr>
+<tr>
+<td><strong>2026-10 底</strong></td>
+<td>三季报（单季营收量级直接决定 1 亿红线成败）</td>
+<td>★★★ 决定性</td>
+<td>数字</td>
+</tr>
+<tr>
+<td><strong>2026-12-31</strong></td>
+<td>全年收入落定 → 1 亿元红线判定</td>
+<td>★★★ 生死开关</td>
+<td>年报表</td>
+</tr>
+<tr>
+<td><strong>2027-04 底</strong></td>
+<td>2026 年报 + 审计意见（<strong>是否维持"无保留"是第二条生死线</strong>）</td>
+<td>★★★</td>
+<td>审计意见类型</td>
+</tr>
+<tr>
+<td><strong>滚动</strong></td>
+<td>欧盟 (EU) 2026/459 修订 / 其他市场是否效仿</td>
+<td>★★</td>
+<td>政策文件</td>
+</tr>
+<tr>
+<td><strong>滚动</strong></td>
+<td>新客户/新市场认证突破（如雅培式突破的复现）</td>
+<td>★★★</td>
+<td>公告/记录表</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-3-16">4.3 与"新·大·强"三字诀的对撞：本书最锋利的一段</h3>
+<p>方法论的核心是找"从 0 到 1 的崭新业务方向"。<strong>把三字诀用到嘉必优身上，会得到很不客气的结果：</strong></p>
+<ul>
+<li><strong>新 ⚠️</strong>：HMOs、燕窝酸 SA、动物营养、AI＋合成生物——<strong>四条新方向全部是从 ARA/DHA 技术平台（微生物发酵＋合成生物学）长出来的</strong>。它们不是"二代星产品"式的全新物种，而是<strong>同一套发酵罐＋同一套菌种改造能力的产品化延伸</strong>。真正的"新"只有一件：<strong>HMOs 作为婴配新原料的法规扩容</strong>（卫健委批准添加至 1/2/3 段＋儿童奶粉＋特医，且拟扩至调制乳、发酵乳、饮料等多品类）——<strong>这是法规创造的新市场，不是公司创造的新技术</strong>。</li>
+<li><strong>大 ✅</strong>：HMOs 的空间是真的。2025-12 记录表原文："国家卫健委已经批准其作为婴配奶粉新原料添加至 1 段、2 段、3 段以及儿童奶粉和特殊医学用途婴儿配方食品中，<strong>将直接加速 HMOs 产品在婴配领域的应用</strong>……2'-FL 和 LNnT 添加量分别为 0.7-2.4g/L、0.2-0.6g/L，<strong>以克为计量单位，添加量较大，具备较大的市场容量</strong>"<sup class="fn"><a href="#fn-7" id="fnref-7">[7]</a></sup>。</li>
+<li><strong>强 ❌</strong>：这是全篇最需要记住的一句——<strong>公司在 2026-07-09（戴帽前 15 天）的原文仍是"2'-FL 已完成国内三新食品申报及美国 Self-GRAS 认证，成功实现产业化，正在推进相关下游客户准入流程"</strong><sup class="fn"><a href="#fn-22" id="fnref-22">[22]</a></sup>。<strong>"正在推进客户准入流程"＝没有收入。</strong> 燕窝酸口径是"收入<strong>将逐步提升</strong>"<sup class="fn"><a href="#fn-22" id="fnref-22">[22]</a></sup>；动物营养口径是"<strong>收获诸多客户合作意向</strong>""计划两年内……实现对鱼油的替代"<sup class="fn"><a href="#fn-22" id="fnref-22">[22]</a></sup>。<strong>三个"将"字，是本案最诚实的风险提示。</strong></li>
+</ul>
+<blockquote>
+<p><strong>一句话总结对撞结果</strong>：<strong>嘉必优有"第二曲线"，但没有"第二曲线的斜率"。</strong> 它的四条新方向都需要 2-3 年才能对报表产生意义，而 ST 的时钟只给了它最多 1 年零 3 个月（到 2027 年报）。<strong>时间不匹配，是这只票最本质的矛盾。</strong></p>
+</blockquote>
+<hr>
+<h2 id="h-2-17">五、规则约束与制度锁拆解（替代"承诺包活口"）</h2>
+<p>方法论 §4.4 的"承诺包活口拆解"针对<strong>控制权变更型</strong>标的——新实控人进来后必须拆开承诺包，看哪些是硬约束、哪些留了活口。<strong>本案没有承诺包</strong>（控制权未变更、无业绩承诺、无补偿安排）。真正约束这家公司的，是<strong>四重规则约束</strong>和<strong>三份仍在存续的书面承诺</strong>。</p>
+<h3 id="h-3-18">5.1 触发条款与摘帽路径（规则与公告原文）</h3>
+<p><strong>触发条款</strong>——《上海证券交易所科创板股票上市规则》第 12.9.1 条。戴帽公告原文引用如下：</p>
+<blockquote>
+<p>"上市公司出现下列情形之一的，本所对其股票实施其他风险警示：（四）公司生产经营活动受到严重影响且预计在 3 个月内不能恢复正常"</p>
+</blockquote>
+<p>（公告原文同时表述为"第 12.9.1 条之第四款"，规范表述为第 12.9.1 条第一款第（四）项。）</p>
+<p><strong>戴帽程序</strong>：2026-07-24（周五）晚公告 → <strong>2026-07-27 停牌一天</strong> → <strong>2026-07-28 复牌并实施</strong>。简称由"嘉必优"变更为"ST 嘉必优"，扩位简称由"嘉必优生物"变更为"ST 嘉必优生物"，证券代码仍为 688089。</p>
+<p><strong>摘帽路径</strong>——本案与其他 ST 最大的结构性差异：</p>
+<blockquote>
+<p><strong>科创板"其他风险警示"的撤销条件是"触及情形已完全消除"，不挂钩年报周期。</strong></p>
+</blockquote>
+<ul>
+<li><strong>没有 12 个月锁定期</strong>。这一点与 ST佳缘（301117）这类"证监会行政处罚型 ST"形成本质区别——后者必须同时满足"对相应年度财报追溯重述"＋"自行政处罚决定书之日起满 12 个月"两个硬条件，时间锁死；<strong>嘉必优只需"生产经营恢复正常"这一条</strong>。</li>
+<li><strong>恢复即可申请</strong>：公司判断触及情形消除后公告并向上交所申请，<strong>上交所于收到申请后 15 个交易日内决定是否撤销</strong>。</li>
+</ul>
+<p>这枚硬币必须两面都看：</p>
+<table>
+<thead>
+<tr>
+<th>面</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>正面（时间自由）</strong></td>
+<td><strong>理论上随时可摘</strong>——只要客户恢复、订单回来、产线跑起来，不必等年报。这在时间上给足了弹性，是本票最被低估的制度优势</td>
+</tr>
+<tr>
+<td><strong>反面（无保护期）</strong></td>
+<td><strong>没有"整改期保护"，也没有"倒计时终点"</strong>。若恢复迟迟不来，每月进展公告就是每月一次的负面提醒；且若拖到 2026 年报扣除后收入 &lt; 1 亿元，<strong>叠加财务类退市风险警示（*ST）</strong>——戴帽公告第五节已把这条风险原文写明</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-3-19">5.2 科创板 ST 的四重制度约束（与主板截然不同）</h3>
+<p>依据戴帽公告原文，本案在风险警示期间受四重制度约束：</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>约束</th>
+<th>具体内容</th>
+<th>投研含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>①</strong></td>
+<td><strong>每月披露义务</strong></td>
+<td>规则第 12.9.5 条：<strong>应当至少每月披露 1 次提示性公告</strong>，分阶段披露涉及事项的解决进展</td>
+<td><strong>这是本案最高频、最可依赖的信源</strong>——每月一份"恢复进度打卡表"。第一期 2026-08-29 已出，<strong>第二期截至 2026-09-22 未出</strong></td>
+</tr>
+<tr>
+<td><strong>②</strong></td>
+<td><strong>单日买入上限 50 万股</strong></td>
+<td>投资者当日通过<strong>竞价交易 + 大宗交易 + 盘后固定价格交易</strong>累计买入不得超过 <strong>50 万股</strong>；<strong>普通证券账户与融资融券信用账户合并计算</strong>；"委托买入数量 + 当日已买入数量 + 已申报买入但尚未成交也未撤销的数量"三者之和不得超过 50 万股</td>
+<td><strong>机构建仓被硬性"限流"</strong>。按 2026-09-22 收盘 8.65 元计，50 万股 ≈ <strong>432.5 万元/日</strong>。这直接解释了为什么换手率长期趴在 1% 以下（9-22 仅 0.501%）。<strong>注</strong>：据上交所退市制度问答，上市公司回购股份、5% 以上股东按已披露增持计划增持，可不受 50 万股限制</td>
+</tr>
+<tr>
+<td><strong>③</strong></td>
+<td><strong>不进入风险警示板，涨跌幅仍 20%</strong></td>
+<td>实施期间股票<strong>不进入上交所风险警示板交易</strong>，不适用风险警示板交易的相关规定；<strong>股票涨跌幅不变，仍为 20%</strong></td>
+<td>波动率上限是主板 ST（5%）的 <strong>4 倍</strong>。这是"事故股"仓位管理必须重算的参数</td>
+</tr>
+<tr>
+<td><strong>④</strong></td>
+<td><strong>盘后固定价格交易仍可用</strong></td>
+<td>科创板特有机制（15:05-15:30，以当日收盘价成交）在 ST 期间继续可用</td>
+<td>为大额资金提供了不受盘中冲击成本影响的合规通道</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>一句话</strong>：<strong>科创板 ST ≠ 主板 ST。</strong> 用主板 ST 的肌肉记忆（5% 涨跌幅、风险警示板、小单可进）来交易这只票，会同时犯"低估波动"和"误判流动性"两个错。</p>
+</blockquote>
+<h3 id="h-3-20">5.3 制度锁清单：什么被锁死，什么没被锁</h3>
+<p>这是本案最需要与 ST信源、ST天玑 对照的一段——<strong>三只 ST 里，只有嘉必优的资本运作通道没被锁死</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>制度锁</th>
+<th>ST信源（300352.SZ）</th>
+<th>ST天玑（300245.SZ）</th>
+<th><strong>ST嘉必优（688089.SH）</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025 年财报审计意见</td>
+<td>保留/非标类</td>
+<td>非标类</td>
+<td><strong>带强调事项段的"无保留意见"</strong></td>
+</tr>
+<tr>
+<td>2025 年内控审计意见</td>
+<td><strong>否定意见</strong></td>
+<td><strong>否定意见</strong></td>
+<td><strong>标准无保留意见</strong></td>
+</tr>
+<tr>
+<td><strong>能否发行股份购买资产</strong></td>
+<td>❌ <strong>被锁</strong>（最近一年一期非标）</td>
+<td>❌ <strong>被锁</strong></td>
+<td><strong>✅ 未锁</strong></td>
+</tr>
+<tr>
+<td>涨跌幅</td>
+<td>20%（创业板）</td>
+<td>20%（创业板）</td>
+<td>20%（科创板）</td>
+</tr>
+<tr>
+<td>单日买入上限</td>
+<td>无</td>
+<td>无</td>
+<td><strong>50 万股</strong></td>
+</tr>
+<tr>
+<td>摘帽时间条件</td>
+<td>内控整改 + 年报</td>
+<td>内控整改 + 年报</td>
+<td><strong>"触及情形消除"即可，无定期报告挂钩</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>结论</strong>：<strong>嘉必优是这三只里唯一"资本运作通道未被封死 + 摘帽无时间锁"的 ST。</strong> 若 2026 年报维持无保留意见，公司完全可以在 ST 期间发行股份购买资产。这与它"戴帽前 11 个月（2025-08-29）刚刚终止欧易生物交易"的历史形成了微妙的期权价值：<strong>不是不能做重组，而是当时不想做（或不敢做）；现在若想做，规则没拦着。</strong></p>
+</blockquote>
+<p>⚠️ 但必须同时说清两个"但是"：</p>
+<ol>
+<li><strong>通道开着 ≠ 有人来敲门。</strong> 截至 2026-09-22，<strong>无任何新重组筹划公告</strong>；</li>
+<li><strong>2026 年报审计意见若从"无保留"降级为"保留/无法表示"</strong>，通道立刻关闭，同时叠加退市风险。<strong>这是继"1 亿元收入红线"之后的第二条生死线，且市场定价几乎完全忽略了它。</strong></li>
+</ol>
+<h3 id="h-3-21">5.4 三份仍在存续的书面承诺</h3>
+<table>
+<thead>
+<tr>
+<th>承诺</th>
+<th>原文要点</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IPO 股份购回承诺</strong></td>
+<td>嘉必优、实际控制人易德伟、控股股东武汉烯王承诺：<strong>保证不存在任何欺诈发行的情形；如不符合发行上市条件、以欺骗手段骗取发行注册并已发行上市，将在中国证监会等有权部门确认后五个工作日内启动股份购回程序，购回本次公开发行的全部新股</strong></td>
+<td><strong>未触发</strong>（无立案、无处罚、无欺诈发行认定）。但它是悬在"若未来出现上市条件问题"上的总兜底条款</td>
+</tr>
+<tr>
+<td><strong>控股股东/实控人不侵占承诺</strong></td>
+<td>武汉烯王、易德伟分别承诺"不越权干预经营管理活动，不侵占嘉必优利益，<strong>前述承诺是无条件且不可撤销的</strong>"</td>
+<td>长期履行中；中报"非经营性资金占用及其他关联资金往来"<strong>全栏为零</strong>，无违反迹象</td>
+</tr>
+<tr>
+<td><strong>分红回报三年规划</strong></td>
+<td>上市后持续现金分红，<strong>累计已超 24,258.95 万元、连续 6 年实施</strong></td>
+<td>持续履行；<strong>2025 年度不分配</strong>（第四届董事会第十一次会议审议通过）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-3-22">5.5 一个不容忽略的动作：戴帽前夜的会计估计变更</h3>
+<p><strong>2026-04-22/23</strong>（与年报同日披露），公司把<strong>部分房屋及建筑物折旧年限由 20-25 年调整为 20-50 年</strong>——仅适用 <strong>2025-11-01 及以后转固/将投入使用的资产</strong>，采用<strong>未来适用法</strong>，<strong>使 2025 年度固定资产折旧额减少 623,219.41 元、净利润相应增加 623,219.41 元</strong>，无需追溯调整<sup class="fn"><a href="#fn-35" id="fnref-35">[35]</a></sup>。依据是"新建土建项目工程建筑结构安全等级为二级、设计使用年限 50 年，结合土地使用权剩余年限不足 50 年"。</p>
+<p><strong>怎么读这个动作？</strong></p>
+<ul>
+<li><strong>金额上不重大</strong>：62.32 万元 ÷ 2025 年归母净利 14,372.45 万元 = <strong>0.43%</strong>；</li>
+<li><strong>但方向上值得登记</strong>：这是"<strong>戴帽前一年把利润向上微调 62 万元</strong>"的动作。它由大信会计师事务所背书、审计委员会一致同意、程序合规（无需股东会审议），且理由（新建筑更高标准）在工程上自洽；</li>
+<li><strong>方法论意义</strong>：在"业绩即将断崖"的前夜调整折旧年限，<strong>方向性应作为治理观察点留存</strong>。<strong>本报告仅登记事实与性质，不作任何违规推断。</strong></li>
+</ul>
+<hr>
+<h2 id="h-2-23">六、业务与财务</h2>
+<h3 id="h-3-24">6.1 主营业务与产品矩阵</h3>
+<p>公司以<strong>合成生物学</strong>为底层技术，以<strong>细胞工厂</strong>为制备方式，通过生物制造为全球营养与健康领域客户提供营养素产品与解决方案。</p>
+<table>
+<thead>
+<tr>
+<th>产品大类</th>
+<th>具体产品</th>
+<th>主要应用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>多不饱和脂肪酸类</strong></td>
+<td><strong>花生四烯酸（ARA）</strong>、<strong>二十二碳六烯酸（DHA）</strong></td>
+<td>婴幼儿配方奶粉、健康食品、动物营养</td>
+</tr>
+<tr>
+<td><strong>萜类物质</strong></td>
+<td>β-胡萝卜素（BC）、虾青素</td>
+<td>食品营养、动物营养</td>
+</tr>
+<tr>
+<td><strong>糖类物质</strong></td>
+<td><strong>N-乙酰神经氨酸（SA，燕窝酸）</strong>、<strong>母乳低聚糖（HMOs）</strong></td>
+<td>个人护理及美妆、婴幼儿配方奶粉、健康食品</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>生产模式</strong>：以<strong>备货为主 + 部分以销定产</strong>相结合；制定"年度 → 月度 → 周"三级生产计划，持续推进柔性排产；</li>
+<li><strong>销售模式</strong>：<strong>To B 为主</strong>。国内市场以<strong>直销</strong>为主；国外市场以<strong>经销</strong>为主、直销为辅。对多数客户采用<strong>先货后款</strong>，一般给予 <strong>1-3 个月</strong>商业信用期；</li>
+<li><strong>行业分类</strong>：所属行业为<strong>生物制造与合成生物</strong>。据年报引述工信部数据，"十四五"期间我国生物制造产业总规模达 1.1 万亿元，生物发酵产品产量占全球 70% 以上；2026 年两会政府工作报告将"生物制造"与量子科技、具身智能、6G 并列为需重点培育的未来产业。</li>
+</ul>
+<h3 id="h-3-25">6.2 七期财务总表（2021-2026H1，全部取自定期报告原文）</h3>
+<p>单位：元</p>
+<table>
+<thead>
+<tr>
+<th>报告期</th>
+<th>营业收入</th>
+<th>归母净利润</th>
+<th>扣非归母净利润</th>
+<th>经营活动现金流净额</th>
+<th>归母净资产</th>
+<th>总资产</th>
+<th>资产负债率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2021</strong></td>
+<td>351,109,348.43</td>
+<td>128,555,441.31</td>
+<td>83,405,360.32</td>
+<td>103,291,182.60</td>
+<td>1,381,000,550.04</td>
+<td>1,448,466,712.45</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>2022</strong></td>
+<td>433,424,477.65</td>
+<td>64,371,911.81</td>
+<td>30,737,838.85</td>
+<td>176,402,734.49</td>
+<td>1,418,928,877.46</td>
+<td>1,611,338,296.17</td>
+<td>11.56%</td>
+</tr>
+<tr>
+<td><strong>2023</strong></td>
+<td>443,803,122.41</td>
+<td>91,374,165.38</td>
+<td>62,449,475.27</td>
+<td>68,888,874.88</td>
+<td>1,476,352,721.21</td>
+<td>1,611,492,632.01</td>
+<td>7.30%</td>
+</tr>
+<tr>
+<td><strong>2024</strong></td>
+<td>555,593,402.27</td>
+<td>124,212,718.70</td>
+<td>99,989,941.08</td>
+<td>173,044,682.14</td>
+<td>1,556,087,313.72</td>
+<td>1,686,816,628.88</td>
+<td>6.95%</td>
+</tr>
+<tr>
+<td><strong>2025</strong></td>
+<td>563,135,748.41</td>
+<td><strong>143,724,509.28</strong></td>
+<td><strong>127,008,903.40</strong></td>
+<td><strong>270,069,772.18</strong></td>
+<td>1,634,061,232.96</td>
+<td>1,859,665,165.77</td>
+<td>11.62%</td>
+</tr>
+<tr>
+<td><strong>2026H1</strong></td>
+<td><strong>57,591,065.75</strong></td>
+<td><strong>-100,577,846.47</strong></td>
+<td><strong>-100,128,602.36</strong></td>
+<td><strong>-8,436,238.09</strong></td>
+<td>1,531,382,670.65</td>
+<td>1,836,875,760.37</td>
+<td><strong>16.29%</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>口径说明：2021 年数据为<strong>执行《企业会计准则解释第 16 号》后的追溯调整后数值</strong>（调整前归母净利 128,578,881.86 元、归母净资产 1,381,023,990.59 元），取自 2023 年年度报告"主要会计数据"表；2022-2025 年取自 2025 年年度报告"近三年主要会计数据和财务指标"表；2026H1 取自 2026 年半年度报告 p5-6。<strong>资产负债率 = 负债合计 ÷ 资产总计</strong>，2021 年因未取得该期所有者权益合计完整口径，留空不估（其余五期均已核实）。</p>
+</blockquote>
+<p><strong>指标表（仅列可核实期）</strong></p>
+<table>
+<thead>
+<tr>
+<th>报告期</th>
+<th>基本每股收益（元/股）</th>
+<th>稀释每股收益（元/股）</th>
+<th>加权平均ROE</th>
+<th>研发投入占营收比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2022</strong></td>
+<td>0.38</td>
+<td>0.38</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>2023</strong></td>
+<td>0.54</td>
+<td>0.54</td>
+<td>6.28%</td>
+<td>8.70%</td>
+</tr>
+<tr>
+<td><strong>2024</strong></td>
+<td>0.74</td>
+<td>0.74</td>
+<td>8.16%</td>
+<td>8.62%</td>
+</tr>
+<tr>
+<td><strong>2025</strong></td>
+<td><strong>0.86</strong></td>
+<td><strong>0.86</strong></td>
+<td><strong>8.99%</strong></td>
+<td>8.42%</td>
+</tr>
+<tr>
+<td><strong>2026H1</strong></td>
+<td><strong>-0.60</strong></td>
+<td><strong>-0.60</strong></td>
+<td><strong>-6.36%</strong></td>
+<td><strong>34.13%</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>2026H1 研发费用 19,654,817.72 元（上年同期 19,759,866.88 元，<strong>-0.53%</strong>）——<strong>研发投入绝对额几乎没减，是营收崩塌 81.22% 才把研发占营收比推高到 34.13%。</strong> 这是一个必须区分的要点：<strong>不是"加大研发"，是"分母塌了"</strong>。</p>
+</blockquote>
+<p><strong>非经常性损益的构成变化（三年对照）</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>2023 年</th>
+<th>2024 年</th>
+<th>2025 年</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>政府补助</td>
+<td>5,153,172.94</td>
+<td>12,361,010.67</td>
+<td>6,187,109.39</td>
+</tr>
+<tr>
+<td>金融资产公允价值变动及处置</td>
+<td>-1,162,275.71</td>
+<td>267,179.56</td>
+<td>-593,568.94</td>
+</tr>
+<tr>
+<td>委托他人投资/管理资产损益</td>
+<td>5,976,385.83</td>
+<td>1,135,164.36</td>
+<td>482,539.96</td>
+</tr>
+<tr>
+<td>单独减值测试应收款项减值准备转回</td>
+<td>6,125,895.19</td>
+<td>1,064,167.73</td>
+<td>1,578,245.13</td>
+</tr>
+<tr>
+<td><strong>其他营业外收支</strong></td>
+<td><strong>17,947,479.93</strong></td>
+<td><strong>13,834,141.06</strong></td>
+<td><strong>12,437,996.85</strong></td>
+</tr>
+<tr>
+<td>减：所得税影响额</td>
+<td>5,055,630.78</td>
+<td>4,286,633.52</td>
+<td>2,822,080.99</td>
+</tr>
+<tr>
+<td>减：少数股东权益影响额（税后）</td>
+<td>107,422.99</td>
+<td>149,588.44</td>
+<td>554,635.52</td>
+</tr>
+<tr>
+<td><strong>非经常性损益合计</strong></td>
+<td><strong>28,924,690.11</strong></td>
+<td><strong>24,222,777.62</strong></td>
+<td><strong>16,715,605.88</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>"其他营业外收支"三年分别为 1,794.75 万元 / 1,383.41 万元 / 1,243.80 万元——连续三年超过 1,200 万元，且是公司非经常性损益的最大单一来源。</strong> 结合第五节第 3 节（2026-01-05/06 雀巢召回），这笔钱的来源已在报告中定位为<strong>帝斯曼关于 ARA 专利无效事项和解后未按约采购的现金补偿</strong>。也就是说：<strong>这家公司过去三年的"非经常性"收益，很大一部分来自全球寡头对手的违约赔偿。</strong> 这是一条"技术实力"的间接证据，也是"一次性、不可持续"的明确标注。</p>
+</blockquote>
+<h3 id="h-3-26">6.3 2026H1 财务深度体检</h3>
+<p><strong>利润表（合并，单位：元）</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>2026H1</th>
+<th>2025H1</th>
+<th>变动</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>营业收入</td>
+<td><strong>57,591,065.75</strong></td>
+<td>306,732,098.82</td>
+<td><strong>-81.22%</strong></td>
+</tr>
+<tr>
+<td>营业成本</td>
+<td><strong>70,530,965.64</strong></td>
+<td>154,348,376.99</td>
+<td><strong>-54.30%</strong></td>
+</tr>
+<tr>
+<td>销售费用</td>
+<td>7,901,468.01</td>
+<td>11,622,997.12</td>
+<td>-32.02%</td>
+</tr>
+<tr>
+<td>管理费用</td>
+<td>24,670,892.02</td>
+<td>18,973,096.56</td>
+<td>+30.03%</td>
+</tr>
+<tr>
+<td>财务费用</td>
+<td>5,832,504.69</td>
+<td>-2,944,595.97</td>
+<td>+298.07%</td>
+</tr>
+<tr>
+<td>研发费用</td>
+<td>19,654,817.72</td>
+<td>19,759,866.88</td>
+<td>-0.53%</td>
+</tr>
+<tr>
+<td>利润总额</td>
+<td><strong>-106,166,061.01</strong></td>
+<td>123,162,334.63</td>
+<td><strong>-186.20%</strong></td>
+</tr>
+<tr>
+<td>净利润</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>归母净利润</strong></td>
+<td><strong>-100,577,846.47</strong></td>
+<td>107,950,937.97</td>
+<td><strong>-193.17%</strong></td>
+</tr>
+<tr>
+<td><strong>扣非归母净利润</strong></td>
+<td><strong>-100,128,602.36</strong></td>
+<td>99,922,796.02</td>
+<td><strong>-200.21%</strong></td>
+</tr>
+<tr>
+<td>经营活动现金流净额</td>
+<td><strong>-8,436,238.09</strong></td>
+<td>117,781,237.94</td>
+<td><strong>-107.16%</strong></td>
+</tr>
+<tr>
+<td>投资活动现金流净额</td>
+<td>-164,437,773.02</td>
+<td>-57,254,603.07</td>
+<td>-187.20%</td>
+</tr>
+<tr>
+<td>筹资活动现金流净额</td>
+<td><strong>+88,724,104.17</strong></td>
+<td>63,343,129.38</td>
+<td>+40.07%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>三个必须点明的技术细节：</strong></p>
+<ol>
+<li><strong>营业成本 &gt; 营业收入（7,053.10 万元 &gt; 5,759.11 万元）——毛损 1,291.99 万元，毛利率 -22.43%。</strong> 上半年"卖一件亏一件"，成本下降（-54.30%）远慢于收入下降（-81.22%），因为<strong>产能停摆但折旧、人工、摊销不因停产而消失</strong>（管理费用 +30.03% 的官方解释即为"房屋及建筑物折旧费用较上期增加"）。</li>
+<li><strong>财务费用由 -294.46 万元转为 +583.25 万元（+298.07%）</strong>，官方解释为"借款利息、汇率波动造成的汇兑损失较上年同期增加"。这一项<strong>从"贡献利润"变成"消耗利润"</strong>，是资产负债结构变化的镜子。</li>
+<li><strong>筹资活动现金流 +8,872.41 万元</strong>（去年同期 6,334.31 万元）：<strong>在利润崩塌的同时，公司在主动加杠杆</strong>——短期借款从 3,366.60 万元增至 7,004.66 万元，长期借款从 4,952.75 万元增至 9,884.40 万元（见下表）。<strong>这是"手上有钱仍借钱"的谜题</strong>——2026-08-27 上证 e 互动已就此问询（见第七节）。</li>
+</ol>
+<p><strong>资产负债表（合并，单位：元）</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>2026-06-30</th>
+<th>2025-12-31</th>
+<th>变动</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>货币资金</td>
+<td>187,437,663.31</td>
+<td>278,229,259.50</td>
+<td>-32.63%</td>
+</tr>
+<tr>
+<td>应收款项（含票据/应收款/融资）</td>
+<td>156,060,616.73</td>
+<td>169,311,383.93</td>
+<td>-7.83%</td>
+</tr>
+<tr>
+<td><strong>存货</strong></td>
+<td><strong>194,591,319.33</strong></td>
+<td>173,272,371.04</td>
+<td><strong>+12.30%</strong></td>
+</tr>
+<tr>
+<td>流动资产合计</td>
+<td>732,541,556.79</td>
+<td>730,684,500.02</td>
+<td>+0.25%</td>
+</tr>
+<tr>
+<td>在建工程</td>
+<td>9,619,992.49</td>
+<td>13,821,846.19</td>
+<td>-30.40%</td>
+</tr>
+<tr>
+<td>固定资产</td>
+<td>877,838,567.40</td>
+<td>501,587,858.17</td>
+<td>—</td>
+</tr>
+<tr>
+<td>无形资产</td>
+<td>42,494,484.60</td>
+<td>43,473,388.15</td>
+<td>-2.25%</td>
+</tr>
+<tr>
+<td>递延所得税资产</td>
+<td>14,334,263.38</td>
+<td>11,801,649.73</td>
+<td>+21.46%</td>
+</tr>
+<tr>
+<td>非流动资产合计</td>
+<td>1,099,645,081.89</td>
+<td>1,137,949,799.93</td>
+<td>-3.37%</td>
+</tr>
+<tr>
+<td><strong>资产总计</strong></td>
+<td><strong>1,836,875,760.37</strong></td>
+<td>1,859,665,165.77</td>
+<td>-1.23%</td>
+</tr>
+<tr>
+<td>短期借款</td>
+<td><strong>70,046,552.51</strong></td>
+<td>33,666,007.78</td>
+<td><strong>+108.06%</strong></td>
+</tr>
+<tr>
+<td>应付账款</td>
+<td>93,289,824.53</td>
+<td>93,246,692.91</td>
+<td>+0.05%</td>
+</tr>
+<tr>
+<td>合同负债</td>
+<td>5,799,237.18</td>
+<td>3,822,471.99</td>
+<td>+51.71%</td>
+</tr>
+<tr>
+<td>应付职工薪酬</td>
+<td>5,873,476.19</td>
+<td>11,474,333.77</td>
+<td>-48.81%</td>
+</tr>
+<tr>
+<td>应交税费</td>
+<td>2,235,350.24</td>
+<td>11,116,657.00</td>
+<td>-79.89%</td>
+</tr>
+<tr>
+<td>一年内到期的非流动负债</td>
+<td>7,178,699.38</td>
+<td>85,522.44</td>
+<td>—</td>
+</tr>
+<tr>
+<td>流动负债合计</td>
+<td>191,320,961.08</td>
+<td>162,633,729.40</td>
+<td>+17.64%</td>
+</tr>
+<tr>
+<td><strong>长期借款</strong></td>
+<td><strong>98,844,029.42</strong></td>
+<td>49,527,510.96</td>
+<td><strong>+99.58%</strong></td>
+</tr>
+<tr>
+<td>非流动负债合计</td>
+<td>107,987,123.02</td>
+<td>53,529,083.22</td>
+<td>+101.74%</td>
+</tr>
+<tr>
+<td><strong>负债合计</strong></td>
+<td><strong>299,308,084.10</strong></td>
+<td>216,162,812.62</td>
+<td><strong>+38.46%</strong></td>
+</tr>
+<tr>
+<td>股本</td>
+<td>168,309,120.00</td>
+<td>168,309,120.00</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>资本公积</td>
+<td>811,971,849.66</td>
+<td>812,009,149.33</td>
+<td>-0.00%</td>
+</tr>
+<tr>
+<td><strong>减：库存股</strong></td>
+<td><strong>45,169,646.72</strong></td>
+<td>43,092,163.41</td>
+<td>+4.82%</td>
+</tr>
+<tr>
+<td>未分配利润</td>
+<td>512,834,080.17</td>
+<td>613,411,926.64</td>
+<td><strong>-16.40%</strong></td>
+</tr>
+<tr>
+<td>归母所有者权益合计</td>
+<td><strong>1,531,382,670.65</strong></td>
+<td>1,634,061,232.96</td>
+<td>-6.28%</td>
+</tr>
+<tr>
+<td>少数股东权益</td>
+<td>6,185,005.62</td>
+<td>9,441,120.19</td>
+<td>-34.49%</td>
+</tr>
+<tr>
+<td><strong>所有者权益合计</strong></td>
+<td><strong>1,537,567,676.27</strong></td>
+<td>1,643,502,353.15</td>
+<td>-6.45%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>勾稽自检（全部通过）</strong>：</p>
+<ul>
+<li>2026H1：负债合计 299,308,084.10 + 所有者权益合计 1,537,567,676.27 = <strong>1,836,875,760.37</strong> ✓ 等于资产总计；</li>
+<li>2025 年末：216,162,812.62 + 1,643,502,353.15 = <strong>1,859,665,165.77</strong> ✓；</li>
+<li>2026H1 归母净资产变动：1,634,061,232.96 − 100,577,846.47 = 1,533,483,386.49；实际 1,531,382,670.65，<strong>差额 −2,100,715.84 元</strong>，与"库存股增加 2,077,483.31 元 ＋ 其他综合收益变动 ＋ 少数股东权益调整"同量级，方向一致（回购股份计入库存股，直接冲减权益，不经损益）✓。</li>
+</ul>
+<p><strong>"手上有钱仍借钱"的谜题——用数字回答</strong></p>
+<table>
+<thead>
+<tr>
+<th>口径</th>
+<th>2026-06-30</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>货币资金</td>
+<td>187,437,663.31</td>
+<td>—</td>
+</tr>
+<tr>
+<td>交易性金融资产（母公司口径）</td>
+<td>164,047,290.65</td>
+<td>理财</td>
+</tr>
+<tr>
+<td>手机现金 + 理财合计</td>
+<td>约 3.51 亿元</td>
+<td>与投资者提问中的"3.5 亿"吻合</td>
+</tr>
+<tr>
+<td>短期借款</td>
+<td>70,046,552.51</td>
+<td>—</td>
+</tr>
+<tr>
+<td>长期借款</td>
+<td>98,844,029.42</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>有息负债合计</strong></td>
+<td><strong>168,890,581.93</strong></td>
+<td>≈ 1.69 亿元</td>
+</tr>
+<tr>
+<td><strong>净现金</strong></td>
+<td><strong>约 +1.82 亿元</strong></td>
+<td>仍为净现金状态</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>公司 2026-08-27 的回答是</strong>："为适应公司业务发展需要及<strong>防范潜在流动性风险</strong>，公司适度进行了银行借款，以更好匹配资金需求"（原文）。<strong>翻译成投研语言</strong>：在手现金虽多，但<strong>经营性现金流转负（-843.62 万元）、投资活动净流出 1.64 亿元、且看不到短期回升</strong>——管理层选择<strong>主动锁定 1.69 亿元低成本授信额度</strong>，作为"过冬"的安全垫。<strong>这个动作本身是中性的，但它透露出的管理层预期是"谨慎"，不是"乐观"。</strong></p>
+</blockquote>
+<h3 id="h-3-27">6.4 存货与减值：一份非常"诚实"的报表</h3>
+<p><strong>存货结构（2026-06-30 vs 2025-12-31，单位：元）</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>期末账面余额</th>
+<th>期末跌价准备</th>
+<th>期末账面价值</th>
+<th>期初账面余额</th>
+<th>期初跌价准备</th>
+<th>期初账面价值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原材料</td>
+<td>16,120,845.26</td>
+<td>744,606.28</td>
+<td>15,376,238.98</td>
+<td>14,902,578.04</td>
+<td>365,944.26</td>
+<td>14,536,633.78</td>
+</tr>
+<tr>
+<td>在产品</td>
+<td>1,491,545.59</td>
+<td>—</td>
+<td>1,491,545.59</td>
+<td>3,238,198.43</td>
+<td>—</td>
+<td>3,238,198.43</td>
+</tr>
+<tr>
+<td><strong>库存商品</strong></td>
+<td><strong>202,645,601.12</strong></td>
+<td><strong>37,278,304.19</strong></td>
+<td><strong>165,367,296.93</strong></td>
+<td>143,470,806.38</td>
+<td>16,771,379.55</td>
+<td>126,699,426.83</td>
+</tr>
+<tr>
+<td>包装物</td>
+<td>2,072,281.72</td>
+<td>169,494.12</td>
+<td>1,902,787.60</td>
+<td>2,308,878.89</td>
+<td>11,651.87</td>
+<td>2,297,227.02</td>
+</tr>
+<tr>
+<td>低值易耗品</td>
+<td>2,938,986.32</td>
+<td>1,187,746.60</td>
+<td>1,751,239.72</td>
+<td>2,815,633.80</td>
+<td>1,114,986.92</td>
+<td>1,700,646.88</td>
+</tr>
+<tr>
+<td>发出商品</td>
+<td>3,214,153.01</td>
+<td>1,896,007.24</td>
+<td>1,318,145.77</td>
+<td>18,172,148.22</td>
+<td>1,131,220.99</td>
+<td>17,040,927.23</td>
+</tr>
+<tr>
+<td>受托加工物资</td>
+<td>7,846,014.31</td>
+<td>762,175.08</td>
+<td>7,083,839.23</td>
+<td>6,363,560.99</td>
+<td>678,736.21</td>
+<td>5,684,824.78</td>
+</tr>
+<tr>
+<td>委托加工物资</td>
+<td>866,226.36</td>
+<td>566,000.85</td>
+<td>300,225.51</td>
+<td>2,074,486.09</td>
+<td>—</td>
+<td>2,074,486.09</td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td><strong>237,195,653.69</strong></td>
+<td><strong>42,604,334.36</strong></td>
+<td><strong>194,591,319.33</strong></td>
+<td><strong>193,346,290.84</strong></td>
+<td><strong>20,073,919.80</strong></td>
+<td><strong>173,272,371.04</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>这张表里藏着本案最重要的一个"反差"：</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>数字</th>
+<th>读法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>存货账面余额</td>
+<td>1.93 亿 → <strong>2.37 亿（+22.68%）</strong></td>
+<td>卖不出去，货压在仓库</td>
+</tr>
+<tr>
+<td>其中<strong>库存商品</strong></td>
+<td>1.43 亿 → <strong>2.03 亿（+41.25%）</strong></td>
+<td><strong>产成品积压是主因</strong></td>
+</tr>
+<tr>
+<td><strong>存货跌价准备</strong></td>
+<td>2,007.39 万 → <strong>4,260.43 万（+112.24%）</strong></td>
+<td><strong>公司主动、大额计提</strong></td>
+</tr>
+<tr>
+<td>其中库存商品跌价准备</td>
+<td>1,677.14 万 → <strong>3,727.83 万（+122.27%）</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>发出商品</td>
+<td>1,817.21 万 → <strong>321.42 万（-82.31%）</strong></td>
+<td>已发货未确认收入的货在下降——<strong>说明"发出"环节在恢复，卡点在"客户验收/订单"</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>与 ST佳缘（301117）的对照极为刺眼</strong>：ST佳缘 2026H1 存货 5.35 亿元、跌价准备仅 <strong>16,874.26 元（0.003%）</strong>，原材料暴增 39.56% 却几乎零计提；而<strong>嘉必优存货 2.37 亿元、跌价准备 4,260.43 万元（计提比例 17.96%）</strong>。<br>
+<strong>同样是 ST，同样面对卖不动，一家在"记存货"，一家在"记减值"。</strong> 嘉必优这份报表的<strong>会计谨慎性明显更高</strong>，这是"财务质量"层面一个重要的正面差异。<strong>一家愿意把 4,260 万元减值摆到台面上的公司，其后续每一份报表的可信度都会更高。</strong></p>
+</blockquote>
+<p><strong>2026H1 计提减值明细（公告 2026-023）</strong></p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>金额（元）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>信用减值损失（含应收账款、其他应收款）</td>
+<td><strong>5,467,253.87</strong></td>
+</tr>
+<tr>
+<td>资产减值损失（存货跌价准备）</td>
+<td><strong>26,043,390.61</strong></td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td><strong>31,510,644.48</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>公告原文："本次计提减值准备计入资产减值损失和信用减值损失科目，<strong>合计对公司 2026 年 1-6 月合并利润总额影响 31,510,644.48 元</strong>（未计算所得税影响）。上述数据未经会计师事务所审计。"</p>
+</blockquote>
+<h3 id="h-3-28">6.5 客户与供应商：一条"寡头客户 + 寡头对手"的链条</h3>
+<p><strong>2025 年度前五名客户</strong>（营业额 40,740.62 万元，占年度销售总额 <strong>72.35%</strong>；其中关联方销售额 0 元）</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>客户</th>
+<th>销售额（万元）</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>客户 1</td>
+<td><strong>16,148.78</strong></td>
+<td><strong>28.68%</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>客户 2</td>
+<td>10,996.48</td>
+<td>19.52%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>客户 3</td>
+<td>6,491.35</td>
+<td>11.52%</td>
+</tr>
+<tr>
+<td>4</td>
+<td>客户 4</td>
+<td>5,058.06</td>
+<td>8.98%</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>上海勇度食品有限公司（新增）</strong></td>
+<td>2,045.95</td>
+<td>3.63%</td>
+</tr>
+<tr>
+<td>—</td>
+<td><strong>合计</strong></td>
+<td><strong>40,740.62</strong></td>
+<td><strong>72.35%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>2025 年度前五名供应商</strong>（采购额 5,419.09 万元，占年度采购总额 <strong>52.84%</strong>；其中关联方采购额 0 元）</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>供应商</th>
+<th>采购额（万元）</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>供应商 1</td>
+<td>1,974.87</td>
+<td>19.26%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>供应商 2</td>
+<td>1,323.41</td>
+<td>12.90%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>供应商 3</td>
+<td>857.33</td>
+<td>8.36%</td>
+</tr>
+<tr>
+<td>4</td>
+<td>供应商 4</td>
+<td>816.78</td>
+<td>7.96%</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>保龄宝生物股份有限公司（新增）</strong></td>
+<td>446.70</td>
+<td>4.36%</td>
+</tr>
+<tr>
+<td>—</td>
+<td><strong>合计</strong></td>
+<td><strong>5,419.09</strong></td>
+<td><strong>52.84%</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>三条读数</strong>：<br>
+1. <strong>客户集中度极高（前五占 72.35%、第一大占 28.68%）</strong>——这是本案"外生冲击为何传导如此剧烈"的结构性原因。<strong>当第一大客户占近三成收入，一次全球召回就足以让整条产线停下来。</strong><br>
+2. <strong>2025 年度前五大客户中有 1 家新增（上海勇度食品）</strong>，供应商中新增 1 家（保龄宝生物）。<strong>新名字出现在前五，说明公司在扩大客户/供应基础——但这两家都不构成"头部乳企级"的重量。</strong><br>
+3. <strong>关联方销售、关联方采购均为 0</strong>——与中报"非经营性资金占用及其他关联资金往来全栏为零"互相印证，<strong>治理干净这条没被打破。</strong></p>
+</blockquote>
+<h3 id="h-3-29">6.6 募集资金：一个"已经用光"的对照组</h3>
+<p>这是本案与 ST佳缘 的第二个鲜明对比——<strong>嘉必优的募集资金已经全部用完了</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>金额（万元）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>募集资金总额（2019 年 IPO，发行 3,000 万股 @ 23.90 元）</td>
+<td><strong>71,700.00</strong></td>
+</tr>
+<tr>
+<td>其中：超募资金</td>
+<td>10,368.71</td>
+</tr>
+<tr>
+<td>减：直接支付发行费用</td>
+<td>6,867.39</td>
+</tr>
+<tr>
+<td><strong>募集资金净额</strong></td>
+<td><strong>64,832.61</strong></td>
+</tr>
+<tr>
+<td>减：以前年度已使用金额</td>
+<td>63,727.02</td>
+</tr>
+<tr>
+<td>减：本年度（2025 年）使用金额</td>
+<td>731.64</td>
+</tr>
+<tr>
+<td>减：其他-永久补充流动资金</td>
+<td>376.48</td>
+</tr>
+<tr>
+<td>加：募集资金利息收入</td>
+<td>2.59</td>
+</tr>
+<tr>
+<td><strong>截至 2025-12-31 募集资金余额</strong></td>
+<td><strong>0</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>募投项目与节余</strong>："微生物油脂扩建二期工程项目"和"多不饱和脂肪酸油脂微胶囊生产线扩建项目"合计节余 <strong>376.48 万元</strong>，经审议<strong>永久补充流动资金</strong>；"研发中心建设项目"节余 0 元。</p>
+<p><strong>固定资产的印证</strong>：固定资产账面价值从 2025-12-31 的 <strong>501,587,858.17 元</strong>（注：母公司口径为 798,958,962.71 元，此处为合并口径 501,587,858.17 元）增至 2026-06-30 的 <strong>877,838,567.40 元</strong>（合并口径），与"募投新产能已于 2025 年全部投产"、"2025 年新产能投产以后产品毛利率得到进一步提升"的公司口径<strong>互相印证</strong>。</p>
+<blockquote>
+<p><strong>一句话</strong>：<strong>嘉必优的"资本开支周期"已经走完了。</strong> 募投项目全部投产、募集资金余额归零、在建工程从 1,382.18 万元降至 961.99 万元。<strong>这意味着它的"故事"不能再靠"新产能投产带来增量"来续写——未来每一点收入增长都必须来自"卖出去"，而不是"造出来"。</strong> 这与 ST佳缘（募投项目进度仅 37.97% / 84.01%、两次延期、剩余 2.2 亿元躺在账上）形成完全相反的状态。</p>
+</blockquote>
+<hr>
+<h2 id="h-2-30">七、★ §4.7 投资者交流信息挖掘专章</h2>
+<blockquote>
+<p>本节是方法论 §4.7 的完整落地。<strong>嘉必优是科创板标的，信源路径与深市/创业板的"互动易"体系完全不同</strong>——这一节同时承担"找线索"和"打通信源路径"两个任务。</p>
+</blockquote>
+<h3 id="h-3-31">7.1 三路信源全景（含一条关键负发现）</h3>
+<table>
+<thead>
+<tr>
+<th>信源</th>
+<th>平台/路径</th>
+<th>条数</th>
+<th>时间跨度</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① 上证 e 互动问答</strong></td>
+<td><code>basic.10jqka.com.cn/new/688089/interactive.html</code>（同花顺 F10，科创板须用 <code>new/</code> 路径，GBK 解码）</td>
+<td><strong>13 条</strong></td>
+<td>2025-11-20 ~ <strong>2026-08-27</strong></td>
+<td><strong>2026-08-27 后零新增</strong></td>
+</tr>
+<tr>
+<td><strong>② 投资者关系活动记录表</strong></td>
+<td>东方财富公告库（<code>np-anotice-stock</code> 接口翻页）＋上交所网站</td>
+<td><strong>16 份</strong></td>
+<td>2024-04-30 ~ <strong>2026-05-18</strong></td>
+<td>⚠️ <strong>最后一份止于 2026-05-18（戴帽前 71 天），此后停更</strong></td>
+</tr>
+<tr>
+<td><strong>③ 业绩说明会全文</strong></td>
+<td>含于记录表内（2026-05-13 业绩说明会编号 2026-01）</td>
+<td>1 份</td>
+<td>2026-05-13</td>
+<td>已取全文</td>
+</tr>
+</tbody>
+</table>
+<p><strong>★ 三个负发现（比正发现更重要）：</strong></p>
+<ol>
+<li><strong>巨潮 <code>tabName=relation</code> 栏目对本标的几乎无效</strong>——检索 2019-12-01~2026-09-22 仅返回 <strong>2 份记录表（均为 2022 年）</strong>。<strong>科创板记录表不在巨潮主库</strong>。本次改由东财公告库翻页取得全部 16 份。这与 ST佳缘（深市，巨潮 <code>relation</code> 栏目直接给出 13 份）形成鲜明对照——<strong>深市/沪市记录表的信源路径不同，这是方法论需要固化的一条路由规则。</strong></li>
+<li><strong>记录表在戴帽后停更（2026-05-18 → 至今 4 个月零新增）。</strong> 这是个有信息量的"沉默"：公司仍在按规则每月发进展公告（法定动作），但<strong>不再主动组织调研/说明会</strong>（自愿动作）。<strong>"自愿披露停了、法定披露照做"——这是最典型的"无话可说"状态。</strong></li>
+<li><strong>上证 e 互动在 2026-08-27 后零新增</strong>——最后一条恰好是问"现金流与金融资产有 3.5 亿，为何还要借款 8000 万"（见 7.3）。<strong>在最需要解释的时刻，问答停了。</strong></li>
+</ol>
+<blockquote>
+<p><strong>三路信源同时指向同一个结论</strong>：<strong>这家公司当前处于"信息真空期"。</strong> 这不是隐瞒——每月的进展公告还在按时发，而是<strong>真的没有新的、值得说的进展</strong>。</p>
+</blockquote>
+<h3 id="h-3-32">7.2 十六条记录表时间轴：叙事演进史</h3>
+<p>把 16 份记录表按时间排开，可以清晰看到<strong>叙事的"起—盛—转—收"四个阶段</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>日期</th>
+<th>交流类型</th>
+<th>核心叙事</th>
+<th>关键词密度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>一、盛</strong><br>新国标红利</td>
+<td>2024-04-30</td>
+<td>现场/电话</td>
+<td>年报后沟通</td>
+<td>—</td>
+</tr>
+<tr>
+<td></td>
+<td>2024-07-23 / 08-30 / 09-30 / 10-30 / 12-09</td>
+<td>调研</td>
+<td><strong>欧易生物重组推进期</strong>（2024-10-29 停牌筹划）</td>
+<td>—</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>2025-04-08</strong></td>
+<td>调研（3/28-4/3）</td>
+<td><strong>新国标替换 + 帝斯曼专利到期 + 雀巢/达能</strong>："核心客户销量均实现较大增长""募投项目智能化产能建成投产"</td>
+<td>ARA 1 / <strong>DHA 11</strong> / 产能 9 / 毛利率 7</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>2025-04-28</strong></td>
+<td>调研（4/17-4/24）</td>
+<td><strong>藻油 DHA 取得欧盟婴配 Novel Food 认证</strong>（"国际认证方面"原文）；FSSC22000/清真/洁食/FDA GRAS</td>
+<td><strong>DHA 22</strong> / 藻油 9</td>
+</tr>
+<tr>
+<td></td>
+<td>2025-04-30</td>
+<td>电话会议（4/29）</td>
+<td>一季报沟通</td>
+<td>产能 9 / 毛利率 12</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>2025-05-19</strong></td>
+<td>调研（5/6-5/16）</td>
+<td><strong>头部客户订单"年签"制</strong>："与大客户的订单采用年签的形式"；飞鹤/伊利/雀巢/达能/嘉吉</td>
+<td>宠物 5 / 产能 7</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>2025-06-16</strong></td>
+<td>调研</td>
+<td><strong>HMOs 多品类战略</strong>（2'-FL/3'-FL/3'-SL/6'-SL/LNnT/LNT/LNFPⅠ/LNFPⅢ）＋燕窝酸</td>
+<td>HMO 4 / 燕窝酸 2</td>
+</tr>
+<tr>
+<td><strong>二、峰</strong><br>历史最好</td>
+<td><strong>2025-08-20</strong></td>
+<td>调研（8/18）</td>
+<td><strong>"发酵产能基本处于满产""主要产品产量创历史新高"</strong></td>
+<td>产能 10 / HMO 4</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>2025-09-03</strong></td>
+<td>调研（9/2）</td>
+<td><strong>雅培部分工厂完成产品准入并开始商业化合作</strong>："国际市场已开发了雀巢、达能、新莱特、澳优"</td>
+<td>宠物 9 / SA 6</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>2025-09-15</strong></td>
+<td>调研</td>
+<td>动物营养、宠物供应链、"生物+人工智能"</td>
+<td><strong>ARA 9</strong> / 宠物 10 / 合成生物 4</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>2025-12-16</strong></td>
+<td><strong>现场调研 + 路演中心 Q3 说明会</strong></td>
+<td><strong>★ HMOs 法规扩容详述 ＋ 燕窝酸客户名单（麦吉丽/百雀羚/广东康容）＋ 前三季净利 +54.18%</strong></td>
+<td><strong>HMO 13</strong> / 合成生物 12 / 燕窝酸 6</td>
+</tr>
+<tr>
+<td><strong>三、转</strong><br>冲击降临</td>
+<td>2026-05-18</td>
+<td><strong>业绩说明会（线上，编号 2026-01）</strong></td>
+<td><strong>★ 戴帽前最后一次正式交流：19 问全部围绕"检测报告/恢复订单/停工/减值"</strong></td>
+<td><strong>恢复 16</strong> / 欧盟 4 / 雀巢 2 / 召回 1</td>
+</tr>
+<tr>
+<td><strong>四、收</strong><br>沉默</td>
+<td>—</td>
+<td>—</td>
+<td><strong>记录表停更</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>四个可以从这条时间轴直接读出的结论：</strong></p>
+<ol>
+<li><strong>叙事的顶点是 2025-08-20 与 2025-12-16</strong>：前者是"满产、产量创历史新高"，后者是"HMOs 法规扩容 + 前三季净利 +54.18%"。<strong>此后一年，记录表里的每一个关键词都换了一遍。</strong></li>
+<li><strong>关键词的"换血"是最直观的证据</strong>：<br>
+   - <code>恢复</code>：2025 年前 9 份记录表出现 <strong>0 次</strong>，2026-05-18 一份出现 <strong>16 次</strong>；<br>
+   - <code>召回</code>：2025 年全年 <strong>0 次</strong>，2026-05-18 出现 <strong>1 次</strong>；<br>
+   - <code>雀巢</code>：2025 年 5 份记录表中作为"<strong>核心大客户</strong>"出现，2026-05-18 作为"<strong>召回事件主体</strong>"出现。<br>
+<strong>同一个词、同一家公司，一年之内从"资产"变成"变量"。</strong></li>
+<li><strong>机构在 2025-12 已经在现场</strong>：2025-12-16 记录表列明参与机构 <strong>昌燊投资、中能建基金、财达证券、指南基金、北京艾文智略投资、西部证券"走进上市公司"活动</strong>——<strong>这是戴帽前最后一次机构现场调研，主题是 HMOs</strong>。四个月后（2026-04-23 年报）股价跌停 -19.98%。<strong>机构看到了 HMOs，但没人预料到雀巢。</strong></li>
+<li><strong>2026-05-18 那份记录表的信息量极高</strong>：19 个问题中，<strong>投资者问到的敏感问题一个不少</strong>——"工厂是否停工"、"两个证券部电话永远忙音"、"存货是否有过期风险"、"是否有资产减值要求"、"海外订单最快何时恢复"、"是否有回购计划"。<strong>这是一份"投资者已经把该问的都问完了"的清单，而公司的答案全部是"正在沟通、逐步恢复、请以公告为准"。</strong></li>
+</ol>
+<h3 id="h-3-33">7.3 关键问答逐条判读（L1~L4 四级分级）</h3>
+<p><strong>分级标准</strong>：<strong>L1＝有明确时间/数字且可验证</strong>；<strong>L2＝有明确动作已完成（已获批/已上市/已产业化）</strong>；<strong>L3＝有方向无时间表（正在推进/将逐步提升）</strong>；<strong>L4＝纯展望或否认</strong>。</p>
+<p><strong>A. 上证 e 互动 13 条（按时间倒序）</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>日期</th>
+<th>问题要点</th>
+<th>答复原文要点</th>
+<th><strong>判级</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>2026-08-27 17:29</strong></td>
+<td>现金流 1.08 亿 &gt; 营收 0.58 亿？有 3.5 亿为何还借 8000 万？</td>
+<td>"主要系本期部分票据到期兑付及以前年度的应收账款回款所致……<strong>为适应公司业务发展需要及防范潜在流动性风险，公司适度进行了银行借款</strong>"</td>
+<td><strong>L2</strong>（有数字、有解释）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2026-07-09 16:08</td>
+<td>ARA、藻油 DHA 产能利用率/订单/毛利率</td>
+<td>"毛利率一直以来较为稳定，特别是 2025 年新产能投产以后得到进一步提升。<strong>2026 年一季度以来，受海外舆情和监管新要求的影响，公司核心产品的订单情况受到了影响</strong>"</td>
+<td><strong>L3</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>2026-07-09 16:04</td>
+<td>新产能释放进度/降本增效</td>
+<td>"募投新产能已于 <strong>2025 年全部投产</strong>，当前产能根据市场订单情况<strong>灵活排产</strong>……毛利率已从 2024 年的 <strong>43.61%</strong> 提升至 2025 年的 <strong>47.70%</strong>"</td>
+<td><strong>L1</strong>（有数字）</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>2026-07-09 16:01</strong></td>
+<td>HMOs／2'-FL 中试、送测、商业化进度</td>
+<td>"2'-FL 已完成国内三新食品申报及<strong>美国 Self-GRAS 认证</strong>，成功实现产业化，<strong>正在推进相关下游客户准入流程</strong>；3'-SL 已完成产线级产品开发，国内法规申报材料已正式提交；LNT、3-FL、6'-SL 法规申报材料正在加快筹备中；<strong>2026 年 6 月，公司 LNnT 产品通过了国家卫健委审批</strong>"</td>
+<td><strong>L2</strong>（LNnT 已获批）／<strong>L3</strong>（2'-FL 商业化为"正在推进"）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2026-07-09 15:51</td>
+<td>宠物营养/动物营养订单与增量空间</td>
+<td>"参展 2026 中国饲料工业展览会……<strong>收获诸多客户合作意向</strong>。<strong>计划两年内，通过技术研发、产线改造和市场推广将 DHA 藻油和裂壶藻粉在水产领域实现对鱼油的替代</strong>"</td>
+<td><strong>L3</strong>（"合作意向"＋"计划两年内"）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2026-07-09 15:42</td>
+<td>燕窝酸、β-胡萝卜素认证与渗透率</td>
+<td>"<strong>全球知名企业欧莱雅添加公司 SA 的复颜新专研系列产品已经于 2026 年 4 月 8 号上市</strong>，明确提出了'001 号燕窝酸''22 项国家专利''超小分子燕窝酸''妆食同源''激活胶原新生'等宣传……燕窝酸在美妆个护领域的<strong>收入将逐步提升</strong>"</td>
+<td><strong>L2</strong>（终端产品已上市）／<strong>L3</strong>（收入"将逐步提升"）</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2025-12-04 17:57</td>
+<td>10 月 31 日股东人数</td>
+<td>按规则在定期报告披露，其他时点需提供持股证明</td>
+<td>L4（程序性）</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2025-11-20 17:44</td>
+<td>三季度环比波动？SA 和 HMOs 进展？</td>
+<td>"营收波动主要系客户取货节奏的影响"；<strong>2025-10-22 国家食品安全风险评估中心拟</strong>将 3'-SL 作为食品营养强化剂新品种、<strong>拟将 2'-FL 应用范围从婴配扩展至调制乳、风味发酵乳、调制乳粉、干酪、饮料类等多个品类</strong></td>
+<td><strong>L2</strong>（法规进展有日期）</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2025-11-20 17:44</td>
+<td>AI 蛋白质/并购计划</td>
+<td>"已经针对 <strong>AI 蛋白质</strong>方面进行研究，例如针对酶与底物反应的预测评估……并购重组重大事项将基于多重维度审慎考量，<strong>如有相关计划将及时履行信息披露义务</strong>"</td>
+<td><strong>L3</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>2025-11-20 17:44</strong></td>
+<td><strong>燕窝酸官司终审胜诉影响</strong></td>
+<td>"本次胜诉是公司维护自主知识产权的胜利，<strong>充分印证了公司 N-乙酰神经氨酸产品知识产权的独立性和有效性</strong>……与<strong>麦吉丽、欧莱雅、广东康容</strong>等企业建立了战略合作"</td>
+<td><strong>L1</strong>（判决已生效）</td>
+</tr>
+<tr>
+<td>11</td>
+<td>2025-11-20 17:44</td>
+<td>胜诉后有无产品规划/业绩指引</td>
+<td>"已陆续发布多期<strong>业绩预增的自愿性披露公告</strong>"</td>
+<td>L4</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>2025-11-20 17:37</strong></td>
+<td>基因编辑能力与 AI 布局</td>
+<td>"已建立<strong>生物信息与生物计算、基因合成与基因编辑等八大平台</strong>，打通合成生物学全技术链条，<strong>已实际产业化落地</strong>——通过合成生物学自主研发的 <strong>2'-FL 成功入选工信部首批生物制造标志性产品名单</strong>"；"智能研发平台一期已高通量稳定运行，二期持续优化中"；"升级生物信息学平台，配备<strong>独立算力平台</strong>，支持蛋白质建模、结构预测、酶的理性设计"</td>
+<td><strong>L1</strong>（入选工信部名单）／<strong>L2</strong>（平台已运行）</td>
+</tr>
+<tr>
+<td>13</td>
+<td>2025-11-20 17:37</td>
+<td>三季度营收较二季度下滑原因</td>
+<td>"主要受客户取货节奏的影响"</td>
+<td>L4</td>
+</tr>
+</tbody>
+</table>
+<p><strong>B. 2026-05-18 业绩说明会（19 问，戴帽前最后一次正式交流）——摘取最关键的 6 问</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>投资者问</th>
+<th>公司答（原文要点）</th>
+<th><strong>判级／读法</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>产品质量检测报告出来了吗？什么结果？是否恢复订单和生产？</strong></td>
+<td>"公司已在 2025 年年度报告相关章节进行披露，即<strong>公司生产和销售的产品交付客户时，均符合相关食品安全标准、客户合同约定的具体验收指标以及相应进口国（地区）适用标准</strong>。目前公司正在加紧与客户沟通，争取尽快恢复业绩"</td>
+<td><strong>L3</strong>。<strong>注意：公司始终没说"我们的检测报告结论是什么"——它说的是"交付时符合标准"。这是一个精确的法律表述。</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>"现在工厂在停工状态吗？因为一季度没有订单，推测现在工厂在停工或少量工人开工状态。"</strong></td>
+<td><strong>"目前工厂根据市场订单排产。"</strong></td>
+<td><strong>L4</strong>。<strong>十个字的答复，是整份记录表里信息量最大的一句</strong>——"按订单排产"＝<strong>订单就是产线的开关</strong>。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>一季度大幅亏损主因？<strong>与雀巢是否还有持续合作的可能性？</strong></td>
+<td>"一季度公司根据海外舆情和监管新要求，对生产计划进行了调整……<strong>导致一季度业绩下滑</strong>"</td>
+<td><strong>L3</strong>。<strong>"雀巢"三个字，公司没有正面回答。</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>"公司两个证券部电话永远忙音，永远打不通！管理一直这么混乱吗？二季度出货能达到同期 5 成以上？未来欧盟再提新标准，是否跟这次一样被动，继续全面停产？"</strong></td>
+<td>"目前公司投资者热线正常接听。公司通过全面技术研究、检测能力建设、企业标准科研攻关等系统性举措，确保产品始终符合国内外不断更新的适用标准和监管要求"</td>
+<td><strong>L4</strong>。<strong>"二季度出货能否达到同期 5 成"这个问题，公司没有回答数字。</strong></td>
+</tr>
+<tr>
+<td>17</td>
+<td><strong>生产经营恢复路径、营收恢复至正常水平的预期周期、是否有资产减值要求？</strong></td>
+<td>"生产端目前公司所产产品能够符合目前国内外最新检测要求。二季度各业务板块制定了明确的业务计划……<strong>企业经营是一个复杂的过程，业务恢复需要一定的时间</strong>，经营成果也会在定期报告中报告"</td>
+<td><strong>L4</strong>。<strong>"需要一定的时间"——这就是全部的恢复时间表。</strong>（对照：三个月后半年报落地，一次性计提减值 3,151.06 万元）</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>是否有考虑上下游并购重组计划或研发新产品？</strong></td>
+<td>"公司将根据法规，<strong>合理运用各种资本运作工具</strong>，构建开放共赢的产业生态，助力实现战略落地"</td>
+<td><strong>L3（开放式）</strong>。<strong>这是戴帽前最后一次就资本运作表态，措辞是开放的</strong>——结合第五节的"制度锁未封死"，这两条应该放在一起读。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-3-34">7.4 四条新方向的"称重"：用交流信源给叙事配重量</h3>
+<p>方法论 §4.7 的核心动作是<strong>把"交流里的故事"放到财报的秤上称一称</strong>。嘉必优的四条新方向，称重结果如下：</p>
+<table>
+<thead>
+<tr>
+<th>方向</th>
+<th>交流信源里的最高强度证据</th>
+<th>财报侧的印证</th>
+<th><strong>新</strong></th>
+<th><strong>大</strong></th>
+<th><strong>强</strong></th>
+<th>综合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HMOs</strong><br>（母乳低聚糖）</td>
+<td><strong>L1</strong>：2026-06-09 公告"LNnT 经国家卫健委审查通过"（自愿性披露）；2'-FL 入选<strong>工信部首批生物制造标志性产品名单</strong>；2025-10-22 国家食品安全风险评估中心<strong>拟将 2'-FL 应用范围扩至调制乳/风味发酵乳/调制乳粉/干酪/饮料类</strong></td>
+<td>2025 年报<strong>无 HMOs 收入单列</strong>；2026-07-09 口径仍为"<strong>正在推进相关下游客户准入流程</strong>"</td>
+<td>⚠️ <strong>法规创造的新市场，非公司创造的新技术</strong></td>
+<td>✅ 2'-FL 0.7-2.4 g/L、LNnT 0.2-0.6 g/L，<strong>以克计、添加量大</strong></td>
+<td>❌ <strong>零收入</strong></td>
+<td><strong>新 ⚠️ / 大 ✅ / 强 ❌</strong></td>
+</tr>
+<tr>
+<td><strong>燕窝酸 SA</strong><br>（美妆个护）</td>
+<td><strong>L2</strong>：<strong>欧莱雅"复颜新专研"系列 2026-04-08 上市</strong>，主打"001 号燕窝酸"；<strong>L1</strong>：商业秘密案 2025-11 最高法终审胜诉</td>
+<td>2025 年报：<strong>个人护理及化妆品行业收入 4,019,165.77 元（+90.66%），毛利率 63.37%</strong>——<strong>增速极快但绝对额仅 402 万元（占主营 0.7%）</strong></td>
+<td>⚠️ 同一发酵平台的产品化延伸</td>
+<td>✅ 欧莱雅背书 = 想象力</td>
+<td>❌ <strong>402 万元，占主营 0.7%</strong></td>
+<td><strong>新 ⚠️ / 大 ✅ / 强 ❌</strong></td>
+</tr>
+<tr>
+<td><strong>动物营养</strong><br>（宠物＋水产）</td>
+<td><strong>L2</strong>：2026-08-29 进展公告"<strong>首批海外订单正在交付中</strong>""快速扩大藻油 DHA 在水产领域的销售应用"；2026-04-08 记录表列明乖宝、海正、全硕、正大、越秀等客户</td>
+<td>2025 年报：<strong>动物营养行业收入 13,954,801.59 元（-15.04%），毛利率 15.29%（-0.82pct）</strong>——<strong>唯一收入下滑的业务，且毛利率最低</strong></td>
+<td>⚠️ DHA 的渠道重定向</td>
+<td>✅ 全球鱼油紧缺 + 藻油替代是真趋势</td>
+<td>❌ <strong>收入 1,395.48 万元、同比 -15.04%、毛利率仅 15.29%</strong></td>
+<td><strong>新 ⚠️ / 大 ✅ / 强 ❌</strong></td>
+</tr>
+<tr>
+<td><strong>AI＋合成生物</strong></td>
+<td><strong>L2</strong>：2025-11-20 口径"<strong>智能研发平台一期已高通量稳定运行</strong>""配备独立算力平台，支持蛋白质建模、结构预测、酶的理性设计"；<strong>L1</strong>：2'-FL 入选工信部名单</td>
+<td><strong>无独立收入科目</strong>（属工具/效率类，不单独创收）</td>
+<td>⚠️ 工具而非产品</td>
+<td>⚠️ "AI 提效"难以定价</td>
+<td>❌ <strong>无收入口径</strong></td>
+<td><strong>新 ⚠️ / 大 ⚠️ / 强 ❌</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>这张表给出的最重要的一个判断：</strong></p>
+<blockquote>
+<p><strong>嘉必优的四条"第二曲线"，全部是"同一套发酵罐 + 同一套菌种改造能力"的产品化延伸——它们不是"新物种"，而是"新订单"。</strong></p>
+<p>这与 ST佳缘的"星载安全+计算载荷一体化产品"有本质区别：佳缘那条线是<strong>平台级的新物种</strong>（把安全模块与算力模组融合，用在卫星上，此前没有）；嘉必优这四条是<strong>同一平台在不同应用场景的销售工作</strong>。</p>
+<p><strong>"新"的成色，决定了"故事"能不能撑起"十倍"。</strong> 用方法论的标尺量：<strong>嘉必优没有"从 0 到 1"的物种级新业务；它有的是"从 1 到 N"的场景复制，而且这些复制尚未产生规模收入。</strong></p>
+</blockquote>
+<h3 id="h-3-35">7.5 一个"可验证的抓手"：把四条方向排进时间表</h3>
+<p>把 §7.4 的结论转成可跟踪的检查清单：</p>
+<table>
+<thead>
+<tr>
+<th>观察项</th>
+<th>当前状态（2026-09-22）</th>
+<th>升级信号（L3→L2→L1）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2'-FL 客户准入</strong></td>
+<td>"正在推进相关下游客户准入流程"</td>
+<td><strong>首次出现"已完成某客户准入/开始供货"＋金额</strong></td>
+</tr>
+<tr>
+<td><strong>HMOs 收入单列</strong></td>
+<td>未单列</td>
+<td><strong>2026 年报首次单列 HMOs 收入</strong></td>
+</tr>
+<tr>
+<td><strong>燕窝酸收入</strong></td>
+<td>402 万元（占主营 0.7%）</td>
+<td><strong>单期收入突破 1,000 万元（占主营 &gt;2%）</strong></td>
+</tr>
+<tr>
+<td><strong>动物营养收入</strong></td>
+<td>1,395.48 万元（-15.04%）</td>
+<td><strong>恢复正增长 + 毛利率由 15.29% 上行</strong></td>
+</tr>
+<tr>
+<td><strong>欧盟 (EU) 2026/459</strong></td>
+<td>强化管控清单（2026-02-24）</td>
+<td><strong>任何修订/放松信号</strong></td>
+</tr>
+<tr>
+<td><strong>每月进展公告</strong></td>
+<td>第一期 2026-08-29</td>
+<td><strong>客户名单变化 = 最高频 KPI</strong></td>
+</tr>
+<tr>
+<td><strong>记录表恢复</strong></td>
+<td>停更 4 个月</td>
+<td><strong>重新组织调研/说明会</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-3-36">7.6 一句话总结本章</h3>
+<blockquote>
+<p><strong>§4.7 在嘉必优身上得到的答案，与在 ST佳缘身上得到的答案正好相反：</strong></p>
+<p><strong>佳缘的交流里藏着一条"财报里还没有、但真的在动"的新线索（载荷）；嘉必优的交流里摊开的是四条"财报里已记账、但收入还没起来"的老线索（HMOs/燕窝酸/动物营养/AI）。</strong></p>
+<p>前者要找的是"<strong>它是不是真的在动</strong>"；后者要找的是"<strong>它动得够不够快</strong>"。<strong>嘉必优的答案是：都在动，都太慢。</strong></p>
+</blockquote>
+<hr>
+<h2 id="h-2-37">八、控制权六维拆解（同构替换后的打分）</h2>
+<p>第三节给出了"六维 → 本案六问"的映射框架。本节把它落成<strong>打分表</strong>——每一维给出<strong>证据、读数、得分（0-5 分）</strong>，最后给出综合判断。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>维度（同构替换后）</th>
+<th>关键证据</th>
+<th>读数</th>
+<th>得分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>4.1</strong></td>
+<td><strong>摘帽节奏</strong></td>
+<td>科创板"触及情形消除"即可申请，<strong>无 12 个月时间锁</strong>；但每月进展公告<strong>第二期截至 9-22 未出</strong>、记录表停更 4 个月</td>
+<td><strong>制度上最快，执行上最慢</strong></td>
+<td><strong>3 / 5</strong></td>
+</tr>
+<tr>
+<td><strong>4.2</strong></td>
+<td><strong>原实控人处境与意愿</strong></td>
+<td>易德伟通过武汉烯王持股 <strong>44.17%</strong> ＋个人 <strong>1.39%</strong>；<strong>零质押、零冻结</strong>；两期回购共 2,738,245 股、金额约 <strong>4,517 万元</strong>，<strong>2026-08-04 全部注销</strong>（真减注册资本）</td>
+<td><strong>意愿强、杠杆零、动作实</strong></td>
+<td><strong>5 / 5</strong></td>
+</tr>
+<tr>
+<td><strong>4.3</strong></td>
+<td><strong>主业受损性质</strong></td>
+<td><strong>外生冲击</strong>：技术/产能/客户关系未损毁（募投新产能 2025 全部投产、固定资产 5.02 亿→8.78 亿）；断的是"出口合规资格"与"客户信心"</td>
+<td><strong>可修复型损伤</strong>（非技术溃败、非掏空）</td>
+<td><strong>4 / 5</strong></td>
+</tr>
+<tr>
+<td><strong>4.4</strong></td>
+<td><strong>规则约束与制度锁</strong></td>
+<td>2025 年报财报"带强调事项段无保留"＋内控"<strong>标准无保留</strong>"→ <strong>发股买资产通道未锁</strong>；且<strong>戴帽前 11 个月刚终止</strong>欧易生物交易</td>
+<td><strong>通道开着、但没人敲门</strong></td>
+<td><strong>3 / 5</strong></td>
+</tr>
+<tr>
+<td><strong>4.5</strong></td>
+<td><strong>行情映射与流动性</strong></td>
+<td>戴帽首日 <strong>-20.02%</strong>（9.94→7.95）；后复权自高点 <strong>-81.65%</strong>、自低点 <strong>+23.93%</strong>；<strong>单日买入上限 50 万股</strong>＋9-22 换手仅 <strong>0.501%</strong>、成交额 720.63 万元</td>
+<td><strong>跌够了，但流动性被制度限死</strong></td>
+<td><strong>2 / 5</strong></td>
+</tr>
+<tr>
+<td><strong>4.6</strong></td>
+<td><strong>一句话核心矛盾</strong></td>
+<td><strong>"不需要救兵，但也没有第二条曲线"</strong>；四条新方向全部是同一发酵平台的产品化延伸，且<strong>零规模收入</strong></td>
+<td><strong>资产负债表 A 级、成长性 D 级</strong></td>
+<td><strong>—</strong></td>
+</tr>
+<tr>
+<td><strong>综合</strong></td>
+<td>—</td>
+<td><strong>负债率 16.29%、零质押、零商誉、净现金 1.83 亿元、连续 6 年分红 2.43 亿元</strong></td>
+<td><strong>一只"财务健康度远高于 ST 身份"的 ST</strong></td>
+<td><strong>17 / 25</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-3-38">8.1 六维里最需要展开的两维</h3>
+<p><strong>（1）4.2 维拿满分的理由——"主动回购注销"是最硬的意愿证据</strong></p>
+<p>方法论 §4.2 关注"新实控人的意图"，本案的等价物是"<strong>原实控人的意愿强度</strong>"。三个证据里，<strong>回购注销是唯一"用真金白银下注"的动作</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>期次</th>
+<th>回购股数</th>
+<th>金额</th>
+<th>用途</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一期</td>
+<td>789,128 股</td>
+<td>1,516.48 万元</td>
+<td><strong>注销</strong></td>
+<td>已完成</td>
+</tr>
+<tr>
+<td>第二期</td>
+<td>1,949,117 股</td>
+<td>—</td>
+<td><strong>注销</strong></td>
+<td><strong>2026-08-04 全部注销</strong></td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td><strong>2,738,245 股</strong></td>
+<td>约 <strong>4,517 万元</strong></td>
+<td>—</td>
+<td>总股本 168,309,120 → <strong>166,360,003 股</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>关键区别</strong>：回购用于<strong>股权激励</strong>，是"省激励成本"；回购用于<strong>注销</strong>，是"<strong>减少注册资本、提高每股含金量</strong>"。<strong>在股价从 70 元跌到 8.65 元的四年里，公司选择把 4,517 万元永久性地从股本里拿走——这是"+1"和"+2"的区别。</strong></p>
+<p><strong>一个必须说清的"但是"</strong>：回购注销发生在 <strong>2026-01-27（第二期完成）→ 2026-08-04（注销实施）</strong>，这段时间<strong>跨越了雀巢召回（2026-01-05）</strong>。也就是说，<strong>公司在已经知道全球召回的背景下，仍然完成了注销</strong>。这既是"意愿强"的证据，也提示我们：<strong>管理层的判断是"这是可控的事件"，而不是"这是存亡危机"。</strong> 这个判断对不对，要到 2026 年报才能验证。</p>
+</blockquote>
+<p><strong>（2）4.5 维只拿 2 分的理由——流动性被"制度 + 基本面"双重锁死</strong></p>
+<table>
+<thead>
+<tr>
+<th>层面</th>
+<th>约束</th>
+<th>数字</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>制度层</strong></td>
+<td>单日买入上限 <strong>50 万股</strong>（普通账户 + 信用账户合并计算）</td>
+<td>按 9-22 收盘 8.65 元计，<strong>≈ 432.5 万元/日</strong></td>
+</tr>
+<tr>
+<td><strong>交易层</strong></td>
+<td>2026-09-22 换手率 <strong>0.5010%</strong>、成交额 <strong>7,206,253 元</strong>、成交量 833,522 股</td>
+<td>相对 1.66 亿股总股本，<strong>理论上限 50 万股 ≈ 全年换手 0.30%/日</strong>（注：50 万股占 1.66 亿股 = 0.30%，实际 9-22 换手 0.50% 说明当日买入未触及上限）</td>
+</tr>
+<tr>
+<td><strong>基本面层</strong></td>
+<td>客户恢复无时间表、记录表停更、进展公告零新增</td>
+<td><strong>买方无法形成"抢筹"的叙事</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>结论</strong>：<strong>这不是一只"流动性充裕、只是价格便宜"的票。</strong> 它的流动性受制度硬约束（50 万股/日）、受基本面软约束（无催化）。<strong>对机构而言，按 432.5 万元/日的上限建仓 1 亿元需要 23 个交易日以上</strong>——这是仓位管理必须前置计算的成本。</p>
+</blockquote>
+<h3 id="h-3-39">8.2 综合判断</h3>
+<blockquote>
+<p><strong>这是一只"六维里五维干净、一维（流动性）受限、且成长性维度缺席"的 ST。</strong></p>
+<p>用方法论的框架说：<strong>它不是"壳价值"标的，也不是"控制权变更"标的，而是一只"被外生事件打断的正常公司"。</strong> 六维拆解在这里的最大价值，恰恰是<strong>证伪了"谁会来救"的问题本身</strong>——<strong>没有人需要来救，因为没人能通过"救"在这个结构里获利：控制权不在市场上（44.17% + 家族治理），资产干净到没有"重组折价"可赚，规则通道虽然开着但没有交易对手。</strong></p>
+</blockquote>
+<hr>
+<h2 id="h-2-40">九、壳价值评估与赔率测算</h2>
+<h3 id="h-3-41">9.1 壳价值三要素：本案的"壳"值多少钱？</h3>
+<p>方法论 §5 的壳价值评估，看三个要素：</p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>本案情况</th>
+<th>评估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① 干净度</strong></td>
+<td>负债率 <strong>16.29%</strong>、<strong>零质押／零冻结</strong>、<strong>零商誉</strong>、<strong>零非经营性资金占用</strong>、财报与内控<strong>双无保留</strong>、无立案无处罚</td>
+<td><strong>A 级干净</strong>（在所有 ST 中属第一档）</td>
+</tr>
+<tr>
+<td><strong>② 控制权可得性</strong></td>
+<td>武汉烯王持股 <strong>44.17%</strong>，家族（易德伟＋杜斌连襟，杜斌持股 97.64 万股）＋创业伙伴（王华标 110.82 万股）治理结构紧密</td>
+<td><strong>❌ 不可得</strong>——控制权根本不在市场上</td>
+</tr>
+<tr>
+<td><strong>③ 规则通道</strong></td>
+<td>科创板 ST <strong>不限制发行股份购买资产</strong>（无保留意见）；摘帽无 12 个月时间锁</td>
+<td><strong>✅ 开着</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>关键结论：前两条决定了"这只壳不会被用来借壳上市"（拿不到控制权），第三条决定了"这只壳可以让公司自己发股买资产"。</strong></p>
+<p>所以<strong>本案的"壳价值"= 0</strong>，但<strong>"平台价值"≠ 0</strong>：一个负债率 16.29%、账上净现金 1.83 亿元、拥有完整合成生物学平台（八大平台＋独立算力平台）的上市公司，<strong>它的"资本运作载体价值"是真实存在的</strong>——只是这个价值必须由<strong>现有股东自己使用</strong>，而不是卖给第三方。</p>
+</blockquote>
+<h3 id="h-3-42">9.2 估值的三个锚</h3>
+<p><strong>锚一：PB（市净率）</strong></p>
+<table>
+<thead>
+<tr>
+<th>口径</th>
+<th>计算</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Wind PB(LF)</strong></td>
+<td>Wind 直接取值（2026-09-22）</td>
+<td><strong>0.9682</strong></td>
+</tr>
+<tr>
+<td><strong>中报归母净资产口径</strong></td>
+<td>8.65 ÷ (1,531,382,670.65 ÷ 166,360,003) = 8.65 ÷ 9.2053</td>
+<td><strong>0.9397</strong></td>
+</tr>
+<tr>
+<td>差异来源</td>
+<td>Wind 的 PB(LF) 对<strong>库存股 45,169,646.72 元做了扣除</strong>：(1,531,382,670.65 − 45,169,646.72) ÷ 166,360,003 = 8.9337 元/股，8.65 ÷ 8.9337 = 0.9682 ✓</td>
+<td>两条口径<strong>均确认破净</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>"两把尺子"的用法</strong>：两条口径差 0.029（约 3%），但<strong>结论完全一致——破净</strong>。用"谁能自洽"而非"谁更大"来判：<strong>中报口径可逐项核对（归母权益 ÷ 总股本），Wind 口径多了库存股处理，两者都对，只是口径不同。本报告同时列出，读者可任选。</strong></p>
+</blockquote>
+<p><strong>锚二：PS（市销率）</strong></p>
+<table>
+<thead>
+<tr>
+<th>口径</th>
+<th>计算</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Wind PS(TTM)</strong></td>
+<td>Wind 直接取值</td>
+<td><strong>4.5829</strong></td>
+</tr>
+<tr>
+<td><strong>静态口径（2025 年报）</strong></td>
+<td>14.3901 亿 ÷ 5.6314 亿</td>
+<td><strong>2.5554</strong></td>
+</tr>
+<tr>
+<td><strong>年化口径（2026H1×2）</strong></td>
+<td>14.3901 亿 ÷ (0.5759×2) 亿</td>
+<td><strong>12.494</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>三个 PS 差 4.9 倍——这不是口径问题，这是"这家公司今年赚多少钱"完全不确定。</strong> PS 在本案里<strong>不是估值指标，是"恢复程度指示器"</strong>：<br>
+- 若 2026 全年收入恢复到 <strong>3 亿元</strong>（约 2024 年的 54%）→ PS ≈ <strong>4.80</strong><br>
+- 若全年收入只有 <strong>1.2 亿元</strong>（勉强过线）→ PS ≈ <strong>11.99</strong><br>
+- 若全年收入 <strong>2 亿元</strong> → PS ≈ <strong>7.20</strong></p>
+<p><strong>换句话说：当前 14.39 亿元市值，隐含的市场预期大约是"2026 全年收入 1.2-3 亿元之间"。这正好是"过线"与"不及格"之间的区间。</strong> 市场没有给"完全恢复"付钱，也没有按"归零"定价。</p>
+</blockquote>
+<p><strong>锚三：净现金与重置成本</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>金额（元）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>货币资金</td>
+<td>187,437,663.31</td>
+</tr>
+<tr>
+<td>交易性金融资产</td>
+<td>164,047,290.65</td>
+</tr>
+<tr>
+<td><strong>现金类资产合计</strong></td>
+<td><strong>351,484,953.96</strong></td>
+</tr>
+<tr>
+<td>短期借款</td>
+<td>70,046,552.51</td>
+</tr>
+<tr>
+<td>长期借款</td>
+<td>98,844,029.42</td>
+</tr>
+<tr>
+<td><strong>有息负债合计</strong></td>
+<td><strong>168,890,581.93</strong></td>
+</tr>
+<tr>
+<td><strong>净现金</strong></td>
+<td><strong>+182,594,372.03（约 1.83 亿元）</strong></td>
+</tr>
+<tr>
+<td>固定资产（账面价值）</td>
+<td>877,838,567.40</td>
+</tr>
+<tr>
+<td>在建工程</td>
+<td>9,619,992.49</td>
+</tr>
+<tr>
+<td><strong>固定资产＋在建工程</strong></td>
+<td><strong>887,458,559.89（约 8.87 亿元）</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>一个残酷的算术</strong>：市值 14.39 亿元 − 净现金 1.83 亿元 = <strong>12.56 亿元</strong>，对应的是<strong>8.87 亿元固定资产＋在建工程 + 1.95 亿元存货 + 全部技术平台与客户关系 + 一个科创板上市地位</strong>。</p>
+<p><strong>换言之：市场给这家公司的"经营性资产"的报价，大约是"固定资产账面价值的 1.4 倍"（且这部分固定资产是 2025 年刚投产的新产能）。</strong> 这是一个<strong>在正常年份绝不可能出现的价格</strong>——2025 年它的净利率是 22.7%、ROE 8.99%。</p>
+</blockquote>
+<h3 id="h-3-43">9.3 三种情景推演</h3>
+<table>
+<thead>
+<tr>
+<th>情景</th>
+<th>触发条件</th>
+<th>2026 全年收入</th>
+<th>2027 年报表形态</th>
+<th><strong>合理市值区间</strong></th>
+<th>相对现价（14.39 亿）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>乐观（25%）</strong></td>
+<td>① 欧盟 (EU) 2026/459 松动或客户完成重新认证；② <strong>H2 收入恢复至 2.4 亿元以上</strong>（即全年 ≥3 亿元）；③ 2026 年报维持无保留意见；④ 2027 年内摘帽</td>
+<td><strong>3.0-3.6 亿元</strong></td>
+<td>归母净利转正至 <strong>0.8-1.4 亿元</strong></td>
+<td><strong>24-32 亿元</strong>（PS 8x / PE 20-25x）</td>
+<td><strong>+67% ~ +122%</strong></td>
+</tr>
+<tr>
+<td><strong>中性（50%）</strong></td>
+<td>① 客户缓慢恢复、无新市场突破；② 全年收入 <strong>1.5-2.5 亿元</strong>（守住 1 亿元红线）；③ 计提继续但不再暴增</td>
+<td><strong>1.5-2.5 亿元</strong></td>
+<td>归母净利 <strong>-0.3 ~ +0.3 亿元</strong>；仍亏损或微利</td>
+<td><strong>12-18 亿元</strong>（PB 0.8-1.1x）</td>
+<td><strong>-17% ~ +25%</strong></td>
+</tr>
+<tr>
+<td><strong>悲观（25%）</strong></td>
+<td>① 欧盟管控加严/其他市场效仿；② 全年扣除后收入 <strong>&lt; 1 亿元</strong> → <strong>叠加 *ST</strong>；③ 或 2026 年报审计意见降级/客户永久流失</td>
+<td><strong>&lt; 1 亿元</strong></td>
+<td>归母净利 <strong>-2 亿元以下</strong>；净资产降至 <strong>14 亿元以下</strong></td>
+<td><strong>7-11 亿元</strong>（PB 0.5-0.7x）</td>
+<td><strong>-51% ~ -23%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>概率加权的期望市值</strong>：</p>
+<blockquote>
+<p>0.25 × 28 亿 + 0.50 × 15 亿 + 0.25 × 9 亿 = 7.00 + 7.50 + 2.25 = <strong>16.75 亿元</strong><br>
+相对现价 14.39 亿元 → <strong>约 +16.4%</strong></p>
+<p><strong>这个期望收益听起来不高，但必须看分布的形状</strong>：<strong>上行 +67%~+122%，下行 -23%~-51%</strong>。<br>
+- <strong>赔率不对称但方向存疑</strong>：上行幅度更大（因为有"恢复 + 摘帽 + 平台重估"三重弹性），下行幅度也不小（因为"<em>ST + 净资产下移"会双杀）；<br>
+- </em><em>关键赔率改善点</em><em>：若按 </em><em>2025-07-30 的区间最低点后复权 10.377</em><em> 对应的价格（约 </em><em>6.98 元</em><em>）计，悲观情景的下行空间被压缩到 </em><em>-17% 以内</em><em>——</em><em>这也是为什么"跌到 7 元附近"是一个风险收益比明显改善的位置</em>*。</p>
+</blockquote>
+<h3 id="h-3-44">9.4 同业对照：它是六家里唯一破净的</h3>
+<table>
+<thead>
+<tr>
+<th>标的</th>
+<th>代码</th>
+<th>2026-09-22 收盘</th>
+<th>市值（亿元）</th>
+<th><strong>PB(LF)</strong></th>
+<th>PS(TTM)</th>
+<th>PE(TTM)</th>
+<th>换手率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>嘉必优</strong></td>
+<td><strong>688089.SH</strong></td>
+<td><strong>8.65</strong></td>
+<td><strong>14.39</strong></td>
+<td><strong>0.9682</strong></td>
+<td><strong>4.5829</strong></td>
+<td><strong>-22.2055</strong></td>
+<td><strong>0.5010%</strong></td>
+</tr>
+<tr>
+<td>华恒生物</td>
+<td>688639.SH</td>
+<td>18.58</td>
+<td>46.47</td>
+<td>1.7171</td>
+<td>1.5465</td>
+<td>39.2570</td>
+<td>3.8309%</td>
+</tr>
+<tr>
+<td>凯赛生物</td>
+<td>688065.SH</td>
+<td>38.60</td>
+<td>278.42</td>
+<td>1.5676</td>
+<td>7.8996</td>
+<td>44.5623</td>
+<td>0.5884%</td>
+</tr>
+<tr>
+<td>晨光生物</td>
+<td>300138.SZ</td>
+<td>11.57</td>
+<td>55.89</td>
+<td>1.6440</td>
+<td>0.9223</td>
+<td>16.8140</td>
+<td>1.5415%</td>
+</tr>
+<tr>
+<td>梅花生物</td>
+<td>600873.SH</td>
+<td>7.51</td>
+<td>210.60</td>
+<td>1.3439</td>
+<td>0.8716</td>
+<td>9.6836</td>
+<td>0.4987%</td>
+</tr>
+<tr>
+<td>金丹科技</td>
+<td>300829.SZ</td>
+<td>27.60</td>
+<td>62.73</td>
+<td>2.5710</td>
+<td>3.7717</td>
+<td>88.5367</td>
+<td>25.7201%</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>两条读数</strong>：<br>
+1. <strong>嘉必优是六家里唯一 PB &lt; 1 的公司</strong>（第二低是梅花生物 1.3439）。<strong>这既是"破净"的量化证据，也是"市场已把它按事故定价"的量化证据</strong>；<br>
+2. <strong>PS(TTM) 4.5829 在六家里排第二高</strong>（仅次于凯赛生物 7.8996）——<strong>但这是"分母塌了"造成的假高</strong>（TTM 分母包含了 2026H1 只做了 0.58 亿元收入的半年）。<strong>若以 2025 年报收入计，PS 仅 2.56</strong>，低于凯赛、金丹，接近晨光。<strong>同一个数字，两种读法，差异超过一倍——这正是"ST 股的估值指标必须先校准分母"的现实案例。</strong></p>
+</blockquote>
+<h3 id="h-3-45">9.5 壳价值评估的最终结论</h3>
+<blockquote>
+<p><strong>本案的"壳"不值钱（控制权拿不到），但"平台"值钱（负债率 16.29%＋净现金 1.83 亿元＋完整合成生物学平台＋科创板上市地位）。</strong></p>
+<p><strong>投资这只票的核心命题不是"谁会来救"，而是"恢复能不能在 2027 年报之前完成"。</strong><br>
+- <strong>上行触发器（按优先级）</strong>：① 每月进展公告出现"新客户恢复供货"的名单变化；② 三季报单季收入环比大幅回升；③ 欧盟管控松动的任何信号；④ HMOs/燕窝酸首次单列或规模放量；<br>
+- <strong>下行触发器</strong>：① 2026 年 10 月底三季报显示 H2 收入 &lt; 0.4 亿元；② 12 月底全年收入落定 &lt; 1 亿元（→ *ST）；③ 2027 年 4 月年报审计意见降级；④ 欧盟加严或新市场效仿。</p>
+<p><strong>一句话</strong>：<strong>这是一张"事故险"保单——你付出的价格是 0.94-0.97 倍净资产，你买的是"产品没问题、客户会回来"这个判断。它不便宜到无脑，也不贵到不能碰；它的核心风险不是财务造假，而是"时间"。</strong></p>
+</blockquote>
+<hr>
+<h2 id="h-2-46">十、数据来源</h2>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>具体来源</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>定期报告</strong></td>
+<td>2025 年年度报告（2026-04-23，announcementId=1225156914）；2024 年年度报告（2025-03-28）；2023 年年度报告（2024-04-27）；<strong>2026 年半年度报告</strong>（2026-08-22，announcementId=1225491172）</td>
+<td>财务数据、经营情况、股东结构、关联方、募集资金</td>
+</tr>
+<tr>
+<td><strong>临时公告（2026 年全量 53 条）</strong></td>
+<td>巨潮 <code>topSearch/query</code>（orgId=<strong>9900033197</strong>）→ <code>hisAnnouncement/query</code>（<code>column=sse</code>＋<code>plate=sh</code>）；同期核对上交所网站</td>
+<td>公告时间轴、事项核查</td>
+</tr>
+<tr>
+<td><strong>关键公告原文</strong></td>
+<td>2026-07-25 戴帽停牌公告（2026-019）、2026-08-29 进展公告（2026-024）、2026-09-15 再审应诉公告（2026-025）、2026-08-22 减值公告（2026-023）、2026-06-09 LNnT 获批公告（2026-015）、2026-04-23 会计估计变更公告（2026-010）、2025 年度募集资金专项报告（2026-008）</td>
+<td>规则、程序、逐字引文</td>
+</tr>
+<tr>
+<td><strong>投资者交流信源</strong></td>
+<td>① <strong>上证 e 互动</strong>经同花顺 F10（<code>basic.10jqka.com.cn/new/688089/interactive.html</code>，科创板 <code>new/</code> 路径）收录 <strong>13 条</strong>；② <strong>投资者关系活动记录表 16 份</strong>（东方财富公告库翻页取得，2024-04-30~2026-05-18）；③ 业绩说明会全文（含于记录表）</td>
+<td>§4.7 专章</td>
+</tr>
+<tr>
+<td><strong>行情与估值</strong></td>
+<td>Wind（windproxy 局域网代理 <code>192.168.1.20:8000</code>），tradeDate=2026-09-22；后复权（<code>PriceAdj=B</code>）序列 2019-12-19~2026-09-22</td>
+<td>价格、市值、PB/PS/PE、换手、EV2、真实回撤</td>
+</tr>
+<tr>
+<td><strong>规则文件</strong></td>
+<td>《上海证券交易所科创板股票上市规则》第 12.9.1 条、第 12.9.5 条（均经公司公告原文引用）；上交所退市制度问答（50 万股限制的除外情形）</td>
+<td>规则约束</td>
+</tr>
+<tr>
+<td><strong>工商信息</strong></td>
+<td>天眼查／公开工商登记（核对子公司）</td>
+<td>子公司核查</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>信源纪律说明</strong>：本报告全部财务数字取自<strong>公司定期报告与公告原文</strong>；行情估值取自 <strong>Wind</strong>；投资者交流取自<strong>公司官方披露渠道（上证 e 互动、投资者关系活动记录表）</strong>。<strong>未使用任何第三方财经网站、社交媒体或自媒体作为事实来源</strong>（媒体仅用于事件时间的交叉印证，且已在正文标注）。</p>
+</blockquote>
+<hr>
+<h2 id="h-2-47">信源索引（脚注定义）</h2>
+<hr>
+<h2 id="h-2-48">附录 A：关键财务表（勾稽自检版）</h2>
+<p><strong>A1. 合并资产负债表勾稽（2026-06-30 与 2025-12-31）</strong></p>
+<table>
+<thead>
+<tr>
+<th>检核项</th>
+<th>2026-06-30</th>
+<th>2025-12-31</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>负债合计</td>
+<td>299,308,084.10</td>
+<td>216,162,812.62</td>
+</tr>
+<tr>
+<td>加：所有者权益合计</td>
+<td>1,537,567,676.27</td>
+<td>1,643,502,353.15</td>
+</tr>
+<tr>
+<td><strong>= 负债和所有者权益总计</strong></td>
+<td><strong>1,836,875,760.37 ✓</strong></td>
+<td><strong>1,859,665,165.77 ✓</strong></td>
+</tr>
+<tr>
+<td>与资产总计是否一致</td>
+<td>一致 ✓</td>
+<td>一致 ✓</td>
+</tr>
+<tr>
+<td>资产负债率</td>
+<td><strong>16.29%</strong></td>
+<td>11.62%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A2. 归母净资产变动勾稽（2026H1）</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>金额（元）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>期初归母净资产（2025-12-31）</td>
+<td>1,634,061,232.96</td>
+</tr>
+<tr>
+<td>减：归母净利润（2026H1）</td>
+<td>100,577,846.47</td>
+</tr>
+<tr>
+<td>= 理论期末</td>
+<td>1,533,483,386.49</td>
+</tr>
+<tr>
+<td><strong>实际期末归母净资产</strong></td>
+<td><strong>1,531,382,670.65</strong></td>
+</tr>
+<tr>
+<td><strong>差额</strong></td>
+<td><strong>-2,100,715.84</strong></td>
+</tr>
+<tr>
+<td>差异说明</td>
+<td>与"库存股增加 2,077,483.31 元（43,092,163.41→45,169,646.72）＋其他综合收益变动"同量级、同方向 ✓</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A3. 2025 年分季度数据（年报原文）</strong></p>
+<table>
+<thead>
+<tr>
+<th>季度</th>
+<th>营业收入</th>
+<th>归母净利润</th>
+<th>扣非归母净利润</th>
+<th>经营活动现金流净额</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q1</td>
+<td>155,965,651.51</td>
+<td>44,995,913.27</td>
+<td>41,371,462.64</td>
+<td>32,889,318.49</td>
+</tr>
+<tr>
+<td>Q2</td>
+<td>150,766,447.31</td>
+<td>62,955,024.70</td>
+<td>58,551,333.38</td>
+<td>84,891,919.45</td>
+</tr>
+<tr>
+<td>Q3</td>
+<td>121,295,640.10</td>
+<td>21,394,197.72</td>
+<td>17,856,645.84</td>
+<td>56,083,632.83</td>
+</tr>
+<tr>
+<td>Q4</td>
+<td>135,108,009.49</td>
+<td>14,379,373.59</td>
+<td>9,229,461.54</td>
+<td>96,204,901.41</td>
+</tr>
+<tr>
+<td><strong>全年</strong></td>
+<td><strong>563,135,748.41 ✓</strong></td>
+<td><strong>143,724,509.28 ✓</strong></td>
+<td><strong>127,008,903.40 ✓</strong></td>
+<td><strong>270,069,772.18 ✓</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>勾稽：四项分季度加总与全年数<strong>全部分毫不差</strong>——这份年报的内部分账是干净的。</p>
+</blockquote>
+<hr>
+<h2 id="h-2-49">附录 B：事件与时间轴</h2>
+<p><strong>B1. 从盛到衰的完整链条</strong></p>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>事件</th>
+<th>性质</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019-12-16</td>
+<td>募集资金到账（净额 64,832.61 万元）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2019-12-19</td>
+<td>科创板上市，发行价 23.90 元</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2021-12-01</td>
+<td><strong>后复权价历史最高 70.0829441</strong></td>
+<td>峰值</td>
+</tr>
+<tr>
+<td>2021-12</td>
+<td>中科鸿基商业秘密案起诉（广东高院）</td>
+<td>诉讼起点</td>
+</tr>
+<tr>
+<td>2023-01</td>
+<td>实施 10 转 4 派 3 元，总股本 1.2 亿→1.68 亿股</td>
+<td>股本扩张</td>
+</tr>
+<tr>
+<td>2024-07</td>
+<td>一审胜诉（驳回中科鸿基全部请求）</td>
+<td>诉讼</td>
+</tr>
+<tr>
+<td>2024-10-29</td>
+<td><strong>停牌筹划重大资产重组（收购上海欧易生物 63.2134%，约 8.31 亿元、评估增值 441.23%）</strong></td>
+<td>转型豪赌</td>
+</tr>
+<tr>
+<td>2024-11-12</td>
+<td>复牌一字涨停 +19.98%，收 24.90 元</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>2025-08-20</strong></td>
+<td>记录表：<strong>"发酵产能基本处于满产""主要产品产量创历史新高"</strong></td>
+<td><strong>顶点</strong></td>
+</tr>
+<tr>
+<td>2025-08-29</td>
+<td><strong>终止欧易生物交易并撤回申请</strong></td>
+<td>赌局收场</td>
+</tr>
+<tr>
+<td>2025-11</td>
+<td>最高法终审胜诉（驳回上诉，维持原判）</td>
+<td>诉讼胜诉</td>
+</tr>
+<tr>
+<td><strong>2025-11-21 / 2026-04-08</strong></td>
+<td>记录表/e 互动口径：<strong>"前三季净利 +54.18%"</strong>、"毛利率 43.61%→47.70%"</td>
+<td>顶峰数据</td>
+</tr>
+<tr>
+<td><strong>2025-12-10</strong></td>
+<td>欧盟预警荷兰雀巢产品 cereulide 污染，雀巢当日在 16 国召回 25 个批次</td>
+<td><strong>冲击起点</strong></td>
+</tr>
+<tr>
+<td><strong>2026-01-05/06</strong></td>
+<td><strong>雀巢升级为全球 31 个国家和地区召回</strong>，指向"供应商提供的 ARA 油"；雀巢中国召回 71 个批次</td>
+<td><strong>★ 核心冲击</strong></td>
+</tr>
+<tr>
+<td>2026-01-08</td>
+<td>嘉必优开盘跌超 13%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2026-01-27</td>
+<td>第二期股份回购实施结果（合计 1,949,117 股）</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>2026-02-24</strong></td>
+<td><strong>欧盟 (EU) 2026/459 条例</strong>：原产中国 ARA 油列入<strong>强化管控清单</strong>，每批须附中国官方无蜡芽孢杆菌毒素证书＋实验室报告，50% 频率查验</td>
+<td><strong>★ 制度性冲击</strong></td>
+</tr>
+<tr>
+<td>2026-02-28</td>
+<td>2025 年度业绩快报</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2026-04-08</td>
+<td><strong>欧莱雅含"001 号燕窝酸"的复颜新专研系列上市</strong></td>
+<td>正面事件</td>
+</tr>
+<tr>
+<td>2026-04-22/23</td>
+<td><strong>会计估计变更</strong>（房屋折旧年限 20-25→20-50 年）；<strong>2025 年报披露，审计意见"带强调事项段的无保留"</strong>；<strong>2026-04-23 股价 -19.98% 跌停至 16.02 元</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>2026-05-13</strong></td>
+<td><strong>业绩说明会（编号 2026-01）</strong>，19 问，戴帽前最后一次正式交流</td>
+<td>★ 见 §7</td>
+</tr>
+<tr>
+<td>2026-06-09</td>
+<td><strong>LNnT 经国家卫健委审查通过</strong>（自愿性披露）</td>
+<td>正面事件</td>
+</tr>
+<tr>
+<td>2026-06-16</td>
+<td>2025 年年度股东会决议</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>2026-07-09</strong></td>
+<td>e 互动 5 连问（戴帽前 15 天）：毛利率、新产能、HMOs、动物营养、燕窝酸</td>
+<td>★ 见 §7</td>
+</tr>
+<tr>
+<td>2026-07-24（周五）晚</td>
+<td><strong>公告半年度业绩预告 + 被实施其他风险警示暨停牌</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>2026-07-27</td>
+<td><strong>停牌一天</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>2026-07-28</strong></td>
+<td><strong>复牌并戴帽"ST 嘉必优"，收盘 7.95 元（-20.02%）</strong></td>
+<td><strong>★ 戴帽</strong></td>
+</tr>
+<tr>
+<td><strong>2026-07-30</strong></td>
+<td><strong>后复权价区间最低 10.37697754</strong></td>
+<td>底部</td>
+</tr>
+<tr>
+<td>2026-08-04</td>
+<td>回购股份（1,949,117 股）<strong>全部注销</strong>，总股本降至 166,360,003 股</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2026-08-13</td>
+<td>独立董事辞职</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>2026-08-22</strong></td>
+<td><strong>2026 年半年度报告</strong>（营收 0.5759 亿元、归母 -1.0058 亿元）＋<strong>计提减值 3,151.06 万元</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>2026-08-27</strong></td>
+<td>e 互动最后一条问答（现金流/借款）</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>2026-08-29</strong></td>
+<td><strong>第一期风险警示进展公告</strong>（2026-024）："<strong>部分大健康业务客户率先恢复稳定供货</strong>""<strong>首批海外订单正在交付中</strong>""<strong>发酵纤维素已实现产业化生产和销售，发酵甘氨酸已实现 10 吨级规模化生产</strong>"</td>
+<td>★ 最新实质进展</td>
+</tr>
+<tr>
+<td><strong>2026-09-15</strong></td>
+<td>收到最高法 (2026) 最高法民申 3114 号应诉通知书，中科鸿基<strong>申请再审</strong></td>
+<td>★ 见下</td>
+</tr>
+<tr>
+<td><strong>2026-09-22</strong></td>
+<td><strong>第二期进展公告未出</strong>（截至本报告定稿）</td>
+<td>⚠️</td>
+</tr>
+</tbody>
+</table>
+<p><strong>B2. 再审案细节（2026-09-15 公告原文）</strong></p>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>案件阶段</td>
+<td><strong>再审申请已立案审查</strong></td>
+</tr>
+<tr>
+<td>公司地位</td>
+<td><strong>被申请人</strong>（一审被告、二审被上诉人）</td>
+</tr>
+<tr>
+<td>涉案金额</td>
+<td>赔偿损失 <strong>500 万元</strong> + 合理费用 <strong>15 万元</strong> + 诉讼费</td>
+</tr>
+<tr>
+<td>案号</td>
+<td>（2026）最高法民申 3114 号</td>
+</tr>
+<tr>
+<td>涉诉产品</td>
+<td><strong>N-乙酰神经氨酸（SA，燕窝酸）</strong>，由全资子公司<strong>武汉中科光谷</strong>联合<strong>中科院合肥物质研究院</strong>自主研发</td>
+</tr>
+<tr>
+<td>诉讼史</td>
+<td>2021-12 起诉 → 2024-07 一审胜诉 → <strong>2025-11 最高法终审胜诉</strong> → 2026-09 中科鸿基申请再审</td>
+</tr>
+<tr>
+<td>对报表影响</td>
+<td>"<strong>二审胜诉判决已经生效，再审审查期间，不停止原判决的执行</strong>"；"存在被裁定驳回再审申请或支持再审申请两种可能性"</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>读法</strong>：<strong>涉案 515 万元，对一家净资产 15.31 亿元的公司不构成财务威胁。</strong> 它的意义在于两条：① 这是<strong>燕窝酸知识产权的第十年长跑</strong>（2021 起诉、2024 一审、2025 终审、2026 再审），<strong>公司一直赢</strong>——这是"技术独立性"的一条间接证据；② <strong>再审不影响原判决执行</strong>，属程序性风险而非实质风险。<strong>本报告列为"关注项"，不列为"风险项"。</strong></p>
+</blockquote>
+<hr>
+<h2 id="h-2-50">附录 C：未核实与存疑清单（供人工复核）</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>事项</th>
+<th>现状</th>
+<th>建议复核路径</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>科创板撤销"其他风险警示"的直接条款号</strong></td>
+<td>公司戴帽公告仅引用第 12.9.1 条（实施）与 12.9.5 条（每月披露）；<strong>"撤销"条款号本报告未从交易所规则原文取得</strong>，正文按"触及情形已完全消除即可申请＋15 个交易日内决定"表述</td>
+<td>查阅《上海证券交易所科创板股票上市规则（2026 年修订）》第十二章第九节全文</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>2021 年末"所有者权益合计"完整口径</strong></td>
+<td>正文财务总表 2021 年资产负债率留空不估（避免混用口径）</td>
+<td>2021 年年度报告合并资产负债表</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>2019／2020 年归母净利润</strong></td>
+<td>本次未取得年报原文（Wind 该两期仅有含少数股东口径 119,750,223.25 / 134,938,937.10 元），故正文财务表起点定为 2021 年</td>
+<td>2020／2021 年年度报告</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>境外收入与境外客户明细（2026H1）</strong></td>
+<td>中报未按"分地区/分客户"细列（半年报通常简化），故第二节"境外收入 1.88 亿元"为 2025 年报数据</td>
+<td>2026 年年度报告</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>"记录表停更"的准确起点</strong></td>
+<td>本报告依据东财公告库全量数据，确认最后一份为 2026-05-18；<strong>未排除公司通过其他渠道（如微信公众号"嘉必优投资者关系"）发布活动的可能</strong></td>
+<td>查阅公司微信公众号</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>"上海勇度食品"与"保龄宝生物"的性质</strong></td>
+<td>年报仅列名称与金额，未披露是否为新增乳企级客户</td>
+<td>工商登记＋后续年报客户名单对比</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>HMOs 的 2026H1 收入</strong></td>
+<td>中报未单列 HMOs 收入；正文按"未单列"处理</td>
+<td>2026 年年度报告</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>2025-10-22 国家食品安全风险评估中心征求意见稿的最终落地状态</strong></td>
+<td>正文按"拟将 2'-FL 应用范围扩展"表述（截至 2026-07-09 公司口径仍为"拟"）</td>
+<td>国家卫健委公告</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="h-2-51">附录 D：逻辑漏洞与反方观点</h2>
+<p><strong>D1. 本报告可能存在的三个逻辑漏洞</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>漏洞</th>
+<th>说明</th>
+<th>反向检验</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>"外生冲击"的定性可能过于宽容</strong></td>
+<td>本报告把本案定义为"外生事件冲击，技术/产能/客户关系未损毁"。但<strong>若欧盟 (EU) 2026/459 的实质是"对中国 ARA 产业的系统性排斥"</strong>，那么它就不是"事件"而是"格局"，"恢复"可能永远不回来</td>
+<td>需持续跟踪：其他市场是否效仿？管控是否从"程序性"升级为"禁止性"？<strong>这是本案最大的单点风险</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>"四条新方向都是延伸"的判断可能低估了 HMOs</strong></td>
+<td>本报告认为 HMOs 是"法规创造的新市场，非公司创造的新技术"。但<strong>2'-FL 入选工信部首批生物制造标志性产品名单</strong>＋<strong>LNnT 获批</strong>＋<strong>公司能开发"结构更复杂、更接近天然母乳的 HMOs"</strong>，存在"技术差异化"的可能性——若 HMOs 全球只有少数几家企业能做，那它就不是"延伸"，而是"新物种"</td>
+<td>复核：全球 HMOs 供应商名单、公司 HMOs 专利数量、2'-FL 的全球竞争格局</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>"净现金 1.83 亿元"可能高估安全垫</strong></td>
+<td>计入的现金类资产包括"交易性金融资产 164,047,290.65 元"（理财）。<strong>若部分理财为结构性存款/非保本产品，或存在质押/受限情形</strong>，安全垫会缩水</td>
+<td>复核：理财产品的具体类型与到期结构、货币资金受限明细</td>
+</tr>
+</tbody>
+</table>
+<p><strong>D2. 三条反方观点（看多者的反驳）</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>反方观点</th>
+<th>本报告的回应</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>"负债率 16.29%、净现金 1.83 亿元、零质押、连续 6 年分红 2.43 亿元——这不是 ST 股该有的样子，是错杀"</strong></td>
+<td><strong>部分同意。</strong> 财务质量确实远高于 ST 平均。但"错杀"的前提是"能被证明"——<strong>恢复必须是可验证的（客户名单、季度收入），而不是"应该会恢复"。</strong> 目前公司提供的全是"正在推进"，这不足以支撑"错杀"的定论</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>"PB 0.94-0.97 倍、固定资产 8.87 亿元是新产能、技术平台完整——重置成本远高于市值，跌无可跌"</strong></td>
+<td><strong>不同意"跌无可跌"。</strong> 2026-07-30 后复权低点 10.377 对应不复权价约 6.98 元，比现价还低 19%。<strong>破净是"资产端安全"，不是"价格端底"。</strong> 若 2026 年亏损扩大 2 亿元以上，净资产从 15.31 亿元降至 13 亿元，PB 会被动上升到 1.10 倍——<strong>破净可以消失，而且不需要股价上涨</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>"摘帽无 12 个月时间锁，随时可能摘帽，这是最大的期权"</strong></td>
+<td><strong>制度判断正确，执行判断需谨慎。</strong> "随时可摘"的前提是"触及情形消除"，而这需要<strong>客户回来</strong>。<strong>目前没有任何一份公告或记录表给出客户恢复的时间表</strong>（2026-05-18 第 17 问已直接问过，答案是"需要一定的时间"）。<strong>制度给了弹性，但业务没给进度</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>D3. 本报告最想强调的一句风险提示</strong></p>
+<blockquote>
+<p><strong>本案的核心风险不是"造假"，不是"掏空"，也不是"退市"——而是"时间"。</strong></p>
+<p>ST 的时钟（每月进展公告、2026 年报的 1 亿元红线、2027 年报的审计意见）是<strong>按季度走的</strong>；而客户重新认证、欧盟管控解除、HMOs 客户准入、燕窝酸放量——<strong>这四件事全都是按"年"走的</strong>。</p>
+<p><strong>时间不匹配，是这只票最本质的矛盾（同 §4.3 结论）。而这个矛盾，无法靠"资产便宜"来解决。</strong></p>
+</blockquote>
+<hr>
+<h2 id="h-2-52">附录 E：关键公告直链（交付前已逐条实测 HTTP 200）</h2>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>直链</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026 年半年度报告</td>
+<td><a href="https://static.cninfo.com.cn/finalpage/2026-08-22/1225491172.PDF" target="_blank" rel="noopener">https://static.cninfo.com.cn/finalpage/2026-08-22/1225491172.PDF</a></td>
+</tr>
+<tr>
+<td>2025 年年度报告</td>
+<td><a href="https://static.cninfo.com.cn/finalpage/2026-04-23/1225156914.PDF" target="_blank" rel="noopener">https://static.cninfo.com.cn/finalpage/2026-04-23/1225156914.PDF</a></td>
+</tr>
+<tr>
+<td>2025 年度募集资金存放与实际使用情况的专项报告</td>
+<td><a href="https://static.cninfo.com.cn/finalpage/2026-04-23/1225156887.PDF" target="_blank" rel="noopener">https://static.cninfo.com.cn/finalpage/2026-04-23/1225156887.PDF</a></td>
+</tr>
+<tr>
+<td>关于会计估计变更的公告（2026-010）</td>
+<td><a href="https://static.cninfo.com.cn/finalpage/2026-04-23/1225156894.PDF" target="_blank" rel="noopener">https://static.cninfo.com.cn/finalpage/2026-04-23/1225156894.PDF</a></td>
+</tr>
+<tr>
+<td>关于乳糖-N-新四糖获批的自愿性披露公告（2026-015）</td>
+<td><a href="https://static.cninfo.com.cn/finalpage/2026-06-09/1225356557.PDF" target="_blank" rel="noopener">https://static.cninfo.com.cn/finalpage/2026-06-09/1225356557.PDF</a></td>
+</tr>
+<tr>
+<td>关于 2026 年半年度业绩预告的自愿性披露公告</td>
+<td><a href="https://static.cninfo.com.cn/finalpage/2026-07-25/1225441061.PDF" target="_blank" rel="noopener">https://static.cninfo.com.cn/finalpage/2026-07-25/1225441061.PDF</a></td>
+</tr>
+<tr>
+<td>关于被实施其他风险警示暨停牌的公告（2026-019）</td>
+<td><a href="https://static.cninfo.com.cn/finalpage/2026-07-25/1225441065.PDF" target="_blank" rel="noopener">https://static.cninfo.com.cn/finalpage/2026-07-25/1225441065.PDF</a></td>
+</tr>
+<tr>
+<td>关于实施回购股份注销暨股份变动的公告</td>
+<td><a href="https://static.cninfo.com.cn/finalpage/2026-08-04/1225455923.PDF" target="_blank" rel="noopener">https://static.cninfo.com.cn/finalpage/2026-08-04/1225455923.PDF</a></td>
+</tr>
+<tr>
+<td>关于 2026 年半年度计提信用及资产减值准备的公告（2026-023）</td>
+<td><a href="https://static.cninfo.com.cn/finalpage/2026-08-22/1225491165.PDF" target="_blank" rel="noopener">https://static.cninfo.com.cn/finalpage/2026-08-22/1225491165.PDF</a></td>
+</tr>
+<tr>
+<td>关于公司股票被实施其他风险警示的进展公告（2026-024）</td>
+<td><a href="https://static.cninfo.com.cn/finalpage/2026-08-29/1225525306.PDF" target="_blank" rel="noopener">https://static.cninfo.com.cn/finalpage/2026-08-29/1225525306.PDF</a></td>
+</tr>
+<tr>
+<td>关于收到再审应诉通知书暨诉讼进展的公告（2026-025）</td>
+<td><a href="https://static.cninfo.com.cn/finalpage/2026-09-15/1225562769.PDF" target="_blank" rel="noopener">https://static.cninfo.com.cn/finalpage/2026-09-15/1225562769.PDF</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>信源获取方式备注</strong>：投资者关系活动记录表（16 份）与上证 e 互动问答均来自公司官方披露渠道（上交所网站 / 上证 e 互动平台），本报告通过公告检索与公开平台读取，未使用第三方财经网站的解读内容。巨潮资讯网为上述 PDF 的官方指定披露镜像。</p>
+</blockquote>
+<hr>
+<h2 id="h-2-53">免责声明</h2>
+<p>免责声明：本文内容仅为自用兼知识分享，不构成任何投资建议。文中数据来自公司定期报告与公告原文、上交所与巨潮资讯网、Wind 数据终端及公司官方投资者交流渠道，作者已力求准确，但不对其完整性、准确性作出保证。文中的分析、推测与情景假设均为作者个人观点，可能与事实不符。据此操作，风险自担。股市有风险，投资需谨慎。</p>
+<section class="footnotes"><h2 id="h-fn">信源索引（脚注）</h2><ol class="fnlist">
+<li id="fn-1">2026-07-25《关于被实施其他风险警示暨停牌的公告》（公告编号 2026-019）。上交所网站 / 巨潮资讯网。 <a class="fnback" href="#fnref-1">↩</a></li>
+<li id="fn-2">《嘉必优生物技术（武汉）股份有限公司 2026 年半年度报告》（2026-08-22）。含主要会计数据、非经常性损益、主营业务分析、资产负债状况、风险因素。 <a class="fnback" href="#fnref-2">↩</a></li>
+<li id="fn-3">2026 年半年度报告&quot;公司股东数量及持股情况&quot;&quot;实际控制人情况&quot;&quot;承诺事项履行情况&quot;章节。 <a class="fnback" href="#fnref-3">↩</a></li>
+<li id="fn-4">巨潮资讯网 `topSearch/query`（orgId=9900033197）→ `hisAnnouncement/query`（`column=sse`＋`plate=sh`），检索区间 2026-01-01~2026-09-22，去重后 53 条。 <a class="fnback" href="#fnref-4">↩</a></li>
+<li id="fn-5">《投资者关系活动记录表》编号 2026-01（2026 年 5 月 13 日 15:00-17:00 业绩说明会，线上）。参会：董事长、总经理易德伟，财务负责人王华标，董事会秘书易华荣，独立董事陈向东。 <a class="fnback" href="#fnref-5">↩</a></li>
+<li id="fn-6">上证 e 互动平台公司问答（`basic.10jqka.com.cn/new/688089/interactive.html`），2025-11-20~2026-08-27 共 13 条。 <a class="fnback" href="#fnref-6">↩</a></li>
+<li id="fn-7">2026-08-29《关于公司股票被实施其他风险警示的进展公告》（公告编号 2026-024）；《投资者关系活动记录表》编号 2025-09（2025 年 12 月 9 日-15 日）；2026-08-04《关于实施回购股份注销暨股份变动的公告》。 <a class="fnback" href="#fnref-7">↩</a></li>
+<li id="fn-8">权威媒体公开报道（公司沿革、&quot;湖北省首家科创板上市公司&quot;&quot;科创板食品生物科技第一股&quot;），新华社、央广网、上海证券报、证券日报、中国经济网等。 <a class="fnback" href="#fnref-8">↩</a></li>
+<li id="fn-9">2025 年年度报告&quot;公司股票简况&quot;&quot;公司股本变动&quot;章节。 <a class="fnback" href="#fnref-9">↩</a></li>
+<li id="fn-10">《关于同意嘉必优生物技术（武汉）股份有限公司首次公开发行股票注册的批复》（证监许可〔2019〕2338 号）；《2025 年度募集资金存放与实际使用情况的专项报告》（公告编号 2026-008，2026-04-23）。 <a class="fnback" href="#fnref-10">↩</a></li>
+<li id="fn-11">权威媒体公开报道（ARA 全球行业格局、2026-01-08 股价反应），财联社、上海证券报等。 <a class="fnback" href="#fnref-11">↩</a></li>
+<li id="fn-12">公司《投资者关系活动记录表》各期（2025-04-08、2025-04-28、2025-05-19、2025-09-03 等）关于客户关系与合作进展的原文。 <a class="fnback" href="#fnref-12">↩</a></li>
+<li id="fn-13">2023 年年度权益分派实施公告（每 10 股转增 4 股派 3 元）。 <a class="fnback" href="#fnref-13">↩</a></li>
+<li id="fn-14">2023 年度利润分配方案（每 10 股派 2 元）。 <a class="fnback" href="#fnref-14">↩</a></li>
+<li id="fn-15">2024 年度利润分配方案（每 10 股派 2 元）。 <a class="fnback" href="#fnref-15">↩</a></li>
+<li id="fn-16">2024-10-29《关于筹划重大资产重组的停牌公告》及后续预案公告。 <a class="fnback" href="#fnref-16">↩</a></li>
+<li id="fn-17">Wind（windproxy）行情数据，2024-11-12。 <a class="fnback" href="#fnref-17">↩</a></li>
+<li id="fn-18">重大资产重组预案及问询回复相关公告（2024-11 至 2025-08）；股价反应取自 Wind。 <a class="fnback" href="#fnref-18">↩</a></li>
+<li id="fn-19">《关于终止发行股份及支付现金购买资产并募集配套资金暨关联交易的公告》（2025-08-29）。 <a class="fnback" href="#fnref-19">↩</a></li>
+<li id="fn-20">2025-08-29 事项公告（终止原因表述原文）。 <a class="fnback" href="#fnref-20">↩</a></li>
+<li id="fn-21">《嘉必优生物技术（武汉）股份有限公司 2025 年年度报告》（2026-04-23，announcementId=1225156914）；含审计报告（大信会计师事务所，签字会计师伍志超、付娟）与&quot;带强调事项段的无保留意见&quot;原文。 <a class="fnback" href="#fnref-21">↩</a></li>
+<li id="fn-22">2026-07-09 上证 e 互动问答（毛利率 43.61%→47.70%、HMOs、燕窝酸、动物营养口径）。 <a class="fnback" href="#fnref-22">↩</a></li>
+<li id="fn-23">2024／2025 年年度报告&quot;营业外收入&quot;附注（帝斯曼和解补偿款）。 <a class="fnback" href="#fnref-23">↩</a></li>
+<li id="fn-24">权威媒体公开报道（2025-12-10 欧盟预警与雀巢欧洲召回），新华社、央广网等。 <a class="fnback" href="#fnref-24">↩</a></li>
+<li id="fn-25">权威媒体公开报道（2026-01-05/06 雀巢全球 31 个国家和地区召回），财联社、上海证券报等。 <a class="fnback" href="#fnref-25">↩</a></li>
+<li id="fn-26">权威媒体公开报道（雀巢中国召回 71 个批次）。 <a class="fnback" href="#fnref-26">↩</a></li>
+<li id="fn-27">上证 e 互动／投资者关系活动记录表（公司关于产品送检与标准符合性的回应原文）。 <a class="fnback" href="#fnref-27">↩</a></li>
+<li id="fn-28">权威媒体公开报道（(EU) 2026/459 条例通过实施时间）；条例编号与日期以公司记录表原文引用为准。 <a class="fnback" href="#fnref-28">↩</a></li>
+<li id="fn-29">Wind（windproxy 局域网代理 `192.168.1.20:8000`），2026Q1 季度序列。 <a class="fnback" href="#fnref-29">↩</a></li>
+<li id="fn-30">Wind（windproxy），2026-04-23 行情（-19.98% 跌停至 16.02 元）。 <a class="fnback" href="#fnref-30">↩</a></li>
+<li id="fn-31">2026-08-22《关于 2026 年半年度计提信用及资产减值准备的公告》（公告编号 2026-023）。 <a class="fnback" href="#fnref-31">↩</a></li>
+<li id="fn-32">2026-09-15《关于收到再审应诉通知书暨诉讼进展的公告》（公告编号 2026-025）；案号（2026）最高法民申 3114 号。 <a class="fnback" href="#fnref-32">↩</a></li>
+<li id="fn-33">2026-01-27《关于第二期股份回购实施结果暨股份变动的公告》。 <a class="fnback" href="#fnref-33">↩</a></li>
+<li id="fn-34">2026-08-04《关于实施回购股份注销暨股份变动的公告》。 <a class="fnback" href="#fnref-34">↩</a></li>
+<li id="fn-35">2026-04-23《关于会计估计变更的公告》（公告编号 2026-010）。 <a class="fnback" href="#fnref-35">↩</a></li>
+</ol></section>
+<footer>
+建议与质疑请回"王艳的逍遥岛"。本报告所有事实性结论均引自公司定期报告与公告原文（巨潮资讯网 / 上交所网站）、公司官方投资者交流渠道（上证 e 互动、投资者关系活动记录表），行情与财务数值取自 Wind（经 windproxy 局域网代理）。文末免责声明为作者原文。
+</footer>
+</main></div>
+</body>
 </html>
