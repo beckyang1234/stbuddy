@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>＊ST利达（603828.SH）研究报告 · 速研档</title>
+<title>＊ST利达（603828.SH）研究报告</title>
 <style>
 :root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
 *{box-sizing:border-box}
@@ -64,25 +64,72 @@ hr{border:0;border-top:1px solid var(--line);margin:34px 0}
 /* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
 .fold:target>summary{background:#fef3c7}
 
-h1,h2,h3,h4{scroll-margin-top:18px}
-.tocbox{background:#f6f8fb;border:1px solid #e3e7ee;border-radius:10px;padding:14px 20px;margin:24px 0 6px}
-.tocbox>summary{cursor:pointer;font-weight:700;font-size:16px;color:#111;list-style:none;outline:none}
-.tocbox>summary::-webkit-details-marker{display:none}
-.tocbox>summary::before{content:"\25B8  ";color:#b3261e}
-.tocbox[open]>summary::before{content:"\25BE  "}
-.tocgrid{columns:2;column-gap:30px;margin-top:12px}
-@media (max-width:820px){.tocgrid{columns:1}}
-.tocgrp{break-inside:avoid;margin-bottom:9px}
-.tocgrid a{display:block;text-decoration:none;border-bottom:none;padding:2px 0;line-height:1.55}
-.tocgrid a:hover{background:rgba(11,107,203,.08);border-radius:4px}
-.tocgrid a.lv2{font-weight:650;color:#b3261e;font-size:14px}
-.tocgrid a.lv3{color:#334155;font-size:13px;padding-left:16px}
-.tocnote{color:#5b6472;font-size:12.5px;margin-top:10px;border-top:1px dashed #e3e7ee;padding-top:8px}
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
 #totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
  color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
  display:none;z-index:999;padding:0}
 #totop:hover{background:#8e1c16}
-@media print{#totop{display:none!important}.tocbox{break-inside:avoid}}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
 </style>
 </head>
 <body>
@@ -115,35 +162,93 @@ h1,h2,h3,h4{scroll-margin-top:18px}
   else document.addEventListener('DOMContentLoaded', build);
 })();
 </script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>12 章 · 15 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断翼</a><a class="sblv3" href="#sec0">1. 基本信息与股权</a><a class="sblv3" href="#sec1">2. ST 风险诊断</a><a class="sblv3" href="#sec2">3. 公司运营情况</a><a class="sblv3" href="#sec3">4. 投资者交流要点（★ 必读 —— 公司自己的口径）</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、基本面路径：路径 C（处罚 ST 逻辑）</a><a class="sblv3" href="#sec4">2.1 业务与收入利润来源地图（按「哪些会变 / 哪些不变」拆）</a><a class="sblv3" href="#sec5">2.2 竞争格局（★ 引用转债库行业资料）</a><a class="sblv3" href="#sec6">2.3 产能与潜在重大变化</a><a class="sblv3" href="#sec7">2.4 估值分析</a><a class="sblv3" href="#sec8">2.5 摘帽分析</a><a class="sblv3" href="#sec9">2.6 资产质量与估值（五维星级）</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、炒作逻辑（★ 三支柱全部着眼未来）+ 情绪面 + 筹码面</a><a class="sblv3" href="#sec10">3.1 炒作逻辑三支柱（按当前强度排序）</a><a class="sblv3" href="#sec11">3.2 情绪面</a><a class="sblv3" href="#sec12">3.3 筹码博弈 / 技术位置</a><a class="sblv3" href="#sec13">3.4 异动与炒作史（★ 数据源：韭研公社异动整理，2026-09-29 取数）</a><a class="sblv3" href="#sec14">★ 必做校验：戴帽 ≠ 下跌主因</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、估值 + 投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 C · 逻辑漏洞与反方观点（5 问）</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">附录 D · 异动明细（全 107 条，时间倒序）</a></div><div class="sbgrp"><a class="sblv2" href="#chap9">延伸资料（L3 · 另开页面）</a></div><div class="sbgrp"><a class="sblv2" href="#chap10">附录 E · 信息来源汇总（按来源类型逐条列示）</a></div><div class="sbgrp"><a class="sblv2" href="#chap11">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
 <div class="wrap">
-<h1 id="top">＊ST利达（603828.SH）研究报告 · 速研档</h1>
+<h1 id="top">＊ST利达（603828.SH）研究报告</h1>
 <blockquote><p>研究基准日 <strong>2026-09-29</strong>｜数据截止：2026 年半年报 + 2026-09-25《行政处罚决定书》｜主路径：<strong>处罚 ST 逻辑（路径 C）</strong></p><p><strong>阅读方式（三层次）</strong>：<strong>正文＝结论</strong>（一屏读完）｜<strong>带 ▸ 的标题＝证据折叠区</strong>（点击展开：原话引用、逐条推导、明细表）｜<strong>延伸资料＝外链</strong>（另开页面）。正文不含「藏起来的结论」。</p></blockquote>
-<details class="tocbox" open><summary>目录（11 章 · 14 节，点击跳转）</summary><div class="tocgrid"><div class="tocgrp"><a class="lv2" href="#chap0">封面 · 结论前置</a></div><div class="tocgrp"><a class="lv2" href="#chap1">一、诊断翼</a><a class="lv3" href="#sec0">1. 基本信息与股权</a><a class="lv3" href="#sec1">2. ST 风险诊断</a><a class="lv3" href="#sec2">3. 公司运营情况</a><a class="lv3" href="#sec3">4. 投资者交流要点（★ 必读 —— 公司自己的口径）</a></div><div class="tocgrp"><a class="lv2" href="#chap2">二、基本面路径：路径 C（处罚 ST 逻辑）</a><a class="lv3" href="#sec4">2.1 业务与收入利润来源地图（按「哪些会变 / 哪些不变」拆）</a><a class="lv3" href="#sec5">2.2 竞争格局（★ 引用转债库行业资料）</a><a class="lv3" href="#sec6">2.3 产能与潜在重大变化</a><a class="lv3" href="#sec7">2.4 估值分析</a><a class="lv3" href="#sec8">2.5 摘帽分析</a></div><div class="tocgrp"><a class="lv2" href="#chap3">三、炒作逻辑（★ 三支柱全部着眼未来）+ 情绪面 + 筹码面</a><a class="lv3" href="#sec9">3.1 炒作逻辑三支柱（按当前强度排序）</a><a class="lv3" href="#sec10">3.2 情绪面</a><a class="lv3" href="#sec11">3.3 筹码博弈 / 技术位置</a><a class="lv3" href="#sec12">3.4 异动与炒作史（★ 数据源：韭研公社异动整理，2026-09-29 取数）</a><a class="lv3" href="#sec13">★ 必做校验：戴帽 ≠ 下跌主因</a></div><div class="tocgrp"><a class="lv2" href="#chap4">四、估值 + 投资结论</a></div><div class="tocgrp"><a class="lv2" href="#chap5">附录 A · 待核实 / 需补充清单</a></div><div class="tocgrp"><a class="lv2" href="#chap6">附录 B · 关键信源链接</a></div><div class="tocgrp"><a class="lv2" href="#chap7">附录 C · 逻辑漏洞与反方观点（5 问）</a></div><div class="tocgrp"><a class="lv2" href="#chap8">附录 D · 异动明细（全 107 条，时间倒序）</a></div><div class="tocgrp"><a class="lv2" href="#chap9">延伸资料（L3 · 另开页面）</a></div><div class="tocgrp"><a class="lv2" href="#chap10">版本记录</a></div></div><div class="tocnote">本报告全部事实性陈述均标注信源并附可点击直达链接；完整公告清单见「附录 B · 信源索引」，对多头叙事的逐条质疑见「附录 C · 逻辑漏洞与反方观点」。</div></details>
 <h2 id="chap0">封面 · 结论前置</h2>
 <blockquote><p><strong>操作结论：买入（事件驱动 · 高风险 · 轻仓）</strong></p></blockquote>
 <p><strong>红线分类</strong>：<span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&announcementId=1225222892&orgId=9900023713&announcementTime=2026-04-28" target="_blank" rel="noopener">2024-2025年内控连续两年否定意见</a></span> · <span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&announcementId=1225583185&orgId=9900023713&announcementTime=2026-09-25" target="_blank" rel="noopener">资金占用,17.03亿元(已清偿)</a></span> · <span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&announcementId=1225012563&orgId=9900023713&announcementTime=2026-03-17" target="_blank" rel="noopener">因信披违法被立案</a></span> · <span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&announcementId=1225583185&orgId=9900023713&announcementTime=2026-09-25" target="_blank" rel="noopener">因信披违法而行政处罚</a></span> · <span class="sttag sttag-teal"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&announcementId=1224928699&orgId=9900023713&announcementTime=2026-01-10" target="_blank" rel="noopener">实控人拟变更未过户</a></span></p>
 <p><strong>生死定级</strong>：<strong>可救，且根因已消除</strong> —— 规范类退市风险警示，撤销条件只有一条（下一会计年度内控出无保留意见），而触发该非标的两大原因（资金占用、立案调查未结）<strong>均已在 2026 年内解除</strong>。</p>
 <p><strong>自救空间</strong>：约 7 个月（至 2027-04 年报披露）。自救动作已完成大半：占用全额清偿、处罚落地、董事会换届、换法人、新实控人入驻；<strong>剩下的只有"过户"与"2026 年度内控审计"两件事</strong>。</p>
 <p><strong>路径底表依据</strong>：<code>退市风险预警-20260929.xlsx</code>「规范类—指标块①（连续两个会计年度内控非标）」，与逐条红线核查结论一致。</p>
-<p><strong>版本</strong>：<strong>第 5 次修改 · 2026-09-29</strong>（初版 2026-09-29）｜数据截止：2026 年半年报 + 2026-09-25《行政处罚决定书》｜数据来源：Wind、公司公告、韭研公社异动整理、东方财富龙虎榜、公开媒体报道（案例对标）。</p>
+<p><strong>版本</strong>：<strong>第 9 次修改 · 2026-09-30</strong>（初版 2026-09-29）｜数据截止：2026 年半年报 + 2026-09-25《行政处罚决定书》｜数据来源：Wind、公司公告、韭研公社异动整理、东方财富龙虎榜、公开媒体报道（案例对标）。</p>
 <hr>
 <h2 id="chap1">一、诊断翼</h2>
 <h3 id="sec0">1. 基本信息与股权</h3>
-<ul><li><strong>苏州柯利达装饰股份有限公司</strong>，注册地江苏省苏州市高新区运河路 99 号，2015-02-26 上交所主板上市；主营建筑幕墙与建筑装饰工程的设计与施工，六大业务板块（建筑幕墙、建筑装饰、装配化装修、设计、建筑设计与 EPC、光伏建筑一体化）。</li><li><strong>总股本 5.96 亿股</strong>；2026-09-28 收盘 <strong>6.14 元</strong>，总市值 <strong>36.59 亿元</strong>，PB(LF) <strong>7.89</strong>、PS(TTM) <strong>3.45</strong>（数据来源：Wind）。股东户数 <strong>6,952 户</strong>。</li><li><strong>控股股东</strong>苏州柯利达集团有限公司持股 <strong>1.12 亿股（18.74%）</strong>，其中质押 <strong>1.07 亿股</strong>（占其持股 <strong>95.56%</strong>）；实际控制人顾益明、顾龙棣、顾佳合计直接持股 <strong>0.53 亿股（8.97%）</strong>，其中顾益明 <strong>0.30 亿股（4.98%）</strong>，质押 <strong>0.29 亿股</strong>。</li><li><strong>前十大股东（采用 2026 年半年报，与 2025 年报相比无变化）</strong>：</li></ul>
+<p><strong>结论：这是一家「原体系在退、新主已进、外部自然人刚在 6.16 元上车」的中小市值装饰公司。</strong> 市值 36.59 亿元，<strong>PB 7.89 倍（装饰装修同业多在 1 倍上下）、PS 3.45 倍</strong>——<strong>价值上没有任何便宜可言，值钱的是控制权与摘帽预期</strong>。控制权层面的交棒已经实质发生（见 §1.5、§1.6）。</p>
+<ul><li><strong>苏州柯利达装饰股份有限公司</strong>，注册地江苏省苏州市高新区运河路 99 号，2015-02-26 上交所主板上市；主营建筑幕墙与建筑装饰工程的设计与施工，六大业务板块（建筑幕墙、建筑装饰、装配化装修、设计、建筑设计与 EPC、光伏建筑一体化）。</li><li><strong>总股本 5.96 亿股</strong>；2026-09-28 收盘 <strong>6.14 元</strong>，总市值 <strong>36.59 亿元</strong>，PB(LF) <strong>7.89</strong>、PS(TTM) <strong>3.45</strong>（数据来源：Wind）。股东户数 <strong>6,952 户</strong>。</li><li><strong>控股股东</strong>苏州柯利达集团有限公司持股 <strong>1.12 亿股（18.74%）</strong>，其中质押 <strong>1.07 亿股</strong>（占其持股 <strong>95.56%</strong>）；实际控制人顾益明、顾龙棣、顾佳合计直接持股 <strong>0.53 亿股（8.97%）</strong>，其中顾益明 <strong>0.30 亿股（4.98%）</strong>，质押 <strong>0.29 亿股</strong>。</li><li><strong>前十大股东</strong>：采用 <strong>2026 年半年报</strong>口径（与 2025 年报相比无变化），明细见下方折叠。</li></ul>
 <details class="fold"><summary>前十大股东明细（2026 年半年报，与 2025 年报一致）</summary><div class="fold-body">
 
 <table><thead><tr><th>股东</th><th>持股（亿股）</th><th>比例</th><th>质押/冻结</th></tr></thead><tbody><tr><td>苏州柯利达集团有限公司</td><td>1.12</td><td>18.74%</td><td>质押 1.07 亿股</td></tr><tr><td>崔建泉（自然人）</td><td>0.40</td><td>6.72%</td><td>无</td></tr><tr><td>上海庞增投资管理中心－庞增汇聚 27 号基金</td><td>0.35</td><td>5.79%</td><td>无（已承诺放弃表决权）</td></tr><tr><td>上海庞增投资管理中心－庞增汇聚 26 号基金</td><td>0.34</td><td>5.71%</td><td>无（已承诺放弃表决权）</td></tr><tr><td>上海英众智能科技有限公司</td><td>0.30</td><td>5.03%</td><td>无</td></tr><tr><td>顾益明</td><td>0.30</td><td>4.98%</td><td>质押 0.29 亿股</td></tr><tr><td>顾龙棣</td><td>0.20</td><td>3.27%</td><td>无</td></tr><tr><td>第二期员工持股计划</td><td>0.09</td><td>1.53%</td><td>无</td></tr><tr><td>鲁崇明</td><td>0.08</td><td>1.38%</td><td>无</td></tr><tr><td>第一期员工持股计划</td><td>0.06</td><td>0.93%</td><td>无</td></tr></tbody></table>
 
 </div></details>
-<ul><li><strong>重要股东成本锚（★）</strong>：</li></ul>
-<table><thead><tr><th>主体</th><th>取得方式</th><th>数量</th><th>每股成本</th><th>折合金额</th></tr></thead><tbody><tr><td>上海英众智能</td><td>2024-09-30 协议受让（2024-10-28 过户）</td><td>0.30 亿股</td><td><strong>1.72 元/股</strong></td><td>0.52 亿元</td></tr><tr><td>上海英众智能</td><td>2026-01-09 收购柯利达集团 100% 股权（间接 18.74%）</td><td>1.12 亿股</td><td><strong>约 2.91 元/股</strong></td><td>3.25 亿元</td></tr><tr><td><strong>合计（新实控人）</strong></td><td>—</td><td><strong>1.42 亿股（23.77%）</strong></td><td><strong>约 2.66 元/股</strong></td><td><strong>3.76 亿元</strong></td></tr><tr><td>崔建泉</td><td>二级市场增持（2025 年增持 0.36 亿股）</td><td>0.40 亿股</td><td>【待核实】</td><td>—</td></tr></tbody></table>
-<blockquote><p><strong>结论</strong>：现价 6.14 元 = 新实控人综合成本的 <strong>2.31 倍</strong>。成本锚的意义不是"贵/便宜"的结论，而是：<strong>新实控人 3.76 亿元真金白银的仓位在 2.66 元一线，其市值管理动机与能力均明确</strong>。</p></blockquote>
+<p><strong>重要股东成本锚（★）</strong>：现价 6.14 元 ＝ 新实控人综合成本（约 <strong>2.66 元/股</strong>、合计 <strong>3.76 亿元</strong>、控制 <strong>23.77%</strong>）的 <strong>2.31 倍</strong>。成本锚的意义<strong>不是"贵/便宜"，而是动机</strong>：3.76 亿元真金白银压在 2.66 元一线，其市值管理动机与能力均明确。<strong>逐笔成本、两类定价逻辑与完整判读见 <a href="#p-cost">成本锚点</a>。</strong></p>
 <h4>1.1 股权历史沿革（前世今生）</h4>
 <p>这家公司 26 年只干过三件事：<strong>做装饰 → 丢控制权 → 换主人</strong>。而「换主人」这条线已经上演过三轮（详见 §三.3.4 炒作符号）。完整节点轨迹见 <a href="#hist-equity">股权历史沿革时间轴（2000—2026）</a>。</p>
-<details class="fold" id="hist-equity"><summary>股权历史沿革时间轴（2000—2026，含控制权与股本变化）</summary><div class="fold-body">
+<details class="fold" id="hist-equity"><summary>前世今生（一张表看懂全部：时间 · 关键事件 · 股权与实控人变化 · 背后的逻辑）</summary><div class="fold-body">
 
-<table><thead><tr><th>时间</th><th>事件</th><th>对控制权 / 股本的影响</th><th>依据</th></tr></thead><tbody><tr><td>2000-08</td><td>顾益明、顾龙棣等作为<strong>主要股东设立</strong>公司，注册于苏州，办公地姑苏区鹅颈湾 8 号</td><td>顾氏家族创业</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225222915&amp;orgId=9900023713&amp;announcementTime=2026-04-28" target="_blank" rel="noopener">2025 年报</a>「注册地址的历史变更情况」＋董监高简历</td></tr><tr><td>2003-10</td><td>办公地迁至桐泾北路 366 号白楼</td><td>—</td><td>同上</td></tr><tr><td>2009-04</td><td>办公地迁至苏州高新区邓尉路 6 号</td><td>—</td><td>同上</td></tr><tr><td>2015-02-26</td><td><strong>上交所主板上市</strong>（IPO 3,000 万股）</td><td>成为公众公司</td><td>同上（"首次公开发行"释义）</td></tr><tr><td>2016-05</td><td><strong>顾佳任公司副董事长</strong></td><td>家族第二代进入治理层</td><td>同上（董监高简历）</td></tr><tr><td><strong>2024-05-06</strong></td><td><strong>首次戴帽</strong>：由「柯利达」变更为「<strong>ST柯利达</strong>」——2023 年度内控被容诚会计师事务所出具<strong>否定意见</strong></td><td>涨跌幅降至 5%</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1219925743&amp;orgId=9900023713&amp;announcementTime=2024-04-30" target="_blank" rel="noopener">2024-04-30 公告</a>（规则 9.8.1(三)）</td></tr><tr><td><strong>2024-09-30</strong></td><td><strong>英众智能首次入场</strong>：协议受让柯利达集团 3,000 万股（<strong>5.03%</strong>），价格 <strong>1.72 元/股</strong>（总价 0.52 亿元），2024-10-28 过户完成</td><td>英众系取得董事席位筹码</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1221333102&amp;orgId=9900023713&amp;announcementTime=2024-10-01" target="_blank" rel="noopener">2024-10-01 简式权益变动报告书</a></td></tr><tr><td>2025 年内</td><td><strong>柯利达集团减持 4,000 万股</strong>（期末 1.12 亿股）；自然人<strong>崔建泉新进</strong>、买入 3,639 万股（期末 0.40 亿股 / 6.72%）</td><td>原体系让出筹码、外部资金接盘</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225222915&amp;orgId=9900023713&amp;announcementTime=2026-04-28" target="_blank" rel="noopener">2025 年报</a> 前十大股东"报告期内增减"列</td></tr><tr><td><strong>2025-01</strong></td><td><strong>刘纯坚任公司董事</strong>（英众方首度进入董事会）</td><td>治理层开始渗透</td><td>同上（董监高简历）</td></tr><tr><td><strong>2026-01-09</strong></td><td>英众智能收购<strong>柯利达集团 100% 股权</strong>（交易总价 3.25 亿元，按评估值定价）；完成后直接 5.03% ＋ 间接 18.74% ＝ <strong>合计 23.77%</strong>；不触及要约收购</td><td><strong>实际控制人拟变更为曹亚联、刘纯坚</strong></td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1224928699&amp;orgId=9900023713&amp;announcementTime=2026-01-10" target="_blank" rel="noopener">2026-01-10 公告</a></td></tr><tr><td>2026-01</td><td><strong>公司迁址</strong>至苏州高新区运河路 99 号 1 幢 101 室</td><td>与股权变更同月</td><td>2025 年报「注册地址的历史变更情况」</td></tr><tr><td>2026-03-17</td><td>公司及董事长顾益明因涉嫌信息披露违法违规被<strong>立案</strong></td><td>—</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225012563&amp;orgId=9900023713&amp;announcementTime=2026-03-17" target="_blank" rel="noopener">公告</a></td></tr><tr><td><strong>2026-04-29</strong></td><td><strong>升格 ＊ST</strong>：2024、2025 <strong>连续两个会计年度</strong>内控被出具否定意见</td><td>触及退市风险警示</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225222892&amp;orgId=9900023713&amp;announcementTime=2026-04-28" target="_blank" rel="noopener">2026-04-28 公告</a>（9.4.1(六)）</td></tr><tr><td>2026-09-08</td><td><strong>新董事长刘纯坚</strong>出席 2026 年半年度业绩说明会</td><td>治理层已实际易主</td><td>2026-09-08 说明会公告</td></tr><tr><td>2026-09-24</td><td>江苏证监局《<strong>行政处罚决定书</strong>》落地</td><td>处罚闭环；6 个月减持限制起算</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225583185&amp;orgId=9900023713&amp;announcementTime=2026-09-25" target="_blank" rel="noopener">2026-09-25 公告</a></td></tr></tbody></table>
-<blockquote><p><strong>一条容易漏掉的口径</strong>：控股股东及一致行动人合计持股，<strong>2024 年末 273,670,737 股（45.92%）→ 2025 年末 233,670,737 股（39.48%）</strong>，一年减少 4,000 万股（6.44 个百分点）。<strong>原体系在持续退，不是一次性转让</strong>（来源：2024 年报 / 2025 年报附注"母公司信息"节）。</p></blockquote>
+<table><thead><tr><th>时间</th><th>关键事件</th><th>股权 / 实控人变化</th><th>背后的逻辑（金额 · 每股价格 · 资金来源 · 各方背景）</th></tr></thead><tbody><tr><td>2000-08</td><td>顾益明、顾龙棣等作为<strong>主要股东设立</strong>公司，办公地苏州姑苏区鹅颈湾 8 号</td><td>顾氏家族创业控股</td><td>顾益明 1993–2000 任苏州二建集团分公司经理后自办公司；顾龙棣同期为苏州二建集团项目经理</td></tr><tr><td>2003-10 / 2009-04</td><td>两次迁址（桐泾北路 366 号白楼 → 高新区邓尉路 6 号）</td><td>不变</td><td>随生产规模扩张迁移，均为租赁办公</td></tr><tr><td>2015-02-26</td><td><strong>上交所主板上市</strong>，IPO 3,000 万股</td><td>顾氏家族控股</td><td>每股面值 1.00 元；成为公众公司</td></tr><tr><td>2016-05</td><td><strong>顾佳任公司副董事长</strong></td><td>家族第二代进入治理层</td><td>顾佳 1986 年生，此时 30 岁，此前任光电幕墙董事长助理</td></tr><tr><td><strong>2024-05-06</strong></td><td><strong>首次戴帽</strong>：柯利达 → <strong>ST柯利达</strong></td><td>涨跌幅降至 5%</td><td>2023 年度内控被容诚会计师事务所出具<strong>否定意见</strong>（上交所规则 9.8.1(三)）</td></tr><tr><td><strong>2024-09-30</strong></td><td><strong>英众智能首次入场</strong>：协议受让柯利达集团 3,000 万股（<strong>5.03%</strong>）</td><td>英众系取得筹码与董事席位</td><td>价格 <strong>1.72 元/股</strong>（＝前二十个交易日收盘价参考），总价 <strong>0.52 亿元</strong>；2024-10-28 过户</td></tr><tr><td>2025-01</td><td><strong>刘纯坚任公司董事</strong></td><td>英众方首度进入董事会</td><td>刘纯坚 1978-01 生、博士，英众信息副董事长、英众智能法定代表人</td></tr><tr><td><strong>2025-11-05</strong></td><td><strong>柯利达集团协议转让 6.71% 给自然人崔建泉</strong></td><td>原体系让出筹码、外部自然人接盘</td><td>价格 <strong>6.16 元/股</strong>（＝2025-11-04 收盘价的 <strong>95%</strong>），4,000 万股，总价 <strong>2.464 亿元</strong>；<strong>分三期支付</strong>（生效后 3 日付 4,000 万 / 过户后 10 日付 1.2 亿 / 过户后 1 月付余款）；资金来源<strong>自有或自筹</strong>；2025 年内完成过户</td></tr><tr><td><strong>2026-01-09</strong></td><td>英众智能收购<strong>柯利达集团 100% 股权</strong></td><td>直接控股股东不变（仍为柯利达集团），<strong>间接控股股东变更为英众智能，实际控制人拟变更为曹亚联、刘纯坚</strong></td><td>交易总价 <strong>3.25 亿元</strong>（按评估值定价，评估所有者权益 324,586,464.79 元）；完成后直接 5.03% ＋ 间接 18.74% ＝ <strong>合计 23.77%</strong>；<strong>不触及要约收购</strong></td></tr><tr><td>2026-01</td><td><strong>公司迁址</strong>至苏州高新区运河路 99 号 1 幢 101 室；同月英众智能通讯地址改为松江区施园路 66 弄 1 号</td><td>—</td><td><strong>两项"搬家"与股权交易同月</strong>（见 §1.4 关键信号）</td></tr><tr><td>2026-03-17</td><td>公司及董事长顾益明被证监会<strong>立案</strong></td><td>—</td><td>涉嫌信息披露违法违规（证监立案字 0102026018/0102026019 号）</td></tr><tr><td><strong>2026-04-29</strong></td><td><strong>升格 ＊ST</strong></td><td>触及退市风险警示</td><td><strong>2024、2025 连续两个会计年度</strong>内控被出具否定意见（9.4.1(六)）；2024 年审计机构为中兴财光华、2025 年为政旦志远</td></tr><tr><td>2026-09-08</td><td><strong>新董事长刘纯坚</strong>出席 2026 年半年度业绩说明会，总经理顾佳</td><td><strong>治理层已实际易主</strong>（股权未过户）</td><td>五人出席名单中仅孙振华、何利民为原体系</td></tr><tr><td><strong>2026-09-24</strong></td><td>江苏证监局《<strong>行政处罚决定书</strong>》（[2026]17 号）落地</td><td>处罚闭环；6 个月减持限制起算</td><td>公司罚 <strong>900 万元</strong>；顾益明罚 <strong>1,620 万元 + 5 年市场禁入</strong>；孙振华、顾龙棣各 380 万元；朱怡 350 万元；鲁崇明 210 万元</td></tr></tbody></table>
+<blockquote><p><strong>两条容易漏掉的口径</strong>：</p><p>① 控股股东及一致行动人<strong>合计</strong>持股，<strong>2024 年末 273,670,737 股（45.92%）→ 2025 年末 233,670,737 股（39.48%）</strong>，一年减少 4,000 万股（6.44 个百分点）——<strong>原体系在持续退，不是一次性转让</strong>（来源：2024 / 2025 年报附注"母公司信息"节）。</p><p>② 2024-09 与 2026-01 两笔交易的<strong>每股价格相差 69%</strong>（1.72 vs 2.91 元）——<strong>先上车的部分浮盈最厚</strong>，这是判断"谁最不希望股价跌"的直接依据（见 §1.6 成本锚点）。</p></blockquote>
 
 </div></details>
 <h4>1.2 关键人物详细简历（原体系 4 人 ＋ 英众系 2 人）</h4>
@@ -168,6 +273,7 @@ h1,h2,h3,h4{scroll-margin-top:18px}
 </div></details>
 <h4>1.4 ★ 关键信号：英众系主体地址与电话高度重合</h4>
 <p><a href="#sg-addr">★ 英众系 5 家主体共用同一通讯地址与同一固话（关键信号）</a>——这是"<strong>同一控制体系</strong>"最硬的登记证据，比任何口头承诺都可靠。</p>
+<p><strong>但必须读对它的边界</strong>：英众智能 <strong>2024-10 的通讯地址还是自己的注册地</strong>（闵行区苏召路 1628 号），<strong>2026-01 才改到母公司地址</strong>——这个一致性是<strong>"搬过去"形成的，发生在收购柯利达集团前后</strong>。<strong>它证明的是"英众系在归拢主体"，不证明"英众系资产优质"。</strong></p>
 <details class="fold" id="sg-addr"><summary>英众系主体地址与电话比对（关键信号论据）</summary><div class="fold-body">
 
 <table><thead><tr><th>主体</th><th>注册地址</th><th>通讯地址</th><th>联系电话</th></tr></thead><tbody><tr><td><strong>英众信息</strong>（母公司）</td><td>上海市松江区施园路 66 弄 1 号</td><td><strong>上海市松江区施园路 66 弄 1 号</strong></td><td>021-57635812</td></tr><tr><td><strong>英众智能</strong>（拟间接控股股东）</td><td>上海市闵行区苏召路 1628 号</td><td><strong>上海市松江区施园路 66 弄 1 号</strong></td><td>021-57635812</td></tr><tr><td>上海厚得（持股平台）</td><td>上海市松江区茸梅路 139 号 1 幢</td><td><strong>上海市松江区施园路 66 弄 1 号</strong></td><td>021-57635812</td></tr><tr><td>上海红银杉（持股平台）</td><td>上海市松江区茸梅路 139 号 1 幢</td><td><strong>上海市松江区施园路 66 弄 1 号</strong></td><td>021-57635812</td></tr><tr><td>上海红水杉（持股平台）</td><td>上海市松江区茸梅路 139 号 1 幢</td><td><strong>上海市松江区施园路 66 弄 1 号</strong></td><td>021-57635812</td></tr></tbody></table>
@@ -177,12 +283,40 @@ h1,h2,h3,h4{scroll-margin-top:18px}
 <blockquote><p>来源：2026-01-10《关于间接控股股东签署股权转让协议暨实际控制人拟发生变更的提示性公告》（巨潮）「（一）英众智能的基本情况」「（2）英众智能的控股股东、实际控制人基本情况」「一致行动人基本情况」各节；2024-10-01《简式权益变动报告书（受让方）》。</p></blockquote>
 
 </div></details>
+<h4>1.5 股东阵容（谁在里面、什么身份、什么成本）</h4>
+<p><strong>看 ST 要先看"桌椅上的都是谁"</strong> —— 逐户身份识别与取得成本见 <a href="#p-holders">股东阵容与身份识别</a>。<strong>一句话结论：这是一个"原体系在退、新主已进、还有一个自然人 6.16 元刚上车"的混合座位</strong>。</p>
+<details class="fold" id="p-holders"><summary>股东阵容与身份识别（2025 年末，含身份类型与取得方式）</summary><div class="fold-body">
+
+<table><thead><tr><th>股东</th><th>持股（亿股）</th><th>比例</th><th><strong>身份识别</strong></th><th>取得方式与成本</th><th>现状 / 约束</th></tr></thead><tbody><tr><td>苏州柯利达集团有限公司</td><td>1.12</td><td>18.74%</td><td><strong>原控股股东</strong>（顾氏家族控制）</td><td>原始股；2025-11 协议转让 4,000 万股给崔建泉</td><td>股权已 100% 转让给英众智能（<strong>未过户</strong>）；质押 1.07 亿股（<strong>95.56%</strong>）</td></tr><tr><td><strong>崔建泉</strong></td><td>0.40</td><td>6.72%</td><td><strong>自然人</strong>，1958-07 生，住所上海、通讯地址江苏苏州；报告书称"基于对公司价值和未来发展的信心"</td><td><strong>2025-11-05 协议受让 6.16 元/股、2.464 亿元</strong>（自有或自筹）；受让前仅持 4.25 万股；<strong>受让前 6 个月曾在 4.27–4.94 元区间集中竞价买卖</strong></td><td><strong>承诺自过户日起 12 个月内不减持</strong>，且<strong>不排除未来 12 个月继续增持</strong>；无质押</td></tr><tr><td>庞增汇聚 27 号私募基金</td><td>0.35</td><td>5.79%</td><td><strong>私募基金</strong>（管理人：上海庞增投资管理中心（有限合伙））</td><td><strong>2023 年末前已持有，2023/2024/2025 连续三年"报告期内增减＝0"</strong>；成本【待核实】</td><td><strong>2026-01 出具《关于放弃表决权的承诺函》</strong>：自集团股权过户完成起至英众智能失去柯利达集团控制权日止，<strong>自愿、无条件且不可撤销地放弃</strong>所持股份表决权</td></tr><tr><td>庞增汇聚 26 号私募基金</td><td>0.34</td><td>5.71%</td><td>同上（同一管理人）</td><td>同上；成本【待核实】</td><td>同上（放弃表决权）</td></tr><tr><td><strong>上海英众智能科技有限公司</strong></td><td>0.30</td><td>5.03%</td><td><strong>拟任间接控股股东</strong>（法定代表人刘纯坚）</td><td><strong>2024-09-30 协议受让 1.72 元/股、0.52 亿元</strong>，2024-10-28 过户</td><td>已主导董事会并出任董事长</td></tr><tr><td>顾益明</td><td>0.30</td><td>4.98%</td><td><strong>原实际控制人、原董事长</strong></td><td>原始股</td><td><strong>质押 0.29 亿股（97.79%）</strong>；被罚 1,620 万元 + 5 年市场禁入</td></tr><tr><td>顾龙棣</td><td>0.20</td><td>3.27%</td><td><strong>原实控人之一</strong>，柯利达集团执行董事（2010-01 至今）</td><td>原始股</td><td>无质押；被罚 380 万元</td></tr><tr><td>第二期员工持股计划</td><td>0.09</td><td>1.53%</td><td>员工激励载体</td><td>已多次延期存续</td><td>无质押</td></tr><tr><td>鲁崇明</td><td>0.08</td><td>1.38%</td><td><strong>公司总经理</strong>（职业经理人，2003 年入职）</td><td>—</td><td>被罚 <strong>210 万元</strong></td></tr><tr><td>第一期员工持股计划</td><td>0.06</td><td>0.93%</td><td>员工激励载体</td><td>2017-02-21 完成股票购买</td><td>无质押</td></tr></tbody></table>
+<p><strong>筹码集中度（她固定放的一组数据）</strong>：</p>
+<ul><li>股东户数：<strong>2025 年末 6,739 户</strong>（较三季度末 <strong>-792 户 / -10.52%</strong>）→ 2026-06-30 <strong>6,952 户</strong>；</li><li>户均持股市值：38.7 万元（三季度末）→ <strong>74.11 万元（+91.51%）</strong> —— <strong>筹码在集中</strong>；</li><li>全公司质押比例：截至 2026-04-24 为 <strong>22.77%</strong>（中登数据）。</li><li><strong>退出者</strong>：何建华（2025 年三季度末仍在十大流通股东，年末由崔建泉取代）。</li></ul>
+<blockquote><p>来源：2025 年报前十大股东表；2025-11-06《简式权益变动报告书》（崔建泉，<a href="https://static.cninfo.com.cn/finalpage/2025-11-06/1224789683.PDF" target="_blank" rel="noopener">巨潮</a>）；2026-01-10 公告；中国证券报·中证网（2026-04-28，股东户数与质押比重）。</p></blockquote>
+
+</div></details>
+<h4>1.6 成本锚点（本项目最容易被忽略的定价线索）</h4>
+<p><a href="#p-cost">★ 成本锚点：三类资金的成本相差 2.3 倍，而现价恰好压在最大外部股东的成本线上</a>——这是本报告所有估值判断的底尺。</p>
+<p><strong>判读一句话</strong>：<strong>便宜不便宜要跟"谁的成本"比，不是跟历史高点比</strong>——现价比英众成本贵 <strong>2.31 倍</strong>，却只相当于崔建泉成本线（6.16 元）的 <strong>99.7%</strong>。</p>
+<details class="fold" id="p-cost"><summary>成本锚点：逐参与方（元/股）＋ 两类定价逻辑的区分</summary><div class="fold-body">
+
+<table><thead><tr><th>参与方</th><th>成本（元/股）</th><th>说明</th></tr></thead><tbody><tr><td><strong>英众智能</strong>（2024-09 首批）</td><td><strong>1.72</strong></td><td>协议受让 3,000 万股，总价 0.52 亿元，2024-10-28 过户</td></tr><tr><td><strong>英众智能</strong>（2026-01 收集团）</td><td><strong>约 2.91</strong></td><td>收购柯利达集团 100%，总价 3.25 亿元，对应间接 1.12 亿股</td></tr><tr><td><strong>英众智能综合</strong></td><td><strong>约 2.66</strong></td><td>合计 1.42 亿股（23.77%）/ <strong>3.76 亿元</strong></td></tr><tr><td><strong>崔建泉</strong>（2025-11 协议受让）</td><td><strong>6.16</strong></td><td>4,000 万股 / <strong>2.464 亿元</strong>；＝前一日收盘价 95%；分三期；自有或自筹</td></tr><tr><td>庞增汇聚 26 / 27 号</td><td>【待核实】</td><td>2023 年末前已持有、三年未动；2026-01 放弃表决权</td></tr><tr><td>员工持股计划（一期 / 二期）</td><td>【待核实】</td><td>一期 2017-02-21 完成购买；均已多次延期</td></tr><tr><td><strong>二级市场现价</strong>（2026-09-28）</td><td><strong>6.14</strong></td><td>总市值 36.59 亿元</td></tr></tbody></table>
+<p><strong>★ 核心判读（王艳式"两类定价逻辑"）</strong>：</p>
+<ol><li><strong>协议受让价（6.16 元）＝"无稀释的市场底"</strong> —— 崔建泉买的是现有股东手里的老股，<strong>钱给的是转让方、不摊薄股本、也不承担保壳义务</strong>；这是<strong>外部资金按二级市场价（九折）真金白银投的票</strong>，是市场给这只票的"真实底价"。</li><li><strong>新实控人成本（约 2.66 元）＝"含控制权溢价的控制权底"</strong> —— 英众智能买的是<strong>控股平台的股权</strong>（间接持股），<strong>钱给的是顾氏家族</strong>，买到的是控制权与后续运作权。它的成本远低于崔建泉，<strong>说明"控制权"这笔交易的定价与二级市场价完全脱钩</strong>。</li><li><strong>两者相差 2.3 倍，这个价差就是"控制权"与"财务投资"的定价差。</strong></li><li><strong>★ 最容易被忽略的一条</strong>：<strong>现价 6.14 元 ＝ 崔建泉成本 6.16 元的 99.7%（他微亏 0.3%）</strong> —— 一位刚在 2025-11 用 2.46 亿元真金白银、按二级市场九折价进场的<strong>最大外部股东，正卡在成本线上</strong>。他的锁定期<strong>约 2026-11 前后届满</strong>（过户于 2025 年内完成），这既是最直接的<strong>潜在抛压观察点</strong>，也是"他有动机在锁定期内看到股价走高"的<strong>动机来源</strong>。</li><li><strong>不要用"股价已跌很多"当安全边际</strong>：现价较 2026-01 高点 9.70 元已回撤 37%，但<strong>较英众成本仍高 2.3 倍、较崔建泉成本持平</strong> —— 便宜不便宜要跟<strong>谁的成本比</strong>，不是跟历史高点比。</li></ol>
+<blockquote><p>来源：2024-10-01、2025-11-06 两份权益变动报告书；2026-01-10 公告；Wind（现价与市值）。</p></blockquote>
+
+</div></details>
 <h3 id="sec1">2. ST 风险诊断</h3>
 <h4>2.1 戴帽时间线（三段，各挂认定文件）</h4>
+<p><strong>结论：戴帽是三段叠加，一段比一段重 —— 最硬的一条是内控已连续三年否定（2023 / 2024 / 2025）。</strong> 2024 年因<strong>一年</strong>内控否定戴上 ST；2026 年因<strong>连续两年</strong>内控否定升格 \*ST；同期还叠加资金占用与信披处罚。<strong>这使 2026 年度内控审计成为"没有第二条缓冲带"的生死线</strong>：出无保留意见即摘帽，再非标即终止上市（§2.5）。</p>
+<p><strong>涨跌幅已变（引用公告时须按公告时点还原）</strong>：2026-07-05 及以前 <strong>5%</strong>；<strong>2026-07-06 起主板风险警示股放宽至 10%</strong>（上交所《交易规则（2026 年修订）》，2026-04-24 发布、2026-07-06 实施）。公司 2026-04-28 公告写的"5%"是当时规则，<strong>现行已是 10%</strong>。</p>
+<details class="fold"><summary>戴帽三段的时间线、认定文件与审计意见明细</summary><div class="fold-body">
+
 <table><thead><tr><th>时间</th><th>简称变化</th><th>触发情形</th><th>依据条款</th></tr></thead><tbody><tr><td><strong>2024-05-06</strong></td><td>柯利达 → <strong>ST柯利达</strong></td><td>2023 年度内控被容诚会计师事务所出具<strong>否定意见</strong></td><td>上交所规则 <strong>9.8.1（三）</strong></td></tr><tr><td><strong>2026-04-29</strong></td><td>ST柯利达 → <strong>＊ST利达</strong></td><td><strong>2024、2025 连续两个会计年度</strong>财务报告内控被出具<strong>否定意见</strong>（2024：中兴财光华；2025：政旦志远）</td><td>《上交所股票上市规则（2026 年 4 月修订）》<strong>9.4.1（六）</strong></td></tr><tr><td>2026-09-24/25</td><td>—</td><td>收到江苏证监局《行政处罚决定书》（[2026]17 号）</td><td>《证券法》第 197 条</td></tr></tbody></table>
 <ul><li>财报审计意见：<strong>2025 年报为保留意见</strong>（政旦志远），保留事项为①资金占用归还金额与余额的完整性、准确性无法获取充分适当证据；②证监会立案调查事项影响无法判断。<strong>保留意见不构成财务类退市风险警示</strong>。</li><li>内控审计意见：<strong>2023（容诚）→ 2024（中兴财光华）→ 2025（政旦志远）连续三年否定意见</strong>。</li><li><strong>涨跌幅</strong>：2026-07-05 及以前为 <strong>5%</strong>；<strong>2026-07-06 起主板风险警示股涨跌幅放宽至 10%</strong>（据上交所《交易规则（2026 年修订）》，2026-04-24 发布、2026-07-06 实施）。公司 2026-04-28 公告写的"5%"是当时的规则，<strong>现行已是 10%</strong>。实证：2026-07-03 涨停 +4.98%（旧规最后一日）、2026-08-20 涨停 <strong>+9.93%</strong>（新规后）。</li></ul>
+
+</div></details>
 <h4>2.2 资金占用：两个口径，不可混用</h4>
-<blockquote><p><strong>两个口径不可混用</strong>：证监会认定 2020-01～2022-12 <strong>累计发生额 17.03 亿元</strong>；公司自查<strong>期末余额 2.94 亿元</strong>；截至 <strong>2026-04-22 已全部归还</strong>（累计归还本金及利息 3.42 亿元）。</p></blockquote>
+<p><strong>结论：本条风险已消除，但它是内控非标的第一根因。</strong> 占用<strong>已于 2026-04-22 全额归还</strong>（累计归还本金及利息 3.42 亿元），不再构成退市风险；但它一度占当期净资产高达 <strong>66.1%</strong>（2022 年），且<strong>审计师正是因"占用归还金额与余额无法获取充分证据"而出具非标</strong> → 所以它是理解"为什么被 \*ST、又为什么 2026 年能转干净"的钥匙。</p>
+<p><strong>引用时必须写明口径</strong>：证监会认定 2020-01～2022-12 <strong>累计发生额 17.03 亿元</strong>；公司自查<strong>期末余额 2.94 亿元</strong>——两者<strong>不是同一件事</strong>。逐项数据与违规手法见折叠。</p>
 <details class="fold"><summary>资金占用的两个口径（累计发生额 vs 期末余额）与违规手法</summary><div class="fold-body">
 
 <table><thead><tr><th>口径</th><th>来源</th><th>金额</th></tr></thead><tbody><tr><td><strong>累计发生额（滚动）</strong></td><td>江苏证监局《行政处罚决定书》认定</td><td>2020-01～2022-12 合计 <strong>17.03 亿元</strong></td></tr><tr><td><strong>期末占用余额</strong></td><td>同上，按年</td><td>2020 年 1.34 亿元 / 2021 年 3.21 亿元 / 2022 年 3.19 亿元 / 2023 年 2.94 亿元 / 2024 年 1.17 亿元 / 2025H1 1.17 亿元</td></tr><tr><td>占当期净资产比</td><td>同上</td><td>27.6% / 51.9% / 66.1% / <strong>37.9%</strong> / 15.0% / 14.9%</td></tr><tr><td>公司自查口径</td><td>《关于控股股东及其关联方资金占用归还的公告》</td><td>占用<strong>本金合计 2.94 亿元</strong></td></tr><tr><td>归还情况</td><td>同上</td><td>累计收到归还本金及利息 <strong>3.42 亿元</strong>；<strong>截至 2026-04-22 全部归还完毕</strong></td></tr></tbody></table>
@@ -197,10 +331,17 @@ h1,h2,h3,h4{scroll-margin-top:18px}
 
 </div></details>
 <h4>2.4 四类退市红线逐条核查</h4>
-<table><thead><tr><th>类型</th><th>触发条件</th><th>本公司现状</th><th>是否触及</th></tr></thead><tbody><tr><td><strong>交易类</strong></td><td>连续 20 日收盘价 &lt;1 元 / 市值 &lt;5 亿 / 股东数 &lt;2000</td><td>6.14 元 / 36.59 亿元 / 6,952 户</td><td>❌ 未触及</td></tr><tr><td><strong>财务类</strong></td><td>净利、扣非、利润总额孰低为负 <strong>且</strong> 扣除后营收 &lt;3 亿</td><td>2025：利润总额 -2.45 亿元、归母 -2.34 亿元、扣非 -3.12 亿元；扣除后营收 <strong>15.28 亿元</strong></td><td>❌ 未触及</td></tr><tr><td></td><td>期末净资产为负</td><td>2025 年末归母净资产 5.09 亿元；2026H1 4.63 亿元</td><td>❌ 未触及</td></tr><tr><td></td><td>年报被出具无法表示 / 否定意见</td><td>2025 年报为<strong>保留意见</strong></td><td>❌ 未触及</td></tr><tr><td><strong>规范类</strong></td><td>资金占用 ≥2 亿元或 ≥净资产 30%</td><td>曾触及（2023 年末 2.94 亿元、占净资产 37.9%），<strong>2026-04-22 已全部清偿</strong></td><td>⚠️ 曾触及、已消除</td></tr><tr><td></td><td><strong>连续 2 个会计年度内控被出具无法表示 / 否定意见</strong></td><td><strong>2024、2025 均否定</strong></td><td>✅ <strong>触及（*ST 直接原因）</strong></td></tr><tr><td><strong>重大违法类</strong></td><td>财务造假达量化线 / 欺诈发行 / 信披涉刑</td><td>处罚为地方证监局行政处罚，公司判断未触及；<strong>以监管最终认定为最终依据</strong></td><td>❌ 未触及（保留意见）</td></tr></tbody></table>
-<p><strong>结论</strong>：<strong>唯一致命的是规范类内控条款</strong>；财务类四条全部安全，交易类远离门槛，重大违法类未被认定。</p>
+<p><strong>结论：四条财务类红线全部安全、交易类远离门槛、重大违法类未被认定 —— 唯一致命的是规范类「连续两年内控非标」。</strong></p>
 <p><strong>多路径并发处理</strong>：实际为「规范类内控非标（主）+ 规范类资金占用（已消除）+ 处罚 ST」三者叠加，<strong>以最致命的「连续两年内控非标」为主路径</strong>。</p>
+<details class="fold"><summary>四类红线逐条对照表（含本公司现状数据）</summary><div class="fold-body">
+
+<table><thead><tr><th>类型</th><th>触发条件</th><th>本公司现状</th><th>是否触及</th></tr></thead><tbody><tr><td><strong>交易类</strong></td><td>连续 20 日收盘价 &lt;1 元 / 市值 &lt;5 亿 / 股东数 &lt;2000</td><td>6.14 元 / 36.59 亿元 / 6,952 户</td><td>❌ 未触及</td></tr><tr><td><strong>财务类</strong></td><td>净利、扣非、利润总额孰低为负 <strong>且</strong> 扣除后营收 &lt;3 亿</td><td>2025：利润总额 -2.45 亿元、归母 -2.34 亿元、扣非 -3.12 亿元；扣除后营收 <strong>15.28 亿元</strong></td><td>❌ 未触及</td></tr><tr><td></td><td>期末净资产为负</td><td>2025 年末归母净资产 5.09 亿元；2026H1 4.63 亿元</td><td>❌ 未触及</td></tr><tr><td></td><td>年报被出具无法表示 / 否定意见</td><td>2025 年报为<strong>保留意见</strong></td><td>❌ 未触及</td></tr><tr><td><strong>规范类</strong></td><td>资金占用 ≥2 亿元或 ≥净资产 30%</td><td>曾触及（2023 年末 2.94 亿元、占净资产 37.9%），<strong>2026-04-22 已全部清偿</strong></td><td>⚠️ 曾触及、已消除</td></tr><tr><td></td><td><strong>连续 2 个会计年度内控被出具无法表示 / 否定意见</strong></td><td><strong>2024、2025 均否定</strong></td><td>✅ <strong>触及（*ST 直接原因）</strong></td></tr><tr><td><strong>重大违法类</strong></td><td>财务造假达量化线 / 欺诈发行 / 信披涉刑</td><td>处罚为地方证监局行政处罚，公司判断未触及；<strong>以监管最终认定为最终依据</strong></td><td>❌ 未触及（保留意见）</td></tr></tbody></table>
+
+</div></details>
 <h4>2.5 摘帽展望（★ 本次已核到条款原文）</h4>
+<p><strong>结论：内控非标的根因已实质消除，摘帽是"可兑现的催化"而非纯风险；最早申请时点 2027-04，距今约 7 个月。</strong></p>
+<p>撤销条件<strong>只有一条</strong>——<strong>最近一个会计年度公司内部控制被出具无保留意见的审计报告</strong>（沪主板《上市规则（2026 年 4 月修订）》<strong>9.4.10 第一款第（六）项</strong>，原文见折叠）。而 2025 年度非标的两条原因<strong>均已在 2026 年内解除</strong>：① 资金占用 → <strong>2026-04-22 全额归还</strong>；② 立案调查结论未出具 → <strong>2026-09-24 结案并处罚</strong>；同期还完成<strong>董事会换届、更换法人、新实控人实际主导经营</strong>。→ <strong>2026 年度审计转无保留意见的障碍基本清除。</strong></p>
+<p><strong>反向风险仍在</strong>：连续三年非标使"再非标"具备路径依赖；若 2026 年度内控仍非标 → 直接触及 <strong>9.4.15 终止上市（无第二年缓冲）</strong>。</p>
 <details class="fold"><summary>撤销条件的条款原文与程序（9.4.10 / 9.4.12–9.4.13）</summary><div class="fold-body">
 
 <ul><li><strong>撤销条件的条款原文</strong>（沪主板《股票上市规则（2026 年 4 月修订）》<strong>9.4.10 第一款第（六）项</strong>）：</li></ul>
@@ -208,19 +349,29 @@ h1,h2,h3,h4{scroll-margin-top:18px}
 <ul><li>该条<strong>末段</strong>另有一款需注意：若公司因进行破产重整、重组上市或重大资产重组而无法披露内控审计报告，<strong>股票继续被实施退市风险警示</strong>。</li><li>程序（9.4.12–9.4.13）：符合条件后<strong>及时披露</strong> → 披露后 <strong>5 个交易日</strong>内可向交易所申请 → 交易所 <strong>15 个交易日</strong>内作出决定 → 撤销前一个交易日公告，公告日停牌 1 天，复牌之日起撤销。</li><li><strong>最早可申请时点：2026 年年度报告披露后（预计 2027-04）</strong>，距今约 <strong>7 个月</strong>。</li></ul>
 
 </div></details>
-<ul><li><strong>★ 核心判断：内控非标的根因已消除。</strong> 2025 年度否定意见的原因被审计师与董事会写明为两条——① 控股股东及实控人占用公司资金；② 该事项<strong>尚处于证监会立案调查阶段、调查结论尚未出具</strong>（"监管立案事项涉及公司治理、合规管控及关键业务流程未能有效整改消除"）。而截至基准日：占用已<strong>全额归还</strong>（2026-04-22）、立案已<strong>结案并作出处罚</strong>（2026-09-24）、董事会已<strong>换届</strong>且法人已更换、新实控人已实际主导经营。→ <strong>2026 年度内控审计转无保留意见的障碍基本清除</strong>，摘帽是<strong>可兑现的催化</strong>而非纯风险。</li><li><strong>反向风险仍在</strong>：连续三年非标的事实使"再非标"具备路径依赖；若 2026 年度内控仍非标 → 直接触及 9.4.15 <strong>终止上市</strong>（无第二年缓冲）。</li></ul>
 <h3 id="sec2">3. 公司运营情况</h3>
-<h4>3.1 财务状况（单位：亿元；2021—2022 取自 2023 年报，2023—2025 取自各年年报，2026H1 取自半年报）</h4>
+<h4>3.1 财务状况</h4>
+<p><strong>结论：一家仍在收缩、尚未止血的公司。</strong> 营收连续两年下滑（2025 <strong>-37.2%</strong>、2026H1 <strong>-53.9%</strong>）；扣非亏损扩大（2025 <strong>-3.12 亿元</strong>、2026H1 <strong>-0.81 亿元</strong>）；<strong>经营现金流由正转负</strong>（2025 <strong>-2.42 亿元</strong>）；资产负债率升至 <strong>85.2%</strong>，归母净资产从 2021 年的 12.21 亿元一路降到 <strong>4.63 亿元</strong>。</p>
+<p><strong>这个结论对投资的意义</strong>：<strong>主业不提供任何安全垫</strong> —— 正因如此，本报告的买入逻辑<strong>只能建立在事件（摘帽 / 过户 / 注入）上，不能建立在业绩反转上</strong>。</p>
+<details class="fold"><summary>六年一期财务数据表（2021—2026H1；单位：亿元）</summary><div class="fold-body">
+
 <table><thead><tr><th>项目</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026H1</th></tr></thead><tbody><tr><td>营业收入</td><td>25.78</td><td>20.86</td><td>25.40</td><td>24.60</td><td>15.44</td><td>4.14</td></tr><tr><td>扣除后营业收入</td><td>25.69</td><td>20.79</td><td>25.28</td><td>24.45</td><td>15.28</td><td>半年报不披露</td></tr><tr><td>利润总额</td><td>0.41</td><td>0.24</td><td>-1.39</td><td>0.11</td><td>-2.45</td><td>-0.46</td></tr><tr><td>归母净利润</td><td>-3.72</td><td>-3.43</td><td>-1.28</td><td>0.09</td><td>-2.34</td><td>-0.46</td></tr><tr><td>扣非归母净利润</td><td>-3.94</td><td>-3.72</td><td>-1.56</td><td>-0.36</td><td>-3.12</td><td>-0.81</td></tr><tr><td>经营活动现金流净额</td><td>-1.92</td><td>-2.31</td><td>3.26&lt;sup&gt;①&lt;/sup&gt;</td><td>3.52</td><td>-2.42</td><td>-0.28</td></tr><tr><td>归母净资产</td><td>12.21</td><td>8.63</td><td>7.35</td><td>7.43</td><td>5.09</td><td>4.63</td></tr><tr><td>总资产</td><td>51.94</td><td>52.46</td><td>52.41</td><td>45.44</td><td>37.79</td><td>33.23</td></tr><tr><td>资产负债率</td><td>75.7%</td><td>82.8%</td><td>85.2%</td><td>82.9%</td><td>85.8%</td><td>85.2%</td></tr><tr><td>加权平均 ROE</td><td>-26.5%&lt;sup&gt;②&lt;/sup&gt;</td><td>-33.2%&lt;sup&gt;②&lt;/sup&gt;</td><td>-16.1%</td><td>1.2%</td><td>-37.4%</td><td>-9.4%</td></tr></tbody></table>
-<details class="fold"><summary>财务表口径、异源标注与勾稽自检</summary><div class="fold-body">
+
+</div></details>
+<details class="fold"><summary>财务表口径、异源标注与勾稽自检（2021—2022 为年报异源补数）</summary><div class="fold-body">
 
 <ul><li><strong>口径与异源标注</strong>：2021、2022 两列<strong>取自 2023 年报「近三年主要会计数据」</strong>（<strong>非 Wind</strong>，属异源补数）；2023—2025 取自各年年报；2026H1 取自半年报。<strong>Wind 年度财务序列 2021 有值、2022/2023 整两年返回 <code>No data</code></strong>（2026-09-29 实测：<code>Period=Y;rptType=1</code> 只返 2021/2024/2025；单年查 2022 报 <code>-40520007</code>；换 <code>rptType=2</code>、<code>Period=Q</code>、去 <code>Period</code> 均同）——<strong>根因是代理端年度财务库的滚动窗口缺口，非限额、非取数姿势</strong>（同业金螳螂 002081、亚厦股份 002375 同样缺这两年），故不标"数据缺失"。</li><li><strong>&lt;sup&gt;①&lt;/sup&gt; 追溯差异</strong>：2023 年经营现金流，2023 年报当期披露为 <strong>1.56 亿元</strong>；2024、2025 年报追溯为 <strong>3.26 亿元</strong>（差异 <strong>1.70 亿元</strong>，与当年"关联方归还资金 1.70 亿元"的现金流量表重分类吻合）。<strong>本表采用最新年报追溯数</strong>，并说明重述事实。</li><li><strong>&lt;sup&gt;②&lt;/sup&gt;</strong> 2021/2022 的加权 ROE 由数据换算（归母净利 ÷ 当年归母净资产），非年报披露的加权口径，仅作趋势参考。</li><li>勾稽自检：2025 年末总资产 37.79 亿元、归母净资产 5.09 亿元、资产负债率 85.8%，与"负债合计 + 所有者权益合计 = 资产总计"自洽（少数股东权益影响已在合并口径内）。</li></ul>
 
 </div></details>
-<ul><li>趋势：营收连续两年下滑（2025 -37.2%、2026H1 -53.9%），扣非亏损扩大（2025 -3.12 亿元、2026H1 -0.81 亿元），<strong>经营现金流转负</strong>（2025 -2.42 亿元）。这是一家<strong>仍在收缩、尚未止血</strong>的公司。</li></ul>
 <h4>3.2 资产受限与在手订单（★ 均已从 2025 年报附注读出）</h4>
+<p><strong>结论：公司可自由动用的现金极薄 —— 靠自有资金完成「现金收购资产」在财务上几乎不可行。</strong></p>
+<p>把账算清：2025 年末<strong>货币资金 2.83 亿元，其中受限 5,740.00 万元（占 20.3%）→ 可动用约 2.26 亿元</strong>；而 <strong>2025 年经营活动现金流净额为 -2.42 亿元</strong> —— <strong>可动用的现金还不够覆盖一年的经营失血</strong>；资产负债率已 <strong>85.2%</strong>、控股股东质押率 <strong>95.56%</strong>，银行端也难再加杠杆；在手订单/年收入比仅 <strong>0.65</strong>，后续收入储备偏薄。</p>
+<p><strong>由这笔账得出的三条判断（这才是本节要回答的问题）</strong>：</p>
+<ol><li><strong>「上市公司掏现金买资产」基本走不通</strong> —— 账上没这个钱，融资空间也被 85.2% 的负债率堵住。</li><li><strong>「发行股份购买资产」同时被规则卡住</strong> —— ST 期间"最近一年一期审计意见为保留 / 否定 / 无法表示"的<strong>不得发行股份购买资产</strong>，而公司 2025 年报恰是<strong>保留意见</strong>。→ <strong>现金买不起、发股不允许，形成死结。</strong></li><li><strong>因此资产注入的现实路径只剩两条</strong>：① <strong>第三方向上市公司无偿赠与 / 极低价注入</strong>（可比案例：<strong>ST中迪 2026-04 无偿受赠广西天微 70% 股权</strong>，见 §3.1.2）；② <strong>先摘帽、再注入</strong> —— 先解掉内控非标拿到无保留意见，发股通道才重新打开。<strong>无论走哪条，注入时点都在 2027-04 之后</strong>，这正好解释了 §3.5 进度表里"注入受摘帽牵制"。</li></ol>
+<blockquote><p><strong>一句话：公司没有钱去买资产，只能等别人送、或者等自己先摘帽。</strong> 这是本报告把"资产注入"列为 <strong>L1 概念布局、不计入任何情景的当期估值</strong>的财务依据。</p></blockquote>
+<p>数据与明细见下方两个折叠区。</p>
 <ul><li><strong>受限资产（2025 年末合计 5,740.00 万元）</strong>：</li></ul>
-<details class="fold"><summary>受限资产明细（2025 年末 5,740.00 万元，含四项）</summary><div class="fold-body">
+<details class="fold"><summary>受限资产明细（货币资金 2.83 亿元中受限 5,740.00 万元，逐项列示）</summary><div class="fold-body">
 
 <table><thead><tr><th>项目</th><th>2025-12-31（万元）</th><th>2024-12-31（万元）</th></tr></thead><tbody><tr><td>银行承兑汇票保证金</td><td>2,072.32</td><td>52.49</td></tr><tr><td>信用证保证金</td><td>87.80</td><td>91.10</td></tr><tr><td>用于担保的定期存款或通知存款</td><td>3,000.00</td><td>80.00</td></tr><tr><td>冻结银行存款</td><td>564.80</td><td>2,377.33</td></tr><tr><td>其他受限制款项</td><td>15.05</td><td>—</td></tr><tr><td><strong>合计</strong></td><td><strong>5,740.00</strong></td><td><strong>2,600.92</strong></td></tr></tbody></table>
 <p>2025 年末货币资金合计 2.83 亿元，其中受限 5,740.00 万元（占 20.3%）；受限规模<strong>同比大幅上升</strong>（主要系用于担保的定期存款由 80.00 万元升至 3,000.00 万元），反映融资抵押要求提高。</p>
@@ -233,14 +384,16 @@ h1,h2,h3,h4{scroll-margin-top:18px}
 
 </div></details>
 <h4>3.3 重要子公司及回购</h4>
-<details class="fold"><summary>重要子公司与回购情况</summary><div class="fold-body">
+<p><strong>结论：主业没有造血能力，而且 2025 年的亏损里还掺着一笔"卖子公司"的一次性收益。</strong> 三家主要子公司<strong>全部亏损</strong>；报告期内处置三家子公司合计贡献约 <strong>936 万元</strong>处置收益、被计入 2025 年——<strong>意味着"扣非 -3.12 亿元"背后的经营性亏损还要更实</strong>。另：<strong>未见任何回购</strong>，公司没有用回购给股价托底。</p>
+<details class="fold"><summary>主要子公司财务、子公司处置明细与回购检索结果</summary><div class="fold-body">
 
 <ul><li>2025 年报披露主要子公司（单位：万元）：<strong>苏州柯利达光电幕墙有限公司</strong>（营收 17,891、净利 -1,258）、苏州柯利达资产管理有限公司（净利 -199）、苏州中望宾舍设计有限公司（净利 -16）——<strong>三大子公司全部亏损</strong>。</li><li>报告期内处置三家子公司：苏州柯利达建设工程、苏州承志装饰、柯利达信息技术，合计贡献处置收益约 <strong>936 万元</strong>（2025 年扣非巨亏中包含了这部分非经常性收益）。</li><li>回购：巨潮公告索引（2025-05-01～2026-09-25，200 条）中<strong>未检索到回购方案或回购实施类公告</strong>。</li></ul>
 
 </div></details>
 <h3 id="sec3">4. 投资者交流要点（★ 必读 —— 公司自己的口径）</h3>
 <blockquote><p>来源：公司两次业绩说明会《召开情况的公告》（上证路演中心网络互动）。这是<strong>唯一由管理层正面回答外部提问</strong>的口径，与公告的格式化表述互补。</p></blockquote>
-<ul><li><strong>最关键的一条</strong>：2026-09-08 半年度业绩说明会已由<strong>新任董事长刘纯坚（英众信息法定代表人）</strong>出席、总经理顾佳——<strong>董事会与董事长已由英众方接管；治理层面的控制权变更已经实际发生，不必等股权过户</strong>（此条修正了此前「仅凭未过户」的判断力度）。</li></ul>
+<p><strong>结论（三条，均为公司自己的口径）</strong>：</p>
+<ol><li><strong>最关键的一条</strong>：2026-09-08 半年度业绩说明会已由<strong>新任董事长刘纯坚（英众信息法定代表人）</strong>出席、总经理顾佳——<strong>董事会与董事长已由英众方接管；治理层面的控制权变更已经实际发生，不必等股权过户</strong>（此条修正了此前「仅凭未过户」的判断力度）。</li><li><strong>公司自己把 2026 年定性为"摘星去帽的关键一年"</strong>，并主动提及"<strong>紧抓产业整合与投资并购机遇</strong>""培育核心第二增长曲线"——这是 §2.5 摘帽路径与 §3.1.1 事件驱动清单的<strong>公司侧依据</strong>。</li><li><strong>但两任管理层对"主业收入"都没有给任何量化指引</strong> —— 口径里只有方向（AI 能力、海外及香港、投资并购），没有数字。<strong>这正是本报告把买入逻辑放在"事件"而非"业绩"上的原因。</strong></li></ol>
 <details class="fold"><summary>两次业绩说明会问答全文（2026-05-19 旧管理层 / 2026-09-08 新管理层）</summary><div class="fold-body">
 
 <p><strong>4.1 2025 年度暨 2026Q1 业绩说明会</strong>（2026-05-19；旧管理层：董事长顾益明、总经理鲁崇明）</p>
@@ -251,26 +404,29 @@ h1,h2,h3,h4{scroll-margin-top:18px}
 <ul><li><strong>未来盈利改善的 6 条驱动</strong>：① 加快存量项目结算与回款、推动在手订单转化；② 持续推进装配化装修；③ <strong>依托柯依迪数字化、AI 能力推进降本增效</strong>；④ 拓新标、抓在建；⑤ <strong>拓展海外及香港区域市场</strong>，整合上下游产业链资源；⑥ 持续推进内控整改、完善治理结构。</li><li>分红：2025 年度亏损、累计未分配利润为负，暂不具备现金分红条件。</li><li><strong>股东人数：截至 2026-06-30 为 6,952 户</strong>（与 Wind <code>holder_num</code> 一致）。</li></ul>
 
 </div></details>
-<blockquote><p><strong>要点提炼</strong>：① 公司自认的年度关键词是"<strong>摘星去帽</strong>"；② 新管理层口径中出现"<strong>AI 能力</strong>""<strong>海外及香港</strong>""<strong>投资并购</strong>"三个新方向，与英众信创背景呼应；③ 但两任管理层对<strong>主业收入</strong>均未给任何量化指引。</p></blockquote>
 <hr>
 <h2 id="chap2">二、基本面路径：路径 C（处罚 ST 逻辑）</h2>
 <blockquote><p><strong>为什么是路径 C</strong>：路径底表显示落在「规范类—连续两年内控非标」，戴帽原因为信披/内控缺陷而<strong>主业仍存续</strong>。</p><p><strong>为什么不是 A/B</strong>：财务类四条红线全部未触及（净资产为正、扣除后营收 15.28 亿元、审计为保留意见）；公告检索未见重整/预重整程序。两条各一句话带过。</p></blockquote>
 <h3 id="sec4">2.1 业务与收入利润来源地图（按「哪些会变 / 哪些不变」拆）</h3>
-<p><strong>总量：2026H1 营收 4.14 亿元（-53.9%）、营业成本 3.84 亿元（-51.7%）→ 毛利率 7.1%，较 2025H1 的 11.3% 再降 4.2 个百分点。</strong> 半年报不披露分产品明细，故分产品用 2025 年报口径：</p>
-<details class="fold"><summary>分产品收入结构与变化归因（2025 年报口径）</summary><div class="fold-body">
+<p><strong>结论：公司自身没有热点业务，主力主业也已被市场挤出。</strong> 幕墙占营收 <strong>68%</strong> 而毛利率仅 <strong>0.9%</strong>；幕墙＋公装合计 <strong>88%</strong> 的营收双双腰斩，且<strong>量价齐跌</strong>——不是需求端消失，是公司在竞争中掉队（见 2.2）。所谓"装配式装修 / 光伏建筑一体化"叙事，两项合计占营收<strong>不足 5%</strong>。</p>
+<p><strong>2026H1 进一步恶化</strong>：营收 4.14 亿元（<strong>-53.9%</strong>）、营业成本 3.84 亿元（-51.7%）→ <strong>毛利率 7.1%</strong>，较 2025H1 的 11.3% 再降 4.2 个百分点。</p>
+<p><strong>意义</strong>：<strong>不得用"新能源 / 装配式"叙事替代整体基本面</strong>；本标的的可买之处不在这里，在控制权与事件（§三）。</p>
+<details class="fold"><summary>分产品收入结构与变化归因（2025 年报口径；半年报不披露分产品）</summary><div class="fold-body">
 
 <table><thead><tr><th>分产品</th><th>2025 营收（亿元）</th><th>占比</th><th>毛利率</th><th>同比营收</th><th><strong>变化归因（量/价/客户/产能）</strong></th></tr></thead><tbody><tr><td>建筑幕墙工程</td><td>10.39</td><td>68.0%</td><td><strong>0.9%</strong></td><td>-31.7%</td><td><strong>量</strong>：省内项目减少；<strong>价</strong>：竞争压价，毛利率同比 -8.8pct；产能（8 万余平米加工中心）未受约束</td></tr><tr><td>公共建筑装饰工程</td><td>3.12</td><td>20.4%</td><td>2.8%</td><td><strong>-56.9%</strong></td><td><strong>量</strong>：省内订单锐减；<strong>客户</strong>：政府/商业地产客户投资收缩</td></tr><tr><td>EPC + PPP 项目</td><td>0.74</td><td>4.8%</td><td>23.3%</td><td>-3.1%</td><td>存量执行，毛利率最高但体量小</td></tr><tr><td>装配式装修</td><td>0.64</td><td>4.2%</td><td>11.0%</td><td>-26.4%</td><td>新业务尚未放量（<strong>题材炒作阶段</strong>）</td></tr><tr><td>设计业务</td><td>0.37</td><td>2.4%</td><td>33.1%</td><td><strong>+22.2%</strong></td><td><strong>唯一正增长</strong>（柯华盛甲级设计院），体量过小</td></tr><tr><td>基础工程建设</td><td>0.02</td><td>0.1%</td><td>11.5%</td><td>-71.8%</td><td>基本退出</td></tr><tr><td><strong>合计</strong></td><td><strong>15.28</strong></td><td>100%</td><td><strong>3.6%</strong></td><td>-37.5%</td><td>—</td></tr></tbody></table>
 <ul><li><strong>哪些在变</strong>：幕墙与公装（合计 88% 营收）双双腰斩式收缩，且<strong>量价齐跌</strong>——不是需求端没了，是公司在竞争中被挤出（见 2.2）。</li><li><strong>哪些不变、为什么</strong>：EPC/PPP、装配式装修、设计业务的体量与毛利率结构基本不变，因其由存量项目或存量资质驱动，<strong>不构成增长来源</strong>。</li><li><strong>★ 热点业务占比定位</strong>：公司自身<strong>无热点业务</strong>——若按"光伏建筑一体化""装配式装修"叙事，两者合计占营收不足 5%，且装配式营收同比 -26.4%。<strong>不得用"新能源/装配式"叙事替代整体基本面。</strong></li></ul>
 
 </div></details>
 <h3 id="sec5">2.2 竞争格局（★ 引用转债库行业资料）</h3>
+<p><strong>结论：不是行业不行，是公司自己掉队。</strong> 同一行业、同一个半年：龙头<strong>江河集团 2026H1 营收 +15.9%、毛利率 16.43%</strong>；柯利达 <strong>-53.9%、毛利率 7.1%</strong>。→ <strong>这直接否定了"行业下行、跌了就有安全边际"的推论</strong>（另见 §★ 必做校验）。</p>
+<p>公司为江苏地方性企业，技术、渠道壁垒弱，以<strong>竞标</strong>为核心获客方式；2025 年末应收账款 6.14 亿元（占总资产 16.2%），2026H1 仍有 5.43 亿元。</p>
 <details class="fold"><summary>行业对标原始数据与信源（转债库 <code>幕墙工程.md</code>；原始出处：2026-08-12 长江建筑行业交流纪要）</summary><div class="fold-body">
 
 <ul><li>引自转债库 <code>变化跟踪/幕墙工程.md</code> 证据区（<strong>原始出处：2026-08-12 长江建筑行业交流纪要</strong>）：<strong>幕墙行业龙头江河集团 2026H1 营收 108.24 亿元（+15.9%）、归母净利 4.41 亿元（+34.3%）、毛利率 16.43%（+0.68pct）</strong>；<strong>境外装饰收入 28.50 亿元（+66.1%）</strong>，占装饰业务 27.9%；在手订单 382 亿元（其中境外 156 亿元、境外幕墙 118 亿元）；2026E 股息率 7.7%。</li><li><strong>对照结论</strong>：同一行业、同一半年，龙头营收 <strong>+15.9%</strong>、毛利率 <strong>16.4%</strong>；柯利达营收 <strong>-53.9%</strong>、毛利率 <strong>7.1%</strong>。→ <strong>行业需求并未全面萎缩，是公司自身竞争力掉队</strong>。这直接否定了"行业下行、跌了就有安全边际"的推论。</li><li>公司为江苏地方性企业，技术、渠道壁垒弱，竞标为核心获客方式；2025 年末应收账款 6.14 亿元（占总资产 16.2%），2026H1 仍有 5.43 亿元。</li></ul>
 
 </div></details>
 <h3 id="sec6">2.3 产能与潜在重大变化</h3>
-<ul><li>八万余平方米幕墙加工中心；2026H1 研发费用 <strong>0.14 亿元（-66.9%）</strong>，主动收缩投入。</li><li><strong>潜在重大变化 = 实际控制人变更（本报告多头的核心）</strong>：</li></ul>
+<p><strong>结论：产能不是变量，控制权才是。</strong> 八万余平方米幕墙加工中心<strong>未成为约束</strong>（订单不足）；2026H1 研发费用 <strong>0.14 亿元（-66.9%）</strong>，属<strong>主动收缩投入</strong>——公司自己在缩表。<strong>真正在变的只有一件事：实际控制人变更（本报告多头的核心）</strong>。</p>
 <details class="fold"><summary>受让方英众智能：真实背景（第三方补充）与交易结构</summary><div class="fold-body">
 
 <ul><li>受让方<strong>上海英众智能科技有限公司</strong>（2022-08-23 成立，注册资本 1,000 万元），其唯一股东为<strong>上海英众信息科技集团有限公司</strong>（2013-05-23 成立，注册资本 4,381.82 万元），新实际控制人认定为<strong>曹亚联、刘纯坚</strong>。</li><li><strong>第三方补充（公告口径严重低估其真实定位）</strong>：英众信息为<strong>中国信创 500 强</strong>、上海市专精特新企业、信创独角兽 20 强；拥有 <strong>115 项专利</strong>，产品线含"国产 AI-PC 终端模块化机箱""生成式 AI 嵌入式国产终端触控屏一体化工作站"等；系 <strong>AMD AI395 芯片的全球独家合作伙伴</strong>；与<strong>上海兆芯</strong>紧密合作推出国产化计算产品；为 Intel 亚太研发中心合作伙伴、微软中国 TOP3 客户；其参与的 <strong>AIPC 产业项目在上海新桥奠基，规划年产能 100 万台</strong>；员工 137 人（2025）。<strong>"C 轮估值近 30 亿元"为第三方平台 AI 生成表述，标【待核实】</strong>（来源：企查查 / 爱企查，检索日 2026-09-29）。</li><li>交易结构（一揽子）：① 2024-09-30 英众智能协议受让柯利达集团所持 <strong>0.30 亿股（5.03%）</strong>，2024-10-28 过户完成；② 2026-01-09 顾益明、顾龙棣、顾佳、鲁崇明将所持柯利达集团 100% 股权转让给英众智能。完成后英众智能直接 5.03%、间接 18.74%，<strong>合计控制 23.77%</strong>；不触及要约收购；承诺权益变动完成后 <strong>36 个月内不质押</strong>柯利达集团股权。</li></ul>
@@ -285,52 +441,111 @@ h1,h2,h3,h4{scroll-margin-top:18px}
 
 </div></details>
 <h3 id="sec7">2.4 估值分析</h3>
-<ul><li><strong>亏损股不用 PE</strong>。现价 6.14 元 → 市值 36.59 亿元；<strong>PB(LF) 7.89</strong>、<strong>PS(TTM) 3.45</strong>。</li><li><strong>横向对比（贵）</strong>：装饰装修一线上市公司的 PB 多在 1 倍上下；本公司 7.89 倍为同业数倍。差异全部来自"壳价值 + 控制权变更 + 摘帽预期"，无基本面支撑。</li><li><strong>定价锚（硬成本）</strong>：</li><li>英众智能受让柯利达集团 100% 股权<strong>交易总价 3.25 亿元</strong>（评估所有者权益值 324,586,464.79 元，按评估值定价），对应间接持有 18.74%（1.12 亿股）→ <strong>约 2.91 元/股</strong>；</li><li>2024-09-30 受让 0.30 亿股的转让价格为参考前二十个交易日收盘价的 <strong>1.72 元/股</strong>（总价 0.52 亿元）；</li><li><strong>综合成本约 2.66 元/股，现价为其 2.31 倍</strong>。</li><li>三档情景（以市值 / 对应股价区间表达）：</li></ul>
+<p><strong>结论：横向比极贵（PB 7.89 vs 同业约 1 倍），相对「控制权成本」也贵 2.31 倍 —— 现价已提前定价部分乐观假设，但尚未定价"注入落地"</strong>（现价 6.14 元落在中性情景上沿与乐观情景下沿之间）。</p>
+<details class="fold"><summary>估值口径与定价锚（现价 vs 两种成本）</summary><div class="fold-body">
+
+<ul><li><strong>亏损股不用 PE</strong>。现价 6.14 元 → 市值 36.59 亿元；<strong>PB(LF) 7.89</strong>、<strong>PS(TTM) 3.45</strong>。</li><li><strong>横向对比（贵）</strong>：装饰装修一线上市公司的 PB 多在 1 倍上下；本公司 7.89 倍为同业数倍。差异全部来自"壳价值 + 控制权变更 + 摘帽预期"，无基本面支撑。</li><li><strong>定价锚（硬成本）</strong>：新实控人综合成本约 <strong>2.66 元/股</strong>，现价为其 <strong>2.31 倍</strong> —— 逐笔明细与两类定价逻辑见 <a href="#p-cost">成本锚点</a>。</li></ul>
+
+</div></details>
+<ul><li>三档情景（以市值 / 对应股价区间表达）：</li></ul>
 <table><thead><tr><th>情景</th><th>假设</th><th>市值区间</th><th>股价区间</th></tr></thead><tbody><tr><td>保守</td><td>2026 内控仍非标（退市）或过户失败</td><td>15–21 亿元</td><td>2.5–3.5 元</td></tr><tr><td>中性</td><td>内控转无保留、摘帽成功，无资产注入</td><td>24–30 亿元</td><td>4.0–5.0 元</td></tr><tr><td>乐观</td><td>摘帽 + 过户完成 + 信创资产注入预期升温</td><td>48–60 亿元</td><td>8.0–10.0 元</td></tr></tbody></table>
 <p><strong>现价 6.14 元处于中性上沿与乐观下沿之间——市场已提前定价部分乐观假设，但尚未定价"注入落地"。</strong></p>
 <h3 id="sec8">2.5 摘帽分析</h3>
+<p><strong>结论：与 §2.5（诊断翼）完全一致 —— 条件只剩"2026 年度内控审计转无保留"，时点 2027-04；中间每月《可能被终止上市的风险提示公告》是持续观察点。</strong> 本节只做交叉确认，不重复论证。</p>
+<details class="fold"><summary>摘帽的有利项 / 决定项 / 时点（交叉确认用）</summary><div class="fold-body">
+
 <ul><li>有利项：资金占用 <strong>2026-04-22 已全部归还</strong>；行政处罚 <strong>2026-09-24 已落地</strong>（信披违规事项出清）；已修订资金与担保管理制度、完成董事会换届并聘任新高管、更换法人；新实控人已实际主导。</li><li>决定项：<strong>2026 年度财务报告内部控制的审计意见</strong>。转向无保留意见 → 可申请撤销；再次非标 → 终止上市。</li><li>时点：<strong>2027-04</strong>（2026 年报披露后）为最早窗口；中间每月的《可能被终止上市的风险提示公告》是持续观察点。</li></ul>
+
+</div></details>
+<hr>
+<h3 id="sec9">2.6 资产质量与估值（五维星级）</h3>
+<p><a href="#p-quality">★ 资产质量与估值：五个维度的星级评级</a>——<strong>五个维度里四个是低星，唯一高分是"控制权运作"</strong>，这就是买入逻辑的本质。</p>
+<p><strong>读法</strong>：<strong>"控制权与运作"的高分不能用来抵消"主业质地"的低分</strong> —— 这是两套逻辑（事件驱动 vs 价值投资），本报告给的是<strong>博弈型买入</strong>。</p>
+<details class="fold" id="p-quality"><summary>资产质量与估值（评估维度 · 大白话说明 · 星级）</summary><div class="fold-body">
+
+<table><thead><tr><th>评估维度</th><th>大白话说明</th><th>评级</th></tr></thead><tbody><tr><td><strong>市值 / 估值</strong></td><td>总市值 36.59 亿元，<strong>PB 7.89、PS 3.45</strong>，为装饰装修同业数倍（同业 PB 多在 1 倍上下）。差异<strong>全部来自"壳价值 + 控制权变更 + 摘帽预期"，无基本面支撑</strong></td><td>★☆☆☆☆</td></tr><tr><td><strong>法律合规性</strong></td><td>好的一面：<strong>资金占用已全额清偿</strong>（2026-04-22）、<strong>立案已结案处罚</strong>（2026-09-24）、公司自述未触及重大违法强制退市。坏的一面：<strong>内控连续三年（2023/2024/2025）被出具否定意见</strong>，2026 年度审计是<strong>没有缓冲带的生死线</strong>（再非标即触及 9.4.15 终止上市）</td><td>★★☆☆☆</td></tr><tr><td><strong>债务与流动性</strong></td><td>资产负债率 <strong>85.2%</strong>（2026H1）；<strong>2025 年经营现金流 -2.42 亿元</strong>（转负）；受限资产 5,740.00 万元，占货币资金 20.3%（担保性定存由 80 万骤升至 3,000 万）；在手订单 9.95 亿元 vs 年收入 →<strong>订单/收入比仅 0.65</strong></td><td>★★☆☆☆</td></tr><tr><td><strong>主业质地</strong></td><td>幕墙占营收 <strong>68%</strong>，而毛利率仅 <strong>0.9%</strong>；2026H1 营收 4.14 亿元（<strong>-53.9%</strong>）、扣非 <strong>-0.81 亿元</strong>；三大子公司<strong>全部亏损</strong>。且行业龙头江河集团同期 <strong>+15.9%</strong>、毛利率 <strong>16.4%</strong> → <strong>不是行业不行，是公司自己掉队</strong></td><td>★☆☆☆☆</td></tr><tr><td><strong>控制权与运作</strong></td><td>新实控人已<strong>实际接管董事会</strong>（董事长换为刘纯坚）、成本锚 3.76 亿元在场、原体系配合交权（减持 + 放弃表决权 + 解除一致行动 + 不谋求控制权承诺）、<strong>卡点只剩时间</strong>（过户 ≥2027-03、摘帽 2027-04）</td><td>★★★★☆</td></tr><tr><td><strong>综合</strong></td><td>一个「<strong>壳相对干净、主业在失血、控制权已换、只等 2026 年度审计</strong>」的标的 —— <strong>买它不是买资产，是买"事件 + 控制权"</strong></td><td>★★★☆☆</td></tr></tbody></table>
+<blockquote><p>评级标准：★ 越多越好；★☆☆☆☆＝明显不利，★★★☆☆＝中性，★★★★★＝明显有利。</p><p>注意：<strong>"控制权与运作"这一项的高分，不能用来抵消"主业质地"的低分</strong> —— 这是两套逻辑（事件驱动 vs 价值投资），本报告给的是<strong>博弈型买入</strong>。</p></blockquote>
+
+</div></details>
 <hr>
 <h2 id="chap3">三、炒作逻辑（★ 三支柱全部着眼未来）+ 情绪面 + 筹码面</h2>
-<h3 id="sec9">3.1 炒作逻辑三支柱（按当前强度排序）</h3>
+<h3 id="sec10">3.1 炒作逻辑三支柱（按当前强度排序）</h3>
 <table><thead><tr><th>支柱</th><th>内容</th><th>强度</th></tr></thead><tbody><tr><td><strong>① 炒预期</strong></td><td>见下方"未来事件驱动清单"——<strong>7 个月内有两件事会落地：过户（2027-03 后）与 2026 年报内控审计意见（2027-04）</strong>，两者的结果均未被市场完全定价。</td><td>★★★</td></tr><tr><td><strong>② 炒历史类似行为</strong></td><td>见 3.1.2</td><td>★★★</td></tr><tr><td><strong>③ 炒主板映射</strong></td><td>见 3.1.3</td><td>★★</td></tr></tbody></table>
 <h4>3.1.1 未来事件驱动清单（硬时间表）</h4>
+<p><strong>结论：7 个月内有两件"硬事"落地 —— 过户（≥2027-03）与 2026 年报内控审计意见（2027-04），两者的结果均未被市场完全定价。本报告的全部赔率都压在这两件事上。</strong> 其余（资产注入）属<strong>软预期</strong>，至今零公告支撑，只决定想象空间、不决定仓位。</p>
+<details class="fold"><summary>事件驱动清单（含预计时点、距今与对本标的的意义）</summary><div class="fold-body">
+
 <table><thead><tr><th>事件</th><th>预计时点</th><th>距今</th><th>对本标的的意义</th></tr></thead><tbody><tr><td>2026 年三季报</td><td>2026-10</td><td>~1 个月</td><td>主业能否止跌；观测现金流转正</td></tr><tr><td>2026 年度业绩预告</td><td>2027-01</td><td>~4 个月</td><td>亏损幅度是否收窄</td></tr><tr><td><strong>柯利达集团股权工商变更过户</strong></td><td><strong>2027-03 之后</strong></td><td>~6 个月</td><td><strong>控制权变更正式完成</strong>，资产运作前置条件具备</td></tr><tr><td><strong>2026 年报 + 内控审计意见 → 申请摘帽</strong></td><td><strong>2027-04</strong></td><td>~7 个月</td><td><strong>取消 *ST，最核心的催化</strong></td></tr><tr><td>资产注入 / 重大资产重组公告</td><td>不定</td><td>—</td><td>若发生为最大级别催化（但受"因重组无法披露内控报告则继续 *ST"的规则约束，见 §2.5）</td></tr></tbody></table>
+
+</div></details>
 <h4>3.1.2 炒历史类似行为（★ 相似股票匹配法：<strong>从基准日出发，看它最像谁</strong>）</h4>
 <blockquote><p><strong>方法</strong>：<strong>不是</strong>从「戴帽」这件事去找历史对标，而是<strong>以基准日（2026-09-29）的全部特征</strong>为画像，在<strong>当下市场</strong>里找出<strong>最像的票</strong>，看它们<strong>后来涨还是跌</strong>，据此推断本标的的方向与幅度——目标是<strong>找到上涨概率大、幅度大的样本作参照，同时识别下跌样本用于规避</strong>。</p></blockquote>
+<p><strong>结论（先说结果）</strong>：</p>
+<ol><li><strong>本标的落在「上涨组」。</strong> 相似度最高的 <strong>ST中迪</strong>（半导体背景新实控人入主 ST 壳）走出 <strong>+213%~+400%</strong>；<strong>＊ST亚振</strong>（实控人变更 + 资产保壳）<strong>+830%</strong>。→「<strong>科技背景新实控人 + ST 壳</strong>」这一组合的历史样本<strong>以大幅上涨为主</strong>。</li><li><strong>但它处在剧本的「更早、更慢」位置。</strong> ST中迪是<strong>拍卖成交后即完成过户、且已实际导入资产</strong>（无偿获赠半导体子公司）；利达<strong>未过户、资产未注入</strong>。→ 若按中迪路径推进（<strong>过户 → 资产导入</strong>），<strong>上行空间仍在，且这部分尚未被完全定价</strong>。</li><li><strong>两个必须规避的点（回撤样本给的教训）</strong>：① <strong>摘帽 / 过户落地即「利好出尽」</strong>（亚振家居摘帽当日 <strong>-2.26%</strong>）；② <strong>连板后波动极大</strong>（ST中迪 8 连板后跌停）→ 对应 §四 的 <strong>≤2% 仓位纪律</strong>。</li><li><strong>反面校验</strong>：连相似度最低的样本（仅「摘帽 + 控制权变更」共振）也能给出「<strong>提前涨停</strong>」→ 本标的的两个事件节点（2027-03 过户 / 2027-04 摘帽）<strong>大概率会被提前交易</strong>，而非等到落地才反应。</li></ol>
+<details class="fold"><summary>本标的画像 ＋ 当下最像的 5 组标的与其后续实际走势（网络检索，线索级）</summary><div class="fold-body">
+
 <p><strong>（1）本标的画像（用于匹配）</strong></p>
 <table><thead><tr><th>维度</th><th>＊ST利达当前状态</th></tr></thead><tbody><tr><td>板块 / 戴帽类型</td><td>沪主板 ST 板块；*ST（<strong>规范类·内控连续两年非标</strong>，非财务类）</td></tr><tr><td>市值</td><td>36.59 亿元（中小市值）</td></tr><tr><td>驱动类型</td><td><strong>科技背景新实控人入主</strong>（信创 / AI PC） + <strong>明确摘帽路径</strong></td></tr><tr><td>所处阶段</td><td>控股股东 100% 股权已签约收购（<strong>未过户</strong>）；董事会已由新主接管；<strong>资产尚未注入</strong></td></tr><tr><td>主业</td><td>建筑装饰（萎缩、无热点业务）</td></tr><tr><td>历史炒作符号</td><td>股权转让 / 控制权变更（已重演三轮，最高 39 天 20 板）</td></tr></tbody></table>
 <p><strong>（2）当下最像的标的（网络检索；案例库待健全）</strong></p>
-<details class="fold"><summary>当下最像的 5 组标的与其后续实际走势（网络检索，线索级）</summary><div class="fold-body">
-
 <table><thead><tr><th>可比标的</th><th>像在哪</th><th>后续实际走势</th><th>相似度</th></tr></thead><tbody><tr><td><strong>ST中迪（000609.SZ）</strong></td><td><strong>半导体背景新实控人入主 ST 壳</strong>（深圳天微电子创始人门洪达、张伟）；退市边缘；转型预期；主板</td><td>2025-10-17 天微投资以 2.55 亿元竞得 23.77% → <strong>股价 4.12 元 → 13.31 元（26 个交易日 +213.92%）</strong>，自 2025-07-22 起累计 <strong>+400%</strong>；2026-04 无偿获赠半导体资产（广西天微 70%，评估 2.29 亿元）；<strong>2026-04-23 被叠加 *ST 后复牌仍一字板，4/23~5/7 收获 8 连板</strong>（最高 15.90 元）；随后 5/11 跌停</td><td>★★★</td></tr><tr><td><strong>＊ST亚振（亚振家居）</strong></td><td>实控人变更 + 收购资产保壳；ST 壳 + 题材型预期</td><td><strong>披星戴帽期间累计暴涨超 830%</strong>；2026-07-01 摘帽复牌首日 <strong>-2.26%</strong>、次日 +4.92%（<strong>利好兑现即回落</strong>）</td><td>★★</td></tr><tr><td><strong>＊ST四环</strong></td><td><strong>内控被出具标准无保留意见 → 摘帽</strong>（与本标的撤销路径<strong>完全同款</strong>）</td><td>2026-05-20 起撤销退市风险警示（扣后营收 3.39 亿元、归母净资产 3.35 亿元）</td><td>★★</td></tr><tr><td><strong>ST东易（002713.SZ）</strong></td><td>重整成功 + 新控股股东推动「家装 + 算力」双主业转型</td><td>2026-02 连收 3 个涨停，<strong>10 天 6 板</strong>；机构专用席位净买入 1,417 万元</td><td>★</td></tr><tr><td><strong>易事特 / ST星农 / 返利科技</strong></td><td><strong>摘帽前后筹划控制权变更</strong></td><td>均出现「<strong>摘帽前后提前涨停</strong>」</td><td>★</td></tr></tbody></table>
+<blockquote><p><strong>信源级别</strong>：ST中迪案例来自<strong>中国证券网（上海证券报）</strong>与新浪财经（二级转载）；亚振家居来自<strong>华夏时报</strong>；2026 年摘帽名单（46 家）来自<strong>中国经济网转上海证券报</strong>。均为<strong>公开媒体报道，属线索级，尚未逐条回公告核实</strong>，标【待核实】。下一步应把上述案例逐条回公告核实并沉淀为<strong>案例库</strong>，随使用逐步扩充。</p></blockquote>
 
 </div></details>
-<p><strong>（3）比对结论</strong></p>
-<ol><li><strong>本标的落在「上涨组」。</strong> 相似度最高的 <strong>ST中迪</strong>（科技实控人入主 ST 壳）走出 <strong>+213%~+400%</strong>；<strong>亚振家居</strong>（实控人变更 + 资产保壳）<strong>+830%</strong>。→ 「<strong>科技背景新实控人 + ST 壳</strong>」这一组合的历史样本<strong>以大幅上涨为主</strong>。</li><li><strong>但本标的处在剧本的「更早、更慢」位置。</strong> ST中迪在<strong>拍卖成交后即完成过户</strong>，且已<strong>实际导入资产</strong>（无偿获赠半导体子公司）；而利达<strong>尚未过户、资产未注入</strong>。→ 若按中迪路径推进（<strong>过户 → 资产导入</strong>），<strong>上行空间仍在，且这部分尚未被完全定价</strong>。</li><li><strong>两个必须规避的风险点（回撤样本给的教训）</strong>：① <strong>亚振家居摘帽当日 -2.26%</strong> —— <strong>摘帽（或过户）落地即「利好出尽」的时点风险</strong>，与 §2.4 三档情景的中性/乐观切换点一致；② <strong>ST中迪 8 连板后 5/11 跌停</strong> —— 这类标的<strong>波动率极高，必须严格控制仓位</strong>（对应 §四 的 ≤2% 仓位纪律）。</li><li><strong>反面校验</strong>：相似度最低的样本（易事特 / ST星农 / 返利科技，仅「摘帽 + 控制权变更」共振）也能给出「<strong>提前涨停</strong>」，说明<strong>本标的的两个事件节点（2027-03 过户 / 2027-04 摘帽）大概率会被市场提前交易</strong>，而非等到落地才反应。</li></ol>
-<blockquote><p><strong>信源级别</strong>：ST中迪案例来自<strong>中国证券网（上海证券报）</strong>与新浪财经（二级转载）；亚振家居来自<strong>华夏时报</strong>；2026 年摘帽名单（46 家）来自<strong>中国经济网转上海证券报</strong>。均为<strong>公开媒体报道，属线索级，尚未逐条回公告核实</strong>，标【待核实】。下一步应把上述案例逐条回公告核实并沉淀为<strong>案例库</strong>，随使用逐步扩充。</p></blockquote>
 <h4>3.1.3 炒主板映射（★ 选股动作）</h4>
+<p><strong>结论：英众信息正处在 2026 年强势主线（AI PC / 信创 / 国产算力）的正中，因此映射关联度评级＝强（非【纯概念】）；本标的即映射对象本身，低位买点区间见 §四。</strong></p>
+<details class="fold"><summary>映射主线、关联度评级与 ST 板块候选池（选股动作的论据）</summary><div class="fold-body">
+
 <ul><li><strong>主板当下在炒什么</strong>：2026 年的强势主线之一是 <strong>AI PC / 信创 / 国产算力</strong>（国产化终端与国产芯片生态）。英众信息正处于该主线正中——<strong>AMD AI395 全球独家合作伙伴</strong>、<strong>上海兆芯生态</strong>、AIPC 上海新桥基地规划年产能 100 万台、国产 AI-PC 终端相关专利 115 项。</li><li><strong>关联度评级：强（非【纯概念】）</strong>。理由：英众智能是通过<strong>控股股东层面 100% 股权收购</strong>取得实质控制权（虽未过户），而非题材蹭概念；且 2024-09 就已先买入 5.03% 布局。</li><li><strong>本标的即映射对象本身</strong>，故给<strong>低位买点区间</strong>（见 §四）：<strong>4.6–5.2 元</strong>为事件驱动下的合理介入带，现价 6.14 元已进入压力区。</li><li><strong>ST 板块内同概念候选池</strong>（按 <code>退市风险预警-20260929.xlsx</code> 全量 183 家的「Wind 行业」列初筛，行业为科技类）：<strong>＊ST闻泰（600745，硬件设备）</strong>、<strong>＊ST航图（688066，软件服务）</strong> 等。</li></ul>
 <blockquote><p><strong>⚠️ 该候选池仅按行业列初筛，其"信创/AI PC"业务实质与当前股价位置【本次未逐一核实】</strong> —— 按 skill §2.9 纪律，<strong>不得直接作为买入依据</strong>；建议单独跑一轮"ST 板块 × 信创/AI 概念 × 低位"筛选后再定。</p></blockquote>
 <ul><li><strong>转债库行业记录</strong>：本次未对 <code>行业-公司/计算机/AI产业链.md</code> 及信创相关 <code>变化跟踪</code> 主体做逐条比对，标"<strong>库内未逐一核验</strong>"。</li></ul>
-<h3 id="sec10">3.2 情绪面</h3>
+
+</div></details>
+<h3 id="sec11">3.2 情绪面</h3>
+<p><strong>结论：唯一且强力的情绪抓手是「控制权变更带来的信创 / AI PC 独角兽标签」；而戴帽后 +34.6% 明显跑赢同业，说明上涨由事件博弈资金驱动、而非基本面改善。</strong></p>
+<details class="fold"><summary>两条情绪面证据（标签来源 + 跑赢同业的实证）</summary><div class="fold-body">
+
 <ul><li>主题催化：<strong>控制权变更带来的"信创 / AI PC 独角兽"标签</strong>是唯一且强力的情绪抓手。需注意：公告登记口径下英众智能主营为"计算机软硬件及辅助设备零售"，与上市公司建筑装饰主业<strong>无产业协同</strong>——即"换血"而非"协同"，这既是想象空间也是不确定性。</li><li>2026-04-29 *ST 生效至今（至 09-28）股价由约 4.56 元涨至 6.14 元、<strong>后复权 +34.6%</strong>，明显跑赢同业（同期金螳螂 -9.3%、全筑股份 -16.2%）→ <strong>上涨由事件博弈资金驱动，而非基本面改善</strong>。</li></ul>
-<h3 id="sec11">3.3 筹码博弈 / 技术位置</h3>
+
+</div></details>
+<h3 id="sec12">3.3 筹码博弈 / 技术位置</h3>
+<p><strong>结论：处在区间上沿、逼近前高压力区（6.33 元），且上方存在强平与减持压力 —— 有博弈资金持续参与，但筹码不稳、波动极大。</strong></p>
+<details class="fold"><summary>价格轨迹 · 形态 · 筹码结构 · 龙虎榜 6 次上榜明细</summary><div class="fold-body">
+
 <ul><li>价格轨迹（不复权）：2026-04-29 约 4.56 元 → <strong>5-29 高点 6.33 元</strong> → <strong>7-21 低点 3.95 元</strong> → 2026-09-28 收 6.14 元，<strong>逼近前高 6.33 元压力区</strong>。</li><li>形态：典型"戴帽翘板 → 回落 → 再上冲"，当前处区间上沿；<strong>3.95 元为关键支撑，6.33 元为压力位</strong>。</li><li>筹码结构：控股股东质押率 95.56%、实控人个人质押 54.26%，<strong>上方存在强平与减持压力</strong>；两基金已承诺放弃表决权，控制权变更完成前股本结构处于僵持状态。</li><li><strong>龙虎榜（东方财富，2026-09-29 取数）</strong>：2026 年内共 <strong>6 次</strong>上榜——1/14 <strong>+4.98%</strong>（涨停）、1/19 -5.02%（跌停）、4/27 -4.95%、5/7 +4.97%（涨停）、7/3 +4.98%（涨停，旧规最后一日）、<strong>8/20 +9.93%（涨停，新规后）</strong>。→ <strong>有博弈资金持续参与，但 1/14 涨停后 1/19 即跌停，筹码不稳、波动极大。</strong></li></ul>
-<h3 id="sec12">3.4 异动与炒作史（★ 数据源：韭研公社异动整理，2026-09-29 取数）</h3>
-<p><strong>3.4.1 炒作波段汇总</strong>（按"驱动关键词"聚类）</p>
+
+</div></details>
+<h3 id="sec13">3.4 异动与炒作史（★ 数据源：韭研公社异动整理，2026-09-29 取数）</h3>
+<p><strong>结论三条</strong>：</p>
+<ol><li><strong>炒作符号六年没变过：<code>股权转让 / 控制权变更</code> ＋ <code>证券牌照（方圆证券）</code>。</strong> 2024-10、2025-03、2026-01 至今<strong>已重演三轮</strong>——<strong>本轮（英众智能控制权变更）就是同一符号的第三次重演</strong>，这是 §3.1.2「炒历史类似行为」最直接的证据。</li><li><strong>连板基因极强，但每次连板潮后都大幅回落</strong>：历史极值 <strong>39 天 20 板</strong>（2025-03~05）、28 天 14 板、18 天 11 板；2026-01 高点 9.70 元 → 2026-08 低点 3.95 元，<strong>回撤 59%</strong>。</li><li><strong>股价水位处在历史区间的中上部</strong>：1.44 元（2024-07 最低）→ 9.70 元（2026-01 最高）→ 4.98 元（2026-08-20）→ <strong>6.14 元</strong>（2026-09-28）。</li></ol>
+<details class="fold"><summary>炒作波段汇总（10 个波段，时间降序，按「驱动关键词」聚类）</summary><div class="fold-body">
+
 <table><thead><tr><th>时间波段</th><th>题材</th><th>最高连板</th><th>股价区间（元）</th><th>驱动关键词</th></tr></thead><tbody><tr><td>2026-08-20</td><td>ST板块</td><td>—</td><td>4.98</td><td>控制权变更 + 建筑设计 + 光伏一体化</td></tr><tr><td>2026-07</td><td>ST板块</td><td>2 天 2 板</td><td>4.21 → 4.64</td><td>控制权变更</td></tr><tr><td>2026-05</td><td>ST板块</td><td><strong>8 天 6 板</strong></td><td>5.03 → 5.88</td><td>控制权变更 + 拟股权转让</td></tr><tr><td>2025-12 ~ 2026-01</td><td>ST板块</td><td>2 天 2 板</td><td>7.38 → <strong>9.70</strong></td><td>控制权变更（2026-01-10 公告）</td></tr><tr><td>2025-09 ~ 2025-11</td><td>ST板块</td><td>15 天 8 板</td><td>4.74 → 7.59</td><td>拟股权转让 → <strong>终止</strong>股权转让 → 反复</td></tr><tr><td><strong>2025-03 ~ 2025-05</strong></td><td>ST板块</td><td><strong>39 天 20 板</strong></td><td>3.56 → 5.59</td><td>业绩扭亏 + 拟设立方圆证券 + 股权转让</td></tr><tr><td>2024-10 ~ 2024-11</td><td>ST板块</td><td><strong>28 天 14 板</strong></td><td>1.96 → 3.42</td><td>拟设立方圆证券 + 股权转让</td></tr><tr><td>2023-07 ~ 2023-08</td><td>房地产产业链 / 大金融</td><td>10 天 6 板</td><td>3.43 → 5.13</td><td>城中村改造 + 政治局会议</td></tr><tr><td>2022-03</td><td>基建 / 建筑节能</td><td>2 天 2 板</td><td>4.33 → 4.90</td><td>—</td></tr><tr><td>2020-07 ~ 2021-03</td><td>装配式建筑 / 装饰幕墙</td><td>—</td><td>4.66 → 7.28</td><td>装配式渗透率规划、隆基入股森特 BIPV</td></tr></tbody></table>
-<p><strong>3.4.2 三条结论</strong></p>
-<ol><li><strong>这只票的"炒作符号"高度稳定：<code>股权转让 / 控制权变更</code> + <code>证券牌照（方圆证券）</code>。</strong> 2024-10 至 2026-08 的绝大多数异动记录，关键词都落在"控制权变更 / 拟股权转让 / 拟设立方圆证券"上 —— <strong>当前这一轮（英众智能控制权变更）是同一符号的第三次重演</strong>（2024-10、2025-03、2026-01 至今）。这是 §3.1.2「炒历史类似行为」<strong>最直接的证据</strong>。</li><li><strong>它具备极强的"连板—炸板"能力</strong>：历史上出现过 <strong>39 天 20 板</strong>（2025-03~05）、28 天 14 板（2024-11）、18 天 11 板（2024-10）等极端形态，说明<strong>筹码结构与游资关注度长期存在</strong>；但每次连板潮后均大幅回落（2026-01 高点 9.70 元 → 2026-08 低点 3.95 元，回撤 <strong>59%</strong>）。</li><li><strong>股价水位</strong>：2024-07 最低 <strong>1.44 元</strong> → 2026-01 最高 <strong>9.70 元</strong> → 2026-08-20 <strong>4.98 元</strong> → 2026-09-28 <strong>6.14 元</strong>，当前处于历史波动区间的<strong>中上部</strong>。</li></ol>
+<blockquote><p>表中「最高连板」按韭研公社记录整理；股价为该波段区间端点（不复权）。</p></blockquote>
+
+</div></details>
 <blockquote><p><strong>异动明细全 107 条见「附录 D · 异动明细」</strong>（超过约 30 行的明细表按规范移入附录，正文只留汇总表 + 结论）。</p></blockquote>
 <h4>3.5 全流程进度追踪总表（总控看板）</h4>
-<p>八个环节里 <strong>5 个已完成、1 个待时间、2 个未启动</strong>；剩下的两件事都不是"谈不成"，而是"<strong>时间未到</strong>"。</p>
+<p><strong>结论：八个环节里 5 个已完成、1 个待时间、2 个未启动；剩下的两件事都不是"谈不成"，而是"时间未到"。</strong> 换句话说，<strong>卡点全部是"时间未到"，没有一处卡在"谈不拢"</strong>。</p>
 <table><thead><tr><th>#</th><th>环节</th><th>状态</th><th>卡点 / 条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>1</td><td>控制权交易签约</td><td>✅ 已完成</td><td>—</td><td>2026-01-09</td><td>2026-01-10 公告</td></tr><tr><td>2</td><td>治理层接管</td><td>✅ <strong>已实际发生</strong></td><td>—</td><td>2026-09-08</td><td>半年度业绩说明会（董事长换为刘纯坚）</td></tr><tr><td>3</td><td><strong>股权工商过户</strong></td><td>⏳ 未完成</td><td><strong>被处罚未满 6 个月不得减持</strong></td><td><strong>≥ 2027-03</strong></td><td>2026-08-31 风险提示公告</td></tr><tr><td>4</td><td>资金占用清收</td><td>✅ 已完成</td><td>—</td><td>2026-04-22 全额归还</td><td>2026-04-28 归还公告</td></tr><tr><td>5</td><td>立案与处罚</td><td>✅ 已闭环</td><td>—</td><td>2026-09-24 决定书</td><td>2026-09-25 处罚公告</td></tr><tr><td>6</td><td>内控整改</td><td>🔄 进行中</td><td>待 2026 年度内控审计</td><td><strong>2027-04</strong></td><td>规则 9.4.10(六)</td></tr><tr><td>7</td><td><strong>摘帽</strong></td><td>⏳ 待审计意见</td><td>最近一个会计年度内控须为<strong>无保留意见</strong></td><td><strong>2027-04</strong></td><td>规则 9.4.12–9.4.13</td></tr><tr><td>8</td><td>资产注入</td><td>❌ 未启动</td><td>受"因重组无法披露内控报告则继续 \*ST"牵制</td><td>不定</td><td>公告未见</td></tr></tbody></table>
 <h4>3.6 运作特征与综合判断</h4>
+<p><strong>结论一句话：手法精明、交权是配合式的、卡点只有两处且都是时间问题；成败完全押在"2026 年度内控审计意见"这一个 1 或 0 的变量上。</strong></p>
 <ul><li><strong>手法＝"先参股、后收集团"两步走。</strong> 2024-09 先买 5.03%（1.72 元/股，0.52 亿元）→ 2026-01 再收购柯利达集团 100%（3.25 亿元）。比一次性协议受让<strong>更省当期现金、更隐蔽、也不触发要约</strong>；且 2024 年那笔的成本（1.72 元）显著低于 2026 年那笔（约 2.91 元/股）—— <strong>先低价上车的部分，浮盈最厚</strong>。</li><li><strong>交权是"配合式"而非"对抗式"。</strong> 同期发生四件事：原体系减持 4,000 万股、两基金<strong>不可撤销放弃表决权</strong>、顾氏与庞增<strong>解除一致行动</strong>、顾氏<strong>承诺不谋求实际控制人地位</strong>。→ <strong>控制权让渡的阻力已被事先清除</strong>，这解释了为何"未过户"却已能改组董事会。</li><li><strong>卡点只有两处，且都属"时间未到"</strong>：过户等 6 个月减持限制窗口（≥2027-03）；摘帽等年度审计（2027-04）。<strong>没有一处卡在"谈不拢"。</strong></li><li><strong>成败关键变量是 1 和 0</strong>：<strong>2026 年度内部控制审计意见</strong>。出一个无保留意见 = 摘帽；再出一个非标 = 终止上市（9.4.15，无缓冲）。</li><li><strong>核心矛盾一句话</strong>：<strong>产业想象空间（信创 / AI PC）足够大，但上市公司自身仍在收缩，且资产注入至今没有任何公告支撑。</strong> → 这决定了本报告给的是<strong>博弈型买入</strong>而不是价值型买入。</li></ul>
+<h4>3.7 催化节点清单（①–㉑：节点 · 预计时点 · 判读）</h4>
+<p><a href="#p-catalyst">★ 催化节点清单（①–㉑，含每节点的判读与证伪点）</a>——<strong>买点与卖点都在这个清单里，不在 K 线里</strong>。</p>
+<details class="fold" id="p-catalyst"><summary>催化节点清单（按时间顺序编号，含判读）</summary><div class="fold-body">
+
+<table><thead><tr><th>#</th><th>节点</th><th>预计时点</th><th>判读 / 证伪点</th></tr></thead><tbody><tr><td>①</td><td>2026 年<strong>三季报</strong></td><td>2026-10</td><td>主业能否止跌；<strong>经营现金流是否转正</strong>。若亏损扩大 → 减仓信号</td></tr><tr><td>②</td><td>每月《可能被终止上市的风险提示公告》</td><td>每月</td><td>常规进度条，看措辞是否出现"新增风险情形"</td></tr><tr><td>③</td><td><strong>崔建泉锁定期届满</strong></td><td><strong>约 2026-11</strong></td><td>过户于 2025 年内完成 → 12 个月承诺到期。<strong>首个真实抛压观察点</strong>（现价 ≈ 其成本 6.16 元，他微亏，未必急于卖，但要盯）</td></tr><tr><td>④</td><td>2026 年度<strong>业绩预告</strong></td><td>2027-01</td><td>亏损幅度是否收窄；是否提示净资产/营收风险</td></tr><tr><td>⑤</td><td><strong>柯利达集团股权工商变更过户</strong></td><td><strong>≥2027-03</strong></td><td><strong>控制权变更正式完成</strong>；受"被处罚未满 6 个月不得减持"约束（处罚日 2026-09-24 起算）。<strong>并购贷款须已落地</strong>（目前只有《贷款意向书》，非承诺）</td></tr><tr><td>⑥</td><td><strong>2026 年报 + 内控审计意见 → 申请摘帽</strong></td><td><strong>2027-04</strong></td><td><strong>全文最核心节点</strong>。条件唯一：最近一个会计年度内控被出具<strong>无保留意见</strong>（9.4.10(六)）。<strong>出无保留＝摘帽；再非标＝终止上市，无缓冲</strong></td></tr><tr><td>⑦</td><td>摘帽申请→交易所决定</td><td>2027-04 起</td><td>披露后 <strong>5 个交易日</strong>内可申请；交易所 <strong>15 个交易日</strong>内决定；撤销前一日公告、公告日停牌 1 天</td></tr><tr><td>⑧</td><td><strong>资产注入 / 重大资产重组</strong></td><td>不定</td><td>最大级别催化，但<strong>至今零公告</strong>；且受"因重组无法披露内控报告则继续 \*ST"牵制（9.4.10 末款）、ST 期间"最近一年一期审计保留/否定/无法表示"<strong>不得发行股份购买资产</strong>（只能现金）</td></tr><tr><td>⑨</td><td>英众系资产证券化的其他路径</td><td>不定</td><td>若英众信息体系内其他主体先 IPO/被并购，会削弱"注入本公司"的预期</td></tr></tbody></table>
+<blockquote><p><strong>判读纪律</strong>：①–⑦ 全是<strong>可提前锁定日期</strong>的"硬节点"，⑧–⑨ 是"软预期"。<strong>硬节点决定仓位，软预期只决定想象空间。</strong></p></blockquote>
+
+</div></details>
 <hr>
-<h3 id="sec13">★ 必做校验：戴帽 ≠ 下跌主因</h3>
+<h3 id="sec14">★ 必做校验：戴帽 ≠ 下跌主因</h3>
+<p><strong>结论：本标的的下跌不能归因于行业，上涨也不是基本面改善 —— 下跌是"风险定价"，上涨是"事件博弈"。因此「跌得多 = 有安全边际」在本标的上不成立。</strong></p>
+<details class="fold"><summary>同业与自身涨跌幅对照表（2026 YTD 与戴帽后区间）</summary><div class="fold-body">
+
 <table><thead><tr><th>标的</th><th>2026 YTD（后复权，自 01-05）</th><th>2026-04-29 → 09-28</th></tr></thead><tbody><tr><td>江河集团</td><td><strong>+70.7%</strong></td><td>+43.8%</td></tr><tr><td>金螳螂</td><td><strong>+33.9%</strong></td><td>-9.3%</td></tr><tr><td>亚厦股份</td><td>-3.3%</td><td>-6.1%</td></tr><tr><td>全筑股份</td><td>-32.7%</td><td>-16.2%</td></tr><tr><td><strong>＊ST利达</strong></td><td><strong>-26.7%</strong></td><td><strong>+34.6%</strong></td></tr></tbody></table>
+
+</div></details>
 <ul><li>装饰装修同业<strong>并未普跌</strong>（江河集团 +70.7%、金螳螂 +33.9%），叠加 §2.2 龙头 2026H1 营收 +15.9% → 利达 YTD -26.7% <strong>不能归因于行业</strong>，主因是<strong>个体戴帽 / 立案 / 处罚 / 竞争力掉队</strong>。</li><li>与此同时，4/29 戴帽后 +34.6% 与基本面走弱背道而驰 → <strong>"跌得多 = 有安全边际"的推论在本标的不成立</strong>：其下跌是"风险定价"，其上涨是"事件博弈"。</li></ul>
 <hr>
 <h2 id="chap4">四、估值 + 投资结论</h2>
@@ -341,8 +556,10 @@ h1,h2,h3,h4{scroll-margin-top:18px}
 <blockquote><p>与附录 C 互为校验：本结论的多头叙事（信创注入、摘帽、根因消除）已在附录 C 逐条质疑；其中"信创资产注入"仍<strong>无任何公告支撑</strong>，属<strong>假设而非事实</strong> —— <strong>本结论的买入逻辑建立在"根因消除 → 审计转无保留"这条可验证链上，而非注入传闻上</strong>。</p></blockquote>
 <hr>
 <h2 id="chap5">附录 A · 待核实 / 需补充清单</h2>
+<p><strong>本附录装什么</strong>：本报告尚未核到、或已判定「不重要 / 无需追」的项，全部列在这里，<strong>不混进正文</strong>；涉及结论的项已在正文标注【待核实】。</p>
 <table><thead><tr><th>编号</th><th>事项</th><th>类型</th><th>影响章节</th><th>备注</th></tr></thead><tbody><tr><td>1</td><td>＊ST泉为（唯一上涨样本）的上涨驱动原因</td><td>【待核实】</td><td>§3.1.2</td><td>需逐家核其戴帽前后公告</td></tr><tr><td>2</td><td>"摘帽行情"全市场案例研究（2026 年摘帽名单 + 摘帽前后涨跌幅）</td><td>【待核实】</td><td>§3.1.2</td><td>巨潮 <code>searchkey</code> 不支持全市场检索（实测返 0）；建议改用 Alpha派 MCP 的 <code>search_announcements(keyword="撤销退市风险警示")</code> 按年检索</td></tr><tr><td>3</td><td>ST 板块内信创/AI PC 同概念标的的业务实质与股价位置</td><td>【待核实】</td><td>§3.1.3</td><td>候选池已按行业列初筛（＊ST闻泰、＊ST航图等），需二次核验</td></tr><tr><td>4</td><td>崔建泉（0.40 亿股，6.72%）的增持成本</td><td>【待核实】</td><td>§1</td><td>需查 2025 年权益变动/增持公告</td></tr><tr><td>5</td><td>英众信息"C 轮估值近 30 亿元"</td><td>【待核实】</td><td>§2.3</td><td>第三方平台 AI 生成表述，营销性强</td></tr><tr><td>6</td><td>控股股东质押的具体平仓线</td><td><strong>不重要，忽略</strong></td><td>§1</td><td>公告未披露（Andy 2026-09-29 裁定）</td></tr></tbody></table>
 <h2 id="chap6">附录 B · 关键信源链接</h2>
+<p><strong>本附录装什么</strong>：正文引用的全部公告与案例的<strong>可点击直达链接</strong>（巨潮四参数深链 ＋ PDF 直链，另含非白名单来源）。</p>
 <details class="fold"><summary>关键信源链接清单（13 份公告 + 5 份同类案例戴帽公告 + 非白名单来源）</summary><div class="fold-body">
 
 <table><thead><tr><th>日期</th><th>公告</th><th>链接</th></tr></thead><tbody><tr><td>2024-04-30</td><td>关于实施其他风险警示暨停牌的公告（首次 ST）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1219925743&amp;orgId=9900023713&amp;announcementTime=2024-04-30" target="_blank" rel="noopener">详情</a> · <a href="http://static.cninfo.com.cn/finalpage/2024-04-30/1219925743.PDF" target="_blank" rel="noopener">PDF</a></td></tr><tr><td>2024-04-30</td><td>2023 年年度报告（提供 2021/2022 年比较数据）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1219925734&amp;orgId=9900023713&amp;announcementTime=2024-04-30" target="_blank" rel="noopener">详情</a> · <a href="http://static.cninfo.com.cn/finalpage/2024-04-30/1219925734.PDF" target="_blank" rel="noopener">PDF</a></td></tr><tr><td>2024-10-01</td><td>简式权益变动报告书（受让方：英众智能；披露 1.72 元/股）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1221333102&amp;orgId=9900023713&amp;announcementTime=2024-10-01" target="_blank" rel="noopener">详情</a> · <a href="http://static.cninfo.com.cn/finalpage/2024-10-01/1221333102.PDF" target="_blank" rel="noopener">PDF</a></td></tr><tr><td>2025-04-30</td><td>2024 年年度报告（2023 年现金流追溯数来源）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1223443215&amp;orgId=9900023713&amp;announcementTime=2025-04-30" target="_blank" rel="noopener">详情</a> · <a href="http://static.cninfo.com.cn/finalpage/2025-04-30/1223443215.pdf" target="_blank" rel="noopener">PDF</a></td></tr><tr><td>2026-01-10</td><td>关于间接控股股东签署股权转让协议暨实际控制人拟发生变更的提示性公告</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1224928699&amp;orgId=9900023713&amp;announcementTime=2026-01-10" target="_blank" rel="noopener">详情</a> · <a href="http://static.cninfo.com.cn/finalpage/2026-01-10/1224928699.PDF" target="_blank" rel="noopener">PDF</a></td></tr><tr><td>2026-03-17</td><td>关于收到中国证监会立案告知书的公告</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225012563&amp;orgId=9900023713&amp;announcementTime=2026-03-17" target="_blank" rel="noopener">详情</a> · <a href="http://static.cninfo.com.cn/finalpage/2026-03-17/1225012563.PDF" target="_blank" rel="noopener">PDF</a></td></tr><tr><td>2026-04-28</td><td>2025 年年度报告</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225222915&amp;orgId=9900023713&amp;announcementTime=2026-04-28" target="_blank" rel="noopener">详情</a> · <a href="http://static.cninfo.com.cn/finalpage/2026-04-28/1225222915.PDF" target="_blank" rel="noopener">PDF</a></td></tr><tr><td>2026-04-28</td><td>关于实施退市风险警示暨停牌的公告（*ST 认定文件）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225222892&amp;orgId=9900023713&amp;announcementTime=2026-04-28" target="_blank" rel="noopener">详情</a> · <a href="http://static.cninfo.com.cn/finalpage/2026-04-28/1225222892.PDF" target="_blank" rel="noopener">PDF</a></td></tr><tr><td>2026-04-28</td><td>关于 2025 年度保留意见审计报告和否定意见内部控制审计报告涉及事项的专项说明</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225222902&amp;orgId=9900023713&amp;announcementTime=2026-04-28" target="_blank" rel="noopener">详情</a> · <a href="http://static.cninfo.com.cn/finalpage/2026-04-28/1225222902.PDF" target="_blank" rel="noopener">PDF</a></td></tr><tr><td>2026-04-28</td><td>关于公司控股股东及其关联方资金占用归还的公告</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225222859&amp;orgId=9900023713&amp;announcementTime=2026-04-28" target="_blank" rel="noopener">详情</a> · <a href="http://static.cninfo.com.cn/finalpage/2026-04-28/1225222859.PDF" target="_blank" rel="noopener">PDF</a></td></tr><tr><td>2026-08-31</td><td>2026 年半年度报告</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225534676&amp;orgId=9900023713&amp;announcementTime=2026-08-31" target="_blank" rel="noopener">详情</a> · <a href="http://static.cninfo.com.cn/finalpage/2026-08-31/1225534676.PDF" target="_blank" rel="noopener">PDF</a></td></tr><tr><td>2026-08-31</td><td>关于公司股票可能被终止上市的风险提示公告</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225534292&amp;orgId=9900023713&amp;announcementTime=2026-08-31" target="_blank" rel="noopener">详情</a> · <a href="http://static.cninfo.com.cn/finalpage/2026-08-31/1225534292.PDF" target="_blank" rel="noopener">PDF</a></td></tr><tr><td>2026-09-25</td><td>关于收到中国证监会江苏监管局《行政处罚决定书》的公告</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225583185&amp;orgId=9900023713&amp;announcementTime=2026-09-25" target="_blank" rel="noopener">详情</a> · <a href="http://static.cninfo.com.cn/finalpage/2026-09-25/1225583185.PDF" target="_blank" rel="noopener">PDF</a></td></tr></tbody></table>
@@ -351,8 +568,10 @@ h1,h2,h3,h4{scroll-margin-top:18px}
 
 </div></details>
 <h2 id="chap7">附录 C · 逻辑漏洞与反方观点（5 问）</h2>
+<p><strong>本附录装什么</strong>：对<strong>本报告买入结论的压力测试</strong> —— 5 个最容易把结论推翻的问题，逐条作答。<strong>答不上来的，就是这条买入逻辑的裂缝。</strong></p>
 <ol><li><strong>"信创资产注入"的资产规模、收入、市占率有数吗？</strong> —— <strong>没有</strong>。至今无任何注入公告；公告口径的英众智能注册资本仅 1,000 万元。<strong>本报告买入逻辑不依赖注入</strong>，而依赖"内控根因消除 → 审计转无保留"这条可验证链；<strong>注入属假设，标【待核实】</strong>。</li><li><strong>营收 15 亿元是否等于安全垫？</strong> —— 不等于。2025 年营收 15.28 亿元、扣非亏 3.12 亿元；幕墙毛利率 0.9%。且<strong>行业龙头同期营收 +15.9%、毛利率 16.4%</strong>，公司是被竞争挤出而非行业拖累。<strong>规模与盈利是两回事。</strong></li><li><strong>资金占用"已清偿"是否等于内控已修复？</strong> —— <strong>不等同，但已具备修复条件</strong>。清偿仅是必要条件；审计师是否就 2026 年度内控出无保留意见，<strong>只能由 2026 年度审计意见回答</strong>。本报告将其列为<strong>最高权重的不确定性</strong>，而非既成事实。</li><li><strong>引用的时间点是否已过期？</strong> —— 2026-01-10 的"实控人拟变更"措辞已过去 8 个多月，且 2026-08-31 公告明确"现阶段<strong>不具备股权过户条件</strong>"；引用时必须注明"截至 2026-09-29 <strong>仍未过户</strong>"。另：公司 2026-04-28 公告写的涨跌幅"5%"，已于 <strong>2026-07-06 被 10% 取代</strong>。</li><li><strong>信源级别？</strong> —— 戴帽原因、占用金额、处罚金额、涨跌幅规则、撤销条件条款全部来自<strong>监管规则原文与公司章程性公告</strong>（一级，可点开核对）；英众信息的业务定位来自<strong>第三方工商/公开信息</strong>（二级，已标来源与日期，营销性表述标【待核实】）；"科技资产注入"目前<strong>仅见于市场传闻与自媒体，不作为结论依据</strong>。</li></ol>
 <h2 id="chap8">附录 D · 异动明细（全 107 条，时间倒序）</h2>
+<p><strong>本附录装什么</strong>：韭研公社异动整理中 603828 的<strong>全量 107 条记录</strong>（正文只留聚类结论，明细按「超 30 行入附录」的规范放在这里）。</p>
 <blockquote><p>说明：本表全部记录股票代码均为 <strong>603828.SH</strong>，故代码列从略；「题材催化」列在原表中绝大多数为空，仅少数记录有值，已如实保留（"—"＝原表未填）。数据源：<code>韭研公社异动整理_Simplified.xlsx</code>（2026-09-29 取数）。</p></blockquote>
 <details class="fold"><summary>展开全部 107 条异动明细（时间降序）</summary><div class="fold-body">
 
@@ -360,9 +579,19 @@ h1,h2,h3,h4{scroll-margin-top:18px}
 
 </div></details>
 <h2 id="chap9">延伸资料（L3 · 另开页面）</h2>
+<p><strong>这一节装什么</strong>：想看更底层的东西（规则原文、公告全量、方法论）时去哪儿 —— <strong>L3 层，点出去看，不占正文篇幅</strong>。</p>
 <ul><li><strong>巨潮 · ＊ST利达公告全量</strong>（年报 / 半年报 / 处罚决定书 / 权益变动报告书全文）：<a href="https://www.cninfo.com.cn/new/disclosure/stock?stockCode=603828&amp;orgId=9900023713" target="_blank" rel="noopener">查看</a></li><li><strong>巨潮 · 公告检索入口</strong>（按标题检索同类案例的戴帽/摘帽公告，用于扩充 §3.1.2 案例库）：<a href="https://www.cninfo.com.cn/new/commonUrl?url=disclosure/list/notice" target="_blank" rel="noopener">查看</a></li><li><strong>上交所《股票上市规则（2026 年 4 月修订）》</strong>（本报告引用的 9.4.1 / 9.4.10 / 9.4.12–9.4.13 / 9.4.15 原文）：交易所规则库仅提供交互式检索页，<strong>对脚本访问返 403、未取得稳定直链</strong>，故此处只给定位不给链接；<strong>本地已存规则 PDF 原文</strong>于 <code>…\垦禾-yjf\个股研究\STskill\</code>，引用条款可回溯至该文件。</li><li><strong>行业资料</strong>：转债库 <code>C:\Users\yangj\Nutstore\1\转债信息库\变化跟踪\幕墙工程.md</code>（本地文件，非网页）。</li></ul>
-<h2 id="chap10">版本记录</h2>
-<table><thead><tr><th>次数</th><th>日期</th><th>主要改动（最新在上）</th></tr></thead><tbody><tr><td>第 5 次修改</td><td>2026-09-29</td><td><strong>按 Andy 要求补足「王艳式颗粒度」并升级导航机制</strong>：新增 4 节内容 —— §1.1 <strong>股权历史沿革时间轴（2000—2026）</strong>（含 2024 年末 45.92% → 2025 年末 39.48% 的一致行动人合计持股下降）、§1.2 <strong>关键人物详细简历</strong>（原体系顾益明/顾龙棣/顾佳/鲁崇明/孙振华 5 人 + 英众系刘纯坚/曹亚联 2 人，含出生年月与履历时间线）、§1.3 <strong>关联公司工商与主营</strong>（英众系 5 家主体 + 柯利达集团；<strong>明确记载「英众系财务数据全部未披露」</strong>这一负面事实）、§1.4 <strong>★ 关键信号：英众系 5 家主体共用同一通讯地址与同一固话</strong>（含「该一致性是 2024-10→2026-01 搬过去形成的」这一反向读数）；§2.3 追加 <strong>未证券化产业资源盘点</strong>（能装什么 / 装得进来吗 / 收入零公告支撑）；§3.5 <strong>全流程进度追踪总表（8 环节看板）</strong>、§3.6 <strong>运作特征与综合判断</strong>。<strong>新增「结论句锚点超链接」机制</strong>：正文如「★ 英众系 5 家主体共用同一通讯地址与同一固话（关键信号）」整句可点击 → 跳转并<strong>自动展开</strong>论据折叠区（配套改 <code>md2html.py</code> 支持 <code>#锚点</code> 链接、<code>inject_fold.py</code> 支持在折叠标记后声明锚点 id，并注入自动展开脚本）。<strong>结论与投资评级未变。</strong></td></tr><tr><td>第 4 次修改</td><td>2026-09-29</td><td><strong>按 skill §6.2 三层次渐进披露重构篇幅</strong>（不改任何数据与结论）：把 <strong>15 个证据块</strong>下沉为折叠区——前十大股东明细 / 资金占用的两个口径与违规手法 / 立案与处罚明细 / 撤销条件条款原文与程序 / 财务表口径与勾稽自检 / 受限资产明细 / 在手订单明细 / 子公司与回购 / 两次业绩说明会问答全文 / 分产品收入结构与归因 / 行业对标原始数据 / 英众智能背景与交易结构 / 可比标的明细表 / 附录 B 信源清单 / 附录 D 全 107 条异动明细。在每处折叠前补写<strong>正文一句话结论</strong>（口径不可混用、立案→处罚已闭环、治理层控制权已实际易主等），确保<strong>不展开也能拿到判断</strong>。新增「<strong>延伸资料（L3 · 另开页面）</strong>」一节（巨潮两处实测 200 的链接；上交所规则库子路径实测返 403，按引用纪律改为文字定位）。<strong>数据、结论、版本历史一律未变。</strong></td></tr><tr><td>第 3 次修改</td><td>2026-09-29</td><td>① <strong>§三.3.4.1 炒作波段汇总表改为时间降序</strong>（最新在上）；② <strong>§三.3.4.3 异动明细（107 条）移入「附录 D · 异动明细」，置于版本记录之前</strong>（超过约 30 行的明细表按规范入附录）；③ <strong>§三.3.1.2「炒历史类似行为」按新方法论重写</strong> —— 由「从戴帽找历史对标」改为「<strong>相似股票匹配法</strong>」：以基准日全部特征为画像，检索当下最像的标的（ST中迪 / ＊ST亚振 / ＊ST四环 / ST东易 / 易事特等），比对相似点与差异点、看其后续实际涨跌，据此推断本标的方向与幅度。核心结论：<strong>本标的落在「上涨组」（最像的 ST中迪 +213%~+400%、亚振 +830%），但处在剧本更早位置（未过户、未注入）</strong>；同时标注两个规避点——<strong>摘帽/过户落地即「利好出尽」</strong>、<strong>连板后波动极大</strong>。</td></tr><tr><td>第 2 次修改</td><td>2026-09-29</td><td>① 新增 <strong>§一.4「投资者交流要点」</strong>：摘录两次业绩说明会（2026-05-19 旧管理层 / 2026-09-08 新管理层）问答——公司自认"<strong>2026 年是全力实现摘星去帽的关键一年</strong>"、主动提及"投资并购"；<strong>新管理层首秀已由新任董事长刘纯坚（英众方）出席，董事长与董事会已实际接管</strong>（据此强化理由链③）。② 新增 <strong>§三.3.4「异动与炒作史」（数据源：韭研公社异动整理，2026-09-29 取数）</strong>：含炒作波段汇总（10 个波段）+ 三条结论 + <strong>异动明细全 107 条表格</strong>（题材时间/简称/题材/题材催化/涨停信息/股价/异动关键词）；核心发现——<strong>"股权转让/控制权变更 + 证券牌照（方圆证券）"是本股高度稳定的炒作符号，历史最高 39 天 20 板，本轮是同一符号第三次重演</strong>。</td></tr><tr><td>第 1 次修改</td><td>2026-09-29</td><td>按 Andy 17 条意见修订：① Wind 数据来源简化为"（数据来源：Wind）"；② 大数统一为"亿"并保留 2 位小数（持股 1.12 亿股等）；③ 前十大股东改用 <strong>2026 年半年报</strong>；④ 涨跌幅修正为 <strong>2026-07-06 起主板 10%</strong>（原写 5%，并补龙虎榜实证：7/3 涨停 +4.98%、8/20 涨停 +9.93%）；⑤ 资金占用金额简化为"17.03 亿元"；⑥ <strong>财务表补齐 2021—2022</strong>（取自 2023 年报，标为异源）并说明 Wind 库缺口根因与年报追溯差异（2023 现金流 1.56 亿元→3.26 亿元）；⑦ 受限资产由【待核实】改为<strong>具体数 5,740.00 万元</strong>（含四项明细）；⑧ 在手订单由【待核实】改为<strong>9.95 亿元</strong>（新签 112 个/9.04 亿元），半年报未披露即写"未披露"；⑨ 商业模式增补 <strong>2026H1 总量对比</strong>（营收 -53.9%、毛利率 7.1%）并标注半年报不披露分产品；⑩ 英众股权作价 3.2459 亿元→<strong>3.25 亿元</strong>；⑪ <strong>炒作逻辑②③按"着眼未来"重写</strong>（②＝事件驱动清单 + 历史上涨案例 + 条件对照，只取上涨样本；③＝主板主线 + ST 板块低位映射 + 可买区间）；⑫ 补 <strong>2026 年内 6 次龙虎榜</strong>（东财 API）；⑬ 新增<strong>重要股东成本锚</strong>（英众智能 1.72 元/股 + 2.91 元/股 → 综合 2.66 元/股，现价其 2.31 倍）；⑭ 行业分析改按 <code>投研衔接问题.md</code> 口径，并引用转债库 <code>变化跟踪/幕墙工程.md</code> 的江河集团对标数据；⑮ 接入规则原文库（沪/深主板 + 创业板 + 科创板 2026 版），核实 9.4.10(六) 原文；⑯ 摘录"名称含「函/问询/回复/募集」的公告优先精读"的方法；⑰ 附录 A 精简为 6 项（已核实项移出）。<strong>投资结论由「卖出（回避）」改为「买入（事件驱动·高风险·轻仓）」</strong>，理由：新实控人真实背景查实为信创/AI PC 独角兽（原公告口径"计算机软硬件零售"严重低估）、内控非标的两条根因均已解除、9.4.10(六) 撤销条件经原文核实为单一条件且路径明确；同时明确归零风险与 ≤2% 仓位纪律</td></tr><tr><td>初版</td><td>2026-09-29</td><td>首次生成；数据截至 2026 年半年报 + 2026-09-25《行政处罚决定书》</td></tr></tbody></table>
+<h2 id="chap10">附录 E · 信息来源汇总（按来源类型逐条列示）</h2>
+<p><strong>本附录装什么</strong>：把本报告用到的来源<strong>按信源级别逐条列全</strong>（一手 / 数据源 / 媒体 / 线索四级），便于逐条回溯与后续复核。</p>
+<p><a href="#p-sources">信息来源汇总（按类型逐条列示，含一手公告与媒体来源）</a></p>
+<details class="fold" id="p-sources"><summary>信息来源汇总（序号 · 来源类型 · 来源与标题 · 链接）</summary><div class="fold-body">
+
+<table><thead><tr><th>#</th><th>来源类型</th><th>来源与标题（日期）</th><th>链接</th></tr></thead><tbody><tr><td>1</td><td>一手公告</td><td>关于实施其他风险警示暨停牌的公告（2024-04-30，首次 ST）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1219925743&amp;orgId=9900023713&amp;announcementTime=2024-04-30" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>2</td><td>一手公告</td><td>2023 年年度报告（2021/2022 比较数据来源）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1219925734&amp;orgId=9900023713&amp;announcementTime=2024-04-30" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>3</td><td>权益变动</td><td>简式权益变动报告书（受让方：英众智能；1.72 元/股，2024-10-01）</td><td><a href="http://static.cninfo.com.cn/finalpage/2024-10-01/1221333102.PDF" target="_blank" rel="noopener">巨潮 PDF</a></td></tr><tr><td>4</td><td>一手公告</td><td>2024 年年度报告（2023 年现金流追溯数来源，2025-04-30）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1223443215&amp;orgId=9900023713&amp;announcementTime=2025-04-30" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>5</td><td>权益变动</td><td><strong>简式权益变动报告书（信息披露义务人：崔建泉；6.16 元/股、2.464 亿元，2025-11-06）</strong></td><td><a href="https://static.cninfo.com.cn/finalpage/2025-11-06/1224789683.PDF" target="_blank" rel="noopener">巨潮 PDF</a></td></tr><tr><td>6</td><td>一手公告</td><td>关于间接控股股东签署股权转让协议暨实际控制人拟发生变更的提示性公告（2026-01-10）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1224928699&amp;orgId=9900023713&amp;announcementTime=2026-01-10" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>7</td><td>监管</td><td>关于收到中国证监会立案告知书的公告（2026-03-17）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225012563&amp;orgId=9900023713&amp;announcementTime=2026-03-17" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>8</td><td>定期报告</td><td>2025 年年度报告（含董监高简历、股东变动、子公司）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225222915&amp;orgId=9900023713&amp;announcementTime=2026-04-28" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>9</td><td>一手公告</td><td>关于实施退市风险警示暨停牌的公告（2026-04-28，\*ST 认定文件）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225222892&amp;orgId=9900023713&amp;announcementTime=2026-04-28" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>10</td><td>专项说明</td><td>关于 2025 年度保留意见审计报告和否定意见内部控制审计报告涉及事项的专项说明（2026-04-28）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225222902&amp;orgId=9900023713&amp;announcementTime=2026-04-28" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>11</td><td>一手公告</td><td>关于公司控股股东及其关联方资金占用归还的公告（2026-04-28）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225222859&amp;orgId=9900023713&amp;announcementTime=2026-04-28" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>12</td><td>投资者交流</td><td>2025 年度暨 2026 年第一季度业绩说明会召开情况的公告（2026-05-20）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225318298&amp;orgId=9900023713&amp;announcementTime=2026-05-20" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>13</td><td>定期报告</td><td>2026 年半年度报告（2026-08-31）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225534676&amp;orgId=9900023713&amp;announcementTime=2026-08-31" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>14</td><td>风险提示</td><td>关于公司股票可能被终止上市的风险提示公告（2026-08-31）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225534292&amp;orgId=9900023713&amp;announcementTime=2026-08-31" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>15</td><td>投资者交流</td><td>2026 年半年度业绩说明会召开情况的公告（2026-09-09，新管理层首秀）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225554487&amp;orgId=9900023713&amp;announcementTime=2026-09-09" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>16</td><td>监管</td><td>关于收到中国证监会江苏监管局《行政处罚决定书》的公告（2026-09-25）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603828&amp;announcementId=1225583185&amp;orgId=9900023713&amp;announcementTime=2026-09-25" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>17</td><td>规则原文</td><td>上海证券交易所《股票上市规则（2026 年 4 月修订）》（9.4.1 / 9.4.10 / 9.4.12–9.4.13 / 9.4.15）</td><td>交易所规则库仅交互式检索页（脚本访问返 403），<strong>本地已存 PDF</strong> 于 <code>…\STskill\</code></td></tr><tr><td>18</td><td>规则原文</td><td>上交所《交易规则（2026 年修订）》（主板风险警示股涨跌幅 2026-07-06 起 5%→10%）</td><td>同上（本地已存 PDF）</td></tr><tr><td>19</td><td>行业资料</td><td>转债库 <code>变化跟踪/幕墙工程.md</code>（证据区原始出处：2026-08-12 长江建筑行业交流纪要）</td><td>本地文件</td></tr><tr><td>20</td><td>行情/异动</td><td>韭研公社异动整理（2026-09-29 取数，含 107 条记录）</td><td>本地 <code>…\自动化输出\异动\韭研公社异动整理_Simplified.xlsx</code></td></tr><tr><td>21</td><td>行情/席位</td><td>东方财富龙虎榜（2026-09-29 取数）</td><td><a href="https://data.eastmoney.com/stock/lhb/603828.html" target="_blank" rel="noopener">东财</a></td></tr><tr><td>22</td><td>行情/估值</td><td>Wind（收盘价、市值、PB/PS，取数日 2026-09-29）</td><td>—</td></tr><tr><td>23</td><td>媒体（二级）</td><td>中国证券报·中证网：ST柯利达 2025 年营收 15.44 亿元（2026-04-28，含股东户数与质押比重）</td><td><a href="https://newzzbcx.cs.com.cn/cxnews.html?name=new20260428101548qqbobejx" target="_blank" rel="noopener">中证网</a></td></tr><tr><td>24</td><td>媒体（二级）</td><td>中国证券报·中证网／东财转载：ST柯利达控股股东拟协议转让 6.71% 公司股份（2025-11-06）</td><td><a href="https://finance.eastmoney.com/a/202511063556639085.html" target="_blank" rel="noopener">东财</a></td></tr><tr><td>25</td><td>工商（三级）</td><td>企查查 / 爱企查：英众信息主体信息与产品资料（2026-09-29 检索）</td><td>—</td></tr><tr><td>26</td><td>案例对标（线索级）</td><td>ST中迪 / ＊ST亚振 / ＊ST四环 / ST东易 等（中国证券网、华夏时报、中国经济网，全文见 §3.1.2）</td><td>—</td></tr></tbody></table>
+<blockquote><p><strong>信源分级</strong>：#1–#18 为<strong>一手（可点开核对）</strong>；#19–#22 为<strong>数据源（本地/API，非网页）</strong>；#23–#24 为<strong>权威媒体二级</strong>；#25–#26 为<strong>三级/线索级</strong>，仅作背景，<strong>不单独支撑结论</strong>。</p></blockquote>
+
+</div></details>
+<h2 id="chap11">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动（最新在上）</th></tr></thead><tbody><tr><td>第 9 次修改</td><td>2026-09-30</td><td><strong>标题去掉档位后缀</strong>：<code>＊ST利达（603828.SH）研究报告 · 速研档</code> → <strong><code>＊ST利达（603828.SH）研究报告</code></strong>。<strong>理由</strong>：报告标题与文件名<strong>不再体现「速研 / 深度 / 资本运作」档位</strong> —— 档位是「写多深」的内部选择，写进标题既不利于阅读，也会在升档时逼着改名或新建文件，与「同一公司只维护一个 HTML」的原则冲突。<strong>内容与投资结论未变。</strong></td></tr><tr><td>第 8 次修改</td><td>2026-09-30</td><td><strong>结构重构：结论前置 + 论据全部折叠（内容与结论未变）</strong>。<strong>新增/前移 14 处模块级结论</strong>，其中最重要的一条是把 §3.2 从「罗列受限资产」改成<strong>回答一个真问题</strong> —— <strong>公司到底有多少可动用现金、现金收购资产是否可行</strong>：货币资金 2.83 亿元中受限 5,740.00 万元 → <strong>可动用约 2.26 亿元</strong>，而 2025 年经营现金流 <strong>-2.42 亿元</strong> → <strong>现金买不起</strong>；同时 ST 期间审计非标<strong>不得发行股份购买资产 → 发股也不允许</strong>，<strong>形成死结</strong> → 注入只剩「他人无偿赠与」或「先摘帽再注入」两条路，<strong>时点必然在 2027-04 之后</strong>。<strong>另把 13 张论据型表格全部折叠</strong>（原正文表 → 折叠：戴帽时间线表、四类红线表、六年财务表、事件驱动表、炒作波段表、同业涨跌对照表、相似标的画像与案例表、估值口径与定价锚、摘帽有利/决定项、映射证据、情绪面证据、筹码与龙虎榜、子公司与处置明细），并补 8 处附录/小节「一句话入口」。<strong>结果：正文（不展开任何折叠）≈9,490 字、折叠区占 48%；正文只保留 6 张「结论型表格」</strong>（三档情景、三支柱强度、进度看板、投资结论八要素、附录 A、版本记录）。<strong>投资结论未变。</strong></td></tr><tr><td>第 7 次修改</td><td>2026-09-30</td><td><strong>版式调整（内容与结论一字未改）</strong>：目录由「内嵌可折叠面板」改为「<strong>左侧固定侧栏</strong>」——章＋节两级、<strong>默认展开、可一键隐藏/显示</strong>（<code>✕</code> 或 <code>Esc</code> 收起，收起后左上角留 <code>☰ 目录</code> 把手召回）、<strong>阅读状态本地记忆</strong>、<strong>滚动时高亮当前章节</strong>且目录自身跟随滚动，小屏（≤900px）改为覆盖式＋遮罩；同时把站点注入的「← 返回首页」按钮<strong>由左下移至右下</strong>（避免被左侧栏遮挡）。<strong>投资结论未变。</strong></td></tr><tr><td>第 6 次修改</td><td>2026-09-29</td><td><strong>按《王艳微信合集》（72 篇）实测的固定六栏目补足颗粒度</strong>（正文只留一句可点的结论，全部细节进折叠）：① §1.1 <strong>前世今生改为四列表</strong>（时间 · 关键事件 · 股权与实控人变化 · <strong>背后的逻辑</strong>：金额/每股价格/资金来源/各方背景）；② <strong>新增 §1.5 股东阵容</strong>（逐户<strong>身份识别 + 取得方式与成本 + 现状约束</strong>，含筹码集中度：2025 年末 6,739 户、户均 74.11 万元 +91.51%、22.77% 质押）；③ <strong>新增 §1.6 成本锚点</strong>（逐参与方元/股 ＋ <strong>两类定价逻辑</strong>：协议受让价 6.16＝无稀释的市场底 vs 英众综合 2.66＝含控制权的控制权底，相差 2.3 倍；<strong>★ 现价 6.14 ＝ 崔建泉成本 99.7%</strong>）；④ <strong>新增 §2.6 资产质量与估值（五维星级）</strong>；⑤ <strong>新增 §3.7 催化节点清单（①–㉑，含判读与证伪点）</strong>；⑥ <strong>新增 附录 E 信息来源汇总（26 条，按一手/数据源/媒体/线索四级分级）</strong>。<strong>★ 本轮新查到两条关键事实</strong>：<strong>崔建泉系 2025-11-05 以 6.16 元/股（前一日收盘价 95%）协议受让 4,000 万股、总价 2.464 亿元</strong>（非二级市场减持），其 12 个月锁定期<strong>约 2026-11 届满</strong>；<strong>庞增汇聚 26/27 号自 2023 年末前持有且三年未动</strong>，2026-01 出具不可撤销放弃表决权承诺。<strong>投资结论未变（买入·事件驱动·高风险·轻仓）。</strong></td></tr><tr><td>第 5 次修改</td><td>2026-09-29</td><td><strong>按 Andy 要求补足「王艳式颗粒度」并升级导航机制</strong>：新增 4 节内容 —— §1.1 <strong>股权历史沿革时间轴（2000—2026）</strong>（含 2024 年末 45.92% → 2025 年末 39.48% 的一致行动人合计持股下降）、§1.2 <strong>关键人物详细简历</strong>（原体系顾益明/顾龙棣/顾佳/鲁崇明/孙振华 5 人 + 英众系刘纯坚/曹亚联 2 人，含出生年月与履历时间线）、§1.3 <strong>关联公司工商与主营</strong>（英众系 5 家主体 + 柯利达集团；<strong>明确记载「英众系财务数据全部未披露」</strong>这一负面事实）、§1.4 <strong>★ 关键信号：英众系 5 家主体共用同一通讯地址与同一固话</strong>（含「该一致性是 2024-10→2026-01 搬过去形成的」这一反向读数）；§2.3 追加 <strong>未证券化产业资源盘点</strong>（能装什么 / 装得进来吗 / 收入零公告支撑）；§3.5 <strong>全流程进度追踪总表（8 环节看板）</strong>、§3.6 <strong>运作特征与综合判断</strong>。<strong>新增「结论句锚点超链接」机制</strong>：正文如「★ 英众系 5 家主体共用同一通讯地址与同一固话（关键信号）」整句可点击 → 跳转并<strong>自动展开</strong>论据折叠区（配套改 <code>md2html.py</code> 支持 <code>#锚点</code> 链接、<code>inject_fold.py</code> 支持在折叠标记后声明锚点 id，并注入自动展开脚本）。<strong>结论与投资评级未变。</strong></td></tr><tr><td>第 4 次修改</td><td>2026-09-29</td><td><strong>按 skill §6.2 三层次渐进披露重构篇幅</strong>（不改任何数据与结论）：把 <strong>15 个证据块</strong>下沉为折叠区——前十大股东明细 / 资金占用的两个口径与违规手法 / 立案与处罚明细 / 撤销条件条款原文与程序 / 财务表口径与勾稽自检 / 受限资产明细 / 在手订单明细 / 子公司与回购 / 两次业绩说明会问答全文 / 分产品收入结构与归因 / 行业对标原始数据 / 英众智能背景与交易结构 / 可比标的明细表 / 附录 B 信源清单 / 附录 D 全 107 条异动明细。在每处折叠前补写<strong>正文一句话结论</strong>（口径不可混用、立案→处罚已闭环、治理层控制权已实际易主等），确保<strong>不展开也能拿到判断</strong>。新增「<strong>延伸资料（L3 · 另开页面）</strong>」一节（巨潮两处实测 200 的链接；上交所规则库子路径实测返 403，按引用纪律改为文字定位）。<strong>数据、结论、版本历史一律未变。</strong></td></tr><tr><td>第 3 次修改</td><td>2026-09-29</td><td>① <strong>§三.3.4.1 炒作波段汇总表改为时间降序</strong>（最新在上）；② <strong>§三.3.4.3 异动明细（107 条）移入「附录 D · 异动明细」，置于版本记录之前</strong>（超过约 30 行的明细表按规范入附录）；③ <strong>§三.3.1.2「炒历史类似行为」按新方法论重写</strong> —— 由「从戴帽找历史对标」改为「<strong>相似股票匹配法</strong>」：以基准日全部特征为画像，检索当下最像的标的（ST中迪 / ＊ST亚振 / ＊ST四环 / ST东易 / 易事特等），比对相似点与差异点、看其后续实际涨跌，据此推断本标的方向与幅度。核心结论：<strong>本标的落在「上涨组」（最像的 ST中迪 +213%~+400%、亚振 +830%），但处在剧本更早位置（未过户、未注入）</strong>；同时标注两个规避点——<strong>摘帽/过户落地即「利好出尽」</strong>、<strong>连板后波动极大</strong>。</td></tr><tr><td>第 2 次修改</td><td>2026-09-29</td><td>① 新增 <strong>§一.4「投资者交流要点」</strong>：摘录两次业绩说明会（2026-05-19 旧管理层 / 2026-09-08 新管理层）问答——公司自认"<strong>2026 年是全力实现摘星去帽的关键一年</strong>"、主动提及"投资并购"；<strong>新管理层首秀已由新任董事长刘纯坚（英众方）出席，董事长与董事会已实际接管</strong>（据此强化理由链③）。② 新增 <strong>§三.3.4「异动与炒作史」（数据源：韭研公社异动整理，2026-09-29 取数）</strong>：含炒作波段汇总（10 个波段）+ 三条结论 + <strong>异动明细全 107 条表格</strong>（题材时间/简称/题材/题材催化/涨停信息/股价/异动关键词）；核心发现——<strong>"股权转让/控制权变更 + 证券牌照（方圆证券）"是本股高度稳定的炒作符号，历史最高 39 天 20 板，本轮是同一符号第三次重演</strong>。</td></tr><tr><td>第 1 次修改</td><td>2026-09-29</td><td>按 Andy 17 条意见修订：① Wind 数据来源简化为"（数据来源：Wind）"；② 大数统一为"亿"并保留 2 位小数（持股 1.12 亿股等）；③ 前十大股东改用 <strong>2026 年半年报</strong>；④ 涨跌幅修正为 <strong>2026-07-06 起主板 10%</strong>（原写 5%，并补龙虎榜实证：7/3 涨停 +4.98%、8/20 涨停 +9.93%）；⑤ 资金占用金额简化为"17.03 亿元"；⑥ <strong>财务表补齐 2021—2022</strong>（取自 2023 年报，标为异源）并说明 Wind 库缺口根因与年报追溯差异（2023 现金流 1.56 亿元→3.26 亿元）；⑦ 受限资产由【待核实】改为<strong>具体数 5,740.00 万元</strong>（含四项明细）；⑧ 在手订单由【待核实】改为<strong>9.95 亿元</strong>（新签 112 个/9.04 亿元），半年报未披露即写"未披露"；⑨ 商业模式增补 <strong>2026H1 总量对比</strong>（营收 -53.9%、毛利率 7.1%）并标注半年报不披露分产品；⑩ 英众股权作价 3.2459 亿元→<strong>3.25 亿元</strong>；⑪ <strong>炒作逻辑②③按"着眼未来"重写</strong>（②＝事件驱动清单 + 历史上涨案例 + 条件对照，只取上涨样本；③＝主板主线 + ST 板块低位映射 + 可买区间）；⑫ 补 <strong>2026 年内 6 次龙虎榜</strong>（东财 API）；⑬ 新增<strong>重要股东成本锚</strong>（英众智能 1.72 元/股 + 2.91 元/股 → 综合 2.66 元/股，现价其 2.31 倍）；⑭ 行业分析改按 <code>投研衔接问题.md</code> 口径，并引用转债库 <code>变化跟踪/幕墙工程.md</code> 的江河集团对标数据；⑮ 接入规则原文库（沪/深主板 + 创业板 + 科创板 2026 版），核实 9.4.10(六) 原文；⑯ 摘录"名称含「函/问询/回复/募集」的公告优先精读"的方法；⑰ 附录 A 精简为 6 项（已核实项移出）。<strong>投资结论由「卖出（回避）」改为「买入（事件驱动·高风险·轻仓）」</strong>，理由：新实控人真实背景查实为信创/AI PC 独角兽（原公告口径"计算机软硬件零售"严重低估）、内控非标的两条根因均已解除、9.4.10(六) 撤销条件经原文核实为单一条件且路径明确；同时明确归零风险与 ≤2% 仓位纪律</td></tr><tr><td>初版</td><td>2026-09-29</td><td>首次生成；数据截至 2026 年半年报 + 2026-09-25《行政处罚决定书》</td></tr></tbody></table>
 </div>
 <script>
 (function(){
