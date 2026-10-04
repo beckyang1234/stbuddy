@@ -1,49 +1,139 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ST实达(600734)深度研究·王艳体</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>＊ST实达（600734.SH）研究报告</title>
 <style>
-  :root{
-    --ink:#1a1a1a; --sub:#555; --muted:#888; --line:#e3e0d8;
-    --accent:#b02a2a; --accent2:#8a6d1f; --bg:#fbf9f4;
-  }
-  *{box-sizing:border-box;}
-  body{margin:0;background:var(--bg);color:var(--ink);
-       font-family:-apple-system,"PingFang SC","Microsoft YaHei","Segoe UI",Roboto,sans-serif;
-       line-height:1.85;font-size:16px;}
-  .wrap{max-width:880px;margin:0 auto;padding:32px 22px 80px;}
-  h1{font-size:26px;line-height:1.5;margin:0 0 6px;font-weight:800;}
-  h2{font-size:21px;margin:44px 0 14px;padding-left:12px;border-left:5px solid var(--accent);font-weight:800;}
-  h3{font-size:18px;margin:26px 0 10px;font-weight:700;}
-  .meta{color:var(--muted);font-size:14px;margin-bottom:28px;}
-  .update{font-weight:700;color:var(--accent);}
-  p{margin:12px 0;}
-  a{color:#1a5fb4;text-decoration:none;border-bottom:1px dotted #9db8d9;}
-  a:hover{color:#0b3d80;}
-  table{border-collapse:collapse;width:100%;margin:18px 0;font-size:14px;}
-  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;}
-  th{background:#f0ece0;font-weight:700;white-space:nowrap;}
-  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
-  tr:hover td{background:#faf7ee;}
-  blockquote{margin:16px 0;padding:12px 16px;background:#f3efe4;border-left:4px solid var(--accent2);color:#4a3f22;}
-  .concl{background:#fdf3f0;border:1px solid #f0c4ba;border-radius:8px;padding:16px 18px;margin:18px 0;}
-  .concl b{color:var(--accent);}
-  .src{margin:6px 0;font-size:13.5px;color:var(--sub);}
-  .src a{font-size:13.5px;}
-  .disclaimer{margin-top:44px;padding:16px 18px;background:#f3efe4;border:1px solid var(--line);border-radius:8px;color:#4a4a4a;font-size:14px;}
-  .tag{display:inline-block;background:var(--accent);color:#fff;font-size:12px;padding:2px 10px;border-radius:20px;margin-right:6px;}
-  .tag.blue{background:#1a5fb4;}
-  .tag.gold{background:var(--accent2);}
-  ul,ol{padding-left:24px;}
-  li{margin:5px 0;}
-  hr{border:none;border-top:1px dashed var(--line);margin:30px 0;}
-  .small{font-size:13px;color:var(--muted);}
-  @media print{.wrap{max-width:100%;}}
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
 </style>
 </head>
-<body><script id="sbgatescript">
+<body>
+<script id="sbgatescript">
 (function(){
   var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
   try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
@@ -72,381 +162,248 @@
   else document.addEventListener('DOMContentLoaded', build);
 })();
 </script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>5 章 · 23 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">一、诊断：为什么第二次戴帽，法律上还能不能活</a><a class="sblv3" href="#sec0">1.1 基本信息与股权结构（结论前置）</a><a class="sblv3" href="#sec1">1.2 前世今生：一张 38 年时间轴</a><a class="sblv3" href="#sec2">1.3 关键人物：谁在当家</a><a class="sblv3" href="#sec3">1.4 全流程进度看板</a><a class="sblv3" href="#sec4">1.5 运作特征</a><a class="sblv3" href="#sec5">1.6 戴帽原因与退市红线对照</a><a class="sblv3" href="#sec6">1.7 立案调查专章（最大不确定性）</a><a class="sblv3" href="#sec7">1.8 摘帽展望</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">二、基本面路径：保壳（营收不足）</a><a class="sblv3" href="#sec8">2.1 数产名商：这台"算力机器"值多少</a><a class="sblv3" href="#sec9">2.2 全年营收取数测算</a><a class="sblv3" href="#sec10">2.3 承诺包拆解：活口在哪</a><a class="sblv3" href="#sec11">2.4 成本锚点：谁在什么价位进来</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">三、炒作逻辑、情绪与筹码</a><a class="sblv3" href="#sec12">3.1 炒作逻辑三支柱</a><a class="sblv3" href="#sec13">3.2 情绪面与筹码面</a><a class="sblv3" href="#sec14">3.3 历史炒作波段（韭研公社异动表）</a><a class="sblv3" href="#sec15">3.4 投资者交流要点</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">四、Shell 经济学与估值</a><a class="sblv3" href="#sec16">4.1 壳价值：值不值得救</a><a class="sblv3" href="#sec17">4.2 估值：三档情景区间</a><a class="sblv3" href="#sec18">4.3 投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">五、附录</a><a class="sblv3" href="#sec19">附录 A · 待核实 / 需补充清单</a><a class="sblv3" href="#sec20">附录 B · 关键信源链接</a><a class="sblv3" href="#sec21">附录 C · 逻辑漏洞与反方观点（5 问速版）</a><a class="sblv3" href="#sec22">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
 <div class="wrap">
+<h1 id="top">＊ST实达（600734.SH）研究报告</h1>
+<blockquote><p><strong>操作结论：卖出（回避）</strong></p><p><strong>红线分类：</strong> <span class="sttag sttag-blue"><a href="http://dataclouds.cninfo.com.cn/shgonggao/hsomarket/2026/20260428/83ab727550a44c51b7587b38a7d1fca5.PDF" target="_blank" rel="noopener">2025年净利为负且营收<3亿</a></span> · <span class="sttag sttag-red"><a href="http://static.cninfo.com.cn/finalpage/2026-08-08/1225464687.PDF" target="_blank" rel="noopener">因2023年半年报信披违法被立案</a></span></p><p><strong>生死定级：</strong> 可救 · 需外力（国资已入场，但 2026 年"营收冲 3 亿"是硬仗，且立案结果不可控）</p><p><strong>自救空间：</strong> 靠数产名商全年并表 + 上海联通 6.74 亿元长约把 2026 年营收硬凑过 3 亿；最大障碍是立案调查结论不在公司手里。</p><p><strong>主要看点：</strong> 福建省国资委（福建省大数据集团）已把算力资产 <strong>福建数产名商科技有限公司</strong>（2000P 智算中心 + 上海联通 6.74 亿元长约）于 2026-02-12 装进上市公司并表——这是"营收冲 3 亿保壳"的唯一载体。</p></blockquote>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>标的</td><td>＊ST实达（600734.SH，沪主板，2026-04-30 二度戴帽）</td></tr><tr><td>研究基准日</td><td>2026-10-04（行情数据截至 2026-09-30 收盘）</td></tr><tr><td>现价 / 总市值</td><td>1.86 元 / 40.52 亿元（总股本 21.78 亿股，全流通）</td></tr><tr><td>估值</td><td>PB <strong>19.00</strong> 倍 · PE(TTM) -33.44（亏损，PE 无意义）</td></tr><tr><td>年内涨跌幅</td><td><strong>-59.7%</strong>（2026-01-05 4.62 元 → 2026-09-30 1.86 元）</td></tr><tr><td>版本</td><td>初版 · 2026-10-04</td></tr></tbody></table>
+<hr>
+<h2 id="chap0">一、诊断：为什么第二次戴帽，法律上还能不能活</h2>
+<p><strong>结论：这是一只"福建省国资委真金白银救过一轮、又被自己的会计处理二次绊倒"的算力壳。四条退市红线里只踩了"营收&lt;3亿+亏损"一条，净资产为正、审计标准无保留，理论上有整整一年整改窗口；但 2026-08-07 的立案调查是悬顶之剑——它若被认定为重大违法，前面所有保壳努力一并作废。</strong></p>
+<h3 id="sec0">1.1 基本信息与股权结构（结论前置）</h3>
+<p><strong>国资持股干净、无质押无冻结，这是它区别于多数 ST 壳最可贵的一点；但"干净"换来的是 PB 19 倍的高估值。</strong></p>
+<p>福建省国资委为实际控制人，通过 <strong>福建省大数据集团有限公司</strong> 控制 <strong>福建数晟投资合伙企业（有限合伙）</strong>（持股 25.00%）与 <strong>福建大数据产业投资控股有限公司</strong>（持股 1.11%），两者为一致行动人，合计 <strong>26.11%</strong>。</p>
+<details class="fold"><summary>前十大股东明细与筹码集中度（2026-06-30）</summary><div class="fold-body">
 
-<h1>寻找十倍系列——*ST实达（600734）</h1>
-<div style="font-size:16px;color:#333;font-weight:700;margin-bottom:4px;">【老牌"实达"电脑二次戴帽，福建国资这张"算力壳"还能不能救？】</div>
-<div class="meta">王艳的逍遥岛 | 2026-09-21　·　<span class="update">更新至 2026-09-21</span>　·　数据基准日 2026-09-21</div>
+<table><thead><tr><th>排序</th><th>股东</th><th>持股（万股）</th><th>比例</th><th>性质</th><th>质押/冻结</th></tr></thead><tbody><tr><td>1</td><td>福建省数晟投资合伙企业</td><td>54,457.56</td><td>25.00%</td><td>国有法人</td><td>无</td></tr><tr><td>2</td><td>福建大数据产业投资控股</td><td>2,408.08</td><td>1.11%</td><td>国有法人</td><td>无</td></tr><tr><td>3</td><td>福建新立基投资</td><td>2,080.73</td><td>0.96%</td><td>非国有</td><td>无</td></tr><tr><td>4</td><td>张志团</td><td>1,539.29</td><td>0.71%</td><td>自然人</td><td>无</td></tr><tr><td>5</td><td>张双喜</td><td>1,310.45</td><td>0.60%</td><td>自然人</td><td>无</td></tr><tr><td>6</td><td>张雅芳</td><td>1,305.98</td><td>0.60%</td><td>自然人</td><td>无</td></tr><tr><td>7</td><td>张天虚</td><td>1,214.42</td><td>0.56%</td><td>自然人</td><td>无</td></tr><tr><td>8</td><td>张炜达</td><td>1,127.11</td><td>0.52%</td><td>自然人</td><td>无</td></tr><tr><td>9</td><td>梁傍远</td><td>817.16</td><td>0.38%</td><td>自然人</td><td>无</td></tr><tr><td>10</td><td>福州开发区国有资产营运</td><td>787.50</td><td>0.36%</td><td>国有法人</td><td>无</td></tr></tbody></table>
+<p><strong>筹码集中度</strong>：股东户数由 2026-03-31 的 <strong>17.98 万户</strong>降至 2026-06-30 的 <strong>12.25 万户</strong>，一个季度减少 <strong>31.9%</strong>；前十大股东无一质押、无一冻结。户数骤降 + 全流通无质押，说明戴帽后的下跌被"接盘方"承接消化。（股东户数来源：上证 e 互动公司答复，2026-06-18；（雪球评论亦有讨论，不作依据））</p>
 
-<h2>岛主引言：三句话先给结论</h2>
+</div></details>
+<h3 id="sec1">1.2 前世今生：一张 38 年时间轴</h3>
+<p><strong>结论：实达的"活法"换过五次——国企 IT → 民企景百孚系腾挪十年 → 2021 年国资预重整兜底 → 2022 年转型大数据 → 2025 年会计口径挤水分二次戴帽。它的每一次续命都靠"换人 + 换资产"，而不是靠主业。</strong></p>
+<details class="fold"><summary>前世今生四列表（1988—2026）</summary><div class="fold-body">
 
-<p><b>缘起</b>：实达，1988年出生、1996年上市的福建老牌IT品牌（实达电脑/打印机/终端，最早也是福建国资控股），这是它<b>第二次戴帽</b>。第一次是2020年6月16日（连续两年亏损+净资产为负），靠2021年底"预重整+司法重整"由福建省国资委入主拉回；这一次是<b>2026年4月30日</b>，因为<b>2025年营收从3.09亿崩到8814万、净亏1.46亿</b>，一脚又踩回"营收&lt;3亿+亏损"的财务类退市红线 <a href="http://dataclouds.cninfo.com.cn/shgonggao/hsomarket/2026/20260428/83ab727550a44c51b7587b38a7d1fca5.PDF" target="_blank">来源</a>。</p>
+<table><thead><tr><th>时间</th><th>关键事件</th><th>股权/实控人变化</th><th>背后的逻辑（金额/价格/资金来源）</th></tr></thead><tbody><tr><td>1988-05</td><td>福州成立</td><td>——</td><td>实达电脑起步</td></tr><tr><td>1994-03</td><td>规范为股份制，总股本 5,000 万股</td><td>福建国资控股</td><td>老牌国企 IT</td></tr><tr><td>1996-08-08</td><td>上交所挂牌（600734），发行价 7.35 元、募资 2.05 亿元</td><td>福建国资</td><td>"实达"品牌上市</td></tr><tr><td>2007 前后</td><td>控制权转民企</td><td><strong>景百孚</strong>成为实控人</td><td>国企 IT 老化，卖给民企</td></tr><tr><td>2007—2019</td><td>注入地产→剥离→转型移动终端/物联网安防，靠收购保壳</td><td>景百孚系（北京昂展等）</td><td>反复腾挪续命</td></tr><tr><td>2018/2019</td><td>净利连续为负，2019 年净资产为负、巨亏 30.47 亿元</td><td>景百孚</td><td>深圳兴飞、中科融通等商誉减值</td></tr><tr><td>2019-11-12</td><td>与郑州航空港区兴创电子签表决权放弃/委托协议</td><td>控股股东变<strong>兴创电子</strong></td><td>被迫卖壳，国资过渡</td></tr><tr><td>2020-06-16</td><td><strong>首次戴帽</strong></td><td>——</td><td>"实达集团"→"*ST实达"</td></tr><tr><td>2021-02-05</td><td>债权人北京空港富视申请重整</td><td>——</td><td>债务压顶</td></tr><tr><td>2021-03-31</td><td>福州中院启动<strong>预重整</strong>（方达律所任临时管理人）</td><td>——</td><td>先谈后立</td></tr><tr><td>2021-11-26</td><td>裁定受理重整（(2021)闽01破申6号）</td><td>管理人：方达律所</td><td>正式进手术室</td></tr><tr><td>2021-12-27</td><td>债权人会议通过《重整计划》并获批准</td><td><strong>每 10 股转增 25 股</strong></td><td>资本公积转增，原股东大幅稀释</td></tr><tr><td>2021-12-29</td><td>重整投资人支付完毕 <strong>8.99998 亿元</strong></td><td>平均每股对价约 <strong>0.5784 元</strong></td><td>国资 + 11 名财投掏真金白银</td></tr><tr><td>2021-12-31</td><td>裁定确认重整计划执行完毕</td><td>——</td><td>保壳手术收尾</td></tr><tr><td>2022-02</td><td>转增股本上市、股份扣划，控股股东变 <strong>福建数晟（25%）</strong>，实控人变<strong>福建省国资委</strong></td><td>国资正式当家</td><td>二次投胎</td></tr><tr><td>2023-07</td><td>启动"星云大数据"资产注入工作</td><td>——</td><td>兑现重整承诺</td></tr><tr><td>2024</td><td>营收 3.09 亿元、归母净利 565 万元（靠处置长投收益 8,069.57 万元"撑住"）</td><td>——</td><td>转型第一年勉强站住</td></tr><tr><td>2025-02</td><td>承诺变更：注入标的由<strong>星云大数据</strong>改为<strong>数产名商</strong></td><td>——</td><td>星云不具备注入条件</td></tr><tr><td>2025-11-20</td><td>股东会通过 1.85 亿元收购数产名商 95% 股权</td><td>交易对手：大数据产投 + 大名城</td><td>现金收购，不动股权</td></tr><tr><td>2026-02-12</td><td>签股权转让协议、完成工商变更，数产名商并表</td><td>——</td><td>算力资产落地</td></tr><tr><td>2026-04-28</td><td>披露《被实施退市风险警示暨停牌公告》（2026-021 号）</td><td>——</td><td>2025 年营收 0.88 亿元，二次踩线</td></tr><tr><td>2026-04-30</td><td><strong>二度戴帽</strong>，涨跌幅 5%（今为 10%）</td><td>——</td><td>营收暴跌 + 亏损触发财务红线</td></tr><tr><td>2026-06-22</td><td>上交所纪律处分：2025 业绩预告不准确（朱向东公开谴责、戴晓燕通报批评）</td><td>——</td><td>追责"预告变脸"</td></tr><tr><td>2026-08-07</td><td><strong>证监会立案</strong>（2023 年半年报涉嫌信披违规，证监立案字 0262026007 号）</td><td>——</td><td>悬顶之剑</td></tr><tr><td>2026-09-11</td><td>第三次临时股东会通过续聘华兴会计师事务所</td><td>——</td><td>保壳关键程序动作</td></tr></tbody></table>
+<p><strong>2021 年重整投资人受让明细</strong>（以总股本 6.2237 亿股为基数，每 10 股转增 25 股，合计转增 15.559 亿股 → 总股本增至 21.78 亿股；转增股不向原股东分配，全部由重整投资人有条件受让，合计支付约 8.99998 亿元、平均每股对价约 0.5784 元）：</p>
+<table><thead><tr><th>重整投资人</th><th>受让股数（万股）</th><th>持股比例</th><th>角色</th></tr></thead><tbody><tr><td>福建数晟（大数据集团指定）</td><td>54,457.56</td><td><strong>25.00%</strong></td><td>产业投资人（控股）</td></tr><tr><td>福建炜凯</td><td>10,869.73</td><td>4.99%</td><td>财务投资人</td></tr><tr><td>郑刘颖</td><td>10,869.73</td><td>4.99%</td><td>财务投资人</td></tr><tr><td>林强</td><td>10,700.00</td><td>4.91%</td><td>财务投资人</td></tr><tr><td>福州赤恒成达</td><td>10,604.35</td><td>4.87%</td><td>财务投资人</td></tr><tr><td>荆建坤</td><td>10,208.74</td><td>4.69%</td><td>财务投资人</td></tr><tr><td>周映霏</td><td>10,113.58</td><td>4.64%</td><td>财务投资人</td></tr><tr><td>衢州东昆</td><td>9,791.28</td><td>4.49%</td><td>财务投资人</td></tr><tr><td>黄浪峰</td><td>9,168.88</td><td>4.21%</td><td>财务投资人</td></tr><tr><td>左玲</td><td>8,695.65</td><td>3.99%</td><td>财务投资人</td></tr><tr><td>王珊</td><td>5,445.78</td><td>2.50%</td><td>财务投资人</td></tr><tr><td>刘浪英</td><td>4,667.80</td><td>2.14%</td><td>财务投资人</td></tr><tr><td>原股东（景系昂展等）</td><td>被稀释</td><td>合计约 34%↓</td><td>权益缩水</td></tr></tbody></table>
 
-<div class="concl">
-<p><b>1. 红线分类</b>：财务类退市风险警示（《上海证券交易所股票上市规则》9.3.2条第一款第（一）项：利润总额/净利润/扣非三者孰低为负 + 营业收入低于3亿元）。2025年报审计意见系"标准无保留"，归母净资产为正（2.13亿），所以<b>非标红线、净资产红线都没踩，只踩了"营收+亏损"这一条</b> <a href="https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-29/600734_20260429_HZN6.pdf" target="_blank">来源</a>。</p>
-<p><b>2. 生死定级</b>：可救，有整整一年整改窗口（2026年度）。<b>唯一的生死开关就是2026年全年营收能不能站上3亿元</b>——只要营收≥3亿，即便继续亏，9.3.2(一)这条也自动失效；反之，若2026年报仍"营收&lt;3亿+亏损"，按"连续两个会计年度触及财务类强制退市情形"，直接终止上市。真正悬顶的是<b>2026年8月7日证监会立案（2023年半年报信披违规）</b>，一旦最终被认定为重大违法，那是"一票否决、申辩成功率≈0"的另一条路，这是本报告单列的最大不确定性 <a href="https://stcn.com/article/detail/4065609.html" target="_blank">来源</a>。</p>
-<p><b>3. 自救空间</b>：救兵是<b>福建省国资委（产业资本+地方国资联合体）</b>，不是来炒壳的套利者。它已完成一记实招——2026年2月用1.85亿现金把算力资产"数产名商"95%股权收进表内（承诺从"星云大数据"换成"数产名商"），并锁定上海联通6.74亿算力采购长约。这张算力壳值不值、救不救得活，取决于"1.07亿半年营收→全年冲3亿"这条曲线能不能画上去 <a href="https://www.cs.com.cn/ssgs/gsxw/202511/t20251107_6522243.html" target="_blank">来源</a>。</p>
+</div></details>
+<h3 id="sec2">1.3 关键人物：谁在当家</h3>
+<p><strong>结论：操盘方是省级国资平台（不是壳贩子），现场班子仍在"换血整理期"——2026 年以来董事长、总裁、财务总监、董秘几乎全换了一遍。</strong></p>
+<ul><li><strong>实控人</strong>：福建省人民政府国有资产监督管理委员会。</li><li><strong>核心操盘平台</strong>：<strong>福建省大数据集团有限公司</strong>（2021-08-26 成立，注册资本 3 亿元），系省委省政府部署设立的省管国有全资企业，定位"福建省公共数据资源一级开发机构 + 省级电子政务建设运维单位"，旗下含星云大数据等。</li><li><strong>现任班子（2026-03 换届）</strong>：董事长 <strong>苏岳峰</strong>、总裁兼法定代表人 <strong>何桂东</strong>、财务总监 <strong>曾庆勇</strong>、董秘 <strong>戴晓燕</strong>。2026 年以来雷欢骅、郑章、朱向东先后离任（朱向东因 2025 业绩预告失准被公开谴责）。</li></ul>
+<details class="fold"><summary>历史实控人景百孚系背景（为什么这个壳"底子脏"）</summary><div class="fold-body">
+
+<p>景百孚（1970-10 生），2007 年入主。先后注入地产→剥离→转型移动终端（深圳兴飞）、物联网安防（中科融通），反复腾挪。2019 年资金恶化被迫卖壳；2020—2021 年被福建证监局多次警示（2019 业绩预告不准、"忽悠式增持"）；2022-12 被证监会行政处罚〔2022〕2 号罚款 230 万元（2018 年"智慧海派"虚增收入成本）。<strong>景系留下的是一个商誉爆雷、信披频频出问题的壳——这正是 2026-08 再度被立案的历史包袱根源。</strong>（关键人物详细简历：公告未披露其出生年月之外的其他履历信息）</p>
+
+</div></details>
+<h3 id="sec3">1.4 全流程进度看板</h3>
+<p><strong>结论：重整早已交卷、资产注入第一棒已落地；当前卡在"营收冲 3 亿"这个时间未到 + "立案结论"这个谈不拢——前者可等，后者不可控。</strong></p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点/条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>司法重整</td><td>✅ 2021-12-31 执行完毕</td><td>——</td><td>已闭环</td><td>重整计划执行完毕公告</td></tr><tr><td>控制权变更</td><td>✅ 2022-02 福建国资委入主</td><td>——</td><td>已闭环</td><td>股东权益变动公告</td></tr><tr><td>资产注入第一棒</td><td>✅ 2026-02-12 数产名商并表</td><td>——</td><td>已闭环</td><td>股权转让协议、追溯调整公告</td></tr><tr><td><strong>2026 年营收冲 3 亿</strong></td><td>⏳ 进行中（H1 仅 1.07 亿元）</td><td>下半年须做 1.93 亿元</td><td>2026 三季报（约 10 月下旬）、2026 年报（2027-04）</td><td>半年报、业绩说明会</td></tr><tr><td><strong>立案调查</strong></td><td>⏳ 2026-08-07 立案，至今无结论</td><td>结论不可控</td><td>待证监会</td><td>立案告知书公告（2026-036 号）</td></tr><tr><td>后续资产注入</td><td>⏳ 无时间表</td><td>承诺用"适时/其他优质资产"留活口</td><td>看国资意愿</td><td>承诺事项履行情况</td></tr><tr><td>摘帽</td><td>⏳ 未到期</td><td>2026 年报达标后可申请</td><td>最早 <strong>2027-04</strong>（2026 年报披露后）</td><td>上市规则 9.3.9</td></tr></tbody></table>
+<h3 id="sec4">1.5 运作特征</h3>
+<p><strong>结论：手法克制（全程用现金、不发股）、节奏偏慢（四年才装第一块资产）、交权是"配合式"——原体系已彻底出清，无对抗。</strong></p>
+<ul><li><strong>手法</strong>：司法重整（资本公积每 10 股转增 25 股）+ 现金收购资产注入，<strong>全程不用发行股份</strong>，规避重组审核门槛；这在被立案期间尤其关键（立案期间发股/重大资产重组受限，现金收购不受限）。</li><li><strong>节奏</strong>：2022 年重整完成 → 2026 年才装第一块算力资产，四年窗口主要耗在星云大数据反复评估与自身止血上。</li><li><strong>交权性质</strong>：<strong>配合式</strong>。原景系（北京昂展等）已被稀释至边缘，2022 年完成股份扣划；11 名财务投资人书面承诺"不签一致行动协议、不谋求控制权"，国资一家独大，无内斗风险。</li><li><strong>成败关键变量（1 和 0 问题）</strong>：① 2026 年营收能否 ≥3 亿元；② 立案是否升级为重大违法。</li><li><strong>核心矛盾一句话</strong>：<strong>"资产有、国资在，但营收凑 3 亿是硬仗、立案是悬剑"——壳价值兑现全押在 2026 年报这一张答卷上。</strong></li></ul>
+<h3 id="sec5">1.6 戴帽原因与退市红线对照</h3>
+<p><strong>结论：只踩一条财务类红线（营收&lt;3 亿 + 亏损），净资产、审计意见、规范类均未踩；但叠加了一个"未定"的重大违法类风险。</strong></p>
+<p><strong>戴帽原因</strong>：<span class="sttag sttag-blue"><a href="http://dataclouds.cninfo.com.cn/shgonggao/hsomarket/2026/20260428/83ab727550a44c51b7587b38a7d1fca5.PDF" target="_blank" rel="noopener">2025年净利为负且营收<3亿</a></span>（触发《上市规则》9.3.2 第一款第（一）项：利润总额/净利润/扣非孰低为负 <strong>且</strong> 营收&lt;3 亿元）。</p>
+<table><thead><tr><th>红线类型</th><th>触发明细</th><th>现状</th><th>可救性</th></tr></thead><tbody><tr><td>财务类·营收不足</td><td>2025 年扣非净利 -1.36 亿元、营收 0.88 亿元</td><td><strong>踩线</strong></td><td>可救，1 年整改期</td></tr><tr><td>财务类·净资产为负</td><td>归母净资产 2.13 亿元（2026-06-30）</td><td>未踩</td><td>——</td></tr><tr><td>财务类·审计非标</td><td>2025 年报标准无保留意见</td><td>未踩</td><td>——</td></tr><tr><td>规范类·资金占用/违规担保</td><td>半年报明确"否"</td><td>未踩</td><td>——</td></tr><tr><td><strong>重大违法类</strong></td><td><strong>2026-08-07 因 2023 年半年报信披违法被立案</strong></td><td><strong>未定（最大变数）</strong></td><td>若认定重大违法 → <strong>一票否决</strong></td></tr></tbody></table>
+<h3 id="sec6">1.7 立案调查专章（最大不确定性）</h3>
+<p><strong>结论：立案指向 2023 年半年报、公司口径"不涉及其他年度"，但结论未出——这是本标的最不能被定价的一项。</strong></p>
+<details class="fold"><summary>立案告知书原文要点（2026-036 号）</summary><div class="fold-body">
+
+<ul><li>公司于 <strong>2026-08-07</strong> 收到证监会《立案告知书》（<strong>证监立案字 0262026007 号</strong>）。</li><li>事由：<strong>2023 年半年报涉嫌信息披露违法违规</strong>。</li><li>公司表述："本次立案调查涉及的是公司 2023 年半年报相关事项，<strong>不涉及其他年度</strong>，对公司经营不会造成影响。"</li><li>截至基准日（2026-10-04）<strong>尚未披露任何结案/处罚进展</strong>。</li></ul>
+<p><strong>为什么这条最致命</strong>：若最终被认定为<strong>财务造假且触及量化线</strong>（单年虚增≥2 亿元且占比≥30%，或连续两年合计≥3 亿元且占比≥20%，或连续三年及以上），将直接触发重大违法强制退市——<strong>绕开"营收冲 3 亿"这条保壳主线，前面所有努力一并作废</strong>。同时，立案未结期间，控股股东、实控人<strong>不得减持</strong>（《上市公司股东减持股份管理暂行办法》），重大资产重组/发股亦受限（这解释了为什么国资选择"现金收购"路径）。</p>
+<p><strong>反方观点（雪球）</strong>：「实达 4 月份公告过已对此事项进行了追溯调整，连续三年和≥5 亿这两条都没有触碰，这种立案基本上两个月左右就会结案」（雪球评论，2026-09-19，@往事多踟蹰）。<strong>但截止基准日已逾两个月仍无结论，该判断未获验证；此属雪球预期，不构成事实。</strong></p>
+
+</div></details>
+<h3 id="sec7">1.8 摘帽展望</h3>
+<p><strong>结论：财务类 \*ST 的摘帽是"营收达标 </strong>或<strong> 净利为正"的 OR 逻辑——只要 2026 年营收 ≥3 亿元，即便继续亏损，9.3.2(一) 也自动失效。最早可申请日为 2027 年 4 月（2026 年报披露后）。</strong></p>
+<hr>
+<h2 id="chap1">二、基本面路径：保壳（营收不足）</h2>
+<p><strong>结论：这是本标的唯一值得深耕的路径。营收不足型保壳的解法就是"把收入做上去"，唯一载体是数产名商 + 上海联通长约；难度不在于有没有资产，而在于毛利率极低的硬件集成能不能把营收做够。</strong></p>
+<h3 id="sec8">2.1 数产名商：这台"算力机器"值多少</h3>
+<p><strong>结论：这是真有资产的注入，不是画饼——2000P 智算中心 + 6.74 亿元长约，能贡献营收、但拉不动多少利润。</strong></p>
+<table><thead><tr><th>测算项</th><th>数据</th><th>说明</th></tr></thead><tbody><tr><td>智算中心规模</td><td>2000P（稀疏算法）</td><td>福建省属首个自主运营智算中心</td></tr><tr><td>总投资额</td><td>5.5 亿元</td><td>重资产</td></tr><tr><td>投产时间</td><td>2024-09 竣工验收投产</td><td>已进入运营期</td></tr><tr><td>2024 年业绩</td><td>营收 3,411 万元、净利 371 万元</td><td>起步</td></tr><tr><td>2025 年 1—7 月</td><td>营收 5,969 万元、净利 608.55 万元</td><td>快速爬坡</td></tr><tr><td>收购对价</td><td>1.85 亿元（95% 股权，评估值 1.9433 亿元）</td><td>溢价仅约 5.78%</td></tr><tr><td>关键长约</td><td><strong>上海联通算力采购：每年 1.21 亿元（含税）、5 年 7 个月、合计 6.74 亿元</strong></td><td>稳定现金流压舱石</td></tr><tr><td>关联大单</td><td>名城数科《先进计算技术服务》合计 7.59 亿元（2024-08—2031-08）</td><td>交易后履约方变更为上市公司</td></tr><tr><td>2026H1 归母贡献</td><td>净利约 584 万元</td><td><strong>能贡献营收、利润微薄</strong></td></tr></tbody></table>
+<h3 id="sec9">2.2 全年营收取数测算</h3>
+<p><strong>结论：2026 年冲 3 亿元"理论可达、成色存疑"——H1 只做了 1.07 亿元，下半年必须做 1.93 亿元，且收入结构中低毛利硬件集成占比高。</strong></p>
+<ul><li>2026H1 营收 <strong>1.07 亿元</strong>（同比 <strong>-31.93%</strong>），归母净利 <strong>-2,836.85 万元</strong>。</li><li>全年 3 亿元 → 下半年需 <strong>1.93 亿元</strong>（H1 的 1.8 倍）。</li><li>支撑项：数产名商全年并表（年化约 1 亿元+）、上海联通年 1.21 亿元分摊、已中标约 6,729 万元（莆田荔兴、南平 GXYQ 等）+ 平潭实达电信 1,015 万元预中标 + 存量政企/教育项目。</li><li><strong>成色风险</strong>：<strong>GPU 服务器占算力硬件成本约 90%</strong>，收入增长难转化为利润；2025 年营收暴跌正是"总额法改净额法"挤水分所致，2026 年若靠硬件"总额法"硬凑，<strong>监管再问询下仍有被下调认定风险</strong>。</li></ul>
+<details class="fold"><summary>公司对"营收口径"的投资者问答（原话）</summary><div class="fold-body">
+
+<ul><li>投资者问："贵公司现在除了数产名商的联通业务是按总额法算，那其他在手的项目是不是全部都是净额法算？如果全部都是净额法算，今年三亿以上目标就根本不可能成功。" → 公司答（未正面回应口径，仅复述"聚焦主业、降本增效"）。</li><li>投资者问："为什么 2025 改净额法，2024 不追究，以后会不会追究（其他公司都追溯往年业绩）？" → 公司答："为严格执行会计准则，2025 年年报对部分业务收入确认方法由总额法调整为净额法，旨在确保财务信息真实、准确，<strong>不涉及其他年度年报数据的调整</strong>。"（上证 e 互动，2026-07-16）</li></ul>
+<p><strong>解读</strong>：公司口径回避了"全年营收口径构成"这一核心问题，<strong>这本身就是风险</strong>——投资者无法自证 3 亿元的实现路径。</p>
+
+</div></details>
+<h3 id="sec10">2.3 承诺包拆解：活口在哪</h3>
+<p><strong>结论：承诺方是真金白银的福建国资，履约能力无虞；但活口集中在"适时/优质资产/其他优质资产"三处限定语——注什么、何时注、注多少，主动权全在国资手里，没有可强制的对赌。</strong></p>
+<details class="fold"><summary>承诺包"原话 vs 大白话"逐条对照</summary><div class="fold-body">
+
+<table><thead><tr><th>承诺方</th><th>承诺原文（摘要）</th><th>大白话 + 活口拆解</th></tr></thead><tbody><tr><td>大数据集团（同业竞争）</td><td>"将根据《重整计划》……<strong>适时</strong>将星云大数据注入实达集团，注入方式<strong>包括但不限于</strong>现金购买资产、发行股份购买资产……"</td><td>"适时"没写死时间、"包括但不限于"没写死方式——最大活口。结果 2023-07 才启动，2025-02 干脆改成数产名商。</td></tr><tr><td>大数据集团（资产注入）</td><td>"在《重整计划》执行完毕后，将其合法拥有或管理的<strong>优质资产</strong>或者实达集团股东大会认可的<strong>其他优质资产</strong>……注入"</td><td>承诺期"2022-12-31 起持续有效"；2026-02 完成数产名商注入，半年报标注<strong>"已履行完毕"</strong>——"其他优质资产"给了换标的后门，已用。</td></tr><tr><td>大数据集团（同业竞争）</td><td>"注入完成后……将避免直接或间接从事与上市公司构成同业竞争的业务"</td><td>对应 2026-02 并表后已基本落地，属履约中。</td></tr><tr><td>福建数晟（同业竞争）</td><td>"福建数晟与上市公司不存在同业竞争……将积极消除同业竞争"</td><td>标准句式，无新活口。</td></tr><tr><td>11 名财务投资人（不谋求控制权）</td><td>"不达成或签署任何形式的一致行动人协议……不通过任何方式谋求上市公司的控制权"</td><td>2022-02-22 起作为股东期间持续有效——保住国资一家独大。</td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec11">2.4 成本锚点：谁在什么价位进来</h3>
+<p><strong>结论：国资与 11 名重整投资人的平均成本约 0.5784 元/股，现价 1.86 元 = 其成本的 3.2 倍；成本锚对现价不构成任何支撑（他们已浮盈 3 倍，缺"倒挂自救"的动机）。</strong></p>
+<table><thead><tr><th>参与方</th><th>成本（元/股）</th><th>说明</th></tr></thead><tbody><tr><td>福建数晟 + 11 名重整投资人</td><td>约 <strong>0.5784</strong></td><td>2021-12 支付 8.99998 亿元受让转增股份；现价倍数 <strong>3.2 倍</strong></td></tr><tr><td>产业投资人（福建数晟）</td><td>同上</td><td>锁 36 个月（<strong>已过期</strong>）</td></tr><tr><td>财务投资人</td><td>同上</td><td>承诺不谋求控制权</td></tr></tbody></table>
+<p><strong>两类定价逻辑的区分</strong>：本案成本锚属<strong>"有稀释的重整底"</strong>（资本公积转增 + 低价受让，原股东权益被大幅稀释）——它不是"协议受让/法拍价"那种无稀释的市场底，<strong>不能拿它当现价的支撑位</strong>。</p>
+<hr>
+<h2 id="chap2">三、炒作逻辑、情绪与筹码</h2>
+<h3 id="sec12">3.1 炒作逻辑三支柱</h3>
+<h4>3.1.1 支柱①：炒预期——未来 6—12 个月的可验证事件</h4>
+<p><strong>结论：可验证的硬节点只有两个，且都在 2027 年——2026 年三季报（约 10 月下旬）能提前看到营收进度，2026 年报（2027-04）决定生死。</strong></p>
+<table><thead><tr><th>时点</th><th>催化内容</th><th>可验证性</th><th>重要性</th></tr></thead><tbody><tr><td>约 2026-10 下旬</td><td>2026 年三季报（营收进度首度曝光）</td><td>高</td><td>高</td></tr><tr><td>待定</td><td>立案调查结论</td><td>不可控</td><td>极高</td></tr><tr><td>持续</td><td>上海联通 6.74 亿元合同的收入确认节奏</td><td>中高</td><td>中高</td></tr><tr><td>持续</td><td>重大合同/订单落地（已中标约 6,729 万元 + 平潭 1,015 万元预中标）</td><td>中</td><td>中</td></tr><tr><td>2027-04</td><td><strong>2026 年报（决定摘帽 or 终止上市）</strong></td><td>高</td><td><strong>生死线</strong></td></tr><tr><td>无时间表</td><td>国资再注入第二块算力/数据资产</td><td>低</td><td>高弹性</td></tr></tbody></table>
+<h4>3.1.2 支柱②：炒历史类似行为——相似股票匹配法</h4>
+<p><strong>结论：以基准日画像（沪主板 · 财务类 \*ST+立案 · 国资/低价壳 · 市值 40 亿元 · 算力题材 · 年内已跌 60%）去当下市场找最像的票，</strong>跌的样本远多于涨的样本<strong>——本标的落入"下跌组"。</strong></p>
+<p><strong>本标的画像</strong>：沪主板 ST · 财务类\*ST（营收&lt;3 亿+亏损）· 国资实控 · 被立案 · 总市值 40 亿元 · 低价（1.86 元）· 历史炒作符号＝算力/智算中心+福建国资+数产名商+AI 教育+机器人 · 年内 <strong>-59.7%</strong>。</p>
+<table><thead><tr><th>对象</th><th>像在哪一句话</th><th>2026 年内涨跌幅</th></tr></thead><tbody><tr><td>＊ST九鼎（600053）</td><td>同被证监会立案、同属沪主板低价壳、同被股民互相参照</td><td><strong>-60.9%</strong></td></tr><tr><td>＊ST新元（300472）</td><td>财务类 \*ST、摘星不摘帽、重整在途</td><td>-11.9%</td></tr><tr><td>ST宁科（600165）</td><td>子公司重整完成、刚摘帽</td><td>-19.3%</td></tr><tr><td>＊ST大立（002214）</td><td>财务类 \*ST 已摘帽</td><td>-2.1%</td></tr><tr><td>ST长园（600525）</td><td>内控非标事项消除、已摘帽</td><td>+37.7%</td></tr><tr><td>ST易联众（300096）</td><td>非标影响消除、已摘帽</td><td>+16.7%</td></tr></tbody></table>
+<p><strong>对照判读</strong>：<strong>立案型（九鼎 -60.9%）显著差于摘帽型</strong>；摘帽型内部严重分化（+37.7% ~ -19.3%），<strong>说明"能不能摘帽"本身不构成上涨理由</strong>（与近期实测铁律一致：摘帽前涨得越满、摘帽后跌得越狠）。实达自身年内 -59.7% 与立案组九鼎（-60.9%）几乎同步——<strong>它已经被市场归入"立案 + 财务类\*ST"这一下跌组</strong>，而非"国资护体"的上涨组。</p>
+<blockquote><p>样本量小，<strong>只作方向参考、不作概率推断</strong>；涨跌幅为不复权口径（新浪日 K，2025-12-31 → 2026-09-30）。</p></blockquote>
+<h4>3.1.3 支柱③：炒主板映射——主板在炒什么，ST 板块有哪些低位映射</h4>
+<p><strong>结论：实达自身就是"算力/智算中心"这条主线的 ST 板映射对象——但它是被映射的一方，不是别人映射它；这决定了它的股价弹性来自"算力题材轮动"，而非自身基本面。</strong></p>
+<ul><li><strong>主板主线</strong>：算力/AI 基础设施（智算中心、算力租赁、国产算力），2025—2026 年最持续的主题之一。实达持有的数产名商（2000P 智算中心）恰好卡在这条线上。</li><li><strong>ST 板块映射清单</strong>：实达自身即对象，炒作符号（来自异动表）＝<strong>算力中心 + 中标 + 福建 + 拟购买福建数产 95% + 机器人 + AI 教育</strong>。</li><li><strong>判读</strong>：它的题材是"真的"（有资产、有长约），但<strong>题材的兑现已经在 2025-11—2026-01 被炒过一轮</strong>（见 3.3 炒作波段），当前处在"题材冷却 + 保壳存亡"阶段。</li></ul>
+<h3 id="sec13">3.2 情绪面与筹码面</h3>
+<p><strong>结论：9 月那波"抢跑"已把注意力用掉一次且方向朝下——异动后龙虎榜净卖出、10 日累计跌 20.35%，说明这是"消息抢跑 → 兑现出货"的典型形态。</strong></p>
+<details class="fold"><summary>2026-09-11 龙虎榜与后续走势（证据）</summary><div class="fold-body">
+
+<table><thead><tr><th>要点</th><th>数据</th></tr></thead><tbody><tr><td>上榜日 / 收盘</td><td>2026-09-11 / 2.31 元（当日 <strong>+8.96%</strong>，换手 8.47%）</td></tr><tr><td>上榜原因</td><td>*ST 证券连续三个交易日内收盘价涨幅偏离值累计达 <strong>20%</strong></td></tr><tr><td>成交额</td><td>9.27 亿元</td></tr><tr><td>龙虎榜净额</td><td><strong>-3,771.71 万元</strong>（买入 4,913.41 万 / 卖出 8,685.12 万）</td></tr><tr><td>席位特征</td><td>"西藏自治区资金买入，成功率 35.79%"</td></tr><tr><td><strong>后续表现</strong></td><td><strong>D1 -9.96% / D2 -13.85% / D5 -16.45% / D10 -20.35%</strong></td></tr></tbody></table>
+<p><strong>完整走势</strong>：2026-08-28 收 1.73 元 → 09-11 冲高 <strong>2.31 元（+33.5%）</strong> → 09-30 收 <strong>1.86 元（自高点回撤 -19.5%）</strong>。<strong>9 月这波是"预期抢跑"，没有实质落地催化，公司 09-12 异动公告亦明确"不存在应披露而未披露的重大事项"。</strong></p>
+
+</div></details>
+<h3 id="sec14">3.3 历史炒作波段（韭研公社异动表）</h3>
+<p><strong>结论：实达的炒作符号高度稳定——「算力/智算中心 + 福建国资 + 拟购买福建数产 95% + AI 教育 + 机器人」。历史上三波大行情：2021 重整（连板极值 41 天 22 板）、2025-11~2026-01 算力注入（4.20→6.70 元）、2026-05 收购落地（2.12→2.34 元）。现价 1.86 元低于前两轮起涨点。</strong></p>
+<details class="fold"><summary>炒作波段汇总与全量异动明细（176 条，2020-07—2026-07）</summary><div class="fold-body">
+
+<p><strong>炒作波段汇总</strong>（按驱动关键词聚类，时间降序）：</p>
+<table><thead><tr><th>波段</th><th>时间</th><th>题材/驱动关键词</th><th>连板极值</th><th>股价区间</th></tr></thead><tbody><tr><td>六</td><td>2026-05—07</td><td>算力中心+中标+福建+拟购买福建数产 95%+机器人</td><td>8 天 4 板</td><td>1.53—2.34</td></tr><tr><td>五</td><td>2025-11—2026-01</td><td>AI 教育+福建+智算中心+数产名商+机器人</td><td>13 天 8 板</td><td>4.09—6.70</td></tr><tr><td>四</td><td>2025-01—06</td><td>AI 智能体+机器人+数据要素+算力+重组进展</td><td>3 天 2 板</td><td>3.93—5.00</td></tr><tr><td>三</td><td>2024</td><td>数据要素+算力+拟注入资产</td><td>——</td><td>2.22—4.69</td></tr><tr><td>二</td><td>2022</td><td>重整后转型大数据</td><td>——</td><td>3.50—5.60</td></tr><tr><td>一</td><td>2021</td><td>重整+债务重组+福建国资入主</td><td><strong>41 天 22 板</strong>（另 43 天 24 板、34 天 25 板）</td><td>——</td></tr></tbody></table>
+<p><strong>关键读数</strong>：</p>
+<ul><li><strong>连板极值</strong>：历史最高 "34 天 25 板"（2021 年重整行情）；2025-11 那波最高 "13 天 8 板"。</li><li><strong>股价水位</strong>：2025-12-08 高点 <strong>6.70 元</strong> → 2026-06-29 低点 <strong>1.53 元</strong>（<strong>-77.2%</strong>）→ 现价 1.86 元。</li><li><strong>炒作符号</strong>：六条波段中五条含"算力/智算中心"，四条含"福建/国资"，三条含"数产名商/拟购买福建数产 95%"——<strong>符号高度集中于"国资算力资产注入"</strong>，当前这轮（2026 年）仍是同一符号的重演。</li><li>⚠️ <strong>该表最新记录停在 2026-07-03，2026 年 9 月那波异动（09-09~09-11，涨幅偏离 20%）未入库</strong>——韭研异动表只收录达标异动，不代表 9 月无异动。</li></ul>
+<p><strong>全量异动明细</strong>（176 条，仅列 2024 年以来 24 条，时间降序；数据源：韭研公社，二级整理，供线索）：</p>
+<table><thead><tr><th>题材时间</th><th>涨停信息</th><th>股价</th><th>涨停x板</th><th>涨幅%</th><th>异动关键词</th></tr></thead><tbody><tr><td>2026-07-03</td><td>3 天 2 板</td><td>1.74</td><td>2</td><td>4.82</td><td>算力中心+中标+福建+拟购买福建数产95%+机器人</td></tr><tr><td>2026-07-01</td><td>——</td><td>1.62</td><td>——</td><td>5.19</td><td>同上</td></tr><tr><td>2026-06-17</td><td>——</td><td>2.01</td><td>——</td><td>3.08</td><td>同上</td></tr><tr><td>2026-06-01</td><td>——</td><td>2.23</td><td>——</td><td>5.19</td><td>中标+算力中心+福建+拟购买福建数产95%+机器人</td></tr><tr><td>2026-05-19</td><td>8 天 4 板</td><td>2.29</td><td>4</td><td>5.05</td><td>同上</td></tr><tr><td>2026-05-12</td><td>3 天 3 板</td><td>2.34</td><td>3</td><td>4.93</td><td>算力中心+福建+拟购买福建数产95%+机器人</td></tr><tr><td>2026-05-11</td><td>2 天 2 板</td><td>2.23</td><td>2</td><td>5.19</td><td>同上</td></tr><tr><td>2026-05-08</td><td>——</td><td>2.12</td><td>——</td><td>4.95</td><td>同上</td></tr><tr><td>2026-01-15</td><td>——</td><td>5.55</td><td>——</td><td>2.97</td><td>AI教育(阿里)+福建+拟购买福建数产95%+机器人</td></tr><tr><td>2026-01-14</td><td>——</td><td>5.39</td><td>——</td><td>10.00</td><td>AI教育+福建+拟购买福建数产95%+机器人</td></tr><tr><td>2025-12-08</td><td>13 天 8 板</td><td>6.70</td><td>8</td><td>10.02</td><td>福建+AI教育+拟购买福建数产95%+机器人</td></tr><tr><td>2025-12-05</td><td>12 天 7 板</td><td>6.09</td><td>7</td><td>9.93</td><td>同上</td></tr><tr><td>2025-12-01</td><td>8 天 6 板</td><td>5.59</td><td>6</td><td>10.04</td><td>AI教育+福建+拟购买福建数产95%+智算中心+机器人</td></tr><tr><td>2025-11-26</td><td>5 天 5 板</td><td>6.15</td><td>5</td><td>10.02</td><td>同上</td></tr><tr><td>2025-11-25</td><td>4 天 4 板</td><td>5.59</td><td>4</td><td>10.04</td><td>同上</td></tr><tr><td>2025-11-24</td><td>3 天 3 板</td><td>5.08</td><td>3</td><td>9.96</td><td>福建+拟购买福建数产95%+智算中心+机器人+AI教育</td></tr><tr><td>2025-11-21</td><td>2 天 2 板</td><td>4.62</td><td>2</td><td>10.00</td><td>同上</td></tr><tr><td>2025-11-20</td><td>——</td><td>4.20</td><td>——</td><td>9.95</td><td>同上</td></tr><tr><td>2025-11-05</td><td>——</td><td>4.09</td><td>——</td><td>9.95</td><td>拟购买福建数产95%+机器人+AI智能体+算力+福建国资</td></tr><tr><td>2025-06-26</td><td>——</td><td>4.29</td><td>——</td><td>10.00</td><td>中国移动RWA+机器人+AI智能体+算力+重组进展</td></tr><tr><td>2025-03-04</td><td>3 天 2 板</td><td>4.87</td><td>2</td><td>9.93</td><td>机器人+AI智能体+算力+重组进展</td></tr><tr><td>2025-02-28</td><td>——</td><td>5.00</td><td>——</td><td>2.67</td><td>重组进展+数据要素（国资）+算力+AI智能体+机器人</td></tr><tr><td>2025-02-14</td><td>——</td><td>4.49</td><td>——</td><td>10.05</td><td>数据要素（国资）+算力+AI智能体+机器人</td></tr><tr><td>2025-01-24</td><td>——</td><td>3.93</td><td>——</td><td>10.08</td><td>AI智能体+机器人+数据要素+算力+拟注入资产</td></tr><tr><td>2024-11-20</td><td>——</td><td>4.36</td><td>——</td><td>10.10</td><td>数据要素+算力+拟注入资产</td></tr></tbody></table>
+<p>（更早 2020—2024 年 152 条略；异动表 2026-07-03 后无记录）</p>
+
+</div></details>
+<h3 id="sec15">3.4 投资者交流要点</h3>
+<p><strong>结论：管理层对"营收冲 3 亿"和"摘帽时间表"一律用"聚焦主业、降本增效、依托股东资源"三板斧回应，从不给量化路径——这是典型的"没有可承诺的数字"。</strong></p>
+<table><thead><tr><th>投资者问题</th><th>公司答复要点</th><th>解读</th></tr></thead><tbody><tr><td>公司什么时候去星摘帽</td><td>"当前核心任务是保障日常业务平稳推进，为后续撤销退市风险警示奠定基础"</td><td>无时间表</td></tr><tr><td>董事会如何提振信心</td><td>三件事：① 做实智能算力、数智教育、数据流动、数字政府；② 强化内控、降本增效；③ 用好控股股东资源</td><td>全是方向、无数字</td></tr><tr><td>除数产名商联通业务按总额法，其他项目是否全按净额法？全按净额法则 3 亿目标不可能成功</td><td>（未正面回应）</td><td><strong>回避核心口径问题</strong></td></tr><tr><td>2025 改净额法、2024 为何不追究、以后会不会追究</td><td>"严格执行会计准则……不涉及其他年度年报数据的调整"</td><td>公司口径</td></tr><tr><td>股东人数</td><td>"截至 2026-03-31 为 179,800 人"</td><td>与半年报 12.25 万户形成骤降对比</td></tr></tbody></table>
+<p><strong>必抓四点的读数</strong>：① <strong>参会人员是否换人</strong>——2026 年董秘换为戴晓燕、财务总监换为曾庆勇，<strong>治理层已换血</strong>（早于任何股权动作）；② 盈利驱动自述——算力/数智教育/数据流动/数字政府四大方向；③ 摘帽自述——<strong>无时间表</strong>；④ 股东人数——<strong>3/31 17.98 万户 → 6/30 12.25 万户（-31.9%）</strong>。</p>
+<hr>
+<h2 id="chap3">四、Shell 经济学与估值</h2>
+<h3 id="sec16">4.1 壳价值：值不值得救</h3>
+<p><strong>结论：国资视角"必须救"，市场化视角"救得活但救不肥"——它是一个有上级意志背书、有真资产垫底、但负债沉重、且被立案悬刀的算力壳。</strong></p>
+<details class="fold"><summary>救壳四手段对照与负债质量</summary><div class="fold-body">
+
+<ul><li><strong>换人</strong>：✅ 已做（2026-03 换届，国资班子稳定）。</li><li><strong>换业务</strong>：✅ 已做（大数据/算力转型，数产名商并表）。</li><li><strong>剥离差业务</strong>：❌ 未充分做（中科融通等旧包袱仍在表内，净资产为负 1.59 亿元）。</li><li><strong>搞钱</strong>：重整已搞到 9 亿元；现靠银行贷款 + 联通预付类现金流。</li><li><strong>负债质量（2026-06-30）</strong>：总资产 14.30 亿元、负债合计 12.08 亿元，<strong>资产负债率 84.5%</strong>；货币资金 9,988 万元 vs 短期借款 2.41 亿元（其中<strong>已逾期未偿还短期借款 7,912 万元</strong>）；受限资产账面价值 5.45 亿元。<strong>这是"负债压顶、资产被反复抵押"的重壳，不是轻装干净壳。</strong></li></ul>
+
+</div></details>
+<h3 id="sec17">4.2 估值：三档情景区间</h3>
+<p><strong>结论：这是一次"期权定价"而非价值定价——买的是"立案不升级 + 营收达标"两张彩票同时中的概率。当前 40.52 亿元市值已把"算力注入预期"透支到位。</strong></p>
+<p><strong>估值前提（必须显式标注）</strong>：以下情景区间<strong>全部以"2026 年营收 ≥3 亿元且立案未升级为重大违法"为前提</strong>；若任一条不成立，情景区间全部作废（对应终止上市 / 归零风险）。</p>
+<table><thead><tr><th>情景</th><th>假设</th><th>合理市值区间</th><th>对应股价</th></tr></thead><tbody><tr><td>保守</td><td>营收勉强过 3 亿、主业继续亏损、无新注入</td><td>20—26 亿元</td><td>0.92—1.19 元</td></tr><tr><td>中性</td><td>营收过 3 亿 + 摘帽 + 国资再注入一块数据资产预期</td><td>30—40 亿元</td><td>1.38—1.84 元</td></tr><tr><td>激进</td><td>摘帽 + 算力主业扭亏 + 第二块资产注入落地 + 立案彻底结案</td><td>50—60 亿元</td><td>2.30—2.75 元</td></tr></tbody></table>
+<p><strong>当前 40.52 亿元落在"中性情景上沿"，属"预期已打满"</strong>。参照物：总市值 40.52 亿元 vs 归母净资产 2.13 亿元 → <strong>PB 19.00 倍</strong>；数产名商 2025 年 1—7 月净利仅 608.55 万元，<strong>当前市值意味着给这块资产约 60 倍以上的想象溢价</strong>。</p>
+<h3 id="sec18">4.3 投资结论</h3>
+<p><strong>结论：卖出（回避）。</strong></p>
+<p><strong>理由链（按重要性排序）</strong>：</p>
+<ol><li><strong>风险收益极端不对称</strong>：四条红线里踩了"营收&lt;3 亿+亏损"，2026 年报若仍不达标 → 连续两年触及 → <strong>直接终止上市（归零）</strong>；即便达标，也只是"继续亏损 + PB 19 倍"——<strong>下行是 0，上行已被估值透支</strong>。</li><li><strong>立案是不可定价的一票否决项</strong>：2026-08-07 立案（2023 年半年报），已逾两个月<strong>无结论</strong>；若认定为重大违法 → 绕开保壳主线直接退市。此项<strong>无法通过任何研究消除，只能等</strong>。</li><li><strong>注意力来过且朝下</strong>：2026-09-09~09-11 异动（3 日涨幅偏离超 20%）、09-11 龙虎榜<strong>净卖出 3,771.71 万元</strong>、其后 <strong>D10 累跌 -20.35%</strong>——典型的"预期抢跑→兑现出货"，且公司公告已否认有未披露事项。</li><li><strong>同型样本指向下跌组</strong>：立案型代表 ＊ST九鼎年内 <strong>-60.9%</strong>，与实达自身 <strong>-59.7%</strong> 几乎同步；摘帽型内部严重分化（+37.7% ~ -19.3%），印证"摘帽本身不构成上涨理由"。市场已把实达归入"立案 + 财务类\*ST"下跌组。</li><li><strong>主业造血不足、收入增长≠盈利改善</strong>：H1 营收 1.07 亿元（同比 -31.93%），全年冲 3 亿元意味着下半年须做 1.93 亿元；而算力硬件 GPU 服务器占成本约 90%、毛利率极低，<strong>靠硬件集成堆出来的营收换不来利润</strong>。</li></ol>
+<p><strong>触发条件（转向买入的信号）</strong>：</p>
+<ul><li>立案以"一般信披违规"结案、明确不触及重大违法；<strong>且</strong></li><li>2026 三季报显示营收进度可支撑全年 3 亿元；<strong>且</strong></li><li>股价回落至 <strong>1.50 元附近</strong>（近 3 年低点 1.53 元区域，安全垫重新出现）。</li></ul>
+<p><strong>失效条件（本结论作废）</strong>：出现"立案重大违法认定"或"2026 年报营收&lt;3 亿"任一条 → 本结论从"回避"恶化为"退市归零"。</p>
+<p><strong>参考区间</strong>：不建仓；若已持有，<strong>建议在 1.90—2.30 元反弹区间减持</strong>。理论观察区间 0.90—1.20 元（保守情景）。</p>
+<p><strong>时间窗口</strong>：本结论有效至 2026 年三季报（约 10 月下旬）披露——那是第一个能验证"营收冲 3 亿"的公开数据点。</p>
+<p><strong>仓位建议</strong>：不建仓（若为博弈立案结案的短线资金，须明确这是"零/一"赌注，非投资）。</p>
+<p><strong>最大风险</strong>：<strong>立案结果不可控</strong>——这是唯一一项"研究无法降低不确定性"的风险。</p>
+<hr>
+<h2 id="chap4">五、附录</h2>
+<h3 id="sec19">附录 A · 待核实 / 需补充清单</h3>
+<table><thead><tr><th>事项</th><th>状态</th></tr></thead><tbody><tr><td>立案调查结论与处罚口径</td><td>截至基准日未披露（2026-08-07 立案）</td></tr><tr><td>2026 年三季报营收</td><td>尚未披露（预计 10 月下旬）</td></tr><tr><td>上海联通 6.74 亿元合同的年度收入确认金额</td><td>公司未逐期披露</td></tr><tr><td>国资后续资产注入的时间表与标的</td><td>承诺未写死，无时间表</td></tr><tr><td>数产名商 2026 全年业绩</td><td>仅披露 2025 年 1—7 月</td></tr></tbody></table>
+<h3 id="sec20">附录 B · 关键信源链接</h3>
+<p><strong>结论：本报告全部关键数字与事件均可回溯至下列一手公告（巨潮/上交所/证监会）；行情、龙虎榜与异动数据为公开源，已在正文表注标明。</strong></p>
+<ul><li><a href="http://dataclouds.cninfo.com.cn/shgonggao/hsomarket/2026/20260428/83ab727550a44c51b7587b38a7d1fca5.PDF" target="_blank" rel="noopener">《关于公司股票被实施退市风险警示暨停牌的公告》（2026-021 号，2026-04-28）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-08-08/1225464687.PDF" target="_blank" rel="noopener">《关于收到中国证券监督管理委员会立案告知书的公告》（2026-036 号，2026-08-08 披露）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-08-27/1225515124.PDF" target="_blank" rel="noopener">《2026 年半年度报告》（2026-08-27）</a></li><li><a href="https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-29/600734_20260429_HZN6.pdf" target="_blank" rel="noopener">《2025 年年度报告》（2026-04-29，上交所）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-08-27/1225515139.PDF" target="_blank" rel="noopener">《关于续聘会计师事务所的公告》（2026-041 号，2026-08-27）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-08-27/1225515109.PDF" target="_blank" rel="noopener">《关于同一控制下企业合并追溯调整对比期 2025 年半年度财务数据的公告》（2026-038 号，2026-08-27）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-08-27/1225515111.PDF" target="_blank" rel="noopener">《关于 2026 年第一季度财务数据更正的公告》（2026-039 号，2026-08-27）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-09-12/1225561497.PDF" target="_blank" rel="noopener">《股票交易异常波动公告》（2026-044 号，2026-09-12 披露）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-09-23/1225577870.PDF" target="_blank" rel="noopener">《关于全资孙公司涉及重大诉讼进展的公告》（2026-045 号，2026-09-23 披露）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-07-15/1225424560.PDF" target="_blank" rel="noopener">《2026 年半年度业绩预告》（2026-033 号，2026-07-15）</a></li><li><a href="https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2022-02-24/600734_20220224_2_4Mhx2odM.pdf" target="_blank" rel="noopener">《股东权益变动暨控股股东发生变更的提示性公告》（2022-023 号，2022-02-24，上交所）</a></li><li><a href="http://www.csrc.gov.cn/fujian/c104054/c6909562/content.shtml" target="_blank" rel="noopener">《行政处罚决定书〔2022〕2 号》（福建证监局，2022-12-05）</a></li><li>投资者交流：上证 e 互动（2026-06-18、2026-07-16 问答）</li><li>行情与龙虎榜：腾讯 <code>qt.gtimg.cn</code>、新浪日 K、东财龙虎榜 API（数据截至 2026-09-30）</li><li>异动：韭研公社异动整理（二级整理，176 条，2020-07—2026-07）</li></ul>
+<blockquote><p><strong>数据源说明</strong>：本报告基准日 Wind 局域网代理不可达（connect timeout），行情/估值/日 K 改用腾讯与新浪公开源，龙虎榜用东财 API，公告用巨潮 API —— <strong>相关数字均为公开源，已在表中标注</strong>。</p></blockquote>
+<h3 id="sec21">附录 C · 逻辑漏洞与反方观点（5 问速版）</h3>
+<table><thead><tr><th>#</th><th>质疑</th><th>回应</th></tr></thead><tbody><tr><td>1</td><td>"国资必救"是否成立？</td><td>国资<strong>未公开承诺保壳</strong>；重整承诺的"优质资产/其他优质资产"是活口，无强制力。若 2026 营收不达标，理论上国资也可能放弃（概率低，但不能排除）。</td></tr><tr><td>2</td><td>"营收冲 3 亿"会不会再被监管下调？</td><td>会。2025 年正是"净额法"挤水分导致营收暴跌 71.45%，2026 若靠硬件"总额法"硬凑，监管再问询下认定仍有被下调风险。</td></tr><tr><td>3</td><td>立案结论是否已经"price in"？</td><td>难以判断。雪球有"两个月结案、必不涉退市"的乐观说法（雪球评论，2026-09-19），但至今无结论，且实达年内 -59.7% 与立案型九鼎 -60.9% 同步——<strong>市场已按"最坏情形"定价了一部分</strong>。</td></tr><tr><td>4</td><td>40 亿元市值 vs 2.13 亿元净资产，是不是"预期打满"？</td><td>是。PB 19 倍、数产名商 2025 年 1—7 月净利仅 608.55 万元，<strong>当前市值透支了远超其盈利能力的想象溢价</strong>。</td></tr><tr><td>5</td><td>9 月那波异动是不是"主力进场"信号？</td><td>反向证据更强：龙虎榜净卖出 3,771.71 万元、席位"西藏资金成功率 35.79%"、其后 D10 跌 20.35%。<strong>更像抢跑出货，不是建仓</strong>。</td></tr></tbody></table>
+<h3 id="sec22">版本记录</h3>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-04</td><td>首次以现行规范（结论前置+三层次渐进披露）重构：吸收 2026-09-21《深度研究》全部内容（前世今生时间轴 / 重整交易结构 / 承诺包拆解 / 六维拆解 / 壳经济学 / 财务表），并将基准日推进至 2026-10-04；<strong>新增</strong>：2026-08-07 立案告知书原文要点、2026-09-09~09-11 异动与 09-11 龙虎榜（净卖 3,771.71 万元、D10 -20.35%）、09-22 孙公司诉讼终结、股东户数 3/31 17.98 万户→6/30 12.25 万户、异动史 176 条（炒作符号/连板极值/股价水位）、同型样本对照（立案型九鼎 -60.9%）、王艳式六栏目与全流程进度看板；<strong>首次给出二选一结论（卖出·回避）</strong>。行情：1.93 元（09-21）→ <strong>1.86 元</strong>（09-30）；市值 42.04 亿元 → <strong>40.52 亿元</strong>。</td></tr></tbody></table>
 </div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
 
-<p><b>当下快照（2026-09-21）</b>：现价约<b>1.93元</b>，总市值约<b>42.04亿元</b>，总股本21.78亿股；2026H1营收1.07亿、归母净利-2836.85万、扣非-2890.75万。动态市盈率-74（亏损无PE），市净率约19.7倍（归母净资产仅2.13亿撑起的市值）<a href="https://stcn.com/quotes/index/sh600734.html" target="_blank">来源</a>。</p>
-
-<h2>一、前世今生：一张30年时间轴，看"多次换活法"怎么走到今天</h2>
-
-<table>
-<thead><tr><th>时间</th><th>关键事件</th><th>股权/实控人变化</th><th>背后逻辑（大白话）</th></tr></thead>
-<tbody>
-<tr><td>1988-05</td><td>公司在福州成立</td><td>——</td><td>实达电脑起步</td></tr>
-<tr><td>1994-03</td><td>规范为股份制企业，总股本5000万股</td><td>福建国资控股</td><td>老牌国企IT</td></tr>
-<tr><td>1996-08-08</td><td>A股上交所挂牌（600734），发行价7.35元，募资2.05亿</td><td>福建国资</td><td>"实达"品牌登陆资本市场</td></tr>
-<tr><td>2007前后</td><td>控制权转向民企</td><td><b>景百孚</b>成为实控人</td><td>国企IT老了，卖给民企</td></tr>
-<tr><td>2007-2019</td><td>景百孚注入地产→剥离→再转型（移动终端、物联网安防），靠收购保壳</td><td>景百孚系（北京昂展等）</td><td>"景系"反复腾挪续命</td></tr>
-<tr><td>2018/2019</td><td>年报净利连续为负，2019年净资产为负；2019年巨亏30.47亿</td><td>景百孚</td><td>深圳兴飞、中科融通等商誉全线减值</td></tr>
-<tr><td>2019-11-12</td><td>景百孚系"卖壳"：与郑州航空港区兴创电子签表决权放弃/委托协议</td><td>控股股东变<b>兴创电子</b></td><td>被迫卖壳，国资接盘过渡</td></tr>
-<tr><td>2020-06-16</td><td>首次戴帽：连续两年亏损+净资产为负</td><td>——</td><td>简称"实达集团"变"*ST实达"</td></tr>
-<tr><td>2020年末</td><td>期末净资产仍为负</td><td>——</td><td>继续*ST</td></tr>
-<tr><td>2021-02-05</td><td>债权人北京空港富视向福州中院申请重整</td><td>——</td><td>债务压顶，债权人出手</td></tr>
-<tr><td>2021-03-31</td><td>福州中院启动<b>预重整</b>，方达律所为临时管理人</td><td>——</td><td>先谈后立，准司法程序</td></tr>
-<tr><td>2021-11-26</td><td>福州中院裁定受理重整（(2021)闽01破申6号）</td><td>管理人：方达律所</td><td>正式进手术室 <a href="https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2021-11-27/600734_20211127_1_jvxVgJnV.pdf" target="_blank">来源</a></td></tr>
-<tr><td>2021-11-30</td><td>证监会立案（12月9日收到告知书）；"忽悠式增持"被警示</td><td>——</td><td>重整夹缝里的雷</td></tr>
-<tr><td>2021-12-06</td><td>与产业投资人<b>福建省大数据有限公司</b>、11名财务投资人签重整投资协议</td><td>大数据公司=唯一产业投资人</td><td>福建国资登场"救火"</td></tr>
-<tr><td>2021-12-27</td><td>债权人会议+出资人组会议通过《重整计划》；法院裁定批准</td><td>每10股转增25股</td><td>资本公积转增，原股东权益大幅稀释</td></tr>
-<tr><td>2021-12-29</td><td>重整投资人支付完毕<b>89999.82万元</b>（约9亿）</td><td>平均每股对价约0.5784元</td><td>国资+11财投掏真金白银</td></tr>
-<tr><td>2021-12-31</td><td>福州中院裁定确认《重整计划》执行完毕</td><td>——</td><td>"保壳手术"收尾 <a href="http://m.toutiao.com/group/7047905308999746085/" target="_blank">来源</a></td></tr>
-<tr><td>2022-02</td><td>转增股本上市（2月14日登记、16日上市）；股份扣划至重整投资人</td><td>控股股东变<b>福建数晟（25%）</b>，实控人变<b>福建省国资委</b></td><td>福建国资正式当家 <a href="https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2022-02-24/600734_20220224_2_4Mhx2odM.pdf" target="_blank">来源</a></td></tr>
-<tr><td>2022起</td><td>撤销退市风险警示，简称恢复"实达集团"；宣布转型大数据</td><td>——</td><td>二次投胎，换赛道</td></tr>
-<tr><td>2023-07</td><td>启动"星云大数据"资产注入工作</td><td>——</td><td>兑现重整承诺</td></tr>
-<tr><td>2024</td><td>营收3.09亿、归母净利565万（靠处置长投收益8069.57万"撑住"）</td><td>——</td><td>转型第一年勉强站住</td></tr>
-<tr><td>2025-02</td><td>变更承诺：注入标的由<b>星云大数据</b>改为<b>数产名商</b></td><td>——</td><td>承诺"换汤"——星云大数据不具备注入条件</td></tr>
-<tr><td>2025-11</td><td>股东会通过1.85亿收购数产名商95%股权</td><td>交易对手：大数据产投+大名城</td><td>现金收购，不动股权结构</td></tr>
-<tr><td>2026-02-12</td><td>签股权转让协议、完成工商变更，数产名商并表</td><td>——</td><td>算力资产落地</td></tr>
-<tr><td>2026-04-28</td><td>披露《被实施退市风险警示暨停牌公告》（第2026-021号）</td><td>——</td><td>2025年报营收0.88亿，二次"踩线预告"</td></tr>
-<tr><td>2026-04-30</td><td><b>二次戴帽</b>，简称"实达集团"→"*ST实达"，涨跌幅5%（2026-07-06 起已放宽至10%）</td><td>——</td><td>营收暴跌+亏损触发财务红线 <a href="http://www.cnstock.com/commonDetail/697972" target="_blank">来源</a></td></tr>
-<tr><td>2026-06-22</td><td>上交所纪律处分：2025业绩预告不准确（朱向东公开谴责、戴晓燕通报批评）</td><td>——</td><td>监管对"预告变脸"追责</td></tr>
-<tr><td>2026-08-07</td><td>证监会立案（2023年半年报涉嫌信披违规，证监立案字0262026007号）</td><td>——</td><td>悬顶之剑 <a href="https://stcn.com/article/detail/4065609.html" target="_blank">来源</a></td></tr>
-<tr><td>2026-09-21</td><td>无新重大公告，立案调查进行中；股价约1.93元、市值约42亿</td><td>——</td><td>等待"营收冲3亿"叙事验证</td></tr>
-</tbody>
-</table>
-
-<p><b>一句话总结前世今生</b>：一家福建老牌国企IT→卖给景百孚系→景系腾挪十年玩脱→2019甩给郑州兴创电子过渡→2021年国资"预重整+司法重整"兜底、福建国资委接手→2022年换赛道做大数据→2024年靠卖资产"虚胖"过线→2025年总额法改净额法、营收"挤水分"暴跌71%→2026年二次戴帽，卡在"营收冲3亿"的生死线。</p>
-
-<h2>二、关键人物/实控人：谁在当家，什么来头</h2>
-
-<h3>2.1 现任实控人：福建省国资委（间接控制）</h3>
-<ul>
-<li><b>实控人</b>：福建省人民政府国有资产监督管理委员会（福建国资委）。</li>
-<li><b>控制链条</b>：福建国资委 → <b>福建省大数据集团有限公司</b>（原"福建省大数据有限公司"）→ 旗下 <b>福建数晟投资合伙企业（有限合伙）</b>（控股股东）+ 福建大数据产业投资控股有限公司（大数据产投）。</li>
-<li><b>可支配表决权</b>：福建数晟持 <b>25.00%</b>（5.4458亿股）+ 大数据产投持 <b>1.11%</b>（2408.08万股），两者一致行动，合计 <b>26.11%</b>。</li>
-</ul>
-
-<h3>2.2 核心操盘平台：福建省大数据集团</h3>
-<ul>
-<li>成立于<b>2021年8月26日</b>，注册资本3亿元，<b>省委省政府部署设立的省管国有全资企业</b>，定位"福建省公共数据资源一级开发机构+省级电子政务建设运维单位"。</li>
-<li>旗下含福建大数据产业园运营管理、福建大数据产业投资、<b>星云大数据</b>（2013年成立）等。</li>
-<li><b>进来的动机</b>：重整时承诺"注入星云大数据"，要把上市公司变成<b>省级算力/大数据资产证券化平台</b>——这是"地方国资要本地的壳、装自家的资产"的典型样本，不是套利壳贩子。</li>
-</ul>
-
-<h3>2.3 历史人物背景（景百孚系）</h3>
-<ul>
-<li>景百孚（1970年10月生），2007年入主成为实控人，曾注入地产→剥离→转型移动终端（深圳兴飞）、物联网安防（中科融通），反复腾挪保壳。</li>
-<li>2019年资金恶化被迫"卖壳"；2020-2021年被福建证监局多次警示（2019业绩预告不准、"忽悠式增持"）；2022年12月被证监会行政处罚〔2022〕2号罚款230万（2018年"智慧海派"虚增收入成本等虚假记载）<a href="http://www.csrc.gov.cn/fujian/c104054/c6909562/content.shtml" target="_blank">来源</a>。</li>
-<li><b>结论</b>：景系时代留下的是一个被反复"过手"、商誉爆雷、信披频频出问题的壳——这正是2026年8月再度被立案的"历史包袱"根源。</li>
-</ul>
-
-<h3>2.4 上市公司现场班子（2026年3月换届）</h3>
-<ul>
-<li>董事长：<b>苏岳峰</b>；总裁（法定代表人）：<b>何桂东</b>；财务总监：<b>曾庆勇</b>；董秘：戴晓燕。</li>
-<li>2026年以来高管变动频繁（雷欢骅、郑章、朱向东先后离任，朱向东因2025业绩预告失准被公开谴责）——<b>治理层仍处"换血整理期"</b>，这是判断节奏时的重要信号。</li>
-</ul>
-
-<h2>三、怎么拿控制权：重整路径与交易结构拆解</h2>
-
-<h3>3.1 路径定性：预重整 + 司法重整（最完整彻底的"换血手术"）</h3>
-<ul>
-<li><b>预重整</b>（2021-03-31启动）→ <b>正式受理</b>（2021-11-26）→ <b>批准+执行完毕</b>（2021-12-27批准、12-31执行完毕），全程<b>不足4个月</b>，是"预重整+司法重整"的高效样本。</li>
-<li><b>大白话</b>：公司已严重资不抵债，债权人先申请，法院先让各方在桌下谈好（预重整），再正式立案一步到位；产业投资人（福建国资）进场，财务投资人（11名）凑钱，把债清了、把股权洗了。</li>
-</ul>
-
-<h3>3.2 拿到股份的方式：资本公积转增 + 重整投资人受让</h3>
-<ul>
-<li>以总股本6.2237亿股为基数，<b>每10股转增25股</b>，合计转增15.559亿股 → 总股本增至<b>21.78亿股</b>。</li>
-<li><b>转增股不向原股东分配，全部由重整投资人"有条件受让"</b>；合计支付约<b>9亿元</b>，<b>平均每股对价约0.5784元</b>。</li>
-</ul>
-
-<table>
-<thead><tr><th>重整投资人</th><th class="num">受让股数（万股）</th><th class="num">持股比例</th><th>角色</th></tr></thead>
-<tbody>
-<tr><td>福建数晟（大数据集团指定）</td><td class="num">54,457.56</td><td class="num"><b>25.00%</b></td><td>产业投资人（控股）</td></tr>
-<tr><td>福建炜凯</td><td class="num">10,869.73</td><td class="num">4.99%</td><td>财务投资人</td></tr>
-<tr><td>郑刘颖</td><td class="num">10,869.73</td><td class="num">4.99%</td><td>财务投资人</td></tr>
-<tr><td>林强</td><td class="num">10,700.00</td><td class="num">4.91%</td><td>财务投资人</td></tr>
-<tr><td>福州赤恒成达</td><td class="num">10,604.35</td><td class="num">4.87%</td><td>财务投资人</td></tr>
-<tr><td>荆建坤</td><td class="num">10,208.74</td><td class="num">4.69%</td><td>财务投资人</td></tr>
-<tr><td>周映霏</td><td class="num">10,113.58</td><td class="num">4.64%</td><td>财务投资人</td></tr>
-<tr><td>衢州东昆</td><td class="num">9,791.28</td><td class="num">4.49%</td><td>财务投资人</td></tr>
-<tr><td>黄浪峰</td><td class="num">9,168.88</td><td class="num">4.21%</td><td>财务投资人</td></tr>
-<tr><td>左玲</td><td class="num">8,695.65</td><td class="num">3.99%</td><td>财务投资人</td></tr>
-<tr><td>王珊</td><td class="num">5,445.78</td><td class="num">2.50%</td><td>财务投资人</td></tr>
-<tr><td>刘浪英</td><td class="num">4,667.80</td><td class="num">2.14%</td><td>财务投资人</td></tr>
-<tr><td>原股东（景系昂展等）被稀释</td><td class="num">——</td><td class="num">约34%↓</td><td>权益缩水</td></tr>
-</tbody>
-</table>
-
-<ul>
-<li><b>合规细节</b>：财务投资人承诺"不签一致行动人协议、不谋求控制权"；产业投资人受让股份<b>锁36个月</b> <a href="https://epaper.cs.com.cn/zgzqb/images/2022-02/24/B048/zqB04824.pdf" target="_blank">来源</a>。这是"国资出钱+产业资本整合+财务投资人救火+原股东让渡"的联合救壳结构。</li>
-</ul>
-
-<h3>3.3 从"谁救"到"怎么救"的三件事跟踪</h3>
-<ol>
-<li><b>谁来救</b>：福建省国资委+大数据集团（地方国资+产业资本，真救型）。</li>
-<li><b>怎么救</b>：司法重整洗债（约9亿对价清债）+ 资产注入（星云大数据→数产名商）。</li>
-<li><b>救到哪一步</b>：重整早已执行完毕；资产注入第一棒（数产名商）2026年2月落地；但<b>"营收冲3亿"的续命硬仗还没打完</b>，且2026年8月被立案，出现新变量。</li>
-</ol>
-
-<h2>四、意图分析与节奏推测："省级算力/大数据证券化平台"的路径图</h2>
-
-<h3>4.1 新实控人为什么买这个壳</h3>
-<ul>
-<li><b>不是套利</b>：产业投资人说到底是有任务的——把福建省的公共数据、算力基础设施资产装进上市公司。数产名商（2000P智算中心、总投资5.5亿）是大数据集团旗下最"证券化友好"的算力资产，先装它，像"先让上市公司有台能下金蛋的机器"。</li>
-<li><b>判定</b>：国资征集→国资自接=产业注入意图强，方向上属于"真整合"，不是"纯概念"。</li>
-</ul>
-
-<h3>4.2 资产质量：数产名商是什么成色</h3>
-<table>
-<thead><tr><th>项目</th><th>数据</th><th>大白话</th></tr></thead>
-<tbody>
-<tr><td>智算中心规模</td><td>2000P（稀疏算法）</td><td>福建省属首个自主运营智算中心</td></tr>
-<tr><td>总投资额</td><td>5.5亿元</td><td>重资产投入</td></tr>
-<tr><td>投产时间</td><td>2024年9月竣工验收投产</td><td>已进入运营期</td></tr>
-<tr><td>2024年业绩</td><td>营收3411万、净利371万</td><td>起步</td></tr>
-<tr><td>2025年1-7月</td><td>营收5969万、净利608.55万</td><td>快速爬坡</td></tr>
-<tr><td>收购对价</td><td>1.846亿（95%股权，评估值1.9433亿）</td><td>溢价仅约5.78%</td></tr>
-<tr><td>关键长约</td><td>上海联通算力采购，<b>每年1.21亿(含税)、5年7个月、合计6.74亿</b></td><td>稳定现金流压舱石</td></tr>
-<tr><td>关联大单</td><td>名城数科《先进计算技术服务》合计7.59亿（2024.8-2031.8）</td><td>交易后履约方变更为上市公司</td></tr>
-</tbody>
-</table>
-<p class="small">数据来源：<a href="https://www.cs.com.cn/ssgs/gsxw/202511/t20251107_6522243.html" target="_blank">中国证券报(2025-11-07)</a>　·　<a href="https://www.cs.com.cn/ssgs/01/2026/07/14/detail_2026071410024316.html" target="_blank">中国证券报(2026-07-14)</a>　·　本地半年报底稿。</p>
-
-<ul>
-<li><b>判断</b>：这是"上市公司1台现成的算力机器+1张6.74亿长约"的真资产，不是画饼。但<b>算力硬件毛利率极低（GPU服务器占成本90%）</b>，数产名商2026H1给归母贡献净利仅584万——<b>能贡献营收、拉不动多少利润</b>。</li>
-</ul>
-
-<h3>4.3 唯一最优路径 + 催化排序</h3>
-<ul>
-<li><b>最优路径</b>：2026年靠"数产名商全年并表 + 上海联通6.74亿合同分摊 + 政务/算力/教育订单"把<b>营收硬凑到3亿以上</b>→ 摘掉财务红线（9.3.2(一)失效）→ 2027年再谈盈利与后续资产注入。</li>
-<li><b>催化事件排序（按可验证性×重要性）</b>：
-<ol>
-<li>立案调查结果（2023半年报）——高重要性、不可验证，最大变量；</li>
-<li>2026三季报/全年营收能否站上3亿——高重要性、可验证；</li>
-<li>上海联通6.74亿合同的收入确认节奏——中高重要性、可验证；</li>
-<li>后续重大合同/订单落地（莆田荔兴2088万、南平GXYQ智慧校园4641万等合计约6729万已中标，平潭实达电信1015.7万预中标）——中重要性、可验证 <a href="https://www.cs.com.cn/ssgs/01/2026/07/14/detail_2026071410024316.html" target="_blank">来源</a> <a href="https://stcn.com/article/detail/4084929.html" target="_blank">来源</a>；</li>
-<li>大数据集团是否再注入第二块算力资产——低概率但高弹性、不可验证。</li>
-</ol></li>
-</ul>
-
-<h3>4.4 行情映射：为什么戴着"*ST"还能跌80%又弹</h3>
-<ul>
-<li><b>下跌主因不是戴帽，是"业绩预告变脸"</b>：2025年1月预告营收3.15-3.65亿（并称"不存在虚假记载、不存在TS风险"），4月年报突然总额法改净额法、营收实为8814万，股价腰斩再腰斩，引发投资者索赔情绪 <a href="https://epaper.cs.com.cn/zgzqb/html/2026-01/31/nw.D110000zgzqb_20260131_9-B072.htm" target="_blank">来源</a> <a href="http://paper.cnstock.com/html/2026-03/17/content_2189077.htm" target="_blank">来源</a>。这是"预告变脸+总额法/净额法"的地雷，与多数*ST股"戴帽即跌"不同。</li>
-<li><b>反弹催化</b>：2026年5月8-12日连续异动（三天涨幅偏离值累计超12%），公司在异动公告中明确"不存在应披露未披露事项"——行情在"赌"国资保壳与算力叙事，但尚无实质落地催化 <a href="https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-05-13/600734_20260513_SG4O.pdf" target="_blank">来源</a>。</li>
-</ul>
-
-<h2>五、承诺包"原话 vs 大白话"逐条拆解（活口在哪）</h2>
-
-<p class="small">来源：2026年半年报"第五节 重要事项·承诺事项履行情况"、2022年2月《股东权益变动暨控股股东变更》公告、2021年12月《重整进展》公告。</p>
-
-<table>
-<thead><tr><th style="width:16%">承诺方</th><th style="width:38%">承诺原文（摘要）</th><th>大白话+活口拆解</th></tr></thead>
-<tbody>
-<tr><td>大数据集团（解决同业竞争）</td><td>"将根据《重整计划》……<b>适时</b>将星云大数据注入实达集团，注入方式<b>包括但不限于</b>现金购买资产、发行股份购买资产……"</td><td><b>"适时"没写死时间、"包括但不限于"没写死方式</b>——这是最大的活口。结果2023-07才启动，2025-02干脆变更为数产名商。</td></tr>
-<tr><td>大数据集团（资产注入）</td><td>"在《重整计划》执行完毕后，将其合法拥有或管理的<b>优质资产</b>或者实达集团股东大会认可的<b>其他优质资产</b>……注入实达集团"</td><td>承诺期<b>2022-12-31起持续有效</b>；2026-02完成数产名商注入，半年报标注<b>"已履行完毕"</b>——"其他优质资产"给了换标的的后门，已用。</td></tr>
-<tr><td>大数据集团（同业竞争）</td><td>"注入完成后……将避免直接或间接从事与上市公司构成同业竞争的业务"</td><td>对应2026-02数产名商并表后已基本落地，属履约中。</td></tr>
-<tr><td>福建数晟（同业竞争）</td><td>"福建数晟与上市公司不存在同业竞争……本企业将积极消除同业竞争"</td><td>标准句式，无新活口。</td></tr>
-<tr><td>11名财务投资人（不谋求控制权）</td><td>"不达成或签署任何形式的一致行动人协议……不通过任何方式谋求上市公司的控制权"</td><td>2022-02-22起、作为股东期间持续有效——保住了国资一家独大，不会内斗。</td></tr>
-</tbody>
-</table>
-
-<p><b>拆解结论</b>：这包承诺的"承诺方"是真金白银的福建国资，履约能力无虞；<b>活口集中在"适时/优质资产/其他优质资产"三处限定语</b>——注什么、何时注、注多少，<b>主动权全部在国资手里</b>。已完成的"数产名商"只是第一块，后续"第二块算力/数据资产"会不会继续装，全看国资心情和上市公司续命需求，<b>没有可强制的对赌约束</b>。</p>
-
-<h2>六、六维拆解（控制权变更标的·同大股份范式）</h2>
-
-<h3>6.1 重组节奏（最核心）</h3>
-<ul>
-<li><b>①为什么曾卡壳</b>：星云大数据"不具备注入上市公司的相关条件"（2023年启动后搁置）→ 改用数产名商。</li>
-<li><b>②当前进度</b>：数产名商95%股权已于2026-02-12完成工商变更并表，"资产注入第一棒"落地。</li>
-<li><b>③能不能解决</b>：能。现金收购（1.846亿，自有资金+银行贷款），不涉及发股、不触发重大重组/重组上市，<b>合规门槛低、已交卷</b>。</li>
-<li><b>④承诺期与过户脱钩</b>：资产注入承诺期"重整计划执行完毕后"长期有效，与实际过户无硬性绑定——国资"什么时候装下一块"没有时间表。</li>
-</ul>
-
-<h3>6.2 新实控人背景与意图</h3>
-<ul>
-<li><b>是谁</b>：福建省国资委（省管全资大数据集团）。</li>
-<li><b>资产为什么优质</b>：数产名商有"国资背景+上海联通6.74亿长约+2000P算力"，客户绑定较强。</li>
-<li><b>为什么买壳</b>：省级国有数据/算力资产需要一个证券化平台，IPO排队太长，重整拿壳最快。</li>
-<li><b>评级</b>：资产质量★★★☆、运作经验★★★、交易执行力★★★★。<b>一句话：这是"产业注入意图强"的国资，但别指望它激进拉市值——它要的是平台、不是暴涨。</b></li>
-</ul>
-
-<h3>6.3 上市公司原业务质量</h3>
-<ul>
-<li><b>主业为什么弱</b>：老IT（物联网周界安防中科融通）已废（净资产为负1.59亿、营收仅224万）；新大数据业务毛利率极低，营收主要靠低毛利的算力硬件集成。</li>
-<li><b>是不是干净壳</b>：<b>不干净</b>。2026H1末总资产14.30亿、负债合计12.08亿，<b>负债率84.5%</b>；货币资金仅9988万 vs 短期借款2.41亿（其中<b>已逾期未偿还短期借款7912万</b>）；应收/长期应收/固定资产大量质押抵押（受限资产账面价值5.45亿）。<b>这是一个"负债压顶、资产被反复抵押"的重壳，不是轻装干净的壳。</b></li>
-<li><b>原业务怎么处理</b>：中科融通等旧资产仍在表内"流血"（负净资产），未彻底剥离——<b>历史包袱并未出清</b>。</li>
-</ul>
-
-<h3>6.4 承诺包活口</h3>
-<p>见第五部分，结论同上：<b>活口在"适时/优质资产/其他优质资产"三处限定语</b>。</p>
-
-<h3>6.5 全流程进度与行情映射</h3>
-<ul>
-<li><b>过山车原因</b>：2025年"预告变脸"（总额法→净额法）是暴跌主因，叠加戴帽。</li>
-<li><b>下一波催化</b>：见4.3催化排序，核心是<b>营收冲3亿</b>的可验证节点。</li>
-</ul>
-
-<h3>6.6 运作特征与综合判断</h3>
-<ul>
-<li><b>操盘手法</b>：司法重整（资本公积转增）+ 现金收购资产注入，<b>全程不用发股</b>，避免各类重组审核门槛——手法克制、合规优先。</li>
-<li><b>为何"慢"</b>：2022年重整→2026年才装第一块算力资产，四年时间主要耗在"星云大数据"反复评估与上市公司自身止血上。</li>
-<li><b>成败关键变量（0/1问题）</b>：①2026营收能否≥3亿；②立案调查是否升级为重大违法。</li>
-<li><b>核心矛盾一句话</b>：<b>"资产有、国资在，但营收凑3亿是硬仗，立案是悬剑"——壳价值的兑现取决于2026年报这一张答卷。</b></li>
-</ul>
-
-<h2>七、壳经济学：这张壳值不值得救</h2>
-
-<h3>7.1 先过"一票否决"三张表</h3>
-<table>
-<thead><tr><th style="width:30%">检查项</th><th>结论</th></tr></thead>
-<tbody>
-<tr><td>重大违法类退市</td><td>⚠️ <b>未定</b>：2023半年报信披被立案（截至2026-09-21无结果）。若最终认定财务造假达量化线→一票否决、不可救；若仅为一般信披违规→不影响"营收冲3亿"主线。<b>这是本标的最大不确定性。</b></td></tr>
-<tr><td>立案调查</td><td>⚠️ 立案期间发股/重大重组受限，但<b>现金收购不受限</b>（数产名商已现金完成即证明）。</td></tr>
-<tr><td>交易类退市</td><td>✅ 无风险：股价1.93元（远高于1元）、市值42亿（远高于5亿主板线）。</td></tr>
-</tbody>
-</table>
-
-<h3>7.2 先看踩了哪条红线，再算账</h3>
-<table>
-<thead><tr><th>红线</th><th>现状</th><th>解决手段</th><th>难度</th></tr></thead>
-<tbody>
-<tr><td>财务类：营收&lt;3亿+亏损</td><td><b>踩了（2025）</b></td><td>换业务/做营收——数产名商并表+联通长约+订单</td><td>中（硬仗）</td></tr>
-<tr><td>财务类：净资产为负</td><td>未踩（归母2.13亿为正）</td><td>——</td><td>——</td></tr>
-<tr><td>财务类：审计非标</td><td>未踩（2025标准无保留）</td><td>——</td><td>——</td></tr>
-<tr><td>规范类：资金占用/违规担保</td><td>无（半年报明确"否"）</td><td>——</td><td>——</td></tr>
-<tr><td>重大违法类</td><td><b>悬而未决（立案中）</b></td><td>无法"救"，只能等结论</td><td>不可控</td></tr>
-</tbody>
-</table>
-
-<h3>7.3 救壳四手段对照</h3>
-<ul>
-<li><b>换人</b>：已做（2026年3月换届，国资班子稳定）。</li>
-<li><b>换业务</b>：已做（大数据/算力转型，数产名商并表）。</li>
-<li><b>剥离差业务</b>：<b>未充分做</b>（中科融通等旧包袱仍在表内）。</li>
-<li><b>搞钱</b>：重整时已搞到9亿，现靠银行贷款+联通算力预付类现金流。</li>
-</ul>
-
-<h3>7.4 值不值得救的结论</h3>
-<ul>
-<li><b>国资视角</b>：必须救。一个省级大数据/算力平台的上市壳，退出成本远高于续命成本；42亿市值的壳一旦退市，省级数字经济战略缺一块拼图。</li>
-<li><b>市场化视角</b>：<b>"营收冲3亿"的实现路径真实存在</b>（数产名商全年并表、上海联通每年1.21亿、已中标约6729万订单、平潭998万预中标、存量政企/教育项目），但<b>毛利率极低→"收入增长≠盈利改善"</b>，短期仍是"靠营收避险、靠叙事撑估值"。</li>
-<li><b>一句话</b>：这是一张<b>有上级意志背书、有真资产垫底、但负债沉重、且被立案悬刀</b>的算力壳。<b>能不能救活，看2026年报"营收"这一个数。</b></li>
-</ul>
-
-<h2>八、核心财务数据（定稿口径 + 勾稽自检）</h2>
-
-<h3>8.1 主要会计数据（营收/利润）</h3>
-<table>
-<thead><tr><th>指标</th><th class="num">2023</th><th class="num">2024</th><th class="num">2025（定稿）</th><th class="num">2026H1</th></tr></thead>
-<tbody>
-<tr><td>营业收入（元）</td><td class="num">335,479,491.00</td><td class="num">308,691,187.04</td><td class="num">88,139,840.75</td><td class="num">106,949,282.12</td></tr>
-<tr><td>营收同比</td><td class="num">——</td><td class="num">-8.00%</td><td class="num"><b>-71.45%</b></td><td class="num">-31.93%</td></tr>
-<tr><td>扣除后营收（元）</td><td class="num">329,923,927.71</td><td class="num">304,622,049.38</td><td class="num">87,991,014.46</td><td class="num">—</td></tr>
-<tr><td>归母净利润（元）</td><td class="num">扭亏</td><td class="num">5,653,700</td><td class="num"><b>-145,636,973.28</b></td><td class="num">-28,368,516.61</td></tr>
-<tr><td>扣非归母净利（元）</td><td class="num">——</td><td class="num">-72,430,400</td><td class="num"><b>-135,883,497.31</b></td><td class="num">-28,907,464.36</td></tr>
-<tr><td>经营现金流净额（元）</td><td class="num">——</td><td class="num">——</td><td class="num">约-89,730,200</td><td class="num">-53,200,936.36</td></tr>
-</tbody>
-</table>
-<p class="small">数据来源：<a href="https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-29/600734_20260429_HZN6.pdf" target="_blank">2025年报(上交所)</a>　·　<a href="https://stock.stockstar.com/RB2026042900016916.shtml" target="_blank">证券之星年报解读</a>　·　本地半年报底稿。</p>
-
-<h3>8.2 资产负债（合并资产负债表，半年报定稿）</h3>
-<table>
-<thead><tr><th>项目</th><th class="num">2025-12-31</th><th class="num">2026-06-30</th></tr></thead>
-<tbody>
-<tr><td>资产总计（元）</td><td class="num">1,624,051,908.89</td><td class="num">1,429,879,642.81</td></tr>
-<tr><td>负债合计（元）</td><td class="num">1,177,028,918.86</td><td class="num">1,208,290,326.44</td></tr>
-<tr><td><b>负债率</b></td><td class="num"><b>72.48%</b></td><td class="num"><b>84.50%</b></td></tr>
-<tr><td>归母净资产（元）</td><td class="num">351,589,942.06</td><td class="num">213,288,041.64</td></tr>
-<tr><td>所有者权益合计（元）</td><td class="num">447,022,990.03</td><td class="num">221,589,316.37</td></tr>
-<tr><td>少数股东权益（元）</td><td class="num">95,433,047.97</td><td class="num">8,301,274.73</td></tr>
-<tr><td>货币资金（元）</td><td class="num">237,160,708.96</td><td class="num">99,883,926.43</td></tr>
-<tr><td>短期借款（元）</td><td class="num">238,987,237.00</td><td class="num">241,443,289.41</td></tr>
-<tr><td>长期借款（元）</td><td class="num">244,340,000.00</td><td class="num">307,890,000.00</td></tr>
-</tbody>
-</table>
-
-<p><b>勾稽自检</b>：①负债合计+所有者权益合计=资产总计（2025末：11.77亿+4.47亿=16.24亿✅；2026H1：12.08亿+2.22亿=14.30亿✅）；②归母净资产2026H1(2.13亿)≈期初3.52亿−上半年归母净利0.28亿−收购数产名商同一控制下追溯调整（资本公积由15.12亿降至14.08亿、少数股东权益由0.95亿降至0.08亿）✅；③负债率=负债合计/资产总计（未用归母倒推）✅。</p>
-
-<h3>8.3 前十大股东与质押（2026-06-30）</h3>
-<table>
-<thead><tr><th>#</th><th>股东</th><th class="num">持股（万股）</th><th class="num">比例</th><th>性质</th><th>质押/冻结</th></tr></thead>
-<tbody>
-<tr><td>1</td><td>福建省数晟投资合伙企业（有限合伙）</td><td class="num">54,457.56</td><td class="num">25.00%</td><td>国有法人</td><td>无</td></tr>
-<tr><td>2</td><td>福建大数据产业投资控股有限公司</td><td class="num">2,408.08</td><td class="num">1.11%</td><td>国有法人</td><td>无</td></tr>
-<tr><td>3</td><td>福建新立基投资合伙企业（有限合伙）</td><td class="num">2,080.73</td><td class="num">0.96%</td><td>非国有法人</td><td>无</td></tr>
-<tr><td>4</td><td>张志团</td><td class="num">1,539.29</td><td class="num">0.71%</td><td>自然人</td><td>无</td></tr>
-<tr><td>5</td><td>张双喜</td><td class="num">1,310.45</td><td class="num">0.60%</td><td>自然人</td><td>无</td></tr>
-<tr><td>6</td><td>张雅芳</td><td class="num">1,305.98</td><td class="num">0.60%</td><td>自然人</td><td>无</td></tr>
-<tr><td>7</td><td>张天虚</td><td class="num">1,214.42</td><td class="num">0.56%</td><td>自然人</td><td>无</td></tr>
-<tr><td>8</td><td>张炜达</td><td class="num">1,127.11</td><td class="num">0.52%</td><td>自然人</td><td>无</td></tr>
-<tr><td>9</td><td>梁傍远</td><td class="num">817.16</td><td class="num">0.38%</td><td>自然人</td><td>无</td></tr>
-<tr><td>10</td><td>福州开发区国有资产营运有限公司</td><td class="num">787.50</td><td class="num">0.36%</td><td>国有法人</td><td>无</td></tr>
-</tbody>
-</table>
-
-<ul>
-<li><b>股东总数12.25万户</b>；前十大股东<b>无一质押/冻结</b>；一致行动人=福建数晟+大数据产投（合计26.11%）。国资股权干净、无爆仓隐忧，这是"壳"最可贵的属性之一（相对多数ST壳股）。</li>
-</ul>
-
-<h3>8.4 退市风险透视（2026-09-21基准）</h3>
-<ul>
-<li><b>三大"红灯"</b>：①扣非连亏（2025年-1.36亿、2026H1-0.29亿）——红灯；②净资产2.13亿为正——绿灯；③经营现金流2026H1净流出5320万——黄灯（仍靠筹资续命）。</li>
-<li><b>现金危机</b>：货币资金9988万 vs 已逾期短借7912万 + 应付利息8277万——<b>流动性偏紧但非即刻断裂</b>，靠国资背书+银行续贷+联通算力回款续命。</li>
-</ul>
-
-<h2>九、附录：逻辑漏洞与反方观点（自查）</h2>
-<ol>
-<li><b>"营收冲3亿"可能靠"总额法/净额法"再被监管质疑</b>：2025年营收暴跌正是"净额法"挤水分所致，2026年若靠算力硬件"总额法"硬凑、监管再问询，营收认定仍有被下调风险。</li>
-<li><b>立案调查是"黑箱"</b>：虽指向2023半年报、公司称"不涉及其他年度"，但最终处罚口径未出，最坏情形（重大违法认定）直接否定本报告"可救"结论。</li>
-<li><b>"国资必救"是假设</b>：福建省国资委未公开承诺"保壳"，若2026营收仍不达标，理论上国资也可能放弃（概率低，但不能排除）。</li>
-<li><b>市值42亿 vs 归母净资产2.13亿的"壳溢价"</b>：PB近20倍，已透支大量"算力注入"预期，若注入节奏放缓，估值有回撤风险。</li>
-</ol>
-
-<h2>十、数据来源</h2>
-<div class="src">1. 《福建实达集团股份有限公司2026年半年度报告》——2026-08-27（本地底稿PDF "2026-08-27_福建实达集团股份有限公司2026年半年度报告.pdf"）</div>
-<div class="src">2. 《福建实达集团股份有限公司关于公司股票被实施退市风险警示暨停牌的公告》（第2026-021号）——2026-04-28，巨潮　<a href="http://dataclouds.cninfo.com.cn/shgonggao/hsomarket/2026/20260428/83ab727550a44c51b7587b38a7d1fca5.PDF" target="_blank">http://dataclouds.cninfo.com.cn/shgonggao/hsomarket/2026/20260428/83ab727550a44c51b7587b38a7d1fca5.PDF</a></div>
-<div class="src">3. 《福建实达集团股份有限公司2025年年度报告》——2026-04-29，上交所　<a href="https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-29/600734_20260429_HZN6.pdf" target="_blank">https://static.sse.com.cn/.../600734_20260429_HZN6.pdf</a></div>
-<div class="src">4. 《审计报告》（华兴审字2026 25016470015号）——2026-04-29，上交所　<a href="http://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-29/600734_20260429_NT5P.pdf" target="_blank">http://www.sse.com.cn/.../600734_20260429_NT5P.pdf</a></div>
-<div class="src">5. 《福建实达集团股份有限公司关于股东权益变动暨控股股东发生变更的提示性公告》（第2022-023号）——2022-02-24，上交所　<a href="https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2022-02-24/600734_20220224_2_4Mhx2odM.pdf" target="_blank">https://static.sse.com.cn/.../600734_20220224_2_4Mhx2odM.pdf</a></div>
-<div class="src">6. 《简式权益变动报告书》——2022-02-24，中国证券报　<a href="https://epaper.cs.com.cn/zgzqb/images/2022-02/24/B048/zqB04824.pdf" target="_blank">https://epaper.cs.com.cn/zgzqb/images/2022-02/24/B048/zqB04824.pdf</a></div>
-<div class="src">7. 《关于法院裁定受理公司重整暨股票被继续实施退市风险警示的公告》——2021-11-27，上交所　<a href="https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2021-11-27/600734_20211127_1_jvxVgJnV.pdf" target="_blank">https://www.sse.com.cn/.../600734_20211127_1_jvxVgJnV.pdf</a></div>
-<div class="src">8. 《福建实达集团股份有限公司关于重整进展的公告》（第2021-096号）——2021-12-23　<a href="http://m.toutiao.com/group/7044955800623645197/" target="_blank">http://m.toutiao.com/group/7044955800623645197/</a></div>
-<div class="src">9. 《福建实达集团股份有限公司关于重整计划执行完毕的公告》（第2021-101号）——2021-12-31　<a href="http://m.toutiao.com/group/7047905308999746085/" target="_blank">http://m.toutiao.com/group/7047905308999746085/</a></div>
-<div class="src">10. 《中国证监会福建监管局行政处罚决定书〔2022〕2号（ST实达）》——2022-12-05，证监会福建局　<a href="http://www.csrc.gov.cn/fujian/c104054/c6909562/content.shtml" target="_blank">http://www.csrc.gov.cn/fujian/c104054/c6909562/content.shtml</a></div>
-<div class="src">11. 《关于对景百孚、张振伟、郭春光采取出具警示函措施的决定》〔2021〕9号——2021-04-02，证监会福建局　<a href="http://www.csrc.gov.cn/fujian/c104054/c46c64a01bcec454099b8ec06f9c2baf9/content.shtml" target="_blank">http://www.csrc.gov.cn/fujian/.../content.shtml</a></div>
-<div class="src">12. 《关于福建实达信息技术有限公司和景百孚收到福建证监局警示函的公告》（第2021-079号）——2021-11-30，证券日报　<a href="http://m.epaper.zqrb.cn/html/2021-11/30/content_788099.htm" target="_blank">http://m.epaper.zqrb.cn/html/2021-11/30/content_788099.htm</a></div>
-<div class="src">13. 《2025年年度业绩预告》（第2026-003号）——2026-01-31，中国证券报　<a href="https://epaper.cs.com.cn/zgzqb/html/2026-01/31/nw.D110000zgzqb_20260131_9-B072.htm" target="_blank">https://epaper.cs.com.cn/.../20260131_9-B072.htm</a></div>
-<div class="src">14. 《关于股票可能被实施退市风险警示的第二次风险提示公告》（第2026-015号）——2026-04-24，上海证券报　<a href="http://paper.cnstock.com/html/2026-04/25/content_2205707.htm" target="_blank">http://paper.cnstock.com/html/2026-04/25/content_2205707.htm</a></div>
-<div class="src">15. 《关于上海证券交易所对公司2025年业绩预告相关事项的监管工作函的回复公告》（第2026-009号）——2026-03-17，上海证券报　<a href="http://paper.cnstock.com/html/2026-03/17/content_2189077.htm" target="_blank">http://paper.cnstock.com/html/2026-03/17/content_2189077.htm</a></div>
-<div class="src">16. 《股票交易异常波动公告》——2026-05-12，上交所　<a href="https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-05-13/600734_20260513_SG4O.pdf" target="_blank">https://static.sse.com.cn/.../600734_20260513_SG4O.pdf</a></div>
-<div class="src">17. 《实达集团：4月30日起被实施退市风险警示 29日停牌一天》——2026-04-28，上海证券报·中国证券网　<a href="http://www.cnstock.com/commonDetail/697972" target="_blank">http://www.cnstock.com/commonDetail/697972</a></div>
-<div class="src">18. 《实达集团：拟1.85亿元收购数产名商95%股权 加码算力赛道》——2025-11-07，中国证券报　<a href="https://www.cs.com.cn/ssgs/gsxw/202511/t20251107_6522243.html" target="_blank">https://www.cs.com.cn/ssgs/gsxw/202511/t20251107_6522243.html</a></div>
-<div class="src">19. 《实达集团拟收购数产名商95%股权，将有利于公司聚焦主责主业》——2025-11-04，证券时报　<a href="https://www.stcn.com/article/detail/3478468.html" target="_blank">https://www.stcn.com/article/detail/3478468.html</a></div>
-<div class="src">20. 《持续加码算力业务 实达集团股东会审议通过数产名商收购议案》——2025-11-20，中国证券报　<a href="https://www.cs.com.cn/ssgs/gsxw/202511/t20251120_6524340.html" target="_blank">https://www.cs.com.cn/ssgs/gsxw/202511/t20251120_6524340.html</a></div>
-<div class="src">21. 《*ST实达：预计2026上半年净亏损同比收窄32.44%至54.96%》——2026-07-14，中国证券报　<a href="https://www.cs.com.cn/ssgs/01/2026/07/14/detail_2026071410024316.html" target="_blank">https://www.cs.com.cn/ssgs/01/2026/07/14/detail_2026071410024316.html</a></div>
-<div class="src">22. 《投资者关系活动记录表》——2026-05-08　<a href="http://notice.10jqka.com.cn/api/pdf/dc7e90f147ca70b3.pdf" target="_blank">http://notice.10jqka.com.cn/api/pdf/dc7e90f147ca70b3.pdf</a></div>
-<div class="src">23. 《*ST实达被立案涉2023年半年报信披 2026年业绩稳步复苏》——2026-08-09，证券时报网　<a href="https://stcn.com/article/detail/4065609.html" target="_blank">https://stcn.com/article/detail/4065609.html</a></div>
-<div class="src">24. 《财报快递｜实达集团2025年度营收骤降逾七成，净利暴跌超26倍，触及退市风险警示》——2026-04-29，证券之星　<a href="https://stock.stockstar.com/RB2026042900016916.shtml" target="_blank">https://stock.stockstar.com/RB2026042900016916.shtml</a></div>
-<div class="src">25. 《*ST实达：2026年上半年同比减亏46.32% 下半年订单将进入集中兑现期》——2026-08-26，证券时报网　<a href="https://stcn.com/article/detail/4132269.html" target="_blank">https://stcn.com/article/detail/4132269.html</a></div>
-<div class="src">26. 《*ST实达（sh600734）行情》——2026-09-21，证券时报　<a href="https://stcn.com/quotes/index/sh600734.html" target="_blank">https://stcn.com/quotes/index/sh600734.html</a></div>
-<div class="src">27. 《*ST实达：预中标1015.7万元中国电信福州分公司采购项目》——2026-08-18，证券时报网　<a href="https://stcn.com/article/detail/4084929.html" target="_blank">https://stcn.com/article/detail/4084929.html</a></div>
-
-<div class="disclaimer">（免责声明：本文内容仅为自用兼知识分享与逻辑分析，数据可能有错误或不及时，不构成任何投资建议。市场有风险，投资需谨慎。）</div>
-
-</div>
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
 </body>
 </html>
