@@ -1,50 +1,139 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ST新元(300472)深度研究·王艳体</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ST新元（300472.SZ）研究报告</title>
 <style>
-  :root{--ink:#1a1a1a;--muted:#6b7280;--accent:#b91c1c;--accent2:#0f6cbd;--line:#e5e7eb;--bg:#faf9f7;--card:#ffffff;}
-  *{box-sizing:border-box;}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;color:var(--ink);background:var(--bg);line-height:1.85;font-size:16px;}
-  .wrap{max-width:900px;margin:0 auto;padding:32px 20px 80px;}
-  h1{font-size:28px;line-height:1.4;margin:8px 0 6px;color:#0b0b0b;}
-  h2{font-size:22px;margin:48px 0 14px;padding-left:12px;border-left:5px solid var(--accent);color:#111;}
-  h3{font-size:18px;margin:30px 0 10px;color:#1f2937;}
-  h4{font-size:16px;margin:20px 0 8px;color:#374151;}
-  p{margin:10px 0;}
-  .muted{color:var(--muted);font-size:14px;}
-  .small{font-size:14px;}
-  .byline{color:var(--muted);font-size:14px;margin:0 0 8px;}
-  .lead{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:16px 18px;margin:18px 0;}
-  .lead p{margin:6px 0;}
-  .verdict{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:16px 18px;margin:18px 0;}
-  .verdict b.tag{color:var(--accent);}
-  .snapshot{background:#f0f6ff;border:1px solid #bfdbfe;border-radius:8px;padding:14px 16px;margin:16px 0;font-size:15px;}
-  table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px;background:var(--card);}
-  th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top;}
-  th{background:#f3f4f6;font-weight:600;white-space:nowrap;}
-  tr:nth-child(even) td{background:#fafafa;}
-  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
-  .neg{color:#b91c1c;}
-  .pos{color:#047857;}
-  a{color:var(--accent2);text-decoration:none;word-break:break-all;}
-  a:hover{text-decoration:underline;}
-  .src{margin:6px 0;font-size:13px;color:var(--muted);}
-  .quote{background:#f5f5f4;border-left:3px solid #d6d3d1;padding:8px 14px;margin:12px 0;font-size:14.5px;color:#292524;}
-  .zhz{color:#b45309;font-weight:600;}
-  blockquote{margin:12px 0;padding:6px 16px;border-left:3px solid #9ca3af;color:#4b5563;background:#fff;}
-  ol,ul{padding-left:24px;}
-  li{margin:4px 0;}
-  .tagline{display:inline-block;background:#111;color:#fff;font-size:12px;padding:2px 8px;border-radius:3px;margin-right:6px;}
-  .hr{border:none;border-top:1px dashed var(--line);margin:36px 0;}
-  .toc{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 18px;font-size:14px;}
-  .toc a{color:#374151;}
-  .warn{background:#fffbeb;border:1px solid #fde68a;border-radius:6px;padding:10px 14px;margin:12px 0;font-size:14px;}
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
 </style>
 </head>
-<body><script id="sbgatescript">
+<body>
+<script id="sbgatescript">
 (function(){
   var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
   try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
@@ -73,328 +162,290 @@
   else document.addEventListener('DOMContentLoaded', build);
 })();
 </script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>7 章 · 22 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 五要素结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断（第一翼）</a><a class="sblv3" href="#sec0">1.1 基本信息与股权</a><a class="sblv3" href="#sec1">1.2 王艳式六栏目</a><a class="sblv3" href="#sec2">1.3 关键人物与重要关联公司</a><a class="sblv3" href="#sec3">1.4 全流程进度看板</a><a class="sblv3" href="#sec4">1.5 运作特征与综合判断</a><a class="sblv3" href="#sec5">1.6 ST 风险诊断</a><a class="sblv3" href="#sec6">1.7 四类退市红线逐条对照</a><a class="sblv3" href="#sec7">1.8 摘帽展望</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、公司运营情况</a><a class="sblv3" href="#sec8">2.1 财务状况</a><a class="sblv3" href="#sec9">2.2 子公司与在手订单</a><a class="sblv3" href="#sec10">2.3 股票回购</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、基本面路径（第二翼）</a><a class="sblv3" href="#sec11">3.1 主路径 B · 重整逻辑</a><a class="sblv3" href="#sec12">3.2 辅路径 A · 保壳逻辑</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、炒作逻辑 + 情绪面 + 筹码面（第三翼）</a><a class="sblv3" href="#sec13">4.1 炒作逻辑三支柱</a><a class="sblv3" href="#sec14">4.2 炒作波段与股价水位</a><a class="sblv3" href="#sec15">4.3 情绪与注意力面</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">五、估值与投资结论</a><a class="sblv3" href="#sec16">5.1 估值</a><a class="sblv3" href="#sec17">5.2 投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录</a><a class="sblv3" href="#sec18">附录 A · 待核实 / 需补充清单</a><a class="sblv3" href="#sec19">附录 B · 关键信源链接</a><a class="sblv3" href="#sec20">附录 C · 逻辑漏洞与反方观点（5 问速版）</a><a class="sblv3" href="#sec21">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
 <div class="wrap">
+<h1 id="top">ST新元（300472.SZ）研究报告</h1>
+<blockquote><p>研究基准日 2026-10-04（数据截至 2026-09-30 收盘 / 最新公告 2026-09-24）· 本报告由 2026-09-21《深度研究》吸收重构，首次落地下手给出二选一结论。</p></blockquote>
+<h2 id="chap0">封面 · 五要素结论</h2>
+<p><strong>操作结论：卖出（回避）</strong></p>
+<p>红线分类：<span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300472&announcementId=1225542714&orgId=9900024679&announcementTime=2026-09-02" target="_blank" rel="noopener">因信息披露违法而行政处罚</a></span>·<span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300472&announcementId=1225542714&orgId=9900024679&announcementTime=2026-09-02" target="_blank" rel="noopener">连续三年扣非孰低为负</a></span>·<span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300472&announcementId=1225551462&orgId=9900024679&announcementTime=2026-09-07" target="_blank" rel="noopener">主要银行账户被冻结</a></span>·<span class="sttag sttag-teal"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300472&announcementId=1225581716&orgId=9900024679&announcementTime=2026-09-24" target="_blank" rel="noopener">预重整</a></span></p>
+<p>生死定级：<strong>命悬一线——可救，但须与时间赛跑</strong>（已"摘星"、未"摘帽"；2026 年报是生死裁判）</p>
+<p>自救空间：产业方随锐系＋抚州国资真金白银已到账（现金捐赠 3.12 亿元、共益债 0.38 亿元），短期续命筹码不弱；但"重整受理"这一 1/0 开关 14 个月未按下，且 2026 年报"营收≥1 亿元＋净资产为正"双条件大概率失守，自救窗口正在收缩。</p>
+<p>主要看点：<strong>产业方随锐科技集团（创始人舒骋，已任董事长兼总经理）以 3.5 元/股认购 1 亿股、绑定"通信云＋AI 巡检机器人"资产注入，抚州临川国资（临川国控）作财务投资人托底</strong>——但重整申请自 2025-07 启动至今未获法院受理，2026-09-24 已<strong>第五次延期至 2027-01-03</strong>。</p>
+<table><thead><tr><th>要点</th><th>数值（2026-09-30 收盘）</th></tr></thead><tbody><tr><td>收盘价 / 涨跌</td><td>6.78 元 / +1.95%</td></tr><tr><td>总市值 / 流通市值</td><td>18.66 亿元 / 17.41 亿元</td></tr><tr><td>总股本</td><td>2.7526 亿股</td></tr><tr><td>市净率（归母净资产口径）</td><td>151.26 倍</td></tr><tr><td>市销率（2025 年营收口径）</td><td>15.05 倍</td></tr><tr><td>换手率 / 年初至今</td><td>0.91% / −11.95%</td></tr><tr><td>近 20 年价格分位数</td><td><strong>9.28%</strong>（历史低位区）</td></tr><tr><td>2026H1 营收 / 归母净利</td><td>4,866.37 万元（+657.67%）/ −3,101.48 万元</td></tr><tr><td>2026H1 末归母净资产</td><td><strong>1,233.77 万元</strong>（合并所有者权益已为 −1,907.54 万元）</td></tr></tbody></table>
+<blockquote><p>数据来源：行情为腾讯自选股接口（Wind 局域网代理 2026-10-01 起不可达）；财务为 2026 年半年报、2025 年年报定稿数。财务数据以年报/半年报原文为准。</p></blockquote>
+<hr>
+<h2 id="chap1">一、诊断（第一翼）</h2>
+<h3 id="sec0">1.1 基本信息与股权</h3>
+<p><strong>结论：这是一个"没有控股股东、筹码高度分散、原实控人已被废"的壳——朱业胜系合计仅持 11.38% 且几乎全部冻结/质押，前十大股东里新进的全是赌重整的私募与自然人。</strong></p>
+<p>公司注册地江西抚州临川，创业板上市（2015-06-11），当前简称 ST新元（2026-09-03 由 *ST新元摘星而来）。实控人仍为朱业胜（一致行动人曾维斌、姜承法、宁波世纪万向），四人合计持股 <strong>11.38%</strong>（2026H1 末，较此前 14.32% 下降，因 2026-01-20 朱业胜 810.61 万股被司法拍卖过户）。</p>
+<p>朱业胜所持 1,078.99 万股<strong>全部司法冻结</strong>、其中 980.00 万股设质押；世纪万向所持 441.09 万股亦全部冻结、200.00 万股质押。<strong>原实控人已被市场禁入（5 年），却仍是名义实控人</strong>——一只"实控人已废、壳还姓朱"的票。</p>
+<details class="fold"><summary>前十大股东明细与身份识别（2026-06-30）</summary><div class="fold-body">
 
-<h1>寻找十倍系列——ST新元(300472)【*ST去星后，随锐系+抚州国资双路救火，"AI·通信云"资产装壳还是套现？】</h1>
-<div class="byline">王艳的逍遥岛 | 2026-09-21（更新至 2026-09-21）</div>
-<div class="muted">点击蓝字 关注我们 · 人生缘何不逍遥，只因未到逍遥岛 · 逍遥人生＝精神（国学）＋财富（创业/投资/个人品牌）</div>
+<table><thead><tr><th>排名</th><th>股东</th><th>性质</th><th>持股比例</th><th>持股数（股）</th><th>报告期变动</th><th>质押/冻结</th></tr></thead><tbody><tr><td>1</td><td>朱业胜</td><td>自然人（原实控人）</td><td>3.92%</td><td>10,789,993</td><td>持平</td><td>冻结 1,078.99 万股 / 质押 980.00 万股</td></tr><tr><td>2</td><td>曾维斌</td><td>自然人（一致行动人）</td><td>3.02%</td><td>8,303,618</td><td>持平</td><td>无</td></tr><tr><td>3</td><td>青岛洪运瑞恒私募—洪运瑞恒泓创老字号私募证券投资基金</td><td>私募基金</td><td>2.94%</td><td>8,106,050</td><td><strong>新进</strong></td><td>无</td></tr><tr><td>4</td><td>姜承法</td><td>自然人（一致行动人）</td><td>2.84%</td><td>7,815,618</td><td>持平</td><td>无</td></tr><tr><td>5</td><td>吴优</td><td>自然人</td><td>2.43%</td><td>6,690,000</td><td><strong>+581.49 万股</strong></td><td>无</td></tr><tr><td>6</td><td>宁波世纪万向企业管理合伙企业（有限合伙）</td><td>一致行动人</td><td>1.60%</td><td>4,410,900</td><td>持平</td><td>冻结 441.09 万股 / 质押 200.00 万股</td></tr><tr><td>7</td><td>李晓明</td><td>自然人</td><td>1.28%</td><td>3,520,400</td><td>−55.91 万股</td><td>无</td></tr><tr><td>8</td><td>广东大兴华旗资产管理—大兴华旗奋斗五号私募证券投资基金</td><td>私募基金</td><td>1.11%</td><td>3,066,800</td><td><strong>新进</strong></td><td>无</td></tr><tr><td>9</td><td>北京信升创卓投资管理中心（有限合伙）</td><td>有限合伙</td><td>0.81%</td><td>2,237,700</td><td><strong>新进</strong></td><td>无</td></tr><tr><td>10</td><td>黄群</td><td>自然人</td><td>0.80%</td><td>2,200,020</td><td><strong>新进</strong></td><td>无</td></tr></tbody></table>
+<p><strong>身份识别</strong>：第 3、5、8、9、10 位（洪运瑞恒私募基金、吴优、大兴华旗奋斗五号、信升创卓、黄群）在 2026 上半年<strong>集中新进/增持</strong>，合计约 7.7%，是典型的<strong>重整博弈型财务投资者与牛散</strong>（赌重整落地后的转增与注入），非产业资本、无锁定承诺。<strong>筹码集中度</strong>：前十大合计约 20.75%，无单一控股方；股东户数约 1.02 万户（2026 年中报口径）。<strong>判读</strong>：筹码分散＋博弈资金进场＝股价对"重整受理"这一单一事件高度敏感，事件不来则易横盘阴跌。</p>
 
-<div class="lead">
-  <p>更新至 2026-09-21。本文结论先行，三句话点题：</p>
-  <p>① <b>这家公司到底发生了什么：</b>万向新元科技（300472，创业板，抚州）2022.5—2024.6 通过虚构"分布式存储装备集成业务"连续虚增收入/利润，2024年报被大华所出具<b>无法表示意见</b>并触发退市风险警示（*ST），原实控人朱业胜被证监会罚款400万＋5年证券市场禁入。</p>
-  <p>② <b>为什么现在仍极度危险：</b>公司已经<i>合并报表层面资不抵债</i>（2026年6月末所有者权益合计 -1907.54万元、资产负债率102%），2026年6月末归母净资产只剩 1233.77万元、一路被烧穿，若2026年报"营收不到1亿元且亏损"或"期末净资产转负"，将重新触发财务类退市。</p>
-  <p>③ <b>核心矛盾是什么：</b>救兵<b>随锐科技集团（创始人舒骋）＋抚州国资（临川国控）</b>的"预重整＋产业投资人"方案<b>已签约、钱已给了一部分（现金捐赠3.12亿元等）、管理层已派驻（舒骋任董事长兼总经理）</b>，但<b>重整申请至今尚未被法院受理</b>——随时可能"签约了却落不了地"。</p>
+</div></details>
+<h3 id="sec1">1.2 王艳式六栏目</h3>
+<p><strong>结论：前世今生是"洗过两次壳、换过三次活法"；股东阵容已在 1.1 展开；成本锚点是全案最硬的尺——产业方 3.5 元/股、财务方部分 3.9 元/股，而现价 6.78 元已是产业方成本的 1.94 倍。</strong></p>
+<details class="fold"><summary>① 前世今生时间轴（含金额 / 每股价格 / 资金来源）</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>关键事件</th><th>股权·实控人变化</th><th>背后的逻辑</th></tr></thead><tbody><tr><td>2001/2003</td><td>北京万向新元环保工程技术有限公司成立，定位轮胎橡胶炼胶成套装备</td><td>朱业胜为实控人、董事长</td><td>专用装备制造，重资产慢生意</td></tr><tr><td>2011-07</td><td>整体变更为股份公司</td><td>朱业胜＋曾维斌＋姜承法＋张玉生＋世纪万向</td><td>为 IPO 铺路</td></tr><tr><td>2015-06-11</td><td>创业板挂牌，简称"新元科技"，代码 300472</td><td>实控人朱业胜系</td><td>橡胶智能装备＋环保主业上市</td></tr><tr><td>2017</td><td>发行股份＋现金收购清投智能（智能显控/枪弹柜/机器人/滑雪机）</td><td>股权集中度下降</td><td>跨界"数字化智能装备"，讲故事开端</td></tr><tr><td>2019-2020</td><td>注册地迁至江西抚州临川；更名"万向新元科技股份有限公司"</td><td>实控人仍朱业胜</td><td>换取抚州地方资源</td></tr><tr><td>2022.5-2024.6</td><td>虚构"分布式存储装备集成业务"（单一客户江西世星科技），虚增收入/成本/利润/存货</td><td>—</td><td>财务造假，为保壳铤而走险</td></tr><tr><td>2024-08-14</td><td>朱业胜等与湖南新辉控股签《表决权委托协议》</td><td>实控人变更为吴贤龙</td><td>第一次"换活法"：外部资本接盘</td></tr><tr><td>2025-03-27</td><td>收到证监会《立案告知书》（证监立案字 0252025001 号）</td><td>—</td><td>造假东窗事发</td></tr><tr><td>2025-04-29</td><td>2024 年报：大华出具无法表示意见（财报）＋否定意见（内控）</td><td>—</td><td>审计失守→退市风险警示</td></tr><tr><td>2025-05-06</td><td>股票被实施退市风险警示，简称变"*ST新元"</td><td>—</td><td>创业板规则 10.3.1 条款</td></tr><tr><td>2025-06-30</td><td>债权人向抚州中院申请重整及预重整</td><td>—</td><td>被债权人逼上重整台面</td></tr><tr><td>2025-07-04</td><td>抚州中院启动预重整，指定锦天城律所任临时管理人</td><td>—</td><td>进入"预重整＋司法重整"路径</td></tr><tr><td>2025-08-14</td><td>重整投资人报名 21 家（产业 10＋财务 11）</td><td>—</td><td>壳的吸引力仍在</td></tr><tr><td>2025-09-01</td><td>解除与新辉控股表决权委托；吴贤龙辞任董事长</td><td>实控人恢复为朱业胜</td><td>第一次接盘方"撤退"</td></tr><tr><td>2025-11-14</td><td>收到《行政处罚决定书》（〔2025〕4 号）：公司罚 800 万元；朱业胜罚 400 万元＋5 年禁入；张瑞英 250 万元；刘毅 100 万元；盖平 60 万元</td><td>朱业胜被 5 年禁入</td><td>造假落锤，但"不触及重大违法强制退市"</td></tr><tr><td>2025-12-11</td><td>与产业投资人签《重整投资协议》：资本公积转增约 3.97 亿股；随锐新元 3.5 元/股购 1 亿股＝3.50 亿元；绿技行 3.5 元/股购 2,000 万股＝0.70 亿元；1.1 亿股偿债</td><td>随锐系成拟定牵头产业投资人</td><td>第二次"换活法"：科技产业资本落子</td></tr><tr><td>2025 年末</td><td>产投方已投入共益债 0.38 亿元＋现金捐赠 3.12 亿元，资本公积增至 14.25 亿元</td><td>—</td><td>真金白银先到账续命</td></tr><tr><td>2026-01/02</td><td>设立北京锐新信创科技（新元持 20%）、江西绿元低碳科技</td><td>随锐系业务开始"装"进来</td><td>用合资子公司注入 AI/云网/低碳业务</td></tr><tr><td>2026-03-02/12</td><td>第六届董事会换届：舒骋（随锐创始人）当选董事长兼总经理；冷骥任法定代表人/董事</td><td>随锐系全面接管</td><td>"治理更迭"先于"股份过户"</td></tr><tr><td>2026-06-08/09</td><td>与抚州市临川区国资（临川国控）签《重整投资协议》</td><td>国资做财务投资人托底</td><td>"国资＋产业资本"联合救火定型</td></tr><tr><td>2026-08-27</td><td>子公司江西锐元受让四川国科愿景融合科技 51% 股权（对价 765 万元）</td><td>—</td><td>产投方导入可并表业务，抬营收</td></tr><tr><td>2026-09-01/03</td><td>深交所撤销退市风险警示，9-02 停牌一天、9-03 复牌，简称变"ST新元"</td><td>—</td><td>"摘星"落地</td></tr><tr><td>2026-09-24</td><td>抚州中院<strong>第五次延长预重整期限至 2027-01-03</strong></td><td>实控人仍朱业胜</td><td><strong>重整受理 14 个月未落地</strong></td></tr><tr><td>2026-10-04（基准日）</td><td>仍处预重整阶段，重整申请尚未被法院受理；股价 6.78 元、市值 18.66 亿元</td><td>实控人持股冻结＋质押＋部分司法拍卖</td><td>成败未定，1/0 开关未按</td></tr></tbody></table>
+<p><strong>关联方合计持股逐年增减</strong>：2024 年末约 14.32% → 2026H1 末 <strong>11.38%</strong>（因司法拍卖过户而下降）——<strong>原体系在"退"，随锐系在"进"（但目前只是治理与业务层面，股权尚未过户）</strong>。</p>
+
+</div></details>
+<details class="fold"><summary>④ 资产质量与估值（星级表）</summary><div class="fold-body">
+
+<table><thead><tr><th>星级维度</th><th>大白话说明</th><th>评级</th></tr></thead><tbody><tr><td>市值与估值</td><td>18.66 亿元小市值，但 PB 151 倍、PS 15 倍，已按"重整成功＋资产注入"定价，不便宜</td><td>★★☆☆☆</td></tr><tr><td>法律合规性</td><td>造假已定性并处罚、立案已结案，历史违规出清；但其他风险警示未消除</td><td>★★★☆☆</td></tr><tr><td>债务与流动性</td><td>合并所有者权益 −1,907.54 万元（资不抵债）、资产负债率 102%、经营现金流 −9,788.52 万元</td><td>★☆☆☆☆</td></tr><tr><td>主业质地</td><td>橡胶/轮胎装备赛道饱和，2024 年末应收账款原值 6.46 亿元、坏账 4.25 亿元；子公司一度停产</td><td>★★☆☆☆</td></tr><tr><td>控制权与运作</td><td>产业方（随锐）＋国资（临川国控）联合，手法清晰、钱已到账；但过户仍未发生</td><td>★★★☆☆</td></tr><tr><td><strong>综合</strong></td><td><strong>可救、正在救、还没救成——基本面无支撑，全靠"重整＋注入"预期撑住市值</strong></td><td>★★☆☆☆</td></tr></tbody></table>
+<blockquote><p><strong>哪一项的高分不能抵消哪一项的低分</strong>：控制权与运作的 ★★★ 不能抵消债务与流动性的 ★——<strong>"钱到了"≠"债清了"，"治理换了"≠"报表改好了"</strong>。</p></blockquote>
+
+</div></details>
+<details class="fold"><summary>⑤ 成本锚点（逐参与方 · 元/股）</summary><div class="fold-body">
+
+<table><thead><tr><th>参与方</th><th>成本（元/股）</th><th>说明</th></tr></thead><tbody><tr><td>北京随锐新元创新科技中心（产业投资人）</td><td><strong>3.50</strong></td><td>认购 1 亿股＝3.50 亿元，重整框架定价</td></tr><tr><td>绿技行（武汉）（产业投资人）</td><td><strong>3.50</strong></td><td>认购 2,000 万股＝0.70 亿元</td></tr><tr><td>深圳市吉富启瑞（财务投资人）</td><td><strong>3.90</strong></td><td>认购 1,000 万股</td></tr><tr><td>临川国控（财务投资人）</td><td>未披露单价</td><td>抚州国资托底</td></tr><tr><td>现价（2026-09-30）</td><td><strong>6.78</strong></td><td>＝产业方成本的 <strong>1.94 倍</strong></td></tr></tbody></table>
+<p><strong>两类定价逻辑必须分清</strong>：随锐/绿技行/吉富的认购价＝<strong>"有稀释的重整底"</strong>（转增 3.97 亿股、原股东被大幅稀释），<strong>不等于</strong>二级市场可参照的"无稀释市场底"；协议受让/司法拍卖价才是"无稀释的市场底"。<strong>判读</strong>：现价相对产业方成本已翻倍，<strong>二级市场在为"重整落地后的第二段"提前买单</strong>，赔率优势被规则性削弱。</p>
+
+</div></details>
+<details class="fold"><summary>⑥ 信息来源汇总（四级分级）</summary><div class="fold-body">
+
+<table><thead><tr><th>序号</th><th>来源类型</th><th>来源与标题（日期）</th><th>链接</th></tr></thead><tbody><tr><td>1</td><td>一手·公告</td><td>《关于公司收到法院再次延长预重整期限决定书的公告》（2026-09-24）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300472&amp;announcementId=1225581716&amp;orgId=9900024679&amp;announcementTime=2026-09-24" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>2</td><td>一手·公告</td><td>《关于公司股票交易撤销退市风险警示并继续被实施其他风险警示暨停牌的公告》（2026-09-02）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300472&amp;announcementId=1225542714&amp;orgId=9900024679&amp;announcementTime=2026-09-02" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>3</td><td>一手·公告</td><td>《2025 年年报问询函回复》（2026-09-02）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300472&amp;announcementId=1225542715&amp;orgId=9900024679&amp;announcementTime=2026-09-02" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>4</td><td>一手·公告</td><td>《关于公司股票交易被实施其他风险警示相关事项的进展公告》（2026-09-07）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300472&amp;announcementId=1225551462&amp;orgId=9900024679&amp;announcementTime=2026-09-07" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>5</td><td>一手·年报</td><td>《2025 年年度报告》（2026-04-27）、2023/2024 年报（更正后，2026-06-26）</td><td>本地底稿（见附录 B）</td></tr><tr><td>6</td><td>一手·年报</td><td>《2026 年半年度报告》（2026-08-28）</td><td>本地底稿</td></tr><tr><td>7</td><td>一手·处罚</td><td>《行政处罚决定书》（〔2025〕4 号，2025-11-14）</td><td>见本地底稿</td></tr><tr><td>8</td><td>数据源</td><td>腾讯自选股行情接口（2026-09-30）</td><td>现价/市值/PB/换手</td></tr><tr><td>9</td><td>数据源</td><td>韭研公社异动整理（2021-07～2025-10，全表 20 条）</td><td>本地 parquet</td></tr><tr><td>10</td><td>数据源</td><td>东财龙虎榜 API（最近上榜 2025-10-13）</td><td>data.eastmoney.com</td></tr><tr><td>11</td><td>数据源</td><td>ST 信息库「＊ST新元-300472.SZ」档案（近 20 年价格分位 9.28%）</td><td>本地库</td></tr><tr><td>12</td><td>二级整理</td><td>上海证券报《*ST新元与产业投资人签署重整投资协议》（2025-12-12）</td><td><a href="http://www.cnstock.com/commonDetail/601783" target="_blank" rel="noopener">上证报</a></td></tr><tr><td>13</td><td>二级整理</td><td>上海证券报《*ST新元：上半年营收同比增长 658% 拟收购四川愿景 51% 股权》（2026-08-27）</td><td><a href="http://www.cnstock.com/commonDetail/777725" target="_blank" rel="noopener">上证报</a></td></tr><tr><td>14</td><td>线索·雪球</td><td>雪球讨论（2026-09-22/09-23/09-24，讨论条数极低）</td><td>ST 信息库「3.重要消息」</td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec2">1.3 关键人物与重要关联公司</h3>
+<p><strong>结论：真正的操盘手是随锐科技集团创始人舒骋（已任董事长兼总经理），他带来的是"工信部多方通信运营商牌照＋政企/党政军客户＋冬奥会背书"；原实控人朱业胜已被 5 年市场禁入。</strong></p>
+<details class="fold"><summary>关键人物简历（核不到的一律写"公告未披露"）</summary><div class="fold-body">
+
+<ul><li><strong>舒骋（拟任新实控方代表，1976 年生，江西德兴人）</strong>：中南大学应用物理、中科院数学所、清华/北大计算机背景，师从 AI 科学家陆汝钤院士，曾任职微软中国。2006 年与冯文澜创办<strong>随锐科技集团</strong>，主营通信云＋AI 工业巡检机器人＋商业显示与大屏显控，北京冬奥会官方协同办公软件供应商，政企客户超 70 万家、平台服务客户超 1,000 万家；旗下有多方通信运营商牌照（稀缺）。<strong>2026-03 起任上市公司董事长兼总经理</strong>，是实质"导演"。公告未披露其出生年月与学历细节，上述履历来自公开资料。</li><li><strong>朱业胜（原实控人）</strong>：公司创始人，<strong>被罚 400 万元＋5 年证券市场禁入</strong>（"情节严重"档），已无法担任董监高。<strong>公告未披露其出生年月与完整履历</strong>。</li><li><strong>张瑞英</strong>：董事、常务副总经理、财务总监，造假直接负责的主管人员，被罚 250 万元。</li><li><strong>吴贤龙（已退出）</strong>：湖南新辉控股系，2024-08 接手表决权、2025-09-01 辞任董事长并解除委托。</li><li><strong>范燕君（1986 年生，会计师）</strong>：就职于抚州临川区属国资，2026 年进入董事会（临川国控提名的财务投资人代表）。</li></ul>
+
+</div></details>
+<details class="fold"><summary>重要关联公司主营与工商（查不到财务即写"未披露"）</summary><div class="fold-body">
+
+<table><thead><tr><th>主体</th><th>与上市公司关系</th><th>主营（公告口径）</th><th>财务</th></tr></thead><tbody><tr><td>随锐科技集团股份有限公司</td><td>产业投资人（董事长舒骋来源方）</td><td>通信云＋AI 工业巡检机器人（库锐德产品线）＋商业显示与大屏显控</td><td><strong>未披露</strong>（非上市，未经上市审计）</td></tr><tr><td>绿技行（武汉）</td><td>产业投资人</td><td>绿色低碳</td><td><strong>未披露</strong></td></tr><tr><td>抚州市临川区国有资产投资控股集团（临川国控）</td><td>财务投资人</td><td>区属国资投资控股</td><td><strong>未披露</strong></td></tr><tr><td>北京锐新信创科技</td><td>新元持股 20% 的合资子公司</td><td>信创/AI</td><td><strong>未披露</strong></td></tr><tr><td>江西绿元低碳科技</td><td>合资子公司</td><td>低碳</td><td><strong>未披露</strong></td></tr><tr><td>四川国科愿景融合科技</td><td>江西锐元受让 51%（2026-08，对价 765 万元）</td><td>融合科技</td><td>2025 年营收 2,655 万元 / 净利 129 万元</td></tr><tr><td>北京万向新元科技</td><td>全资子公司，已进入破产重整</td><td>智能装备</td><td>重整计划草案提交期限延至 2026-12-05</td></tr></tbody></table>
+<blockquote><p><strong>"未披露"本身就是定价锚缺失的硬事实</strong>：随锐作为"注入方"，其自身营收利润从未经上市审计披露，二级市场无法核验"资产成色"。</p></blockquote>
+
+</div></details>
+<h3 id="sec3">1.4 全流程进度看板</h3>
+<p><strong>结论：卡点</strong>不是"谈不拢"（协议已签、钱已到账），而是<strong>"法院受不受理"这一外部开关</strong>——属于典型的"时间未到 + 方案落地难度大"，14 个月、五次延期就是证据。**</p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点或条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>预重整启动</td><td>已完成（2025-07-04）</td><td>—</td><td>—</td><td>法院决定书</td></tr><tr><td>债权申报</td><td>已完成</td><td>—</td><td>—</td><td>临时管理人通知</td></tr><tr><td>投资人招募</td><td>已完成（21 家报名）</td><td>—</td><td>—</td><td>招募公告</td></tr><tr><td>产业投资人签约</td><td>已完成（2025-12-11）</td><td>—</td><td>—</td><td>重整投资协议</td></tr><tr><td>财务投资人签约</td><td>已完成（2026-06）</td><td>—</td><td>—</td><td>临川国控协议</td></tr><tr><td>资金到位</td><td>部分完成（捐赠 3.12 亿＋共益债 0.38 亿）</td><td>后续增厚至 ≥4.5 亿元净资产</td><td>—</td><td>相关公告</td></tr><tr><td>治理接管</td><td>已完成（2026-03）</td><td>—</td><td>—</td><td>董事会决议</td></tr><tr><td><strong>法院受理重整</strong></td><td><strong>未完成</strong></td><td><strong>抚州中院是否受理（1/0）</strong></td><td><strong>2027-01-03 为当前预重整期限终点</strong></td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300472&amp;announcementId=1225581716&amp;orgId=9900024679&amp;announcementTime=2026-09-24" target="_blank" rel="noopener">2026-09-24 延期公告</a></td></tr><tr><td>计划批准 / 转增过户</td><td>未启动</td><td>受理后才可能</td><td>受理后 1-6 个月</td><td>—</td></tr><tr><td><strong>2026 年报保壳</strong></td><td>进行中</td><td><strong>营收≥1 亿元 且 净资产为正</strong></td><td>2027-04 年报披露</td><td>—</td></tr></tbody></table>
+<h3 id="sec4">1.5 运作特征与综合判断</h3>
+<p><strong>结论：手法是"预重整＋资本公积转增认购＋渐进资产注入"，联合模式为产业资本（随锐）＋地方国资（临川国控）＋债权人债转股；交权是"配合式"；成败关键变量是"重整受不受理"（1 和 0）。</strong></p>
+<ul><li><strong>手法</strong>：不是一次性受让，而是"先换治理（舒骋任董事长）→ 再装业务（合资子公司＋收购四川愿景）→ 最后等股权过户"的三段式。</li><li><strong>节奏</strong>：偏慢——预重整自 2025-07 启动已逾 14 个月，横比同类预重整 6-12 个月明显拖长。</li><li><strong>交权性质</strong>：<strong>配合式</strong>（原体系未设置对抗，朱业胜系持股被动冻结/拍卖，无"不谋求控制权"式承诺，属被动退出）。</li><li><strong>核心矛盾一句话</strong>：<strong>资产方是真的、国资托得真，但壳是"资不抵债＋造假＋原实控人禁入"的烂壳，交易执行力是唯一不确定项。</strong></li></ul>
+<hr>
+<h3 id="sec5">1.6 ST 风险诊断</h3>
+<p><strong>结论：这是"财务类退市风险已摘星、但规范类（造假处罚）其他风险警示未摘、并被预重整套牢"的混合型标的；2026 年报一旦踩线即刻重新 *ST。</strong></p>
+<p><strong>戴帽 → 摘星时间线</strong>：2025-05-06 因 2024 年报"无法表示意见"被实施退市风险警示（*ST）；2026-09-03 撤销退市风险警示（摘星），简称变 ST新元，<strong>继续被实施其他风险警示</strong>——原因是三项规范类情形尚未消除：① 财务指标虚假记载遭处罚；② 连续三年扣非前后净利孰低为负；③ 主要银行账户被冻结。</p>
+<details class="fold"><summary>认定文件与处罚明细</summary><div class="fold-body">
+
+<ul><li><strong>退市风险警示认定</strong>：《2024 年年度报告》，大华会计师事务所出具<strong>无法表示意见</strong>（财报）＋<strong>否定意见</strong>（内控），董事张光华投反对票。依据创业板上市规则 10.3.1 条第一款第（三）项。</li><li><strong>处罚落地</strong>：《行政处罚决定书》（〔2025〕4 号，2025-11-14）——公司罚 800 万元；朱业胜 400 万元＋5 年禁入；张瑞英 250 万元；刘毅 100 万元；盖平 60 万元；<strong>明确"不触及重大违法强制退市"</strong>。</li><li><strong>处罚认定事实</strong>：2022-05～2024-06 虚构"分布式存储装备集成业务"（单一客户江西世星科技）。2022 年虚增营收 1.67 亿元（占 29.52%）、2023 年虚增 1.01 亿元（占 43.09%）、2024H1 虚增 0.71 亿元（占 32.18%）。</li><li><strong>非经营性资金占用</strong>：2026H1 末余额 77.03 万元（金额极小）；关联资金往来期末约 3.52 亿元（含经营性）。</li></ul>
+
+</div></details>
+<h3 id="sec6">1.7 四类退市红线逐条对照</h3>
+<p><strong>结论：交易类、重大违法类、财务类三条当前均未触发（这也是能摘星的原因）；但 2026 年报的财务类红线是悬顶之剑。</strong></p>
+<table><thead><tr><th>类型</th><th>触发条件（速查）</th><th>现状</th><th>可救性</th></tr></thead><tbody><tr><td>财务类</td><td>三者孰低为负 <strong>且</strong> 扣除后营收 &lt;1 亿元（创业板）；或净资产为负</td><td><strong>2025 年未触发</strong>（营收 1.22 亿元≥1 亿元门槛，故可摘星）；<strong>2026 年高危</strong></td><td>可救，1 年整改期</td></tr><tr><td>交易类</td><td>连续 20 日收盘价 &lt;1 元 / 市值 &lt;3 亿元 / 股东数 &lt;400</td><td>未触发（6.78 元、18.66 亿元、约 1.02 万户）</td><td><strong>不可救</strong></td></tr><tr><td>规范类</td><td>资金占用、内控连续非标、控制权无序争夺等</td><td>处罚台账命中（造假），其他风险警示未消除</td><td>可救，看大股东配合</td></tr><tr><td>重大违法类</td><td>欺诈发行、造假达量化线、信披违法涉刑</td><td><strong>未触发</strong>——虚增额未同时满足量化线，处罚书明确"不触及"</td><td>一票否决</td></tr></tbody></table>
+<blockquote><p>依据：<code>退市风险预警-20260929.xlsx</code>——交易类/财务类/其他类三表均<strong>无</strong> 300472，<strong>规范类表命中</strong>（处罚台账，2025-11-05）。多路径并发以最致命红线为主路径 → 当前主路径为 <strong>重整（B）</strong>，辅以 <strong>保壳（A）</strong>。</p></blockquote>
+<h3 id="sec7">1.8 摘帽展望</h3>
+<p><strong>结论：其他风险警示（"假 ST"性质）的解绑是"AND 逻辑"——既要对造假所涉年度财报追溯重述，又要自处罚决定书作出日起满 12 个月；最早的确定时点是 2027 年，且摘帽本身不构成上涨理由。</strong></p>
+<ul><li>因 2025-11-14《行政处罚决定书》被实施其他风险警示的，撤销须<strong>同时</strong>满足：① 已追溯重述；② 自决定书作出日起满 12 个月。<strong>最早可申请日 ≈ 2026-11-16 起具备条件（满 12 个月），仍需其他两项（连续三年扣非为负、账户冻结）同步消除。</strong></li><li>叠加变量：<strong>若法院受理重整，股票将被重新实施退市风险警示（*ST）</strong>——即刚摘的星会临时挂回去。</li></ul>
+<hr>
+<h2 id="chap2">二、公司运营情况</h2>
+<h3 id="sec8">2.1 财务状况</h3>
+<p><strong>结论：营收靠"第四季度放量＋并表"勉强守住 1 亿元线，但扣非连年为负、经营持续失血，合并口径已资不抵债——2026 年是纯粹的"保线"年。</strong></p>
+<p>2026H1 营收 4,866.37 万元（同比 +657.67%，主要系同比低基数＋并表），全年要守住 1 亿元线，<strong>下半年须再做约 5,134 万元</strong>。2025 年营收 1.24 亿元亦属"第四季度放量"型。2026H1 末归母净资产仅 1,233.77 万元，<strong>较期初 4,335.25 万元消耗 71.54%</strong>。</p>
+<details class="fold"><summary>利润表核心（合并，定稿数）</summary><div class="fold-body">
+
+<table><thead><tr><th>指标</th><th>2023 年（更正后）</th><th>2024 年（更正后）</th><th>2025 年</th><th>2026H1</th></tr></thead><tbody><tr><td>营业收入</td><td>1.34 亿元</td><td>1.34 亿元</td><td>1.24 亿元</td><td>4,866.37 万元</td></tr><tr><td>营收（扣除后）</td><td>—</td><td>1.31 亿元</td><td>1.22 亿元</td><td>—</td></tr><tr><td>归母净利润</td><td>−2.55 亿元</td><td>−3.73 亿元</td><td>−3.42 亿元</td><td>−3,101.48 万元</td></tr><tr><td>扣非净利润</td><td>−2.68 亿元</td><td>−3.96 亿元</td><td>−3.98 亿元</td><td>−4,162.47 万元</td></tr><tr><td>经营现金流净额</td><td>—</td><td>−1.51 亿元</td><td>−0.23 亿元</td><td>−9,788.52 万元</td></tr><tr><td>基本每股收益</td><td>−0.96 元</td><td>−1.41 元</td><td>−1.29 元</td><td>−0.11 元</td></tr><tr><td>加权平均 ROE</td><td>−48.38%</td><td>−167.94%</td><td>−243.94%</td><td>−111.38%</td></tr></tbody></table>
+<blockquote><p>口径：合并报表、归母口径；来源为 2023/2024 年报（更正后，2026-06-26）、2025 年年报、2026 年半年报。2023 年更正后经营现金流年报追溯表未单列，属口径性缺项。</p></blockquote>
+
+</div></details>
+<details class="fold"><summary>资产负债核心与勾稽自检（合并）</summary><div class="fold-body">
+
+<table><thead><tr><th>指标</th><th>2025 年末</th><th>2026-06-30</th><th>变动</th></tr></thead><tbody><tr><td>资产总计</td><td>10.36 亿元</td><td>9.52 亿元</td><td>−8.13%</td></tr><tr><td>负债合计</td><td>10.23 亿元</td><td>9.71 亿元</td><td>−5.09%</td></tr><tr><td>所有者权益合计</td><td>0.13 亿元</td><td><strong>−0.19 亿元</strong></td><td>转负</td></tr><tr><td>其中：归母净资产</td><td>0.43 亿元</td><td>0.12 亿元</td><td>−71.54%</td></tr><tr><td>少数股东权益</td><td>−0.30 亿元</td><td>−0.31 亿元</td><td>—</td></tr><tr><td>资产负债率</td><td>98.73%</td><td><strong>102.00%</strong></td><td>资不抵债</td></tr></tbody></table>
+<p>勾稽自检：① 2025 年末 10.23＋0.13＝10.36 亿元 ✓；② 2026H1 末 9.71＋(−0.19)＝9.52 亿元 ✓；③ 归母净资产 0.12＝期初 0.43 − 归母净利 0.31 亿元 ✓。</p>
+<blockquote><p><strong>退市规则里"净资产为负"指向"归属于上市公司股东的净资产"口径</strong>（公司在历次风险提示公告中明确写"归属于上市公司股东的净资产"）；归母 0.12 亿元尚为正，但<strong>合并口径已资不抵债</strong>，是实打实的重症信号。</p></blockquote>
+
+</div></details>
+<details class="fold"><summary>会计差错更正（追溯重述）要点</summary><div class="fold-body">
+
+<table><thead><tr><th>调整项</th><th>金额</th></tr></thead><tbody><tr><td>调减 2022 年营业收入</td><td>−1.67 亿元</td></tr><tr><td>调减 2022 年营业成本</td><td>−1.57 亿元</td></tr><tr><td>调减 2022 年末存货</td><td>−0.32 亿元</td></tr><tr><td>调减 2023 年营业收入</td><td>−1.05 亿元</td></tr><tr><td>调减 2023 年营业成本</td><td>−0.88 亿元</td></tr><tr><td>调减 2023 年末存货</td><td>−0.26 亿元</td></tr><tr><td>冲回 2024 年前三季度已披露营收</td><td>−1.45 亿元</td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec9">2.2 子公司与在手订单</h3>
+<p><strong>结论：在手订单 1.12 亿元是 2026 年保 1 亿元线的关键筹码，但主要由"已交付未确认 0.75 亿元"构成，能否在 2026 年内确认收入存在不确定性。</strong></p>
+<p>2025 年年报问询函回复（2026-09-02）披露：截至回函日<strong>在手订单 11,199 万元（1.12 亿元）</strong>，其中已交付未确认 <strong>7,452.34 万元</strong>；审计细节测试覆盖营收 <strong>90.92%</strong>、函证＋替代程序合计确认 <strong>99.32%</strong>——<strong>营收真实性获审计背书</strong>（造假已出清，2025 年营收为真）。若 7,452.34 万元在 2026 年确认，2026 全年营收有望达约 1.23 亿元，保线有望；但确认节奏未披露。</p>
+<h3 id="sec10">2.3 股票回购</h3>
+<p><strong>结论：报告期内无新增股份回购计划</strong>（公司资金链紧张，不具备回购条件）。<strong>公告未披露回购安排。</strong></p>
+<hr>
+<h2 id="chap3">三、基本面路径（第二翼）</h2>
+<p><strong>结论：主路径＝重整（B），辅路径＝保壳（A）。二者共用同一个裁判日——2026 年报。</strong></p>
+<h3 id="sec11">3.1 主路径 B · 重整逻辑</h3>
+<p><strong>结论：这是一场"先换治理、后换股权"的重整——方案已签、钱已到账、管理层已派驻，唯独"法院受理"未按下。受理后规则上会重新触发 *ST 叠加，是短期反向风险。</strong></p>
+<table><thead><tr><th>要素</th><th>内容</th><th>大白话</th></tr></thead><tbody><tr><td>转增规模</td><td>每 10 股转增 15 股（以 2.75 亿总股本为基数约每 10 股转增 14.4323 股），合计约 3.97 亿股</td><td>老股东被极大稀释</td></tr><tr><td>产业投资人</td><td>随锐新元 3.5 元/股认购 1 亿股＝3.50 亿元；绿技行 3.5 元/股认购 2,000 万股＝0.70 亿元</td><td>随锐系 3.5 亿元绑 1 亿股</td></tr><tr><td>财务投资人</td><td>认购 1.67 亿股（含临川国控、深圳吉富启瑞 1,000 万股@3.9 元等）</td><td>出资当财务投资人</td></tr><tr><td>抵偿债务</td><td>转增股票中 1.1 亿股用于向债权人抵债</td><td>债转股式清偿</td></tr><tr><td>已落地的钱</td><td>共益债 0.38 亿元＋现金捐赠 3.12 亿元（已计入资本公积）</td><td>人没进门，钱先垫进来</td></tr><tr><td>后续承诺</td><td>增厚净资产 ≥4.5 亿元；重整后 36 个月内支持 ≥10 亿元资本性融资</td><td>给房子再给装修＋贷款</td></tr></tbody></table>
+<p><strong>最大摊薄空间</strong>：现总股本 2.7526 亿股 ×（1＋1.5）＝约 6.88 亿股上限（每 10 股转增不超过 15 股，指引 11 号 §7）→ <strong>原股东持股比例降至约 40%</strong>。<strong>注意：转增伴除权，变的是每股对应权益而非市值</strong>；实际比例取决于"抵多少债＋投多少钱"，方案未出<strong>只给上限、不给数值预测</strong>。</p>
+<p><strong>重整成功 ≠ 摘帽</strong>：重整计划执行完毕只解决债务，摘帽仍要看年报审计意见/净资产/营收/内控并过交易所审核，多要等到下一年年报。</p>
+<p><strong>★ 受理本身是规则性利空</strong>：据《创业板股票上市规则》9.4.1，若法院受理重整申请，公司股票将被实施退市风险警示——<strong>刚摘的星会临时挂回去</strong>，这与"重整受理＝利好"的市场直觉相反，须作为短期风险预判。</p>
+<h3 id="sec12">3.2 辅路径 A · 保壳逻辑</h3>
+<p><strong>结论：2026 年保壳的胜负手是两个数——扣除后营收能否守住 1 亿元、期末归母净资产能否守住正值。</strong></p>
+<ul><li><strong>营收线</strong>：2026H1 仅 4,866.37 万元 → 下半年须做约 5,134 万元；依赖在手订单确认（已交付未确认 7,452.34 万元）与并表（四川愿景 2025 年营收仅 2,655 万元，体量太小）。</li><li><strong>净资产线</strong>：2026H1 末归母净资产 1,233.77 万元，若 H2 继续亏损则大概率转负；产业方"增厚净资产 ≥4.5 亿元"的承诺是否在 2026 年内落地，是能否守住的关键。</li><li><strong>不可逆风险</strong>：若 2026 年报同时踩"营收 &lt;1 亿元 + 亏损"或"净资产为负"，将<strong>重新 *ST，且连续两年触及可终止上市</strong>。</li></ul>
+<hr>
+<h2 id="chap4">四、炒作逻辑 + 情绪面 + 筹码面（第三翼）</h2>
+<h3 id="sec13">4.1 炒作逻辑三支柱</h3>
+<p><strong>结论：当前最强的一支是①炒预期（重整受理），但预期已被现价抢跑大半；②炒历史类似行为指向"下跌组"（同型预重整股 6/9 年内下跌、全部距高点回撤 14–42%）；③主板映射（AI 算力/通信云/机器人）真实存在但需低位才有效。</strong></p>
+<h4>① 炒预期</h4>
+<p><strong>结论：未来 6–12 个月有三个硬节点（2027-01-03 预重整期限尽头、受理与否、2027-04 年报），其中"重整受理"是 1/0 开关，但兑现瞬间反带 *ST 叠加风险。</strong></p>
+<table><thead><tr><th>时点</th><th>催化内容</th><th>性质</th></tr></thead><tbody><tr><td>2027-01-03</td><td>新一轮预重整期限终点（受理或再延期）</td><td>硬节点（可锁定日期）</td></tr><tr><td>不确定</td><td>抚州中院受理重整申请</td><td><strong>硬开关（1/0）</strong>，但伴随 *ST 叠加</td></tr><tr><td>2027-04</td><td>2026 年报披露（营收/净资产保线结果）</td><td>硬节点（决定生死）</td></tr><tr><td>不确定</td><td>随锐核心资产注入并表（有量化方案与时间表）</td><td>软预期（最大想象空间）</td></tr></tbody></table>
+<h4>② 炒历史类似行为（相似股票匹配法）</h4>
+<p><strong>本标的画像（基准日 2026-10-04）</strong>：创业板 ST／规范类其他风险警示（假 ST）／小市值（18.66 亿元）／预重整长期未受理（≥14 个月、5 次延期）／产业资本＋国资联合／历史炒作符号＝硅料·巡检机器人·算力租赁·预重整／筹码分散、无控股股东。</p>
+<p><strong>检索到的当下最像的样本（预重整/重整类 ST）</strong>：</p>
+<details class="fold"><summary>同型样本区间涨跌（基准日 2026-09-30，后复权）</summary><div class="fold-body">
+
+<table><thead><tr><th>样本</th><th>年内涨跌</th><th>近 3 月</th><th>距近期高点</th></tr></thead><tbody><tr><td>＊ST启环（000826）</td><td>−22.5%</td><td>−11.8%</td><td>−28.6%</td></tr><tr><td>＊ST英飞（002528）</td><td>+129.4%</td><td>+48.3%</td><td>−21.0%</td></tr><tr><td>ST华谊（300027）</td><td>−24.0%</td><td>−1.8%</td><td>−20.3%</td></tr><tr><td>＊ST发展（000838）</td><td>−22.2%</td><td>+52.2%</td><td>−22.7%</td></tr><tr><td>ST百利（603959）</td><td>−28.5%</td><td>−8.5%</td><td>−22.7%</td></tr><tr><td>ST三木（000632）</td><td>−32.1%</td><td>+18.7%</td><td>−14.4%</td></tr><tr><td>＊ST泉为（300716）</td><td>+35.3%</td><td>−23.7%</td><td>−42.0%</td></tr><tr><td>ST同德（002360）</td><td>+11.3%</td><td>+7.9%</td><td>−16.6%</td></tr><tr><td>ST龙元（600491）</td><td>−45.9%</td><td>+61.9%</td><td>−19.1%</td></tr><tr><td><strong>ST新元（300472）</strong></td><td><strong>−13.3%</strong></td><td><strong>−0.6%</strong></td><td><strong>−21.6%</strong></td></tr></tbody></table>
+
+</div></details>
+<p><strong>读表结论（写在表前）</strong>：这组样本<strong>6/9 年内下跌 22%–46%</strong>，且<strong>无一例外全部距近期高点回撤 14%–42%</strong>（连涨幅最大的 ＊ST英飞也 −21.0%）——<strong>"预重整/重整"预期交易的共同形态是"冲高—回落"</strong>。ST新元自身 YTD −13.3%、距高点 −21.6%，与样本中位相当。<strong>本标的落在"下跌组"，无赔率优势。</strong></p>
+<h4>③ 炒主板映射</h4>
+<p><strong>结论：主板当下主线之一为"AI 算力/通信云/工业机器人"，与随锐的业务确有对应；但 ST 板块同类低位标的稀缺，且本标的自身价位已不低，映射意义有限。</strong></p>
+<ul><li>主板主线：AI 算力基础设施、通信云、工业巡检机器人（随锐主业对应点＝库锐德巡检机器人、多方通信牌照）。</li><li>ST 板块可映射对象<strong>暂无高关联度低位标的</strong>（本标的自身即映射对象，但现价距 3.5 元重整成本已翻倍，非低位买点）。</li><li>关联度评级：业务层面 <strong>中</strong>（随锐真实业务与题材料一致）；<strong>但"注入"无量化与时间表 → 题材兑现度低</strong>，属【真实业务 + 软承诺】。</li></ul>
+<h3 id="sec14">4.2 炒作波段与股价水位</h3>
+<p><strong>结论：本股 2026 年零异动、零龙虎榜、雪球讨论极稀——注意力处于低谷；历史炒作符号为"硅料/多晶硅回收＋巡检机器人＋算力租赁＋预重整"，连板极值仅"2 天 2 板"（2025-07-02），股价水位 3.67–29.44 元、现价 6.78 元处低位区。</strong></p>
+<details class="fold"><summary>炒作波段汇总与全量异动明细（韭研公社，2021-07～2025-10）</summary><div class="fold-body">
+
+<p><strong>炒作波段汇总</strong></p>
+<table><thead><tr><th>波段时间</th><th>题材</th><th>最高连板</th><th>股价区间（元）</th><th>驱动关键词</th></tr></thead><tbody><tr><td>2025-07</td><td>ST板块</td><td>2 天 2 板</td><td>3.67 → 5.77</td><td>预重整＋多晶硅＋AR眼镜＋算力租赁＋巡检机器人</td></tr><tr><td>2024-02～10</td><td>机器人/光伏/游戏/AR</td><td>—</td><td>5.34 → 8.80</td><td>巡检机器人＋硅料＋云游戏＋算力租赁＋AR眼镜</td></tr><tr><td>2022-07～09</td><td>光伏产业链</td><td>—</td><td>11.91 → 14.40</td><td>多晶硅回收/提纯＋巡检机器人</td></tr><tr><td>2021-07～10</td><td>硅料/光伏/云游戏</td><td>—</td><td>11.79 → 29.44</td><td>硅废料提纯＋硅料＋云游戏＋智能制造</td></tr></tbody></table>
+<p><strong>全量异动明细（20 条，时间降序）</strong></p>
+<table><thead><tr><th>题材时间</th><th>题材</th><th>题材催化</th><th>涨停信息</th><th>股价</th><th>异动关键词</th></tr></thead><tbody><tr><td>2025-10-10</td><td>ST板块</td><td>—</td><td>—</td><td>5.77</td><td>预重整＋多晶硅＋AR眼镜＋算力租赁＋巡检机器人</td></tr><tr><td>2025-08-06</td><td>ST板块</td><td>—</td><td>—</td><td>5.64</td><td>预重整＋多晶硅＋AR眼镜＋算力租赁＋巡检机器人</td></tr><tr><td>2025-07-02</td><td>ST板块</td><td>—</td><td>2 天 2 板</td><td>4.40</td><td>预重整＋多晶硅＋AR眼镜＋算力租赁＋巡检机器人</td></tr><tr><td>2025-07-01</td><td>ST板块</td><td>—</td><td>—</td><td>3.67</td><td>预重整＋AR眼镜＋算力租赁＋光伏＋巡检机器人</td></tr><tr><td>2025-01-15</td><td>AI相关</td><td>字节情感大模型/猫箱</td><td>—</td><td>8.90</td><td>AR眼镜＋算力租赁＋光伏＋巡检机器人</td></tr><tr><td>2024-10-25</td><td>光伏</td><td>美商务部启动 CCR 审查</td><td>—</td><td>8.80</td><td>光伏＋算力租赁＋巡检机器人＋AR眼镜</td></tr><tr><td>2024-08-16</td><td>AR眼镜</td><td>苹果 AI 眼镜传闻</td><td>—</td><td>6.53</td><td>AR眼镜＋云游戏＋算力租赁＋巡检机器人</td></tr><tr><td>2024-08-15</td><td>游戏</td><td>《黑神话：悟空》上线</td><td>—</td><td>6.17</td><td>云游戏＋算力租赁＋巡检机器人＋硅料循环装备</td></tr><tr><td>2024-08-06</td><td>光伏</td><td>硅料报价上调</td><td>—</td><td>5.34</td><td>硅料循环装备＋巡检机器人＋智能输送</td></tr><tr><td>2024-02-26</td><td>机器人</td><td>OpenAI 投资人形机器人 Figure</td><td>—</td><td>6.98</td><td>巡检机器人＋多晶硅回收/提纯</td></tr><tr><td>2022-09-20</td><td>光伏/绿电</td><td>—</td><td>—</td><td>14.40</td><td>多晶硅回收/提纯＋巡检机器人</td></tr><tr><td>2022-07-01</td><td>光伏产业链</td><td>隆基上调单晶硅片价</td><td>—</td><td>11.91</td><td>多晶硅回收/提纯＋巡检机器人</td></tr><tr><td>2021-10-21</td><td>储能及光伏</td><td>—</td><td>—</td><td>29.44</td><td>举牌＋硅废料提纯＋轮胎回收</td></tr><tr><td>2021-10-20</td><td>公告</td><td>—</td><td>—</td><td>24.53</td><td>增持＋硅料＋轮胎回收</td></tr><tr><td>2021-10-18</td><td>其他</td><td>—</td><td>—</td><td>22.55</td><td>硅料＋轮胎回收</td></tr><tr><td>2021-10-14</td><td>光伏及电力</td><td>—</td><td>—</td><td>20.28</td><td>硅料＋轮胎回收</td></tr><tr><td>2021-10-11</td><td>其他</td><td>—</td><td>—</td><td>18.58</td><td>硅料＋轮胎回收</td></tr><tr><td>2021-09-30</td><td>电站建设相关</td><td>光伏风电重要性提升</td><td>—</td><td>15.96</td><td>硅料未来想象力十足</td></tr><tr><td>2021-09-24</td><td>华为及科技</td><td>—</td><td>—</td><td>13.97</td><td>云游戏平台＋智能制造</td></tr><tr><td>2021-07-12</td><td>其他</td><td>—</td><td>—</td><td>11.79</td><td>云游戏＋超高清</td></tr></tbody></table>
+<blockquote><p><strong>说明</strong>：韭研公社为二级整理，<strong>只收录达到异动阈值的题材</strong>。本股 <strong>2026 年未入库</strong>（≠"没有异动"），炒作史以 2021–2025 年为主。股价列为当时记录值，未复权。</p></blockquote>
+
+</div></details>
+<details class="fold"><summary>龙虎榜（东财，最近上榜 2025-10-13）</summary><div class="fold-body">
+
+<table><thead><tr><th>交易日</th><th>上榜原因</th><th>当日涨跌</th><th>净买额</th></tr></thead><tbody><tr><td>2025-10-13</td><td>连续三日涨幅偏离 ≥30%</td><td>+11.96%</td><td>−1,223.0 万元</td></tr><tr><td>2025-10-10</td><td>日涨幅前 5</td><td>+19.96%</td><td>+438.5 万元</td></tr><tr><td>2025-07-02</td><td>连续三日涨幅偏离 ≥30%</td><td>+19.89%</td><td>−703.1 万元</td></tr><tr><td>2025-05-06</td><td>日振幅前 5</td><td>+0.64%</td><td>−1,621.4 万元</td></tr><tr><td>2025-01-15</td><td>日涨幅前 5</td><td>+19.95%</td><td>+4,999.5 万元</td></tr></tbody></table>
+<blockquote><p><strong>2026 年零上榜</strong>。筹码面观察：2025-07/10 的预重整炒作波段以净卖出收场（−703.1 万元 / −1,223.0 万元），<strong>游资进出快、无接力意愿</strong>。</p></blockquote>
+
+</div></details>
+<h3 id="sec15">4.3 情绪与注意力面</h3>
+<p><strong>结论：注意力处于低谷——2026 年零异动、零龙虎榜、雪球讨论 09-24 后归零；按"注意力定价"，无注意力则涨不动。</strong></p>
+<ul><li>雪球讨论（（雪球评论，2026-09-22/09-23/09-24））：讨论条数极少，仅有个别散户表示"先把钱放在这，感觉肯定会赚"（（雪球评论，2026-09-22）），<strong>属预期型情绪表达，无增量信息</strong>；09-24 后无新讨论。</li><li>换手率 0.91%（2026-09-30）——交投清淡。</li><li><strong>反方读数</strong>：注意力低谷既可能意味着"底部无人问津"（潜在机会），也可能意味着"预期已被消化、缺乏增量资金"（价值陷阱）。结合"重整受理未落地＋2026 保线高危"，本报告倾向前者概率低。</li></ul>
+<hr>
+<h2 id="chap5">五、估值与投资结论</h2>
+<h3 id="sec16">5.1 估值</h3>
+<p><strong>结论：归母净资产口径 PB 151 倍、PS 15 倍，公司基本无净资产支撑，市值完全由"重整＋注入"的想象空间定价——属期权定价，不属价值定价。</strong></p>
+<p><strong>算得出 vs 算不出</strong>：公司主业亏损、净利为负，<strong>PE 无意义</strong>；因算不出当期利润，按 A 股对"无收入/在研资产"的定价口径，用<strong>想象力加总</strong>给区间（须显式标注前提）。</p>
+<details class="fold"><summary>想象力加总（随锐系资产，三档情景）</summary><div class="fold-body">
+
+<table><thead><tr><th>情景</th><th>假设</th><th>对应市值</th><th>对应股价</th></tr></thead><tbody><tr><td>保守</td><td>重整受理并执行，随锐仅注入四川愿景类小额并表资产（年净利百万元级），按 PS 3–5 倍</td><td>12–18 亿元</td><td>4.36–6.54 元</td></tr><tr><td>中性</td><td>重整落地＋随锐核心业务（通信云/巡检机器人）部分并表，年收入 3–5 亿元、按 PS 4–6 倍</td><td>20–30 亿元</td><td>7.27–10.90 元</td></tr><tr><td>激进</td><td>随锐整体注入并表＋牌照与党政军客户重估，年收入 8–10 亿元、按 PS 6–8 倍</td><td>48–80 亿元</td><td>17.44–29.07 元</td></tr></tbody></table>
+<blockquote><p><strong>前提（不满足则全部作废）</strong>：① 法院受理并执行完毕重整；② 随锐核心资产真实注入并表。<strong>参数均按"重整成功"情景设定，属乐观假设；现实是受理尚未发生、注入无时间表。</strong> 现价 6.78 元落在<strong>保守与中性之间</strong>——即市场已按"重整大概率成功"定价，几乎没有为"失败"留空间。<strong>分清期权折价与价值折价：本标的的折价是"期权折价"（扣实现概率），不是"价值折价"（扣盈利质量）——因为其几乎没有可估的价值底。</strong></p></blockquote>
+
+</div></details>
+<h3 id="sec17">5.2 投资结论</h3>
+<p><strong>结论：卖出（回避）。</strong></p>
+<p><strong>理由链（按重要性）</strong></p>
+<ol><li><strong>2026 年报是生死线，双条件大概率失守。</strong> 2026H1 营收仅 4,866.37 万元（下半年须做约 5,134 万元）、归母净资产仅 1,233.77 万元（较期初消耗 71.54%）、经营现金流 −9,788.52 万元；合并口径已资不抵债。来源：<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300472&amp;announcementId=1225551462&amp;orgId=9900024679&amp;announcementTime=2026-09-07" target="_blank" rel="noopener">2026 半年报摘要 / 2026-09-07 风险提示公告</a>。</li><li><strong>重整受理 14 个月未落地、五次延期，且受理本身触发 *ST 叠加。</strong> 2026-09-24 第五次延期至 2027-01-03；按规则受理将重新实施退市风险警示——<strong>"利好"兑现的瞬间恰是风险点</strong>。来源：<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300472&amp;announcementId=1225581716&amp;orgId=9900024679&amp;announcementTime=2026-09-24" target="_blank" rel="noopener">2026-09-24 延期公告</a>。</li><li><strong>现价相对产业方成本已抢跑。</strong> 现价 6.78 元＝产业方认购价 3.50 元的 <strong>1.94 倍</strong>；PB 151 倍、PS 15 倍，市场已为"重整成功"提前买单，赔率被规则性削弱。</li><li><strong>注意力低谷，缺乏上行燃料。</strong> 2026 年零异动、零龙虎榜、雪球讨论 09-24 后归零，换手 0.91%——<strong>无注意力则涨不动</strong>。</li><li><strong>同型样本属"下跌组"。</strong> 预重整/重整类 ST 样本 6/9 年内下跌 22%–46%，<strong>全部距近期高点回撤 14%–42%</strong>；本标的 YTD −13.3%、距高点 −21.6%，无相对优势。叠加原实控人造假＋禁入的信任折价。</li></ol>
+<p><strong>触发条件（转买入）</strong>：① 抚州中院受理重整并进入计划批准，且随锐核心资产注入<strong>给出量化财务数据＋时间表＋业绩对赌</strong>；② 2026 三季报/业绩预告确认营收放量、全年营收稳过 1 亿元且归母净资产守住正值；③ 股价回落至 5.0–5.5 元（更低位置）后叠加上述催化。</p>
+<p><strong>失效条件</strong>：若 2026 年报"扣除后营收 &lt;1 亿元且亏损"或"期末归母净资产为负" → 重新 *ST、并触发连续两年终止上市风险，本结论作废（届时为不可逆的卖出信号）。若重整受理后原股东被大幅稀释、股价除权下行，本结论亦得到验证。</p>
+<p><strong>参考区间</strong>：不建议现价（6.78 元）建仓；<strong>观察位 5.32–6.00 元</strong>（跌破 2025 年低点 5.32 元须回避）；<strong>不建议设目标价</strong>——在受理未发生前，任何目标价都是对"重整成功"的重复押注。</p>
+<p><strong>时间窗口</strong>：至 <strong>2026 年报披露（2027-04）</strong>；期间每月的其他风险警示进展公告与预重整进展公告为关键跟踪点。</p>
+<p><strong>仓位建议</strong>：<strong>不建仓</strong>（若已持有，宜在反弹中减持）。</p>
+<p><strong>最大风险</strong>：<strong>重整受理与 2026 年报保线两个开关同时失守 → 退市定价、股价快速杀跌</strong>。反向风险（本结论出错的情形）＝重整超预期受理并注入优质资产，股价补涨——但该情形需要的时间与资金成本均未被现价充分反映，属"高风险博弈"，不适合作为核心理由。</p>
+<hr>
+<h2 id="chap6">附录</h2>
+<h3 id="sec18">附录 A · 待核实 / 需补充清单</h3>
+<p><strong>结论：本报告最关键的四个待核实项全部指向"尚未发生的催化"，即结论的成立与否取决于未来事件而非已披露事实。</strong></p>
+<ul><li>抚州中院对重整申请的受理时点（<strong>公告未披露</strong>，无申报渠道可查）。</li><li>随锐科技集团自身的营收/净利/资产（<strong>未披露</strong>，非上市未经审计）。</li><li>2026 三季报（预计 2026-10 下旬披露）——营收是否放量、净资产是否守住。</li><li>产业方"增厚净资产 ≥4.5 亿元"的后续落地方式与金额（<strong>未披露</strong>）。</li></ul>
+<h3 id="sec19">附录 B · 关键信源链接</h3>
+<p><strong>结论：全部关键判断均可回溯至下列巨潮公告原文，链接已实测可达（HTTP 200）。</strong></p>
+<details class="fold"><summary>一手指引（公告原文深链）</summary><div class="fold-body">
+
+<table><thead><tr><th>文件</th><th>链接</th></tr></thead><tbody><tr><td>撤销退市风险警示暨停牌公告（2026-09-02）</td><td>http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300472&amp;announcementId=1225542714&amp;orgId=9900024679&amp;announcementTime=2026-09-02</td></tr><tr><td>2025 年年报问询函回复（2026-09-02）</td><td>http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300472&amp;announcementId=1225542715&amp;orgId=9900024679&amp;announcementTime=2026-09-02</td></tr><tr><td>其他风险警示进展公告（2026-09-07）</td><td>http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300472&amp;announcementId=1225551462&amp;orgId=9900024679&amp;announcementTime=2026-09-07</td></tr><tr><td>预重整进展公告（2026-09-07）</td><td>http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300472&amp;announcementId=1225551461&amp;orgId=9900024679&amp;announcementTime=2026-09-07</td></tr><tr><td>法院再次延长预重整期限（2026-09-24）</td><td>http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300472&amp;announcementId=1225581716&amp;orgId=9900024679&amp;announcementTime=2026-09-24</td></tr><tr><td>子公司延期提交重整计划草案（2026-09-02）</td><td>http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300472&amp;announcementId=1225543634&amp;orgId=9900024679&amp;announcementTime=2026-09-02</td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec20">附录 C · 逻辑漏洞与反方观点（5 问速版）</h3>
+<ol><li><strong>"资产注入"的市占率/收入怎么来的？</strong> ——随锐未上市、财务未披露，"通信云＋巡检机器人"的规模与盈利均为公告口径/公开资料，无第三方审计，须打折看。</li><li><strong>"在手订单 1.12 亿元"＝收入吗？</strong> ——不等于。其中已交付未确认 7,452.34 万元需在年内确认，确认节奏未知。</li><li><strong>"国资托底"＝会救吗？</strong> ——临川国控以财务投资人身份签约，金额未披露，不能等同于全额兜底。</li><li><strong>引用的时间点是否过期？</strong> ——重整受理时点、2026 三季报、增厚净资产落地均未发生，本报告结论建立在"尚未发生的催化"之上。</li><li><strong>数据来源级别？</strong> ——行情为腾讯接口（Wind 代理离线）、异动为韭研二级整理、人物背景为公开资料，均已在正文标注级别。</li></ol>
+<h3 id="sec21">版本记录</h3>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-04</td><td>由 2026-09-21《深度研究》吸收重构为速研档单文件 HTML：① 首次落地下手给出二选一结论「卖出（回避）」（原深度版无结论）；② 封面新增第 5 行「主要看点」与行情快照；③ 增补 2026-09-24 预重整第五次延期至 2027-01-03；④ 行情更新为 2026-09-30 收盘（6.78 元/18.66 亿元/PB 151.26，原 09-21 为 6.77 元/18.64 亿元）；⑤ 新增前十大股东明细、同型样本区间涨跌、韭研异动全量 20 条、龙虎榜；⑥ 按"结论前置＋论据折叠＋左侧目录"三层次重构</td></tr></tbody></table>
 </div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
 
-<div class="verdict">
-  <p><b class="tag">开头三行结论（按王艳口径）：</b></p>
-  <p><b>红线分类：</b>财务类退市风险警示（2024年报"无法表示意见"触发*ST）＋叠加其他风险警示（内控否定意见、连续三年扣非前后净利孰低为负、主要银行账户被冻结、财务指标虚假记载遭证监会处罚）。<b>已于 2026-09-03 撤销退市风险警示（摘星），简称由"*ST新元"变更为"ST新元"，其他风险警示尚未消除。</b></p>
-  <p><b>生死定级：</b>可救、但命悬一线——不是已上岸，而是"半只脚踩在生死线上"。2026年报是生死裁判：①扣除后营业收入能否守住1亿元；②期末归母净资产能否守住正值。二者任一失守即重新*ST/退市。</p>
-  <p><b>自救空间：</b>中偏上。产业方随锐系（认购股份3.5亿元现金已至少部分支付）＋财务方临川国控（抚州国资）＋3.12亿元现金捐赠已落地增厚净资产，短期续命筹码充足；但"重整受理"这一1/0开关未按下，原实控人劣迹（造假+禁入）是最大信任折价。</p>
-</div>
-
-<div class="snapshot">
-  <b>股价·市值快照（2026-09-18/09-21）：</b>收盘价 6.77 元；总市值 18.64 亿元；流通市值 17.38 亿元；总股本 2.7526 亿股；市净率约 150 倍（归母净资产口径）；当日换手 0.44%。<br>
-  <b>2026H1：</b>营收 4,866.37万元（+657.67%）；归母净利 -3,101.48万元（减亏52.33%）；扣非净利 -4,162.47万元（减亏13.82%）；经营现金流净额 -9,788.52万元。
-</div>
-
-<div class="toc">
-  <b>目录</b><br>
-  <a href="#s0">岛主引言：三句话＋生死裁判表</a> ｜ <a href="#s1">一、前世今生时间轴</a> ｜ <a href="#s2">二、关键人物/实控人是谁</a> ｜ <a href="#s3">三、怎么拿控制权</a> ｜ <a href="#s4">四、意图分析与节奏推测</a> ｜ <a href="#s5">五、承诺包"原话 vs 大白话"拆解</a> ｜ <a href="#s6">六、六维拆解</a> ｜ <a href="#s7">七、壳经济学：值不值得救</a> ｜ <a href="#s8">八、核心财务表（定稿）</a> ｜ <a href="#s9">数据来源</a> ｜ <a href="#s10">免责声明</a>
-</div>
-
-<h2 id="s0">岛主引言：先把生死裁判表摆出来</h2>
-<p>动笔前先说结论。这家公司被市场标签为"控制权变更/壳/重整标的"，但真正驱动股价重估的，不是"万向"两个字（下文会讲，这个"万向"跟鲁冠球的万向集团<b>没有半毛钱关系</b>），而是一场<b>财务造假→*ST→预重整→产业资本介入→摘星</b>的连环戏。</p>
-<p>按王艳口径，判断一家ST公司先过"生死关"，再过"救兵关"。我把它的生死裁判整理成下表：</p>
-
-<table>
-<thead><tr><th>裁判项</th><th>2024年报（已触发*ST）</th><th>2025年报（已披露，定稿）</th><th>2026年报（进行中，决定生死）</th></tr></thead>
-<tbody>
-<tr><td>审计意见</td><td class="neg">无法表示意见（大华）</td><td class="pos">带持续经营重大不确定性段落的无保留意见（北京德皓）</td><td>待出（北京德皓）</td></tr>
-<tr><td>内控审计</td><td class="neg">否定意见（大华）</td><td class="pos">标准无保留意见（北京德皓）</td><td>待出</td></tr>
-<tr><td>归母净利润</td><td class="neg">-3.729亿元（更正后）</td><td class="neg">-3.417亿元</td><td>2026H1已亏 -0.310亿元</td></tr>
-<tr><td>扣非净利润</td><td class="neg">-3.956亿元（更正后）</td><td class="neg">-3.983亿元</td><td>2026H1已亏 -0.416亿元</td></tr>
-<tr><td>营业收入（扣除后）</td><td>1.342亿元（更正后）</td><td>1.219亿元</td><td class="neg">2026H1仅0.4866亿元，全年1亿元线是生死点</td></tr>
-<tr><td>期末归母净资产</td><td>0.318亿元（更正后）</td><td>0.434亿元</td><td class="neg">2026H1末已滑至0.123亿元</td></tr>
-<tr><td>期末所有者权益合计（含少数股东）</td><td>0.132亿元</td><td class="pos">0.132亿元</td><td class="neg">-0.191亿元（资不抵债）</td></tr>
-<tr><td>连续三年扣非前后净利孰低为负</td><td colspan="2">是（2022-2024）——构成其他风险警示</td><td>延续</td></tr>
-</tbody>
-</table>
-<p class="muted">说明：期末"归母净资产"与"所有者权益合计"是两个数——归母为正（0.123亿）、合计为负（-0.191亿），差额是负的少数股东权益约 -0.314亿元。退市规则里"期末净资产为负"指向归母口径（公司在历次风险提示公告中也明确写"归属于上市公司股东的净资产"），但合并口径已资不抵债是实打实的重症信号。</p>
-
-<p>一句话：<b>它过了"摘星"这一关（2026-09-03撤销退市风险警示），但没脱离危险区</b>。下面把来龙去脉拆开。</p>
-
-<h2 id="s1">一、前世今生时间轴（十多年"多次换活法"走到今天）</h2>
-<table>
-<thead><tr><th style="width:90px;">时间</th><th>关键事件</th><th>股权·实控人变化</th><th>背后逻辑</th></tr></thead>
-<tbody>
-<tr><td>2001/2003</td><td>北京万向新元环保工程技术有限公司（后为北京万向新元科技）在中关村成立，定位轮胎橡胶行业炼胶成套装备</td><td>朱业胜为实际控制人、董事长</td><td>专用装备制造，绑定轮胎/橡胶厂，重资产、慢生意</td></tr>
-<tr><td>2011-07</td><td>整体变更为股份公司</td><td>朱业胜＋曾维斌＋姜承法＋张玉生＋世纪万向为发起股东</td><td>为IPO铺路</td></tr>
-<tr><td>2015-06-11</td><td>深交所创业板挂牌，简称"新元科技"，代码300472</td><td>实控人朱业胜，一致行动人曾维斌、姜承法、世纪万向</td><td>橡胶智能装备＋环保的主业上市</td></tr>
-<tr><td>2017</td><td>发行股份+现金收购清投智能（智能显控/枪弹柜/机器人/滑雪机）</td><td>股权集中度下降</td><td>从工业智能化延伸至数字化智能装备，"跨界讲故事"的开端</td></tr>
-<tr><td>2019-2020</td><td>注册地由北京迁至江西抚州临川；公司更名"万向新元科技股份有限公司"</td><td>实控人仍朱业胜</td><td>拿到抚州地方资源（后续预重整、临川国控介入都发生在这里）</td></tr>
-<tr><td>2022.5-2024.6</td><td class="neg">虚构"分布式存储装备集成业务"（客户为单一客户江西世星科技），虚增收入/成本/利润/存货</td><td>——</td><td class="neg">财务造假，为保壳/保业绩铤而走险</td></tr>
-<tr><td>2024-08-14</td><td>朱业胜、曾维斌、姜承法、世纪万向与湖南新辉控股集团签署《表决权委托协议》</td><td class="neg">表决权让渡给新辉控股，实控人变更为吴贤龙（新辉控股系）</td><td>第一次"换活法"：外部资本接盘，疑似壳生意</td></tr>
-<tr><td>2025-03-27</td><td>收到证监会《立案告知书》（证监立案字0252025001号）</td><td>——</td><td class="neg">造假东窗事发，监管立案</td></tr>
-<tr><td>2025-04-29</td><td>披露2024年报：大华出具无法表示意见（财报）＋否定意见（内控）；董事张光华投反对票无法保证真实</td><td>——</td><td class="neg">审计失守→退市风险警示的导火索</td></tr>
-<tr><td>2025-05-06</td><td class="neg">股票被实施退市风险警示，简称变"*ST新元"</td><td>——</td><td>依据创业板上市规则10.3.1条第一款第（三）项（财报被出具无法表示/否定意见）</td></tr>
-<tr><td>2025-06-30</td><td>债权人向抚州中院申请重整及预重整</td><td>——</td><td>被债权人逼上重整台面</td></tr>
-<tr><td>2025-07-04</td><td>抚州中院决定启动预重整，指定上海市锦天城律所为临时管理人</td><td>——</td><td>正式进入"预重整+司法重整"路径</td></tr>
-<tr><td>2025-08-14</td><td>重整投资人报名21家（产业10家＋财务11家）</td><td>——</td><td>壳的"吸引力"仍在</td></tr>
-<tr><td>2025-09-01</td><td>解除与新辉控股的表决权委托；吴贤龙辞任董事长</td><td class="pos">实控人恢复为朱业胜（一致行动人曾维斌、姜承法）</td><td>第一次接盘方新辉控股"撤退"</td></tr>
-<tr><td>2025-10-24/25</td><td>收到江西证监局《行政处罚事先告知书》</td><td>——</td><td>叠加其他风险警示（财务指标虚假记载）</td></tr>
-<tr><td>2025-11-14</td><td>收到《行政处罚决定书》（〔2025〕4号）：公司罚800万；朱业胜罚400万＋5年证券市场禁入；张瑞英250万；刘毅100万；盖平60万；认定不触及重大违法强制退市</td><td>朱业胜被5年市场禁入（不能再干证券业务/董监高）</td><td class="neg">造假定性落锤，但公司"命"保住了（不触及重大违法退市）</td></tr>
-<tr><td>2025-12-11</td><td class="pos">与产业投资人签署《重整投资协议》：资本公积转增3.97亿股；随锐新元（3.5元/股购1亿股=3.5亿元）、绿技行（3.5元/股购2000万股=7000万元）入场；1.1亿股偿债</td><td>随锐科技系成为拟定的牵头产业投资人</td><td>第二次"换活法"：科技产业资本正式落子</td></tr>
-<tr><td>2025年末</td><td>产投方已投入共益债0.378亿元＋现金捐赠3.12亿元，资本公积期末增至14.25亿元</td><td>——</td><td class="pos">真金白银先到账，给公司续命</td></tr>
-<tr><td>2026-01/02</td><td>设立北京锐新信创科技（新元持股20%）、江西绿元低碳科技（随锐/绿技行指定主体合资）</td><td>随锐系业务开始"装"进来</td><td>用合资子公司方式注入AI/云网/低碳业务</td></tr>
-<tr><td>2026-03-02/12</td><td class="pos">第六届董事会换届：舒骋（随锐科技创始人）当选董事长并兼任总经理；冷骥任法定代表人/董事</td><td>随锐系全面接管董事会与管理层</td><td>"治理更迭"先于"股份过户"完成</td></tr>
-<tr><td>2026-06-08/09</td><td>与抚州市临川区区属国资（临川国控）签署《重整投资协议》</td><td>抚州地方国资做财务投资人托底</td><td class="pos">"国资＋产业资本"联合救火模式定型</td></tr>
-<tr><td>2026-08-27</td><td>子公司江西锐元受让四川国科愿景融合科技51%股权（对价765万元）</td><td>——</td><td>产投方导入可并表业务，抬营收</td></tr>
-<tr><td>2026-09-01/03</td><td class="pos">深交所撤销退市风险警示，9-02停牌一天、9-03复牌，简称变"ST新元"</td><td>——</td><td>"摘星"落地（因2025年报已出无保留意见）</td></tr>
-<tr><td>2026-09-21（基准日）</td><td>仍处预重整阶段，重整申请尚未被法院受理；股价6.77元、市值18.64亿</td><td>实控人仍朱业胜（持股被冻结＋质押＋部分司法拍卖）</td><td>成败未定，1/0开关未按</td></tr>
-</tbody>
-</table>
-<p class="muted">数据来源：①2025年年报（追述+重要事项）；②2026年半年度报告；③《行政处罚决定书》公告（2025-11-14）；④《关于公司预重整事项的进展公告》（2026-09-07）；⑤《关于公司股票交易撤销退市风险警示并继续被实施其他风险警示的公告》（2026-09-01）。详见文末"数据来源"。</p>
-
-<h3>重要纠偏：这个"万向"不是万向集团</h3>
-<p>很多人看到"万向新元科技"四个字，会条件反射到鲁冠球的万向集团/万向控股。我核查后的结论是：<b>没有任何股权关系</b>。公司名称里的"万向"，源自其前身"北京万向新元环保工程技术有限公司"（2001/2003年设立时即用此名），英文名 New Universal（"新元"即 New Universal 的音义，公司官网域名 newugroup.com = New Universal Group）。公司的控股股东始终是自然人朱业胜＋一致行动人曾维斌、姜承法＋世纪万向（朱业胜自己的有限合伙平台），维权新闻里的"世纪万向"也印证了这一点。把"万向系"套在这只票上，是从名字望文生义的误读，务必先纠正。</p>
-
-<h2 id="s2">二、关键人物/实控人是谁</h2>
-<h3>2.1 原实控人：朱业胜（"造假的老板"）</h3>
-<p>朱业胜，公司创始人、原董事长/总经理，一致行动人曾维斌、姜承法（历任董事/副总）。三人加世纪万向合计持股<b>11.38%</b>（2026H1末，此前为14.32%，因2026-01-20朱业胜的810.61万股被司法拍卖过户给"洪运瑞恒泓创老字号私募"而降）。</p>
-<p>我判断他的底色是<b>"实体创业起家、后期为保壳铤而走险"</b>的悲剧路径：做轮胎橡胶炼胶装备二十年，赛道天花板低、回款难（2024年末应收账款原值6.46亿元、计提坏账4.25亿元），主业失血后，2022.5起通过虚构"分布式存储装备"造假续命，最终被证监会认定并处罚。<b>处罚落点：朱业胜400万元罚款＋5年证券市场禁入（正是"情节严重"档）</b>——说明监管判定他是造假的组织实施者。</p>
-<p>现状：朱业胜持股1078.99万股中<b>全部被司法冻结</b>、其中980万股设质押，部分（810.61万股）已司法拍卖易主。他被禁入后已无法担任董监高，<b>但作为持股最高的单一大股东＋一致行动人核心，仍是名义实控人</b>——这是一只"实控人已被废、但壳还姓朱"的票。</p>
-
-<h3>2.2 昙花一现的接盘方：湖南新辉控股／吴贤龙</h3>
-<p>2024-08-14，朱业胜等把表决权委托给湖南新辉控股集团，实控人一度变更为吴贤龙（吴贤龙随后出任董事长/总经理）。但这场"换壳"只持续了约13个月：<b>2025-09-01双方签署《表决权委托解除协议书》，吴贤龙辞任董事长，控制权返还朱业胜</b>。</p>
-<p>新辉控股留下了几笔"活口承诺"（下节拆解）：24个月内增持至≥20%、1年内提供6000万元借款等，随后又把对新元的债权（7130万元借款等）转让给"欧亿健康管理股份有限公司"，欧亿健康2025-12-29出具《债务豁免确认函》单方面豁免。这套操作我判断是<b>典型的"壳贩子进来抬一下、发现是烫手山芋又撤退"</b>，其留下的增持承诺大概率不会兑现。</p>
-
-<h3>2.3 真正的救兵：随锐科技集团（舒骋）</h3>
-<p>这是本故事的主角。<b>舒骋，1976年生，江西德兴人（与上市公司注册地抚州同省）</b>，中南大学应用物理、中科院数学所（与贵州大学联培）、清华/北大计算机硕士，师从AI科学家陆汝钤院士，曾任职微软中国。2006年与冯文澜创办随锐科技集团（新三板股票835990，后摘牌），主营<b>通信云（视频会议云）＋AI工业巡检机器人＋商业显示与大屏显控</b>，是北京冬奥会官方协同办公软件供应商，政企客户超70万家、平台服务客户超1000万家。</p>
-<p>随锐的"资产成色"能给较高分：①有核心牌照（工信部多方通信运营商牌照，国内除三大运营商外少有的规模通信云运营商）；②有政企/党政军高密级客户；③有"软件硬件化、科技制造化"的实体化诉求，<b>天然需要上市公司这个资本+制造平台</b>。舒骋现已出任新元科技<b>董事长兼总经理</b>，是实质上的"导演"。</p>
-
-<h3>2.4 托底的国资：抚州市临川国控</h3>
-<p>抚州市临川区区属国有资产投资控股集团有限公司（临川国控）作为财务投资人签署重整投资协议。范燕君（1986年生，会计师，就职于临川区区属国资）进入董事会——<b>这是"地方国资保税收保就业＋产业资本整合"的经典联合救火模式</b>。上市公司注册地2020年就迁到了抚州临川，如今地方国资出资托底，逻辑自洽。</p>
-
-<h2 id="s3">三、怎么拿控制权：一场"先换治理、后换股权"的重整</h2>
-<p>这家公司拿控制权的路径，走的不是传统协议转让/定增，而是<b>破产重整框架下的"资本公积转增股本＋认购"</b>，且目前<b>只走到"预重整+协议签署"阶段，尚未到"法院受理重整+股份过户"的一锤定音时刻</b>。我把已披露的权益调整方案拆出来：</p>
-
-<table>
-<thead><tr><th>项目</th><th>内容</th><th>大白话</th></tr></thead>
-<tbody>
-<tr><td>转增规模</td><td>每10股转增15股（以2.75亿总股本为基数约每10股转增14.4323股），合计转增约3.97亿股</td><td>老股东股份被极大稀释，用"增发股份"换钱+还债+给投资人</td></tr>
-<tr><td>产业投资人</td><td>北京随锐新元创新科技中心（有限合伙）以3.5元/股认购1亿股，支付3.5亿元；绿技行（武汉）投资合伙企业以3.5元/股认购2000万股，支付7000万元</td><td>随锐系出资3.5亿绑1亿股；绿技行出7000万绑2000万股</td></tr>
-<tr><td>财务投资人</td><td>认购1.67亿股（含临川国控、深圳市吉富启瑞投资合伙企业——1000万股@3.9元/股等）</td><td>出一部分现金当财务投资人，价格略高于产业方（3.9 vs 3.5）</td></tr>
-<tr><td>抵偿债务</td><td>转增股票中1.1亿股用于向债权人抵偿债务</td><td>债转股式清偿，把债变成股</td></tr>
-<tr><td>已落地的钱</td><td>产投方共益债0.378亿元＋现金捐赠3.12亿元（已计入资本公积）</td><td>人还没进门，钱先垫进来了</td></tr>
-<tr><td>后续承诺</td><td>承诺增厚净资产不低于4.5亿元；重整后36个月内支持不低于10亿元资本性融资</td><td>给你房子还不够，承诺再给你装修+贷款</td></tr>
-</tbody>
-</table>
-<p class="muted">数据来源：《关于公司预重整事项的进展公告》（多期）、《关于与产业投资人签署重整投资协议的公告》（2025-12-11）及上海证券报报道（2025-12-12）。</p>
-
-<p><b>定价锚：3.5元/股 vs 现价6.77元。</b>产业投资人3.5元/股认购、财务投资人部分3.9元/股——这是资本方真实愿意付出的成本锚。现价6.77元约为产业方认购价的1.93倍，说明二级市场已把"重整成型的预期"提前计价进去，<b>且给出的是"接近翻倍的溢价"，赌的是重整落地+资产注入后的第二段</b>。这是理解当下估值的钥匙。</p>
-
-<h3>两个"先于过户"的关键动作</h3>
-<ul>
-<li><b>治理先换：</b>2026-03-02/12，舒骋出任董事长兼总经理、随锐指定主体设立合资公司（北京锐新信创、江西绿元低碳）。按王艳"控制权三阶段"（股权过户→管理层更迭→制度固化），这里<b>管理层更迭和治理固化已经大幅超前于股份过户</b>——随锐先用"经营权"控盘，再用重整拿"股权"。</li>
-<li><b>业务先装：</b>2026-08-27子公司江西锐元受让四川国科愿景融合科技51%股权（对价仅765万元，标的2025年营收2655万元/净利129万元），本质是产投方导入可并表收入，为2026年"营收过亿"做铺垫。</li>
-</ul>
-<p class="warn"><b>风险锚：</b>重整申请<b>至今未被法院受理</b>。2026-09-07的进度公告仍在用"预重整事项进展"的标题，并白纸黑字写着"破产重整申请能否被法院受理仍存在重大不确定性；若法院受理重整申请，公司股票将被实施退市风险警示"。也就是说，<b>目前承诺的3.97亿股转增、随锐拿1亿股、财务投资人1.67亿股，全部是"纸上方案"，一日不受理、一日不过户</b>。这是全案最硬的1/0开关。</p>
-
-<h2 id="s4">四、意图分析与节奏推测</h2>
-<h3>4.1 随锐为什么要来救这个"造假+资不抵债"的壳？</h3>
-<p>我判断有三层意图，由表及里：</p>
-<ol>
-<li><b>要上市平台（融资+实体化制造基地）。</b>随锐是"软件公司硬件化、互联网公司实体化"路线的典型案例，通信云＋AI巡检机器人＋商业显示，都需要重资产的制造与集成能力，也渴望一个A股融资平台。借壳/重整成本显著低于排队IPO，且它有政企大客户资源需要"上市公司信用"背书。</li>
-<li><b>要一个江西的产业据点＋地方资源。</b>舒骋是江西德兴人，上市公司注册地在抚州、政府（省市区三级）与监管部门在预重整中"统筹支持"、临川国资出钱托底——<b>这是典型的地方ZF基金+产业资本"政企合谋救壳"结构</b>，随锐拿的是一张"地方倾斜资源"的名片。</li>
-<li><b>用最低现金成本锁定一个几乎清零重组的壳。</b>会计上公司合并净资产已为负、资不抵债，债权人只能"债转股+打折受偿"，随锐用3.5亿元换1亿股＋3.12亿捐赠换来话语权，<b>相对十几个亿的市值，是四两拨千斤</b>。当然，这也意味着老股东（含原实控人朱业胜）在转增后会被稀释到近乎出清。</li>
-</ol>
-
-<h3>4.2 资产要"装"什么？（产业协同的交叉点）</h3>
-<p>从公告与公司表述里能拼出未来注入方向：<b>AI工业巡检机器人（随锐库锐德产品线）、高端商业显示终端（大屏显控）、新能源装备、绿色低碳（绿技行）</b>，叠加"工业互联网+通信云"对原智能装备主业的数字化改造。产投方用"共同出资设立子公司"而非直接资产并购来落地（北京锐新信创、江西绿元低碳），并逐步收购标的（四川愿景51%）。</p>
-<p>我判断：<b>这是"真整合"的概率大于"纯概念"，但"成色"取决于随锐愿意把多少核心资产（通信云/机器人）的真实收入与利润并进来</b>。目前装进来的四川愿景年营收仅2655万元，远不足以改命——<b>真正的重注（随锐主业的注入）尚未落地，这是最大的想象空间，也是最大的证伪点</b>。</p>
-
-<h3>4.3 节奏推测（六步排序）</h3>
-<table>
-<thead><tr><th>步骤</th><th>时间（推测）</th><th>事件</th><th>可验证性×重要性</th></tr></thead>
-<tbody>
-<tr><td>1</td><td>2026年内</td><td>抚州中院是否受理重整申请（1/0开关）</td><td>极高×极高</td></tr>
-<tr><td>2</td><td>受理后约1个月内</td><td>重整计划草案提交/债权人会议表决/法院裁定批准</td><td>高×高</td></tr>
-<tr><td>3</td><td>批准后</td><td>资本公积转增除权、3.97亿股过户、随锐拿1亿股、部分债权转股</td><td>极高×高（停牌1日除权）</td></tr>
-<tr><td>4</td><td>2026年报披露时</td><td>2026全年营收能否过1亿、净资产能否守正（决定是否重新*ST）</td><td>极高×极高</td></tr>
-<tr><td>5</td><td>重整后36个月内</td><td>随锐系核心资产（通信云/机器人/商业显示）是否真正注入并表</td><td>中×高（长周期、易变卦）</td></tr>
-<tr><td>6</td><td>持续</td><td>10亿元资本性融资、订单放量、蓝领业务扭亏</td><td>中×中</td></tr>
-</tbody>
-</table>
-<p>我把<b>步骤1（重整受理）和步骤4（2026年报）并列为两个生死节点</b>：前者决定"故事还能不能讲"，后者决定"公司还活不活"。</p>
-
-<h2 id="s5">五、承诺包"原话 vs 大白话"拆解（关键）</h2>
-<p>王艳方法论的精华，就是盯住"承诺"里的限定语、起算点、活口。这家公司的承诺分两拨人：<b>已撤退的湖南新辉控股</b>（大概率不兑现的）和<b>正在救场的随锐/临川国资</b>（正在兑现的）。</p>
-
-<table>
-<thead><tr><th style="width:32%;">承诺原文（摘录）</th><th>大白话</th><th>活口/关键点</th></tr></thead>
-<tbody>
-<tr><td>新辉控股"24个月内将通过不限于竞价交易、协议转让、参与向特定对象增发股票等方式增持新元科技股份达到或超过20%"</td><td>我两年内买到20%以上，当大股东</td><td class="neg">已签《表决权委托解除协议书》走人，此承诺大概率作废；且"24个月"起算点含糊，本就有拖延空间</td></tr>
-<tr><td>新辉控股"承诺于表决权委托协议公告后1年内向上市公司提供6000万元的有息借款"</td><td>一年内借你6000万，还要收利息</td><td>实际已提供7130万元借款，"有息"二字暴露其非无偿纾困</td></tr>
-<tr><td>后续：欧亿健康管理股份有限公司以2640万元受让新辉控股对新元科技的全部债权，并出具《债务豁免确认函》"单方面、不附带任何条件、不可变更且不可撤销地豁免"</td><td>我把债权贱卖（7130万债权作价2640万）给欧亿健康，欧亿说这钱不要了</td><td class="pos">表面是豁免=增厚净资产（这正是2025年末归母净资产能回升到4335万的重要原因）；本质是"持债人洗牌"——债权打折易主后豁免，是常见的重整前"账面美容"手法</td></tr>
-<tr><td>产投方"将通过资产/现金捐赠、债务豁免等方式增厚净资产不低于4.5亿元"</td><td>我至少给你4.5亿净资产，把资不抵债补回来</td><td>3.12亿现金捐赠已落地（计入资本公积），剩余以资产/债务豁免形式补足；"不低于"是下限承诺，属正向绑定的硬承诺</td></tr>
-<tr><td>产投方"在重整后36个月内支持不低于10亿元资本性融资"</td><td>重整完三年内帮你融10个亿</td><td>"支持"不是"担保/兜底"，是软性表述，实际融资额看市场与授信，留了活口</td></tr>
-<tr><td>随锐科技集团股份有限公司、绿技行（武汉）投资合伙企业"将向新元科技注入核心优质业务"，以"共同出资设立子公司"方式落地</td><td>我把好业务装进来，但先用合资公司慢慢来</td><td class="neg">"核心优质业务"无量化标准、"注入"无时间表与对赌——这是全案最大的"软承诺"，一旦重整受阻，可轻易搁置</td></tr>
-</tbody>
-</table>
-<p class="muted">数据来源：2025年年报"承诺事项履行情况"＋年报"非标意见影响已消除说明"＋《关于与（产业/财务）投资人签署重整投资协议的公告》。</p>
-
-<p><b>小结：</b>真正有法律与资金约束力的是"现金捐赠3.12亿"（已到账）、"增厚净资产≥4.5亿"（下限承诺）；真正虚的是"注入核心优质业务"（无量化、无对赌）。<b>投资者最该盯的，不是这些纸面承诺，而是"重整受理"那天到底来不来。</b></p>
-
-<h2 id="s6">六、六维拆解（对标控制权变更标的）</h2>
-<h3>6.1 重组节奏（最核心）：卡在"受理"这一环</h3>
-<ul>
-<li><b>卡壳点：</b>重整申请迟迟未被抚州中院受理。预重整期限已三度延长（2025-09-28→2026-01-03、2025-12-29→2026-04-03、2026-04-01→2026-07-03），后又继续延期推进。</li>
-<li><b>进度：</b>预重整阶段已完成——临时管理人指定（锦天城）、债权申报、21家投资人招募、产业/财务投资人协议签署、现金捐赠到位、董事会/管理层改组。差的就是"最后一脚"受理。</li>
-<li><b>能不能解决：</b>我判断大概率能受理（政府+监管"统筹支持"、国资托底、债权人已组债委会），但受理后<u>规则上会触发"退市风险警示"叠加</u>（刚摘的星可能又临时挂回去，直到重整计划执行完毕），这是价格短期波动的来源之一。</li>
-</ul>
-
-<h3>6.2 新实控人（随锐系）背景与意图评级：★★★★☆</h3>
-<ul>
-<li><b>是谁：</b>舒骋，清华/北大/中科院背景、微软出身、师从陆汝钤院士，随锐科技创始人。</li>
-<li><b>资产为何优质：</b>通信云多方运营商牌照（稀缺）、政企/党政军高密级客户（客户+资质双重绑定）、北京冬奥会官方协同办公供应商（品牌背书）。</li>
-<li><b>为何买壳：</b>IPO周期与股东穿透核查压力 vs 重整拿壳的成本与效率；且公司自身走"科技制造化"，要A股制造平台。</li>
-<li><b>扣分项：</b>随锐自身也是"想上市而未成的科技公司"，其通信云/机器人的真实盈利质量需要独立验证；用合资公司"小步慢装"而非一步到位注入，说明对并表节奏有保留。</li>
-</ul>
-
-<h3>6.3 原业务质量：坏账深坑＋两个停产子公司，但产线还在</h3>
-<ul>
-<li><b>主业为何弱：</b>橡胶/轮胎装备赛道饱和、下游轮胎厂付款能力差，2024年末应收账款原值6.46亿、计提坏账4.25亿（计提比约66%），2022-2024靠造假撑收入。</li>
-<li><b>是不是"干净壳"：否。</b>合并净资产已为负（资不抵债）、货币资金紧张、两个全资子公司（宁夏新元、天津新元）2025年一度停产（已复产）、北京万向新元子公司已进入破产重整（重整计划草案延期至2026-12-05）。</li>
-<li><b>原业务怎么处理：</b>2026年业绩说明里写"关停和剥离低效无效资产"，天津/宁夏复产并接订单，但整体是"收缩传统装备、嫁接新业务"。</li>
-</ul>
-
-<h3>6.4 承诺包活口拆解：见第五节</h3>
-<p>一句话：钱类承诺硬（3.12亿已到账、4.5亿净资产下限），业务类承诺软（"注入核心优质业务"无量无对赌无时间表）。</p>
-
-<h3>6.5 全流程进度与行情映射</h3>
-<ul>
-<li><b>行情位置：</b>现价6.77元、市值18.64亿，市净率约150倍（归母口径）——<b>这已经不是一个"壳价"（干净壳20亿左右），而是把"重整+资产注入预期"计价了大半的小市值科技股定价</b>。价格相对产业方3.5元认购价已翻倍，说明"预期抢跑"明显。</li>
-<li><b>下跌/波动主因预判：</b>①重整受理若迟迟不来或受阻；②受理后"退市风险警示"临时叠加带来的情绪杀；③老股东/财务投资人解禁减持（产业方转增后锁36个月，但财务投资人锁定期更短）；④2026年报若营收卡1亿线引发资金避险。</li>
-<li><b>下一波催化排序：</b>重整受理（最大）＞重整计划批准/转增除权＞四川愿景等并购并表放营收＞随锐核心资产真正注入＞摘帽（撤销其他风险警示）。</li>
-</ul>
-
-<h3>6.6 运作特征与综合判断</h3>
-<p><b>手法：</b>"预重整＋司法重整"框架下的资本公积转增认购，辅以"先换管理层、再设合资公司、再买小标的"的渐进式资产注入；联合模式=产业资本（随锐）＋地方国资（临川国控）＋债权人债转股。</p>
-<p><b>比同类快/慢：</b>从2025-07启动预重整到2026-09仍未受理，横向对比预重整周期半年到一年，<b>它处于"偏慢但仍在推进"的区间</b>，慢的症结在造假+立案+实控人禁入叠加，法院审慎。</p>
-<p><b>成败关键变量（1和0）：</b>重整受理与否。</p>
-<p><b>核心矛盾一句话：</b>资产方（随锐）是真的、地方国资（临川）托得真，但"壳"是资不抵债+造假+原实控人禁入的烂壳，交易执行力(能不能受理、能不能过户)是唯一不确定项。</p>
-
-<h2 id="s7">七、壳经济学：值不值得救</h2>
-<h3>7.1 先过一票否决关</h3>
-<table>
-<thead><tr><th>红线</th><th>是否触发</th><th>结论</th></tr></thead>
-<tbody>
-<tr><td>重大违法强制退市（欺诈发行/造假达量化线：单年虚增≥2亿且≥30%等）</td><td class="pos">未触发——2022虚增营收1.67亿（占比29.52%）、2023虚增1.01亿（43.09%），未同时满足"≥2亿且≥30%"的量化线；处罚决定书已明确"不触及重大违法强制退市"</td><td>可救</td></tr>
-<tr><td>交易类退市（<1元 / 市值<3亿 / 股东数<400）</td><td class="pos">未触发——股价6.77元、市值18.64亿、股东数10202户</td><td>可救</td></tr>
-<tr><td>正在被证监会立案调查（重组做不了）</td><td class="neg">曾立案，但2025-11-14已出《行政处罚决定书》结案，立案期已过</td><td>障碍基本解除</td></tr>
-</tbody>
-</table>
-
-<h3>7.2 再算"可以救但要算账"的账</h3>
-<table>
-<thead><tr><th>当前病症</th><th>解决手段</th><th>代价/进度</th></tr></thead>
-<tbody>
-<tr><td>财务类：净资产为负（合并口径）/归母濒临转负</td><td>搞钱——现金捐赠+债务豁免增厚净资产</td><td>3.12亿已到账，承诺再补到≥4.5亿；短期兜得住</td></tr>
-<tr><td>财务类：营收<1亿+持续亏损（2026年风险）</td><td>换业务——注入有收入的资产/并表收购</td><td>四川愿景等并购并表在推进，2026H1营收仅4866万、全年1亿线仍紧</td></tr>
-<tr><td>财务类：审计意见（已从非标回到"带持续经营段的无保留"）</td><td>换人＋整改</td><td>已换北京德皓，内控重新审计为无保留，摘星已完成</td></tr>
-<tr><td>规范类：实控人造假/禁入、内控失效</td><td>换人（随锐系全面接管董事会/管理层）</td><td>已换；舒骋任董事长兼总经理</td></tr>
-<tr><td>规范类：主要银行账户被冻结</td><td>债务和解/重整清偿解冻</td><td>未完全解决（其他风险警示仍在）</td></tr>
-</tbody>
-</table>
-
-<h3>7.3 三类救壳主体的定性</h3>
-<ul>
-<li><b>随锐科技＝产业资本：</b>要的不是便宜壳，是要装自己业务的"干净+能融资的平台"。它进来＝真救的方向，但要警惕"装进来多少".</li>
-<li><b>临川国控＝地方国资：</b>要本地的壳，保税收就业、保重整落地，出的是财务投资的钱、给的是背书。有它＝下行有托底。</li>
-<li><b>湖南新辉控股＝资本套利者（已撤）：</b>进得快、撤退也快，留下的增持承诺大概率不兑现——警惕其潜台词是"这壳不好炒"。</li>
-</ul>
-<p><b>岛主判断：</b>这是一个"<b>可以救、正在救、但还没救成</b>"的标的。产业资本+国资双路真金白银，救的成色偏真；但"受理"与"2026营收/净资产"两个开关未按，当下18.64亿市值相对"壳底+注入预期"已不便宜，<b>属于高风险博弈，单只仓位务必控制</b>。若重整受理并执行、随锐核心资产真注入、2026年营收过亿+扭亏，才有第二轮重估；若任一环节卡壳，则回到"退市风险"定价并快速杀估值。</p>
-
-<h2 id="s8">八、核心财务表（定稿数，零估计）</h2>
-<h3>8.1 利润表核心（合并）</h3>
-<table>
-<thead><tr><th>指标</th><th class="num">2023年（更正后）</th><th class="num">2024年（更正后）</th><th class="num">2025年</th><th class="num">2026H1</th></tr></thead>
-<tbody>
-<tr><td>营业收入（元）</td><td class="num">134,328,018.73</td><td class="num">134,236,125.99</td><td class="num">123,929,420.04</td><td class="num">48,663,708.97</td></tr>
-<tr><td>营收扣除后（元）</td><td class="num">—</td><td class="num">130,966,860.76</td><td class="num">121,892,399.81</td><td class="num">—</td></tr>
-<tr><td>归母净利润（元）</td><td class="num neg">-254,929,551.84</td><td class="num neg">-372,885,069.33</td><td class="num neg">-341,705,641.62</td><td class="num neg">-31,014,775.11</td></tr>
-<tr><td>扣非净利润（元）</td><td class="num neg">-268,225,804.95</td><td class="num neg">-395,553,619.53</td><td class="num neg">-398,343,421.59</td><td class="num neg">-41,624,664.82</td></tr>
-<tr><td>经营现金流净额（元）</td><td class="num">—</td><td class="num">-150,589,950.27</td><td class="num neg">-22,623,679.44</td><td class="num neg">-97,885,228.46</td></tr>
-<tr><td>基本每股收益（元）</td><td class="num neg">-0.96</td><td class="num neg">-1.41</td><td class="num neg">-1.29</td><td class="num neg">-0.11</td></tr>
-<tr><td>加权平均净资产收益率</td><td class="num neg">-48.38%</td><td class="num neg">-167.94%</td><td class="num neg">-243.94%</td><td class="num neg">-111.38%</td></tr>
-</tbody>
-</table>
-<p class="muted">注：2024年经营现金流净额-150,589,950.27为"调整前/调整后"一致口径（-1.506亿元）。2023年更正后经营现金流未在追溯表内单列，故标注"—"，属年报追溯表中未披露该行追溯值的口径性缺项（非估计）。</p>
-
-<h3>8.2 资产负债核心（合并，落到半年报合并资产负债表）</h3>
-<table>
-<thead><tr><th>指标</th><th class="num">2025年末</th><th class="num">2026年6月末</th><th>变动</th></tr></thead>
-<tbody>
-<tr><td>资产总计（元）</td><td class="num">1,036,292,244.90</td><td class="num">951,990,469.34</td><td>-8.13%</td></tr>
-<tr><td>负债合计（元）</td><td class="num">1,023,125,925.86</td><td class="num">971,065,829.82</td><td>-5.09%</td></tr>
-<tr><td>所有者权益合计（元）</td><td class="num">13,166,319.04</td><td class="num neg">-19,075,360.48</td><td class="neg">转负</td></tr>
-<tr><td>其中：归母净资产（元）</td><td class="num">43,352,498.00</td><td class="num">12,337,722.89</td><td>-71.54%</td></tr>
-<tr><td>少数股东权益（元）</td><td class="num neg">-30,186,179.00</td><td class="num neg">-31,413,083.37</td><td>—</td></tr>
-<tr><td>资产负债率（负债合计/资产总计）</td><td class="num">98.73%</td><td class="num neg">102.00%</td><td class="neg">资不抵债</td></tr>
-</tbody>
-</table>
-<p class="muted">勾稽自检：①2025年末 1,023,125,925.86＋13,166,319.04＝1,036,292,244.90 ✓；②2026年6月末 971,065,829.82＋(-19,075,360.48)＝951,990,469.34 ✓；③归母净资产 12,337,722.89＝期初43,352,498.00－归母净利31,014,775.11 ✓（无其他权益变动）。资产负债率按"负债合计/资产总计"，不用归母净资产倒推。</p>
-
-<h3>8.3 会计差错更正要点（追溯重述，取更正后数值）</h3>
-<table>
-<thead><tr><th>项目</th><th>调整金额</th><th>说明</th></tr></thead>
-<tbody>
-<tr><td>调减2022年营业收入</td><td class="neg">-16,749.48万元</td><td>对应证监会认定2022年虚增营收1.6749亿元（占29.52%）</td></tr>
-<tr><td>调减2022年营业成本</td><td class="neg">-15,705.72万元</td><td>—</td></tr>
-<tr><td>调减2022年末存货</td><td class="neg">-3,195.72万元</td><td>—</td></tr>
-<tr><td>调减2023年营业收入</td><td class="neg">-10,524.21万元</td><td>对应证监会认定2023年虚增营收1.0082亿元（占43.09%）；更正调减额更大于处罚虚增额，含其他差错调整</td></tr>
-<tr><td>调减2023年营业成本</td><td class="neg">-8,814.84万元</td><td>—</td></tr>
-<tr><td>调减2023年末存货</td><td class="neg">-2,631.28万元</td><td>—</td></tr>
-<tr><td>冲回2024年前三季度已披露营收</td><td class="neg">-14,519.00万元</td><td>2024年前三季度虚增收入冲回</td></tr>
-</tbody>
-</table>
-<p class="muted">数据来源：2025年年报附注（前期差错更正）、《行政处罚决定书》（赣处罚字〔2025〕4号）、北京德皓《出具非标意见涉及事项影响已消除的审核报告》（德皓核字[2026]00001133号）。</p>
-
-<h2 id="s9">数据来源</h2>
-<p>以下为本文关键事实的公告原文与权威信源（标题＋日期＋链接）：</p>
-<ol>
-<li>万向新元科技股份有限公司《2026年半年度报告》（2026-08-28）<a href="http://www.cninfo.com.cn/new/disclosure/stock?stockCode=300472&orgId=9900024679" target="_blank">巨潮资讯公告页</a></li>
-<li>万向新元科技股份有限公司《2025年年度报告》（2026-04-27）<a href="http://www.cninfo.com.cn/new/disclosure/stock?stockCode=300472&orgId=9900024679" target="_blank">巨潮资讯公告页</a></li>
-<li>《关于公司股票交易撤销退市风险警示并继续被实施其他风险警示暨停牌的公告》（2026-09-01）<a href="https://www.egsea.com/news/detail/2337004.html" target="_blank">证券时报·e公司</a>、<a href="https://finance.sina.com.cn/roll/2026-09-01/doc-iniqitru8346109.shtml" target="_blank">新浪财经</a>、<a href="https://stcn.com/article/detail/4168124.html" target="_blank">证券时报</a></li>
-<li>《关于公司预重整事项的进展公告》（2026-09-07，公告编号2026-092）<a href="https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-09-07/023513dc-c556-4637-b518-6f52d0b844b7.PDF" target="_blank">深交所PDF原文</a></li>
-<li>《关于公司及相关当事人收到〈行政处罚决定书〉的公告》（2025-11-14）<a href="https://disc.static.szse.cn/download/disc/disk03/finalpage/2025-11-15/e3b349ab-7eba-4c30-8e95-e8ce0d486e03.PDF" target="_blank">深交所PDF原文</a></li>
-<li>《*ST新元与产业投资人签署重整投资协议》（上海证券报·中国证券网，2025-12-12）<a href="http://www.cnstock.com/commonDetail/601783" target="_blank">上证报</a></li>
-<li>《连续两年审计报告存在虚假记载 大华所被罚288.68万元》（上海证券报，2026-07-29）<a href="https://m.cnstock.com/commonDetail/752292" target="_blank">上证报</a></li>
-<li>《*ST新元：上半年营收同比增长658% 拟收购四川愿景51%股权》（上海证券报，2026-08-27）<a href="http://www.cnstock.com/commonDetail/777725" target="_blank">上证报</a></li>
-<li>随锐科技集团《随锐科技签署万向新元重整投资协议》（2025-12-23）<a href="https://www.suirui.com/show-10-1901-1.html" target="_blank">随锐科技官网</a></li>
-<li>舒骋（随锐科技集团董事长）人物百科 <a href="https://m.baike.com/wiki/%E8%88%92%E9%AA%8B/2556675" target="_blank">百科</a></li>
-<li>随锐科技集团股份有限公司简介 <a href="https://www.suirui.com/show-10-1475-1.html" target="_blank">随锐科技官网</a></li>
-<li>《*ST新元：与财务投资人签署重整投资协议》（人民财讯，2026-06-09）<a href="https://stcn.com/article/detail/3952210.html" target="_blank">证券时报</a></li>
-<li>《万向新元科技披露2025年年报问询函回复 在手订单总额1.12亿元》（新浪财经，2026-09-01）<a href="https://finance.sina.com.cn/stock/aigc/wenxun/2026-09-01/doc-iniqixxq1477097.shtml" target="_blank">新浪财经</a></li>
-<li>《关于法院裁定批准子公司延期提交重整计划草案的公告》（2026-09-02）<a href="http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12580741&stockid=300472" target="_blank">新浪财经公告</a></li>
-<li>北京万向新元科技股份有限公司《首次公开发行股票并在创业板上市之上市公告书》（2015-06）<a href="http://static.cninfo.com.cn/finalpage/2015-06-17/1201164041.PDF" target="_blank">巨潮PDF</a></li>
-<li>万向新元科技股份有限公司官方网站·公告中心 <a href="http://www.newugroup.com/investment.aspx" target="_blank">newugroup.com</a></li>
-<li>东方财富网 ST新元(300472)个股行情与质押数据（2026-09-18）<a href="https://data.eastmoney.com/gdfx/stock/300472.html" target="_blank">东方财富</a>、<a href="https://www.egsea.com/quotation/stock-info/sz300472.html" target="_blank">证券时报·e公司行情</a></li>
-</ol>
-<p class="muted">本地PDF底稿（已读，取定稿数）：2026年半年度报告、2025年年报、2023/2024年年报（更正后）、2022年年报（更正）、年报问询函回复、部分董事无法保证年报真实的说明公告、2025年报编制及审计进展公告。</p>
-
-<h2 id="s10">附录：逻辑漏洞与反方观点</h2>
-<ul>
-<li><b>反方一（重整很可能无法受理/执行）：</b>公司合并净资产已为负、原实控人被禁入、造假余波未平，法院与债权人委员会可能对"资不抵债+蓄意造假"的壳要求更高清偿率，受理与批准存在实质风险；一旦重整失败转入破产清算，普通股权益将大幅缩水甚至归零。</li>
-<li><b>反方二（"注入核心优质业务"是画饼）：</b>随锐自身的通信云/机器人盈利质量未经上市审计验证，目前只装进"四川愿景"这类年净利129万的小标的存在撑营收嫌疑；若核心资产迟迟不注入，"十倍"逻辑不成立。</li>
-<li><b>反方三（估值已透支）：</b>现价约为产业方3.5元认购价的1.93倍、市净率约150倍，重组红利已被二级市场提前抢跑，追高的安全边际薄。</li>
-<li><b>反方四（原实控人劣迹的信任折价）：</b>一家连续两年造假、被罚800万+实控人禁入的公司，即便换了管理层，治理文化修复需要时间，信息真实性天然打折扣。</li>
-</ul>
-
-<div class="hr"></div>
-<p>（免责声明：本文内容仅为自用兼知识分享与逻辑分析，数据可能有错误或不及时，不构成任何投资建议。市场有风险，投资需谨慎。）</p>
-
-</div>
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
 </body>
 </html>
