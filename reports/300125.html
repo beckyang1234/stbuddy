@@ -1,52 +1,139 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ST聆达(300125)深度研究·王艳体</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>聆达股份（300125.SZ）研究报告</title>
 <style>
-  :root{
-    --ink:#1a1a1a; --sub:#5a5a5a; --line:#e3e0d8; --bg:#fdfcf8; --card:#fffef9;
-    --red:#b0261c; --green:#1e7d4f; --amber:#b57b1a; --blue:#1d4e89; --gold:#8a6d1d;
-  }
-  *{box-sizing:border-box;}
-  body{margin:0;background:var(--bg);color:var(--ink);
-    font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
-    line-height:1.85; font-size:16px;}
-  .wrap{max-width:880px;margin:0 auto;padding:28px 22px 90px;}
-  header{border-bottom:3px solid var(--ink);padding-bottom:18px;margin-bottom:10px;}
-  h1{font-size:28px;margin:6px 0 4px;letter-spacing:1px;}
-  .subtitle{color:var(--sub);font-size:15px;}
-  .meta{color:var(--sub);font-size:13px;margin-top:8px;}
-  .verdict{margin:22px 0;background:#fbf6e9;border:1px solid #e8dcc0;border-radius:10px;padding:16px 18px;}
-  .verdict .line{font-size:16.5px;margin:6px 0;font-weight:600;}
-  .verdict .red{color:var(--red);} .verdict .green{color:var(--green);} .verdict .amber{color:var(--amber);}
-  h2{font-size:21px;margin:40px 0 14px;padding-left:12px;border-left:5px solid var(--red);}
-  h3{font-size:17.5px;margin:26px 0 10px;color:var(--blue);}
-  p{margin:12px 0;text-align:justify;}
-  a{color:var(--blue);text-decoration:none;border-bottom:1px dotted #9cb4d4;}
-  a:hover{border-bottom:1px solid var(--blue);}
-  blockquote{margin:14px 0;padding:10px 16px;background:#f4f1ea;border-left:4px solid #c9bd9d;color:#444;border-radius:0 6px 6px 0;}
-  table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.8px;background:var(--card);}
-  th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top;}
-  th{background:#efece3;font-weight:600;color:#333;}
-  tr:nth-child(even) td{background:#faf8f2;}
-  .num{text-align:right;font-variant-numeric:tabular-nums;}
-  .neg{color:var(--red);} .pos{color:var(--green);}
-  .tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;margin-right:6px;vertical-align:middle;}
-  .tag.red{background:#f7dcd8;color:#8f1c12;} .tag.green{background:#dcefe4;color:#165c3a;}
-  .tag.blue{background:#dce7f5;color:#16406e;} .tag.amber{background:#f3e7cf;color:#7a5a16;}
-  .churoi{color:var(--sub);font-size:13px;}
-  .src-list li{margin:6px 0;font-size:13.5px;color:#333;}
-  .src-list a{color:#1d4e89;}
-  .disclaimer{margin-top:40px;padding:14px 16px;background:#f5f2eb;border:1px dashed #b8a878;border-radius:8px;color:#555;font-size:14px;}
-  .toc{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 18px;font-size:14px;color:#444;}
-  .toc b{color:#222;}
-  .foot{margin-top:30px;color:#999;font-size:12px;text-align:center;}
-  @media print{body{font-size:13px;} .wrap{max-width:100%;}}
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
 </style>
 </head>
-<body><script id="sbgatescript">
+<body>
+<script id="sbgatescript">
 (function(){
   var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
   try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
@@ -75,227 +162,284 @@
   else document.addEventListener('DOMContentLoaded', build);
 })();
 </script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>10 章 · 11 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断：一个"净壳 + 现金"的平台，值 57 亿元</a><a class="sblv3" href="#sec0">1.1 基本盘：价格在历史低分区，但估值哪一项都不低</a><a class="sblv3" href="#sec1">1.2 王艳式六栏目：料全齐，就地展开</a><a class="sblv3" href="#sec2">1.3 全流程进度看板：从"救壳"到"装东西"，后半段一步没动</a><a class="sblv3" href="#sec3">1.4 运作特征与核心矛盾</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、主要看点：彭骞的体外资产，装得进来吗</a><a class="sblv3" href="#sec4">2.1 已落地的两块：不是"装在上市公司里"，是"上市公司自己掏钱做的"</a><a class="sblv3" href="#sec5">2.2 体外三块：能装的不能装的，时间表天差地别</a><a class="sblv3" href="#sec6">2.3 炒作逻辑三支柱（全部着眼未来）</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、经营与财务：壳洗干净了，肉没长出来</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、炒作面与筹码：注意力已经过峰值</a><a class="sblv3" href="#sec7">4.1 历史炒作波段：符号变了三次，连板极值在 2024 年 8 月</a><a class="sblv3" href="#sec8">4.2 筹码与情绪：三组数据指向同一个方向</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">五、估值与投资结论</a><a class="sblv3" href="#sec9">5.1 估值：57 亿元买的是期权，但要算清期权的行权时间</a><a class="sblv3" href="#sec10">5.2 投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">附录 C · 逻辑漏洞与反方观点（5 问压力测试）</a></div><div class="sbgrp"><a class="sblv2" href="#chap9">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
 <div class="wrap">
+<h1 id="top">聆达股份（300125.SZ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<blockquote><p><strong>操作结论：卖出（回避）</strong>　｜　基准日：2026-10-04　｜　数据截止：行情 2026-09-30 收盘；公告与财务 2026-08-28（中报）</p><p><strong>红线分类</strong>：<span class="sttag sttag-teal"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&announcementId=1225460682&orgId=9900013908&announcementTime=2026-08-06" target="_blank" rel="noopener">已摘帽,2026-08-07</a></span> · <span class="sttag sttag-blue"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&announcementId=1223248350&orgId=9900013908&announcementTime=2025-04-24" target="_blank" rel="noopener">原2024年净资产为负</a></span> · <span class="sttag sttag-blue"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&announcementId=1223248362&orgId=9900013908&announcementTime=2025-04-24" target="_blank" rel="noopener">原2024年扣后营收0.58亿元</a></span> · <span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&announcementId=1223248359&orgId=9900013908&announcementTime=2025-04-24" target="_blank" rel="noopener">原2024年内控否定意见</a></span> · <span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&announcementId=1224654133&orgId=9900013908&announcementTime=2025-09-11" target="_blank" rel="noopener">原违规担保1.26亿元已解除</a></span></p><p><strong>生死定级</strong>：<strong>可救 · 已自救完成</strong>（重整执行完毕 + 2026-08-07 摘帽，四类退市红线当前<strong>全部不触及</strong>）。但——<strong>没有退市风险，不等于有上涨理由</strong>，这两件事必须分开算。</p><p><strong>自救空间</strong>：壳已经洗干净（归母净资产 10.78 亿元、资产负债率 19.55%、2025 年报与内控均标准无保留），可动用资金 7.19 亿元；<strong>但主业近乎空心</strong>（全公司 62 人、2026H1 毛利率为负），新业务一块在试产、一块刚投产，运营本体还没有造血能力。</p><p><strong>主要看点</strong>：<strong>新实控人彭骞（精测电子 300567 董事长）的体外半导体与显示资产能否装进来</strong> —— 已落地载体是上市公司自己 55% 控股的<strong>湖北长晶环芯</strong>（半导体设备零部件表面处理）与 52% 参股的<strong>南京嘉悦显示</strong>（彩色滤光膜）；真正的期权在体外三块：<strong>浙江众凌科技</strong>（FMM 精细金属掩膜版）、<strong>合肥威迪半导体</strong>（全固态电致变色 EC 膜）、<strong>精煜智显</strong>。</p><p><strong>版本：第 1 次修改 · 2026-10-04</strong>（初版 2026-09-21 为王艳体深度研究；本次按现行速研规范重构，简称由「＊ST聆达」改为「聆达股份」，数据更新至 2026-09-30）</p></blockquote>
+<p><strong>阅读方式</strong>：正文＝结论与关键判断（一屏读完）；带「▸」标题的折叠区＝论据（原话引用、明细表、推导过程）。<strong>不展开任何折叠，也能拿到完整判断链。</strong></p>
+<hr>
+<h2 id="chap1">一、诊断：一个"净壳 + 现金"的平台，值 57 亿元</h2>
+<p><strong>一句话判断：聆达已经不是一家光伏公司，也不是一家 ST 公司，而是一个"已经洗干净、账上有钱、等着装东西"的创业板壳。它的定价不由当期利润决定，由"装什么、什么时候装"决定。</strong></p>
+<h3 id="sec0">1.1 基本盘：价格在历史低分区，但估值哪一项都不低</h3>
+<p><strong>结论：按注意力定价的"低位"定义（低市值 / 低 PE / 低 PB / 低 PS 至少满足其一），本标的当前一项都不满足</strong> —— 价格分位看着低是"价格"的低，不是"估值"的低，两者不能混。</p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>证券简称／代码</td><td>聆达股份（300125.SZ）· 深交所创业板 · 曾用名 易世达 → 聆达股份 → ST聆达 → ＊ST聆达</td></tr><tr><td>收盘价／总市值</td><td>8.56 元 ／ <strong>57.00 亿元</strong>（流通市值 30.88 亿元）</td></tr><tr><td>估值</td><td>PB <strong>5.29 倍</strong>、PE（TTM）37.86 倍（TTM 利润含重整非经常收益，PE 无参考意义）、PS（TTM 营收 1.25 亿元）≈ 45.6 倍</td></tr><tr><td>2026 年内区间</td><td>高 11.37 元（05-13）／低 6.90 元（07-21）／现价较年内高点 −24.7%、较年内低点 +24.1%</td></tr><tr><td>价格分位</td><td>近 20 年价格分位 <strong>8.49%</strong>（ST 信息库，2026-07-31）—— 口径为价格序列，重整除权后仅作方向参考</td></tr><tr><td>可动用资金</td><td>7.19 亿元（货币资金 1.25 亿元 + 交易性金融资产 6.02 亿元，均为 2026-06-30）</td></tr><tr><td>主业盘子</td><td>全公司 <strong>62 人</strong>（2025 年报末）；2026H1 营业收入 0.50 亿元、扣非 <strong>−0.18 亿元</strong></td></tr></tbody></table>
+<p>价格分位与估值分位背离的成因，以及"为什么它不便宜"的完整拆解：</p>
+<details class="fold"><summary>位置测算的完整过程（含重整除权口径说明）</summary><div class="fold-body">
 
-<header>
-  <h1>ST聆达(300125)深度研究</h1>
-  <div class="subtitle">一只"光伏电池片开山鼻祖"如何被"面板检测大佬"借壳救活 —— 王艳《寻找十倍系列》体例复盘</div>
-  <div class="meta">证券简称：聆达股份（曾用 *ST聆达 / ST聆达 / 易世达）｜代码：300125.SZ｜深交所创业板｜基准日：2026-09-21</div>
-</header>
+<p><strong>为什么 8.49% 的价格分位不能直接当"低位"用。</strong> 2025-12 的重整转增（每 10 股转增 15 股）<strong>没有按普通转增大比例除权</strong>，而是采用了重整专用的调整后除权参考价公式——把「转增股份抵偿债务金额」与「重整投资人受让转增股份支付的现金」一并计入分子。转增平均价定在 <strong>5.12 元/股</strong>（＝(95,381,944 股 × 10.28 元 + 10.59 亿元) ÷ 398,249,992 股），2025-12-29 复牌当日按该参考价开盘并一字涨停 <strong>+19.94%</strong>（收 7.46 元）。这意味着 2025-12-29 之前的原始价格序列与之后<strong>不可直接纵向比较</strong>。</p>
+<p><strong>换算成同一把尺子看更清楚：</strong></p>
+<table><thead><tr><th>口径</th><th>数值</th><th>判断</th></tr></thead><tbody><tr><td>总市值</td><td>57.00 亿元</td><td>对 2025 年 1.25 亿元营收、10.78 亿元净资产，均不便宜</td></tr><tr><td>扣除净现金后的企业价值</td><td>约 49.81 亿元</td><td>对应 2026H1 年化营收约 1.0 亿元，EV/S ≈ 50 倍</td></tr><tr><td>PB</td><td>5.29 倍</td><td>存量光伏同业 PB 多在 0.45–1.3 倍（ST 信息库对照口径）；5.29 倍已是半导体材料板块的估值水平</td></tr><tr><td>实体价值拆解（Andy，2026-08-03）</td><td>存量光伏相关业务（EPC + 格尔木 53MW 电站）合理估值 <strong>10–15 亿元</strong></td><td>其余 <strong>42–47 亿元</strong>是"摘帽 + 南京嘉悦 + 未来注入"的预期溢价</td></tr></tbody></table>
+<p>来源：<details class="fold fold-inline"><summary>转增平均价与除权公式</summary><div class="fold-body">《关于重整计划资本公积金转增股本除权事项的公告》（公告编号 2025-126，2025-12-19）</div></details>，见文末附录 B 链接。</p>
 
-<p><strong>更新至 2026-09-21。</strong>本文严格按本人"寻找十倍"系列的方法论来写：先报三行结论，再抓病因、判生死、锁救兵、拆路径，最后上六维拆解和壳经济学。所有数字尽量取自公司年报/半年报原文（巨潮资讯网、深交所官网），并附来源链接，关键数据我用了 2—3 个口径互证。</p>
+</div></details>
+<h3 id="sec1">1.2 王艳式六栏目：料全齐，就地展开</h3>
+<p><strong>结论：本标的属于"重整 + 控制权变更 + 转型注入"复合型案例，六栏目里最关键的两栏是「股东阵容」和「成本锚点」—— 它们直接解释了 2026 年 8 月以来的股价为什么走弱。</strong></p>
+<p><strong>六栏目的核心结论先摆在这里</strong>：① 前世今生是一条"光伏崩塌 → 破产重整 → 半导体资本入主"的三段式；② 股东阵容里<strong>产业投资人锁 3 年、财务投资人 2026-12-29 解禁、债权人成本 10.28 元高于现价</strong>三件事同时成立；③ 节奏上<strong>硬节点几乎全部落在 2027 年以后</strong>；④ 资产质量"壳满分、主业零分"；⑤ 成本锚点里产业投资人 3.10 元 vs 现价 8.56 元＝<strong>2.76 倍浮盈</strong>，与散户的处境完全相反；⑥ 信源以公告为主、雪球为辅。</p>
+<details class="fold"><summary>① 前世今生（四列表：关键动作 + 股权变化 + 背后的钱）</summary><div class="fold-body">
 
-<div class="verdict">
-  <div class="line red">① 红线分类：*ST（退市风险警示）+ 其他风险警示，四条全踩（营收&lt;1亿收窄线、净资产为负、停产、内控否定意见、违规担保）——典型的"财务类+合规类"双重戴帽的重灾户。</div>
-  <div class="line amber">② 生死定级：已从"将被清退"翻盘为"暂逃一劫"。2025-12-31 重整计划执行完毕，2026-08-07 正式摘星脱帽，简称从 *ST聆达 变回 聆达股份。</div>
-  <div class="line green">③ 自救空间：壳救回来了（净资产 10.53 亿转正、标准无保留意见），但"经营底子"还没救回来——2026H1 扣非仍亏 1770 万，新业务（半导体表面处理+彩色滤光膜）刚下锅，利润靠债务重组收益、资产处置收益和理财利息在撑。</div>
+<table><thead><tr><th>时点</th><th>关键事件</th><th>股权／实控人变化</th><th>背后的逻辑（金额·每股价格·来源）</th></tr></thead><tbody><tr><td>2009–2014</td><td>前身「易世达」在大连上市，主业光伏电站</td><td>无</td><td>2014 年收购格尔木神光 100%，收购价约 2.38 亿元，切入 53MW 光伏电站</td></tr><tr><td>2019-01</td><td>设金寨嘉悦，上马高效晶硅电池片（PERC）</td><td>无</td><td>规划投资 40 亿元、10GW，全部自有＋借款投入</td></tr><tr><td>2021-01</td><td>实控人变更为黄双</td><td>控制权首次易主</td><td>公告未披露每股作价</td></tr><tr><td>2022</td><td>杭州光恒昱（王明圣系）成为控股股东</td><td>控制权第二次易主</td><td>公告未披露每股作价</td></tr><tr><td>2024-03-14</td><td>金寨嘉悦电池片一期临时停产</td><td>无</td><td>PERC 被 TOPCon 替代，40 亿元投资沉淀为无效产能</td></tr><tr><td>2024-07-31</td><td>债权人金寨汇金申请重整，六安中院启动预重整</td><td>无</td><td>（2024）皖15破申127号；临时管理人为金寨县政府组建的清算组</td></tr><tr><td>2024-08-30</td><td>子公司金寨嘉悦启动预重整，与母公司协调审理</td><td>无</td><td>皖15破申147号</td></tr><tr><td>2024-12-31</td><td>证监会立案（信息披露违法违规）</td><td>无</td><td>证监立案字0212024005号</td></tr><tr><td>2025-03-28</td><td>确定为重整投资人（众凌 + 威迪联合体，威迪指定金微为签约主体）并签署《重整投资协议》</td><td>无</td><td>产业投资人 3.10 元/股；财务投资人 3.50／3.87／4.20 元/股</td></tr><tr><td>2025-04-25</td><td>实施退市风险警示（\*ST）+ 其他风险警示</td><td>无</td><td>公告编号 2025-042</td></tr><tr><td>2025-09-11</td><td>大连证监局行政处罚：未披露对外担保、资金占用</td><td>无</td><td>王明圣、林志煌各罚 200 万元</td></tr><tr><td>2025-11-18</td><td>六安中院裁定受理公司及子公司重整</td><td>无</td><td>（2025）皖15破1号、2号</td></tr><tr><td>2025-12-19</td><td>法院裁定批准两份重整计划；重整投资人 10.59 亿元投资款全部到账</td><td>无</td><td>转增 398,249,992 股；抵债价 10.28 元/股</td></tr><tr><td>2025-12-29</td><td>转增股份实施、股票复牌</td><td>无</td><td>复牌一字涨停 +19.94%，收 7.46 元</td></tr><tr><td>2025-12-30／31</td><td>重整计划执行完毕、法院裁定终结重整程序</td><td>无</td><td>（2025）皖15破1、2号之一</td></tr><tr><td>2026-01-07</td><td>转增股票过户</td><td><strong>金寨金微半导体</strong>成控股股东（16.93%），<strong>彭骞</strong>成实控人（合计 20.00%）</td><td>金微 1.1275 亿股 + 众凌 2000 万股</td></tr><tr><td>2026-02-04</td><td>董事会换届，彭骞任董事长，明星任总经理兼董秘</td><td>治理层换人</td><td>第七届董事会</td></tr><tr><td>2026-03-31</td><td>披露 2025 年报（标准无保留 + 内控标准无保留），同日申请撤销两项风险警示</td><td>无</td><td>公告编号 2026-0XX</td></tr><tr><td>2026-04-14／29</td><td>设长晶环芯（半导体设备零部件表面处理）／设南京嘉悦（彩色滤光膜）</td><td>无</td><td>注册资本各 5000 万元</td></tr><tr><td>2026-06-12</td><td>长晶环芯增资扩股，引入核心团队持股平台武汉忠芯</td><td>聆达持股由 100% 降至 <strong>55%</strong></td><td>武汉忠芯现金增资 2250 万元</td></tr><tr><td>2026-08-05／07</td><td>深交所同意撤销；复牌更名「聆达股份」</td><td>简称变更</td><td>停牌 1 天，08-07 复牌当日最高 10.55 元</td></tr></tbody></table>
+<p><strong>关联方合计持股的逐年增减：</strong> 原体系「杭州光恒昱（王明圣系）」持股 2323.03 万股（3.49%），<strong>已全部处于司法冻结</strong>，属"退"的一方；新体系「金微 + 众凌」合计 1.3275 亿股（20.00%），<strong>锁定期至 2029-01</strong>，属"进"的一方。<strong>这是一次彻底的交权，且是配合式的——原体系没有保留表决权委托、没有反收购动作，只剩一个冻结状态的小股东身份。</strong></p>
+
+</div></details>
+<details class="fold"><summary>② 股东阵容（身份识别 + 取得成本 + 锁定 + 筹码集中度）</summary><div class="fold-body">
+
+<table><thead><tr><th>持股方</th><th>身份识别</th><th>持股</th><th>取得成本</th><th>锁定／状态</th></tr></thead><tbody><tr><td>金寨金微半导体材料</td><td><strong>新主·产业投资人</strong>（彭骞直持 34%、经威迪控 35%）</td><td>1.1275 亿股（16.93%）</td><td><strong>3.10 元/股</strong></td><td>限售 36 个月，至 2029-01-06</td></tr><tr><td>浙江众凌科技</td><td><strong>新主一方·产业投资人</strong>（彭骞任董事长）</td><td>2000 万股（3.00%）</td><td><strong>3.10 元/股</strong></td><td>限售 36 个月</td></tr><tr><td>安徽省金福智慧能源</td><td>国资·财务投资人</td><td>3857.08 万股（5.79%）</td><td>3.50–4.20 元/股区间</td><td>无限售，报告期内增持 357.08 万股</td></tr><tr><td>铜陵嘉悦同盛新能源合伙</td><td>财务投资人</td><td>3507.00 万股（5.27%）</td><td>3.50–4.20 元/股区间</td><td>无限售</td></tr><tr><td>云南国际信托－金瑞 512 号单一资金信托</td><td>财务投资人（信托通道）</td><td>3200.00 万股（4.81%）</td><td>3.50–4.20 元/股区间</td><td>3200 万股全部限售</td></tr><tr><td>海南凌科云启管理咨询合伙</td><td>财务投资人</td><td>3141.80 万股（4.72%）</td><td>3.50–4.20 元/股区间</td><td>无限售</td></tr><tr><td>海南星帆智航投资合伙</td><td>财务投资人</td><td>3000.00 万股（4.51%）</td><td>3.50–4.20 元/股区间</td><td>无限售</td></tr><tr><td>武汉佰数千识企业管理合伙</td><td>财务投资人</td><td>2500.00 万股（3.75%）</td><td>3.50–4.20 元/股区间</td><td>无限售</td></tr><tr><td>聆达破产企业财产处置专用账户</td><td><strong>债权人偿债股票池</strong></td><td>3118.90 万股（4.68%）</td><td>抵债价 <strong>10.28 元/股</strong></td><td>2026H1 减少 <strong>1.55 亿股</strong></td></tr><tr><td>杭州光恒昱（王明圣系）</td><td><strong>原控股股东·已出局</strong></td><td>2323.03 万股（3.49%）</td><td>老股东历史成本</td><td><strong>全部司法冻结</strong></td></tr></tbody></table>
+<p><strong>筹码集中度——这是全篇最刺眼的一组数据：</strong></p>
+<table><thead><tr><th>观察日</th><th>股东户数</th><th>变化含义</th></tr></thead><tbody><tr><td>2026-02-13</td><td>10,011 户</td><td>重整期间，筹码集中</td></tr><tr><td>2026-07-20</td><td><strong>8,694 户</strong></td><td>摘帽前最低点，机构/大户占绝对主导</td></tr><tr><td>2026-08-10</td><td><strong>13,400 户</strong></td><td>摘帽复牌后一周激增 <strong>+54.1%</strong></td></tr><tr><td>2026-08-31</td><td>12,067 户</td><td>高位回落，散户留在了场上</td></tr></tbody></table>
+<p><strong>判读：从 8,694 户到 13,400 户，只用了 20 天，增幅 54.1%。</strong> 这不是"关注度提升"的中性表述，而是<strong>典型的大户派发、散户接盘</strong>形态。配合"2026 年全年零龙虎榜上榜"（最后一次上榜是 2025-12-29 重整完成日的 +19.94%），可以判定：<strong>本轮摘帽行情没有任何游资席位参与，是存量资金借助散户情绪完成的一次换手。</strong></p>
+<p><strong>反向读数（必须写）：</strong> 股东户数激增<strong>证明</strong>筹码由集中转向分散、有大额持仓在二级市场实现；<strong>不证明</strong>"后市必跌"——散户化本身是中性的，若后续出现强催化（注入方案、大额订单），分散的筹码反而更容易被重新收集。它只说明<strong>当前时点没有大资金在往上做</strong>。</p>
+
+</div></details>
+<details class="fold"><summary>③ 节奏与催化（编号清单：硬节点 vs 软预期）</summary><div class="fold-body">
+
+<p><strong>硬节点（可提前锁定日期，决定仓位）</strong></p>
+<p>① <strong>2026-12-29</strong> —— 8 家财务投资人取得股份满 12 个月，解禁；同时其"不谋求控制权、不协助他人夺权"承诺到期。这是<strong>最近的一个确定性供给节点</strong>，距今约 3 个月。 ② <strong>2026-10-31 前</strong> —— 2026 年三季报披露（法定截止日）。中报已显示扣非仍亏 1770 万元，三季报是第一个能验证"新业务有没有爬起来"的窗口。 ③ <strong>2027-04-30 前</strong> —— 2026 年年报。<strong>这是唯一能验证"摘帽后首年是否保得住"的硬节点</strong>：若 2026 年再度出现"扣非为负且扣除后营收低于 1 亿元"，将重新触发财务类退市风险警示，且这次<strong>没有第二个壳可以救</strong>。 ④ <strong>2029-01-06</strong> —— 产业投资人（金微 + 众凌）36 个月锁定期届满。</p>
+<p><strong>软预期（只决定想象空间，不决定仓位）</strong></p>
+<p>⑤ 长晶环芯 <strong>2026 年下半年</strong>完成洁净厂房建设与设备安装调试、启动试生产与客户认证（公司中报口径）。视作半年报后的第一个业务催化，但"认证"≠"订单"≠"收入"。 ⑥ 南京嘉悦彩色滤光膜产线爬坡（2026-06 下旬投产，H1 收入 62.82 万元）。 ⑦ <strong>体外资产注入</strong> —— 这是最大的一块想象空间，也是时间最远的一块（见第二章）。</p>
+<p><strong>卡点性质判定：</strong> 当前所有卡点都属于"<strong>时间未到</strong>"，没有一项是"谈不拢"。这是好消息也是坏消息——<strong>好消息</strong>是没有实质障碍；<strong>坏消息</strong>是没有障碍就意味着没有预期差，市场只能等，而"等"本身不产生行情。</p>
+
+</div></details>
+<details class="fold"><summary>④ 资产质量与估值（星级表）</summary><div class="fold-body">
+
+<table><thead><tr><th>评估项</th><th>判断</th><th>星级</th></tr></thead><tbody><tr><td>市值与估值</td><td>57.00 亿元市值 / PB 5.29 倍 / PS 约 45.6 倍，已把注入预期提前定价</td><td>★★☆☆☆</td></tr><tr><td>法律合规性</td><td>重整执行完毕、行政处罚已落地（2025-09）、违规担保已解除、无新的立案；深交所 2026-08-04 给予通报批评（公司层面，非公开谴责）</td><td>★★★★☆</td></tr><tr><td>债务与流动性</td><td>资产负债率 19.55%、可动用资金 7.19 亿元、留债清偿按期推进</td><td>★★★★★</td></tr><tr><td>主业质地</td><td>2026H1 营业成本 5066.96 万元 &gt; 营业收入 5044.67 万元，<strong>毛利率为负</strong>；扣非连亏；员工 62 人</td><td>★☆☆☆☆</td></tr><tr><td>控制权与运作</td><td>新实控人彭骞为精测电子（300567）董事长，实体产业背景清晰；产业方锁 36 个月</td><td>★★★★☆</td></tr><tr><td><strong>综合</strong></td><td><strong>壳是满分的壳，肉是零分的肉</strong></td><td><strong>★★★☆☆</strong></td></tr></tbody></table>
+<p><strong>必须点明的一条纪律：债务与流动性满分，不能抵消主业质地的零分。</strong> 7.19 亿元现金是"未来的弹药"，不是"现在的利润"；在注入落地之前，它只能躺在理财里产生 300 万元级别的收益，撑不起 57 亿元市值。</p>
+
+</div></details>
+<details class="fold"><summary>⑤ 成本锚点（逐参与方元/股 + 两类定价逻辑）</summary><div class="fold-body">
+
+<p><strong>两类定价逻辑必须先分清：</strong></p>
+<ul><li><strong>协议受让 / 司法拍卖价 = "无稀释的市场底"</strong> —— 老股东把存量股票卖给新主，总股本不变，价格反映的是"当时市场愿给的价格"。</li><li><strong>重整 / 战投价 = "有稀释的重整底"</strong> —— 通过资本公积转增新股票给投资人和债权人，总股本扩大，价格反映的是"重整方案里谈出来的公允价"。</li></ul>
+<p><strong>聆达属于后者，两套价格同时存在：</strong></p>
+<table><thead><tr><th>参与方</th><th>成本（元/股）</th><th>现价（8.56 元）倍数</th><th>说明</th></tr></thead><tbody><tr><td>产业投资人（彭骞方：金微 + 众凌）</td><td><strong>3.10</strong></td><td><strong>2.76 倍</strong></td><td>1.3275 亿股，对价 4.11525 亿元；锁 36 个月</td></tr><tr><td>财务投资人</td><td>3.50 / 3.87 / 4.20</td><td>2.45 / 2.21 / 2.04 倍</td><td>合计 1.70118 亿股，对价 6.47728 亿元；锁 12 个月</td></tr><tr><td>债权人（以股抵债）</td><td><strong>10.28</strong></td><td><strong>0.83 倍（浮亏 16.7%）</strong></td><td>9538.19 万股；无锁定，可随时卖出</td></tr><tr><td>重整投资人合计</td><td>—</td><td>—</td><td>受让 3.02868 亿股，对价 <strong>10.59 亿元</strong></td></tr></tbody></table>
+<p><strong>这张表解释了 2026 年 8 月以来的一切：</strong></p>
+<ul><li>产业投资人浮盈 <strong>2.76 倍</strong>（约 7.25 亿元账面盈利），<strong>没有任何自救压力，也没有任何护盘动机</strong>；</li><li>财务投资人浮盈 <strong>2.0–2.45 倍</strong>，且 <strong>2026-12-29 解禁</strong>，有充足动力在现价附近落袋；</li><li>债权人成本 <strong>10.28 元高于现价 8.56 元</strong>，处于浮亏状态，<strong>只可能减仓、不可能加仓</strong>——破产企业财产处置专用账户 2026H1 已减少 1.55 亿股（占总股本 23.3%），正是这一逻辑的兑现。</li></ul>
+<p><strong>判读：三方主要股东的成本全部低于或等于现价，其中两方有浮盈、一方可自由卖出。这是一个"上方没有锁仓同盟"的筹码结构。</strong></p>
+<blockquote><p>说明：破产企业财产处置专用账户持股下降，既可能是债权股过户至债权人指定账户，也可能是该账户在二级市场处置变现（重整计划规定"提存的股票可由公司在二级市场上出售变现后，用于补充公司流动资金"）。两种情形都指向同一件事——<strong>偿债股票是悬在头上的供给</strong>，需持续跟踪。</p></blockquote>
+
+</div></details>
+<details class="fold"><summary>⑥ 信息来源汇总（四级分级）</summary><div class="fold-body">
+
+<table><thead><tr><th>序号</th><th>来源级别</th><th>来源与标题</th><th>链接</th></tr></thead><tbody><tr><td>1</td><td>一手·定期报告</td><td>聆达集团 2026 年半年度报告（2026-08-28）</td><td>http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1225520877&amp;orgId=9900013908&amp;announcementTime=2026-08-28</td></tr><tr><td>2</td><td>一手·定期报告</td><td>聆达集团 2025 年年度报告（2026-03-31）</td><td>http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1225062878&amp;orgId=9900013908&amp;announcementTime=2026-03-31</td></tr><tr><td>3</td><td>一手·定期报告</td><td>聆达集团 2024 年年度报告（2025-04-24）</td><td>http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1223248350&amp;orgId=9900013908&amp;announcementTime=2025-04-24</td></tr><tr><td>4</td><td>一手·公告</td><td>关于公司股票交易撤销退市风险警示及其他风险警示暨停复牌的公告（2026-08-06）</td><td>http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1225460682&amp;orgId=9900013908&amp;announcementTime=2026-08-06</td></tr><tr><td>5</td><td>一手·公告</td><td>关于重整计划资本公积金转增股本除权事项的公告（2025-126，2025-12-19）</td><td>http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1224888715&amp;orgId=9900013908&amp;announcementTime=2025-12-19</td></tr><tr><td>6</td><td>一手·公告</td><td>关于控股股东权益变动暨控股股东、实际控制人发生变更的提示性公告（2026-01-09）</td><td>http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1224928650&amp;orgId=9900013908&amp;announcementTime=2026-01-09</td></tr><tr><td>7</td><td>一手·公告</td><td>关于与预重整投资人签署《重整投资协议》的公告（2025-03-28）</td><td>http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1222948608&amp;orgId=9900013908&amp;announcementTime=2025-03-28</td></tr><tr><td>8</td><td>一手·监管</td><td>关于公司及相关当事人收到《行政处罚决定书》的公告（2025-09-11）</td><td>http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1224654133&amp;orgId=9900013908&amp;announcementTime=2025-09-11</td></tr><tr><td>9</td><td>一手·公告</td><td>关于子公司光伏电站技改项目的进展公告（2026-08-07）</td><td>http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1225462119&amp;orgId=9900013908&amp;announcementTime=2026-08-07</td></tr><tr><td>10</td><td>一手·公告</td><td>关于子公司与关联方共同投资设立合资公司（南京嘉悦）暨关联交易的公告（2026-04-15 董事会）</td><td>见 2026 年半年度报告「主要控股参股公司情况说明」章节</td></tr><tr><td>11</td><td>数据源</td><td>韭研公社异动整理（异动明细与炒作波段）</td><td>本地结构化表（见第三章）</td></tr><tr><td>12</td><td>数据源</td><td>深交所互动易投资者问答（2026-02 至 2026-09，74 条）</td><td>https://basic.10jqka.com.cn/300125/interactive.html</td></tr><tr><td>13</td><td>数据源</td><td>东方财富龙虎榜明细（2026 年无记录，末次为 2025-12-29）</td><td>https://data.eastmoney.com/</td></tr><tr><td>14</td><td>数据源</td><td>Wind / 腾讯自选股行情（2026-09-30 收盘截面与前复权日线）</td><td>—</td></tr><tr><td>15</td><td>权威媒体</td><td>深圳商报《"听到风声"买聆达：胡远生内幕交易被查，34.7 万元违规获利换来 150 万元重罚》（2026-09-21）</td><td>见 ST 信息库「重要消息 2026-09-22」</td></tr><tr><td>16</td><td>权威媒体</td><td>证券时报《\*ST聆达：8 月 7 日复牌并撤销退市风险警示及其他风险警示》（2026-08-05）</td><td>https://www.stcn.com/article/detail/4060438.html</td></tr><tr><td>17</td><td>线索级</td><td>ST 信息库·公司档案与雪球评论（2026-08 至 2026-10）</td><td><code>ST信息库\ST公司\1.所有公司\＊ST聆达-300125.SZ.md</code></td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec2">1.3 全流程进度看板：从"救壳"到"装东西"，后半段一步没动</h3>
+<p><strong>结论：整个流程走完了"审计过关 → 申请摘帽 → 交易所核准"三段，但流程图上真正的下半场（注入）</strong>连起点都还没画出来<strong>。所有已完成的动作都属于"把壳洗干净"，所有未完成的动作都属于"把壳用起来"。</strong></p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点或条件</th><th>下一节点</th></tr></thead><tbody><tr><td>① 重整执行</td><td>✅ 2025-12-30 执行完毕</td><td>无</td><td>已完成</td></tr><tr><td>② 审计过关</td><td>✅ 2025 年报 + 内控均标准无保留</td><td>无</td><td>已完成</td></tr><tr><td>③ 申请摘帽</td><td>✅ 2026-03-31 申请 → 2026-08-05 深交所同意</td><td><strong>耗时 4 个月，属同批次"钉子户"</strong>；期间投资者反复质疑补充材料进度</td><td>已完成</td></tr><tr><td>④ 控制权落地</td><td>✅ 2026-01 过户完成，彭骞任董事长</td><td>无</td><td>已完成</td></tr><tr><td>⑤ 新业务落地</td><td>🟡 长晶环芯建设调试中、南京嘉悦刚投产</td><td>自身能力建设，非外部审批</td><td>2026H2 试生产／客户认证</td></tr><tr><td>⑥ 体外资产注入</td><td>⛔ <strong>尚未启动</strong></td><td>见第二章：重整计划要求"主营业务持续稳定发展 3 年后"再择机并购</td><td>最早指向 2027 年报之后</td></tr></tbody></table>
+<p><strong>为什么摘帽拖了 4 个月？</strong> 投资者在互动易上多次质问"为什么迟迟不见进展""是不是要退市了"，公司口径一律是"正在补充相关材料"（深交所互动易，2026-06-11 / 2026-08-14）。这说明<strong>交易所对这家公司的撤销申请作了实质性审查</strong>，而不是走过场。对投资者而言，这个细节值得记住：<strong>同一个交易所的判断，比我们更有信息优势，而它选择了慢。</strong></p>
+<h3 id="sec3">1.4 运作特征与核心矛盾</h3>
+<p><strong>结论：这是一次教科书式的"配合式交权 + 产业资本低价入主"，手法干净、节奏快；核心矛盾只有一个——</strong>新主是"做产业"还是"做股票"<strong>，目前证据支持前者，但力度极小。</strong></p>
+<table><thead><tr><th>观察点</th><th>事实</th><th>判断</th></tr></thead><tbody><tr><td>手法</td><td>债权人申请重整 → 预重整 → 公开招募 → 联合体中标 → 资本公积转增引入投资人与抵债</td><td>走的是<strong>最快、最标准化、最不容易被否</strong>的重整路径</td></tr><tr><td>节奏</td><td>预重整（2024-07）→ 终结重整（2025-12），约 <strong>17 个月</strong>；全程协调审理一并解决子公司</td><td>快</td></tr><tr><td>交权方式</td><td><strong>配合式</strong>：原控股股东杭州光恒昱股份全部司法冻结、仅剩 3.49%，无表决权委托之争、无对抗</td><td>干净</td></tr><tr><td>出资方背景</td><td>彭骞 = 武汉精测电子（300567）董事长兼总经理，面板/半导体检测设备国产龙头</td><td>真实业方，不是炒壳游资</td></tr><tr><td>投入力度</td><td>产业方对价 4.11525 亿元（3.10 元/股）；已落地的两个新业务主体注册资本各仅 5000 万元</td><td><strong>4.12 亿元入场 + 1 亿元试水，对 7.19 亿元现金是"小步"</strong></td></tr><tr><td>成败关键（1 与 0）</td><td><strong>体外资产能否注入、以及能否在 2027 年报前形成正向利润</strong>。前者决定"能涨到哪"，后者决定"会不会重新戴帽"</td><td>两个都还没有答案</td></tr></tbody></table>
+<hr>
+<h2 id="chap2">二、主要看点：彭骞的体外资产，装得进来吗</h2>
+<p><strong>结论一句话：能装，但时间在 2027 年之后，而且最想装的那一块（众凌）恰恰是 36 个月内不能装的那一块。这决定了"注入"是想象空间，不是近期事件。</strong></p>
+<h3 id="sec4">2.1 已落地的两块：不是"装在上市公司里"，是"上市公司自己掏钱做的"</h3>
+<p><strong>结论：这两块的战略意义大于财务意义 —— 它们是彭骞在体外资产注入受阻时，用上市公司自有资金先搭出的"产业接口"，也是他向监管证明"我在做产业、不是在炒壳"的凭据。</strong></p>
+<table><thead><tr><th>主体</th><th>成立／变更</th><th>持股</th><th>业务定位</th><th>进度（2026-06-30）</th></tr></thead><tbody><tr><td><strong>湖北长晶环芯半导体科技</strong></td><td>2026-04-14 设立；2026-06-12 引入核心团队持股平台武汉忠芯增资 2250 万元</td><td>聆达 <strong>55%</strong></td><td>半导体设备零部件表面处理，覆盖 CVD／PVD／刻蚀／湿法／CMP 等前道晶圆制造设备关键零部件</td><td>洁净厂房建设、产线安装调试中，<strong>收入 0</strong></td></tr><tr><td><strong>南京嘉悦显示技术</strong></td><td>2026-04-29 设立，注册资本 5000 万元</td><td>金寨嘉悦（聆达全资子公司）<strong>52%</strong></td><td>彩色滤光膜研发、生产、检测与封装（掩膜板 MASK 后道全流程）</td><td>2026-06 下旬投产，<strong>H1 收入 62.82 万元、净利 −102.26 万元</strong></td></tr></tbody></table>
+<p>两处细节值得注意：</p>
+<ol><li><strong>长晶环芯把 45% 给了"核心团队持股平台"武汉忠芯</strong>（现金增资 2250 万元）。这是<strong>真在做产业的信号</strong>——如果只想要一个概念，没必要把管理团队绑进来。反过来看，代价是上市公司持股从 100% 降到 55%，<strong>未来并表的利润要打 45 折</strong>。</li><li><strong>南京嘉悦的交易对手方是精煜智显（关联方）</strong>。精煜智显是彭骞 2025 年 2 月拉程刚（航天／激光雷达背景）团队新设的做 LCD 彩色滤光膜的公司，<strong>国内只有两家能做</strong>。<strong>关键设计在于：精煜智显不出让主体股权，只把技术和设备拿出来入伙合资公司，所以不计入借壳累计额度统计</strong>——这是规避借壳认定的典型手法（见 2.2）。</li></ol>
+<h3 id="sec5">2.2 体外三块：能装的不能装的，时间表天差地别</h3>
+<p><strong>结论：体外三块资产里，"众凌（最优质）不能装、威迪（体量小）随时可装、精煜智显（已用合资方式落地）"。因此近期可期待的注入，只能是威迪这类小体量资产，撑不起大行情。</strong></p>
+<table><thead><tr><th>资产</th><th>与彭骞的关系</th><th>业务与地位</th><th>财务体量</th><th>能否注入、何时</th></tr></thead><tbody><tr><td><strong>浙江众凌科技</strong></td><td>2020 年起投资人进入，持续增资成第一大股东</td><td>FMM 精细金属掩膜版 + INVAR36 合金，<strong>全球第二、中国唯一能产 OLED 手机屏金属模板</strong></td><td>2024 年营收 1.29 亿元（已突破借壳营收红线 0.61 亿元）；2025 年 9 月末营收 1.83 亿元、净利 5259 万元</td><td><strong>36 个月窗口期内禁止整体收购</strong>；尚未股改（非股份公司）。重整计划要求"主营业务持续稳定发展 3 年后"再择机并购 → <strong>最稳妥时点指向 2028 年末</strong></td></tr><tr><td><strong>合肥威迪半导体</strong></td><td>2024-11 直接收购控股权</td><td>全固态电致变色（EC）膜，<strong>全球第三、中国唯一</strong></td><td>2024-09 末净资产 3426 万元；2025-09 末净资产 7499 万元、营收 110 万元、净利 −137 万元</td><td>体量小，<strong>即使全额收购并入累计总额也远低于借壳红线，2026–2028 窗口期内随时可收</strong></td></tr><tr><td><strong>精煜智显</strong></td><td>2025-02 与程刚团队共同新设</td><td>LCD 彩色滤光膜，国内仅两家能做</td><td>未披露</td><td><strong>已通过"技术与设备入伙合资公司"的方式落地（即南京嘉悦），不占用借壳额度</strong></td></tr></tbody></table>
+<p><strong>判读：三块资产里最值钱、最想看的是众凌（FMM 掩膜版的国产替代逻辑最硬），但它恰好是时间约束最紧、2028 年之前基本无望的一块。</strong> 这意味着：<strong>未来一两年内，注入这条线的"事件密度"会很低</strong>。市场把 42–47 亿元的预期溢价先算进去了，但能兑现的节奏远比估值隐含的慢。</p>
+<h3 id="sec6">2.3 炒作逻辑三支柱（全部着眼未来）</h3>
+<p><strong>结论：三支柱排序 —— ② 历史类似行为最强（且指向"下跌组"）&gt; ③ 主板映射次之 &gt; ① 炒预期最弱（硬节点全在 2027 年之后）。当前决定股价的第一驱动是②，不是①。</strong></p>
+<p><strong>① 炒预期：事件清单与硬时间表</strong></p>
+<table><thead><tr><th>时点</th><th>催化内容</th><th>性质</th></tr></thead><tbody><tr><td>2026-10-31 前</td><td>2026 年三季报：验证长晶环芯／南京嘉悦是否形成收入</td><td>硬节点</td></tr><tr><td>2026H2</td><td>长晶环芯完成厂房与设备调试、启动试生产与客户认证</td><td>软预期</td></tr><tr><td>2026-12-29</td><td>财务投资人解禁（供给节点，方向偏负）</td><td>硬节点</td></tr><tr><td>2027-04-30 前</td><td>2026 年年报：验证摘帽首年是否保住（<strong>这是生死线</strong>）</td><td>硬节点</td></tr><tr><td>2027 年内</td><td>重整计划"3 年稳定经营"要求的中段</td><td>软预期</td></tr><tr><td>2028 年末</td><td>众凌科技最早可能的注入时点</td><td>软预期</td></tr></tbody></table>
+<p><strong>判读：近 12 个月内没有任何一个"能改变估值"的硬节点 —— 只有一个可能改变方向的年报（2027-04）和一个偏负面的解禁（2026-12-29）。</strong></p>
+<p><strong>② 炒历史类似行为（相似股票匹配法）</strong></p>
+<p><strong>本标的的画像</strong>：创业板 · 破产重整已完成 · 2026 年摘帽 · 产业投资人入主 · 有明确资产注入预期 · 市值 57 亿元 · 实体业务接近零收入 · 股价在摘帽后一个月内持续走弱。</p>
+<p><strong>匹配结果与实测走势（基准日＝各股摘帽日，终点＝2026-09-30）：</strong></p>
+<table><thead><tr><th>对象</th><th>相似点</th><th>摘帽日→2026-09-30</th></tr></thead><tbody><tr><td><strong>聆达股份（本标的）</strong></td><td>—</td><td><strong>−3.6%</strong></td></tr><tr><td>大立科技（002214）</td><td>摘帽 + 军工电子实体资产</td><td><strong>+30.7%</strong></td></tr><tr><td>任子行（300311）</td><td>创业板 + 撤销其他风险警示，同时点</td><td>+10.8%</td></tr><tr><td>宁科（600165）</td><td>沪主板 + 重整执行完毕 + 摘帽</td><td>+0.6%</td></tr><tr><td>中船应急（300527）</td><td>国资 + 撤销其他风险警示</td><td>−1.3%</td></tr><tr><td>长园集团（600525）</td><td>内控／财报意见消除型摘帽</td><td>−2.4%</td></tr><tr><td>逸飞激光（688646）</td><td>科创板 + 撤销其他风险警示</td><td>−3.8%</td></tr><tr><td>易联众（300096）</td><td>创业板 + 违规担保解除型摘帽</td><td>−4.6%</td></tr></tbody></table>
+<p><strong>统计结论：8 只样本中位数约 −1.9%、均值约 +3.3%；剔除唯一大涨的大立科技后，均值转为 −0.7%。</strong> 这与 skill 已固化的同型样本铁律一致——<strong>"摘帽"本身不构成上涨理由，摘帽后 1 个月普遍微跌，且摘帽前涨得越满、摘帽后跌得越狠。</strong></p>
+<p><strong>聆达落在"下跌组"</strong>：它摘帽前 3 个月（2026-05-05 至 2026-08-05）从 8.88 元附近震荡上行至 8.88 元（区间内最高 11.37 元），摘帽前已积累了 5 个月的重整—摘帽预期；摘帽当日冲高 10.55 元后回落，一个月后 −12.4%。<strong>预期兑现即注意力峰值，随后是持续消化。</strong></p>
+<p><strong>结论：按相似股票匹配，本标的未来 3 个月的基准预期是"跑平到小幅跑输同型样本"，不构成买入理由。</strong></p>
+<p><strong>③ 炒主板映射</strong></p>
+<p><strong>主板当下在炒什么（2026-09 下旬）：</strong> ① <strong>重整／预重整投资协议密集落地</strong>（\*ST华幸 0.6 元/股受让 20 亿股、ST美克 1.61 元/股、\*ST沐邦 5.3 元/股、ST华谊 0.9333 元/股、\*ST英飞 2.61 元/股）；② <strong>"六张网"（水网、新型电网、算力网、新一代通信网、城市地下管网、物流网）纳入 PSL 抵押补充贷款支持领域</strong>；③ <strong>AI 算力／具身智能</strong>；④ 创新药。</p>
+<p><strong>ST 板块可映射对象清单：</strong></p>
+<table><thead><tr><th>对象</th><th>概念对应点</th><th>当前位置</th><th>关联度</th></tr></thead><tbody><tr><td><strong>聆达股份（本标的）</strong></td><td>半导体设备零部件表面处理（长晶环芯）+ 显示材料（南京嘉悦、众凌 FMM）</td><td>8.56 元，年内 +12.2%，距年内高点 −24.7%</td><td>本标的自身即映射对象</td></tr><tr><td>\*ST英飞（002528）</td><td>重整投资人有国科控股、芯辰晶微、华实半导体等国科系半导体资本</td><td>已签署重整投资协议，2.61 元/股</td><td>高（半导体资本入主，与聆达同构）</td></tr><tr><td>ST佳缘（301117）</td><td>军工电子 + 子公司成都新宏安微波科技</td><td>受网络空间部队禁标影响</td><td>中【纯概念】</td></tr><tr><td>派瑞股份（300831）</td><td>电力电子器件（IGCT／脉冲功率）国产化</td><td>与西安理工大学共建联合研发中心</td><td>中</td></tr></tbody></table>
+<p><strong>判读：主板当下最强的映射不是"半导体"本身，而是"半导体资本入主 ST 壳"这一交易结构。</strong> 在这个映射里，\*ST英飞（国科系）与聆达（精测电子系）是同一类。但——<strong>映射只决定"有没有人看"，不决定"能涨多少"；聆达的半导体业务收入为 0，映射的成色是"预期级"而非"业绩级"。</strong></p>
+<hr>
+<h2 id="chap3">三、经营与财务：壳洗干净了，肉没长出来</h2>
+<p><strong>结论：财务数据讲了一个非常清晰的故事 —— 2024 年是崩塌年（营收腰斩到 0.61 亿元、巨亏 9.50 亿元、净资产转负），2025 年是财务修复年（靠重整收益扭亏，但扣非仍亏 2.54 亿元），2026H1 是"新故事开场、但还没到第一幕"（营收继续降 15.82%、扣非仍亏 1770 万元、经营现金流由正转负）。</strong></p>
+<table><thead><tr><th>指标</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026H1</th></tr></thead><tbody><tr><td>营业收入</td><td>15.98 亿元</td><td>8.39 亿元</td><td>0.61 亿元</td><td>1.25 亿元</td><td>0.50 亿元</td></tr><tr><td>归母净利润</td><td>−0.17 亿元</td><td>−2.62 亿元</td><td>−9.50 亿元</td><td>+0.20 亿元</td><td>+0.25 亿元</td></tr><tr><td>扣非净利润</td><td>−0.19 亿元</td><td>−2.76 亿元</td><td>−8.56 亿元</td><td><strong>−2.54 亿元</strong></td><td><strong>−0.18 亿元</strong></td></tr><tr><td>归母净资产</td><td>6.60 亿元</td><td>4.12 亿元</td><td><strong>−5.37 亿元</strong></td><td>10.53 亿元</td><td>10.78 亿元</td></tr><tr><td>资产总额</td><td>21.35 亿元</td><td>19.50 亿元</td><td>10.01 亿元</td><td>17.28 亿元</td><td>13.69 亿元</td></tr><tr><td>资产负债率</td><td>33.58%</td><td>36.59%</td><td><strong>153.77%</strong></td><td>39.10%</td><td><strong>19.55%</strong></td></tr><tr><td>经营现金流净额</td><td>—</td><td>0.85 亿元</td><td>−0.10 亿元</td><td>0.49 亿元</td><td>−0.29 亿元</td></tr></tbody></table>
+<blockquote><p>勾稽自检：2026H1 资产总额 13.69 亿元 − 所有者权益合计 11.01 亿元（含少数股东权益 0.24 亿元）= 负债合计 2.68 亿元；2.68 ÷ 13.69 = 19.55% ✓。2024 年负债合计约 15.38 亿元 ÷ 10.01 亿元 = 153.7% ✓。数据来源：各期年度报告与 2026 年半年度报告。</p></blockquote>
+<p><strong>关键判读三条：</strong></p>
+<ol><li><strong>2025 年的 +0.20 亿元归母利润是"拼"出来的，不是赚出来的。</strong> 非经常性损益合计 2.74 亿元，其中债务重组收益 1.83 亿元、其他营业外收入 0.86 亿元，同时被"与正常经营无关的或有事项损失 −1.18 亿元"（违规担保相关）冲抵。<strong>扣非口径下 2025 年仍亏 2.54 亿元。</strong></li><li><strong>2026H1 的 +0.25 亿元归母利润同样是"拼"的。</strong> 非经常性损益 0.43 亿元（非流动性资产处置收益 0.26 亿元、债务重组收益 0.11 亿元、金融资产公允价值变动 0.02 亿元、其他营业外收支 0.04 亿元），扣非后 <strong>仍亏 0.18 亿元</strong>。</li><li><strong>最刺眼的一条</strong>：2026H1 营业成本 5066.96 万元 &gt; 营业收入 5044.67 万元，<strong>整体毛利率为负</strong>。原业务基本只剩"壳的骨架"。</li></ol>
+<p><strong>分业务拆解（2026H1）：</strong></p>
+<table><thead><tr><th>板块</th><th>收入</th><th>同比</th><th>状态</th></tr></thead><tbody><tr><td>电力工程施工 EPC（阳光恒煜 + 天津嘉悦）</td><td>4414.24 万元</td><td>−13.06%</td><td>毛利率 −6.49%，<strong>亏损经营</strong></td></tr><tr><td>光伏电站发电（格尔木神光 53MW）</td><td>498.81 万元</td><td>−39.88%</td><td>二期技改（1–4 月停机）+ 西宁 750kV 变电站改造（3–6 月）双重影响，6 月已恢复</td></tr><tr><td>彩色滤光膜（南京嘉悦）</td><td>62.82 万元</td><td>新增</td><td>2026-06 下旬投产，净利 −102.26 万元</td></tr><tr><td>半导体零部件表面处理（长晶环芯）</td><td><strong>0</strong></td><td>新增</td><td>洁净厂房建设、产线调试中</td></tr></tbody></table>
+<p><strong>结论：现有 0.50 亿元半年营收里，98% 来自 EPC 与电站这两块"存量且亏损"的业务；新业务合计贡献 62.82 万元、占比 1.25%。所谓"转型"，账面上还看不到。</strong> 由此推论：<strong>2026 年全年扣除后营业收入能否守住 1 亿元红线，取决于 EPC 业务的订单节奏，而不是新业务</strong> —— 这是一条被市场普遍忽略的风险。</p>
+<details class="fold"><summary>现金流与资金去向的完整拆解（钱去哪了）</summary><div class="fold-body">
+
+<p><strong>2026H1 三大现金流活动：</strong></p>
+<table><thead><tr><th>活动</th><th>净额</th><th>主要构成</th></tr></thead><tbody><tr><td>经营活动</td><td>−2910.26 万元</td><td>销售收现 4107.99 万元；支付职工 1202.36 万元、购买商品 4401.75 万元</td></tr><tr><td>投资活动</td><td><strong>−5.79 亿元</strong></td><td>投资支付 10.60 亿元、收回投资 4.60 亿元、处置固定资产收现 9484.16 万元；购建固定资产支付 7445.25 万元</td></tr><tr><td>筹资活动</td><td>约 −2.35 亿元</td><td>收到其他与筹资有关现金 2463.02 万元；偿还债务 2.21 亿元、偿付利息 1197.03 万元、支付其他 4263.54 万元</td></tr></tbody></table>
+<p><strong>期末资金结构（2026-06-30）：</strong></p>
+<table><thead><tr><th>科目</th><th>期末</th><th>期初（2025-12-31）</th></tr></thead><tbody><tr><td>货币资金</td><td>1.2517 亿元</td><td>10.0398 亿元</td></tr><tr><td>交易性金融资产（理财）</td><td>6.0188 亿元（成本 6.00 亿元 + 公允价值变动 188 万元）</td><td>0</td></tr><tr><td><strong>合计可动用</strong></td><td><strong>7.19 亿元</strong></td><td>10.04 亿元</td></tr><tr><td>其中受限</td><td>800.07 万元（信用证保证金 86.62 万元 + 保函保证金 713.27 万元 + 冻结存款 1897.60 元）</td><td>2698.26 万元</td></tr></tbody></table>
+<p><strong>判读：半年内账面资金净减 2.77 亿元，主要去向是偿还重整留债（2.21 亿元）与固定资产投入（0.74 亿元），不是经营失血。</strong> 期初 2571.09 万元的"法院裁定冻结银行账户"已在本期解除至 1897.60 元，是重整收尾的正面信号。</p>
+
+</div></details>
+<details class="fold"><summary>重要子公司清单与注销动作</summary><div class="fold-body">
+
+<p><strong>2026H1 新设 2 家、注销 3 家 —— 一边做加法（半导体、显示）、一边做减法（光伏边缘主体），方向非常明确。</strong></p>
+<table><thead><tr><th>主体</th><th>动作</th><th>公司名称</th><th>影响</th></tr></thead><tbody><tr><td>新设</td><td>2026-04-14</td><td>湖北长晶环芯半导体科技（聆达 55%）</td><td>暂未产生收入</td></tr><tr><td>新设</td><td>2026-04-29</td><td>南京嘉悦显示技术（金寨嘉悦 52%）</td><td>收入较少</td></tr><tr><td>注销</td><td>2026-05-25</td><td>广西阳光恒煜新能源（阳光恒煜 100%）</td><td>无影响</td></tr><tr><td>注销</td><td>2026-06-03</td><td>苏州嘉悦新能源科技（金寨嘉悦 100%）</td><td>无影响</td></tr><tr><td>注销</td><td>—</td><td>上海电恋设备制造（参股 10%）</td><td>无影响</td></tr></tbody></table>
+<p><strong>截至报告期末，公司拥有 6 家全资子公司、4 家控股子（孙）公司、3 家参股公司。</strong></p>
+
+</div></details>
+<details class="fold"><summary>股票回购与分红历史</summary><div class="fold-body">
+
+<p><strong>2025 年度：不派发现金红利、不送红股、不以资本公积金转增股本</strong>（2025 年报「利润分配」节）。公司未分配利润为大额负数（2024 年巨亏 9.50 亿元所致），<strong>未来数年不具备分红条件</strong>，因此<strong>分红不达标这条"其他类"红线不适用于本标的</strong>（规则对未分配利润为负的公司不作强制分红要求）。</p>
+
+</div></details>
+<hr>
+<h2 id="chap4">四、炒作面与筹码：注意力已经过峰值</h2>
+<p><strong>结论：这件标的的注意力曲线非常清楚 —— 2025-12-29（重整完成复牌）与 2026-08-07（摘帽复牌）是两个峰值，之后都是衰减。截至 2026-09-30，注意力处于"峰值后第二个月"的下行段，且没有任何新的注意力来源。</strong></p>
+<h3 id="sec7">4.1 历史炒作波段：符号变了三次，连板极值在 2024 年 8 月</h3>
+<p><strong>结论：这只票的"炒作符号"经历了从"光伏 + 储能 + TOPCon/HJT"（2021–2023）到"新型烟草 + 钙钛矿 + 光伏发电 + 启动预重整"（2024）再到"重整完成 + 处罚落地"（2025）的三次切换，2026 年则完全没有进入异动表 —— 说明 2026 年的行情没有达到任何"异动"的量价门槛。</strong></p>
+<table><thead><tr><th>阶段</th><th>主导符号</th><th>典型价位</th><th>连板极值</th></tr></thead><tbody><tr><td>2021–2023</td><td>光伏 + 储能 + TOPCon/HJT</td><td>15.10–32.52 元</td><td>无（未入连板榜）</td></tr><tr><td>2024-06–08</td><td>钙钛矿 + 光伏发电 + 拟回购 → 启动预重整</td><td>1.88–4.67 元</td><td><strong>4 天 3 板</strong>（2024-08-05）、3 天 2 板（2024-08-02）</td></tr><tr><td>2024-09–12</td><td>招募重整投资人 + 新型烟草 + 钙钛矿</td><td>4.90–7.67 元</td><td>无</td></tr><tr><td>2025-08-27</td><td>处罚落地 + 签署重整协议</td><td>8.36 元</td><td>无（当日 +19.94%）</td></tr><tr><td>2025-12-29</td><td>重整完成 + 签署重整协议</td><td>7.46 元</td><td>无（当日 +19.94%）</td></tr><tr><td><strong>2026 年</strong></td><td><strong>未入库（0 条）</strong></td><td>—</td><td>—</td></tr></tbody></table>
+<blockquote><p>说明：韭研公社异动表<strong>只收录达到异动标准的行情</strong>，个股可能整年 0 条。2026 年 0 条 <strong>≠ 2026 年没有异动</strong>，只说明<strong>未达到该表的收录门槛</strong>（如摘帽日 +12% 未达创业板 15% 的单日标准）。异动明细 29 条已全量查阅。</p></blockquote>
+<details class="fold"><summary>全量异动明细（29 条，时间降序）</summary><div class="fold-body">
+
+<table><thead><tr><th>异动日期</th><th>简称</th><th>股价</th><th>涨停信息</th><th>异动关键词</th></tr></thead><tbody><tr><td>2025-12-29</td><td>\*ST聆达</td><td>7.46</td><td>—</td><td>重整完成 + 签署重整协议 + 新型烟草 + 钙钛矿 + 光伏发电</td></tr><tr><td>2025-08-27</td><td>\*ST聆达</td><td>8.36</td><td>—</td><td>处罚落地 + 签署重整协议 + 新型烟草 + 钙钛矿 + 光伏发电</td></tr><tr><td>2024-12-02</td><td>ST聆达</td><td>7.67</td><td>—</td><td>招募重整投资人 + 新型烟草 + 钙钛矿 + 光伏发电</td></tr><tr><td>2024-10-08</td><td>ST聆达</td><td>6.67</td><td>—</td><td>招募重整投资人 + 新型烟草 + 钙钛矿 + 光伏发电</td></tr><tr><td>2024-09-23</td><td>ST聆达</td><td>4.90</td><td>—</td><td>招募重整投资人 + 新型烟草 + 钙钛矿 + 光伏发电</td></tr><tr><td>2024-09-06</td><td>ST聆达</td><td>4.98</td><td>—</td><td>启动预重整 + 新型烟草 + 钙钛矿 + 光伏发电</td></tr><tr><td>2024-08-27</td><td>ST聆达</td><td>4.67</td><td>—</td><td>启动预重整 + 新型烟草 + 钙钛矿 + 光伏发电</td></tr><tr><td>2024-08-21</td><td>ST聆达</td><td>4.17</td><td>—</td><td>启动预重整 + 新型烟草 + 钙钛矿 + 光伏发电</td></tr><tr><td>2024-08-07</td><td>ST聆达</td><td>4.61</td><td>—</td><td>启动预重整 + 新型烟草 + 钙钛矿 + 光伏发电</td></tr><tr><td>2024-08-05</td><td>ST聆达</td><td>3.97</td><td>4 天 3 板</td><td>启动预重整 + 新型烟草 + 钙钛矿 + 光伏发电</td></tr><tr><td>2024-08-02</td><td>ST聆达</td><td>3.31</td><td>3 天 2 板</td><td>拟重整 + 新型烟草 + 钙钛矿 + 光伏发电</td></tr><tr><td>2024-08-01</td><td>ST聆达</td><td>2.76</td><td>—</td><td>拟重整 + 新型烟草 + 钙钛矿 + 光伏发电</td></tr><tr><td>2024-07-31</td><td>ST聆达</td><td>2.63</td><td>—</td><td>新型烟草 + 拟回购 + 钙钛矿 + 光伏发电</td></tr><tr><td>2024-07-03</td><td>ST聆达</td><td>2.08</td><td>—</td><td>新型烟草 + 拟回购 + 钙钛矿 + 光伏发电</td></tr><tr><td>2024-06-17</td><td>ST聆达</td><td>2.48</td><td>—</td><td>拟回购 + 钙钛矿 + 光伏发电</td></tr><tr><td>2024-06-11</td><td>ST聆达</td><td>2.26</td><td>2 天 2 板</td><td>钙钛矿 + 光伏发电</td></tr><tr><td>2024-06-07</td><td>ST聆达</td><td>1.88</td><td>—</td><td>终止光伏项目 + 光伏 + 储能 + 电站</td></tr><tr><td>2024-02-23</td><td>聆达股份</td><td>8.71</td><td>—</td><td>光伏 + 储能 + 电站</td></tr><tr><td>2024-01-12</td><td>聆达股份</td><td>13.45</td><td>—</td><td>光伏 + 储能 + 电站</td></tr><tr><td>2023-02-09</td><td>聆达股份</td><td>23.71</td><td>—</td><td>TOPCon + HJT + 储能</td></tr><tr><td>2022-08-10</td><td>聆达股份</td><td>32.52</td><td>—</td><td>TOPCon + HJT + 储能</td></tr><tr><td>2022-08-08</td><td>聆达股份</td><td>31.40</td><td>—</td><td>实控人变更预期 + TOPCon + HJT + 储能</td></tr><tr><td>2022-07-27</td><td>聆达股份</td><td>22.93</td><td>—</td><td>实控人变更预期 + TOPCon + 光伏 + 储能</td></tr><tr><td>2022-04-28</td><td>聆达股份</td><td>15.16</td><td>—</td><td>TOPCon + 光伏 + 储能</td></tr><tr><td>2022-02-28</td><td>聆达股份</td><td>15.10</td><td>—</td><td>光伏 + 储能</td></tr><tr><td>2021-12-23</td><td>聆达股份</td><td>17.23</td><td>—</td><td>光伏 + 储能</td></tr><tr><td>2021-11-19</td><td>聆达股份</td><td>17.92</td><td>—</td><td>光伏 + 储能</td></tr><tr><td>2021-11-18</td><td>聆达股份</td><td>16.10</td><td>—</td><td>光伏 + 储能</td></tr><tr><td>2021-08-23</td><td>聆达股份</td><td>16.81</td><td>—</td><td>光伏（HJT 异质结电池主题）</td></tr></tbody></table>
+<p>数据来源：韭研公社异动整理（本地结构化表）。</p>
+
+</div></details>
+<h3 id="sec8">4.2 筹码与情绪：三组数据指向同一个方向</h3>
+<p><strong>结论：股东户数激增（筹码分散）、2026 年零龙虎榜（无游资）、债权人成本高于现价（只减不加）—— 三组独立数据互相印证，指向"当前时点没有大资金在往上做"。</strong></p>
+<p><strong>① 股价路径：峰值即摘帽日</strong></p>
+<table><thead><tr><th>关键节点</th><th>价格与动作</th></tr></thead><tbody><tr><td>2026-05-13</td><td>年内最高 11.37 元（重整后预期最乐观时刻）</td></tr><tr><td>2026-07-21</td><td>年内最低 6.90 元（摘帽迟迟未批，"钉子户"质疑最盛时）</td></tr><tr><td>2026-08-05</td><td>摘帽前最后交易日收 8.88 元</td></tr><tr><td><strong>2026-08-07</strong></td><td><strong>摘帽复牌：开 9.88／最高 10.55／收 9.77，成交 33.42 万手（约前一日 10 倍）</strong></td></tr><tr><td>2026-08-27</td><td>摘帽后阶段高点，盘中 10.16 元</td></tr><tr><td>2026-09-30</td><td>收 8.56 元（较复牌日收盘 −12.4%、较 08-27 高点 −15.8%）</td></tr></tbody></table>
+<p><strong>② 情绪观测</strong>：雪球讨论以"拿住""震荡调整"为主流，缺乏强逻辑叙述；机构研报覆盖为零（近三个月无券商覆盖）。<strong>这两个指标同时偏低，说明注意力已从峰值回落，属于典型的"事件兑现后真空期"。</strong></p>
+<p><strong>③ 事件噪音</strong>：2026-09-21，证监会大连监管局对<strong>胡远生内幕交易聆达股份股票</strong>作出处罚——没收违法所得 34.7 万元、罚款 150 万元，罚没合计 184.7 万元。内幕信息形成于 <strong>2025-02-26</strong> 之前（即重整投资协议签署前一个月），公开于 2025-03-28。<strong>这是"重整利好被提前交易"的直接证据，也说明 2026 年 8 月摘帽的定价早已在 2025 年 3 月就被一部分资金完成。</strong></p>
+<hr>
+<h2 id="chap5">五、估值与投资结论</h2>
+<h3 id="sec9">5.1 估值：57 亿元买的是期权，但要算清期权的行权时间</h3>
+<p><strong>结论：本标的不能用 PE（TTM 利润含重整非经常收益），也不能用 PS（营收近乎为零且亏损），只能用"分部加现金 + 期权定价"的思路，并且必须把"期权到期时间"打进去。</strong></p>
+<p><strong>（一）分部估值（2026-09-30 口径）</strong></p>
+<table><thead><tr><th>情景</th><th>假设</th><th>对应市值</th><th>对应股价</th></tr></thead><tbody><tr><td><strong>保守</strong></td><td>存量光伏（电站 + EPC）按同业 10 亿元估值；现金 7.19 亿元按 1 倍计入；新业务按 0；不注入</td><td><strong>17.19 亿元</strong></td><td><strong>约 2.58 元</strong></td></tr><tr><td><strong>中性</strong></td><td>存量光伏 12 亿元；现金 7.19 亿元；长晶环芯 + 南京嘉悦按 1.5 倍注册资本计 1.5 亿元；注入按 30% 概率 × 增量现值 15 亿元计 4.5 亿元</td><td><strong>25.19 亿元</strong></td><td><strong>约 3.78 元</strong></td></tr><tr><td><strong>乐观</strong></td><td>存量光伏 13 亿元；现金 7.19 亿元；新业务按 3 亿元；注入按 70% 概率 × 增量现值 40 亿元计 28 亿元</td><td><strong>51.19 亿元</strong></td><td><strong>约 7.69 元</strong></td></tr><tr><td><strong>现价隐含</strong></td><td><strong>57.00 亿元</strong></td><td>—</td><td><strong>8.56 元</strong></td></tr></tbody></table>
+<p><strong>判读：现价 8.56 元不仅高于乐观情景（7.69 元），而且隐含的假设是"注入几乎确定、且增量现值超过 40 亿元"。换句话说，市场已经把最乐观的情形打完，甚至打超了。</strong> 这就是"低估"与"高估"之间最清楚的界线：<strong>同样的逻辑，现价需要的是"兑现"，而乐观情景需要的是"实现"。</strong></p>
+<p><strong>（二）关键定价锚交叉验证</strong></p>
+<table><thead><tr><th>锚</th><th>价格</th><th>相对现价</th></tr></thead><tbody><tr><td>产业投资人受让价</td><td>3.10 元/股</td><td>现价为其 2.76 倍</td></tr><tr><td>财务投资人受让价</td><td>3.50–4.20 元/股</td><td>现价为其 2.04–2.45 倍</td></tr><tr><td>债权人以股抵债价</td><td>10.28 元/股</td><td>现价为其 0.83 倍（浮亏 16.7%）</td></tr><tr><td>重整后《股权价值分析报告》合理区间</td><td>10.46–15.67 元/股</td><td>现价在区间下方 —— <strong>但该报告出具于 2025-12，其假设是"重整后主营业务恢复"，前提未成立</strong></td></tr></tbody></table>
+<p><strong>注意：不要拿"股权价值分析报告的 10.46–15.67 元"当支撑。那份报告是重整方案获批所需的程序性文件，其估值前提（主营业务恢复）在 2026H1 并未兑现 —— 它衡量的是"如果成功了值多少"，不是"现在值多少"。</strong></p>
+<h3 id="sec10">5.2 投资结论</h3>
+<p><strong>卖出（回避）。本结论的完整理由链、触发与失效条件、参考区间如下。</strong></p>
+<p><strong>理由链（按重要性排序）：</strong></p>
+<ol><li><strong>估值已把最乐观情形打完，且时间错配。</strong> 现价隐含市值 57.00 亿元，而乐观情景测算仅 51.19 亿元；即便给"注入确定"的完全乐观假设，上行空间也已为负。来源：第五章分部估值 + 2026-06-30 资产负债表（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1225520877&amp;orgId=9900013908&amp;announcementTime=2026-08-28" target="_blank" rel="noopener">半年报</a>）。</li><li><strong>筹码结构"上方没有锁仓同盟"。</strong> 产业投资人成本 3.10 元（浮盈 2.76 倍、无护盘动机）、财务投资人成本 3.50–4.20 元且 <strong>2026-12-29 解禁</strong>、债权人成本 10.28 元（浮亏、只减不加，专用账户 2026H1 已减 1.55 亿股）。来源：<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1224888715&amp;orgId=9900013908&amp;announcementTime=2025-12-19" target="_blank" rel="noopener">重整计划转增除权公告</a>、半年报前十大股东表。</li><li><strong>注意力已过峰值，新的注意力来源至少要到 2027-04。</strong> 股东户数 20 天内从 8,694 户升至 13,400 户（大户派发、散户接盘）、2026 年零龙虎榜（无游资）、机构研报零覆盖。来源：深交所互动易（2026-07-15 / 2026-08-14 / 2026-09-09）、东方财富龙虎榜。</li><li><strong>同型样本指向"下跌组"。</strong> 8 只可比摘帽标的（2026-08 前后）摘帽日→2026-09-30 中位数 −1.9%，剔除唯一大涨后均值 −0.7%；聆达自身 −3.6%，落在下跌组。</li><li><strong>经营本体仍是"壳的骨架"。</strong> 2026H1 毛利率为负、扣非亏 1770 万元、经营现金流 −2910 万元；新业务收入占比仅 1.25%。<strong>且 2026 年能否守住"扣除后营收 1 亿元"红线，取决于亏损中的 EPC 业务，而不是新业务</strong> —— 这是被市场忽略的再戴帽风险。</li></ol>
+<p><strong>触发条件（出现下列信号 → 转买入）：</strong></p>
+<ul><li>股价回到 <strong>6.90–7.50 元</strong>区间（对应市值 45.9–49.9 亿元，接近乐观情景上限，安全垫回归），<strong>且</strong> 同时出现下列任一：① 现金收购体外资产的正式方案披露（含审计评估值）；② 长晶环芯披露首份客户认证通过或首批订单；③ 2026 年报录得扣非为正或扣除后营收 ≥1.5 亿元。</li><li>出现下列信号 → 强化卖出：① 2026 年三季报（10-31 前）扣除后营收年化后低于 1 亿元；② 财务投资人解禁（2026-12-29）前后出现大额大宗交易折价。</li></ul>
+<p><strong>失效条件（本结论作废／翻转）：</strong></p>
+<p>① 彭骞方公告以<strong>现金方式</strong>收购浙江众凌科技或合肥威迪半导体控股权（现金收购不占用借壳额度、不受 36 个月限制），则"注入时间远"的核心逻辑被推翻；② 长晶环芯在 2026Q4 前获得有分量的半导体设备厂商批量订单并确认收入；③ 出现第三方产业资本以显著高于现价的协议价受让老股（说明有外部主体认为当前价格偏低）。</p>
+<p><strong>参考区间：</strong></p>
+<table><thead><tr><th>项</th><th>区间</th></tr></thead><tbody><tr><td>买入区间</td><td>6.90–7.50 元（需同时满足上条触发条件）</td></tr><tr><td>当前不宜介入区间</td><td>8.50–10.20 元（现价所在区间）</td></tr><tr><td>目标区间（12 个月，中性情景）</td><td>3.78 元对应的偏低区间已失效，改用"市值锚"：<strong>45–52 亿元</strong>（约 6.76–7.81 元）</td></tr><tr><td>止损位（若已持有）</td><td>跌破 6.90 元（年内低点）无条件减仓</td></tr></tbody></table>
+<p><strong>时间窗口：</strong> 本结论有效期至 <strong>2027-04-30</strong>（2026 年年报披露日）。该时点前若未出现上述转买信号，结论自动延续。</p>
+<p><strong>仓位建议：不建仓。</strong>（已持有者建议在 8.50 元以上区间减仓至观察仓。）</p>
+<p><strong>最大风险（一句话）：本结论最可能错在"低估了彭骞的产业整合决心"—— 若他在 2026 年内以现金方式装入威迪甚至众凌，57 亿元会显得很便宜。</strong></p>
+<hr>
+<h2 id="chap6">附录 A · 待核实 / 需补充清单</h2>
+<p><strong>结论：以下 6 项是本研究目前的信息缺口，其中第 1、5 项直接影响对"注入节奏"与"供给压力"的判断，后续须优先补齐。</strong></p>
+<table><thead><tr><th>编号</th><th>待核实事项</th><th>现状</th></tr></thead><tbody><tr><td>1</td><td>聆达集团与 8 家财务投资人的具体对应关系（哪家对应 3.50／3.87／4.20 元）</td><td>公告仅列价格与股数，未逐家对应；本报告按区间表述</td></tr><tr><td>2</td><td>精煜智显的财务数据（总资产、净资产、营收、净利）</td><td>未披露</td></tr><tr><td>3</td><td>浙江众凌科技、合肥威迪半导体的最新财务（2025 年报口径）</td><td>均为非上市主体，仅能从 ST 信息库线索级资料获取 2025-09 数据</td></tr><tr><td>4</td><td>长晶环芯的客户名单与在手订单</td><td>中报明确"尚处于建设调试阶段，未形成收入"，无订单披露</td></tr><tr><td>5</td><td>破产企业财产处置专用账户 2026H1 减少 1.55 亿股的具体去向（过户 vs 二级市场处置）</td><td>半年报仅列变动数量，未说明处置方式</td></tr><tr><td>6</td><td>2026 年三季报（法定截止 2026-10-31）</td><td>尚未披露</td></tr></tbody></table>
+<h2 id="chap7">附录 B · 关键信源链接</h2>
+<p><strong>结论：本报告的全部关键数字与事件均可通过下列链接回源核对（首选巨潮资讯网公告原文，均为四参数深链）。</strong></p>
+<table><thead><tr><th>编号</th><th>文件</th></tr></thead><tbody><tr><td>1</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1225520877&amp;orgId=9900013908&amp;announcementTime=2026-08-28" target="_blank" rel="noopener">2026 年半年度报告（2026-08-28）</a></td></tr><tr><td>2</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1225062878&amp;orgId=9900013908&amp;announcementTime=2026-03-31" target="_blank" rel="noopener">2025 年年度报告（2026-03-31）</a></td></tr><tr><td>3</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1223248350&amp;orgId=9900013908&amp;announcementTime=2025-04-24" target="_blank" rel="noopener">2024 年年度报告（2025-04-24）</a></td></tr><tr><td>4</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1223248359&amp;orgId=9900013908&amp;announcementTime=2025-04-24" target="_blank" rel="noopener">2024 年度内部控制审计报告（2025-04-24）</a></td></tr><tr><td>5</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1223248362&amp;orgId=9900013908&amp;announcementTime=2025-04-24" target="_blank" rel="noopener">营业收入扣除情况表专项核查报告（2025-04-24）</a></td></tr><tr><td>6</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1224654133&amp;orgId=9900013908&amp;announcementTime=2025-09-11" target="_blank" rel="noopener">关于公司及相关当事人收到《行政处罚决定书》的公告（2025-09-11）</a></td></tr><tr><td>7</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1224814232&amp;orgId=9900013908&amp;announcementTime=2025-11-19" target="_blank" rel="noopener">关于法院裁定受理公司及子公司重整并指定管理人暨股票交易将被叠加实施退市风险警示的公告（2025-11-19）</a></td></tr><tr><td>8</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1224888715&amp;orgId=9900013908&amp;announcementTime=2025-12-19" target="_blank" rel="noopener">关于重整计划资本公积金转增股本除权事项的公告（2025-12-19）</a></td></tr><tr><td>9</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1224911361&amp;orgId=9900013908&amp;announcementTime=2025-12-30" target="_blank" rel="noopener">关于公司及子公司重整计划执行完毕的公告（2025-12-30）</a></td></tr><tr><td>10</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1224928650&amp;orgId=9900013908&amp;announcementTime=2026-01-09" target="_blank" rel="noopener">关于控股股东权益变动暨控股股东、实际控制人发生变更的提示性公告（2026-01-09）</a></td></tr><tr><td>11</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1225062876&amp;orgId=9900013908&amp;announcementTime=2026-03-31" target="_blank" rel="noopener">关于申请撤销公司股票交易退市风险警示及其他风险警示的公告（2026-03-31）</a></td></tr><tr><td>12</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1225062875&amp;orgId=9900013908&amp;announcementTime=2026-03-31" target="_blank" rel="noopener">关于投资设立全资子公司的公告（2026-03-31）</a></td></tr><tr><td>13</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1225460682&amp;orgId=9900013908&amp;announcementTime=2026-08-06" target="_blank" rel="noopener">关于公司股票交易撤销退市风险警示及其他风险警示暨停复牌的公告（2026-08-06）</a></td></tr><tr><td>14</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1225462119&amp;orgId=9900013908&amp;announcementTime=2026-08-07" target="_blank" rel="noopener">关于子公司光伏电站技改项目的进展公告（2026-08-07）</a></td></tr><tr><td>15</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300125&amp;announcementId=1225139843&amp;orgId=9900013908&amp;announcementTime=2026-04-22" target="_blank" rel="noopener">2026 年一季度报告（2026-04-22）</a></td></tr></tbody></table>
+<h2 id="chap8">附录 C · 逻辑漏洞与反方观点（5 问压力测试）</h2>
+<p><strong>结论：本报告的五条卖出理由都通过了下列 5 问自查；真正无法证伪的是"彭骞的整合意愿"，它只能靠公告验证，不能靠分析。</strong></p>
+<table><thead><tr><th>问题</th><th>本报告的答案</th><th>反方最强的反驳</th></tr></thead><tbody><tr><td>① 市占率／业务地位怎么来的？</td><td>长晶环芯 0 收入、无市占率；体外资产（众凌全球第二）的地位来自 ST 信息库线索级资料与公开报道，<strong>未独立核实</strong></td><td>众凌的确是 FMM 国产替代唯一标的，这个地位是真实的</td></tr><tr><td>② 采购／框架协议 ≠ 收入？</td><td>长晶环芯仍在"厂房建设 + 调试"，中报明示未形成收入；南京嘉悦 H1 仅 62.82 万元</td><td>都在建设期，2027 年可能放量</td></tr><tr><td>③ 中标 ≠ 订单？</td><td>无中标可谈</td><td>—</td></tr><tr><td>④ 引用的时间点是否已过期？</td><td>全部采用 2026-08-28 及之后的披露口径；价格分位数据为 2026-07-31</td><td>若 9 月有新公告，本报告未覆盖（已核实：2026-09-01 至 10-04 <strong>无任何公告</strong>）</td></tr><tr><td>⑤ 数据来源是什么级别？</td><td>一手公告与定期报告为主，雪球评论仅作情绪观测并已标注</td><td>—</td></tr></tbody></table>
+<p><strong>反方观点（需在决策前自行核实）：</strong> ① 彭骞已实现约 15.1 亿元减持套现（ST 信息库口径），扣除入主聆达的 4.11525 亿元后手上仍有约 11 亿元现金可调动，<strong>若他愿意，现金收购体外资产完全不需要上市公司出钱</strong> —— 这是本报告"买入"方向最大的潜在错判点；② 长晶环芯的"半导体设备零部件表面处理"若切入国产设备供应链，其估值逻辑可能不适用制造业主的 PE，而适用 PS；③ 实控人彭骞同时控制精测电子（300567），精测电子本身市值较高，<strong>存在"精测电子资源向聆达倾斜"的可能性，这一层外界无法观测</strong>。</p>
+<h2 id="chap9">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-09-21</td><td>首次生成，王艳体深度研究（文件名 <code>ST聆达-300125-深度研究-20260921.html</code>）</td></tr><tr><td>第 1 次修改</td><td>2026-10-04</td><td>① 按现行速研规范重构为单文件 HTML（结论前置、三层次渐进披露、折叠就地放、左侧目录栏）；② 证券简称由「＊ST聆达」改为「聆达股份」（2026-08-07 摘帽），归档目录同步更名；③ 行情数据由 2026-09-21（9.34 元）更新至 2026-09-30（8.56 元），市值 62.19 亿元→57.00 亿元，PB 5.77→5.29；④ 新增「成本锚点」章（产业投资人 3.10 元／财务投资人 3.50–4.20 元／债权人 10.28 元）；⑤ 新增股东户数序列（8,694 户 → 13,400 户）与龙虎榜核查（2026 年零上榜）；⑥ 新增同型样本组（8 只摘帽标的）实测走势；⑦ 新增分部估值三情景与「主要看点」章；⑧ <strong>操作结论由原文的开放式表述改为明确的「卖出（回避）」</strong></td></tr></tbody></table>
+<blockquote><p>免责声明：本文内容仅为自用兼知识分享与逻辑分析，数据可能有错误或不及时，不构成任何投资建议。市场有风险，投资需谨慎。</p></blockquote>
 </div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
 
-<div class="toc">
-<b>目录</b>：岛主引言 · 三行结论 · 前世今生时间轴 · 关键人物/实控人 · 怎么拿的控制权 · 意图分析与节奏 · 承诺包"原话 vs 大白话"拆解 · 六维拆解（重组节奏/新实控人意图/原业务质量/承诺包活口/行情映射/综合判断）· 壳经济学 · 数据来源 · 免责声明
-</div>
-
-<h2>一、岛主引言</h2>
-<p>这票，我盯了很久。不是因为"ST"二字刺激，而是它身上同时叠了三个我最爱拆的剧本：<strong>光伏全产业链崩塌的弃子、破产重整的壳、半导体大佬借壳转型</strong>。</p>
-<p>先把话说清楚：300125 这碗饭，早年叫 <strong>易世达</strong>，是大连一家做光伏的老创业板股票（2010 年前后上市），后来改名"聆达股份"，主业从光伏电站一路切到光伏电池片。它踩的不是普通的坑，是"光伏上游产能过剩+电池片工艺迭代"的双杀——自己砸 40 亿要在安徽金寨搞 10GW 电池片，结果 PERC 被 TOPCon 拍在沙滩上，一期 2024 年 3 月停产，二期直接取消。</p>
-<p>到这里，它本该是社会新闻里的"破产清算"。转折点在：<strong>一个做半导体检测设备的大佬——彭骞（武汉精测电子的掌门人）——看上了这个壳</strong>，带着他的威迪半导体、众凌科技组团入场，用"破产重整"这条最快、最省、最不容易被否决的路，把壳洗干净了。</p>
-<p>研究这种票，我最怕大家只看市值跳、不看底子虚。所以这篇我不讲故事，只摆事实、算账、拆承诺、看节奏。<strong>结论先放这：壳是真救活了，但"十倍"要靠新业务长出肉来，现在还是张草稿纸。</strong></p>
-
-<h2>二、三行结论（细化）</h2>
-<h3>1. 红线分类</h3>
-<p>这是"财务类退市风险警示 + 合规类其他风险警示"叠加的典型案例。它 2024 年报被致同所出了<strong>"带持续经营重大不确定性段落的无保留意见"</strong>（还不是最狠的非标，但内控出了<strong>否定意见</strong>），四条其他风险警示全中：</p>
-<table>
-<tr><th>红线</th><th>触发的官方口径</th><th>我的解读</th></tr>
-<tr><td>退市风险警示（*ST）</td><td>2024 扣非净利 -8.56 亿、扣除后营收 5785 万&lt;1 亿、期末净资产 -5.38 亿 → 触及《创业板上市规则》10.3.1 条第（一）（二）项</td><td>营收跌破 1 亿 + 净资产变负，两条财务退市红线同时压顶，2025-04-25 戴帽</td></tr>
-<tr><td>其他风险警示（ST）</td><td>①金寨嘉悦电池片 2024-03-14 停产超三个月；②2024 内控审计否定意见；③违规担保未限期解决；④连续三年扣非为负 + 2024 年报带持续经营重大不确定性段落</td><td>合规+经营双重爆雷，公司层面已近乎停摆</td></tr>
-</table>
-<p class="churoi">注：公司为"无实际控制人"状态被申请重整，债权人金寨汇金以"具备重整价值"为由申请，2024-07-31 启动预重整。来源见时间轴。</p>
-
-<h3>2. 生死定级</h3>
-<p>如果 2025 重整失败，它 2026 年大概率直接终止上市。但剧本走成了最理想的一集：</p>
-<ul>
-<li>2025 年报营收 <strong>1.2488 亿</strong>（扣除后 1.2383 亿，&gt;1 亿红线，翻倍于 2024）——营收红线过了；</li>
-<li>期末归母净资产 <strong>+10.53 亿</strong>（2024 为 -5.37 亿）——净资产红线翻正；</li>
-<li>审计意见 <strong>标准无保留</strong> + 内控<strong>标准无保留</strong>——非标红线解除；</li>
-<li>2026-08-05 深交所书面同意撤销，<strong>08-07 复牌，简称变回"聆达股份"，涨跌幅仍 20%</strong>。</li>
-</ul>
-<p>一句话：<strong>财务上的"死缓"改判为"缓刑"，合规上的"黑名单"暂时移除。</strong>但请注意——2025 扭亏靠的是 1.83 亿债务重组收益（非经常性），<strong>扣非仍亏 2.54 亿</strong>，经营本体还是漏的。</p>
-
-<h3>3. 自救空间</h3>
-<p>重整净收益把资产负债表洗干净了：2025 年末负债率从 2024 年的 <strong>153.77%</strong> 压到 <strong>39.10%</strong>，2026H1 进一步降到 <strong>19.55%</strong>；2025 年末货币资金 <strong>10.04 亿</strong>（其中大头转成 6.02 亿理财）。账上躺着钱、背着很轻的债，这就是"自救的空间"——也是彭骞敢布局新业务的底气。</p>
-<p>但另一个残酷事实：<strong>全公司员工只有 62 人</strong>（同花顺 F10 口径），主业近乎空心。这笔钱是"养老钱"还是"弹药"，取决于新业务能不能落地。</p>
-
-<h2>三、前世今生时间轴</h2>
-<table>
-<tr><th>时间</th><th>事件</th><th>关键数字/口径</th><th>来源</th></tr>
-<tr><td>早年</td><td>公司前身"易世达"，大连起家，创业板光伏股，后更名聆达集团（聆达股份）</td><td>曾用名：易世达→聆达股份→ST聆达→*ST聆达</td><td>同花顺 F10</td></tr>
-<tr><td>2014</td><td>收购格尔木神光 100% 股权，切入光伏电站运营（53MW）</td><td>收购价约 2.38 亿元</td><td>同花顺概念历史</td></tr>
-<tr><td>2019-01</td><td>设立全资子公司金寨嘉悦，上马高效晶硅电池片（PERC）</td><td>规划投资 40 亿、10GW，一期先建</td><td>2022 年报</td></tr>
-<tr><td>2021-01</td><td>实控人变更为黄双</td><td>——</td><td>2022 年报</td></tr>
-<tr><td>2022</td><td>实控人再变动，杭州光恒昱成为控股股东，王明圣系执掌</td><td>杭州光恒昱为控股股东</td><td>2022 年报</td></tr>
-<tr><td>2024-03-14</td><td>金寨嘉悦电池片一期临时停产，预计三个月内无法复产</td><td>停产后至今未复工</td><td>证券日报 / 摘帽公告</td></tr>
-<tr><td>2024-07-30</td><td>债权人金寨汇金申请重整，法院决定启动预重整</td><td>（2024）皖15破申127号</td><td>2025 年报</td></tr>
-<tr><td>2024-08-30</td><td>子公司金寨嘉悦同日启动预重整，与上市公司协调审理</td><td>（2024）皖15破申147号</td><td>2025 年报</td></tr>
-<tr><td>2024-12-31</td><td>证监会立案（涉嫌信披违法违规）</td><td>证监立案字0212024005号</td><td>2025 年报</td></tr>
-<tr><td>2025-03-28</td><td>确定重整投资人（浙江众凌 + 合肥威迪联合体，威迪指定金微半导体为投资主体）并签重整投资协议</td><td>2025-10-29 财务投资人调整敲定</td><td>2025 年报 / 证券日报</td></tr>
-<tr><td>2025-04-24/25</td><td>披露退市风险警示公告，2025-04-25 被实施 *ST + 其他风险警示并停牌</td><td>公告编号 2025-042</td><td>审计进展公告</td></tr>
-<tr><td>2025-09-11</td><td>大连证监局出具行政处罚决定书（未披露对外担保、关联方资金占用）</td><td>王明圣、林志煌各罚 200 万</td><td>大证监处罚字〔2025〕2号</td></tr>
-<tr><td>2025-11-18</td><td>六安中院裁定受理上市公司 + 金寨嘉悦重整</td><td>（2025）皖15破1、2号</td><td>2025 年报</td></tr>
-<tr><td>2025-12-19</td><td>法院批准《聆达股份重整计划》《金寨嘉悦重整计划》</td><td>出资人权益调整方案 12-18 表决通过</td><td>2025 年报</td></tr>
-<tr><td>2025-12-30</td><td>重整计划执行完毕，律所出具法律意见书</td><td>——</td><td>2025 年报</td></tr>
-<tr><td>2025-12-31</td><td>法院裁定终结两家公司破产重整程序</td><td>皖15破1、2号之一</td><td>2025 年报</td></tr>
-<tr><td>2026-01-07</td><td>转增股票过户至产业投资人账户，金微半导体成控股股东（16.99%），彭骞成实控人（20.00%）</td><td>金微 1.1275 亿股 + 众凌 2000 万股</td><td>2026 半年报</td></tr>
-<tr><td>2026-02-04</td><td>董事会提前换届，彭骞任董事长，明星任总经理/董秘</td><td>七届董事会 4+3 结构</td><td>2026 半年报</td></tr>
-<tr><td>2026-03-31</td><td>披露 2025 年报（标准无保留）+ 向深交所申请撤销风险警示</td><td>营收 1.25 亿、归母净利 2032 万</td><td>2025 年报</td></tr>
-<tr><td>2026-04-14</td><td>设立全资子公司长晶环芯（半导体设备零部件表面处理）</td><td>注册资本 2750 万→5000 万</td><td>2026 半年报</td></tr>
-<tr><td>2026-04-29</td><td>合资设立南京嘉悦（彩色滤光膜），金寨嘉悦持股 52%</td><td>注册资本 5000 万</td><td>2026 半年报</td></tr>
-<tr><td>2026-08-05</td><td>深交所审核同意撤销退市风险警示及其他风险警示</td><td>——</td><td>摘帽公告</td></tr>
-<tr><td>2026-08-07</td><td>复牌，简称变更为"聆达股份"，当日盘中一度涨超 12%</td><td>涨停 11.17 / 跌停 7.45</td><td>上证报 / 证券时报</td></tr>
-</table>
-
-<h2>四、关键人物 / 实控人</h2>
-<h3>1. 新实控人：彭骞——面板/半导体检测设备的"老法师"</h3>
-<p>这是整出戏的灵魂人物。彭骞，1974 年 12 月生，硕士。履历里最重的一行是<strong>武汉精测电子集团股份有限公司董事长兼总经理</strong>——精测电子（300567）是创业板上市、做面板检测 / 半导体检测设备的国产龙头，2026 年仍是枝繁叶茂的半导体概念票。</p>
-<p>他名下的产业版图，正好和聆达新业务严丝合缝：</p>
-<table>
-<tr><th>关联企业</th><th>角色</th><th>主业</th><th>和聆达的关系</th></tr>
-<tr><td>金寨金微半导体材料有限公司</td><td>彭骞直接持股 34%，通过威迪控制 35%</td><td>半导体材料投资主体</td><td>现聆达控股股东（16.93%）</td></tr>
-<tr><td>合肥威迪半导体材料有限公司</td><td>实际控制人</td><td>全固态电致变色 EC 膜半导体材料（国内唯一量产）</td><td>原重整投资人，后指定金微为主体</td></tr>
-<tr><td>浙江众凌科技有限公司</td><td>董事长/实控人</td><td>FMM 精细金属掩膜版 + INVAR36 合金薄带</td><td>重整产业投资人之一（3.00%）</td></tr>
-<tr><td>武汉精测电子集团</td><td>董事长、总经理</td><td>面板/半导体检测设备</td><td>彭骞国资产业资源的大本营</td></tr>
-</table>
-<p><strong>判断：</strong>这不是来"炒壳"的游资，是带着半导体材料、掩膜版、检测设备的实体资源来的产业方。金微半导体（威迪控股）做 EC 膜、众凌做 FMM 掩膜版——都和"先进智造+显示/半导体材料"直接相关，这解释了聆达为什么新设"长晶环芯（半导体设备零部件表面处理）"和"南京嘉悦（彩色滤光膜）"两条线。</p>
-
-<h3>2. 前管理层（已离任 / 被罚）</h3>
-<p><strong>王明圣</strong>（原董事长兼总裁）、<strong>林志煌</strong>（原副董事长兼 CEO）、<strong>谢景远</strong>（原财务总监）——正是把聆达带到沟里的三人组。2024-09-30 因 2023 年业绩预告与年报净利润重大差异被深交所<strong>公开谴责</strong>；2025-09-11 又因未按规定披露对外担保、关联方资金占用被大连证监局<strong>警告并各罚 200 万</strong>，同时被出具警示函（未及时披露金寨嘉悦停工停产、2023 年报未对二期项目做减值测试）。</p>
-<p><strong>判断：</strong>典型的"掏空+隐瞒"的老壳主操作，纪律处分+行政处罚双料齐全。值得记一笔的是，前任留下的违规担保、资金占用问题，正是后来重整里要"清账"的烂摊子之一。</p>
-
-<h2>五、怎么拿的控制权（路径拆解）</h2>
-<p>彭骞拿这一票，走的是<strong>破产重整 + 资本公积转增 + 定向分配</strong>的教科书式打法，速度快、成本可控、还天然绕开了二级市场要约收购：</p>
-<h3>1. 先"止损暂停"，再"低价入场"</h3>
-<ul>
-<li>债权人申请重整 → 法院启动预重整 → 公开招募重整投资人 →<strong>浙江众凌 + 合肥威迪联合体中标</strong>（2025-03）→ 威迪指定控股子公司金微半导体作为签约主体（2025-03-25）→ 3-28 签重整投资协议。</li>
-<li>这一步的妙处：重整投资人的入股价格，通常按转增股本的账面成本走，远低于市价。等于趁公司濒死，用"救助款"换"股权"。</li>
-</ul>
-<h3>2. 资本公积转增：10 股转 15 股，全部不归老股东</h3>
-<p>2025-12 重整计划核心条款：以总股本 265,499,995 股为基数，<strong>每 10 股转增 15 股</strong>，共转增 398,249,992 股，<strong>全部用于清偿债务和引入重整投资人，原股东一股不分</strong>。转增后总股本增至 663,749,987 股（后经限制性股票回购注销等微调至 665,849,987 股）。</p>
-<p>这是重整的常规动作，但对老股东意味着<strong>股权被大幅稀释</strong>——原来 1 股变成 2.5 股的总盘子，老股东手里那份比例被腰斩，但换来的是"壳保住了、不用清零"。</p>
-<h3>3. 过户与控盘</h3>
-<p>2026-01-07 管理人执行过户：金微半导体拿 <strong>1.1275 亿股（16.99%/16.93%）</strong>，众凌科技拿 <strong>2000 万股（3.00%）</strong>，彭骞通过两家公司合计控制 <strong>1.3275 亿股，占 20.00%</strong>，成为实控人。控股股东从"无控股股东"变更为金微半导体。</p>
-<p><strong>拿到控制权的总代价（估值角度）：</strong>以现价 9.34 元折算，彭骞控制的 1.3275 亿股对应市值约 <strong>12.4 亿</strong>，而重整投资人实际投入的是重整投资款（含代偿债务、增量资金），远低于这把股票的市值——这是重整壳的核心套利空间。</p>
-
-<h2>六、意图分析与节奏</h2>
-<h3>1. 彭骞图什么？</h3>
-<ul>
-<li><strong>图一个上市壳：</strong>把威迪（EC 膜）、众凌（FMM 掩膜版）背后的先进材料/半导体装备资产，未来通过聆达这个壳做资产证券化。这是产业资本拿壳最标准的动机。</li>
-<li><strong>图协同：</strong>新设的长晶环芯（半导体设备零部件表面处理，服务晶圆厂 CVD/PVD/刻蚀/CMP 设备）和南京嘉悦（彩色滤光膜，LCD/WOLED 面板核心光学件），都是彭骞在半导体/显示产业链上的既有认知半径。</li>
-<li><strong>图低成本：</strong>重整壳干干净净、没有商誉包袱、账上还有 10 亿现金+6 亿理财，这比正常收购一家上市公司省太多。</li>
-</ul>
-<h3>2. 节奏判断：三步走，才走了半步</h3>
-<table>
-<tr><th>阶段</th><th>动作</th><th>现状</th></tr>
-<tr><td>第一步：救壳</td><td>重整+摘帽+控制权落地</td><td>✅ 已完成（2026-08-07）</td></tr>
-<tr><td>第二步：注入/培育新业务</td><td>长晶环芯（洁净厂房建设/产线调试）+ 南京嘉悦（6 月下旬投产，H1 收入 62.82 万）</td><td>🟡 刚下锅，未见收入起量</td></tr>
-<tr><td>第三步：资产注入/并购</td><td>把威迪、众凌等产业链资产装进来（半年报明确"具备适时产业并购的财务基础"）</td><td>⏳ 未启动，纯预期</td></tr>
-</table>
-<p>半年报的原话是给信号的关键——"<strong>围绕先进智造战略方向储备了较为充裕的资金……具备在符合监管规则前提下、结合业务发展需要适时开展产业并购的财务基础</strong>"。翻译成人话：钱备好了，就等注入。</p>
-<p><strong>我的节奏结论：</strong>现在（2026-09）处于"壳已救活、新业务刚开门、大资产注入尚未提箱"的中场。真正决定这票能不能翻倍以上的，是"第三步"的资产注入何时、装什么、多大估值。</p>
-
-<h2>七、承诺包："原话 vs 大白话"拆解</h2>
-<p>重整股最值钱的是承诺，最坑人的也是承诺。聆达这单的承诺包相当"薄"，我逐条翻译：</p>
-<table>
-<tr><th>承诺内容（原话要点）</th><th>大白话</th><th>我的评价</th></tr>
-<tr><td>财务投资人（云南信托金瑞512号、海南凌科云启、海南星帆智航、武汉佰数千识、长沙昕和、成都吉瑞璟昌、北京盈澄、淄博荣港 8 家）：自取得股份起 12 个月内不转让/不委托管理，且"不谋求控制权或协助产业投资人之外主体谋求控制权"</td><td>这 8 个财务方锁 12 个月（到 2026-12-29 解禁），而且别跟我抢位子。</td><td>中性偏利好——锁定期短（12个月），但明确"不夺权"，控制权稳定。</td></tr>
-<tr><td>产业投资人（金微半导体、浙江众凌）：首发后限售股，锁 36 个月（2026-01-07 至 2029-01-06）</td><td>彭骞这一方锁 3 年，2029 年初才解禁。</td><td>实打实的利好——大股东 3 年不跑，屁股决定脑袋。</td></tr>
-<tr><td>无业绩承诺、无利润补偿、无资产注入时间表承诺</td><td>没有"保证新业务赚多少钱"的兜底；也没有"X 年必须注入 XX 资产"的时间军令状。</td><td>这是最大的短板。买壳股怕的就是"承诺有空间、兑现没时间"，聆达这单目前只有"锁股份"没有"赌业绩"。</td></tr>
-</table>
-<p class="churoi">注：2025 年报"承诺事项履行情况"仅列示了财务投资人的股份限售+不谋求控制权承诺，明确"不涉及业绩承诺"。半年报延续口径。</p>
-
-<h2>八、六维拆解</h2>
-<h3>维度一：重组节奏 —— 已完成，超预期地快</h3>
-<p>从 2024-07-30 预重整启动，到 2025-12-31 终结重整程序，用时约 17 个月；再到 2026-08-07 摘帽，全程约 24 个月。在 A 股重整案例里属于<strong>很快</strong>的节奏，且全程"协调审理"（上市公司+核心子公司金寨嘉悦并肩走），一步到位把最重的那颗雷（电池片子公司）也拆了。</p>
-
-<h3>维度二：新实控人意图 —— 产业方，方向对，力度待观察</h3>
-<p>彭骞=精测电子掌舵人，半导体/显示装备产业资源货真价实；新业务（半导体零部件表面处理、彩色滤光膜）与之一脉相承，不是"乱买资产讲故事"。但"意图"要落到"投入"——长晶环芯注册资本 5000 万、南京嘉悦 5000 万，相对于 10 亿现金只能说"先小步试水"，说明彭骞务实但<strong>还没下重注</strong>。</p>
-
-<h3>维度三：原业务（光伏）质量 —— 核心造血能力已死，只剩"骨头"</h3>
-<table>
-<tr><th>业务板块</th><th>2026H1 收入</th><th>同比</th><th>状态</th></tr>
-<tr><td>光伏电站发电（格尔木神光 53MW）</td><td>498.81 万</td><td class="neg">-39.88%</td><td>一期 3MW + 二期 50MW；二期 1-4 月技改停机、3-6 月外送变电站增容影响上网，6 月已恢复</td></tr>
-<tr><td>电力工程 EPC（阳光恒煜+天津嘉悦）</td><td>4414.24 万</td><td class="neg">-13.06%</td><td>毛利率 -6.49%，亏损经营，靠"聚焦优质项目、控回款"维持</td></tr>
-<tr><td>彩色滤光膜（南京嘉悦，新）</td><td>62.82 万</td><td>——</td><td>6 月下旬投产，刚起步</td></tr>
-<tr><td>半导体表面处理（长晶环芯，新）</td><td>0</td><td>——</td><td>洁净厂房建设/产线调试，未形成收入</td></tr>
-</table>
-<p>注意一个扎眼的数据：<strong>公司整体 2026H1 营业成本 5066.96 万 &gt; 营业收入 5044.67 万</strong>，毛利率为负。也就是说，<strong>留下来的光伏 EPC 业务本身不赚钱</strong>，整份报表的利润是 1119.9 万投资收益（债务重组收益）、2618.9 万资产处置收益、188 万公允价值变动等非经常项目拼出来的。原业务这块，基本是"尸骨"。</p>
-
-<h3>维度四：承诺包活口 —— 有锁没赌，弹性大但缺抓手</h3>
-<p>利好的是产业投资人锁 3 年（彭骞方），坏消息是没有业绩承诺、没有注入时间表。这意味着：<strong>未来注入是"你情我愿"，没有协议杠杆逼着他做</strong>。对赌壳的投资者而言，这是"手中无剑"的状态——只能赌彭骞的产业整合意愿和他的历史信用（精测电子的成功履历是加分项）。</p>
-
-<h3>维度五：行情映射 —— 摘帽脉冲已释放，回到主营定价</h3>
-<ul>
-<li>2026-08-07 摘帽复牌当日盘中<strong>一度涨超 12%</strong>，报 9.66 元附近；</li>
-<li>截至 2026-09-21 午间，股价 <strong>9.34 元</strong>（+0.32%），总市值 <strong>62.19 亿</strong>、流通市值 33.69 亿；</li>
-<li>52 周区间 <strong>5.43 – 11.37 元</strong>，现价处于中位偏上；</li>
-<li>市盈率 TTM 约 <strong>40.7 倍</strong>、市净率约 <strong>5.77 倍</strong>，每股净资产 1.62 元。</li>
-</ul>
-<p><strong>映射结论：</strong>62 亿市值里，"壳价值 + 现金 + 新业务期权"占了绝大部分，"光伏存量业务"几乎贡献不了估值。这个 5.77 倍 PB 对一家扣非亏损、主业空心、62 个员工的壳公司而言，<strong>已经不算便宜</strong>——市场已经把"彭骞+注入预期"提前定价进去了。留给后手的是"注入落地"这一个催化剂，成就是突发翻倍行情，不成就是阴跌回吐。</p>
-
-<h3>维度六：综合判断</h3>
-<table>
-<tr><th>项目</th><th>打分/判断</th></tr>
-<tr><td>壳的干净度</td><td class="pos">高——重整彻底、负债率 19.55%、标准无保留、无商誉、账上 10 亿现金+6 亿理财</td></tr>
-<tr><td>实控人含金量</td><td class="pos">高——精测电子系，半导体/显示产业实体，历史信用好</td></tr>
-<tr><td>经营造血</td><td class="neg">极弱——整体毛利率为负，扣非连亏，原主业尸骨化</td></tr>
-<tr><td>新业务进度</td><td class="amber">早期——两条线刚开门（或还没开门），收入可忽略</td></tr>
-<tr><td>承诺厚度</td><td class="amber">偏薄——锁股份够硬，赌业绩为零，注入无时间表</td></tr>
-<tr><td>估值水位</td><td class="neg">偏贵——62 亿市值 / 5.77 倍 PB / 亏损主业，已含注入预期溢价</td></tr>
-<tr><td>催化剂</td><td class="amber">注入/并购落地、长晶环芯客户认证突破、新业务订单</td></tr>
-<tr><td>风险</td><td class="neg">注入迟迟不来、新业务熄火、理财收益不可持续、财务投资人 2026-12-29 解禁抛压</td></tr>
-</table>
-<p><strong>一句话总评：壳救活了，人找对了，但肉还没长出来；当前股价已把"好故事"算进去一半，剩下的要等"下一步动作"来兑现。属于"看得到空间、等不到确定性"的半成品。</strong></p>
-
-<h2>九、壳经济学</h2>
-<p>把聆达这单拆成一张"壳资产负债表"，更能看清这盘生意的算术：</p>
-<ul>
-<li><strong>壳的原始价值：</strong>濒死创业板壳，主业停产、负债 153.77%、净资产 -5.38 亿,清算价趋近于零甚至为负。</li>
-<li><strong>重整的"清洗"成本：</strong>10 转 15 的转增股全部分给债权人和投资人，等于用"稀释老股东的股权"来买单；老股东比例被摊薄，但避免了"清零退市"。</li>
-<li><strong>产业方的"入场券"：</strong>彭骞方以重整投资款换 20% 股权，现市值约 12.4 亿——这就是"壳的期权价值"。</li>
-<li><strong>留下的"现金包"：</strong>2025 末货币资金 10.04 亿 + 6.02 亿理财，是未来资产注入/并购的弹药。</li>
-<li><strong>壳经济的本质：</strong>彭骞花的是"救助成本"，买的是一个<strong>净壳+现金+上市公司平台+融资功能</strong>的四合一入场券，未来无论注入威迪还是众凌资产，都用这个壳完成证券化，实现一级到二级的估值跃迁。</li>
-</ul>
-<p>对二级买方的意义：<strong>你现在 9.34 元/62 亿市值买的，不是光伏电站，是"彭骞会不会把半导体资产装进来的期权"。</strong>期权有到期日也有归零风险——财报投资人 12 个月锁定期 2026-12-29 到期是一个需要盯住的供给节点。</p>
-
-<h2>十、关键财务速览表（定稿数据）</h2>
-<table>
-<tr><th>指标（元）</th><th>2023</th><th>2024</th><th>2025</th><th>2026H1</th></tr>
-<tr><td>营业收入</td><td class="num">8.39 亿</td><td class="num">6115.13 万</td><td class="num">1.2488 亿</td><td class="num">5044.67 万</td></tr>
-<tr><td>归母净利润</td><td class="num neg">-2.62 亿</td><td class="num neg">-9.50 亿</td><td class="num pos">+2032.27 万</td><td class="num pos">+2540.21 万</td></tr>
-<tr><td>扣非净利润</td><td class="num neg">-2.76 亿</td><td class="num neg">-8.56 亿</td><td class="num neg">-2.54 亿</td><td class="num neg">-1770.08 万</td></tr>
-<tr><td>归母净资产</td><td class="num">4.12 亿</td><td class="num neg">-5.37 亿</td><td class="num pos">10.53 亿</td><td class="num pos">10.78 亿</td></tr>
-<tr><td>资产总额</td><td class="num">19.50 亿</td><td class="num">10.01 亿</td><td class="num">17.28 亿</td><td class="num">13.69 亿</td></tr>
-<tr><td>负债合计</td><td class="num">——</td><td class="num">≈15.39 亿</td><td class="num">6.76 亿</td><td class="num">2.68 亿</td></tr>
-<tr><td>资产负债率（负债合计/资产总计）</td><td class="num">——</td><td class="num">≈153.77%</td><td class="num">39.10%</td><td class="num">19.55%</td></tr>
-<tr><td>经营现金流净额</td><td class="num">8521.78 万</td><td class="num neg">-995.55 万</td><td class="num pos">4915.04 万</td><td class="num neg">-2910.26 万</td></tr>
-</table>
-<p class="churoi">注：2026H1 归母净资产 1,077,956,372.19 元，所有者权益合计 1,101,465,538.69 元（含少数股东权益 2,350.92 万）；负债率严格按"负债合计/资产总计"计算。数据采自 2025 年报、2026 半年报合并资产负债表/利润表。</p>
-
-<h2>十一、数据来源</h2>
-<ul class="src-list">
-  <li>聆达集团股份有限公司《2026 年半年度报告》（2026-08-28）——巨潮资讯网 · <a href="http://paper.cnstock.com/html/2026-08/28/content_2261982.htm" target="_blank">上证报摘要版</a></li>
-  <li>聆达集团股份有限公司《2025 年年度报告》（2026-03-31）——巨潮资讯网</li>
-  <li>《关于公司股票交易撤销退市风险警示及其他风险警示暨停复牌的公告》（2026-08-06）——深交所官网 · <a href="http://disc.static.szse.cn/download/disc/disk03/finalpage/2026-08-06/553cef86-26e0-4888-a740-d60f70ed1c3c.PDF" target="_blank">公告原文 PDF</a></li>
-  <li>《*ST聆达：8月7日复牌并撤销退市风险警示及其他风险警示》——证券时报 2026-08-05 · <a href="https://www.stcn.com/article/detail/4060438.html" target="_blank">链接</a></li>
-  <li>《聆达股份"摘星脱帽"盘中涨超12%》——上海证券报·中国证券网 2026-08-07 · <a href="https://www.cnstock.com/commonDetail/756494" target="_blank">链接</a></li>
-  <li>《*ST聆达预计2025年扭亏为盈》——证券日报 2026-01-30 · <a href="http://m.zqrb.cn/gscy/gongsi/2026-01-30/A1769763296933.html" target="_blank">链接</a></li>
-  <li>《聆达股份：2026年第一季度报告》（2026-04-22）——深交所官网</li>
-  <li>太平洋证券《聆达股份详式权益变动报告书之财务顾问核查意见》（2026-01-09）——新浪财经 · <a href="http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=300125&id=11909052" target="_blank">链接</a></li>
-  <li>聆达股份(300125) 行情与公司资料（2026-09-21 更新）——证券时报 · <a href="https://www.stcn.com/quotes/index/sz300125.html" target="_blank">行情</a> ｜ 同花顺 · <a href="https://stockpage.10jqka.com.cn/300125/company/" target="_blank">公司资料</a> ｜ 雪球 · <a href="https://xueqiu.com/S/SZ300125" target="_blank">行情</a></li>
-  <li>《关于2025年年度报告编制及最新审计进展情况的公告》（2026-03-04 / 2026-03-18，公告编号 2026-026 / 2026-030）——巨潮资讯网</li>
-</ul>
-
-<p class="disclaimer">（免责声明：本文内容仅为自用兼知识分享与逻辑分析，数据可能有错误或不及时，不构成任何投资建议。市场有风险，投资需谨慎。）</p>
-
-<div class="foot">ST聆达(300125)深度研究 · 王艳体 ｜ 更新至 2026-09-21 ｜ 生成于基准日次日归档</div>
-</div>
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
 </body>
 </html>
