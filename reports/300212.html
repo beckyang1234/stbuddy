@@ -1,70 +1,139 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ST易录(300212)深度研究·王艳体</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>＊ST易录（300212.SZ）研究报告</title>
 <style>
-  :root {
-    --red: #b01e23; --dark: #1a1a1a; --ink: #2b2b2b; --muted: #777;
-    --line: #e5e2d8; --bg: #fbfaf6; --card: #ffffff; --gold: #b8860b;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--bg); color: var(--ink);
-    font-family: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
-    line-height: 1.9; font-size: 16px; -webkit-font-smoothing: antialiased;
-  }
-  .wrap { max-width: 900px; margin: 0 auto; padding: 32px 20px 80px; }
-  header.site {
-    border-bottom: 3px solid var(--red); padding-bottom: 18px; margin-bottom: 26px;
-  }
-  header.site h1 { font-size: 30px; margin: 0 0 6px; color: var(--dark); letter-spacing: 1px; }
-  header.site .sub { color: var(--muted); font-size: 14px; }
-  .badge {
-    display: inline-block; background: var(--red); color: #fff; font-size: 13px;
-    padding: 2px 10px; border-radius: 3px; letter-spacing: 1px; margin-right: 6px;
-  }
-  h2 {
-    font-size: 22px; margin: 42px 0 14px; padding-left: 12px; color: var(--dark);
-    border-left: 5px solid var(--red); line-height: 1.4;
-  }
-  h3 { font-size: 18px; margin: 26px 0 10px; color: var(--dark); }
-  p { margin: 12px 0; }
-  strong { color: var(--dark); }
-  .red { color: var(--red); font-weight: bold; }
-  .gold { color: var(--gold); font-weight: bold; }
-  .kv {
-    background: var(--card); border: 1px solid var(--line); border-radius: 6px;
-    padding: 4px 0; margin: 18px 0; box-shadow: 0 1px 2px rgba(0,0,0,.03);
-  }
-  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; background: var(--card); }
-  th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
-  th { background: #f3efe6; color: var(--dark); font-weight: 600; white-space: nowrap; }
-  tr:nth-child(even) td { background: #fdfcf9; }
-  table small { color: var(--muted); }
-  .quote {
-    background: #f7f3ea; border-left: 4px solid var(--gold); padding: 10px 14px;
-    margin: 14px 0; color: #5a4a2a; font-size: 15px;
-  }
-  blockquote.warn {
-    background: #fdf0ef; border-left: 4px solid var(--red); padding: 10px 14px;
-    margin: 14px 0; color: #7a2a2a; font-size: 15px;
-  }
-  a { color: #1460c0; text-decoration: none; border-bottom: 1px dotted #9bb8dd; }
-  a:hover { color: #b01e23; border-bottom-color: #b01e23; }
-  .src { font-size: 12px; color: var(--muted); margin-left: 2px; }
-  .foot { margin-top: 40px; }
-  .disclaimer {
-    margin-top: 34px; padding: 14px 16px; background: #efece4; border-radius: 6px;
-    color: #6a6558; font-size: 14px;
-  }
-  ol.src-list { padding-left: 22px; font-size: 14px; color: #444; }
-  ol.src-list li { margin: 6px 0; }
-  .tagline { font-style: italic; color: var(--muted); }
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
 </style>
 </head>
-<body><script id="sbgatescript">
+<body>
+<script id="sbgatescript">
 (function(){
   var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
   try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
@@ -93,252 +162,302 @@
   else document.addEventListener('DOMContentLoaded', build);
 })();
 </script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>12 章 · 27 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 五条结论</a><a class="sblv3" href="#sec0">股价市值快照（基准日 2026-09-30 收盘）</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断：为什么戴帽、还能不能活</a><a class="sblv3" href="#sec1">1.1 三类风险的原文依据</a><a class="sblv3" href="#sec2">1.2 四类退市红线逐条对照</a><a class="sblv3" href="#sec3">1.3 摘帽展望：两套条件、两个时间锚</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、前世今生：从"央企 IT 亲儿子"到"数据湖黑洞"</a><a class="sblv3" href="#sec4">2.1 关键节点（含金额与资金来源）</a><a class="sblv3" href="#sec5">2.2 股东阵容：一个极度分散、国资独大的散户盘</a><a class="sblv3" href="#sec6">2.3 关键人物：中国电科"接管班子"＋一个被收编的创业元老</a><a class="sblv3" href="#sec7">2.4 关键信号：发起重整的债主是"半个自己人"</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、重整主路径：谁在救、怎么救、走到哪一步</a><a class="sblv3" href="#sec8">3.1 全流程进度看板</a><a class="sblv3" href="#sec9">3.2 25.31 亿元投资结构：两个价格、四道分化</a><a class="sblv3" href="#sec10">3.3 成本锚点：便宜筹码全在桌下</a><a class="sblv3" href="#sec11">3.4 承诺包活口：真正值钱的是两笔钱</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、资产质量与估值</a><a class="sblv3" href="#sec12">4.1 资产质量星级评估</a><a class="sblv3" href="#sec13">4.2 五年＋最新一期核心财务</a><a class="sblv3" href="#sec14">4.3 分业务：一个收缩的重灾区 ＋ 一个还算健康的底盘</a><a class="sblv3" href="#sec15">4.4 估值：想象力加总，但想象空间已被现价透支</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">五、炒作逻辑三支柱（全部着眼未来）</a><a class="sblv3" href="#sec16">5.1 ① 炒预期：未来 6–12 个月的可验证节点</a><a class="sblv3" href="#sec17">5.2 ② 炒历史类似行为：同型样本组指向"下跌组"</a><a class="sblv3" href="#sec18">5.3 ③ 炒主板映射：AI 算力/存力主线在 ST 板块的低位对标</a><a class="sblv3" href="#sec19">5.4 注意力读数：异动与龙虎榜</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">六、投资者交流要点</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">七、投资结论</a><a class="sblv3" href="#sec20">理由链（按重要性排序，每条带证据）</a><a class="sblv3" href="#sec21">触发条件（何时翻转结论）</a><a class="sblv3" href="#sec22">失效条件</a><a class="sblv3" href="#sec23">参考区间</a><a class="sblv3" href="#sec24">时间窗口</a><a class="sblv3" href="#sec25">仓位建议</a><a class="sblv3" href="#sec26">最大风险（一句话）</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap9">附录 B · 关键信源</a></div><div class="sbgrp"><a class="sblv2" href="#chap10">附录 C · 逻辑漏洞与反方观点（压力测试 5 问）</a></div><div class="sbgrp"><a class="sblv2" href="#chap11">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
 <div class="wrap">
+<h1 id="top">＊ST易录（300212.SZ）研究报告</h1>
+<blockquote><p>基准日 2026-10-04 ｜ 行情截至 2026-09-30 收盘 ｜ 财务截至 2026 年半年报 ｜ 重整进度截至 2026-10-04</p><p>版本：第 1 次修改 · 2026-10-04（初版 2026-09-21《深度研究·王艳体》重构并入）</p></blockquote>
+<h2 id="chap0">封面 · 五条结论</h2>
+<p><strong>操作结论：卖出（回避）</strong></p>
+<p><strong>红线分类：</strong> <span class="sttag sttag-blue"><a href="http://static.cninfo.com.cn/finalpage/2026-04-29/1225239128.PDF" target="_blank" rel="noopener">2025年净资产为负</a></span> · <span class="sttag sttag-orange"><a href="http://static.cninfo.com.cn/finalpage/2026-04-29/1225239138.PDF" target="_blank" rel="noopener">连续三年扣非为负+持续经营存疑</a></span> · <span class="sttag sttag-orange"><a href="http://static.cninfo.com.cn/finalpage/2026-04-29/1225239126.PDF" target="_blank" rel="noopener">因信披违法被立案</a></span></p>
+<blockquote><p>依据：Andy 路径底表《退市风险预警-20260929.xlsx》——交易类 / 其他类两表均<strong>无</strong> 300212，<strong>财务类</strong>命中"最近一个会计年度审计净资产为负"指标块（2025-12-31 净资产 -19.53 亿元，较上年末 7.29 亿元下降 367.92%）；规范类未命中（2025 年内控审计意见为<strong>标准无保留</strong>）。故主路径＝<strong>财务类·净资产为负 → 司法重整保壳</strong>，另叠加证监会立案的规范类敞口。</p></blockquote>
+<p><strong>生死定级：可救 · 需外力（高危续命型）</strong></p>
+<p>净资产为负靠自身经营<strong>在数学上无解</strong>（2026 上半年营收 1.89 亿元、归母净资产 -22.64 亿元），唯一的解法是把 25.31 亿元重整投资款与债务重组利得一次性计入 2026 年报。<strong>救兵已经到场、协议已经签了，但法院尚未裁定受理正式重整，钱一分未到账。</strong></p>
+<p><strong>自救空间：</strong> 三张牌——① 实控人<strong>中国电科</strong>、控股股东<strong>华录集团</strong>公开表态"支持通过重整化解风险、促进国有资产保值增值"；② 重整投资人结构"地方国资＋产业资本＋中央金融企业"三层叠加（山东高速系、京合云系、银河资管、广西/广州国资、厦门国际信托）；③ 手里有智慧交通、可信数据空间、蓝光存储等央企数字化牌照与场景。<strong>最大的不确定不是钱、不是人，而是证监会立案结论至今（2026-10-04）未出</strong>——按公告原话"无法确定本次立案事项是否会对后续进入重整程序及重整实施产生影响"。</p>
+<p><strong>主要看点：</strong> <strong>京合云（上海）系联合体以 4.10 元/股认购 3.07 亿股、出资 12.58 亿元</strong>（占 13 家投资人总额的一半），且协议约定重整后"视情况考虑投入运营资金、推动资源或业务协同"，市场据其体系内庆阳/杭州/中卫多个超 5,000 卡异构算力集群，预期"算力资产注入蓝光冷存平台"。这条线是本标的唯一的产业想象力来源，也是本报告判定其<strong>已经透支</strong>的关键——因为它至今仍只是"预期"，而全部硬催化（签协议）已于 2026-09-14 兑现。</p>
+<h3 id="sec0">股价市值快照（基准日 2026-09-30 收盘）</h3>
+<p><strong>结论：57.16 亿元市值里买不到一分钱净资产——PB -2.52、PE -2.11 双双失效，所有价格讨论都只能围绕"重整成功概率"展开；而现价已经高于产业投资人成本 93.7%、高于财务投资人成本 17.6%，便宜筹码在别人手上。</strong></p>
+<table><thead><tr><th>要点</th><th>数值</th><th>口径/说明</th></tr></thead><tbody><tr><td>简称 / 代码</td><td>＊ST易录 / 300212.SZ</td><td>原简称"易华录"，2026-04-29 起戴帽；深交所创业板</td></tr><tr><td>最新价</td><td>7.94 元</td><td>2026-09-30 收盘，+4.89%</td></tr><tr><td>总股本</td><td>7.20 亿股</td><td>注册资本 7.20 亿元（719,892,422 股）</td></tr><tr><td>总市值 / 流通市值</td><td>57.16 亿元 / 55.89 亿元</td><td>2026-09-30（数据来源：腾讯行情，Wind 代理离线改用公开源）</td></tr><tr><td>市净率 / 市盈率</td><td>-2.52 倍 / -2.11 倍</td><td>净资产为负、持续亏损，PB、PE 双双失效</td></tr><tr><td>换手率 / 成交额</td><td>1.70% / 9,367 万元</td><td>2026-09-30，缩量</td></tr><tr><td>涨跌幅限制</td><td>涨停 9.53 / 跌停 6.35 元</td><td>创业板 ST 为 <strong>±20%</strong>（非 5%）</td></tr><tr><td>股东户数</td><td>44,687 户</td><td>截至 2026-09-18（互动易公司答复）</td></tr><tr><td>近 20 年价格分位</td><td>9.75%</td><td>ST 信息库档案；现价处历史极低位</td></tr><tr><td>关键成本锚</td><td>4.10 元 / 6.75 元</td><td>产业投资人 / 财务投资人受让价（均低于现价）</td></tr></tbody></table>
+<blockquote><p>一句话判读：<strong>负净资产的公司，PB/PE 全部失效，57.16 亿元市值买的是"重整成功＋算力注入"的期权，不是净资产，也不是盈利。</strong> 而现价 7.94 元已经是产业投资人成本（4.10 元）的 <strong>1.94 倍</strong>、财务投资人成本（6.75 元）的 <strong>1.18 倍</strong>——<strong>便宜筹码在别人手上，不在二级市场。</strong></p></blockquote>
+<hr>
+<h2 id="chap1">一、诊断：为什么戴帽、还能不能活</h2>
+<p><strong>本标的同时挂着三块牌子，但只有一条是真的红线。</strong> 净资产为负是"生死线"（财务类退市）；连续三年扣非为负＋持续经营存疑只是"ST 黄牌"（其他风险警示）；而立案调查目前是"敞口"而非"定罪"——它不直接触发退市，但一旦结论认定造假达到量化标准，就会升级为<strong>一票否决的重大违法强制退市</strong>。</p>
+<h3 id="sec1">1.1 三类风险的原文依据</h3>
+<p><strong>① 退市风险警示（\*ST）：2025 年末经审计归母净资产 -19.53 亿元。</strong> 2025 年度审计意见为<strong>带持续经营重大不确定性段落的无保留意见</strong>（中勤万信会计师事务所，勤信审字【2026】第 0773 号，2026-04-27 签署），因净资产为负，触及《深圳证券交易所创业板股票上市规则》关于"最近一个会计年度经审计的期末净资产为负值"的情形，股票被实施退市风险警示。</p>
+<p><strong>② 其他风险警示（ST）：连续三年扣非前后孰低为负＋持续经营不确定性。</strong> 2025 年报明确勾选"公司最近三个会计年度扣除非经常性损益前后净利润孰低者均为负值，且最近一年审计报告显示公司持续经营能力存在不确定性"——这一条与上一条是两个独立的帽子，摘起来是<strong>两套条件</strong>。</p>
+<p><strong>③ 证监会立案：涉嫌信息披露违法违规。</strong> 2026-04-29 与年报同日披露《关于收到中国证券监督管理委员会立案告知书的公告》（公告编号 2026-027）。<strong>截至本报告基准日，公司尚未收到结论性意见或决定。</strong></p>
+<details class="fold"><summary>1.1 补充 · 三项风险的公告原文与出处</summary><div class="fold-body">
 
-<header class="site">
-  <div><span class="badge">寻找十倍系列 · 控制权变更/壳/重整驱动</span></div>
-  <h1>ST易录（300212）深度研究</h1>
-  <div class="sub">标的：*ST易录（北京易华录信息技术股份有限公司）｜华录集团 / 中国电科系数据湖与大数据存储公司｜深交所创业板</div>
-  <div class="sub tagline">更新至 2026-09-21</div>
-</header>
+<table><thead><tr><th>风险项</th><th>认定文件</th><th>关键原文</th></tr></thead><tbody><tr><td>退市风险警示</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-04-29/1225239128.PDF" target="_blank" rel="noopener">2025 年年度报告</a></td><td>2025 年末归母净资产 -1,952,651,189.47 元；审计意见类型"带持续经营重大不确定性段落的无保留意见"</td></tr><tr><td>其他风险警示</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-04-29/1225239138.PDF" target="_blank" rel="noopener">董事会关于持续经营相关重大不确定性段涉及事项的专项说明</a></td><td>"最近三个会计年度扣非前后净利润孰低者均为负值"勾选"是"</td></tr><tr><td>立案</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-04-29/1225239126.PDF" target="_blank" rel="noopener">关于收到中国证监会立案告知书的公告</a>（公告编号 2026-027）</td><td>"因公司涉嫌信息披露违法违规等，中国证监会决定对公司立案"</td></tr><tr><td>立案未结</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-09-14/1225564292.PDF" target="_blank" rel="noopener">关于签署重整投资协议的公告</a>（2026-058）特别提示</td><td>"截至目前，公司尚未收到中国证监会就上述立案事项的结论性意见或决定"</td></tr></tbody></table>
 
-<h2>岛主引言（结论先行）</h2>
+</div></details>
+<h3 id="sec2">1.2 四类退市红线逐条对照</h3>
+<p><strong>结论：四条红线里只有财务类（净资产为负）确定已踩、且是唯一能直接导致终止上市的一条；交易类完全安全（57.16 亿元市值距 3 亿元线有 19 倍垫子），规范类只踩到"立案"这条软线，重大违法类悬空未定。</strong></p>
+<table><thead><tr><th>红线类别</th><th>触发条件（创业板口径）</th><th>本司实况</th><th>可救性</th></tr></thead><tbody><tr><td><strong>财务类</strong></td><td>净利润/扣非/利润总额孰低为负 <strong>且</strong> 扣除后营收 &lt; 1 亿元；<strong>或</strong>期末净资产为负；或审计无法表示/否定意见</td><td><strong>已触发净资产为负</strong>（-19.53 亿元）；扣除后营收 4.65 亿元 &gt; 1 亿元（未触发营收线）；审计为标准结构下的无保留意见（未触发非标线）</td><td>可救，靠重整</td></tr><tr><td><strong>交易类</strong></td><td>连续 20 日收盘价 &lt; 1 元；或连续 20 日市值 &lt; 3 亿元；或连续 120 日累计成交量过低</td><td>未触发。现价 7.94 元、总市值 57.16 亿元，距离 3 亿元市值线有 19 倍安全垫</td><td>不适用</td></tr><tr><td><strong>规范类</strong></td><td>资金占用、内控连续两年非标、控制权无序争夺等</td><td><strong>内控未踩线</strong>：2025 年度内部控制审计报告为<strong>标准无保留意见</strong>，非财务报告无重大缺陷；2025 年度非经营性资金占用汇总表已披露。立案属信披违规敞口</td><td>部分敞口</td></tr><tr><td><strong>重大违法类</strong></td><td>欺诈发行；或财务造假达量化线（单年虚增 ≥2 亿元且占比 ≥30%；连续两年合计 ≥3 亿元且占比 ≥20%；连续三年及以上）</td><td><strong>尚未认定</strong>。这是本标的唯一的"归零开关"</td><td>视结论而定</td></tr></tbody></table>
+<blockquote><p><strong>结论：四类红线中，只有财务类是"确定已踩"，交易类完全没踩，规范类只踩到"立案"这一条软线，重大违法类悬空。</strong> 因此这不是"必死"的票，而是"必须靠外力救活"的票——<strong>判断它值不值得买，等于判断"重整能不能在 2026 年内落地"。</strong></p></blockquote>
+<h3 id="sec3">1.3 摘帽展望：两套条件、两个时间锚</h3>
+<p><strong>摘帽不是一个动作，而是两个动作，且这个标的的两个时间锚都指向 2027 年 4 月。</strong></p>
+<p>撤销<strong>退市风险警示（\*ST）</strong>的条件是"最近一个会计年度经审计的期末净资产为正"——即 <strong>2026 年年报（2027 年 4 月披露）</strong> 的净资产必须转正；撤销<strong>其他风险警示（ST）</strong>还需持续经营不确定性消除＋扣非指标改善。也就是说：<strong>2026 年报是一把只能过不能不过的独木桥</strong>。</p>
+<details class="fold"><summary>1.3 补充 · 摘帽条款与两套条件的区别（易混点）</summary><div class="fold-body">
 
-<p>先说三句话，把结论钉在墙上：</p>
+<ul><li><strong>财务类 \*ST 的撤销是"OR 逻辑"</strong>（营收达标 <strong>或</strong> 净利为正 <strong>或</strong> 净资产转正），本标的走的是<strong>净资产转正</strong>这一支。</li><li><strong>其他风险警示（ST）的撤销是另一套条款</strong>（持续经营不确定性消除等），与 \*ST 不可混用同一话术。</li><li><strong>重整完成 ≠ 摘帽</strong>：重整计划执行完毕只是"净资产转正"的必要条件之一，摘帽仍要等 2026 年报出具审计意见并过交易所审核。因此<strong>重整落地与摘帽之间存在至少一个会计年度的时滞</strong>——这是二级市场最容易误判的一点。</li><li><strong>前置可观测信号</strong>：① 北京一中院裁定<strong>受理</strong>正式重整的公告；②《重整计划（草案）》披露；③ 债权人会议表决结果；④ 法院裁定<strong>批准</strong>重整计划；⑤ 重整投资款 25.31 亿元到账。四、五两项目前<strong>均未发生</strong>。</li></ul>
 
-<p><strong class="red">第一句——红线分类：这是"财务类退市"里的"资不抵债"型标本。</strong>
-*ST易录的红线不是营收、不是审计意见，而是<strong>净资产为负</strong>。2025年年报经审计，归母净资产 <strong class="red">-19.53亿元</strong>，直接踩中《创业板股票上市规则》第10.3.1条第（二）项"经审计的期末净资产为负"，于是2026年4月28日晚披露年报当天，被深交所实施<strong>退市风险警示</strong>，股票简称从"易华录"变"*ST易录"；又因连续三年扣非前后净利润孰低均为负值、2025年度审计报告带"持续经营重大不确定性"段落，再叠加<strong>其他风险警示</strong>；同一天还挨了证监会<strong>立案告知书</strong>（涉嫌信息披露违法违规）。<a href="https://stcn.com/article/detail/3853071.html" target="_blank">来源</a></p>
+</div></details>
+<hr>
+<h2 id="chap2">二、前世今生：从"央企 IT 亲儿子"到"数据湖黑洞"</h2>
+<p><strong>这家公司的命运，是一部"央企平台＋重资产模式＋长账期"三重错配的教科书。</strong> 开局是国务院国资委直管央企华录集团的 IT 上市平台、智能交通信控龙头；2017 年起重押"数据湖"（蓝光存储＋政府数据运营），在全国铺开十余个重资产项目；2023 年政府预算收紧后项目变现停滞、减值连绵，净资产从 +35.95 亿元一路跌到 -22.64 亿元，2026 年被戴帽。</p>
+<h3 id="sec4">2.1 关键节点（含金额与资金来源）</h3>
+<details class="fold"><summary>2.1 前世今生 · 关键节点四列表（含金额、每股价格、资金来源与参与方背景）</summary><div class="fold-body">
 
-<p><strong class="red">第二句——生死定级：一脚踩进鬼门关，另一脚踩在央企救援梯上，属于"高危续命型"。</strong>
-到2026年6月30日，归母净资产亏到 <strong class="red">-22.64亿元</strong>，合并负债合计 <strong>90.26亿元</strong>、资产总计 <strong>76.54亿元</strong>，资产负债率 <strong class="red">117.9%</strong>；货币资金只剩 <strong>3.20亿元</strong>，短期借款高达 <strong>30.34亿元</strong>，多笔金融债务逾期、30余个银行账户（含基本户、募集资金专户）被冻结、募集资金专户被司法扣划2590.93万元。<a href="https://stock.stockstar.com/RB2026082700044385.shtml" target="_blank">来源</a>
-反转钥匙已插进锁孔：2026年5月19日北京一中院裁定<strong>启动预重整</strong>，8月20日定下重整投资人，9月14日<strong>签署《重整投资协议》</strong>，13家投资人拟合计出资 <strong class="gold">约25.31亿元</strong>。<a href="http://static.cninfo.com.cn/finalpage/2026-09-14/1225564292.PDF" target="_blank">来源</a> 生死，就看这25亿能不能在2026年内换成"净资产转正"。</p>
+<table><thead><tr><th>时点</th><th>关键动作</th><th>股权/实控人变化</th><th>背后的逻辑</th></tr></thead><tbody><tr><td>2001-04-30</td><td>北京易华录信息技术股份有限公司成立</td><td>华录集团全资发起</td><td>华录集团（2000-06 成立，注册资本 18.36 亿元，国资委直管央企）的 IT 平台</td></tr><tr><td>2011-05</td><td>创业板上市</td><td>华录集团为控股股东</td><td>发行价 27.70 元，早期主业智能交通信控/交管</td></tr><tr><td>2017-2019</td><td>提出并铺开"数据湖"战略</td><td>未变</td><td>以蓝光光盘为核心建城市级数据基础设施；单体项目投资 3–5 亿元，政府回款账期 2–3 年</td></tr><tr><td>2023-04-03</td><td>华录集团公告筹划与中国电科重组</td><td>预期变更</td><td>央企专业化整合，北京市监局公示中国电科无偿受让国资委所持华录集团 66.78% 股权</td></tr><tr><td>2023-11-23</td><td>国资委批准，华录集团股权无偿划入中国电科</td><td><strong>实控人由华录集团变更为中国电科</strong></td><td><strong>无偿行政划转，不换股、不溢价、不花钱</strong>；华录集团直接及间接持股比例不变</td></tr><tr><td>2023</td><td>向特定对象发行股票募资</td><td>未变</td><td>发行 57,459,099 股 @27.51 元/股，募资约 15.81 亿元；此后华录集团直接+间接持股由约 44.74% 摊薄至约 34.10%</td></tr><tr><td>2023-2025</td><td>连续三年巨亏</td><td>未变</td><td>归母净利 -18.90 亿 → -28.65 亿 → -27.17 亿元；净资产由 +35.95 亿→+7.29 亿→-19.53 亿元</td></tr><tr><td>2026-04-29</td><td>披露 2025 年报＋收立案告知书＋被实施退市风险警示</td><td>未变</td><td>三件事同日落地：净资产转负戴"\*ST"、叠加"ST"、被立案</td></tr><tr><td>2026-05-15</td><td>债权人华路易云申请重整及预重整</td><td>未变</td><td><strong>申请人华路易云是公司参股公司（联营企业），同时也是应付账款大户（年报口径 3.35 亿元）</strong></td></tr><tr><td>2026-05-19</td><td>北京一中院裁定<strong>启动预重整</strong>（(2026)京01破申407号）</td><td>未变</td><td>从申请到获批<strong>仅隔 4 天</strong>，临时管理人为北京市金杜律师事务所</td></tr><tr><td>2026-07-03</td><td>37 家意向投资人报名（含联合体）</td><td>未变</td><td>央企壳，报名踊跃</td></tr><tr><td>2026-08-20</td><td>确定两类产投联合体</td><td>未变</td><td>山东高速投资控股牵头联合体、京合云（上海）科技牵头联合体</td></tr><tr><td>2026-09-14</td><td>签署《重整投资协议》（公告 2026-058）</td><td><strong>可能变更</strong></td><td>13 家投资人合计出资约 <strong>25.31 亿元</strong>、受让约 <strong>5.70 亿股</strong>转增股票</td></tr><tr><td>2026-09-24</td><td>5 亿元公司债"22 华录01"<strong>提前兑付暨摘牌</strong></td><td>未变</td><td>由担保人华录集团履行保证责任、资金已足额划付中国结算深圳分公司</td></tr><tr><td>2026-10-04</td><td>基准日：立案无结论、法院未裁定受理正式重整</td><td>—</td><td>三重前置条件仍锁定</td></tr></tbody></table>
+<p><strong>关联方持股逐年增减（退还是进）</strong></p>
+<table><thead><tr><th>时点</th><th>华录集团直接持股</th><th>华录资本（全资子公司）</th><th>合计</th><th>变动方向</th></tr></thead><tbody><tr><td>2022 年末</td><td>约 44.74%（含间接）</td><td>—</td><td>约 44.74%</td><td>定增前</td></tr><tr><td>2023 年定增后</td><td>31.83%</td><td>2.27%</td><td><strong>34.10%</strong></td><td><strong>被动摊薄</strong>（非减持）</td></tr><tr><td>2025 年末</td><td>31.83%</td><td>2.27%</td><td>34.10%</td><td>不变</td></tr><tr><td>2026-06-30</td><td>31.83%</td><td>2.27%</td><td>34.10%</td><td>不变</td></tr></tbody></table>
+<blockquote><p>判读：<strong>中国电科系自 2023 年以来一股未减</strong>，与"央企出逃"的猜测定性相反；但要注意，<strong>重整转增一旦实施，这 34.10% 会被大比例摊薄</strong>（见 §3.2）。</p></blockquote>
 
-<p><strong class="red">第三句——自救空间：这条命是"央企牌照+数据湖壳价值"撑起来的，但立案调查是最大X因素。</strong>
-三张底牌：①实控人<strong>中国电科</strong>、控股股东<strong>华录集团</strong>已公开表态"支持通过重整化解风险、保障国有资产保值增值"；②重整投资人里来了<strong>山东高速投资控股</strong>（带9240公里高速路网数据资源）和<strong>京合云（上海）</strong>（背后是布局AI算力的民企），"国资+产业资本"双保险；③公司手里攥着智慧交通、可信数据空间、蓝光存储等一堆央企数字化牌照和场景。最大不确定不是钱、不是人，而是<strong>证监会立案结论至今（2026-09-21）未出</strong>——公告原话"无法确定本次立案事项是否会对后续进入重整程序及重整实施产生影响"。一句话：<strong>壳能不能救活，一半靠25亿到账，一半靠立案这关过关。</strong></p>
+</div></details>
+<h3 id="sec5">2.2 股东阵容：一个极度分散、国资独大的散户盘</h3>
+<p><strong>结论：股权结构是"国资绝对控股、散户高度分散、没有第二个大股东可以制衡或接盘"的三段式。</strong> 前十大股东中，国资系合计 34.10%，其余 7 席全部是持股市值 1,700 万—3,200 万元的个人散户（第 4 名之后持股比例均不足 0.6%），筹码极度分散。真正值得看的是两个细节：<strong>元老董事林拥军 2,115.72 万股 100% 质押</strong>，以及<strong>新进榜单的罗利、赵章财、沈根祥（合计约 1,078 万股，均为报告期内新进）</strong>——后者是典型的"法拍/二级捡筹型"筹码，不代表产业意志。</p>
+<details class="fold"><summary>2.2 补充 · 股东阵容逐户明细（身份识别＋取得成本＋锁定＋前十大＋筹码集中度）</summary><div class="fold-body">
 
-<div class="kv">
-<h3 style="margin:14px 14px 6px;">股价市值快照（基准日 2026-09-21）</h3>
-<table>
-  <tr><th>项目</th><th>数值</th><th>口径/说明</th></tr>
-  <tr><td>股票简称</td><td>*ST易录</td><td>原简称"易华录"，2026-04-28后戴帽</td></tr>
-  <tr><td>股票代码</td><td>300212.SZ</td><td>深交所创业板</td></tr>
-  <tr><td>最新价</td><td>7.91元</td><td>2026-09-21盘中，+0.13% <a href="https://www.egsea.com/quotation/stock-info/sz300212.html" target="_blank">来源</a></td></tr>
-  <tr><td>总股本 / 流通股本</td><td>7.20亿股 / 7.04亿股</td><td>注册资本7.1989亿元</td></tr>
-  <tr><td>总市值 / 流通市值</td><td>56.94亿 / 55.67亿</td><td>2026-09-21 <a href="https://stcn.com/quotes/index/sz300212.html" target="_blank">来源</a></td></tr>
-  <tr><td>市净率（动态）</td><td>-2.52倍</td><td>净资产为负，PB失效</td></tr>
-  <tr><td>市盈率TTM</td><td>-9.14倍</td><td>亏损，PE失效</td></tr>
-  <tr><td>股东户数</td><td>45,021户</td><td>截至2026-09-10</td></tr>
-  <tr><td>退市风险警示价</td><td>涨停9.41 / 跌停6.27</td><td>ST股5%涨跌停限制</td></tr>
-</table>
+<p><strong>（一）逐户身份识别与取得成本</strong></p>
+<table><thead><tr><th>股东</th><th>身份识别</th><th>持股比例</th><th>取得方式与成本</th><th>锁定与质押</th></tr></thead><tbody><tr><td>中国华录集团有限公司</td><td>控股股东·央企（中国电科二级子公司）</td><td>31.83%</td><td>IPO 前发起＋历次定增，2023 年划转后不变</td><td>无质押、无限售</td></tr><tr><td>林拥军</td><td>创业元老·现任董事</td><td>2.94%</td><td>2001 年起一级老人；2025-09 集中竞价减持 705.24 万股</td><td><strong>2,115.72 万股全部质押（100%）</strong>；其中 1,586.79 万股为高管锁定股</td></tr><tr><td>华录资本控股有限公司</td><td>华录集团全资子公司</td><td>2.27%</td><td>一致行动人</td><td>无质押</td></tr><tr><td>罗利</td><td>自然人（新进）</td><td>0.56%</td><td>报告期内新进</td><td>—</td></tr><tr><td>赵章财</td><td>自然人（新进）</td><td>0.53%</td><td>报告期内新进</td><td>—</td></tr><tr><td>沈根祥</td><td>自然人（新进）</td><td>0.41%</td><td>报告期内新进</td><td>—</td></tr><tr><td>刘新宝 / 邹校红</td><td>自然人</td><td>0.37% / 0.37%</td><td>—</td><td>—</td></tr><tr><td>王海波 / 廖芙秀</td><td>自然人</td><td>0.33% / 0.29%</td><td>廖芙秀报告期内减持 63.80 万股</td><td>—</td></tr></tbody></table>
+<p><strong>（二）前十大股东明细</strong></p>
+<table><thead><tr><th>排名</th><th>股东</th><th>性质</th><th>持股比例</th><th>报告期末持股（股）</th><th>报告期内增减（股）</th><th>有限售（股）</th><th>质押/冻结</th></tr></thead><tbody><tr><td>1</td><td>中国华录集团有限公司</td><td>国有法人</td><td>31.83%</td><td>229,124,004</td><td>0</td><td>0</td><td>无</td></tr><tr><td>2</td><td>林拥军</td><td>境内自然人</td><td>2.94%</td><td>21,157,221</td><td>0</td><td>15,867,916</td><td>质押 21,157,221</td></tr><tr><td>3</td><td>华录资本控股有限公司</td><td>国有法人</td><td>2.27%</td><td>16,345,210</td><td>0</td><td>0</td><td>无</td></tr><tr><td>4</td><td>罗利</td><td>境内自然人</td><td>0.56%</td><td>4,004,576</td><td>+4,004,576</td><td>0</td><td>无</td></tr><tr><td>5</td><td>赵章财</td><td>境内自然人</td><td>0.53%</td><td>3,818,215</td><td>+3,818,215</td><td>0</td><td>无</td></tr><tr><td>6</td><td>沈根祥</td><td>境内自然人</td><td>0.41%</td><td>2,960,000</td><td>+2,960,000</td><td>0</td><td>无</td></tr><tr><td>7</td><td>刘新宝</td><td>境内自然人</td><td>0.37%</td><td>2,699,620</td><td>—</td><td>0</td><td>无</td></tr><tr><td>8</td><td>邹校红</td><td>境内自然人</td><td>0.37%</td><td>2,690,800</td><td>—</td><td>0</td><td>无</td></tr><tr><td>9</td><td>王海波</td><td>境内自然人</td><td>0.33%</td><td>2,400,000</td><td>—</td><td>0</td><td>无</td></tr><tr><td>10</td><td>廖芙秀</td><td>境内自然人</td><td>0.29%</td><td>2,100,000</td><td>-638,000</td><td>0</td><td>无</td></tr></tbody></table>
+<p><strong>（三）筹码集中度</strong>：股东户数由 2026-08-20 的 45,583 户降至 2026-09-18 的 44,687 户（<strong>-1.97%</strong>），对应户均持股由约 1,579 股升至约 1,611 股，<strong>集中度微升但仍是散户盘</strong>；公司层面质押仅林拥军一人（占其个人持股 100%、占公司总股本 2.94%），无控股股东质押风险。</p>
+
+</div></details>
+<h3 id="sec6">2.3 关键人物：中国电科"接管班子"＋一个被收编的创业元老</h3>
+<p><strong>结论：2024 年 6 月是治理层的分水岭——中国电科完成"换班"，元老林拥军从董事长/总裁位子上退下（仍留任董事），华录集团董事长欧黎亲自坐镇、太极股份出身的肖益任总裁。这不是市场化职业经理人更替，而是央企整合后的"接管＋削藩"标准动作。</strong></p>
+<details class="fold"><summary>2.3 关键人物 · 现任班子、履历与"公告未披露"清单</summary><div class="fold-body">
+
+<table><thead><tr><th>姓名</th><th>现任职务</th><th>背景与履历</th><th>看点</th></tr></thead><tbody><tr><td>欧黎</td><td>党委书记、董事长（2024-06 起）</td><td>电子科技大学博士；原中国电科第 26 研究所所长；2021 年起任中国华录集团有限公司党委书记、董事长</td><td>中国电科派驻的"接管人"，华录集团与易华录一把手一肩挑</td></tr><tr><td>肖益</td><td>党委副书记、董事、总裁、<strong>法定代表人</strong></td><td>原太极股份（中国电科系）副总裁/总裁一系</td><td>2024-05 到任；2026 半年报法定代表人已为公司总裁</td></tr><tr><td>满孝国</td><td>党委常委、财务总监、<strong>董事会秘书</strong></td><td>正高级会计师，原财政部山东监管局副处长</td><td>财政部背景的"国资财务管家"；同时兼任董秘，信息披露归口人</td></tr><tr><td>周福全</td><td>党委常委、董事、副总裁</td><td>原融科/国富瑞数据系统总经理</td><td>分管数据湖产业园与存储实体</td></tr><tr><td><strong>林拥军</strong></td><td>董事（2024-06 起卸任董事长/总裁）</td><td>清华硕士，2001 年起为易华录创业元老，2019–2024 任党委书记/董事长</td><td><strong>被收编的关键人物</strong>：2025-09 集中竞价减持 705.24 万股；持股 2,115.72 万股<strong>全部质押</strong>——老舵手自身资金链亦紧</td></tr><tr><td>杜欣军</td><td>董事</td><td>原中国电科第 32 研究所</td><td>中国电科系</td></tr></tbody></table>
+<p><strong>现任全部关联职务与"公告未披露"清单（简历颗粒度）</strong></p>
+<ul><li><strong>欧黎</strong>：现任中国华录集团有限公司党委书记、董事长；北京易华录信息技术股份有限公司党委书记、董事长。出生年月公告未披露。</li><li><strong>肖益</strong>：现任北京易华录总裁、党委副书记、董事、法定代表人；简历显示曾任太极股份总裁一系职务。出生年月公告未披露。</li><li><strong>满孝国</strong>：现任财务总监、董事会秘书；曾任财政部山东监管局副处长。出生年月公告未披露。</li><li><strong>周福全</strong>：现任副总裁、党委常委、董事；曾任融科/国富瑞数据系统总经理。出生年月公告未披露。</li><li><strong>林拥军</strong>：现任董事；2019–2024 年任公司党委书记、董事长；2024-06 后不再担任董事长/总裁。出生年月公告未披露。</li><li><strong>董事会届次</strong>：第六届董事会（2025–2026 年报均以"第六届董事会第××次会议"落款，2026-04-29 为第二十一次会议）。</li><li><strong>公司注册与通讯地址</strong>：北京市石景山区阜石路 165 号中国华录大厦 B 座（注册地址：阜石路 165 号院 1 号楼 1001 室）。联系电话 010-52281160。</li><li><strong>★ 说明</strong>：以上人员的出生年月、完整学历与全部社会兼职<strong>公告未披露</strong>，本报告不引用第三方资料填充（这是"公告未披露"的硬事实，而非核实失败）。</li></ul>
+
+</div></details>
+<h3 id="sec7">2.4 关键信号：发起重整的债主是"半个自己人"</h3>
+<p><strong>结论：这桩重整从第一天起就是"内部人点火"的产物，而不是外部债权人逼宫——它意味着时间主动权被攥在自己手里，也意味着这更像一场有序的国资纾困，而非混乱的被动破产。</strong></p>
+<p><strong>信号一：申请人华路易云是公司参股公司。</strong> 华路易云科技有限公司是公司的参股（联营）企业，同时是年报中的应付账款大户。<strong>反向读数</strong>：① 它<strong>证明</strong>重整是被"安排"好的（4 天获批、金杜任管理人、流程一路绿灯）；② 它<strong>不证明</strong>重整一定会成功——关联方债权人只解决"能不能启动"的问题，不解决"有没人出钱""法院批不批"的问题；③ 这种结构<strong>天然形成</strong>（本就是长期业务往来形成的债权），不是为重整临时构造。</p>
+<p><strong>信号二：产业投资人出资结构里嵌着两支信托。</strong> 济南佳富的合伙人中含"国民信托·易华录重整投资集合资金信托计划"（出资 2 亿元、占 20.66%）；泰安启重汇联 99.97% 的出资来自"兴宝信托-兴盈优选 9 号资产管理信托"。<strong>反向读数</strong>：① 它<strong>证明</strong>本轮重整资金有一大部分是<strong>信托通道的负债资金</strong>，而非全部自有资金；② 它<strong>不证明</strong>资金不到位——协议已设 20% 履约保证金与逾期违约金（日万分之五）约束；③ 但<strong>信托资金通常有存续期与收益率要求</strong>，这决定了产业投资人的退出时点大概率早于"算力注入兑现"。</p>
+<p><strong>信号三：三家产投主体的注册地集中在山东泰安新泰市翟镇。</strong> 泰安启重汇联注册于"山东省泰安市新泰市翟镇府前街 10 号 103 室"；另有泰安玻普亦以泰安冠名。<strong>反向读数</strong>：① 它<strong>证明</strong>这组主体是<strong>为本次重整新设/专门搭建</strong>的投资平台（泰安启重汇联成立于 2026-07-14、注册资本 60,020 万元，成立时间极短、无经营与财务数据）；② 它<strong>不证明</strong>存在隐藏的关联方——公告明确各投资人与上市公司、董监高、控股股东"不存在关联关系或一致行动关系"；③ 新设主体＋信托出资的组合，<strong>本质是"通道型产业资本"</strong>，产业赋能能力有待验证。</p>
+<hr>
+<h2 id="chap3">三、重整主路径：谁在救、怎么救、走到哪一步</h2>
+<p><strong>结论：救兵已经全部到位、价格已经谈定、协议已经签了——但从"签协议"到"钱到账"还横着四道闸门，且第一道（法院裁定受理）截至 2026-10-04 尚未开启。这是一个"已完成 60%、但剩下的 40% 决定生死"的局面。</strong></p>
+<h3 id="sec8">3.1 全流程进度看板</h3>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点/条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>债权人申请</td><td>已完成（2026-05-15）</td><td>—</td><td>—</td><td>2026-029 提示性公告</td></tr><tr><td>法院启动预重整</td><td>已完成（2026-05-19）</td><td>—</td><td>—</td><td>(2026)京01破申407号决定书</td></tr><tr><td>指定临时管理人</td><td>已完成（2026-05-29，金杜）</td><td>—</td><td>—</td><td>2026-037</td></tr><tr><td>债权申报</td><td>已完成（2026-06-01 启动）</td><td>潜在"漏网之债"风险</td><td>债权确认结果</td><td>2026-038</td></tr><tr><td>公开招募投资人</td><td>已完成（2026-06-05 至 07-03，37 家报名）</td><td>—</td><td>—</td><td>2026-041 / 2026-046</td></tr><tr><td>确定投资人</td><td>已完成（2026-08-20）</td><td>—</td><td>—</td><td>2026-053</td></tr><tr><td><strong>签署重整投资协议</strong></td><td>已完成（2026-09-14，13 家 / 25.31 亿元）</td><td>—</td><td>—</td><td>2026-058</td></tr><tr><td><strong>法院裁定受理正式重整</strong></td><td><strong>未发生</strong></td><td><strong>立案结论未出＋法院审查</strong></td><td>受理公告</td><td>—</td></tr><tr><td>重整计划（草案）披露</td><td>未发生</td><td>依赖受理</td><td>草案全文</td><td>—</td></tr><tr><td>债权人会议表决</td><td>未发生</td><td>依赖草案</td><td>表决结果</td><td>—</td></tr><tr><td><strong>法院裁定批准重整计划</strong></td><td><strong>未发生</strong></td><td>依赖表决＋法院</td><td>批准裁定</td><td>—</td></tr><tr><td><strong>25.31 亿元投资款到账</strong></td><td><strong>未发生（0 到账）</strong></td><td>批准后 5 日内</td><td>资金到账公告</td><td>—</td></tr><tr><td>转增股票交割</td><td>未发生</td><td>依赖到账</td><td>交割公告</td><td>—</td></tr><tr><td>资本公积转增实施</td><td>未发生</td><td>依赖批准</td><td>转增公告</td><td>—</td></tr><tr><td>2026 年报净资产转正</td><td><strong>待验证（2027-04）</strong></td><td>前面全部环节</td><td>审计报告</td><td>—</td></tr><tr><td>申请撤销退市风险警示</td><td>未发生</td><td>依赖年报</td><td>撤销公告</td><td>—</td></tr></tbody></table>
+<blockquote><p><strong>卡点性质判读</strong>：从"签协议"往后，<strong>没有任何一道闸门属于"谈不拢"</strong>（价格已定、家数已定、金额已定、锁定期已定），全部属于"<strong>时间未到</strong>"——但"时间未到"里有三个变量是真风险：① 立案调查结论何时出、结论是什么；② 法院受理与批准的排队时长；③ 财务资料有效期（重整方案涉及基准日数据，通常 6+3 个月，过期需更新，是流程最常见的卡点）。因此<strong>这不是"谈判风险"，而是"时序风险"</strong>。</p></blockquote>
+<h3 id="sec9">3.2 25.31 亿元投资结构：两个价格、四道分化</h3>
+<p><strong>结论：这不是"13 家一起买"，而是两组价格、两种身份、两个锁定期的分层交易——产业资本以 4.10 元（市场参考价的 50%）拿 4.96 亿股并锁 18 个月，财务资本以 6.75 元（参考价 82%）拿 0.74 亿股锁 12 个月。</strong></p>
+<table><thead><tr><th>投资人组别</th><th>家数</th><th>每股成本</th><th>受让股数</th><th>出资额</th><th>锁定期</th></tr></thead><tbody><tr><td>产业赋能型</td><td>6 家</td><td>4.10 元</td><td>4.96 亿股</td><td>20.32 亿元</td><td>18 个月</td></tr><tr><td>财务投资人</td><td>7 家</td><td>6.75 元</td><td>0.74 亿股</td><td>4.99 亿元</td><td>12 个月</td></tr><tr><td><strong>合计</strong></td><td><strong>13 家</strong></td><td>—</td><td><strong>5.70 亿股</strong></td><td><strong>25.31 亿元</strong></td><td>—</td></tr></tbody></table>
+<p><strong>四道分化值得注意：</strong></p>
+<ol><li><strong>价格分化</strong>：产业 4.10 元 = 协议签订日前 20 个交易日均价 8.1923 元的 <strong>50.05%（恰好压监管下限）</strong>；财务 6.75 元 = 参考价的 82.4%。<strong>产业资本拿到的是骨折价，二级市场 7.94 元已无价格优势。</strong></li><li><strong>阵营分化</strong>：山东高速系（济南佳富＋泰安启重汇联）仅 1.89 亿股 / 7.74 亿元；<strong>京合云系（芜湖长昱＋泰安玻普＋北京大有瑞祥＋爱泉投资）拿到 3.07 亿股 / 12.58 亿元，是真正的最大买家</strong>——这与市场"京合云牵头的产投联合体豪掷近 20 亿"的解读方向一致（雪球评论，2026-09-19）。</li><li><strong>身份分化</strong>：财务投资人里 4 家是国资背景——<strong>广西金创华盈（广西国资委）、银河资管（中国银河金融控股/中央汇金系）、厦门国际信托（厦门市财政局）、广州广资智录（广州市国资委）</strong>，另 3 家为民营（北京云福易录/陈永亮、北京雅荣春芽/赵栋、北京宸年易录/秦晓杰）。<strong>"央地国资＋AMC＋信托"的组合是典型的化债型重整出资结构。</strong></li><li><strong>稀释分化</strong>：转增 5.70 亿股后，总股本将由 7.20 亿股增至至少 <strong>12.90 亿股</strong>，<strong>原股东权益被摊薄约 44%</strong>；若再叠加抵债转增，摊薄比例更高。届时中国电科系 34.10% 将被稀释至约 <strong>19.0%</strong>，而<strong>京合云系一家即达约 23.8%</strong>——<strong>控制权归属是本次重整未被充分定价的变量</strong>（协议未载明"不谋求控制权"，且锁定期为 18 个月而非 36 个月）。</li></ol>
+<details class="fold"><summary>3.2 补充 · 13 家投资人逐户明细（份额、身份、实控人）</summary><div class="fold-body">
+
+<p><strong>产业赋能型投资人（4.10 元/股，锁 18 个月）</strong></p>
+<table><thead><tr><th>投资人</th><th>受让股数</th><th>出资额</th><th>阵营</th><th>实际控制人/执行事务合伙人</th></tr></thead><tbody><tr><td>济南佳富投资合伙企业（有限合伙）</td><td>89,651,950 股</td><td>3.68 亿元</td><td>山东高速系</td><td>山东省人民政府国有资产监督管理委员会（执行事务合伙人：山东高速资产管理有限公司）</td></tr><tr><td>泰安启重汇联企业管理合伙企业（有限合伙）</td><td>99,180,000 股</td><td>4.07 亿元</td><td>山东高速系</td><td>党劲峰（兴宝信托-兴盈优选 9 号出资 99.97%）</td></tr><tr><td>芜湖长昱项目投资中心（有限合伙）</td><td>100,000,000 股</td><td>4.10 亿元</td><td>京合云系</td><td>京合云（上海）科技发展有限公司（执行事务合伙人）</td></tr><tr><td>泰安玻普企业管理合伙企业（有限合伙）</td><td>75,600,000 股</td><td>3.10 亿元</td><td>京合云系</td><td>—</td></tr><tr><td>北京大有瑞祥企业管理中心（有限合伙）</td><td>66,168,050 股</td><td>2.71 亿元</td><td>京合云系</td><td>—</td></tr><tr><td>广州爱泉投资合伙企业（有限合伙）</td><td>65,000,000 股</td><td>2.67 亿元</td><td>京合云系</td><td>—</td></tr><tr><td><strong>小计</strong></td><td><strong>495,600,000 股</strong></td><td><strong>20.32 亿元</strong></td><td>—</td><td>—</td></tr></tbody></table>
+<p><strong>财务投资人（6.75 元/股，锁 12 个月）</strong></p>
+<table><thead><tr><th>投资人</th><th>受让股数</th><th>出资额</th><th>实际控制人</th></tr></thead><tbody><tr><td>北京云福易录管理咨询合伙企业（有限合伙）</td><td>5,000,000 股</td><td>0.34 亿元</td><td>陈永亮（福石系）</td></tr><tr><td>广西金创华盈投资合伙企业（有限合伙）</td><td>10,000,000 股</td><td>0.68 亿元</td><td>广西壮族自治区人民政府国有资产监督管理委员会</td></tr><tr><td>中国银河资产管理有限责任公司</td><td>26,000,000 股</td><td>1.76 亿元</td><td>中国银河金融控股有限责任公司（中央汇金系）</td></tr><tr><td>厦门国际信托有限公司</td><td>5,000,000 股</td><td>0.34 亿元</td><td>厦门市财政局</td></tr><tr><td>广州广资智录投资中心（有限合伙）</td><td>10,000,000 股</td><td>0.68 亿元</td><td>广州市人民政府国有资产监督管理委员会</td></tr><tr><td>北京雅荣春芽科技发展中心（有限合伙）</td><td>8,000,000 股</td><td>0.54 亿元</td><td>赵栋</td></tr><tr><td>北京宸年易录科技发展中心（有限合伙）</td><td>10,000,000 股</td><td>0.68 亿元</td><td>秦晓杰</td></tr><tr><td><strong>小计</strong></td><td><strong>74,000,000 股</strong></td><td><strong>4.99 亿元</strong></td><td>—</td></tr></tbody></table>
+<blockquote><p><strong>交易实施安排</strong>：① 履约保证金＝投资款的 20%（产业投资人），自协议签署之日起 <strong>3 个工作日</strong>内支付；② 已支付的报名保证金 1,000 万元原路退回；③ <strong>全部重整投资款自北京一中院裁定批准重整计划之日起 5 日内足额支付</strong>；④ 划转至投资人证券账户之日为<strong>交割日</strong>，自此投资人享有股东权利；⑤ 逾期支付按日万分之五计违约金，构成根本违约的按投资款总额 20% 赔付。</p><p><strong>定价依据原文</strong>：市场参考价取"重整投资协议签订日前二十个交易日公司股票交易均价"= <strong>8.1923 元/股</strong>，产业与财务价格"均不低于该市场参考价的 50%"，符合《上市公司监管指引第 11 号——上市公司破产重整相关事项》。</p></blockquote>
+
+</div></details>
+<h3 id="sec10">3.3 成本锚点：便宜筹码全在桌下</h3>
+<p><strong>结论：以现价 7.94 元为尺，产业资本的成本只有 0.52 倍、财务资本 0.85 倍——二级市场在这个位置</strong>没有任何成本优势<strong>，反而要替产业资本抬轿。</strong> 两类定价逻辑必须分开读：<strong>协议受让 / 法拍价是"无稀释的市场底"，重整 / 战投价是"有稀释的重整底"</strong>——本标的是后者，且转增摊薄幅度不小。</p>
+<table><thead><tr><th>参与方</th><th>每股成本</th><th>与现价倍数</th><th>定价逻辑</th></tr></thead><tbody><tr><td>产业赋能型投资人（6 家）</td><td>4.10 元</td><td><strong>0.52 倍</strong></td><td>有稀释的重整底（转增 5.70 亿股，锁 18 个月）</td></tr><tr><td>财务投资人（7 家）</td><td>6.75 元</td><td><strong>0.85 倍</strong></td><td>有稀释的重整底（锁 12 个月）</td></tr><tr><td>市场参考价（协议前 20 日均价）</td><td>8.1923 元</td><td>1.03 倍</td><td>监管定价基准</td></tr><tr><td>二级市场现价（2026-09-30）</td><td>7.94 元</td><td>1.00 倍</td><td>—</td></tr><tr><td>2026 年内最低价（2026-05-06）</td><td>6.04 元</td><td>0.76 倍</td><td>重整预期启动前</td></tr><tr><td>2026 年内最高价（2026-06-01）</td><td>12.28 元</td><td>1.55 倍</td><td>重整申请后情绪峰值</td></tr></tbody></table>
+<blockquote><p><strong>判读</strong>：现价 7.94 元位于"年内低点 6.04 元"与"年内高点 12.28 元"之间偏下位置（距高点 -35.3%），但<strong>仍高于财务投资人成本 17.6%、高于产业投资人成本 93.7%</strong>。若以"产业资本 4.10 元"为真实价值锚，二级市场当前价格隐含了约 94% 的重整成功溢价。</p></blockquote>
+<h3 id="sec11">3.4 承诺包活口：真正值钱的是两笔钱</h3>
+<p><strong>结论：这份"承诺包"里，央企爸爸的"支持"是舆论与资源背书、不是财务担保；真正白纸黑字的活口只有两笔——25.31 亿元重整投资款＋6.27 亿元增信专项出资，且它们的触发条件全部压在"法院裁定批准重整计划"这一道闸上。</strong></p>
+<details class="fold"><summary>3.4 承诺包逐条拆解（原话 vs 大白话）＋ 已兑现的硬动作</summary><div class="fold-body">
+
+<table><thead><tr><th>承诺/表述（原话或公报）</th><th>来源</th><th>大白话翻译</th></tr></thead><tbody><tr><td>"华录集团、中国电科将支持易华录通过重整程序化解风险、优化资产负债结构、恢复持续经营能力；集聚相关资源，促进国有资产保值增值"</td><td>重整相关公告</td><td><strong>"支持"是精神支持＋资源协调，没有承诺兜底多少亿</strong>——注意用词是"支持"不是"包揽"</td></tr><tr><td>中国电科"未来 12 个月内无增持/减持计划、无改变董事会计划、无重大资产重组明确计划"</td><td>2023-11 重组公告</td><td>央企整合期的维稳承诺，<strong>12 个月已过期</strong></td></tr><tr><td>"本次签署《重整投资协议》不代表公司正式进入重整程序，后续能否进入重整程序尚存在重大不确定性"</td><td>2026-058 特别提示</td><td><strong>最硬的免责声明：合同签了 ≠ 钱到账 ≠ 命保住</strong></td></tr><tr><td>"如公司后续未能进入重整程序或重整未顺利实施完毕，则 2026 年度经审计的期末净资产预计为负值，公司股票将面临终止上市风险"</td><td>2026-058 特别提示</td><td><strong>退市倒计时条款，原文照登</strong></td></tr><tr><td>"22 华录01"5 亿元公司债由担保人华录集团履行保证责任、2026-09-29 提前兑付摘牌</td><td>2026-09-24 兑付公告</td><td><strong>华录集团真金白银替公司还了 5 亿元债</strong>——这是本轮"央企支持"中唯一已兑现的硬动作</td></tr><tr><td>产业投资人"共同设立有限责任公司，合计出资 6.27 亿元，专项用于推动增信函件相关事项的解决"</td><td>2026-09 重整相关公告</td><td><strong>拿便宜股票的代价：额外掏 6.27 亿元替公司擦历史"增信/担保"遗留</strong></td></tr><tr><td>国富商通承诺 7,800 万元购股，逾期罚息每日万分之三、超 30 天再罚 780 万元</td><td>2018-08 承诺</td><td><strong>至今未履行</strong>——国富商通业绩补偿款＋违约金＋仲裁费至今没付，已被申请强制清算。<strong>提醒：A 股的承诺，落地才叫钱</strong></td></tr></tbody></table>
+<p><strong>已兑现的最硬一项：5 亿元公司债由华录集团兜底</strong></p>
+<p>2026 年 9 月 24 日，公司披露"22 华录01"（代码 148002，5 亿元本金）<strong>提前兑付暨摘牌</strong>公告：兑付比例 100%、按面值 100.00 元/张，另付 2026-08-17 至 09-29 共 43 天利息，<strong>由担保人中国华录集团有限公司履行保证责任</strong>，兑付资金已足额划付至中国结算深圳分公司指定账户。</p>
+<ul><li><strong>意义</strong>：这是"央企支持"中<strong>唯一已经用现金兑现</strong>的动作，也直接降低了重整期公司层面的偿付压力（预重整期间公司须停止对外清偿，若该债由公司自行兑付会与重整程序冲突）。</li><li><strong>边界</strong>：由<strong>担保人</strong>而非上市公司兑付，因此<strong>不影响上市公司层面的负债结构</strong>，也不构成对上市公司的资金赠与——不要读成"母公司给上市公司注资 5 亿元"。</li></ul>
+
+</div></details>
+<hr>
+<h2 id="chap4">四、资产质量与估值</h2>
+<p><strong>结论：这是一口"资产还在、但已高度被抵押、且几乎不产生利润"的壳。</strong> 主业收入规模只剩 1.89 亿元/半年、毛利率已转负、可动用现金不足 1 亿元，而受限资产覆盖了货币资金、应收账款、合同资产、长期股权投资、固定资产等几乎所有可抵押科目——<strong>公司已经没有"自我造血"或"自我融资"的能力，这也正是为什么它只剩重整一条路。</strong></p>
+<h3 id="sec12">4.1 资产质量星级评估</h3>
+<table><thead><tr><th>星级项</th><th>说明</th><th>评级</th></tr></thead><tbody><tr><td>市值与估值</td><td>总市值 57.16 亿元；PB/PE 失效；近 20 年价格分位 9.75%</td><td>★★☆☆☆</td></tr><tr><td>法律合规性</td><td>净资产为负已踩财务类红线；信披违规被立案、结论未出（尾部归零风险）</td><td>★☆☆☆☆</td></tr><tr><td>债务与流动性</td><td>资产负债率 117.9%；逾期债务 1.45 亿元；30 余个账户被冻结；可动用现金 &lt; 1 亿元</td><td>☆☆☆☆☆</td></tr><tr><td>主业质地</td><td>2026H1 营收 1.89 亿元（-38.4%）、整体毛利率 -1.02%；数据运营及服务是唯一正毛利板块</td><td>★☆☆☆☆</td></tr><tr><td>控制权与运作</td><td>央企控股 34.10%（重整后或被稀释至约 19%）；重整投资人结构分层但控制权归属未明</td><td>★★☆☆☆</td></tr><tr><td><strong>综合</strong></td><td><strong>可救·需外力；五维中"债务流动性"与"法律合规"的低分不能被"控制权与运作"的相对高分抵消</strong></td><td><strong>★★☆☆☆</strong></td></tr></tbody></table>
+<blockquote><p><strong>关键提醒</strong>：这张表里<strong>没有一项高分</strong>。唯一的相对亮点是"控制权与运作"（央企背书＋产业资本进场），但它恰恰是<strong>在重整成功后才成立</strong>的条件——<strong>用未兑现的条件去支撑当前估值，是这类票最典型的定价错误。</strong></p></blockquote>
+<h3 id="sec13">4.2 五年＋最新一期核心财务</h3>
+<p><strong>结论：这是一条"营收四年缩水 77%、三年累计亏掉 74.72 亿元、净资产从 +35.95 亿元变成 -22.64 亿元"的直线下坠曲线；唯一可称改善的只有 2026 上半年的减亏与经营现金流转正，但绝对规模太小，改变不了净资产为负的性质。</strong></p>
+<table><thead><tr><th>期间</th><th>营业收入</th><th>归母净利润</th><th>扣非归母净利润</th><th>归母净资产</th><th>资产总额</th></tr></thead><tbody><tr><td>2021 年</td><td>20.20 亿元</td><td>-1.67 亿元</td><td>-1.67 亿元</td><td>—</td><td>—</td></tr><tr><td>2022 年</td><td>16.04 亿元</td><td>+0.12 亿元</td><td>-1.54 亿元</td><td>—</td><td>—</td></tr><tr><td>2023 年</td><td>7.65 亿元</td><td>-18.90 亿元</td><td>-19.49 亿元</td><td>35.95 亿元</td><td>133.11 亿元</td></tr><tr><td>2024 年</td><td>4.65 亿元</td><td>-28.65 亿元</td><td>-28.23 亿元</td><td>7.29 亿元</td><td>114.66 亿元</td></tr><tr><td>2025 年</td><td>4.65 亿元</td><td>-27.17 亿元</td><td>-30.29 亿元</td><td><strong>-19.53 亿元</strong></td><td>80.52 亿元</td></tr><tr><td>2026 年 Q1</td><td>1.11 亿元</td><td>-0.48 亿元</td><td>-0.55 亿元</td><td>-20.01 亿元</td><td>78.79 亿元</td></tr><tr><td><strong>2026 年 H1</strong></td><td><strong>1.89 亿元</strong></td><td><strong>-3.12 亿元</strong></td><td><strong>-3.02 亿元</strong></td><td><strong>-22.64 亿元</strong></td><td><strong>76.54 亿元</strong></td></tr></tbody></table>
+<blockquote><p>口径：合并报表、归母；数据来源为各期定期报告原文（2021–2023 见 2023 年报，2024–2025 见 2025 年报，2026H1 见半年报）。<strong>2022 年归母净利为正系当年非经常性损益所致，扣非后仍为 -1.54 亿元</strong>——即"连续三年扣非为负"的三年是从 2023 年起算。</p></blockquote>
+<p><strong>2026 上半年的三个边际变化（有正有负）：</strong></p>
+<ul><li><strong>好的向</strong>：归母净利同比<strong>减亏 1.62%</strong>；经营活动现金流净额由 -1.92 亿元转为 <strong>+938.32 万元（+104.88%）</strong>；公司债 5 亿元已由华录集团兜底兑付。</li><li><strong>坏的向</strong>：营收同比 <strong>-38.39%</strong>；<strong>整体毛利率由正转负至 -1.02%</strong>；归母净资产由 -19.53 亿元继续下探至 <strong>-22.64 亿元</strong>；资产负债率升至 <strong>117.9%</strong>；逾期债务累计 <strong>1.45 亿元</strong>（22 笔融资租赁/借款）。</li></ul>
+<details class="fold"><summary>4.2 补充 · 资产负债结构、受限资产与勾稽自检</summary><div class="fold-body">
+
+<p><strong>资产与负债（2026-06-30）</strong>：资产总计 76.54 亿元；负债合计 90.26 亿元；资产负债率 <strong>117.9%</strong>；归母净资产 -22.64 亿元；所有者权益合计约 -13.73 亿元（差额为少数股东权益约 +8.92 亿元）。勾稽自检：76.54 − 90.26 = -13.72 亿元 ≈ 所有者权益合计，通过。</p>
+<p><strong>货币资金与借款</strong>：货币资金 <strong>3.20 亿元</strong>；短期借款 <strong>30.34 亿元</strong>；长期借款 <strong>11.47 亿元</strong>；应付账款 15.72 亿元；其他流动负债 12.10 亿元。</p>
+<p><strong>★ 资产权利受限情况（2026-06-30，这是最要命的一张表）</strong></p>
+<table><thead><tr><th>科目</th><th>期末账面余额</th><th>受限账面价值</th><th>受限类型</th></tr></thead><tbody><tr><td>货币资金</td><td>2.18 亿元</td><td>2.18 亿元</td><td>保证金、诉讼冻结</td></tr><tr><td>存货</td><td>3.21 亿元</td><td>3.04 亿元</td><td>融资租赁</td></tr><tr><td>合同资产</td><td>31.96 亿元</td><td>11.79 亿元</td><td>借款质押、融资租赁</td></tr><tr><td>应收账款</td><td>18.50 亿元</td><td>3.74 亿元</td><td>借款质押</td></tr><tr><td>其他应收款</td><td>2.33 亿元</td><td>0.30 亿元</td><td>借款质押</td></tr><tr><td>长期股权投资</td><td>12.44 亿元</td><td>4.08 亿元</td><td>借款质押</td></tr><tr><td>交易性金融资产</td><td>1.49 亿元</td><td>1.49 亿元</td><td>借款质押</td></tr><tr><td>其他非流动资产</td><td>1.15 亿元</td><td>1.15 亿元</td><td>借款质押</td></tr><tr><td>固定资产</td><td>10.43 亿元</td><td>7.40 亿元</td><td>借款抵押、未办妥产权</td></tr></tbody></table>
+<blockquote><p><strong>判读（这张表回答的问题）：公司 3.20 亿元货币资金里有 2.18 亿元被冻结或作保证金 → 真正可动用的现金只有约 1.02 亿元；而 2025 年全年经营活动净失血 1.59 亿元。现金撑不过一年，同时应收账款、合同资产、长期股权投资、固定资产等几乎所有能抵押的科目都已质押 → 公司既不能靠现金自救，也不能靠抵押融资自救。</strong> 叠加 ST 期间审计非标不得发行股份的约束，<strong>注入资产只剩"他人赠与"或"重整注资"两条路</strong>——这与它的实际选择（司法重整）完全吻合。</p></blockquote>
+<p><strong>担保敞口</strong>：直接或间接为资产负债率超过 70% 的被担保对象提供的债务担保余额 <strong>4.20 亿元</strong>（主要涉大连数据湖、株洲数据湖），担保总额占公司净资产的比例为 -18.53%（净资产为负故为负值）。</p>
+
+</div></details>
+<h3 id="sec14">4.3 分业务：一个收缩的重灾区 ＋ 一个还算健康的底盘</h3>
+<p><strong>结论：曾经的"数据湖"宏大叙事，本质是"重资产＋政府项目＋长账期＋高减值"的黑洞；现在只剩"数据运营及服务"这一个正毛利板块在撑，规模太小，撑不起主业，但它是重整方"数据要素"想象的唯一产业支点。</strong></p>
+<table><thead><tr><th>业务板块</th><th>2026H1 收入</th><th>同比</th><th>毛利率</th><th>审美标签</th></tr></thead><tbody><tr><td>数字化系统及底座（智能交通/存储）</td><td>7,535.20 万元</td><td>-58.70%</td><td><strong>-54.26%</strong></td><td>业务反转（反向）</td></tr><tr><td>数据运营及服务</td><td>1.14 亿元</td><td>-8.62%</td><td><strong>+34.25%</strong></td><td>长期价值（潜在）</td></tr><tr><td><strong>整体</strong></td><td><strong>1.89 亿元</strong></td><td><strong>-38.39%</strong></td><td><strong>-1.02%</strong></td><td>—</td></tr></tbody></table>
+<p><strong>热点业务的占比必须定位</strong>：公司对外披露的"可信数据空间"（池州、内江、增城、昭通 4 个项目，规划合计 6,000 余万元）、"数据资产入表"、河北省数据交易服务中心等新方向，<strong>截至 2026H1 均未在收入结构中形成可识别的主体占比</strong>——不得用"数据要素叙事"替代整体基本面。</p>
+<details class="fold"><summary>4.3 补充 · 业务细节与"数据湖"的产业账</summary><div class="fold-body">
+
+<ul><li><strong>数据湖模式</strong>：2017 年起在全国铺开，单体投资 3–5 亿元，以蓝光光盘（低能耗、长寿命）为核心；各地合资设立项目公司（大连、株洲、泰州、成都金易等）。<strong>政府回款账期 2–3 年</strong>，2023 年政府预算收紧后新项目停滞、存量项目无法变现。</li><li><strong>2026H1 数据运营及服务 1.14 亿元、毛利率 34.25%</strong>：是唯一正毛利的板块，也是"数据资产化"叙事（数据评估、入表、授权运营、区域数据要素市场建设）的落地载体。</li><li><strong>数字化系统及底座毛利率 -54.26%</strong>：说明该板块已进入"接单即亏"的状态（项目结算核减＋成本刚性）。</li><li><strong>行业资料口径</strong>：本报告未在 <code>转债信息库\行业-公司\</code> 与 <code>变化跟踪\</code> 中检索到易华录的数据要素/蓝光存储专项记录，<strong>转债库内无对应记录</strong>，故行业部分不引库内结论，仅以公司公告与年报口径为准。</li></ul>
+
+</div></details>
+<h3 id="sec15">4.4 估值：想象力加总，但想象空间已被现价透支</h3>
+<p><strong>结论：既然重整是"把净资产一次性拉回正数"的账面操作，就不能用 PE/PB 估值，只能用"重整成功后的想象空间加总"。但加总出来的区间，落在现价下方——这就是本报告给出"回避"的核心数量依据。</strong></p>
+<p><strong>情景假设与对应市值：</strong></p>
+<table><thead><tr><th>情景</th><th>核心假设（保守/中性/激进）</th><th>对应总市值</th><th>对应股价（摊薄后 12.90 亿股）</th></tr></thead><tbody><tr><td>保守</td><td>重整落地、净资产转正、主业维持（营收 4–5 亿元、微利），按"央企壳＋数据要素"给 1.5 倍 PS</td><td>约 45–55 亿元</td><td>约 3.5–4.3 元</td></tr><tr><td>中性</td><td>重整落地＋2027 年业绩修复至盈亏平衡，叠加数据运营板块年化 3 亿元收入 × 3 倍 PS</td><td>约 60–75 亿元</td><td>约 4.7–5.8 元</td></tr><tr><td>激进</td><td>重整落地＋京合云算力资产注入（按"算力集群＋蓝光冷存"给平台价值与期权溢价）</td><td>约 90–110 亿元</td><td>约 7.0–8.5 元</td></tr><tr><td>现价对照</td><td>2026-09-30 总市值 57.16 亿元</td><td>57.16 亿元</td><td>7.94 元（未摊薄口径）</td></tr></tbody></table>
+<blockquote><p><strong>★ 关键口径提醒</strong>：上表"对应股价"用的是<strong>重整转增后的 12.90 亿股</strong>，而现价 7.94 元用的是<strong>未摊薄的 7.20 亿股</strong>。若把现价按同样口径摊算，则<strong>当前二级市场的隐含总市值（57.16 亿元）落在"中性情景"下沿、"激进情景"之下</strong>——也就是说：<strong>市场已经把"重整成功＋算力注入"的期权价值预支进了价格，但还没预支摊销。</strong></p><p><strong>前提声明</strong>：以上情景区间<strong>前提＝重整在 2026 年内完成受理与批准并实现净资产转正</strong>。若前提不成立，则全部区间作废，直接对应"终止上市→归零"路径。</p></blockquote>
+<ul><li><strong>期权折价 vs 价值折价</strong>：本标的当前价格扣除的是<strong>价值折价</strong>（盈利质量为负、主业失血），叠加的却是<strong>期权溢价</strong>（重整＋算力注入）——<strong>两种口径混在一起，正是这类票最容易高估的原因</strong>。</li><li><strong>参数方向标注</strong>：主业修复速率（保守）、算力注入时点与规模（激进）、转增摊薄比例（中性偏保守，未计抵债转增）——<strong>只要把摊薄口径统一，现价就已无安全边际。</strong></li></ul>
+<hr>
+<h2 id="chap5">五、炒作逻辑三支柱（全部着眼未来）</h2>
+<p><strong>结论：三支柱里，当前市场最认的是①</strong>（重整节点预期），但<strong>①的最硬一刻（签协议）已经在 2026-09-14 兑现并"利好出尽"</strong>；②同型样本组指向<strong>下跌</strong>；③主板映射（AI 算力/存力）只提供了叙事而不提供资金——<strong>综合判断：注意力已过峰值，方向朝下。</strong></p>
+<h3 id="sec16">5.1 ① 炒预期：未来 6–12 个月的可验证节点</h3>
+<p><strong>结论：剩下的事件全部是"程序性节点"，且它们的价值是"确认重整没黄"，而不是"新增想象力"——这一点决定了它们的股价弹性远小于 2026-05～06 那一波。</strong></p>
+<table><thead><tr><th>时点</th><th>催化内容</th><th>性质</th><th>判读/证伪点</th></tr></thead><tbody><tr><td>2026-09-17 前后</td><td>产业投资人 20% 履约保证金缴付</td><td>硬</td><td>缴付＝协议有效，未缴付＝协议可能解除</td></tr><tr><td>待定（随时）</td><td><strong>北京一中院裁定受理正式重整</strong></td><td>硬</td><td>第一道大坎；受理即"预重整转正式"，标志程序推进</td></tr><tr><td>受理后</td><td>《重整计划（草案）》披露（转增比例、清偿率、原股东让渡）</td><td>硬</td><td><strong>摊薄比例与清偿率此处首度披露</strong>，是真正的定价事件</td></tr><tr><td>受理后</td><td>债权人会议表决</td><td>硬</td><td>通过率决定是否需要法院强裁</td></tr><tr><td>待定</td><td>法院裁定<strong>批准</strong>重整计划</td><td>硬</td><td>批准后 5 日内 25.31 亿元到账</td></tr><tr><td>待定</td><td>立案调查结论（行政处罚事先告知书/决定书）</td><td>硬</td><td><strong>唯一可能一票否决的节点</strong>；决定是否升级为重大违法强制退市</td></tr><tr><td>2027-04</td><td>2026 年报净资产转正 → 申请撤销退市风险警示</td><td>硬</td><td>生死终局；注意重整完成与摘帽有至少一个会计年度时滞</td></tr></tbody></table>
+<blockquote><p><strong>最强催化已成过去时</strong>：2026-09-14 签署《重整投资协议》（13 家/25.31 亿元）当日收 8.91 元（+4.7%），<strong>次日即跌 -8.1% 至 8.19 元</strong>，随后一路阴跌至 09-29 的 <strong>7.57 元</strong>（较 09-14 收盘 -15.1%），09-30 才反弹 4.89% 至 7.94 元。<strong>这是教科书式的"利好出尽"：最硬的利好落地之日，就是注意力峰值之时。</strong></p></blockquote>
+<h3 id="sec17">5.2 ② 炒历史类似行为：同型样本组指向"下跌组"</h3>
+<p><strong>结论：以基准日的全部特征（创业板＋财务类\*ST＋央企壳＋预重整已签投资协议＋立案未结＋已从阶段高点回撤 35%）为画像，当下最像的 9 只票，近 3.5 个月</strong>9 跌 1 涨<strong>，且"签重组/重整协议后"普遍继续下跌——本标的明确落在下跌组。</strong></p>
+<table><thead><tr><th>对象</th><th>像在哪</th><th>2026-06-01→09-30</th><th>2026-09-14→09-30</th></tr></thead><tbody><tr><td><strong>＊ST易录（本标的）</strong></td><td>—</td><td><strong>-35.3%</strong></td><td><strong>-10.9%</strong></td></tr><tr><td>＊ST新元（300472）</td><td>国资参与预重整、预重整已 5 次延期、重整推进迟缓</td><td>-20.6%</td><td>-2.9%</td></tr><tr><td>ST东时（603377）</td><td>预重整中、股东股份被司法拍卖</td><td>-15.7%</td><td>-6.1%</td></tr><tr><td>＊ST华鹏（603021）</td><td>净资产为负、民营产业方入主、资产注入预期</td><td>-40.6%</td><td>-18.8%</td></tr><tr><td>＊ST利源（002501）</td><td>净资产为负、重整推进</td><td>-9.1%</td><td>-0.8%</td></tr><tr><td>＊ST华西（002630）</td><td>内控非标＋重整</td><td>-10.6%</td><td>-16.4%</td></tr><tr><td>＊ST启环（000826）</td><td>子公司破产重整、环保困境反转</td><td>-24.6%</td><td>-9.5%</td></tr><tr><td>＊ST尔雅（600107）</td><td>财务类＋规范类双红线、控制权动荡</td><td>-12.6%</td><td>-4.3%</td></tr><tr><td>＊ST美芝（002856）</td><td>重整投资人低于预期、缩量</td><td>-13.5%</td><td>-21.2%</td></tr><tr><td>＊ST华幸（600340）</td><td>地产重整</td><td>+3.2%</td><td>+21.5%</td></tr></tbody></table>
+<blockquote><p><strong>判读</strong>：<strong>除＊ST华幸（地产重整的政策性特例）外，同型样本 09-14→09-30 全部下跌，组内均值约 -7.8%，本标的 -10.9% 略差于组均值。</strong> 样本量 9 只、只作<strong>方向参考、不作概率推断</strong>；但它与"利好出尽"的价格事实相互印证：<strong>"签下重整投资协议"这一类事件，在 2026 年的市场环境里不构成上涨理由。</strong> 差异点提示：本标的的央企背景与体量（57 亿元市值）显著优于样本组，因此<strong>若重整受理落地，其脉冲弹性会大于样本组</strong>——这是唯一的正面对照。</p></blockquote>
+<h3 id="sec18">5.3 ③ 炒主板映射：AI 算力/存力主线在 ST 板块的低位对标</h3>
+<p><strong>结论：主板当下在炒的主线是"国产算力＋存力"（华为昇腾/NPO、智算中心、存算一体），本标的自身就是映射对象（蓝光冷存＋京合云算力）；但这条线在本标的上属于"叙事先行、资金未至"——2026 年 9 月以来成交额持续萎缩至 5,000 万—1.4 亿元量级，说明资金对这条叙事的定价正在退潮。</strong></p>
+<table><thead><tr><th>主线</th><th>代表公司</th><th>与易录的对应点</th><th>关联度</th></tr></thead><tbody><tr><td>国产算力（昇腾/智算中心）</td><td>主板 AI 算力链</td><td>京合云体系内超 5,000 卡异构算力集群、庆阳/杭州/中卫东数西算节点，协议保留"择机注入"表述</td><td><strong>★★★☆☆</strong>（有协议措辞、无落地时点）</td></tr><tr><td>蓝光冷存 / 存算一体</td><td>存储板块</td><td>易华录是国内蓝光存储规模化供应商，蓝光存储曾与华为、三大运营商合作</td><td><strong>★★★★☆</strong>（技术同源、产品在售，但毛利率为负）</td></tr><tr><td>数据要素 / 数据资产入表</td><td>数据要素板块</td><td>数据湖入湖数据量约 600PB、河北省数据交易服务中心联合运营方</td><td><strong>★★★☆☆</strong>（收入占比未识别）</td></tr><tr><td>央企数字化</td><td>信创/央企改革</td><td>实控人中国电科、华录集团，智慧交通与信创渠道</td><td><strong>★★★☆☆</strong></td></tr><tr><td><strong>ST 板块可映射对象</strong></td><td>＊ST实达（600734，算力/AI 教育）、ST天玑（300245，数据库一体机）、ST达华（002512）</td><td>均为同板块算力/信创叙事标的，其中多为<strong>纯概念</strong></td><td>关联度<strong>推断</strong>，无业务公告支撑的标 <strong>【纯概念】</strong></td></tr></tbody></table>
+<blockquote><p><strong>★ 本节是选股动作，不是解释动作</strong>：若按"主板映射＋低位"选 ST 标的，本标的的"低位"（价格分位 9.75%）成立，但"催化已兑现＋资金退潮"二者同时成立——<strong>低位只有在配上"未兑现的催化"时才有效</strong>，本标的的催化已经兑现过一次了。</p></blockquote>
+<h3 id="sec19">5.4 注意力读数：异动与龙虎榜</h3>
+<p><strong>结论：这是一只"注意力已过峰值、且峰值由游资而非机构推动"的票。</strong> ① 韭研公社异动表全表仅 21 条记录，<strong>2026 年只有 1 条（2026-05-18）</strong>，之后近 4.5 个月无新增异动；② 龙虎榜 2026 年上榜 3 次（05-07、05-19、06-01），<strong>其中 2 次为净卖出</strong>，最新一次停在 2026-06-01；③ 成交额从 6 月峰值 5.9 亿元量级萎缩至 9 月的 5,000 万—1.4 亿元。</p>
+<table><thead><tr><th>观察项</th><th>读数</th><th>判读</th></tr></thead><tbody><tr><td>异动条数（2026 年）</td><td>1 条（2026-05-18，+19.93%，价 7.22 元）</td><td>注意力集中在重整申请公布的那一周</td></tr><tr><td>炒作符号</td><td><strong>重整/央企 + 数据要素（央企）+ 合作华为 + 蓝光存储/数据湖 + 云计算</strong></td><td>2026 年这轮是"重整"符号的新增，前 5 年（2020–2025）的符号是"数据要素/华为/东数西算"</td></tr><tr><td>历史价格水位</td><td>2020–2025 区间 <strong>16.42–46.50 元</strong>；现价 7.94 元</td><td>现价仅为历史炒作区间的<strong>下沿之下</strong>，属长周期低位</td></tr><tr><td>龙虎榜（2026 年）</td><td>05-07（6.07 元）、05-19（8.32 元，净卖 2,248 万元）、06-01（12.28 元，净卖 2,543 万元）</td><td><strong>6 月 1 日峰值日席位净卖出</strong>；此后 D10 -21.5%、D20 -23.5%、D30 -31.5%</td></tr><tr><td>成交额</td><td>09 月日均约 0.8 亿元，09-30 为 0.94 亿元</td><td>缩量，注意力退潮</td></tr><tr><td>雪球讨论</td><td>09-24 后讨论明显转冷（雪球评论，2026-09-25："最近讨论冷清不少"）</td><td>情绪指标偏冷</td></tr></tbody></table>
+<details class="fold"><summary>5.4 补充 · 韭研公社异动全量明细（21 条，时间降序）</summary><div class="fold-body">
+
+<table><thead><tr><th>题材时间</th><th>简称</th><th>题材</th><th>题材催化</th><th>涨停信息</th><th>股价</th><th>异动关键词</th></tr></thead><tbody><tr><td>2026-05-18</td><td>＊ST易录</td><td>ST板块</td><td>2026-05-15 晚公告债权人申请重整及预重整</td><td>—</td><td>7.22 元</td><td>重整申请+数据要素（央企）+合作华为+云计算</td></tr><tr><td>2025-02-14</td><td>易华录</td><td>数据要素</td><td>公共数据资源授权运营价格形成机制通知</td><td>—</td><td>29.53 元</td><td>数据要素（央企）+合作华为+云计算</td></tr><tr><td>2024-10-08</td><td>易华录</td><td>信创/华为</td><td>华为 HarmonyOS NEXT 公测</td><td>—</td><td>29.40 元</td><td>合作华为+数据要素+云计算+网络安全</td></tr><tr><td>2024-09-27</td><td>易华录</td><td>数据中心</td><td>企业数据资源开发利用意见征求意见</td><td>—</td><td>20.55 元</td><td>数据要素+云计算+网络安全</td></tr><tr><td>2023-09-04</td><td>易华录</td><td>其他</td><td>中国电科收购华录集团股权案公示</td><td>—</td><td>36.47 元</td><td>中国电科整合预期+数据中心+网络安全</td></tr><tr><td>2023-08-22</td><td>易华录</td><td>数字经济</td><td>《企业数据资源相关会计处理暂行规定》</td><td>—</td><td>32.20 元</td><td>数据资产+数据中心+网络安全</td></tr><tr><td>2023-04-04</td><td>易华录</td><td>公告</td><td>华录集团拟整合进入中国电科</td><td>—</td><td>46.50 元</td><td>央企拟重组+网络安全+数据中心</td></tr><tr><td>2023-03-28</td><td>易华录</td><td>数据安全</td><td>ChatGPT 数据泄露催生 AI 安全需求</td><td>—</td><td>39.15 元</td><td>网络安全+英伟达合作+数据中心+AI 模型</td></tr><tr><td>2023-03-10</td><td>易华录</td><td>数字中国</td><td>中国移动 6G 服务化 RAN 原型系统集采</td><td>—</td><td>32.43 元</td><td>蓝光存储+政府数据湖+AI 模型</td></tr><tr><td>2023-03-01</td><td>易华录</td><td>数字经济</td><td>《数字中国建设整体布局规划》</td><td>—</td><td>27.52 元</td><td>政府数据湖+AI 模型+大数据云平台+华为合作</td></tr><tr><td>2023-01-03</td><td>易华录</td><td>数字经济</td><td>数据二十条发布</td><td>—</td><td>24.49 元</td><td>政府数据湖+大数据云平台+华为合作</td></tr><tr><td>2022-11-21</td><td>易华录</td><td>信创</td><td>发改委数字经济报告</td><td>—</td><td>21.41 元</td><td>政府数据湖+大数据云平台+华为合作</td></tr><tr><td>2022-11-01</td><td>易华录</td><td>信创</td><td>全国一体化政务大数据体系建设指南</td><td>—</td><td>18.49 元</td><td>政府数据湖+大数据云平台+华为合作</td></tr><tr><td>2022-10-31</td><td>易华录</td><td>信创</td><td>全国一体化政务大数据体系建设指南</td><td>—</td><td>16.42 元</td><td>政府数据湖+大数据云平台+华为合作</td></tr><tr><td>2022-02-21</td><td>易华录</td><td>东数西算</td><td>"东数西算"工程全面启动</td><td>—</td><td>30.53 元</td><td>数据湖+华为合作</td></tr><tr><td>2022-01-17</td><td>易华录</td><td>数字经济—数据中心云计算</td><td>—</td><td>—</td><td>35.52 元</td><td>数据湖+华为合作</td></tr><tr><td>2021-11-12</td><td>易华录</td><td>其他</td><td>—</td><td>—</td><td>33.59 元</td><td>数据湖+华为合作</td></tr><tr><td>2021-08-27</td><td>易华录</td><td>国资云</td><td>国资委推进国企系统上云</td><td>—</td><td>33.61 元</td><td>数据湖+华为合作+半年报增长</td></tr><tr><td>2021-08-10</td><td>易华录</td><td>其他</td><td>数据安全法 9 月 1 日施行</td><td>—</td><td>35.04 元</td><td>国家数据安全+数据湖+华为合作</td></tr><tr><td>2021-07-09</td><td>易华录</td><td>科技及华为</td><td>数据安全法通过</td><td>—</td><td>28.16 元</td><td>国家数据安全+数据湖+华为合作</td></tr><tr><td>2020-12-28</td><td>易华录</td><td>公告</td><td>2020 年报预增 70%–85%</td><td>—</td><td>27.39 元</td><td>年报预增+阿里巴巴+智能交通</td></tr></tbody></table>
+<blockquote><p><strong>数据说明</strong>：韭研公社异动表为二级整理（聚合股吧/自媒体/公告），仅作异动线索与炒作史；<strong>该股在韭研异动表中 2026 年仅入库 1 条，不等于 2026 年全年无其他异动</strong>（该表只收录达到异动阈值的题材）。表中"股价"为该条记录对应时点价格，非同期成本。连板极值：<strong>全表未记录到连续涨停（"涨停信息"列全为空）</strong>，说明该股历次异动以单日脉冲为主、缺乏连板筹码结构——<strong>这一点对博弈格局很重要：没有连板史，说明缺乏稳定游资锁仓</strong>。</p></blockquote>
+
+</div></details>
+<hr>
+<h2 id="chap6">六、投资者交流要点</h2>
+<p><strong>结论：公司在互动平台上对重整与立案的表态，与公告口径完全一致——"按程序正常推进""尚未收到结论性意见"，没有任何增量信息。唯一有信息量的是股东户数的持续小幅下降（筹码微集中）与"重整推进正常"这句自述。</strong></p>
+<table><thead><tr><th>投资者问题</th><th>公司答复要点</th><th>解读（公司口径 vs 本报告判断）</th></tr></thead><tbody><tr><td>重整的产业赋能人选已确定两周，为何迟迟不能签订正式协议？推进是否正常？</td><td>"公司预重整工作正按程序正常推进，已确定产业赋能型重整投资人，若达成正式协议，将第一时间履行信息披露义务"</td><td><strong>公司口径</strong>：程序正常。<strong>本报告判断</strong>：该问答发生于 2026-09-09，5 天后（09-14）即签署协议——<strong>公司在答复时对"即将签约"守口如瓶，属合规的信息中性表述</strong>，不要读成"进展不顺"</td></tr><tr><td>被证监会立案调查有何进展？</td><td>"截至目前，公司尚未收到中国证监会就立案事项的结论性意见或决定"</td><td><strong>公司口径与公告一致</strong>；<strong>本报告判断</strong>：立案结论是唯一的"归零开关"，公司确实无从预知</td></tr><tr><td>截至 09-18 股东户数？</td><td>44,687 户</td><td>硬数据；与 08-20 的 45,583 户相比 <strong>-1.97%</strong>，筹码微集中</td></tr><tr><td>截至 09-10 股东户数？</td><td>45,021 户</td><td>同上</td></tr><tr><td>截至 08-31 股东户数？</td><td>45,444 户</td><td>同上</td></tr></tbody></table>
+<blockquote><p><strong>★ 必抓的四个点核验</strong>：① <strong>参会人员/治理层是否换人</strong>——2026 半年报法定代表人仍为总裁肖益，董事会仍为第六届（2024-06 换届的"中国电科接管班子"），<strong>报告期内未再发生治理层变更</strong>；② <strong>对公司盈利驱动的自述</strong>——互动平台未提及新的盈利驱动，唯一方向性表述来自公告的"数据运营及服务"与京合云"算力协同"；③ <strong>对摘帽的自述时间表</strong>——公司未给出明确摘帽时间表（这与"2026 年报是独木桥"的客观约束一致）；④ <strong>股东人数与分红</strong>——互动易数据与 Wind 一致；2025 年度<strong>拟不进行利润分配</strong>（累积未弥补亏损达实收股本总额三分之一）。</p></blockquote>
+<details class="fold"><summary>6 补充 · 业绩说明会与调研记录检索情况</summary><div class="fold-body">
+
+<ul><li>2026-05-19 公司披露《关于举行 2025 年度网上业绩说明会的通知》。本报告在巨潮 <code>hisAnnouncement/query</code> 中以 <code>tabName=relation</code> 检索公司"投资者关系活动记录表"，<strong>2026 年内未见机构调研记录表</strong>（即报告期内无公开机构集体调研）。<strong>这本身是一个信号：机构对这只票的兴趣处于冰点</strong>，注意力主要来自游资与个人投资者。</li><li>互动易问答抓取方式：同花顺 F10 <code>basic.10jqka.com.cn/300212/interactive.html</code>，取到 2026 年 8–9 月全部问答。</li></ul>
+
+</div></details>
+<hr>
+<h2 id="chap7">七、投资结论</h2>
+<p><strong>卖出（回避）</strong> —— 不与"重整成功"这一单一事件对赌。</p>
+<h3 id="sec20">理由链（按重要性排序，每条带证据）</h3>
+<ol><li><strong>最硬的催化已经兑现，且"利好出尽"已经发生。</strong> 2026-09-14 签署《重整投资协议》（13 家/25.31 亿元）当日仅涨 4.7%，<strong>次日 -8.1%</strong>，至 09-29 跌至 7.57 元（较 09-14 收盘 <strong>-15.1%</strong>）。证据：<a href="http://static.cninfo.com.cn/finalpage/2026-09-14/1225564292.PDF" target="_blank" rel="noopener">2026-058 公告</a>＋日 K 序列（数据来源：腾讯行情）。<strong>按注意力定价框架，"事件兑现瞬间＝注意力峰值＝风险点"，本标的已越过峰值。</strong></li><li><strong>现价相对真实成本毫无安全边际。</strong> 产业投资人成本 4.10 元（＝现价的 <strong>0.52 倍</strong>）、财务投资人 6.75 元（<strong>0.85 倍</strong>），且转增 5.70 亿股将使原股东权益摊薄约 44%——<strong>便宜筹码全在产业与财务资本手上，二级市场在这个位置是抬轿方。</strong></li><li><strong>同型样本组指向下跌，非上涨。</strong> 以基准日画像匹配的 9 只同型 ST，2026-09-14→09-30 <strong>8 跌 1 涨</strong>，组内均值约 -7.8%，本标的 -10.9%。证据：各标的日 K（数据来源：腾讯行情）。</li><li><strong>"生死"仍锁在四道未开启的闸门后，且存在一个归零开关。</strong> 法院尚未裁定受理正式重整；25.31 亿元投资款<strong>到账额为 0</strong>（仅到履约保证金层面）；2026 年报必须净资产转正（时间锚 2027-04）；证监会立案结论未出，若认定造假达量化线即触发<strong>重大违法强制退市（一票否决）</strong>。证据：2026-058 特别提示原文。</li><li><strong>基本面在继续恶化，且已丧失自救能力。</strong> 2026H1 营收 -38.39%、整体毛利率转负至 -1.02%、归母净资产由 -19.53 亿元降至 <strong>-22.64 亿元</strong>、逾期债务 1.45 亿元、30 余个账户被冻结、<strong>可动用现金仅约 1.02 亿元</strong>（3.20 亿元货币资金中 2.18 亿元受限），而几乎所有可抵押资产已质押。</li></ol>
+<h3 id="sec21">触发条件（何时翻转结论）</h3>
+<ul><li><strong>转"买入"的三个信号</strong>（需至少同时出现两项）：① 北京一中院<strong>裁定受理</strong>正式重整，且随后《重整计划（草案）》明确转增比例与清偿率；② 立案调查以"未触及重大违法强制退市"落地（如行政处罚事先告知书/决定书明确该表述）；③ 股价回落至 <strong>4.5–5.5 元</strong>区间（接近摊薄后中性情景下沿、且接近产业投资人成本 4.10 元的 1.1–1.35 倍）。</li><li><strong>转"更坚决卖出"的信号</strong>：① 重整投资协议被解除或投资人未按期缴付保证金；② 立案结论涉及财务造假量化线；③ 2026 年报审计再次非标或净资产未能转正。</li></ul>
+<h3 id="sec22">失效条件</h3>
+<p>若在 2026 年内出现"法院受理＋批准重整计划＋25.31 亿元到账"的连续落地，则本报告基于"时序风险未消除＋价格已透支"的判断<strong>部分失效</strong>——此时须重新按"重整完成后的净资产与股本"重估，并把结论重心从"事件风险"切换为"注入兑现风险"。</p>
+<h3 id="sec23">参考区间</h3>
+<ul><li><strong>回避区间</strong>：当前 7.94 元及以上；<strong>建议不参与</strong>。</li><li><strong>观察区间（转买入的前提）</strong>：<strong>4.5–5.5 元</strong>（对应总市值约 58–71 亿元，需结合摊薄口径校准）。</li><li><strong>止损位（若已有持仓）</strong>：跌破 6.04 元（2026 年内低点）视为重整预期彻底瓦解。</li></ul>
+<h3 id="sec24">时间窗口</h3>
+<p>结论有效期至 <strong>2026 年 12 月 31 日</strong>，或至"法院裁定受理正式重整"公告发布之日（以先到者为准）。受理一旦公告，须立即按新进度重估。</p>
+<h3 id="sec25">仓位建议</h3>
+<p><strong>不建仓（0 仓位）</strong>；已有持仓者建议在反弹中减持。</p>
+<h3 id="sec26">最大风险（一句话）</h3>
+<p><strong>"卖出"结论最可能出错的方式，是重整受理与批准以超预期速度落地、25.31 亿元在 2026 年内到账并彻底消除退市风险——那时这只央企壳会迎来一次由"退市归零"到"保壳成功"的估值重估，反弹幅度可能一次性抹平当前 40% 的价位差。</strong></p>
+<hr>
+<h2 id="chap8">附录 A · 待核实 / 需补充清单</h2>
+<table><thead><tr><th>事项</th><th>状态</th><th>说明</th></tr></thead><tbody><tr><td>重整计划（草案）的转增总规模与摊薄比例</td><td>未披露</td><td>协议仅载明投资人受让 5.70 亿股；抵债转增部分未披露</td></tr><tr><td>债权人申报的债权总额与清偿率</td><td>未披露</td><td>有望在《重整计划（草案）》中首度披露</td></tr><tr><td>京合云系"算力资产注入"的具体资产、时点与作价</td><td>未披露</td><td>协议仅有"视情况考虑投入运营资金、推动资源或业务协同"的原则性表述</td></tr><tr><td>证监会立案的具体事由与涉案期间</td><td>未披露</td><td>公告仅表述"涉嫌信息披露违法违规等"</td></tr><tr><td>泰安玻普、北京大有瑞祥、广州爱泉三家产投主体的实控人</td><td>公告未完整载明</td><td>已在 §3.2 折叠区如实标注"—"</td></tr><tr><td>各董监高的出生年月与完整履历</td><td><strong>公告未披露</strong></td><td>见 §2.3；本报告不引用第三方资料填充</td></tr><tr><td>数据要素新业务的收入占比</td><td>未单独披露</td><td>2026H1 分业务口径中未识别</td></tr></tbody></table>
+<h2 id="chap9">附录 B · 关键信源</h2>
+<p><strong>以下为本报告全部关键事实的原始信源（一手公告与规则优先，数据源与本地库次之），按披露时点排序，供逐项复核。</strong></p>
+<ol><li><a href="http://static.cninfo.com.cn/finalpage/2026-04-29/1225239128.PDF" target="_blank" rel="noopener">2025 年年度报告</a>（2026-04-29）— 净资产为负、审计意见、担保与受限资产</li><li><a href="http://static.cninfo.com.cn/finalpage/2026-04-29/1225239126.PDF" target="_blank" rel="noopener">关于收到中国证监会立案告知书的公告</a>（2026-04-29，公告编号 2026-027）</li><li><a href="http://static.cninfo.com.cn/finalpage/2026-04-29/1225239144.PDF" target="_blank" rel="noopener">2026 年一季度报告</a>（2026-04-29）</li><li><a href="http://static.cninfo.com.cn/finalpage/2026-05-15/1225311620.PDF" target="_blank" rel="noopener">关于公司被债权人申请重整及预重整的提示性公告</a>（2026-05-15）</li><li><a href="http://static.cninfo.com.cn/finalpage/2026-05-19/1225318292.PDF" target="_blank" rel="noopener">关于法院决定对公司启动预重整的公告</a>（2026-05-19）</li><li><a href="http://static.cninfo.com.cn/finalpage/2026-08-20/1225486875.PDF" target="_blank" rel="noopener">关于招募重整投资人的进展公告</a>（2026-08-20）</li><li><a href="http://static.cninfo.com.cn/finalpage/2026-08-25/1225499187.PDF" target="_blank" rel="noopener">2026 年半年度报告</a>（2026-08-25）</li><li><a href="http://static.cninfo.com.cn/finalpage/2026-08-25/1225506722.PDF" target="_blank" rel="noopener">关于债务逾期的进展公告</a>（2026-08-25）</li><li><a href="http://static.cninfo.com.cn/finalpage/2026-09-14/1225564292.PDF" target="_blank" rel="noopener">关于签署重整投资协议的公告</a>（2026-09-14，公告编号 2026-058）</li><li><a href="http://static.cninfo.com.cn/finalpage/2026-09-24/1225582594.PDF" target="_blank" rel="noopener">22 华录01 提前兑付暨摘牌公告</a>（2026-09-24）</li><li>互动易问答（同花顺 F10，2026-08-21 至 2026-09-24）</li><li>行情与估值（2026-09-30）：腾讯行情 <code>qt.gtimg.cn</code>、前复权日 K <code>web.ifzq.gtimg.cn</code>（Wind 代理离线，改用公开源）</li><li>龙虎榜：东方财富 <code>datacenter-web.eastmoney.com</code>（2026 年 3 条）</li><li>异动：韭研公社异动整理（本地库，21 条）</li><li>路径底表：《退市风险预警-20260929.xlsx》（Andy 自建）</li><li>ST 信息库：<code>1.所有公司\＊ST易录-300212.SZ.md</code>、<code>2.重要公告\</code>（2026-08-20 / 08-24 / 08-25 / 08-28 / 09-14 / 09-24）、<code>4.重要综合评论.md</code></li></ol>
+<h2 id="chap10">附录 C · 逻辑漏洞与反方观点（压力测试 5 问）</h2>
+<ol><li><strong>"产业投资人 12.58 亿元"的产业赋能能力是否真实？</strong> 京合云系的算力集群规模来自公开报道与市场解读，<strong>上市公司公告未披露京合云体系的具体资产与财务数据</strong>；协议仅有原则性表述。<strong>本报告已将其定位为"叙事"，不作估值依据。</strong></li><li><strong>"华录集团兜底 5 亿元公司债"能否类推为"央企会继续兜底"？</strong> 不能。该笔兑付由<strong>担保人</strong>履行既有保证责任，属合同义务；公告中中国电科/华录集团对<strong>重整</strong>的表述始终是"支持"，<strong>无金额承诺</strong>。</li><li><strong>"净资产为负"是否真的只能靠重整？</strong> 理论上有"债务豁免/资产处置/注入"等路径，但公司可动用现金约 1.02 亿元、可抵押资产几乎全部受限、ST 期间不得发行股份——<strong>四条路径中三条被堵死</strong>，重整是唯一现实解。</li><li><strong>"价格已透支"的判断是否过于依赖摊薄口径？</strong> 若完全不考虑摊薄（仅按现状 7.20 亿股），现价 57.16 亿元市值对应"中性情景 60–75 亿元"仍不算贵——<strong>这是本结论最脆弱的一环</strong>。但考虑转增 5.70 亿股（摊薄 44%）后，口径必须统一，故仍维持卖出。</li><li><strong>"同型样本 9 跌 1 涨"是否代表性足够？</strong> 样本量仅 9 只，且本标的央企背景显著强于样本；<strong>本报告据此只作方向参考、不作概率推断</strong>，方向结论与价格事实（利好出尽）互为印证。</li></ol>
+<hr>
+<h2 id="chap11">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-09-21</td><td>首次生成《ST易录（300212）深度研究 · 王艳体》（单文件 HTML，结论先行但未落地下手）</td></tr><tr><td>第 1 次修改</td><td>2026-10-04</td><td>按现行规范重构为速研档单文件《＊ST易录（300212.SZ）研究报告》，吸收初版全部内容（岛主引言三句→封面五条结论；前世今生/关键人物/控制权路径/承诺包/六维拆解/壳经济学全部并入并重排为王艳式六栏目），并作以下实质更新：① 行情基准日 2026-09-21→2026-09-30（价 7.91→7.94 元，总市值 56.94→57.16 亿元，成交额换手补入）；② <strong>修正涨跌幅口径</strong>：旧稿写"ST 股 5% 涨跌停限制"有误，创业板 ST 为 <strong>±20%</strong>，快照表涨跌停价 9.41/6.27→<strong>9.53/6.35</strong>；③ 补 2026 年 Q1 财务（营收 1.11 亿元、归母 -0.48 亿元）与 2021–2022 年序列，去年份缺口；④ 补 09-14 重整投资协议逐笔明细（13 家 / 5.70 亿股 / 25.31 亿元，产投 4.10 元 4.96 亿股、财投 6.75 元 0.74 亿股，市场参考价 8.1923 元）；⑤ 补 09-24 5 亿元公司债由华录集团兜底提前兑付；⑥ 新增同型样本对照（9 只）、韭研异动全量明细（21 条）、龙虎榜（3 条）、投资者交流要点；⑦ 新增 2026H1 受限资产明细与可动用现金约 1.02 亿元的推导；⑧ <strong>投资结论首次落地下手：卖出（回避）</strong>（旧稿仅作客观梳理、无二选一结论）。</td></tr></tbody></table>
+<hr>
+<p>（免责声明：本文内容仅为自用兼知识分享与逻辑分析，数据可能有错误或不及时，不构成任何投资建议。市场有风险，投资需谨慎。）</p>
 </div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
 
-<blockquote class="warn">提醒一句：负净资产的公司，PB、PE全部失效。56.94亿市值买的是"重整成功的期权"，不是买净资产，更不是买盈利。</blockquote>
-
-<h2>前世今生时间轴</h2>
-
-<p>易华录是A股"央企IT平台"里活脱脱的教材：开局是亲儿子，中间膨胀成"数据湖"烧钱机器，现在是ICU病人。</p>
-
-<table>
-  <tr><th>时间</th><th>事件</th><th>大白话</th></tr>
-  <tr><td>1992-06</td><td>中国华录电子有限公司成立（华录集团前身）</td><td>大连起家，央企，主业数字音视频</td></tr>
-  <tr><td>2000-06</td><td>中国华录集团有限公司成立，注册资本18.36亿</td><td>国务院国资委直管央企</td></tr>
-  <tr><td>2001-04-30</td><td>北京易华录信息技术股份有限公司成立</td><td>华录集团的IT亲儿子</td></tr>
-  <tr><td>2011-05</td><td>创业板上市</td><td>早期智能交通（信控/交管）龙头，林拥军一手带大</td></tr>
-  <tr><td>2015</td><td>定增募资，切入政企数字化</td><td>扩张期</td></tr>
-  <tr><td>2016-2019</td><td>大干"数据湖"模式</td><td>各地合资建数据湖，重资产、长账期、高减值，埋下今天的雷</td></tr>
-  <tr><td>2023-04-03</td><td>剧透：华录集团正与中国电科筹划重组</td><td>央企整合提前漏风</td></tr>
-  <tr><td>2023-11-23</td><td>国务院国资委批准，华录集团股权无偿划入中国电科</td><td><strong>实控人变更为中国电科</strong> <a href="https://m.cnstock.com/commonDetail/40580" target="_blank">来源</a></td></tr>
-  <tr><td>2023</td><td>向特定对象发行股票募资约15.81亿元（5745.9万股 @27.51元/股）</td><td>央企整合前后一次"续命定增"，杯水车薪</td></tr>
-  <tr><td>2023-2025</td><td>连续三年巨亏：-18.9亿 → -28.6亿 → -27.2亿</td><td>净资产从+35.9亿跌到-19.5亿</td></tr>
-  <tr><td>2026-01-30</td><td>业绩预告：2025年预亏21.76亿~27.91亿</td><td><a href="https://stcn.com/article/detail/3622732.html" target="_blank">来源</a></td></tr>
-  <tr><td>2026-04-28</td><td>披露2025年报＋收立案告知书＋被实施退市风险警示</td><td><strong>一天三件事</strong></td></tr>
-  <tr><td>2026-05-15</td><td>债权人华路易云向北京一中院申请重整及预重整</td><td>4天后法院就批</td></tr>
-  <tr><td>2026-05-19</td><td>北京一中院裁定启动预重整（(2026)京01破申407号）</td><td><a href="https://stcn.com/article/detail/3921615.html" target="_blank">来源</a></td></tr>
-  <tr><td>2026-07-03</td><td>37家意向重整投资人报名</td><td>央企壳，抢的人不少</td></tr>
-  <tr><td>2026-08-20</td><td>确定产业赋能型投资人：山东高速联合体、京合云联合体</td><td>山东高速浮出水面</td></tr>
-  <tr><td>2026-08-25</td><td>2026半年报：营收1.89亿、归母-3.12亿、净资产-22.64亿</td><td>亏得少，但底子更空</td></tr>
-  <tr><td>2026-09-14</td><td>签署《重整投资协议》，13家投资人拟出资约25.31亿</td><td>关键一步，但"不代表正式进入重整程序"</td></tr>
-  <tr><td>2026-09-21</td><td>基准日，立案调查尚无结论性意见</td><td>最大X因素仍悬着</td></tr>
-</table>
-
-<h2>关键人物 / 实控人图谱</h2>
-
-<h3>1. 股权结构（到2026半年报）</h3>
-<table>
-  <tr><th>层级</th><th>名称</th><th>持股/控制</th><th>说明</th></tr>
-  <tr><td>实控人</td><td>中国电子科技集团有限公司（中国电科）</td><td>间接约33.94%</td><td>中央直接管理，持华录集团66.78%股权再间接控制 <a href="http://www.cnstock.com/commonDetail/40583" target="_blank">来源</a></td></tr>
-  <tr><td>控股股东</td><td>中国华录集团有限公司</td><td>直接31.83% + 间接2.27% = 34.10%</td><td>中央国有控股，法定代表人欧黎</td></tr>
-  <tr><td>一致行动人</td><td>华录资本控股有限公司</td><td>2.27%</td><td>华录集团全资子公司</td></tr>
-  <tr><td>前实控人</td><td>中国华录集团（原国务院国资委直管）</td><td>—</td><td>2023-11-23划入中国电科后降为"二级央企"</td></tr>
-</table>
-<p><strong>大白话：</strong>易华录现在是"中国电科—华录集团—易华录"三级架构。华录集团从"国资委亲儿子"降成"中国电科的儿子"，易华录变成<strong>中国电科第19家上市平台</strong>（海康威视、太极股份、电科网安、国睿科技等之外新增）。</p>
-
-<h3>2. 董事会/管理层关键人物</h3>
-<table>
-  <tr><th>姓名</th><th>角色</th><th>背景</th><th>看点</th></tr>
-  <tr><td>欧黎</td><td>党委书记、董事长（2024-06起）</td><td>电子科大博士，原中国电科26所所长、华录集团董事长</td><td><strong>中国电科派驻的"接管人"</strong></td></tr>
-  <tr><td>肖益</td><td>党委副书记、董事、总裁（法定代表人）</td><td>原太极股份副总裁/总裁一系</td><td>中国电科系职业经理人</td></tr>
-  <tr><td>满孝国</td><td>党委常委、财务总监、董秘</td><td>财政部山东监管局副处长出身，正高级会计师</td><td>财政部背景管钱</td></tr>
-  <tr><td>周福全</td><td>党委常委、董事、副总裁</td><td>原国富瑞数据系统总经理</td><td>管数据湖/存储实体</td></tr>
-  <tr><td class="red">林拥军</td><td>董事（2024-06卸任董事长/总裁）</td><td>清华硕士，2001年起易华录元老，2019-2024任董事长</td><td><strong>持股2.94%（2115.72万股）全部质押</strong>，2024年被"收编"让位</td></tr>
-  <tr><td>杜欣军</td><td>董事</td><td>原中国电科32所</td><td>中国电科系</td></tr>
-</table>
-<p><strong>大白话：</strong>2024年6月是分水岭——中国电科完成"换班"，把老人林拥军换下，派驻欧黎坐镇、太极股份出身的肖益当总裁，是央企整合后"削藩+接管"的标准动作。<strong>林拥军2115万股全部质押，是不能忽视的信号</strong>：老舵手自己资金链也紧，指望他"附身救主"不现实。</p>
-
-<h3>3. 债权人（申请人）——华路易云</h3>
-<p>注意债主身份：<strong class="red">华路易云科技有限公司，是公司的参股公司（联营企业）</strong>，又是年报里的应付账款大户（应付账款3.35亿）。发起重整申请的，是"半个自己人"。这是国资纾困/央企自救里最常见的<strong>"内部人点火"</strong>套路——用关联方债权人出面申请，把时间主动权攥在自己手里，避免被外部债权人"抢跑"推动破产清算。</p>
-
-<h2>怎么拿的控制权（两条控制权转移路径）</h2>
-
-<h3>第一段：无偿划转（2023）——央企整合，兵不血刃换老板</h3>
-<table>
-  <tr><th>要素</th><th>内容</th></tr>
-  <tr><td>方式</td><td><strong>行政无偿划转</strong>（非市场收购）</td></tr>
-  <tr><td>动作</td><td>国资委将所持华录集团股权无偿划入中国电科</td></tr>
-  <tr><td>结果</td><td>实控人由"华录集团"变更为"中国电科"</td></tr>
-  <tr><td>持股变化</td><td>华录集团直接+间接持股比例不变（约33.94%），只换"顶头上司"</td></tr>
-  <tr><td>表态度</td><td>中国电科承诺"12个月无增持/减持、无重大资产重组详计划、无改董事会计划"</td></tr>
-</table>
-<p><strong>大白话：</strong>不是市场化并购，是国务院一纸文件把华录整个"并"进中国电科。易华录头上的大股东没变，但"爷爷"从国资委变成中国电科。<strong>这种划转不花钱、不溢价、不换股，对股价本身几无刺激，但它决定了"谁来救"的基因</strong>——央企背景，是这口壳最硬的一块底牌。</p>
-
-<h3>第二段：破产重整（2026）——产业资本进场，控制权可能易主</h3>
-<table>
-  <tr><th>阶段</th><th>时间</th><th>事件</th></tr>
-  <tr><td>点火</td><td>2026-05-15</td><td>债权人华路易云申请重整+预重整</td></tr>
-  <tr><td>受理</td><td>2026-05-19</td><td>北京一中院启动预重整</td></tr>
-  <tr><td>管理</td><td>2026-05-29</td><td>金杜律所任临时管理人</td></tr>
-  <tr><td>招募</td><td>2026-06~08</td><td>公开招募，37家意向投资人</td></tr>
-  <tr><td>定人</td><td>2026-08-20</td><td>山东高速联合体、京合云联合体中选</td></tr>
-  <tr><td>签约</td><td>2026-09-14</td><td>签署《重整投资协议》，13家拟出资约25.31亿 <a href="https://news.iqilu.com/shandong/shandonggedi/20260918/5945555.shtml" target="_blank">来源</a></td></tr>
-</table>
-
-<h3>3. 重整投资结构（关键数字）</h3>
-<table>
-  <tr><th>投资人类别</th><th>家数</th><th>认购价</th><th>受让转增股</th><th>投资款</th></tr>
-  <tr><td>产业赋能型投资人</td><td>6家</td><td>4.10元/股</td><td>约4.96亿股</td><td>约20.32亿元</td></tr>
-  <tr><td>财务投资人</td><td>7家</td><td>6.75元/股</td><td>约0.74亿股</td><td>约5.00亿元</td></tr>
-  <tr><td><strong>合计</strong></td><td><strong>13家</strong></td><td>—</td><td><strong>约5.7亿股</strong></td><td><strong>约25.31亿元</strong></td></tr>
-</table>
-<p><strong>产业赋能型投资人（6家，两大阵营）：</strong>山东高速联合体（牵头：山东高速投资控股）指定<strong>济南佳富、泰安启重汇联</strong>；京合云联合体（牵头：京合云（上海）科技）指定<strong>芜湖长昱、泰安玻普、北京大有瑞祥、广州爱泉</strong>。</p>
-<p><strong>财务投资人（7家）：</strong>中国银河金融控股（银河资管）、厦门国际信托、广西金创华盈、广州国资系、北京云福易录、北京雅荣春芽、北京宸年易录等——中央金融企业+广西/厦门/广州国资+民营资本。</p>
-<p><strong>支付节奏：</strong>履约保证金=投资款的20%（产业）、30%（财务），签约后3个工作日内到账；<strong>全部重整投资款=法院裁定批准重整计划之日起5日内</strong>足额支付。</p>
-<p><strong>大白话：</strong>标准"资本公积转增股本+引入重整投资"打法。产业投资人用4.1元/股骨折价（远低于现价7.91元）拿4.96亿股，换20.32亿救命钱+产业资源；还额外共同出资<strong class="gold">6.27亿元设立有限责任公司，专项解决"增信函件"遗留事项</strong>——这6.27亿是纯"擦屁股钱"，是真金白银的兜底。</p>
-
-<h2>意图分析与节奏</h2>
-
-<h3>山东高速要什么？</h3>
-<p>山东高速投资要的不是一家亏损IT公司，而是<strong>智慧交通的数据入口和场景</strong>：集团体系内握着<strong>9240公里高速公路路网数据资源、高速绿色算力网、207对服务区、647个收费站</strong>；易华录做了二十多年交通大数据，有信控、交管、车路云一体化、泰国TOCC/香港信控/肯尼亚ITS等标杆项目和央企牌照。<a href="https://finance.sina.com.cn/stock/relnews/cn/2026-08-31/doc-iniqetnt4683705.shtml" target="_blank">来源</a> 逻辑：用便宜筹码，把易华录变成山东高速交通数据的"算力+数据要素运营"抓手。<strong>这是"产业协同型"重整，不是纯财务套利。</strong></p>
-
-<h3>京合云要什么？</h3>
-<p>京合云（上海）背后关联布局AI算力的民营资本（市场称"大京集团"），联合芜湖长昱等进场，看中的大概率是易华录手里的<strong>蓝光存储、算力基础设施、数据湖资产</strong>中"算力+存储"的部分，蹭AI算力叙事。</p>
-
-<h3>中国电科/华录集团的态度</h3>
-<p>公告原话：华录集团、中国电科"将支持易华录通过重整程序化解风险、优化资产负债结构、恢复持续经营能力""集聚相关资源，增强持续经营能力和核心竞争力，促进国有资产保值增值"。<strong>注意用词——是"支持"，不是"包办"。</strong>央企愿意背书站台，但钱主要靠山东高速们出，股权也可能因此被稀释。这是"续命"不是"控股保卫战"。</p>
-
-<h3>节奏倒计时（生死时间表）</h3>
-<table>
-  <tr><th>节点</th><th>预期/含义</th></tr>
-  <tr><td>2026-09-17前后</td><td>履约保证金（投资款20%/30%）交齐</td></tr>
-  <tr><td>待法院裁定</td><td>北京一中院裁定<strong>受理重整</strong>（预重整转正式），第一道大坎</td></tr>
-  <tr><td>受理后</td><td>重整计划草案提交、债权人会议表决</td></tr>
-  <tr><td>法院批准重整计划后 <strong>5日内</strong></td><td>25.31亿重整投资款<strong>全额到账</strong></td></tr>
-  <tr><td><strong>2026年报审计（2027年初）</strong></td><td><strong>期末净资产能否转正</strong>，决定是否终止上市</td></tr>
-</table>
-<p><strong>判断：</strong>重建投资款要到账，前提是"法院裁定批准重整计划"，而这一步受两件东西卡着——①证监会立案调查结论；②预重整→正式受理的时间。25.31亿<strong>不是已到账，是"签了合同、交了保证金、等法院点头才给钱"</strong>。到2026-09-21，这只票叫<strong>"三重前置条件锁死"：立案未结 → 受理未定 → 资金未到账</strong>。要赶在2026年报审计前完成净资产转正，窗口偏紧但不至于绝望——重整收益（债务重组利得+资本注入）一旦确认，净资产转正是"账面上能一次性拉回来"的。</p>
-
-<h2>承诺包"原话 vs 大白话"拆解</h2>
-
-<table>
-  <tr><th>承诺/表述（原话）</th><th>时间/来源</th><th>大白话翻译</th></tr>
-  <tr><td>"重组完成后，华录集团直接及间接持有公司的股权比例不发生变化"</td><td>2023-11-23</td><td>划转不换股，你手里股票一张不少，只换名义老板</td></tr>
-  <tr><td>中国电科"不存在未来12个月内继续增持/处置股份、重大资产重组、改董事会计划"</td><td>2023-11</td><td>央企爸爸说"先稳住不折腾"，但12个月后的事谁说得准</td></tr>
-  <tr><td>"承诺保持易华录人员、财务、机构、资产、业务独立"</td><td>2023-11收购报告书</td><td>防掏空的合规动作，不是施救承诺</td></tr>
-  <tr><td>避免同业竞争承诺</td><td>2011-05 IPO</td><td>老黄历</td></tr>
-  <tr><td>国富商通承诺7800万购股，逾期罚每天万分之三、超30天再罚780万</td><td>2018-08</td><td><strong class="red">至今未履行！</strong>补偿款+违约金+仲裁费未付，2025-08被申请强制清算</td></tr>
-  <tr><td>"将支持易华录通过重整化解风险……促进国有资产保值增值"</td><td>2026重整公告</td><td>精神支持+资源协调，<strong>没白纸黑字承诺兜底多少亿</strong></td></tr>
-  <tr><td>产业赋能型投资人"共同设立公司，出资6.27亿元专项解决增信函件事项"</td><td>2026-09-14</td><td>投资人拿便宜股票还额外掏钱擦历史屁股，<strong>真金白银的兜底</strong></td></tr>
-  <tr><td>"本次签署《重整投资协议》不代表公司正式进入重整程序，尚存在重大不确定性"</td><td>2026-09-14特别提示</td><td><strong>最硬免责声明</strong>：合同签了≠钱到手≠命保住</td></tr>
-  <tr><td>"如重整未顺利实施完毕，2026年度经审计期末净资产预计为负，股票将面临终止上市风险"</td><td>2026-09-14特别提示</td><td>退市倒计时条款</td></tr>
-</table>
-
-<blockquote class="warn">拆解结论：这份"承诺包"里真正值钱的活口只有一个——<strong>6.27亿增信专项+25.31亿重整投资款</strong>，触发硬币全压在"法院批准重整计划"一道闸上。央企的"支持"是背书不是担保，别把"支持"当"兜底"。国富商通那单2018年老承诺至今赖账，恰恰提醒：<strong>A股的承诺，落地才叫钱。</strong></blockquote>
-
-<h2>六维拆解</h2>
-
-<h3>维度①：重组节奏（这条命是什么精度的手术）</h3>
-<p><strong>定性：快，快到反常。</strong>5月15日申请、5月19日裁定启动预重整，<strong>4天</strong>，媒体用"仅隔4天获批"当标题。说明这桩重整是<strong>被"安排"好的</strong>——申请人是参股公司（联营企业）、债主是"自己人"，法院一路绿灯，招募4个月就签约。<strong>但难的是"正式受理"这道坎</strong>，立案结论一天不出，受理和重整计划批准都可能有变数。<strong>评分：节奏★★★★☆（前半程飞快），确定性★★★☆☆（后半程悬）。</strong></p>
-
-<h3>维度②：新实控人（重整投资人）意图</h3>
-<p>山东高速（产业型，要交通数据场景+算力落地，会真干活）；京合云（算力叙事型，要存储/算力资产，带来注入想象空间）；7家财务投资人（博重整收益，6.75元拿、现价7.91元，典型打折套利盘）；中国电科/华录集团（保牌护牌，要壳不退市）。<strong>判断：这是一组"产业方出力气、财务方出钱、央企站台"的组合，结构比单一民企接盘健康得多。</strong>山东高速这种量级的地方国资进场，本身就在传递"这壳值得救"的信号。</p>
-
-<h3>维度③：原业务（数据湖）质量盘点</h3>
-<table>
-  <tr><th>业务板块</th><th>2026H1收入</th><th>毛利率</th><th>质量点评</th></tr>
-  <tr><td>数字化系统及底座（智能交通/存储）</td><td>7535.20万（-58.70%）</td><td class="red">-54.26%</td><td>收缩重灾区，毛利巨幅为负，拖累核心</td></tr>
-  <tr><td>数据运营及服务</td><td>1.14亿（-8.62%）</td><td>34.25%</td><td>相对健康，唯一正毛利核心盘</td></tr>
-  <tr><td>整体</td><td>1.89亿（-38.39%）</td><td class="red">-1.02%</td><td>营收腰斩、毛利由正转负</td></tr>
-</table>
-<p>曾经的"数据湖"宏大叙事，本质是"重资产+政府项目+长账期+高减值"的黑洞，三年计提减值几十亿，把净资产从+35.9亿干到-22.6亿。<strong class="red">"数据湖"四个字，2024-2025年是估值杀手，不是引擎。</strong>现在留下的"可信数据空间"（池州、内江、增城、昭通4项目，规划6000多万）和交通数据资产化规模还小，撑不起主业，但<strong>给了重整方"数据要素"的想象空间——这是壳还能被看上的唯一产业理由。</strong></p>
-
-<h3>维度④：承诺包活口</h3>
-<p>见承诺包拆解。核心活口：25.31亿投资款+6.27亿增信专项，触发硬币"法院批准重整计划"。<strong>当前（2026-09-21）到账额≈0</strong>，只到了约投资款20%-30%的履约保证金层面（约5亿~7.6亿）。别被"25亿"迷惑，那是"承诺到账"，不是"已到账"。</p>
-
-<h3>维度⑤：行情映射</h3>
-<table>
-  <tr><th>指标</th><th>数值</th><th>解读</th></tr>
-  <tr><td>现价</td><td>7.91元</td><td>远高于产业4.1元、财务6.75元拿股价</td></tr>
-  <tr><td>总市值</td><td>56.94亿</td><td>买的是重整期权，不是基本面</td></tr>
-  <tr><td>近一周表现</td><td>涨超30%（异动）</td><td>与华电能源等同批被点名异动，游资+题材推动</td></tr>
-  <tr><td>涨跌停</td><td>9.41 / 6.27元</td><td>ST股5%涨跌停，波动被锁窄</td></tr>
-</table>
-<p><strong>判断：</strong>56.94亿市值、-2.52倍PB、-9.14倍PE，说明市场已完全按"壳+重整预期"定价，现价意味着<strong>已抢跑一大段</strong>。产业投资人4.1元拿的筹码，带"重整成功+资产注入"乐观预期。<strong>这种票短期是情绪和游资战场，长期是"重整能否落地"的一锤子买卖，中间没有模糊地带。</strong></p>
-
-<h3>维度⑥：综合判断</h3>
-<p>六维揉成一句话：<strong>这是一口"央企底子+产业方接盘+财务方掏钱"的高质量壳，但踩在"立案未决"和"时间窗口"两把刀上。</strong>三重利空（净资产为负、持续经营不确定、立案调查）和三重利好（央企背书、重整签约、25亿待入）同台，谁先落地谁做主。<strong class="red">定级：高危续命型，博的是"重整过会+净资产转正"的确定性事件，不是博业绩反转。</strong></p>
-
-<h2>壳经济学</h2>
-
-<h3>1. 这口壳值多少钱？</h3>
-<p>现价7.91元、总市值56.94亿，<strong>远高于"净壳价"</strong>。买它的不是"买壳装资产"的借壳方，而是<strong>重整投资人用资本公积转增，把壳当"债务重组+产业重塑"载体</strong>。它值钱的三样东西：①央企/中国电科牌照（数据要素、可信数据空间这类民企拿不到的场景）；②智慧交通二十年数据与技术积累（山东高速要的）；③转增股本的重整套利空间（产业4.1元、财务6.75元 vs 现价7.91元）。</p>
-
-<h3>2. 谁来救、怎么救、救到哪一步</h3>
-<table>
-  <tr><th>问题</th><th>答案</th></tr>
-  <tr><td>谁来救</td><td>明面：山东高速（产业）+京合云（算力）+7家财务（钱）；背后：中国电科/华录集团站台</td></tr>
-  <tr><td>怎么救</td><td>资本公积转增约5.7亿股 → 13家投资人25.31亿入股 → 6.27亿专项解决增信遗留 → 债务重组砍负债</td></tr>
-  <tr><td>救到哪一步</td><td>截至2026-09-21：预重整完成、投资协议已签、履约保证金缴付中；下一步"法院裁定受理"+"批准重整计划"</td></tr>
-  <tr><td>终极目标</td><td>2026年报净资产转正 → 摘掉退市风险 → 保壳成功</td></tr>
-</table>
-
-<h3>3. 壳买卖三句话结论</h3>
-<p>①这壳不便宜，但<strong>"央企壳+产业重整"是当前A股最稀缺的重组范式之一</strong>，山东高速肯出20亿，说明产业方认这个价。</p>
-<p>②风险不在估值，在流程——<strong>立案调查结不结、法院受理不受理、重整计划批不批</strong>，三重不确定叠在一个"2026年年报"的Deadline上。</p>
-<p>③对散户而言，这是<strong>"事件驱动+零和博弈"的牌桌</strong>，不是价值投资。你能赚的是"重整成功"瞬间的预期差；你能亏的是"立案暴雷/受理失败/退市"那一刀。</p>
-
-<h2 class="foot">数据来源</h2>
-<ol class="src-list">
-  <li>北京易华录2025年年度报告（审计报告：中勤万信，勤信审字【2026】第0773号，带持续经营重大不确定性段落的无保留意见），2026-04-29</li>
-  <li>北京易华录2026年半年度报告，2026-08-25</li>
-  <li>《关于签署重整投资协议的公告》（公告编号：2026-058）——<a href="http://static.cninfo.com.cn/finalpage/2026-09-14/1225564292.PDF" target="_blank">巨潮资讯网 2026-09-14</a></li>
-  <li>《关于招募重整投资人的进展公告》（公告编号：2026-053）——2026-08-20（深交所）</li>
-  <li>《关于法院决定对公司启动预重整的公告》（公告编号：2026-033）——2026-05-19</li>
-  <li><a href="https://m.cnstock.com/commonDetail/40580" target="_blank">华录集团与中国电科重组获准 易华录实控人将变更为中国电科</a>——上证报·中国证券网 2023-11-23</li>
-  <li><a href="http://www.cnstock.com/commonDetail/40583" target="_blank">中国电科与华录集团实施重组 数字产业"巨无霸"呼之欲出</a>——上海证券报 2023-11-24</li>
-  <li><a href="https://stcn.com/article/detail/3853071.html" target="_blank">易华录涉嫌信披违法违规被证监会立案 同日被实施退市风险警示</a>——证券时报·e公司 2026-04-28</li>
-  <li><a href="https://stcn.com/article/detail/3921615.html" target="_blank">债权人申请仅隔4天获批 *ST易录启动预重整</a>——每日经济新闻 2026-05-22</li>
-  <li><a href="https://news.iqilu.com/shandong/shandonggedi/20260918/5945555.shtml" target="_blank">*ST易录签署重整投资协议，山东高速联合体作为产业赋能投资人入局</a>——泰山财经/齐鲁网 2026-09-18</li>
-  <li><a href="https://stock.stockstar.com/RB2026082700044385.shtml" target="_blank">财报快递：*ST易录2026上半年营收降38%亏3.12亿，资不抵债、预重整</a>——证券之星 2026-08-27</li>
-  <li><a href="https://www.egsea.com/quotation/stock-info/sz300212.html" target="_blank">*ST易录 个股行情与快讯</a>——证券时报e公司 2026-09-21</li>
-  <li><a href="https://stcn.com/quotes/index/sz300212.html" target="_blank">*ST易录(sz300212)行情走势</a>——证券时报 2026-09-20</li>
-  <li><a href="https://finance.sina.com.cn/stock/aigc/zwyq/2026-08-25/doc-inipqaan2308759.shtml" target="_blank">*ST易录披露债务逾期进展：累计逾期规模达14549.48万元</a>——新浪财经 2026-08-25</li>
-  <li><a href="https://finance.sina.com.cn/stock/relnews/cn/2026-08-31/doc-iniqetnt4683705.shtml" target="_blank">山东高速欲入局易华录，智慧交通格局生变</a>——新浪财经 2026-08-31</li>
-  <li><a href="https://stcn.com/article/detail/3622732.html" target="_blank">易华录：2025年预亏21.76亿—27.91亿元</a>——证券时报 2026-01-30</li>
-  <li>联合资信关于北京易华录2024年度跟踪评级报告——联合资信 2024-06-17</li>
-  <li>《关于收到中国证券监督管理委员会立案告知书的公告》（公告编号：2026-027）——2026-04-28</li>
-</ol>
-
-<div class="disclaimer">（免责声明：本文内容仅为自用兼知识分享与逻辑分析，数据可能有错误或不及时，不构成任何投资建议。市场有风险，投资需谨慎。）</div>
-
-</div>
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
 </body>
 </html>
