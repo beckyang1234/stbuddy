@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>＊ST清越（688496.SH）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>11 章 · 13 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、第一翼 · 诊断</a><a class="sblv3" href="#sec0">1.1 基本信息与股权</a><a class="sblv3" href="#sec1">1.2 关键人物（核不到的一律写"公告未披露"）</a><a class="sblv3" href="#sec2">1.3 戴帽与退市程序沿革（★本报告核心）</a><a class="sblv3" href="#sec3">1.4 四类退市红线逐条对照</a><a class="sblv3" href="#sec4">1.5 全流程进度看板与运作特征</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、第二翼 · 基本面路径</a><a class="sblv3" href="#sec5">2.1 路径判定：既非保壳、也非重整，而是"处罚 ST → 强制退市"路径</a><a class="sblv3" href="#sec6">2.2 公司到底做错了什么：IPO 造假 + 上市后继续造假</a><a class="sblv3" href="#sec7">2.3 处罚与赔偿责任</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、公司运营情况</a><a class="sblv3" href="#sec8">3.1 财务状况</a><a class="sblv3" href="#sec9">3.2 收入与利润来源地图</a><a class="sblv3" href="#sec10">3.3 资产质量与估值星级</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、第三翼 · 炒作逻辑与情绪筹码</a><a class="sblv3" href="#sec11">4.1 炒作逻辑三支柱</a><a class="sblv3" href="#sec12">4.2 情绪与筹码</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">五、估值：只剩退市残值</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">六、投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap9">附录 C · 逻辑漏洞与反方观点</a></div><div class="sbgrp"><a class="sblv2" href="#chap10">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">＊ST清越（688496.SH）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：卖出（回避）。</strong></p>
+<p>红线分类：<span class="sttag sttag-red"><a href="http://static.cninfo.com.cn/finalpage/2026-09-11/1225558617.PDF" target="_blank" rel="noopener">面值退市已触发,2026-09-10</a></span>·<span class="sttag sttag-red"><a href="http://static.cninfo.com.cn/finalpage/2026-09-11/1225558802.PDF" target="_blank" rel="noopener">已收到终止上市事先告知书</a></span>·<span class="sttag sttag-red"><a href="http://static.cninfo.com.cn/finalpage/2026-09-02/1225542707.PDF" target="_blank" rel="noopener">欺诈发行·重大违法强制退市</a></span>·<span class="sttag sttag-orange"><a href="http://static.cninfo.com.cn/finalpage/2026-04-29/1225241605.PDF" target="_blank" rel="noopener">2025年内控否定意见</a></span></p>
+<p>生死定级：一票否决（强制退市程序已启动，无自救空间）。</p>
+<p>自救空间：没有。公司股票已于 2026-09-11 开市起停牌，且交易类强制退市不进入退市整理期，二级市场已无卖出窗口；持仓者只能在摘牌后到全国中小企业股份转让系统（"老三板"）按残值转让。</p>
+<p>主要看点：科创板 688496 是 A 股罕见的"<strong>IPO 招股说明书编造重大虚假内容（欺诈发行）＋ 2025 年度内控否定意见 ＋ 连续 20 个交易日收盘价均低于 1 元</strong>"三重退市事由叠加案例；IPO 保荐人广发证券、审计机构立信与实控人高裕弟已拟共同出资设立先行赔付专项基金，实控人另承诺替上市公司承担不低于 1,000 万元民事赔偿并以 900 万股质押作担保。</p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>标的与基准日</td><td>＊ST清越（688496.SH），上海证券交易所科创板；研究基准日 2026-10-06，数据截止 2026-09-30（股票自 2026-09-11 起停牌，最后交易日为 2026-09-10）</td></tr><tr><td>最后收盘价 / 总市值</td><td>0.58 元 / 2.61 亿元（连续 20 个交易日收盘价低于 1 元，且总市值首次低于 3 亿元）</td></tr><tr><td>总股本 / 流通股</td><td>4.50 亿股 / 2.3795 亿股</td></tr><tr><td>2026 年至今涨跌幅</td><td><strong>-90.24%</strong>（2025-12-31 收 5.94 元 → 2026-09-10 收 0.58 元）</td></tr><tr><td>归母净资产（2026-06-30）</td><td>7.0833 亿元（每股 1.5741 元），<strong>PB 0.37</strong></td></tr><tr><td>当前帽子和类</td><td>＊ST（退市风险警示）＋ ST（其他风险警示）双帽并存</td></tr><tr><td>交易规则</td><td>科创板风险警示股<strong>不进入风险警示板、涨跌幅恒 20%</strong>；投资者当日累计买入不超过 50 万股</td></tr><tr><td>版本</td><td>首次生成 · 2026-10-06</td></tr></tbody></table>
+<details class="fold"><summary>数据来源与数据质量说明</summary><div class="fold-body">
+
+<p><strong>数据来源清单</strong>：① 一手公告与定期报告——巨潮资讯网 <code>www.cninfo.com.cn</code>（orgId=9900051401，2025-01～2026-10 共 268 条公告已按月分窗全量取回），PDF 原文经 <code>static.cninfo.com.cn/finalpage/{披露日}/{id}.PDF</code> 直下后 <code>pymupdf</code> 抽文本；② 行情与估值——腾讯自选股 <code>qt.gtimg.cn</code>（截面，2026-09-30）、新浪财经日 K 接口 <code>CN_MarketData.getKLineData</code>（不复权，datalen=1023）、腾讯 <code>web.ifzq.gtimg.cn/appstock/app/fqkline/get</code>（前复权月 K，46 个月）；③ 股东户数、十大股东、龙虎榜——东方财富 <code>datacenter-web.eastmoney.com</code>（<code>RPT_DAILYBILLBOARD_DETAILSNEW</code>）与 <code>emweb.securities.eastmoney.com/PC_HSF10/ShareholderResearch/PageAjax</code>；④ 异动数据——韭研公社异动整理（<code>0-垦禾投研\自动化输出\异动\韭研公社异动整理_Simplified.parquet</code>，按 6 位代码过滤，共 27 条）；⑤ 规则原文——《上海证券交易所科创板股票上市规则（2026 年 4 月修订）》，条款号以公司公告中引用的原文为准。</p>
+<p><strong>数据质量异常</strong>：① 路径底表《退市风险预警-20261005.xlsx》交易类「日收盘价低于 1 元」块将本标的记为"连续 33 个交易日"，而交易所《终止上市事先告知书》与公司公告认定的口径是"截至 2026-09-10 已连续 20 个交易日"——科创板 <strong>12.3.1 第二款</strong>明文规定"前款规定的交易日，<strong>不包含公司股票停牌日</strong>"，本标的自 2026-09-11 起停牌，故<strong>正确计数应冻结在 20 个交易日</strong>，底表的 33 天应为把停牌日一并计入所致；<strong>本报告一律采用交易所认定口径</strong>；② 公司股票自 2026-09-11 停牌，停牌后的"最新价/市值"为停牌前最后交易日（2026-09-10）数据，非实时；③ 本报告未采用 Wind 数据（局域网代理本轮不可达），估值口径以腾讯截面为准。</p>
+
+</div></details>
+<h2 id="chap1">一、第一翼 · 诊断</h2>
+<h3 id="sec0">1.1 基本信息与股权</h3>
+<p><strong>结论：这是一家 IPO 三年即走到强制退市的科创板公司，实控人高裕弟通过昆山和高、信冠国际、冠京控股三家合计控制约 65.99% 表决权，另三名被处罚负责人已全部离任，治理层在 2026-09-21 完成清空式换届。</strong></p>
+<p>昆山和高信息科技有限公司持 37.91%（1.7059 亿股，其中 900 万股质押、900 万股被冻结、全部为限售股），实控人高裕弟；FAITH CROWN INTERNATIONAL LIMITED（信冠国际）持 19.46%，CROWN CAPITAL HOLDINGS LIMITED（冠京控股）持 8.62%，三者为高裕弟一致行动方，合计约 65.99%。其余股东为员工持股平台昆山合志共创（4.42%）、合志升扬（2.41%）、合志启扬（2.39%）及昆山高新创业投资（2.33%，报告期内减持 686.47 万股）。</p>
+<details class="fold"><summary>1.1 附表 · 股东阵容与身份识别（截至 2026-06-30）</summary><div class="fold-body">
+
+<table><thead><tr><th>股东</th><th>持股</th><th>身份识别</th><th>取得方式与成本</th><th>锁定/质押/冻结</th></tr></thead><tbody><tr><td>昆山和高信息科技有限公司</td><td>37.91%</td><td>控股股东（高裕弟控制）</td><td>IPO 前发起人股</td><td><strong>质押 900 万股、冻结 900 万股</strong>；全部 1.7059 亿股为限售股</td></tr><tr><td>FAITH CROWN INTERNATIONAL LIMITED</td><td>19.46%</td><td>境外法人（高裕弟一致行动方）</td><td>IPO 前发起人股</td><td>无质押标记</td></tr><tr><td>CROWN CAPITAL HOLDINGS LIMITED</td><td>8.62%</td><td>境外法人（高裕弟一致行动方）</td><td>IPO 前发起人股</td><td>无质押标记</td></tr><tr><td>昆山合志共创（有限合伙）</td><td>4.42%</td><td>员工持股平台</td><td>IPO 前</td><td>限售</td></tr><tr><td>昆山合志升扬（有限合伙）</td><td>2.41%</td><td>员工持股平台</td><td>IPO 前</td><td>限售</td></tr><tr><td>昆山合志启扬（有限合伙）</td><td>2.39%</td><td>员工持股平台</td><td>IPO 前</td><td>限售</td></tr><tr><td>昆山高新创业投资有限公司</td><td>2.33%</td><td>国有法人（昆山国资）</td><td>报告期内<strong>减持 686.47 万股</strong></td><td>—</td></tr><tr><td>高盛公司有限责任公司</td><td>0.59%</td><td>外资机构</td><td>二级市场</td><td>—</td></tr><tr><td>付卫东</td><td>0.54%</td><td>自然人（牛散）</td><td>二级市场</td><td>—</td></tr><tr><td>陈先超</td><td>0.36%</td><td>自然人（牛散）</td><td>二级市场</td><td>—</td></tr></tbody></table>
+<p><strong>筹码集中度</strong>：股东户数由 2025 年末的 7,722 户降至 2026-06-30 的 <strong>5,781 户（-25.1%）</strong>，而同期股价由 5.94 元跌至 0.92 元 ⇒ 属"下跌中户数下降"，即<strong>割肉式集中</strong>，不得读作主力吸筹。员工持股数量 4,146.77 万股、占总股本 9.22%。</p>
+
+</div></details>
+<h3 id="sec1">1.2 关键人物（核不到的一律写"公告未披露"）</h3>
+<p><strong>结论：公司全部关键岗位在 2026 年内完成换血——原董事长兼总经理、实控人高裕弟 2026-03 辞去总经理、2026-09-21 换届后不再任董事长，但被证监会拟罚 1,050 万元并采取 8 年市场禁入，仍是公司实控人；新班子由陈钢（董事长兼代行财务总监）、敖伟（总经理）、毕晨亮（董秘）组成，且财务总监岗位自 2026-05-11 起长期空缺。</strong></p>
+<details class="fold"><summary>关键人物详细简历（公告披露口径）</summary><div class="fold-body">
+
+<table><thead><tr><th>姓名</th><th>出生年月</th><th>履历（公告披露）</th><th>现任全部关联职务</th><th>与处罚的关系</th></tr></thead><tbody><tr><td>高裕弟</td><td>公告未披露</td><td>公告未披露</td><td>实际控制人；<strong>已不担任公司董监高</strong>（2026-03-02 辞去总经理、2026-09-21 换届后不再任董事长）</td><td>拟罚 1,050 万元＋<strong>8 年市场禁入</strong></td></tr><tr><td>穆欣炬</td><td>公告未披露</td><td>时任公司常务副总经理、全资子公司义乌清越总经理</td><td>已不在第三届董事会及高管名单</td><td>拟罚 900 万元＋<strong>6 年市场禁入</strong></td></tr><tr><td>张小波</td><td>公告未披露</td><td>时任财务总监、董事会秘书</td><td>已不在第三届董事会及高管名单</td><td>拟罚 700 万元＋<strong>5 年市场禁入</strong></td></tr><tr><td>吴磊</td><td>公告未披露</td><td>时任监事会主席、总监（管理销售部）</td><td>已不在第三届董事会及高管名单</td><td>拟罚 400 万元＋<strong>3 年市场禁入</strong></td></tr><tr><td>陈钢</td><td>公告未披露</td><td>公告未披露</td><td>第三届董事会<strong>董事长</strong>，代行财务总监职责</td><td>非处罚当事人</td></tr><tr><td>敖伟</td><td>公告未披露</td><td>公告未披露</td><td>第三届董事会非独立董事、<strong>总经理</strong></td><td>非处罚当事人</td></tr><tr><td>毕晨亮</td><td>公告未披露</td><td>简历见 2026-09-22 公告附件</td><td><strong>董事会秘书</strong></td><td>非处罚当事人</td></tr><tr><td>嵇从民、曹恒华</td><td>公告未披露</td><td>公告未披露</td><td>独立董事（曹恒华为审计委员会主任委员、会计专业人士）</td><td>非处罚当事人</td></tr><tr><td>葛亮</td><td>公告未披露</td><td>公告未披露</td><td>职工代表董事</td><td>非处罚当事人</td></tr></tbody></table>
+<p><strong>说明</strong>：公司公告披露的董事候选人简历未含出生年月，本表按纪律如实写"公告未披露"，不用第三方内容填充。离任情况：2026-03-03 高裕弟辞去总经理（保留实控人、董事长、核心技术人员）；2026-04-01 董事梁子权辞职（补选葛亮）；<strong>2026-05-12 财务总监辞职离任，至今由董事长陈钢代行</strong>；2026-09-21 换届后韩亦舜、耿建新不再任独立董事，孙剑不再任职工代表董事。</p>
+
+</div></details>
+<h3 id="sec2">1.3 戴帽与退市程序沿革（★本报告核心）</h3>
+<p><strong>结论：公司用 4 个月零 4 天走完了从"其他风险警示"到"退市风险警示"再到"交易类强制退市触发"的全过程，这是 A 股极快的退市路径之一——2026-04-30 因内控否定意见戴 ST，2026-05-12 因收到欺诈发行事先告知书叠加 ＊ST，2026-09-10 因连续 20 个交易日收盘价低于 1 元触发面值退市，2026-09-11 起停牌至今。</strong></p>
+<details class="fold"><summary>戴帽与退市程序完整沿革表（时间降序）</summary><div class="fold-body">
+
+<table><thead><tr><th>日期</th><th>事件</th><th>规则依据 / 关键数字</th></tr></thead><tbody><tr><td>2026-06-23</td><td>归母净资产 7.0833 亿元、未分配利润 -4.3296 亿元、预计负债 1.7628 亿元（含拟罚 1.7188 亿元）</td><td>—</td></tr><tr><td><strong>2026-09-11（星期五）</strong></td><td>股票<strong>开市起停牌</strong>；同日披露《触及交易类强制退市的风险提示暨停牌的公告》《收到终止上市事先告知书的公告》《收到终止上市相关事项监管工作函的公告》</td><td>科创板 12.3.1 第一款第二项、12.3.4 第一款</td></tr><tr><td>2026-09-10（星期四）</td><td>收 0.58 元（-20.55%）、总市值 2.61 亿元，<strong>连续 20 个交易日收盘价均低于 1 元</strong>；上交所上市公司管理二部下发《终止上市事先告知书》，称将依 12.3.5 条作出终止上市决定；公司可于收到后 5 个交易日内提交书面听证申请</td><td>科创板 12.3.1、12.3.5</td></tr><tr><td>2026-09-01</td><td>收到第二份《行政处罚事先告知书》（处罚字[2026]49 号），重新认定欺诈发行事实与量罚；公司股票"可能触及 12.2.1 第（一）项、12.2.2 第（一）项重大违法行为，可能被实施重大违法强制退市"</td><td>科创板 12.2.1(一)、12.2.2(一)</td></tr><tr><td>2026-06-18、2026-06-22</td><td>证监会就本案召开听证会，听取当事人陈述申辩；此后核查补充证据并<strong>重新</strong>进行行政处罚事先告知</td><td>—</td></tr><tr><td><strong>2026-05-12</strong></td><td>股票简称由"ST 清越"变更为"<strong>＊ST 清越</strong>"（2026-05-11 停牌一天），叠加实施退市风险警示，同时继续实施其他风险警示</td><td>科创板 12.2.4 第一款</td></tr><tr><td>2026-05-08</td><td>收到第一份《行政处罚事先告知书》（处罚字[2026]13 号），拟认定欺诈发行＋信息披露违法</td><td>—</td></tr><tr><td><strong>2026-04-30</strong></td><td>股票简称由"清越科技"变更为"ST 清越"，实施其他风险警示（2026-04-29 停牌一天）；涨跌幅不变仍 20%、不进入风险警示板、单日买入限 50 万股</td><td>科创板 12.9.1 第一款第（三）项（2025 年度内控被北京德皓国际出具<strong>否定意见</strong>）</td></tr><tr><td>2026-02-03/04</td><td>收到证监会《冻结决定书》（冻结决定书[2026]10 号），冻结 3 个证券账户 163.13 万股（回购股份）＋ 7 个募集资金专户资金本息 <strong>13,364.41 万元</strong>，期限 6 个月</td><td>—</td></tr><tr><td>2025-12-13</td><td>实控人高裕弟<strong>撤回股份回购提议</strong>，并承诺替上市公司承担不低于 <strong>1,000 万元</strong>民事赔偿，以其通过昆山和高所持 900 万股质押给全资子公司义乌研究院作担保</td><td>—</td></tr><tr><td><strong>2025-10-31</strong></td><td>收到证监会《立案告知书》（证监立案字 <strong>0382025011</strong> 号），因涉嫌定期报告等财务数据虚假记载被立案</td><td>—</td></tr><tr><td>2022-12-28</td><td>在科创板上市，发行价 9.16 元、发行 9,000 万股、募资总额 8.2440 亿元、净额 7.3495 亿元（超募 3.3495 亿元）</td><td>保荐机构广发证券、审计机构立信</td></tr></tbody></table>
+<p><strong>唯一被夹在中间的"自救动作"</strong>：2025-08-27 完成股份回购（163.13 万股），但该批回购股份在 2026-02 被证监会冻结。除此之外，公司层面在 2025-11 立案至今的近 12 个月里未披露任何实质保壳、重整或资产处置方案。</p>
+
+</div></details>
+<h3 id="sec3">1.4 四类退市红线逐条对照</h3>
+<p><strong>结论：四类红线全部命中或已触发——交易类（面值退市）已触发且是本次终止上市的直接依据，重大违法类已由证监会事先告知书认定，财务类与规范类的触发事由同时存在（内控否定意见）；这是四类红线"全中"的极端样本，任何一项单独成立都足以终止上市。</strong></p>
+<table><thead><tr><th>类型</th><th>触发条件（本标的对照）</th><th>是否命中</th><th>可救性</th></tr></thead><tbody><tr><td><strong>交易类</strong></td><td>连续 20 个交易日收盘价 &lt;1 元：<strong>2026-08-14～09-10 连续 20 个交易日收盘价 0.58～0.97 元</strong>；另总市值 2.61 亿元首次低于 3 亿元</td><td><strong>已触发</strong>（交易所已发终止上市事先告知书）</td><td><strong>不可救</strong>（不进入退市整理期）</td></tr><tr><td><strong>重大违法类</strong></td><td>证监会事先告知书认定《招股说明书》编造重大虚假内容（2020—2022H1 虚增利润总额 337.40 万/764.53 万/2,358.16 万元，占各期利润总额 5.56%/15.58%/131.74%），构成《证券法》第 181 条第一款情形</td><td><strong>已认定（拟）</strong>，待正式《行政处罚决定书》</td><td><strong>不可救</strong></td></tr><tr><td><strong>规范类</strong></td><td>2025 年度财务报告内部控制被北京德皓国际出具<strong>否定意见</strong>（德皓内字[2026]00000130 号）——因立案调查涉及的<strong>存货跌价准备计提充分性</strong>等问题金额重大、缺陷影响未消除</td><td><strong>已命中</strong>（即 ST 帽依据）</td><td>不可救（本案已被交易类先适用）</td></tr><tr><td><strong>财务类</strong></td><td>2025 年利润总额 -1.1917 亿元、归母 -0.9884 亿元、扣非 -1.0407 亿元，<strong>但扣除后营收 6.2693 亿元 &gt;3 亿元（科创板线为 1 亿元）且净资产为正 ⇒ 财务类①（营收）与②（净资产）均未触及</strong>；2025 年财报审计意见为"<strong>带强调事项段的保留意见</strong>"，而科创板 12.4.2 第一款第（三）项只含"无法表示/否定" ⇒ 亦未触及</td><td>未触及</td><td>—</td></tr><tr><td>其他类</td><td>三年累计分红因公司连续亏损不适用</td><td>未触及</td><td>—</td></tr></tbody></table>
+<details class="fold"><summary>四类红线的规则原文口径与三个易错点</summary><div class="fold-body">
+
+<p><strong>① "先触及先适用"条款决定了本案不进入退市整理期。</strong> 科创板 12.1.10 第一款规定"上市公司出现两项以上风险警示、终止上市情形的，其股票按照<strong>先触及先适用</strong>的原则实施风险警示、终止上市"（同条第三款另规定"公司同时存在两项以上风险警示情形的，须满足全部风险警示情形的撤销条件，方可撤销风险警示"）。本案<strong>交易类情形先触及</strong>（2026-09-10 满 20 个交易日），而重大违法类尚停留在《行政处罚事先告知书》阶段、需正式《决定书》才成立，故交易所选择交易类路径，并已在《监管工作函》中明确"本所已经发出交易类强制退市的事先告知书"。<strong>退市整理期的进出门槛在 12.7.1 第一款：该款只把"本章第二节（重大违法）、第四节（财务类）、第五节（规范类）"作出终止上市决定的标的纳入退市整理期，第三节（交易类）不在其列</strong> ⇒ 交易类强制退市不进入退市整理期（公司公告亦径称"《科创板股票上市规则》第 12.7.1 条第一款规定，交易类强制退市公司股票不进入退市整理期交易"）。故<strong>持仓者没有"退市整理期最后卖出"的窗口</strong>。这是与科创板首批退市股（紫晶存储、泽达易盛）最关键的差别——那两家适用重大违法类退市，<strong>进入了 15 个交易日（12.7.2）的退市整理期</strong>。</p>
+<p><strong>② 保留意见"不触发"财务类红线，但仍是风险。</strong> 2025 年财报为"带强调事项段的保留意见"（德皓审字[2026]00002094），形成保留意见的基础是"证监会立案调查涉及事项尚未形成最终结论，无法获取充分适当的审计证据"。科创板 12.4.2 第一款第（三）项只列"无法表示意见或否定意见"，故<strong>不构成 2024 年度的财务类 ＊ST 事由</strong>；但若后续重新出具意见，将直接落入该项。</p>
+<p><strong>③ 强调事项段的两件事。</strong> 一是证监会 2026-02 冻结 3 个证券账户 163.13 万股与 7 个募集资金专户 13,364.41 万元（期限 6 个月，审计报告批准报出日仍未解冻），二是该冻结"将直接限制公司募集资金使用与流动性安排……势必会加大公司持续经营能力的不确定性"。</p>
+
+</div></details>
+<h3 id="sec4">1.5 全流程进度看板与运作特征</h3>
+<p><strong>结论：所有环节都已失去公司可操作空间——程序已进入"等交易所裁量"阶段，公司唯一还能做的是聘请主办券商、安排股票转入全国中小企业股份转让系统（截至基准日未见相关公告）。</strong></p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点/条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>立案调查</td><td>已立案（2025-10-31）</td><td>需正式《行政处罚决定书》</td><td>决定书落地（时点未知）</td><td>证监立案字0382025011号</td></tr><tr><td>行政处罚</td><td>两次事先告知书（2026-05-08、2026-09-01）、两次听证（2026-06-18、06-22）</td><td>等待正式决定书</td><td>决定书</td><td>处罚字[2026]13号、49号</td></tr><tr><td>交易类强制退市</td><td><strong>已触发</strong>、已收到终止上市事先告知书</td><td>公司可申请听证（5 个交易日内，基准日前未见申请公告）</td><td>上市委员会审议（期限届满或听证结束后 <strong>15 个交易日</strong>内，12.3.5）→ 交易所终止上市决定（决定之日起 <strong>2 个交易日</strong>内通知并披露，12.3.7）→ <strong>公司公告终止上市决定之日起 5 个交易日内摘牌</strong>（12.3.7）</td><td>2026-09-11 三份公告</td></tr><tr><td>重大违法强制退市</td><td>已 18 次风险提示</td><td>需正式决定书</td><td>因先触及先适用，不再单独走程序</td><td>18 次风险提示公告</td></tr><tr><td>退市后安排</td><td><strong>未见聘请主办券商公告</strong></td><td>摘牌之日起 <strong>45 个交易日</strong>内可在股转系统挂牌转让（12.7.12）；须聘请具有主办券商业务资格的证券公司，未聘请的交易所可协调确定</td><td>聘请主办券商公告</td><td>科创板 12.7.12 条、监管工作函第四条</td></tr><tr><td>投资者赔偿</td><td>保荐人广发证券、审计机构立信、实控人高裕弟<strong>拟共同出资设立先行赔付专项基金</strong></td><td>金额未披露</td><td>基金设立与赔付方案公告</td><td>2026-05-09 公告</td></tr><tr><td>经营</td><td>持续亏损、研发投入腰斩（2026H1 同比 -52.72%）</td><td>—</td><td>—</td><td>2026 半年报</td></tr></tbody></table>
+<details class="fold"><summary>运作特征与核心矛盾（王艳式"运作特征"栏）</summary><div class="fold-body">
+
+<p><strong>手法</strong>：无资本运作手法可言——公司自 2022-12 上市至立案前<strong>没有任何控制权变更、协议转让、司法拍卖或定增</strong>，是一家长年由创始人团队实际经营的技术型公司，本次危机完全由 IPO 阶段的财务造假引发；立案后公司唯一的"动作"是回购（已实施并被冻结）与实控人个人承诺赔偿（撤回提议的回购 + 承诺代偿 1,000 万元 + 质押 900 万股）。</p>
+<p><strong>节奏</strong>：2025-10-31 立案 → 2026-04-30 戴 ST（内控否定）→ 2026-05-12 戴 ＊ST（事先告知书）→ 2026-09-10 触发面值退市 → 2026-09-11 停牌，<strong>全程 10 个月零 11 天</strong>；从戴 ST 到触发交易类退市仅 <strong>4 个月零 11 天</strong>。</p>
+<p><strong>交权是配合式还是对抗式</strong>：<strong>配合式</strong>。高裕弟 2026-03-02 辞去总经理（保留董事长），2026-09-21 换届后不再任董事长；三名被处罚的前任/现任高管（穆欣炬、张小波、吴磊）均已不在第三届董事会及高管名单；新班子由陈钢（董事长兼代行财务总监）与敖伟（总经理）组成。公司层面未见任何对处罚事实的公开抗辩（两次听证后仅调整了量罚）。</p>
+<p><strong>成败关键变量（1 和 0）</strong>：面值退市为"1"——<strong>已经发生</strong>；公司无任何可挽回的变量。</p>
+<p><strong>核心矛盾一句话</strong>：这是一家把"造假来上市"当成起点、把"上市后继续造假"当成习惯的公司，退市不是意外，而是造假链条的必然终点。</p>
+
+</div></details>
+<h2 id="chap2">二、第二翼 · 基本面路径</h2>
+<h3 id="sec5">2.1 路径判定：既非保壳、也非重整，而是"处罚 ST → 强制退市"路径</h3>
+<p><strong>结论：ST 板块常见的三条路径（保壳、重整、处罚 ST）在本案全部失效——财务类红线未踩、无需保壳；无任何重整或预重整公告、无重整基础；而"处罚 ST"路径所指向的摘帽条件根本来不及实现，因为交易类退市已经先把公司摘牌。</strong></p>
+<p>本案应单独归类为<strong>第四类：强制退市执行路径</strong>。三条路径失效的理由分别是：</p>
+<p>① <strong>保壳路径无效</strong>：公司并不踩"营收不足"或"净资产为负"这两条财务类红线（2025 年扣除后营收 6.2693 亿元、2026-06-30 归母净资产 7.0833 亿元），所以没有"保壳"这个题目。真正致命的是<strong>股价</strong>——这是公司无法用经营改善或资本动作解决的问题。</p>
+<p>② <strong>重整路径不存在</strong>：2025-11 立案至今，公司<strong>没有任何重整、预重整或庭外重组公告</strong>；且即便启动，重整受理需法院裁定、常规耗时 6—12 个月，而公司股票已停牌、退市决定在即。</p>
+<p>③ <strong>处罚 ST 路径被时间锁死</strong>：即便公司 2026 年度内控转为无保留意见，撤销 ST 的判定时点也必然落在 2027 年 4 月（科创板 12.9.7 第二款要求"最近一个会计年度"的标准无保留意见内控审计报告）；而交易类强制退市在 2026 年内就会完成摘牌。</p>
+<details class="fold"><summary>2.1 附表 · 三条常规路径的逐条排除依据</summary><div class="fold-body">
+
+<table><thead><tr><th>路径</th><th>本案适用性</th><th>排除依据</th></tr></thead><tbody><tr><td>路径 A · 保壳（营收不足/净资产为负）</td><td><strong>不适用</strong></td><td>2025 年扣除后营收 62,693.07 万元（科创板红线 1 亿元）；2026-06-30 归母净资产 70,832.50 万元为正；财务类①②均未触及</td></tr><tr><td>路径 A 附支 · 审计意见型保壳</td><td><strong>已无意义</strong></td><td>2025 年为"带强调事项段的保留意见"，科创板 12.4.2 第一款第（三）项只含"无法表示/否定"，未触发 ＊ST；但交易类退市已先行</td></tr><tr><td>路径 B · 重整</td><td><strong>不适用</strong></td><td>全周期 268 条公告中<strong>无任何</strong>重整/预重整/庭外重组/控制权变更公告；立案调查期间亦不满足发股条件</td></tr><tr><td>路径 C · 处罚 ST 摘帽</td><td><strong>时间上不可行</strong></td><td>撤销 ST 走科创板 12.9.7 第二款（内控"标准无保留意见"，锚点 2027-04）；撤销 ＊ST 走 12.2.x（需决定书结论"未触及重大违法"，或本就无该项情形）——但公司将在 2026 年内摘牌</td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec6">2.2 公司到底做错了什么：IPO 造假 + 上市后继续造假</h3>
+<p><strong>结论：这不是一次"会计估计失误"，而是从 IPO 招股说明书开始的系统性财务造假——用"故意少计存货跌价准备、虚假销售芯片"把 2020—2022 上半年利润做高，上市后又用"少计减值、虚假销售显示模组、迟延处理补缴税款"继续做高 2022 年报与 2023 半年报，最新一份告知书认定的 2022 年上半年虚增利润总额占招股说明书披露利润总额的 131.74%（即当期真实利润为负）。</strong></p>
+<details class="fold"><summary>两份《行政处罚事先告知书》认定的违法事实（逐项原文摘录）</summary><div class="fold-body">
+
+<p><strong>一、清越科技公告的证券发行文件编造重大虚假内容（欺诈发行）</strong></p>
+<p>《招股说明书》第八节"财务会计信息与管理层分析"涉及的财务数据存在虚假记载：2020 年至 2022 年上半年，通过<strong>故意少计存货跌价准备、虚假销售芯片</strong>等方式分别虚增利润总额 <strong>3,374,031.73 元、7,645,323.73 元、23,581,569.24 元</strong>，占《招股说明书》披露的各当期利润总额的 <strong>5.56%、15.58%、131.74%</strong>。公司构成《证券法》第一百八十一条第一款所述情形。（第一份告知书处罚字[2026]13 号仅认定 2021 年虚增利润总额 10,654,935.32 元、占 21.72%；第二次告知书将报告期扩展至 2020—2022 上半年。）</p>
+<p><strong>二、未按规定披露重大事项，2022 年年度报告、2023 年半年度报告信息披露存在虚假记载</strong></p>
+<p>2022 年至 2023 年上半年，因<strong>故意少计存货跌价准备、少计应收账款减值损失、虚假销售显示模组、未及时对补缴税款进行会计处理</strong>等事项：虚增 2022 年度利润总额 <strong>47,115,576.91 元</strong>，占 2022 年年报披露利润总额的 <strong>108.53%</strong>；虚增 2023 年上半年利润总额 <strong>47,535,999.83 元</strong>，占 2023 年半年报披露利润总额绝对值的 <strong>145.10%</strong>。2023 年未及时披露补缴 <strong>44,419,917.22 元</strong>出口退税款事项，占 2022 年经审计净利润的 <strong>79.74%</strong>。</p>
+<p><strong>三、责任人分工（公告原文摘要）</strong></p>
+<p>高裕弟（时任董事长、总经理）：全面负责经营管理，<strong>知悉、参与虚假销售芯片</strong>，决策少计应收账款减值损失，决策补缴税款但未督促及时进行会计处理和信息披露。穆欣炬（时任常务副总经理、义乌清越总经理）：<strong>组织、策划、参与虚假销售芯片</strong>，决策、知悉少计存货跌价准备；其分管的销售部负责显示模组销售业务。张小波（时任财务总监、董事会秘书）：知悉虚假销售芯片、少计存货跌价准备；<strong>知悉、参与少计应收账款减值损失</strong>；未及时对补缴税款进行会计处理。吴磊（时任监事会主席、总监）：<strong>组织、参与少计应收账款减值损失</strong>；知悉虚假销售芯片。</p>
+
+</div></details>
+<h3 id="sec7">2.3 处罚与赔偿责任</h3>
+<p><strong>结论：证监会拟对公司罚款 17,188 万元（约为非法所募资金 8.244 亿元的 20%），并对四名责任人合计罚款 3,050 万元、市场禁入 3 至 8 年；赔偿端已经启动"两条腿"——保荐人广发证券、审计机构立信与实控人高裕弟拟共设先行赔付专项基金，实控人另个人承诺替上市公司承担不低于 1,000 万元民事赔偿。</strong></p>
+<table><thead><tr><th>对象</th><th>欺诈发行部分罚款</th><th>信披违法部分罚款</th><th>合计罚款</th><th>市场禁入</th></tr></thead><tbody><tr><td>苏州清越（公司）</td><td>16,488 万元（非法所募 8.244 亿元的 20%）</td><td>700 万元（责令改正＋警告）</td><td><strong>17,188 万元</strong></td><td>—</td></tr><tr><td>高裕弟</td><td>600 万元</td><td>450 万元</td><td><strong>1,050 万元</strong></td><td><strong>8 年</strong></td></tr><tr><td>穆欣炬</td><td>500 万元</td><td>400 万元</td><td><strong>900 万元</strong></td><td><strong>6 年</strong></td></tr><tr><td>张小波</td><td>400 万元</td><td>300 万元</td><td><strong>700 万元</strong></td><td><strong>5 年</strong></td></tr><tr><td>吴磊</td><td>150 万元</td><td>250 万元</td><td><strong>400 万元</strong></td><td><strong>3 年</strong></td></tr></tbody></table>
+<p>公司已在 2026 半年报中计提<strong>预计负债 1.7628 亿元</strong>（与拟罚款 1.7188 亿元同量级），这是 2026H1 归母亏损 2.2907 亿元的主要来源（扣非仅 -0.5918 亿元）。</p>
+<details class="fold"><summary>先行赔付机制与同型先例的处理方式</summary><div class="fold-body">
+
+<p><strong>本标的的赔偿安排</strong>：① 2026-05-08，保荐人及主承销商<strong>广发证券</strong>、审计机构<strong>立信会计师事务所</strong>、实控人<strong>高裕弟</strong>通知公司，三方<strong>拟共同出资设立先行赔付专项基金</strong>，用于先行赔付适格投资者的投资损失（<strong>金额未披露</strong>）。② 2025-12-13，高裕弟撤回股份回购提议，并出具《关于撤回股份回购提议并自愿承担未来上市公司一定范围民事赔偿额的承诺》，承诺在法院生效判决确定公司应承担的民事赔偿责任中<strong>替公司向投资人承担不低于 1,000 万元</strong>，并以通过昆山和高所持 <strong>900 万股质押</strong>给公司全资子公司义乌研究院作履约担保。③ 承诺文件同时明确"该承诺金额不代表上市公司及相关责任人的赔偿限额，上市公司及相关责任人向投资者承担的赔偿责任以生效民事判决确定金额为准，存在不确定性"。</p>
+<p><strong>同型先例（科创板首批欺诈发行强制退市股）的处理：</strong></p>
+<table><thead><tr><th>案例</th><th>退市事由</th><th>赔偿安排</th><th>后续</th></tr></thead><tbody><tr><td><strong>紫晶存储（688086，现"退市紫晶"）</strong></td><td>欺诈发行＋信披违法，2023-04-24 停牌、<strong>2023-06-08 进入退市整理期</strong>（首日 -63.22%、收 0.89 元）、2023-07-07 摘牌</td><td>中信建投等 4 家中介机构先行赔付 <strong>10.86 亿元</strong>，覆盖 <strong>16,986 户</strong>（占受损人数 97.22%）／<strong>10.86 亿元</strong>（占总损失 98.93%）；承诺金合计约 <strong>12.75 亿元</strong></td><td>17,471 名投资者损失合计 <strong>10.97 亿元</strong>；2024 年刑事一审：公司犯欺诈发行证券罪罚金 3,700 万元，实控人郑穆等 10 人获刑（郑穆 7 年 6 个月）；2025 年中介机构对 48 名主体反向追偿 10.86 亿元</td></tr><tr><td><strong>泽达易盛（688555，现"退市泽达"）</strong></td><td>同上，<strong>2023-06-08 进入退市整理期</strong>（首日 -62.56%、收 1.55 元）</td><td>保荐机构等赔付约 <strong>4.93 亿元</strong></td><td>上海金融法院受理普通代表人诉讼；中介机构反向追偿 3.72 亿元（37 家企业和 2 名自然人）</td></tr></tbody></table>
+<p><strong>关键差异（决定持仓者命运）</strong>：紫晶、泽达适用<strong>重大违法类</strong>退市，<strong>进入 15 个交易日的退市整理期</strong>，持仓者尚有卖出窗口；本标的适用<strong>交易类</strong>退市（先触及先适用），<strong>不进入退市整理期</strong>，持仓者从停牌直接到摘牌。</p>
+
+</div></details>
+<h2 id="chap3">三、公司运营情况</h2>
+<h3 id="sec8">3.1 财务状况</h3>
+<p><strong>结论：公司连续四年亏损且亏损在加速——2026H1 归母亏损 2.2907 亿元（已超 2025 年全年的 2.3 倍），未分配利润 -4.3296 亿元已超过实收股本 4.5 亿元的三分之一；剔除 1.70 亿元罚款计提后，主业半年仍亏 0.59 亿元，收入同比 -16.26%，没有任何拐点迹象。</strong></p>
+<table><thead><tr><th>财务项</th><th>2023 年</th><th>2024 年</th><th>2025 年</th><th>2026H1</th></tr></thead><tbody><tr><td>营业收入（亿元）</td><td>6.6108</td><td>7.5338</td><td>6.6932</td><td>2.7564</td></tr><tr><td>同比</td><td>—</td><td>+13.96%</td><td>-11.16%</td><td>-16.26%</td></tr><tr><td>扣除后营业收入（亿元）</td><td>6.3696</td><td>7.2599</td><td>6.2693</td><td>半年报未披露</td></tr><tr><td>利润总额（亿元）</td><td>-1.5069</td><td>-0.9447</td><td>-1.1917</td><td>-2.0927</td></tr><tr><td>归母净利润（亿元）</td><td>-1.1793</td><td>-0.6949</td><td>-0.9884</td><td><strong>-2.2907</strong></td></tr><tr><td>扣非归母净利润（亿元）</td><td>-1.3314</td><td>-0.7840</td><td>-1.0407</td><td><strong>-0.5918</strong></td></tr><tr><td>经营活动现金流净额（亿元）</td><td>-1.8039</td><td>+0.1064</td><td>+0.0468</td><td>-0.6631</td></tr><tr><td>归母净资产（亿元）</td><td>11.2690</td><td>10.3199</td><td>9.2415</td><td><strong>7.0833</strong></td></tr><tr><td>总资产（亿元）</td><td>—</td><td>18.2245</td><td>16.2351</td><td>14.2191</td></tr><tr><td>资产负债率</td><td>—</td><td>43.4%</td><td>43.0%</td><td>43.2%</td></tr></tbody></table>
+<p><strong>勾稽校验</strong>：2026-06-30 合并口径——资产总计 14.2191 亿元 ＝ 负债合计 6.1416 亿元 ＋ 所有者权益合计 8.0775 亿元（归母 7.0833 亿 ＋ 少数股东权益 0.9943 亿元），勾稽成立；资产负债率 43.19%，分母为合并所有者权益。</p>
+<details class="fold"><summary>2026H1 亏损拆解与关键资产负债表科目</summary><div class="fold-body">
+
+<p><strong>亏损拆解</strong>：归母 -2.2907 亿元 ＝ 扣非 -0.5918 亿元 ＋ 非经常性损益 -1.6989 亿元。非经常性损益的主要构成是<strong>计提预计负债 1.7628 亿元</strong>（对应拟罚款 1.7188 亿元）；<strong>分季看</strong>：Q1 归母 -0.3245 亿元、Q2 单季 -1.9662 亿元，Q2 的额外亏损即罚款集中计提所致；而 Q1、Q2 的<strong>扣非亏损分别为 -0.3366 亿元与 -0.2552 亿元</strong>，说明主业亏损相对平稳在每季 -0.3 亿元量级，全年主业亏损约 1.2 亿元。</p>
+<p><strong>关键资产负债科目（2026-06-30 vs 2025-12-31，元）</strong>：</p>
+<table><thead><tr><th>科目</th><th>2026-06-30</th><th>2025-12-31</th><th>变动</th></tr></thead><tbody><tr><td>货币资金</td><td>250,885,752.11</td><td>230,271,848.79</td><td>+8.95%</td></tr><tr><td>应收款项</td><td>197,396,655.21</td><td>220,480,907.13</td><td>-10.47%</td></tr><tr><td>存货</td><td>123,116,787.01</td><td>195,379,455.24</td><td><strong>-36.99%</strong>（主要消耗库存物料）</td></tr><tr><td>短期借款</td><td>150,200,448.94</td><td>231,903,873.94</td><td>-35.23%（偿还短期贷款）</td></tr><tr><td>长期借款</td><td>65,900,000.00</td><td>43,866,375.00</td><td>+50.23%（延长还款期）</td></tr><tr><td>一年内到期的非流动负债</td><td>24,090,951.45</td><td>59,800,030.66</td><td>-59.71%</td></tr><tr><td>预计负债</td><td>176,280,275.x</td><td>—</td><td>计提拟罚款</td></tr><tr><td>负债合计</td><td>614,155,839.51</td><td>589,613,714.93</td><td>+4.16%</td></tr><tr><td>未分配利润</td><td><strong>-432,961,985.54</strong></td><td>-203,893,547.01</td><td>亏损累积</td></tr><tr><td>少数股东权益</td><td>99,427,087.61</td><td>109,743,833.65</td><td>-9.40%</td></tr><tr><td>资本公积</td><td>645,797,647.62</td><td>645,797,647.62</td><td>未变</td></tr><tr><td>库存股（回购股份）</td><td>12,991,956.74</td><td>12,991,956.74</td><td>未变（该批股份已被冻结）</td></tr></tbody></table>
+<p><strong>有息负债合计约 2.4019 亿元</strong>（短期借款 1.5020 亿 ＋ 长期借款 0.6590 亿 ＋ 一年内到期 0.2409 亿），对货币资金 2.5089 亿元，短期流动性尚可，前提是<strong>被冻结的 1.3364 亿元募集资金不能解冻</strong>这一约束持续存在。</p>
+<p><strong>担保</strong>：担保总额 8,593.275 万元 ＝ 净资产 12.13%，<strong>全部为对资产负债率超过 70% 的子公司的担保</strong>。</p>
+<p><strong>募集资金使用</strong>：首发募资净额 73,495.47 万元，截至 2026-06-30 累计投入 61,807.25 万元（进度 <strong>84.1%</strong>），其中超募资金累计投入 31,299.19 万元（进度 93.44%）；"硅基 OLED 显示器生产线技改项目""前沿超低功耗显示及驱动技术工程研究中心建设项目""补流"及"超募永久补流"四个项目<strong>均已于 2025 年 12 月结项</strong>。本年度新投入仅 52.80 万元。</p>
+
+</div></details>
+<h3 id="sec9">3.2 收入与利润来源地图</h3>
+<p><strong>结论：公司的收入地图是"以电子纸模组撑规模、以 PMOLED 撑毛利"，而电子纸模组的毛利率只有 1.50%——2025 年该业务贡献 63.2% 的收入却几乎没有毛利，是"越做越亏"的结构；硅基 OLED（市场给的想象空间所在）2025 年收入仅 1,048.54 万元、毛利率 -38.76%，热点业务占比不足 1.6%。</strong></p>
+<p>2025 年主营业务分产品：<strong>PMOLED 1.3020 亿元（占主营 19.6%，毛利率 27.71%）／电子纸模组 4.2324 亿元（占主营 63.7%，毛利率 1.50%）／AMOLED 2,489.91 万元（7.73%）／CTP 1,837.25 万元（24.17%）／硅基 OLED 1,048.54 万元（毛利率 -38.76%）／CTP+OLED 384.36 万元（21.55%）／TFT-LCD 158.82 万元（-56.70%）</strong>。分地区：境内 5.4670 亿元（毛利率 3.87%）／境外 6,593.49 万元（35.62%）。前五名客户销售额 4.6695 亿元，<strong>占年度销售总额 69.77%</strong>，其中第一名 2.6571 亿元占 <strong>39.70%</strong>，客户集中度极高。</p>
+<details class="fold"><summary>3.2 附表 · 主要子公司经营情况与产销量（2025 年报 / 2026 半年报）</summary><div class="fold-body">
+
+<p><strong>主要子公司（2026H1，万元）</strong>：</p>
+<table><thead><tr><th>公司</th><th>类型</th><th>主要业务</th><th>总资产</th><th>净资产</th><th>营业收入</th><th>净利润</th></tr></thead><tbody><tr><td>义乌清越光电科技有限公司</td><td>子公司</td><td>电子纸模组研发生产销售</td><td>41,172.73</td><td><strong>398.74</strong></td><td>15,652.51</td><td><strong>-4,090.67</strong></td></tr><tr><td>昆山梦显电子科技有限公司</td><td>参股公司</td><td>硅基 OLED 研发生产销售</td><td>47,063.82</td><td>30,260.06</td><td>816.65</td><td><strong>-3,016.77</strong></td></tr></tbody></table>
+<p><strong>产销量（2025 年）</strong>：PMOLED 生产 1,311.10 万片、销售 1,506.26 万片、库存 215.03 万片（库存 -39.00%）；电子纸模组 生产 3,203.49 万片、销售 3,154.97 万片、库存 162.13 万片（库存 +28.43%）。</p>
+<p><strong>研发与人员</strong>：2025 年研发投入 5,481.08 万元、占营收 8.19%（同比 -21.29%）；<strong>2026H1 研发投入仅 1,447.89 万元、同比 -52.72%、占营收 5.25%</strong>，公司解释为"严格实施降本增效……研发立项以有明确的商业转化为基础"。2025 年末在职员工 <strong>647 人</strong>（生产 437、技术 100、销售 34、财务 17、行政 59）。</p>
+<p><strong>行业位置</strong>：国家级专精特新"小巨人"企业（2020 年，显示器模组）、单项冠军产品（2021 年，显示器模组）。</p>
+
+</div></details>
+<h3 id="sec10">3.3 资产质量与估值星级</h3>
+<p><strong>结论：资产端的"体面"是相对的——货币资金 2.51 亿元、资产负债率 43% 看似稳健，但 1.34 亿元募集资金被证监会冻结、1.76 亿元预计负债已入表、4.33 亿元未分配利润亏空、且公司即将失去上市地位，PB 0.37 的低估值反映的不是错杀，而是"退市后残值"的定价。</strong></p>
+<table><thead><tr><th>星级维度</th><th>大白话说明</th><th>评级</th></tr></thead><tbody><tr><td>市值与估值</td><td>总市值 2.61 亿元，PB 0.37；但净资产分母已被 1.72 亿元罚款与潜在民事赔偿侵蚀，PB 不可作为安全垫</td><td>★</td></tr><tr><td>法律合规性</td><td>证监会两次事先告知：IPO 欺诈发行＋年报/半年报虚假记载；四名责任人被市场禁入 3—8 年；<strong>已触发交易类强制退市并收到终止上市事先告知书</strong></td><td>☆（无星）</td></tr><tr><td>债务与流动性</td><td>资产负债率 43.19%、有息负债 2.40 亿元、货币资金 2.51 亿元；但 1.3364 亿元募集资金被冻结</td><td>★★</td></tr><tr><td>主业质地</td><td>连续四年亏损，扣非 2023—2026H1 累计亏 2.75 亿元；电子纸模组毛利率 1.50%，硅基 OLED 毛利率 -38.76%；研发投入腰斩</td><td>★</td></tr><tr><td>控制权与运作</td><td>实控人高裕弟持股约 66% 但被 8 年市场禁入；无任何重组、注入、控制权变更安排</td><td>★</td></tr></tbody></table>
+<p><strong>哪一项的高分不能抵消哪一项的低分</strong>：法律合规性（零星）不可被任何一项抵消——<strong>四类退市红线"全中"且交易类已触发</strong>，这是"一票否决"级事实，其余维度的评分只用于说明"退市后还剩多少残值"，不构成投资理由。</p>
+<h2 id="chap4">四、第三翼 · 炒作逻辑与情绪筹码</h2>
+<h3 id="sec11">4.1 炒作逻辑三支柱</h3>
+<p><strong>结论：三支柱全部指向"零"——炒预期无标的（无重整、无注入、无控制权变更）、炒历史类似行为显示退市股在三板的价格区间仅 0.18—1.48 元、炒主板映射是负向（显示面板同业 2026 年中位仅下跌约 2.9%，本股跑输约 87 个百分点），因此本股不存在任何可交易的炒作逻辑。</strong></p>
+<p><strong>① 炒预期：没有可预期的正向事件。</strong> 2026 年的近端事件全是法定程序节点——上市委员会审议、终止上市决定、摘牌、聘请主办券商、先行赔付基金设立与赔付方案。这些事件的共同特征是"<strong>只会兑现损失，不会创造价值</strong>"。公司自查并问询控股股东及实控人后亦公告"不存在应披露而未披露的重大信息"。</p>
+<p><strong>② 炒历史类似行为（相似股票匹配法）：全是"1 元以下 → 摘牌 → 三板残值"的路径。</strong></p>
+<p>当前与本标的"最像"的对照样本及其后续路径：</p>
+<table><thead><tr><th>对照公司</th><th>像在哪一句话</th><th>后续实际路径</th></tr></thead><tbody><tr><td><strong>紫晶存储（688086，现"退市紫晶"）</strong></td><td>科创板＋欺诈发行＋保荐机构设先行赔付基金</td><td>2023-04-24 停牌 → <strong>2023-06-08 退市整理期首日 -63.22%（收 0.89 元）</strong> → 2023-07-07 摘牌；2024 年公司犯欺诈发行证券罪罚金 3,700 万元、实控人获刑 7 年 6 个月</td></tr><tr><td><strong>泽达易盛（688555，现"退市泽达"）</strong></td><td>同上，同为科创板首批欺诈发行退市</td><td>2023-06-08 退市整理期首日 <strong>-62.56%（收 1.55 元）</strong></td></tr><tr><td>＊ST卓然（688121）</td><td>科创板、2026 年同时踩中重大违法＋财务＋市值三条线</td><td>2026 年至今 -90.66%，总市值 2.38 亿元，仍在交易</td></tr><tr><td>＊ST萃华（002731）</td><td>2026 年同期、同为"价格+市值"双线逼近并已收到终止上市事先告知书</td><td>2026-09-09 收到终止上市事先告知书，2026 年至今 -93.87%，0.77 元</td></tr><tr><td>老三板退市股残值样本</td><td>—</td><td>欣泰退 1.48 元／天翔退 1.34 元／退市博天 0.39 元／金亚退 0.30 元／退市卓朗 0.29 元／新海退 0.24 元／乐视退 0.18 元；<strong>中位约 0.30 元</strong></td></tr></tbody></table>
+<p><strong>结论：本标的落在"下跌组"的最末端——以 0.58 元计，退市后按老三板中位残值 0.30 元推算，隐含再跌约 48%。</strong></p>
+<details class="fold"><summary>相似股票匹配的完整比价（含科创板 ST 池与显示同业）</summary><div class="fold-body">
+
+<p><strong>科创板 ST 池（14 只）2026 年至今涨跌幅</strong>：逸飞激光 +99.64%、＊ST禾信 +18.26%、ST帕瓦 +14.98%、ST思科瑞 +7.18%、＊ST天宜 -6.36%、ST南新 -19.20%、ST诺泰 -20.32%、ST瀚川 -39.80%、ST臻镭 -39.02%、ST信安 -47.35%、ST嘉必优 -63.83%、＊ST航图 -72.97%、＊ST清越 -90.24%、＊ST卓然 -90.66% ⇒ <strong>中位 -19.76%、均值 -24.98%、上涨 4/14，本股排倒数第 2</strong>。</p>
+<p><strong>显示面板／电子纸同业 2026 年至今涨跌幅</strong>：秋田微 +190.05%、彩虹股份 +57.01%、华灿光电 +34.09%、三利谱 +31.34%、莱宝高科 +9.58%、龙腾光电 +0.56%、同兴达 -3.14%、亚世光电 -2.76%、维信诺 -22.27%、汉朔科技 -28.08%、深天马Ａ -30.12%、ST合力泰 -49.84% ⇒ <strong>中位约 -2.9%，本股跑输约 87 个百分点</strong>。</p>
+<p><strong>读法</strong>：同业 β 无法解释本股跌幅——<strong>它的下跌是"退市概率"的独立定价，不是行业景气问题</strong>。因此不得以"跌得多/位置低"作为买入理由。</p>
+
+</div></details>
+<p><strong>③ 炒主板映射：负向映射。</strong> 主板/科创板显示板块 2026 年整体走平偏弱（中位约 -2.9%），本股跑输约 87 个百分点 ⇒ 映射结论为<strong>负向</strong>——同业没涨，光靠"面板周期"讲不出故事；且公司的资产、收入、客户都在自己手里，没有任何"母子公司资产腾挪"的映射空间。</p>
+<h3 id="sec12">4.2 情绪与筹码</h3>
+<p><strong>结论：注意力在 2026 年 5 月的两个跌停日达到峰值后迅速衰减，此后每次反弹（6 月 2 日涨停、7 月 27-28 日 2 连板、8 月 13 日涨停）龙虎榜都是净卖出——这是"每一次反弹都在派发"的典型形态；股东户数半年减少 25.1% 而股价同步腰斩，属割肉式离场。</strong></p>
+<table><thead><tr><th>时点</th><th>股价/涨跌幅</th><th>龙虎榜净额</th><th>读法</th></tr></thead><tbody><tr><td>2026-09-10</td><td>0.58 元 / -20.55%</td><td>-20.25 万元</td><td>跌停、面值第 20 日</td></tr><tr><td>2026-09-09</td><td>0.73 元 / -19.78%</td><td>-211.09 万元</td><td>次日触发停牌</td></tr><tr><td>2026-08-13</td><td>1.04 元 / +19.54%</td><td><strong>-46.16 万元</strong></td><td>涨停即派发</td></tr><tr><td>2026-07-28</td><td>1.07 元 / +20.22%（2 天 2 板）</td><td><strong>-71.42 万元</strong></td><td>连板即派发</td></tr><tr><td>2026-07-27</td><td>0.89 元 / +20.27%</td><td>-18.91 万元</td><td>涨停即派发</td></tr><tr><td>2026-07-06</td><td>1.03 元 / +19.77%</td><td>+6.71 万元</td><td>小幅净买</td></tr><tr><td>2026-06-22</td><td>1.06 元 / +20.45%</td><td>+88.63 万元</td><td>小幅净买</td></tr><tr><td>2026-06-03</td><td>1.53 元 / +19.53%</td><td><strong>-206.69 万元</strong></td><td>涨停即派发</td></tr><tr><td>2026-06-02</td><td>1.28 元 / +19.63%</td><td>-47.03 万元</td><td>涨停即派发</td></tr><tr><td>2026-05-18</td><td>— / -19.66%</td><td>-75.43 万元</td><td>＊ST 实施后连续跌停</td></tr><tr><td><strong>2026-05-15</strong></td><td>— / <strong>-19.82%</strong></td><td><strong>-1,159.53 万元</strong></td><td>全期最大净卖出</td></tr></tbody></table>
+<p><strong>股东户数</strong>：7,620 户（2024 年末）→ 7,722 户（2025 年末）→ 7,539 户（2026-03-31）→ <strong>5,781 户（2026-06-30，较年初 -25.1%）</strong>，同期股价由 5.94 元跌至 0.92 元 ⇒ <strong>下跌中户数下降＝割肉式集中</strong>。</p>
+<details class="fold"><summary>4.2 附表 · 韭研公社异动全量记录（27 条，时间降序）与炒作符号演变</summary><div class="fold-body">
+
+<table><thead><tr><th>题材时间</th><th>简称</th><th>题材</th><th>涨停信息</th><th>股价(元)</th><th>异动关键词</th></tr></thead><tbody><tr><td>2026-08-13</td><td>＊ST清越</td><td>ST板块</td><td>—</td><td>1.04</td><td>面值低于1元+AR眼镜+PMOLED面板+硅基OLED</td></tr><tr><td>2026-07-28</td><td>＊ST清越</td><td>ST板块</td><td>2天2板</td><td>1.07</td><td>面值低于1元+AR眼镜+PMOLED面板+硅基OLED</td></tr><tr><td>2026-07-27</td><td>＊ST清越</td><td>ST板块</td><td>—</td><td>0.89</td><td>面值低于1元+AR眼镜+PMOLED面板+硅基OLED</td></tr><tr><td>2026-07-06</td><td>＊ST清越</td><td>ST板块</td><td>—</td><td>1.03</td><td>面值低于1元+AR眼镜+PMOLED面板+硅基OLED</td></tr><tr><td>2026-06-22</td><td>＊ST清越</td><td>ST板块</td><td>—</td><td>1.06</td><td>面值低于1元+AR眼镜+PMOLED面板+硅基OLED</td></tr><tr><td>2026-06-03</td><td>＊ST清越</td><td>ST板块</td><td>—</td><td>1.53</td><td>超跌反弹+AR眼镜+PMOLED面板+硅基OLED</td></tr><tr><td>2026-06-02</td><td>＊ST清越</td><td>ST板块</td><td>—</td><td>1.28</td><td>超跌反弹+AR眼镜+PMOLED面板+硅基OLED</td></tr><tr><td>2025-06-18</td><td>清越科技</td><td>消费电子/AI眼镜</td><td>—</td><td>9.58</td><td>AR眼镜+华为+PMOLED面板+硅基OLED</td></tr><tr><td>2024-10-18</td><td>清越科技</td><td>消费电子</td><td>—</td><td>10.21</td><td>AR眼镜+华为+PMOLED面板+硅基OLED</td></tr><tr><td>2024-04-01</td><td>清越科技</td><td>面板</td><td>—</td><td>13.57</td><td>PMOLED面板+硅基OLED+华为+电子纸膜</td></tr><tr><td>2023-12-29</td><td>清越科技</td><td>VR硬件</td><td>—</td><td>22.39</td><td>硅基OLED+华为+电子纸膜</td></tr><tr><td>2023-11-28</td><td>清越科技</td><td>AR/VR</td><td>—</td><td>18.41</td><td>硅基OLED+华为+电子纸膜</td></tr><tr><td>2023-11-20</td><td>清越科技</td><td>其他</td><td>—</td><td>20.76</td><td>硅基OLED+华为+电子纸膜</td></tr><tr><td>2023-11-17</td><td>清越科技</td><td>其他</td><td>—</td><td>17.30</td><td>硅基OLED+电子纸膜</td></tr><tr><td>2023-11-06</td><td>清越科技</td><td>半导体</td><td>—</td><td>15.31</td><td>硅基OLED+电子纸膜</td></tr><tr><td>2023-08-31</td><td>清越科技</td><td>其他</td><td>—</td><td>17.36</td><td>硅基OLED+电子纸膜</td></tr><tr><td>2023-06-08</td><td>清越科技</td><td>VR/MR/XR</td><td>—</td><td>21.30</td><td>硅基OLED+电子纸膜</td></tr><tr><td>2023-06-07</td><td>清越科技</td><td>其他</td><td>—</td><td>18.68</td><td>硅基OLED+电子纸膜</td></tr><tr><td>2023-06-01</td><td>清越科技</td><td>苹果MR/OLED</td><td>—</td><td>20.18</td><td>苹果发布会+硅基OLED+电子纸膜</td></tr><tr><td>2023-05-31</td><td>清越科技</td><td>苹果MR/OLED</td><td>—</td><td>19.02</td><td>苹果发布会+硅基OLED+电子纸膜</td></tr><tr><td>2023-05-17</td><td>清越科技</td><td>其他</td><td>—</td><td>18.27</td><td>硅基OLED显示+电子纸膜+次新股</td></tr><tr><td>2023-05-16</td><td>清越科技</td><td>消费电子</td><td>—</td><td>15.67</td><td>硅基OLED显示+电子纸膜+次新股</td></tr><tr><td>2023-05-09</td><td>清越科技</td><td>其他</td><td>—</td><td>12.93</td><td>电子纸膜+中小显示面板+次新股</td></tr><tr><td>2023-04-03</td><td>清越科技</td><td>其他</td><td>—</td><td>13.45</td><td>电子纸膜+中小显示面板+钙钛矿材料+次新股</td></tr><tr><td>2023-03-30</td><td>清越科技</td><td>其他</td><td>—</td><td>12.42</td><td>电子纸膜+中小显示面板+钙钛矿材料+次新股</td></tr><tr><td>2023-01-12</td><td>清越科技</td><td>电子纸</td><td>—</td><td>11.60</td><td>电子纸膜+中小显示面板+钙钛矿材料+次新股</td></tr><tr><td>2022-12-28</td><td>清越科技</td><td>新股</td><td>—</td><td>9.97</td><td>中小显示面板</td></tr></tbody></table>
+<p><strong>炒作符号演变（三阶段）</strong>：① 2022-12～2024 年——「<strong>硅基 OLED ＋ 电子纸膜 ＋ 华为 ＋ AR/VR（苹果 MR）</strong>」，股价峰值 22.39 元（2023-12-29）；② 2025 年——「AR 眼镜 ＋ AI 眼镜 ＋ 面板」；③ <strong>2026 年全部转为「面值低于 1 元 ＋ 超跌反弹 ＋ AR 眼镜 ＋ PMOLED 面板 ＋ 硅基 OLED」，即炒作对象已从"业务"退化为"退市博弈"本身</strong>。连板极值仅"2 天 2 板"（2026-07-28），说明筹码已无人愿意承接。2026-09-10 换手率 4.80%、成交额 661.79 万元，是停牌前最后的"出逃成交"。</p>
+
+</div></details>
+<h2 id="chap5">五、估值：只剩退市残值</h2>
+<p><strong>结论：公司已进入强制退市程序，任何"主业估值"都失去意义，唯一有意义的估值是"退市后残值"——以每股归母净资产 1.5741 元、PB 0.37 计看似便宜，但净资产中已含 1.7628 亿元预计负债（拟罚款），且老三板退市股的实际成交价中位仅约 0.30 元，因此 PB 0.37 不构成任何安全垫。</strong></p>
+<table><thead><tr><th>估值尺</th><th>数值</th><th>是否可用</th></tr></thead><tbody><tr><td>现价 / 总市值</td><td>0.58 元 / 2.61 亿元</td><td>—</td></tr><tr><td><strong>每股归母净资产</strong></td><td><strong>1.5741 元</strong>（7.0833 亿元 ÷ 4.50 亿股）</td><td>可作为残值测算的分母</td></tr><tr><td>PB</td><td><strong>0.37</strong></td><td>分母受罚款与赔偿侵蚀，<strong>不构成安全垫</strong></td></tr><tr><td>PS(TTM)</td><td>约 0.86 倍（2.61 亿元 ÷ 年化营收约 3.04 亿元）</td><td>退市后无意义</td></tr><tr><td>PE</td><td>不适用（连续亏损）</td><td>—</td></tr><tr><td>老三板退市股残值参照</td><td>0.18—1.48 元，<strong>中位约 0.30 元</strong></td><td>用于推算摘牌后的价格区间</td></tr><tr><td>隐含再跌空间</td><td>以 0.58 元 → 0.30 元计，<strong>约 -48%</strong></td><td>—</td></tr></tbody></table>
+<details class="fold"><summary>残值测算的三种口径与反向读数</summary><div class="fold-body">
+
+<p><strong>口径一（净资产折算）</strong>：每股归母净资产 1.5741 元 × 折价率 0.3—0.5（退市股普遍折价）= <strong>0.47—0.79 元</strong>。但要注意这些资产的可变现性差——2026H1 货币资金 2.5089 亿元中已有 1.3364 亿元被冻结，存货 1.2312 亿元（且本次立案正是围绕"存货跌价准备计提充分性"）、应收款项 1.9740 亿元。</p>
+<p><strong>口径二（老三板同类成交价）</strong>：欣泰退 1.48 元、天翔退 1.34 元、退市博天 0.39 元、金亚退 0.30 元、退市卓朗 0.29 元、新海退 0.24 元、乐视退 0.18 元 ⇒ <strong>中位约 0.30 元</strong>。需说明的是老三板流动性极差，成交价既不代表真实可变现价值，也常因特殊事件出现离散（如欣泰退 1.48 元）。</p>
+<p><strong>口径三（破产/清算视角）</strong>：科创板终止上市不等于破产，公司总资产 14.2191 亿元、负债 6.1416 亿元，短期内不存在资不抵债；但 1.7188 亿元罚款一旦落地、叠加民事赔偿（先行赔付基金金额未披露、实控人个人承诺不低于 1,000 万元），净资产将被显著侵蚀。</p>
+<p><strong>三条反向读数</strong>： ① <strong>"PB 0.37 很便宜"是陷阱</strong>——退市股的价格不向净资产收敛，而在 1 元以下的基础上继续向 0.2—0.4 元区间收敛； ② <strong>"跌到 0.58 元已经很便宜"也是陷阱</strong>——面值退市的价格是一路跌到触发为止，没有任何技术性支撑（本标的在 2026 年 8 月 13 日涨停至 1.04 元后仍回落至 0.58 元，即证明反弹不改趋势）； ③ <strong>"先行赔付基金可能带来补偿"不能转化为持仓理由</strong>——先行赔付的对象是"适格投资者"（通常限定在特定虚假陈述实施日与揭露日之间的买入者），且在赔付到账前股价已先行沉没；紫晶存储案中即使 97.22% 的受损投资者在两个月内获得赔付，其股票也已从停牌前约 2.4 元跌至整理期首日的 0.89 元。</p>
+
+</div></details>
+<h2 id="chap6">六、投资结论</h2>
+<p><strong>卖出（回避）。</strong></p>
+<table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td><strong>结论</strong></td><td>卖出（回避）</td></tr><tr><td><strong>理由链</strong></td><td>① <strong>交易类强制退市已触发且不可逆</strong>：连续 20 个交易日收盘价低于 1 元，上交所已下发《终止上市事先告知书》，将依 12.3.5 条作出终止上市决定（依据：2026-09-11 公告）；② <strong>不进入退市整理期，二级市场已无卖出窗口</strong>：科创板 12.7.1 第一款只把第二章第二节（重大违法）、第四节（财务类）、第五节（规范类）纳入退市整理期，<strong>第三节（交易类）不在其列</strong>，且 12.1.10 第一款的"先触及先适用"已把本案锁定在交易类路径——与紫晶存储、泽达易盛（重大违法类，有 15 个交易日整理期）形成关键差别（依据：2026-09-11《触及交易类强制退市的风险提示暨停牌的公告》）；③ <strong>重大违法强制退市是第二条独立的归零线</strong>：证监会已两次事先告知书认定 IPO 招股说明书编造重大虚假内容（2022 上半年虚增利润占披露利润总额 131.74%），拟罚公司 17,188 万元，公司已计提预计负债 1.7628 亿元（依据：处罚字[2026]49 号）；④ <strong>基本面没有任何拐点</strong>：扣非连亏四年、2026H1 扣非仍亏 0.5918 亿元、研发投入同比腰斩 -52.72%、电子纸模组毛利率仅 1.50%（依据：2025 年报、2026 半年报）；⑤ <strong>相对估值无安全垫</strong>：PB 0.37 的分母含 1.76 亿元预计负债与 1.34 亿元被冻结募集资金，老三板同类残值中位仅约 0.30 元（依据：2026 半年报、老三板退市股现价）</td></tr><tr><td><strong>触发条件（转买入）</strong></td><td>本结论在可预见期间内<strong>不存在转买入触发条件</strong>。理论上仅在"终止上市决定被撤销、且公司同时完成控制权变更、主业重建、处罚决定书认定未触及重大违法、并重新满足上市条件"这一不可能的组合下才需重估——但交易类退市情形一经触发即不可撤回，故该组合的概率为零</td></tr><tr><td><strong>失效条件</strong></td><td>若出现以下任一情况，需重新评估：① 上交所因程序原因未作出终止上市决定（极低概率）；② 公司在退市后通过股转系统转让、且发生实质性控制权变更与资产重组（属"新的标的"，须按新标的重新研究，不能沿用本报告）</td></tr><tr><td><strong>参考区间</strong></td><td>无买入区间（不参与）；退市后残值参考 <strong>0.30—0.80 元</strong>（老三板同类成交价中位 0.30 元／每股净资产折价 0.3—0.5 倍）</td></tr><tr><td><strong>时间窗口</strong></td><td>结论有效性：<strong>永久有效</strong>（退市已不可逆）。程序时点：上市委员会审议（听证/申辩期限届满或听证结束后 15 个交易日内）→ 终止上市决定 → 决定公告后 5 个交易日内摘牌；公司应于摘牌之日起 45 个交易日内安排股票进入股转系统挂牌转让</td></tr><tr><td><strong>仓位建议</strong></td><td>不建仓；持仓者若已无法卖出（停牌），只能在摘牌后按残值处理，并把"先行赔付基金"申领作为唯一可争取的补偿路径</td></tr><tr><td><strong>最大风险</strong></td><td>唯一的"风险"是<strong>持仓者损失无法挽回</strong>——本报告给"回避"而非"做空"的理由是：股票已停牌，无做空标的；且股价已跌至 0.58 元，进一步下跌的空间（至 0.30 元）远小于退市前的跌幅，风险收益比不再支持任何形式的交易</td></tr></tbody></table>
+<details class="fold"><summary>结论的自我压力测试（附录 C 五问的答案汇总）</summary><div class="fold-body">
+
+<p><strong>① "市占率/产能/技术"怎么来的？</strong> 公司自述是国家级专精特新"小巨人"、单项冠军产品（显示器模组），PMOLED 2025 年销售 1,506.26 万片、电子纸模组 3,154.97 万片。<strong>但这些都无法改变退市已成定局的事实</strong>——它们解释的是"为什么会有人炒过它"，不是"为什么该买"。</p>
+<p><strong>② 框架协议/合作 ≠ 收入？</strong> 本报告未引用任何框架协议或合作意向作为估值依据。公司 2026 年 6 月 19 日披露"核心技术人员离职"、2026 年 10 月 1 日再披露一次"核心技术人员离职"，<strong>人才流失比订单更值得关注</strong>。</p>
+<p><strong>③ 中标/订单是否等于收入？</strong> 未引用。2026H1 营业收入同比 -16.26%，公司自述"未来受宏观经济波动、贸易摩擦、消费电子市场前景不及预期等影响……将面临经营业绩恢复缓慢且持续亏损的风险"。</p>
+<p><strong>④ 引用的时间点是否已过期？</strong> 全部财务数据取自 2025 年年报（2026-04-29 披露）与 2026 年半年报（2026-08-31 披露），公告数据取自 2025-10～2026-10-01；行情为 2026-09-30（停牌前最后交易日）。<strong>已核对无过期引用</strong>。</p>
+<p><strong>⑤ 数据来源是什么级别？</strong> 全部关键数字取自巨潮资讯网公告原文（一手）；行情取自腾讯/新浪（数据源）；老三板退市股价格取自腾讯截面（数据源）；相似案例的赔偿金额与刑事判决取自权威媒体（上证报、中国新闻周刊、中新经纬，二级源，已在正文标明）。</p>
+
+</div></details>
+<h2 id="chap7">附录 A · 待核实 / 需补充清单</h2>
+<table><thead><tr><th>编号</th><th>待核实项</th><th>说明</th></tr></thead><tbody><tr><td>A1</td><td>公司是否已在上交所述期限内提交书面听证申请</td><td>期限为收到《终止上市事先告知书》（2026-09-10）后 5 个交易日内；截至基准日公司未披露听证申请公告</td></tr><tr><td>A2</td><td>上市委员会审议与终止上市决定的具体时点</td><td>需等待交易所公告</td></tr><tr><td>A3</td><td>主办券商的聘请情况</td><td>《监管工作函》要求尽快聘请，截至基准日未见公告</td></tr><tr><td>A4</td><td>先行赔付专项基金的设立金额与赔付方案</td><td>2026-05-09 公告仅披露"拟共同出资设立"，未披露金额</td></tr><tr><td>A5</td><td>《行政处罚决定书》的作出日与最终认定</td><td>目前仅有两次《事先告知书》（处罚字[2026]13 号、49 号）</td></tr><tr><td>A6</td><td>投资者索赔诉讼的进展与公司计提情况</td><td>截至基准日未见公司披露证券虚假陈述诉讼；2026 半年报"重大诉讼、仲裁"栏亦未提及</td></tr><tr><td>A7</td><td>被冻结的 7 个募集资金专户（13,364.41 万元）是否已解冻</td><td>冻结期限 6 个月（自 2026-02 起），半年报称"截至本报告批准报出日止，上述冻结资金暂未解冻"</td></tr><tr><td>A8</td><td>公司扣非口径下各季度单季数据的官方披露</td><td>半年报不披露分季度，本报告的 Q2 单季数据由半年报减一季报倒算</td></tr><tr><td>A9</td><td>昆山和高所持 1.7059 亿股全部为限售股的解限安排</td><td>半年报"限售股份变动情况"勾选"不适用"，未披露限售性质与到期日</td></tr><tr><td>A10</td><td>2026 年度审计机构的聘任情况</td><td>2026 年年度股东会（2026-05-23）决议中未见"续聘会计师事务所"议案，2026 年报审计机构归属未明</td></tr></tbody></table>
+<h2 id="chap8">附录 B · 关键信源链接</h2>
+<table><thead><tr><th>编号</th><th>文件</th><th>发布日</th><th>原文地址</th></tr></thead><tbody><tr><td>B1</td><td>关于实施其他风险警示暨股票停牌的公告</td><td>2026-04-29</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-04-29/1225241605.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B2</td><td>2025 年年度报告</td><td>2026-04-29</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-04-29/1225241607.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B3</td><td>2025 年度审计报告（带强调事项段的保留意见）</td><td>2026-04-29</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-04-29/1225241585.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B4</td><td>2025 年度内部控制审计报告（否定意见）</td><td>2026-04-29</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-04-29/1225241603.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B5</td><td>董事会及其审计委员会关于非标准审计意见和否定意见内控审计报告涉及事项的专项说明</td><td>2026-04-29</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-04-29/1225241601.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B6</td><td>2026 年第一季度报告</td><td>2026-04-29</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-04-29/1225241608.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B7</td><td>关于收到中国证监会《行政处罚事先告知书》的公告（处罚字[2026]13 号）</td><td>2026-05-09</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-05-09/1225286764.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B8</td><td>关于实施退市风险警示并继续实施其他风险警示暨停牌的公告</td><td>2026-05-09</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-05-09/1225286765.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B9</td><td>关于收到相关方拟设立先行赔付专项基金通知的公告</td><td>2026-05-09</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-05-09/1225286762.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B10</td><td>关于收到中国证监会《行政处罚事先告知书》的公告（处罚字[2026]49 号，重新告知）</td><td>2026-09-02</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-09-02/1225542707.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B11</td><td>关于公司股票可能被实施重大违法强制退市暨继续实施退市风险警示的公告</td><td>2026-09-02</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-09-02/1225542709.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B12</td><td>关于公司股票存在可能因股价低于 1 元而终止上市的第十一次风险提示暨可能被实施重大违法强制退市的风险提示公告</td><td>2026-09-10</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-09-10/1225555932.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B13</td><td>关于公司股票触及交易类强制退市的风险提示暨停牌的公告</td><td>2026-09-11</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-09-11/1225558617.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B14</td><td>关于收到上海证券交易所终止上市事先告知书的公告</td><td>2026-09-11</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-09-11/1225558802.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B15</td><td>关于收到公司终止上市相关事项的监管工作函的公告</td><td>2026-09-11</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-09-11/1225558801.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B16</td><td>股票交易异常波动暨将被终止上市风险提示公告</td><td>2026-09-11</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-09-11/1225558620.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B17</td><td>关于董事会换届完成及聘任高级管理人员的公告</td><td>2026-09-22</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-09-22/1225575279.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B18</td><td>2026 年半年度报告</td><td>2026-08-31</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-08-31/1225535013.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B19</td><td>关于实际控制人撤回股份回购提议及自愿承担未来上市公司一定范围民事赔偿额的公告</td><td>2025-12-13</td><td><a href="http://static.cninfo.com.cn/finalpage/2025-12-13/1224875779.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B20</td><td>关于公司控股股东部分股份质押的公告</td><td>2025-12-31</td><td><a href="http://static.cninfo.com.cn/finalpage/2025-12-31/1224909024.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B21</td><td>关于部分证券账户、银行账户被冻结的公告</td><td>2026-02-05</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-02-05/1224967666.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B22</td><td>关于变更总经理的公告</td><td>2026-03-03</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-03-03/1224991422.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B23</td><td>关于首次公开发行股票募投项目结项的公告（含发行价 9.16 元、发行 9,000 万股、募资总额 82,440 万元）</td><td>2025-12-31</td><td><a href="https://big5.sse.com.cn/disclosure/listedinfo/announcement/c/new/2025-12-31/688496_20251231_WRUM.pdf" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B24</td><td>关于核心技术人员离职的公告</td><td>2026-10-01</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-10-01/1225591593.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>B25</td><td>巨潮资讯网 ＊ST清越公告检索页</td><td>—</td><td><a href="http://www.cninfo.com.cn/new/disclosure/stock?stockCode=688496&amp;orgId=9900051401" target="_blank" rel="noopener">打开原文</a></td></tr></tbody></table>
+<blockquote><p><strong>口径提示</strong>：本表"发布日"一律写披露日；正文叙述事件时使用事件发生日（如"2026-09-10 收到《终止上市事先告知书》"），两者相差 1 天属正常。</p></blockquote>
+<h2 id="chap9">附录 C · 逻辑漏洞与反方观点</h2>
+<p><strong>结论：本报告唯一的"反方观点"都不足以改变结论，因为本标的的归零路径已经由交易所程序锁定；但为完整起见，仍列出五问的自检答案与两条可能的质疑。</strong></p>
+<table><thead><tr><th>编号</th><th>可能的质疑</th><th>本报告的回应</th></tr></thead><tbody><tr><td>C1</td><td>"PB 只有 0.37，退市前抄底相当于打折买净资产"</td><td><strong>不成立</strong>。① 净资产 7.0833 亿元中已含 1.7628 亿元预计负债，另 1.3364 亿元募集资金被冻结；② 老三板同类退市股成交价中位约 0.30 元，说明退市股定价既不向净资产收敛、也不给流动性溢价；③ 主板/科创板退市后残值经验区间 0.18—1.48 元，本股现价 0.58 元已在该区间上半部</td></tr><tr><td>C2</td><td>"证监会还没出正式决定书，重大违法退市还没定，可能有转机"</td><td><strong>不改变结论</strong>。交易类退市与重大违法退市是<strong>两条独立通道</strong>，且已明确"先触及先适用"——交易类先在 2026-09-10 触发，故终止上市依据是面值退市，不需要等决定书；即便决定书"未触及重大违法"，公司仍会因面值退市被摘牌</td></tr><tr><td>C3</td><td>"先行赔付基金 + 实控人承诺代偿，投资者损失能被补上一部分"</td><td><strong>属实但不能转化为持仓理由</strong>。① 赔偿对象是"适格投资者"（限定实施日与揭露日之间的买入者），金额尚未披露；② 紫晶存储案的经验是：即使 97.22% 的受损投资者在两个月内获赔，股票本身仍从停牌前价格跌至整理期首日 0.89 元；③ 本标的连整理期都没有</td></tr><tr><td>C4</td><td>"公司技术底子不错（国家级专精特新、单项冠军），退市后重组还有机会"</td><td>属<strong>"新的标的"</strong>。退市后若发生控制权变更与资产重组，须按新标的重新研究，<strong>不能沿用本报告的定价逻辑，也不能用本报告的数据支撑新标的的估值</strong></td></tr><tr><td>C5</td><td>"停牌了还写卖出结论，是不是没有可操作性"</td><td><strong>结论仍必须是"卖出（回避）"</strong>。① "回避"是对未持仓者的明确指令（不参与任何形式的抄底）；② 对持仓者，本报告的作用是提示"二级市场已无卖出窗口"，并把"先行赔付基金申领"作为唯一可争取的补偿路径；③ 本报告的另一点价值是<strong>方法层面的</strong>——它给出了"交易类先触发 ⇒ 不进入退市整理期"这一被普遍忽视的规则后果</td></tr></tbody></table>
+<p><strong>方法论提醒（供同类标的复用）</strong>：判断一只"1 元以下 ST"的命运时，<strong>第一步不是算估值，而是确认"哪一类退市情形先触及"</strong>——交易类先触发的标的不进入退市整理期，持仓者没有最后的卖出窗口；重大违法类、财务类、规范类则有 15 个交易日的整理期。这一步决定了操作策略，而不是估值。</p>
+<h2 id="chap10">版本记录</h2>
+<table><thead><tr><th>版本</th><th>修订日</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-06</td><td>首次生成。数据截至 2026-06-30 定期报告与 2026-09-30 行情（股票自 2026-09-11 起停牌）；结论为"卖出（回避）"。本次检索确认本标的此前无任何独立研究报告（<code>个股研究\</code> 全目录、<code>Desktop\ST选股\.research\</code>、<code>WorkBuddy\</code> 会话目录、<code>ST信息库\</code> 均已检索，其他报告中出现的"688496/＊ST清越"仅为被引用的同型样本行），故无历史版本需要合并</td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
