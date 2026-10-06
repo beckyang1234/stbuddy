@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>＊ST天喻（300205.SZ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>9 章 · 12 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断</a><a class="sblv3" href="#sec0">1.1 基本信息与股权</a><a class="sblv3" href="#sec1">1.2 ST 风险诊断与四类红线对照</a><a class="sblv3" href="#sec2">1.3 摘帽展望（★ 本案核心，也是唯一开关）</a><a class="sblv3" href="#sec3">1.4 王艳式六栏目（完全信息层，全部就地折叠）</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、基本面路径 · 规范类「撤销核准」为主路径</a><a class="sblv3" href="#sec4">2.1 处罚已落地，四类红线没有增加</a><a class="sblv3" href="#sec5">2.2 主业：SDN 制裁未解除，营收已缩到原来的十分之一</a><a class="sblv3" href="#sec6">2.3 资产与追偿：昌喻投资清算＋10.50 亿元仲裁</a><a class="sblv3" href="#sec7">2.4 全流程进度看板与运作特征</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、炒作逻辑 + 情绪面 + 筹码面</a><a class="sblv3" href="#sec8">3.1 三支柱</a><a class="sblv3" href="#sec9">3.2 情绪与筹码</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、估值 + 投资结论</a><a class="sblv3" href="#sec10">4.1 估值</a><a class="sblv3" href="#sec11">4.2 投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">附录 A · 待核实／需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 C · 逻辑漏洞与反方观点（5 问）</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">＊ST天喻（300205.SZ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：卖出（回避）</strong></p>
+<p>红线分类：<span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&announcementId=1225156178&orgId=9900017107&announcementTime=2026-04-23" target="_blank" rel="noopener">申请撤销*ST及ST,2026-04-23</a></span>·<span class="sttag sttag-blue"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&announcementId=1223384981&orgId=9900017107&announcementTime=2025-04-29" target="_blank" rel="noopener">原2024年财报无法表示意见</a></span>·<span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&announcementId=1223384981&orgId=9900017107&announcementTime=2025-04-29" target="_blank" rel="noopener">原2024年内控否定意见</a></span>·<span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&announcementId=1225271987&orgId=9900017107&announcementTime=2026-05-01" target="_blank" rel="noopener">原违规担保,2.90亿元</a></span>·<span class="sttag sttag-red"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&announcementId=1225397765&orgId=9900017107&announcementTime=2026-06-30" target="_blank" rel="noopener">行政处罚,公司600万元／实控人1,350万元</a></span></p>
+<p>生死定级：<strong>命悬一线</strong>（可救，但开关已不在公司手里）——四类退市红线当前<strong>零踩线</strong>，唯一关卡是深交所是否<strong>核准</strong>撤销申请；按规则<strong>不核准即直接终止上市</strong>，无一年缓冲。</p>
+<p>自救空间：<strong>已无动作可做，但运作主体已经换人</strong>。公司能做的两件事（2026-04-23 提交撤销申请、回复年报问询函）<strong>一件已提交、一件逾期未回</strong>；主业（SDN 制裁未解除）与股权（控股股东股份全部冻结、2026-09-29 拍卖三笔全流拍）两条自救通道同时失效。<strong>唯一的变化在治理层：光谷系（武汉东湖高新区国资）已在 6 名非独立董事中占 3 席，并由颜佐辉自 2025-05-14 起代行董事长——但至今没有落定正式董事长、也没有披露任何资产注入方向。</strong></p>
+<p>主要看点：<strong>① 唯一开关＝深交所是否核准 2026-04-23 提交的撤销 \*ST 及 ST 申请</strong>（至 2026-09-28 已 5 个月未批；2025 年报问询函被连续延期 9 次至 2026-07-17 后仍未回复）；<strong>② 运作主体已变＝光谷系国资已在董事会占 3/6 非独立董事席位、并由颜佐辉代行董事长 11 个月以上</strong>，但<strong>无人名以外的"物"与"表"</strong>；<strong>③ 寻宝线索＝参股企业深圳市昌喻投资合伙企业清算人对北京载川科技、重庆鲲鹏支付等提起的 10.50 亿元股权回购仲裁</strong>（深圳中院 2026-09-02 已驳回对方"仲裁协议无效"请求，程序已过第一道门）。</p>
+<hr>
+<p><strong>标的</strong>：＊ST天喻（武汉天喻信息产业股份有限公司）｜<strong>代码</strong>：300205.SZ｜<strong>板块</strong>：深交所创业板 <strong>基准日</strong>：2026-10-05（行情截至 2026-09-30 收盘；财务截至 2026-06-30 中报） <strong>版本</strong>：初版 · 2026-10-06 <strong>数据来源</strong>：巨潮资讯网公告原文与年报/半年报 PDF、腾讯自选股行情（<code>qt.gtimg.cn</code>）、新浪日 K（<code>CN_MarketData.getKLineData</code>）、东财龙虎榜 API、东财 F10 股东数据、同花顺互动易、同花顺 F10、韭研公社异动整理（parquet）、Andy 自建 ST 信息库（<code>1.所有公司</code>／<code>2.重要公告</code>／<code>3.重要消息</code>／<code>5.晨会重要信息</code>） <strong>已知数据质量异常</strong>：① Wind 局域网代理（<code>192.168.1.20:8000</code>）本轮整段不可达，行情与估值一律改用腾讯/新浪公开接口，Wind 年度序列未取；② 目录内旧《退市风险深度分析·法条对照报告》（2026-04-20）所引条款为创业板 <strong>2024 年修订版</strong>（财务类 10.3.1、重大违法 10.4.1、规范类 10.4.2），与本报告采用的 <strong>2026 年修订版</strong>（财务类撤销 10.3.7／终止 10.3.11、规范类 \*ST 触发 10.4.1、终止 10.4.18）<strong>编号体系不同</strong>，本报告已逐条回现行 PDF 原文核正；③ <code>其他资料\天喻信息_深度全景报告_20260421.docx</code>（同名旧研报）<strong>含四处与公告原文不符</strong>，已全部纠正（详见文末版本记录）；④ 目录内 5 份 PPT（ST天喻-20260420～20260424）为同一 2026-04 口径的迭代稿，其事实性内容已被本轮公告取数覆盖。</p>
+<hr>
+<h2 id="chap1">一、诊断</h2>
+<p><strong>结论先行：这家公司"病"在 2025 年年报上已经治好——财报标准无保留、内控无保留、净资产为正、扣除后营收 1.71 亿元；但它现在既不在低位（PB 5.59 倍、PS 约 12.6 倍），也已把"待摘帽＋控制权变更"两重预期涨在前头（2026 年 YTD +4.58%，跑赢同类约 9 个百分点），剩下的是"等一个已经等了 5 个月的批复"。</strong></p>
+<h3 id="sec0">1.1 基本信息与股权</h3>
+<p><strong>结论：控股股东只持 12.45% 且全部冻结、破产清算申请两次被驳、股份拍卖三笔流拍；第一大股东是持股 14.63% 的武汉国资（不构成控制）——控制权处于"悬空但不转移"的状态。</strong></p>
+<table><thead><tr><th>指标</th><th>数值</th><th>判读</th></tr></thead><tbody><tr><td>现价（2026-09-30 收盘）</td><td>5.02 元</td><td>较 2026 年 3 月 30 日高点 6.63 元 <strong>−24.3%</strong>；较 2025-12-31（4.80 元）<strong>+4.58%</strong></td></tr><tr><td>总股本</td><td>4.30 亿股</td><td>2023 年以来未变</td></tr><tr><td>总市值 / 流通市值</td><td>21.59 亿元 / 21.59 亿元</td><td>全流通</td></tr><tr><td>归母净资产（2026-06-30）</td><td>3.87 亿元</td><td>较 2025 年末 4.58 亿元 <strong>−15.70%</strong></td></tr><tr><td><strong>PB</strong></td><td><strong>5.59 倍</strong></td><td>亏损股，PE 无意义</td></tr><tr><td>PS（按 2025 营收 1.72 亿元）</td><td>约 12.6 倍</td><td>按 2026H1 年化 0.48 亿元则约 45 倍</td></tr><tr><td>近 20 年价格分位</td><td>11.74%（ST 信息库，2026-07-31）</td><td>无 2 次以上大比例送转，不复权分位可用</td></tr><tr><td>股东户数（2026-06-30）</td><td>9,549 户（−11.85%）</td><td>户数降而股价同期由 5.98 元跌至 4.92 元 → <strong>属"割肉式下降"，非吸筹</strong>（见 §3.2）</td></tr><tr><td>换手率 / 成交额（2026-09-30）</td><td>0.97% / 2,088 万元</td><td>注意力极度低迷</td></tr></tbody></table>
+<p><strong>股权结构（2026-06-30，前十大合计 44.20%）</strong>：武汉光谷创业科技投资有限公司 <strong>14.63%</strong>（国有法人，光谷金控系）＞ 武汉同喻投资合伙企业（有限合伙）<strong>12.45%</strong>（控股股东）＞ 西藏中茵集团有限公司 <strong>12.13%</strong> ＞ 武汉华中科大资产管理有限公司 2.99% ＞ 武汉华工创业投资有限责任公司 2.00%。<strong>实际控制人为艾迪、闫春雨</strong>（境内自然人，经武汉同喻间接控制）。</p>
+<p><strong>一个必须说清的读法（★ 本案最容易被漏掉的一条治理事实）</strong>：第一大股东 14.63% 大于控股股东 12.45%，<strong>光谷创业虽未被认定为控股股东，但光谷系已在董事会拿到事实上的多数</strong>——6 名非独立董事中，<strong>颜佐辉、汪沵、汪亮三人均任职于武汉光谷金融控股集团</strong>（分别为总经理助理、风控法务部部长、集团本部），且<strong>颜佐辉自 2025-05-14 起代行董事长职责，任期写的是"至董事会选举产生董事长之日"——截至 2025 年报（2026-04-22）仍无正式董事长</strong>。</p>
+<ul><li><strong>正向读数</strong>：国资不只在股权上有 14.63%，<strong>还在治理层实质接手了日常运作</strong>（代行董事长＋3 席董事），比"只有一名董事"强得多。</li><li><strong>反向读数（必须并列写）</strong>：<strong>"代行董事长"状态持续 11 个月以上仍未落定正式人选</strong>，且公司<strong>未披露任何资产注入方向、未公告任何受让方</strong>——按"人／物／表"三分法，<strong>至今仍是"只有人名（与席位）、没有物、没有表"</strong>。</li></ul>
+<details class="fold"><summary>第九届董事会完整构成与一年内的高管换血</summary><div class="fold-body">
+
+<table><thead><tr><th>姓名</th><th>年龄</th><th>职务</th><th>任职状态</th><th>任期起</th><th>关联体系</th></tr></thead><tbody><tr><td><strong>颜佐辉</strong></td><td>55</td><td>董事；<strong>董事长（代行）</strong></td><td>现任</td><td>董事 2018-11-13 起；<strong>代行董事长 2025-05-14 起</strong>（至董事会选举产生董事长之日）</td><td><strong>光谷系</strong>（光谷创业董事、光谷金控总经理助理）</td></tr><tr><td><strong>汪沵</strong></td><td>37</td><td>董事</td><td>现任</td><td>2023-02-20</td><td><strong>光谷系</strong>（光谷金控风控法务部部长）</td></tr><tr><td><strong>汪亮</strong></td><td>42</td><td>董事</td><td>现任</td><td>2025-06-26</td><td><strong>光谷系</strong>（光谷金控）</td></tr><tr><td>陈建</td><td>55</td><td>董事、总经理</td><td>现任</td><td>2025-06-26</td><td>—</td></tr><tr><td>谢伟</td><td>37</td><td>职工代表董事</td><td>现任</td><td>2026-04-08</td><td>—</td></tr><tr><td>邬亚文</td><td>47</td><td>董事</td><td>现任</td><td>2024-10-11</td><td>曾 2025-05-08～05-14 代行董事长；2024-09-19～2025-06-25 任总经理（已离任）</td></tr><tr><td>欧阳丽华／孙晨钟／李娜</td><td>61／45／39</td><td>独立董事</td><td>现任</td><td>2021-05-14／2021-09-27／2024-10-11</td><td>—</td></tr><tr><td>夏威夷</td><td>36</td><td>副总经理、董事会秘书</td><td>现任</td><td>2025-08-14</td><td>—</td></tr><tr><td>毛倩倩</td><td>38</td><td>财务负责人（代行）</td><td>现任</td><td>2025-05-14</td><td>—</td></tr></tbody></table>
+<p><strong>一年内离任的高管（与处罚名单高度重合，这是"管理层已换血"的证据）</strong>：董事长<strong>杨海涛</strong>（2025-05-08 辞职）、董事<strong>艾迪</strong>（实控人之一，2025-05-12 辞职）、副总经理兼财务负责人<strong>张艳菊</strong>（2025-05-14 辞职）、副总经理兼董事会秘书<strong>万骏</strong>（2025-05-14 辞职）、副总经理<strong>曾昭翔</strong>（2025-01-07 辞职）、董事<strong>唐晖文</strong>（2026-04-08 离任）。其中张艳菊、万骏、曾昭翔<strong>同时是 2026 年行政处罚事先告知书列名的其他直接责任人员</strong>。</p>
+<p><strong>读法</strong>：非独立董事 6 席中光谷系占 3 席、董事长长期由光谷系董事代行、2026 年被处罚的责任人员<strong>已全部离开董监高岗位</strong>——三件事合起来说明：<strong>这家公司当前的运作主体是国资、不是实控人</strong>；但<strong>国资至今没有启动任何资产层面的动作</strong>。</p>
+
+</div></details>
+<details class="fold"><summary>股东阵容逐户身份识别（取得方式／成本／冻结质押／锁定期）</summary><div class="fold-body">
+
+<table><thead><tr><th>排名</th><th>股东</th><th>持股</th><th>身份识别</th><th>取得方式与成本</th><th>冻结/质押</th></tr></thead><tbody><tr><td>1</td><td>武汉光谷创业科技投资有限公司</td><td>14.63%（6,291.72 万股）</td><td><strong>国有法人</strong>·光谷金控系（成立 2006-12-31、注册资本 10 亿元、法定代表人金少平；主营集成电路/生物医药/智能制造投资）</td><td>本次取数未核到取得时点与价格 <strong>【待核实】</strong></td><td>无冻结、无质押</td></tr><tr><td>2</td><td>武汉同喻投资合伙企业（有限合伙）</td><td>12.45%（5,355.45 万股）</td><td><strong>控股股东</strong>·私募型持股平台（成立 2020-10-12、注册资本 13.60 亿元、执行事务合伙人委派代表李震军）</td><td>2020—2021 年受让原实控人一系 24.58% 中的一半；单价公告未披露 <strong>【待核实】</strong></td><td><strong>全部司法冻结且处于轮候冻结</strong>（2025 年报）</td></tr><tr><td>3</td><td>西藏中茵集团有限公司</td><td>12.13%（5,214.47 万股）</td><td>境内非国有法人·<strong>司法拍卖受让方／职业法拍客</strong></td><td><strong>2024-09-25 京东网司法拍卖</strong>取得（受让同喻所持 12.13%）；成交单价未核到 <strong>【待核实】</strong></td><td><strong>冻结已大幅解除</strong>：2025 年末为 4,927.67 万股冻结 → <strong>2026-03-12 降至 122.70 万股</strong>（2.35%，惠州市惠城区法院轮候冻结生效）；<strong>质押仍为 4,295.67 万股（占其持股 82.38%）</strong></td></tr><tr><td>4</td><td>武汉华中科大资产管理有限公司</td><td>2.99%</td><td>国有法人·<strong>原校办体系遗留股东</strong></td><td>—</td><td>无</td></tr><tr><td>5</td><td>武汉华工创业投资有限责任公司</td><td>2.00%</td><td>国有法人·原校办体系</td><td>—</td><td>无</td></tr><tr><td>6—10</td><td>冯建屏 1.83%／胡晓静 1.15%／张新访 1.07%／李秀美 1.03%／吴晓蓉 0.90%</td><td>合计 5.98%</td><td>自然人（张新访系离任董事，持 406.48 万股限售股）</td><td>—</td><td>无</td></tr></tbody></table>
+<p><strong>筹码集中度</strong>：股东户数 2025-09-30 的 12,398 户 → 2026-06-30 的 9,549 户（<strong>−22.98%</strong>），户均自由流通持股市值 <strong>22.16 万元</strong>（东财评为"非常集中"）；<strong>但同期股价由 4.61 元降至 4.92 元后继续下探，属下跌中户数减少</strong>，不得直接读作主力吸筹。</p>
+
+</div></details>
+<h3 id="sec1">1.2 ST 风险诊断与四类红线对照</h3>
+<p><strong>结论：当前四类退市红线一条未踩（营收、净资产、审计意见、市值、股价、股东数、内控、资金占用全部过关）；真正的风险不在这张表里，而在"撤销申请会不会被否决"这一条程序性红线上。</strong></p>
+<p>戴帽与叠加共三段、跨越 2024—2025 两年，<strong>三条依据全部落在创业板 2026 年修订版的 9.4 与 10.3.1 上，其中"财报无法表示意见"这一条已在 2025 年报消除、"内控否定意见"这一条已转为无保留</strong>。</p>
+<details class="fold"><summary>三段戴帽路径与依据（公告可查）</summary><div class="fold-body">
+
+<table><thead><tr><th>阶段</th><th>生效日</th><th>依据（创业板 2026 年修订版）</th><th>触发事实</th></tr></thead><tbody><tr><td>① 违规担保 ST</td><td>2024 年初戴帽、2024-04-29 申请撤销</td><td>9.4 第（五）项</td><td>为关联方违规担保</td></tr><tr><td>② *ST</td><td><strong>2025-04-30</strong></td><td><strong>10.3.1 第一款第（三）项</strong></td><td>2024 年度财务会计报告被出具<strong>无法表示意见</strong></td></tr><tr><td>③ 叠加 ST</td><td><strong>2025-04-30</strong></td><td><strong>9.4 第（四）项</strong></td><td>2024 年度内部控制被出具<strong>否定意见</strong></td></tr></tbody></table>
+<p>（依据：<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1223384981&amp;orgId=9900017107&amp;announcementTime=2025-04-29" target="_blank" rel="noopener">关于股票交易被实施退市风险警示并叠加实施其他风险警示及股票停牌的公告，2025-04-29</a>）</p>
+
+</div></details>
+<table><thead><tr><th>类型</th><th>触发条件（创业板）</th><th>本标的是否触及</th><th>可救性</th></tr></thead><tbody><tr><td>财务类</td><td>孰低为负 <strong>且</strong> 扣除后营收&lt;1 亿元／期末净资产为负／审计无法表示·否定意见</td><td><strong>曾触及第（三）项（已消除）</strong>：2025 年扣除后营收 1.71 亿元、净资产 +4.58 亿元、审计标准无保留</td><td>可救</td></tr><tr><td>交易类</td><td>连续 20 日收盘价&lt;1 元／市值&lt;3 亿元／股东数&lt;400 人</td><td>未触及（股价 5.02 元、市值 21.59 亿元、股东 9,549 户）</td><td>—</td></tr><tr><td>规范类</td><td>资金占用≥2 亿元或≥净资产 30%／内控连续两年非标／信披缺陷不整改</td><td>未触及：资金占用<strong>峰值期末余额 1.17 亿元</strong>（占净资产 7.83%）、且<strong>已于 2024 年归还</strong>；2025 年内控为<strong>带强调事项段的无保留意见</strong>（非非标）；股份已于 2025-12-30 全额收回债权转让款</td><td>可救</td></tr><tr><td>重大违法类</td><td>造假达量化线（单年虚增≥2 亿元且占比≥30% 等）／欺诈发行</td><td><strong>未触及</strong>：处罚事由为"未按规定披露关联交易／重大担保＋实控人非经营性资金占用"，属<strong>重大遗漏</strong>而非财务指标虚假记载；公司 2026-05-01 与律所 2026-04-23 法律意见书均明确"不触及第十章第五节重大违法强制退市情形"</td><td>—</td></tr></tbody></table>
+<blockquote><p><strong>路径底表核对</strong>：Andy 自建《退市风险预警-20261005.xlsx》四张表中，300205 <strong>仅出现在「规范类」工作表的处罚台账块</strong>（记录 2026-04-17、2026-04-30 两条信息披露违法记录），交易类／财务类／其他类<strong>三张表均无</strong>——与"财务类红线已随 2025 年报消除"的实际相符，也与"规范类处罚台账收录含非 ST 大盘股"的口径一致（<strong>该表此处是处罚台账、不是退市名单</strong>）。</p></blockquote>
+<details class="fold"><summary>四类红线逐条对照的原始数字（含"扣除后营收"与占用峰值口径）</summary><div class="fold-body">
+
+<p><strong>① 财务类三小项（2025 年报口径，<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225156183&amp;orgId=9900017107&amp;announcementTime=2026-04-23" target="_blank" rel="noopener">2025 年年度报告，2026-04-23</a>）</strong></p>
+<table><thead><tr><th>小项</th><th>红线</th><th>2025 年实际</th><th>结论</th></tr></thead><tbody><tr><td>孰低为负 且 扣除后营收</td><td>&lt;1 亿元</td><td>营业收入 1.72 亿元，<strong>扣除后 1.71 亿元</strong>（扣除额仅 102.71 万元，主要为废料处置收入）</td><td>未触及</td></tr><tr><td>期末净资产</td><td>&lt;0</td><td>归母净资产 <strong>4.58 亿元</strong></td><td>未触及</td></tr><tr><td>审计意见</td><td>无法表示／否定</td><td>政旦志远出具<strong>标准无保留意见</strong>（报告日 2026-04-22，审计报告文号：政旦志远审字第260000309号）</td><td>未触及</td></tr></tbody></table>
+<p><strong>② 规范类资金占用口径（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225271987&amp;orgId=9900017107&amp;announcementTime=2026-05-01" target="_blank" rel="noopener">《行政处罚决定书》公告，2026-05-01</a>）</strong></p>
+<table><thead><tr><th>年度</th><th>发生额</th><th>期末余额</th><th>占最近一期经审计净资产</th></tr></thead><tbody><tr><td>2022</td><td>1,620 万元</td><td>—</td><td>1.16%</td></tr><tr><td>2023</td><td>1.0037 亿元</td><td><strong>1.1657 亿元（峰值）</strong></td><td>6.75% / <strong>7.83%</strong></td></tr><tr><td>2024</td><td>4,000 万元</td><td>—</td><td>2.70%（已通过债权转让全额收回）</td></tr></tbody></table>
+<p>→ 峰值 1.17 亿元 <strong>&lt; 2 亿元</strong>、7.83% <strong>&lt; 30%</strong>，且<strong>已于 2024 年归还</strong>；2025 年另新增占用利息 236.30 万元，2025-12-30 收到全部债权转让款后归零。<strong>两个门槛都未触及。</strong></p>
+<p><strong>③ 内控口径（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225156202&amp;orgId=9900017107&amp;announcementTime=2026-04-23" target="_blank" rel="noopener">2025 年度内部控制审计报告，2026-04-23</a>）</strong>：意见类型为<strong>带强调事项段的无保留意见</strong>（强调事项＝立案与事先告知书所涉资金占用缺陷已完成整改、占用余额为 0；以及上期"无法表示意见"所涉事项已实施前期差错更正）。<strong>"带强调事项段的无保留意见"仍属无保留意见，不构成非标</strong>——这是本案能申请撤销的关键。</p>
+
+</div></details>
+<h3 id="sec2">1.3 摘帽展望（★ 本案核心，也是唯一开关）</h3>
+<p><strong>结论：撤销条件在规则上已全部满足，且公司已按时提交申请；卡的既不是条件、也不是时间，而是"监管是否点头"——按创业板 10.3.11 第九项，"撤销申请未被本所审核同意"本身就构成终止上市情形，所以这是一个"批则活、不批则直接归零"的二元开关。</strong></p>
+<table><thead><tr><th>关卡</th><th>依据</th><th>2025 年报实际</th><th>是否满足</th></tr></thead><tbody><tr><td>撤销 *ST</td><td>创业板 <strong>10.3.7</strong>：次一年度年报不存在 <strong>10.3.11 第一项至第七项</strong>任一情形</td><td>扣除后营收 1.71 亿元＞1 亿元；净资产 +4.58 亿元；审计<strong>标准无保留</strong>；内控<strong>无保留</strong>；已按时披露年报</td><td>✅ 形式满足</td></tr><tr><td>撤销 ST（内控否定意见所致）</td><td>创业板 <strong>9.10</strong> 第三款末句：须披露最近一个会计年度<strong>无保留意见内控审计报告</strong></td><td>2025 年内控为带强调事项段的<strong>无保留意见</strong></td><td>✅ 形式满足</td></tr><tr><td>撤销 ST（首次·违规担保所致）</td><td>9.10 第三款：违规担保事项已消除＋<strong>律所法律意见书</strong></td><td>2024-04-29 已提交申请；嘉源律所已出具法律意见书</td><td>⏳ <strong>自 2024-04-29 起悬置 2 年半未获同意</strong></td></tr></tbody></table>
+<p><strong>时间线：三次"卡住"——一次悬置 2 年半、一次 5 个月未批、一次被延期 9 次后至今逾期未回。</strong> 而规则上创业板 10.3.8 明确"提交<strong>完备</strong>的申请材料的，本所在<strong>十五个交易日内</strong>决定是否撤销"——5 个月无结论的唯一合理解释是<strong>申请材料尚未被认定为"完备"</strong>，而"完备性"的缺口与被延期 9 次仍未回复的那份年报问询函，指向同一个方向。</p>
+<details class="fold"><summary>三次"卡住"的公告原文与完整日期</summary><div class="fold-body">
+
+<ol><li><strong>2024-04-29</strong> 首次提交"撤销违规担保 ST"申请 → <strong>至 2026-09-28 仍未获同意</strong>。2026-09-28 <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225584475&amp;orgId=9900017107&amp;announcementTime=2026-09-28" target="_blank" rel="noopener">进展公告</a>原文："公司认为违规担保情形已消除，已于 2024 年 4 月 29 日向深圳证券交易所申请撤销……<strong>截至本公告披露日，前述申请尚未获得深圳证券交易所同意。</strong>"</li><li><strong>2026-04-23</strong> 提交"撤销 \*ST 及叠加 ST"申请（董事会 2026-04-22 通过）→ <strong>至 2026-09-28 仍未获同意</strong>。同日<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225156178&amp;orgId=9900017107&amp;announcementTime=2026-04-23" target="_blank" rel="noopener">撤销申请公告</a>已写明"公司最终能否撤销退市风险警示及其他风险警示，尚需深圳证券交易所审核同意"。</li><li><strong>2026-04-27</strong> 收到深交所创业板公司管理部《年报问询函》（创业板年报问询函〔2026〕第 36 号），要求 <strong>2026-05-21 前</strong>回复 → <strong>连续延期 9 次</strong>（延期公告日：05-21、05-28、06-04、06-11、06-18、06-26、07-03、07-10、07-17），最后一次（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225429461&amp;orgId=9900017107&amp;announcementTime=2026-07-17" target="_blank" rel="noopener">2026-07-17</a>）称"问询函的回复内容尚需进一步补充和完善……经向深圳证券交易所申请，公司再次延期回复问询函"。<strong>此后至基准日无任何回复公告</strong>；2026-09-28 进展公告仍写"公司正在组织相关方对问询函涉及的问题进行逐项落实"。</li></ol>
+<p><strong>同一时间轴上还有一件事</strong>：公司 2024-04-24 披露过"可能被实施退市风险警示"的第一次提示，2026-01-29／02-12／03-06／03-20 又密集披露了四次"可能被终止上市"的风险提示——<strong>提示次数（4 次）本身就是一条注意力信号</strong>。</p>
+
+</div></details>
+<details class="fold"><summary>撤销条款与终止条款原文（创业板 2026 年修订版，逐字摘录）</summary><div class="fold-body">
+
+<p><strong>10.3.7</strong>（撤销 *ST 的入口）：上市公司因触及第 10.3.1 条第一款规定情形，其股票交易被实施退市风险警示后，实际触及退市风险警示情形相应年度<strong>次一年度的年度报告表明公司不存在第 10.3.11 条第一项至第七项任一情形</strong>的，公司可以向本所申请撤销退市风险警示。公司拟申请撤销退市风险警示的，<strong>应当在披露之日起五个交易日内</strong>，向本所提交申请。</p>
+<p><strong>10.3.8</strong>（时限）：公司提交完备的申请材料的，本所在<strong>十五个交易日内</strong>决定是否撤销退市风险警示。</p>
+<p><strong>10.3.10</strong>（不予撤销）：本所决定不予撤销退市风险警示的，上市公司应当在收到本所有关书面通知<strong>次一交易日</strong>披露公告。</p>
+<p><strong>10.3.11（★ 归零开关）</strong>：上市公司因触及第 10.3.1 条第一款情形，其股票交易被实施退市风险警示后，实际触及退市风险警示情形相应年度次一年度出现下列情形之一的，本所决定<strong>终止其股票上市交易</strong>：……（六）未按照规定披露内部控制审计报告；……<strong>（九）撤销退市风险警示申请未被本所审核同意</strong>；（十）本所认定的其他情形。</p>
+<p><strong>10.3.12</strong>：出现第 10.3.11 条第七项至第十项情形的，应当在相应情形发生的<strong>次一交易日</strong>披露股票可能被终止上市的风险提示公告，公司股票及其衍生品种于公告后停牌。</p>
+<p><strong>9.10</strong>（撤销 ST）：公司认为其出现的第 9.4 条规定的相应情形已消除的，应当及时公告……公司<strong>内部控制缺陷整改完成、内部控制能有效运行</strong>，向本所申请撤销其他风险警示的，应当披露会计师事务所对其<strong>最近一个会计年度财务会计报告出具的无保留意见的内部控制审计报告</strong>。</p>
+<p><strong>一句话总结</strong>：\*ST 的撤销是"<strong>不批即死</strong>"；ST 的撤销是"<strong>可以一直不批，但不影响上市地位</strong>"。天喻的处境是——<strong>\*ST 那道门没开，ST 那两道门已经关了 2 年半。</strong></p>
+
+</div></details>
+<p><strong>退市整理期提示</strong>：本案若因 10.3.11 第九项终止上市，属<strong>财务类/规范类强制退市</strong>（非交易类），仍有退市整理期可供卖出；这与"面值退市无整理期"是两回事。</p>
+<h3 id="sec3">1.4 王艳式六栏目（完全信息层，全部就地折叠）</h3>
+<p><strong>结论：这家公司 25 年的历史可以压缩成一句话——"华科系校办企业 → 2020—2021 年被联创系（艾迪／闫春雨）以 24.58% 入主 → 2021 年起用 5 亿元体外投资昌喻投资并沿'鲲鹏支付股权回购'这条线滚出 10.50 亿元争议 → 2024 年 SDN 制裁＋实控人违规把主业和治理一起打穿"。</strong></p>
+<details class="fold"><summary>① 前世今生（四列表：时间｜关键事件｜股权/实控人变化｜背后的逻辑）</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>关键事件</th><th>股权/实控人变化</th><th>背后的逻辑（金额·价格·资金来源·背景）</th></tr></thead><tbody><tr><td>1999-08</td><td>公司成立</td><td>—</td><td>武汉东湖新技术开发区华工大学科技园，华科系校办企业基因</td></tr><tr><td>2011-04-21</td><td>深交所创业板上市</td><td>—</td><td>智能卡主业</td></tr><tr><td>2020-09-15</td><td>公告实控人一系拟出让上市公司 24.58% 股份</td><td>或导致控制权变更</td><td>出让比例 24.58%（对应约 1.06 亿股）；<strong>每股价格公告未披露【待核实】</strong>（线索级：韭研异动 2020-09-21 记"实控人一系拟出让上市公司 24.58% 股份，或导致控制权变更"）</td></tr><tr><td>2020-10-12</td><td>武汉同喻投资合伙企业（有限合伙）成立</td><td>—</td><td>注册资本 <strong>13.60 亿元</strong>；执行事务合伙人委派代表李震军；受让主体专为本次交易设立</td></tr><tr><td>2021-09-10</td><td>定增：<strong>实控人之一全额认购</strong></td><td>联创系（艾迪／闫春雨）控制权坐实</td><td>资金来自实控人自有/自筹；韭研异动 2021-09-10 记"定增实控人之一全额认购＋实控人变更"</td></tr><tr><td>2021-09-28</td><td>参股设立<strong>深圳市昌喻投资合伙企业（有限合伙）</strong></td><td>—</td><td>天喻以自有资金出资 <strong>5 亿元</strong>，认缴 52.58%、<strong>实缴 76.80%</strong>；另一 LP 南昌水天认缴 47.32%、实缴 23.04%；GP 中科红樟仅认缴 0.11%</td></tr><tr><td>2021-09</td><td>昌喻投资以 <strong>6.50 亿元</strong>受让北京载川（原亿赞普）所持<strong>重庆鲲鹏支付</strong>股权，最终持股 10.84%</td><td>—</td><td>约定业绩承诺＋<strong>2022-12-31 前上市</strong>对赌，未达标则年化 <strong>12% 复利</strong>回购，北京载川以合计 19% 鲲鹏支付股权质押</td></tr><tr><td>2022-10-20</td><td>与深圳锦瑞通签《模块产品供货协议》</td><td>—</td><td>约定"发货前付全款"，实际<strong>未收款即发货且不追违约</strong>；后续被证监会按"实质重于形式"认定为<strong>关联法人</strong></td></tr><tr><td>2023-04</td><td>昌喻投资与北京载川签补充协议：确认回购 <strong>2.10%</strong> 股权，<strong>本金 1.26 亿元</strong></td><td>—</td><td>北京载川仅支付部分款项 → 埋下 2026 年的 10.50 亿元仲裁</td></tr><tr><td>2023-12-26</td><td>湖北证监局警示函</td><td>—</td><td>未及时披露重大诉讼、向关联方担保、控股股东股份被冻结；对象含闫春雨、丹明波、万骏、张艳菊</td></tr><tr><td>2024-01</td><td>违规担保事项逾期未解决 → <strong>ST</strong></td><td>—</td><td>9.4(五)</td></tr><tr><td>2024-04-22/23</td><td>出具《承诺函》《保证合同》三笔，担保总额 <strong>2.90 亿元</strong></td><td>—</td><td>对杭州越秀 6,000 万元＋湖州民融 2 亿元＋湖州民融 3,000 万元（<strong>为闫春雨本人担保 9,000 万元</strong>）；占最近一期经审计净资产 19.50%</td></tr><tr><td>2024-06</td><td><strong>被美国财政部 OFAC 列入 SDN 清单</strong></td><td>—</td><td>因向受制裁的俄罗斯 Alfa 银行供货超 90 万美元；美国运通/万事达/VISA 终止合作</td></tr><tr><td>2024-09-25</td><td>同喻所持 <strong>52,144,656 股（12.13%）</strong> 在京东网司法拍卖成交</td><td>中茵集团入场</td><td>同喻持股由 24.58% 降至 12.45%</td></tr><tr><td>2025-04-30</td><td><strong>\*ST＋ST 叠加</strong></td><td>—</td><td>2024 年财报"无法表示意见"（10.3.1(三)）＋内控"否定意见"（9.4(四)）</td></tr><tr><td>2025-06-06</td><td>证监会立案（公司＋闫春雨，证监立案字 0052025006/0052025005 号）</td><td>—</td><td>涉嫌信息披露违法违规</td></tr><tr><td>2025-10-13／11-19／12-30</td><td>控股股东申请破产清算 → <strong>武汉中院不予受理</strong>（未证明"不能清偿到期债务"）→ <strong>湖北高院 2025-12-29 驳回上诉、维持原裁定</strong></td><td>—</td><td>同喻持股市值彼时约 2.6 亿元，远低于 13.60 亿元注册资本</td></tr><tr><td>2025-10-27</td><td>解散昌喻投资</td><td>—</td><td>以《合伙企业法》第四十九条将 GP<strong>中科红樟除名</strong>（因中科红樟拒收通知函、不主张权利），合伙企业失成立条件须解散；委托<strong>中汇会计师事务所</strong>任清算人</td></tr><tr><td>2025-12-13</td><td>拟变更会计师事务所</td><td>—</td><td>原中兴财光华面临暂停执业风险 → 改聘<strong>政旦志远（深圳）</strong></td></tr><tr><td>2025-12-30</td><td><strong>收到全部债权转让款</strong></td><td>—</td><td>4,000 万元占用本息通过对代理商债权转让全额收回</td></tr><tr><td>2026-01-29</td><td>2025 年度业绩预告 ＋ <strong>首次终止上市风险提示</strong></td><td>—</td><td>亏损 6.05 亿元，触发"可能被终止上市"提示</td></tr><tr><td>2026-04-17</td><td>收到湖北证监局《行政处罚事先告知书》（鄂处罚字(2026)10 号）</td><td>—</td><td>列 7 名当事人</td></tr><tr><td>2026-04-22／23</td><td>董事会通过并提交<strong>撤销 \*ST 及 ST 申请</strong></td><td>—</td><td>依据 10.3.7 与 9.10</td></tr><tr><td>2026-04-27</td><td>收到深交所 2025 年报问询函（第 36 号）</td><td>—</td><td>要求 05-21 前回复 → 延期 9 次至 07-17 → 至今未回</td></tr><tr><td>2026-04-30／06-29</td><td>收到公司《行政处罚决定书》（[2026]9 号）；获悉闫春雨《行政处罚决定书》（[2026]12 号）</td><td>—</td><td>公司 600 万元；闫春雨 1,350 万元＋<strong>5 年市场禁入</strong></td></tr><tr><td>2026-09-29／30</td><td>控股股东所持 <strong>53,554,522 股（12.45%）</strong> 在淘宝司法拍卖分 3 包开拍 → <strong>三笔全部流拍（无人出价）</strong></td><td>控制权未变更</td><td>起拍价按开拍日前 20 个交易日均价确定（线索级：雪球评论，2026-08-31）</td></tr><tr><td>2026-12-31（预计）</td><td>2026 年报结算日</td><td>—</td><td>2026H1 营收仅 2,404.06 万元 → <strong>大概率再次触及 10.3.1(一)</strong>（见 §2.4 节点⑤）</td></tr></tbody></table>
+
+</div></details>
+<details class="fold"><summary>② 股东阵容（身份识别／成本／锁定／集中度）＋ ④ 资产质量星级表</summary><div class="fold-body">
+
+<p><strong>股东阵容</strong>：见 §1.1 折叠表（逐户身份、取得方式、冻结质押）。</p>
+<p><strong>成本锚点（⑤）</strong>：</p>
+<table><thead><tr><th>参与方</th><th>成本口径</th><th>与现价（5.02 元）关系</th></tr></thead><tbody><tr><td>天喻信息（对昌喻投资出资）</td><td>自有资金 <strong>5 亿元</strong>，认缴 52.58%／实缴 76.80%</td><td>折合每股对价不可直接比较</td></tr><tr><td>昌喻投资（受让鲲鹏支付股权）</td><td><strong>6.50 亿元</strong>取得 10.84%</td><td>回购条款已部分触发</td></tr><tr><td>北京载川（回购义务人）</td><td>2.10% 股权回购本金 1.26 亿元；<strong>实缴资本仅 1,000 万元</strong>（注册资本 10.00 亿元）</td><td><strong>偿付能力存疑——这是 10.50 亿元追偿的最大软肋</strong></td></tr><tr><td>西藏中茵（中 12.13%）</td><td>2024-09-25 京东拍卖取得</td><td>单价未核到【待核实】</td></tr><tr><td>控股股东同喻</td><td>2020—2021 年受让 24.58%</td><td>单价未核到【待核实】</td></tr><tr><td>2026-09-29 淘宝拍卖起拍价</td><td>＝开拍日前 20 个交易日均价（线索级）</td><td><strong>流拍＝市场对该价位的承接意愿为零</strong></td></tr></tbody></table>
+<p><strong>两类定价逻辑（本案适用"协议受让·法拍＝无稀释市场底"）</strong>：本案既无重整、也无转增，<strong>股权处置不受除权影响</strong>——2026-09-29 流拍只是"市场化定价未获认可"，不构成价格底。</p>
+<p><strong>④ 资产质量星级表</strong></p>
+<table><thead><tr><th>评估维度</th><th>大白话说明</th><th>评级</th></tr></thead><tbody><tr><td>市值与估值</td><td>市值 21.59 亿元，<strong>PB 5.59 倍、PS（2025）约 12.6 倍</strong>；虽近 20 年价格分位仅 11.74%，但资本结构已因昌喻出表、净资产从 14.80 亿元缩到 3.87 亿元，<strong>分位与市值口径必须并存看</strong></td><td>★☆☆☆☆</td></tr><tr><td>法律合规性</td><td>行政处罚已落地（公司 600 万元／实控人 1,350 万元＋5 年禁入）；年报问询函逾期未回；违规担保 ST 撤销悬置 2 年半</td><td>★★☆☆☆</td></tr><tr><td>债务与流动性</td><td>2026H1 归母净资产 3.87 亿元、<strong>经营性现金流 −1.71 亿元</strong>；成都慧友伟诉讼涉诉本金 2.13 亿元；湖州民融 2 案（1.4 亿元）一审已判不担责且生效</td><td>★★☆☆☆</td></tr><tr><td>主业质地</td><td>SDN 未移除，2026H1 营收 <strong>2,404.06 万元（−72.24%）</strong>；2025 年智能卡毛利率仅 <strong>9.18%</strong>（同比 −19.62 个百分点），外销占比从 17.23% 掉到 1.15%</td><td>★☆☆☆☆</td></tr><tr><td>控制权与运作</td><td>控股股东 12.45% <strong>全部冻结＋轮候冻结</strong>、破产清算申请被驳、股份拍卖流拍；<strong>但光谷系国资已在董事会占 3/6 非独立董事席位并由颜佐辉代行董事长 11 个月以上（未有正式董事长、无注入方向）</strong> —— "运作主体已换人、运作动作未开始"</td><td>★★☆☆☆</td></tr><tr><td><strong>综合</strong></td><td><strong>没有任何一项高分能抵消"主业已失去造血能力、净资产年化失血约 1.4 亿元"这一项</strong></td><td>★☆☆☆☆</td></tr></tbody></table>
+
+</div></details>
+<details class="fold"><summary>③ 重要公司主营工商与财务（查不到就写"未披露"）＋ 关键人物简历</summary><div class="fold-body">
+
+<p><strong>昌喻投资（本案最值钱的争议资产）</strong></p>
+<table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>名称</td><td>深圳市昌喻投资合伙企业（有限合伙）</td></tr><tr><td>成立时间</td><td>2021-09-28</td></tr><tr><td>统一社会信用代码</td><td>91440300MA5H0TW209</td></tr><tr><td>认缴出资额</td><td>95,100 万元（认缴）／65,100 万元（实缴）</td></tr><tr><td>出资结构</td><td>天喻信息 认缴 52.58%／<strong>实缴 76.80%</strong>；南昌水天 认缴 47.32%／实缴 23.04%；中科红樟（GP）0.11%（<strong>2025-10-27 被除名</strong>）</td></tr><tr><td>注册地址</td><td>深圳市福田区沙头街道天安社区泰然四路 29 号天安创新科技广场一期 A 座 1605G6</td></tr><tr><td>核心资产</td><td>重庆鲲鹏支付服务有限公司 <strong>10.84%</strong> 股权（原按 6.50 亿元受让）；北京载川另质押鲲鹏支付 19% 股权给昌喻投资</td></tr><tr><td>净资产</td><td>2025-09-30：<strong>5.54 亿元</strong>；2024-12-31：5.66 亿元；2023-12-31：6.27 亿元（自己无营业收入）</td></tr><tr><td>净利润</td><td>2025 年 1—9 月 <strong>−1,163.10 万元</strong>；2024 年 −6,163.44 万元</td></tr><tr><td>会计处理</td><td>2024 年末所持鲲鹏支付股权账面价值 5.24 亿元 → 因改用"<strong>回购价值法</strong>"重估，<strong>调减公允价值 4,023.00 万元</strong>（2026-04-23 前期会计差错更正）</td></tr><tr><td>状态</td><td><strong>2025-10 起进入清算程序，不再纳入合并范围</strong>，清算人＝中汇会计师事务所（特殊普通合伙）</td></tr><tr><td>上市公司财务贡献</td><td>公司未单独披露其营收/利润归属 <strong>【未披露】</strong>——<strong>昌喻自身 2023 年以来营业收入为 0</strong>（见上表），其价值全部来自鲲鹏支付股权处置</td></tr></tbody></table>
+<p><strong>重庆鲲鹏支付服务有限公司（争议标的）</strong></p>
+<table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>曾用名</td><td>重庆市钱宝科技服务有限公司</td></tr><tr><td>注册资本</td><td>1 亿元（实缴）</td></tr><tr><td>法定代表人</td><td>罗健</td></tr><tr><td>实际控制人</td><td>罗峰</td></tr><tr><td>股东</td><td>北京载川持股 47.47%；昌喻投资持股 10.84%（另质押 19% 待行使）</td></tr><tr><td>地址</td><td>重庆市渝北区龙溪街道红锦大道 90 号中渝广场 2 幢 28-2</td></tr><tr><td>上市/业绩承诺</td><td>未能在 2022-12-31 前上市、2023 年业绩仍未达标 → <strong>剩余 8.74% 股权回购条件亦已触发</strong></td></tr></tbody></table>
+<p><strong>北京载川科技有限公司（回购义务人）</strong></p>
+<table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>曾用名</td><td>亿赞普（北京）科技有限公司</td></tr><tr><td>注册资本／实缴</td><td>10.0008 亿元 / <strong>仅 1,000 万元</strong></td></tr><tr><td>法定代表人／实控人</td><td>罗健 / 罗峰</td></tr><tr><td>地址</td><td>北京市海淀区学清路甲 18 号中关村东升科技园</td></tr><tr><td><strong>风险提示</strong></td><td><strong>注册资本与实缴严重不符，履行能力存疑</strong>——这是 10.50 亿元仲裁追偿能否变现的最大不确定性（据 ST 信息库/本目录《仲裁案件梳理报告_载川系》整理，原始数据以公告为凭）</td></tr></tbody></table>
+<p><strong>关键人物详细简历</strong>（★ 只写公告披露内容；公告未披露的一律写"公告未披露"，<strong>禁用第三方填充</strong>）</p>
+<table><thead><tr><th>姓名</th><th>出生年月</th><th>学历/履历</th><th>现任全部关联职务</th></tr></thead><tbody><tr><td>艾迪</td><td><strong>公告未披露</strong></td><td>公告未披露</td><td>联创投资集团股份有限公司董事长、总经理、董事会秘书、财务负责人；无锡联创人工智能投资企业（有限合伙）执行事务合伙人委派代表；天喻信息<strong>实际控制人之一</strong>（2025-03-21 被上海市第一中级人民法院列入<strong>失信被执行人</strong>）</td></tr><tr><td>闫春雨</td><td><strong>公告未披露</strong></td><td>公告未披露</td><td>深圳市深创智能集团董事长、总经理；天喻教育董事；天喻信息<strong>实际控制人之一、时任董事长</strong>。2026-01-04 被湖州市中级人民法院列入被执行人；2026-04-09 被武汉市武昌区人民法院采取限制消费措施；<strong>2026-06-29 获悉被罚 1,350 万元＋5 年证券市场禁入</strong></td></tr><tr><td>李震军</td><td><strong>公告未披露</strong></td><td>公告未披露</td><td>武汉同喻投资合伙企业（有限合伙）<strong>执行事务合伙人委派代表</strong></td></tr><tr><td>金少平</td><td><strong>公告未披露</strong></td><td>公告未披露</td><td>武汉光谷创业科技投资有限公司法定代表人</td></tr><tr><td>颜佐辉</td><td><strong>公告未披露</strong></td><td>公告未披露</td><td>光谷创业<strong>董事</strong>；武汉光谷金融控股集团<strong>总经理助理</strong>；湖北长晟发展财务负责人；武汉光谷担保集团董事长等 10 余项光谷系职务</td></tr></tbody></table>
+
+</div></details>
+<details class="fold"><summary>⑥ 信息来源汇总（四列表，四级分级）</summary><div class="fold-body">
+
+<table><thead><tr><th>#</th><th>级别</th><th>内容</th><th>链接</th></tr></thead><tbody><tr><td>1</td><td>一手·公告</td><td>2025 年年度报告（2026-04-23）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225156183&amp;orgId=9900017107&amp;announcementTime=2026-04-23" target="_blank" rel="noopener">原文</a></td></tr><tr><td>2</td><td>一手·公告</td><td>关于申请撤销对公司股票交易实施退市风险警示及其他风险警示的公告（2026-04-23）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225156178&amp;orgId=9900017107&amp;announcementTime=2026-04-23" target="_blank" rel="noopener">原文</a></td></tr><tr><td>3</td><td>一手·公告</td><td>关于收到湖北监管局《行政处罚决定书》的公告（2026-05-01）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225271987&amp;orgId=9900017107&amp;announcementTime=2026-05-01" target="_blank" rel="noopener">原文</a></td></tr><tr><td>4</td><td>一手·公告</td><td>关于湖北监管局对实际控制人出具《行政处罚决定书》的公告（2026-06-30）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225397765&amp;orgId=9900017107&amp;announcementTime=2026-06-30" target="_blank" rel="noopener">原文</a></td></tr><tr><td>5</td><td>一手·公告</td><td>关于再次延期回复深交所 2025 年报问询函的公告（2026-07-17）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225429461&amp;orgId=9900017107&amp;announcementTime=2026-07-17" target="_blank" rel="noopener">原文</a></td></tr><tr><td>6</td><td>一手·公告</td><td>关于股票交易被叠加实施其他风险警示的进展公告（2026-09-28）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225584475&amp;orgId=9900017107&amp;announcementTime=2026-09-28" target="_blank" rel="noopener">原文</a></td></tr><tr><td>7</td><td>一手·公告</td><td>关于控股股东股份将被司法拍卖的提示性公告（2026-08-26）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225512960&amp;orgId=9900017107&amp;announcementTime=2026-08-26" target="_blank" rel="noopener">原文</a></td></tr><tr><td>8</td><td>一手·公告</td><td>关于控股股东股份司法拍卖流拍的公告（2026-09-30）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225591995&amp;orgId=9900017107&amp;announcementTime=2026-09-30" target="_blank" rel="noopener">原文</a></td></tr><tr><td>9</td><td>一手·公告</td><td>关于参股企业涉及重大仲裁的公告（2026-04-21）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225136838&amp;orgId=9900017107&amp;announcementTime=2026-04-21" target="_blank" rel="noopener">原文</a></td></tr><tr><td>10</td><td>一手·公告</td><td>2026 年半年度报告（2026-08-18）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225477904&amp;orgId=9900017107&amp;announcementTime=2026-08-18" target="_blank" rel="noopener">原文</a></td></tr><tr><td>11</td><td>一手·公告</td><td>2025 年度内部控制审计报告（2026-04-23）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225156202&amp;orgId=9900017107&amp;announcementTime=2026-04-23" target="_blank" rel="noopener">原文</a></td></tr><tr><td>12</td><td>一手·公告</td><td>关于解散深圳市昌喻投资合伙企业（有限合伙）的公告（2025-10-27）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1224738054&amp;orgId=9900017107&amp;announcementTime=2025-10-27" target="_blank" rel="noopener">原文</a></td></tr><tr><td>13</td><td>一手·监管</td><td>湖北证监局《行政处罚决定书》公示页</td><td><a href="http://www.csrc.gov.cn/hubei/c104406/c7631811/content.shtml" target="_blank" rel="noopener">原文</a></td></tr><tr><td>14</td><td>数据源</td><td>投资者互动易问答（同花顺 F10）</td><td><a href="https://basic.10jqka.com.cn/300205/interactive.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>15</td><td>线索·二级</td><td>雪球 ST 讨论日报（ST 信息库 <code>3.重要消息</code>，2026-08-09／08-14／08-18／08-20／08-22／08-25／08-27／08-31／09-03）</td><td>库内文件</td></tr></tbody></table>
+
+</div></details>
+<hr>
+<h2 id="chap2">二、基本面路径 · 规范类「撤销核准」为主路径</h2>
+<p><strong>结论先行：本案走的是"处罚 ST＋内控非标"的规范类路径，但这家公司的实质处境与「＊ST和科」「＊ST海华」同型——</strong>四类红线零踩、公司无动作可做，唯一变量是监管裁量<strong>。因此本节不铺"保壳动作清单"，只回答三个问题：处罚落地后红线有没有增加、主业还剩多少、追偿能拿回多少。</strong></p>
+<h3 id="sec4">2.1 处罚已落地，四类红线没有增加</h3>
+<p><strong>结论：两份《行政处罚决定书》已于 2026-04-30／06-29 落地（公司 600 万元、实控人 1,350 万元＋5 年禁入），但</strong>没有触发任何新增红线<strong> ——既未构成重大违法强制退市，也未触发 9.4 第（七）项"假 ST"（公司至今未发布任何因此新增风险警示的公告）。</strong></p>
+<table><thead><tr><th>对象</th><th>文号</th><th>金额</th><th>附加</th><th>落地日</th></tr></thead><tbody><tr><td>武汉天喻信息产业股份有限公司</td><td>湖北证监局〔2026〕9 号</td><td><strong>600 万元</strong>（责令改正＋警告）</td><td>—</td><td>2026-04-30 收到</td></tr><tr><td>闫春雨（实控人／时任董事长）</td><td>湖北证监局〔2026〕12 号</td><td><strong>1,350 万元</strong>（作为直接负责主管人员 450 万元＋作为实控人 900 万元）</td><td><strong>5 年证券市场禁入</strong></td><td>2026-06-29 获悉</td></tr></tbody></table>
+<p><strong>违法事实三条（金额全部回决定书原文）</strong>：① 未按规定披露与关联人深圳锦瑞通的关联交易，2022-10—2023-12 合计 <strong>1.88 亿元</strong>（2022 年 2,794.85 万元占净资产 2.00%；2023 年 1.60 亿元占 10.73%）；② 未按规定披露实际控制人非经营性资金占用（见 §1.2 折叠表）；③ 未按规定披露重大担保 <strong>2.90 亿元</strong>（占最近一期经审计净资产 19.50%，其中为闫春雨本人担保 9,000 万元）。</p>
+<p><strong>为什么没有新增红线</strong>：处罚事由是"<strong>重大遗漏</strong>"（未披露），不是"财务指标虚假记载"。创业板 9.4 第（七）项"假 ST"的构成要件是"公司披露的<strong>年度报告财务指标</strong>存在虚假记载"（营收／利润总额／净利润／资产或负债科目）——未披露关联交易与担保<strong>不改变已披露的财务指标数值</strong>；同时资金占用峰值 1.17 亿元远低于 2 亿元门槛、7.83% 远低于净资产 30%。<strong>这也是公司 2026-05-01 公告与嘉源律所 2026-04-23 法律意见书共同给出的口径。</strong></p>
+<details class="fold"><summary>处罚事件的完整事实链（含"关联人认定"的论证逻辑）</summary><div class="fold-body">
+
+<p><strong>锦瑞通为什么被认定为关联人</strong>：2022-10-20《模块产品供货协议》约定"发货前付全款"，实际天喻<strong>未收款即发货、亦不追违约</strong>；货物不经锦瑞通、其不承担货损责任，<strong>仅起销售通道作用</strong>；天喻承担客户导入、生产、发货、质量保证责任。据此，证监会依《上市公司信息披露管理办法》（证监会令第 182 号）<strong>第六十二条第四项"实质重于形式原则"</strong>认定锦瑞通为关联法人。</p>
+<p><strong>关联交易金额</strong>：2022-10—2023-12 合计 <strong>18,762.58 万元</strong>；其中 2022 年 2,794.85 万元（占最近一期经审计净资产 2.00%）、2023 年 15,967.74 万元（占 10.73%／占当期报告记载净资产 10.79%）。</p>
+<p><strong>重大担保三笔</strong>：2024-04-22 向杭州越秀贸易出具《承诺函》，对杭州越秀向锦瑞通、深圳市铺行网、闫春雨等提供的 <strong>6,000 万元</strong>借款本息承担连带清偿责任；2024-04-23 与湖州市民间融资服务中心签两份《保证合同》，分别对张某、潘某伟的 <strong>20,000 万元</strong>借款、对闫春雨的 <strong>3,000 万元</strong>借款提供连带保证。合计 <strong>29,000 万元</strong>（占最近一期经审计净资产 19.50%／占当期报告记载净资产 20.11%）。</p>
+<p><strong>一个易混的口径</strong>：决定书里的"最近一期经审计净资产"用的是<strong>所有者权益合计（含少数股东权益）</strong>，与定期报告的"归母净资产"是两个数——本案 2.90 亿元担保的占比 19.50% 与 20.11% 正是这两个口径的差（19.50% 用审计口径、20.11% 用当期报告口径）。</p>
+<p><strong>其他责任人员</strong>：事先告知书（鄂处罚字(2026)10 号，2026-04-18 公告）列 7 名当事人——除公司与闫春雨外，还有沈进长（外部人员，参与实施资金占用）、丹明波（时任副总经理/总经理/董事）、曾昭翔（时任副总经理/董事）、张艳菊（时任副总经理/财务总监）、万骏（时任副总经理/董事会秘书）。<strong>截至基准日，公司仅公告了公司自身与闫春雨两份决定书；其余 5 名的决定书公司未公告【需补充】。</strong></p>
+
+</div></details>
+<h3 id="sec5">2.2 主业：SDN 制裁未解除，营收已缩到原来的十分之一</h3>
+<p><strong>结论：这是一家"业务还在、造血已停"的公司——SDN 制裁 2024 年 6 月至今未移除，收入连续三级台阶下坠（2023 年 17.00 亿元 → 2024 年 8.47 亿元 → 2025 年 1.72 亿元 → 2026H1 0.24 亿元），而且</strong>下滑原因在公告里被明确归因于"尚未从 SDN 清单中移除＋退市风险警示"，这两件事公司自己都无法决定<strong>。</strong></p>
+<table><thead><tr><th>报告期</th><th>营业收入</th><th>归母净利</th><th>扣非净利</th><th>归母净资产</th><th>总资产</th><th>毛利率</th></tr></thead><tbody><tr><td>2023 年</td><td>17.00 亿元</td><td><strong>+1,970.68 万元</strong></td><td>−1,206.48 万元</td><td>14.80 亿元</td><td>29.86 亿元</td><td>—</td></tr><tr><td>2024 年</td><td>8.47 亿元</td><td>−4.08 亿元</td><td>−3.30 亿元</td><td>10.63 亿元</td><td>21.27 亿元</td><td>—</td></tr><tr><td>2025 年</td><td>1.72 亿元</td><td><strong>−6.05 亿元</strong></td><td>−4.18 亿元</td><td>4.58 亿元</td><td>13.28 亿元</td><td>24.63%</td></tr><tr><td>2026Q1</td><td>1,357.06 万元（−70.09%）</td><td>−4,260.43 万元</td><td>−4,066.89 万元</td><td>4.16 亿元</td><td>10.79 亿元</td><td>—</td></tr><tr><td>2026H1</td><td><strong>2,404.06 万元（−72.24%）</strong></td><td>−7,198.06 万元</td><td>−6,762.71 万元</td><td><strong>3.87 亿元</strong></td><td>9.72 亿元</td><td>42.92%</td></tr></tbody></table>
+<p>（数据来源：2025 年年度报告、2026 年半年度报告、2026 年一季度报告；2024 年数据为追溯重述后口径）</p>
+<p><strong>勾稽自检</strong>：2025 年归母净利 −6.05 亿元 ＝ 四个季度 −4,018.91 −4,563.52 −3,859.48 −48,058.90（万元）之和 ✓；2026H1 归母净资产 3.87 亿元 ＝ 4.58 亿元 − 0.72 亿元 ＋ 其他权益变动，与"净资产变动＝净利贡献＋其他权益变动"的拆解一致 ✓。</p>
+<p><strong>三个必须点出的判断</strong>：</p>
+<ol><li><strong>亏损主要不来自经营，来自减值与或有事项</strong>。2025 年计提信用与资产减值 <strong>2.66 亿元</strong>（其中长期股权投资减值 1.79 亿元、存货跌价 5,231.61 万元、固定资产减值 2,833.00 万元），非经常性损益项下"与公司正常经营业务无关的或有事项产生的损益" <strong>−2.03 亿元</strong>。<strong>但 2026H1 计提已降到 2,123.26 万元</strong>——说明<strong>存量减值基本出清</strong>，后续亏损将回到"经营亏损"的体量。</li><li><strong>即便摘帽成功，2027 年 4 月大概率重新 \*ST</strong>。2026H1 营收仅 2,404.06 万元，即便下半年与上半年持平，全年约 0.48 亿元，<strong>扣除后营收 &lt;1 亿元</strong>；同时"孰低为负"必然成立 → <strong>直接触发 10.3.1 第一款第（一）项</strong>。除非在 2026-12-31 前完成可并表的资产注入或营收跃升，<strong>这条线是不可回避的</strong>。</li><li><strong>成本端已压到极限</strong>。2026H1 销售费用 872.63 万元（−55.17%）、管理费用 2,254.76 万元（−50.74%）、研发投入 1,648.95 万元（−39.78%），<strong>但四项费用合计仍 5,204.84 万元，是当期毛利 1,031.89 万元的 5 倍</strong> —— 这个缺口靠"降本"补不上，只能靠收入。</li></ol>
+<details class="fold"><summary>分产品／分地区／分季度与四项费用拆解（2025 年报口径）</summary><div class="fold-body">
+
+<p><strong>分产品（2025 年）</strong></p>
+<table><thead><tr><th>产品</th><th>收入</th><th>占比</th><th>毛利率</th><th>收入同比</th><th>毛利率同比</th></tr></thead><tbody><tr><td>智能卡</td><td>9,496.16 万元</td><td>55.25%</td><td><strong>9.18%</strong></td><td>−83.39%</td><td>−19.62 pct</td></tr><tr><td>终端</td><td>4,804.12 万元</td><td>27.95%</td><td>28.22%</td><td>−79.62%</td><td>+20.00 pct</td></tr><tr><td>技术服务与开发</td><td>1,447.80 万元</td><td>8.42%</td><td>—</td><td>−33.85%</td><td>—</td></tr><tr><td>其他（含其他业务）</td><td>1,440.85 万元</td><td>8.38%</td><td>—</td><td>−17.91%</td><td>—</td></tr></tbody></table>
+<p><strong>分地区</strong>：国内 1.70 亿元（98.85%，−75.76%）／<strong>国外 198.53 万元（1.15%，−98.64%）</strong> —— <strong>SDN 制裁把外销打掉了 98.64%</strong>。</p>
+<p><strong>分季度（2025 年）</strong></p>
+<table><thead><tr><th>项目</th><th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th></tr></thead><tbody><tr><td>营业收入</td><td>4,537.43 万元</td><td>4,124.17 万元</td><td>4,452.32 万元</td><td>4,075.01 万元</td></tr><tr><td>归母净利</td><td>−4,018.91 万元</td><td>−4,563.52 万元</td><td>−3,859.48 万元</td><td><strong>−4.81 亿元</strong></td></tr></tbody></table>
+<p>→ 全年亏损几乎全部集中在 Q4（减值集中计提），<strong>前三个季度经营亏损稳定在每季 −4,000 万元上下</strong>。</p>
+<p><strong>2026H1 费用拆解</strong></p>
+<table><thead><tr><th>项目</th><th>2026H1</th><th>同比</th><th>公司口径的变动原因</th></tr></thead><tbody><tr><td>营业收入</td><td>2,404.06 万元</td><td>−72.24%</td><td>SDN 制裁未移除＋退市风险警示，主要业务持续遭受重大影响</td></tr><tr><td>营业成本</td><td>1,372.17 万元</td><td>−80.74%</td><td>同上</td></tr><tr><td>销售费用</td><td>872.63 万元</td><td>−55.17%</td><td>业绩下滑、销售量下降，人员及市场推广投入减少</td></tr><tr><td>管理费用</td><td>2,254.76 万元</td><td>−50.74%</td><td>人员成本缩减、处置房产后折旧摊销降低、法律事务费减少</td></tr><tr><td>财务费用</td><td>428.50 万元</td><td><strong>+161.77%</strong></td><td>人民币升值致汇兑损益增加；昌喻投资 2025-10 出表后其利息收入同比减少</td></tr><tr><td>研发投入</td><td>1,648.95 万元</td><td>−39.78%</td><td>业绩下滑、销售量下降，人员与技术服务开发投入减少</td></tr><tr><td>经营活动现金流净额</td><td><strong>−1.71 亿元</strong></td><td>−161.57%</td><td>收回的银行账户解冻资金减少＋上年同期收到关联方借款</td></tr></tbody></table>
+<p><strong>专利与认证（公司自述的"底子"）</strong>：累计有效专利 225 项（发明 135 项）、软件著作权 310 项；7 款智能卡与终端通过第三方 10 项检测认证；eSIM 连接管理平台与模块遵循 GSMA 规范。</p>
+
+</div></details>
+<h3 id="sec6">2.3 资产与追偿：昌喻投资清算＋10.50 亿元仲裁</h3>
+<p><strong>结论：公司最大的"寻宝线索"不是主业，而是参股企业昌喻投资在清算中向北京载川、鲲鹏支付、罗峰、黄资丰提起的 </strong>10.50 亿元<strong>股权回购仲裁——程序上已经打赢第一仗（深圳中院 2026-09-02 驳回对方"仲裁协议无效"请求），但</strong>对手方北京载川注册资本 10.0008 亿元、实缴仅 1,000 万元，偿付能力存疑 → 这是一张赔率极高、胜率未知、变现概率低的期权，不能当估值基础<strong>。</strong></p>
+<table><thead><tr><th>案件</th><th>申请人</th><th>被申请人</th><th>标的</th><th>状态（截至 2026-10-05）</th></tr></thead><tbody><tr><td>昌喻投资（清算人）股权回购</td><td>昌喻投资清算人（中汇会计师事务所）</td><td>北京载川、鲲鹏支付、罗峰、黄资丰</td><td><strong>回购款本金＋利息＋违约金合计约 10.50 亿元</strong></td><td>仲裁已立案；深圳中院 2026-09-02 驳回北京载川/鲲鹏支付"确认仲裁协议无效"请求；2026-09-04 准许罗峰/黄资丰撤回同类申请；<strong>2026-09-10 黄资丰再度提出同一申请（拖延）</strong></td></tr><tr><td>天喻信息 vs 南昌水天</td><td>天喻信息</td><td>南昌水天投资管理合伙企业</td><td>回购款 <strong>8,700 万元</strong>＋反请求罚息（暂计至 2025-06-30 为 1,218.60 万元）＋律师费 30 万元＋保全保险费 28 万元</td><td>(2025)深国仲受终 3872 号，审理中</td></tr><tr><td>深创智能 vs 昌喻投资</td><td>深圳前海深创智能制造</td><td>宁波梅山保税港区昌喻股权投资合伙企业</td><td>7,000 万元 → <strong>和解 9,800 万元</strong></td><td>2025-01-26 达成和解</td></tr><tr><td>天喻 vs 北京载川（衍生仲裁）</td><td>天喻信息</td><td>北京载川、鲲鹏支付、罗峰</td><td>8,181.07 万元＋违约金 1,383.51 万元</td><td>2026-03-09 武汉中院认定"双方不存在仲裁协议" → 2026-03-30 仲裁院撤案</td></tr></tbody></table>
+<p><strong>10.50 亿元仲裁的请求构成（昌喻清算人主张）</strong>：2.10% 股权部分 —— 剩余回购款 8,823.12 万元＋迟延违约金 1,793.48 万元（暂计至 2026-03-22）；8.74% 股权部分 —— 全部回购款 87,700.00 万元＋迟延违约金 6,655.11 万元；合计 <strong>约 10.50 亿元</strong>，并要求鲲鹏支付、罗峰、黄资丰承担连带责任，且昌喻投资对北京载川质押的鲲鹏支付 19% 股权享有优先受偿权。</p>
+<p><strong>对上市公司的实际意义</strong>：昌喻投资已出表，<strong>追偿收益不直接进上市公司合并报表的当期损益</strong>，而是通过清算分配回到公司。按实缴比例 76.80% 粗算，<strong>理论上逐级分配后上市公司可望回笼的规模在数亿元量级——但这一数字取决于"能否执行到现金"</strong>，而北京载川实缴 1,000 万元、罗峰/黄资丰偿付能力未披露，<strong>公司自身在 2025 年年报中对昌喻相关长期股权投资已计提减值 1.79 亿元</strong>。公司口径是"持续督促清算人采取法律手段维护合法权益"（互动易 2026-05-08），<strong>没有任何金额承诺</strong>。</p>
+<details class="fold"><summary>昌喻投资 2021—2026 来龙去脉（谁欠谁、欠多少、为什么打不动）</summary><div class="fold-body">
+
+<p><strong>这是一条从"分拆投资"演化成"清算追偿"的五年链子，四个关键点决定了今天的局面：</strong></p>
+<p><strong>① 起点是"分拆投资"。</strong> 2021 年 9 月，天喻信息以自有资金 <strong>5 亿元</strong>作为有限合伙人参与设立昌喻投资（认缴 52.58%、<strong>实缴 76.80%</strong>），由昌喻去受让北京载川（原亿赞普）持有的重庆鲲鹏支付股权，最终持股 <strong>10.84%</strong>，对价 <strong>6.50 亿元</strong>。<strong>天喻没有直接买股权，而是通过合伙企业持有</strong>——这一步决定了后面所有权利主张都要"绕道昌喻"。</p>
+<p><strong>② 对赌条款是后来争议的模板。</strong> 各方约定：鲲鹏支付须在 <strong>2022-12-31 前上市</strong>且业绩达标，否则昌喻有权要求北京载川<strong>按年化 12% 复利</strong>回购股权，北京载川以持有的鲲鹏支付合计 19% 股权质押担保。<strong>结果两项都没达到</strong>：2023-04 补充协议确认先回购 2.10% 股权（本金 1.26 亿元），北京载川仅支付部分款项；2023 年业绩仍未达标、2024 年底仍未上市 → <strong>剩余 8.74% 股权的回购条件亦触发</strong>。</p>
+<p><strong>③ "合伙人内讧"把追偿程序拖成了一个独立的战场。</strong> 昌喻的 GP 是<strong>中科红樟投资（深圳）</strong>，只认缴 0.11%（100 万元）。公司多次督促 GP 主张权利，中科红樟<strong>拒收通知函</strong>；2025-10-27 天喻与南昌水天依《合伙企业法》第四十九条决议<strong>将中科红樟除名</strong>，合伙企业因此不再满足成立条件而<strong>解散</strong>，改由中汇会计师事务所任清算人——<strong>这才有了 2026-04 由清算人代表昌喻提起的 10.50 亿元仲裁</strong>。天喻自身此前作为 LP 提起的衍生仲裁（对北京载川，主张 8,181.07 万元＋违约金 1,383.51 万元）<strong>在 2026-03-09 被武汉中院以"双方不存在仲裁协议"为由终结</strong>，仲裁院于 2026-03-30 撤案。</p>
+<p><strong>④ 对方在程序上做了三次抵抗，昌喻赢了前两次。</strong> 2026-08 北京载川与鲲鹏支付、罗峰与黄资丰分别向深圳中院申请"确认仲裁协议无效"，导致深圳国际仲裁院中止仲裁；<strong>2026-09-02 深圳中院裁定驳回北京载川、鲲鹏支付的请求</strong>；<strong>2026-09-04 准许罗峰、黄资丰撤回同类申请</strong>；<strong>2026-09-10 黄资丰再度提出同一申请</strong>（公告原文："请求确认其不受《股权收购协议》及其补充协议中的仲裁条款约束"）。</p>
+<p><strong>一句话判读</strong>：程序上昌喻在前进，但<strong>执行的对象是一家"注册资本 10.0008 亿元、实缴 1,000 万元"的公司</strong>——《仲裁案件梳理报告_载川系》明确指出"北京载川实缴资本与注册资本严重不符，存在履行能力不足的风险"。<strong>因此这张期权的价值不在"裁决金额"，而在"能否执行到现金"，而后者目前没有任何证据支持。</strong></p>
+
+</div></details>
+<h3 id="sec7">2.4 全流程进度看板与运作特征</h3>
+<p><strong>结论：所有节点里，只有一个能决定生死（撤销核准），另一个会决定 2027 年（2026 年报）；其余节点全部属于"低概率、不可控"。</strong></p>
+<table><thead><tr><th>#</th><th>节点</th><th>类型</th><th>预计时点</th><th>判读/证伪点</th></tr></thead><tbody><tr><td>1</td><td><strong>深交所核准撤销 \*ST 及 ST</strong></td><td><strong>硬节点·无日期</strong></td><td>不定（2026-04-23 已提交）</td><td><strong>不批 → 10.3.11 第九项直接终止上市</strong>；公司自 2026-04-23 起每月披露进展，<strong>看措辞</strong>：从"补充材料"变为"不予撤销"即终点</td></tr><tr><td>2</td><td>回复深交所 2025 年报问询函</td><td>硬节点·已逾期</td><td>承诺 2026-07-17，未回</td><td>回复出来才能看监管关心什么；<strong>逾期越久，说明核查越难</strong></td></tr><tr><td>3</td><td>2026 年年度报告</td><td><strong>硬节点</strong></td><td>2027-04</td><td><strong>扣除后营收大概率 &lt;1 亿元＋孰低为负 → 重新 \*ST</strong>；除非年内完成可并表注入</td></tr><tr><td>4</td><td>控股股东股份再处置（第二轮降价拍卖／变卖）</td><td>硬节点·时点未定</td><td>2026-09-29 三笔全流拍后</td><td><strong>流拍＝市场承接意愿为零</strong>；即使成交，12.45% 也不足以单独构成控制权变更的稳定基础</td></tr><tr><td>5</td><td>昌喻投资清算人 10.50 亿元仲裁裁决</td><td>软预期</td><td>无时间表</td><td>深圳中院已过第一道程序门；<strong>真变量是"能不能执行到钱"</strong></td></tr><tr><td>6</td><td>成都慧友伟诉讼（涉诉本金 2.13 亿元）二审</td><td>软预期</td><td>未定</td><td>2024 年已计提预计负债 1,063.00 万元</td></tr><tr><td>7</td><td>光谷系（国资第一大股东）增持／入主</td><td>软预期·无实质</td><td>—</td><td>互动易答复仅"感谢您的建议"；<strong>无人名以外的任何披露</strong></td></tr><tr><td>8</td><td>美国 SDN 清单移除</td><td>软预期·不由公司决定</td><td>—</td><td>未有进展公告；公司自述"积极推进"</td></tr></tbody></table>
+<p><strong>运作特征（关键信号＋反向读数）</strong>：① <strong>控股股东与实控人已"功能性出局"</strong> —— 同喻 12.45% 全部司法冻结并于轮候冻结、破产清算申请被武汉中院不予受理且湖北高院驳回上诉、股份拍卖流拍；闫春雨被 5 年市场禁入、被多地法院列被执行人/限制消费。② <strong>这是"对抗式而非配合式"的失败案例</strong> —— 中茵集团 2025 年因违规减持被要求购回 286.80 万股并上缴价差 896.81 万元，显示股东层内部亦无统一意志。③ <strong>反向读数</strong>：控股股东"全部冻结"<strong>不等于</strong>控制权一定会变——<strong>冻结只证明它在被追债，不证明有人要来接</strong>；2026-09-29 的<strong>流拍正是这个反向读数的实证</strong>。<strong>8 月 26 日公告说"可能导致公司控制权发生变更"，9 月 30 日公告说"三笔均因无人出价流拍"——中间没有发生任何控制权变化。</strong></p>
+<hr>
+<h2 id="chap3">三、炒作逻辑 + 情绪面 + 筹码面</h2>
+<p><strong>结论先行：三支柱里唯一还立得住的是"① 炒预期（摘帽核准）"，但它是一张</strong>没有日期的公开日历<strong>；②"炒历史类似行为"给出的方向是</strong>下跌<strong>（同类已提交撤销申请待核准的 6 只 2026 年 YTD 中位 −4.37%）；③"炒主板映射"在本案完全落空——数字人民币/eSIM/数据安全主线 2026 年在 ST 板块没有形成可映射的低位品种接力。综合起来：</strong>故事已经被消费过了。<strong>。</strong></p>
+<h3 id="sec8">3.1 三支柱</h3>
+<p><strong>① 炒预期（当前最强，但无日期）</strong></p>
+<table><thead><tr><th>预期事件</th><th>类型</th><th>距今</th><th>预期差在哪一侧</th></tr></thead><tbody><tr><td>深交所核准撤销 \*ST＋ST</td><td>硬节点·无日期</td><td>已提交 5 个月</td><td><strong>负向</strong>：市场已按"大概率获批"定价（YTD 正收益），而未获批是致命结果</td></tr><tr><td>回复年报问询函</td><td>硬节点·逾期</td><td>已逾期 2.5 个月</td><td>中性偏负</td></tr><tr><td>昌喻 10.50 亿元仲裁</td><td>软预期</td><td>无表</td><td>正向想象，但对手偿付能力存疑</td></tr><tr><td>2026 年报（扣除后营收&lt;1 亿元）</td><td>硬节点</td><td>2027-04</td><td><strong>明确负向</strong></td></tr></tbody></table>
+<p><strong>② 炒历史类似行为（相似股票匹配法）</strong></p>
+<p><strong>画像</strong>：创业板 ＊ST·戴帽原因＝财报无法表示意见＋内控否定意见·市值 21.59 亿元·实控人已被市场禁入·控股股东股份全冻结且拍卖流拍·已提交撤销申请待核准·2026 年零龙虎榜·主业因外部制裁（非经营性因素）萎缩。</p>
+<p><strong>当下最像的 5 只</strong>（同属"已提交／已完成撤销退市风险警示申请、待交易所核准"这一组）：</p>
+<table><thead><tr><th>对象</th><th>像在哪一句话</th><th>2026 年 YTD</th></tr></thead><tbody><tr><td>＊ST天喻（本标的）</td><td>—</td><td><strong>+4.58%</strong></td></tr><tr><td>＊ST和科</td><td>已提交撤销申请、待核准，同样"下行归零、上行无红利"</td><td>−2.71%</td></tr><tr><td>＊ST步森</td><td>同上</td><td>−3.13%</td></tr><tr><td>＊ST美谷</td><td>同上</td><td>−6.02%</td></tr><tr><td>＊ST南置</td><td>已提交撤销申请 5 个月未批、深主板（无涨跌幅红利）</td><td>−6.28%</td></tr><tr><td>亿通科技</td><td>创业板、已提交撤销申请</td><td>−9.80%</td></tr></tbody></table>
+<p><strong>结论：6 只中 5 只下跌，中位 −4.37%；本标的 +4.58%，是组内唯一正收益，且跑赢创业板指（−2.12%）约 6.7 个百分点。</strong> → <strong>本标的落在"上涨侧"，但这恰恰是问题所在：它已经把"相对优势"用掉了。</strong> 组内后续实际走势给出的方向是<strong>下跌</strong>。</p>
+<p><strong>③ 炒主板映射（本案基本落空）</strong></p>
+<p>主板 2026 年在炒的主线（AI 算力／创新药／军工／贵金属）与天喻的资产没有任何可对接的载体。天喻的历史炒作符号是<strong>数字人民币／硬件钱包／数据安全／eSIM／区块链</strong>，这些题材在 2026 年的 ST 板块<strong>没有形成"主板炒—ST 接力"的链条</strong>：</p>
+<table><thead><tr><th>概念</th><th>ST 板块可映射对象</th><th>关联度</th><th>位置</th></tr></thead><tbody><tr><td>数字人民币／硬钱包</td><td>＊ST天喻自身</td><td>有实际产品但<strong>占营收比重小</strong>（公司互动易 2026-07-09 自述"数字人民币系列产品占公司整体业务规模较小"）</td><td>—</td></tr><tr><td>eSIM／物联网卡</td><td>＊ST天喻自身</td><td>有 GSMA 认证与产品，但受 SDN 影响订单不及行业节奏</td><td>—</td></tr><tr><td>数据安全／抗量子</td><td>＊ST天喻自身</td><td>公司口径为"持续关注、开展技术研究" <strong>【纯概念】</strong></td><td>—</td></tr></tbody></table>
+<p>→ <strong>主板映射这一支在本案给出的是"无可买清单"</strong>，这本身就是一条结论。</p>
+<details class="fold"><summary>三支柱的完整证据与龙虎榜/异动/投资者交流明细</summary><div class="fold-body">
+
+<p><strong>龙虎榜（东财 API 全量 52 次）</strong>：最近两次为 <strong>2025-04-28</strong>（跌幅偏离值累计达 30%，净额 <strong>−940.42 万元</strong>）与 <strong>2025-04-25</strong>（日跌幅达 15% 前 5 只，净额 −372.30 万元）——<strong>都是戴帽前后砸盘</strong>。<strong>2026 年 1 月 1 日至基准日 0 次上榜</strong>，说明注意力已彻底退出。</p>
+<p><strong>韭研公社异动表（全量 21 条，最近一条 2024-08-27）</strong>：</p>
+<table><thead><tr><th>日期</th><th>炒作符号</th><th>股价</th></tr></thead><tbody><tr><td>2024-08-27</td><td>华为合作＋数字人民币＋数据安全＋金融服务</td><td>5.61 元</td></tr><tr><td>2024-04-18</td><td>数字人民币＋数据安全＋金融服务</td><td>6.27 元</td></tr><tr><td>2024-04-02</td><td>数字人民币＋数据安全＋金融服务</td><td>7.44 元</td></tr><tr><td>2024-03-29</td><td>取得专利＋数字人民币＋数据安全</td><td>6.60 元</td></tr><tr><td>2022-02-09～11</td><td>数字货币＋硬件钱包＋金融服务＋年报扭亏为盈</td><td>15.88—19.78 元</td></tr><tr><td>2021-09-10</td><td><strong>定增实控人之一全额认购＋实控人变更</strong>＋社保卡＋区块链</td><td>15.54 元</td></tr><tr><td>2020-09-21</td><td><strong>实控人一系拟出让 24.58% 股份，或导致控制权变更</strong></td><td>13.88 元</td></tr><tr><td>2020-10-20</td><td>第一家通过 GSMA SAS-SM 安全认证＋eSIM 批量出货＋区块链</td><td>16.35 元</td></tr></tbody></table>
+<p>→ <strong>炒作符号长期稳定在"数字人民币／硬件钱包／eSIM／数据安全"，2024 年 8 月后彻底消失；2026 年 0 条入库。</strong> 历史极值：2022-02 曾至 20.29 元（数字人民币行情），当前 5.02 元。</p>
+<p><strong>投资者交流（同花顺互动易，最近 28 条，取最近两次重点）</strong></p>
+<table><thead><tr><th>日期</th><th>问题要点</th><th>公司答复要点</th><th>判读</th></tr></thead><tbody><tr><td><strong>2026-07-09</strong></td><td>核心产品订单储备、产能利用率、毛利率修复？</td><td>"受公司尚未从美国 SDN 制裁清单中移除、退市风险警示等因素影响，<strong>公司整体订单规模不及行业节奏</strong>"</td><td><strong>管理层亲口承认订单不行</strong></td></tr><tr><td><strong>2026-07-09</strong></td><td>撤销 ST、解除退市风险的时间预期？</td><td>"已于 2026 年 4 月 23 日提交申请。<strong>截至目前，前述申请尚未获得深圳证券交易所同意</strong>"</td><td>无时间表</td></tr><tr><td>2026-06-16</td><td>"问询函推迟没有次数限制，不会到了 2027 年还在问吧"</td><td>"问询函的回复内容尚需进一步补充和完善"</td><td>连投资者都看出延期异常</td></tr><tr><td>2026-06-16</td><td>光谷金控有无重组天喻计划？</td><td>"<strong>您好，感谢您的建议。</strong>"</td><td>无实质</td></tr><tr><td>2026-05-26</td><td>已收到处罚决定书，是不是要满一年才能申请撤销退市警示？</td><td>"已于 2026-04-23 申请撤销……尚未获得同意"</td><td><strong>公司自己澄清：本类型撤销不设 12 个月等待期</strong>（区别于 9.4 第七项假 ST）</td></tr><tr><td>2026-01-05</td><td>慧友伟案、湖州民融案，闫春雨是否正常出庭？"二审闫春雨失联"</td><td>"公司将持续采取法律手段维护公司合法权益"</td><td><strong>回避了"实控人是否失联"这一问</strong></td></tr></tbody></table>
+<p><strong>参会/答复人员变动（治理层是否实际易主）</strong>：互动易未披露个人答复人；从公告看，2025-12-13 一次性修订/新增/废止 21 项治理制度、取消监事会并由审计委员会承接，属<strong>治理架构重置</strong>，但<strong>董事会成员未出现国资背景人士接任董事长的迹象</strong>——<strong>光谷系只在董事会有一名董事（颜佐辉），无实际易主</strong>。</p>
+
+</div></details>
+<h3 id="sec9">3.2 情绪与筹码</h3>
+<p><strong>结论：注意力已完全退出（2026 年零龙虎榜、换手 0.97%、股东户数持续下降），而股东户数下降发生在股价下跌过程中，属"割肉式下降"，不能读作主力吸筹。</strong></p>
+<p><strong>读法（本案最关键的一条筹码判断）</strong>：<strong>股价峰值出现在 2026-03-30（6.63 元），早于 2026-04-23 的撤销申请公告</strong>（典型的"预期先行"）；公告落地当周冲高至 6.38 元后一路回落，<strong>至 2026-09-30 已从峰值回撤 24.3%</strong>，收 5.02 元。这是"<strong>兑现＝注意力峰值＝利好出尽</strong>"的标准形态——<strong>而本案的"兑现"其实还没有发生（申请未批），价格却已经把预期走完了</strong>。</p>
+<details class="fold"><summary>2026 年逐月价格路径与股东户数序列</summary><div class="fold-body">
+
+<p><strong>价格路径（2026 年逐月收盘，不复权）</strong>：1 月 4.31→5.01｜2 月 4.26→4.87（<strong>年内低点 4.26 元，2026-02-02</strong>）｜3 月 4.53→<strong>6.63（年内高点，2026-03-30）</strong>｜4 月 5.03→6.38（4/22 收 6.04、4/23 撤销申请公告当日收 6.31）｜5 月 5.66—6.11｜6 月 4.91—5.99｜7 月 4.48—5.17｜8 月 4.72—5.25｜9 月 4.86—5.36，收 <strong>5.02</strong>。</p>
+<p><strong>股东户数序列</strong>：2025-09-30 的 12,398 户 → 2025-12-31 的 12,495 户 → 2026-03-31 的 10,833 户 → 2026-06-30 的 <strong>9,549 户</strong>。其中 <strong>2026Q2 户数 −11.85%，同期股价从 5.98 元跌到 4.92 元——量价同向下跌</strong>，接盘方身份未见于任何公告（东财口径的"非常集中"是<strong>户数减少的结果</strong>，不是主力吸筹的证据）。</p>
+<p><strong>换手与成交</strong>：2026-09-30 换手率 <strong>0.97%</strong>、成交额 <strong>2,088 万元</strong>，处于"无人问津"区间；同期流通市值 21.59 亿元（全流通）。</p>
+
+</div></details>
+<p><strong>必做校验一：戴帽 ≠ 下跌主因（但本案的特殊性在于——行业跌了、它涨了）。</strong> 同业智能卡三家的 2026 年 YTD 分别是 <strong>恒宝股份 −53.10%、东信和平 −37.76%、新国都 −33.96%</strong>，<strong>全行业在收缩，天喻却涨 +4.58%</strong>。这说明：</p>
+<ul><li><strong>它的下跌不是"行业估值收缩"</strong>，而是 2024 年 SDN 制裁＋实控人违规导致的<strong>公司个体崩塌</strong>（营收 17.00 亿元 → 1.72 亿元），因此<strong>跌幅大也不构成安全边际</strong>；</li><li><strong>它的相对上涨也不是行业驱动，而是纯粹的"摘帽事件溢价"</strong> —— 同业跌三四成、它涨 4.58%，<strong>这部分超额完全押在一个未获批的申请上，一旦不批，回撤空间是"行业跌幅 + 事件归零"的叠加</strong>。</li></ul>
+<p><strong>必做校验二：股东户数下降"不含方向"。</strong> 本案户数下降发生在<strong>股价下跌</strong>过程中（2026Q2 户数 −11.85%，同期股价 5.98 元 → 4.92 元），属<strong>散户割肉离场</strong>，接盘方身份未见于任何公告——<strong>不得读作主力吸筹</strong>。</p>
+<table><thead><tr><th>对照对象</th><th>2026 年 YTD</th><th>说明</th></tr></thead><tbody><tr><td><strong>＊ST天喻（本标的）</strong></td><td><strong>+4.58%</strong></td><td>事件溢价</td></tr><tr><td>恒宝股份（002104.SZ）</td><td>−53.10%</td><td>金融 IC 卡龙头，无 ST 风险</td></tr><tr><td>东信和平（002017.SZ）</td><td>−37.76%</td><td>通信 SIM 卡龙头，无 ST 风险</td></tr><tr><td>新国都（300130.SZ）</td><td>−33.96%</td><td>支付终端</td></tr><tr><td>创业板指</td><td>−2.12%</td><td>—</td></tr><tr><td>上证指数 / 沪深 300</td><td>−3.19% / −5.88%</td><td>—</td></tr></tbody></table>
+<hr>
+<h2 id="chap4">四、估值 + 投资结论</h2>
+<h3 id="sec10">4.1 估值</h3>
+<p><strong>结论：亏损股不用 PE。本标的的定价只能用 PB／PS，而</strong>两个口径都指向"贵"<strong>——PB 5.59 倍对应的是已无造血能力的净资产，PS 约 12.6 倍（2025 口径）／约 45 倍（2026 年化口径）对应的是正在继续下滑的收入。</strong>若按"退市失败残值"反推，现价隐含的成功概率显著高于本报告的判断（见 §4.2）。**</p>
+<table><thead><tr><th>方法</th><th>计算</th><th>结果</th><th>判读</th></tr></thead><tbody><tr><td>PB</td><td>21.59 亿元 ÷ 3.87 亿元</td><td><strong>5.59 倍</strong></td><td>净资产从 14.80 亿元缩到 3.87 亿元且仍在失血；<strong>PB 越高，越说明市场在给"壳与事件"而非资产定价</strong></td></tr><tr><td>PS（2025 口径）</td><td>21.59 亿元 ÷ 1.72 亿元</td><td>约 <strong>12.6 倍</strong></td><td>收入同比 −79.70%</td></tr><tr><td>PS（2026 年化）</td><td>21.59 亿元 ÷ 0.48 亿元</td><td>约 <strong>45 倍</strong></td><td>收入同比 −72.24%（H1）</td></tr><tr><td>价格分位</td><td>近 20 年分位 11.74%</td><td>低位</td><td><strong>但资本结构已变</strong>（昌喻出表、净资产腰斩），必须与市值/PB 口径并读</td></tr><tr><td><strong>失败残值（反推用）</strong></td><td>每股归母净资产 0.90 元 × 折价率 0.5—0.8</td><td><strong>0.45—0.72 元/股</strong></td><td>财务类强制退市有整理期，仍有卖出窗口</td></tr></tbody></table>
+<p><strong>★ 隐含概率反推</strong>：设成功情景价区间 6.00—6.60 元（回到 2026 年 3—4 月套牢区上沿）、失败残值 0.45—0.72 元，则现价 5.02 元对应的<strong>隐含成功率约 78%—87%</strong>（<code>5.02 = p×6.00 + (1−p)×0.72</code> → p≈81%；<code>5.02 = p×6.60 + (1−p)×0.45</code> → p≈74%）。<strong>而本报告对该开关的判断是 40%—55%</strong>（见下）——<strong>现价隐含的成功率比本报告判断高出 20—40 个百分点，这就是"卖出"最硬的算术理由。</strong></p>
+<h3 id="sec11">4.2 投资结论</h3>
+<p><strong>卖出（回避）</strong></p>
+<p><strong>理由链（按重要性排序）</strong></p>
+<ol><li><strong>这是一个"下行归零、上行无红利"的二元开关，且开关已被监管握住 5 个月。</strong> 创业板 10.3.11 第九项明确"撤销退市风险警示申请未被本所审核同意"即<strong>终止上市</strong>——不存在"再等一年"的缓冲；而创业板 ST 涨跌幅本就是 <strong>20%</strong>，与摘帽后完全相同，<strong>摘帽没有一分制度红利</strong>。公司 2026-04-23 提交申请后，至 2026-09-28 公告仍未获同意；2024-04-29 那次违规担保 ST 撤销申请<strong>已悬置 2 年半</strong>。（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225156178&amp;orgId=9900017107&amp;announcementTime=2026-04-23" target="_blank" rel="noopener">撤销申请公告</a>｜<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225584475&amp;orgId=9900017107&amp;announcementTime=2026-09-28" target="_blank" rel="noopener">2026-09-28 进展公告</a>）</li><li><strong>"他证"给出了负面信号：年报问询函被连续延期 9 次、最后一次承诺 2026-07-17 至今未回复。</strong> 创业板 10.3.8 规定"提交完备材料后 15 个交易日内决定"，实际 5 个月未决的唯一解释是材料未被认定完备；而那份问询函未回复，与"完备性缺口"指向同一方向。（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225429461&amp;orgId=9900017107&amp;announcementTime=2026-07-17" target="_blank" rel="noopener">2026-07-17 延期公告</a>）</li><li><strong>即使摘帽成功，2027 年 4 月大概率重新 \*ST。</strong> 2026H1 营收仅 2,404.06 万元（−72.24%），全年按持平推算约 0.48 亿元，<strong>扣除后营收 &lt;1 亿元</strong>且孰低为负 → 触发 10.3.1 第一款第（一）项。<strong>"摘帽"在这里不是终局，只是把归零开关往后推一年。</strong></li><li><strong>两条救援通道同时失效，但"运作主体"已经换人——这既是唯一的变量，也仍是"只有人名"。</strong> 股权通道：控股股东 12.45% 全部司法冻结＋轮候冻结、破产清算申请被驳（武汉中院不予受理、湖北高院 2025-12-29 驳回上诉）、2026-09-29 股份拍卖<strong>三笔全部流拍</strong>（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300205&amp;announcementId=1225591995&amp;orgId=9900017107&amp;announcementTime=2026-09-30" target="_blank" rel="noopener">拍卖流拍公告</a>）；产业通道：<strong>光谷系已在董事会占 3/6 非独立董事席位、颜佐辉代行董事长已超 11 个月</strong> —— 但<strong>公司既未选出正式董事长，也未披露任何资产注入方向或受让方</strong>，互动易对"是否重组"只答"感谢您的建议"。<strong>按"人／物／表"三分法，它仍是"只有人名（与席位）、没有物、没有表"。</strong></li><li><strong>赔率已被走完，而且是被"行业下跌 + 个股上涨"这个组合走完的。</strong> 现价 5.02 元、PB 5.59 倍、PS 约 12.6—45 倍；2026 年 YTD <strong>+4.58%</strong>——是"已提交撤销申请待核准"同型 6 只中唯一正收益（该组中位 −4.37%），同时<strong>跑赢创业板指（−2.12%）约 6.7 个百分点，而它的同业恒宝股份 −53.10%、东信和平 −37.76%</strong>。<strong>在最需要折价的价格上，它给的是"事件溢价"，而这部分溢价完全建立在一个尚未获批的申请上。</strong></li></ol>
+<p><strong>触发条件（出现即转买）</strong></p>
+<ul><li>① 深交所<strong>正式核准</strong>撤销 \*ST 及 ST 的公告落地（这是唯一能把"归零开关"变回"正常股"的动作）；</li><li>② <strong>光谷系（国资）从"代行"转为"正式"</strong>——董事会正式选举董事长，且同步披露资产注入方向或受让方案（"人＋物＋表"三全）；</li><li>③ 控股股东股份在<strong>下一轮拍卖中成交</strong>，且受让方为产业方／国资并同步披露资产注入方向；</li><li>④ 昌喻投资清算人的 10.50 亿元仲裁取得<strong>可执行的和解或终局裁决</strong>，且对手方被证实有实际偿付能力；</li><li>⑤ 公司公告引入战略投资者、重整、或披露"可在 2026-12-31 前完成交割的资产收购"。</li></ul>
+<p><strong>失效条件（本结论作废或翻转）</strong></p>
+<ul><li>① 若深交所<strong>核准撤销</strong>，且公司在 2026-12-31 前完成<strong>可并表的资产注入</strong>使 2026 年扣除后营收 ≥1 亿元 → 本结论需整体重写（届时应转"买入"，按注入后市值重估）；</li><li>② 若 2026-12-31 前出现<strong>控股股东破产清算被法院受理</strong>（控制权处置路径彻底改变）→ 需按"待处置壳"重新定价，而非"待摘帽"。</li></ul>
+<p><strong>参考区间</strong></p>
+<ul><li><strong>操作</strong>：不建仓；已持有者可在 <strong>4.80—5.30 元</strong>区间减出，反弹至 <strong>5.80—6.60 元</strong>（2026 年 3—4 月套牢密集区）为主要减仓区。</li><li><strong>目标区间</strong>：不给单点。<strong>成功情景 6.00—6.60 元</strong>（需核准公告落地）；<strong>失败情景残值 0.45—0.72 元/股</strong>（每股归母净资产 0.90 元 × 折价率 0.5—0.8）。</li><li><strong>止损位</strong>：若已有仓位，跌破 2026 年低点 <strong>4.26 元</strong>（2026-02-02）应视为趋势确认。</li></ul>
+<p><strong>时间窗口</strong>：本结论有效期至 <strong>2027-04-30</strong>（2026 年年报披露截止日）。其中 <strong>2026-12-31</strong> 是"能否解决 2026 年营收与净资产"的最后交割时点。</p>
+<p><strong>仓位建议</strong>：<strong>不建仓</strong>。</p>
+<p><strong>最大风险（最可能让本结论出错的一件事）</strong>：<strong>深交所核准撤销 + 国资（光谷系）随即注入资产</strong>——这两件事各自概率都不高，但一旦同时发生，标的会从"退市折价"直接跳到"保壳成功＋资产注入"的双重定价，股价向上的弹性远大于本节给出的成功情景价（6.00—6.60 元）。<strong>本结论的 40%—55% 成功率判断，正是在对"这两件事是否会同向发生"下注。</strong></p>
+<hr>
+<h2 id="chap5">附录 A · 待核实／需补充清单</h2>
+<table><thead><tr><th>#</th><th>项目</th><th>状态</th></tr></thead><tbody><tr><td>1</td><td>2020—2021 年原实控人一系出让 24.58% 的<strong>每股价格与资金来源</strong></td><td>【待核实】公告未检索到定价披露</td></tr><tr><td>2</td><td>2024-09-25 京东拍卖同喻 12.13% 的<strong>成交单价</strong></td><td>【待核实】</td></tr><tr><td>3</td><td>2026-09-29 淘宝拍卖三笔的<strong>起拍价具体数值</strong></td><td>【待核实】公告仅载"分三笔"；起拍价按前 20 交易日均价的口径来自雪球评论（2026-08-31），属线索级</td></tr><tr><td>4</td><td>沈进长、丹明波、曾昭翔、张艳菊、万骏 5 人的<strong>《行政处罚决定书》内容</strong></td><td>【需补充】公司未公告</td></tr><tr><td>5</td><td>昌喻投资历史上的<strong>合伙人出资与分配流水</strong>、清算进度表</td><td>【需补充】公告未逐笔披露</td></tr><tr><td>6</td><td>武汉光谷创业科技投资有限公司<strong>取得 14.63% 的时点与成本</strong></td><td>【待核实】</td></tr><tr><td>7</td><td>罗峰、黄资丰的<strong>个人偿付能力</strong></td><td>【待核实】无公开信息</td></tr><tr><td>8</td><td>昌喻投资对上市公司的<strong>历史财务贡献</strong>（营收/利润归属）</td><td><strong>未披露</strong>（昌喻自身 2023 年以来营业收入为 0）</td></tr><tr><td>9</td><td><strong>实控人闫春雨是否另涉刑事案件（"涉嫌挪用资金被武汉市公安局立案侦查"）</strong></td><td>【待核实】该说法来自目录内旧《天喻信息_深度全景报告_20260421》（线索级），<strong>本轮未在巨潮公告中检索到任何刑事立案公告</strong>，按纪律不得当作事实引用</td></tr><tr><td>10</td><td>2026 年 4 月之前<strong>投资者索赔的受理窗口与基准日</strong></td><td>【待核实】旧报告载有三类索赔窗口（2021-09-01—2024-09-08／2025-06-05 前买入／2024-04-29—2025-04-28），来源为<strong>多家律所公开征集</strong>，属线索级，<strong>以法院受理与正式索赔公告为准</strong></td></tr><tr><td>11</td><td>颜佐辉、汪沵、汪亮、李震军、金少平的<strong>出生年月与完整履历</strong></td><td><strong>公告未披露</strong>（年报仅披露姓名、年龄、任职日期与关联单位），按纪律不填第三方内容</td></tr></tbody></table>
+<h2 id="chap6">附录 B · 关键信源链接</h2>
+<p>见 §1.4 折叠⑥"信息来源汇总"（15 条，分一手／监管／数据源／线索四级），不重复。</p>
+<h2 id="chap7">附录 C · 逻辑漏洞与反方观点（5 问）</h2>
+<p><strong>结论：本报告的五个最容易被打的点——营收口径、扣除后营收真实性、10.50 亿元仲裁的价值、引用时点、数据来源级别——逐条都能回原文作答；而反方最强的一条（"制裁解除或国资入主后弹性极大"）无法在本案的</strong>时间尺度<strong>上成立。</strong></p>
+<table><thead><tr><th>#</th><th>反问</th><th>本报告的回答</th></tr></thead><tbody><tr><td>①</td><td><strong>"营收/收入数据怎么来的？"</strong></td><td>2025 年、2026H1、2026Q1 数据全部取自巨潮公告原文（年报/半年报/一季报 PDF），并做了勾稽自检（分季度加总＝全年、资产＝负债＋权益）；分产品收入取自年报"营业收入构成"表，非二手摘要</td></tr><tr><td>②</td><td><strong>"扣除后营收 1.71 亿元是否真实？"</strong></td><td>扣除额仅 102.71 万元（废料处置及其他），占营收 0.60%，<strong>扣除规则上无争议空间</strong>；会计师已出具《关于营业收入扣除事项的专项核查意见》。<strong>风险不在此项，而在 2026 年的收入体量</strong></td></tr><tr><td>③</td><td><strong>"10.50 亿元仲裁是不是就是基本面反转？"</strong></td><td><strong>不是</strong>。昌喻投资已出表，收益走清算分配而非当期损益；对手方北京载川注册资本 10.0008 亿元、<strong>实缴仅 1,000 万元</strong>，且公司 2025 年已对相关长期股权投资计提减值 1.79 亿元——<strong>这是期权，不是资产</strong></td></tr><tr><td>④</td><td><strong>"引用的时间点是否已过期？"</strong></td><td>行情截至 2026-09-30 收盘、财务截至 2026-06-30、公告截至 2026-09-30；<strong>规则引的是创业板 2026 年修订版</strong>（本地 PDF 抽文本后逐条核对），旧报告所引"10.3.1／10.4.1／10.4.2"为 2024 版编号，已在本报告封面「已知数据质量异常」中注明</td></tr><tr><td>⑤</td><td><strong>"数据来源是什么级别？"</strong></td><td>一手：巨潮公告 PDF＋年报/半年报（12 条）；监管：湖北证监局公示页；数据源：腾讯行情、新浪日 K、东财龙虎榜/F10、同花顺互动易、韭研异动库；线索级：雪球评论（均标日期）。<strong>雪球内容仅用于"注意力观测"与线索，涉及数字一律回公告核实</strong></td></tr></tbody></table>
+<p><strong>反方最强的一条（压力测试）</strong>：<strong>"这是一只被外部因素（SDN）打伤、但资产与专利底子还在、债务已出清、净资产仍为正的公司——一旦制裁解除或国资入主，弹性极大。"</strong> 本报告的回应是：① SDN 解除不由公司决定、且无任何进展公告；② 国资只有 14.63% 的持股和一名董事，<strong>无人名以外的物与表</strong>；③ 专利 225 项对应的是 2026H1 仅 2,404.06 万元的收入——<strong>"底子"没有转化为订单</strong>；④ 最关键的是，<strong>上述所有正向假设都指向"未来某个时点"，而 10.3.11 第九项的开关指向"下一个公告日"，两者的时间尺度不对等。</strong></p>
+<h2 id="chap8">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-06</td><td>首次生成（速研档）。<strong>已完全吸收</strong>库内既有四类材料：① 目录内《ST天喻300205退市风险深度分析_法条对照报告》（2026-04-20，md＋pdf）——其法条编号为创业板 <strong>2024 年修订版</strong>（10.3.1 财务类／10.4.1 重大违法／10.4.2 规范类），已按现行 <strong>2026 年修订版</strong>核正为（10.3.7 撤销／10.3.11 终止／10.4.1 规范类 \*ST／10.4.18 终止），并补入其缺失的 <strong>10.3.11 第九项"撤销未获同意即终止上市"这一归零开关</strong>；② 目录内《天喻信息300205违法违规事实完整梳理报告.docx》——其"其他 5 名责任人共罚 1,150 万元"一处已按决定书原文修正为"<strong>事先告知书列 7 名当事人，截至基准日公司仅公告公司与闫春雨两份决定书，其余 5 人决定书未公告</strong>"；③ 目录内《仲裁案件梳理报告.pdf》与《仲裁案件梳理报告_载川系.pdf》——全部案件并入 §2.3 并新增"昌喻投资 2021—2026 来龙去脉"折叠；④ <strong><code>其他资料\天喻信息_深度全景报告_20260421.docx</code>（另一份同名旧研报）</strong>——吸收其行业与竞争对手框架（恒宝股份/东信和平/新国大）、投资者索赔三类窗口、非经常性损益预告区间；<strong>同时纠正其四处与公告不符</strong>：<strong>2023 年营收"约 20 亿元"→实为 17.00 亿元</strong>、<strong>2024 年营收"约 6 亿元"→实为 8.47 亿元</strong>、<strong>股东户数"约 4.3 万户（2025 年末）"→实为 12,495 户</strong>、<strong>"中茵 122.7 万股解除冻结（冻结清零）"→实为惠州市惠城区法院轮候冻结生效、中茵累计冻结由 4,927.67 万股降至 122.70 万股（2026-03-12 公告）</strong>；另其"实控人涉嫌挪用资金被公安立案侦查"与"董事长颜佐辉"两处，前者标【待核实】（无公告支撑）、后者修正为"颜佐辉系<strong>代行</strong>董事长、公司至今无正式董事长"。<strong>投资结论：卖出（回避）</strong>。<strong>归档动作</strong>：本目录内旧版报告类文件（法条对照 md/pdf、违法违规事实梳理 docx、5 份 20260420—20260424 PPT）与 <code>其他资料\</code> 下的《天喻信息_深度全景报告_20260421.docx/.pdf》已<strong>全部移入本目录 <code>历史\</code> 子文件夹</strong>，本目录顶层仅保留唯一一份最新研究报告（同名 <code>.html</code> 与 <code>.md</code> 底稿）。数据截至 2026-09-30 行情／2026-06-30 财务／2026-09-30 公告。</td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
