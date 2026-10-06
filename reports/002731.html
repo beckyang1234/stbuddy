@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>＊ST萃华（002731.SZ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>10 章 · 20 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断：一只已经把"退市"走完到告知书阶段的票</a><a class="sblv3" href="#sec0">1.1 基本信息与价格快照</a><a class="sblv3" href="#sec1">1.2 三顶帽子：一个"ST → ＊ST → 终止上市"的完整下沉链</a><a class="sblv3" href="#sec2">1.3 立案与"涉嫌虚假记载"：本案真正的病根</a><a class="sblv3" href="#sec3">1.4 四类退市红线逐条对照</a><a class="sblv3" href="#sec4">1.5 控制权沿革与股东阵容：一次"先拿控制权、再注入资产"的标准动作</a><a class="sblv3" href="#sec5">1.6 关键人物</a><a class="sblv3" href="#sec6">1.7 全流程进度看板与运作特征</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、强制退市执行路径：这是第四类路径</a><a class="sblv3" href="#sec7">2.1 为什么走第四类路径</a><a class="sblv3" href="#sec8">2.2 退市程序时间表</a><a class="sblv3" href="#sec9">2.3 残值定价：退市整理期与退市板块</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、公司运营：账面很好看，账实待核</a><a class="sblv3" href="#sec10">3.1 财务五年：一份与"退市"完全不相称的报表</a><a class="sblv3" href="#sec11">3.2 收入地图：黄金是全部，锂盐是故事</a><a class="sblv3" href="#sec12">3.3 资产质量：34.18 亿元存货是全部问题的起点</a><a class="sblv3" href="#sec13">3.4 债务与流动性：11.36 亿元逾期是"账户被冻结"的直接原因</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、炒作逻辑三支柱</a><a class="sblv3" href="#sec14">4.1 ① 炒预期：可炒的事件只剩"退市整理期"这一个（负向事件）</a><a class="sblv3" href="#sec15">4.2 ② 炒历史类似行为：本标的的历史行情是"符号驱动"，而当前符号已失效</a><a class="sblv3" href="#sec16">4.3 ③ 炒主板映射：负向</a><a class="sblv3" href="#sec17">4.4 情绪面与筹码面</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">五、估值与投资结论</a><a class="sblv3" href="#sec18">5.1 估值</a><a class="sblv3" href="#sec19">5.2 投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">附录 C · 逻辑漏洞与反方观点</a></div><div class="sbgrp"><a class="sblv2" href="#chap9">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">＊ST萃华（002731.SZ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td><strong>操作结论</strong></td><td><strong>卖出（回避）——退市已实质落地，二级市场不存在"在途卖出窗口"</strong></td></tr><tr><td>红线分类</td><td><span class="sttag sttag-red"><a href="http://static.cninfo.com.cn/finalpage/2026-09-09/1225554537.PDF" target="_blank" rel="noopener">规范类·未按期披露2025年报</a></span>·<span class="sttag sttag-red"><a href="http://static.cninfo.com.cn/finalpage/2026-08-07/1225462594.PDF" target="_blank" rel="noopener">交易类·连续19日市值<5亿元</a></span>·<span class="sttag sttag-red"><a href="http://static.cninfo.com.cn/finalpage/2026-08-28/1225519189.PDF" target="_blank" rel="noopener">面值·连续3日<1元</a></span>·<span class="sttag sttag-red"><a href="http://static.cninfo.com.cn/finalpage/2026-08-07/1225462595.PDF" target="_blank" rel="noopener">重大违法·涉嫌虚假记载（待认定）</a></span>·<span class="sttag sttag-orange"><a href="http://static.cninfo.com.cn/finalpage/2026-09-29/1225584573.PDF" target="_blank" rel="noopener">借款逾期11.36亿元</a></span>·<span class="sttag sttag-orange"><a href="http://static.cninfo.com.cn/finalpage/2026-02-07/1224971967.PDF" target="_blank" rel="noopener">主要银行账户被冻结</a></span></td></tr><tr><td>生死定级</td><td><strong>一票否决（规范类终止上市程序已启动，无自救空间）</strong></td></tr><tr><td>自救空间</td><td><strong>没有。</strong> 公司已于 2026-09-08 收到深交所《终止上市事先告知书》（公司部函〔2026〕第 276 号），其后仅剩听证与陈述申辩两项程序权利，不改变结果；2025 年报、2026 半年报双双未披露，无财务或资本动作可补救</td></tr><tr><td>主要看点</td><td>唯一可交易时点＝<strong>退市整理期 15 个交易日</strong>（简称将变更为"<strong>萃华退</strong>"、涨跌幅首日不设限、此后 10%、不进入任何恢复安排）。核心悬念是"<strong>存货 34.18 亿元（占总资产 55.79%，其中库存商品 21.50 亿元黄金珠宝、零跌价准备）究竟值多少</strong>"——它决定退市板块的残值，而它正是证监会立案核查的对象</td></tr></tbody></table>
+<p>标的：沈阳萃华金银珠宝股份有限公司（002731.SZ，深主板，Wind 行业"纺织服装Ⅱ"，实际主业为珠宝首饰＋锂盐双主业） 研究基准日：<strong>2026-10-06</strong>；数据截止时点：2026-10-06 版本：<strong>首次生成 · 2026-10-06</strong>（该目录原无任何历史研报；全库检索确认无同名报告可吸收） 数据来源清单：巨潮资讯网公告原文、公司定期报告、深圳证券交易所《股票上市规则（2026 年修订）》、腾讯行情／新浪日 K、东方财富 F10、同花顺 F10 互动易、Andy 自建 ST 信息库 已知数据质量异常：① 2025 年年度报告、2026 年半年度报告<strong>均未披露</strong>，最新可用财务期为 <strong>2025 年三季度报告</strong>（2025-10-28）；② 股票自 <strong>2026-09-01 开市起停牌</strong>，无实时行情，报价数据为停牌前最后交易日 <strong>2026-08-31</strong> 收盘；③ 路径底表《退市风险预警-20261005.xlsx》「交易类」表记本股"市值低于 5 亿元的连续交易日 <strong>39</strong> 天"，与逐日核算的 <strong>19</strong> 个交易日不一致（见 §1.4 折叠区说明）</p>
+<blockquote><p><strong>本报告的性质说明</strong>：这不是一份"保壳路径能不能走通"的报告，而是一份<strong>强制退市执行路径与残值定价</strong>的报告。前三类路径（保壳／重整／处罚 ST）在本标的身上<strong>全部失效</strong>：保壳不可能（两年定期报告均未披露，无财务口径可修）；重整不存在（未披露年报的公司无法启动须以经审计报表为基础的重整，且公司 2026-07-17 公告明确"无正在筹划中的并购重组、实际控制权变更或债转股事宜，未来三个月内亦无相关计划"）；处罚 ST 路径被时间锁死（终止上市程序已启动，早于任何整改与申报窗口）。</p></blockquote>
+<hr>
+<h2 id="chap1">一、诊断：一只已经把"退市"走完到告知书阶段的票</h2>
+<h3 id="sec0">1.1 基本信息与价格快照</h3>
+<p><strong>结论：本标的当前唯一有效信息是"停牌前 0.77 元、总市值 1.97 亿元"，已同时跌破 5 亿元市值线与 1 元面值线，年内跌幅 93.87%——价格已进入退市定价，而不是估值定价。</strong></p>
+<table><thead><tr><th>指标</th><th>数值</th><th>判读</th></tr></thead><tbody><tr><td>证券简称／代码</td><td>＊ST萃华／002731.SZ（深主板）</td><td>巨潮 <code>topSearch</code> 的 <code>zwjc</code> 字段实测为"*ST萃华"，未摘帽</td></tr><tr><td><strong>停牌前收盘价</strong></td><td><strong>0.77 元</strong>（2026-08-31）</td><td>8-27 起连续 3 个交易日收盘 &lt;1 元</td></tr><tr><td><strong>总市值</strong></td><td><strong>1.97 亿元</strong></td><td>8-06 起连续 19 个交易日 &lt;5 亿元</td></tr><tr><td>总股本／流通股</td><td>2.5616 亿股／2.2966 亿股</td><td>—</td></tr><tr><td>每股净资产（BPS）</td><td><strong>7.302 元</strong>（2025-09-30）</td><td>现价对应 <strong>PB 0.105 倍</strong></td></tr><tr><td>年内涨跌幅</td><td><strong>−93.87%</strong>（2025-12-31 收 12.56 元 → 0.77 元）</td><td>2026 年内最高 16.20 元</td></tr><tr><td>加权平均 ROE</td><td><strong>9.71%</strong>（2025 年 1—9 月）</td><td><strong>账面业绩并不难看——这正是本案最反常之处</strong></td></tr><tr><td>最新可用报告期</td><td><strong>2025 年三季报</strong>（2025-10-28）</td><td>2025 年报、2026 半年报均未披露</td></tr><tr><td>交易状态</td><td><strong>停牌中</strong>（2026-09-01 起，2026-09-07 起继续停牌）</td><td>无实时价格，无法即时卖出</td></tr></tbody></table>
+<details class="fold"><summary>价格路径与交易状态的关键读数</summary><div class="fold-body">
+
+<table><thead><tr><th>关键交易日</th><th>收盘价（元）</th><th>总市值（亿元）</th><th>当日性质</th></tr></thead><tbody><tr><td>2025-12-31</td><td>12.56</td><td>32.17</td><td>上一年度收官</td></tr><tr><td>2026-01-26</td><td>15.16</td><td>38.83</td><td>现货黄金突破 5,000 美元/盎司，异动表记录高位</td></tr><tr><td>2026-02-07／02-10</td><td>—</td><td>—</td><td>披露主要银行账户被冻结＋实施其他风险警示（ST）；同日披露收到证监会立案告知书</td></tr><tr><td>2026-05-06</td><td>—</td><td>—</td><td>因未在法定期限内披露 2025 年年报，股票停牌</td></tr><tr><td>2026-07-07</td><td>3.92</td><td>10.05</td><td>停牌满两个月仍未披露 → 复牌并被实施退市风险警示（＊ST）</td></tr><tr><td>2026-08-04</td><td>1.94</td><td>4.97</td><td>首次收盘市值低于 5 亿元（随后 8-05 短暂回到 5.10 亿元）</td></tr><tr><td><strong>2026-08-06</strong></td><td><strong>1.88</strong></td><td><strong>4.82</strong></td><td><strong>市值低于 5 亿元连续第 1 个交易日</strong>（公司首次提示）</td></tr><tr><td>2026-08-19</td><td>1.43</td><td>3.66</td><td>连续第 11 个交易日；公司披露"预计无法在规定期限内披露 2025 年年报、亦无法在法定期限内披露 2026 年半年报"</td></tr><tr><td>2026-08-27</td><td>0.94</td><td>2.41</td><td><strong>跌破 1 元面值</strong>（面值退市第 1 个交易日）</td></tr><tr><td><strong>2026-08-31</strong></td><td><strong>0.77</strong></td><td><strong>1.97</strong></td><td><strong>停牌前最后交易日；市值低于 5 亿元连续第 19 个交易日</strong></td></tr><tr><td>2026-09-01</td><td>停牌</td><td>—</td><td>因预计无法披露 2026 半年报，开市起停牌</td></tr><tr><td>2026-09-07</td><td>停牌</td><td>—</td><td>规范类终止上市情形出现，继续停牌</td></tr><tr><td>2026-09-08</td><td>停牌</td><td>—</td><td><strong>收到深交所《终止上市事先告知书》</strong></td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec1">1.2 三顶帽子：一个"ST → ＊ST → 终止上市"的完整下沉链</h3>
+<p><strong>结论：本标的的帽子不是一次性戴上的一顶，而是在 7 个月内沿"其他风险警示（ST）→ 退市风险警示（＊ST）→ 规范类终止上市"三段式下沉，每一次下沉都对应一个</strong>不可逆<strong>的事实，而与经营业绩无关。</strong></p>
+<table><thead><tr><th>时点</th><th>帽子／阶段</th><th>触发事由</th><th>依据条款</th><th>是否可逆</th></tr></thead><tbody><tr><td>2026-02-10</td><td><strong>ST</strong>（其他风险警示）</td><td>因资金紧张、多笔金融机构贷款逾期违约，多家金融机构诉讼／仲裁致公司及子公司主要银行账户被人民法院冻结</td><td>深主板 <strong>9.8.1 第一款第（六）项</strong>（主要银行账户被冻结）</td><td>可逆（需解冻，但截至 2026-10-06 未见解冻公告）</td></tr><tr><td>2026-07-07</td><td>叠加 <strong>＊ST</strong>（退市风险警示）</td><td>未在法定期限内披露 2025 年年报，且股票停牌两个月内仍未披露</td><td>深主板 <strong>9.4.1 第（一）项</strong></td><td><strong>不可逆</strong>（窗口已过）</td></tr><tr><td>2026-09-08</td><td><strong>规范类终止上市程序启动</strong></td><td>被实施退市风险警示之日起两个月内（2026-09-06 前）仍未披露过半数董事保证真实、准确、完整的 2025 年年报</td><td>深主板 <strong>9.4.18 第（一）项</strong></td><td><strong>不可逆</strong></td></tr></tbody></table>
+<h3 id="sec2">1.3 立案与"涉嫌虚假记载"：本案真正的病根</h3>
+<p><strong>结论：公司自 2026-02-09 起被证监会两次立案，至 2026-08-06 监管已"初步查明公司披露的部分年度财务信息涉嫌虚假记载，可能触及重大违法强制退市"——这是"年报为什么出不来"的答案，也是全部风险的源头。</strong></p>
+<table><thead><tr><th>时点</th><th>事项</th><th>文号／主体</th><th>要点</th></tr></thead><tbody><tr><td>2026-02-09（披露 02-10）</td><td>公司被立案</td><td>证监立案字 <strong>0022026001</strong> 号</td><td>事由"涉嫌信息披露违法违规"</td></tr><tr><td>2026-05-07</td><td>公司再次被立案</td><td>证监立案字 <strong>0022026006</strong> 号</td><td>事由"未按规定披露定期报告"</td></tr><tr><td>2026-08-05</td><td><strong>控股股东、实际控制人陈思伟</strong>被立案</td><td>—</td><td>事由"涉嫌信息披露违法违规"</td></tr><tr><td>2026-08-05</td><td><strong>持股 5% 以上股东一致行动人郭英杰</strong>被立案</td><td>—</td><td>同上</td></tr><tr><td>2026-08-06</td><td>深交所《关于对公司的关注函》</td><td>公司部关注函〔2026〕第 13 号</td><td>因辽宁证监局通报"已初步查明公司披露的部分年度财务信息涉嫌虚假记载，可能触及重大违法强制退市情形"，要求充分风险提示</td></tr><tr><td>2026-07-31／08-18</td><td><strong>审计机构"消失"</strong></td><td>立信中联会计师事务所（特殊普通合伙）</td><td>立信中联被财政部<strong>暂停经营业务 6 个月</strong>（财政部 7-31 公告），公司须变更 2025 年度审计机构；公司迟至 <strong>8-18</strong> 才公告（投资者在互动易直接追问"为什么时隔 18 天才公告"）</td></tr></tbody></table>
+<blockquote><p><strong>无法披露年报的两个官方原因（公司口径，原文）</strong>：① "公司 2025 年年度报告涉及的<strong>收入、存货</strong>等重要事项需要进一步核实补充"；② "公司聘请的 2025 年度审计机构立信中联会计师事务所（特殊普通合伙）于近期被财政部暂停经营业务 6 个月，公司需要变更 2025 年度审计机构……需要经董事会和股东会审议通过"，时间上"预计无法在被实施退市风险警示之日起两个月内（2026 年 9 月 6 日前）披露"。→ <strong>两个原因一内一外：内因是账实不符需要核查，外因是审计机构失格。前者是根本，后者是加速器。</strong></p></blockquote>
+<h3 id="sec3">1.4 四类退市红线逐条对照</h3>
+<p><strong>结论：不是"踩中一条"，而是四类红线中三类已经命中、一类仍在途——规范类已经走完程序，交易类（市值）差 1 个交易日、面值差 17 个交易日，重大违法类待正式处罚决定落地。</strong></p>
+<table><thead><tr><th>类型</th><th>触发条件（本案实测）</th><th>命中与否</th><th>依据</th></tr></thead><tbody><tr><td><strong>交易类·市值</strong></td><td>深主板连续 20 个交易日收盘总市值 &lt;5 亿元；本案 <strong>2026-08-06 至 08-31 连续 19 个交易日 &lt;5 亿元</strong>（8-31 收 1.97 亿元）</td><td><strong>差 1 个交易日触发</strong>（2026-09-01 起停牌，计数冻结）</td><td>深主板 <strong>9.2.1 第一款第（六）项</strong></td></tr><tr><td><strong>交易类·面值</strong></td><td>连续 20 个交易日收盘价 &lt;1 元；本案 <strong>2026-08-27、08-28、08-31 连续 3 个交易日 &lt;1 元</strong>（0.94／0.85／0.77 元）</td><td><strong>差 17 个交易日触发</strong></td><td>深主板 <strong>9.2.1 第一款第（四）项</strong></td></tr><tr><td><strong>规范类</strong></td><td>未在法定期限内披露年报，停牌两个月内仍未披露（9.4.1(一)）；被 ＊ST 后两个月内仍未披露过半数董事保证真实的年报（9.4.18(一)）</td><td><strong>已命中，程序已启动</strong></td><td>深主板 <strong>9.4.1(一)／9.4.18(一)</strong></td></tr><tr><td><strong>重大违法类</strong></td><td>监管"已初步查明部分年度财务信息涉嫌虚假记载"；是否达量化线须待《行政处罚决定书》</td><td><strong>在途（未认定）</strong></td><td>深主板 <strong>9.5.2</strong>（各项须按"数值命中＋年度适用范围"两步算，见折叠区）</td></tr><tr><td>财务类</td><td>2025 年三季报归母 1.74 亿元、净资产 18.70 亿元、2024 年报审计意见为标准无保留</td><td><strong>未踩线</strong></td><td>深主板 9.3.1／9.3.2</td></tr><tr><td>其他类</td><td>分红红线以"最近一个会计年度净利润为正值"为前置条件，本案 2025 年报未出、无法判断，但前三季净利为正</td><td>未触发</td><td>深主板 9.8.1 第一款第（九）项</td></tr></tbody></table>
+<details class="fold"><summary>三个必须写清的口径细节（含与路径底表的差异）</summary><div class="fold-body">
+
+<p><strong>① 市值计数是 19 日，不是底表的 39 日。</strong> 按总股本 2.5616 亿股逐日核算：2026-08-04 首日 &lt;5 亿元（4.97 亿元）后，8-05 收 1.99 元／5.10 亿元<strong>中断</strong>；<strong>连续段自 2026-08-06（4.82 亿元）起算，至 8-31（1.97 亿元）共 19 个交易日</strong>。路径底表《退市风险预警-20261005.xlsx》「交易类」表记 <strong>39</strong> 天，推断其将 9 月停牌日一并计入。<strong>按 skill 既有纪律"停牌日不计入连续交易日（计数冻结）"，以逐日核算的 19 日为口径</strong>，并如实登记该差异；由于规范类路径已先行触发，该差异不影响结论。</p>
+<p><strong>② 市值线未触发对持仓者反而是"程序上的幸运"。</strong> 若 9-01 未因半年报未披露而停牌，8-31（第 19 日）后 9-01 即第 20 日 → 触发<strong>交易类</strong>强制退市，而依深主板 <strong>9.1.15</strong>，"因触及交易类强制退市情形而终止上市的股票<strong>不进入退市整理期</strong>"，持仓者连减仓窗口都没有。本案改由<strong>规范类</strong>终止，依 <strong>9.6.1</strong> 须进入 15 个交易日退市整理期——<strong>这是唯一能减仓的时间窗</strong>。</p>
+<p><strong>③ 重大违法类必须"数值＋年度"两步算，不能只比金额。</strong> 深主板 <strong>9.5.2</strong> 第一款第（四）项（单年虚假记载 ≥2 亿元且 &gt;30%）、第（五）项（连续两年合计 ≥3 亿元且 &gt;20%）<strong>均只适用于 2024 年度及以后的虚假记载行为</strong>；第（六）项（连续三年虚假记载）适用于 2020 年度及以后；第（七）项（连续两年营收／净利／利润总额合计 ≥5 亿元且 &gt;50%）适用于 2020—2024 年度。<strong>本案的造假年度与金额尚未公开</strong>，公司及深交所公告均只写"部分年度财务信息涉嫌虚假记载"而未列年度与金额，故<strong>"是否触及重大违法强制退市"在《行政处罚决定书》落地前既不能被证实、也不能被证伪</strong>——但这不影响结论，因为规范类路径已经先行。</p>
+
+</div></details>
+<h3 id="sec4">1.5 控制权沿革与股东阵容：一次"先拿控制权、再注入资产"的标准动作</h3>
+<p><strong>结论：本标的的控制权与资产是同一笔交易的两个半场——陈思伟 2022-06 以 13.86 元/股受让 12% 股份＋对手方放弃 19.38% 表决权成为实控人，2022-11 即把自己的思特瑞锂业（锂盐）以 6.12 亿元现金卖给上市公司并给出 3 亿元业绩承诺；他的"真实净成本"因此远低于 13.86 元/股。</strong></p>
+<table><thead><tr><th>时点</th><th>关键动作</th><th>对价／比例</th><th>出资方与背景</th></tr></thead><tbody><tr><td>2021-11-05／11-08</td><td>第一次控制权变更（<strong>未完成</strong>）：上海鸿潮受让翠艺投资 1,639.40 万股，并拟由上海鸿菘、上海鸿杞认购非公开发行股票</td><td>协议受让 <strong>6.44 元/股</strong>（1.06 亿元）；定增价 <strong>5.38 元/股</strong>；完成后合计 28.00%，实控人拟变更为<strong>陈华崇</strong>（1973 年生，浙江永嘉人，阀门制造背景）</td><td>上海鸿潮／鸿菘／鸿杞均为 <strong>2021-10-29～11-02 新设</strong>、尚未开展业务；该非公开发行需股东会与证监会核准，<strong>最终未实施</strong></td></tr><tr><td>2022-06-16／06-18</td><td><strong>第二次控制权变更（完成）</strong>：翠艺投资将 3,073.87 万股转让给<strong>陈思伟</strong>；同日翠艺投资及郭英杰、郭裕春、郭琼雁放弃合计 4,964.71 万股（<strong>19.38%</strong>）表决权</td><td><strong>13.86 元/股，总价 4.26 亿元</strong>；表决权放弃期限＝"自标的股份过户至陈思伟名下之日起满 <strong>36 个月</strong>止"</td><td>现金；受让前翠艺投资所持股份存在质押，承诺过户前解除</td></tr><tr><td>2022-07-09</td><td>上海鸿潮减持至 5% 以下</td><td>—</td><td>第一轮控制权变更方退出</td></tr><tr><td>2022-11-10</td><td>签署《四川思特瑞锂业有限公司股权转让协议》，收购 <strong>51%</strong> 股权</td><td><strong>现金 6.12 亿元</strong>（分五方：29,988／7,980／15,300／4,992／2,940 万元，其中<strong>陈思伟本人 2.9988 亿元</strong>）</td><td>2023-07 完成付款，<strong>2023-08-02 完成工商变更</strong>，按<strong>非同一控制下企业合并</strong>处理，形成<strong>商誉 3.54 亿元</strong></td></tr><tr><td>2022-11-10</td><td>业绩承诺</td><td>思特瑞锂业 <strong>2023—2025 年累计净利 ≥3 亿元</strong>（剔除股份支付、扣非），<strong>补偿义务人＝陈思伟</strong>，未达 90% 即须补偿</td><td>上市公司将"预期应补偿金额的公允价值确认为交易性金融资产"</td></tr><tr><td>2026-08-17</td><td>翠艺投资及其一致行动人的表决权放弃协议<strong>期限届满</strong></td><td>收回 <strong>13.18%</strong> 股份表决权</td><td>公司称"未获知有其他协议安排"</td></tr></tbody></table>
+<p><strong>股东阵容（2025-09-30 前十大，最新披露口径）</strong>：</p>
+<table><thead><tr><th>持有方</th><th>持股比例</th><th>持股数量（万股）</th><th>质押／冻结</th><th>身份识别</th></tr></thead><tbody><tr><td>陈思伟</td><td>12.00%</td><td>3,073.87（含限售 2,305.40）</td><td>无</td><td><strong>控股股东、实际控制人</strong>（2022-06 以 13.86 元/股受让）</td></tr><tr><td>深圳市翠艺投资</td><td>6.53%</td><td>1,672.26</td><td>质押 340 万股</td><td>原控股股东，2022 年起放弃表决权（<strong>2026-08-17 到期收回 13.18%</strong>）</td></tr><tr><td>龙凤</td><td>5.20%</td><td>1,332.02</td><td>无</td><td>自然人</td></tr><tr><td><strong>郭英杰</strong></td><td>4.86%</td><td>1,245.28</td><td>质押 600 万股</td><td>股东一致行动人，<strong>2026-08-05 被证监会立案</strong></td></tr><tr><td>邵增明</td><td>4.38%</td><td>1,121.34</td><td>无</td><td>自然人（力量钻石系；公司称"未参与公司管理"）</td></tr><tr><td>马俊豪</td><td>2.87%</td><td>734.23</td><td>无</td><td>自然人</td></tr><tr><td>郑秋红</td><td>2.40%</td><td>615.44</td><td>无</td><td>自然人</td></tr><tr><td>刘文华</td><td>1.88%</td><td>480.69</td><td>无</td><td>自然人</td></tr><tr><td>永赢中证沪深港黄金产业股票 ETF</td><td>0.80%</td><td>205.72</td><td>无</td><td>公募指数基金</td></tr><tr><td>方嘉凯</td><td>0.66%</td><td>170.00</td><td>无</td><td>自然人</td></tr></tbody></table>
+<p><strong>股东户数</strong>：24,283 户（2025-09-30）；按东财户均持股反算，<strong>2026-08-10 约 2.13 万户</strong>，较 2026-07-20 的约 2.40 万户继续下降——<strong>股价崩塌过程中户数同步下降，属割肉式集中，不得读作主力吸筹</strong>。</p>
+<details class="fold"><summary>成本锚点：三类口径与"13.86 元是假成本"的算术</summary><div class="fold-body">
+
+<table><thead><tr><th>参与方</th><th>成本（元/股）</th><th>现价 0.77 元对应倍数</th><th>说明</th></tr></thead><tbody><tr><td>陈思伟（协议受让，2022-06）</td><td><strong>13.86</strong></td><td><strong>0.056 倍</strong></td><td>表面口径</td></tr><tr><td><strong>陈思伟（净额口径）</strong></td><td><strong>约 4.10</strong></td><td><strong>约 0.19 倍</strong></td><td>净额＝受让对价 4.26 亿元 − 其出售思特瑞锂业股权回笼 3.00 亿元 ＝ 1.26 亿元 ÷ 3,073.87 万股</td></tr><tr><td>上海鸿潮（第一轮未成，2021-11）</td><td>6.44</td><td>0.12 倍</td><td>该轮未实施</td></tr><tr><td>非公开发行拟定价（2021-11）</td><td>5.38</td><td>0.14 倍</td><td>未实施</td></tr></tbody></table>
+<p><strong>关键判读</strong>：陈思伟的"13.86 元受让价"不能单独作为成本锚——他在同一周期内通过向上市公司<strong>卖出资产</strong>回笼约 3.00 亿元现金，二者对冲后的隐含成本约 <strong>4.10 元/股</strong>。即便如此，现价 0.77 元仍低于该净成本约 <strong>81%</strong>。 <strong>但"深套"没有转化为"自救"</strong>：陈思伟的持股 <strong>12.00% 无质押、无冻结</strong>（另一面是缺少"跌到平仓线必须救"的被动触发器），且其在 2026-07-17／07-18 两份澄清公告中明确"公司目前无正在筹划中的并购重组、实际控制权变更或债转股事宜，未来三个月内公司亦无并购重组计划、实际控制权变更计划或债转股计划"。<strong>行为记录 &gt; 单笔公告。</strong></p>
+
+</div></details>
+<h3 id="sec5">1.6 关键人物</h3>
+<p><strong>结论：本案的关键人物只有一位——实际控制人陈思伟（同时是注入资产的卖方、业绩承诺的补偿义务人，且已于 2026-08-05 被证监会立案）；原体系郭英杰家族退出表决权，但郭英杰同期被立案。</strong></p>
+<table><thead><tr><th>人物</th><th>现任／曾任职务</th><th>与本案的关系</th><th>简历（据披露口径）</th></tr></thead><tbody><tr><td><strong>陈思伟</strong></td><td>控股股东、实际控制人</td><td>2022-06 以 13.86 元/股受让 12.00% 成为实控人；2022-11 将思特瑞锂业 51% 以 6.12 亿元注入上市公司并承诺 3 亿元累计净利；<strong>2026-08-05 因"涉嫌信息披露违法违规"被证监会立案</strong></td><td><strong>公告未披露其出生年月与完整履历</strong>（《详式权益变动报告书》对自然人实控人只披露姓名、性别、国籍、住所等，因其为自然人"无财务数据"而免除履历披露义务）</td></tr><tr><td><strong>郭英杰</strong></td><td>持股 5% 以上股东一致行动人</td><td>2022 年与翠艺投资、郭裕春、郭琼雁共同放弃 19.38% 表决权（2026-08-17 到期）；<strong>2026-08-05 被证监会立案</strong></td><td>公告未披露完整履历；公司于 2026-09-11 互动易确认其"目前未被列为失信人员"，但投资者称其已被列限高</td></tr><tr><td><strong>郭裕春</strong></td><td>董事会秘书</td><td>同为翠艺投资一致行动人</td><td>公告未披露完整履历</td></tr><tr><td><strong>陈华崇</strong></td><td>未任职（第一轮控制权变更的拟任实控人）</td><td>2021-11 拟通过上海鸿潮＋定增入主，<strong>未实施</strong></td><td>1973 年出生，浙江温州永嘉县人；1994 年于永嘉县政府部门工作；1997 年入职宣达实业集团负责阀门制造与销售；2011 年任宣达实业集团浙江特种泵阀有限公司董事长；2020 年任浙江富锐实业集团有限公司经理、执行董事</td></tr></tbody></table>
+<h3 id="sec6">1.7 全流程进度看板与运作特征</h3>
+<p><strong>结论：整条流程没有"卡点"，只有"终点"——所有环节都已走完或已到期，卡点栏可以写"无"。</strong></p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点或条件</th><th>下一节点</th></tr></thead><tbody><tr><td>定期报告披露</td><td><strong>失败</strong>：2025 年报未披露、2026 半年报未披露</td><td>无（收入与存货核查未完成＋审计机构失格）</td><td>无</td></tr><tr><td>年报审计机构</td><td>立信中联被财政部暂停业务 6 个月，须另聘</td><td>需董事会＋股东会审议通过</td><td><strong>截至 2026-10-06 无新任审计机构公告</strong></td></tr><tr><td>账户解冻</td><td>未解冻</td><td>需偿还逾期债务或与债权人达成和解</td><td>无</td></tr><tr><td>债务化解</td><td>逾期本金持续增加（8-30 的 10.72 亿元 → 9-28 的 11.36 亿元）</td><td>需展期或新增融资</td><td>公司称"正积极与相关金融机构沟通推进展期"</td></tr><tr><td>证监会立案</td><td><strong>三次立案，调查进行中</strong></td><td>待《行政处罚决定书》</td><td>决定书落地将确认是否触及重大违法强制退市</td></tr><tr><td><strong>规范类终止上市</strong></td><td><strong>已收到《终止上市事先告知书》（2026-09-08）</strong></td><td>仅剩听证与陈述申辩权利</td><td><strong>深交所上市委员会审议 → 作出终止上市决定</strong></td></tr></tbody></table>
+<p><strong>运作特征（一句话）</strong>：<strong>手法＝"控制权变更＋资产注入"的标准两步（2021—2023 完成），节奏＝两年半走完，交权方式＝原体系"配合式"（翠艺投资系放弃表决权 36 个月，到期后收回但未对抗），成败关键变量＝1 和 0（定期报告出得来／出不来，已判 0），核心矛盾＝账面净利润 1.74 亿元、每股净资产 7.30 元，而 34.18 亿元存货（占总资产 55.79%）的真实性无法被审计验证，最终以"规范类终止上市"的方式把这个矛盾结算掉。</strong></p>
+<hr>
+<h2 id="chap2">二、强制退市执行路径：这是第四类路径</h2>
+<h3 id="sec7">2.1 为什么走第四类路径</h3>
+<p><strong>结论：三条常规分析路径（保壳／重整／处罚 ST）在本标的身上全部失效，报告主线整体改写为"程序执行 ＋ 残值定价"。</strong></p>
+<table><thead><tr><th>常规路径</th><th>是否可行</th><th>失效理由</th></tr></thead><tbody><tr><td>路径 A · 保壳（财务类）</td><td><strong>不成立</strong></td><td>保壳的前提是"用经营或会计动作把某个财务指标做到线内"。本案的致命问题是<strong>两年定期报告都出不来</strong>——没有可编制的经审计报表，就没有可优化的指标</td></tr><tr><td>路径 B · 重整</td><td><strong>不存在</strong></td><td>重整须以经审计的财务数据与债权债务清单为基础；公司未披露 2025 年报。且公司 2026-07-17／07-18 公告明确"目前无正在筹划中的并购重组、实际控制权变更或债转股事宜，未来三个月内亦无并购重组计划、实际控制权变更计划或债转股计划"。全周期公告中<strong>零</strong>重整／预重整／控制权变更公告</td></tr><tr><td>路径 C · 处罚 ST（规范类整改）</td><td><strong>被时间锁死</strong></td><td>规范类终止上市程序已于 2026-09-08 启动；即便行政处罚落地，也不存在"整改后恢复上市"的通道</td></tr><tr><td><strong>第四类路径 · 强制退市执行</strong></td><td><strong>★ 适用</strong></td><td>报告主线＝程序时间表 ＋ 退市整理期与退市板块的残值定价</td></tr></tbody></table>
+<h3 id="sec8">2.2 退市程序时间表</h3>
+<p><strong>结论：程序已经走到"发出拟终止上市事先告知书之后"，公司只剩听证与陈述申辩两项权利；预计 2026 年 10 月中下旬作出终止上市决定，随后进入 15 个交易日退市整理期。</strong></p>
+<table><thead><tr><th>步骤</th><th>依据</th><th>时限</th><th>说明</th></tr></thead><tbody><tr><td>因未按期披露 2025 年报停牌</td><td>深主板 <strong>8.3</strong></td><td><strong>2026-05-06</strong> 起</td><td>停牌期限不超过两个月</td></tr><tr><td>停牌两个月内仍未披露 → 实施退市风险警示</td><td>深主板 <strong>9.4.1 第（一）项</strong></td><td><strong>2026-07-07</strong> 复牌并实施 ＊ST</td><td>—</td></tr><tr><td>＊ST 后两个月内仍未披露过半数董事保证真实的年报 → 触及终止上市情形</td><td>深主板 <strong>9.4.18 第（一）项</strong></td><td><strong>2026-09-06</strong> 期限届满</td><td>—</td></tr><tr><td>继续停牌</td><td>深主板 <strong>9.3.13</strong></td><td><strong>2026-09-07</strong> 起</td><td>—</td></tr><tr><td><strong>发出《终止上市事先告知书》</strong></td><td>—</td><td><strong>2026-09-08 收到</strong>（公司部函〔2026〕第 276 号）</td><td>5 个交易日内可申请听证、10 个交易日内可提交书面陈述申辩</td></tr><tr><td>上市委员会审议 → 作出是否终止上市决定</td><td>深主板 <strong>9.3.14／9.3.15</strong></td><td>规定期限内（推断 2026 年 10 月）</td><td>公司逾期未申请视为放弃（截至 2026-10-06 未见申请听证公告）</td></tr><tr><td>公告终止上市决定 → <strong>复牌进入退市整理期</strong></td><td>深主板 <strong>9.6.1</strong></td><td>决定公告之日起 <strong>5 个交易日后的次一交易日</strong>复牌</td><td>证券代码不变、简称后冠"退"标识（<strong>"萃华退"</strong>）、进入<strong>风险警示板</strong>交易</td></tr><tr><td>退市整理期交易</td><td>深主板 <strong>9.6.2</strong></td><td><strong>15 个交易日</strong></td><td><strong>首日不实行价格涨跌幅限制，此后每日 10%</strong>；原则上不停牌（累计停牌不超过 5 个交易日）</td></tr><tr><td>摘牌 → 转入退市板块</td><td>9.6.2 末段；《关于退市公司进入退市板块挂牌转让的实施办法》</td><td>整理期届满次一交易日摘牌</td><td>转入全国股转公司代为管理的<strong>退市板块</strong>挂牌转让</td></tr><tr><td>退市整理期禁止事项</td><td>深主板 <strong>9.6.11</strong></td><td>—</td><td><strong>整理期内公司不得筹划或实施重大资产重组</strong></td></tr></tbody></table>
+<h3 id="sec9">2.3 残值定价：退市整理期与退市板块</h3>
+<p><strong>结论：退市整理期是持仓者唯一的减仓窗口，而样本显示整理期首日通常一次性补跌到位（两只同业样本首日分别 −88.8%、−92.9%）；本标的停牌前 0.77 元已提前跌透（年内 −93.87%、PB 0.105），故首日跌幅大概率小于样本，但方向没有例外——推断区间 0.20—0.40 元，摘牌后进入退市板块大概率落在 0.20—0.40 元区间。</strong></p>
+<p><strong>退市整理期首日表现样本（同一批 2026 年深市终止上市股票）</strong>：</p>
+<table><thead><tr><th>对照公司</th><th>停牌前最后收盘（元）</th><th>整理期首日收盘（元）</th><th><strong>首日跌幅</strong></th><th>整理期最后交易日收盘（元）</th><th>整理期起止</th></tr></thead><tbody><tr><td>恒久退（原 002808）</td><td>2.83（2026-04-30）</td><td><strong>0.20</strong>（2026-06-23）</td><td><strong>−92.9%</strong></td><td>0.22（2026-07-13）</td><td>2026-06-23 至 07-13</td></tr><tr><td>国华退（000004）</td><td>2.76（2026-04-27）</td><td><strong>0.31</strong>（2026-06-23）</td><td><strong>−88.8%</strong></td><td>0.51（2026-07-13）</td><td>2026-06-23 至 07-13</td></tr><tr><td>元道退（301139）</td><td>—</td><td>2026-09-30 起进入整理期（首日无涨跌幅限制、此后 20%）</td><td>—</td><td>—</td><td>2026-09-30 至 10-27（预计）</td></tr></tbody></table>
+<p><strong>对本案的三档推断（明确标注：这是推断区间，不是目标价预测）</strong>：</p>
+<table><thead><tr><th>情景</th><th>整理期首日区间</th><th>相对停牌前 0.77 元</th><th>假设</th></tr></thead><tbody><tr><td>悲观（40%）</td><td>0.15—0.22 元</td><td>−71%～−81%</td><td>市场按"存货真实性存疑＋11.36 亿元逾期债务＋无重整可能"给纯清算折价</td></tr><tr><td>中性（45%）</td><td>0.22—0.32 元</td><td>−58%～−71%</td><td>按样本方向但幅度收敛（因停牌前已跌 93.87%、PB 仅 0.105）</td></tr><tr><td>乐观（15%）</td><td>0.32—0.45 元</td><td>−42%～−58%</td><td>出现"黄金存货为真＋清算价值远超市值"的博弈资金（14 日中已有过一次地天板末日轮）</td></tr></tbody></table>
+<p><strong>概率加权推断价 ≈0.25 元</strong>（较停牌前 0.77 元约 −67%）。</p>
+<details class="fold"><summary>残值定价的方法说明、三个不确定性与一个必须点破的直觉错误</summary><div class="fold-body">
+
+<p><strong>（一）为什么用"整理期首日"而不是"目标价"</strong>：退市整理期 15 个交易日、首日无涨跌幅限制，是<strong>一次性把退市折价打满</strong>的机制。样本（恒久退、国华退）首日即跌到最终价位附近，其后 14 个交易日均在首日价的 ±50% 内波动。因此"整理期首日价"就是持仓者实际拿到的价格中枢。</p>
+<p><strong>（二）三个不确定性（必须并列写出，不能用单值掩盖）</strong>：</p>
+<ol><li><strong>决定日未知</strong>：截至 2026-10-06 深交所尚未作出终止上市决定，整理期起始日无法确定（推断 10 月下旬）。决定日每推迟一周，行情环境与情绪都会变。</li><li><strong>存货真实性未定</strong>：34.18 亿元存货（占总资产 55.79%）中库存商品 21.50 亿元（黄金珠宝）<strong>零跌价准备</strong>。若按 2025 年上半年上海金 Au9999 加权均价 725.28 元/克折算，21.50 亿元对应约 <strong>29.6 吨</strong>黄金量级——<strong>这个量级本身就是需要解释的</strong>。它是"账面极低估"的唯一来源，也是证监会立案核查的核心对象。</li><li><strong>退市板块的流动性与定价环境未知</strong>：转入退市板块后交易极不活跃，历史样本现价区间大体在 0.18—1.48 元、中位约 0.30 元；<strong>该价格既不等于可变现价值，也可能因特殊事件离散</strong>。</li></ol>
+<p><strong>（三）必须点破的一个直觉错误</strong>：<strong>"PB 0.105 倍 ＝ 极便宜"这个推论在本标的上不成立。</strong> 理由是三点同时成立：① PB 的分母（净资产 18.70 亿元）<strong>主要由未经审计验证的存货构成</strong>——它不是"已实现的价值"，而是一个<strong>待验证的假设</strong>；② 分母中还有 <strong>3.54 亿元商誉</strong>（来自思特瑞锂业并购，而该标的 2025H1 净利为 <strong>−645.27 万元</strong>，2023—2025 累计承诺 3 亿元<strong>大概率无法完成</strong>）；③ 退市后流动性归零，<strong>"清算价值"与"可变现价值"之间存在巨大的执行折价</strong>。→ <strong>本标的的低 PB 是"资产可信度折价"，不是"错杀折价"。</strong>（区分口径：这是<strong>价值折价</strong>，不是可交易的<strong>期权折价</strong>。）</p>
+
+</div></details>
+<hr>
+<h2 id="chap3">三、公司运营：账面很好看，账实待核</h2>
+<h3 id="sec10">3.1 财务五年：一份与"退市"完全不相称的报表</h3>
+<p><strong>结论：本标的 2023—2025 年前三季度的归母净利分别为 1.73／2.17／1.74 亿元、加权 ROE 最高 13.35%，财务类红线一条未踩——它不是"亏死的"，是"账出不来"死的。</strong></p>
+<table><thead><tr><th>财务项</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025 年 1—9 月</th></tr></thead><tbody><tr><td>营业收入（亿元）</td><td>36.80</td><td>42.06</td><td>45.65</td><td>44.38</td><td><strong>33.82</strong>（+1.74%）</td></tr><tr><td>归母净利润（亿元）</td><td>0.34</td><td>0.47</td><td>1.73</td><td><strong>2.17</strong></td><td><strong>1.74</strong>（+48.97%）</td></tr><tr><td>扣非归母净利（亿元）</td><td>0.36</td><td>0.33</td><td><strong>0.15</strong></td><td><strong>0.64</strong></td><td><strong>1.75</strong>（+54.95%）</td></tr><tr><td>经营现金流（亿元）</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>0.46</strong>（−58.72%）</td></tr><tr><td>每股净资产（元）</td><td>5.04</td><td>5.21</td><td>5.92</td><td>6.68</td><td><strong>7.30</strong></td></tr><tr><td>加权平均 ROE</td><td>2.67%</td><td>3.64%</td><td>12.11%</td><td><strong>13.35%</strong></td><td><strong>9.71%</strong></td></tr><tr><td>资产负债率</td><td>60.89%</td><td>58.25%</td><td>69.02%</td><td>69.43%</td><td><strong>68.78%</strong></td></tr></tbody></table>
+<blockquote><p>口径说明：2021—2025 年 1—9 月数据取自东方财富 F10 财务序列（<strong>异源</strong>，已与 2024 年报摘要、2025 年三季报原文核对一致）；2025 年 1—9 月为年初至报告期末累计数，<strong>全年数据因 2025 年年报未披露而缺失</strong>。</p></blockquote>
+<p><strong>一个必须并列写出的反常</strong>：2024 年归母净利 2.17 亿元而<strong>扣非仅 0.64 亿元</strong>，差额 1.53 亿元来自非经常性损益；2025 年 1—9 月则相反，<strong>扣非 1.75 亿元略高于归母 1.74 亿元</strong>——这一反差本身说明非经常性项目对利润的影响很大，而<strong>它的具体构成同样需要 2025 年报才能验证</strong>。</p>
+<h3 id="sec11">3.2 收入地图：黄金是全部，锂盐是故事</h3>
+<p><strong>结论：收入结构上，"锂电"只占约五分之一且 2025 年上半年净亏 645.27 万元；真正撑起业绩的是黄金珠宝（占收入 72.01%），而高金价恰恰是"存货价值与终端动销"这对矛盾的放大器。</strong></p>
+<table><thead><tr><th>分产品</th><th>2025 年上半年收入（亿元）</th><th>占比</th><th>同比</th></tr></thead><tbody><tr><td>黄金产品</td><td>16.15</td><td><strong>72.01%</strong></td><td>+1.49%</td></tr><tr><td><strong>锂产品及加工</strong></td><td><strong>4.87</strong></td><td><strong>21.73%</strong></td><td><strong>+46.47%</strong></td></tr><tr><td>其他</td><td>1.22</td><td>5.44%</td><td>−22.41%</td></tr><tr><td>镶嵌产品</td><td>0.09</td><td>0.40%</td><td>+20.90%</td></tr><tr><td>其他珠宝</td><td>0.05</td><td>0.23%</td><td>+74.15%</td></tr><tr><td>黄金加工</td><td>0.03</td><td>0.15%</td><td>+50.52%</td></tr><tr><td>铂金产品</td><td>0.01</td><td>0.04%</td><td>+56.35%</td></tr></tbody></table>
+<p><strong>分地区（2025H1）</strong>：华南 8.92 亿元（39.77%）／东北 4.72 亿元（21.05%）／华东 4.12 亿元（18.37%）／华中 1.64 亿元（7.32%）／华北 1.48 亿元（6.58%）／西南 1.45 亿元（6.45%）。</p>
+<p><strong>两家子公司的对比是整份报告最有信息量的一处</strong>：</p>
+<table><thead><tr><th>子公司</th><th>持股</th><th>2025H1 收入</th><th>2025H1 净利</th><th>同比</th></tr></thead><tbody><tr><td>深圳市萃华珠宝首饰有限公司</td><td>100%</td><td>—</td><td><strong>+9,180.52 万元</strong></td><td>+43.61%（受黄金价格上涨影响）</td></tr><tr><td>四川思特瑞锂业有限公司</td><td>51%</td><td><strong>5.20 亿元</strong></td><td><strong>−645.27 万元</strong></td><td>净利同比 −154.45%</td></tr></tbody></table>
+<blockquote><p><strong>判读</strong>：上市公司 2025H1 归母净利 1.11 亿元，几乎全部由深圳萃华一家贡献；而 2023 年那次 6.12 亿元现金收购的锂盐资产，<strong>两年后不仅不赚钱，还对报表形成拖累（净亏 645.27 万元），且背着 3.54 亿元商誉与一项大概率无法完成的 3 亿元累计业绩承诺</strong>。→ <strong>"双主业"在收入上成立（21.73%），在利润上不成立。</strong></p></blockquote>
+<details class="fold"><summary>业务审美标签与热点业务占比定位（按 §2.9 口径）</summary><div class="fold-body">
+
+<table><thead><tr><th>业务</th><th>2025H1 收入占比</th><th>毛利率形态</th><th>审美标签</th></tr></thead><tbody><tr><td>黄金产品（直营＋加工）</td><td>72.16%</td><td>受金价驱动，毛利随价格上行</td><td><strong>景气成长（价格驱动型）</strong></td></tr><tr><td>锂产品及加工</td><td>21.73%</td><td>净利为负（−645.27 万元）</td><td><strong>业务反转（尚未反转）</strong></td></tr><tr><td>镶嵌／铂金／其他珠宝</td><td>0.67%</td><td>体量极小</td><td><strong>题材炒作（无实际权重）</strong></td></tr></tbody></table>
+<p><strong>热点业务占比定位的答案</strong>：市场历史炒作符号中权重最高的两个——"<strong>黄金珠宝／古法黄金</strong>"占 2025H1 收入 <strong>72.01%</strong>（真实且是业绩来源）；"<strong>锂电池／碳酸锂</strong>"占 <strong>21.73%</strong>（真实但亏损）。<strong>没有"占比 0.3% 却撑起估值"的情形，本案的问题不是"热点业务占比太低"，而是"占比最高的那块资产的真实性正在被监管核查"。</strong></p>
+
+</div></details>
+<h3 id="sec12">3.3 资产质量：34.18 亿元存货是全部问题的起点</h3>
+<p><strong>结论：存货 34.18 亿元占总资产 55.79%、是净资产的 1.83 倍，其中库存商品 21.50 亿元黄金珠宝</strong>未计提任何跌价准备<strong>；这既是账面"低 PB"的全部来源，也是证监会立案核查的核心对象——本标的的估值分歧 100% 集中在这一项上。</strong></p>
+<table><thead><tr><th>存货明细（2025-06-30，珠宝板块）</th><th>账面余额（亿元）</th><th>跌价准备（亿元）</th><th>账面价值（亿元）</th></tr></thead><tbody><tr><td>库存商品</td><td><strong>21.50</strong></td><td><strong>0</strong></td><td>21.50</td></tr><tr><td>原材料</td><td><strong>9.59</strong></td><td><strong>0</strong></td><td>9.59</td></tr><tr><td>发出商品</td><td>0.06</td><td>0</td><td>0.06</td></tr><tr><td>周转材料</td><td>0.01</td><td>0</td><td>0.01</td></tr><tr><td>委托加工物资</td><td>0.005</td><td>0</td><td>0.005</td></tr><tr><td>合计（明细）</td><td><strong>31.17</strong></td><td><strong>0</strong></td><td>31.17</td></tr><tr><td><strong>合并资产负债表存货</strong></td><td>—</td><td>—</td><td><strong>34.18</strong>（占总资产 <strong>55.79%</strong>，较上年末 32.13 亿元继续增长）</td></tr></tbody></table>
+<p><strong>其他关键资产与负债（2025-06-30）</strong>：</p>
+<table><thead><tr><th>报表项</th><th>金额（亿元）</th><th>判读</th></tr></thead><tbody><tr><td>货币资金</td><td>4.85（其中<strong>受限 2.70</strong>）</td><td>可动用约 2.14 亿元</td></tr><tr><td>应收账款</td><td>2.39</td><td>—</td></tr><tr><td><strong>商誉</strong></td><td><strong>3.54</strong></td><td>全部来自思特瑞锂业并购，<strong>未计提减值</strong></td></tr><tr><td>固定资产</td><td>8.04</td><td>抵押 1.83 亿元</td></tr><tr><td><strong>总资产</strong></td><td><strong>61.27</strong></td><td>—</td></tr><tr><td><strong>短期借款</strong></td><td><strong>15.88</strong></td><td>较上年末 13.24 亿元继续增长</td></tr><tr><td>长期借款</td><td>3.26</td><td>—</td></tr><tr><td>一年内到期的非流动负债</td><td>2.75</td><td><strong>有息负债合计约 21.89 亿元</strong></td></tr><tr><td>其他应付款</td><td>10.35</td><td>含<strong>应付股利 4.07 亿元</strong>（长期挂账）</td></tr><tr><td>合同负债</td><td>1.96</td><td>—</td></tr><tr><td>受限资产（账面价值）</td><td>4.72</td><td>货币资金冻结 2.70＋固定资产抵押 1.83＋无形资产抵押 0.19</td></tr></tbody></table>
+<h3 id="sec13">3.4 债务与流动性：11.36 亿元逾期是"账户被冻结"的直接原因</h3>
+<p><strong>结论：逾期借款本金从 2026 年 4 月起持续增加，至 2026-09-28 累计达 11.36 亿元；这是"主要银行账户被冻结"的直接原因，也是公司所有自救路径的共同堵塞点。</strong></p>
+<table><thead><tr><th>发布日</th><th>新增逾期（万元）</th><th>累计逾期本金（万元）</th><th>主要债权人</th></tr></thead><tbody><tr><td>2026-04-01</td><td>—</td><td>披露开始</td><td>—</td></tr><tr><td>2026-08-30／31</td><td>9,100.00（沈阳萃华 2 笔）</td><td>107,159.91</td><td>交通银行辽宁省分行 5,500；兴业银行沈阳分行 3,600</td></tr><tr><td><strong>2026-09-28</strong></td><td><strong>6,422.00</strong>（深圳萃华 2 笔）</td><td><strong>113,573.91</strong></td><td>江苏银行深圳分行 1,422；广东华兴银行深圳分行 5,000</td></tr></tbody></table>
+<blockquote><p><strong>公司口径（公告原文）</strong>：逾期金额<strong>不包含</strong>逾期未付利息、违约金、滞纳金和罚息；若未能妥善解决，公司及子公司可能面临诉讼、仲裁、被要求履行连带担保责任等风险，<strong>公司控股股东、部分 5% 以上股东也可能面临诉讼、仲裁、被要求履行连带担保责任</strong>。</p><p><strong>判读</strong>：账面货币资金 4.85 亿元、可动用约 2.14 亿元，而<strong>一年内到期有息负债约 18.63 亿元</strong>（短期借款 15.88＋一年内到期非流动负债 2.75）——<strong>流动性缺口约 16 亿元</strong>，且主要账户已被冻结，<strong>债务化解只能靠展期或外部输血，而两条路在退市程序启动后均已收紧</strong>。</p></blockquote>
+<hr>
+<h2 id="chap4">四、炒作逻辑三支柱</h2>
+<h3 id="sec14">4.1 ① 炒预期：可炒的事件只剩"退市整理期"这一个（负向事件）</h3>
+<p><strong>结论：本标的未来 6 个月唯一确定的事件是"终止上市 → 退市整理期 15 个交易日 → 摘牌"，全部为负向；不存在正向催化。</strong></p>
+<table><thead><tr><th>时点</th><th>催化内容</th><th>性质</th><th>距今</th></tr></thead><tbody><tr><td>2026 年 10 月（推断）</td><td>深交所作出终止上市决定并公告</td><td>负向（已预告）</td><td>数周内</td></tr><tr><td>决定公告后 5 个交易日的次一交易日</td><td>复牌进入退市整理期（"萃华退"），首日无涨跌幅限制</td><td><strong>负向（一次性补跌）</strong></td><td>约 3—5 周</td></tr><tr><td>整理期 15 个交易日</td><td>原则上不停牌、不得筹划重大资产重组</td><td>负向</td><td>—</td></tr><tr><td>整理期届满次一交易日</td><td>摘牌，转入退市板块</td><td>负向（流动性归零）</td><td>约 6—8 周</td></tr><tr><td>待定（无时间表）</td><td>证监会《行政处罚决定书》落地，确认是否触及重大违法强制退市</td><td>负向</td><td>未知</td></tr></tbody></table>
+<p><strong>注意一个反向的"预期差"</strong>：市场对本标的的定价可能已经<strong>过度悲观</strong>（停牌前 0.77 元、PB 0.105 倍）。若 34.18 亿元存货经核查<strong>被证明基本真实</strong>，则退市板块的残值（对应净资产 18.70 亿元的清算价值）在理论上远高于 0.25 元的整理期推断价。<strong>但这一点不能作为买入理由</strong>，因为：① 核查结论由监管掌握、无时间表；② 即便存货为真，退市后流动性折价与执行折价都极大；③ 退市整理期内没有任何"恢复"机制。→ <strong>这是"赔率不确定＋时间不确定"的双重不确定，唯一合理的动作是回避，不是下注。</strong></p>
+<h3 id="sec15">4.2 ② 炒历史类似行为：本标的的历史行情是"符号驱动"，而当前符号已失效</h3>
+<p><strong>结论：本标的 2020—2026 年的 51 条异动记录显示，其炒作符号始终围绕"黄金珠宝（底）＋ 实控人变更／资产注入（弹性）"展开，最高连板达 8 天 4 板；但支撑这些行情的两个弹性符号（实控人变更、锂电资产注入）</strong>都已在 2021—2023 年用尽<strong>，2026 年的符号退化为"超跌反弹＋股东持股遭强平"。</strong></p>
+<table><thead><tr><th>区间</th><th>题材</th><th>涨停表现</th><th>股价区间（元）</th><th>驱动关键词</th></tr></thead><tbody><tr><td>2026-07-16 至 08-24</td><td>ST 板块</td><td>4 天 2 板（07-30）</td><td>1.28—2.53</td><td><strong>超跌反弹＋碳酸锂＋股东部分持股遭强平＋黄金珠宝</strong></td></tr><tr><td>2026-02-25 至 03-27</td><td>ST 板块</td><td>—</td><td>7.62—9.37</td><td>股东部分持股遭强平＋黄金珠宝＋IP 经济＋锂电池</td></tr><tr><td>2026-01-26</td><td>有色金属</td><td>—</td><td>15.16</td><td>现货黄金突破 5,000 美元/盎司、现货白银突破 100 美元/盎司</td></tr><tr><td>2025-03 至 2025-08</td><td>消费／黄金／伊以冲突</td><td>2 天 2 板 ×3</td><td>11.02—17.28</td><td>黄金珠宝＋古法黄金＋IP 经济＋锂电池</td></tr><tr><td>2024-01 至 2024-04</td><td>华字辈／黄金</td><td>6 天 3 板</td><td>10.48—13.62</td><td>锂电池＋黄金＋珠宝＋年报预增</td></tr><tr><td><strong>2022-06-21 至 2022-11-04</strong></td><td><strong>锂电产业链／公告</strong></td><td><strong>8 天 4 板、5 天 3 板、2 天 2 板</strong></td><td><strong>15.62—22.02</strong></td><td><strong>拟变更新实控人持有锂盐业务＋珠宝＋黄金</strong></td></tr><tr><td>2021-11-08 至 2022-03-31</td><td>公告／消费</td><td>4 天 2 板、2 天 2 板</td><td>6.61—14.89</td><td><strong>实控人变更／股权转让＋珠宝</strong></td></tr><tr><td>2020-07-07 至 2021-03-31</td><td>黄金稀土／消费</td><td>2 天 2 板</td><td>6.61—8.93</td><td>珠宝饰品＋黄金＋拼多多合作</td></tr></tbody></table>
+<p><strong>"相似股票匹配"——从基准日出发现最像谁</strong>：</p>
+<table><thead><tr><th>对照公司</th><th>像在哪一句话</th><th>后续实际走势</th><th>结论</th></tr></thead><tbody><tr><td><strong>恒久退（原 002808）</strong></td><td>2026 年因"2025 年财报被出具无法表示意见＋内控无法表示意见"终止上市（<strong>财务类</strong>），同样经历了"停牌—复牌—＊ST—终止"的下沉</td><td>停牌前 2.83 元 → 整理期首日 <strong>0.20 元（−92.9%）</strong> → 摘牌前 0.22 元</td><td><strong>下跌组</strong></td></tr><tr><td><strong>国华退（000004）</strong></td><td>2026 年同期终止上市并进入同一批退市整理期（2026-06-23 起、07-13 止）</td><td>停牌前 2.76 元 → 整理期首日 <strong>0.31 元（−88.8%）</strong> → 摘牌前 0.51 元</td><td><strong>下跌组</strong></td></tr><tr><td><strong>元道退（301139）</strong></td><td>2026 年 9-30 起进入退市整理期（<strong>欺诈发行·重大违法类</strong>）</td><td>整理期中</td><td><strong>下跌组</strong></td></tr><tr><td>萃华自身 2026 年 7—8 月</td><td>停牌前最后 3 个交易日（0.94／0.85／0.77 元）连续跌停，<strong>期间出现过一次"地天板"末日轮</strong>（晨会记录：1 板／地天板／"筹码博弈-退市末日轮"）</td><td>从 3.92 元（07-07）跌至 0.77 元（08-31）＝ <strong>−80.4%</strong></td><td><strong>下跌组</strong></td></tr></tbody></table>
+<p>→ <strong>本标的明确落在"下跌组"</strong>，且已在下跌组末端爆发过一轮"末日轮"投机（8-24 涨 10.34% 但龙虎榜<strong>净卖 212.82 万元</strong>）。</p>
+<p><strong>反过来，上涨组的共性也值得记一笔</strong>：2026 年同型样本中真正上涨的（如 ＊ST英飞 +130.22%、＊ST美芝 +71.21%、＊ST威领 +69.52%）<strong>全部"有物"</strong>——已签重整投资协议、已披露转增方案、有明确要约方。<strong>本标的的"物"（思特瑞锂业）早在 2023 年 8 月就已并表（无增量），此后没有任何新的可命名载体。</strong>（"人有／有物"判据第 20 余次验证。）</p>
+<h3 id="sec16">4.3 ③ 炒主板映射：负向</h3>
+<p><strong>结论：能映射的两条主线（黄金珠宝、锂电）在 2026 年都不弱，但本标的没有参与——它不是"低位补涨"，而是"退市定价"。</strong></p>
+<table><thead><tr><th>主线</th><th>主板当期状况</th><th>可映射对象</th><th>关联度</th><th>本股实际表现</th></tr></thead><tbody><tr><td>黄金珠宝</td><td>2026 年上半年金价大幅上行（上海金 Au9999 上半年加权均价 725.28 元/克、同比 +41.07%），黄金股普遍强势</td><td>黄金首饰同业</td><td><strong>强（收入 72.01% 来自黄金）</strong></td><td>深圳萃华 2025H1 净利 +43.61%，<strong>但股价年内 −93.87%</strong></td></tr><tr><td>锂电／碳酸锂</td><td>2026 年碳酸锂板块有阶段性行情</td><td>思特瑞锂业（51%）</td><td><strong>中（收入 21.73%、净利为负）</strong></td><td>锂盐业务 2025H1 净亏 645.27 万元、锂能矿业"已建成投产"（互动易未正面确认）</td></tr><tr><td>ST 板块整体</td><td>2026 年 ST 板块内部严重分化</td><td>—</td><td>—</td><td>本标的属<strong>规范类退市</strong>，不参与任何 ST 博弈分组</td></tr></tbody></table>
+<blockquote><p><strong>判读</strong>：<strong>主板映射在本标的上是"负向"</strong>——行业景气（金价上行）确实传导到了收入与子公司利润，但<strong>没有传导到股价</strong>，因为股价由"退市概率"定价，而不是由"金价"定价。<strong>"跌得多＋行业在涨"在这里不构成安全边际，只说明它的定价变量根本不是行业。</strong></p></blockquote>
+<h3 id="sec17">4.4 情绪面与筹码面</h3>
+<p><strong>结论：注意力曾在 2026 年 7—8 月集中爆发（龙虎榜密集上榜、出现地天板末日轮），但每一次放量上涨都伴随龙虎榜净卖出——这是撤退型筹码结构，不是接力型。</strong></p>
+<table><thead><tr><th>交易日</th><th>涨跌幅</th><th>龙虎榜净额（万元）</th><th>上榜原因</th><th>读法</th></tr></thead><tbody><tr><td>2026-07-17</td><td>+10.00%</td><td>−164.33</td><td>日换手率达 20%</td><td>涨而净卖</td></tr><tr><td>2026-07-22</td><td>−6.83%</td><td><strong>−655.34</strong></td><td>振幅 15%／换手 20%</td><td>派发</td></tr><tr><td>2026-07-23</td><td>−4.19%</td><td>+395.66</td><td>换手 20%</td><td>抢反弹</td></tr><tr><td>2026-08-05</td><td>+2.58%</td><td>+115.73</td><td>振幅 15%</td><td>—</td></tr><tr><td>2026-08-07</td><td>−9.04%</td><td>−269.64</td><td>跌幅偏离 7%</td><td>出逃</td></tr><tr><td>2026-08-21</td><td>−10.08%</td><td>+89.15</td><td>连续三日跌幅偏离 20%</td><td>抢反弹</td></tr><tr><td>2026-08-24</td><td><strong>+10.34%</strong></td><td><strong>−212.82</strong></td><td>换手 20%／振幅 15%</td><td><strong>涨停日净卖＝拉高派发</strong></td></tr><tr><td>2026-08-25</td><td>−10.16%</td><td>−111.20</td><td>换手 20%／跌幅偏离 7%</td><td>出逃</td></tr><tr><td>2026-08-26</td><td>−9.57%</td><td>−237.10</td><td>换手 20%／跌幅偏离 7%</td><td>出逃</td></tr><tr><td>2026-08-27</td><td>−9.62%</td><td>−228.14</td><td>连续三日跌幅偏离 20%</td><td>跌破 1 元</td></tr><tr><td>2026-08-28</td><td>−9.57%</td><td>−24.51</td><td>跌幅偏离 7%／<strong>严重异常期间累计跌幅偏离 70%</strong></td><td>停牌前倒数第 2 日</td></tr></tbody></table>
+<details class="fold"><summary>投资者交流要点（同花顺 F10 互动易，共 836 条问答，摘 2026 年 7—9 月要点）</summary><div class="fold-body">
+
+<table><thead><tr><th>投资者问题（节选原话）</th><th>公司答复要点</th><th>本报告判读</th></tr></thead><tbody><tr><td>"公司黄金是太多了吗？怎么到现在还数不清楚？"</td><td>"关于库存、收入等核查尚未完成"</td><td><strong>公司首次正面确认核查对象是"库存（黄金）与收入"</strong></td></tr><tr><td>"立信中联被暂停执业……9 月 6 日年报披露大限，公司有什么预案？"</td><td>"因公司 2025 年年度报告涉及的收入、存货等重要事项需要进一步核实补充……公司将触及规范类退市情形，深交所将决定终止公司股票交易"</td><td>公司已<strong>提前自认</strong>将触及规范类退市</td></tr><tr><td>"7 月 31 日财政部就公告了对立信事务所的处罚，为什么公司在明知审计机构已经被暂停业务半年的情况下，时隔 18 天才公告？"</td><td>"公司在接洽会计师事务所，确定的审计机构需要经董事会、股东会审议通过"</td><td>信息披露及时性存疑</td></tr><tr><td>"上市公司主要生产经营活动严重受阻……公司从 5 月份起主营业务已经超过 4 个月未恢复营业，是否属于信披违规？"</td><td>"<strong>公司直营业务基本停滞</strong>，但加盟商使用公司的品牌授权经营影响较小"</td><td><strong>公司自认直营停摆</strong></td></tr><tr><td>"请问董秘：公司有无对中小股东的赔偿方案？"</td><td>"公司目前面临的诉讼和仲裁情况较多，公司积极面对处理"</td><td>未给方案</td></tr><tr><td>"思特瑞锂业的业绩补偿是否还有效？"</td><td>"公司会依据收购协议约定、结合年度审计数据核查履约条件，督促相关方履行承诺义务"</td><td><strong>补偿须依赖年度审计数据，而年报出不来</strong></td></tr><tr><td>"翠艺投资＋郭英杰家族一致行动人放弃 13.18% 股份表决权……是 2026 年 8 月 17 日自动收回表决权吗？"</td><td>"表决权放弃协议期限已届满，目前公司未获知有其他协议安排"</td><td>原体系表决权收回</td></tr><tr><td>"已有 10% 合计持股的中小股东准备提请清盘公司的议案"</td><td>"关于股东提案可以依照公司章程股东和股东会的相关条款"</td><td><strong>已有中小股东筹划清盘动议</strong></td></tr></tbody></table>
+<p><strong>必抓的四个点</strong>：① <strong>参会人员是否换人</strong>——2026 年 7 月董事会补选职工董事、多名高管辞职（总经理、财务负责人、证券事务代表、职工董事先后变动），<strong>治理层不稳定，但控制权未变更</strong>（公司明确"实际控制人未发生变更"）；② 未来盈利驱动自述——公司口径为"通过双主业发展提升抗风险能力"，<strong>无新赛道</strong>；③ 摘帽自述时间表——<strong>无时间表，已被终止上市程序取代</strong>；④ 分红／股东人数——<strong>应付股利 4.07 亿元长期挂账未付</strong>，股东户数持续下降。</p>
+
+</div></details>
+<hr>
+<h2 id="chap5">五、估值与投资结论</h2>
+<h3 id="sec18">5.1 估值</h3>
+<p><strong>结论：本标的不适用 PE／PS／PB 常规框架——它已进入"退市执行定价"，唯一有效的估值方法是「退市整理期首日样本 ＋ 退市板块残值」两条尺子交叉。</strong></p>
+<table><thead><tr><th>尺子</th><th>数值</th><th>是否有效</th></tr></thead><tbody><tr><td>PB（PB＝0.105，BPS 7.302 元）</td><td>0.105 倍</td><td><strong>不可用作安全垫</strong>——分母主要由未经审计验证的存货构成（见 §2.3 折叠区）</td></tr><tr><td>PS（2025 年 1—9 月年化营收约 45 亿元 ÷ 市值 1.97 亿元）</td><td>≈0.04 倍</td><td>不适用（营收规模与市值已彻底脱钩）</td></tr><tr><td>PE</td><td>不适用</td><td>2025 年报未披露；且退市定价与盈利无关</td></tr><tr><td><strong>退市整理期首日样本（恒久退 −92.9%／国华退 −88.8%）</strong></td><td>对应 0.055—0.086 元</td><td><strong>有效</strong>（但需按本标的"已提前跌透"做收敛修正）</td></tr><tr><td><strong>退市板块历史价格区间</strong></td><td>0.18—1.48 元、中位约 <strong>0.30 元</strong></td><td><strong>有效</strong>（退市后定价中枢的最直接参照）</td></tr></tbody></table>
+<p><strong>三档推断价（本轮唯一结论性区间）</strong>：悲观 0.15—0.22 元／中性 0.22—0.32 元／乐观 0.32—0.45 元，<strong>概率加权推断价 ≈0.25 元</strong>（较停牌前 0.77 元约 −67%）。</p>
+<h3 id="sec19">5.2 投资结论</h3>
+<p><strong>结论：卖出（回避）。</strong></p>
+<table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td><strong>结论</strong></td><td><strong>卖出（回避）</strong></td></tr><tr><td><strong>理由链</strong></td><td>① <strong>规范类终止上市程序已实质走完，唯一剩余程序不改变结果</strong>——已于 2026-09-08 收到《终止上市事先告知书》（公司部函〔2026〕第 276 号），两年定期报告双双未披露，无任何整改或补披露通道；② <strong>持仓者不存在"在途卖出窗口"，唯一减仓时点是退市整理期 15 个交易日</strong>（预计 2026 年 10 月下旬—11 月），而样本显示整理期首日即一次性补跌（恒久退 −92.9%、国华退 −88.8%）；③ <strong>"低 PB 0.105 倍"是资产可信度折价而非错杀</strong>——净资产 18.70 亿元中存货 34.18 亿元占总资产 55.79%、库存商品 21.50 亿元<strong>零跌价准备</strong>，且该科目正是证监会立案核查的对象，同时硬夹一笔 3.54 亿元商誉（对应标的 2025H1 已净亏 645.27 万元）；④ <strong>基本面救援与外部救援双双关闭</strong>——11.36 亿元借款逾期、主要银行账户被冻结、可动用现金约 2.14 亿元对一年内到期有息负债约 18.63 亿元，公司并已在 2026-07-17／07-18 明确"未来三个月内无并购重组、控制权变更或债转股计划"；⑤ <strong>炒作符号已用尽</strong>——51 条异动记录显示弹性来自"实控人变更（2021-11 用尽）＋锂电资产注入（2023-08 用尽）"，2026 年的符号已退化为"超跌反弹＋股东持股遭强平"，且每次放量均伴随龙虎榜净卖出</td></tr><tr><td><strong>触发条件</strong></td><td><strong>转买入＝不存在可操作的转买入条件</strong>；唯一能重估结论的是"非公开核查结论"（如存货被确认真实且可足额变现），而它既无时间表也不可交易。&lt;br&gt;<strong>转卖出（若尚未停牌）＝立即</strong>（本标的已停牌，转为"退市整理期首日市价减持"）</td></tr><tr><td><strong>失效条件（本结论作废的情形）</strong></td><td>① 深交所<strong>未</strong>作出终止上市决定（在规范类情形下概率极低）；② 出现<strong>超预期的权益性输血或资产注入</strong>使 2025 年报在程序完成前完成披露并经审计（须同时满足"披露"与"过半数董事保证真实"两个条件）；③ 存货被监管核查确认为<strong>真实且可足额变现</strong>，使退市板块残值显著高于 0.45 元</td></tr><tr><td><strong>参考区间</strong></td><td>退市整理期首日：<strong>0.20—0.40 元</strong>；退市板块（摘牌后）：<strong>0.20—0.40 元</strong>；<strong>不建议在任何价位建仓</strong></td></tr><tr><td><strong>时间窗口</strong></td><td>本结论有效期至 <strong>2026 年 11 月</strong>（退市整理期结束、摘牌完成）；其后本标的转入退市板块，分析框架须整体改写</td></tr><tr><td><strong>仓位建议</strong></td><td><strong>不建仓</strong>（含"博末日轮"式投机）；已持仓者在退市整理期择机清仓，不参与退市板块</td></tr><tr><td><strong>最大风险</strong></td><td><strong>本结论出错的那一件事＝公司 2006 年以来口径的存货黄金被核查确认为真实存在且可足额变现</strong>——此时"账面 18.70 亿元净资产"对 1.97 亿元市值将形成巨额折价，退市板块残值可能远高于本报告推断的 0.25 元。<strong>但请注意：这个风险的方向是"我可能低估了残值"，而不是"现在应该买入"——因为它不可验证、无时间表、且无法在停牌状态下变现。</strong></td></tr></tbody></table>
+<hr>
+<h2 id="chap6">附录 A · 待核实 / 需补充清单</h2>
+<table><thead><tr><th>编号</th><th>待核实项</th><th>说明</th></tr></thead><tbody><tr><td>1</td><td><strong>2025 年年度报告</strong></td><td>未披露。收入、存货核查结论、审计意见类型、非经常性损益构成均无法核实</td></tr><tr><td>2</td><td><strong>2026 年半年度报告</strong></td><td>未披露（期初数无法确认）</td></tr><tr><td>3</td><td><strong>证监会《行政处罚决定书》</strong></td><td>未作出。虚假记载的具体年度、金额、是否触及重大违法强制退市均未认定</td></tr><tr><td>4</td><td><strong>新任 2025 年度审计机构</strong></td><td>截至 2026-10-06 无公告；董事会／股东会审议进展未披露</td></tr><tr><td>5</td><td><strong>34.18 亿元存货的实物盘点结果</strong></td><td>公司仅称"核查尚未完成"；库存商品 21.50 亿元黄金珠宝的克重、成色、权属未披露</td></tr><tr><td>6</td><td><strong>思特瑞锂业 2023—2025 累计业绩完成情况与补偿金额</strong></td><td>补偿须依赖年度审计数据，而年报未出；公司"交易性金融资产"中该项的公允价值未单独披露</td></tr><tr><td>7</td><td><strong>深交所终止上市决定的作出日与退市整理期起始日</strong></td><td>截至 2026-10-06 未公告</td></tr><tr><td>8</td><td><strong>陈思伟、郭英杰的完整个人简历</strong></td><td>公告未披露（自然人实控人在权益变动报告书中免于履历披露；本案亦未在其被提名聘任董监高时补披露）</td></tr><tr><td>9</td><td><strong>主要银行账户解冻进展</strong></td><td>自 2026-02 冻结至今无解冻公告</td></tr><tr><td>10</td><td><strong>中小股东"提请清盘公司"动议的正式状态</strong></td><td>仅见于互动易投资者提问（2026-08-24），无公司或股东公告佐证</td></tr><tr><td>11</td><td><strong>路径底表市值计数 39 天与逐日核算 19 天的差异原因</strong></td><td>推断底表将 9 月停牌日一并计入；已按"停牌日不计入"口径采用 19 日</td></tr><tr><td>12</td><td><strong>2026-09-08 后是否申请听证</strong></td><td>截至 2026-10-06 未见相关公告（逾期视为放弃）</td></tr><tr><td>13</td><td><strong>恒久退（002808）证券代码与公司主体确认</strong></td><td>样本价格取自新浪行情 <code>sz002808</code>（简称"恒久退"），<strong>公司主体名称未曾逐字核对公告，按线索级采信</strong>（本报告仅用其价格序列作整理期跌幅参照）</td></tr></tbody></table>
+<h2 id="chap7">附录 B · 关键信源链接</h2>
+<table><thead><tr><th>编号</th><th>文件</th><th>发布日</th><th>原文地址</th></tr></thead><tbody><tr><td>1</td><td>关于收到终止上市事先告知书的公告（公司部函〔2026〕第 276 号）</td><td>2026-09-09</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-09-09/1225554537.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>2</td><td>关于公司股票将被终止上市暨继续停牌的风险提示公告</td><td>2026-09-07</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-09-07/1225549792.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>3</td><td>关于无法在法定期限内披露定期报告暨公司股票停牌暨可能被终止上市的风险提示公告</td><td>2026-09-01</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-09-01/1225539050.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>4</td><td>关于子公司新增借款逾期的公告（累计逾期本金 113,573.91 万元）</td><td>2026-09-29</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-09-29/1225584573.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>5</td><td>关于公司新增借款逾期的公告（累计逾期本金 107,159.91 万元）</td><td>2026-08-31</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-08-31/1225532766.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>6</td><td>关于预计无法在规定期限内披露 2025 年年度报告暨……的风险提示公告</td><td>2026-08-19</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-08-19/1225480944.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>7</td><td>关于公司股票存在可能因市值被终止上市的第一次风险提示公告（2026-08-06 市值 4.82 亿元）</td><td>2026-08-07</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-08-07/1225462594.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>8</td><td>关于公司股票存在可能因股价低于 1 元而终止上市的首次风险提示公告</td><td>2026-08-28</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-08-28/1225519189.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>9</td><td>关于公司股票存在可能因市值被终止上市的第九次风险提示公告</td><td>2026-08-31</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-08-31/1225532765.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>10</td><td>关于公司立案调查进展暨风险提示公告暨收到深交所《关于对公司的关注函》的公告（公司部关注函〔2026〕第 13 号）</td><td>2026-08-07</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-08-07/1225462595.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>11</td><td>关于公司控股股东、实际控制人收到中国证监会立案告知书的公告</td><td>2026-08-05</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-08-05/1225458447.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>12</td><td>关于公司持股 5% 以上股东一致行动人收到中国证监会立案告知书的公告</td><td>2026-08-05</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-08-05/1225458446.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>13</td><td>关于股票交易被实施退市风险警示暨停复牌安排的公告</td><td>2026-07-06</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-07-06/1225410169.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>14</td><td>关于收到中国证券监督管理委员会立案告知书的公告（证监立案字 0022026006 号）</td><td>2026-05-07</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-05-07/1225280208.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>15</td><td>关于无法在法定期限内披露定期报告暨股票停牌的公告</td><td>2026-05-06</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-05-06/1225274917.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>16</td><td>关于收到中国证券监督管理委员会立案告知书的公告（证监立案字 0022026001 号）</td><td>2026-02-10</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-02-10/1224973942.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>17</td><td>关于公司主要银行账户被冻结暨股票交易被实施其他风险警示及股票停牌的公告</td><td>2026-02-07</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-02-07/1224971967.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>18</td><td>关于市场传闻的澄清及风险提示的公告（明确无并购重组、控制权变更、债转股计划）</td><td>2026-07-17</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-07-17/1225429029.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>19</td><td>2025 年第三季度报告（最新可用财务期）</td><td>2025-10-28</td><td><a href="http://static.cninfo.com.cn/finalpage/2025-10-28/1224739096.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>20</td><td>2025 年半年度报告全文（存货明细、分产品、子公司数据来源）</td><td>2025-08-30</td><td><a href="http://static.cninfo.com.cn/finalpage/2025-08-30/1224620791.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>21</td><td>2024 年年度报告摘要</td><td>2025-04-22</td><td><a href="http://static.cninfo.com.cn/finalpage/2025-04-22/1223188179.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>22</td><td>详式权益变动报告书（陈思伟，13.86 元/股受让 12% 及 19.38% 表决权放弃）</td><td>2022-06-18</td><td><a href="http://static.cninfo.com.cn/finalpage/2022-06-18/1213743753.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>23</td><td>详式权益变动报告书（陈华崇，第一轮未实施的控制权变更）</td><td>2021-11-08</td><td><a href="http://static.cninfo.com.cn/finalpage/2021-11-08/1211511800.PDF" target="_blank" rel="noopener">原文</a></td></tr></tbody></table>
+<h2 id="chap8">附录 C · 逻辑漏洞与反方观点</h2>
+<p><strong>五问速版（逐条回答）</strong>：</p>
+<ol><li><strong>"存货 34.18 亿元＝每股 13.3 元"这个推算能不能用？</strong> —— <strong>不能直接用。</strong> ① 该数是<strong>账面余额</strong>，其中 21.50 亿元库存商品零跌价准备，未经审计验证；② 存货变现需扣除 11.36 亿元逾期债务与约 21.89 亿元有息负债对应的<strong>优先级清偿</strong>；③ 退市后流动性折价与执行折价极大。<strong>它只能作为"向上空间"的极限值，不能作为估值支点。</strong></li><li><strong>"净资产 18.70 亿元、PB 0.105 倍"是不是错杀？</strong> —— <strong>不是。</strong> 见 §2.3 折叠区：分母主要由未经审计验证的存货构成，并夹着 3.54 亿元商誉。这是<strong>价值折价（扣盈利质量与资产可信度）</strong>，不是<strong>期权折价（扣时间与概率）</strong>，两者不可混用逻辑。</li><li><strong>"金价 2026 年上半年大涨 41.07%，行业没问题"是不是买入理由？</strong> —— <strong>不是。</strong> 行业景气确实传导到了收入（深圳萃华净利 +43.61%），但<strong>没有传导到股价</strong>（年内 −93.87%）。当定价变量是"退市概率"而不是"金价"时，行业逻辑与股价无关。</li><li><strong>"已有中小股东筹划提请清盘公司"是否意味着清算价值会兑现？</strong> —— <strong>不能推导出兑现。</strong> ① 该动议仅见于互动易投资者提问（2026-08-24），<strong>无公司或股东公告佐证</strong>；② 即便进入清算程序，退市公司清算的通常路径是"资产折价处置 + 债权人优先受偿"，普通股东受偿顺序在最后；③ <strong>时间不可预测。</strong></li><li><strong>"8-24 出现过地天板、有末日轮资金"是否意味着还有博弈机会？</strong> —— <strong>不是买入理由。</strong> 该日涨停 10.34% 但<strong>龙虎榜净卖 212.82 万元</strong>——是"涨着出货"而不是"接棒"。末日轮博弈的特征是时间极短、单日振幅极大且监管不予保护（退市整理期首日不设涨跌幅），<strong>属赔付结构不确定＋时间不确定的双重不确定</strong>。</li></ol>
+<p><strong>另外三条反方观点（必须并列写出）</strong>：</p>
+<ul><li><strong>陈思伟的"净成本约 4.10 元/股"可能被我高估。</strong> 上述算术假设他出售思特瑞锂业股权所得 2.9988 亿元全额回笼且无其他对价安排；若存在代持、借款或后续返利安排，其真实成本会更低、浮亏更小。<strong>此为推断，须以资金流水核实为准。</strong></li><li><strong>"重大违法强制退市"尚未认定，存在"未触及"的可能。</strong> 监管用语是"涉嫌""可能触及"。若《行政处罚决定书》最终认定造假金额与年度落在 9.5.2 各项年度适用范围之外，则该条不成立——<strong>但这不改变规范类终止上市的结论</strong>，只是减少一项叠加风险。</li><li><strong>34.18 亿元黄金存货若被证实为真，本报告的"悲观/中性"档会被证伪。</strong> 这是本报告最大的一处判断风险，已写入 §5.2「最大风险」。<strong>但请注意：它对应的动作是"重新评估残值"，而不是"现在买入"——因为核查结论无时间表、股票处于停牌、且退市后无法在主流市场变现。</strong></li></ul>
+<h2 id="chap9">版本记录</h2>
+<p><strong>结论：本次为首版，无历史版本需要合并——该目录原本并无研究报告，全库检索亦无同名报告。</strong></p>
+<table><thead><tr><th>版本</th><th>修订日</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-06</td><td>首次生成。该目录原仅有一份《关于预计无法在规定期限内披露 2025 年年度报告……的风险提示公告》PDF，<strong>无任何历史研报</strong>；全库检索（<code>个股研究\</code> 全目录、<code>其他资料\</code>、<code>ST 信息库</code>、<code>Desktop\ST选股\.research\</code>、<code>WorkBuddy\</code> 会话目录）确认无同名报告可吸收，故无历史版本合并。数据截止 2026-10-06</td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
