@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ST标准（600302.SH）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>8 章 · 11 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断</a><a class="sblv3" href="#sec0">1.1 基本信息与股权</a><a class="sblv3" href="#sec1">1.2 戴帽诊断与四类退市红线对照</a><a class="sblv3" href="#sec2">1.3 摘帽路径与时间锚</a><a class="sblv3" href="#sec3">1.4 全流程进度看板</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、基本面路径（路径 C · 规范类"内控非标型"ST）</a><a class="sblv3" href="#sec4">2.1 病因与整改</a><a class="sblv3" href="#sec5">2.2 经营与财务</a><a class="sblv3" href="#sec6">2.3 资产端：标缝厂搬迁（潜在但不可定价）</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、炒作逻辑三支柱 + 情绪与筹码</a><a class="sblv3" href="#sec7">3.1 炒作逻辑三支柱</a><a class="sblv3" href="#sec8">3.2 情绪与筹码</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、估值与投资结论</a><a class="sblv3" href="#sec9">4.1 估值</a><a class="sblv3" href="#sec10">4.2 投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">ST标准（600302.SH）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：卖出（回避）</strong></p>
+<p>红线分类：<span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&announcementId=1225266678&orgId=gssh0600302&announcementTime=2026-04-30" target="_blank" rel="noopener">2025年内控否定意见</a></span>·<span class="sttag sttag-blue"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&announcementId=1225266722&orgId=gssh0600302&announcementTime=2026-04-30" target="_blank" rel="noopener">原财报保留意见,1271.61万元</a></span>·<span class="sttag sttag-teal"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&announcementId=1224747046&orgId=gssh0600302&announcementTime=2025-10-28" target="_blank" rel="noopener">控制权公开征集停滞11个月</a></span></p>
+<p>生死定级：<strong>可救 · 无退市风险</strong>（四类退市红线当前零踩线；唯一开关＝2026 年度内控审计意见）</p>
+<p>自救空间：<strong>内控缺陷的载体（子公司标准海菱）已进入清算注销（承诺 2026-12-31 前完成），缺陷载体消失 → 2026 年度内控有望获"标准无保留" → 时间锚 2027-04</strong>；但认定权在审计师，公司只能等，无牌可打</p>
+<p>主要看点：<strong>西安市国资委拟公开征集转让不超过 27.77% 股份导致控制权变更（转让价下限 6.94 元/股），自 2025-10-28 公告至今已停滞 11 个月、无任何进展公告</strong>；次看点＝标缝厂老厂区（临潼兵马俑保护区旁）搬迁资产处置补偿，方案在西安市国资委审批中</p>
+<blockquote><p>标的：ST标准（600302.SH）｜沪主板｜Wind 行业：机械（缝制设备）</p><p>研究基准日：<strong>2026-10-06</strong>（行情数据截止 <strong>2026-09-30 收盘</strong>；公司公告截止 2026-09-17）</p><p>版本：<strong>首次生成 · 2026-10-06</strong></p><p>数据来源：巨潮资讯网公告原文、公司 2025 年报与 2026 半年报、腾讯行情、东方财富 F10、韭研公社异动表、Andy 自建 ST 信息库</p><p>已知数据质量异常：《2025 年度营业收入扣除情况专项核查意见》PDF 为图片型（<code>pymupdf</code> 仅抽 1,245 字符），扣除后营收口径改以年报正文"扣除与主营业务无关的业务收入和不具备商业实质的收入后的营业收入 <strong>310,821,511.15 元</strong>"为准</p></blockquote>
+<hr>
+<h2 id="chap1">一、诊断</h2>
+<h3 id="sec0">1.1 基本信息与股权</h3>
+<p><strong>结论：控股股东为中国标准工业集团（42.77%），实际控制人为西安市国资委（经西安工业投资集团 100% 持有标准集团）；股份全流通、零质押零冻结，是一副干净的国资壳。</strong></p>
+<p>要点 | 内容 ---|--- 证券简称／代码 | ST标准／600302.SH 板块 | 沪主板（风险警示板） 现价／总股本 | 6.76 元／3.46 亿股 总市值／流通市值 | 23.39 亿元／23.39 亿元（全流通） PB／PE(TTM) | 5.00 倍／-13.32 倍（亏损） 年内区间／现价分位 | 4.92—14.65 元／18.9% 分位 年初至今涨跌幅 | <strong>-35.56%</strong>（2025-12-31 收 10.49 元）</p>
+<p>股权链条清晰且极简：<strong>标准集团（42.77%）← 100% 由西安工业投资集团（西安工投）持有 ← 西安市国资委</strong>。2025 年 5 月经西安市国资委批复同意，西安工投对标准集团实施<strong>提级管理</strong>、成为公司间接控股股东（原间接控股股东陕鼓集团退出），西安工投"十五五"规划确立以"工业'智'造"为核心、"科创投资"与"产业运营"为两翼的格局，公司被定位为"工业'智'造"战略承接方。</p>
+<details class="fold"><summary>前十大股东与股东户数变化明细</summary><div class="fold-body">
+
+<p><strong>前十大股东（截至 2026-06-30）</strong>：中国标准工业集团 147,991,448 股（42.77%，国有法人，无质押）／钱戌强 2.89%／钱友群 1.25%／李江 0.63%／沈雨梦 0.52%／陈晓云 0.50%／钱德芝 0.46%／白宝 0.35%／龚仲辉 0.32%／林震宇 0.30% —— <strong>除控股股东外九席全为自然人，无一家机构或产业资本</strong>。</p>
+<p><strong>股东户数（公司互动平台逐期披露）</strong>：2026-07-10 <strong>1.57 万户</strong> → 07-20 1.53 万 → 07-31 1.52 万 → 08-10 1.50 万 → 08-20 1.49 万 → 08-31 1.48 万 → <strong>09-10 1.52 万户 → 09-18 1.50 万户</strong>。三个月净减约 4.5%，同期股价先跌后反弹（7-31 报 6.24 元、9-30 收 6.76 元），属<strong>"下跌中下降＝割肉"与"反弹中回流"交替的拉锯形态</strong>，不足以读作主力吸筹。</p>
+<p><strong>2025 年报口径</strong>：期末股东总数 21,414 户（年报披露前一月末 21,983 户）。</p>
+
+</div></details>
+<h3 id="sec1">1.2 戴帽诊断与四类退市红线对照</h3>
+<p><strong>结论：只戴一顶"ST"帽，依据沪主板《股票上市规则》9.8.1 第一款第（三）项（2025 年度财务报告内部控制被致同所出具否定意见），且四类退市红线当前一条未踩——底表《退市风险预警-20261005.xlsx》四张工作表均未收录 600302，与逐条核对结果一致。</strong></p>
+<p>时间线：2026-04-28 董事会通过相关议案 → <strong>2026-04-30 停牌一天</strong> → <strong>2026-05-06 起实施其他风险警示，简称"标准股份"→"ST标准"</strong>（公告 2026-019）。公司同时披露《可能被实施退市风险警示的风险提示公告》（2026-020），明确"若下一个年度内控仍被出具无法表示或否定意见，将叠加 *ST"。</p>
+<p>四类红线逐条对照（口径：2025 年报）：</p>
+<p>类型 | 触发线 | 本股实际 | 判定 ---|---|---|--- 财务类① | 孰低为负 <strong>且</strong> 扣除后营收 &lt;3 亿元 | 孰低为负（归母 -1.44 亿元）<strong>但扣除后营收 3.11 亿元 &gt;3 亿元</strong> | 未触发 财务类② | 期末净资产为负 | 归母净资产 <strong>4.98 亿元</strong> 为正 | 未触发 财务类③ | 财报被出具无法表示／否定意见 | 2025 年财报为<strong>保留意见</strong>（保留≠无法表示/否定） | 未触发 交易类 | 面值 &lt;1 元／市值 &lt;5 亿元／成交量、股东数 | 6.76 元、23.39 亿元 | 未触发 规范类 | 资金占用／违规担保／内控连续两年非标 | <strong>仅内控首年非标</strong>（未满连续两年）；占用 0、违规担保 0 | 单项 ST、未触 *ST 重大违法类 | 造假达量化线等 | 无立案、无处罚决定书 | 未触发</p>
+<details class="fold"><summary>戴帽公告与内控审计报告原文摘录</summary><div class="fold-body">
+
+<p><strong>《关于实施其他风险警示暨停牌的公告》（2026-019）原文</strong>：因《上海证券交易所股票上市规则》第 9.8.1 条第（三）项规定"最近一个会计年度财务报告内部控制被出具无法表示意见或否定意见的审计报告，或未按照规定披露财务报告内部控制审计报告"，上海证券交易所对其股票实施其他风险警示。公司 2025 年度内部控制被出具否定意见的审计报告。实施起始日 2026 年 5 月 6 日，实施后 A 股简称"ST 标准"。</p>
+<p><strong>《2025 年度内部控制审计报告》（致同审字（2026）第 610A019660 号）"导致否定意见的事项"原文</strong>：子公司上海标准海菱缝制机械有限公司 2025 年度与缝制设备内销营业收入确认相关的<strong>客户签收单据严重缺失</strong>，销售跟踪控制环节的内部控制未能得到有效执行，相关内部控制存在重大缺陷。</p>
+<p><strong>同报告"六、非财务报告内部控制的重大缺陷"原文</strong>：公司未按规定对标缝厂（老厂区，临潼区秦陵东侧）搬迁事项履行审批手续。<strong>该项不计入对财务报告内部控制有效性发表的审计意见。</strong></p>
+<p><strong>董事会专项说明（2026-04-28）</strong>：2025 年度财务报告审计意见为<strong>保留意见</strong>，保留事由为——标准海菱与收入确认相关的内部控制存在重大缺陷、控制权转移证据缺失，且无法实施有效替代程序，<strong>标准海菱营业收入中的 1,271.61 万元无法获取充分、适当的审计证据</strong>。</p>
+
+</div></details>
+<h3 id="sec2">1.3 摘帽路径与时间锚</h3>
+<p><strong>结论：撤销这顶"ST"帽走沪主板 9.8.7 第二款，须披露会计师事务所对"最近一个会计年度"财务报告出具的"标准无保留意见"内部控制审计报告 → 时间锚固定在 2026 年报披露期（2027-04），不存在提前申请；判断权重应放在"审计师认不认"，而不是公司说"整改完毕"。</strong></p>
+<p>三层价格与帽子关系：</p>
+<p>层次 | 依据 | 条件 | 时点 ---|---|---|--- 撤销 ST（当前帽） | <strong>9.8.7 第二款</strong> | 内控缺陷整改完成、内控有效运行，且披露"最近一个会计年度"<strong>标准无保留</strong>内控审计报告 | 2027-04（2026 年报） 叠加 *ST（风险） | <strong>9.4.1 第（六）项</strong> | 连续 2 个会计年度内控非标 | 若 2026 年度再非标，2027-04 触发 月度披露义务 | <strong>9.8.5</strong> | 因 9.8.1 第一款第（二）—（五）项被 ST 的，至少每月披露 1 次进展 | 持续</p>
+<p><strong>两条必须写清的判据</strong>：① <strong>沪主板口径最严</strong>——9.8.7 第二款要求"<strong>标准</strong>无保留意见"，而深主板 9.8.7 第三款与创业板 9.10 第三款只要求"无保留意见"；<strong>一份"带强调事项段的无保留意见"在深市可能达标、在沪主板不构成充分条件</strong>。② <strong>"标准无保留"的对象是内控审计报告，不是财报审计报告</strong>——公司 2025 年财报为保留意见（保留意见不触发 9.3.2 第三项，也不必然阻碍摘帽），但 2026 年度内控必须转"标准无保留"。</p>
+<details class="fold"><summary>条款原文（沪主板 2026 年 4 月修订，逐字核）</summary><div class="fold-body">
+
+<p><strong>9.8.1 第一款第（三）项</strong>：最近一个会计年度财务报告内部控制被出具无法表示意见或否定意见的审计报告，或未按照规定披露财务报告内部控制审计报告。</p>
+<p><strong>9.8.5</strong>：上市公司股票因第 9.8.1 条第一款第（二）项至第（五）项规定情形被实施其他风险警示的，在被实施其他风险警示期间，公司应当至少每月披露 1 次提示性公告，分阶段披露涉及事项的解决进展情况。</p>
+<p><strong>9.8.7 第二款</strong>：公司股票因第 9.8.1 条第一款第（三）项规定情形被实施其他风险警示后，<strong>公司内部控制缺陷整改完成，内控有效运行</strong>，向本所申请撤销对其股票实施的其他风险警示的，应当披露会计师事务所对其最近一个会计年度财务报告出具的<strong>标准无保留意见的内部控制审计报告</strong>。公司进行破产重整、重组上市或者重大资产重组，按照相关规定无法披露财务报告内部控制审计报告的，公司股票继续实施其他风险警示，直至披露下一个会计年度财务报告内部控制审计报告后……</p>
+<p><strong>9.4.1 第（六）项</strong>：连续 2 个会计年度的财务报告内部控制被出具无法表示意见或者否定意见的审计报告，或者未按照规定披露财务报告内部控制审计报告。</p>
+<p><strong>9.4.3 第（六）项</strong>：首个会计年度的财务报告内部控制被出具无法表示意见或者否定意见的审计报告……公司应当披露股票可能被实施退市风险警示的风险提示公告。</p>
+
+</div></details>
+<h3 id="sec3">1.4 全流程进度看板</h3>
+<p><strong>结论：六个环节里三个已闭环（戴帽、病因查明、载体处置启动），真正的卡点只有两个——"内控能否在 2026 年度转标准无保留"（时间未到）与"控制权转让受让方能否确定"（谈不拢）。</strong></p>
+<p>环节 | 现状 | 卡点性质 | 下一节点 ---|---|---|--- 戴帽 | 2026-05-06 实施 ST | 已闭环 | — 病因查明 | 标准海菱签收单据严重缺失 | 已闭环 | — 载体处置 | 标准海菱清算注销推进中（已完成员工安置、评估报告初稿） | 时间未到 | 2026-12-31 前注销完成 内控整改 | 逐笔交叉验证已完成；制度梳理推进 | <strong>时间未到</strong> | 2026 年度内控审计报告（2027-04） 控制权转让 | 公开征集方案"已制定完成、推进沟通及审批" | <strong>谈不拢</strong>（11 个月无受让方信息） | 无确定时点 标缝厂搬迁 | 国资委处置方案审批中、补偿协议未签 | 时间未到（政府流程） | 无确定时点</p>
+<details class="fold"><summary>王艳式六栏目 · ①前世今生（四列表）</summary><div class="fold-body">
+
+<p>时点 | 关键事件 | 股权／实控人变化 | 背后的逻辑（金额／来源） ---|---|---|--- 2020-09 | 陕鼓集团因无偿划转成为间接控股股东 | 间接控股股东变更 | 国资体系内划转，无对价 2022-04-28 | 公司就标准供应链买卖合同纠纷起诉中国太原煤炭交易中心 | — | 诉请本金 <strong>12,791.22 万元</strong>＋逾期损失 794.20 万元 2025-05-07 | 《间接控股股东国有股权无偿划转的提示性公告》（2025-021） | <strong>陕鼓集团将所持标准集团 100% 股权无偿划转至西安工投</strong> | 国资体系内划转，无对价 2025-06-06 | 控股股东工商变更登记完成（2025-026） | 西安工投成为间接控股股东；陕鼓集团原承诺自动解除 | 同上 2025-09-05 | 董事会通过《对控股子公司标准海菱实施清算退出的议案》 | — | 终止标准海菱持续亏损 2025-10-11 | 董事长离任 | — | — 2025-10-21 | <strong>停牌</strong>（实控人筹划重大事项，可能导致控制权变更） | — | — 2025-10-28 | <strong>《控股股东拟通过公开征集方式转让部分公司股份暨复牌的公告》</strong> | 拟转让 ≤27.77% 且 ≥控制权变更比例 | <strong>转让价下限 6.94 元/股</strong> 2025-11-06 | 选举董事长；此后股价见顶回落 | — | — 2025-11-28 | 收到陕西证监局<strong>警示函</strong>（陕证监措施字〔2025〕44 号） | — | 2023 年报供应链应收核算错误 2025-12-05 | 拟向标准海菱提供 <strong>≤3,000 万元</strong>委托贷款（利率 3.25%） | — | 专项用于清算 2026-04-28/30 | 董事会通过内控整改议案；<strong>戴帽 ST</strong> | — | 内控否定意见 2026-05-30 | 首期月度进展公告 | — | 依 9.8.5 2026-06-09 | 调整组织架构（设精密制造事业部、产业服务事业部、合规风控部） | — | 培育第二增长曲线 2026-09-16/17 | <strong>完成第十届董事会换届</strong> | — | 董事长王坤元（兼标准集团党委书记、董事长）</p>
+
+</div></details>
+<details class="fold"><summary>王艳式六栏目 · ②股东阵容与筹码集中度</summary><div class="fold-body">
+
+<p><strong>控股股东</strong>：中国标准工业集团 42.77%（147,991,448 股，全部非限售流通股，<strong>零质押、零冻结</strong>）。</p>
+<p><strong>其余九大股东全为自然人</strong>（钱戌强 2.89%、钱友群 1.25%、李江 0.63% 等），<strong>无机构、无产业资本、无财务投资人</strong>——这与"有明确受让方"的样本（如已签重整投资协议者）形成鲜明对照。</p>
+<p><strong>筹码集中度</strong>：股东户数 1.50 万户（2026-09-18），户均持股市值按 7.17 元计约 16.5 万元；全公司<strong>质押比例 0%</strong>。<strong>结构上不存在"高质押→平仓压力→被迫自救"的链条</strong>。</p>
+
+</div></details>
+<details class="fold"><summary>王艳式六栏目 · ⑤成本锚点（两类定价逻辑分开读）</summary><div class="fold-body">
+
+<p>参与方 | 成本／价格 | 说明 ---|---|--- 西安市国资委（拟转让方） | <strong>不低于 6.94 元/股</strong> | 2025-10-28 提示性公告日前 30 个交易日每日加权平均价格的算术平均值，且不低于最近一个会计年度经审计每股净资产 潜在受让方 | 尚未产生 | 无受让方名称、无保证金、无协议 二级市场现价 | <strong>6.76 元</strong> | ＝国资转让价下限的 <strong>0.974 倍</strong></p>
+<p><strong>两类定价逻辑必须分开读</strong>：<strong>拟转让价 6.94 元 = "协议转让的国资底线"</strong>（有国资监管背书、面向特定受让方）；<strong>现价 6.76 元 = 二级市场价</strong>。二者相差仅 2.6%，但性质不同——<strong>协议转让的对价不流向二级市场股东，因此"现价低于转让底价"不构成套利，只构成间接的成本参照</strong>。</p>
+
+</div></details>
+<hr>
+<h2 id="chap2">二、基本面路径（路径 C · 规范类"内控非标型"ST）</h2>
+<h3 id="sec4">2.1 病因与整改</h3>
+<p><strong>结论：病因是"事实存疑型"而非"流程可修补型"——标准海菱的客户签收单据严重缺失，导致收入确认真实性证据链断裂；但公司选择的解法不是"补制度"，而是"让载体消失"（清算注销），这在结构上能根除缺陷，代价是时间与一次性支出。</strong></p>
+<p>四项缺陷与对应动作：</p>
+<p>缺陷 | 载体 | 公司解法 | 进展 ---|---|---|--- 财务报告内控重大缺陷（签收单据严重缺失） | 标准海菱 | 逐笔交叉验证（物流记录／对账单／发票／回款凭证）＋<strong>清算注销该主体</strong> | 核查已完成；承诺 <strong>2026-12-31 前注销</strong> 非财务报告内控重大缺陷（未按规定履行搬迁审批手续） | 标缝厂搬迁 | 与国资委沟通、签订搬迁协议并履行审议程序 | 处置方案审批中 2023 年报供应链应收核算错误（警示函） | 标准供应链 | 计提减值（11 月案终审败诉，已全额计提） | 已闭环 子公司净资产为负 | 标准国贸、标准欧洲 | 拓展出口、压降费用 | 持续推进</p>
+<p><strong>判断要点</strong>：内控否定事由属<strong>"事实存疑型"</strong>（交易真实性证据缺失）——按 §2.13 的三分法，此类"补制度、画流程、做培训"<strong>本身无效</strong>；公司真正倚仗的是<strong>"载体消失"</strong>：标准海菱 2025 年已停止生产经营、进入清算注销，主体注销后该缺陷丧失存在基础。<strong>这是本股摘帽逻辑中最硬的一环，但结论仍取决于审计师对"2026 年度内控是否标准无保留"的判断。</strong></p>
+<details class="fold"><summary>整改措施原文（戴帽公告第四节）</summary><div class="fold-body">
+
+<p>公司采取以下整改措施：1、公司组织的清算组已接管标准海菱的财务工作，对 2025 年度缺失签收单据的销售业务进行全面的梳理和核对，针对缺失的客户签收单，通过收集物流运输记录、客户对账单、发票流转记录及回款凭证等多方证据，进行逐笔交叉验证……<strong>此项工作将在本报告披露日后的 3 个月内完成</strong>；2、公司要求标准海菱清算组加快清算程序的推进，<strong>于 2026 年 12 月 31 日前完成标准海菱公司清算注销工作</strong>；3、鉴于标准海菱于 2025 年已进入清算注销程序，生产经营活动已全面停止，相关品牌经授权由标准股份本部继续运营。该公司此前发生的可能影响内部控制问题将不再形成持续的影响和风险；4、将此案例纳入公司内部培训……；5、督促管理层提升公司治理水平。</p>
+<p><strong>2026 半年报披露的实际进展</strong>：截至 2026 年 6 月末，标准海菱清算组主导开展清算工作，<strong>已完成员工安置法定程序，评估机构已完成全数资产的实际盘点并出具评估报告初稿</strong>。</p>
+
+</div></details>
+<h3 id="sec5">2.2 经营与财务</h3>
+<p><strong>结论：公司不是"原地踏步的壳"，而是"主业持续失血的真公司"——2026H1 营收同比 -15.43%、归母净利由上年同期 -852 万元增至 -4,025 万元（增亏 3.7 倍）、经营性现金流净流出 7,047 万元，且 2026H1 亏损集中在汇兑损失（外生因素）与营收下滑（内生因素）两条线上。</strong></p>
+<p>五年 + 最新一期核心表（单位：亿元）：</p>
+<p>指标 | 2023 | 2024 | 2025 | 2026H1 ---|---|---|---|--- 营业收入 | 5.07 | 4.46 | 3.37 | 1.56 扣除后营业收入 | 4.97 | 4.35 | <strong>3.11</strong> | 未披露 归母净利润 | -1.96 | -1.53 | -1.44 | <strong>-0.40</strong> 扣非归母净利润 | -2.05 | -1.63 | -1.39 | -0.39 经营活动现金流净额 | -0.30 | +0.02 | -0.32 | <strong>-0.70</strong> 归母净资产 | 7.99 | 6.53 | 4.98 | <strong>4.68</strong> 总资产 | 13.11 | 11.15 | 8.87 | 8.18</p>
+<p><strong>三条必读判断</strong>：① <strong>亏损是常态、不是偶发</strong>——2023—2025 连续三年归母为负、扣非为负，2026H1 增亏；② <strong>2025 年计提信用＋资产减值 9,199.29 万元</strong>是当年亏损的主要构成（Q4 单季归母 -9,789 万元）；③ <strong>2026H1 亏损的性质是"汇兑＋营收"双杀</strong>，公司自述"主要因汇率波动造成汇兑损失增加所致；同时缝制设备行业市场竞争激烈，营业收入较上年同期有一定幅度的下降"，<strong>其中汇兑属外生、营收下滑属内生且行业性的</strong>。</p>
+<details class="fold"><summary>资产负债结构与风险提示（2026-06-30）</summary><div class="fold-body">
+
+<p><strong>资产端</strong>：货币资金 <strong>1.05 亿元</strong>、交易性金融资产 <strong>0.70 亿元</strong>（较上年末 1.60 亿元 <strong>-56.15%</strong>）、应收账款 <strong>2.00 亿元</strong>（总资产 24.40%）、存货 <strong>1.61 亿元</strong>（19.75%）、应收票据 0.18 亿元。</p>
+<p><strong>负债端</strong>：短期借款 <strong>2,802 万元</strong>（较上年末 -24.32%）、应付账款 1.51 亿元、应付票据 0.18 亿元、合同负债 0.17 亿元、其他应付款 0.51 亿元；<strong>无长期借款</strong>。</p>
+<p><strong>关键口径</strong>：现金类资产（货币资金 1.05 亿元 ＋ 交易性金融资产 0.70 亿元）＝ <strong>1.75 亿元，÷ 总市值 23.39 亿元 ＝ 7.5%</strong>，<strong>远小于 1 → 明确不适用"净现金型 ST 的退市折价消除"框架</strong>。</p>
+<p><strong>半年报自述六项风险</strong>：① 行业与市场风险；② <strong>汇率波动风险</strong>（出口以美元、欧元结算）；③ 原材料价格上涨（直接材料占成本 80% 以上）；④ 财务风险（应收账款与存货占比高、经营现金流多为净流出）；⑤ <strong>子公司净资产为负的风险</strong>（标准国贸、标准欧洲期末净资产为负）；⑥ <strong>临潼生产基地搬迁事项的风险</strong>（未签协议、搬迁主体与权属关系不明确、尚未履行审议程序）。</p>
+
+</div></details>
+<h3 id="sec6">2.3 资产端：标缝厂搬迁（潜在但不可定价）</h3>
+<p><strong>结论：标缝厂老厂区位于临潼区秦陵东侧、处于兵马俑保护区内，是一块有想象空间的土地资产，但截至基准日"搬迁补偿相关协议尚未签订、最终处置方案仍在国资委审批中"——它属于"软预期"，在协议签订前不构成可定价的催化。</strong></p>
+<p>事实链：① 标缝厂搬迁系省、市重点项目，2020-03 全面启动建设，2024-09 新生产区竣工验收；② 截至 2021-09 末大部分生产设备物资已搬迁至渭北工业园（新厂区），但<strong>搬迁事项尚未按公司章程规定履行审批手续</strong>（构成非财务报告内控重大缺陷）；③ 2025 年公司就收到的<strong>西安市国资委《关于印发〈标缝厂搬迁资产处置实施方案〉的通知》</strong>与国资委沟通并反馈意见，<strong>最终处置方案正在国资委审批中</strong>；④ <strong>新生产区在标缝厂资产处置之前仍由标准股份无偿使用</strong>；⑤ 公司风险提示："后续根据协议的签订情况，公司的固定资产及其折旧可能会增加，对公司的盈利能力产生一定的影响"。</p>
+<p><strong>读法</strong>：这是一块"国资主导定价、公司只能等"的资产。<strong>在补偿协议签订前，不得计入估值</strong>；一旦签订，须重估（补偿金额、资产处置损益、是否伴随土地出让收益分成）。</p>
+<details class="fold"><summary>公司治理与人事（换届后的意图读数）</summary><div class="fold-body">
+
+<p><strong>第十届董事会（2026-09-16 股东会产生）</strong>：董事长<strong>王坤元</strong>（1977-03，现任中国标准工业集团<strong>党委书记、董事长</strong>，曾任西安企业资本服务中心董事长，<strong>西安市国资委专家委员会专家</strong>）；副董事长兼总经理<strong>陈锦山</strong>（1975-10，标准集团党委委员、标准菀坪董事长）；非独立董事<strong>胡过江</strong>（1987-11，<strong>注册会计师、高级会计师、税务师</strong>，现任副总经理兼财务总监，曾任陕鼓集团财务部部长助理、标准集团财务副总监）、<strong>邓斌</strong>、<strong>土军勇</strong>（1971-09，<strong>陕西省证券研究会副会长、西安市国资委专家委员会委员；曾任西安企业资本服务中心副总经理、投行事业部总经理；中国银河证券、长江证券承销保荐、中天国富证券、开源证券投资银行业务部门负责人</strong>）、田卫明（职工代表董事）；独立董事王兴春、王凡、王满仓（<strong>西北大学金融系主任、西北大学国有资本运营研究中心主任、陕西省证券研究会会长</strong>）；副总经理<strong>潘冬</strong>（1982-01，哈工大机械设计制造、西安交大 MBA，曾任<strong>华为研发工程师、中兴通讯云计算产品解决方案总监</strong>、陕西智引科技总工程师）。</p>
+<p><strong>运作特征读数</strong>：① <strong>董事长＋总经理双双由标准集团一二把手兼任</strong>，说明控股股东对上市公司直接管控；② <strong>新入董事土军勇为纯投行背景（三家券商投行部门负责人）</strong>，市场据此推断"为公司公开征集转让股份、可能变更实控人的事项提供专业支撑"（雪球评论，2026-09-18）；③ 独立董事阵容含<strong>陕西省证券研究会会长与西北大学国有资本运营研究中心主任</strong>，属"资本运作型"配置；④ 离任者含原董事长张鹏武、原董秘刘红卫等，<strong>董事会秘书目前由董事长王坤元代行（不超过 6 个月）</strong> —— 治理层处于"新班子已到位、关键岗位待补"的状态。</p>
+<p><strong>交权是配合式还是对抗式</strong>？——<strong>是规范配合式</strong>：原体系（陕鼓系）已于 2025 年退出，现体系（西安工投系）全面接管，董事会改组顺利，无对抗痕迹、无董事反对票记录。</p>
+
+</div></details>
+<hr>
+<h2 id="chap3">三、炒作逻辑三支柱 + 情绪与筹码</h2>
+<h3 id="sec7">3.1 炒作逻辑三支柱</h3>
+<p><strong>结论：三支柱中"炒预期"最强但已失效 11 个月，"炒历史类似行为"指向下跌组，"炒主板映射"仅剩机器人概念的弱联想——当前市场最认的其实是"控制权转让何时落地"这一个开关。</strong></p>
+<p>支柱 | 内容 | 硬节点／证据 | 强度 ---|---|---|--- ① 炒预期 | <strong>西安市国资委拟公开征集转让 ≤27.77% 股份（≥控制权变更比例）→ 控制权变更</strong> | 无硬节点：2025-10-28 公告后再无进展公告；公司口径"已完成方案制定、推进沟通及审批" | <strong>强但停滞</strong> ② 炒历史类似行为 | 内控非标型 ST 同型 <strong>58 只</strong> 2026 年 YTD <strong>中位 -32.56%</strong> | 本股 <strong>-35.56% 排第 26（中位偏弱）</strong>；上涨 12 只<strong>全部"有物"</strong>（已摘帽／重整／要约），本股"只有人名" | 指向下跌组 ③ 炒主板映射 | 机器人（机械臂 3D 机器人缝纫）＋西安国资改革 | 异动关键词六年稳定＝<strong>控制权变更预期＋机械臂 3D 机器人缝纫＋标准智云手机 APP＋汽车座椅面套</strong> | 弱（联想型）</p>
+<p><strong>②的样本池明示</strong>：<code>grep "内控审计被出具无法表示/否定意见"</code> 得 ST 信息库内 58 家档案（含本股），腾讯批量取 2026 年涨跌幅——<strong>中位 -32.56%、均值 -26.56%、上涨 12 只、下跌 46 只</strong>。上涨组（逸飞激光 +99.64% 已摘帽、＊ST威领 +69.52% 要约收购、＊ST泉为 +42.44% 重整、ST新华锦 +40.00%、长园集团 +37.68% 已摘帽、ST帕瓦 +14.98%、ST凯利 +11.47%、＊ST正平 +10.84%、ST同德 +10.12%、ST合纵 +5.34%、＊ST天喻 +4.58%、＊ST沐邦 +1.33%）<strong>几乎全部"有物"</strong>；本股属<strong>"有人名（拟转让方为国资）、无物（受让方未定）"</strong> → 落下跌组一侧。</p>
+<p><strong>③的读法</strong>：机器人是"工业缝纫机的自动化延伸"（机械臂 3D 机器人缝纫），属<strong>联想型映射</strong>，不是新增业务；公司 2025 年报主业仅"缝制机械"，<strong>精密制造事业部 2026H1 尚在拓展零部件加工业务</strong>。</p>
+<details class="fold"><summary>炒作波段汇总与连板极值（韭研公社异动全表 47 条）</summary><div class="fold-body">
+
+<p>波段 | 驱动关键词 | 最高连板 | 股价区间 | 后续 ---|---|---|---|--- 2022-11 | 缝制机械设备＋专用设备＋西安国资 | 5 天 4 板 | 6.30—7.83 元 | 回落 2023-12 | 智能纺织＋汽车座椅＋西安国资 | 3 天 3 板 | 6.36—7.70 元 | 回落 2024-02～03 | 机器人＋新质生产力＋西安国资 | <strong>10 天 5 板</strong> | 3.92—5.71 元 | 回落至 3.62 元（2024-06） 2025-10-28 | <strong>拟股权转让</strong>（复牌） | 2 天 2 板 | 8.15→12.21 元 | <strong>2025-11-06 见顶 12.77 元后跌停</strong> 2026-01 | 拟股权转让＋机器人登春晚 | 3 天 2 板 | 11.76—14.65 元 | <strong>年内高点 14.65 元</strong> 2026-05～06 | 控制权变更预期（戴帽后） | <strong>10 天 5 板</strong> | 8.45—10.89 元 | 2026-07 跌至 <strong>4.92 元</strong> 2026-09-04 | 控制权变更预期（最后一条记录） | — | 6.93 元 | 现价 6.76 元</p>
+<p><strong>股价水位</strong>：前复权月 K（2005-01 起 260 个月）区间 2.25—14.79 元，<strong>现价分位 70.38%</strong>；不复权 259 个月分位 <strong>69.11%</strong>（两口径接近 → <strong>无大比例送转，分位可信</strong>）。<strong>年内</strong>区间 4.92—14.65 元，现价居 <strong>18.9% 分位</strong>。</p>
+<p><strong>关键结论：现价"年内偏低"是"从控制权预期峰值 14.65 元跌下来"的结果，而非"长期低位"——长期口径仍在中位偏上（70% 分位）。</strong></p>
+
+</div></details>
+<h3 id="sec8">3.2 情绪与筹码</h3>
+<p><strong>结论：注意力的峰值出现在 2025-10 停牌复牌与 2026-01（14.65 元），此后被戴帽与半年报增亏打断；2026 年 9 次龙虎榜里，净卖额最大的两次（2026-07-14 净卖 975 万元、2025-11-06 净卖 5,945 万元）都落在"利好出尽"的当日。</strong></p>
+<p>资金面事实：① <strong>2026 年龙虎榜 9 次</strong>——01-19（+10.00%，净买 +969 万元）／03-11（-10.02%，<strong>净卖 -3,286 万元</strong>）／04-03（+10.04%，净买 +1,333 万元）／05-08（-4.99%）／<strong>05-14（+4.99%，净买 +1,867 万元）</strong>／<strong>06-01（+5.02%，净买 +1,627 万元）</strong>／06-17（-5.04%）／<strong>07-14（-10.05%，净卖 -975 万元）</strong>／<strong>07-21（-10.05%，净卖 -65 万元）</strong>；② <strong>2025-11-06 是阶段高点派发点</strong>（当日 -9.99%、振幅 15%，净卖 <strong>5,945 万元</strong>）；③ 成交额 9-30 仅 <strong>1,274 万元</strong>、换手率 <strong>0.54%</strong>、量比 0.51——<strong>注意力已退至低位</strong>。</p>
+<p><strong>筹码方向判断</strong>：股东户数三个月降 4.5%，同期股价 6.24→6.76 元——<strong>属"下跌未深、反弹温和"下的拉锯，既不能读作主力吸筹，也谈不上恐慌性出逃</strong>。真正有意义的信号是：<strong>除控股股东外九席全为自然人，无任何机构或产业资本进场</strong>。</p>
+<details class="fold"><summary>投资者交流要点（投资者问题 → 公司答复 → 解读）</summary><div class="fold-body">
+
+<table><thead><tr><th>投资者问题（节选）</th><th>公司答复要点</th><th>解读</th></tr></thead><tbody><tr><td>2026-09-28："股权转让已经 11 个月了，进展如何"</td><td>"控股股东<strong>已完成公开征集转让方案的制定工作，正在按照要求推进沟通及审批等相关工作</strong>"</td><td><strong>最新口径</strong>：方案已成型、卡在审批，但<strong>无受让方、无时间表</strong></td></tr><tr><td>2026-09-07："近一年的征集转让<strong>实际内部已经终止</strong>；董事会换届均为工投集团和市委派人员、未有任何外方企业背景人员"</td><td>重复同一模板答复，<strong>未正面否认</strong></td><td>公司回避该问；换届人员结构客观上印证"未见外部受让方痕迹"</td></tr><tr><td>2026-07-24："转让价不低于 6.94 元/股，今年会下调吗"</td><td>重复模板，<strong>未正面回答</strong></td><td>价格是否调整未披露</td></tr><tr><td>2026-07-24："股价下跌接近 60%—70%，是不是跟公司对转让一事含糊其辞有关"</td><td>"聚焦主责主业……加强信息披露质量……多举措开展市值管理"</td><td>无实质措施</td></tr><tr><td>2026-09-07："控股股东发布社会招聘投资管理部部长，负责股权转让及项目退出管理"</td><td>"公司与控股股东在人员和业务等方面保持独立，子公司标准海菱清算事项由标准海菱清算组负责"</td><td>未否认招聘与股权转让相关</td></tr></tbody></table>
+<p><strong>参会人员／治理层是否换人 → 是</strong>：2026-09-16 董事会整体换届，董事长由张鹏武换为<strong>王坤元</strong>，董秘空缺由董事长代行 —— <strong>治理层已随国资体系调整而更换，属"控制权在国资内部已实质到位"</strong>。</p>
+
+</div></details>
+<hr>
+<h2 id="chap4">四、估值与投资结论</h2>
+<h3 id="sec9">4.1 估值</h3>
+<p><strong>结论：这是一只"没有低位、估值偏贵、唯一弹性来自一个停滞开关"的标的——PB 5.00 倍是缝制设备同业最高一档，PS(TTM) 约 6.94 倍，且分母（净资产）正在被持续亏损侵蚀。</strong></p>
+<p>估值对照（2026-09-30 收盘）：</p>
+<p>指标 | 本股 | 杰克科技 | 上工申贝 | 中捷资源 | 爱仕达 | 永艺股份 ---|---|---|---|---|---|--- PB | <strong>5.00</strong> | 3.09 | 2.03 | 4.99 | 2.65 | 1.50 2026 YTD | <strong>-35.56%</strong> | -18.25% | -39.55% | +4.45% | -19.59% | -11.35%</p>
+<p><strong>三档情景（以"控制权转让是否落地"为核心变量）</strong>：</p>
+<p>情景 | 概率 | 关键假设 | 目标价区间 ---|---|---|--- 乐观 | 20% | 控制权转让落地、受让方具备产业背景（"人名变有物"） | 9.00—11.00 元 中性 | 40% | 2027-04 顺利摘帽，但控制权转让继续悬置 | 6.00—7.00 元 悲观 | 40% | 征集终止或长期停滞，2026 年报再亏使净资产继续下滑 | 4.90—5.50 元</p>
+<p><strong>概率加权期望价 ≈ 6.68 元，略低于现价 6.76 元。</strong> 用隐含概率倒推：<code>现价 6.76 = p × 10.00 + (1−p) × 5.20</code> → <strong>市场隐含"控制权转让落地"概率约 32.5%</strong>，与本报告判断的 <strong>25%—35%</strong> 大体相当，<strong>属"赔率不划算"而非"严重高估"</strong>。</p>
+<blockquote><p>说明：本股无 PE（亏损），PS(TTM) = 23.39 亿元 ÷ 3.37 亿元 ≈ <strong>6.94 倍</strong>；<strong>不适用"净现金型"框架</strong>（现金类资产 ÷ 市值仅 7.5%）。</p></blockquote>
+<details class="fold"><summary>隐含概率倒推与三档测算过程</summary><div class="fold-body">
+
+<p><strong>每股净资产</strong>：4.68 亿元 ÷ 3.46 亿股 ≈ <strong>1.353 元/股</strong>。</p>
+<ul><li>悲观（PB 3.6—4.1）：4.87—5.55 元 → 取 <strong>5.20 元</strong></li><li>中性（PB 4.4—5.2）：5.95—7.04 元 → 取 <strong>6.50 元</strong></li><li>乐观（回到 2026-01 高点区间 62%—75%）：9.08—10.99 元 → 取 <strong>10.00 元</strong></li></ul>
+<p><strong>概率加权</strong>：0.40×5.20 ＋ 0.40×6.50 ＋ 0.20×10.00 ＝ 2.08 ＋ 2.60 ＋ 2.00 ＝ <strong>6.68 元</strong>。</p>
+<p><strong>反推隐含概率</strong>：6.76 ＝ p×10.00 ＋ (1−p)×5.20 → p ＝ 1.56/4.80 ＝ <strong>32.5%</strong>。</p>
+<p><strong>关键敏感性</strong>：若 2026 年报亏损扩大使每股净资产降至 1.20 元，则中性档（PB 5.0）对应 6.00 元、悲观档（PB 3.6）对应 4.32 元 —— <strong>净资产每下滑 10%，三档目标价同比例下移约 10%</strong>。</p>
+
+</div></details>
+<h3 id="sec10">4.2 投资结论</h3>
+<p><strong>结论：卖出（回避）——这是一只"不在长期低位、唯一催化已停滞 11 个月、估值居同业最高一档，而上行完全依赖一个不在公司掌控的开关"的标的。</strong></p>
+<p><strong>理由链</strong></p>
+<ol><li><strong>不在真正的"低位"</strong>——前复权月 K（2005 年起 260 个月）分位 <strong>70.38%</strong>，现价 6.76 元只低于约三成历史月份；"年内 18.9% 分位"是 2026-01 由控制权预期炒到 14.65 元后跌下来的结果，<strong>不是安全垫</strong>（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1224747046&amp;orgId=gssh0600302&amp;announcementTime=2025-10-28" target="_blank" rel="noopener">行情与分位测算见 §3.1 折叠</a>）。</li><li><strong>唯一弹性开关停滞 11 个月且不在公司掌控</strong>——2025-10-28 公告公开征集转让后，<strong>无任何进展或结果公告</strong>；公司口径恒为"已完成方案制定、推进沟通及审批"，对"是否已内部终止"始终回避；换届后董事会成员<strong>全为西安工投与西安市委派人员、未见任何外部受让方痕迹</strong>。</li><li><strong>估值偏贵且分母在缩</strong>——PB <strong>5.00 倍</strong>为缝制设备同业最高一档（杰克 3.09／上工申贝 2.03／中捷 4.99／爱仕达 2.65／永艺 1.50），PS(TTM) 约 <strong>6.94 倍</strong>；而 2026H1 归母 -4,025 万元已使归母净资产由 4.98 亿元降至 <strong>4.68 亿元</strong>。</li><li><strong>基本面在恶化</strong>——2026H1 营收 1.56 亿元（-15.43%）、归母净利较上年同期增亏 <strong>3.7 倍</strong>、经营性现金流净流出 <strong>7,047 万元</strong>；两家主要子公司（标准国贸、标准欧洲）<strong>期末净资产为负</strong>；2025 年计提减值 9,199.29 万元。</li><li><strong>同型样本指向下跌组</strong>——内控非标型 ST <strong>58 只</strong> 2026 年 YTD 中位 <strong>-32.56%</strong>、上涨仅 12 只，本股 <strong>-35.56% 中位偏弱</strong>；上涨 12 只<strong>全部"有物"</strong>，本股属"只有人名"。</li><li><strong>摘帽本身不构成上涨理由</strong>——撤销 ST 是<strong>公开日历</strong>（时间锚 2027-04），且<strong>主板风险警示股自 2026-07-06 起涨跌幅已由 5% 改为 10%</strong>，摘帽前后同幅 ⇒ <strong>零制度红利</strong>。</li></ol>
+<p><strong>触发条件（转买入）</strong></p>
+<ul><li>控股股东<strong>公告受让方名称</strong>（尤其受让方具备产业背景），"人名"变"有物"；</li><li>或股价回落至 <strong>4.90—5.50 元</strong>（对应 PB 3.6—4.1、接近 2026-07 低点区）；</li><li>或标缝厂搬迁补偿协议<strong>正式签订</strong>并披露金额。</li></ul>
+<p><strong>失效条件（本结论作废）</strong></p>
+<ul><li>公司披露 2026 年度内控审计报告为<strong>非标准无保留</strong>（则摘帽失败 + 叠加 *ST 双重打击，须重新评估）；</li><li>或公开征集转让<strong>正式终止</strong>（则失去唯一预期，价格向 4.90 元下沿回归）；</li><li>或控制权受让方落地且带来明确的资产注入安排（则须按"注入后市值"重估）。</li></ul>
+<p><strong>参考区间</strong>：回避区间 <strong>6.50—7.00 元</strong>（现价所在）；观察买点 <strong>4.90—5.50 元</strong>；止损位 <strong>4.60 元</strong>。 <strong>时间窗口</strong>：本结论有效期至 <strong>2026 年报披露（2027-04 前后）</strong>，其间每次月度进展公告与 2026 年度业绩预告为关键观察点。 <strong>仓位建议</strong>：不建仓；已持有者建议减持。 <strong>最大风险</strong>：<strong>控股股东突然公告受让方并再度停牌</strong>（重演 2025-10-21 → 复牌后 +72% 的路径），数日内出现 30% 以上跳跃——这是唯一能让本结论显著出错的事件。</p>
+<details class="fold"><summary>附录 C · 逻辑漏洞与反方观点（5 问速版）</summary><div class="fold-body">
+
+<ol><li><strong>"转让价下限 6.94 元 &gt; 现价 6.76 元"能否当作安全垫？</strong> ——<strong>不能</strong>。该价格是<strong>协议转让</strong>的国资底价，对价支付给标准集团而非二级市场股东；二级市场无法以该价格退出。它只说明"国资自认的每股底部"，且<strong>调整与否未披露</strong>。</li><li><strong>"标准海菱清算注销 → 内控缺陷消失 → 必然摘帽"？</strong> ——<strong>弱推理</strong>。撤销要件是审计师对<strong>2026 年度</strong>出具<strong>标准无保留</strong>内控审计报告（沪主板 9.8.7 第二款、口径严于深市与创业板）；"载体消失"提高概率，但<strong>决定权在审计师</strong>，且公司同时存在"标缝厂搬迁未履行审批程序"这一<strong>非财报内控重大缺陷</strong>尚未闭环。</li><li><strong>"戴帽已跌 35%，是否跌无可跌"？</strong> ——<strong>误读</strong>。跌的是"控制权预期溢价"，长期分位仍在 70%；且<strong>四类红线零踩线 ≠ 不会变差</strong>——2026 年报若净资产转负或内控再非标，都会改变帽子结构。</li><li><strong>"西安国资改革、资产注入"是否可期？</strong> ——<strong>目前无载体</strong>。西安工投"十五五"规划确以"工业'智'造＋科创投资＋产业运营"为格局，但<strong>公告层面无任何注入标的、无时间表</strong>；且<strong>公开征集的取向恰好是"往外让"而非"往里装"</strong>，两者方向相反。</li><li><strong>数据来源级别</strong>？ ——<strong>一手为主</strong>：戴帽公告、内控审计报告、专项说明、年报、半年报、问询函回复均取自巨潮公告原文并逐字核对；公司答复取自互动平台（10jqka 转载）与公告；"西安国资改革／征集终止"等表述来自雪球评论（已标「（雪球评论，日期）」），<strong>属线索级，未作事实结论依据</strong>。</li></ol>
+
+</div></details>
+<h2 id="chap5">附录 A · 待核实 / 需补充清单</h2>
+<ul><li><strong>公开征集转让的具体方案内容</strong>（转让比例最终值、价格是否调整、受让方条件）——公司仅称"已完成方案制定"，未披露。</li><li><strong>受让方是否已有意向方</strong>——无任何公开信息；投资者质疑"已内部终止"，公司未正面回应。</li><li><strong>标准海菱清算注销的实际完成日与清算损益</strong>——承诺 2026-12-31 前完成，尚在推进。</li><li><strong>标缝厂搬迁补偿金额与资产处置方式</strong>——国资委处置方案审批中，未披露。</li><li><strong>2026 年度审计机构的聘任情况</strong>——2026-09-01 董事会已通过续聘议案（待股东会审议），基准日未见续聘结果公告。</li><li><strong>巨潮"营业收入扣除情况专项核查意见"PDF 为图片型</strong>（<code>pymupdf</code> 仅抽 1,245 字符），扣除后营收口径以年报正文为准。</li></ul>
+<h2 id="chap6">附录 B · 关键信源链接</h2>
+<p>编号 | 文件 | 发布日 | 原文地址 ---|---|---|--- 1 | 标准股份关于实施其他风险警示暨停牌的公告（2026-019） | 2026-04-30 | <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1225266703&amp;orgId=gssh0600302&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">打开原文</a> 2 | 标准股份关于公司股票可能被实施退市风险警示的风险提示公告（2026-020） | 2026-04-30 | <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1225266706&amp;orgId=gssh0600302&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">打开原文</a> 3 | 标准股份2025年内部控制审计报告 | 2026-04-30 | <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1225266678&amp;orgId=gssh0600302&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">打开原文</a> 4 | 标准股份董事会关于2025年度财务报告及内部控制非标准审计意见涉及事项的专项说明 | 2026-04-30 | <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1225266722&amp;orgId=gssh0600302&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">打开原文</a> 5 | 标准股份2025年年度报告全文 | 2026-04-30 | <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1225266733&amp;orgId=gssh0600302&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">打开原文</a> 6 | 标准股份关于控股股东拟通过公开征集方式转让部分公司股份暨复牌的公告（2025-046） | 2025-10-28 | <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1224747046&amp;orgId=gssh0600302&amp;announcementTime=2025-10-28" target="_blank" rel="noopener">打开原文</a> 7 | 标准股份关于间接控股股东国有股权无偿划转的提示性公告（2025-021） | 2025-05-07 | <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1223475107&amp;orgId=gssh0600302&amp;announcementTime=2025-05-07" target="_blank" rel="noopener">打开原文</a> 8 | 标准股份关于收到陕西证监局监管措施决定书的公告（2025-057） | 2025-11-29 | <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1224832787&amp;orgId=gssh0600302&amp;announcementTime=2025-11-29" target="_blank" rel="noopener">打开原文</a> 9 | 标准股份关于涉及诉讼的进展公告（2025-056） | 2025-11-22 | <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1224819509&amp;orgId=gssh0600302&amp;announcementTime=2025-11-22" target="_blank" rel="noopener">打开原文</a> 10 | 标准股份关于向控股子公司标准海菱委托贷款的公告（2025-059） | 2025-12-05 | <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1224849985&amp;orgId=gssh0600302&amp;announcementTime=2025-12-05" target="_blank" rel="noopener">打开原文</a> 11 | 标准股份2026年半年度业绩预亏公告（2026-036） | 2026-07-15 | <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1225424163&amp;orgId=gssh0600302&amp;announcementTime=2026-07-15" target="_blank" rel="noopener">打开原文</a> 12 | 标准股份2026年半年度报告全文 | 2026-08-27 | <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1225509844&amp;orgId=gssh0600302&amp;announcementTime=2026-08-27" target="_blank" rel="noopener">打开原文</a> 13 | 标准股份关于完成董事会换届选举、聘任高级管理人员及董事长代行董事会秘书职责的公告（2026-050） | 2026-09-17 | <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1225568811&amp;orgId=gssh0600302&amp;announcementTime=2026-09-17" target="_blank" rel="noopener">打开原文</a> 14 | 标准股份关于董事会换届选举的公告 | 2026-09-01 | <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1225535854&amp;orgId=gssh0600302&amp;announcementTime=2026-09-01" target="_blank" rel="noopener">打开原文</a> 15 | 标准股份关于续聘会计师事务所的公告 | 2026-09-01 | <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1225535853&amp;orgId=gssh0600302&amp;announcementTime=2026-09-01" target="_blank" rel="noopener">打开原文</a> 16 | 标准股份关于调整公司组织架构的公告（2026-028） | 2026-06-09 | <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1225356733&amp;orgId=gssh0600302&amp;announcementTime=2026-06-09" target="_blank" rel="noopener">打开原文</a> 17 | 标准股份关于收到独立董事督促函的公告（2026-008） | 2026-04-25 | <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1225178374&amp;orgId=gssh0600302&amp;announcementTime=2026-04-25" target="_blank" rel="noopener">打开原文</a> 18 | 标准股份关于公司股票被实施其他风险警示相关事项的进展公告 | 2026-05-30 | <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1225337651&amp;orgId=gssh0600302&amp;announcementTime=2026-05-30" target="_blank" rel="noopener">打开原文</a> 19 | 标准股份关于2025年年度报告信息披露监管问询函的回复公告 | 2026-07-11 | <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1225420062&amp;orgId=gssh0600302&amp;announcementTime=2026-07-11" target="_blank" rel="noopener">打开原文</a> 20 | 致同会计师事务所关于西安标准工业股份有限公司2025年年报问询函的回复 | 2026-07-11 | <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600302&amp;announcementId=1225420084&amp;orgId=gssh0600302&amp;announcementTime=2026-07-11" target="_blank" rel="noopener">打开原文</a></p>
+<blockquote><p>说明：本报告引用《上海证券交易所股票上市规则（2026 年 4 月修订）》9.8.1／9.8.5／9.8.7／9.4.1／9.4.3 原文，均自本地规则 PDF 逐字提取核对。</p></blockquote>
+<h2 id="chap7">版本记录</h2>
+<p>版本 | 修订日 | 主要改动 ---|---|--- 初版 | 2026-10-06 | 首次生成。基准日 2026-10-06，行情截至 2026-09-30 收盘；数据取自巨潮公告原文（21 份 PDF 精读）、2025 年报与 2026 半年报、腾讯行情、东方财富 F10、韭研公社异动表、ST 信息库；结论为<strong>卖出（回避）</strong></p>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
