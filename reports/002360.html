@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ST同德（002360.SZ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>6 章 · 20 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断</a><a class="sblv3" href="#sec0">1.1 基本信息与估值</a><a class="sblv3" href="#sec1">1.2 股权结构</a><a class="sblv3" href="#sec2">1.3 全流程进度追踪总表</a><a class="sblv3" href="#sec3">1.4 ST 风险诊断（戴帽原因与四类红线）</a><a class="sblv3" href="#sec4">1.5 公司运营情况</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、基本面路径（选 B · 重整逻辑）</a><a class="sblv3" href="#sec5">2.1 节点时间线</a><a class="sblv3" href="#sec6">2.2 重整投资协议商务条款</a><a class="sblv3" href="#sec7">2.3 重整投资人质量：这是"有物"还是"人名"？</a><a class="sblv3" href="#sec8">2.4 除权参考价测算（★ 本节是本报告的核心定价依据）</a><a class="sblv3" href="#sec9">2.5 成本锚点与定价交叉验证</a><a class="sblv3" href="#sec10">2.6 2.80 亿元现金赠与与债务豁免（已于 2026-09-24 实收）</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、第三翼 · 炒作逻辑 + 情绪面 + 筹码面</a><a class="sblv3" href="#sec11">3.1 炒作逻辑三支柱</a><a class="sblv3" href="#sec12">3.2 情绪面：最硬利好已被"利好出尽"消化</a><a class="sblv3" href="#sec13">3.3 筹码面</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、估值与投资结论</a><a class="sblv3" href="#sec14">4.1 估值</a><a class="sblv3" href="#sec15">4.2 投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">附录</a><a class="sblv3" href="#sec16">附录 A · 待核实 / 需补充清单</a><a class="sblv3" href="#sec17">附录 B · 关键信源链接（简版）</a><a class="sblv3" href="#sec18">附录 C · 逻辑漏洞与反方观点（5 问）</a><a class="sblv3" href="#sec19">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">ST同德（002360.SZ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<table><thead><tr><th>项</th><th>内容</th></tr></thead><tbody><tr><td><strong>操作结论</strong></td><td><strong>卖出（回避）</strong></td></tr><tr><td>红线分类</td><td><span class="sttag sttag-blue"><a href="https://data.eastmoney.com/notices/detail/002360/AN202604271821634163.html" target="_blank" rel="noopener">2025年报保留意见</a></span> · <span class="sttag sttag-orange"><a href="https://data.eastmoney.com/notices/detail/002360/AN202604271821634176.html" target="_blank" rel="noopener">2025年内控否定意见</a></span> · <span class="sttag sttag-orange"><a href="https://data.eastmoney.com/notices/detail/002360/AN202604271821634183.html" target="_blank" rel="noopener">资金占用,3,505万元(已清偿)</a></span> · <span class="sttag sttag-orange"><a href="https://data.eastmoney.com/notices/detail/002360/AN202608241828363694.html" target="_blank" rel="noopener">债务逾期,7.10亿元</a></span> · <span class="sttag sttag-teal"><a href="https://data.eastmoney.com/notices/detail/002360/AN202604211821379363.html" target="_blank" rel="noopener">预重整备案登记</a></span></td></tr><tr><td>生死定级</td><td><strong>可救 · 需外力</strong>（路径 B 重整；四类退市红线当前一条未踩，但近端开关方向朝下）</td></tr><tr><td>自救空间</td><td>靠司法重整 + 生力民爆联合体；<strong>2.80 亿元现金赠与与债务豁免已于 2026-09-24 实收且约定不可撤销</strong>。最大障碍不是缺钱，而是<strong>法院至今只做"预重整备案登记"、未裁定受理</strong>——受理即叠加 \*ST。</td></tr><tr><td>主要看点</td><td><strong>内蒙古生力民爆股份有限公司联合体</strong>（2025 年净利 <strong>10.31 亿元</strong>、净资产 <strong>41.05 亿元</strong>、工业炸药许可产能 <strong>25.65 万吨/年</strong>）以 <strong>2.6820 元/股</strong>受让 1.90 亿股成为重整后控股股东，并承诺自重整计划执行完毕起 <strong>5 年内以反向吸收合并等方式注入民爆业务资产</strong>（2026-09-22 签约）。</td></tr></tbody></table>
+<ul><li>标的：山西同德化工股份有限公司（ST同德，002360.SZ，深交所主板）</li><li>基准日：<strong>2026-09-30</strong>（行情、财务）；报告撰写日 2026-10-06</li><li>版本：<strong>初版 · 2026-10-06</strong></li><li>数据来源：公司公告（东财公告库）、2026 年半年度报告、2025 年年度报告、投资者关系活动记录表、腾讯行情（<code>qt.gtimg.cn</code>）、新浪日 K、东财龙虎榜、Andy 自建 ST 信息库、韭研公社异动整理</li><li>数据质量异常：① Wind 代理基准日不可达（<code>EC False</code>），行情与财务改用腾讯/新浪/东财；② 韭研异动表最新一条仅到 2026-07-03，<strong>9 月的重整投资人事件未入库</strong>（≠ 无异动）；③ 东财 F10 与半年报原文逐个核对一致。</li></ul>
+<hr>
+<h2 id="chap1">一、诊断</h2>
+<h3 id="sec0">1.1 基本信息与估值</h3>
+<p><strong>结论：ST同德是山西民爆龙头，现价 5.33 元对应总市值 21.41 亿元；但"21.41 亿元"是重整前的口径——按已披露的每 10 股转增约 11 股方案，理论除权参考价只有 3.97–4.48 元。</strong></p>
+<details class="fold"><summary>论据 · 行情与估值原始读数（基准日 2026-09-30）</summary><div class="fold-body">
+
+<table><thead><tr><th>指标</th><th>数值</th><th>口径/来源</th></tr></thead><tbody><tr><td>现价（2026-09-30 收）</td><td>5.33 元</td><td>新浪日 K</td></tr><tr><td>总市值 / 流通市值</td><td>21.41 亿元 / 16.44 亿元</td><td>腾讯行情</td></tr><tr><td>总股本 / 流通股</td><td>4.0177 亿股 / 3.085 亿股</td><td>腾讯行情</td></tr><tr><td>PB（归母）</td><td>2.42 倍</td><td>市值 21.41 亿 ÷ 归母净资产 8.84 亿元</td></tr><tr><td>PE(TTM) / PS(TTM)</td><td>负值 / 约 5.4 倍</td><td>亏损股，PE 不适用</td></tr><tr><td>换手率 / 成交额</td><td>1.68% / 2,775 万元</td><td>2026-09-30</td></tr><tr><td>涨跌幅限制</td><td>10%</td><td>主板 ST 自 2026-07-06 起由 5% 改 10%</td></tr><tr><td>2026 年 YTD</td><td><strong>+10.12%</strong></td><td>2025-12-31 收 4.84 元 → 5.33 元</td></tr><tr><td>2026 年内高/低</td><td>6.92 元（04-22）/ 4.48 元（06-29）</td><td>新浪日 K</td></tr><tr><td>近 20 年价格分位</td><td>12.12%</td><td>ST 信息库档案（2026-07-31 口径）</td></tr></tbody></table>
+
+</div></details>
+<ul><li>判读：<strong>PB 2.42 倍对一个 2025 年巨亏 10.93 亿元、逾期债务占净资产 78.15% 的公司不构成安全垫</strong>；2026 年 YTD +10.12% 同期跑赢 ST 板块中位（−22.98%）、重整型 ST 样本中位（−27.44%）与上证指数（−3.19%）——<strong>它已经涨过了，不是"还没涨"</strong>。</li></ul>
+<h3 id="sec1">1.2 股权结构</h3>
+<p><strong>结论：实控人张云升持股 19.93%，其中 50.62% 已被司法冻结、另有 600 万股被推上司法拍卖；更要紧的是张云升已于 2026-06-03 退出董事会，"控股股东"与"经营班子"出现分离——这是治理层面的关键前兆。</strong></p>
+<details class="fold"><summary>论据 · 实控人质押/冻结/拍卖与股东户数明细</summary><div class="fold-body">
+
+<ul><li>控股股东、实际控制人：<strong>张云升</strong>，持 80,057,500 股 = <strong>19.93%</strong>（普通账户 72,097,500 股 + 国信证券鼎信掘金 105 号单一资管计划 7,960,000 股）。</li><li>质押 55,680,000 股（占其持股 69.55%）；<strong>累计被冻结 40,527,500 股（占其持股 50.62%、总股本 10.09%）</strong>——其中 24,377,500 股系 2026-09-09 因公司未能偿还浦发银行忻州支行债务、张云升作为担保人被诉而新增冻结。</li><li>另有 <strong>600 万股（1.49%）</strong>因与华融金融租赁融资租赁合同纠纷，被杭州市上城区人民法院列入司法拍卖（2026-02-09/10 淘宝网），若成交张云升持股降至 18.43%。</li><li><strong>2026-06-03 董事会换届：张云升、郑俊卿不再担任董事</strong>；第九届董事长兼法定代表人 <strong>张富铨</strong>，总经理 <strong>邬庆文</strong>，董秘张冬，财务总监金富春。</li><li>股东户数：<strong>12,332 户（2026-06-30）</strong>，较 2026-05-20 的 13,868 户减少 11.1%。</li><li>无战略投资者、无一致行动人、无表决权委托或放弃。</li></ul>
+
+</div></details>
+<blockquote><p>资料来源：<a href="https://data.eastmoney.com/notices/detail/002360/AN202609111829275829.html" target="_blank" rel="noopener">关于公司控股股东、实际控制人部分股份被司法冻结的公告（2026-09-12）</a>、<a href="https://data.eastmoney.com/notices/detail/002360/AN202601121816949846.html" target="_blank" rel="noopener">关于控股股东所持公司部分股份拟被司法拍卖的提示性公告（2026-01-13）</a>、2026 年半年度报告。</p></blockquote>
+<details class="fold"><summary>论据 · 王艳式六栏目（前世今生 / 股东阵容 / 节奏催化 / 资产质量星级 / 成本锚点 / 信息来源）</summary><div class="fold-body">
+
+<p><strong>① 前世今生</strong></p>
+<table><thead><tr><th>时间</th><th>关键事件</th><th>股权/实控人变化</th><th>背后的逻辑</th></tr></thead><tbody><tr><td>2006-11</td><td>同德化工在深交所上市</td><td>—</td><td>山西河曲起家的民爆企业，实控人张云升</td></tr><tr><td>2015–2016</td><td>逐套向内部职工销售职工公寓楼（合同价款合计 3,555 万元）</td><td>无变化</td><td><strong>核心管理人员擅自将购房款长期占用</strong>——这一笔 2017 年的事，直到 2026 年才变成内控否定意见</td></tr><tr><td>2022</td><td>营收 10.90 亿元、归母 1.86 亿元（历史峰值区）</td><td>无变化</td><td>民爆景气高点</td></tr><tr><td>2023</td><td>归母 4.40 亿元（含非经常性损益 2.87 亿元）</td><td>无变化</td><td>扣非仅 1.53 亿元，利润质量已开始分化</td></tr><tr><td>2024</td><td>归母 −0.70 亿元，首次年度亏损</td><td>无变化</td><td>同德科创 PBAT 项目大规模资本开支，利息与折旧开始压顶</td></tr><tr><td>2025-04-25</td><td>首次披露债务逾期（本金 3,082.09 万元）</td><td>无变化</td><td>逾期起点</td></tr><tr><td>2025-11-29</td><td><strong>公司被列入失信被执行人名单</strong></td><td>无变化</td><td>信用崩塌</td></tr><tr><td>2026-01-05</td><td><strong>2025 年度审计机构辞任</strong></td><td>无变化</td><td>年审换所的第一信号</td></tr><tr><td>2026-01-13</td><td>聘请立信中联会计师事务所为 2025 年度财务及内控审计机构</td><td>无变化</td><td>接任者出具了保留意见 + 内控否定意见</td></tr><tr><td>2026-04-20</td><td>债权人河曲县万象建筑工程有限责任公司申请预重整及重整；忻州中院决定<strong>预重整备案登记</strong></td><td>无变化</td><td>司法程序起点</td></tr><tr><td>2026-04-28</td><td>披露 2025 年报、非标专项说明、自查资金占用；<strong>4-29 起实施其他风险警示（ST）</strong></td><td>无变化</td><td>摘帽时钟启动</td></tr><tr><td>2026-06-03</td><td>第九届董事会换届，<strong>张云升退出董事会</strong></td><td>持股不变，治理权交接</td><td>"控股股东"与"经营班子"分离</td></tr><tr><td>2026-09-17</td><td>确定<strong>内蒙古生力民爆联合体</strong>为中选重整投资人</td><td>拟变更（重整后）</td><td>产业资本入主</td></tr><tr><td>2026-09-22</td><td>与联合体签署《重整投资协议》</td><td>牵头方将持 22.5359%</td><td>重整后控股股东易主</td></tr></tbody></table>
+<p><strong>② 股东阵容</strong></p>
+<table><thead><tr><th>股东</th><th>持股</th><th>身份</th><th>取得方式/成本</th><th>状态</th></tr></thead><tbody><tr><td>张云升</td><td>19.93%</td><td>原体系实控人</td><td>原始股 + 二级增持</td><td>质押 69.55%、冻结 50.62%（累计）</td></tr><tr><td>邬庆文</td><td>2.51%</td><td>新班子总经理</td><td>二级</td><td>无质押</td></tr><tr><td>白利军</td><td>1.52%</td><td>离任监事（家族成员疑似）</td><td>二级</td><td>无质押</td></tr><tr><td>郑俊卿</td><td>1.46%</td><td>离任董事</td><td>二级</td><td>无质押</td></tr><tr><td>张乃蛇/祁洋/朱月成/黄奇俊/王浚/孙琪</td><td>0.57%–1.07%</td><td><strong>清一色自然人牛散</strong></td><td>二级（部分为本季新增）</td><td>—</td></tr></tbody></table>
+<ul><li><strong>关键读法：除控股股东外，前十大全部为自然人，无一家机构或产业资本</strong>——"知道些什么的人"在 2026-06-30 之前并未进场。</li><li>户均持股市值：以 12,332 户 ÷ 流通市值 16.44 亿元计，约 <strong>13.3 万元/户</strong>（偏低，散户化）。</li><li>关联方合计持股逐年增减：张云升 2025-10 起冻结/拍卖、<strong>总体为"退"不进</strong>。</li></ul>
+<p><strong>③ 节奏催化</strong>：见 §3.1「炒作逻辑三支柱」的硬节点表与 §1.4 进度看板。</p>
+<p><strong>④ 资产质量与估值（星级）</strong></p>
+<table><thead><tr><th>评估维度</th><th>大白话说明</th><th>评级</th></tr></thead><tbody><tr><td>市值/估值</td><td>21.41 亿元小市值，但 PB 2.42 倍、除权后仍有 3.97–4.48 元锚</td><td>★★</td></tr><tr><td>法律合规性</td><td>内控否定 + 财报保留 + 会计差错两次追溯更正 + 行政监管措施，<strong>未见立案</strong></td><td>★★</td></tr><tr><td>债务与流动性</td><td>逾期本金 7.10 亿元（占净资产 78.15%）、有息负债约 17 亿元、货币资金 1.04 亿元（含受限）</td><td>★</td></tr><tr><td>主业质地</td><td>民爆牌照 + 6.8 万吨产能 + 省公安厅一级/二级爆破资质；但 2026H1 工业炸药收入 −83.63%</td><td>★★</td></tr><tr><td>控制权与运作</td><td>产业投资人已签约、2.80 亿元已实收、明确 5 年注入承诺</td><td>★★★★</td></tr><tr><td><strong>综合</strong></td><td><strong>资本运作维度强、经营与债务维度弱，不能用后者否定前者，也不能用前者掩盖后者</strong></td><td>★★☆</td></tr></tbody></table>
+<p><strong>⑤ 成本锚点</strong></p>
+<table><thead><tr><th>参与方</th><th>成本（元/股）</th><th>说明</th></tr></thead><tbody><tr><td>生力民爆（牵头方）</td><td><strong>2.6820</strong></td><td>受让 1.90 亿股，价款 5.0958 亿元；公告明示"不低于签署日前 60 日交易均价的 50%"</td></tr><tr><td>联合体其他成员</td><td><strong>2.9502</strong></td><td>合计受让 9,000 万股，价款 2.6552 亿元</td></tr><tr><td>债权人（以股抵债）</td><td>未披露</td><td>获转增 1.6133 亿股（441,325,685 − 2.8 亿）</td></tr><tr><td>张云升（原实控人）</td><td>原始股，成本不可比</td><td>—</td></tr><tr><td><strong>现价</strong></td><td><strong>5.33</strong></td><td><strong>＝牵头方成本的 1.99 倍、其他成员的 1.81 倍</strong></td></tr></tbody></table>
+<ul><li>两类定价逻辑必须分开：<strong>重整投资人价＝"有稀释的重整底"</strong>（转增摊薄、60 个月锁定），不是"无稀释的市场底"。<strong>二级市场价比产业资本高 99%，没有任何估值支撑。</strong></li></ul>
+<p><strong>⑥ 信息来源汇总</strong></p>
+<table><thead><tr><th>序号</th><th>类型</th><th>来源与标题（日期）</th><th>链接</th></tr></thead><tbody><tr><td>1</td><td>一手·公告</td><td>关于公司股票交易将被实施其他风险警示暨股票停复牌的提示性公告（2026-04-28）</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202604271821634169.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>2</td><td>一手·公告</td><td>董事会对 2025 年度保留意见的审计报告和否定意见的内部控制审计报告涉及事项的专项说明（2026-04-28）</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202604271821634187.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>3</td><td>一手·年报</td><td>2025 年年度报告（2026-04-28）</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202604271821634163.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>4</td><td>一手·公告</td><td>关于与重整投资人签署《重整投资协议》的公告（2026-09-24）</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202609231829805524.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>5</td><td>一手·公告</td><td>关于公司接受现金赠与及获得债务豁免的公告（2026-09-28）</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202609271829937014.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>6</td><td>一手·公告</td><td>关于公司及子公司部分债务逾期的进展公告（2026-08-24，58 笔明细）</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202608241828363694.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>7</td><td>一手·公告</td><td>关于被债权人申请重整及预重整的提示性公告（2026-04-22）</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202604211821379341.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>8</td><td>一手·交流</td><td>投资者关系活动记录表（2026-05-22 业绩说明会）</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202605221822686700.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>9</td><td>数据源</td><td>腾讯行情 <code>qt.gtimg.cn</code>、新浪日 K <code>CN_MarketData</code>、东财龙虎榜</td><td>—</td></tr><tr><td>10</td><td>数据源</td><td>Andy 自建 ST 信息库（1.所有公司 / 2.重要公告 / 3.重要消息）</td><td>—</td></tr><tr><td>11</td><td>数据源</td><td>韭研公社异动整理（21 条，最新至 2026-07-03）</td><td>—</td></tr><tr><td>12</td><td>三级·线索</td><td>雪球 ST 讨论（本轮未采信具体数字）</td><td>—</td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec2">1.3 全流程进度追踪总表</h3>
+<p><strong>结论：整条路径只卡在一个环节——法院尚未裁定受理重整。这不是"谈不拢"，而是"时间未到"；但受理这一动作本身会把股票变成 \*ST。</strong></p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点或条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>① 债权人申请</td><td>已完成（2026-04-20）</td><td>—</td><td>—</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202604211821379341.html" target="_blank" rel="noopener">提示性公告 2026-04-22</a></td></tr><tr><td>② 预重整备案登记</td><td>已完成（2026-04-20）</td><td>备案登记<strong>不等于</strong>立案登记</td><td>—</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202604211821379363.html" target="_blank" rel="noopener">备案登记公告</a></td></tr><tr><td>③ 指定辅助机构</td><td>已完成（2026-05-06，公司清算组）</td><td>—</td><td>—</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202605071822035503.html" target="_blank" rel="noopener">公告 2026-05-08</a></td></tr><tr><td>④ 债权申报</td><td>已启动（2026-05-12）</td><td>债权审查未公开完成</td><td>债权表定稿</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202605121822217595.html" target="_blank" rel="noopener">债权申报公告</a></td></tr><tr><td>⑤ 招募投资人</td><td>已完成（2026-05-15 起，05-29 报名截止）</td><td>—</td><td>—</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202605151822348741.html" target="_blank" rel="noopener">招募公告</a></td></tr><tr><td>⑥ 确定投资人</td><td>已完成（2026-09-17：生力民爆联合体）</td><td>—</td><td>—</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202609171829519304.html" target="_blank" rel="noopener">进展公告 2026-09-18</a></td></tr><tr><td>⑦ 签重整投资协议</td><td>已完成（2026-09-22 签约，09-24 公告）</td><td>—</td><td>—</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202609231829805524.html" target="_blank" rel="noopener">协议公告</a></td></tr><tr><td>⑧ 资本公积金创设</td><td><strong>已完成</strong>（2026-09-24 2.80 亿元全额到账）</td><td>—</td><td>—</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202609271829937014.html" target="_blank" rel="noopener">现金赠与及债务豁免公告</a></td></tr><tr><td>⑨ <strong>法院裁定受理重整</strong></td><td><strong>未发生</strong></td><td><strong>预重整期限已延至 2026-10-20</strong>；需债权人/证监会/最高院逐级审批</td><td>2026-10-20 前后</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202607171827062439.html" target="_blank" rel="noopener">预重整延期决定书 2026-07-18</a></td></tr><tr><td>⑩ 实施退市风险警示</td><td>未发生</td><td>随⑨自动触发</td><td>随⑨</td><td>深主板 9.4.1(九)</td></tr><tr><td>⑪ 重整计划表决/批准</td><td>未发生</td><td>—</td><td>受理后 3–6 个月</td><td>—</td></tr><tr><td>⑫ 执行完毕</td><td>未发生</td><td>—</td><td>受理后 6–12 个月</td><td>—</td></tr><tr><td>⑬ 撤销 \*ST</td><td>未发生</td><td>重整计划执行完毕</td><td>2027–2028</td><td>深主板 9.4.14</td></tr><tr><td>⑭ 民爆资产注入</td><td>未发生</td><td><strong>承诺期＝重整计划执行完毕起 5 年内</strong></td><td>2032 年前后</td><td>重整投资协议</td></tr></tbody></table>
+<h3 id="sec3">1.4 ST 风险诊断（戴帽原因与四类红线）</h3>
+<p><strong>结论：ST 由 2025 年内控被出具否定意见触发（深主板 9.8.1(四)），属"最近一个会计年度"、是 ST 而非 \*ST；同期的财报保留意见因 9.3.1(三) 只含"无法表示/否定"而不构成 \*ST。四类退市红线当前一条未踩。</strong></p>
+<p><strong>① 戴帽事实</strong>：2025 年度审计机构立信中联对公司出具了<strong>保留意见的财务报表审计报告</strong>和<strong>否定意见的内部控制审计报告</strong>；公司股票自 <strong>2026-04-28 停牌 1 天、2026-04-29 复牌起实施其他风险警示</strong>，简称由"同德化工"变更为"ST同德"，涨跌幅限制当时由 10% 改为 5%（现行为 10%）。</p>
+<p><strong>② 资金占用与违规担保</strong>：内控否定的第一项事由即 2017 年内部职工住房购房款被核心管理人员占用，<strong>占用本金 3,505 万元、应计利息 1,150 万元</strong>，截至 2025-12-31 本金已全部归还、利息截至审计报告日已全部收回；2026 年半年报口径余额为零。<strong>违规对外担保：无。</strong> <strong>立案：未见中国证监会立案告知书</strong>；2026 年 4 月收到中国证监会山西监管局《行政监管措施决定书》（〔2026〕23 号），事由为 2024 年半年报、三季报财务费用披露不准确——<strong>行政监管措施不属于"行政处罚"，不触发 \*ST。</strong></p>
+<p><strong>③ 四类退市红线逐条对照</strong></p>
+<table><thead><tr><th>类型</th><th>触发条件（速查）</th><th>同德实况</th><th>是否踩线</th></tr></thead><tbody><tr><td>交易类</td><td>20 日收盘 &lt;1 元；20 日市值 &lt;5 亿元；20 日股东数 &lt;2,000</td><td>现价 5.33 元；市值 21.41 亿元；股东 12,332 户</td><td><strong>未踩</strong></td></tr><tr><td>财务类</td><td>孰低为负 <strong>且</strong> 营收&lt;3 亿元；或净资产为负；或审计无法表示/否定</td><td>2025 年营收 4.72 亿元（&gt;3 亿元）、归母净资产 9.28 亿元（为正）、财报为<strong>保留意见</strong>（不在触发项内）</td><td><strong>未踩</strong></td></tr><tr><td>规范类</td><td>资金占用≥2 亿元或≥净资产 30%；内控<strong>连续两年</strong>非标；不保真/不整改；控制权无序争夺</td><td>占用仅 3,505 万元（占净资产 0.38%）；内控否定<strong>仅 2025 一年</strong></td><td><strong>未踩</strong></td></tr><tr><td>重大违法类</td><td>欺诈发行；重大信披违法涉刑；财务造假达量化线</td><td>未见立案；两次会计差错更正均为自查且公司称"不改变盈亏性质、不致净资产为负"</td><td><strong>未踩</strong></td></tr></tbody></table>
+<blockquote><p><strong>★ 但两条红线已经贴近，必须在报告里单独标出</strong>：</p><p>1. <strong>营收红线</strong>：2026H1 营收 1.84 亿元（同比 −28.00%）。按 2025 年"H1 占 54%"的季节分布外推，2026 年全年营收约 3.4 亿元，<strong>高于 3 亿元红线但余量仅约 13%</strong>。若 H2 进一步走弱至 &lt;3 亿元，且净利仍为负，<strong>2026 年报将新增一条财务类 \*ST</strong>。</p><p>2. <strong>内控红线</strong>：若 2026 年度内控审计<strong>再次</strong>被出具无法表示/否定意见，则"连续两年内控非标"直接构成规范类 \*ST。</p></blockquote>
+<p><strong>④ 摘帽展望</strong></p>
+<p><strong>结论：摘帽是"次年内控审计须转无保留"的单开关（深主板 9.8.7 第三款），最早可申请日＝2027 年 4 月（2026 年报披露时）；但若法院在 2026 年内裁定受理重整，将叠加 \*ST，摘帽时钟被推后到"重整计划执行完毕"。</strong></p>
+<ul><li>撤销 ST 的硬条件：最近一个会计年度（即 2026 年度）的<strong>内部控制审计报告为无保留意见</strong>（标准无保留），且不触及其他风险警示情形。</li><li>前置信号：<strong>《2026 年度内部控制审计报告否定意见涉及事项影响已消除的审核报告》</strong>——一旦披露，即视为内控缺陷已整改完毕的实质证据。</li><li>叠加风险：法院裁定受理重整 → 触发 9.4.1(九) 实施退市风险警示（\*ST）→ 撤销 \*ST 须等"重整计划执行完毕"。</li><li>制度红利为零：主板 ST 自 2026-07-06 起摘帽前后同为 10% 涨跌幅，<strong>摘帽不带来任何交易制度红利</strong>。</li></ul>
+<details class="fold"><summary>论据 · 非标审计意见的五项事由与内控否定的两项缺陷</summary><div class="fold-body">
+
+<p><strong>（一）2025 年度财务报表保留意见的五项基础</strong></p>
+<ol><li><strong>持续经营能力</strong>：截至 2025-12-31，流动负债超出流动资产 <strong>11.38 亿元</strong>；有息负债合计 <strong>10.2 亿元</strong>（短期借款 + 应付票据 + 一年内到期非流动负债）；货币资金余额 <strong>8,028 万元</strong>，其中受限 <strong>3,573 万元</strong>。部分债务逾期引发多起诉讼仲裁、部分银行账户冻结、部分资产查封。</li><li><strong>在建工程减值</strong>：2025 年末在建工程<strong>原值 30.4 亿元、减值准备 9.1 亿元、账面价值 21.3 亿元</strong>；审计师复核了合同协议与评估报告并与评估机构沟通后，<strong>仍无法获取充分适当审计证据</strong>。</li><li><strong>商誉减值</strong>：全资子公司余热宝科技对阳城县国泰中科清洁能源技术有限公司投资形成商誉原值 <strong>1,599 万元</strong>，审计师无法就减值测试依赖的重大假设合理性取得充分证据。</li><li><strong>部分供应链业务款项的商业合理性与可收回性</strong>：个别子公司对外开展供应链业务，形成对沂南县广源石业、湛江市灏桐矿业、安徽省乾丰行矿业、深圳市金飞杰信息技术服务、中梧链控（深圳）科技往来款项合计 <strong>7,734 万元</strong>，已全额计提减值、账面价值为零。</li><li><strong>部分对外投资的商业合理性与可收回性</strong>：子公司同德（沂南）股权投资基金对山东祎禾铁路新材料（成本 1,665 万元、实缴 99.98%）、山东祎禾轨道交通新材料（成本 4,800 万元、实缴 100%）的投资，减值准备余额 3,571 万元、账面价值仅 12 万元；子公司同德企管对山西落基山光伏能源合伙企业认缴 8,000 万元（占 80%）、账面投资成本 2,128.21 万元、账面价值 187 万元，而该基金<strong>未进行任何外部投资</strong>、账面资产绝大部分形成其他应收款 2,856 万元。</li></ol>
+<p><strong>（二）2025 年度内部控制审计报告否定意见的两项重大缺陷</strong></p>
+<ol><li><strong>2017 年内部职工住房资金占用</strong>：合同价款合计 <strong>3,555 万元</strong>，"公司核心管理人员利用职务便利，在职工公寓楼款项收取、缴存与管理过程中，未按公司资金管理制度及审批程序执行，擅自将向职工收取的公寓楼购房款长期占用，形成关联方非经营性资金占用，占用金额为 <strong>3,505 万元</strong>"。该事项表明公司在<strong>资金管理与授权审批控制</strong>、<strong>固定资产管理</strong>方面存在重大缺陷。</li><li><strong>子公司大额投资款、预付款项长期挂账且计提大额减值准备并难以收回</strong>，相关风险尚未完全消除，表明<strong>对外投资、预付款项管理及资金管控</strong>存在重大缺陷。</li></ol>
+<blockquote><p><strong>定性判读：属"事实存疑型"而非"时间不足型"</strong>——① 占用事项有明确自然人（半年报占用表列示关联人为<strong>张烘</strong>，系公司离任董事），是"已认定事实"；② 供应链往来款 7,734 万元全额计提、对外投资账面价值趋零，指向的是<strong>资产可验证性</strong>而非制度缺失。因此"补制度、做培训"不足以过关，<strong>整改能否过关取决于证据是否拿得到</strong>。</p></blockquote>
+
+</div></details>
+<h3 id="sec4">1.5 公司运营情况</h3>
+<p><strong>结论：主业是一个"牌照完好、产能闲置、盈利被利息吃掉"的民爆公司——2025 年一把亏掉 10.93 亿元（主因在建工程减值 9.1 亿元），2026 上半年继续亏 4,847 万元，唯一稳定盈利的主体是爆破工程子公司。</strong></p>
+<p><strong>① 五年 + 最新一期核心财务</strong></p>
+<table><thead><tr><th>报告期</th><th>营业收入</th><th>归母净利</th><th>扣非归母</th><th>归母净资产</th><th>资产负债率</th></tr></thead><tbody><tr><td>2021 年报</td><td>8.53 亿元</td><td>1.19 亿元</td><td>1.10 亿元</td><td>13.82 亿元</td><td>30.45%</td></tr><tr><td>2022 年报</td><td>10.90 亿元</td><td>1.86 亿元</td><td>1.86 亿元</td><td>16.72 亿元</td><td>41.59%</td></tr><tr><td>2023 年报</td><td>9.64 亿元</td><td>4.40 亿元</td><td>1.53 亿元</td><td>21.49 亿元</td><td>44.09%</td></tr><tr><td>2024 年报</td><td>5.45 亿元</td><td>−0.70 亿元</td><td>−0.66 亿元</td><td>20.13 亿元</td><td>57.43%</td></tr><tr><td><strong>2025 年报</strong></td><td><strong>4.72 亿元</strong></td><td><strong>−10.93 亿元</strong></td><td><strong>−11.14 亿元</strong></td><td><strong>9.28 亿元</strong></td><td><strong>73.49%</strong></td></tr><tr><td>2026H1</td><td>1.84 亿元</td><td>−0.48 亿元</td><td>−0.50 亿元</td><td>8.84 亿元</td><td>74.60%</td></tr></tbody></table>
+<ul><li>勾稽自检：2026-06-30 总资产 33.99 亿元、负债 25.36 亿元、所有者权益合计 8.63 亿元（其中归母 8.84 亿元、少数股东权益 −0.21 亿元）；33.99 = 25.36 + 8.63 ✓。</li><li><strong>净资产变动必须拆开看</strong>：2026H1 归母净资产由 9.28 亿元降至 8.84 亿元，减少 0.44 亿元，<strong>全部来自当期归母亏损 0.48 亿元</strong>，无权益性交易干扰；而 2026Q3 将新增 <strong>2.80 亿元资本公积</strong>（见 §3.3），届时净资产口径会"跳变"——<strong>这不是经营改善，是资本性投入。</strong></li></ul>
+<p><strong>② 主业结构（2026H1）</strong></p>
+<ul><li><strong>结论：公司已从"炸药生产商"退化为"爆破服务商"</strong>——工程爆破占比由 58.58% 升至 87.40%，而炸药生产端收入崩了 83.63%。民爆行业的产能（6.8 万吨/年）还在，但<strong>卖不动</strong>。</li><li><strong>省外收入归零</strong>：2026H1 山西省内占比 98.49%、省外 0（2025H1 省外尚有 1,324 万元）——这是比营收 −28% 更值得警惕的信号。</li></ul>
+<details class="fold"><summary>论据 · 2026H1 分产品/分地区收入明细</summary><div class="fold-body">
+
+<table><thead><tr><th>分产品</th><th>收入</th><th>占比</th><th>同比</th><th>毛利率</th></tr></thead><tbody><tr><td>工程爆破</td><td>1.61 亿元</td><td>87.40%</td><td><strong>+7.42%</strong></td><td>51.32%</td></tr><tr><td>工业炸药</td><td>1,171 万元</td><td>6.36%</td><td><strong>−83.63%</strong></td><td>33.21%</td></tr><tr><td>其他民爆器材</td><td>739 万元</td><td>4.02%</td><td>−72.34%</td><td>—</td></tr><tr><td>运输服务</td><td>131 万元</td><td>0.71%</td><td>−29.32%</td><td>—</td></tr><tr><td>供应链</td><td>53 万元</td><td>0.29%</td><td>−81.12%</td><td>—</td></tr><tr><td>电力业务</td><td>34 万元</td><td>0.19%</td><td>−78.29%</td><td>—</td></tr><tr><td>其他</td><td>191 万元</td><td>1.04%</td><td>+39.05%</td><td>—</td></tr><tr><td>合计</td><td>1.84 亿元</td><td>100%</td><td>−28.00%</td><td>—</td></tr></tbody></table>
+
+</div></details>
+<p><strong>③ 重要子公司（2026H1）</strong></p>
+<ul><li><strong>结论：利润归属高度集中于一个主体</strong>——同德爆破一家贡献 4,413 万元利润，而同德民爆亏损 249 万元。<strong>上市公司目前的盈利实际全靠爆破服务子公司。</strong></li></ul>
+<details class="fold"><summary>论据 · 重要子公司财务明细（2026H1）</summary><div class="fold-body">
+
+<table><thead><tr><th>公司</th><th>主营</th><th>总资产</th><th>净资产</th><th>营业收入</th><th>净利润</th></tr></thead><tbody><tr><td>同德爆破</td><td>爆破作业</td><td>3.31 亿元</td><td>3.10 亿元</td><td>1.33 亿元</td><td><strong>+4,413 万元</strong></td></tr><tr><td>同德民爆</td><td>工业雷管、炸药、索火工品</td><td>3.77 亿元</td><td>1.60 亿元</td><td>1.52 亿元</td><td><strong>−249 万元</strong></td></tr></tbody></table>
+
+</div></details>
+<p><strong>④ 资产端的两块"重物"</strong>：在建工程 21.35 亿元（占总资产 <strong>62.82%</strong>，即同德科创 PBAT 新材料产业链一体化项目）；固定资产 3.71 亿元。<strong>这块 21.35 亿元的在建工程，正是重整投资人要求剥离的对象。</strong></p>
+<details class="fold"><summary>论据 · 2026H1 现金流量与受限资产</summary><div class="fold-body">
+
+<ul><li>经营活动产生的现金流量净额 <strong>+6,101.96 万元</strong>（同比 −1.33%）——<strong>主业尚能产生经营现金流，这是它还有重整价值的基础</strong>。</li><li>投资活动现金流净额 −1,279.13 万元（同比 −88.89%）；报告期投资额 0.00 元（上年同期 5,014.00 万元，−100%），<strong>已停止一切资本开支</strong>。</li><li>现金及现金等价物净增加额 +4,574.74 万元。</li><li>货币资金 1.04 亿元，但含受限资金；短期借款 5.74 亿元、长期借款 5.60 亿元。</li><li>权利受限资产：编号 ZL201410350019.9、ZL201410467737.4、ZL201210365241.7、ZL202120146589.1 的<strong>四项专利被冻结</strong>（2026-07-21 公告）；全资子公司<strong>忻州同德民爆器材经营有限公司 100% 股权被冻结</strong>（2025-12-20 公告）；全资子公司<strong>山西同德爆破工程有限责任公司 100% 股权被冻结</strong>（2025-09-23 公告）；2026-08-28 又新增：因与青岛华通融资租赁纠纷，余热宝、山西同德民爆、同德企管 100% 股权被冻结，同德爆破、同德民爆 100% 股权被轮候冻结（冻结期 2026-03 至 2029-03）。</li><li>境外布局：津巴布韦年产 5 万吨民爆项目<strong>因资金问题长期停滞</strong>，公司称"是否重启须待破产重整事项完成后重新评估"。</li><li>股票回购：报告期无回购计划与实施。</li></ul>
+
+</div></details>
+<hr>
+<h2 id="chap2">二、基本面路径（选 B · 重整逻辑）</h2>
+<blockquote><p>三条路径中，<strong>路径 A（保壳）与路径 C（处罚 ST）均不适用</strong>：未踩财务类红线（营收 4.72 亿元、净资产为正），也未被立案。<strong>唯一路径是司法重整</strong>，故仅深耕路径 B。</p><p><strong>★ 一条必须纠正的常见误读：这里的"重整"不是"为保壳而重整"。</strong>公司的帽子（ST）来自内控否定意见，<strong>与重整无关</strong>；重整是为了解决 17 亿元有息负债与 7.10 亿元逾期债务。<strong>换句话说：即使重整成功，也顺手解决不了"内控否定"这顶帽子</strong>——那是 2027 年 4 月内控审计的事。</p></blockquote>
+<h3 id="sec5">2.1 节点时间线</h3>
+<p><strong>结论：从 2026-04-20 预重整备案到 2026-09-22 签署重整投资协议只用了 5 个月（速度快），但此后两个月法院仍未受理，预重整期限已延长至 2026-10-20。</strong></p>
+<details class="fold"><summary>论据 · 预重整 → 签约节点全时间线（可点击核对）</summary><div class="fold-body">
+
+<table><thead><tr><th>日期</th><th>节点</th><th>公告编号/文件</th></tr></thead><tbody><tr><td>2026-04-20</td><td>收到忻州中院《通知书》及债权人河曲县万象建筑工程有限责任公司《通知函》，申请预重整及重整；同日法院决定<strong>预重整备案登记</strong></td><td>2026-033 / 2026-034</td></tr><tr><td>2026-04-21</td><td>披露上述两份公告</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202604211821379341.html" target="_blank" rel="noopener">提示性公告</a></td></tr><tr><td>2026-04-25</td><td>披露《关于被债权人申请重整及预重整的专项自查报告》</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202604241821548503.html" target="_blank" rel="noopener">自查报告</a></td></tr><tr><td>2026-05-06</td><td>忻州中院指定<strong>山西同德化工股份有限公司清算组</strong>担任预重整辅助机构</td><td>2026-056</td></tr><tr><td>2026-05-12</td><td>预重整辅助机构发出债权申报通知</td><td>2026-058</td></tr><tr><td>2026-05-15</td><td>公开招募和遴选重整投资人（报名截止 2026-05-29）</td><td>2026-059</td></tr><tr><td>2026-05-22</td><td>召开 2025 年度业绩说明会（董事长张富铨、董秘张冬、财务总监金富春）</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202605221822686700.html" target="_blank" rel="noopener">投资者关系记录表</a></td></tr><tr><td>2026-07-17</td><td>忻州中院出具（2026）晋 09 破申（预）1 号之一《决定书》，<strong>延长预重整期限至 2026-10-20</strong></td><td>2026-084</td></tr><tr><td>2026-09-17</td><td>收到预重整辅助机构通知，<strong>确定内蒙古生力民爆股份有限公司联合体为中选重整投资人</strong></td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202609171829519304.html" target="_blank" rel="noopener">进展公告</a></td></tr><tr><td>2026-09-22</td><td>与联合体四名成员分别签署《重整投资协议》</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202609231829805524.html" target="_blank" rel="noopener">协议公告</a></td></tr><tr><td>2026-09-24</td><td>第九届董事会第四次会议通过接受现金赠与、获得债务豁免议案；<strong>同日 2.80 亿元全部到账</strong></td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202609271829937014.html" target="_blank" rel="noopener">公告</a></td></tr></tbody></table>
+
+</div></details>
+<ul><li>判读：<strong>签约到受理之间隔了两个月仍未受理，是当前最主要的不确定性。</strong> 但需注意——<strong>"预重整期限届满未受理"本身也是独立事实</strong>：按公司公告，预重整延期至 2026-10-20，<strong>这个日期是当前最硬的观察节点</strong>。</li></ul>
+<h3 id="sec6">2.2 重整投资协议商务条款</h3>
+<p><strong>结论：这是一份在 ST 重整里质量偏高的协议——牵头方是真实盈利的产业资本（2025 年净利 10.31 亿元），且带了两份硬承诺（5 亿元业绩承诺 + 5 年内注入民爆资产）；但代价是原股东被摊薄到 47.65%，且注入的时限太长。</strong></p>
+<table><thead><tr><th>条款</th><th>内容</th></tr></thead><tbody><tr><td>中选投资人</td><td>内蒙古生力民爆股份有限公司联合体：生力民爆（牵头方）、内蒙古观叙投资合伙企业（有限合伙）、海南德启智达管理咨询合伙企业（有限合伙）、天津正信畅盈企业管理咨询合伙企业（有限合伙）</td></tr><tr><td>转增方案</td><td>以现有总股本为基数，<strong>每 10 股转增约 11 股</strong>，共计转增 <strong>441,325,685 股</strong>（原总股本 401,774,248 股 → 转增后 843,099,933 股）</td></tr><tr><td>牵头方受让</td><td><strong>190,000,000 股</strong>，占重整后股本约 <strong>22.5359%</strong>，每股 <strong>2.6820 元</strong>，价款 <strong>5.0958 亿元</strong></td></tr><tr><td>其他成员受让</td><td>合计 <strong>90,000,000 股</strong>，每股 <strong>2.9502 元</strong>，价款 <strong>2.6552 亿元</strong></td></tr><tr><td>投资人合计</td><td>2.8 亿股、价款 <strong>7.7510 亿元</strong>、占重整后 33.21%</td></tr><tr><td>债权人受让</td><td>剩余 161,325,685 股用于抵偿债务，<strong>作价未披露</strong></td></tr><tr><td>原股东稀释</td><td>原股东持股比例由 100% 降至 <strong>47.65%</strong></td></tr><tr><td>定价约束</td><td>牵头方价格"不低于本协议签署日前 <strong>60 日</strong>公司股票交易均价的 <strong>50%</strong>"（实测前 60 日均价 5.3762 元 × 50% = 2.6881 元，与 2.6820 吻合）</td></tr><tr><td>锁定期</td><td>牵头方受让股份自登记之日起 <strong>60 个月</strong>不得转让/减持/委托管理</td></tr><tr><td><strong>业绩承诺</strong></td><td>重整计划执行完毕后第 1–3 个完整会计年度（若 2027 年执行完毕，即 <strong>2028/2029/2030 年</strong>），剔除同德科创股权及债权减值影响后的扣非归母净利润<strong>合计不低于 5 亿元</strong>，差额由生力民爆现金一次性补足，逾期按未付金额日万分之五付违约金</td></tr><tr><td><strong>资产注入承诺</strong></td><td>自重整计划执行完毕之日起 <strong>5 年内完成民爆业务整合</strong>，包括但不限于采用<strong>反向吸收合并</strong>等方式，将生力民爆的民爆业务相关资产、业务及权益<strong>整合注入上市公司</strong>；因政策限制或审批障碍无法按期完成的，应采取经董事会审议认可的替代方案</td></tr><tr><td>主业赋能承诺</td><td>保障产能优先释放、助力完善产品品类、推动爆破业务资质升级、降低生产采购成本、保障安全生产、提供人才与技术支撑、助力争取行业支持政策</td></tr><tr><td>同德科创处置</td><td>拟将公司持有的<strong>同德科创不低于 51% 的股权通过设立信托计划等方式剥离</strong>，使其不再纳入合并报表；生力民爆促使内蒙古生力资源（集团）有限责任公司向同德科创提供<strong>不低于 3 亿元</strong>续建借款（利率不高于 1 年期 LPR）</td></tr><tr><td>资本公积金创设</td><td>鉴于账面资本公积不足以支撑转增，联合体于 2026-09-30 前以现金捐赠、代为偿债、债务豁免等方式投入 <strong>2.80 亿元</strong>，等额增加可转增资本公积</td></tr></tbody></table>
+<blockquote><p>资料来源：<a href="https://data.eastmoney.com/notices/detail/002360/AN202609231829805524.html" target="_blank" rel="noopener">关于与重整投资人签署《重整投资协议》的公告（2026-09-24）</a>。</p></blockquote>
+<h3 id="sec7">2.3 重整投资人质量：这是"有物"还是"人名"？</h3>
+<p><strong>结论：这是"有物"——生力民爆是一家 2025 年净利润 10.31 亿元、净资产 41.05 亿元、工业炸药许可产能 25.65 万吨/年的真实民爆企业，且带着 5 年注入承诺而来。这一条是本次研究中最强的正向证据，必须如实写足。</strong></p>
+<details class="fold"><summary>论据 · 生力民爆与同德化工体量对照（2025 年）</summary><div class="fold-body">
+
+<table><thead><tr><th>项目</th><th>生力民爆</th><th>同德化工</th><th>倍数</th></tr></thead><tbody><tr><td>工业炸药许可产能</td><td><strong>25.65 万吨/年</strong></td><td>6.8 万吨/年（2025-12-31）</td><td>3.77 倍</td></tr><tr><td>2025 年营业总收入</td><td>26.91 亿元</td><td>4.72 亿元</td><td>5.70 倍</td></tr><tr><td>2025 年净利润</td><td><strong>10.31 亿元</strong></td><td>−10.93 亿元</td><td>—</td></tr><tr><td>2025 年末净资产</td><td><strong>41.05 亿元</strong></td><td>9.28 亿元</td><td>4.42 倍</td></tr><tr><td>2025 年末资产总额</td><td>50.15 亿元</td><td>34.25 亿元</td><td>1.46 倍</td></tr><tr><td>注册地 / 法定代表人 / 实控人</td><td>内蒙古准格尔旗 / 张家浩 / 张家浩（控制 57.7057% 表决权）</td><td>山西忻州 / 张富铨 / 张云升</td><td>—</td></tr></tbody></table>
+
+</div></details>
+<ul><li><strong>产业逻辑成立</strong>：生力民爆与同德同属晋陕蒙民爆市场（内蒙准格尔旗 / 山西忻州交界），工信部政策明确要求 2027 年底形成 3–5 家大型民爆企业集团——<strong>这是政策主线上的真实整合动作，不是财务投资人的通道安排。</strong></li><li><strong>反向读数</strong>：跟投方只出钱换股、不承担注入义务——<strong>含金量集中在生力民爆一家。</strong></li></ul>
+<details class="fold"><summary>论据 · 整合政策依据与联合体构成细节</summary><div class="fold-body">
+
+<ul><li>政策依据：工信部 2025 年 2 月《加快推进民用爆炸物品行业转型升级实施意见》要求"到 2027 年底……产业集中度进一步提升，形成 3 到 5 家具有较强国际竞争力的大型民爆企业（集团）"。</li><li>联合体构成：生力民爆（牵头方，2016-04-01 成立，注册资本 6,000 万元）、内蒙古观叙投资合伙企业（有限合伙，<strong>2026-07-10 新设</strong>，注册资本 1 亿元，实控人刘雄伟，暂无业务及财务数据）、海南德启智达管理咨询合伙企业（有限合伙，<strong>2026-04-23 新设</strong>，注册资本 1,000 万元，实控人王红菊）、天津正信畅盈企业管理咨询合伙企业（有限合伙）。</li><li>公告明示："生力民爆与内蒙古观叙、海南德启、天津正信之间不存在关联关系或一致行动关系，且不存在出资安排"；三家新设主体"暂无业务情况及财务数据"。</li><li>锁定安排：仅牵头方受让股份 60 个月内不得转让/减持/委托管理；<strong>其他成员的锁定期公告未披露</strong>。</li></ul>
+
+</div></details>
+<h3 id="sec8">2.4 除权参考价测算（★ 本节是本报告的核心定价依据）</h3>
+<p><strong>结论：按已披露的转增与受让方案，理论除权参考价 </strong>3.97–4.48 元<strong>，对应现价 5.33 元 </strong>−16% 至 −25.5%<strong>（中枢约 4.2 元、约 −21%）。这意味着——"重整成功"对按现价买入的投资者，首先是一次</strong>价格向下除权<strong>。</strong></p>
+<blockquote><p>除权参考价 =（前收盘价 × 原总股本 + 重整投资款 + 抵债股份作价）÷（原总股本 + 转增总股本）</p><p>=（5.33 × 401,774,248 + 775,098,000 + 抵债作价）÷ 843,099,933</p></blockquote>
+<table><thead><tr><th>情景</th><th>抵债作价假设（元/股）</th><th>抵债股份作价</th><th>除权参考价</th><th>对现价 5.33 的变动</th></tr></thead><tbody><tr><td>保守（抵债价 = 产投价 2.6820）</td><td>2.6820</td><td>4.3268 亿元</td><td><strong>3.97 元</strong></td><td><strong>−25.5%</strong></td></tr><tr><td>中性（抵债价 3.50）</td><td>3.50</td><td>5.6464 亿元</td><td><strong>4.13 元</strong></td><td><strong>−22.5%</strong></td></tr><tr><td>乐观（抵债价 = 现价 5.33）</td><td>5.33</td><td>8.5997 亿元</td><td><strong>4.48 元</strong></td><td><strong>−16.0%</strong></td></tr></tbody></table>
+<ul><li><strong>抵债作价未披露</strong>，故给三档。参照同型样本（如 ＊ST聆达以股抵债价 10.28 元高于当期现价 8.56 元），<strong>实际抵债价较可能落在现价附近甚至更高</strong>，对应除权折价落在 −16%~−22% 区间。</li><li>重要提醒：<strong>除权本身不等于损失</strong>（原股东持股比例变小、但公司拿到 7.75 亿元现金并减少债务），但<strong>除权也绝不等于必然填权</strong>——决定填权与否的是"重整后公司值不值这个价"，而这个问题目前无解（见 §2.5）。</li></ul>
+<h3 id="sec9">2.5 成本锚点与定价交叉验证</h3>
+<p><strong>结论：现价 5.33 元是牵头方成本的 1.99 倍、其他成员的 1.81 倍，且约等于协议签署前 60 日均价——产业资本用"五折"拿到的股份，二级市场要用"全价"买。这是本报告给出"卖出"的第一条理由。</strong></p>
+<table><thead><tr><th>定价锚</th><th>价格（元/股）</th><th>现价 / 该锚</th></tr></thead><tbody><tr><td>生力民爆受让价</td><td>2.6820</td><td><strong>1.99 倍</strong></td></tr><tr><td>联合体其他成员受让价</td><td>2.9502</td><td><strong>1.81 倍</strong></td></tr><tr><td>协议签署前 60 日交易均价</td><td>5.3762</td><td>0.99 倍</td></tr><tr><td>协议签署前 60 日均价 × 50%（最低价约束）</td><td>2.6881</td><td>1.98 倍</td></tr><tr><td><strong>现价（2026-09-30）</strong></td><td><strong>5.33</strong></td><td>—</td></tr></tbody></table>
+<ul><li>关键判据：<strong>正确对照是"现价 vs 除权参考价"，不是"现价 vs 投资人认购价"</strong>——但两者指向同一方向：现价既高于除权参考价 16%–25%，又是产业资本成本的两倍。<strong>两条尺子都得出"现价没有安全边际"。</strong></li></ul>
+<h3 id="sec10">2.6 2.80 亿元现金赠与与债务豁免（已于 2026-09-24 实收）</h3>
+<p><strong>结论：这 2.80 亿元是"已落地的事实"，不是"预期"——但它计入资本公积、不进当期损益，因此改善的是资产负债表，不是利润表；且它的用途被协议锁死为"创设转增所需的资本公积"。</strong></p>
+<details class="fold"><summary>论据 · 2.80 亿元现金赠与与债务豁免明细（2026-09-24 到账）</summary><div class="fold-body">
+
+<table><thead><tr><th>赠与/豁免方</th><th>现金赠与</th><th>债务豁免</th></tr></thead><tbody><tr><td>生力民爆</td><td>107,442,940.16 元</td><td>82,557,059.84 元（其取得的对公司债权及全部从权利）</td></tr><tr><td>内蒙古观叙</td><td>20,000,000.00 元</td><td>—</td></tr><tr><td>海南德启</td><td>35,000,000.00 元</td><td>—</td></tr><tr><td>天津正信</td><td>35,000,000.00 元</td><td>—</td></tr><tr><td><strong>合计</strong></td><td><strong>197,442,940.16 元</strong></td><td><strong>82,557,059.84 元</strong></td></tr><tr><td><strong>总计</strong></td><td><strong>280,000,000.00 元</strong></td><td></td></tr></tbody></table>
+
+</div></details>
+<details class="fold"><summary>论据 · 会计处理口径与"不可撤销"条款原文</summary><div class="fold-body">
+
+<ul><li>会计处理：依《监管规则适用指引——会计类第 1 号》，<strong>经济实质为资本性投入，形成的利得计入所有者权益（资本公积）</strong>，可计入 2026 年第三季度财务报告。</li><li><strong>不可撤销性已写进协议</strong>：联合体承诺"自愿、无偿、单方面向甲方作出，不附带任何条件、不附有任何义务、不可变更且不可撤销"，并明确"无论发生何种情形（包括重整申请未被法院受理、重整计划草案未获批准、股票被终止上市、重整未成功、进入破产清算或本协议解除、终止等），均不得撤销"。<strong>2026-09-24 已全额到账。</strong></li></ul>
+
+</div></details>
+<ul><li>判读：<strong>这是"已经装进口袋的钱"，在 ST 板块里属于稀缺项</strong>——它把净资产从 8.84 亿元抬到约 11.64 亿元（2026Q3 口径）。但它<strong>不改变"主业盈利为负"这一事实</strong>，也不等同于重整成功。</li></ul>
+<hr>
+<h2 id="chap3">三、第三翼 · 炒作逻辑 + 情绪面 + 筹码面</h2>
+<h3 id="sec11">3.1 炒作逻辑三支柱</h3>
+<p><strong>① 炒预期：未来 6–12 个月的事件节点</strong></p>
+<p><strong>结论：节点密集但方向分化——近端最硬的节点（法院受理）是"利空式利好"（触发 \*ST），真正能重定价的节点（资产注入）在 5 年之后。</strong></p>
+<table><thead><tr><th>硬节点</th><th>预计时点</th><th>距今</th><th>判读/证伪点</th></tr></thead><tbody><tr><td>预重整期限届满 / 是否延期</td><td><strong>2026-10-20</strong></td><td>约 14 天</td><td>延期 = 无进展；收窄 = 临近受理</td></tr><tr><td>法院裁定受理重整</td><td>2026Q4–2027Q1</td><td>0–4 个月</td><td><strong>受理即叠加 \*ST</strong>，属"利空式确认"</td></tr><tr><td>重整计划（草案）披露与债权人会议</td><td>受理后 3–6 个月</td><td>6–10 个月</td><td>看清偿率与转增最终方案（除权价定案）</td></tr><tr><td>法院裁定批准重整计划</td><td>同上</td><td>6–10 个月</td><td>—</td></tr><tr><td>重整计划执行完毕</td><td>受理后 6–12 个月</td><td>12–18 个月</td><td>触发撤销 \*ST 条件之一</td></tr><tr><td>《内控否定意见影响已消除的审核报告》</td><td>2026 年报披露前</td><td>12–14 个月</td><td><strong>撤销 ST 的直接前置信号</strong></td></tr><tr><td>撤销其他风险警示（ST）</td><td><strong>2027 年 4 月</strong></td><td>约 18 个月</td><td>取决于 2026 年内控审计意见</td></tr><tr><td>民爆资产整合注入</td><td>重整执行完毕起 <strong>5 年内</strong></td><td><strong>约 6–7 年</strong></td><td>反向吸收合并，方式与对价均未定</td></tr></tbody></table>
+<ul><li><strong>预期差在哪一侧</strong>：市场已知"生力民爆入主 + 5 年注入"，未知的是"何时受理、转增抵债作价、注入对价"。<strong>已知部分已反映在 +10.12% 的 YTD 里；未知部分的时间轴太长，不构成近端驱动。</strong></li></ul>
+<p><strong>② 炒历史类似行为（相似股票匹配）</strong></p>
+<p><strong>结论：把 15 只"重整型 ST"拉出来做同型样本，2026 年中位 −27.44%、本股 +10.12% 显著强于中位；再扣掉指数（上证 −3.19%），本股真实超额约 +13 个百分点——它已经涨过了。更关键的是：本标的属于"有物但物太远"，与"物太远"的 ST司特（永温磷矿 3–7 年后投产）同类，而那一类并未获得定价。</strong></p>
+<table><thead><tr><th>分组</th><th>样本</th><th>2026 YTD</th></tr></thead><tbody><tr><td><strong>上涨组（有物）</strong></td><td>＊ST英飞（130.22%，重整投资人）｜＊ST美芝（71.21%，庭外重组已定人）｜＊ST威领（69.52%，被收购方明确）｜＊ST皇庭（34.33%）｜＊ST中迪（5.28%）</td><td>中位约 +34%</td></tr><tr><td><strong>下跌组（只有人名/方案）</strong></td><td>＊ST易录（−54.50%，重整协议已签但法院未受理）｜＊ST亿晶（−49.28%）｜＊ST春兴（−44.75%）｜＊ST华西（−42.80%）｜<strong>＊ST西旅（−39.81%，预重整投资协议已签）</strong>｜＊ST棒杰（−30.62%）｜＊ST准油（−27.97%）｜＊ST雅博（−27.44%）｜ST富煌（−18.57%）｜＊ST华鹏（−4.50%）</td><td>中位约 −31%</td></tr><tr><td><strong>全样本 15 只</strong></td><td>—</td><td><strong>中位 −27.44%</strong></td></tr><tr><td><strong>本标的 ST同德</strong></td><td>—</td><td><strong>+10.12%</strong></td></tr><tr><td>参照</td><td>上证指数 −3.19%｜ST 板块（退市预警目录 182 家）中位 −22.98%</td><td>—</td></tr></tbody></table>
+<ul><li><strong>本标的像谁</strong>：最像 <strong>＊ST西旅（000610.SZ，YTD −39.81%）</strong> 与 <strong>＊ST易录（300212.SZ，YTD −54.50%）</strong>——<strong>两只都是"方案已签、程序未动"的形态，最终大幅下跌。</strong></li><li><strong>结论：本标的落在"有物但物太远"的中间态</strong>——它比西旅/易录"有物"，但"物"的兑现期比它们更长。参照 ST司特判例（永温磷矿 3–7 年后投产），<strong>"有物但物太远不足以支撑'它还便宜'的推论"</strong>。</li></ul>
+<details class="fold"><summary>论据 · 与 ＊ST西旅 / ＊ST易录 的相似点与差异点</summary><div class="fold-body">
+
+<ul><li><strong>差异点（本标的更强的地方）</strong>：① 投资人是<strong>真实盈利的产业资本</strong>——＊ST西旅的投资人严建亚为财务背景、＊ST易录投资人为通道型安排，本标的生力民爆 2025 年净利 10.31 亿元；② 本标的有<strong>明确资产注入承诺</strong>（5 年、反向吸收合并），西旅与易录没有；③ 本标的 <strong>2.80 亿元现金赠与与债务豁免已实收</strong>，西旅/易录的履约保证金规模小得多。</li><li><strong>差异点（本标的更弱的地方）</strong>：① 本标的<strong>除权折价更深</strong>（−16%~−25.5%）；② 本标的<strong>基本面更差</strong>（2025 年亏 10.93 亿元、逾期 7.10 亿元、公司被列失信被执行人）；③ 本标的的"物"在 <strong>6–7 年后</strong>才可能落地，西旅至少还有"机器人"想象。</li></ul>
+
+</div></details>
+<p><strong>③ 炒主板映射（民爆板块）</strong></p>
+<p><strong>结论：这是负向映射——民爆板块 2026 年整体杀跌（中位约 −23.7%），"板块跌得多"在这里是风险而不是机会。</strong></p>
+<details class="fold"><summary>论据 · 民爆同业 2026 年涨跌幅对照（主板映射校验）</summary><div class="fold-body">
+
+<table><thead><tr><th>民爆同业</th><th>代码</th><th>2026 YTD</th></tr></thead><tbody><tr><td>壶化股份</td><td>003002.SZ</td><td>−51.48%</td></tr><tr><td>广东宏大</td><td>002683.SZ</td><td>−40.92%</td></tr><tr><td>雅化集团</td><td>002497.SZ</td><td>−36.41%</td></tr><tr><td>易普力</td><td>002096.SZ</td><td>−30.27%</td></tr><tr><td>金奥博</td><td>002917.SZ</td><td>−24.19%</td></tr><tr><td>国泰集团</td><td>603977.SH</td><td>−23.24%</td></tr><tr><td>凯龙股份</td><td>002783.SZ</td><td>−14.15%</td></tr><tr><td>雪峰科技</td><td>603227.SH</td><td>−9.18%</td></tr><tr><td>江南化工</td><td>002226.SZ</td><td>−6.68%</td></tr><tr><td>高争民爆</td><td>002827.SZ</td><td><strong>+56.96%</strong>（雅下水电概念）</td></tr><tr><td><strong>中位</strong></td><td>—</td><td><strong>约 −23.7%</strong></td></tr><tr><td><strong>ST同德</strong></td><td>002360.SZ</td><td><strong>+10.12%</strong></td></tr></tbody></table>
+
+</div></details>
+<ul><li>判读：<strong>民爆板块唯一大涨的高争民爆靠的是"雅下水电"题材，不是民爆景气。</strong> 而同德自身在 2025 年 7 月曾被挂过"雅下水电站（民爆）"题材（异动表 2025-07-21/22），但<strong>该题材已过，且公司业务在晋蒙、与雅下无关</strong>。<strong>映射结论：负向。</strong></li></ul>
+<h3 id="sec12">3.2 情绪面：最硬利好已被"利好出尽"消化</h3>
+<p><strong>结论：2026-09-17 确定生力民爆为中选投资人（本年度最硬利好）公开后，次一交易日 09-18 放量 </strong>−8.58%<strong>、登上龙虎榜且净卖出 774 万元——这是"注意力峰值已过"的直接证据。</strong></p>
+<details class="fold"><summary>论据 · 重整事件窗口逐日量价（2026-09-16 ~ 09-30）</summary><div class="fold-body">
+
+<table><thead><tr><th>日期</th><th>事件</th><th>收盘</th><th>涨跌幅</th><th>成交量</th></tr></thead><tbody><tr><td>2026-09-16</td><td>—</td><td>5.67</td><td>—</td><td>401 万股</td></tr><tr><td>2026-09-17</td><td>收到《关于确定重整投资人的通知》</td><td>5.83</td><td>+2.82%</td><td>784 万股</td></tr><tr><td><strong>2026-09-18</strong></td><td><strong>公告确定生力民爆联合体中选</strong></td><td><strong>5.33</strong></td><td><strong>−8.58%</strong></td><td><strong>1,886 万股（4.7 倍）</strong></td></tr><tr><td>2026-09-21</td><td>—</td><td>5.51</td><td>+3.38%（盘中最低 5.04）</td><td>1,451 万股</td></tr><tr><td>2026-09-23</td><td>《重整投资协议》签署</td><td>5.34</td><td>+0.19%</td><td>429 万股</td></tr><tr><td>2026-09-24</td><td>协议公告 + 2.80 亿元到账</td><td>5.50</td><td>+3.00%</td><td>1,120 万股</td></tr><tr><td>2026-09-30</td><td>—</td><td>5.33</td><td>−0.74%</td><td>519 万股</td></tr></tbody></table>
+
+</div></details>
+<ul><li>龙虎榜记录：<strong>2026-09-18 日跌幅偏离值达 7% 上榜，净买额 −774.34 万元</strong>（卖方主导）。</li><li>判读：<strong>"投资人确定 + 资产注入承诺"这种量级的利好，市场只用了一天就消化完毕并反向砸盘</strong>——说明市场定价的重点不是"谁来救"，而是"除权摊薄 + 时间太长"。</li></ul>
+<h3 id="sec13">3.3 筹码面</h3>
+<p><strong>结论：股东户数三个月减少 11.1%，但同期股价从 6.9 元跌到 5.33 元——这是"割肉式集中"而非"吸筹式集中"；且前十大除控股股东外清一色自然人，机构与产业资本在重整前并未进场。</strong></p>
+<details class="fold"><summary>论据 · 股东户数、前十大构成、异动符号与技术位置明细</summary><div class="fold-body">
+
+<ul><li>股东户数：<strong>13,868 户（2026-05-20）→ 12,332 户（2026-06-30）</strong>，减少 11.1%；同期股价由 6.2 元区间下行至 5.33 元 → <strong>"割肉式集中"</strong>。</li><li>前十大股东（2026-06-30）：张云升 19.93%、邬庆文 2.51%、白利军 1.52%、郑俊卿 1.46%、张乃蛇 1.07%、祁洋 0.78%、朱月成 0.78%、黄奇俊 0.76%、王浚 0.64%、孙琪 0.57%——<strong>除控股股东外九席全为自然人，无一家机构或产业资本</strong>。</li><li>全公司质押比例：控股股东张云升质押 55,680,000 股（占其持股 69.55%），其他主要股东无质押。</li><li>异动记录（韭研公社异动整理，21 条）：历史炒作符号为 <strong>"民用炸药 + 电解液原料 + 光伏级多晶硅原料"</strong>（2020–2023 年），2025 年转为 <strong>"民爆 + 电力 + 光伏"</strong>；最近一次连板为 <strong>2026-07-01 至 07-03 的 4 天 4 板</strong>（4.70 → 5.45 元），驱动为"债务重整 + 重整投资人招募"。</li><li><strong>★ 注意：异动表最新一条仅到 2026-07-03，9 月的"确定投资人 / 签署协议"事件未入库（≠ 该期间无异动）。</strong></li><li>技术位置：现价 5.33 元处于 2026 年区间（4.48–6.92 元）的 <strong>35% 分位</strong>；2022-07 以来区间（4.04–8.29 元）的 30% 分位；近 20 年价格分位 12.12%。</li></ul>
+
+</div></details>
+<hr>
+<h2 id="chap4">四、估值与投资结论</h2>
+<h3 id="sec14">4.1 估值</h3>
+<p><strong>结论：亏损股不用 PE。可用尺子只有三条——PB、除权参考价、注入后市值，三条都指向"现价偏贵"。</strong></p>
+<table><thead><tr><th>估值尺</th><th>数值</th><th>判读</th></tr></thead><tbody><tr><td>PB（重整前，2026-06-30 归母净资产 8.84 亿元）</td><td>2.42 倍</td><td>对一家亏损、逾期债务占净资产 78.15% 的公司不便宜</td></tr><tr><td>PB（2026Q3 加计 2.80 亿元资本公积后，净资产约 11.64 亿元）</td><td>1.84 倍</td><td>分子不变，因资本性投入而"变便宜"——<strong>这不是经营改善</strong></td></tr><tr><td><strong>理论除权参考价</strong></td><td><strong>3.97–4.48 元</strong>（中枢约 4.2 元）</td><td><strong>对现价 5.33 元 −16%~−25.5%</strong></td></tr><tr><td>成本锚（牵头方 2.6820 元）</td><td>现价是其 1.99 倍</td><td>产业资本五折拿股</td></tr><tr><td>注入后市值（粗糙）</td><td>若生力民爆整体注入并以 15–20 倍 PE（对应 2025 年净利 10.31 亿元）估值，注入主体价值约 155–206 亿元；按反向吸收合并口径，现有股东大约只剩 10%–22% 权益</td><td>对现有股东<strong>不必然增厚</strong>；对价与换股比例均未定，<strong>无法给出可靠目标价</strong></td></tr></tbody></table>
+<ul><li><strong>★ 本标的使用"想象力加总"的边界</strong>：市场对"生力民爆注入"确有可加总的空间（10.31 亿元净利 × 民爆同业 PE），但——<strong>加总的前提是"装入"，而装入的时限被协议写在"重整计划执行完毕起 5 年内"，起点本身还在 12–18 个月之后</strong>。按 ST雪发的判据句自问："<strong>我在赌的那件事，如果等三年会发生吗？</strong>"——<strong>答案是不会（三年内不会发生）</strong>。故本报告不给出基于注入的乐观目标价，只标注"想象空间存在但不可交易"。</li></ul>
+<h3 id="sec15">4.2 投资结论</h3>
+<table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td><strong>结论</strong></td><td><strong>卖出（回避）</strong></td></tr><tr><td><strong>理由链</strong></td><td><strong>① 赔率已被规则性削弱——现价 5.33 元是牵头方成本 2.6820 元的 1.99 倍，按已披露方案的理论除权参考价仅 3.97–4.48 元（−16%~−25.5%）。</strong>"重整成功"对按现价买入者首先是向下除权。（<a href="https://data.eastmoney.com/notices/detail/002360/AN202609231829805524.html" target="_blank" rel="noopener">重整投资协议公告</a>）&lt;br&gt;<strong>② 最硬的催化已一次性兑现且市场已否——</strong>2026-09-17 确定生力民爆联合体中选（本年度最硬利好）公开后，09-18 放量 −8.58%、登龙虎榜净卖 774 万元；09-22 签署协议后仅 +3.00% 便回落。<strong>注意力峰值已过。</strong>（<a href="https://data.eastmoney.com/notices/detail/002360/AN202609171829519304.html" target="_blank" rel="noopener">招募进展公告</a>）&lt;br&gt;<strong>③ 相对涨幅已透支——</strong>2026 年 YTD +10.12%，同期 ST 板块中位 −22.98%、重整型 ST 样本中位 −27.44%、上证指数 −3.19%；真实超额约 +13 个百分点。<strong>它不是"还没涨"，是"已经涨过了"。</strong>&lt;br&gt;<strong>④ "物"太远，不构成本轮买入理由——</strong>资产注入承诺的起点是"重整计划执行完毕"（12–18 个月后），期限再往后 5 年，实际约 <strong>6–7 年</strong>；叠加反向吸收合并对现有股东的进一步摊薄。参照 ST司特判例："有物但物太远，不足以支撑'它还便宜'。"&lt;br&gt;<strong>⑤ 近端硬节点方向朝下 + 基本面不具备自愈能力——</strong>法院一旦裁定受理重整，将按深主板 9.4.1(九) 叠加 \*ST；2025 年归母 −10.93 亿元、2026H1 营收 −28%（工业炸药 −83.63%、省外收入归零）、逾期债务 7.10 亿元（占净资产 78.15%）、有息负债约 17 亿元而货币资金 1.04 亿元；公司已被列入失信被执行人名单、实控人 50.62% 持股被冻结。</td></tr><tr><td><strong>触发条件</strong></td><td><strong>转买入信号</strong>：① 股价回落至 <strong>3.8–4.3 元</strong>区间（接近或低于除权参考价中枢），赔率修复；② 法院<strong>正式裁定受理重整</strong>后 \*ST 落地砸出深坑（"利空出尽"型低点，需配合成交量放大确认）；③ 披露《2026 年度内控否定意见影响已消除的审核报告》。&lt;br&gt;<strong>转卖出信号（确认）</strong>：预重整期限 2026-10-20 届满既未受理又未延期；重整投资人退出或协议解除；2026 年报营收跌破 3 亿元。</td></tr><tr><td><strong>失效条件</strong></td><td>① 重整投资人以<strong>显著高于协议价的现金对价注入民爆资产</strong>（对现有股东增厚），且对价方案公开；② 2026 年报内控审计转为标准无保留意见<strong>且</strong>营收守住 3 亿元、净资产为正——则"ST + 重整"双压制同时解除，须重估；③ 生力民爆公告提前完成资产注入（早于 2028 年）。</td></tr><tr><td><strong>参考区间</strong></td><td>现价 5.33 元无安全边际；<strong>观察/关注区间 3.80–4.30 元</strong>（接近除权参考价中枢）；若已持仓，<strong>止损位 4.80 元</strong>（跌破 2026-06 低点 4.48 前的中继位）；<strong>不给目标价</strong>（注入对价未定）。</td></tr><tr><td><strong>时间窗口</strong></td><td>本结论有效期至 <strong>2026-12-31</strong>（预重整期限届满 + 2026 年报预告窗口前）。</td></tr><tr><td><strong>仓位建议</strong></td><td><strong>不建仓</strong>；已持仓者利用反弹（如 5.6–5.9 元）减仓。</td></tr><tr><td><strong>最大风险</strong></td><td><strong>重整在 2026-10-20 前被法院正式受理，且同步披露"抵债作价接近现价 + 注入对价明显有利现有股东"，触发一轮"重整确定性溢价"的短促脉冲——本报告的"卖出"在 10–20 个交易日内可能被这套组合拳证伪。</strong></td></tr></tbody></table>
+<hr>
+<h2 id="chap5">附录</h2>
+<h3 id="sec16">附录 A · 待核实 / 需补充清单</h3>
+<p><strong>结论：本报告的核心定价参数中，只有"转增股份抵债作价"一项未披露（它决定除权参考价的三档区间），其余缺口均不影响结论方向。</strong></p>
+<details class="fold"><summary>论据 · 待核实 / 需补充清单</summary><div class="fold-body">
+
+<table><thead><tr><th>序号</th><th>事项</th><th>现状</th></tr></thead><tbody><tr><td>A1</td><td><strong>转增股份抵债作价</strong></td><td><strong>未披露</strong>——除权参考价的三档测算因此给出区间；受理后待重整计划披露</td></tr><tr><td>A2</td><td>联合体其他三名成员的<strong>锁定期</strong></td><td>公告未披露（仅牵头方明确 60 个月）</td></tr><tr><td>A3</td><td>重整投资人联合体的<strong>最终受让股数</strong></td><td>以中国结算深圳分公司确认数量为准，公告明示可能因资本公积创设规模变化而调整</td></tr><tr><td>A4</td><td>同德科创<strong>剥离的具体方式、对价与时间</strong></td><td>公告仅写"以忻州中院裁定批准的重整计划相关内容为准"</td></tr><tr><td>A5</td><td><strong>抵债股份数</strong>（161,325,685 股）</td><td>系按"转增总数 − 投资人受让数"倒算，非公告直接列示</td></tr><tr><td>A6</td><td>2026 年全年营收是否守住 3 亿元</td><td>需待 2026 年报；当前按 H1 数据外推约 3.4 亿元，余量仅约 13%</td></tr><tr><td>A7</td><td>生力民爆 2025 年财务数据</td><td>来源为"生力民爆提供的资料"，<strong>未经审计</strong>，公告明示"根据生力民爆提供的资料"</td></tr><tr><td>A8</td><td>2026-01-13 公告的 600 万股司法拍卖（2026-02-09/10）<strong>成交结果</strong></td><td><strong>未检索到后续成交/流拍公告</strong>；若成交，张云升持股降至 18.43%</td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec17">附录 B · 关键信源链接（简版）</h3>
+<p><strong>结论：本报告全部关键事实均可回溯到一级公告原文，链接如下（共 14 份）。</strong></p>
+<details class="fold"><summary>论据 · 关键公告链接清单</summary><div class="fold-body">
+
+<table><thead><tr><th>序号</th><th>标题</th><th>链接</th></tr></thead><tbody><tr><td>B1</td><td>关于公司股票交易将被实施其他风险警示暨股票停复牌的提示性公告（2026-04-28）</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202604271821634169.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>B2</td><td>董事会对公司 2025 年度保留意见的审计报告和否定意见的内部控制审计报告涉及事项的专项说明</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202604271821634187.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>B3</td><td>2025 年年度报告</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202604271821634163.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>B4</td><td>2025 年度内部控制审计报告</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202604271821634176.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>B5</td><td>关于自查非经营性资金占用及整改情况的公告</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202604271821634183.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>B6</td><td>关于被债权人申请重整及预重整的提示性公告（2026-04-22）</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202604211821379341.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>B7</td><td>关于法院决定对公司进行预重整备案登记的公告</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202604211821379363.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>B8</td><td>关于公开招募重整投资人的公告</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202605151822348741.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>B9</td><td>关于公开招募重整投资人进展情况的公告（确定生力民爆联合体）</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202609171829519304.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>B10</td><td>关于与重整投资人签署《重整投资协议》的公告</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202609231829805524.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>B11</td><td>关于公司接受现金赠与及获得债务豁免的公告</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202609271829937014.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>B12</td><td>关于公司及子公司部分债务逾期的进展公告（2026-08-24）</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202608241828363694.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>B13</td><td>关于公司控股股东、实际控制人部分股份被司法冻结的公告（2026-09-12）</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202609111829275829.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>B14</td><td>投资者关系活动记录表（2026-05-22）</td><td><a href="https://data.eastmoney.com/notices/detail/002360/AN202605221822686700.html" target="_blank" rel="noopener">链接</a></td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec18">附录 C · 逻辑漏洞与反方观点（5 问）</h3>
+<ol><li><strong>"生力民爆入主"的市占率/体量怎么来的？</strong> —— 产能 25.65 万吨/年、2025 年营收 26.91 亿元、净利 10.31 亿元，<strong>来源为公司公告转述的"生力民爆提供的资料"，未经审计</strong>（见 A7）。且<strong>"入主"目前仅是协议层面</strong>，法院尚未受理重整，股权尚未过户。</li><li><strong>"5 年注入承诺"算不算硬承诺？</strong> —— 属<strong>有条件硬承诺</strong>：有明确标的（民爆业务资产、业务及权益）、明确时限（重整计划执行完毕起 5 年）、明确方式（包括但不限于反向吸收合并），且协议写明"因政策限制或审批障碍无法按期完成的，应采取经董事会审议认可的替代方案"——<strong>末句是逃生条款</strong>。按"写了违约后果的才是硬承诺"口径，本条<strong>未写违约金</strong>，属<strong>半硬钩子</strong>。</li><li><strong>"2.80 亿元到账"是否等于净资产问题解决？</strong> —— <strong>不等于</strong>。它计入资本公积、不进损益，只把净资产从 8.84 亿元抬到约 11.64 亿元；<strong>2026H1 单期亏损 0.48 亿元，该笔输血约相当于 5 期亏损的量级</strong>，且不改变"主业盈利为负"。</li><li><strong>引用的时间点是否已过期？</strong> —— 公司口径需还原时点：2026-05-22 业绩说明会上公司答"公司将全力推进预重整及重整工作……保障民爆核心板块的正常运营"，<strong>当时尚未选定投资人</strong>；投资人确定（09-17）与协议签署（09-22）均在之后。另：戴帽公告所述"涨跌幅限制为 5%"是<strong>当时</strong>规则，<strong>现行主板 ST 已为 10%</strong>。韭研异动表最新仅至 2026-07-03。</li><li><strong>数据来源是什么级别？</strong> —— 核心事实（戴帽原因、非标五项事由、内控两项缺陷、转增方案、投资人信息、债务逾期明细、现金赠与金额）<strong>全部来自一级公告原文</strong>；行情来自腾讯/新浪；<strong>生力民爆财务数据为二手（公告转述）</strong>；同型样本 YTD 来自腾讯行情批量取数。<strong>本轮未采信任何雪球/自媒体数字。</strong></li></ol>
+<h3 id="sec19">版本记录</h3>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-06</td><td>首次生成；数据截至 2026 年半年报与 2026-09-30 行情；基准价 5.33 元、总市值 21.41 亿元、PB 2.42 倍；理论除权参考价区间 3.97–4.48 元；结论＝卖出（回避）。</td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
