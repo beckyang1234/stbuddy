@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>＊ST康乐（920575.BJ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>10 章 · 20 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断</a><a class="sblv3" href="#sec0">1.1 行情与估值快照</a><a class="sblv3" href="#sec1">1.2 股权结构与控制权</a><a class="sblv3" href="#sec2">1.3 王艳式颗粒度（股权沿革／关键人物／关联主体／关键信号）</a><a class="sblv3" href="#sec3">1.4 全流程进度看板（总控）</a><a class="sblv3" href="#sec4">1.5 运作特征与核心矛盾</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、ST 风险诊断</a><a class="sblv3" href="#sec5">2.1 戴帽原因与条款</a><a class="sblv3" href="#sec6">2.2 四类退市红线逐条对照</a><a class="sblv3" href="#sec7">2.3 摘帽与归零：同一份年报的两面</a><a class="sblv3" href="#sec8">2.4 生死开关：净资产缺口测算</a><a class="sblv3" href="#sec9">2.5 ★ 融资路径的制度死结（本报告最核心的一节）</a><a class="sblv3" href="#sec10">2.6 债务、诉讼与账户冻结</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、公司运营情况</a><a class="sblv3" href="#sec11">3.1 业务与管线</a><a class="sblv3" href="#sec12">3.2 财务五年 + 最新一期</a><a class="sblv3" href="#sec13">3.3 募集资金</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、炒作逻辑三支柱</a><a class="sblv3" href="#sec14">4.1 ① 炒预期：未来 6–12 个月可验证的事件节点</a><a class="sblv3" href="#sec15">4.2 ② 炒历史类似行为：相似股票匹配法</a><a class="sblv3" href="#sec16">4.3 ③ 炒主板映射：HPV 疫苗板块的位置</a><a class="sblv3" href="#sec17">4.4 情绪与筹码</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">五、估值与投资结论</a><a class="sblv3" href="#sec18">5.1 估值</a><a class="sblv3" href="#sec19">5.2 投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">附录 C · 逻辑漏洞与反方观点（5 问速版）</a></div><div class="sbgrp"><a class="sblv2" href="#chap9">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">＊ST康乐（920575.BJ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：卖出（回避）</strong></p>
+<p>红线分类：<span class="sttag sttag-blue"><a href="https://data.eastmoney.com/notices/detail/920575/AN202604291821760352.html" target="_blank" rel="noopener">2025年期末净资产为负</a></span>·<span class="sttag sttag-orange"><a href="https://data.eastmoney.com/notices/detail/920575/AN202604291821760146.html" target="_blank" rel="noopener">2025年报保留意见</a></span>·<span class="sttag sttag-orange"><a href="https://data.eastmoney.com/notices/detail/920575/AN202607291827460784.html" target="_blank" rel="noopener">债务逾期,3,206.63万元</a></span></p>
+<p>生死定级：<strong>命悬一线</strong>（2026 年报须同时满足"归母净资产为正 ＋ 财报标准无保留 ＋ 内控标准无保留 ＋ 按期披露"，四项零容错，任一不过即终止上市）</p>
+<p>自救空间：<strong>只有一条路走得通——在 2026-12-31 前落地"权益性注资"（第三方受让子公司老股形成资本公积、或重大资产重组、或债权人债务重组）补足约 2 亿元缺口；公司自己列出的两条主力路径（上市公司定增、子公司股权融资）在制度与会计上均不解决"归母净资产"这一判定口径。</strong></p>
+<p>主要看点：控股子公司<strong>康乐卫士（昆明）</strong>的三价 HPV 疫苗（16/18/58 型）已于 <strong>2026-07-31</strong> 取得《药品注册证书》（国药准字 S20260057），成为公司首款商业化产品；昆明基地设计年产能 <strong>1,000 万剂三价 ＋ 3,000 万剂九价</strong>、已取得药品生产许可证——<strong>但公司自述"启动疫苗生产的资金目前还没有到位"</strong>。</p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>证券简称／代码</td><td>＊ST康乐／920575.BJ（原简称"康乐卫士"，2026-05-06 起冠 \*ST）</td></tr><tr><td>上市地与板块</td><td>北京证券交易所，2023-03-15 上市；按《北交所股票上市规则》<strong>第 2.1.3 条第一款第（四）项</strong>（预计市值不低于 15 亿元、最近两年研发投入合计不低于 5,000 万元）上市</td></tr><tr><td>研究基准日</td><td>2026-10-06（行情取 2026-09-30 收盘）</td></tr><tr><td>数据截止时点</td><td>公告至 2026-09-28；财务至 2026-06-30（半年报未经审计）</td></tr><tr><td>主要数据源</td><td>北交所公告原文（东财公告库全文）、2025 年年度报告与 2026 年半年度报告原文、腾讯行情、新浪日 K、东方财富 F10、韭研公社异动表、Andy 自建 ST 信息库</td></tr><tr><td>已知数据质量异常</td><td>① 北交所公告不经巨潮 <code>hisAnnouncement</code> 主库，本轮全部改走东财公告双接口；② 半年报对 2026 年 1–9 月业绩仅作"仍将持续亏损"定性预计，无量化区间</td></tr></tbody></table>
+<p><strong>版本：初版 · 2026-10-06</strong></p>
+<hr>
+<h2 id="chap1">一、诊断</h2>
+<h3 id="sec0">1.1 行情与估值快照</h3>
+<p><strong>结论：现价 5.07 元处上市以来 8.94% 分位（历史次低位区），但这不是"价值折价"而是"退市风险折价"——因为归母净资产为负，PB 与 PS 两个分母口径同时失效，价格分位低不能读成安全垫。</strong></p>
+<p>2026-09-30 收盘 5.07 元，总市值 <strong>14.24 亿元</strong>、流通市值 9.52 亿元，换手 1.53%、成交额 1,443.92 万元。上市以来（2023-03-15 起 861 个交易日）低于现价的交易日仅 <strong>77 天＝8.94% 分位</strong>；2026 年内区间 <strong>3.41（07-13）—11.99（01-13）元</strong>，现价处 19.3% 分位。总股本自上市以来恒为 2.8094 亿股、无送转，<strong>不复权即前复权，分位口径可信</strong>。</p>
+<p>估值三把尺子的结论是一致的：<strong>全部失效或不可用</strong>——PE(TTM) 为负；PB 为负（归母净资产 -1.218 亿元）；半年营收 18.61 万元使 PS 无意义。此时唯二可用的锚是<strong>市值／资产口径</strong>（市值 14.24 亿元 vs 总资产 12.34 亿元，其中在建工程 7.88 亿元）与<strong>隐含概率倒推</strong>（见 §5.1）。</p>
+<details class="fold"><summary>行情与估值明细（2026-09-30）</summary><div class="fold-body">
+
+<table><thead><tr><th>指标</th><th>数值</th></tr></thead><tbody><tr><td>收盘价／昨收</td><td>5.07 元／4.94 元（+2.63%）</td></tr><tr><td>总股本／流通股本</td><td>2.8094 亿股／1.8784 亿股</td></tr><tr><td>总市值／流通市值</td><td>14.24 亿元／9.52 亿元</td></tr><tr><td>换手率／成交额</td><td>1.53%／1,443.92 万元</td></tr><tr><td>PE(TTM)／PB</td><td>负值／负值（-11.69 倍，分母为负）</td></tr><tr><td>年初至今涨跌幅</td><td><strong>-38.69%</strong>（2025-12-31 收盘 8.27 元）</td></tr><tr><td>2026 年内区间</td><td>3.41（07-13）—11.99（01-13）元</td></tr><tr><td>上市以来收盘价分位</td><td>8.94%（861 个交易日，最高 35.52、最低 3.41 元）</td></tr><tr><td>每股净资产</td><td><strong>-0.43 元</strong>（2026-06-30）</td></tr><tr><td>资产负债率（合并）／流动比率</td><td><strong>109.87%／0.013</strong></td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec1">1.2 股权结构与控制权</h3>
+<p><strong>结论：控制权短期内不会变更（控股股东股份若被全部行权仍持 9.60%，高于二股东 7.90%），但控股股东已丧失"兜底能力"——其质押对手方出现自然人、小额贷款公司与典当行，且公告明示质押融资款"主要用于天狼星集团向公司提供借款"，即靠高成本小额融资给上市公司输血。</strong></p>
+<p>控股股东<strong>天狼星控股集团有限公司 6,043.60 万股（21.51%）</strong>，全部为限售流通 A 股；实控人<strong>陶涛</strong>（持天狼星集团 78.60% 股权），一致行动人为天狼星集团、小江生物、江林威华，<strong>合计表决权 8,346.93 万股（29.71%）</strong>。股东名册中的<strong>云南国资系</strong>（云南慧港投资 1.81%、云南滇中恒昇 1.09%，同受云南滇中新区管理委员会控制）＋昆明远望健康产业股权投资基金 1.81%，是市场"云南国资守候多年"叙事的来源，但<strong>三者合计仅 4.71%、且无任何注资公告</strong>。</p>
+<p>质押结构是最值得警惕的一处：天狼星集团已质押 3,345.57 万股（占其持股 <strong>55.36%</strong>），控股股东及一致行动人累计质押 <strong>3,789.57 万股（占总股本 13.49%）</strong>；<strong>司法冻结 0 股</strong>。</p>
+<details class="fold"><summary>质押明细与质权人结构（2026-06-10 公告口径）</summary><div class="fold-body">
+
+<table><thead><tr><th>质权人</th><th>性质</th><th>质押股数</th><th>用途</th></tr></thead><tbody><tr><td>陈华</td><td><strong>自然人</strong></td><td>200 万股（0.71%）</td><td>融资性质押（本次），本金 1,000 万元，<strong>用于天狼星集团向公司提供借款</strong></td></tr><tr><td>陈华</td><td>自然人</td><td>200 万股（0.71%）</td><td>2025-12-15 融资性质押</td></tr><tr><td>北京市富安小额贷款有限公司</td><td><strong>小贷公司</strong></td><td>800 万股（2.85%）</td><td>融资性质押（已于 2026-02-11 解除）</td></tr><tr><td>湖北中财典当有限责任公司</td><td><strong>典当行</strong></td><td>800 万股（2.85%）</td><td>融资性质押</td></tr><tr><td>湖北中财典当有限责任公司</td><td>典当行</td><td>400 万股（1.42%）</td><td>融资性质押</td></tr><tr><td>北京银行经开区支行</td><td>银行</td><td>1,000 万股（3.56%）</td><td>为公司银行授信担保</td></tr><tr><td>兴业银行大兴支行</td><td>银行</td><td>550 万股（1.96%）</td><td>为公司银行授信担保</td></tr><tr><td>北京亦庄国际融资租赁</td><td>租赁</td><td>195.57 万股（0.70%）</td><td>为公司融资租赁担保（<strong>已进入执行证书程序</strong>）</td></tr></tbody></table>
+<p>公告原文提示：<strong>"如果全部在质股份被行权，天狼星集团仍持有公司股份 26,980,303 股，占总股本的 9.60% 以上，不会低于第二大股东持股比例，不会导致公司控股股东或者实际控制人发生变化。"</strong></p>
+
+</div></details>
+<p><strong>逐票判断："高质押＝必自救"这条推论在本股不成立。</strong> 质押的对手方是自然人、小贷与典当——这类资金成本高、期限短、缺乏展期空间，说明控股股东自身的融资渠道已经收窄到最后一档；质押所得还要转手借给上市公司。这不是"深套待解套"型的被动触发器，而是"自己也快没牌"的信号。</p>
+<h3 id="sec2">1.3 王艳式颗粒度（股权沿革／关键人物／关联主体／关键信号）</h3>
+<p><strong>结论：这家公司四个"完全信息"维度的答案都指向同一件事——主体架构清楚、技术资产真实，但资金链条从控股股东到上市公司到子公司全部绷到极限。</strong></p>
+<details class="fold"><summary>① 股权与控制权沿革</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>关键事件</th><th>股权／控制权变化</th><th>背后的逻辑</th></tr></thead><tbody><tr><td>2008 年</td><td>公司成立（北京经开区）</td><td>—</td><td>重组蛋白疫苗技术平台，核心为大肠杆菌表达体系</td></tr><tr><td>2015-09-18</td><td>新三板挂牌</td><td>进入公开资本市场</td><td>为后续研发融资铺路</td></tr><tr><td>2021 年</td><td>新三板第一次股票定向发行</td><td>—</td><td>募资投向三价／九价 HPV III 期临床、临床前研究、昆明基地建设、补流</td></tr><tr><td>2022-12-26</td><td>北交所 IPO 过会</td><td>拟募资 23.8 亿元（当时北交所最大 IPO）</td><td><strong>首家以"市值＋研发投入"第四套标准申报的北交所企业</strong></td></tr><tr><td>2023-03-15</td><td>北交所上市</td><td>发行 1,400 万股 @21 元，募资净额 2.67 亿元；上市时市值约 <strong>59.05 亿元</strong></td><td>实际募资规模远小于拟募资额</td></tr><tr><td>2023-04</td><td>变更募投实施主体</td><td>15,450 万元由借款改增资投入昆明康乐</td><td>昆明基地主体转为控股子公司</td></tr><tr><td>2025-07</td><td>公积金弥补亏损</td><td>—</td><td>恢复分红能力的技术动作</td></tr><tr><td>2025-12-18</td><td>首次公告贷款逾期＋15 个银行账户被冻结</td><td>—</td><td>流动性问题公开化</td></tr><tr><td>2026-01-15／02-13</td><td>公告三价与九价 HPV 临床试验被临床现场单位<strong>暂停</strong></td><td>—</td><td>临床经费支付逾期、现场研究经费短缺</td></tr><tr><td>2026-04-29</td><td>披露 2025 年年报（归母净资产 -2,660.74 万元）</td><td><strong>股票 4/30 停牌，5/6 起冠 \*ST</strong></td><td>触及 10.3.1(二)"期末净资产为负值"</td></tr><tr><td>2026-06-16</td><td>北交所〔2026〕18 号纪律处分</td><td>—</td><td>业绩预告／快报不准确且未及时修正</td></tr><tr><td>2026-07-31</td><td>三价 HPV 疫苗取得《药品注册证书》</td><td>—</td><td>首款商业化产品获批</td></tr><tr><td>2026-08-21</td><td>披露 2026 年半年报</td><td>归母净资产进一步降至 <strong>-1.22 亿元</strong></td><td>H1 亏损 9,529.61 万元</td></tr></tbody></table>
+
+</div></details>
+<details class="fold"><summary>② 关键人物（出生年月＋履历＋现任全部关联职务；公告未披露的照实写）</summary><div class="fold-body">
+
+<table><thead><tr><th>姓名</th><th>出生年月</th><th>现任职务（起始日）</th><th>与控股股东关系</th><th>备注</th></tr></thead><tbody><tr><td>刘永江</td><td>1961 年 8 月</td><td>董事长、首席科学官（2024-11-25 起）；<strong>原兼董事会秘书</strong></td><td>江林威华法定代表人；曾任/现任集团相关职务</td><td>北交所〔2026〕18 号纪律处分当事人之一；2026-09-18 董秘一职由赵立涛接任</td></tr><tr><td>陶然</td><td>1963 年 8 月</td><td>董事、<strong>首席执行官、法定代表人</strong>（2023-07-17 起）</td><td>一致行动人</td><td>纪律处分当事人之一</td></tr><tr><td>陶涛</td><td>1966 年 2 月</td><td>董事（2024-11-25 起）</td><td><strong>实际控制人</strong>（持天狼星集团 78.60%）</td><td>与配偶为多笔银行授信的连带保证人</td></tr><tr><td>郝春利</td><td>1973 年 9 月</td><td>董事（任期至 2026-07-29）</td><td>天狼星集团董事、持其 3.00% 股权</td><td>家族／体系内一致行动链条的一环</td></tr><tr><td>王泽学</td><td>1971 年前后（年龄 56）</td><td><strong>首席财务官</strong>（2025-12-18 起）</td><td>—</td><td>纪律处分当事人之一</td></tr><tr><td>赵立涛</td><td>年龄 50</td><td>董事会秘书（<strong>2026-09-18</strong> 起）</td><td>—</td><td>债务逾期与诉讼缠身背景下的常规补位</td></tr><tr><td>乔友林</td><td>年龄 71</td><td>独立董事（2024-11-25 起）</td><td>—</td><td>流行病学领域专家（公告口径）</td></tr><tr><td>黄顺</td><td>年龄 53</td><td>独立董事（<strong>2026-08-14</strong> 起）</td><td>—</td><td>新聘独董</td></tr><tr><td>李辉</td><td>1979 年 9 月</td><td>原副董事长、首席资本官</td><td>—</td><td><strong>2026-06-16 离任</strong>（未续任）</td></tr></tbody></table>
+<p><strong>注意两点</strong>：① 控股股东、实控人、董事长、CEO、CFO 五方姓名高度集中于陶氏与刘氏两个体系，<strong>质押担保、借款、董监高职务在同一个群体内部循环</strong>；② 公告未披露刘永江、赵立涛、黄顺的出生年月，本表按东财 F10 年龄字段换算推算，<strong>以公告为准的只有已披露者</strong>。</p>
+
+</div></details>
+<details class="fold"><summary>③ 核心主体的工商与主营（查不到财务的照实写"未披露"）</summary><div class="fold-body">
+
+<table><thead><tr><th>主体</th><th>成立／注册资本</th><th>主营（公告口径）</th><th>关键财务（2026H1／公告）</th></tr></thead><tbody><tr><td>北京康乐卫士生物技术股份有限公司</td><td>上市主体，总股本 2.8094 亿股</td><td>人用疫苗研发、开发与产业化</td><td>母公司所有者权益 <strong>+2.696 亿元</strong>；母公司未分配利润 -19.698 亿元</td></tr><tr><td>康乐卫士（昆明）生物技术有限公司</td><td>注册资本 <strong>4.7862 亿元</strong></td><td>生物制品研发、生产及销售（<strong>持昆明 GMP 基地与三价 HPV 上市许可</strong>）</td><td>总资产 9.8722 亿元／净资产 <strong>+2.7002 亿元</strong>／营收 125.13 万元／净利 <strong>-3,662.55 万元</strong></td></tr><tr><td>云南滇中立康实业开发有限公司</td><td>注册资本 5,000 万元</td><td>昆明产业化基地建设及物业管理</td><td>总资产 2.9384 亿元／净资产 +1.4817 亿元／营收 481.37 万元／净利 -102.08 万元</td></tr><tr><td>康乐卫士（济南）生物制药有限公司</td><td><strong>未披露</strong></td><td>疫苗研发</td><td><strong>未披露</strong></td></tr><tr><td>PT FUTURE BIOPHARMA ASIA（印尼子公司）</td><td><strong>未披露</strong></td><td>印尼临床与商业化平台</td><td><strong>未披露</strong></td></tr></tbody></table>
+<p><strong>关键信号（反向读数一并写出）</strong>：合并口径归母净资产（-1.218 亿元）<strong>低于</strong>母公司口径所有者权益（+2.696 亿元），差额来自母公司对子公司长期股权投资的抵销（母公司长期股权投资 4.555 亿元）。这说明——<strong>"资不抵债"出现在合并层面，是集团内部累计亏损与资产组减值的结果，而不是某一块资产被抽空</strong>。它证明的是"账面权益被亏损吃掉"，<strong>不证明</strong>"公司没有可用的实体资产"；反过来，<strong>也不减轻归母净资产为负这一退市判定事实</strong>。</p>
+
+</div></details>
+<h3 id="sec3">1.4 全流程进度看板（总控）</h3>
+<p><strong>结论：公司目前没有"保壳动作清单"可做——监管路径上它已无所作为，唯一变量在公司体外（潜在注资方），因此报告主线只能写成"等资金"。</strong></p>
+<table><thead><tr><th>环节</th><th>现状（截至 2026-10-06）</th><th>卡点／条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>① 三价 HPV 获批</td><td><strong>已完成</strong>（2026-07-31）</td><td>—</td><td>取得<strong>批签发证明</strong>＋各地疾控招标准入</td><td><a href="https://data.eastmoney.com/notices/detail/920575/AN202607311827527014.html" target="_blank" rel="noopener">三价 HPV 获批公告</a></td></tr><tr><td>② 生产启动</td><td>未启动</td><td><strong>"启动疫苗生产的资金目前还没有到位"</strong>（风险因素原文）</td><td>资金到位</td><td>2026 年半年报"公司面临的风险和应对措施"</td></tr><tr><td>③ 九价 HPV 上市申请</td><td><strong>停滞</strong>（2026-03 起 III 期进入结束程序）</td><td>临床经费短缺、访视停止</td><td>项目重启并完成桥接试验</td><td>同上</td></tr><tr><td>④ 债务化解</td><td>逾期本息持续新增</td><td>未化解存量逾期者难以取得新增授信</td><td>展期／重组方案</td><td><a href="https://data.eastmoney.com/notices/detail/920575/AN202609181829620219.html" target="_blank" rel="noopener">公司及子公司部分债务逾期公告</a></td></tr><tr><td>⑤ 权益注资（保壳唯一解）</td><td><strong>零公告</strong></td><td>需要约 2 亿元量级的权益性资金</td><td>战投／重组／债务豁免</td><td><a href="https://data.eastmoney.com/notices/detail/920575/AN202607291827460784.html" target="_blank" rel="noopener">年报问询函回复</a></td></tr><tr><td>⑥ 2026 年报（生死判定）</td><td>未出</td><td><strong>归母净资产为正＋财报标准无保留＋内控标准无保留＋按期披露</strong></td><td>2027-04</td><td>北交所《股票上市规则》10.3.6／10.3.9</td></tr></tbody></table>
+<h3 id="sec4">1.5 运作特征与核心矛盾</h3>
+<p><strong>结论：手法上这是一家"把全部资源押在一条管线上、并在管线刚出结果时资金断裂"的企业；核心矛盾一句话——产品是真的，钱是假的。</strong></p>
+<p>判断落在三个可核对的动作上：<strong>控股股东、实控人、董事会、管理层至今未变（无交权动作）；唯一救命动作（权益注资）截至基准日零公告；成败关键变量是 2026-12-31 当日经审计归母净资产的正负号，没有中间态。</strong></p>
+<details class="fold"><summary>运作特征四要素（手法／节奏／交权方式／核心矛盾）</summary><div class="fold-body">
+
+<ul><li><strong>手法</strong>：以第四套标准（无盈利门槛）上市融资 → 募资远低于计划（拟 23.8 亿元、实募净额 2.67 亿元）→ 昆明基地靠银行贷款、融资租赁、子公司增资、控股股东质押输血多线并行 → 2025 年末集中暴露。</li><li><strong>节奏</strong>：从"临床经费支付逾期"到"临床现场集体发函暂停"（2026-01）再到"III 期进入结束程序"（2026-03），用了不到一个季度；从"业绩快报净资产 +2.44 亿元"到"修正后 -0.27 亿元"（2026-04-29），只用了一次资产组减值测试。</li><li><strong>交权是配合式还是对抗式</strong>：<strong>两者都不是——是不交权</strong>。控股股东天狼星集团 21.51%、一致行动人合计 29.71% 未变；董事会任期至 2027-11-24；无表决权放弃、无一致行动解除、无不谋求控制权承诺。</li><li><strong>核心矛盾</strong>：三价 HPV 已获批是<strong>真实的产品里程碑</strong>，但公司同时缺三样东西——生产资金、销售体系、支付能力。三者缺一，里程碑都换不成现金流。</li></ul>
+
+</div></details>
+<p><strong>一句判读</strong>：这类标的的定价不由"公司讲什么"决定，而由"体外有没有人愿意填那 2 个亿"决定——<strong>而这件事在本股没有任何可观测的前兆。</strong></p>
+<hr>
+<h2 id="chap2">二、ST 风险诊断</h2>
+<h3 id="sec5">2.1 戴帽原因与条款</h3>
+<p><strong>结论：戴帽事由是纯财务类"净资产为负"，且因为公司按第四套标准上市，北交所规则明确豁免了"营收＋利润"这一条——所以本股的存亡与营业收入完全无关，只由净资产与审计意见决定。</strong></p>
+<p><span class="sttag sttag-blue"><a href="https://data.eastmoney.com/notices/detail/920575/AN202604291821760352.html" target="_blank" rel="noopener">2025年期末净资产为负</a></span>——依《北京证券交易所股票上市规则》<strong>第 10.3.1 条第一款第（二）项</strong>："最近一个会计年度经审计的期末净资产为负值"。公司 2025 年度经审计<strong>归属于上市公司股东的所有者权益为 -26,607,358.65 元</strong>。股票 2026-04-30 停牌一天，<strong>2026-05-06 起实施退市风险警示</strong>，简称由"康乐卫士"变更为"＊ST康乐"，代码不变；<strong>实施后交易日涨跌幅限制不变，仍为 30%</strong>。</p>
+<p><span class="sttag sttag-orange"><a href="https://data.eastmoney.com/notices/detail/920575/AN202604291821760146.html" target="_blank" rel="noopener">2025年报保留意见</a></span>——中审众环 2026-04-28 出具<strong>保留意见</strong>审计报告（众环审字（2026）0300288 号）。保留事由是<strong>两个互相咬合的问题</strong>：① 公司 2025 年净亏 5.79 亿元、负债高于资产 2,660.74 万元已资不抵债，<strong>改善措施仍在论证或报批过程中，财务报表未对持续经营重大不确定性作出充分披露</strong>；② 该不确定性可能影响"重组疫苗临床及产业化项目资产组"未来现金流预测假设，<strong>进而影响减值准备计提的准确性</strong>。重要性水平按合并资产总额 121,885.83 万元的 0.5% 确定，为 <strong>609.43 万元</strong>。</p>
+<p><strong>关键制度事实（决定全篇）</strong>：戴帽公告在终止上市条款后附了一句限定——"<strong>按照本规则第 2.1.3 条第一款第二至四项规定上市的公司，不适用本条第一款第一项的规定</strong>"。公司招股说明书与发行保荐文件均明确其适用<strong>第 2.1.3 条第（四）项</strong>（预计市值不低于 15 亿元、最近两年研发投入合计不低于 5,000 万元）。⇒ <strong>10.3.1 与 10.3.9 中"孰低为负且营业收入低于 5,000 万元"这一项对本股不适用</strong>。</p>
+<details class="fold"><summary>核准依据：第四套上市标准的书面出处</summary><div class="fold-body">
+
+<p>《北京康乐卫士生物技术股份有限公司向不特定合格投资者公开发行股票并在北京证券交易所上市投资风险特别公告》（公告编号 2023-023）原文："本次发行价格确定后发行人上市时市值约为 <strong>59.05 亿元</strong>（超额配售选择权行使前）……发行人 2020 年度、2021 年度经审计的研发投入分别为 11,751.11 万元、21,827.79 万元，合计不低于 5,000.00 万元，<strong>符合并适用《北京证券交易所股票上市规则（试行）》第 2.1.3 条第（四）项</strong>规定的公开发行并上市的市值及财务指标标准：'预计市值不低于 15 亿元，最近两年研发投入合计不低于 5,000.00 万元'。"</p>
+<p>发行价格 21 元／股，发行 1,400 万股，募集资金总额 29,400 万元、净额 26,662.41 万元（超额配售权行使前）。</p>
+
+</div></details>
+<h3 id="sec6">2.2 四类退市红线逐条对照</h3>
+<p><strong>结论：四类红线只踩"财务类"一条，但这一条是致命的一条——净资产为负已经把公司放到"连续两个会计年度"的悬崖边；交易类、规范类、重大违法类当前均未触及。</strong></p>
+<table><thead><tr><th>类型</th><th>触发条件（北交所）</th><th>本股现状（2026-09-30／2026-06-30）</th><th>判定</th></tr></thead><tbody><tr><td>交易类</td><td>连续 20 交易日收盘价 &lt;1 元；或市值 &lt;3 亿元；或股东数 &lt;200 人</td><td>收盘 5.07 元；市值 14.24 亿元；股东 6,952 户</td><td><strong>未触及</strong></td></tr><tr><td>财务类</td><td>① 孰低为负且营收 &lt;5,000 万元；② 期末净资产为负；③ 财报无法表示／否定意见</td><td><strong>②已触发</strong>（2025 年末归母净资产 -2,660.74 万元）；<strong>①因第四套标准上市而不适用</strong>；③2025 年为"保留意见"，<strong>不在触发项之列</strong></td><td><strong>已触发，主路径</strong></td></tr><tr><td>规范类</td><td>资金占用、违规担保、内控连续非标、未按期披露等</td><td>无非经营性资金占用；无违规担保；<strong>已出现"业绩预告／快报信息不准确"的交易所纪律处分</strong></td><td><strong>未触及</strong></td></tr><tr><td>重大违法类</td><td>欺诈发行、重大信披违法、财务造假达量化线</td><td>无证监会立案、无行政处罚</td><td><strong>未触及</strong></td></tr></tbody></table>
+<blockquote><p>口径提醒：Andy 路径底表《退市风险预警-20261005.xlsx》「财务类」工作表对 920575 收录<strong>两行</strong>——块①（营收 0.01 亿元／利润总额 -5.79／净利 -5.79／扣非 -5.80 亿元）与块②（归母净资产 -0.27 亿元／同比 -104.81%／上年末 5.53 亿元）。<strong>底表只是路径索引，本表数字已逐项回 2025 年年报与 2026 年半年报原文核实。</strong></p></blockquote>
+<h3 id="sec7">2.3 摘帽与归零：同一份年报的两面</h3>
+<p><strong>结论：撤销 \*ST 的条件与终止上市的条件是同一张清单（10.3.9 第一款第一至七项）——2026 年报四项中任何一项不过关，不是"再等一年"，而是直接终止上市。</strong></p>
+<p>依 <strong>10.3.6</strong>：公司因触及第 10.3.1 条被实施退市风险警示后，<strong>首个会计年度</strong>（对康乐即 2026 年度）审计结果表明<strong>未出现 10.3.9 条第一款第一至七项任一情形</strong>的，可以向本所申请撤销退市风险警示；应在披露年度报告同时说明，拟申请的须在<strong>披露之日起 5 个交易日内</strong>提交。依 <strong>10.3.7</strong>：提交申请后次一交易日披露；材料完备的，本所 <strong>15 个交易日</strong>内决定。依 <strong>10.3.8</strong>：决定撤销的，公告后<strong>停牌 1 天</strong>、自复牌之日起撤销；不予撤销的，收到书面通知次一交易日披露。</p>
+<p><strong>对康乐卫士实际适用的"四项零容错开关"</strong>（10.3.9 第一款，逐项对照本股）：</p>
+<table><thead><tr><th>关卡</th><th>条款</th><th>本股 2026 年报必须达到</th><th>当前基础</th></tr></thead><tbody><tr><td>(一)</td><td>孰低为负且营收 &lt;5,000 万元</td><td><strong>不适用</strong>（第四套标准豁免）</td><td>—</td></tr><tr><td><strong>(二)</strong></td><td><strong>经审计的期末净资产为负值</strong></td><td><strong>必须为正</strong></td><td>2026-06-30 已 <strong>-1.218 亿元</strong>，H2 预计再亏</td></tr><tr><td><strong>(三)</strong></td><td><strong>财报被出具保留意见／无法表示意见／否定意见</strong></td><td><strong>必须是标准无保留</strong>（<strong>保留意见也不行</strong>）</td><td><strong>2025 年已是保留意见</strong>，事由未消除</td></tr><tr><td>(四)</td><td>追溯重述后触发 (一)(二)</td><td>不适用／无追溯重述事项</td><td>—</td></tr><tr><td><strong>(五)</strong></td><td><strong>内控被出具无法表示意见／否定意见</strong></td><td>须为标准无保留</td><td>2025 年度内控审计报告已正常出具</td></tr><tr><td>(六)</td><td>未按规定时间披露内控审计报告</td><td>按期披露</td><td>具备条件</td></tr><tr><td>(七)</td><td>未在法定期限内披露过半数董事保证真实的年报</td><td>按期披露且董事保证</td><td>具备条件</td></tr></tbody></table>
+<p><strong>条款级提醒</strong>：触发 \*ST 的 10.3.1 第三项只含"<strong>无法表示意见或否定意见</strong>"，而终止条款 10.3.9 第三项把"<strong>保留意见</strong>"一并列入——<strong>"当年不因保留意见戴帽、戴帽后次年却因保留意见退市"</strong>，这一错位在本股是<strong>已经上膛的枪</strong>。</p>
+<h3 id="sec8">2.4 生死开关：净资产缺口测算</h3>
+<p><strong>结论：2026-12-31 需要的是一笔 2 亿元量级的权益性资金，而不是"把主营做起来"——三价 HPV 即便年内投产，对 2026 年净资产的贡献也可以忽略。</strong></p>
+<p>缺口算法：<code>2026 年末归母净资产 = 2026-06-30 归母净资产 + H2 归母净利 + H2 权益性交易影响</code></p>
+<ul><li>起点：<strong>-12,181.55 万元</strong>（2026-06-30）</li><li>H2 归母净利三档：乐观 <strong>-6,000 万元</strong>（研发与人员支出继续压缩、利息费用刚性）／中性 <strong>-8,500 万元</strong>／悲观 <strong>-11,000 万元</strong>（含新增逾期罚息与减值）</li><li>并表口径：<strong>少数股东权益为 0、少数股东损益为 0</strong>，即 100% 亏损由上市公司股东承担（子公司累计亏损已把少数股东权益冲减至零）</li><li>⇒ 年末归母净资产三档：<strong>-18,181.55／-20,681.55／-23,181.55 万元</strong></li><li>⇒ <strong>所需权益性注资（转正且留有余量）：乐观约 1.9 亿元／中性约 2.1 亿元／悲观约 2.4 亿元</strong></li></ul>
+<p><strong>结论句：如果 H2 没有权益性资金到位，2026 年报净资产为负是基准情形，不是尾部情形。</strong></p>
+<details class="fold"><summary>支撑缺口测算的半年报数据（2026H1）</summary><div class="fold-body">
+
+<table><thead><tr><th>项目</th><th>2026H1</th><th>2025H1</th><th>变动</th></tr></thead><tbody><tr><td>营业收入</td><td>186,070.87 元（18.61 万元）</td><td>828,599.65 元</td><td><strong>-77.54%</strong></td></tr><tr><td>营业成本</td><td>11,985.40 元</td><td>415,065.52 元</td><td>—</td></tr><tr><td>毛利率</td><td><strong>93.56%</strong></td><td>49.91%</td><td>收入为试剂销售，成本极低</td></tr><tr><td>研发费用</td><td><strong>4,004.28 万元</strong></td><td>9,046.86 万元</td><td><strong>-55.73%</strong></td></tr><tr><td>管理费用</td><td>4,477.58 万元</td><td>4,985.78 万元</td><td>-10.19%</td></tr><tr><td>财务费用（其中利息费用）</td><td>986.85 万元（966.76 万元）</td><td>627.04 万元</td><td>+57.4%</td></tr><tr><td>归母净利</td><td><strong>-9,529.61 万元</strong></td><td>-14,720.82 万元</td><td>减亏 35.26%</td></tr><tr><td>扣非归母净利</td><td>-9,534.42 万元</td><td>-14,704.47 万元</td><td>减亏 35.16%</td></tr><tr><td>经营活动现金流</td><td><strong>-2,185.07 万元</strong></td><td>-5,168.87 万元</td><td>改善 57.73%（<strong>系职工薪酬延后发放、研发付款放缓</strong>）</td></tr><tr><td>筹资活动现金流</td><td>+2,220.70 万元</td><td>+1,576.61 万元</td><td><strong>系减少归还到期银行借款</strong></td></tr></tbody></table>
+<p><strong>"减亏"与"现金流改善"的口径必须说清</strong>：H1 亏损收窄 35.26% 的主因是<strong>研发投入砍掉一半以上</strong>（-5,042.58 万元），经营现金流改善的主因是<strong>欠薪与延付供应商</strong>（应付职工薪酬由 12,379.01 万元升至 <strong>16,414.37 万元</strong>）。<strong>这不是经营改善，是把支出往后推。</strong></p>
+
+</div></details>
+<h3 id="sec9">2.5 ★ 融资路径的制度死结（本报告最核心的一节）</h3>
+<p><strong>结论：公司自己列出的两条主力融资路径都在制度或会计上不解决"归母净资产为负"——定增被"保留意见所涉事项未消除"卡住，子公司股权融资只增加少数股东权益、不进归母口径；能解局的只有"重大资产重组"或"体外权益性注资"两类，而这两类至今零公告。</strong></p>
+<p><strong>① 上市公司定增（向特定对象发行股票）——被保留意见卡住。</strong> 《北京证券交易所上市公司证券发行注册管理办法》<strong>第九条第（三）项</strong>：上市公司向特定对象发行股票，应当"最近一年财务会计报告无虚假记载，未被出具否定意见或无法表示意见的审计报告；<strong>最近一年财务会计报告被出具保留意见的审计报告，保留意见所涉及事项对上市公司的重大不利影响已经消除</strong>。本次发行涉及重大资产重组的除外"。本股 2025 年保留意见的<strong>唯一事由就是"持续经营重大不确定性未充分披露 + 已资不抵债"</strong>——除非先把资不抵债解决，否则该事由不可能"已消除"，<strong>构成自我循环</strong>。 配套再看 <strong>第十条第（四）项</strong>（上市公司或其控股股东、实际控制人被列入失信被执行人名单且情形尚未消除）与<strong>第（五）项</strong>（上市公司利益严重受损的其他情形）——目前尚无失信被执行人记录，但多项贷款逾期与执行证书程序已是<strong>新增风险敞口</strong>。</p>
+<p><strong>② 子公司（昆明康乐）股权融资——只增少数股东权益，不增归母净资产。</strong> <strong>③ 控股股东／实控人赠与或债务豁免——有能力问题。</strong> <strong>④ 债权方债务重组——计入损益、可增归母净资产，但需要偿付安排。</strong> <strong>⑤ 重大资产重组——制度上留有例外，但标的从哪来？</strong> 四条的完整推导与引文见下。</p>
+<details class="fold"><summary>②—⑤ 四条的条款依据与判读</summary><div class="fold-body">
+
+<p><strong>② 子公司（昆明康乐）股权融资——只增少数股东权益，不增归母净资产。</strong> 公司 2026-07-29 回复明确把"继续推动子公司的股权融资""力促上市公司净资产转正"写成主线之一，但<strong>退市判定看的是"归属于上市公司股东的所有者权益"</strong>（公司自己的戴帽公告即按此口径）。子公司增资在合并报表中体现为<strong>少数股东权益增加</strong>，<strong>归母净资产不变</strong>。⇒ <strong>这条路在会计上不解决生死开关</strong>。例外是"转让子公司老股且不丧失控制权"——处置对价高于应享净资产份额的差额计入资本公积，才增归母净资产；但需以显著高于账面净资产的价格找到买方（见附录 A 第 1 项）。</p>
+<p><strong>③ 控股股东／实控人赠与或债务豁免——有能力问题。</strong> 控股股东自身已质押其持股的 55.36%，且质权人中出现自然人、小贷公司与典当行；2026-06-10 公告明示本次质押融资本金 1,000 万元系"用于天狼星集团向公司提供借款"。<strong>输血方向是"股东借给公司"，不是"股东送给公司"。</strong></p>
+<p><strong>④ 债权方债务重组（非股东豁免）——计入损益、可增归母净资产，但需要偿付安排。</strong> 公司措施第 3 条提到"与主要债权人、金融机构沟通协商，探讨债务偿还及展期"。若取得债务豁免，重组收益计入当期损益、可增厚归母净资产；但<strong>需要有对价或兑付能力</strong>，而公司 2026-06-30 货币资金仅 <strong>71.03 万元</strong>。</p>
+<p><strong>⑤ 重大资产重组（发行股份购买资产）——制度上留有例外，但标的从哪来？</strong> 《发行注册办法》第九条第（三）项的括号是"<strong>本次发行涉及重大资产重组的除外</strong>"，即借助重组可绕开保留意见障碍；但公司无实控人变更计划、无标的、无公告，且<strong>控股股东自身已无资产可注</strong>。</p>
+
+</div></details>
+<p><strong>四条合并看，本股的解局条件非常具体：需要在 2026-12-31 之前，由上市公司体外的第三方，以"受让子公司老股 / 注入资产 / 豁免债务"三种形式之一，向上市公司权益端输送 2 亿元量级的资金。</strong></p>
+<h3 id="sec10">2.6 债务、诉讼与账户冻结</h3>
+<p><strong>结论：债务逾期已从"单笔子公司贷款"扩散到"公司本部＋子公司、银行＋租赁＋小贷典当"的全口径，并已进入"赋强公证可直接强制执行"阶段——这是侵蚀净资产的第二条通道。</strong></p>
+<details class="fold"><summary>债务逾期明细（按公告日）</summary><div class="fold-body">
+
+<table><thead><tr><th>公告日</th><th>主体</th><th>债权人</th><th>逾期本金</th><th>占最近一期经审计净资产</th></tr></thead><tbody><tr><td>2025-12-18</td><td>昆明康乐</td><td>中信银行昆明分行</td><td>2,021.17 万元（已还 500 万元，未偿 1,521.17 万元）</td><td>2.75%</td></tr><tr><td>2026-04-01</td><td>昆明康乐</td><td>云南省农信社（等）</td><td>—</td><td>—</td></tr><tr><td>2026-06-22</td><td>子公司</td><td>—</td><td>—</td><td>—</td></tr><tr><td>2026-07-29（回复汇总）</td><td>官渡农商行／华夏银行圆通支行／云南省农信社／民生银行环城南路支行／建设银行西单支行</td><td>—</td><td>合计 <strong>3,206.63 万元</strong></td><td>120.52%（相对 -2,660.74 万元绝对值）</td></tr><tr><td><strong>2026-09-14</strong></td><td>昆明康乐</td><td>昆明官渡农村合作银行</td><td><strong>2,550.00 万元</strong></td><td><strong>95.84%</strong></td></tr><tr><td><strong>2026-09-18</strong></td><td>昆明康乐</td><td>中国光大银行昆明分行</td><td><strong>1,924.99 万元</strong></td><td><strong>72.35%</strong></td></tr><tr><td><strong>2026-09-18</strong></td><td>公司本部</td><td>北京银行经开区支行</td><td><strong>617.19 万元</strong></td><td><strong>23.20%</strong></td></tr><tr><td><strong>2026-09-18</strong></td><td>公司本部</td><td>建设银行西单支行</td><td><strong>287.19 万元</strong></td><td><strong>10.79%</strong></td></tr><tr><td><strong>2026-09-08</strong></td><td>公司（融资租赁）</td><td>北京亦庄国际融资租赁</td><td><strong>2,470.57 万元</strong>＋逾期利息 141.78 万元＋公证费 4.06 万元</td><td>—</td></tr></tbody></table>
+<p><strong>亦庄租赁案的特殊性</strong>：该《融资租赁协议》于 2024-11-13 经<strong>北京市中信公证处赋予强制执行效力</strong>，出租人已于 2026-09-02 提交《执行证书申请书》——<strong>一旦取得执行证书，可直接向法院申请强制执行，无需另行诉讼</strong>；质押物包含控股股东天狼星集团的 195.57 万股。公司已提交异议函，尚未收到回执。</p>
+
+</div></details>
+<details class="fold"><summary>诉讼、仲裁与账户冻结</summary><div class="fold-body">
+
+<ul><li><strong>累计诉讼、仲裁涉案 2,130.47 万元 ＝ 最近一期经审计净资产绝对值的 80.07%</strong>（2026-09-18 公告）。其中：劳动争议 19 件涉案 1,234.12 万元（占 46.38%，18 件已调解或裁定、结案金额 1,199.51 万元）；合同纠纷 3 起仲裁＋3 起诉讼涉案 896.36 万元（占 33.69%）。公司称<strong>不存在单项占比超 10% 且超 1,000 万元的重大案件</strong>。</li><li><strong>2025-12-18</strong>：公司及子公司 <strong>15 个银行账户被冻结</strong>（占账户总数 41.67%），含公司及昆明康乐<strong>基本户</strong>、部分一般户与<strong>一个北交所公开发行募集资金专户</strong>；冻结金额合计 34.69 万元；另有<strong>一项专利因劳动仲裁被采取财产保全措施</strong>。</li><li><strong>劳动者密集仲裁</strong>：2026-09-04 以来 19 名员工提起劳动仲裁；2025-12-18 公告已披露"部分员工因无法按时发放薪资及缴纳社保等原因离职"。</li></ul>
+<p><strong>读法</strong>：劳动争议的密集出现是欠薪的直接表征；基本户被冻结直接影响收款与付款能力；<strong>专利被财产保全</strong>是最值得写入风险清单的一条——它触及公司最核心的技术资产。反向读数：冻结金额本身很小（34.69 万元），说明债权人保全的对象是"程序威慑"而非"资金"。</p>
+
+</div></details>
+<hr>
+<h2 id="chap3">三、公司运营情况</h2>
+<h3 id="sec11">3.1 业务与管线</h3>
+<p><strong>结论：技术资产是真实的（GMP 基地已建成、三价 HPV 已获批、8 条在研管线、63 项专利），但"热点业务占比"这个问题的答案在本股并不成立——公司根本没有收入型业务，唯一收入是科研用检测试剂，2026H1 只有 18.61 万元。</strong></p>
+<p>行业归类为 <strong>C27 医药制造业／C276 生物药品制品制造</strong>。<strong>"收入地图"这个问题在本股的正确答案是：没有收入侧的地图可画</strong>——唯一收入来源是"销售科研用检测试剂"，公司自述"未能覆盖研发和日常经营需要"。</p>
+<details class="fold"><summary>公司与基地画像、管线进度与商业化前置条件（含"四类审美标签"）</summary><div class="fold-body">
+
+<p>公司主营业务为<strong>人用疫苗的研究、开发和产业化</strong>。截至 2026-06-30，公司拥有 <strong>9 个在研候选疫苗</strong>（8 个重组蛋白 + 1 个 mRNA），拥有<strong>昆明 GMP 基地</strong>（符合中国、欧盟及 WHO GMP 标准，<strong>设计年产能 1,000 万剂三价 HPV ＋ 3,000 万剂九价 HPV</strong>，已取得药品生产许可证），在中国取得 <strong>63 项授权有效专利</strong>（其中 50 项发明专利），并在南非取得 1 项发明专利。</p>
+<table><thead><tr><th>管线</th><th>阶段</th><th>审美标签</th><th>关键事实与制约</th></tr></thead><tbody><tr><td><strong>三价 HPV（16/18/58）</strong></td><td><strong>已获批上市（2026-07-31）</strong></td><td><strong>业务反转（待验证）</strong></td><td>国药准字 S20260057；适用 9–45 岁女性；9–14 岁可 2 剂次；<strong>尚需取得批签发证明并完成各地准入</strong>；公司自述<strong>启动生产资金未到位</strong></td></tr><tr><td>九价 HPV（女性）</td><td>III 期（国内已揭盲 PI12；印尼已揭盲）</td><td>长期价值（受损）</td><td><strong>2026-03 起进入结束程序，停止第 54 个月及后续全部预定访视</strong></td></tr><tr><td>九价 HPV（男性）</td><td>III 期</td><td>长期价值（受损）</td><td>进度受制于资金</td></tr><tr><td>十五价 HPV（与成大生物联合开发）</td><td>II 期</td><td>长期价值</td><td>国内最高价数在研产品之一</td></tr><tr><td>二价 RSV／带状疱疹／七价诺如／四价手足口／脊髓灰质炎／mRNA 二价治疗性 HPV</td><td>临床前</td><td>长期价值（远）</td><td>均处于临床前研究阶段</td></tr></tbody></table>
+<p><strong>商业化前置条件清单</strong>：① 取得产品批签发证明；② 各省疾控中心招标准入与配送体系；③ <strong>生产资金</strong>（原料采购、批生产、质量管理体系运行）；④ 销售团队与市场费用；⑤ 定价体系。<strong>目前五项中只有第①项在推进，第②—⑤项均未启动。</strong></p>
+
+</div></details>
+<p><strong>一句判读</strong>：这份管线表看起来"很厚"，但<strong>能对 2026 年净资产产生贡献的项为零</strong>——三价 HPV 从获批到形成销售需跨越五个前置条件，九价已停止访视；<strong>报告因此把"业务"放在估值的最次要位置，而把"权益注资"放在最首要位置。</strong></p>
+<h3 id="sec12">3.2 财务五年 + 最新一期</h3>
+<p><strong>结论：这是一家"收入趋零、亏损延续、资产负债率过百、流动性归零"的公司；唯一在改善的指标是亏损额与经营现金流，而两者都由"少花钱、晚付钱"贡献，不是经营改善。</strong></p>
+<table><thead><tr><th>指标（合并）</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026H1</th></tr></thead><tbody><tr><td>营业收入（万元）</td><td>27.48¹</td><td>341.16¹</td><td>4,308.22¹</td><td>888.58¹</td><td><strong>144.94</strong></td><td>18.61</td></tr><tr><td>归母净利润（万元）</td><td>-38,000¹</td><td>-29,400¹</td><td>-14,300¹</td><td>-35,616¹</td><td><strong>-57,945.11</strong></td><td>-9,529.61</td></tr><tr><td>归母净资产（万元）</td><td>—</td><td>—</td><td>—</td><td>55,267.49</td><td><strong>-2,660.74</strong></td><td><strong>-12,181.55</strong></td></tr><tr><td>总资产（万元）</td><td>—</td><td>—</td><td>—</td><td>123,630¹</td><td>121,885.83</td><td>123,406.61</td></tr><tr><td>负债合计（万元）</td><td>—</td><td>—</td><td>—</td><td>79,363¹</td><td>124,546.57</td><td>135,588.16</td></tr><tr><td>资产负债率（合并）</td><td>—</td><td>—</td><td>—</td><td>64.20%</td><td><strong>102.18%</strong></td><td><strong>109.87%</strong></td></tr><tr><td>经营活动现金流（万元）</td><td>—</td><td>—</td><td>—</td><td>—</td><td>-7,790.83</td><td>-2,185.07</td></tr></tbody></table>
+<p>¹ 2021—2023 年数据来源为招股说明书与公开报道的招股口径（<strong>属二级源，标注为【异源】</strong>），仅作趋势参照；2024—2026H1 全部取自年报／半年报原文。</p>
+<p><strong>结论落在哪张表上</strong>：2025 年是转折点——<strong>归母净资产从 +5.53 亿元翻转为 -0.27 亿元</strong>，一年之内蒸发 5.79 亿元，其中包含年末对"重组疫苗临床及产业化项目资产组"计提的减值；2026H1 再降 0.95 亿元至 -1.22 亿元。</p>
+<details class="fold"><summary>资产与负债结构明细（2026-06-30，单位：万元）</summary><div class="fold-body">
+
+<table><thead><tr><th>资产项</th><th>金额</th><th>占比</th><th>负债与权益项</th><th>金额</th></tr></thead><tbody><tr><td>货币资金</td><td><strong>71.03</strong></td><td>0.06%</td><td>短期借款</td><td>7,789.79</td></tr><tr><td>应收账款</td><td>64.34</td><td>0.05%</td><td>应付账款</td><td><strong>24,738.48</strong></td></tr><tr><td>预付款项</td><td>117.95</td><td>0.10%</td><td>合同负债</td><td>8,340.00</td></tr><tr><td>其他应收款</td><td>404.84</td><td>0.33%</td><td><strong>应付职工薪酬</strong></td><td><strong>16,414.37</strong></td></tr><tr><td>存货</td><td>823.97</td><td>0.67%</td><td>应交税费</td><td>165.36</td></tr><tr><td><strong>流动资产合计</strong></td><td><strong>1,482.13</strong></td><td><strong>1.20%</strong></td><td>其他应付款</td><td><strong>49,842.39</strong></td></tr><tr><td>固定资产</td><td>15,942.46</td><td>12.92%</td><td>一年内到期的非流动负债</td><td>10,252.60</td></tr><tr><td><strong>在建工程</strong></td><td><strong>78,822.56</strong></td><td><strong>63.87%</strong></td><td>长期借款</td><td>804.21</td></tr><tr><td>使用权资产</td><td>136.63</td><td>0.11%</td><td>递延收益</td><td>6,631.37</td></tr><tr><td>无形资产</td><td>2,970.97</td><td>2.41%</td><td>其他非流动负债</td><td>10,609.58</td></tr><tr><td>开发支出</td><td>16,347.49</td><td>13.25%</td><td><strong>负债合计</strong></td><td><strong>135,588.16</strong></td></tr><tr><td>长期待摊费用</td><td>324.96</td><td>0.26%</td><td>股本</td><td>28,094.00</td></tr><tr><td>其他非流动资产</td><td>7,237.87</td><td>5.87%</td><td>资本公积</td><td><strong>195,818.66</strong></td></tr><tr><td>长期应收款</td><td>141.53</td><td>0.11%</td><td>未分配利润</td><td><strong>-236,119.66</strong></td></tr><tr><td>—</td><td>—</td><td>—</td><td><strong>归母净资产</strong></td><td><strong>-12,181.55</strong></td></tr></tbody></table>
+<p><strong>勾稽自检</strong>：资产总计 123,406.61 ＝ 负债合计 135,588.16 ＋ 所有者权益合计 -12,181.55 ✓；归母净资产 ＝ 股本 28,094.00 ＋ 资本公积 195,818.66 ＋ 其他综合收益 25.45 ＋ 未分配利润 -236,119.66 ＝ -12,181.55 ✓；<strong>少数股东权益 ＝ 0</strong>（所有者权益合计 ＝ 归母净资产）✓。</p>
+<p><strong>两个必须记住的口径</strong>：① <strong>资本公积 19.58 亿元</strong>是账面最大的权益科目，也是"亏损吃掉净资产"这句话的具体样子——它意味着<strong>未来若实现盈利，可先用资本公积弥补亏损</strong>（公司 2025-07 已做过一次公积金弥补亏损）；② <strong>应付职工薪酬 1.64 亿元</strong>＋<strong>其他应付款 4.98 亿元</strong>＋<strong>应付账款 2.47 亿元</strong>，合计约 9.1 亿元的经营性负债压在一个只有 1,482 万元流动资产的资产负债表上。</p>
+
+</div></details>
+<h3 id="sec13">3.3 募集资金</h3>
+<p><strong>结论：募集资金已耗尽，且尚有 8,000 万元闲置募集资金处于"暂时补充流动资金"状态——偿还能力本身就是风险点。</strong></p>
+<p>2023 年北交所公开发行募集资金余额 <strong>2.79 元</strong>（专户存款余额 2.79 元）；2021 年新三板定增募集资金专户余额 100,793.20 元；<strong>闲置募集资金暂时补充流动资金金额 80,000,000.00 元（8,000 万元）</strong>。</p>
+<hr>
+<h2 id="chap4">四、炒作逻辑三支柱</h2>
+<h3 id="sec14">4.1 ① 炒预期：未来 6–12 个月可验证的事件节点</h3>
+<p><strong>结论：唯一有硬时间表的节点是 2027-04 的年报（生死判定），其余全部是"取决于资金到位"的软节点——而软节点无法定价。</strong></p>
+<table><thead><tr><th>时点</th><th>节点</th><th>性质</th><th>判读／证伪点</th></tr></thead><tbody><tr><td>2026Q4</td><td>三价 HPV <strong>批签发证明</strong>取得</td><td>软</td><td>取得批签发≠能生产（需原料采购资金）</td></tr><tr><td>2026Q4—2027Q1</td><td>各地疾控招标准入／首批销售</td><td>软</td><td>无销售体系与市场费用预算</td></tr><tr><td><strong>2026-12-31</strong></td><td><strong>年度末归母净资产（审计基准点）</strong></td><td><strong>硬</strong></td><td><strong>决定生死</strong></td></tr><tr><td><strong>2027-04</strong></td><td><strong>2026 年度报告＋审计意见＋内控审计报告</strong></td><td><strong>硬（公开日历）</strong></td><td>净资产是否为正／意见是否标准无保留</td></tr><tr><td>2027-04 起</td><td>撤销 \*ST 申请（若达标）</td><td>硬</td><td>5 个交易日内提交，交易所 15 个交易日内决定</td></tr><tr><td>不定</td><td>权益注资／重大资产重组／债务重组</td><td>软（<strong>当前零公告</strong>）</td><td>出现具名对手方与金额才算"有物"</td></tr><tr><td>不定</td><td>九价 HPV III 期重启</td><td>软</td><td>需先解决临床经费</td></tr></tbody></table>
+<p><strong>预期差在哪一侧：在"下行"一侧。</strong> 市场若按"三价获批＝基本面重构"定价，就会忽略三件事——产品获批与产品开卖之间还隔着<strong>生产资金、批签发、各省准入</strong>；开卖与净资产转正之间隔着<strong>权益融资制度的自我循环</strong>；净资产转正与摘帽之间还隔着<strong>审计意见这一道独立的二元开关</strong>。</p>
+<h3 id="sec15">4.2 ② 炒历史类似行为：相似股票匹配法</h3>
+<p><strong>结论：从基准日的全部特征看，本股最像的不是"药品获批型"标的，而是"净资产为负 ＋ 唯一救命动作尚未落地"这一组——该组 33 家 2026 年内中位数 -27.90%、上涨仅 8 家，且上涨者全部"有物"，本股 -38.69% 落在中位以下。</strong></p>
+<p><strong>本股画像</strong>：北交所主板（涨跌幅 30%）／财务类*ST（2025 年净资产为负）／市值 14.24 亿元（小市值）／驱动类型＝<strong>产品获批型（三价 HPV）＋ 潜在注资型</strong>／所处阶段＝<strong>戴帽后第 5 个月，唯一救命动作未落地</strong>／历史炒作符号＝<strong>HPV 疫苗＋北交所</strong>／筹码结构＝6,952 户、无机构、控股股东 55.36% 质押。</p>
+<details class="fold"><summary>同型样本对照（34 家"最近一个会计年度审计净资产为负值"型，2026 YTD）</summary><div class="fold-body">
+
+<table><thead><tr><th>证券代码</th><th>简称</th><th>2025 年末归母净资产（亿元）</th><th>2026 YTD</th></tr></thead><tbody><tr><td>002528</td><td>＊ST英飞</td><td>-1.13</td><td><strong>+130.22%</strong></td></tr><tr><td>002856</td><td>＊ST美芝</td><td>-0.52</td><td><strong>+71.21%</strong></td></tr><tr><td>002667</td><td>＊ST威领</td><td>-0.32</td><td><strong>+69.52%</strong></td></tr><tr><td>300044</td><td>＊ST赛为</td><td>-11.35</td><td><strong>+47.87%</strong></td></tr><tr><td>300716</td><td>＊ST泉为</td><td>-1.63</td><td><strong>+42.44%</strong></td></tr><tr><td>000056</td><td>＊ST皇庭</td><td>-23.73</td><td><strong>+34.33%</strong></td></tr><tr><td>002620</td><td>＊ST瑞和</td><td>-0.56</td><td>+5.95%</td></tr><tr><td>000609</td><td>＊ST中迪</td><td>-2.75</td><td>+5.28%</td></tr><tr><td>…</td><td>…</td><td>…</td><td>…</td></tr><tr><td><strong>920575</strong></td><td><strong>＊ST康乐</strong></td><td><strong>-0.27</strong></td><td><strong>-38.69%</strong></td></tr><tr><td>…</td><td>…</td><td>…</td><td>…</td></tr><tr><td>688066</td><td>＊ST航图</td><td>-10.36</td><td>-72.97%</td></tr></tbody></table>
+<p><strong>统计</strong>：中位 <strong>-27.90%</strong>、均值 -16.49%、上涨 <strong>8/33</strong>；本股排第 <strong>22/34</strong>（中位偏弱）。上涨 8 家的共同点<strong>全部是"有物"</strong>——重整投资协议已签（英飞、美芝、瑞和、赛为、泉为）、要约收购方已出具（威领）、关联债权已抵销落地（皇庭）、资产已赠与（中迪）。</p>
+<p><strong>相似点／差异点</strong>：与"有物"组相比，本股的"物"（三价 HPV 批文）其实更硬——<strong>但差异点同样清晰：那一组的"物"是资本注入或债务减记，直接作用于净资产；本股的"物"是产品批文，只作用于未来收入，不作用于当期净资产。</strong> 这正是它与上涨组之间那道过不去的墙。</p>
+
+</div></details>
+<h3 id="sec16">4.3 ③ 炒主板映射：HPV 疫苗板块的位置</h3>
+<p><strong>结论：映射方向是"负向"——主板 HPV 板块已经从"稀缺溢价"切换到"价格战出清"，康乐卫士的三价（16/18/58）恰好夹在"双价免费"与"国产九价低价"之间，是最没有定价权的那一档。</strong></p>
+<details class="fold"><summary>2026 年 HPV 疫苗分层格局（含可比公司行情）</summary><div class="fold-body">
+
+<p><strong>双价</strong>（万泰、沃森／泽润）国产完全主导，<strong>2025-11 起对 13 周岁女孩免费接种</strong>，逻辑是"规模化走量、薄利多销"，中小企业在双价赛道已无竞争空间；<strong>四价</strong>处于"上有九价替代、下有双价挤压"的夹心淘汰阶段；<strong>九价</strong>是唯一仍有溢价的赛道，但<strong>万泰生物"馨可宁9"已于 2025-06 获批（国产首款、全球第二款）、2026-05 完成全国 31 省准入</strong>，2026H1 其疫苗板块营收 4.28 亿元（占总营收 40.84%）。沃森生物、瑞科生物、<strong>康乐卫士</strong>、上海博唯等多家国产九价处于 III 期或获批前夜。行业整体已由"卖方市场"转为"买方市场"，<strong>中小研发企业因经费短缺暂停临床试验的案例开始出现</strong>——康乐卫士正是其中之一。</p>
+<table><thead><tr><th>公司</th><th>代码</th><th>现价（元）</th><th>总市值（亿元）</th><th>PB</th></tr></thead><tbody><tr><td>万泰生物</td><td>603392.SH</td><td>27.34</td><td>345.68</td><td>2.95</td></tr><tr><td>智飞生物</td><td>300122.SZ</td><td>13.98</td><td>334.65</td><td>2.23</td></tr><tr><td>沃森生物</td><td>300142.SZ</td><td>14.23</td><td>227.59</td><td>3.26</td></tr><tr><td>康泰生物</td><td>300601.SZ</td><td>13.58</td><td>151.68</td><td>1.66</td></tr><tr><td>诺思兰德（北交所，未盈利生物药）</td><td>430047.BJ</td><td>8.17</td><td>22.41</td><td>9.03</td></tr><tr><td>＊ST田野</td><td>920023.BJ</td><td>1.40</td><td>4.58</td><td>0.38</td></tr><tr><td>＊ST同辉</td><td>920090.BJ</td><td>3.16</td><td>6.30</td><td>18.18</td></tr><tr><td><strong>＊ST康乐</strong></td><td><strong>920575.BJ</strong></td><td><strong>5.07</strong></td><td><strong>14.24</strong></td><td><strong>负值</strong></td></tr></tbody></table>
+<p><strong>读法</strong>：本股 14.24 亿元市值约为万泰生物的 4.1%、诺思兰德的 63.5%。<strong>市场给它的定价既不按"收入"（无收入）、也不按"净资产"（为负），而是按"资产生命力 ＋ 批文期权"</strong>——这正是 §5.1 要用隐含概率倒推而非乘数法的原因。</p>
+
+</div></details>
+<p><strong>一句判读</strong>：本股与"HPV 板块"之间只剩一个共同标签——<strong>它的产品还没有进入那个已经开始打价格战的市场。</strong></p>
+<h3 id="sec17">4.4 情绪与筹码</h3>
+<p><strong>结论：注意力已经退潮，而且最关键的读数对它不利——三价 HPV 获批这件"基本面重构级"利好，落地当日与次日龙虎榜全部是净卖出。</strong></p>
+<details class="fold"><summary>龙虎榜全量（2023—2026）</summary><div class="fold-body">
+
+<table><thead><tr><th>上榜日</th><th>上榜原因</th><th>当日涨跌幅</th><th>龙虎榜净额</th><th>换手率</th></tr></thead><tbody><tr><td>2026-08-03</td><td>振幅达 30% 前 5／3 日涨跌幅偏离累计 +40%</td><td>+16.35%</td><td><strong>-1,460.10 万元</strong></td><td>14.40%</td></tr><tr><td><strong>2026-07-31</strong></td><td><strong>收盘涨幅达 20% 前 5（三价获批当日）</strong></td><td><strong>+23.95%</strong></td><td><strong>-1,111.19 万元</strong></td><td>13.25%</td></tr><tr><td>2026-05-26</td><td>收盘涨幅达 20% 前 5</td><td>+20.00%</td><td>-216.49 万元</td><td>11.62%</td></tr><tr><td>2026-05-07</td><td>3 个交易日涨跌幅偏离累计 +40%</td><td>-7.04%</td><td>+395.22 万元</td><td>10.67%</td></tr><tr><td>2026-05-06</td><td><strong>收盘跌幅达 -20% 前 5（戴帽首日）</strong></td><td><strong>-30.00%</strong></td><td>+409.43 万元</td><td>8.47%</td></tr><tr><td>2026-01-13</td><td>收盘涨幅达 20% 前 5</td><td>+29.90%</td><td>-317.51 万元</td><td>18.70%</td></tr><tr><td>2023-12-26</td><td>3 日涨跌幅偏离累计 +40%／涨幅达 20%／振幅达 30%</td><td>+30.00%</td><td>-3,417.56 万元（-2,102.37 万元）</td><td>12.69%</td></tr></tbody></table>
+<p><strong>三条读数</strong>：① <strong>利好兑现即派发</strong>——三价获批当日（+23.95%）与次日（+16.35%）合计净卖 <strong>2,571.29 万元</strong>，且两日换手均超 13%；② <strong>戴帽首日 -30%</strong> 完成估值重定价，但此后两次涨停（05-26、07-31）都未能形成持续趋势；③ 2026-09-30 换手率已回落至 <strong>1.53%</strong>、成交额 1,443.92 万元 ⇒ <strong>注意力退潮</strong>。</p>
+
+</div></details>
+<p><strong>股东户数</strong>：2026-06-30 <strong>6,952 户</strong>，较 2026-03-31 的 8,570 户 <strong>-18.88%</strong>。<strong>读法是"割肉式集中"而非"吸筹"</strong>——同期股价从 8.90 元区间一路跌至 4.83 元，户数下降与股价下跌同向。<strong>纪律提示：股东户数下降必须先看同期股价方向，本股属反向情形。</strong></p>
+<p><strong>韭研异动表</strong>：全表仅收录 <strong>1 条</strong>（2026-01-13，题材"医疗医药"，催化为"英伟达与礼来合作投入 10 亿美元建 AI 药物研发实验室"，异动关键词"九价HPV疫苗+北交所"）。<strong>该表只收录达到异动阈值的题材，1 条不等于"没有异动"</strong>；北交所标的整体收录极少，故炒作史以一手中介与龙虎榜交叉验证为准。</p>
+<hr>
+<h2 id="chap5">五、估值与投资结论</h2>
+<h3 id="sec18">5.1 估值</h3>
+<p><strong>结论：净资产为负使 PB、PE、PS 三个乘数全部失效，本股只能以"想象力加总 + 隐含概率倒推"两法并用；两法结论一致——现价已把"成功解局"当作三成以上概率，而本报告判断只有两成左右。</strong></p>
+<p><strong>（一）想象力加总（"算不出利润"时的正确算法）：成功情景合计 28–40 亿元市值，对应股价 10.0–14.2 元。</strong></p>
+<p>口径说明两条：① 三价 HPV 的取值区间<strong>已经把"双价免费 ＋ 国产九价低价"的挤压考虑进去</strong>；② 雪球流传的"三价峰值 30 亿元营收"缺少公开可核依据，<strong>本报告不采信</strong>。</p>
+<details class="fold"><summary>想象力加总逐项参数（保守／中性／激进标注）</summary><div class="fold-body">
+
+<table><thead><tr><th>估值来源</th><th>参数与取值</th><th>对应市值</th></tr></thead><tbody><tr><td>三价 HPV（16/18/58）商业化</td><td>昆明基地三价设计产能 1,000 万剂／年；假设峰值销量 <strong>200（保守）／350（中性）／500（激进）万剂</strong>、出厂价 <strong>200／275／350 元／剂</strong> → 峰值销售 4／9.6／17.5 亿元；按生物制品 <strong>PS 4／6／8 倍</strong> → 16／58／140 亿元。<strong>全部以"生产资金到位 ＋ 销售体系建成"为前提</strong></td><td>16–45（保守－中性）</td></tr><tr><td>九价 HPV（女性／男性）</td><td>临床已暂停并进入结束程序；重启并完成桥接后申报 → <strong>投产不早于 2029 年</strong>；仅给期权价值</td><td>8–15（期权）</td></tr><tr><td>十五价 HPV ＋ mRNA 平台 ＋ 6 条临床前管线</td><td>未计入基准情景，仅作<strong>遗漏管线</strong>登记（避免"先自己打折"）</td><td>0（不计入）</td></tr><tr><td>GMP 基地与产线（在建工程 7.88 亿元 ＋ 固定资产 1.59 亿元）</td><td>重置成本口径，但<strong>已被抵押</strong>，按清算／重整口径折价</td><td>3–6</td></tr><tr><td>北交所上市地位</td><td>北交所壳价值远低于沪深主板，且公司资不抵债</td><td>1–2</td></tr><tr><td><strong>合计（成功情景）</strong></td><td>—</td><td><strong>28–40 亿元</strong></td></tr></tbody></table>
+
+</div></details>
+<p><strong>（二）隐含概率倒推——两档成功价给出的隐含成功率是 29%–37%。</strong></p>
+<p><code>现价 5.07 元 = p × 成功情景价 + (1 − p) × 退市残值</code></p>
+<ul><li>成功情景价取 <strong>12.00 元</strong>（市值 33.7 亿元，相当于回到 2026-01 的定价水平）；退市残值取 <strong>1.00 元</strong>（退市后转新三板仍可交易，且公司持三价 HPV 批文与 GMP 基地，残值不归零）→ <strong>p = 37.0%</strong></li><li>成功情景价取 <strong>15.00 元</strong>、残值 <strong>1.00 元</strong> → <strong>p = 29.1%</strong></li></ul>
+<p>⇒ <strong>市场隐含"2026 年报净资产转正且审计意见转标准无保留"的概率约 29%–37%</strong>。</p>
+<p><strong>本报告判断：15%–25%。</strong> 依据是 §2.5 的制度死结（定增被保留意见卡住、子公司股权融资不进归母口径、控股股东无兜底能力）＋§2.4 的缺口量级（约 2 亿元）＋时间只剩不到一个季度 ＋ 基准日零相关公告。<strong>两件事必须同时发生才能成功：① 一笔 2 亿元量级的权益性资金在 12-31 前到账；② 2026 年报审计师愿意对"持续经营重大不确定性"作出充分披露并出具标准无保留意见。第二件事不完全由资金决定。</strong></p>
+<h3 id="sec19">5.2 投资结论</h3>
+<p><strong>卖出（回避）。</strong></p>
+<p><strong>理由链（按重要性排序）</strong></p>
+<ol><li><strong>制度上，公司自己列出的两条主力融资路径都不解决生死开关。</strong> 定增被《北交所上市公司证券发行注册管理办法》第九条第（三）项卡在"保留意见所涉事项未消除"上（2025 年保留意见事由正是"资不抵债＋持续经营未充分披露"，构成自我循环）；子公司股权融资只增少数股东权益、不进归母口径。<strong>能解局的只剩"重大资产重组"与"体外权益性注资"两类，而截至基准日零公告。</strong>（<a href="https://data.eastmoney.com/notices/detail/920575/AN202607291827460784.html" target="_blank" rel="noopener">年报问询函回复</a>）</li><li><strong>净资产缺口约 2 亿元，且越拖越大。</strong> 2026-06-30 归母净资产 -1.218 亿元，较 2025 年末的 -0.27 亿元再恶化 0.95 亿元；H1 亏损 9,529.61 万元中"减亏"主要来自研发费用砍掉 55.73%，属<strong>支出后推而非经营改善</strong>。</li><li><strong>审计意见是一道独立的二元开关，且 2025 年已经亮过一次红灯。</strong> 10.3.9 第三项把"保留意见"与"无法表示／否定"并列 ⇒ <strong>2026 年报即便净资产转正，只要审计师仍出保留意见，一样终止上市</strong>。（<a href="https://data.eastmoney.com/notices/detail/920575/AN202604291821760146.html" target="_blank" rel="noopener">保留意见专项说明</a>）</li><li><strong>三价 HPV 获批是真里程碑，但商业化链条上的五个前置条件只推进了第一个。</strong> 公司自述"启动疫苗生产的资金目前还没有到位"；九价 III 期已进入结束程序；2026H1 营业收入仅 18.61 万元（-77.54%）。<strong>"获批"与"卖出去"在本股之间隔着资金这道墙。</strong></li><li><strong>注意力已退潮，且最关键的读数不利。</strong> 三价获批当日与次日龙虎榜合计净卖 <strong>2,571.29 万元</strong>；2026-09-30 换手率 1.53%、成交额 1,443.92 万元；同型样本中位 -27.90%、本股 -38.69% 排 22/34（中位偏弱）。</li><li><strong>资金链条从控股股东到上市公司到子公司全线绷紧。</strong> 控股股东质押其持股 55.36%，质权人含自然人、小贷公司与典当行，且质押融资款"主要用于天狼星集团向公司提供借款"；公司货币资金 71.03 万元、流动比率 0.013、应付职工薪酬 1.64 亿元、15 个银行账户曾被冻结（含基本户）、一项专利被财产保全；累计诉讼仲裁 2,130.47 万元＝净资产绝对值的 80.07%。（<a href="https://data.eastmoney.com/notices/detail/920575/AN202606101823430105.html" target="_blank" rel="noopener">股权质押公告</a>、<a href="https://data.eastmoney.com/notices/detail/920575/AN202609181829620219.html" target="_blank" rel="noopener">公司及子公司部分债务逾期公告</a>）</li></ol>
+<p><strong>触发条件（转买入的信号）</strong></p>
+<ol><li><strong>具名、带金额、带时间的权益性注资公告</strong>——第三方受让昆明康乐老股（不丧失控制权、形成资本公积）、或重大资产重组预案、或债权人债务豁免协议，<strong>金额达到 1.5 亿元以上</strong>；</li><li><strong>三价 HPV 取得批签发证明并公告首批生产／首批疾控供货</strong>（证明生产资金已到位）；</li><li>股价回落至 <strong>2.50–3.00 元</strong>区间（对应市值 7.0–8.4 亿元，接近"资产生命力＋批文期权"的下沿），同时上述第 1 或第 2 项之一出现。</li></ol>
+<p><strong>失效条件（本结论作废／翻转）</strong></p>
+<ul><li>2026-12-31 前公告 <strong>≥2 亿元的权益性资金到账</strong>（含资本公积确认），且年审机构已明确按标准无保留意见审计 —— 则"净资产＋审计意见"两开关同时解，本报告的"卖出"结论作废，应按"事件驱动·轻仓"重新评估；</li><li>反之，若<strong>任何一笔主要债权人取得生效判决并启动强制执行、或将公司列为失信被执行人</strong>，则《发行注册办法》第十条第（四）项被触发，保壳路径进一步收窄。</li></ul>
+<p><strong>参考区间</strong></p>
+<ul><li>现价 5.07 元（2026-09-30）。<strong>本报告认为合理中枢在 2.5–4.0 元</strong>（对应隐含成功率 15%–25%、成功价 12.00–15.00 元、残值 1.00 元，概率加权期望价约 <strong>3.3–4.4 元</strong>）。</li><li>若已持仓：<strong>不设"抄底位"，按纪律回避</strong>；若必须给出观察位，<strong>跌破 3.41 元（2026 年内低点）后进入"资产期权"区间</strong>，但那属于以"破产重整／清算"框架参与，与本报告的"二级市场买卖"框架不同。</li></ul>
+<p><strong>时间窗口</strong>：本结论有效至 <strong>2026 年年度业绩预告／年报披露</strong>（预计 2027-01 至 2027-04）。</p>
+<p><strong>仓位建议</strong>：<strong>不建仓。</strong></p>
+<p><strong>最大风险（最可能让本结论出错的那一件事）</strong>：<strong>在 2026 年 10–12 月间突然公告一笔具名的、≥2 亿元的权益性注资（例如云南国资体系或产业方受让昆明康乐股权形成资本公积），使归母净资产一次性转正，并同步取得审计机构对持续经营披露的口径确认。</strong> 一旦发生，股价在数日内可能出现 +50% 以上的重估——这也是本报告主张"观望"而非"做空／融券"的原因。</p>
+<hr>
+<h2 id="chap6">附录 A · 待核实 / 需补充清单</h2>
+<p><strong>结论：八项待核实中，第 5 项（2026 年度审计机构聘任情况）与第 1 项（昆明康乐股权结构与少数股东出资细节）对本报告结论影响最大——前者决定生死开关的执行者是谁，后者决定"子公司股权融资能否转化为归母净资产"这一判断是否需要修正。</strong></p>
+<table><thead><tr><th>#</th><th>待核实项</th><th>说明</th></tr></thead><tbody><tr><td>1</td><td>昆明康乐的股权结构与少数股东出资细节</td><td>半年报显示少数股东权益为 0、少数股东损益为 0，与公告所述"双创基金、烁锦投资已完成大部分实缴增资"存在口径待对齐；需以工商登记与增资协议原文核定持股比例</td></tr><tr><td>2</td><td>三价 HPV 的<strong>批签发证明</strong>取得时点与首批生产安排</td><td>未披露；决定 2026 年是否可能形成任何收入</td></tr><tr><td>3</td><td>三价 HPV 的定价策略与各省准入进度</td><td>公司未披露；市场流传的"429 元／剂"来源于二级整理，<strong>未在公告中找到依据</strong></td></tr><tr><td>4</td><td>亦庄租赁执行证书的进展与异议结果</td><td>2026-09-08 公告称已提交异议函，截至基准日未见回函</td></tr><tr><td>5</td><td>2026 年度审计机构的聘任情况</td><td>2025 年年度股东会议案清单中未见续聘议案；<strong>审计意见取向是生死开关，机构归属未定是独立观察点</strong></td></tr><tr><td>6</td><td>九价 HPV III 期"项目重启"的条件与时点</td><td>公司称"保留项目重启的权利"，未给条件</td></tr><tr><td>7</td><td>2026 年 1–9 月业绩的量化区间</td><td>半年报仅作"仍将持续亏损"定性预计</td></tr><tr><td>8</td><td>控股股东天狼星集团的自身财务数据</td><td>公告未披露其资产负债与现金流；"具备追加担保或提前购回能力"系公告自述</td></tr></tbody></table>
+<h2 id="chap7">附录 B · 关键信源链接</h2>
+<p><strong>结论：本表 16 条全部为一手公告原文的可点击链接，交付前逐条 GET 实测均为 HTTP 200；"戴帽—保留意见—纪律处分—股权质押—债务逾期—诉讼"六类关键事实均可在本表内直接溯源。</strong></p>
+<table><thead><tr><th>#</th><th>文件</th><th>发布日</th><th>原文地址</th></tr></thead><tbody><tr><td>1</td><td>关于公司股票交易将被实施退市风险警示的公告（2026-042）</td><td>2026-04-29</td><td><a href="https://data.eastmoney.com/notices/detail/920575/AN202604291821760352.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>2</td><td>董事会关于 2025 年度审计报告保留意见涉及事项的专项说明（2026-032）</td><td>2026-04-29</td><td><a href="https://data.eastmoney.com/notices/detail/920575/AN202604291821760146.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>3</td><td>关于公司未弥补亏损达到实收股本总额三分之一的公告（2026-025）</td><td>2026-04-29</td><td><a href="https://data.eastmoney.com/notices/detail/920575/AN202604291821760141.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>4</td><td>2025 年年度报告</td><td>2026-04-29</td><td><a href="https://data.eastmoney.com/notices/detail/920575/AN202604291821760134.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>5</td><td>关于给予北京康乐卫士生物技术股份有限公司及相关责任主体纪律处分的决定（北交所〔2026〕18 号）</td><td>2026-06-16</td><td><a href="https://data.eastmoney.com/notices/detail/920575/AN202606181823671853.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>6</td><td>股权质押的公告（2026-059）</td><td>2026-06-10</td><td><a href="https://data.eastmoney.com/notices/detail/920575/AN202606101823430105.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>7</td><td>关于接受公司股东财务资助暨关联交易的公告（2026-071）</td><td>2026-07-29</td><td><a href="https://data.eastmoney.com/notices/detail/920575/AN202607291827460787.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>8</td><td>关于对北京证券交易所 2025 年年报问询函的回复公告（2026-074）</td><td>2026-07-29</td><td><a href="https://data.eastmoney.com/notices/detail/920575/AN202607291827460784.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>9</td><td>关于获得三价人乳头瘤病毒疫苗《药品注册证书》的公告（2026-76）</td><td>2026-07-31</td><td><a href="https://data.eastmoney.com/notices/detail/920575/AN202607311827527014.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>10</td><td>股票交易异常波动公告（2026-078）</td><td>2026-08-03</td><td><a href="https://data.eastmoney.com/notices/detail/920575/AN202608031827589599.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>11</td><td>2026 年半年度报告</td><td>2026-08-21</td><td><a href="https://data.eastmoney.com/notices/detail/920575/AN202608211828277937.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>12</td><td>关于收到北京市中信公证处《核实函》的公告（2026-089）</td><td>2026-09-08</td><td><a href="https://data.eastmoney.com/notices/detail/920575/AN202609081829135310.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>13</td><td>关于子公司部分债务逾期的公告</td><td>2026-09-14</td><td><a href="https://data.eastmoney.com/notices/detail/920575/AN202609141829378867.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>14</td><td>关于公司及子公司部分债务逾期的公告（2026-093）</td><td>2026-09-18</td><td><a href="https://data.eastmoney.com/notices/detail/920575/AN202609181829620219.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>15</td><td>关于累计诉讼、仲裁的公告（2026-092）</td><td>2026-09-18</td><td><a href="https://data.eastmoney.com/notices/detail/920575/AN202609181829620217.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>16</td><td>高级管理人员任命公告</td><td>2026-09-18</td><td><a href="https://data.eastmoney.com/notices/detail/920575/AN202609181829620218.html" target="_blank" rel="noopener">打开原文</a></td></tr></tbody></table>
+<blockquote><p>口径提示：本表"发布日"一律写<strong>披露日</strong>（以公告原文落款与东财 <code>notice_date</code> 双重核对）；正文叙述事件时使用<strong>事件发生日</strong>（如"2026-07-31 取得《药品注册证书》"），两者相差 1–2 天属正常。</p></blockquote>
+<h2 id="chap8">附录 C · 逻辑漏洞与反方观点（5 问速版）</h2>
+<p><strong>结论：五个问题里，本报告最容易被攻破的是第 1 问（会计口径），而这一问恰好指向"如果注资方式设计得当，缺口可以比 2 亿元小"——这也是本报告把最大风险单列的原因。</strong></p>
+<ol><li><strong>"归母净资产"这个判定口径是否绝对？</strong> 公司自己按归母口径公告，本报告采信；<strong>反方观点</strong>：若采取"转让子公司老股（不丧失控制权）"的方式，处置对价高于应享净资产份额的差额计入资本公积、直接增厚归母净资产——<strong>在昆明康乐净资产为正（+2.70 亿元）的前提下，这条路径的交易对价设计空间可能大于本报告假设</strong>。</li><li><strong>"定增被卡死"是否绝对？</strong> 《发行注册办法》第九条第（三）项留有"本次发行涉及重大资产重组的除外"。<strong>反方观点</strong>：借助重大资产重组可以绕开保留意见障碍。本报告的回应是——重组需要标的，而基准日无任何标的与对手方公告。</li><li><strong>"三价获批不是利好"是否过头？</strong> 三价 HPV 是国内首个覆盖中国高危型别（HPV58）的三价苗。<strong>反方观点</strong>：如果生产资金以极小规模（例如 CMO 代工或小批量生产）启动，先做区域市场，也可能形成正现金流。本报告的回应是——GMP 自建产能的运行成本刚性，小批量生产的单位成本会高于外购；且销售体系从零搭建需 6–12 个月。</li><li><strong>时间点是否已过期？</strong> 本报告的行情基准日为 2026-09-30、公告截止 2026-09-28。<strong>风险</strong>：2026-10 至 12 月若出现重大公告，结论需即时重估。</li><li><strong>数据来源级别？</strong> 核心事实（戴帽事由、净资产数值、审计意见、债务逾期金额、诉讼金额、股东与质押数据）<strong>全部取自公告与定期报告原文</strong>；2021—2023 年财务数据取自招股口径二级源并已标注【异源】；三价 HPV 定价传闻为二级整理、<strong>已在本报告中标明未采信</strong>。</li></ol>
+<h2 id="chap9">版本记录</h2>
+<table><thead><tr><th>版本</th><th>修订日</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-06</td><td>首次生成。全库检索确认本标的此前无任何研究报告（其他报告中对"＊ST康乐"的引用仅为同型样本对照行），故为从零生成，无历史版本需要合并。基准日 2026-10-06；行情取 2026-09-30 收盘；财务取 2026 年半年报（未经审计）与 2025 年年度报告。投资结论：卖出（回避）。</td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
