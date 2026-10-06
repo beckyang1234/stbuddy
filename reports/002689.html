@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ST远智（002689.SZ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>9 章 · 17 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断：四类红线一条未踩，风险全部集中在"处罚"这一条</a><a class="sblv3" href="#sec0">1.1 基本信息与估值快照</a><a class="sblv3" href="#sec1">1.2 股权结构与股东阵容</a><a class="sblv3" href="#sec2">1.3 资产质量与估值（星级表）</a><a class="sblv3" href="#sec3">1.4 全流程进度看板</a><a class="sblv3" href="#sec4">1.5 运作特征与综合判断</a><a class="sblv3" href="#sec5">2. ST 风险诊断</a><a class="sblv3" href="#sec6">2.4 摘帽展望</a><a class="sblv3" href="#sec7">3. 公司运营情况</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、路径 C · 处罚 ST：唯一要做的事是"等时钟走完"，但时钟走完后没有增量</a><a class="sblv3" href="#sec8">3.1 摘帽时间锚：全文最重要的日期</a><a class="sblv3" href="#sec9">3.2 ★ 发股通道被锁死：摘帽之后也没有"重估引擎"</a><a class="sblv3" href="#sec10">3.3 公司自己的口径：无并购、无回购、聚焦主业</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、炒作逻辑三支柱</a><a class="sblv3" href="#sec11">3.1 支柱① 炒预期（当前最强，但含金量低）</a><a class="sblv3" href="#sec12">3.2 支柱② 炒历史类似行为（相似股票匹配法）</a><a class="sblv3" href="#sec13">3.3 支柱③ 炒主板映射（选股动作）</a><a class="sblv3" href="#sec14">3.4 筹码博弈与注意力读数</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">估值与投资结论</a><a class="sblv3" href="#sec15">（一）估值</a><a class="sblv3" href="#sec16">（二）投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 C · 逻辑漏洞与反方观点（5 问）</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">ST远智（002689.SZ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：卖出（回避）</strong></p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>红线分类</td><td><span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002689&announcementId=1224836460&orgId=9900022993&announcementTime=2025-11-29" target="_blank" rel="noopener">其他风险警示·年报虚假记载（假ST）</a></span>·<span class="sttag sttag-teal"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002689&announcementId=1224887893&orgId=9900022993&announcementTime=2025-12-20" target="_blank" rel="noopener">未触及重大违法强制退市</a></span></td></tr><tr><td>生死定级</td><td><strong>安全</strong>——交易类／财务类／规范类（内控）／重大违法类<strong>四条红线一条未踩</strong>，无退市归零风险；贴的是"其他风险警示"（ST），不是"退市风险警示"（\*ST）</td></tr><tr><td>自救空间</td><td><strong>无需自救</strong>。撤销 ST 的两个条件中"追溯重述"已于 2023-04-29 完成，只剩"决定书满 12 个月"这一条计时项；<strong>最早可申请日 2026-12-21</strong>（决定书 2025-12-19 作出，满 12 个月当日为周六顺延），距基准日 75 天</td></tr><tr><td>主要看点</td><td>① <strong>摘帽日历</strong>——决定书〔2025〕8 号 2025-12-19 作出、追溯重述 2023-04-29 已完成，2026-12-21 即可申请撤销其他风险警示，是本标的唯一近端硬节点（但主板 ST 自 2026-07-06 起涨跌幅已 10%，摘帽无制度红利）；② <strong>海外电梯出海</strong>——博林特电梯乌兹别克斯坦生产基地 2026 年 8 月正式投产，2026H1 国外收入 3.03 亿元、占比 53.66%、毛利率 35.55%（各分区最高）</td></tr></tbody></table>
+<ul><li>标的：沈阳远大智能工业集团股份有限公司（原"远大智能"／博林特电梯，2012-07 上市）</li><li>基准日：<strong>2026-10-05</strong>；行情截面＝2026-09-30 收盘（节前最后交易日）</li><li>版本：<strong>初版 · 2026-10-05</strong></li><li>数据来源：巨潮资讯网公告原文、公司 2025 年年度报告／2026 年半年度报告 PDF、深交所互动易（经同花顺 F10 抓取）、Andy 自建 ST 信息库、韭研公社异动整理、东方财富龙虎榜 API、腾讯行情／新浪日 K（Wind 局域网代理本轮整段不可达，行情与同业估值改用公开源）</li><li>数据质量异常：① Wind 代理 <code>192.168.1.20:8000</code> 整段不可达（未反复重试），行情、同业估值、同型样本涨跌幅全部改用腾讯 <code>qt.gtimg.cn</code>（复权口径）；② 年度财务序列以 2025 年年报与 2026 年半年报 PDF 为唯一口径，东财 F10 仅作交叉验证并标【异源】；③ 巨潮 <code>topSearch/query</code> 与 <code>hisAnnouncement/query</code> 本轮可用（orgId＝<code>9900022993</code>，数字型；<code>zwjc</code>＝<code>ST远智</code> 表明尚未摘帽）。</li></ul>
+<hr>
+<h2 id="chap1">一、诊断：四类红线一条未踩，风险全部集中在"处罚"这一条</h2>
+<p><strong>结论：这是一只被"假 ST"标签压住的正常经营公司——不是壳、不需要救、也没有退市风险。</strong> 002689 在 Andy 的《退市风险预警-20261005.xlsx》中<strong>只出现在「规范类」工作表</strong>（处罚台账），交易类、财务类、其他类三张表全部未命中；2025 年营收 13.58 亿元（扣除后）、归母净资产 12.27 亿元、财报与内控审计意见均为<strong>标准无保留</strong>、无资金占用、无违规担保、无有息负债。它被戴帽的唯一原因是<strong>年报虚假记载（2019—2021 年）</strong>，属于深主板 9.8.1 条第（八）项——"<strong>其他风险警示</strong>"，不属于四类退市红线中的任何一条。</p>
+<h3 id="sec0">1.1 基本信息与估值快照</h3>
+<table><thead><tr><th>指标</th><th>数值</th><th>判读</th></tr></thead><tbody><tr><td>现价 / 总市值</td><td>2.93 元 / 30.57 亿元</td><td>流通市值 30.56 亿元（近全流通）</td></tr><tr><td>PB（最新净资产）</td><td>2.49 倍</td><td><strong>高于全部可比电梯同业</strong>（康力 1.35、广日 0.75、上海机电 1.30、梅轮 1.74）</td></tr><tr><td>PE(TTM)</td><td>37.66 倍</td><td>2026H1 扣非已转负，PE 的分母是 2025 年的盈利</td></tr><tr><td>换手率 / 成交额</td><td>0.32% / 987 万元</td><td>注意力冰点</td></tr><tr><td>涨停价 / 跌停价</td><td>3.20 / 2.62 元</td><td><strong>反证主板 ST 现行涨跌幅为 10%</strong>（2.91×1.1、2.91×0.9）</td></tr><tr><td>年初至今</td><td>-7.28%（腾讯复权口径）</td><td>同型"假 ST"样本中位数 -17.12%，本股<strong>相对抗跌</strong></td></tr><tr><td>总股本</td><td>10.43 亿股</td><td>近三年无股本变动、无重组除权史</td></tr><tr><td>归母净资产</td><td>12.27 亿元（2026-06-30）</td><td>期初 12.78 亿元，半年减少 3.98%</td></tr><tr><td>资产负债率</td><td>30.0%</td><td>无短期借款、无长期借款、无商誉，货币资金 4.36 亿元</td></tr></tbody></table>
+<blockquote><p><strong>估值口径警示</strong>：亏损股不用 PE，但本股 2025 年是真实盈利（归母 1.01 亿元、扣非 0.76 亿元），故 PE 可用——问题在于<strong>分母正在缩水</strong>：2026H1 扣非已转负（-865.99 万元），若全年按 2025H2 打七折测算，2026 年归母约 5,700 万元，对应 PE 约 53 倍。<strong>估值的分子（市值）不动、分母（盈利）在下行</strong>，这是给出"卖出"的第一条量化理由。</p></blockquote>
+<h3 id="sec1">1.2 股权结构与股东阵容</h3>
+<p><strong>结论：控制权高度集中且未变更，没有"新主入主"故事可讲；控股股东质押其持股的 51.3%，但无平仓压力证据。</strong> 沈阳远大铝业集团（34.64%）＋远大铝业工程（新加坡）（16.61%）合计 <strong>51.25%</strong>，同属远大系，实际控制人为<strong>康宝华</strong>（持有上市公司 53.23 万股）；其余八大股东<strong>全部为自然人</strong>（许磊 1.19%、彭旭 0.81%、王晓远 0.47% 等），<strong>无一家公募、保险、社保或券商</strong>。因康宝华自公司创立至今一直任董事长、股权未发生控制权层面的变化，<strong>"控制权变更/新主入主"这条 A 股常见的重估路径在本标的不存在</strong>。</p>
+<details class="fold"><summary>股东阵容逐户明细（2026-06-30 十大股东）</summary><div class="fold-body">
+
+<table><thead><tr><th>排名</th><th>持有方</th><th>性质</th><th>持股比例</th><th>股数</th><th>质押/冻结</th></tr></thead><tbody><tr><td>1</td><td>沈阳远大铝业集团有限公司</td><td>境内非国有法人</td><td>34.64%</td><td>3.61 亿股</td><td><strong>质押 1.85 亿股</strong>（占其持股 51.3%）</td></tr><tr><td>2</td><td>远大铝业工程（新加坡）有限公司</td><td>境外法人</td><td>16.61%</td><td>1.73 亿股</td><td>无</td></tr><tr><td>3</td><td>许磊</td><td>自然人</td><td>1.19%</td><td>1,244.00 万股</td><td>无</td></tr><tr><td>4</td><td>彭旭</td><td>自然人</td><td>0.81%</td><td>847.87 万股</td><td>无</td></tr><tr><td>5</td><td>王晓远</td><td>自然人</td><td>0.47%</td><td>489.33 万股</td><td>无</td></tr><tr><td>6</td><td>孔令寿</td><td>自然人</td><td>0.44%</td><td>458.42 万股</td><td>无</td></tr><tr><td>7</td><td>杨成社</td><td>自然人</td><td>0.42%</td><td>437.25 万股</td><td>无</td></tr><tr><td>8</td><td>卢玉芳</td><td>自然人</td><td>0.41%</td><td>425.93 万股</td><td>无</td></tr><tr><td>9</td><td>杨俊敏</td><td>自然人</td><td>0.37%</td><td>390.09 万股</td><td>无</td></tr><tr><td>10</td><td>吴永棠</td><td>自然人</td><td>0.37%</td><td>388.00 万股</td><td>无</td></tr></tbody></table>
+<p><strong>筹码集中度</strong>：股东户数由 2025-12-31 的 <strong>50,462 户</strong>降至 2026-06-30 的 <strong>44,731 户</strong>（-11.4%），户均市值约 5.81 万元。⚠️ <strong>按本 skill 的必做校验——"户数下降不含方向"</strong>：本股同期股价自 2025-12-31 附近的 3.9 元区间下行至 6 月末的 2.90 元区间，属"<strong>下跌中户数下降</strong>"，读作散户割肉离场，<strong>不可直接读作"主力吸筹"</strong>。</p>
+
+</div></details>
+<details class="fold"><summary>股权历史沿革与控制权变动（含每股价格）</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>关键事件</th><th>股权/实控人变化</th><th>背后的逻辑</th></tr></thead><tbody><tr><td>2010-10</td><td>沈阳远大铝业集团入主</td><td>康宝华成为实际控制人</td><td>远大系（幕墙/铝业）为上市平台注入电梯业务（博林特）</td></tr><tr><td>2012-07</td><td>深交所中小板上市</td><td>发行后集团持股被摊薄</td><td>电梯主业独立上市</td></tr><tr><td>2019-03 至 2022-06</td><td><strong>伪造《验收证明》提前确认电梯销售收入</strong></td><td>股权无变化</td><td><strong>虚增 2019—2021 年营收、虚增/虚减利润总额</strong>，是本轮 ST 的直接来源</td></tr><tr><td>2024-04-30</td><td>收到证监会《立案告知书》（证监立案字 0022024001 号）</td><td>股权无变化</td><td>因涉嫌信息披露违法违规被立案</td></tr><tr><td>2025-11-28</td><td>收到辽宁证监局《行政处罚事先告知书》（〔2025〕6 号）</td><td>股权无变化</td><td>触发 9.8.1(八)，2025-12-02 起戴 ST 帽（当日涨跌幅 5%）</td></tr><tr><td>2025-12-19</td><td>收到《行政处罚决定书》（〔2025〕8 号）</td><td>股权无变化</td><td><strong>摘帽 12 个月计时起算日</strong></td></tr></tbody></table>
+<p><strong>关联方持股逐年增减</strong>：远大铝业集团与新加坡远大合计持股自上市以来仅在 2024-11 出现过一次控股股东增持（2024-11-14 公告"增持计划实施完毕"，已出具法律意见书），此后<strong>两期（2025-12-31、2026-06-30）均为"0 增减"</strong>——<strong>控股股东在自身公司被立案、被 ST 的全过程中未减持、也未再增持</strong>，行为记录中性偏冷。</p>
+
+</div></details>
+<h3 id="sec2">1.3 资产质量与估值（星级表）</h3>
+<p><strong>结论：这是一张"干净但不便宜"的资产负债表——债务端满分、估值端最差，而恰恰是后者决定它涨不动。</strong> 五维打分中，"债务与流动性" 拿 ★4，"市值与估值" 与 "控制权与运作" 均只有 ★2。</p>
+<table><thead><tr><th>星级维度</th><th>大白话说明</th><th>评级</th></tr></thead><tbody><tr><td>市值与估值</td><td>30.57 亿元市值、PB 2.49（同业最高）、2026 年化 PE 约 53 倍——<strong>估值不便宜</strong></td><td>★★☆☆☆</td></tr><tr><td>法律合规性</td><td>年报虚假记载已被处罚（公司 600 万元），但<strong>未触及重大违法强制退市</strong>；无资金占用、无违规担保、无诉讼冻结（仅 174.71 万元司法冻结资金）</td><td>★★★☆☆</td></tr><tr><td>债务与流动性</td><td><strong>无有息负债</strong>、资产负债率 30.0%、货币资金 4.36 亿元（受限 2.04 亿元），无商誉——资产负债表干净</td><td>★★★★☆</td></tr><tr><td>主业质地</td><td>电梯主业真实（2025 年营收 13.75 亿元），海外收入占比升至 53.66%、海外毛利率 35.55%；但<strong>2026H1 扣非转负、归母同比 -91.4%</strong></td><td>★★★☆☆</td></tr><tr><td>控制权与运作</td><td>控制权稳定（远大系 51.25%），<strong>但没有新主、没有资产注入、且发股通道被锁死至 2028-12</strong></td><td>★★☆☆☆</td></tr><tr><td><strong>综合</strong></td><td><strong>一只"资产负债表干净、主业真实、但没有故事"的假 ST</strong></td><td><strong>★★★☆☆</strong></td></tr></tbody></table>
+<blockquote><p><strong>哪一项高分不能抵消哪一项低分</strong>：债务干净（★4）与合规过关（★3）<strong>不能抵消</strong>"估值最贵（★2）＋ 无重估引擎（★2）"这两项——前者决定"跌不死"，后者决定"涨不动"。</p></blockquote>
+<h3 id="sec3">1.4 全流程进度看板</h3>
+<p><strong>结论：全流程只剩一个环节——等 2026-12-19 这个日期过去。卡点属于"时间未到"，不是"谈不拢"。</strong></p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点或条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>立案调查</td><td>已结案</td><td>—</td><td>已完成</td><td>〔2025〕8 号决定书</td></tr><tr><td>事先告知书</td><td>已收到（2025-11-28）</td><td>—</td><td>已完成</td><td>2025-049 公告</td></tr><tr><td>戴帽（ST）</td><td>已于 2025-12-02 实施</td><td>—</td><td>已完成</td><td>2025-050 公告</td></tr><tr><td>追溯重述</td><td><strong>已完成</strong>（2023-04-27 董事会、2023-04-29 公告）</td><td>—</td><td>已完成</td><td>2023-018 公告</td></tr><tr><td>决定书 12 个月计时</td><td>进行中（已过 290 天）</td><td><strong>2026-12-19 满 12 个月</strong></td><td>2026-12-21 可提交申请</td><td>9.8.8 条</td></tr><tr><td>提交撤销申请</td><td>未提交</td><td>需满 12 个月</td><td>预计 2026-12 下旬</td><td>—</td></tr><tr><td>交易所审核</td><td>未开始</td><td>15 个交易日内决定</td><td>预计 2027-01</td><td>9.8.10 条</td></tr></tbody></table>
+<h3 id="sec4">1.5 运作特征与综合判断</h3>
+<ul><li><strong>手法</strong>：无运作。原体系（远大系）自始至终未增持、未减持、未引入战投、未筹划重组，<strong>唯一动作是"整改 + 道歉"</strong>。</li><li><strong>节奏</strong>：从立案（2024-04）到决定书（2025-12）历时 20 个月，属常规监管周期。</li><li><strong>交权是配合式还是对抗式</strong>：<strong>二者都不是——根本没有交权议题</strong>。</li><li><strong>成败关键变量（1 和 0 问题）</strong>：唯一的"1 和 0"是——<strong>在 2026-12-19 之前是否出现新的其他风险警示事由</strong>（如新的内控非标、新的处罚、资金占用）。目前无任何迹象。</li><li><strong>核心矛盾一句话</strong>：<strong>摘帽确定性极高，但摘帽本身不含任何估值增量——因为它既无涨跌幅制度红利，也不解锁发股能力。</strong></li></ul>
+<hr>
+<h3 id="sec5">2. ST 风险诊断</h3>
+<p><strong>结论：戴帽依据是"假 ST"（深主板 9.8.1 第八项），四类退市红线逐条对照全部未触及；把它读成"有退市风险"是本标的最常见的分析错误。</strong></p>
+<ul><li><strong>戴帽时间／原因／类型</strong>：2025-12-02 起实施其他风险警示，简称由"远大智能"变更为"ST 远智"。原因是<strong>2025-11-28 收到的《行政处罚事先告知书》载明公司 2019—2021 年年报及 2022 年半年报财务指标存在虚假记载</strong>，属<strong>规范类·处罚 ST</strong>（"假 ST"），<strong>不是财务类 \*ST</strong>。</li><li><strong>立案情况</strong>：2024-04-30 被证监会立案（证监立案字 0022024001 号），<strong>已于 2025-12-19 随决定书落地而终结</strong>——不存在"立案未决导致重组做不了"的障碍。</li><li><strong>资金占用与违规担保</strong>：2025 年年报明载"<strong>公司报告期不存在控股股东及其他关联方对上市公司的非经营性占用资金</strong>""<strong>公司报告期无违规对外担保情况</strong>"。</li></ul>
+<details class="fold"><summary>四类退市红线逐条对照（回规则原文核实）</summary><div class="fold-body">
+
+<table><thead><tr><th>类型</th><th>触发条件</th><th>本标的实际值</th><th>是否触及</th></tr></thead><tbody><tr><td><strong>交易类</strong></td><td>连续 20 日收盘价 &lt;1 元；连续 20 日市值 &lt;5 亿元（主板）；连续 20 日股东数 &lt;2,000 人</td><td>股价 2.93 元；市值 30.57 亿元；股东 44,731 户</td><td><strong>否</strong></td></tr><tr><td><strong>财务类①</strong></td><td>利润总额/净利/扣非孰低为负 <strong>且</strong> 扣除后营收 &lt;3 亿元</td><td>2025 年三者均为正（扣非 +0.76 亿元）；<strong>扣除后营收 13.58 亿元</strong></td><td><strong>否</strong></td></tr><tr><td><strong>财务类②</strong></td><td>最近一个会计年度审计净资产为负</td><td>归母净资产 12.27 亿元（正）</td><td><strong>否</strong></td></tr><tr><td><strong>财务类③</strong></td><td>审计意见为无法表示／否定</td><td><strong>2025 年财报审计＝标准无保留意见</strong>（中审华，CAC 审字[2026]1083 号，2026-04-15）</td><td><strong>否</strong></td></tr><tr><td><strong>规范类①</strong></td><td>连续两个会计年度内控被出具无法表示/否定</td><td>2025 年<strong>内控审计＝标准无保留意见</strong>；2024 年为"带强调事项段的无保留意见"（因立案未决），<strong>"带强调事项段的无保留"＝无保留</strong>，不构成非标</td><td><strong>否</strong></td></tr><tr><td><strong>规范类②</strong></td><td>资金占用（≥2 亿元或 ≥净资产 30%）；信披违规等</td><td>非经营性占用 <strong>0</strong>；违规担保 <strong>0</strong>；处罚已落地且未触及重大违法</td><td><strong>否</strong></td></tr><tr><td><strong>其他类</strong></td><td>近三年累计分红 &lt;年均净利 30% 且 &lt;5,000 万元</td><td>2025 年度分红 0.05 元/股（2026-05-29 实施），<strong>金额约 5,216 万元 &gt;5,000 万元</strong>，且远高于近三年年均净利的 30%</td><td><strong>否</strong></td></tr><tr><td><strong>重大违法类</strong></td><td>财务造假达量化线</td><td>详见下方专条</td><td><strong>否（有年度适用范围限制）</strong></td></tr></tbody></table>
+<p><strong>重大违法量化线的"年度适用范围"专条</strong>：深主板 9.5.2 第（四）（五）项的量化线（单年 ≥2 亿元且占比 &gt;30%；连续两年合计 ≥3 亿元且占比 &gt;20%）<strong>仅适用于 2024 年度及以后</strong>的虚假记载；第（六）项"连续三年虚假记载"<strong>仅适用于 2020 年度及以后</strong>。本案造假落在 2019—2022 年，<strong>2019 年不在适用区间内</strong>，故连续三个会计年度（2020、2021 年报）不构成"连续三年"；<strong>与辽宁证监局"未触及重大违法强制退市"的认定一致</strong>。</p>
+
+</div></details>
+<details class="fold"><summary>行政处罚决定书认定的违法事实与量级（逐笔）</summary><div class="fold-body">
+
+<p><strong>案号：辽宁证监局〔2025〕8 号；当事人 8 名</strong></p>
+<table><thead><tr><th>报告期</th><th>虚增/虚减营业收入</th><th>占当期营收</th><th>虚增/虚减利润总额</th><th>占当期利润总额绝对值</th></tr></thead><tbody><tr><td>2019 年年度报告</td><td><strong>虚增 1.23 亿元</strong></td><td>15.22%</td><td>虚增 0.33 亿元</td><td>31.48%</td></tr><tr><td>2020 年年度报告</td><td>虚增 0.66 亿元</td><td>7.24%</td><td>虚增 0.22 亿元</td><td><strong>300.55%</strong></td></tr><tr><td>2021 年年度报告</td><td><strong>虚增 1.47 亿元</strong></td><td>15.21%</td><td>虚增 0.39 亿元</td><td><strong>286.69%</strong></td></tr><tr><td>2022 年半年度报告</td><td>虚减 0.16 亿元</td><td>4.85%</td><td>虚减 0.23 亿元</td><td>42.96%</td></tr></tbody></table>
+<ul><li><strong>手法一</strong>：2019-03 至 2022-06，在部分非买断式电梯产品<strong>未取得特种设备检验机构《监督检验报告》、客户未取得控制权</strong>的情况下，<strong>利用伪造的《验收证明》</strong>作为收入确认依据，提前确认电梯销售收入（含安装费）并结转成本。</li><li><strong>手法二</strong>：利用<strong>未实际履行的租赁协议</strong>确认租赁业务收入，导致 2021 年年报虚假记载。</li><li><strong>罚款</strong>：公司警告并罚 <strong>600 万元</strong>；康宝华（时任董事长）300 万元、王延邦 250 万元、王维龙 250 万元、陈光伟 200 万元、张楠 200 万元、孙成雨 200 万元、王爽 100 万元，<strong>合计 2,100 万元</strong>。</li><li><strong>追溯重述</strong>：2023-04-27 董事会、监事会审议通过《关于前期会计差错更正的议案》，2023-04-29 公告（编号 2023-018），已对相应年度财务报表追溯调整。</li></ul>
+
+</div></details>
+<h3 id="sec6">2.4 摘帽展望</h3>
+<p><strong>结论：摘帽条件已满足其一、另一条只剩计时——最早可申请日 2026-12-21，但"摘帽"本身不含任何估值增量。</strong></p>
+<ul><li><strong>依据条款</strong>：深交所《股票上市规则（2025 年修订）》<strong>9.8.8 条</strong>——因 9.8.1 第八项被实施其他风险警示后，<strong>同时</strong>符合两条件即可申请撤销：</li><li><strong>公司已就行政处罚决定所涉事项对相应年度财务会计报告进行追溯重述</strong> → <strong>已完成</strong>（2023-04-29 公告 2023-018），公司 2026-08-06 起在互动易多次确认"行政处罚所涉事项已整改完毕"；</li><li><strong>自中国证监会作出行政处罚决定书之日起已满十二个月</strong> → 决定书 <strong>2025-12-19</strong> 作出，满 12 个月为 <strong>2026-12-19（周六）</strong>，<strong>首个交易日 2026-12-21（周一）</strong> 即可提交申请。</li><li><strong>零容错提示</strong>：申请前若出现<strong>新的</strong>其他风险警示事由（新的内控非标、新的处罚、资金占用等），条件将重新计算。目前无任何此类迹象。</li><li><strong>★ 关键否定：摘帽无制度红利。</strong> 主板风险警示股涨跌幅自 <strong>2026-07-06</strong> 起由 5% 改为 <strong>10%</strong>，<strong>摘帽前后同为 10%</strong> → "摘帽放大"的制度性来源已完全消失。本股 2026-09-30 涨停价 3.20 元／跌停价 2.62 元（＝2.91×1.1／×0.9）可直接反证现行比例为 10%。<strong>"戴帽时是 5%、摘帽后回到 10%"这条 2025 年 12 月戴帽公告里写的逻辑，今天已不成立。</strong></li></ul>
+<hr>
+<h3 id="sec7">3. 公司运营情况</h3>
+<p><strong>结论：主业是真的（电梯），增长也是真的（出海）——但 2026H1 利润端突然失速，扣非转负。</strong></p>
+<p>核心财务（合并口径，2026H1 及最近五年）：</p>
+<table><thead><tr><th>报告期</th><th>营业收入</th><th>归母净利</th><th>扣非净利</th><th>每股净资产</th><th>毛利率</th></tr></thead><tbody><tr><td>2026H1</td><td>5.65 亿元（+9.80%）</td><td><strong>183.69 万元（-91.4%）</strong></td><td><strong>-865.99 万元</strong></td><td>1.176 元</td><td>30.33%</td></tr><tr><td>2025 年</td><td>13.75 亿元（+14.35%）</td><td>1.01 亿元</td><td>0.76 亿元</td><td>1.225 元</td><td>29.46%</td></tr><tr><td>2024 年</td><td>12.03 亿元</td><td>0.18 亿元</td><td>-0.21 亿元</td><td>1.130 元</td><td>24.24%</td></tr><tr><td>2023 年</td><td>13.36 亿元</td><td>0.31 亿元</td><td>0.05 亿元</td><td>1.115 元</td><td>22.19%</td></tr><tr><td>2022 年</td><td>9.88 亿元</td><td>-1.11 亿元</td><td>-1.46 亿元</td><td>1.091 元</td><td>20.06%</td></tr><tr><td>2021 年</td><td>8.22 亿元</td><td>-0.28 亿元</td><td>-0.52 亿元</td><td>1.186 元</td><td>25.42%</td></tr></tbody></table>
+<blockquote><p><strong>口径与来源</strong>：2021—2023 年数据取自东方财富 F10 主要指标【异源】，2024—2026H1 取自公司年报／半年报原文；勾稽自检：2026H1 总资产 18.74 亿元 ＝ 负债 5.63 亿元 ＋ 所有者权益 13.11 亿元，其中归母 12.27 亿元 ✓。</p></blockquote>
+<p><strong>利润为何失速（2026H1 同比）</strong>：营收增长 9.80% 而归母下滑 91.4%，<strong>原因不在收入端，在三项费用与非经常性损益</strong>——① <strong>财务费用从 -110.05 万元转为 +920.63 万元（+936.52%）</strong>，公司自述"本期汇率变动引起汇兑收益减少所致"（海外收入占比过半，人民币汇率是主要利润变量）；② <strong>销售费用 9,489.87 万元，同比 +21.42%</strong>，增速为营收增速的两倍；③ 2026H1 计提资产减值准备 <strong>754.68 万元</strong>（应收账款坏账 369.34 万元、其他应收款坏账 494.10 万元等）。</p>
+<details class="fold"><summary>2026H1 分行业／分产品／分地区收入结构（热点业务占比定位）</summary><div class="fold-body">
+
+<p><strong>分行业</strong>：电梯 <strong>98.31%</strong>（5.56 亿元，+9.32%）｜机器人自动化设备 <strong>0.03%（16.11 万元，-45.13%）</strong>｜其他 1.66%</p>
+<p><strong>分产品</strong>：直梯 72.38%（4.09 亿元，+28.84%）｜电梯安装及维保费 15.35%（0.87 亿元，-26.52%）｜扶梯 6.38%（0.36 亿元，-34.09%）｜配件 4.20%（0.24 亿元）｜其他 1.18%｜加工费 0.35%｜材料零部件 0.13%｜<strong>机器人自动化设备 0.03%</strong></p>
+<p><strong>分地区</strong>：</p>
+<table><thead><tr><th>地区</th><th>收入</th><th>毛利率</th><th>收入同比</th></tr></thead><tbody><tr><td><strong>国外</strong></td><td><strong>3.03 亿元（占 53.66%）</strong></td><td><strong>35.55%</strong></td><td><strong>+36.89%</strong></td></tr><tr><td>东北地区</td><td>0.83 亿元</td><td>20.85%</td><td>+29.24%</td></tr><tr><td>华东地区</td><td>0.46 亿元</td><td>27.81%</td><td><strong>-34.26%</strong></td></tr><tr><td>华北地区</td><td>0.46 亿元</td><td>21.69%</td><td>-15.20%</td></tr><tr><td>西北地区</td><td>0.46 亿元</td><td>31.76%</td><td>-18.26%</td></tr><tr><td>华南地区</td><td>0.41 亿元</td><td>21.88%</td><td>-15.67%</td></tr></tbody></table>
+<p><strong>★ 热点业务占比定位（本报告必做的动作）</strong>：市场反复使用的"<strong>机器人</strong>"标签，2026H1 收入 <strong>16.11 万元、占营收 0.03%</strong>；公司在互动易反复自述"<strong>该子公司营业收入占公司总营业收入比例约为 0.13%（2025 年）</strong>""<strong>曾为客户提供过定制化产品，未批量生产，无人形机器人相关业务</strong>"，并主动"<strong>提请投资者理性看待相关发展预期</strong>"。<strong>"军工/战斗机舱体部件机器人打磨系统"与"风电"均只见于 2022—2025 年的异动关键词，2026 年半年报分产品表中无对应科目。</strong></p>
+
+</div></details>
+<p><strong>重要子公司</strong>：2025 年 12 月 31 日新设<strong>成都远大智能工业有限公司</strong>（100% 持股）；全资子公司<strong>沈阳远大智能高科机器人有限公司</strong>承接工业机器人业务；2026 年新设<strong>境外控股子公司</strong>（博林特电梯乌兹别克斯坦生产基地，2026-08 已正式投产）。</p>
+<p><strong>回购历史与计划</strong>：2026-04-29 业绩说明会明确答复"<strong>公司目前没有回购注销计划</strong>"。</p>
+<hr>
+<h2 id="chap2">二、路径 C · 处罚 ST：唯一要做的事是"等时钟走完"，但时钟走完后没有增量</h2>
+<p><strong>结论：路径上没有可深耕的动作——因为这是一条"自动完成"的路径。真正需要判断的不是"能不能摘帽"，而是"摘帽之后能拿到什么"，答案是：拿不到制度红利，也拿不到发股能力。</strong></p>
+<h3 id="sec8">3.1 摘帽时间锚：全文最重要的日期</h3>
+<p><strong>结论：全文最重要的日期只有一个——2026-12-21（最早可申请日，距今 75 天）；它是本标的唯一的价值锚，也是它最大的问题所在（因为是公开日历）。</strong></p>
+<table><thead><tr><th>节点</th><th>时点</th><th>说明</th></tr></thead><tbody><tr><td>追溯重述完成</td><td><strong>2023-04-29</strong></td><td>条件一已满足（公告 2023-018）</td></tr><tr><td>决定书作出</td><td><strong>2025-12-19</strong></td><td>条件二的起算日</td></tr><tr><td>满 12 个月</td><td>2026-12-19（周六）</td><td>距今 <strong>75 天</strong></td></tr><tr><td><strong>最早可申请日</strong></td><td><strong>2026-12-21（周一）</strong></td><td>满 12 个月后的首个交易日</td></tr><tr><td>交易所决定时限</td><td>受理后 15 个交易日内</td><td>按 9.8.10 条</td></tr></tbody></table>
+<p><strong>这条时间锚是"公开日历"，不存在任何信息差</strong>——公司自 2026-04 起已在互动易被追问摘帽 6 次以上，答复口径完全一致。<strong>公开日历型事件在 A 股通常已被提前定价</strong>：同型样本（假 ST，54 只有效）2026 年涨跌幅中位数 <strong>-17.12%</strong>、均值 -7.93%，<strong>仅 17 只上涨</strong>；本股 -7.28% 位列中位偏上（相对抗跌）。<strong>本 skill 的通用铁律在此再次被验证——"摘帽本身不构成上涨理由"。</strong></p>
+<h3 id="sec9">3.2 ★ 发股通道被锁死：摘帽之后也没有"重估引擎"</h3>
+<p><strong>结论：现任董事会与高管中有 3 名处罚当事人仍在任，触发《上市公司证券发行注册管理办法》第十一条第（三）项——公司在 2028-12-19 前不得向特定对象发行股票，"摘帽后装资产"这条 A 股最常用的重估路径在本标的不存在。</strong></p>
+<p>第六届董事会（2026-01-15 换届）与高管名单中，<strong>下列人员同时是《行政处罚决定书》的当事人</strong>：</p>
+<table><thead><tr><th>现任职务</th><th>姓名</th><th>处罚（〔2025〕8 号）</th></tr></thead><tbody><tr><td>董事长（兼任实际控制人）</td><td><strong>康宝华</strong></td><td>警告 + <strong>罚款 300 万元</strong></td></tr><tr><td>董事、财务总监</td><td><strong>王维龙</strong></td><td>警告 + <strong>罚款 250 万元</strong></td></tr><tr><td>总经理</td><td><strong>王延邦</strong></td><td>警告 + <strong>罚款 250 万元</strong></td></tr></tbody></table>
+<p>公司自己在 2026-01-16 换届公告中即已披露：三人"于 2023 年 5 月收到过辽宁证监局出具警示函的监管措施……于 2025 年 12 月收到辽宁证监局下发的《行政处罚决定书》，对其作出警告并处以罚款的<strong>行政处罚</strong>"。</p>
+<blockquote><p><strong>条款原意与两个易错点</strong>：《发行注册办法》第十一条第（三）项限制的是「<strong>现任</strong>董事、监事和高级管理人员<strong>最近三年</strong>受到中国证监会<strong>行政处罚</strong>」——① 是"现任 × 最近三年"，<strong>不是</strong>"上市公司受处罚 × 12 个月"；② <strong>"警示函"（行政监管措施）不构成行政处罚</strong>（这一点在 ST宏达案例中已正反面验证），但本案是<strong>《行政处罚决定书》，明确属行政处罚</strong>。</p><p><strong>化解方式与概率</strong>：条款限"<strong>现任</strong>"，相关董监高<strong>先行辞任</strong>即可消除该情形。但三人的任期至 <strong>2029-01-15</strong>，且康宝华同时是实际控制人；截至基准日<strong>无任何辞任或改选迹象</strong>（2026-09-15 只补选了独立董事、2026-09-29 只补选了职工代表董事）。<strong>因此按当前人事状态，发股类资本运作在 2028-12-19 前不可行。</strong></p></blockquote>
+<p><strong>这为什么关键</strong>：对一只"假 ST"而言，摘帽后市值重估通常依赖两条路——<strong>① 涨跌幅/资金准入的制度红利（本案已消失）</strong>；<strong>② 通过发行股份购买资产装入新业务（本案被锁死至 2028 年）</strong>。<strong>两条路同时关闭，"摘帽"就只剩一个标签变化。</strong></p>
+<h3 id="sec10">3.3 公司自己的口径：无并购、无回购、聚焦主业</h3>
+<p>2026 年公司在互动易的答复构成一个完整且一致的口径闭环：<strong>① 机器人不做大</strong>（"占比较小""未批量生产""无人形机器人相关业务""提请投资者理性看待"）；<strong>② 无外延并购表述</strong>（被问及"闲置资金是否投入机器人研发/海外拓展/旧改、是否剥离低效资产"时答"聚焦主营业务的优化升级"）；<strong>③ 无回购</strong>（"目前没有回购注销计划"）；<strong>④ 无目标披露</strong>（被反复追问订单、产能、市占率目标时统一答"具体经营数据详见定期报告"）。<strong>当一家公司连续 4 个月对 20 余个"增量信息"类提问给出同一套模板答复时，"零增量"本身就是一个可用的结论。</strong></p>
+<hr>
+<h2 id="chap3">三、炒作逻辑三支柱</h2>
+<p><strong>结论：三支柱中最强的一支是"炒预期"，但被催化对象（摘帽）本身无预期差；"炒历史类似行为"与"炒主板映射"均指向下跌组。</strong></p>
+<h3 id="sec11">3.1 支柱① 炒预期（当前最强，但含金量低）</h3>
+<p>本标的未来 6—12 个月<strong>可验证的事件节点只有三个</strong>，且全部是公开日历：</p>
+<table><thead><tr><th>节点</th><th>预计时点</th><th>性质</th><th>判读/证伪点</th></tr></thead><tbody><tr><td>2026 年三季报</td><td>2026-10 下旬</td><td>硬节点</td><td>验证 H2 能否扭转 H1 的扣非转负</td></tr><tr><td><strong>满 12 个月 → 提交撤销 ST 申请</strong></td><td><strong>2026-12-21 起</strong></td><td><strong>硬节点（公开日历）</strong></td><td><strong>无信息差；主板 ST 已 10%，无制度红利</strong></td></tr><tr><td>交易所决定撤销</td><td>预计 2027-01</td><td>硬节点</td><td>通过即标签消除</td></tr></tbody></table>
+<p><strong>找不到"硬时间表 + 预期差"的组合</strong>——这正是"炒预期"这一支在本标的偏弱的原因：<strong>事件存在，但事件本身不含估值增量。</strong></p>
+<h3 id="sec12">3.2 支柱② 炒历史类似行为（相似股票匹配法）</h3>
+<p><strong>结论：以基准日画像（主板／假 ST／30 亿市值／有真实主业但盈利下滑／无新主／摘帽在 75 天后）检索，本标的落在"下跌组"一侧——上涨的那 17 只假 ST 全部"有物"，而本标的没有。</strong></p>
+<p>画像：深主板｜规范类·假 ST（9.8.1 八）｜市值 30.57 亿元｜远大系控股无变更｜2026H1 扣非转负｜摘帽窗口 75 天｜历史炒作符号＝机器人/军工/中俄贸易/风电。</p>
+<details class="fold"><summary>同型样本（"假 ST"55 只，剔本股 54 只有效）2026 年涨跌幅分布</summary><div class="fold-body">
+
+<table><thead><tr><th>分组</th><th>标的与涨跌幅</th></tr></thead><tbody><tr><td><strong>上涨组（17 只）</strong></td><td>京蓝科技 +170.76%／\*ST英飞 +130.22%／ST东尼 +83.44%／ST长方 +68.35%／ST海钦 +53.24%／任子行 +38.51%／ST天圣 +27.37%／ST派瑞 +20.65%／ST惠伦 +16.17%／ST星农 +9.77%／ST人福 +8.74%／ST百灵 +7.82%／ST银江 +7.43%／ST思科瑞 +7.18%／ST司特 +7.14%／ST沈化 +1.64%／\*ST沐邦 +1.33%</td></tr><tr><td><strong>下跌组（代表）</strong></td><td>元道退 -95.04%／\*ST清越 -90.24%／ST天际 -70.84%／\*ST岭南 -61.73%／ST荃银 -51.28%／ST合力泰 -49.84%／ST京机 -45.82%／ST际华 -42.09%／ST达华 -39.65%／ST臻镭 -39.02%／ST恒信 -37.76%／ST章鼓 -35.69%／<strong>ST创意 -18.36%／ST汇洲 -5.33%／ST远智 -7.28%（本股）</strong></td></tr><tr><td>统计</td><td><strong>中位数 -17.12%｜均值 -7.93%｜上涨 17/54</strong></td></tr></tbody></table>
+<p><strong>★ 上涨组反查共性（本 skill 的必做动作）</strong>：17 只上涨样本的共同点是<strong>"有物"</strong>——已签重整投资协议（\*ST英飞）、明确的重组/资产注入（京蓝科技、ST东尼、ST长方）、要约收购方（\*ST威领类）、实质资产动作；<strong>而本标的只有"一份公开日历上的摘帽日期"</strong>。<strong>"人名属于预期、物属于事实"</strong>——本标的连"人名"都没有（无新实控人、无重组方），<strong>属"三者皆缺"（人/物/表里的"表"虽有，但是公开日历）</strong>。</p>
+<p><strong>跨类对照：三只"摘帽线"票的横向表现</strong>——雪球 ST 讨论中反复并列的三只"趋势预摘帽且涨幅不大"的标的，2026 年表现分别为 <strong>ST创意 -18.36%、ST汇洲 -5.33%、ST远智 -7.28%</strong>。<strong>"摘帽线"这一主题在 2026 年是整体走平至下跌的，不是被奖励的叙事。</strong></p>
+
+</div></details>
+<h3 id="sec13">3.3 支柱③ 炒主板映射（选股动作）</h3>
+<p><strong>结论：主板电梯板块没有被炒，"映射"无标的可映射；公司自身能蹭上的"俄乌重建"属未落地的地缘假设，标【纯概念】。</strong></p>
+<ul><li><strong>主板当下在炒什么</strong>：2026 年主板主线集中于 AI 算力、半导体、机器人本体与固态电池等，<strong>"电梯"这个板块在 2026 年没有形成主线行情</strong>——同业 <strong>康力电梯 PE 19.63／PB 1.35、广日股份 PE 10.84／PB 0.75、上海机电 PE 26.42／PB 1.30</strong>，估值均处低位而股价未成趋势，说明<strong>行业本身缺乏注意力</strong>。</li><li><strong>ST 板块内可映射的同类</strong>：电梯类 ST 标的仅本股一只，<strong>无可映射清单</strong>。</li><li><strong>公司自身能蹭上的</strong>：① <strong>俄乌停战后重建</strong>（雪球观点："ST远智下一个会稽山，概念 2026.12 月底摘帽，俄乌停战重建与电梯行业爆发"，2026-09-28）——<strong>无任何公告支撑，标【纯概念】</strong>；② <strong>中俄贸易/中欧班列</strong>——公司总部在沈阳、依托中欧班列（沈阳）集结中心，属<strong>真实的物流优势</strong>，但<strong>未披露过具体的中俄订单金额</strong>；③ <strong>机器人</strong>——占比 0.03%，公司反复否认，<strong>标【纯概念】</strong>。</li></ul>
+<details class="fold"><summary>韭研公社异动全量明细（56 条，时间降序）</summary><div class="fold-body">
+
+<table><thead><tr><th>题材时间</th><th>简称</th><th>题材</th><th>涨停信息</th><th>股价</th><th>异动关键词</th></tr></thead><tbody><tr><td>2026-07-02</td><td>ST远智</td><td>ST板块</td><td>—</td><td>2.71</td><td>撤销其他风险警示预期+机器人+战斗机舱体部件+中俄贸易</td></tr><tr><td>2026-07-01</td><td>ST远智</td><td>ST板块</td><td>—</td><td>2.58</td><td>撤销其他风险警示预期+机器人+战斗机舱体部件+中俄贸易</td></tr><tr><td>2026-02-09</td><td>ST远智</td><td>ST板块</td><td>—</td><td>4.07</td><td>机器人+年报预增+战斗机舱体部件+中俄贸易</td></tr><tr><td>2026-01-27</td><td>ST远智</td><td>ST板块</td><td><strong>7天4板</strong></td><td>4.11</td><td>年报预增+机器人+战斗机舱体部件+中俄贸易</td></tr><tr><td>2026-01-22</td><td>ST远智</td><td>ST板块</td><td><strong>4天3板</strong></td><td>3.94</td><td>年报预增+机器人+业绩扭亏+战斗机舱体部件+中俄贸易</td></tr><tr><td>2026-01-20</td><td>ST远智</td><td>ST板块</td><td><strong>2天2板</strong></td><td>3.73</td><td>年报预增+机器人+业绩扭亏+战斗机舱体部件+中俄贸易</td></tr><tr><td>2026-01-19</td><td>ST远智</td><td>ST板块</td><td>—</td><td>3.55</td><td>机器人+业绩扭亏+战斗机舱体部件+中俄贸易</td></tr><tr><td>2025-10-29</td><td>远大智能</td><td>公告</td><td>—</td><td>4.92</td><td>业绩扭亏+战斗机舱体部件机器人打磨系统+中俄贸易+机器人</td></tr><tr><td>2025-10-15</td><td>远大智能</td><td>公告</td><td>—</td><td>4.30</td><td>业绩扭亏+战斗机舱体部件机器人打磨系统+中俄贸易+机器人</td></tr><tr><td>2025-05-09</td><td>远大智能</td><td>军工(印巴)</td><td>—</td><td>4.04</td><td>战斗机舱体部件机器人打磨系统+中俄贸易+机器人</td></tr><tr><td>2025-02-26</td><td>远大智能</td><td>机器人</td><td>—</td><td>4.64</td><td>机器人+军工+风电+视觉引导系统</td></tr><tr><td>2025-01-17</td><td>远大智能</td><td>机器人</td><td>—</td><td>4.02</td><td>机器人+军工+风电+视觉引导系统</td></tr><tr><td>2024-12-12</td><td>远大智能</td><td>机器人</td><td>—</td><td>5.08</td><td>机器人+视觉引导系统+航空飞机</td></tr><tr><td>2024-12-04</td><td>远大智能</td><td>机器人</td><td><strong>2天2板</strong></td><td>4.75</td><td>机器人+视觉引导系统+航空飞机</td></tr><tr><td>2024-12-03</td><td>远大智能</td><td>机器人</td><td>—</td><td>4.32</td><td>机器人+视觉引导系统+航空飞机</td></tr><tr><td>2024-11-07</td><td>远大智能</td><td>机器人</td><td>—</td><td>4.09</td><td>机器人+视觉引导系统+航空飞机</td></tr><tr><td>2024-11-06</td><td>远大智能</td><td>机器人</td><td><strong>3天2板</strong></td><td>3.83</td><td>机器人+视觉引导系统+航空飞机</td></tr><tr><td>2024-11-04</td><td>远大智能</td><td>机器人</td><td>—</td><td>3.34</td><td>机器人+视觉引导系统+航空飞机</td></tr><tr><td>2024-09-04</td><td>远大智能</td><td>机器人</td><td>—</td><td>2.75</td><td>机器人+视觉引导系统+航空飞机</td></tr><tr><td>2024-09-03</td><td>远大智能</td><td>机器人</td><td>—</td><td>2.60</td><td>机器人+视觉引导系统+航空飞机</td></tr><tr><td>2024-08-21</td><td>远大智能</td><td>机器人</td><td>—</td><td>2.46</td><td>机器人+视觉引导系统+航空飞机</td></tr><tr><td>2024-07-05</td><td>远大智能</td><td>其他</td><td><strong>2天2板</strong></td><td>2.65</td><td>机器人+视觉引导系统+航空飞机</td></tr><tr><td>2024-07-04</td><td>远大智能</td><td>机器人</td><td>—</td><td>2.41</td><td>机器人+视觉引导系统+航空飞机</td></tr><tr><td>2024-03-06</td><td>远大智能</td><td>新质生产力</td><td>—</td><td>3.98</td><td>机器人+视觉引导系统+风电+航空飞机</td></tr><tr><td>2024-02-07</td><td>远大智能</td><td>新质生产力</td><td>—</td><td>2.98</td><td>机器人+视觉引导系统+风电+航空飞机</td></tr><tr><td>2023-06-29</td><td>远大智能</td><td>机器人</td><td>—</td><td>4.98</td><td>机器人视觉引导系统+风电+电梯</td></tr><tr><td>2023-05-19</td><td>远大智能</td><td>机器人</td><td>—</td><td>4.83</td><td>机器人视觉引导系统+风电+电梯</td></tr><tr><td>2023-05-18</td><td>远大智能</td><td>机器人</td><td>—</td><td>4.39</td><td>机器人视觉引导系统+风电+航空飞机</td></tr><tr><td>2023-03-27</td><td>远大智能</td><td>其他</td><td>—</td><td>5.05</td><td>机器人视觉引导系统+风电+航空飞机+电梯</td></tr><tr><td>2023-01-30</td><td>远大智能</td><td>人工智能</td><td>—</td><td>5.65</td><td>机器人视觉引导系统+风电+航空飞机+电梯</td></tr><tr><td>2023-01-12</td><td>远大智能</td><td>其他</td><td>—</td><td>5.27</td><td>机器人视觉引导系统+风电+航空飞机+电梯</td></tr><tr><td>2022-12-14</td><td>远大智能</td><td>机器人板块</td><td>—</td><td>4.66</td><td>机器人视觉引导系统+风电+航空飞机+电梯</td></tr><tr><td>2022-11-09</td><td>远大智能</td><td>其他</td><td>—</td><td>4.59</td><td>风电+工业机器人+航空飞机+电梯</td></tr><tr><td>2022-08-26</td><td>远大智能</td><td>风光储</td><td><strong>9天6板</strong></td><td><strong>6.56</strong></td><td>风电+工业机器人+航空飞机+电梯</td></tr><tr><td>2022-08-22</td><td>远大智能</td><td>风光储能产业链</td><td><strong>5天5板</strong></td><td><strong>6.91</strong></td><td>风电+工业机器人+航空飞机+电梯</td></tr><tr><td>2022-08-19</td><td>远大智能</td><td>风光储能产业链</td><td><strong>4天4板</strong></td><td>6.28</td><td>风电+工业机器人+航空飞机+电梯</td></tr><tr><td>2022-08-18</td><td>远大智能</td><td>风电</td><td><strong>3天3板</strong></td><td>5.71</td><td>风电+工业机器人+航空飞机+电梯</td></tr><tr><td>2022-08-17</td><td>远大智能</td><td>风电</td><td><strong>2天2板</strong></td><td>5.19</td><td>风电+工业机器人+航空飞机+电梯</td></tr><tr><td>2022-08-16</td><td>远大智能</td><td>风电</td><td>—</td><td>4.72</td><td>风电+工业机器人+航空飞机+电梯</td></tr><tr><td>2022-08-01</td><td>远大智能</td><td>机器人</td><td>—</td><td>4.32</td><td>工业机器人+风电+航空飞机+电梯</td></tr><tr><td>2022-07-11</td><td>远大智能</td><td>机器人</td><td>—</td><td>4.42</td><td>工业机器人+风电+电梯</td></tr><tr><td>2022-06-30</td><td>远大智能</td><td>智能制造</td><td><strong>4天4板</strong></td><td>5.03</td><td>工业机器人+风电+电梯</td></tr><tr><td>2022-06-29</td><td>远大智能</td><td>机器人</td><td><strong>3天3板</strong></td><td>4.57</td><td>工业机器人+风电+电梯</td></tr><tr><td>2022-06-28</td><td>远大智能</td><td>机器人</td><td><strong>2天2板</strong></td><td>4.15</td><td>工业机器人+风电+电梯</td></tr><tr><td>2022-06-27</td><td>远大智能</td><td>机器人</td><td>—</td><td>3.77</td><td>工业机器人+风电+电梯</td></tr><tr><td>2022-04-19</td><td>远大智能</td><td>其他</td><td><strong>4天2板</strong></td><td>3.89</td><td>工业机器人+风电+电梯</td></tr><tr><td>2022-04-14</td><td>远大智能</td><td>工业互联</td><td>—</td><td>3.89</td><td>工业机器人+电梯+风电</td></tr><tr><td>2022-03-21</td><td>远大智能</td><td>电梯</td><td>—</td><td>3.43</td><td>电梯+风电+智能机器人</td></tr><tr><td>2022-01-05</td><td>远大智能</td><td>其他</td><td>—</td><td>3.85</td><td>智能制造+一带一路+电梯+风电</td></tr><tr><td>2022-01-04</td><td>远大智能</td><td>其他</td><td>—</td><td>3.61</td><td>智能制造+一带一路+电梯+风电</td></tr><tr><td>2021-12-24</td><td>远大智能</td><td>其他</td><td><strong>4天2板</strong></td><td>3.41</td><td>电梯+智能制造+风电</td></tr><tr><td>2021-12-21</td><td>远大智能</td><td>房地产产业链</td><td>—</td><td>3.42</td><td>电梯+智能制造+风电</td></tr><tr><td>2021-08-03</td><td>远大智能</td><td>智能制造</td><td>—</td><td>3.29</td><td>智能制造+工业机器人+风电</td></tr><tr><td>2021-03-01</td><td>远大智能</td><td>智能制造</td><td><strong>2天2板</strong></td><td>3.73</td><td>电梯+智能制造+风电+股价超跌</td></tr><tr><td>2021-02-26</td><td>远大智能</td><td>智能制造</td><td>—</td><td>3.39</td><td>电梯+智能制造+风电+低价</td></tr><tr><td>2020-08-06</td><td>远大智能</td><td>装配式建筑</td><td>—</td><td>4.13</td><td>（装配式建筑政策 + 电梯主业描述）</td></tr></tbody></table>
+<p><strong>炒作波段汇总</strong>（按驱动关键词聚类，时间降序）：</p>
+<table><thead><tr><th>波段</th><th>题材</th><th>最高连板</th><th>股价区间</th><th>驱动关键词</th></tr></thead><tbody><tr><td>2026-07</td><td>ST 板块</td><td>—</td><td>2.58→2.71</td><td><strong>"撤销其他风险警示预期"</strong>（唯一一次摘帽驱动）</td></tr><tr><td>2026-01～02</td><td>ST 板块</td><td><strong>7 天 4 板</strong></td><td>3.55→4.11</td><td>年报预增 + 业绩扭亏 + 机器人 + 军工 + 中俄贸易</td></tr><tr><td>2025-05～10</td><td>军工/公告</td><td>—</td><td>4.04→4.92</td><td>印巴冲突 + 战斗机舱体部件机器人打磨系统</td></tr><tr><td>2024-02～2025-02</td><td>机器人</td><td>3 天 2 板</td><td>2.46→5.08</td><td>特斯拉 Optimus + 宇树 + 赛力斯 + 新质生产力</td></tr><tr><td>2022-06～09</td><td><strong>风电/光储</strong></td><td><strong>9 天 6 板</strong></td><td><strong>4.15→6.91</strong></td><td>千乡万村驭风行动 + 四川限电（<strong>历史股价峰值</strong>）</td></tr><tr><td>2021-02～2022-04</td><td>智能制造/电梯</td><td>4 天 2 板</td><td>3.29→3.89</td><td>电梯加装政策 + 智能制造</td></tr></tbody></table>
+<p><strong>★ 炒作符号提炼</strong>：贯穿 6 年的核心符号是「<strong>机器人（视觉引导系统）＋ 军工（战斗机舱体部件机器人打磨系统）＋ 风电 ＋ 电梯 ＋ 中俄贸易</strong>」——<strong>机器人是热度最高、但业务占比最低（0.03%）的那一个</strong>。<strong>连板极值 9 天 6 板（2022-08，风电）</strong>，此后股价自 <strong>6.91 元</strong>一路回落至 2026-07 的 <strong>2.58 元</strong>，<strong>最大回撤 -62.7%</strong>。</p>
+<p><strong>股价水位</strong>：前复权历史最高 <strong>13.86 元（2015-05）</strong>、最低 <strong>1.20 元（2012-11）</strong>；现价 2.93 元处月线序列 <strong>21.1% 分位</strong>（Andy 信息库口径"近 20 年价格分位数 8.40%"，取数日 2026-07-31、价格 2.60 元）。<strong>结论：价格确实处于历史低位区间，但 2026 年 7 月以来已自 2.58 元反弹约 13.6%，且这一低位伴随的是盈利下滑，而非"错杀"。</strong></p>
+
+</div></details>
+<h3 id="sec14">3.4 筹码博弈与注意力读数</h3>
+<p><strong>结论：注意力处于冰点，且 2026 年的三次上榜全部为净卖出。</strong></p>
+<table><thead><tr><th>读数</th><th>数值</th><th>判读</th></tr></thead><tbody><tr><td>换手率 / 成交额</td><td>0.32% / 987 万元</td><td>冰点</td></tr><tr><td>2026 年龙虎榜</td><td>3 次，<strong>全部净卖出</strong></td><td>07-03 净卖 -324.02 万元；01-20 净卖 -319.54 万元</td></tr><tr><td>2025-12 龙虎榜</td><td>2 次净卖出</td><td>12-08 净卖 -1,476.98 万元；12-04 净卖 -118.37 万元</td></tr><tr><td>股东户数</td><td>50,462（2025-12-31）→ 44,731（2026-06-30）</td><td><strong>下跌中户数下降＝散户割肉，不含方向</strong></td></tr><tr><td>韭研异动最新记录</td><td>2026-07-03</td><td>2026-07 之后无新记录</td></tr></tbody></table>
+<details class="fold"><summary>龙虎榜全量（2018—2026，时间降序，仅列 2024 年以来）</summary><div class="fold-body">
+
+<table><thead><tr><th>交易日</th><th>上榜原因</th><th>当日涨跌幅</th><th>净买额</th></tr></thead><tbody><tr><td>2026-07-03</td><td>ST 证券连续三日涨幅偏离 12%</td><td>+3.69%</td><td><strong>-324.02 万元</strong></td></tr><tr><td>2026-01-20</td><td>ST 证券连续三日涨幅偏离 12%</td><td>+5.07%</td><td><strong>-319.54 万元</strong></td></tr><tr><td>2025-12-08</td><td>ST 证券连续三日跌幅偏离 12%</td><td>-5.12%</td><td><strong>-1,476.98 万元</strong></td></tr><tr><td>2025-12-04</td><td>ST 证券连续三日跌幅偏离 12%</td><td>-5.11%</td><td>-118.37 万元</td></tr><tr><td>2024-12-04</td><td>连续三日涨幅偏离 20%</td><td>+9.95%</td><td><strong>+8,955.19 万元</strong></td></tr><tr><td>2024-11-06</td><td>连续三日涨幅偏离 20%</td><td>+10.06%</td><td>+1,343.13 万元</td></tr><tr><td>2024-07-08</td><td>日跌幅偏离 7% 前五</td><td>-9.81%</td><td>-1,707.79 万元</td></tr><tr><td>2024-07-05</td><td>连续三日涨幅偏离 20%</td><td>+9.96%</td><td>+723.02 万元</td></tr><tr><td>2024-07-04</td><td>日涨幅偏离 7% 前五</td><td>+10.05%</td><td>+1,964.31 万元</td></tr><tr><td>2024-05-06</td><td>日跌幅偏离 7% 前五</td><td>-10.00%</td><td>-289.19 万元</td></tr></tbody></table>
+<blockquote><p><strong>读数</strong>：2024-12-04 单日净买 <strong>+8,955.19 万元</strong>（机器人行情峰值）与 2025-12-08 单日净卖 <strong>-1,476.98 万元</strong>（戴帽后首波折算）构成鲜明的"<strong>拉高—派发</strong>"对照；<strong>2026 年三次上榜全部净卖出</strong>，说明当前的下跌不是恐慌，是<strong>持续的小额流出</strong>。</p></blockquote>
+
+</div></details>
+<hr>
+<h2 id="chap4">估值与投资结论</h2>
+<h3 id="sec15">（一）估值</h3>
+<p>亏损股不用 PE；本股 2025 年真实盈利，故 PE／PB 均可用，并与电梯同业对照：</p>
+<table><thead><tr><th>对照对象</th><th>总市值</th><th>PE(TTM)</th><th>PB</th></tr></thead><tbody><tr><td><strong>ST远智（002689）</strong></td><td><strong>30.57 亿元</strong></td><td><strong>37.66</strong></td><td><strong>2.49</strong></td></tr><tr><td>康力电梯（002367）</td><td>48.34 亿元</td><td>19.63</td><td>1.35</td></tr><tr><td>广日股份（600894）</td><td>64.81 亿元</td><td>10.84</td><td>0.75</td></tr><tr><td>上海机电（600835）</td><td>184.23 亿元</td><td>26.42</td><td>1.30</td></tr><tr><td>梅轮电梯（603321）</td><td>25.09 亿元</td><td>71.07</td><td>1.74</td></tr></tbody></table>
+<p><strong>结论：本股 PB 2.49 倍高于全部可比同业（康力 1.35／广日 0.75／上海机电 1.30／梅轮 1.74），估值不便宜。</strong> PE 看似不高，是因为分母用的是 2025 年（三年最好的一年）的盈利；而 2026H1 扣非已转负，<strong>分母在下行</strong>。</p>
+<p><strong>情景区间（以 2026 年归母净利为锚）</strong>：</p>
+<table><thead><tr><th>情景</th><th>假设</th><th>2026 归母</th><th>对应 PE</th><th>对应市值（PE 25 倍）</th></tr></thead><tbody><tr><td>悲观</td><td>H2 与 2025H2 同比 -50%</td><td>约 0.42 亿元</td><td>73 倍</td><td>10.5 亿元（<strong>-66%</strong>）</td></tr><tr><td>中性</td><td>H2 与 2025H2 同比 -30%</td><td>约 0.57 亿元</td><td>53 倍</td><td>14.3 亿元（<strong>-53%</strong>）</td></tr><tr><td>乐观</td><td>H2 与 2025H2 持平</td><td>约 0.81 亿元</td><td>38 倍</td><td>20.2 亿元（**-34%）</td></tr></tbody></table>
+<blockquote><p><strong>口径说明</strong>：以同业 PE 25 倍（康力 19.63 与上海机电 26.42 之间）为估值基准。<strong>即便在乐观情景下，按同业 PE 估出的市值也低于现价 30.57 亿元。</strong> 若改用"净资产＋净现金"的绝对底（归母净资产 12.27 亿元＋净现金约 2.3 亿元 ≈ 14.6 亿元，对应股价约 1.40 元），则是<strong>极端悲观下的价值底</strong>——它不构成买入理由，但标出了下行的量级。</p></blockquote>
+<blockquote><p><strong>★ 财务类 \*ST 的估值前提提示</strong>：本股<strong>不是</strong>财务类 \*ST，无"保壳/摘帽失败即退市归零"的归零风险；因此它的估值前提不是"保壳成功"，而是"<strong>主业盈利能否止跌</strong>"。这一点与其他 ST 案例不同，须区分。</p></blockquote>
+<h3 id="sec16">（二）投资结论</h3>
+<p><strong>卖出（回避）</strong></p>
+<table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td><strong>结论</strong></td><td><strong>卖出（回避）</strong> ——与封面「操作结论」一致</td></tr><tr><td><strong>理由链 1</strong></td><td><strong>唯一的近端事件（摘帽）是"公开日历 + 零制度红利"</strong>。撤销条件已满足其一、只剩"决定书满 12 个月"（2026-12-21 可申请），但主板 ST 涨跌幅自 2026-07-06 起已 <strong>10%</strong>，摘帽前后同幅 → <strong>无涨跌幅放大</strong>；且公司已就摘帽被追问 6 次以上、口径完全一致 → <strong>无信息差</strong>。（依据：2025-050 戴帽公告、9.8.8 条、2026-09-30 涨停价 3.20/跌停价 2.62）</td></tr><tr><td><strong>理由链 2</strong></td><td><strong>摘帽后没有"重估引擎"</strong>。现任董监高中 <strong>康宝华（董事长）、王维龙（董事兼财务总监）、王延邦（总经理）</strong> 三人是〔2025〕8 号《行政处罚决定书》当事人（合计罚款 800 万元），触发《发行注册办法》第十一条第（三）项 → <strong>2028-12-19 前不得向特定对象发行股票</strong>；三人任期至 2029-01-15 且无辞任迹象。<strong>"摘帽后发股装资产"这条 A 股最常用路径被锁死 2 年。</strong></td></tr><tr><td><strong>理由链 3</strong></td><td><strong>估值高于同业、且分母在下行</strong>。PB 2.49 倍为可比电梯同业最高；2026H1 归母 183.69 万元（<strong>-91.4%</strong>）、<strong>扣非 -865.99 万元</strong>（转负）；财务费用因汇兑由 -110 万元转为 +921 万元、销售费用 +21.42%。<strong>即便按乐观情景（H2 与 2025H2 持平）以同业 PE 25 倍估算，市值也仅约 20 亿元，低于现价 30.57 亿元。</strong></td></tr><tr><td><strong>理由链 4</strong></td><td><strong>题材不实</strong>。机器人业务 2026H1 收入 <strong>16.11 万元、占营收 0.03%</strong>（2025 年 0.13%），公司反复自述"未批量生产、无人形机器人相关业务、提请投资者理性看待"；军工、风电只见于异动关键词，2026 年报分产品表中无对应科目；"俄乌重建"零公告支撑，标【纯概念】。</td></tr><tr><td><strong>理由链 5</strong></td><td><strong>同型样本指向下跌组</strong>。54 只"假 ST"样本 2026 年涨跌幅<strong>中位数 -17.12%、仅 17 只上涨</strong>，且上涨组全部"有物"（重整协议/资产注入/要约收购方），本标的"人、物、表"三者皆缺（表是公开日历）；三只并列的"摘帽线"标的（ST创意 -18.36%、ST汇洲 -5.33%、本股 -7.28%）整体走平至下跌。</td></tr><tr><td><strong>触发条件</strong></td><td><strong>转买入信号</strong>（同时出现至少两条）：① 2026 年三季报扣非<strong>重回正值</strong>且 Q3 单季归母同比不再下滑；② 相关董监高<strong>辞任</strong>（解除发股限制）；③ 乌兹别克斯坦／中亚或城市更新披露<strong>达到披露标准的具体订单金额</strong>；④ 股价回落至 2.20 元以下（对应 PB &lt;1.9，接近同业上沿）。<strong>转卖出信号</strong>：摘帽申请被交易所问询、或出现新的风险警示事由。</td></tr><tr><td><strong>失效条件</strong></td><td>① 若 2026 年报扣非显著转正、且海外订单出现可披露的金额级突破 → 本结论作废；② 若相关董监高辞任并启动发股购买资产 → 本结论作废；③ 若三季报显示 H1 的利润失速仅为汇兑一次性因素（Q3 扣非转正）→ 需下调本结论强度。</td></tr><tr><td><strong>参考区间</strong></td><td>买入区间：<strong>≤2.20 元</strong>（对应 PB≤1.9、市值≤22.9 亿元）；目标区间（若触发条件成立）：2.90—3.60 元；<strong>止损位</strong>：不适用（本结论为回避）。</td></tr><tr><td><strong>时间窗口</strong></td><td><strong>3 个月</strong>（至 2027-01-05，覆盖三季报与摘帽申请两个节点）；到期后按新数据重估。</td></tr><tr><td><strong>仓位建议</strong></td><td><strong>不建仓</strong>。已持有者可在 2026 年三季报（10 月下旬）前后逢反弹减仓。</td></tr><tr><td><strong>最大风险</strong></td><td><strong>"低估值的壳 + 确定的摘帽"这一组合可能吸引资金做一波短促脉冲</strong>——若 2026-12 摘帽申请公告引发情绪，可能出现 10%—20% 的短期反弹；但这不改变本结论（脉冲式行情不构成持有理由）。</td></tr></tbody></table>
+<hr>
+<h2 id="chap5">附录 A · 待核实 / 需补充清单</h2>
+<table><thead><tr><th>#</th><th>待核实项</th><th>结论</th></tr></thead><tbody><tr><td>1</td><td>公司在 2026 年三季报中能否扭转 H1 的扣非转负</td><td><strong>待 2026-10 下旬三季报</strong></td></tr><tr><td>2</td><td>中亚（乌兹别克斯坦）与城市更新业务的<strong>具体订单金额</strong></td><td><strong>公司未披露</strong>（互动易反复答"若达到披露标准将披露"）——属"未披露"而非【待核实】</td></tr><tr><td>3</td><td>控股股东 1.85 亿股质押的<strong>预警线/平仓线</strong></td><td><strong>公告未披露</strong></td></tr><tr><td>4</td><td>是否存在投资者证券虚假陈述索赔诉讼</td><td>2026 半年报与 2025 年报均未披露相关诉讼；<strong>公告检索亦未发现</strong></td></tr></tbody></table>
+<h2 id="chap6">附录 B · 关键信源链接</h2>
+<p><strong>一手（公告／规则）</strong></p>
+<table><thead><tr><th>编号</th><th>文件</th><th>发布日</th><th>原文</th></tr></thead><tbody><tr><td>1</td><td>关于公司股票交易将被实施其他风险警示暨股票停复牌的提示性公告（2025-050）</td><td>2025-11-29</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002689&amp;announcementId=1224836460&amp;orgId=9900022993&amp;announcementTime=2025-11-29" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>2</td><td>关于公司及相关当事人收到《行政处罚决定书》的公告（2025-053）</td><td>2025-12-20</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002689&amp;announcementId=1224887893&amp;orgId=9900022993&amp;announcementTime=2025-12-20" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>3</td><td>2025 年年度报告</td><td>2026-04-17</td><td><a href="https://data.eastmoney.com/notices/detail/002689/AN202604161821273459.html" target="_blank" rel="noopener">东财</a></td></tr><tr><td>4</td><td>2026 年半年度报告</td><td>2026-08-28</td><td><a href="https://data.eastmoney.com/notices/detail/002689/AN202608271828541515.html" target="_blank" rel="noopener">东财</a></td></tr><tr><td>5</td><td>关于董事会完成换届选举及聘任高级管理人员、内部审计负责人和证券事务代表的公告（2026-006）</td><td>2026-01-16</td><td><a href="https://data.eastmoney.com/notices/detail/002689/AN202601151817053864.html" target="_blank" rel="noopener">东财</a></td></tr><tr><td>6</td><td>投资者关系活动记录表（2025 年度网上业绩说明会）</td><td>2026-04-29</td><td><a href="https://data.eastmoney.com/notices/detail/002689/AN202604291821751492.html" target="_blank" rel="noopener">东财</a></td></tr><tr><td>7</td><td>关于 2026 年半年度计提资产减值准备的公告（2026-030）</td><td>2026-08-28</td><td><a href="https://data.eastmoney.com/notices/detail/002689/AN202608271828541559.html" target="_blank" rel="noopener">东财</a></td></tr><tr><td>8</td><td>关于对外投资设立境外控股子公司的进展公告</td><td>2026-08-06</td><td><a href="https://data.eastmoney.com/notices/detail/002689/AN202608051827672363.html" target="_blank" rel="noopener">东财</a></td></tr><tr><td>9</td><td>戴帽公告 PDF 直链</td><td>2025-11-29</td><td><a href="https://static.cninfo.com.cn/finalpage/2025-11-29/1224836460.PDF" target="_blank" rel="noopener">PDF</a></td></tr><tr><td>10</td><td>决定书公告 PDF 直链</td><td>2025-12-20</td><td><a href="https://static.cninfo.com.cn/finalpage/2025-12-20/1224887893.PDF" target="_blank" rel="noopener">PDF</a></td></tr></tbody></table>
+<p><strong>数据源与线索级</strong></p>
+<table><thead><tr><th>编号</th><th>来源</th><th>说明</th></tr></thead><tbody><tr><td>11</td><td>巨潮 topSearch／hisAnnouncement</td><td>orgId＝<code>9900022993</code>、<code>zwjc</code>＝<code>ST远智</code></td></tr><tr><td>12</td><td>深交所互动易（经同花顺 F10 抓取，114 条）</td><td>2026-01-08 至 2026-09-28</td></tr><tr><td>13</td><td>东方财富龙虎榜 API（<code>RPT_DAILYBILLBOARD_DETAILSNEW</code>）</td><td>2018—2026 全量</td></tr><tr><td>14</td><td>韭研公社异动整理（parquet）</td><td>56 条，2020-08-06 至 2026-07-02</td></tr><tr><td>15</td><td>腾讯行情 <code>qt.gtimg.cn</code>／新浪日 K</td><td>截面与同型样本涨跌幅</td></tr><tr><td>16</td><td>Andy 自建 ST 信息库（<code>ST远智-002689.SZ.md</code>、<code>3.重要消息</code>、<code>4.重要综合评论</code>）</td><td>含雪球评论（线索级）</td></tr></tbody></table>
+<h2 id="chap7">附录 C · 逻辑漏洞与反方观点（5 问）</h2>
+<p><strong>结论：五问逐条回答后，没有一条能把"卖出"翻转成"买入"，但第 3 问与第 5 问是对本报告最有力的反驳，须长期监控。</strong></p>
+<ol><li><strong>"市占率/成长性怎么来的？"</strong> —— 海外收入占比 53.66% 与 +36.89% 增速有公告支撑（2026H1 分地区表），但<strong>公司从未披露电梯市占率</strong>，属"未披露"；行业出口数据（2026H1 载客电梯出口 65,724 台、+17.46%）引自公司半年报引用的海关口径，<strong>非独立核实</strong>。</li><li><strong>"采购/框架协议 ≠ 收入？"</strong> —— 本报告未使用任何框架协议类表述作为收入证据；乌兹别克斯坦工厂已"正式投产"是公司口径，<strong>未披露产能与订单</strong>。</li><li><strong>★ 反驳一：低估值 + 确定摘帽，可能催生情绪脉冲。</strong> 本股价格处历史 21% 分位、无退市风险、摘帽确定，这类组合在 2026 年确实出现过短促反弹（如 7 月 1—2 日的"撤销其他风险警示预期"两日异动）。<strong>为什么仍维持卖出</strong>：该反弹为脉冲式、由异动驱动而非盈利驱动，且<strong>同期龙虎榜为净卖出</strong>（07-03 净卖 -324.02 万元）——反弹被用于出货。</li><li><strong>"引用的时间点是否已过期？"</strong> —— 基准日 2026-10-05，最新财务为 2026H1（2026-08-28 披露），最新公告为 2026-09-30。<strong>三季报（10 月下旬）将是对"扣非转负"这一核心判断的第一次检验</strong>，若 Q3 扣非转正，本结论须下调强度。</li><li><strong>★ 反驳二：发股限制的"化解方式"很简单——辞任即可。</strong> 《发行注册办法》第十一条第（三）项限"<strong>现任</strong>"，康宝华等三人只要<strong>辞去董事/高管职务</strong>（不必卖股）即可恢复发股能力。<strong>为什么仍维持卖出</strong>：① 康宝华<strong>同时是实际控制人</strong>，且自 2010 年起任董事长，辞任的政治与治理成本高；② 三人任期至 2029-01-15，<strong>截至基准日无任何辞任、改选迹象</strong>（2026 年两次董事会调整均只涉及独立董事与职工代表董事）；③ 即便辞任，公司<strong>账上也没有可注入的优质资产</strong>（无新主、无反方）。<strong>监控信号：一旦出现"董事长/总经理/财务总监辞任"公告，本结论的第 2 条理由即告瓦解。</strong></li></ol>
+<h2 id="chap8">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-05</td><td>首次生成；数据截至 2026 年半年报（2026-08-28）与 2026-09-30 行情；投资结论＝卖出（回避）</td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
