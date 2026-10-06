@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>＊ST明德（002932.SZ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>10 章 · 14 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断</a><a class="sblv3" href="#sec0">1.1 基本信息与股权结构</a><a class="sblv3" href="#sec1">1.2 ST 风险诊断</a><a class="sblv3" href="#sec2">1.3 全流程进度看板</a><a class="sblv3" href="#sec3">1.4 运作特征</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、基本面路径</a><a class="sblv3" href="#sec4">2.1 缺口测算：缺口其实比想象的小</a><a class="sblv3" href="#sec5">2.2 并购并表：两单已经落地，时间账已经算清</a><a class="sblv3" href="#sec6">2.3 审计意见开关：两道意见关 = 零容错</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、公司运营</a><a class="sblv3" href="#sec7">3.1 财务全景：利润表在亏损，资产负债表极厚</a><a class="sblv3" href="#sec8">3.2 核心安全垫：现金类资产超过总市值</a><a class="sblv3" href="#sec9">3.3 重要子公司</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、炒作逻辑三支柱与筹码</a><a class="sblv3" href="#sec10">4.1 三支柱（全部着眼未来）</a><a class="sblv3" href="#sec11">4.2 情绪与筹码：注意力已到冰点</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">五、估值与投资结论</a><a class="sblv3" href="#sec12">5.1 估值：不是"贵不贵"，而是"折价何时消除"</a><a class="sblv3" href="#sec13">5.2 投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录 A · 待核实与需补充</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">附录 C · 反方观点与逻辑漏洞（压力测试）</a></div><div class="sbgrp"><a class="sblv2" href="#chap9">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">＊ST明德（002932.SZ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：买入（深度价值 · 事件驱动 · 轻仓 · 长周期）</strong></p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>红线分类</td><td><span class="sttag sttag-blue"><a href="https://data.eastmoney.com/notices/detail/002932/AN202604201821351532.html" target="_blank" rel="noopener">2025年净利为负且扣后营收2.41亿元</a></span>·<span class="sttag sttag-orange"><a href="https://data.eastmoney.com/notices/detail/002932/AN202608270006754374.html" target="_blank" rel="noopener">业绩预告披露违规·被通报批评</a></span></td></tr><tr><td>生死定级</td><td><strong>可救 · 需自身达标</strong>（四类退市红线只踩财务类①一条；无立案、无造假、无资金占用、无违规担保、实控人零质押）</td></tr><tr><td>自救空间</td><td>中高。公司总市值 <strong>35.65 亿元</strong> 买不到其 <strong>36.72 亿元</strong> 现金类资产；把 2026 年扣除后营业收入做到 3 亿元以上即摘帽，缺口靠「蓝怡 51% 已并表 + 必凯尔 100% 已于 2026-08-13 交割」补齐。最大障碍：必凯尔当年只能并表约 4.5 个月</td></tr><tr><td>主要看点</td><td>公司以<strong>现金 1.90 亿元</strong>收购的<strong>武汉必凯尔救助用品有限公司 100% 股权</strong>已于 <strong>2026-08-13 交割过户并表</strong>（标的属 C27 医药制造业，2025 年主营收入 2.30 亿元、出口占比 85.91%），叠加 2026-01 已并表的<strong>湖南蓝怡 51%</strong>，2026 年扣除后营业收入有望首次站上 3 亿元红线</td></tr></tbody></table>
+<p>另附：标的 ＊ST明德（002932.SZ，深主板）｜基准日 <strong>2026-10-05</strong>（数据截至 2026-09-30 收盘、2026 年半年报）｜<strong>版本：初版 · 2026-10-05</strong> 数据来源：公司公告（巨潮／东财公告库）、2025 年年度报告、2026 年半年度报告、重大资产购买报告书、深交所规则原文库、腾讯行情、新浪日 K、东财龙虎榜、韭研公社异动整理、ST 信息库。 <strong>已知数据质量异常</strong>：① Wind 局域网代理（192.168.1.20:8000）本轮整段不可达，行情与估值改用腾讯／新浪公开源，财务序列以<strong>年报与半年报原文</strong>为唯一口径（东财 F10 仅作补缺并标注【异源】）；② 半年报<strong>不披露扣除后营业收入</strong>，2026 年扣除后营收为本报告测算，已在正文标出。</p>
+<hr>
+<h2 id="chap1">一、诊断</h2>
+<h3 id="sec0">1.1 基本信息与股权结构</h3>
+<p><strong>结论：这是一家由创始团队绝对控制、零质押、无任何"大股东掏空"痕迹的公司——控制权风险为零，但反过来也意味着没有"新主入主"的催化可供想象。</strong></p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>全称</td><td>武汉明德生物科技股份有限公司（原简称"明德生物"，前身武汉明德生物科技有限责任公司）</td></tr><tr><td>代码／板块</td><td>002932.SZ · 深交所主板 · 医药制造业（体外诊断 IVD） · 2018 年上市</td></tr><tr><td>当前简称</td><td>＊ST明德（2026-04-22 起，未摘帽——巨潮 <code>zwjc</code> 字段）</td></tr><tr><td>现价／总市值</td><td><strong>15.33 元</strong>（2026-09-30 收盘）／<strong>35.65 亿元</strong>（流通市值 23.93 亿元）</td></tr><tr><td>股本</td><td>总股本 <strong>2.33 亿股</strong>（232,520,957 股）；回购专用账户持股 <strong>2,247.17 万股／9.66%</strong></td></tr><tr><td>估值</td><td>PB <strong>0.67</strong>（每股净资产 23.02 元）；PE(TTM) 为负（2026H1 亏损）；近 20 年价格分位 <strong>11.26%</strong>（ST 信息库口径，取数日 2026-07-31／14.61 元）</td></tr><tr><td>年内表现</td><td>2026 年 YTD <strong>-20.07%</strong>（2025-12-31 收 19.18 元）；年内区间 <strong>13.85–20.00 元</strong></td></tr><tr><td>实控人</td><td><strong>陈莉莉 27.06%</strong>（6,291.89 万股，<strong>零质押</strong>）；王颖 15.45%、王锐 1.30% 为创始团队成员，合计 <strong>43.81%</strong></td></tr></tbody></table>
+<p>创始人陈莉莉同时任董事长兼总经理，王锐任董事会秘书兼财务负责人兼副总经理——<strong>决策权、经营权、财务权均在同一创始团队手中</strong>，2026 年 7 月 9 日业绩说明会的参会名单（陈莉莉、王锐、国金证券林尚研）与前次一致，<strong>治理层未发生任何易主迹象</strong>。</p>
+<details class="fold"><summary>②股东阵容｜取得成本、锁定与筹码集中度</summary><div class="fold-body">
+
+<p><strong>十大股东（2026-06-30，东财 F10 口径）</strong></p>
+<table><thead><tr><th>排名</th><th>股东</th><th>持股（万股）</th><th>占比</th><th>变动</th></tr></thead><tbody><tr><td>1</td><td>陈莉莉（实控人）</td><td>6,291.89</td><td>27.06%</td><td>不变</td></tr><tr><td>2</td><td>王颖</td><td>3,591.69</td><td>15.45%</td><td>不变</td></tr><tr><td>3</td><td>王锐（董秘兼财务负责人）</td><td>302.61</td><td>1.30%</td><td>不变</td></tr><tr><td>4</td><td>融通健康产业灵活配置混合（公募）</td><td>230.00</td><td>0.99%</td><td>减 48.00 万股</td></tr><tr><td>5</td><td>陈鑫涛</td><td>210.20</td><td>0.90%</td><td>增 3.80 万股</td></tr><tr><td>6</td><td>周琴</td><td>188.07</td><td>0.81%</td><td>基本未动</td></tr><tr><td>7</td><td>刘熀松</td><td>167.16</td><td>0.72%</td><td>增 19.73 万股</td></tr><tr><td>8</td><td>上海织箜管理咨询合伙企业</td><td>163.12</td><td>0.70%</td><td>新进</td></tr><tr><td>9</td><td>甘宜梧</td><td>161.55</td><td>0.69%</td><td>新进</td></tr><tr><td>10</td><td>柏忠伟</td><td>151.70</td><td>0.65%</td><td>减 67.83 万股</td></tr></tbody></table>
+<p><strong>身份识别</strong>：前十中<strong>无一家私募或产业资本举牌型股东</strong>，除 1 只公募基金外全为自然人；创始团队三人（陈莉莉、王颖、王锐）合计 43.81%，<strong>其中 75% 为高管锁定股</strong>（陈莉莉可流通 1,572.97 万股、王颖 897.92 万股），实际流通盘极薄。<strong>既无"外部强援"也没有"待入主的新主"</strong>——这是理解本股"低注意力"的结构性原因。</p>
+<p><strong>筹码集中度</strong>：回购专户持股 <strong>2,247.17 万股（9.66%）</strong>（含 2024 年回购 1,303.47 万股 + 2026 年回购 943.70 万股），是账面上最大的单一持股主体。该部分股份虽被锁定，但公司已明示<strong>"后续将按有关规定予以全部出售"</strong>——即未来的<strong>潜在抛压</strong>而非永久性注销。</p>
+<p><strong>股东户数</strong>：2025-12-31 的 <strong>29,387 户</strong> → 2026-07-31 的 <strong>14,841 户（-49.5%）</strong>，户均持股市值 22.89 万元。⚠️ 同期股价从 19.18 元跌至 14.61 元（<strong>-23.8%</strong>）——属"<strong>下跌中户数下降＝散户割肉离场</strong>"，<strong>不得读作"主力吸筹"</strong>（接盘方未必是主力）。</p>
+
+</div></details>
+<h3 id="sec1">1.2 ST 风险诊断</h3>
+<p><strong>结论：只踩一条红线（财务类①营收不足），其余三类全未触及——这是 ST 板块里风险项最少的一类，但"能不能活"完全取决于一个可量化的开关：2026 年扣除后营业收入能否达到 3 亿元。</strong></p>
+<p><strong>戴帽事实（回公告原文核实）</strong>：公司股票自 <strong>2026-04-22</strong> 起被实施退市风险警示，简称由"明德生物"变更为"＊ST明德"。依公司《2025 年年度报告》：2025 年度利润总额 <strong>-6,379.40 万元</strong>、归母净利润 <strong>-1,646.07 万元</strong>、扣非归母净利润 <strong>-11,689.80 万元</strong>、营业收入 <strong>26,507.87 万元</strong>、<strong>扣除后营业收入 24,118.38 万元</strong>，触及深交所《股票上市规则（2025 年修订）》<strong>9.3.1 条第一款第（一）项</strong>"孰低为负值，且扣除后的营业收入低于 3 亿元"。<strong>只戴＊ST 一顶帽子，未叠加其他风险警示（ST）。</strong></p>
+<blockquote><p>⚠️ 公司 2026-04-21 的戴帽公告写"日涨跌幅限制为 <strong>5%</strong>"——那是 <strong>2026-07-06 修订前</strong>的旧口径。现行主板风险警示股涨跌幅已为 <strong>10%</strong>（本报告以 2026-09-30 行情反证：昨收 15.15 元、涨停价 16.67 元、跌停价 13.64 元）。<strong>引用旧公告须按公告时点还原。</strong></p></blockquote>
+<p><strong>四类退市红线逐条对照</strong>（先查 Andy 路径底表《退市风险预警-20261005.xlsx》「财务类」工作表第 15 行命中，再回规则原文逐条核）：</p>
+<table><thead><tr><th>类型</th><th>触发条件</th><th>本股</th><th>判定</th></tr></thead><tbody><tr><td>交易类</td><td>连续 20 日收盘价 &lt;1 元／市值 &lt;5 亿元／股东数 &lt;2,000 人</td><td>价 15.33 元、市值 35.65 亿元、股东 14,841 户</td><td><strong>未触及</strong></td></tr><tr><td>财务类①</td><td>孰低为负 <strong>且</strong> 扣除后营收 &lt;3 亿元</td><td>2025 年扣后营收 <strong>2.41 亿元</strong></td><td><strong>已触及（唯一）</strong></td></tr><tr><td>财务类②</td><td>期末净资产为负</td><td>2026-06-30 归母净资产 <strong>53.53 亿元</strong></td><td>未触及</td></tr><tr><td>财务类③</td><td>审计无法表示／否定意见</td><td>2025 年度为<strong>标准无保留意见</strong></td><td>未触及</td></tr><tr><td>规范类</td><td>资金占用／内控连续非标／控制权无序争夺</td><td>非经营性占用 <strong>0</strong>、违规担保 <strong>0</strong>、2025 年内控<strong>标准无保留</strong></td><td>未触及</td></tr><tr><td>其他类</td><td>近三年分红不达标</td><td>2023—2025 累计分红 <strong>2.97 亿元</strong> &gt; 年均净利 30% 且 &gt;5,000 万元</td><td>未触及</td></tr><tr><td>重大违法类</td><td>欺诈发行／造假达量化线</td><td>无立案、无处罚、无追溯重述</td><td>未触及</td></tr></tbody></table>
+<p><strong>摘帽展望</strong>：深交所 <strong>9.3.8 条</strong>——被实施退市风险警示后，<strong>次一年度（即 2026 年度）年报不存在 9.3.12 第（一）至（七）项任一情形</strong>即可申请撤销。因 2026 年必然亏损（"孰低为负"条件已锁定），<strong>唯一的实质条件是"扣除后营业收入 ≥3 亿元"</strong>；同时须过 <strong>9.3.12 第（三）项（财报审计意见非标）与第（五）项（内控非标）</strong>两道意见关。<strong>最早可申请日：2026 年年度报告披露后（预计 2027 年 4 月）。</strong></p>
+<blockquote><p>⚠️ <strong>9.3.12 第（三）项把"保留意见"与"无法表示／否定"并列</strong>——即 2026 年报审计意见是<strong>二元开关</strong>：标准无保留＝可摘帽，<strong>任何非标（含保留意见）＝直接终止上市</strong>，没有中间态。</p></blockquote>
+<details class="fold"><summary>③保壳节奏与催化｜硬节点与软预期分列</summary><div class="fold-body">
+
+<table><thead><tr><th>编号</th><th>节点</th><th>预计时点</th><th>判读／证伪点</th></tr></thead><tbody><tr><td>①</td><td><strong>2026 年三季报</strong></td><td>2026 年 10 月下旬</td><td>硬节点。首次体现必凯尔并表约 1.5 个月；验证主业 H2 斜率。若 H2 本体营收显著弱于 H1，需下修</td></tr><tr><td>②</td><td><strong>2026 年年度业绩预告</strong></td><td>2027 年 1 月</td><td>硬节点。<strong>摘帽判定的第一次公开读数</strong>——预告会披露全年营收区间，是"3 亿元能否过线"的最早可见证据</td></tr><tr><td>③</td><td><strong>2026 年年度报告 + 审计意见</strong></td><td>2027 年 4 月</td><td>硬节点。<strong>生死开关</strong>。营收达标且两套审计意见均为标准无保留 → 可申请撤销</td></tr><tr><td>④</td><td>撤销申请与交易所审核</td><td>年报披露后</td><td>硬节点。披露后 5 个交易日内可申请，交易所 15 个交易日内决定</td></tr><tr><td>⑤</td><td>2026 年中期分红</td><td>2026 年内</td><td><strong>软预期／实际已关闭</strong>——授权条款要求"当期归母净利为正"，2026 年预亏，<strong>大概率不实施</strong></td></tr><tr><td>⑥</td><td>后续并购（产业基金布局）</td><td>未定</td><td>软预期。2026-09 子公司以 2,000 万元参与光谷基石基金（LP），是"并购管道"的铺垫，但<strong>无标的、无时间表</strong></td></tr><tr><td>⑦</td><td>剩余 9.66% 回购股份出售</td><td>未定</td><td><strong>反面节点</strong>。公司已明示全部出售，构成潜在抛压</td></tr></tbody></table>
+<p><strong>卡点性质</strong>：属"<strong>时间未到</strong>"（等 2026 年报），<strong>不是"谈不拢"</strong>——这是与重整型、资产注入型 ST 的本质区别。</p>
+
+</div></details>
+<details class="fold"><summary>④资产质量与估值｜五维星级</summary><div class="fold-body">
+
+<table><thead><tr><th>星级维度</th><th>大白话说明</th><th>评级</th></tr></thead><tbody><tr><td>市值与估值</td><td>PB 0.67 深度破净；现金类资产 36.72 亿元 &gt; 总市值 35.65 亿元</td><td>★★★★★</td></tr><tr><td>法律合规性</td><td>无立案、无重大诉讼、无资金占用、无违规担保；<strong>但 2026-05-15 被深交所通报批评</strong>（业绩预告披露违规）</td><td>★★★☆☆</td></tr><tr><td>债务与流动性</td><td>资产负债率 <strong>5.23%</strong>、负债合计仅 3.02 亿元、账上现金类 36.72 亿元；受限货币资金仅 0.56 亿元</td><td>★★★★★</td></tr><tr><td>主业质地</td><td>IVD 主业营收企稳（2026H1 +1.54%）、毛利率回升（40.82%→45.82%）；但<strong>扣非连亏</strong>（2024 -1.40 亿元、2025 -1.17 亿元、2026H1 -0.49 亿元）</td><td>★★★☆☆</td></tr><tr><td>控制权与运作</td><td>创始团队 43.81% 绝对控制、零质押、无控制权风险；<strong>但同样没有"新主入主"的想象空间</strong>，运作方向是"内生 + 现金并购"</td><td>★★★☆☆</td></tr><tr><td><strong>综合</strong></td><td><strong>资产底极厚、经营端偏弱、运作端偏保守</strong></td><td><strong>★★★★☆（偏向"防守型"）</strong></td></tr></tbody></table>
+<p><strong>哪一项高分不能抵消哪一项低分</strong>：★★★★★ 的债务与流动性<strong>不能</strong>抵消主业扣非连亏——账上 36.72 亿元现金类资产<strong>不会自动变成股东回报</strong>（2025 年度零分红、中期分红条件要求当期净利为正）。资产底只保证"<strong>跌不深</strong>"，不保证"<strong>会涨</strong>"。</p>
+
+</div></details>
+<details class="fold"><summary>⑤成本锚点｜逐参与方与两类定价逻辑</summary><div class="fold-body">
+
+<table><thead><tr><th>参与方</th><th>成本（元/股）</th><th>说明</th></tr></thead><tbody><tr><td>创始团队（陈莉莉／王颖／王锐）</td><td>原始出资，未披露</td><td>上市前股东，无公开取得成本；零质押</td></tr><tr><td><strong>公司自身（2026 年回购）</strong></td><td><strong>16.28</strong></td><td>2026-03-31 首购 → 2026-06-22 完成，943.70 万股（4.06%），最高 17.50 元、最低 15.13 元，支付 <strong>1.54 亿元</strong>（不含交易费用）；<strong>用途为"后续全部出售"，不是注销</strong></td></tr><tr><td>公司自身（2024 年回购）</td><td>约 19.02</td><td>1,303.47 万股（5.61%），支付 2.48 亿元，2025-03-19 完成</td></tr><tr><td>明德（收购方）→ 蓝帆医疗</td><td>必凯尔对价 1.90 亿元</td><td>评估值 1.906 亿元（收益法），<strong>作价略低于评估值</strong></td></tr><tr><td>2024 年度分红</td><td>1.20 元/股</td><td>约 2.70 亿元，除权日 2025-06-12（年度特别性质）</td></tr></tbody></table>
+<p><strong>两类定价逻辑必须分开</strong>：本案<strong>不存在重整投资人／战投的稀释型成本锚</strong>（公司走的是<strong>现金收购</strong>路径，不涉及发股、不摊薄），因此可比的是<strong>公司自身的回购成本</strong>——<strong>16.28 元／股</strong>，<strong>高于现价 15.33 元约 6.2%</strong>。这不是"无稀释市场底"意义上的一级市场价格，而是<strong>管理层用自有资金给出的价值判断</strong>：回购期内（2026-03-31～06-22）公司选择的主要买入价位在现价之上。</p>
+
+</div></details>
+<details class="fold"><summary>⑥信息来源汇总｜四级分级</summary><div class="fold-body">
+
+<table><thead><tr><th>序号</th><th>来源类型</th><th>来源与标题（日期）</th><th>链接</th></tr></thead><tbody><tr><td>1</td><td>一手·公告</td><td>关于公司股票交易被实施退市风险警示暨股票停复牌安排的公告（2026-04-21）</td><td>https://data.eastmoney.com/notices/detail/002932/AN202604201821351532.html</td></tr><tr><td>2</td><td>一手·年报</td><td>2025 年年度报告（2026-04-21）</td><td>https://data.eastmoney.com/notices/detail/002932/AN202604201821351324.html</td></tr><tr><td>3</td><td>一手·鉴证</td><td>会计师事务所对公司营业收入扣除事项的专项报告（2026-04-21）</td><td>https://data.eastmoney.com/notices/detail/002932/AN202604201821351543.html</td></tr><tr><td>4</td><td>一手·半年报</td><td>2026 年半年度报告（2026-08-28）</td><td>https://data.eastmoney.com/notices/detail/002932/AN202608270006754374.html</td></tr><tr><td>5</td><td>一手·公告</td><td>2026 年半年度业绩预告（2026-07-15）</td><td>https://data.eastmoney.com/notices/detail/002932/AN202607141826963488.html</td></tr><tr><td>6</td><td>一手·公告</td><td>2025 年度业绩预告修正公告（2026-03-23）</td><td>https://data.eastmoney.com/notices/detail/002932/AN202603221820687253.html</td></tr><tr><td>7</td><td>一手·公告</td><td>关于重大资产购买之标的资产过户完成的公告（2026-08-18）</td><td>https://data.eastmoney.com/notices/detail/002932/AN202608171828060375.html</td></tr><tr><td>8</td><td>一手·报告书</td><td>重大资产购买报告书（2026-08-14）</td><td>https://data.eastmoney.com/notices/detail/002932/AN202608131827948569.html</td></tr><tr><td>9</td><td>一手·公告</td><td>关于回复深交所《现金重大资产购买的问询函》的公告（2026-08-01）</td><td>https://data.eastmoney.com/notices/detail/002932/AN202607311827534689.html</td></tr><tr><td>10</td><td>一手·交流</td><td>投资者关系活动记录表 2026-001（2026-07-09）</td><td>https://data.eastmoney.com/notices/detail/002932/AN202607091826851249.html</td></tr><tr><td>11</td><td>一手·公告</td><td>关于 2025 年度利润分配预案的公告（2026-04-21）</td><td>https://data.eastmoney.com/notices/detail/002932/AN202604201821351525.html</td></tr><tr><td>12</td><td>一手·公告</td><td>关于授权董事会制定中期分红方案的公告（2026-04-21）</td><td>https://data.eastmoney.com/notices/detail/002932/AN202604201821351470.html</td></tr><tr><td>13</td><td>一手·公告</td><td>2026 年度估值提升计划（2026-04-21）</td><td>https://data.eastmoney.com/notices/detail/002932/AN202604201821351505.html</td></tr><tr><td>14</td><td>一手·公告</td><td>关于公司相关税务事项处理的公告（2026-09-23）</td><td>https://data.eastmoney.com/notices/detail/002932/AN202609221829762649.html</td></tr><tr><td>15</td><td>一手·公告</td><td>关于增资并收购蓝怡（湖南）医疗器械有限公司股权的公告（2026-01-20）</td><td>https://data.eastmoney.com/notices/detail/002932/AN202601191818115489.html</td></tr><tr><td>16</td><td>一手·公告</td><td>关于终止部分募集资金投资项目暨变更募集资金用途的公告（2026-08-01）</td><td>https://data.eastmoney.com/notices/detail/002932/AN202607311827534670.html</td></tr><tr><td>17</td><td>一手·公告</td><td>关于子公司与专业机构共同投资的公告（2026-09-17）</td><td>https://data.eastmoney.com/notices/detail/002932/AN202609161829467259.html</td></tr><tr><td>18</td><td>数据源</td><td>腾讯行情截面（2026-09-30）／新浪日 K 序列（2022-07-14～2026-09-30）</td><td>—</td></tr><tr><td>19</td><td>数据源</td><td>东方财富龙虎榜明细（RPT_DAILYBILLBOARD_DETAILSNEW）</td><td>—</td></tr><tr><td>20</td><td>数据源</td><td>韭研公社异动整理（35 条，2020-07～2026-06）</td><td>—</td></tr><tr><td>21</td><td>数据源</td><td>ST 信息库《＊ST明德-002932.SZ.md》档案（2026-07-31）</td><td>—</td></tr><tr><td>22</td><td>规则</td><td>《深圳证券交易所股票上市规则（2026 年修订）》9.3.1／9.3.8／9.3.12</td><td>本地规则原文库</td></tr><tr><td>23</td><td>二级·线索</td><td>其他资料《ST明德_深度分析_20260601.md》（2026-06-01，已于本报告中逐项回公告核实）</td><td>—</td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec2">1.3 全流程进度看板</h3>
+<p><strong>结论：所有环节都已走完，卡点只有"时间未到"——本股不存在"谈不拢"型卡壳。</strong></p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点或条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>戴帽</td><td>已完成（2026-04-22）</td><td>—</td><td>—</td><td>戴帽公告</td></tr><tr><td>主业企稳</td><td>部分完成</td><td>营收 +1.54%、毛利率 +5.0pct，但扣非仍亏 0.49 亿元（半年）</td><td>2026 三季报</td><td>2026 半年报</td></tr><tr><td>蓝怡 51% 并表</td><td><strong>已完成</strong></td><td>对价 3,570 万元，已纳入合并报表</td><td>—</td><td>收购公告</td></tr><tr><td>必凯尔 100% 并表</td><td><strong>已完成</strong>（2026-08-13 交割、08-14 工商变更）</td><td>对价 1.90 亿元现金，自购买日起并表</td><td>三季报首次体现</td><td>过户完成公告</td></tr><tr><td>2026 营收达标</td><td><strong>待验证</strong></td><td>需扣除后营收 ≥3 亿元</td><td>2027-01 业绩预告</td><td>—</td></tr><tr><td>审计意见</td><td><strong>待验证</strong></td><td>财报 + 内控均须标准无保留</td><td>2027-04 年报</td><td>—</td></tr><tr><td>撤销 ＊ST</td><td>未启动</td><td>满足 9.3.8 后 5 个交易日内申请</td><td>2027-04 后</td><td>—</td></tr></tbody></table>
+<h3 id="sec3">1.4 运作特征</h3>
+<p><strong>结论：手法是"现金收购 + 自有资金回购"的保守型运作，交权为零、外部资本参与为零——特征鲜明，恰恰解释了它为什么没有注意力。</strong></p>
+<ul><li><strong>手法</strong>：不做发股、不做引入战投、不做控制权变更；以<strong>自有资金 + 2021 年非公开发行节余募集资金</strong>（变更 10,020.64 万元用途）支付并购对价，属于"<strong>自掏腰包买收入</strong>"。</li><li><strong>节奏</strong>：2025-12-31 签意向协议 → 2026-06-30 报告书草案 → 08-01 问询回复 → 08-13 临时股东会通过 → <strong>08-13/14 交割过户</strong>，从草案到交割仅约 <strong>44 天</strong>，执行效率高。</li><li><strong>交权方式</strong>：<strong>完全不涉及</strong>——创始团队 43.81% 未动，零减持、零质押、无表决权安排。</li><li><strong>成败关键变量（1 和 0）</strong>：<strong>2026 年扣除后营业收入能否 ≥3 亿元</strong>。这是一个纯粹的收入规模问题，与治理无关。</li><li><strong>核心矛盾一句话</strong>：<strong>资产端极度宽裕（36.72 亿元现金类资产 vs 35.65 亿元市值），但利润表仍然亏钱，且现金以"再投资"而非"分红"方式使用——买的是资产，等的是摘帽，不买它的成长性。</strong></li></ul>
+<hr>
+<h2 id="chap2">二、基本面路径</h2>
+<p><strong>路径选择：本股属财务类①（营收不足），走「路径 A · 保壳」。</strong> 重整路径不适用（无任何重整/预重整公告，且净资产为正无重整基础）；处罚 ST 路径不适用（无立案、无处罚决定书）。</p>
+<h3 id="sec4">2.1 缺口测算：缺口其实比想象的小</h3>
+<p><strong>结论：按最保守口径推算，2026 年扣除后营业收入约 3.20–3.45 亿元，</strong>过线的概率约 75%–85%<strong>；即使本体 H2 营收比 H1 下滑 24%，仍能过线。</strong></p>
+<p>2025 年的扣除结构（回《营业收入扣除情况表》原文核实）：营业收入 26,507.87 万元，扣除 <strong>2,389.49 万元</strong>，扣除后 <strong>24,118.38 万元</strong>。扣除明细为两类——</p>
+<table><thead><tr><th>扣除类别</th><th>金额（万元）</th><th>具体内容</th></tr></thead><tbody><tr><td>正常经营之外的其他业务收入</td><td>1,734.14</td><td>出租固定资产、销售材料、授予软件许可收入</td></tr><tr><td>本会计年度及上一会计年度新增贸易业务收入</td><td>655.35</td><td>新增贸易业务</td></tr><tr><td><strong>合计</strong></td><td><strong>2,389.49</strong></td><td>—</td></tr></tbody></table>
+<p><strong>2026 年测算（三档）</strong>：以 2026H1 营业收入 <strong>14,143.07 万元</strong>为基准，H2 由「本体 H2 斜率」×  「必凯尔并表月数」两个变量决定。</p>
+<table><thead><tr><th>情景</th><th>本体 H2 假设</th><th>必凯尔 H2 贡献</th><th>2026 全年营收</th><th>扣除后营收</th><th>是否过线</th></tr></thead><tbody><tr><td>保守</td><td>H1 的 0.80×（2.55 亿元）</td><td>0.60 亿元</td><td>3.15 亿元</td><td><strong>约 2.91 亿元</strong></td><td>接近但可能不过</td></tr><tr><td>中性</td><td>H1 的 0.90×（2.55 亿元）</td><td>0.70 亿元</td><td>3.44 亿元</td><td><strong>约 3.20 亿元</strong></td><td><strong>过线（缓冲 6.7%）</strong></td></tr><tr><td>乐观</td><td>H1 持平（2.83 亿元）</td><td>0.78 亿元</td><td>3.61 亿元</td><td><strong>约 3.37 亿元</strong></td><td><strong>过线（缓冲 12.3%）</strong></td></tr></tbody></table>
+<p><strong>关键判读</strong>：由于 2025 年 H2/H1 比值为 0.903（2025H1 营收 1.3929 亿元、H2 1.2579 亿元），<strong>中性情景本身就是历史中枢</strong>；而必凯尔只要贡献 0.6 亿元以上，本体 H2 的容忍度即放宽到"下滑 20%–24% 仍可过线"。</p>
+<details class="fold"><summary>必凯尔并表收入的口径核验（能否计入"扣除后营业收入"）</summary><div class="fold-body">
+
+<p>这是本报告最关键的一处会计判断，也是区分"能保壳"与"白忙一场"的分水岭。</p>
+<p><strong>一、先排除三类会被扣除的情形</strong>（依深交所《上市公司自律监管指南第 1 号——业务办理》"营业收入扣除相关事项"）：</p>
+<table><thead><tr><th>扣除类别</th><th>必凯尔是否命中</th><th>理由</th></tr></thead><tbody><tr><td>与主营业务无关的业务收入（正常经营之外，如出租、材料销售）</td><td><strong>否</strong></td><td>必凯尔主营为<strong>急救包的研发、生产及销售</strong>，行业归类为"<strong>C27 医药制造业</strong>—C2770 卫生材料及医药用品制造"，<strong>与上市公司同属医药制造业</strong></td></tr><tr><td>不具备商业实质的收入（显失公允对价／非交易方式取得的企业合并）</td><td><strong>否</strong></td><td>本次为<strong>现金收购、对价 1.90 亿元略低于收益法评估值 1.906 亿元</strong>，属公允对价的市场化交易，非无偿赠与或零对价</td></tr><tr><td>本会计年度及上一会计年度新增贸易业务收入</td><td><strong>否（待验证）</strong></td><td>必凯尔为<strong>制造企业</strong>（下属湖北高德、高格医疗、蓝格医疗、蓝帆应急、宝科特五家全资制造子公司），非贸易通道型</td></tr></tbody></table>
+<p><strong>二、口径交叉验证</strong>：上市公司 2025 年扣除的 2,389.49 万元里，<strong>没有任何一笔来自子公司营收</strong>，全部为上市公司层面的出租/材料/软件许可/贸易——说明公司历史上并未把并购子公司收入列入扣除项。</p>
+<p><strong>三、反向读数（必须写）</strong>：<strong>必凯尔的收入能进"扣除后营业收入"，并不等于它能进"利润"</strong>。必凯尔 2025 年净利润已从 3,067.68 万元降至 <strong>1,769.13 万元（-42.33%）</strong>，2026Q1 更因汇兑损失等原因净利润基数很低（上市公司备考口径甚至阶段性亏损）。且本次交易新增商誉 <strong>4,761.17 万元</strong>。<strong>它买的是"营收规模"，盈利能力是次要的、甚至可能是负面的。</strong></p>
+
+</div></details>
+<h3 id="sec5">2.2 并购并表：两单已经落地，时间账已经算清</h3>
+<p><strong>结论：两单收购都已完成交割，2026 年的营收增量是</strong>已发生的确定性事实<strong>，不是预期——这是本股与绝大多数"讲故事"型 ST 的根本区别。</strong></p>
+<table><thead><tr><th>收购对象</th><th>持股</th><th>对价</th><th>交割安排</th><th>2026 可并表月数</th><th>关键数据</th></tr></thead><tbody><tr><td>蓝怡（湖南）医疗器械</td><td>51%</td><td>3,570 万元</td><td>2026 年 1 月公告、2 月推进</td><td>约 11 个月</td><td>2024 年营收 4,770 万元；2026H1 营收 3,088.47 万元、净利 38.36 万元</td></tr><tr><td><strong>武汉必凯尔救助用品</strong></td><td><strong>100%</strong></td><td><strong>19,000 万元现金</strong></td><td><strong>2026-08-13 交割、08-14 工商变更</strong></td><td><strong>约 4.5 个月</strong></td><td>2024／2025 年主营收入 2.54／2.30 亿元；净利 3,067.68／1,769.13 万元；2026Q1 营收 5,023.49 万元</td></tr></tbody></table>
+<p><strong>必凯尔的四项关键条款</strong>：① <strong>业绩承诺</strong>——蓝帆医疗承诺必凯尔 <strong>2026—2028 年累计净利润不低于 6,500 万元</strong>（归母净利与扣非孰低），未达标以<strong>现金</strong>补偿；② <strong>超额业绩奖励</strong>——核心管理团队可获超额部分的 100%，上限为交易作价的 20%；③ <strong>商誉</strong>——预计新增 <strong>4,761.17 万元</strong>（占 2026Q1 末备考净资产 0.84%）；④ <strong>竞业禁止</strong>——蓝帆医疗、蓝帆投资及李振平出具竞业禁止及禁止招揽承诺，并许可标的公司继续使用相关商标。</p>
+<details class="fold"><summary>必凯尔的经营质量与风险（原话摘录）</summary><div class="fold-body">
+
+<p><strong>境外依赖是最大的一处结构性风险</strong>（引报告书原文）：</p>
+<blockquote><p>"报告期内，标的公司境外销售收入金额分别为 21,804.27 万元、20,062.60 万元、4,315.54 万元，占主营业务收入的比例分别为 <strong>85.81%、87.22%、85.91%</strong>。目前标的公司产品<strong>主要出口地为欧洲</strong>……如主要出口的国家或者地区的政治、经济环境、贸易政策等发生重大变化……可能对标的公司的境外销售造成冲击。"</p></blockquote>
+<p><strong>汇兑损益波动明显</strong>：报告期各期汇兑损益分别为 <strong>-91.05 万元、-405.82 万元、+243.61 万元</strong>（损失以正数列示）。外销以美元、欧元结算，人民币汇率变动会直接冲击利润。</p>
+<p><strong>客户集中</strong>：2026 年 1-3 月第一大客户占主营业务收入 <strong>13.33%</strong>；应收账款前五名中，第一户余额 1,298.24 万元、<strong>已全额计提坏账 1,298.24 万元</strong>（占比 32.53%）——说明标的自身也背着一笔高风险应收。</p>
+<p><strong>向下的量级</strong>：必凯尔主营收入已连续两年下滑（2024 年 2.54 亿元 → 2025 年 2.30 亿元，-9.48%；2026Q1 年化约 2.01 亿元），<strong>它提供的是一条下降的、且高度依赖欧洲出口的收入曲线</strong>。</p>
+
+</div></details>
+<h3 id="sec6">2.3 审计意见开关：两道意见关 = 零容错</h3>
+<p><strong>结论：2026 年报的审计意见是本股唯一"可能一夜归零"的开关</strong>——营收达标只解决第一关，两套审计意见必须<strong>同时</strong>标准无保留，任一非标即触及 9.3.12 终止上市。</p>
+<table><thead><tr><th>关卡</th><th>依据</th><th>2025 年情况</th><th>2026 年风险评级</th></tr></thead><tbody><tr><td>财务报告审计意见</td><td>9.3.12 第（三）项（含<strong>保留意见</strong>）</td><td>标准无保留（信会师报字〔2026〕第 ZE10166 号）</td><td><strong>低</strong>——净资产 53.53 亿元、负债仅 3.02 亿元、资产以现金与理财为主，可审计性高</td></tr><tr><td>内部控制审计意见</td><td>9.3.12 第（五）项</td><td>标准无保留</td><td><strong>中低</strong>——2026-05-15 因业绩预告披露违规被深交所通报批评，暴露信披流程瑕疵；但审计师此前仍出标准意见</td></tr></tbody></table>
+<p><strong>一处须写清的口径</strong>：<strong>"带强调事项段／带持续经营重大不确定性段落的无保留意见"仍是"无保留意见"</strong>——不触发 9.3.12 第（三）项。但本股连这一层也未出现（2025 年为干净的标准无保留）。</p>
+<hr>
+<h2 id="chap3">三、公司运营</h2>
+<h3 id="sec7">3.1 财务全景：利润表在亏损，资产负债表极厚</h3>
+<p><strong>结论：这是一家"资产负债表远远好于利润表"的公司——五年间营收从 105.30 亿元（2022 年新冠检测峰值）萎缩至 2.65 亿元，扣非连亏三年，但净资产仍高达 53.53 亿元、资产负债率仅 5.23%。</strong></p>
+<table><thead><tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026H1</th></tr></thead><tbody><tr><td>营业收入（亿元）</td><td>28.30</td><td>105.30</td><td>7.50</td><td>3.50</td><td><strong>2.65</strong></td><td><strong>1.41</strong></td></tr><tr><td>归母净利润（亿元）</td><td>14.13</td><td>42.09</td><td>0.75</td><td>0.75</td><td><strong>-0.16</strong></td><td><strong>-0.22</strong></td></tr><tr><td>扣非归母净利润（亿元）</td><td>14.03</td><td>41.58</td><td>-1.24</td><td>-1.40</td><td><strong>-1.17</strong></td><td><strong>-0.49</strong></td></tr><tr><td>毛利率</td><td>75.02%</td><td>66.85%</td><td>54.28%</td><td>53.89%</td><td>36.16%</td><td><strong>45.82%</strong></td></tr><tr><td>每股净资产（元）</td><td>26.59</td><td>41.61</td><td>25.92</td><td>25.06</td><td>23.78</td><td><strong>23.02</strong></td></tr><tr><td>经营现金流净额（亿元）</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>-0.47</strong></td></tr></tbody></table>
+<blockquote><p>口径：合并报表、归母；2026H1 数据取自 2026 年半年度报告原文，2021—2025 年取自历年年报（Wind 代理不可用，未采用二手源）。（数据来源：公司定期报告）</p></blockquote>
+<p><strong>三处必须点出的判断</strong>：</p>
+<ol><li><strong>营收的下滑斜率已经收敛</strong>：2024 年 -53.3% → 2025 年 -24.3% → <strong>2026H1 +1.54%</strong>，且主营的"体外诊断产品和解决方案"板块 2026H1 收入 <strong>1.24 亿元、同比 +36.84%</strong>（占比升至 87.65%）——<strong>下滑的是被计入扣除项的"经营业务及其他"（-64.14%）</strong>，不是主业。</li><li><strong>毛利率触底回升</strong>：40.82%（2025H1）→ <strong>45.82%</strong>（2026H1）；同期营业成本 -7.03%、销售费用 -31.10%、管理费用 -5.54%、研发费用 -29.13%，<strong>三项期间费用合计同比节省约 3,024 万元</strong>。</li><li><strong>但归母净利仍然恶化</strong>（2026H1 -2,186.76 万元 vs 上年同期 +1,249.73 万元），原因公司自述为"<strong>政府补助减少 + 应收账款账龄增加导致信用减值增加 + 理财产品收益率下行</strong>"三项，合计影响利润总额同比减少超 4,000 万元。<strong>换句话说：亏损不是经营恶化造成的，而是"理财收益这台发动机变小了"。</strong></li></ol>
+<h3 id="sec8">3.2 核心安全垫：现金类资产超过总市值</h3>
+<p><strong>结论：账上 36.72 亿元现金类资产 &gt; 35.65 亿元总市值，PB 0.67——这是 ST 板块里罕见的"净现金型"资产底，也是本报告给出"买入"的第一依据；但它只提供下限，不提供上涨动力。</strong></p>
+<table><thead><tr><th>要点</th><th>金额（亿元）</th><th>备注</th></tr></thead><tbody><tr><td>货币资金</td><td>3.53</td><td>其中受限 0.56 亿元（诉讼冻结 0.11 亿元 + 保函/信用证保证金 0.45 亿元）</td></tr><tr><td>交易性金融资产</td><td>33.19</td><td>大额存单、结构性存款、收益凭证等低风险理财产品</td></tr><tr><td><strong>现金类资产合计</strong></td><td><strong>36.72</strong></td><td>扣除受限后约 <strong>36.16 亿元</strong> 可动用</td></tr><tr><td>一年内到期的非流动资产</td><td>0.94</td><td>年初为 29.28 亿元，已重分类至交易性金融资产</td></tr><tr><td><strong>总市值</strong></td><td><strong>35.65</strong></td><td>现金类资产／市值 ≈ <strong>1.03 倍</strong></td></tr><tr><td>归母净资产</td><td>53.53</td><td>市值／净资产 = <strong>0.67</strong></td></tr><tr><td>负债合计</td><td>3.02</td><td>资产负债率 <strong>5.23%</strong></td></tr></tbody></table>
+<p><strong>三句判读</strong>：① <strong>下限</strong>——总市值买不到账上现金，且净资产是市值的 1.5 倍，<strong>跌破 13.85 元（年内低点）需要有超出"经营亏损"的额外负面</strong>；② <strong>上限不在资产表</strong>——2025 年度<strong>零分红</strong>，2026 年中期分红条款要求"当期归母净利为正"，<strong>2026 年大概率不实施</strong>，因此<strong>现金不会以分红形式流向股东</strong>；③ <strong>正确读法</strong>——这不是"高股息资产"，而是"<strong>被退市风险折价、且尚未找到回报股东路径的现金堆</strong>"。</p>
+<details class="fold"><summary>现金类资产的构成与受限情况（原文核对）</summary><div class="fold-body">
+
+<ul><li><strong>货币资金 3.53 亿元</strong>（年初 5.11 亿元）：其中"其他货币资金"690.16 万元（含证券账户余额 675.76 万元）；受限部分 <strong>5,633.03 万元</strong>，明细为"<strong>诉讼冻结 1,143.79 万元</strong>"+"<strong>保函保证金、信用证保证金 4,489.25 万元</strong>"。</li><li><strong>交易性金融资产 33.19 亿元</strong>（年初 3.94 亿元）：主要为公司购买<strong>大额存单等理财产品</strong>；本期公允价值变动损益 +1,740.35 万元、投资收益 +2,206.28 万元。<strong>大幅增加的原因是一年内到期的非流动资产（29.28 亿元，以大额存单为主）在报告期内到期并重分类</strong>。</li><li><strong>公司对安全性的口径</strong>（2026-07-09 投资者关系活动记录表原文）："公司大额存单存放于<strong>国有大行、全国性股份制商业银行</strong>等经营稳健的金融机构"。</li><li><strong>理财产品规模与红线的隔离</strong>：公司 2026-04-21 同步通过《关于使用闲置自有资金进行委托理财的公告》《关于使用部分闲置募集资金进行现金管理的公告》，理财使用已在授权框架内。</li></ul>
+
+</div></details>
+<h3 id="sec9">3.3 重要子公司</h3>
+<p><strong>结论：除新并表的蓝怡外，其余子公司体量小、且多数微利或亏损——本股的利润来源高度集中在上市公司本部（理财收益）与新增并购标的。</strong></p>
+<table><thead><tr><th>子公司</th><th>主要业务</th><th>注册资本（万元）</th><th>净资产（万元）</th><th>2026H1 营业收入（万元）</th><th>2026H1 净利润（万元）</th></tr></thead><tbody><tr><td>湖南蓝怡（51%）</td><td>医疗器械产品销售</td><td>1,540</td><td>2,952.99</td><td>3,088.47</td><td>38.36</td></tr><tr><td>广东明志</td><td>第三方医学检验</td><td>1,500</td><td>12,320.85</td><td>2,149.60</td><td>12.92</td></tr><tr><td>新疆明德和</td><td>医疗器械产品销售</td><td>1,000</td><td>1,555.25</td><td>1,790.29</td><td>125.54</td></tr><tr><td>新疆明德</td><td>医疗器械产品销售</td><td>5,000</td><td>8,885.98</td><td>167.60</td><td>6.23</td></tr><tr><td>湖北明德</td><td>软件开发</td><td>3,000</td><td>-1,049.37</td><td>73.98</td><td>-488.09</td></tr></tbody></table>
+<p>（数据来源：2026 年半年度报告"主要控股参股公司分析"）</p>
+<p>必凯尔体系（武汉必凯尔 + 湖北高德 + 高格医疗 + 蓝格医疗 + 蓝帆应急 + 宝科特）自 2026-08 起纳入合并范围，<strong>本期未体现</strong>。</p>
+<hr>
+<h2 id="chap4">四、炒作逻辑三支柱与筹码</h2>
+<h3 id="sec10">4.1 三支柱（全部着眼未来）</h3>
+<p><strong>结论：本股当前</strong>最强的支柱是①炒预期（摘帽硬节点）<strong>，弱在③主板映射——IVD 板块 2026 年并无显著主线；②相似股票匹配显示本股落在"相对抗跌但方向向下"的一侧。</strong></p>
+<table><thead><tr><th>支柱</th><th>回答的问题</th><th>本股证据</th></tr></thead><tbody><tr><td><strong>① 炒预期（最强）</strong></td><td>未来 6–12 个月有哪些可验证节点？</td><td><strong>2027-01 业绩预告</strong>（第一次公开读到 2026 全年营收）→ <strong>2027-04 年报 + 审计意见</strong>（生死开关）→ 撤销申请。均为<strong>公开日历</strong>，无信息差</td></tr><tr><td><strong>② 炒历史类似行为</strong></td><td>从基准日出发，本股现在"最像谁"？它们后来涨还是跌？</td><td>取 Andy 路径底表「财务类①」全部 <strong>43 只有行情</strong>的同型样本，2026 年 YTD <strong>中位 -27.44%、均值 -24.05%、仅 7 只上涨</strong>；<strong>明德 -20.07% 排第 15</strong>，属<strong>相对抗跌的"下跌组"</strong>（见下折叠）</td></tr><tr><td><strong>③ 炒主板映射（最弱）</strong></td><td>主板当下在炒什么主线？ST 板块有哪些低位同类？</td><td>2026 年 IVD 板块无显著主线；本股自身历史炒作符号（新冠检测／血气诊断）已于 2022 年后失效，<strong>当前无可用映射</strong></td></tr></tbody></table>
+<details class="fold"><summary>②相似股票匹配：同型样本全表（2026 年 YTD，43 只）</summary><div class="fold-body">
+
+<p><strong>筛选口径</strong>：直接以 Andy 路径底表《退市风险预警-20261005.xlsx》「财务类」工作表<strong>块①（孰低为负且营业收入&lt;3 亿元）</strong>的 45 家为样本池，剔除无行情者，得 43 只；用腾讯行情批量取 2026 年年初至今涨跌幅（前缀 <code>GP-A</code> 定位，复权口径）。</p>
+<table><thead><tr><th>排位</th><th>代码</th><th>简称</th><th>2026 YTD</th><th>收盘价（元）</th></tr></thead><tbody><tr><td>1</td><td>688806.SH</td><td>泰诺麦博-U</td><td>+112.10%</td><td>30.67</td></tr><tr><td>2</td><td>300716.SZ</td><td>＊ST泉为</td><td>+42.44%</td><td>17.05</td></tr><tr><td>3</td><td>603557.SH</td><td>＊ST起步</td><td>+20.55%</td><td>3.05</td></tr><tr><td>4</td><td>688622.SH</td><td>＊ST禾信</td><td>+18.26%</td><td>119.60</td></tr><tr><td>5</td><td>600265.SH</td><td>＊ST景谷</td><td>+14.24%</td><td>22.95</td></tr><tr><td>6</td><td>688197.SH</td><td>首药控股-U</td><td>+8.52%</td><td>37.70</td></tr><tr><td>7</td><td>000609.SZ</td><td>＊ST中迪</td><td>+5.28%</td><td>9.37</td></tr><tr><td>…</td><td></td><td></td><td></td><td></td></tr><tr><td><strong>15</strong></td><td><strong>002932.SZ</strong></td><td><strong>＊ST明德</strong></td><td><strong>-20.07%</strong></td><td><strong>15.33</strong></td></tr><tr><td>…</td><td></td><td></td><td></td><td></td></tr><tr><td>41</td><td>600053.SH</td><td>＊ST九鼎</td><td>-60.90%</td><td>7.77</td></tr><tr><td>42</td><td>002717.SZ</td><td>＊ST岭南</td><td>-61.73%</td><td>0.62</td></tr><tr><td>43</td><td>603359.SH</td><td>＊ST东珠</td><td>-78.72%</td><td>2.03</td></tr></tbody></table>
+<p><strong>上涨组共性反查（"人有 vs 有物"判据的又一次验证）</strong>：7 只上涨标的中，3 只为未盈利生物医药（泰诺麦博-U、首药控股-U —— 属另一个逻辑），<strong>真正的 ST 类上涨 4 只全部"有物"</strong>：＊ST禾信（发行股份购买资产已过会）、＊ST中迪（关联方无偿赠与半导体资产）、＊ST泉为、＊ST景谷（均有重组/注入动作）。</p>
+<p><strong>本股的定位</strong>：<strong>明德也有"物"（必凯尔 + 蓝怡）且已落地</strong>——但落地后 YTD 仍为 <strong>-20.07%</strong>。这条事实本身是本次研究中最重要的一处负面读数：<strong>市场并未对"现金买收入"给出任何溢价</strong>。</p>
+
+</div></details>
+<h3 id="sec11">4.2 情绪与筹码：注意力已到冰点</h3>
+<p><strong>结论：2026 年全年仅 1 次龙虎榜、换手率 0.57%、日成交额 1,357 万元——本股当前处于"没有注意力"的状态。按注意力定价框架，这意味着它短期涨不动，也意味着一旦出现确定性事件，边际关注度的抬升空间反而更大。</strong></p>
+<table><thead><tr><th>观察项</th><th>读数</th><th>判读</th></tr></thead><tbody><tr><td>龙虎榜（2026 年）</td><td><strong>仅 1 次</strong>：2026-03-25，跌 -5.39%、<strong>净卖 3,199.29 万元</strong>、换手 8.04%（原因"日跌幅偏离值达 7%"）</td><td>上一次上榜是 2022-12-12；<strong>2026 年上榜的唯一一次是净卖出</strong></td></tr><tr><td>换手率／成交额</td><td>0.57%／1,357 万元（2026-09-30）</td><td>极度低迷，属"注意力冰点"</td></tr><tr><td>股东户数</td><td>29,387 户（2025-12-31）→ <strong>14,841 户</strong>（2026-07-31），-49.5%</td><td>同期股价 -23.8%，属"<strong>下跌中割肉</strong>"，不构成"主力吸筹"证据</td></tr><tr><td>股价水位</td><td>2026 年内 13.85–20.00 元；现价 15.33 元处年内区间 <strong>28% 分位</strong>；近 20 年价格分位 <strong>11.26%</strong></td><td>低位，但年内并非最低点</td></tr><tr><td>公司回购</td><td>2026-03-31～06-22 回购 943.70 万股、均价 <strong>16.28 元</strong>、耗资 <strong>1.54 亿元</strong>，<strong>高于现价 6.2%</strong></td><td>管理层在现价之上持续买入；但股份"后续全部出售"构成潜在抛压</td></tr></tbody></table>
+<details class="fold"><summary>历史炒作符号演变（韭研公社异动全表，35 条）</summary><div class="fold-body">
+
+<p><strong>炒作符号四阶段</strong>：</p>
+<table><thead><tr><th>阶段</th><th>时间</th><th>题材符号</th><th>代表行情</th></tr></thead><tbody><tr><td>一</td><td>2020-07～2022-12</td><td><strong>新冠检测 + 血气诊断</strong>（抗原/核酸/方舱/血气分析仪）</td><td>连板极值 <strong>6 天 4 板</strong>（2022-01-14）；不复权股价峰值 <strong>131.27 元</strong>（2022-05-06）</td></tr><tr><td>二</td><td>2024-02～2024-03</td><td>抗原检测 + 血气分析仪 + <strong>拟回购</strong></td><td>股价 18.61→21.63 元</td></tr><tr><td>三</td><td>2025-06-05</td><td><strong>益生菌饮料 + 分红</strong>（几乎无关主业）</td><td>21.46 元</td></tr><tr><td>四</td><td>2026-04-27 起</td><td><strong>退市风险警示（ST 板块）</strong>；2026-06-30 加入"<strong>拟收购必凯尔</strong>"</td><td>17.58→14.35 元</td></tr></tbody></table>
+<p><strong>全量异动记录（35 条，时间降序，最新在前）</strong></p>
+<table><thead><tr><th>题材时间</th><th>简称</th><th>题材</th><th>题材催化</th><th>涨停信息</th><th>股价</th><th>异动关键词（节选）</th></tr></thead><tbody><tr><td>2026-06-30</td><td>＊ST明德</td><td>ST 板块</td><td>—</td><td>—</td><td>14.35</td><td>拟收购必凯尔+退市风险警示+益生菌饮料+血气分析仪</td></tr><tr><td>2026-04-27</td><td>＊ST明德</td><td>ST 板块</td><td>—</td><td>—</td><td>17.58</td><td>退市风险警示+益生菌饮料+抗原检测+血气分析仪</td></tr><tr><td>2025-06-05</td><td>明德生物</td><td>消费</td><td>港股消费明星股齐创新高</td><td>—</td><td>21.46</td><td>益生菌饮料+分红+抗原检测+血气分析仪</td></tr><tr><td>2024-03-28</td><td>明德生物</td><td>其他</td><td>—</td><td>—</td><td>21.63</td><td>抗原检测+血气分析仪+核酸检测+拟回购</td></tr><tr><td>2024-02-08</td><td>明德生物</td><td>医药</td><td>医保局新上市药品首发价格新机制征求意见</td><td>—</td><td>18.61</td><td>抗原检测+血气分析仪+核酸检测</td></tr><tr><td>2022-12-12</td><td>明德生物</td><td>防疫/检测</td><td>部分地区抗原试剂盒/N95 口罩涨价或缺货</td><td>2 天 2 板</td><td>72.89</td><td>抗原检测+血气分析仪+方舱+核酸检测</td></tr><tr><td>2022-12-09</td><td>明德生物</td><td>医疗医药</td><td>药店抗原试剂盒、连花清瘟缺货</td><td>—</td><td>66.26</td><td>核酸检测+抗原检测+血气分析仪+方舱</td></tr><tr><td>2022-11-21</td><td>明德生物</td><td>新冠检测</td><td>广州、重庆、成都发放抗原检测试剂</td><td>—</td><td>71.14</td><td>核酸检测+抗原检测+血气分析仪+方舱</td></tr><tr><td>2022-05-23</td><td>明德生物</td><td>医药医疗</td><td>—</td><td>—</td><td>110.37</td><td>血气分析仪+核酸检测+抗原检测</td></tr><tr><td>2022-05-06</td><td>明德生物</td><td>新冠防疫</td><td>政治局常委会强调从严落实常态化防控</td><td>—</td><td>131.27</td><td>核酸检测+抗原检测+一季报增长</td></tr><tr><td>2022-04-18</td><td>明德生物</td><td>新冠防疫</td><td>—</td><td>3 天 2 板</td><td>125.51</td><td>一季报预增+核酸检测+抗原检测+血气诊断</td></tr><tr><td>2022-04-14</td><td>明德生物</td><td>公告</td><td>—</td><td>—</td><td>116.81</td><td>一季报预增+核酸检测+抗原检测+血气诊断</td></tr><tr><td>2022-03-29</td><td>明德生物</td><td>新冠防疫</td><td>上海开展新一轮切块式、网格化核酸筛查</td><td>2 天 2 板</td><td>107.69</td><td>核酸检测+抗原检测+血气诊断</td></tr><tr><td>2022-03-28</td><td>明德生物</td><td>新冠防疫</td><td>上海全市核酸筛查</td><td>—</td><td>97.90</td><td>核酸检测+抗原检测+血气诊断</td></tr><tr><td>2022-03-11</td><td>明德生物</td><td>新冠检测</td><td>—</td><td>2 天 2 板</td><td>95.23</td><td>新冠检测+血气诊断</td></tr><tr><td>2022-03-10</td><td>明德生物</td><td>新冠检测</td><td>世卫组织对检测量减少表示担忧</td><td>—</td><td>86.57</td><td>新冠检测+血气诊断</td></tr><tr><td>2022-01-14</td><td>明德生物</td><td>新冠相关</td><td>国内外疫情反复</td><td><strong>6 天 4 板</strong></td><td>112.74</td><td>新冠检测+血气诊断</td></tr><tr><td>2022-01-13</td><td>明德生物</td><td>新冠防疫</td><td>—</td><td>5 天 3 板</td><td>102.49</td><td>供不应求+新冠检测+血气诊断</td></tr><tr><td>2022-01-10</td><td>明德生物</td><td>医疗医药</td><td>国内疫情零散分布发酵</td><td>2 天 2 板</td><td>92.31</td><td>新冠检测+血气诊断</td></tr><tr><td>2022-01-07</td><td>明德生物</td><td>医疗医药</td><td>—</td><td>—</td><td>83.92</td><td>新冠检测+血气诊断</td></tr><tr><td>2021-10-12</td><td>明德生物</td><td>公告</td><td>—</td><td>—</td><td>68.37</td><td>业绩超预期+新冠检测+血气诊断</td></tr><tr><td>2021-09-01</td><td>明德生物</td><td>公告</td><td>业绩预增、股份回购</td><td>—</td><td>70.58</td><td>10 股派 15 元+新冠检测+检测仪器</td></tr><tr><td>2021-08-03</td><td>明德生物</td><td>疫情</td><td>—</td><td>—</td><td>84.23</td><td>新冠检测+检测仪器+半年报预增</td></tr><tr><td>2021-07-28</td><td>明德生物</td><td>疫情</td><td>南京疫情辐射部分省市</td><td>—</td><td>67.53</td><td>新冠检测+检测仪器+半年报预增</td></tr><tr><td>2021-04-28</td><td>明德生物</td><td>医药</td><td>—</td><td>3 天 2 板</td><td>104.06</td><td>检测试剂+检测仪器+一季报预增</td></tr><tr><td>2021-04-26</td><td>明德生物</td><td>医疗</td><td>印度单日新增确诊飙升</td><td>—</td><td>97.48</td><td>检测试剂+检测仪器+一季报预增</td></tr><tr><td>2021-04-15</td><td>明德生物</td><td>公告</td><td>—</td><td>3 天 2 板</td><td>82.68</td><td>检测试剂+检测仪器+一季报预增</td></tr><tr><td>2021-04-13</td><td>明德生物</td><td>医美医药</td><td>—</td><td>—</td><td>72.91</td><td>检测试剂+检测仪器+业绩预增</td></tr><tr><td>2021-01-22</td><td>明德生物</td><td>疫情及医药</td><td>—</td><td>2 天 2 板</td><td>92.94</td><td>检测试剂+检测仪器+业绩增长</td></tr><tr><td>2021-01-21</td><td>明德生物</td><td>医药</td><td>冬春季农村地区新冠防控方案下发</td><td>—</td><td>84.49</td><td>业绩增长+检测试剂+检测仪器</td></tr><tr><td>2021-01-14</td><td>明德生物</td><td>业绩预增</td><td>—</td><td>—</td><td>85.17</td><td>业绩增长+检测试剂+检测仪器</td></tr><tr><td>2021-01-06</td><td>明德生物</td><td>疫情防护</td><td>河北省新增 20 例本地确诊</td><td>—</td><td>72.25</td><td>检测试剂+检测仪器</td></tr><tr><td>2020-08-03</td><td>明德生物</td><td>抗疫</td><td>—</td><td>—</td><td>109.69</td><td>中标湖北新冠检测试剂集中采购</td></tr><tr><td>2020-07-10</td><td>明德生物</td><td>抗疫</td><td>—</td><td>2 天 2 板</td><td>96.99</td><td>中标湖北新冠检测试剂集中采购</td></tr><tr><td>2020-07-09</td><td>明德生物</td><td>抗疫</td><td>—</td><td>—</td><td>88.17</td><td>新冠检测</td></tr></tbody></table>
+<p><strong>三句判读</strong>：① <strong>炒作符号已彻底换代</strong>——2020—2022 年是"新冠检测"，2026 年是"退市风险警示 + 拟收购必凯尔"，<strong>旧符号（新冠/抗原）已不可能复现</strong>；② <strong>连板极值 6 天 4 板（2022-01-14）</strong>，此后最大回撤至 13.85 元（2026-07-22），<strong>自峰值 -89.4%</strong>；③ 2026 年异动表<strong>只有 2 条</strong>——异动表本身也印证了"注意力冰点"。</p>
+
+</div></details>
+<hr>
+<h2 id="chap5">五、估值与投资结论</h2>
+<h3 id="sec12">5.1 估值：不是"贵不贵"，而是"折价何时消除"</h3>
+<p><strong>结论：本股不适用 PE（亏损），适用 PB 与净现金框架。以 PB 0.67、现金类资产／市值 1.03 倍的起点看，估值上行的全部来源是"退市风险折价"的消除，而不是盈利增长。</strong></p>
+<p><strong>为什么说这个折价是"退市风险折价"而不是"盈利折价"</strong>：公司资产负债率 5.23%、负债 3.02 亿元、现金类资产 36.72 亿元，<strong>经营端的亏损（每年约 0.7—1.0 亿元）完全在利息与理财收益的覆盖范围内</strong>，不存在偿付能力问题。压在 PB 上的 0.33 倍折价，主要来自"<strong>2027 年若营收不达标即终止上市</strong>"这一尾部风险。</p>
+<p><strong>三档情景（PB 定价法）</strong>：</p>
+<table><thead><tr><th>情景</th><th>概率</th><th>关键假设</th><th>对应 PB</th><th>对应股价</th></tr></thead><tbody><tr><td>乐观</td><td>30%</td><td>2026 扣除后营收 3.35 亿元以上，2027-04 顺利摘帽，且主业 H2 延续回升</td><td>0.85–1.00</td><td><strong>19.6–23.0 元</strong></td></tr><tr><td>中性</td><td>45%</td><td>2026 扣除后营收 3.1–3.3 亿元，刚好过线并摘帽，但市场对"无成长性"给予折价</td><td>0.72–0.85</td><td><strong>16.6–19.6 元</strong></td></tr><tr><td>悲观</td><td>20%</td><td>必凯尔并表不及预期／本体 H2 明显走弱 → 2026 扣除后营收 &lt;3 亿元 → 2027 年报终止上市</td><td>0.45–0.55</td><td><strong>10.4–12.7 元</strong></td></tr><tr><td>极端</td><td>5%</td><td>2026 年报审计意见非标（含保留意见）→ 直接终止上市</td><td>约 0.35</td><td><strong>约 8.1 元</strong></td></tr></tbody></table>
+<p><strong>概率加权中枢 ≈ 17.2 元</strong>，较现价 15.33 元约 <strong>+12%</strong>；<strong>上行情景的空间（+28%~+50%）显著大于下行情景（-17%~-32%）</strong>，但下行情景带一条"归零式"尾部。</p>
+<blockquote><p><strong>估值前提必须显式标出</strong>：上述情景区间<strong>全部建立在"2026 年扣除后营业收入 ≥3 亿元且两套审计意见均标准无保留"之上</strong>。前提不成立时，情景区间整体作废，转为终止上市路径。</p></blockquote>
+<h3 id="sec13">5.2 投资结论</h3>
+<p><strong>操作结论：买入（深度价值 · 事件驱动 · 轻仓 · 长周期）</strong></p>
+<p><strong>理由链（5 条，按重要性排序）</strong></p>
+<ol><li><strong>资产底极厚，且下限由现金而非由市值决定。</strong> 总市值 35.65 亿元 &lt; 现金类资产 36.72 亿元（覆盖率 1.03 倍），归母净资产 53.53 亿元为市值的 1.50 倍，PB 0.67；负债仅 3.02 亿元。<strong>这是本股与 90% 以上 ST 标的的根本区别——它的下跌空间需要"经营亏损以外"的额外负面才能打开。</strong>（来源：<a href="https://data.eastmoney.com/notices/detail/002932/AN202608270006754374.html" target="_blank" rel="noopener">2026 年半年度报告</a>）</li><li><strong>摘帽路径清晰、可观测、且增量已经落地。</strong> 唯一红线是"扣除后营收 &lt;3 亿元"；2026H1 营收 1.4143 亿元，叠加已并表的蓝怡与 2026-08-13 交割的必凯尔，中性测算 2026 扣除后营收约 3.20 亿元，<strong>过线概率约 75%–85%</strong>，且<strong>即使本体 H2 比 H1 下滑 24% 仍可过线</strong>。（来源：<a href="https://data.eastmoney.com/notices/detail/002932/AN202608171828060375.html" target="_blank" rel="noopener">标的资产过户完成公告</a>、<a href="https://data.eastmoney.com/notices/detail/002932/AN202608131827948569.html" target="_blank" rel="noopener">重大资产购买报告书</a>）</li><li><strong>管理层用真金白银给出了高于现价的价值判断。</strong> 公司 2026 年以<strong>自有资金 1.54 亿元回购 943.70 万股，均价 16.28 元</strong>（最高 17.50 元、最低 15.13 元），<strong>高于现价 15.33 元约 6.2%</strong>；同期公司还终止了原募投项目、把 10,020.64 万元募集资金变更用途投向必凯尔——<strong>资金用途指向"修复利润表与营收规模"，而非套现或还债。</strong>（来源：<a href="https://data.eastmoney.com/notices/detail/002932/AN202608270006754374.html" target="_blank" rel="noopener">2026 年半年度报告</a>、<a href="https://data.eastmoney.com/notices/detail/002932/AN202607311827534670.html" target="_blank" rel="noopener">变更募集资金用途公告</a>）</li><li><strong>主业下滑斜率已收敛，且亏损并非经营端恶化。</strong> 2026H1 营收 +1.54%、IVD 板块 +36.84%、毛利率 40.82%→45.82%、三项期间费用同比节省约 3,024 万元；归母净利下滑系"政府补助减少 + 信用减值增加 + 理财收益率下行"三项非经营性因素，<strong>公司自述合计影响利润总额超 4,000 万元</strong>。（来源：<a href="https://data.eastmoney.com/notices/detail/002932/AN202608270006754374.html" target="_blank" rel="noopener">2026 年半年度报告</a>、<a href="https://data.eastmoney.com/notices/detail/002932/AN202607141826963488.html" target="_blank" rel="noopener">2026 年半年度业绩预告</a>）</li><li><strong>筹码位置有利，且公司风险项最少。</strong> 股价处 2026 年内 28% 分位、近 20 年价格分位 11.26%；同型 43 只样本 2026 年 YTD 中位 -27.44%，本股 -20.07% 相对抗跌；<strong>四类红线只踩一条、无立案、无造假、无资金占用、无违规担保、实控人零质押</strong>——同型样本里几乎找不到更"干净"的一只。（来源：东财龙虎榜、韭研公社异动整理、本报告 §4.1 同型样本表）</li></ol>
+<p><strong>触发条件</strong></p>
+<ul><li><strong>转更强（加仓）</strong>：2027-01 业绩预告显示 2026 年扣除后营业收入 <strong>≥3.2 亿元</strong>；或三季报显示主业 H2 营收同比转正；或公司启动新一单并购/出现特别分红安排。</li><li><strong>转弱（减仓/退出）</strong>：三季报或业绩预告显示全年营收趋势<strong>低于 3.05 亿元</strong>；公司对"营收达标"口径明显回避；或股价跌破 <strong>12.8 元</strong>（对应 PB 约 0.56，意味市场开始定价摘帽失败）。</li></ul>
+<p><strong>失效条件</strong>（出现任一，本结论作废）</p>
+<ol><li>2026 年年度报告披露的<strong>扣除后营业收入 &lt;3 亿元</strong> → 直接触发 9.3.12 第（一）项，2027 年报终止上市；</li><li>2026 年审计意见出现<strong>保留／无法表示／否定</strong>，或内控审计非标 → 触及 9.3.12 第（三）／（五）项，<strong>无中间态</strong>；</li><li>公司在 2027-04 前出现新的立案、资金占用、违规担保或控制权变更纠纷；</li><li>必凯尔出现重大业绩不达标导致<strong>大额商誉减值</strong>（当前商誉仅 4,761.17 万元，量级可控，但需跟踪）。</li></ol>
+<p><strong>参考区间</strong></p>
+<ul><li><strong>买入区间：14.0–15.5 元</strong>（现价附近；对应 PB 0.61–0.67）</li><li><strong>目标区间：18.5–21.5 元</strong>（对应 PB 0.80–0.93，中性至乐观情景）</li><li><strong>止损位：12.8 元</strong>（跌破视为市场定价摘帽失败）</li><li><strong>仓位建议：轻仓</strong>（建议不超过组合 3%–5%，因存在约 20%–25% 的尾部归零风险）</li></ul>
+<p><strong>时间窗口</strong></p>
+<p><strong>至 2027 年 4 月（2026 年报披露）</strong>。本标的不具备短周期爆发的注意力条件，<strong>持有逻辑是"等两个公开读数"</strong>：2027-01 业绩预告（营收）与 2027-04 年报（营收 + 审计意见）。</p>
+<p><strong>最大风险</strong></p>
+<p><strong>2026 年扣除后营业收入不达 3 亿元</strong>——必凯尔当年只并表约 4.5 个月，若其 H2 只贡献 0.5 亿元以下、且本体 H2 营收低于 H1 的 90%，则扣除后营收可能落在 2.9–3.0 亿元区间，直接触发 2027 年报终止上市。</p>
+<p><strong>是否建议升档</strong></p>
+<p>建议在下列时点升为<strong>深度档</strong>：① 2027-01 业绩预告披露后（营收数字落地，可做精确的摘帽概率重估）；② 若公司启动新一单并购（则需按资本运作档重做"谁在运作、装什么"）。当前阶段（等公开读数）速研档信息量已足够。</p>
+<hr>
+<h2 id="chap6">附录 A · 待核实与需补充</h2>
+<p><strong>结论：本报告全部结论中，只有一项真正依赖"未公开数据"——2026 年扣除后营业收入的确切金额；其余四项均不影响判断方向。</strong></p>
+<table><thead><tr><th>#</th><th>待核实项</th><th>本报告的处理</th></tr></thead><tbody><tr><td>1</td><td>2026 年<strong>扣除后营业收入</strong>的确切金额</td><td>半年报不披露该口径，本报告给出保守/中性/乐观三档测算（2.91／3.20／3.37 亿元），<strong>以 2027-01 业绩预告与 2027-04 年报为准</strong></td></tr><tr><td>2</td><td>2026 年扣除额的<strong>具体构成</strong>（出租/材料/软件许可/新增贸易是否延续 2025 年结构）</td><td>2025 年扣除 2,389.49 万元；2026 年未披露。测算中按 2,400 万元假设，<strong>若扣除额下降（如 2024 年仅 158 万元）则过线更稳</strong></td></tr><tr><td>3</td><td>必凯尔<strong>2026 年 4–12 月</strong>的实际收入与利润</td><td>本报告以 2026Q1 年化推算 H2 贡献 0.60–0.78 亿元；<strong>待三季报（首次体现约 1.5 个月）验证</strong></td></tr><tr><td>4</td><td>必凯尔商标使用安排的具体期限与费用</td><td>重组报告书仅载"蓝帆医疗、蓝帆集团许可标的公司及子公司使用商标"，<strong>未披露期限与费率</strong></td></tr><tr><td>5</td><td>货币资金中"诉讼冻结 1,143.79 万元"对应的<strong>具体案件</strong></td><td>半年报载"本报告期公司无重大诉讼、仲裁事项"，故未按重大诉讼披露；<strong>该冻结标的与对手方未公开</strong></td></tr></tbody></table>
+<h2 id="chap7">附录 B · 关键信源链接</h2>
+<table><thead><tr><th>编号</th><th>文件</th><th>发布日</th><th>原文</th></tr></thead><tbody><tr><td>1</td><td>关于公司股票交易被实施退市风险警示暨股票停复牌安排的公告</td><td>2026-04-21</td><td><a href="https://data.eastmoney.com/notices/detail/002932/AN202604201821351532.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>2</td><td>2025 年年度报告</td><td>2026-04-21</td><td><a href="https://data.eastmoney.com/notices/detail/002932/AN202604201821351324.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>3</td><td>会计师事务所对公司营业收入扣除事项的专项报告</td><td>2026-04-21</td><td><a href="https://data.eastmoney.com/notices/detail/002932/AN202604201821351543.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>4</td><td>2026 年半年度报告</td><td>2026-08-28</td><td><a href="https://data.eastmoney.com/notices/detail/002932/AN202608270006754374.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>5</td><td>2026 年半年度业绩预告</td><td>2026-07-15</td><td><a href="https://data.eastmoney.com/notices/detail/002932/AN202607141826963488.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>6</td><td>2025 年度业绩预告修正公告</td><td>2026-03-23</td><td><a href="https://data.eastmoney.com/notices/detail/002932/AN202603221820687253.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>7</td><td>关于重大资产购买之标的资产过户完成的公告</td><td>2026-08-18</td><td><a href="https://data.eastmoney.com/notices/detail/002932/AN202608171828060375.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>8</td><td>重大资产购买报告书</td><td>2026-08-14</td><td><a href="https://data.eastmoney.com/notices/detail/002932/AN202608131827948569.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>9</td><td>关于回复深交所《现金重大资产购买的问询函》的公告</td><td>2026-08-01</td><td><a href="https://data.eastmoney.com/notices/detail/002932/AN202607311827534689.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>10</td><td>投资者关系活动记录表 2026-001</td><td>2026-07-09</td><td><a href="https://data.eastmoney.com/notices/detail/002932/AN202607091826851249.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>11</td><td>关于 2025 年度利润分配预案的公告</td><td>2026-04-21</td><td><a href="https://data.eastmoney.com/notices/detail/002932/AN202604201821351525.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>12</td><td>关于授权董事会制定中期分红方案的公告</td><td>2026-04-21</td><td><a href="https://data.eastmoney.com/notices/detail/002932/AN202604201821351470.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>13</td><td>2026 年度估值提升计划</td><td>2026-04-21</td><td><a href="https://data.eastmoney.com/notices/detail/002932/AN202604201821351505.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>14</td><td>关于公司相关税务事项处理的公告</td><td>2026-09-23</td><td><a href="https://data.eastmoney.com/notices/detail/002932/AN202609221829762649.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>15</td><td>关于增资并收购蓝怡（湖南）医疗器械有限公司股权的公告</td><td>2026-01-20</td><td><a href="https://data.eastmoney.com/notices/detail/002932/AN202601191818115489.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>16</td><td>关于终止部分募集资金投资项目暨变更募集资金用途的公告</td><td>2026-08-01</td><td><a href="https://data.eastmoney.com/notices/detail/002932/AN202607311827534670.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>17</td><td>关于子公司与专业机构共同投资的公告</td><td>2026-09-17</td><td><a href="https://data.eastmoney.com/notices/detail/002932/AN202609161829467259.html" target="_blank" rel="noopener">原文</a></td></tr></tbody></table>
+<h2 id="chap8">附录 C · 反方观点与逻辑漏洞（压力测试）</h2>
+<p><strong>以下五条是本报告"买入"结论最需要正面回答的质疑。若其中任何一条被证实，结论应下调至"卖出（回避）"。</strong></p>
+<ol><li><strong>【最致命】扣除后营收可能不达标。</strong> 必凯尔 2026 年只能并表约 4.5 个月，本体 H2 有走弱风险（2025H2/H1 = 0.903，且 2025Q4 单季营收仅 3,827 万元）。若必凯尔 H2 不足 0.5 亿元且本体 H2 低于 H1 的 90%，扣除后营收可能落在 2.9–3.0 亿元——<strong>2027-04 即终止上市</strong>。本报告给出的过线概率 75%–85%，意味着<strong>约 1/5 的概率亏掉大部分本金</strong>。</li><li><strong>"现金多"不等于"回报股东"。</strong> 2025 年度零分红；2026 年中期分红条款明写"当期归母净利为正"，2026 年预亏即不派；剩余 9.66% 回购股份公司明示"<strong>后续全部出售</strong>"。<strong>36.72 亿元现金类资产没有一条既定的回流股东的路径</strong>——这正是"价值陷阱"的典型形态。</li><li><strong>"摘帽"本身不构成上涨理由，且本股无制度红利。</strong> 主板风险警示股自 2026-07-06 起涨跌幅已为 10%，<strong>摘帽前后同幅</strong>；同型样本中"摘帽型"标的历史上多数在摘帽后 1 个月下跌。<strong>本股的上涨必须依赖"退市折价消除"这一条更间接的逻辑</strong>，而非事件本身。</li><li><strong>注意力冰点可能长期持续。</strong> 2026 年全年仅 1 次龙虎榜（且为净卖出 3,199 万元）、换手 0.57%、日成交额 1,357 万元。按注意力定价框架，"<strong>没有注意力，再好的基本面也涨不动</strong>"——本股可能在 2027-04 之前长期横盘甚至阴跌，<strong>持有 18 个月的机会成本很高</strong>。</li><li><strong>一处被市场忽略的合规瑕疵：2026-05-15 被深交所通报批评。</strong> 因未按期披露业绩预告与退市风险警示提示性公告，公司及陈莉莉等被<strong>通报批评</strong>（违反上市规则 1.4／2.1.1(一)／5.1.1／5.1.3(一)／5.1.9(二)／9.3.3(一)）。属<strong>交易所纪律处分但非"公开谴责"</strong>——<strong>不触发</strong>《上市公司证券发行注册管理办法》第十一条第（三）项（该条要求"最近一年受证券交易所<strong>公开谴责</strong>"），因此<strong>不影响向特定对象发行股票的通道</strong>；但这条记录削弱了公司"口径可信度"，也在 2026-05-15 给审计师留下了关注点。<strong>若 2026 年报审计师因此加"强调事项段"，虽仍属无保留意见、不触及终止条款，但会强化市场对治理的折价。</strong></li></ol>
+<h2 id="chap9">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-05</td><td>首次生成。数据截至 2026 年半年报与 2026-09-30 行情。核心结论：买入（深度价值·事件驱动·轻仓）。<strong>已完全吸收 <code>其他资料\ST明德_深度分析_20260601.md</code>（2026-06-01 旧稿）并逐项回公告核实</strong>，其中三处按一手原文更正：① 旧稿"必凯尔仅意向协议、尽调中"→ <strong>已于 2026-08-13 交割、08-14 完成工商变更</strong>；② 旧稿"涨跌幅限制 ±5%"→ 现行主板风险警示股为 <strong>10%</strong>（2026-07-06 修订，以 2026-09-30 涨停价 16.67 元反证）；③ 旧稿"回购均价约 16.78 元、耗资 7,850 万元"→ 2026 年回购最终为 <strong>943.70 万股、均价 16.28 元、耗资 1.54 亿元</strong>（2026-06-22 完成）。另新增旧稿未覆盖的内容：2026-05-15 深交所通报批评、2026-09-23 补缴税款及滞纳金 3,746 万元、同型样本 43 只 2026 年 YTD 对照、异动全表 35 条、龙虎榜 2026 年仅 1 次、股东户数序列、必凯尔业绩承诺与商誉 4,761.17 万元。</td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
