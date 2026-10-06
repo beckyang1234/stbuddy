@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>＊ST中设（002883.SZ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>9 章 · 14 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断</a><a class="sblv3" href="#sec0">1.1 基本信息与股权</a><a class="sblv3" href="#sec1">1.2 ST 风险诊断</a><a class="sblv3" href="#sec2">1.3 摘帽展望与时间锚</a><a class="sblv3" href="#sec3">1.4 全流程进度看板与运作特征</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、基本面路径</a><a class="sblv3" href="#sec4">2.1 本案全部逻辑：那笔 1.17 亿元的扣除，2026 年会自动归零</a><a class="sblv3" href="#sec5">2.2 财务状况</a><a class="sblv3" href="#sec6">2.3 业务与行业</a><a class="sblv3" href="#sec7">2.4 审计、内控与"发股通道"（本股少有的正面因素）</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、炒作逻辑三支柱 + 情绪面 + 筹码面</a><a class="sblv3" href="#sec8">3.1 炒作逻辑三支柱（全部着眼未来）</a><a class="sblv3" href="#sec9">3.2 情绪面</a><a class="sblv3" href="#sec10">3.3 筹码博弈与技术面</a><a class="sblv3" href="#sec11">投资者交流要点（2026 年）</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、估值与投资结论</a><a class="sblv3" href="#sec12">4.1 估值</a><a class="sblv3" href="#sec13">4.2 投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">附录 A · 待核实与需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 C · 逻辑漏洞与反方观点（5 问速版）</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">＊ST中设（002883.SZ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td><strong>操作结论</strong></td><td><strong>卖出（回避）</strong></td></tr><tr><td>红线分类</td><td><span class="sttag sttag-blue"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002883&announcementId=1225266057&orgId=9900031776&announcementTime=2026-04-30" target="_blank" rel="noopener">2025年孰低为负且扣除后营收2.51亿元</a></span></td></tr><tr><td>生死定级</td><td><strong>可救 · 自救空间大</strong>——唯一的红线由"会计扣除规则"造成，且该扣除项在 2026 年自动消失</td></tr><tr><td>自救空间</td><td>不需要任何资本运作：2026 年度扣除后营业收入只要 ≥3 亿元即可过关，而 2025 年把营收压到 2.51 亿元的那笔扣除（1.17 亿元）2026 年不再发生；最大障碍是"主业自己挣得不够"，须靠并表子公司交建新材料的完整年度收入补位</td></tr><tr><td>主要看点</td><td>无锡国资（无锡市交通产业集团，合计控制 25.62% 表决权）的 A 股平台；看点＝<strong>2026 年报"扣除后营收"红线大概率自动达标、2027-04 可望撤销 \*ST</strong>，但其唯一题材"低空经济"的载体仅为 2025-07 新设的<strong>江苏中设集团（无锡）低空智能科技有限公司</strong>，2026 上半年分产品收入中无对应科目</td></tr></tbody></table>
+<ul><li><strong>标的与基准日</strong>：江苏中设集团股份有限公司（002883.SZ，深主板），研究基准日 <strong>2026-10-05</strong>，行情与财务数据截止 <strong>2026-09-30</strong> 收盘／<strong>2026 年半年报</strong>。</li><li><strong>版本</strong>：初版 · 2026-10-05。</li><li><strong>数据来源</strong>：Wind（行情代理本轮不可达，改用腾讯行情／新浪日 K）、巨潮资讯网公告原文（一手）、东方财富 F10（财务序列，异源已标注）、韭研公社异动整理、同花顺互动易。</li><li><strong>已知数据质量异常</strong>：① 本目录原仅存 2026 年半年度报告一份 PDF，全库检索（个股研究／其他资料／Desktop 底稿区／WorkBuddy 会话／stbuddy-web）<strong>确认无任何同标的既有研报可吸收</strong>，本报告为从零生成；② 半年报不披露"扣除后营业收入"，2026H1 该值系按 2025 年扣除口径推算（见 §2.1）；③ 公司对 2022–2024 年度报表做过<strong>前期会计差错更正及追溯调整</strong>，本文所有历史数据一律采用<strong>更正后（追溯重述）</strong>口径，并在表注中说明。</li></ul>
+<h2 id="chap1">一、诊断</h2>
+<h3 id="sec0">1.1 基本信息与股权</h3>
+<p><strong>结论：这是一家"已由无锡市国资控股四年、主业萎缩但资产负债表干净"的设计咨询公司——控股股东系合计控制 25.62% 表决权，无质押、无冻结、无占用、无违规担保，全公司唯一的问题就是"营收和利润不够"。</strong></p>
+<p>一句话股权画像：无锡市交通产业集团<strong>直接持股 8.61%</strong> ＋通过一致行动人<strong>无锡炬航投资合伙企业（有限合伙）间接控制 10.00%</strong>＝<strong>合计控制 24.20% 股权</strong>；再加廖芳龄、周晓慧、袁益军三人<strong>合计 1.42% 表决权不可撤销委托</strong>，<strong>合计持有 25.62% 表决权</strong>，为控股股东；最终控制方为无锡市交通产业集团有限公司，<strong>实际控制人＝无锡市人民政府国有资产监督管理委员会</strong>。原第一大股东陈凤军（11.35%）持股 1,773.02 万股中 <strong>69.77%（1,237.10 万股）已质押</strong>，是唯一的股权瑕疵。</p>
+<details class="fold"><summary>① 前世今生（四列表）与股权沿革</summary><div class="fold-body">
+
+<table><thead><tr><th>时点</th><th>关键动作</th><th>股权／实控人变化</th><th>背后的逻辑（金额·每股价格·资金来源·参与方背景）</th></tr></thead><tbody><tr><td>2017-07</td><td>深交所主板 IPO 上市</td><td>陈凤军等创始股东为实控人</td><td>工程设计咨询服务商，主营规划咨询、勘察设计、工程监理、项目管理、EPC</td></tr><tr><td>2022-02-24</td><td>原实控人与部分一致行动人解除一致行动关系</td><td>实控人发生变动（公司治理层内部调整）</td><td>见《关于实际控制人与部分一致行动人解除一致行动关系暨公司实际控制人变动的提示性公告》</td></tr><tr><td>2022-07-25 → 08-01</td><td>停牌筹划控制权变更 → 复牌并披露《详式权益变动报告书》</td><td>拟引入无锡市交通产业集团</td><td>华英证券任财务顾问，出具核查意见</td></tr><tr><td>2022-09-03</td><td>收到无锡市国资委批复</td><td>—</td><td>国资进场的前置审批</td></tr><tr><td>2022-11-01</td><td>收到深交所股份转让确认书</td><td>—</td><td>—</td></tr><tr><td><strong>2022-11-18</strong></td><td><strong>股份转让过户完成暨控制权发生变更</strong></td><td><strong>无锡市交通产业集团成为控股股东，实控人变更为无锡市国资委</strong></td><td>国资入主；具体转让对价与股数见公司 2022 年公告</td></tr><tr><td>2024-10-26</td><td>转让子公司中设科欣设计集团有限公司部分股权</td><td>中设科欣不再纳入合并报表</td><td>处置亏损／低效资产，但<strong>直接造成后续营收口径下降</strong>（公司 2025 年业绩预告自述为营收下滑原因之一）</td></tr><tr><td><strong>2025-10-14 → 11-14</strong></td><td><strong>现金 6,885 万元收购无锡交建新材料科技有限公司 51% 股权，构成同一控制下企业合并；2025-11-01 起并表</strong></td><td>新增沥青、水稳混合料业务板块</td><td>出让方为<strong>无锡交通建设工程集团股份有限公司（2%）与无锡锡通路桥工程有限公司（49%）</strong>，与本公司同受无锡市交通产业集团控制；<strong>支付对价导致资本公积减少 6,885 万元</strong>（同一控制下合并差额冲减资本公积）</td></tr><tr><td>2025-09-24 → 09-30</td><td>一致行动人无锡炬航集中竞价增持 219.19 万股</td><td>控股股东系合计持股 24.63% → <strong>25.62%</strong></td><td><strong>增持至 25% 时未停止交易，2025-11-14 收到江苏证监局警示函（〔2025〕195 号）与深交所监管函（公司部监管函〔2025〕187 号）</strong></td></tr><tr><td>2026-05-06</td><td>因 2025 年报触及财务类红线被实施退市风险警示</td><td>简称由"中设股份"变更为"＊ST中设"</td><td>见 §1.2</td></tr></tbody></table>
+
+</div></details>
+<details class="fold"><summary>② 股东阵容（2026-06-30）与筹码集中度</summary><div class="fold-body">
+
+<p><strong>结论：控股股东系 24.20% 股权全部无质押无冻结，是全部股东中唯一的"干净筹码"；原第一大股东陈凤军 69.77% 质押是唯一的杠杆敞口。</strong></p>
+<table><thead><tr><th>序号</th><th>名称</th><th>性质</th><th>持股比例</th><th>持股数（万股）</th><th>报告期变动</th><th>质押／冻结</th></tr></thead><tbody><tr><td>1</td><td>陈凤军</td><td>境内自然人（原实控人）</td><td>11.35%</td><td>1,773.02</td><td>0</td><td><strong>质押 1,237.10 万股（占其持股 69.77%）</strong></td></tr><tr><td>2</td><td>无锡炬航投资合伙企业（有限合伙）</td><td>其他（控股股东一致行动人）</td><td>10.00%</td><td>1,561.06</td><td>0</td><td>无</td></tr><tr><td>3</td><td>无锡市交通产业集团有限公司</td><td>国有法人（控股股东）</td><td>8.61%</td><td>1,343.99</td><td>0</td><td>无</td></tr><tr><td>4</td><td>无锡中设创投管理中心（有限合伙）</td><td>其他（一致行动人）</td><td>5.60%</td><td>874.68</td><td>0</td><td>无</td></tr><tr><td>5</td><td>周宇光</td><td>境内自然人</td><td>3.40%</td><td>530.60</td><td>+3.18 万股</td><td>无</td></tr><tr><td>6</td><td>周明标</td><td>境内自然人</td><td>1.76%</td><td>275.13</td><td><strong>新进</strong></td><td>无</td></tr><tr><td>7</td><td>杨春梅</td><td>境内自然人</td><td>1.64%</td><td>256.23</td><td><strong>新进</strong></td><td>无</td></tr><tr><td>8</td><td>陆卫东</td><td>境内自然人（公司总裁）</td><td>1.30%</td><td>203.46</td><td>0（其中 152.60 万股为高管锁定股）</td><td>无</td></tr><tr><td>9</td><td>刘永生</td><td>境内自然人</td><td>1.28%</td><td>200.00</td><td><strong>新进</strong></td><td>无</td></tr><tr><td>10</td><td>J. P. Morgan Securities PLC－自有资金</td><td>境外法人</td><td>1.00%</td><td>156.33</td><td><strong>新进</strong></td><td>无</td></tr></tbody></table>
+<p><strong>筹码集中度的读法</strong>：普通股股东总数从 2025-12-31 的 <strong>17,977 户</strong>降至 2026-06-30 的 <strong>9,265 户（-48.5%）</strong>，同期收盘价从 10.94 元跌至 9.14 元。<strong>按"户数下降不含方向"的判据，这是下跌中的割肉离场，不构成"主力吸筹"证据</strong>；2026 年二季度确有 4 户新进（周明标、杨春梅、刘永生、J.P. Morgan 自有资金），但均为小额（合计约 4.4%），未见机构成建制建仓。</p>
+
+</div></details>
+<details class="fold"><summary>③ 关键人物（公告披露范围内的全部信息）</summary><div class="fold-body">
+
+<ul><li><strong>胡志伟</strong>，男，53 岁，<strong>董事长</strong>（2025-07-28 起任），同时为<strong>公司法定代表人</strong>。公告未披露其出生年月、学历与详细履历。</li><li><strong>陆卫东</strong>，男，50 岁，<strong>董事兼总裁</strong>（董事 2015-03-19 起任、总裁 2024-07-15 起任），持股 203.46 万股，报告期内未减持。公告未披露其详细履历。</li><li><strong>过宁一</strong>，女，43 岁，<strong>财务负责人</strong>（2025-07-10 起任），兼主管会计工作负责人与会计机构负责人。公告未披露其详细履历。</li><li><strong>陈晨</strong>，女，39 岁，<strong>董事会秘书</strong>（2024-07-15 起任），持股 300 股。</li><li><strong>黄海洋、杨素</strong>：2025 年度财务报告审计与内控审计的签字注册会计师（北京德皓国际会计师事务所）。</li><li>其余董事（朱冬青、葛平）与独立董事（李兴华、黄培明、唐建荣）年龄分别为 50／51／58／49／62 岁，任职期均自 2025-07-28 或更早起。</li></ul>
+<p><strong>反向读数</strong>：公司现任董监高<strong>无一人出现在任何行政处罚决定书中</strong>——这是本股在"发股通道"上的关键正面因素（见 §2.4）。<strong>上述人员除性别年龄与任期外，公告均未披露出生年月与履历，属"公告未披露"，不以第三方信息填充。</strong></p>
+
+</div></details>
+<h3 id="sec1">1.2 ST 风险诊断</h3>
+<p><strong>结论：本股四类退市红线只踩"财务类①"一条，且该条的触发是"会计扣除规则"造成的技术性结果，不是经营性失败——没有立案、没有资金占用、没有违规担保、审计与内控意见均为"带强调事项段的无保留意见"（非非标）。</strong></p>
+<p><strong>2.1 戴帽时间与原因</strong></p>
+<ul><li><strong>实施日</strong>：2026-05-06（2026-04-30 停牌一天，2026-05-06 复牌并戴帽），简称由"中设股份"变更为"＊ST中设"。</li><li><strong>依据</strong>：深交所《股票上市规则》<strong>第 9.3.1 条第一款第（一）项</strong>——"最近一个会计年度经审计的利润总额、净利润、扣除非经常性损益后的净利润三者孰低为负值，<strong>且</strong>扣除后的营业收入低于 3 亿元"。</li><li><strong>2025 年度经审计数</strong>（北京德皓国际会计师事务所）：营业收入 <strong>3.70 亿元</strong>；<strong>营业收入扣除后 2.51 亿元</strong>；归母净利润 <strong>-2,742.10 万元</strong>；扣非归母 <strong>-3,394.04 万元</strong>；利润总额 <strong>-2,482.54 万元</strong>。</li><li><strong>扣除 1.19 亿元（占营业收入 32.12%）的构成——这是全篇最关键的一张表</strong>：</li></ul>
+<table><thead><tr><th>扣除项</th><th>金额（万元）</th><th>说明</th></tr></thead><tbody><tr><td>同一控制下企业合并的子公司期初至合并日的收入</td><td><strong>11,680.19</strong></td><td><strong>交建新材料 2025-01-01 至 2025-11-01（合并日）的收入</strong></td></tr><tr><td>正常经营之外的其他业务收入（出租固定资产）</td><td>192.65</td><td>金额小、逐年稳定</td></tr><tr><td><strong>合计</strong></td><td><strong>11,872.84</strong></td><td>扣除后 = 36,961.49 − 11,872.84 = <strong>25,088.65</strong></td></tr></tbody></table>
+<p><strong>逐条结论</strong>：这笔 1.168 亿元的扣除<strong>不是</strong>因为"业务与主业无关"，而是深交所营收扣除规则中的<strong>时点条款</strong>（同一控制下合并的子公司，其合并日之前的收入不计入上市公司口径）。<strong>交建新材料的合并日为 2025-11-01，因此 2025 年只扣 10 个月；2026 年 1 月 1 日起它已是完整年度在册子公司，该项扣除归零。</strong></p>
+<p><strong>2.2 立案、资金占用与违规担保排查</strong></p>
+<p>三条全部为<strong>零</strong>，且均由公司层面正式确认：</p>
+<ul><li>2026 年半年报"第二节 控股股东及其他关联方对上市公司的非经营性占用资金情况"栏勾选"<strong>不适用</strong>"，公司报告期不存在控股股东及其他关联方非经营性占用上市公司资金；"违规对外担保情况"栏勾选"<strong>不适用</strong>"。</li><li>2025 年度《上市公司非经营性资金占用及其他关联资金往来情况汇总表》《2025 年控股股东及其他关联方资金占用情况的专项说明》均已披露，无占用余额。</li><li>2026 年 1-6 月汇总表同样显示非经营性占用<strong>全表为空</strong>。</li><li><strong>未见任何证监会立案调查公告</strong>（2026-04 至 2026-10 的公告清单中无"立案"字样）。</li></ul>
+<p><strong>2.3 四类退市红线逐条对照</strong></p>
+<table><thead><tr><th>类型</th><th>触发条件（本案适用口径）</th><th>本股实际</th><th>判定</th></tr></thead><tbody><tr><td>财务类①</td><td>孰低为负 <strong>且</strong> 扣除后营收 &lt;3 亿元（主板）</td><td>2025 年孰低 <strong>-3,394.04 万元</strong>、扣除后营收 <strong>2.51 亿元</strong></td><td><strong>已触发（本案唯一红线）</strong></td></tr><tr><td>财务类②</td><td>期末审计净资产为负</td><td>2025 年末归母净资产 <strong>4.67 亿元</strong>、2026-06-30 <strong>4.59 亿元</strong></td><td>未触及</td></tr><tr><td>财务类③</td><td>财报被出具无法表示／否定意见</td><td>2025 年审计意见为<strong>带强调事项段的无保留意见</strong>（非非标）</td><td>未触及</td></tr><tr><td>交易类</td><td>连续 20 日收盘价 &lt;1 元；或市值 &lt;5 亿元；或股东数 &lt;2,000 人</td><td>现价 9.14 元、市值 <strong>14.27 亿元</strong>、股东 <strong>9,265 户</strong></td><td>未触及</td></tr><tr><td>规范类</td><td>资金占用 ≥2 亿元或 ≥净资产 30%；内控连续两年非标；信披重大缺陷</td><td>无占用；<strong>2025 年内控审计为"带强调事项段的无保留意见"（非非标）</strong></td><td>未触及</td></tr><tr><td>其他类</td><td>近三年累计分红 &lt;年均净利 30% 且 &lt;5,000 万元</td><td>规则要求"最近一个会计年度净利为正值"，本股亏损</td><td><strong>不适用</strong></td></tr><tr><td>重大违法类</td><td>财务造假达量化线等</td><td>会计差错更正属"更正后追溯重述"，<strong>未被认定为虚假记载</strong></td><td>未触及</td></tr></tbody></table>
+<blockquote><p><strong>路径底表核对</strong>：<code>退市风险预警-20261005.xlsx</code>「财务类」工作表<strong>仅</strong>在块①（孰低为负且营收 &lt;3 亿元）收录 002883，交易类／规范类／其他类三表均无。<strong>与逐条回规则原文核对的结果一致。</strong></p><p><strong>口径澄清</strong>：涨跌幅规则的时点分界必须按公告时点还原——公司 2026-04-30 的戴帽公告写"日涨跌幅限制为 5%"，但同时载明"根据 2026 年 7 月 6 日开始施行的《深圳证券交易所交易规则（2026 年修订）》，自该规则施行起恢复为 10%"。<strong>现行主板风险警示股涨跌幅为 10%</strong>，可由 2026-09-30 行情直接反证（昨收 9.18 元、涨停价 10.10 元、跌停价 8.26 元 ＝ ±10%）。</p></blockquote>
+<h3 id="sec2">1.3 摘帽展望与时间锚</h3>
+<p><strong>结论：本股是 ST 板块里"摘帽条件最容易看清"的一类——深交所 9.3.8 与 9.3.12 互为镜像，只考"2026 年度年报不出任一终止情形"，不存在分阶段达标；按现有营收进度，</strong>2027-04（2026 年报披露后）<strong>可望撤销 \*ST，且这一事件是</strong>公开日历、无信息差<strong>。</strong></p>
+<p><strong>规则链路（深交所 2026 版，逐字核原文）</strong></p>
+<ol><li><strong>撤销 \*ST ＝ 9.3.8 条</strong>：因 9.3.1 第一款被实施退市风险警示的，<strong>次一年度</strong>（本案即 <strong>2026 年度</strong>）年报披露后，<strong>不存在 9.3.12 第（一）至（七）项任一情形</strong>，可申请撤销；</li><li><strong>终止上市 ＝ 9.3.12 条</strong>（本案须逐条过的关卡）：（一）孰低为负<strong>且</strong>扣除后营收 &lt;3 亿元；（二）期末净资产为负；（三）财报被出具<strong>保留</strong>、无法表示或否定意见；（四）追溯重述后触发（一）或（二）；（五）内控被出具无法表示或否定意见；（六）未按规定披露内控审计报告；（七）未按期披露年度报告。</li><li><strong>两张帽子、两条申请</strong>：本股只戴 \*ST 一顶（未叠加其他风险警示），撤销走 9.3.8 单一条款。</li></ol>
+<table><thead><tr><th>关卡（2026 年度年报）</th><th>现状</th><th>过关判断</th></tr></thead><tbody><tr><td>（一）扣除后营收 ≥3 亿元或孰低为正</td><td>2026H1 营收 1.66 亿元、扣除后约 1.65 亿元</td><td><strong>很可能过关</strong>（详见 §2.1 测算，余量约 0.78 亿元）</td></tr><tr><td>（二）期末净资产为正</td><td>2026-06-30 归母净资产 4.59 亿元</td><td>过关</td></tr><tr><td>（三）财报审计意见为标准无保留</td><td>2025 年为带强调事项段的无保留；2023 年（更正后）经公证天业重新审计为<strong>标准无保留</strong></td><td>过关概率高</td></tr><tr><td>（五）内控审计意见为无保留</td><td>2025 年为带强调事项段的无保留，且强调段明确"<strong>截至 2025 年 12 月 31 日，公司对相关内部控制缺陷已完成整改</strong>"</td><td>过关概率高</td></tr><tr><td>（六）（七）按期披露内控审计报告与年报</td><td>2026-08-24 董事会已通过续聘北京德皓国际</td><td>过关</td></tr></tbody></table>
+<details class="fold"><summary>摘帽的"前置信号"与需要盯的证伪点</summary><div class="fold-body">
+
+<ul><li><strong>唯一有信息量的前置信号</strong>：2026 年度《内部控制审计报告》的<strong>强调事项段是否消失</strong>。2025 年的强调段是"公司对 2025 年 9 月末及以前年度财务报表进行了会计差错更正"——会计差错更正是一次性事件，<strong>若 2026 年内控审计报告不再带强调段，即为"缺陷根源已清除"的硬证据</strong>；反之若继续出现新的强调段或降级为无法表示／否定，则是重大警讯。</li><li><strong>须盯的证伪点</strong>：① <strong>2026 年三季度报告与全年业绩预告</strong>（预计 2027-01 披露）中的营业收入，若前三季度营收低于 2.2 亿元，则全年 3 亿元红线告急；② <strong>交建新材料的收入是否被重新定性</strong>（见 §2.1 风险提示）；③ <strong>是否因会计差错更正被证监会立案或采取行政监管措施</strong>——一旦证监会立案，公司的发行股份购买资产通道立即关闭（详见 §2.4）。</li><li><strong>无制度红利</strong>：本股为主板 ST，<strong>自 2026-07-06 起风险警示股涨跌幅已由 5% 改为 10%</strong>，摘帽前后同为 10%——<strong>与创业板／科创板／北交所一样，"摘帽放大"的制度性红利已全面消失</strong>（详见 §3.1）。</li></ul>
+
+</div></details>
+<h3 id="sec3">1.4 全流程进度看板与运作特征</h3>
+<p><strong>结论：本案不存在"重整／重组进度条"——公司走的是最朴素的"靠经营把营收做上去、下一年报撤销警示"路径；当前全部进度就是"交建新材料已于 2025-11-01 并表、2026 年是其第一个完整会计年度"。</strong></p>
+<table><thead><tr><th>环节</th><th>现状（截至 2026-10-05）</th><th>卡点或条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>并表扩营收</td><td><strong>已完成</strong>——交建新材料 51% 股权 2025-11-14 工商变更、2025-11-01 起并表</td><td>无</td><td>2026 年报体现完整年度收入</td><td>2025 年报「合并范围变更」</td></tr><tr><td>2025 年报审计</td><td><strong>已完成</strong>——带强调事项段的无保留意见</td><td>无</td><td>—</td><td>2025 年度审计报告</td></tr><tr><td>会计差错更正与追溯重述</td><td><strong>已完成</strong>——2022 至 2025 年 1-9 月合并报表已追溯调整，2023 年报表经公证天业重新审计并已披露</td><td>无</td><td>—</td><td>《关于前期会计差错更正及追溯调整的公告》《2023 年度审计报告（更正后）》</td></tr><tr><td>内控缺陷整改</td><td>公司自述 <strong>2025-12-31 前已完成整改</strong></td><td>述者自证，须待 2026 年度内控审计"他证"</td><td>2027-04 内控审计报告</td><td>2025 年内控审计报告强调段</td></tr><tr><td>营收达标</td><td><strong>进行中</strong>——2026H1 营收 1.66 亿元</td><td><strong>时间未到</strong>（非谈不拢）：H2 只需约 1.36 亿元，低于 2025H2 的 2.13 亿元</td><td>2026 年三季报（约 2026-10 底）</td><td>2026 半年报</td></tr><tr><td>申请撤销 \*ST</td><td><strong>未启动</strong></td><td>须待 2026 年年报</td><td><strong>2027-04</strong></td><td>9.3.8 条</td></tr><tr><td>外延并购／资产注入</td><td><strong>零公告</strong>——互动易最新答复为"在新质生产力领域积极布局投入、寻找优质标的"</td><td>无标的、无时间表</td><td>不确定</td><td>2026-06-16 互动易答复</td></tr></tbody></table>
+<p><strong>运作特征与综合判断</strong></p>
+<ul><li><strong>手法</strong>：最朴素的一条路——<strong>不卖壳、不重整、不处置资产，靠"现金收购同一控制下的关联方资产并表"把收入规模做大</strong>（2025-10 收购交建新材料 51%，作价 6,885 万元）。</li><li><strong>交权是配合式还是对抗式</strong>：无锡交通集团 2022-11-18 过户入主至今<strong>已近四年，从未发生控制权争夺</strong>；原体系（陈凤军）保留 11.35% 并配合签署表决权委托的是廖芳龄、周晓慧、袁益军三人。2025 年 7 月管理层更迭（董事长由顾小军换成胡志伟、财务负责人由周志东换成过宁一）属<strong>国资体系内的正常人事轮换</strong>，非控制权变更。<strong>属配合式。</strong></li><li><strong>成败关键变量（1 和 0 的问题）</strong>：<strong>唯一变量＝2026 年度扣除后营业收入是否 ≥3 亿元。</strong> 净资产、审计意见、内控意见三项在现有证据下均为"低风险"，因此这是一道<strong>单开关题</strong>——过了就摘帽，不过就直接终止上市，没有中间态。</li><li><strong>核心矛盾一句话</strong>：<strong>公司账目干净、国资在位、债务无虞，唯独主业在萎缩；所以保壳的办法不是"救"，而是"并"——把同一控制下的沥青业务装进来把收入撑住。</strong></li></ul>
+<h2 id="chap2">二、基本面路径</h2>
+<blockquote><p>三条路径中只深耕 <strong>路径 A · 保壳（营收不足型）</strong>：本股无重整申请、无处罚 ST 事由（唯一红线是财务类①营收），故路径 B、C 各一句话带过——<strong>路径 B（重整）</strong>：截至基准日无预重整／重整申请公告，且净资产为正、债务无违约，重整既无必要也无入口；<strong>路径 C（处罚 ST）</strong>：2025 年因会计差错更正仅被出具带强调事项段的无保留意见，<strong>未被行政处罚、未被立案</strong>，不构成处罚 ST。</p></blockquote>
+<h3 id="sec4">2.1 本案全部逻辑：那笔 1.17 亿元的扣除，2026 年会自动归零</h3>
+<p><strong>结论：2026 年扣除后营业收入 ≈ 表观营业收入 − 约 190 万元（出租固定资产）；按现有进度，2026 年全年表观营收约 3.70–3.85 亿元 → 扣除后约 3.68–3.83 亿元，较 3 亿元红线余量约 0.68–0.83 亿元（23%–28%）。</strong></p>
+<p>推导链条（全部基于已披露的一手数据）：</p>
+<ol><li><strong>2025 年的扣除是怎么来的</strong>：交建新材料 2025-10-14 签约、<strong>2025-11-14 工商变更、2025-11-01 起纳入合并报表</strong>。深交所营收扣除指南将"同一控制下企业合并的子公司<strong>期初至合并日的收入</strong>"列为扣除项 → 2025 年扣除 2025-01-01 至 2025-11-01 共 10 个月的收入 <strong>1.168 亿元</strong>（占全年扣除额的 98.4%）。</li><li><strong>2026 年为什么不再发生</strong>：2026 年 1 月 1 日起，交建新材料已是在册子公司，<strong>不存在"期初至合并日"这一段期间</strong> → 该项扣除为 <strong>0</strong>。</li><li><strong>2026H1 实况</strong>：营业收入 <strong>1.66 亿元</strong>（同比 +5.54%），其中服务业（设计咨询）0.99 亿元（+14.08%）、新材料销售与施工 0.67 亿元（-5.01%）。扣除项只剩出租固定资产（半年约 96 万元）→ <strong>推算扣除后营业收入约 1.65 亿元</strong>。</li><li><strong>下半年的门槛</strong>：要达到全年 3.00 亿元，H2 只需 <strong>1.36 亿元</strong>——<strong>而 2025 年下半年表观营收是 2.13 亿元，2025 年下半年扣除后口径也有 1.64 亿元。相当于允许 H2 同比下滑约 36% 仍能过关。</strong></li><li><strong>全年推演（分板块，保守口径）</strong>：设计咨询板块 2026H1 已 0.99 亿元（+13.95%），按 H2 与 2025 年同期持平（1.23 亿元）即得全年 2.22 亿元；交建新材料 2026H1 已 0.67 亿元，按 H2 为 2025H2 的 95%（0.85 亿元）得全年 1.52 亿元 → <strong>合计约 3.74 亿元</strong>。<strong>扣除后约 3.72 亿元。</strong></li></ol>
+<p><strong>风险提示（最大的单一不确定性）</strong>：深交所营收扣除指南同一章节还列有"<strong>本会计年度以及上一会计年度新增贸易业务所产生的收入</strong>"。若会计师把交建新材料的沥青、水稳材料销售认定为"新增贸易业务"，则 2026 年仍将出现大额扣除。<strong>本公司年报披露的扣除明细未见此项，且交建新材料在合并日资产负债表上列有固定资产 5,546.71 万元、在建工程 362.59 万元</strong>——是<strong>有产能的生产型企业</strong>而非通道型贸易商，故本报告判断其不落入"新增贸易业务"条款。<strong>但这是本报告结论最大的单点假设，须在 2026 年三季报与年报披露时复核。</strong></p>
+<details class="fold"><summary>2025 年营收扣除明细表（原文口径，全年）</summary><div class="fold-body">
+
+<table><thead><tr><th>扣除项</th><th>2025 年（元）</th><th>占营业收入</th><th>2024 年（元）</th><th>占营业收入</th></tr></thead><tbody><tr><td>营业收入</td><td>369,614,919.30</td><td>—</td><td>807,043,414.44</td><td>—</td></tr><tr><td>其中：正常经营之外的其他业务收入（出租固定资产）</td><td>1,926,485.73</td><td>0.52%</td><td>1,280,295.14</td><td>0.16%</td></tr><tr><td>其中：同一控制下企业合并的子公司期初至合并日的收入</td><td><strong>116,801,898.73</strong></td><td><strong>31.60%</strong></td><td><strong>295,867,261.71</strong></td><td><strong>36.66%</strong></td></tr><tr><td>扣除项目合计</td><td>118,728,384.46</td><td>32.12%</td><td>297,147,556.85</td><td>36.82%</td></tr><tr><td><strong>扣除后营业收入</strong></td><td><strong>250,886,534.84</strong></td><td>—</td><td><strong>509,895,857.59</strong></td><td>—</td></tr></tbody></table>
+<blockquote><p><strong>2024 年那一栏更能说明问题</strong>：2024 年全年都是"交建新材料尚未合并"的期间，按同一规则全额扣除 2.96 亿元（＝交建新材料 2024 年全年收入），扣除后 5.10 亿元。<strong>一家 8.07 亿元营收的公司被扣成 5.10 亿元、一家 3.70 亿元营收的公司被扣成 2.51 亿元——本题不是"公司不行"，是"规则这么算"。</strong></p></blockquote>
+
+</div></details>
+<h3 id="sec5">2.2 财务状况</h3>
+<p><strong>结论：五年营业收入从 6.76 亿元一路降到 3.70 亿元，扣非归母两度转负；但资产负债表是干净的——无商誉、有息负债 2.04 亿元对货币资金 1.89 亿元基本对冲、无对外担保、无逾期债务。这是一家"经营性困难、财务性安全"的公司。</strong></p>
+<table><thead><tr><th>报告期</th><th>营业收入（亿元）</th><th>扣除后营业收入（亿元）</th><th>归母净利（亿元）</th><th>扣非归母（亿元）</th><th>归母净资产（亿元）</th></tr></thead><tbody><tr><td>2026H1</td><td>1.66</td><td>约 1.65（推算）</td><td>-0.08</td><td>-0.08</td><td>4.59</td></tr><tr><td>2025</td><td>3.70</td><td><strong>2.51</strong></td><td>-0.27</td><td>-0.34</td><td>4.67</td></tr><tr><td>2024</td><td>8.07</td><td>5.10</td><td>0.08</td><td>0.06</td><td>5.87</td></tr><tr><td>2023</td><td>6.43</td><td>约 6.42</td><td>-0.08</td><td>-0.10</td><td>5.44</td></tr><tr><td>2022</td><td>6.76</td><td>—</td><td>0.51</td><td>—</td><td>5.58</td></tr></tbody></table>
+<blockquote><p>口径：均取<strong>会计差错更正及追溯重述后</strong>数；2024 年含交建新材料全年追溯数，<strong>故 2024→2025 的 -54.20% 并非可比同比</strong>（2024 含交建 12 个月、2025 仅含 2 个月）。2026H1 扣除后营收系推算值，半年报不披露该项。2023／2024 年"扣除后营业收入"依 2025 年报附表列示的对应口径回填，2022 年该口径未披露。</p></blockquote>
+<p><strong>2026 年半年报关键资产负债项（合并口径）</strong></p>
+<table><thead><tr><th>指标</th><th>2026-06-30</th><th>2025-12-31</th><th>判读</th></tr></thead><tbody><tr><td>货币资金</td><td>1.89 亿元（受限 91.62 万元）</td><td>1.40 亿元</td><td>可动用现金约 1.88 亿元，<strong>无流动性危机</strong></td></tr><tr><td>应收账款</td><td>3.35 亿元</td><td>4.34 亿元</td><td>占总资产 29.29%，绝对额在下降（回款在推进）</td></tr><tr><td>合同资产</td><td>3.80 亿元</td><td>3.82 亿元</td><td>与应收账款合计 <strong>7.15 亿元＝归母净资产的 155.7%</strong>，是资产质量的主要风险点</td></tr><tr><td>短期借款 + 长期借款</td><td>2.04 亿元</td><td>1.51 亿元</td><td><strong>有息负债与货币资金基本对冲</strong>（净负债约 0.16 亿元）</td></tr><tr><td>资产负债率</td><td>56.61%</td><td>58.33%</td><td>处同业中位偏下</td></tr><tr><td>商誉</td><td><strong>0</strong></td><td>0</td><td>无并购商誉减值风险</td></tr><tr><td>经营活动现金流净额（当期）</td><td>+1,071.43 万元</td><td>+4,250.38 万元</td><td><strong>由负转正</strong>（2025H1 调整后为 -1,519.01 万元）</td></tr><tr><td>分红</td><td>2025 年度拟不进行利润分配</td><td>—</td><td>因亏损，其他类分红红线不适用</td></tr></tbody></table>
+<h3 id="sec6">2.3 业务与行业</h3>
+<p><strong>结论：收入与利润来源已经从"单一勘察设计"变成"设计咨询 + 道路新材料"双板块，但两块都不增长；从审美标签看，设计咨询属"业务反转（尚未反转）"、新材料属"景气成长（已到平台）"，而市场给它贴的"低空经济"标签 2026 年上半年收入为零。</strong></p>
+<table><thead><tr><th>业务板块</th><th>2026H1 收入（亿元）</th><th>占比</th><th>同比</th><th>毛利率</th><th>审美标签</th></tr></thead><tbody><tr><td>规划咨询及勘察设计</td><td>0.88</td><td>53.02%</td><td>+13.95%</td><td>20.77%</td><td>业务反转（尚未反转）</td></tr><tr><td>新材料销售与施工（交建新材料）</td><td>0.67</td><td>40.24%</td><td>-5.01%</td><td>17.21%</td><td>景气成长（已到平台）</td></tr><tr><td>工程监理</td><td>0.09</td><td>5.17%</td><td>+9.71%</td><td>—</td><td>长期价值（小而稳）</td></tr><tr><td>工程总承包（EPC）</td><td>0.02</td><td>1.15%</td><td>+114.07%</td><td>—</td><td>业务反转（低基数）</td></tr><tr><td>其他</td><td>0.01</td><td>0.42%</td><td>-31.31%</td><td>—</td><td>—</td></tr><tr><td><strong>低空经济</strong></td><td><strong>0</strong></td><td><strong>0%</strong></td><td>—</td><td>—</td><td><strong>题材炒作（纯概念）</strong></td></tr></tbody></table>
+<p><strong>热点业务占比定位（必做项）</strong>：市场通用标签为"<strong>低空经济</strong>"，其载体为 <strong>2025 年 7 月新设的江苏中设集团（无锡）低空智能科技有限公司</strong>（符合小型微利企业条件，说明规模极小）。<strong>2026 年半年报分产品表中没有任何与低空经济对应的收入科目——该板块收入为零。主题材的营收占比为 0%，属纯概念。</strong></p>
+<details class="fold"><summary>收入与利润来源地图（量／价／客户／产能归因）与行业 β 校验</summary><div class="fold-body">
+
+<ul><li><strong>设计咨询（服务业）</strong>：量升价稳——收入回升 14.08%，但<strong>无锡地区收入 1.03 亿元、同比 -13.42%</strong>，增量来自"江苏省内（除无锡）0.48 亿元、+81.33%"，即<strong>从根据地无锡向省内其他城市外拓</strong>。客户为政府及投资单位，行业投资端 2026H1 全国基础设施投资同比 <strong>-2.4%</strong>、房地产开发投资 <strong>-18.0%</strong>，<strong>行业总盘在收缩</strong>，公司靠份额争取维持增长。</li><li><strong>新材料（交建新材料）</strong>：收入微降 5.01%，毛利率下滑 2.60 个百分点至 17.21%。<strong>客户高度集中于关联方</strong>——主要客户包括无锡交通建设工程集团股份有限公司（同受无锡市交通产业集团控制）、浙江交工集团、中铁四局。<strong>关联交易占比高本身即是审计与监管关注点。</strong></li><li><strong>哪些业务不变、为什么</strong>：勘察设计、工程监理两块属资质型业务，公司拥有<strong>跨行业全业务链甲级资质</strong>（城乡规划编制甲级、公路行业设计甲级、市政行业四个专业设计甲级、建筑行业设计甲级、水运行业港口工程甲级、风景园林专项甲级、工程勘察综合甲级、工程监理三专业甲级），是难以被替代的护城河，但其收入体量在行业投资下滑时也随之收缩。</li><li><strong>低空经济的业务实质</strong>：2025 年上半年完成的《无锡市低空经济基础设施规划研究》＋"低空应用方案入围 2026 年无锡市第一批场景能力清单、承接多个区县的无人机物流配送与低空起降场可研"。<strong>这是一家设计咨询公司在"编制规划"层面的参与，不是产业运营层面的落地。</strong></li><li><strong>可比估值坐标（行业 β 校验）</strong>：设计咨询／交通基建同业 2026 年内涨跌幅——深城交 -25.21%、设计总院 -25.06%、苏交科 -34.49%、华设集团 -16.25%、隧道股份 -16.14%、中国交建 -26.17%、上海建工 -14.34%、陕建股份 -17.66%、华阳国际 -14.40%、北新路桥 -41.19%（汉嘉数智 +17.36%、勘设股份 +3.99% 为仅有的上涨）。<strong>本股 2026 年 -16.45%，中位附近——说明其跌幅主要由行业估值收缩解释，不存在"跌得多所以有安全边际"。</strong></li></ul>
+
+</div></details>
+<h3 id="sec7">2.4 审计、内控与"发股通道"（本股少有的正面因素）</h3>
+<p><strong>结论：2025 年度财务报告与内控审计均为"带强调事项段的无保留意见"——按现行规则"带强调事项段的无保留 = 无保留"，不触发任何退市条款；且公司现任董监高无一人被证监会行政处罚、无一人被交易所公开谴责，发行股份购买资产的通道未被锁死。</strong></p>
+<details class="fold"><summary>审计意见的完整链条（逐份核对原文）</summary><div class="fold-body">
+
+<ul><li>2025 年度财务报告：<strong>带强调事项段的无保留意见</strong>（德皓审字【2026】00002091 号，2026-04-28，签字注册会计师黄海洋、杨素）。强调段内容＝"公司对 2025 年 9 月末及以前年度的财务报表进行了会计差错更正"。</li><li>2025 年度内部控制：<strong>带强调事项段的无保留意见</strong>。强调段明确"截至目前，中设股份公司对相关内部控制缺陷<strong>已完成整改</strong>"。</li><li><strong>2023 年度财务报表（更正后）</strong>：因差错更正导致 2023 年归母净利由盈利转为亏损（盈亏性质改变），依《编报规则第 19 号》由<strong>公证天业会计师事务所</strong>重新审计，2026-06-30 披露的审计报告为<strong>标准无保留意见</strong>，关键审计事项为收入确认。</li><li><strong>口径澄清（极重要）</strong>："带强调事项段的无保留意见"<strong>不是</strong>非标意见 → <strong>不触发</strong> 9.3.1 第一款第（三）项、<strong>不构成</strong> 9.3.12 第（三）项终止情形；也<strong>不触发</strong> 9.8.1(四)（内控非标）。<strong>把"带强调事项段"读成"审计非标"是本类标的最常见的分析错误。</strong></li></ul>
+
+</div></details>
+<p><strong>发股通道的三条腿检查</strong></p>
+<table><thead><tr><th>约束条款</th><th>本案情况</th><th>是否触发</th></tr></thead><tbody><tr><td>上市公司被证监会立案</td><td>无立案公告</td><td>否</td></tr><tr><td>现任董监高最近三年受<strong>中国证监会行政处罚</strong></td><td>无</td><td>否</td></tr><tr><td>现任董监高最近一年受<strong>交易所公开谴责</strong></td><td>无（2025-11 的深交所文件是<strong>监管函</strong>，对象为<strong>股东</strong>无锡炬航）</td><td>否</td></tr><tr><td>控股股东／实控人减持限制</td><td>被行政处罚未满 6 个月不得减持——<strong>本条约束控股股东系，2025-11 警示函属行政监管措施，且本案控股股东无减持计划</strong></td><td>不影响</td></tr></tbody></table>
+<blockquote><p><strong>结论：公司具备用"发行股份购买资产"方式做外延并购的完整资格。</strong> 这在 ST 板块中并不常见（对照：ST冀凯、ST远智、ST宏明等同批标的的发股通道均被《上市公司证券发行注册管理办法》第十一条第（三）项锁死 3 年）。<strong>这是本报告对"资产注入"这一想象空间给出正概率的唯一制度依据。</strong></p></blockquote>
+<details class="fold"><summary>会计差错更正的全部影响（2022—2024，一手数据）</summary><div class="fold-body">
+
+<table><thead><tr><th>年度</th><th>营业收入 重述前 → 重述后（亿元）</th><th>归母净利 重述前 → 重述后（亿元）</th></tr></thead><tbody><tr><td>2024</td><td>6.07 → 5.11（差错更正后）；再叠加交建追溯 → <strong>8.07</strong></td><td>0.10 → 0.01（差错更正后）；再叠加交建追溯 → <strong>0.08</strong></td></tr><tr><td>2023</td><td>7.41 → 6.43</td><td><strong>0.43 → -0.08（由盈转亏，盈亏性质改变）</strong></td></tr><tr><td>2022</td><td>7.46 → 6.76</td><td>0.52 → 0.51</td></tr></tbody></table>
+<p><strong>差错原因（公司自述原文）</strong>：部分规划咨询及勘察设计项目存在<strong>收入及成本核算不准确</strong>问题；部分工程总承包项目<strong>按照总额法确认收入不谨慎</strong>。采用追溯重述法调整 2022 年度至 2025 年 1-9 月合并财务报表。</p>
+<p><strong>两处最重的会计痕迹</strong>：</p>
+<ul><li><strong>未分配利润</strong>：2022 年末调减 7,520.63 万元、2023 年末累计调减 12,207.53 万元、2024 年末累计调减 12,983.20 万元；</li><li><strong>应付账款</strong>：2023 年末调增 16,543.02 万元、2024 年末调增 16,509.48 万元——<strong>收入与成本同步调减，但应付账款大幅调增，说明"少记成本、少记收入"背后还伴随负债的重新归集</strong>。</li><li><strong>重要含义</strong>：这一更正<strong>不属于"虚假记载"认定</strong>（公司未被证监会立案、无行政处罚公告），但它把 2023 年从盈利改成亏损，<strong>构成了"最近三个会计年度扣非前后孰低者"这一连续亏损事实的一部分</strong>。市场对"差错更正导致盈亏性质变化"通常会预期监管函件落地，<strong>这是本案一个尚未落地的软风险（见附录 A）</strong>。</li></ul>
+
+</div></details>
+<h2 id="chap3">三、炒作逻辑三支柱 + 情绪面 + 筹码面</h2>
+<h3 id="sec8">3.1 炒作逻辑三支柱（全部着眼未来）</h3>
+<p><strong>结论：三支柱里当前市场最认的是"① 炒预期（摘帽）"，但这一支恰是"公开日历、无信息差"；最有想象空间的"③ 主板映射（低空经济）"在公司体内没有收入；"② 相似股票匹配"把本股放在"相对抗跌、补跌未释放"的一侧。</strong></p>
+<p><strong>① 炒预期——未来 12 个月的可验证节点</strong></p>
+<table><thead><tr><th>时点</th><th>催化内容</th><th>性质</th><th>距今</th></tr></thead><tbody><tr><td>2026-10 下旬</td><td>2026 年第三季度报告（检验营收进度）</td><td>硬节点</td><td>约 3 周</td></tr><tr><td>2027-01</td><td>2026 年度业绩预告（可提前确认是否达标）</td><td>硬节点</td><td>约 3 个月</td></tr><tr><td><strong>2027-04</strong></td><td><strong>2026 年年度报告 → 申请撤销 \*ST</strong></td><td>硬节点（公开日历，无信息差）</td><td>约 6 个月</td></tr><tr><td>不确定</td><td>无锡国资注入低空经济／智慧交通资产（发行股份购买资产）</td><td>软预期（无标的、无时间表、零公告）</td><td>—</td></tr><tr><td>不确定</td><td>因会计差错更正被证监会立案或采取监管措施</td><td>负面软风险</td><td>—</td></tr></tbody></table>
+<p><strong>预期差在哪一侧</strong>：<strong>偏负</strong>。撤销 \*ST 的时点、条件、概率在 2026-04-30 的戴帽公告里已经写全（9.3.8 条与 9.3.12 条十项），公司也在 2026-04-30、2026-05-08 两次公告中重复提示"力争尽快撤销"——<strong>这是一个没有任何信息含量的公开日历</strong>。而真正能改变估值的那件事（资产注入）没有标的、没有时间表，属"人名齐全、器物缺席"。</p>
+<p><strong>② 炒历史类似行为（相似股票匹配法）</strong></p>
+<p>以此画像取路径底表「财务类·块①」同型样本池共 <strong>45 只</strong>（43 只有行情），2026 年内涨跌幅分布如下：</p>
+<details class="fold"><summary>本标的的基准日画像（用于匹配同型样本的三组特征）</summary><div class="fold-body">
+
+<p>深主板 · 财务类①（孰低为负＋扣除后营收 &lt;3 亿元）<strong>单一红线</strong> · 总市值 <strong>14.27 亿元</strong>（极小市值）· 2026-05 戴帽 · <strong>地方国资控股（既非重组、也非重整）</strong> · <strong>无实控人变更驱动</strong>（无锡国资 2022-11 已入主、四年无重估级动作）· 题材＝低空经济（零收入）· 2026 年内 <strong>-16.45%</strong>（同型中相对抗跌）。</p>
+
+</div></details>
+<table><thead><tr><th>分组</th><th>成员（2026 年内涨跌幅）</th></tr></thead><tbody><tr><td><strong>上涨组（7 只，剔除 2 只未盈利生物医药后为 5 只）</strong></td><td>＊ST泉为 +42.44、＊ST起步 +20.55、＊ST禾信 +18.26、＊ST景谷 +14.24、＊ST中迪 +5.28</td></tr><tr><td>本标的</td><td><strong>＊ST中设 -16.45（排第 13 位）</strong></td></tr><tr><td>中位／均值</td><td><strong>中位 -27.44%／均值 -24.05%／正收益 7 只（含 2 只非 ST）</strong></td></tr><tr><td><strong>下跌组（尾部）</strong></td><td>＊ST东珠 -78.72、＊ST岭南 -61.73、＊ST九鼎 -60.90、＊ST实达 -59.57、＊ST宝馨 -59.01、＊ST冀凯 -56.24</td></tr></tbody></table>
+<p><strong>上涨组的共性反查（这是全套方法里最有价值的一步）</strong>：5 只上涨 ST <strong>全部"有物"</strong>——＊ST泉为（重整／资产注入）、＊ST起步（重组预期落地）、＊ST禾信（重组过会，标的为稀释制冷机企业量羲技术）、＊ST景谷、＊ST中迪（实控人法拍入主＋资产赠与）。<strong>本标的只有"人"（无锡国资，且已入主近四年、期间无一次重估级动作），没有"物"。</strong> 按"人名属于预期、可被反复消费也会被反复质疑；物属于事实、一旦公告即重定价"的判据，<strong>本标的落在下跌组一侧</strong>。</p>
+<p><strong>同时必须给出的反向读法</strong>：本股 2026 年 -16.45% 显著强于同型中位（-27.44%）——<strong>这不是"抗跌=低估"，而是"补跌空间未释放"</strong>（其同业 β 已跌 14%–41%，本股仅 -16.45%，且 2026 年内低点 8.01 元距现价 9.14 元尚有 +14% 的下行余量）。</p>
+<p><strong>③ 炒主板映射——主板在炒什么，ST 板块里谁低位</strong></p>
+<p>主板当前与本公司关联度最高的主线是 <strong>低空经济／车路云一体化／智慧交通</strong>（映射标的：<strong>深城交 301091</strong>，主营智慧交通与低空经济基础设施，2026 年内 -25.21%、PB 4.35；<strong>经纬恒润 688326</strong>，车路云，年内 -51.80%）。ST 板块内的可映射标的：</p>
+<table><thead><tr><th>对象</th><th>概念对应点</th><th>现价与位置</th><th>关联度评级</th></tr></thead><tbody><tr><td><strong>＊ST中设 002883</strong></td><td>完成《无锡市低空经济基础设施规划研究》、新设低空智能子公司、低空应用入围无锡市场景能力清单</td><td>9.14 元，2026 年区间（8.01–11.54）32% 分位</td><td><strong>【纯概念】</strong>——低空收入 0，仅有规划研究与子公司壳</td></tr><tr><td>＊ST宁视 300076</td><td>视觉/智能</td><td>4.05 元</td><td>【纯概念】</td></tr><tr><td>＊ST网达 603189</td><td>智慧城市/视觉</td><td>9.27 元</td><td>【纯概念】</td></tr></tbody></table>
+<p><strong>判断</strong>：低空经济这条主线在 ST 板块里<strong>没有真正落地的映射标的</strong>，本股的"映射"停留在"规划咨询"这一层，且这一层收入规模极小、不单独披露。<strong>主线若重新走强，本股只有情绪层面的弹性，没有业绩层面的承接。</strong></p>
+<h3 id="sec9">3.2 情绪面</h3>
+<p><strong>结论：注意力已进入冰点——2026 年全年仅 1 次龙虎榜、最近一次异动记录停在 2026-07-01、2026-09-30 换手率仅 0.18%、成交额仅 249 万元。</strong></p>
+<details class="fold"><summary>炒作符号的四段演变（韭研异动全量 39 条，2021-12 至 2026-07）</summary><div class="fold-body">
+
+<p>城市交通建设＋方舱建设（2022-05，<strong>14 天 8 板</strong>、股价最高 20.25 元）→ 城市交通建设＋EPC＋实控人变更（2022-08 至 2022-11）→ 低空经济＋无锡国资＋工程设计＋车路云（2024-03 至 2025-02，连板极值 <strong>3 天 2 板</strong>）→ 雅下水电站＋西藏基建＋低空经济（2025-07，<strong>4 天 4 板</strong>、股价 16.79 元）→ <strong>撤销风险警示预期＋西藏基建＋低空经济＋无锡国资（2026-05 至 2026-07，共 4 条，最新一条停在 2026-07-01，股价 8.55 元）</strong>。</p>
+<p><strong>提炼的炒作符号</strong>：<strong>"无锡国资 + 工程设计 + 低空经济"</strong> 三件套六年未变；<strong>西藏基建</strong>是 2025-07 才叠加上去的新变量。<strong>当前这轮与历史各轮是同一符号的重演，唯一新元素是"撤销风险警示预期"——而它恰恰是最没有信息含量的那一个。</strong></p>
+
+</div></details>
+<ul><li><strong>股价水位</strong>：2022 年 5 月的历史峰值 <strong>20.25 元</strong>（14 天 8 板）；2026 年内最高收盘 11.51 元（01-23）、最低收盘 8.07 元（07-22）；<strong>现价 9.14 元处 2026 年区间的 32% 分位</strong>。对比信息库记录的"近 20 年价格分位 13.95%"（2026-07-31＠8.48 元），现价已高于该取数点。</li><li><strong>异动表的滞后已交叉验证</strong>：韭研表最新记录停在 2026-07-01，而东财龙虎榜显示 2026-05-07 有一次上榜（连续三日跌幅偏离超 12%，净卖 241.05 万元、换手 13.03%），此后至基准日<strong>零上榜</strong>。<strong>因此"2026-07 之后无记录"经两源交叉确认，是真实的注意力枯竭，不是数据缺档。</strong></li></ul>
+<h3 id="sec10">3.3 筹码博弈与技术面</h3>
+<p><strong>结论：主力行为已明显退潮——2025 年 7 月那波（连续 5 天上榜、单日换手 34%–42%、三日净卖合计约 1.3 亿元）是本股最近一次"有量"的行情；2026 年至今只有戴帽当周的一次被动上榜。当前 0.18% 的换手率意味着连续一字板或连续阴跌都缺乏对手盘。</strong></p>
+<table><thead><tr><th>时点</th><th>上榜原因</th><th>当日涨跌幅</th><th>龙虎榜净额</th><th>换手率</th></tr></thead><tbody><tr><td>2026-05-07</td><td>连续三个交易日跌幅偏离值累计超 12%（ST 类）</td><td>-4.69%</td><td><strong>-241.05 万元</strong></td><td>13.03%</td></tr><tr><td>2025-07-28</td><td>日换手率超 20%／日跌幅偏离值超 7%</td><td>-9.99%</td><td><strong>-4,789.20 万元</strong></td><td>34.75%</td></tr><tr><td>2025-07-25</td><td>日跌幅偏离值超 7%</td><td>-10.01%</td><td><strong>-6,499.95 万元</strong></td><td>24.21%</td></tr><tr><td>2025-07-24</td><td>日换手率超 20%／日振幅超 15%</td><td>+10.03%</td><td>-1,402.22 万元</td><td>42.59%</td></tr><tr><td>2025-07-23</td><td>连续三个交易日涨幅偏离值累计超 20%</td><td>+10.02%</td><td>-6,166.38 万元</td><td>12.06%</td></tr><tr><td>2025-07-22</td><td>日换手率超 20%</td><td>+9.99%</td><td>-2,112.64 万元</td><td>32.32%</td></tr></tbody></table>
+<details class="fold"><summary>读法：2025 年 7 月那波是"拉高派发"的教科书样本</summary><div class="fold-body">
+
+<p>2025-07-22 至 07-28 的五日过山车，<strong>7 月 22、23、24 日连续涨停（龙虎榜净额却连续为负），7 月 25、28 日直接跌停（两日净卖 1.13 亿元）</strong>——<strong>上涨日出货、下跌日砸盘，是典型的"拉高派发"</strong>。驱动事件是 2025-07-19 雅鲁藏布江下游水电工程开工带来的"西藏基建＋低空经济"联想，<strong>而非公司自身经营</strong>。此后 14 个月再无一次净买入的上榜。</p>
+<p><strong>反向读数</strong>：2026-05-07 那次上榜是<strong>被动触发</strong>（幅度偏离阈值），净卖仅 241.05 万元、且发生在戴帽后第二日，<strong>不能读作"主力仍在出货"，只能读作"没有主力参与"</strong>。</p>
+
+</div></details>
+<p><strong>行为限制与减持日历（决定"救兵能不能动"）</strong></p>
+<ul><li><strong>控股股东系</strong>：无锡交通产业集团（24.20% 股权）<strong>无质押、无冻结</strong>；<strong>未被证监会立案、未被行政处罚</strong>（2025-11 的警示函对象是一致行动人无锡炬航，属行政监管措施，且不构成"不得减持"的情形）。<strong>因此在制度上控股股东可以继续增持、也可以参与认购——这是本股能谈"注入"的前提。</strong></li><li><strong>原第一大股东陈凤军</strong>：11.35% 中 1,237.10 万股已质押；2025-10-23 至 2026-01-22 的减持计划<strong>届满零减持</strong>（2026-01-23 公告）。<strong>质押 + 未减持的组合，说明其既无强烈的变现需求，也无追加担保之外的动作。</strong></li><li><strong>公司层面</strong>：无股份回购、无员工持股、无股权激励；2026-04-13 与 2026-08-05 两次互动易被问及回购与引入战略投资者，公司均为模板答复（"会结合资本市场环境、经营发展需要及资金状况综合考量""如有相关安排将严格履行信息披露义务"）。</li></ul>
+<h3 id="sec11">投资者交流要点（2026 年）</h3>
+<p><strong>结论：全年 102 条问答中，最有信息量的是三条——"股东户数逐旬披露"、"不回购"、"低空经济只有规划研究"。参会与答复口径前后完全一致，说明治理层没有任何变化迹象。</strong></p>
+<table><thead><tr><th>投资者问题</th><th>公司答复要点</th><th>解读</th></tr></thead><tbody><tr><td>公司及高管是否回购？是否有明确的引进战略投资者？</td><td>"关于股份回购等相关事项，公司如有相关安排，将严格按照监管规定履行决策程序及信息披露义务""管理层将持续聚焦主业、提升经营质量"</td><td><strong>公司口径</strong>：无回购、无战投安排。<strong>本报告判断</strong>：在无退市风险（营收大概率达标）的前提下，国资没有动力做市值管理动作</td></tr><tr><td>收购材料公司进展如何？是否有信心今年胜利保壳？</td><td>"2025 年度公司完成了对无锡交建新材料科技有限公司 51% 股权的收购。公司将……在新质生产力领域积极布局投入、拓展新兴机会，<strong>寻找优质标的</strong>"</td><td>公司在"外延"上的表态停留在"寻找优质标的"，<strong>无标的、无时间表</strong></td></tr><tr><td>公司是否参与低空经济产业的设计规划和建设？</td><td>"2025 年上半年完成《无锡市低空经济基础设施规划研究》……公司将<strong>积极探索相关成果的应用发展机会</strong>"</td><td><strong>公司口径是"探索"，本报告不替公司升级为"落地"</strong></td></tr><tr><td>截止某日股东人数？</td><td>逐旬如实答复（见 §1.1 折叠区的户数序列）</td><td>罕见的"高频披露股东户数"公司，为筹码观察提供了高密度数据</td></tr></tbody></table>
+<details class="fold"><summary>股东户数全序列（2025-10 至 2026-08，公司互动易自述）</summary><div class="fold-body">
+
+<table><thead><tr><th>时点</th><th>户数</th><th>环比</th><th>同期股价（元）</th></tr></thead><tbody><tr><td>2026-08-05</td><td>—</td><td>—</td><td>9.15（当日）</td></tr><tr><td>2026-06-30</td><td>9,265</td><td>-385（-3.99%）</td><td>9.14</td></tr><tr><td>2026-06-10</td><td>9,650</td><td>-194</td><td>—</td></tr><tr><td>2026-05-29</td><td>9,844</td><td>-333</td><td>—</td></tr><tr><td>2026-05-20</td><td>10,177</td><td>-1,019</td><td>—</td></tr><tr><td>2026-05-08</td><td>11,196</td><td>-2,418</td><td>9.54</td></tr><tr><td>2026-04-30</td><td>13,614</td><td>-89（较 04-20）</td><td>—</td></tr><tr><td>2026-04-20</td><td>13,703</td><td>-233</td><td>—</td></tr><tr><td>2026-04-10</td><td>13,936</td><td>-591</td><td>—</td></tr><tr><td>2026-03-31</td><td>14,527</td><td>-79</td><td>—</td></tr><tr><td>2026-03-20</td><td>14,606</td><td>-402</td><td>—</td></tr><tr><td>2026-03-10</td><td>15,008</td><td>-269</td><td>—</td></tr><tr><td>2026-02-27</td><td>15,277</td><td>+142</td><td>—</td></tr><tr><td>2026-02-13</td><td>15,135</td><td>-323</td><td>—</td></tr><tr><td>2026-02-10</td><td>15,477</td><td>+19</td><td>—</td></tr><tr><td>2026-01-30</td><td>15,458</td><td>-1,701</td><td>—</td></tr><tr><td>2026-01-20</td><td>17,159</td><td>-98</td><td>—</td></tr><tr><td>2026-01-09</td><td>17,257</td><td>-720</td><td>—</td></tr><tr><td>2025-12-31</td><td>17,977</td><td>-44</td><td>10.94</td></tr><tr><td>2025-12-19</td><td>18,021</td><td>-1,076</td><td>—</td></tr><tr><td>2025-12-10</td><td>19,097</td><td>-631</td><td>—</td></tr><tr><td>2025-11-28</td><td>19,728</td><td>-526</td><td>—</td></tr><tr><td>2025-11-20</td><td>20,254</td><td>-784</td><td>—</td></tr><tr><td>2025-11-10</td><td>21,038</td><td>-278</td><td>—</td></tr><tr><td>2025-10-31</td><td>21,316</td><td>-41（较 10-20）</td><td>—</td></tr></tbody></table>
+<p><strong>唯一的一次逆向变化</strong>：2026-01-30 → 2026-02-10 户数由 15,458 升至 15,477（+19 户），恰在 2026-01-29 披露《2025 年度业绩预告》与《可能被实施退市风险警示的提示性公告》之后——<strong>是"戴帽前抢筹"而非"戴帽后离场"</strong>。此后 2026-03 至 2026-06 连续四个披露点全部下降。</p>
+<p><strong>按"户数下降不含方向"的判据</strong>：这 25 个披露点跨越的股价区间是 10.94 元（2025-12-31）→ 9.14 元（2026-06-30），<strong>整体下行</strong>，因此户数从 21,316 户降至 9,265 户（-56.5%）应读作<strong>散户割肉离场</strong>，接盘方未必是主力。<strong>不得据此得出"筹码集中、主力吸筹"的看多结论。</strong></p>
+
+</div></details>
+<h2 id="chap4">四、估值与投资结论</h2>
+<h3 id="sec12">4.1 估值</h3>
+<p><strong>结论：本股不在"真正的低位"——PB 3.11 倍是设计咨询同业（华设 0.80、苏交科 0.78、设计总院 0.87、隧道股份 0.53、中国交建 0.33）的 3.6–9.4 倍，14.27 亿元市值对 4.59 亿元归母净资产、3.32 亿元年化营业收入，已经把"保壳成功＋资产注入"两层预期全部打完。</strong></p>
+<ul><li><strong>不用 PE</strong>（连续亏损，PE(TTM) 为负）。</li><li><strong>PB 口径</strong>：现价 9.14 元／每股净资产 2.94 元 ＝ <strong>PB 3.11</strong>。同业中仅深城交（4.35，低空／智慧交通龙头）高于它，其余全部低于它、且多数<strong>破净</strong>。</li><li><strong>PS 口径</strong>：按 2026H1 年化营收 3.32 亿元计，PS ≈ <strong>4.30</strong>；按 2025 年营收 3.70 亿元计，PS ≈ <strong>3.86</strong>。</li><li><strong>价格位置</strong>：2026 年区间（8.01–11.54 元）<strong>32% 分位</strong>；信息库记录的"近 20 年价格分位 13.95%"取数于 2026-07-31＠8.48 元，<strong>现价已高于该取数点</strong>。<strong>注意"低位尺子须与资本结构变化同步"的判据——本股近两年无整体性资产置换或除权，故价格分位仍可比，但需注意其反映的是 2022 年国资入主后的估值收缩区间，而非"历史底部"。</strong></li><li><strong>三年情景区间</strong>：</li></ul>
+<table><thead><tr><th>情景</th><th>概率</th><th>关键假设</th><th>对应市值（亿元）</th><th>对应股价（元）</th><th>相较现价</th></tr></thead><tbody><tr><td><strong>悲观</strong></td><td>40%</td><td>主业继续亏损、交建新材料收入被重新定性、"注入"始终不来，板块估值继续收缩至设计咨询同业上沿（PB 1.5 倍）</td><td>6.9</td><td><strong>4.48</strong></td><td><strong>-51%</strong></td></tr><tr><td><strong>中性</strong></td><td>45%</td><td>2027-04 成功撤销 \*ST、无实质资产注入，PB 维持 2.2–2.8 倍</td><td>10.1–12.9</td><td><strong>7.00–8.50</strong></td><td><strong>-7% ~ -23%</strong></td></tr><tr><td><strong>乐观</strong></td><td>15%</td><td>无锡国资以发行股份购买资产方式注入低空经济／智慧交通资产，市值重估至 25–35 亿元</td><td>25–35</td><td><strong>16.00–23.00</strong></td><td><strong>+75% ~ +150%</strong></td></tr></tbody></table>
+<ul><li><strong>概率加权期望值 ≈ 0.40×4.48 + 0.45×7.80 + 0.15×19.00 ≈ 8.15 元 &lt; 现价 9.14 元</strong>——<strong>以现价买入，期望收益为负。</strong></li><li><strong>财务类 \*ST 必须显式标注的估值前提</strong>：<strong>以上全部情景均以"2026 年度扣除后营业收入 ≥3 亿元、2027 年 4 月顺利摘帽"为前提；若 2026 年报触发 9.3.12 第（一）项，则股票终止上市、市值归零，上述区间全部作废。</strong></li></ul>
+<h3 id="sec13">4.2 投资结论</h3>
+<blockquote><p><strong>卖出（回避）</strong></p></blockquote>
+<p><strong>理由链（按重要性排序）</strong></p>
+<ol><li><strong>不在低位——估值已把"保壳 + 注入"两层预期全部打完，且比同业贵数倍。</strong> 现价 9.14 元对应 PB 3.11 倍，而华设集团 0.80、苏交科 0.78、设计总院 0.87、隧道股份 0.53、中国交建 0.33（[腾讯行情，2026-09-30]）；14.27 亿元市值对应 4.59 亿元归母净资产，净资产中又有 7.15 亿元应收账款＋合同资产（占净资产 155.7%）待减值考验。<strong>证据</strong>：2026 年半年报资产负债表、同业腾讯截面。</li><li><strong>最强的题材"低空经济"在公司体内收入为零——属纯概念。</strong> 载体仅为 2025-07 新设的江苏中设集团（无锡）低空智能科技有限公司（符合小型微利企业条件），2026 年半年报分产品收入表中<strong>无任何低空经济科目</strong>；公司自述口径是"完成规划研究""积极探索应用机会"。<strong>证据</strong>：<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002883&amp;announcementId=1225495024&amp;orgId=9900031776&amp;announcementTime=2026-08-25" target="_blank" rel="noopener">2026 年半年度报告</a> 分产品收入表。</li><li><strong>最确定的近端事件（2027-04 撤销 \*ST）是公开日历、无信息差、无制度红利。</strong> 撤销条件在 2026-04-30 戴帽公告里已全文列出；主板 ST 自 2026-07-06 起涨跌幅已由 5% 改为 10%，<strong>摘帽前后同为 10%</strong>，不存在"摘帽放大"；同型样本验证亦显示"摘帽本身不构成上涨理由"（本报告第 45 只样本、历史上 6 次以上验证）。<strong>证据</strong>：<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002883&amp;announcementId=1225266057&amp;orgId=9900031776&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">戴帽公告</a>。</li><li><strong>注意力处于冰点且方向朝下，缺乏承接资金。</strong> 2026-09-30 换手率精算 0.18%、成交额 249 万元、量比 0.69；2026 年全年仅 1 次龙虎榜（2026-05-07，净卖 241.05 万元）；异动表最新记录停在 2026-07-01；股东户数从 2025 年末 17,977 户降至 2026-06-30 的 9,265 户（-48.5%），同期股价下跌＝<strong>割肉离场</strong>。<strong>证据</strong>：腾讯行情、东财龙虎榜 API、韭研异动、公司互动易户数序列。</li><li><strong>相似股票匹配落"下跌组"，且相对抗跌意味着补跌未释放。</strong> 45 只同型样本 2026 年内中位 <strong>-27.44%</strong>、正收益仅 7 只（其中 5 只真 ST 全部"有物"——重整协议／资产注入／资产赠与），本股 <strong>-16.45% 排第 13 位</strong>，只有"人名"没有"物"。<strong>证据</strong>：路径底表「财务类·块①」45 只＋腾讯批量行情。</li></ol>
+<p><strong>触发条件（什么信号出现应转为买入）</strong></p>
+<ul><li><strong>价格条件</strong>：回落至 <strong>6.50–7.50 元</strong>区间（对应 PB 约 2.2–2.6 倍、2026 年内低点 8.01 元下方 6%–19%），估值安全垫才会重新出现；</li><li><strong>事件条件</strong>：公司披露<strong>发行股份购买资产预案</strong>（标的为无锡国资体系内的低空经济／智慧交通／交通基建运营类资产），或控股股东系公告进一步增持至 30% 以上；</li><li><strong>业绩条件</strong>：2026 年三季报显示前三季度营业收入已 ≥2.3 亿元（年化达标的确定性从"推算"升级为"可见"）。</li></ul>
+<p><strong>失效条件（本结论在什么情况下作废／翻转）</strong></p>
+<ul><li><strong>向上失效</strong>：出现"价格条件 + 事件条件"同时满足 → 结论改为"买入（事件驱动 · 轻仓 · 高波动）"；</li><li><strong>向下失效（更危险的方向）</strong>：① 2026 年三季报或业绩预告显示全年营收可能 &lt;3 亿元；② 会计师事务所把交建新材料的材料销售收入认定为"新增贸易业务所产生的收入"从而继续大额扣除；③ 因 2022—2024 年会计差错更正被证监会<strong>立案调查</strong>（一旦立案，发行股份购买资产通道立即关闭，且构成一票否决项）；④ 2026 年度审计意见降级为保留／无法表示／否定，或内控审计被出具无法表示／否定。<strong>出现任一情形，结论从"卖出"降级为"坚决回避（不得抄底）"。</strong></li></ul>
+<p><strong>参考区间</strong>：买入区间 <strong>6.50–7.50 元</strong>；当前合理区间 <strong>7.00–8.50 元</strong>；止损位 <strong>跌破 8.00 元</strong>（2026 年内低点 8.01 元下方，同时是 2026 年区间的下沿）。 <strong>时间窗口</strong>：本结论有效期至 <strong>2026 年度业绩预告披露（预计 2027-01）</strong>，届时须以营收实际进度重估。 <strong>仓位建议</strong>：<strong>不建仓。</strong> <strong>最大风险</strong>：本报告对"2026 年扣除后营收可达标"的判断依赖于"交建新材料的收入不被认定为新增贸易业务"这一假设——<strong>该假设若不成立，公司将在 2027 年 4 月直接终止上市。</strong></p>
+<h2 id="chap5">附录 A · 待核实与需补充清单</h2>
+<table><thead><tr><th>#</th><th>待核实项</th><th>结论／处理</th></tr></thead><tbody><tr><td>A1</td><td>交建新材料 2026 年度收入是否会被认定为"本会计年度以及上一会计年度新增贸易业务所产生的收入"而继续扣除</td><td><strong>未披露，无法提前确认</strong>。公司 2025 年报扣除明细未列此项，且标的在合并日列有固定资产 5,546.71 万元、在建工程 362.59 万元（生产型），本报告据此判断不落入该条款，但<strong>须在 2026 年三季报／年报披露时复核</strong></td></tr><tr><td>A2</td><td>公司是否因 2022—2024 年会计差错更正被证监会立案或采取行政监管措施</td><td><strong>截至基准日未见立案公告</strong>（已检索 2026-01 至 2026-10 全部公告）。市场的普遍预期是会有警示函落地，属未落地的软风险</td></tr><tr><td>A3</td><td>2026H1 扣除后营业收入</td><td><strong>未披露</strong>（半年报不披露该项）。本报告按 2025 年扣除口径推算约 1.65 亿元，已在正文标注为推算值</td></tr><tr><td>A4</td><td>董事长胡志伟、总裁陆卫东、财务负责人过宁一的出生年月与详细履历</td><td><strong>公告未披露</strong>。不采用第三方信息填充</td></tr><tr><td>A5</td><td>2022-11-18 无锡交通集团受让股份的具体股数与每股价格</td><td>公司公告披露了《详式权益变动报告书》与财务顾问核查意见（2022-08-01），<strong>本报告未逐笔取数</strong>；该成本锚对判断国资浮盈／浮亏有意义（现价 9.14 元 vs 2022 年 11 月受让价），建议补取</td></tr><tr><td>A6</td><td>无锡交通产业集团有限公司的总资产、营业收入与旗下未上市资产清单</td><td><strong>未披露于公司公告</strong>。判断"能不能注入、能注入什么"的关键资料，建议经工商与公开信息补取</td></tr><tr><td>A7</td><td>江苏中设集团（无锡）低空智能科技有限公司的注册资本、股东结构与已签合同</td><td>半年报仅在税项附注中提及（符合小型微利企业条件），<strong>注册资本与股权结构未披露</strong></td></tr></tbody></table>
+<h2 id="chap6">附录 B · 关键信源链接</h2>
+<table><thead><tr><th>编号</th><th>文件</th><th>时点</th><th>原文</th></tr></thead><tbody><tr><td>B1</td><td>关于公司股票交易被实施退市风险警示及股票停牌的公告（2026-016）</td><td>2026-04-30</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002883&amp;announcementId=1225266057&amp;orgId=9900031776&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>B2</td><td>2025 年年度报告</td><td>2026-04-30</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002883&amp;announcementId=1225266060&amp;orgId=9900031776&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>B3</td><td>关于前期会计差错更正及追溯调整的公告（2026-006）</td><td>2026-04-30</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002883&amp;announcementId=1225266086&amp;orgId=9900031776&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>B4</td><td>董事会及审计委员会关于带强调事项段无保留意见的审计报告和内部控制审计报告的专项说明</td><td>2026-04-30</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002883&amp;announcementId=1225266069&amp;orgId=9900031776&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>B5</td><td>2025 年关于营业收入扣除事项的专项核查意见</td><td>2026-04-30</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002883&amp;announcementId=1225266068&amp;orgId=9900031776&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>B6</td><td>2025 年内部控制审计报告</td><td>2026-04-30</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002883&amp;announcementId=1225266079&amp;orgId=9900031776&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>B7</td><td>2026 年第一季度报告（2026-017）</td><td>2026-04-30</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002883&amp;announcementId=1225266071&amp;orgId=9900031776&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>B8</td><td>股票交易异常波动公告（2026-018）</td><td>2026-05-08</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002883&amp;announcementId=1225282014&amp;orgId=9900031776&amp;announcementTime=2026-05-08" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>B9</td><td>2023 年度审计报告（更正后，公证天业）</td><td>2026-06-30</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002883&amp;announcementId=1225395270&amp;orgId=9900031776&amp;announcementTime=2026-06-30" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>B10</td><td>2026 年半年度业绩预告（2026-024）</td><td>2026-07-14</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002883&amp;announcementId=1225421285&amp;orgId=9900031776&amp;announcementTime=2026-07-14" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>B11</td><td>2026 年半年度报告</td><td>2026-08-25</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002883&amp;announcementId=1225495024&amp;orgId=9900031776&amp;announcementTime=2026-08-25" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>B12</td><td>2026 年 1-6 月非经营性资金占用及其他关联资金往来情况汇总表</td><td>2026-08-25</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002883&amp;announcementId=1225495025&amp;orgId=9900031776&amp;announcementTime=2026-08-25" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>B13</td><td>2026 年第二次临时股东会决议公告</td><td>2026-09-10</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002883&amp;announcementId=1225555471&amp;orgId=9900031776&amp;announcementTime=2026-09-10" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>B14</td><td>关于控股股东之一致行动人无锡炬航收到江苏证监局警示函和深交所监管函的公告（2025-055）</td><td>2025-11-14</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002883&amp;announcementId=1224804119&amp;orgId=9900031776&amp;announcementTime=2025-11-14" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>B15</td><td>2025 年年度业绩预告（2026-002）</td><td>2026-01-29</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002883&amp;announcementId=1224954545&amp;orgId=9900031776&amp;announcementTime=2026-01-29" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>B16</td><td>关于股东减持股份计划时间届满未减持股份的公告（2026-001）</td><td>2026-01-23</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002883&amp;announcementId=1224946435&amp;orgId=9900031776&amp;announcementTime=2026-01-23" target="_blank" rel="noopener">巨潮</a></td></tr></tbody></table>
+<p><strong>信息来源汇总（四级分级）</strong></p>
+<table><thead><tr><th>级别</th><th>信源类型</th><th>具体来源与标题</th><th>说明</th></tr></thead><tbody><tr><td>一手</td><td>公司公告／年报</td><td>上表 B1–B16（巨潮资讯网原文 PDF 全量抽取）</td><td>全部关键数字均取自原文，未使用二手摘要</td></tr><tr><td>一手</td><td>交易所规则</td><td>深交所《股票上市规则（2026 修订）》9.3.1／9.3.8／9.3.12；《上市公司自律监管指南第 1 号——业务办理》"营业收入扣除相关事项"</td><td>本机规则原文库</td></tr><tr><td>数据源</td><td>行情</td><td>腾讯 <code>qt.gtimg.cn</code>（2026-09-30 截面：现价 9.14 元、PB 3.11、总市值 14.27 亿元、换手 0.18%、年内涨跌幅 -16.45%）</td><td>Wind 代理本轮不可达</td></tr><tr><td>数据源</td><td>日 K</td><td>新浪 <code>CN_MarketData.getKLineData</code>，<code>datalen=1023</code>（2022-07-07 至 2026-09-30，不复权）</td><td>用于价格水位与同型样本区间涨跌幅</td></tr><tr><td>数据源</td><td>龙虎榜</td><td>东方财富 <code>RPT_DAILYBILLBOARD_DETAILSNEW</code></td><td>覆盖 2019–2026 全量</td></tr><tr><td>数据源</td><td>股东户数</td><td>东方财富 <code>RPT_HOLDERNUMLATEST</code> ＋ 公司互动易逐旬答复</td><td>交叉验证</td></tr><tr><td>数据源</td><td>财务序列</td><td>东方财富 F10 <code>RPT_F10_FINANCE_MAINFINADATA</code>【异源】</td><td>仅用于 2026H1 毛利率／资产负债率交叉核对，与半年报一致</td></tr><tr><td>二级</td><td>题材整理</td><td>韭研公社异动整理（parquet，全表 39 条 002883 记录）</td><td>只作异动线索，连板与股价已用行情源交叉验证</td></tr><tr><td>二级</td><td>投资者交流</td><td>同花顺 F10 <code>interactive.html</code>（全量 102 条问答）</td><td>公司口径，已与公告交叉核对</td></tr></tbody></table>
+<h2 id="chap7">附录 C · 逻辑漏洞与反方观点（5 问速版）</h2>
+<ol><li><strong>"2026 年扣除后营收可达标"是不是把"规则会变"当成"规则不变"？</strong> —— 本报告的判断基础是深交所营收扣除指南的<strong>时点条款</strong>（同一控制下合并子公司期初至合并日的收入），该条款在 2026 年对本案自然失效。<strong>反方</strong>：同一章节还有"新增贸易业务所产生的收入"条款，若交建新材料被定性为贸易业务，扣除将持续。<strong>本报告的处理是把这一条写成"最大风险"并列在结论正下方，而不是隐藏在折叠区。</strong></li><li><strong>"低空经济"真的零收入吗？</strong> —— 是的，2026 年半年报分产品收入表中无对应科目，公司自述为"完成规划研究""积极探索"。<strong>反方</strong>：无锡市低空经济母基金、公司在无锡的场景能力清单入围，都可能在未来转化为订单。<strong>本报告的处理：承认方向真实，但把"零收入"作为当前定价依据，不给收入预测。</strong></li><li><strong>"PB 3.11 贵"是不是用错了尺子？</strong> —— <strong>反方</strong>：小市值国资壳的定价从来不是 PB，14 亿元市值对无锡市国资委的 A 股平台而言可能偏低；深城交 PB 4.35 即为反例。<strong>本报告的处理</strong>：给出悲观／中性／乐观三档并做概率加权（结果 8.15 元 &lt; 现价），把"贵"的结论定量化，而不是仅凭同业对比。</li><li><strong>引用的时间点是否已过期？</strong> —— 本文所有规则条文取自本机现行规则原文库（深交所 2026 修订版）；涨跌幅、股东户数、财务数据均取最新已披露期（2026-06-30 ／ 2026-09-30）。<strong>唯一滞后项</strong>：韭研异动表最新记录停在 2026-07-01，已用龙虎榜与日 K 交叉验证后如实说明。</li><li><strong>数据来源是什么级别？</strong> —— 全部关键数字取自巨潮公告原文（一手），行情与异动为二级数据源并已交叉验证；仅"2026H1 扣除后营收"为推算值、"2026 年全年营收"为测算值，两者均在正文明确标注为推算／测算。</li></ol>
+<h2 id="chap8">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-05</td><td>首次生成。数据截至 2026 年半年报与 2026-09-30 收盘；全库检索确认无历史研报可吸收，属从零生成。投资结论＝<strong>卖出（回避）</strong></td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
