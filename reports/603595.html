@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ST东尼（603595.SH）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>11 章 · 21 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断</a><a class="sblv3" href="#sec0">1.1 基本信息：账面干净、价格不低</a><a class="sblv3" href="#sec1">1.2 股权结构：控制权高度集中，质押与冻结并存</a><a class="sblv3" href="#sec2">1.3 前世今生·股东阵容·催化清单·资产质量·成本锚点·信息来源</a><a class="sblv3" href="#sec3">1.4 全流程进度看板</a><a class="sblv3" href="#sec4">1.5 运作特征与综合判断</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、ST 风险诊断</a><a class="sblv3" href="#sec5">2.1 戴帽原因：唯一的帽子是"假 ST"</a><a class="sblv3" href="#sec6">2.2 立案与处罚：造假手法与金额</a><a class="sblv3" href="#sec7">2.3 四类退市红线逐条对照</a><a class="sblv3" href="#sec8">2.4 摘帽展望：条件只有两条，都已就位或即将就位</a><a class="sblv3" href="#sec9">2.5 第二道锁：发股通道被罚当事人锁死</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、公司运营</a><a class="sblv3" href="#sec10">3.1 五年 + 最新一期财务（2026H1 的"转正"是假象）</a><a class="sblv3" href="#sec11">3.2 分产品：新能源是唯一亮点，碳化硅是黑洞</a><a class="sblv3" href="#sec12">3.3 碳化硅：投入 21.7 亿元，换来 834.59 万元收入</a><a class="sblv3" href="#sec13">3.4 东尼新能源：被卖掉的那块好资产</a><a class="sblv3" href="#sec14">3.5 债务、受限资产与一项被忽略的或有负债</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、基本面路径（路径 C · 处罚 ST）</a><a class="sblv3" href="#sec15">4.1 三条修复要件</a><a class="sblv3" href="#sec16">4.2 投资者索赔：一项未量化的敞口</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">五、炒作逻辑三支柱 + 情绪面 + 筹码面</a><a class="sblv3" href="#sec17">5.1 三支柱</a><a class="sblv3" href="#sec18">5.2 情绪面与筹码面</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">六、估值与投资结论</a><a class="sblv3" href="#sec19">6.1 估值：只有 PB 可用，且它不便宜</a><a class="sblv3" href="#sec20">6.2 投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap9">附录 C · 逻辑漏洞与反方观点（5 问速版）</a></div><div class="sbgrp"><a class="sblv2" href="#chap10">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">ST东尼（603595.SH）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：卖出（回避）</strong></p>
+<p>红线分类：<span class="sttag sttag-teal"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603595&announcementId=1224764257&orgId=9900032656&announcementTime=2025-10-30" target="_blank" rel="noopener">假ST·2022年报与2023半年报虚假记载</a></span>·<span class="sttag sttag-blue"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603595&announcementId=1224800854&orgId=9900032656&announcementTime=2025-11-13" target="_blank" rel="noopener">原重大合同进展披露不及时</a></span></p>
+<p>生死定级：<strong>安全</strong> —— 四类退市红线一条未踩，唯一帽子是"其他风险警示"，不构成退市倒计时。</p>
+<p>自救空间：<strong>无需自救</strong>。摘帽条件只有两条（决定书满 12 个月 ＋ 追溯重述），后者 2024 年 4 月已完成，前者指向 2026-11-12；但主板 ST 自 2026-07-06 起涨跌幅已为 10%，摘帽前后同幅，<strong>零制度红利</strong>。</p>
+<p>主要看点：<strong>"假 ST 摘帽"是一张公开日历，真正的分歧在碳化硅——该业务近三年累计投入约 21.7 亿元，2025 年只换来 834.59 万元收入（占主营 0.42%）、毛利率 -400.17%，而其载体东尼半导体 2026 年 6 月末净资产已转负（-0.84 亿元），上市公司对它挂账的其他应收款高达 12.58 亿元。</strong></p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>标的 / 基准日</td><td>ST东尼（603595.SH）· 沪主板 / 2026-10-06</td></tr><tr><td>现价 / 总市值</td><td>31.02 元 / <strong>72.10 亿元</strong>（2.3244 亿股，全流通）</td></tr><tr><td>PB / PS(2025)</td><td><strong>4.27 倍</strong> / 3.42 倍；扣非为负，PE 不适用</td></tr><tr><td>价格水位</td><td>前复权月线 111 个月分位 <strong>61.26%</strong>（不复权 53.15%）；2026 年内 73.6%</td></tr><tr><td>YTD</td><td><strong>+83.44%</strong>（假 ST 同型 39 只中<strong>排第 2</strong>，中位 -14.85%）</td></tr><tr><td>唯一帽子</td><td>沪主板 9.8.1 第一款第（七）项（假 ST），2025-10-31 起</td></tr><tr><td>决定书</td><td>〔2025〕18 号，<strong>2025-11-12 收到</strong>；罚款合计 1,570 万元</td></tr><tr><td>最早可申请摘帽</td><td><strong>2026-11-12</strong>（决定书满 12 个月，追溯重述已完成）</td></tr><tr><td>发股锁</td><td>现任董事长兼总经理<strong>沈晓宇</strong>系处罚当事人 → 锁至约 <strong>2028-11</strong></td></tr><tr><td>2026H1</td><td>营收 10.68 亿元（+27.26%）／归母 <strong>+1.43 亿元</strong>／<strong>扣非 -1.62 亿元</strong></td></tr><tr><td>归母净资产</td><td>2026-06-30 <strong>16.87 亿元</strong>（正）</td></tr><tr><td>数据来源</td><td>巨潮公告原文、公司 2025 年报与 2026 半年报、腾讯自选股行情、东财龙虎榜、韭研公社异动表</td></tr><tr><td>数据质量异常</td><td>内控审计报告、营业收入扣除专项核查意见、2026 半年报减值专项为图片型 PDF，相关口径改从年报／半年报正文读取；「决定书作出日」公告未披露，本报告以"收到日＋12 个月"口径计算并已列入附录 A</td></tr></tbody></table>
+<hr>
+<h2 id="chap1">一、诊断</h2>
+<h3 id="sec0">1.1 基本信息：账面干净、价格不低</h3>
+<p><strong>ST东尼是一家"帽子很轻、价格很贵"的公司——四类退市红线一条未踩，但现价已处于上市以来 61.26% 分位、2026 年内 73.6% 分位，YTD 涨 83.44%，与"低位＋催化"的标准模型相反。</strong></p>
+<p>公司主营金属基材与金属基复合材料（超微细电子线材、无线充电隔磁材料）、半导体材料（碳化硅衬底）；2017 年 7 月于上交所主板上市，注册地浙江湖州，员工规模与业务体量属中型制造企业。2025 年 10 月 31 日因信息披露违法违规被实施其他风险警示，简称由"东尼电子"变更为"ST东尼"。</p>
+<p>现价 31.02 元对应总市值 72.10 亿元、PB 4.27 倍。<strong>该 PB 与其同业中位数基本持平</strong>（碳化硅与消费电子线材 12 家同业 PB 中位约 4.38 倍），因此"估值便宜"这个说法在横向上并不成立；更关键的是公司<strong>扣非净利润连续为负</strong>，PB 的分母（归母净资产 16.87 亿元）并未获得盈利质量的支撑。</p>
+<details class="fold"><summary>价格水位与同业估值对照（含前复权复核过程）</summary><div class="fold-body">
+
+<p><strong>价格水位（三口径交叉）</strong></p>
+<table><thead><tr><th>口径</th><th>样本</th><th>现价分位</th><th>判读</th></tr></thead><tbody><tr><td>前复权月 K</td><td>111 个月（2017-07 上市至 2026-09）</td><td><strong>61.26%</strong></td><td>中位偏上</td></tr><tr><td>不复权月 K</td><td>111 个月</td><td>53.15%</td><td>两口径接近 ⇒ 无大比例送转干扰，分位可信</td></tr><tr><td>2026 年内日 K</td><td>181 个交易日</td><td>73.6%（区间 14.38—36.98 元，最高 38.35）</td><td>年内高位</td></tr></tbody></table>
+<p>全历史区间（前复权）15.36—71.66 元。<strong>注：近 20 年价格分位数（信息库档案记 20.18%，取数日 2026-07-31／21.52 元）已被现价 31.02 元（较该时点 +44%）作废，须以本表重算值为准。</strong></p>
+<p><strong>同业估值（2026-09-30，腾讯自选股批量截面）</strong></p>
+<table><thead><tr><th>类别</th><th>公司</th><th>现价</th><th>总市值</th><th>PB</th><th>YTD</th></tr></thead><tbody><tr><td>碳化硅</td><td>天岳先进</td><td>104.39</td><td>505.89 亿</td><td>7.12</td><td>+17.45%</td></tr><tr><td>碳化硅</td><td>晶盛机电</td><td>35.88</td><td>469.86 亿</td><td>2.75</td><td>-1.81%</td></tr><tr><td>碳化硅</td><td>露笑科技</td><td>6.90</td><td>131.73 亿</td><td>2.03</td><td>-14.81%</td></tr><tr><td>碳化硅</td><td>三安光电</td><td>11.48</td><td>572.74 亿</td><td>1.65</td><td>-18.75%</td></tr><tr><td>消费电子线材</td><td>信维通信</td><td>51.23</td><td>495.69 亿</td><td>6.19</td><td>-17.30%</td></tr><tr><td>消费电子线材</td><td>电连技术</td><td>40.17</td><td>170.65 亿</td><td>3.39</td><td>-17.08%</td></tr><tr><td>消费电子线材</td><td>领益智造</td><td>11.88</td><td>964.69 亿</td><td>3.07</td><td>-23.35%</td></tr><tr><td>消费电子线材</td><td>瀛通通讯</td><td>14.04</td><td>26.15 亿</td><td>2.61</td><td>-21.08%</td></tr><tr><td>新能源 FPC/CCS</td><td>东山精密</td><td>167.40</td><td>3,066.11 亿</td><td>12.58</td><td>+97.76%</td></tr><tr><td>新能源 FPC/CCS</td><td>鹏鼎控股</td><td>79.55</td><td>1,843.60 亿</td><td>5.36</td><td>+60.45%</td></tr><tr><td>新能源 FPC/CCS</td><td>壹连科技</td><td>59.48</td><td>76.12 亿</td><td>2.93</td><td>-18.80%</td></tr><tr><td>新能源 FPC/CCS</td><td>弘信电子</td><td>32.40</td><td>156.21 亿</td><td>8.77</td><td>+17.14%</td></tr><tr><td><strong>本股</strong></td><td><strong>ST东尼</strong></td><td><strong>31.02</strong></td><td><strong>72.10 亿</strong></td><td><strong>4.27</strong></td><td><strong>+83.44%</strong></td></tr></tbody></table>
+<p>同业 PB 中位 4.38 倍、YTD 中位约 -15.95%。<strong>⇒ 本股 PB 位于同业中枢，"低于同业"不成立；YTD 跑赢同业中位约 99 个百分点，超额几乎全部来自"摘帽预期＋出售子公司股权收款"这两件事。</strong></p>
+
+</div></details>
+<h3 id="sec1">1.2 股权结构：控制权高度集中，质押与冻结并存</h3>
+<p><strong>沈新芳、沈晓宇父子合计持股 45.90%，其中 80.69% 已质押、另有 1,432.15 万股被冻结；控股股东在 2026 年 6 月刚完成一次 3.00% 的减持并用于偿还质押融资。家族高集中度＋高质押比例，是本股治理层面的主要风险来源。</strong></p>
+<table><thead><tr><th>持有方</th><th>持股（万股）</th><th>比例</th><th>质押（万股）</th><th>冻结（万股）</th><th>备注</th></tr></thead><tbody><tr><td>沈新芳</td><td>6,799.68</td><td>29.25%</td><td>5,569.75（81.91%）</td><td>661.08</td><td>2026-06-11～16 减持 697.32 万股（3.00%）</td></tr><tr><td>沈晓宇</td><td>3,870.46</td><td>16.65%</td><td>3,040.00（78.54%）</td><td>361.08</td><td><strong>现任董事长、总经理、法定代表人</strong></td></tr><tr><td>合计（一致行动人）</td><td>10,670.14</td><td>45.90%</td><td>8,609.75（80.69%）</td><td>1,022.16</td><td>质押占总股本 37.04%</td></tr><tr><td>张英</td><td>930.00</td><td>4.00%</td><td>—</td><td>—</td><td>第三大股东，与父子非一致行动关系</td></tr><tr><td>UBS AG</td><td>485.12</td><td>2.09%</td><td>—</td><td>—</td><td>境外法人（较上期新进）</td></tr><tr><td>高盛国际－自有资金</td><td>223.06</td><td>0.96%</td><td>—</td><td>—</td><td>境外法人</td></tr></tbody></table>
+<p>控股股东及其关联方<strong>不存在</strong>向公司提供借款的情形、<strong>不存在</strong>非经营性占用、<strong>不存在</strong>违规担保（互动易 2026-06-29 答复与定期报告"否"栏互证）。减持后合并质押比例由 79.35% 降至 71.32%，但<strong>质押的股票若被平仓或违约处置，可能导致股权结构与控制权变动</strong>（公司 2026 半年报风险提示原文）。</p>
+<details class="fold"><summary>股权与质押的完整沿革与市场传闻澄清</summary><div class="fold-body">
+
+<p><strong>减持时间线（时间降序）</strong></p>
+<table><thead><tr><th>时点</th><th>事件</th><th>关键数据</th></tr></thead><tbody><tr><td>2026-06-23</td><td>沈新芳部分股份解质</td><td>解质 410 万股；剩余质押 5,569.75 万股（占其持股 81.91%）</td></tr><tr><td>2026-06-17</td><td>披露减持结果暨权益变动触及 1% 刻度</td><td>6/11—6/16 集中竞价＋大宗合计减持 <strong>697.32 万股（3.00%）</strong>；父子合计由 46.33% 降至 <strong>45.90%</strong></td></tr><tr><td>2026-05-16</td><td>披露控股股东减持计划</td><td>拟于 2026-06-08 至 09-07 减持不超过 697.32 万股（3.00%），原因为"自身资金需求"</td></tr><tr><td>2025-11-13</td><td>董事会秘书翁鑫怡离任</td><td>公司称其"还在公司任职"（互动易 2026-04-24）</td></tr></tbody></table>
+<p><strong>市场传闻的两条澄清（附反方证据）</strong></p>
+<ol><li><strong>"实控人减持＝看空公司"</strong> —— 公司口径为"偿还部分质押融资"，落地证据是解质押公告（质押比例确由 79.35% 降至 71.32%）。<strong>反向读数</strong>：无论用途如何，<strong>控股股东在股价年内高点附近减持 3.00%、且减持后仍有 80.69% 的股份处于质押状态</strong>，这一组合本身说明其现金流压力未解除，不能读作"大股东看好后市"。</li><li><strong>"张英与前两大股东是否存在一致行动／夫妻关系、是否存在内斗"</strong>（投资者 2026-04-24 提问）—— 公司明确答"<strong>第三大股东张英与第一第二大股东不存在一致行动关系</strong>"，并指向 2020-01-16《简式权益变动报告书（张英）》。<strong>该问题属投资者推测，公告层面无内斗证据，不得作为定价依据。</strong></li></ol>
+
+</div></details>
+<h3 id="sec2">1.3 前世今生·股东阵容·催化清单·资产质量·成本锚点·信息来源</h3>
+<p><strong>一句话判断：公司的历史是一条"用消费电子线材的现金流去喂碳化硅、结果现金流失血而碳化硅没有变成收入"的路径；2025—2026 年的所有资本动作（卖东尼新能源、控股股东减持、加强应收账款回收）本质都是"回笼现金"，而不是"扩张"。</strong></p>
+<details class="fold"><summary>① 前世今生（四列表：时间｜关键事件｜股权/实控人变化｜背后的逻辑）</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>关键事件</th><th>股权/实控人变化</th><th>背后的逻辑</th></tr></thead><tbody><tr><td>2008 年前后</td><td>浙江湖州织里镇设厂，做超微细金属线材</td><td>沈新芳家族创业</td><td>高技术壁垒、低关注度细分市场；后成为国际大客户无线充电隔磁材料主力供应商</td></tr><tr><td>2017-07</td><td>上交所主板上市（603595）</td><td>沈新芳、沈晓宇父子合计控股</td><td>募资扩张消费电子线材产能</td></tr><tr><td>2019—2022</td><td>跨界布局碳化硅单晶／衬底</td><td>无变化</td><td>前瞻布局新能源汽车功率器件材料；2022 年股价一度超 70 元（前复权）</td></tr><tr><td><strong>2023-01-09</strong></td><td>控股子公司东尼半导体与广东天域签 <strong>6.75 亿元</strong>碳化硅衬底采购合同（占最近一期经审计主营收入 51.84%）</td><td>无变化</td><td><strong>这是本案的起点</strong>——合同实际履行严重落后</td></tr><tr><td>2023-04</td><td>顾小荣、叶佩华、钱鑫祥三人向东尼半导体增资 <strong>2.3 亿元</strong></td><td>东尼半导体少数股东持股 32.48%</td><td><strong>附带"三年后按评估值与本金+8%/年孰高"的回购权</strong>（2026-04 起生效）</td></tr><tr><td>2023-10 末</td><td>该合同交付进度仅 <strong>6.74%</strong>，已可预见无法按期完成</td><td>无变化</td><td>公司未及时披露，迟至 2024-01-06 才公告</td></tr><tr><td><strong>2024-04</strong></td><td>披露《前期会计差错更正公告》及补充公告</td><td>无变化</td><td>对虚增利润事项追溯调整 —— <strong>这为后来摘帽埋下一个必要条件</strong>（见 §2.4）</td></tr><tr><td>2025-04-25</td><td>收到证监会《立案告知书》（证监立案字 01120250010 号）</td><td>无变化</td><td>信息披露违法违规立案</td></tr><tr><td>2025-10-29</td><td>收到浙江证监局《行政处罚事先告知书》（浙处罚字〔2025〕19 号）</td><td>无变化</td><td>触发 ST</td></tr><tr><td><strong>2025-10-31</strong></td><td>实施其他风险警示，简称变更为 ST东尼</td><td>无变化</td><td>帽子落下</td></tr><tr><td><strong>2025-11-12</strong></td><td>收到《行政处罚决定书》（〔2025〕18 号）</td><td>无变化</td><td><strong>12 个月计时起点</strong></td></tr><tr><td>2026-02-13／03-02</td><td>董事会／股东会通过转让东尼新能源 <strong>31.698%</strong> 股权</td><td>东尼新能源由 65% 降至 33.302%，出表</td><td>对价合计约 2.63 亿元；湖州国资系接盘</td></tr><tr><td>2026-05</td><td>东尼新能源完成控制权交割</td><td>自 2026-06 起不再并表</td><td>上半年确认大额处置投资收益，是 2026H1 归母转正的唯一原因</td></tr><tr><td>2026-06-11～16</td><td>控股股东减持 3.00%</td><td>父子合计 46.33%→45.90%</td><td>偿还部分质押融资</td></tr></tbody></table>
+
+</div></details>
+<details class="fold"><summary>② 股东阵容（身份识别＋成本＋锁定＋筹码集中度）</summary><div class="fold-body">
+
+<table><thead><tr><th>持有方</th><th>身份</th><th>取得方式</th><th>成本线索</th><th>锁定／承诺</th><th>质押状态</th></tr></thead><tbody><tr><td>沈新芳</td><td>创始人家族、实控人</td><td>IPO 前取得</td><td>未披露</td><td>减持承诺已届满</td><td>质押 81.91%、冻结 661.08 万股</td></tr><tr><td>沈晓宇</td><td>实控人之子，现任董事长兼总经理</td><td>IPO 前取得</td><td>未披露</td><td>同上</td><td>质押 78.54%、冻结 361.08 万股</td></tr><tr><td>张英</td><td>自然人（第三大股东）</td><td>二级市场（据 2020 年简式权益变动报告书）</td><td>未披露</td><td>无</td><td>无公开质押</td></tr><tr><td>UBS AG / 高盛国际</td><td>境外机构投资者</td><td>二级市场</td><td>未知</td><td>无</td><td>无</td></tr><tr><td>其余前十大</td><td>均为自然人</td><td>二级市场</td><td>未知</td><td>无</td><td>无</td></tr></tbody></table>
+<p><strong>筹码集中度</strong>：前十大股东中除父子二人外<strong>全部为自然人</strong>（含外资托管账户），<strong>无产业资本、无境内机构、无券商自营</strong>；公司未在半年报中披露股东户数（投资者问询时公司以《公司章程》为由要求提供持股证明后查询）。<strong>⇒ "谁在买"这个问题在本股上找不到机构侧的答案，这是一条负面读数：产业方没有进场。</strong></p>
+
+</div></details>
+<details class="fold"><summary>③ 节奏与催化清单（编号清单：节点｜预计时点｜判读/证伪点）</summary><div class="fold-body">
+
+<table><thead><tr><th>编号</th><th>节点</th><th>预计时点</th><th>判读／证伪点</th></tr></thead><tbody><tr><td>①</td><td><strong>决定书满 12 个月，可提交撤销 ST 申请</strong></td><td><strong>2026-11-12 起</strong></td><td><strong>硬节点（公开日历）</strong>。判据：公告《关于申请撤销其他风险警示的公告》；证伪：逾期不申请</td></tr><tr><td>②</td><td>交易所核准并撤销 ST</td><td>申请后 15 个交易日内决定（补充材料期不计入）</td><td>9.8.8 为 AND 逻辑，无实质裁量空间；<strong>撤销后涨跌幅不变（10%→10%）</strong></td></tr><tr><td>③</td><td>2026 年三季报</td><td>约 2026-10 下旬</td><td>观察 Q3 扣非是否延续 Q2 的 -1.84 亿元量级</td></tr><tr><td>④</td><td>2026 年年报</td><td>2027-04</td><td>观察碳化硅业务是否继续拖累、减值是否第三次大额计提</td></tr><tr><td>⑤</td><td>东尼半导体少数股东回购权</td><td>2026-04 起可行使</td><td><strong>软预期/尾部风险</strong>。若行使，公司须按"评估值与本金 2.3 亿元＋8%/年单利孰高"收购其 32.48% 股权</td></tr><tr><td>⑥</td><td>投资者索赔诉讼</td><td>不确定</td><td>公司称"尚未收到立案通知"；已被提起时须充分计提预计负债</td></tr><tr><td>⑦</td><td>控股股东剩余质押的处置</td><td>不确定</td><td>质押 80.69%；公司自认可能影响控制权稳定</td></tr></tbody></table>
+<p><strong>硬节点只有①②（同一件事的两步），其余全部是软预期或风险项 —— 这意味着本股的"催化"实质上只有一个，且已被充分定价。</strong></p>
+
+</div></details>
+<details class="fold"><summary>④ 资产质量与估值（星级表：评估维度｜大白话说明｜评级）</summary><div class="fold-body">
+
+<table><thead><tr><th>星级维度</th><th>大白话说明</th><th>评级</th></tr></thead><tbody><tr><td>市值／估值</td><td>72.10 亿元市值／PB 4.27／扣非为负 → 无盈利支撑，靠"摘帽＋题材"定价</td><td>★★☆☆☆</td></tr><tr><td>法律合规性</td><td>造假已处罚并结案、已追溯重述；四类退市红线零踩；但投资者索赔敞口未明</td><td>★★★☆☆</td></tr><tr><td>债务与流动性</td><td>资产负债率 61.63%；短期借款＋一年内到期 12.67 亿元 vs 货币资金 0.79 亿元；受限资产 18.32 亿元</td><td>★★☆☆☆</td></tr><tr><td>主业质地</td><td>消费电子与医疗稳定微利，新能源 FPC/CCS 高增长；<strong>碳化硅累计投入 21.7 亿元换来 834.59 万元收入</strong></td><td>★★☆☆☆</td></tr><tr><td>控制权与运作</td><td>家族集中持股 45.90%，质押 80.69%，无产业资本进场；现任董事长为处罚当事人</td><td>★★☆☆☆</td></tr><tr><td><strong>综合</strong></td><td><strong>一家"帽子轻、底子薄、价格贵"的公司</strong></td><td>★★☆☆☆</td></tr></tbody></table>
+<p><strong>哪一项的高分不能抵消哪一项的低分</strong>：法律合规性（★★★）<strong>不能</strong>抵消主业质地与债务流动性（各 ★★）——因为前者只说明"不会被强制退市"，不说明"能赚钱"。</p>
+
+</div></details>
+<details class="fold"><summary>⑤ 成本锚点（逐参与方成本 ＋ 两类定价逻辑）</summary><div class="fold-body">
+
+<table><thead><tr><th>参与方／事件</th><th>成本（元/股）</th><th>说明</th><th>与现价（31.02 元）倍数</th></tr></thead><tbody><tr><td>沈新芳 IPO 前取得</td><td>未披露</td><td>原始股</td><td>—</td></tr><tr><td><strong>控股股东减持（2026-06-11～16）</strong></td><td>未披露具体均价</td><td>集中竞价＋大宗合计 697.32 万股</td><td>—</td></tr><tr><td><strong>东尼新能源 21.698% 股权受让方（湖州东利／湖州人才基金二期）</strong></td><td>隐含按评估值 10.6 亿元对应</td><td>对价 23,000.00 万元</td><td><strong>这是本期唯一可用的"外部资本定价"</strong></td></tr><tr><td>东尼新能源 10% 股权（员工持股平台）</td><td>隐含按账面净资产 3.3357 亿元对应</td><td>对价 3,335.67 万元</td><td>属股权激励，非市场化定价</td></tr><tr><td>碳化硅少数股东增资（2023-04）</td><td>2.3 亿元对应 32.48%</td><td>附 8%/年单利保底回购</td><td>见 §3.5</td></tr></tbody></table>
+<p><strong>两类定价逻辑的区分</strong>：本股<strong>既无协议受让价、也无可法拍卖价、更无定增价</strong> —— 控股股东的股份是 IPO 前取得、上述转让是<strong>子公司层面</strong>的股权转让而非上市公司股份。<strong>⇒ 本股"上市公司层面的成本锚"实质缺失，现价的支撑只能来自净资产（每股 7.26 元）与题材想象。这是本报告给出"卖出"的第一条结构性理由。</strong></p>
+
+</div></details>
+<details class="fold"><summary>⑥ 信息来源汇总（四级分级）</summary><div class="fold-body">
+
+<table><thead><tr><th>编号</th><th>信源类型</th><th>来源与标题（日期）</th><th>原文地址</th></tr></thead><tbody><tr><td>1</td><td>一手·公告</td><td>关于实施其他风险警示暨停牌的公告（2025-10-30）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1224764257.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>2</td><td>一手·公告</td><td>关于收到浙江证监局《行政处罚决定书》的公告（2025-11-13）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1224800854.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>3</td><td>一手·定期报告</td><td>2025 年年度报告（2026-04-18）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1225121792.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>4</td><td>一手·定期报告</td><td>2026 年半年度报告（2026-08-26）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1225505188.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>5</td><td>一手·定期报告</td><td>2026 年第一季度报告（2026-04-18）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1225121799.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>6</td><td>一手·公告</td><td>关于转让控股子公司部分股权的公告（2026-02-14）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1224981593.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>7</td><td>一手·公告</td><td>关于 2025 年年度报告信息披露监管问询函的回复公告（2026-06-27）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1225392687.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>8</td><td>一手·公告</td><td>关于控股股东减持股份结果暨权益变动触及 1% 刻度的公告（2026-06-17）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1225373356.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>9</td><td>一手·公告</td><td>关于 2026 年半年度计提信用减值及资产减值准备的公告（2026-08-26）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1225505583.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>10</td><td>一手·公告</td><td>2026 年半年度业绩预盈公告（2026-07-15）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1225423996.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>11</td><td>一手·公告</td><td>关于控股股东部分股份解除质押的公告（2026-06-23）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1225381289.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>12</td><td>数据源</td><td>腾讯自选股行情／前复权月 K（2026-09-30）</td><td>—</td></tr><tr><td>13</td><td>数据源</td><td>东方财富龙虎榜明细（2026 年 4 次上榜）</td><td><a href="https://data.eastmoney.com/stock/lhb/603595.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>14</td><td>数据源</td><td>韭研公社异动整理（63 条，2020-08 至 2026-09）</td><td>—</td></tr><tr><td>15</td><td>一手·互动平台</td><td>上证 e 互动问答（71 条，最近 2026-07-03）</td><td>—</td></tr><tr><td>16</td><td>三级·线索</td><td>雪球 ST 讨论（2026-08 数次，仅作情绪读数）</td><td>—</td></tr><tr><td>17</td><td>三级·线索</td><td>其他资料《ST东尼_603595_深度报告_20260514更新》（星轨拾贝，2026-05-14）</td><td>本地文件</td></tr><tr><td>18</td><td>三级·线索</td><td>其他资料《ST东尼&amp;ST海泰_资讯全景报告_20260419》（2026-04-19）</td><td>本地文件</td></tr></tbody></table>
+<p><strong>分级说明</strong>：1–11、15 为一级（可直接引用）；12–14 为数据源（可复现）；16–18 为三级线索（仅供交叉验证，数字已回一手公告核实）。</p>
+
+</div></details>
+<h3 id="sec3">1.4 全流程进度看板</h3>
+<p><strong>一句话判断：本股"全流程"只有一条线（摘帽），且已走完公司能走的部分，剩下的时间是"等"——卡点性质是"时间未到"，不是"谈不拢"。</strong></p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点或条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>立案</td><td>已完成</td><td>—</td><td>—</td><td>2025-04-26 立案告知书公告</td></tr><tr><td>处罚（事先告知书）</td><td>已完成</td><td>—</td><td>—</td><td>2025-10-30 公告（浙处罚字〔2025〕19 号）</td></tr><tr><td>处罚（决定书）</td><td><strong>已完成，2025-11-12 收到</strong></td><td>—</td><td>—</td><td>2025-11-13 公告（〔2025〕18 号）</td></tr><tr><td>追溯重述</td><td><strong>已完成（2024-04）</strong></td><td>—</td><td>—</td><td>2024-04《前期会计差错更正公告》及补充公告</td></tr><tr><td>罚款缴纳</td><td>已完成</td><td>—</td><td>—</td><td>决定书要求 15 日内缴纳</td></tr><tr><td>12 个月计时</td><td>进行中（自 2025-11-12 起）</td><td><strong>须满至 2026-11-12</strong></td><td>2026-11-12 起提交撤销申请</td><td>9.8.8 条</td></tr><tr><td>撤销申请</td><td>尚未提交（截至 2026-10-06）</td><td>等待 12 个月期满</td><td>2026-11 中旬</td><td>—</td></tr><tr><td>交易所核准</td><td>未开始</td><td>15 个交易日内决定（补充材料期不计入）</td><td>申请后约 3 周</td><td>9.8.9／9.8.10 条</td></tr><tr><td>投资者索赔</td><td>未立案（公司口径）</td><td>不确定</td><td>—</td><td>半年报"尚未收到投资者索赔诉讼立案通知"</td></tr></tbody></table>
+<p><strong>卡点归因</strong>：全部环节均为"<strong>时间未到</strong>"，无一处"谈不拢"。这也意味着<strong>不存在预期差可交易</strong>——一个完全按日历推进的事件，价格只会提前反映，不会在事件发生时给出超额。</p>
+<h3 id="sec4">1.5 运作特征与综合判断</h3>
+<p><strong>一句话判断：公司的资本动作方向是"往外卖"（卖子公司股权换取现金），而不是"往里装"；加上现任董事长本人是处罚当事人，</strong>"资产注入"这条 A 股最主流的想象在本股上制度性走不通。****</p>
+<ul><li><strong>手法</strong>：不涉控制权变更、不涉重整、不涉借壳；唯一的资本动作是<strong>子公司层面的股权转让</strong>（东尼新能源 31.698% 出表，回笼约 2.63 亿元）与控股股东减持。</li><li><strong>节奏</strong>：从立案（2025-04-25）到决定书（2025-11-12）历时约 6.5 个月，属正常监管流程；从 ST（2025-10-31）到最早可申请摘帽（2026-11-12）恰好 12 个月＋。</li><li><strong>交权是配合式还是对抗式</strong>：<strong>不适用</strong>——控制权自上市以来未发生变更，家族仍合计控制 45.90%。</li><li><strong>成败关键变量（1 和 0 问题）</strong>：</li><li>摘帽本身不是 1/0 问题（条件客观，几乎必然达成）；</li><li><strong>真正的 1/0 问题是"碳化硅业务能否止血"</strong>：2026H1 东尼半导体净资产已转负 -0.84 亿元，上市公司对其挂账 12.58 亿元其他应收款。若继续失血，将直接冲击上市公司净资产与审计意见。</li><li><strong>核心矛盾一句话</strong>：<strong>市场按"摘帽＋碳化硅高景气"给它 72 亿元市值、PB 4.27 倍，而碳化硅近三年 21.7 亿元投入只换来 834.59 万元年收入、毛利率 -400.17% —— 定价的是想象，报表里没有对应物。</strong></li></ul>
+<hr>
+<h2 id="chap2">二、ST 风险诊断</h2>
+<h3 id="sec5">2.1 戴帽原因：唯一的帽子是"假 ST"</h3>
+<p><strong>ST东尼戴的是"其他风险警示"（假 ST），依据</strong>沪主板 9.8.1 第一款第（七）项<strong>，</strong>不属于四类退市红线中的任何一条<strong> —— 把"戴 ST 帽"读成"有退市风险"是本股最常见的分析错误。</strong></p>
+<ul><li><strong>实施日</strong>：2025-10-31（2025-10-30 停牌一天）</li><li><strong>实施依据</strong>：<span class="sttag sttag-teal"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=603595&announcementId=1224764257&orgId=9900032656&announcementTime=2025-10-30" target="_blank" rel="noopener">9.8.1 第一款第（七）项</a></span>——"根据中国证监会行政处罚事先告知书载明的事实，公司披露的年度报告财务指标存在虚假记载，但未触及本规则第 9.5.2 条第一款规定情形"</li><li><strong>触发文件</strong>：2025-10-29 收到的《行政处罚事先告知书》（浙处罚字〔2025〕19 号）</li><li><strong>公司明确声明</strong>："未触及《上海证券交易所股票上市规则（2025 年 4 月修订）》第 9.5.2 条规定的重大违法类强制退市情形"</li></ul>
+<h3 id="sec6">2.2 立案与处罚：造假手法与金额</h3>
+<p><strong>处罚金额合计 1,570 万元，两项违法事实：一是重大合同进展披露不及时；二是 2022 年年报、2023 年半年报虚假记载（虚增利润总额 3,877.59 万元、7,227.79 万元）。造假手法与碳化硅业务高度绑定，这决定了后续"碳化硅黑洞"的性质——它不只是经营失败，还是本案的案发地。</strong></p>
+<table><thead><tr><th>违法事实</th><th>具体内容</th><th>对应条款</th></tr></thead><tbody><tr><td>一、重大合同进展披露不及时</td><td>2023-01-09 东尼半导体与广东天域签 6.75 亿元碳化硅衬底采购合同（占最近一期经审计主营收入 <strong>51.84%</strong>）；至 2023-10 末仅完成交付进度 <strong>6.74%</strong>，已可预见无法按期完成，公司<strong>迟至 2024-01-06</strong> 才披露</td><td>《证券法》第七十八条、第八十条 → 第一百九十七条第一款</td></tr><tr><td>二、2022 年报与 2023 半年报虚假记载（三项手段合计）</td><td>① 将应确认为研发费用的不良晶体确认为存货，累计少确认研发费用 <strong>5,681.49 万元</strong>；② 关联方（湖州东尼实业）代垫资金采购原材料未入账，累计少确认研发费用 673.64 万元、营业成本 2,071.90 万元，合计虚增利润总额 <strong>2,745.54 万元</strong>；③ 未充分计提存货跌价准备，累计少确认资产减值损失 <strong>2,678.34 万元</strong></td><td>《证券法》第七十八条第二款、第七十九条 → 第一百九十七条第二款</td></tr></tbody></table>
+<details class="fold"><summary>处罚金额明细与当事人名单（含现任董监高比对）</summary><div class="fold-body">
+
+<p><strong>罚款明细</strong></p>
+<table><thead><tr><th>当事人</th><th>时任职务</th><th>罚款（万元）</th></tr></thead><tbody><tr><td>浙江东尼电子股份有限公司</td><td>公司</td><td>700</td></tr><tr><td>沈新芳</td><td>时任董事长</td><td>350</td></tr><tr><td><strong>沈晓宇</strong></td><td><strong>时任总经理</strong></td><td><strong>170</strong></td></tr><tr><td>杨云</td><td>时任财务总监</td><td>100</td></tr><tr><td>钟伟琴</td><td>时任财务总监</td><td>100</td></tr><tr><td>翁鑫怡</td><td>时任董事会秘书</td><td>90</td></tr><tr><td>罗斌斌</td><td>时任副总经理、董事会秘书</td><td>60</td></tr><tr><td><strong>合计</strong></td><td></td><td><strong>1,570</strong></td></tr></tbody></table>
+<p><strong>★ 现任董监高比对（2026-10-06 东财 F10 最新名单，16 人）</strong></p>
+<table><thead><tr><th>处罚当事人</th><th>是否仍在任</th><th>现任职务</th></tr></thead><tbody><tr><td><strong>沈晓宇</strong></td><td><strong>★ 在任</strong></td><td><strong>董事长、总经理、法定代表人、非独立董事（2015-09-08 至今）</strong></td></tr><tr><td>沈新芳</td><td>不在</td><td>—（仍为控股股东、实控人）</td></tr><tr><td>杨云、钟伟琴</td><td>不在</td><td>—</td></tr><tr><td>翁鑫怡</td><td>不在董监高名单（公司称"还在公司任职"）</td><td>—</td></tr><tr><td>罗斌斌</td><td>不在</td><td>—</td></tr></tbody></table>
+<p><strong>⇒ 现任董事长兼总经理沈晓宇本人即为《行政处罚决定书》当事人（罚款 170 万元），直接触发《上市公司证券发行注册管理办法》第十一条第（三）项"现任董事、高级管理人员最近三年受到中国证监会行政处罚"→ 上市公司自 2025-11-12 起约 3 年内（至约 2028-11）不得向特定对象发行股票。</strong></p>
+
+</div></details>
+<h3 id="sec7">2.3 四类退市红线逐条对照</h3>
+<p><strong>结论：四类退市红线一条未踩，且是"每一条都有很大余量"的未踩——这是本股唯一的正面结构性事实。</strong></p>
+<table><thead><tr><th>类型</th><th>触发条件（速查）</th><th>本股现况</th><th>是否触发</th></tr></thead><tbody><tr><td>财务类①</td><td>孰低为负 <strong>且</strong> 扣除后营收 &lt;3 亿元</td><td>2025 年归母 -0.638 亿元、扣非 -0.618 亿元，<strong>扣除后营业收入 19.99 亿元</strong>（距红线 6.7 倍）</td><td><strong>否</strong>（营收侧完全无虞）</td></tr><tr><td>财务类②</td><td>期末净资产为负</td><td>2025 年末归母净资产 <strong>14.97 亿元</strong>；2026-06-30 <strong>16.87 亿元</strong></td><td><strong>否</strong></td></tr><tr><td>财务类③</td><td>财报被出具无法表示／否定意见</td><td>2025 年财报为<strong>标准无保留意见</strong>（公证天业会计师事务所）</td><td><strong>否</strong></td></tr><tr><td>规范类</td><td>内控连续非标／资金占用／违规担保</td><td>2025 年内控审计报告意见类型＝<strong>标准的无保留意见</strong>；非经营性占用 0；违规担保 0</td><td><strong>否</strong></td></tr><tr><td>交易类</td><td>连续 20 日收盘价 &lt;1 元／市值 &lt;5 亿元／股东数 &lt;2,000</td><td>股价 31.02 元；市值 72.10 亿元</td><td><strong>否</strong></td></tr><tr><td>其他类</td><td>三年累计分红 &lt;年均净利 30% 且 &lt;5,000 万元</td><td>最近一个会计年度净利润为负 ⇒ 前提不成立，整条不适用</td><td><strong>否</strong></td></tr><tr><td>重大违法类</td><td>欺诈发行／造假达量化线</td><td>公司明确声明未触及 9.5.2 条</td><td><strong>否</strong></td></tr></tbody></table>
+<p><strong>路径底表核对</strong>：Andy《退市风险预警-20261005.xlsx》四张工作表中，603595 <strong>仅命中「规范类」工作表</strong>（处罚台账两行，处罚时间分别记为 2025-11-12 与 2025-10-29），交易类／财务类／其他类三表均未收录 —— <strong>与本报告逐条回规则原文核对的结果一致</strong>。</p>
+<p><strong>★ 关于重大违法类的一点补充</strong>：《行政处罚决定书》认定的造假年份为 <strong>2022 年度与 2023 年半年度</strong>，均落在沪主板 9.5.2 第一款第（四）（五）项"<strong>仅适用 2024 年度及以后</strong>"的年度适用范围之外；且单年虚增 3,877.59 万元 &lt;2 亿元、两年合计约 0.66 亿元 &lt;3 亿元，<strong>数值与年度双重不命中</strong>。</p>
+<h3 id="sec8">2.4 摘帽展望：条件只有两条，都已就位或即将就位</h3>
+<p><strong>摘帽路径极清晰：依 9.8.8 条，须同时满足"决定书满 12 个月"与"已完成追溯重述"——后者 2024 年 4 月已完成，前者指向 2026-11-12。不存在实质裁量空间。</strong></p>
+<table><thead><tr><th>条件</th><th>要求</th><th>本股现况</th><th>判定</th></tr></thead><tbody><tr><td>（一）中国证监会作出行政处罚决定书已满 12 个月</td><td>自决定书作出日起算 12 个月</td><td>〔2025〕18 号，<strong>2025-11-12 收到</strong></td><td><strong>2026-11-12 起满足</strong></td></tr><tr><td>（二）已就行政处罚决定所涉事项对相应年度财务会计报告进行追溯重述</td><td>对 2022 年年报、2023 年半年报追溯调整</td><td><strong>2024 年 4 月已披露《关于前期会计差错更正的公告》及补充公告</strong></td><td><strong>已满足</strong></td></tr><tr><td><strong>最早可申请日</strong></td><td>—</td><td>—</td><td><strong>2026-11-12</strong></td></tr><tr><td>附加关</td><td>申请时若已被提起证券虚假陈述诉讼，须就索赔<strong>充分计提预计负债</strong></td><td>公司称"尚未收到投资者索赔诉讼立案通知"</td><td>未触发（须持续跟踪）</td></tr><tr><td>即时撤销通路</td><td>ST 期间收到决定书显示"未触及 9.8.1（七）"可立即撤销</td><td>决定书已认定虚假记载</td><td><strong>走不通</strong></td></tr></tbody></table>
+<details class="fold"><summary>摘帽条款原文与"零制度红利"的验证</summary><div class="fold-body">
+
+<p><strong>9.8.8 条原文（公司公告引用）</strong>："上市公司股票因第 9.8.1 条第一款第（七）项规定情形被实施其他风险警示后，同时符合下列条件的，可以向本所申请撤销对其股票实施的其他风险警示并披露：（一）中国证监会作出行政处罚决定书已满 12 个月；（二）公司已就行政处罚决定所涉事项对相应年度财务会计报告进行追溯重述。"</p>
+<p><strong>★ 零制度红利的两条验证</strong></p>
+<ol><li><strong>涨跌幅已无变化</strong>：主板风险警示股自 <strong>2026-07-06</strong> 起，日涨跌幅限制由 5% 改为 <strong>10%</strong>。本股 2026-09-30 行情直接反证：昨收 31.50 元、<strong>涨停价 34.65 元、跌停价 28.35 元＝±10%</strong>。因此摘帽前（ST）与摘帽后（正常）<strong>都是 10%</strong>，不存在"放宽涨跌幅"的放大效应。</li><li><strong>公司自身口径一致</strong>：2025-12-18 与 2026-03-16 两次互动易答复，均逐字引用同一条 9.8.8 全文，未提及任何提前路径 —— 说明摘帽时点已是全市场公开信息，<strong>无信息差</strong>。</li></ol>
+<p><strong>⚠️ 一处口径提醒</strong>：公司 2025-10-30 的戴帽公告写"股票价格的日涨跌幅限制为 <strong>5%</strong>"，该表述在其公告时点正确，但<strong>引用时须按 2026-07-06 的修订分界线还原为现行 10%</strong>。</p>
+
+</div></details>
+<h3 id="sec9">2.5 第二道锁：发股通道被罚当事人锁死</h3>
+<p><strong>这是一个此前少被提及、但对本股定价至关重要的事实：现任董事长兼总经理沈晓宇是《行政处罚决定书》当事人之一，"发行股份购买资产"这条路径在 2028 年 11 月之前制度上走不通。</strong></p>
+<ul><li><strong>法条</strong>：《上市公司证券发行注册管理办法》<strong>第十一条第（三）项</strong>——"现任董事、监事和高级管理人员最近三年受到中国证监会行政处罚"的，上市公司不得向特定对象发行股票。</li><li><strong>比对结果</strong>：沈晓宇（时任总经理，罚 170 万元）<strong>现任董事长、总经理、法定代表人</strong>（2015-09-08 至今）→ <strong>触发</strong>。</li><li><strong>封锁期</strong>：自 2025-11-12 起约 3 年，<strong>至约 2028-11</strong>。</li><li><strong>化解方式</strong>：条款限"<strong>现任</strong>"，<strong>沈晓宇辞去董事与高级管理人员职务即可解除该情形</strong>。</li><li><strong>连带推论</strong>：</li><li>它同时锁死了"引入产业方／注入资产"这条 A 股最主流的估值引擎；</li><li><strong>现金收购不受该条限制</strong>，但公司货币资金仅 0.79 亿元、短期借款＋一年内到期 12.67 亿元，<strong>现金这条路也走不通</strong>；</li><li>因此<strong>转买入触发条件的第一位，应当是"沈晓宇何时辞去董监高职务"，而不是"公司业绩会不会变好"。</strong></li></ul>
+<hr>
+<h2 id="chap3">三、公司运营</h2>
+<h3 id="sec10">3.1 五年 + 最新一期财务（2026H1 的"转正"是假象）</h3>
+<p><strong>结论先行：2026H1 归母净利润 +1.43 亿元看似"扭亏为盈"，但扣非净利润仍是 -1.62 亿元、且同比恶化 202.47% —— 这 1.43 亿元全部来自转让东尼新能源 31.698% 股权的非经常性处置收益（3.53 亿元）。主业的真实状态是"2026Q1 微利、2026Q2 大幅失血"。</strong></p>
+<table><thead><tr><th>财务项（亿元）</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026H1</th></tr></thead><tbody><tr><td>营业收入</td><td>—</td><td>—</td><td>18.36</td><td>19.81</td><td>21.08</td><td>10.68</td></tr><tr><td>扣除后营业收入</td><td>—</td><td>—</td><td>17.15</td><td>18.38</td><td><strong>19.99</strong></td><td>—</td></tr><tr><td>利润总额</td><td>—</td><td>—</td><td>-9.81</td><td>-0.84</td><td>-1.45</td><td>+1.42</td></tr><tr><td>归母净利润</td><td>—</td><td>—</td><td>-6.07</td><td>+0.12</td><td><strong>-0.64</strong></td><td><strong>+1.43</strong></td></tr><tr><td><strong>扣非归母净利润</strong></td><td>—</td><td>—</td><td>-6.30</td><td><strong>-0.85</strong></td><td><strong>-0.62</strong></td><td><strong>-1.62</strong></td></tr><tr><td>经营活动现金流净额</td><td>—</td><td>—</td><td>-3.40</td><td>+8.87</td><td>+3.59</td><td><strong>-0.77</strong></td></tr><tr><td>归母净资产</td><td>—</td><td>—</td><td>15.52</td><td>15.64</td><td>14.97</td><td><strong>16.87</strong></td></tr><tr><td>资产负债率</td><td>—</td><td>—</td><td>—</td><td>65.58%</td><td><strong>66.63%</strong></td><td><strong>61.63%</strong></td></tr></tbody></table>
+<p>口径：2023—2025 年数据取自 2025 年年报"近三年主要会计数据"（合并口径、归母）；2026H1 取自 2026 年半年报。2021—2022 年数据未在本轮公开材料中取得，故留空，<strong>不作推断</strong>。</p>
+<p><strong>关键读数（三条）</strong>：① <strong>扣非已连续两年为负</strong>（2024 −0.85 亿元、2025 −0.62 亿元），2026H1 进一步扩大到 −1.62 亿元；② <strong>归母净资产从 14.97 亿元升至 16.87 亿元（+12.71%）靠的是处置收益，不是盈利</strong>；③ <strong>经营现金流由 2025H1 的 +1.05 亿元转为 2026H1 的 −0.77 亿元（−173.42%）</strong>。</p>
+<details class="fold"><summary>分季度数据与 2026H1 利润构成拆解</summary><div class="fold-body">
+
+<p><strong>分季度（归母／扣非，万元）</strong></p>
+<table><thead><tr><th>期间</th><th>营业收入</th><th>归母净利</th><th>扣非归母</th></tr></thead><tbody><tr><td>2025Q1</td><td>42,835.97</td><td>+1,088.67</td><td>+549.26</td></tr><tr><td>2025Q2</td><td>41,077.72</td><td>-5,209.87</td><td>-5,907.73</td></tr><tr><td>2025Q3</td><td>61,824.62</td><td>+2,660.70</td><td>+2,591.41</td></tr><tr><td>2025Q4</td><td>65,041.22</td><td>-4,918.85</td><td>-3,411.01</td></tr><tr><td><strong>2026Q1</strong></td><td><strong>60,813.21</strong></td><td><strong>+2,379.68</strong></td><td><strong>+2,198.73</strong></td></tr><tr><td><strong>2026Q2（倒算）</strong></td><td><strong>45,972.84</strong></td><td><strong>+11,914.65</strong></td><td><strong>-18,406.57</strong></td></tr></tbody></table>
+<p><strong>2026H1 利润构成</strong>：归母净利润 14,294.33 万元 ＝ 扣非归母（-16,207.84 万元）＋ 非经常性损益归母（30,502.16 万元）。非经常性损益中最大一项为"<strong>非流动性资产处置损益 35,311.49 万元</strong>"，即转让东尼新能源股权的处置收益。</p>
+<p><strong>"其他符合非经常性损益定义的损益项目 -7,264.33 万元"</strong> 与<strong>少数股东权益影响额 -2,463.67 万元</strong> 为本次处置的配套调整项（公司未逐项展开说明）。</p>
+<p><strong>⇒ 判读：公司主业在 2026Q1 曾短暂转正（扣非 +2,198.73 万元），但 Q2 单季扣非亏 1.84 亿元，把 Q1 的改善全部抹去。Q2 亏损的主要构成是 1.34 亿元减值计提（见 §3.5）与碳化硅业务持续亏损。</strong></p>
+
+</div></details>
+<h3 id="sec11">3.2 分产品：新能源是唯一亮点，碳化硅是黑洞</h3>
+<p><strong>结论先行：公司五块业务里，只有"新能源（FPC/CCS）"在真实成长（2025 年 +78.74%、毛利率 +11.56pct）；消费电子与医疗稳定但增长有限；光伏已近亏损；碳化硅在报表上几乎不存在（占主营 0.42%）。</strong></p>
+<table><thead><tr><th>分产品</th><th>2025 年收入</th><th>占比</th><th>毛利率</th><th>同比</th></tr></thead><tbody><tr><td>消费电子（超微细电子线材、无线充电隔磁材料）</td><td>10.10 亿元</td><td>50.5%</td><td>23.25%</td><td>-2.16%（毛利率 -1.11pct）</td></tr><tr><td><strong>新能源（柔性线路板 FPC、电池极耳）</strong></td><td><strong>7.53 亿元</strong></td><td><strong>37.7%</strong></td><td><strong>19.97%</strong></td><td><strong>+78.74%（毛利率 +11.56pct）</strong></td></tr><tr><td>医疗（医疗线束）</td><td>1.43 亿元</td><td>7.1%</td><td>38.99%</td><td>+6.15%</td></tr><tr><td>光伏（金刚石切割线）</td><td>0.85 亿元</td><td>4.3%</td><td>3.43%</td><td>-52.35%（毛利率 -14.49pct）</td></tr><tr><td><strong>半导体（碳化硅衬底）</strong></td><td><strong>0.083 亿元</strong></td><td><strong>0.42%</strong></td><td><strong>-400.17%</strong></td><td><strong>-88.21%</strong></td></tr><tr><td>制造业合计</td><td>19.99 亿元</td><td>100%</td><td>20.53%</td><td>+8.80%</td></tr></tbody></table>
+<p><strong>热点业务占比定位（必答项）</strong>：市场给本股的标签是"碳化硅衬底＋半导体"，而<strong>半导体业务 2025 年收入仅 834.59 万元、占主营业务收入 0.42%，毛利率 -400.17%</strong>（公司 2026-06-27 问询函回复"重要内容提示"原文自认）。<strong>不得用"碳化硅高景气"的叙事替代整体基本面——它在报表上是一个负毛利的小数字。</strong></p>
+<p><strong>四类审美标签</strong>：消费电子与医疗＝<strong>长期价值</strong>（稳定微利、毛利 23%／39%）；新能源 FPC/CCS＝<strong>景气成长</strong>（高增速＋毛利率提升）；光伏＝<strong>业务反转待观察</strong>（营收腰斩、毛利率仅 3.43%）；碳化硅＝<strong>题材炒作</strong>（0.42% 占比、负毛利、累计投入 21.7 亿元）。</p>
+<h3 id="sec12">3.3 碳化硅：投入 21.7 亿元，换来 834.59 万元收入</h3>
+<p><strong>这是本报告的核心判断：碳化硅业务是一个"资本开支黑洞"，它同时解释了本案的造假案发（造假三手段全部发生在碳化硅合同履行过程中）、子公司净资产转负、以及上市公司高达 12.58 亿元的其他应收款挂账。</strong></p>
+<table><thead><tr><th>半导体业务</th><th>2023 年</th><th>2024 年</th><th>2025 年</th><th>2026H1</th></tr></thead><tbody><tr><td>营业收入（万元）</td><td>12,940.92</td><td>7,081.52</td><td><strong>834.59</strong></td><td>1,227.20（东尼半导体）</td></tr><tr><td>营业成本（万元）</td><td>19,503.97</td><td>9,088.69</td><td>4,174.40</td><td>—</td></tr><tr><td>毛利（万元）</td><td>-6,563.05</td><td>-2,007.18</td><td><strong>-3,339.81</strong></td><td>—</td></tr><tr><td>毛利率</td><td>-50.72%</td><td>-28.34%</td><td><strong>-400.17%</strong></td><td>—</td></tr><tr><td>销售量（KPCS）</td><td>47.70</td><td>31.06</td><td>6.58</td><td>—</td></tr><tr><td>平均单价（元/PCS）</td><td>2,712.98</td><td>2,279.95</td><td>1,268.37</td><td>—</td></tr><tr><td><strong>资金投入（万元）</strong></td><td><strong>145,254.30</strong></td><td><strong>44,305.65</strong></td><td><strong>27,502.28</strong></td><td>—</td></tr></tbody></table>
+<p><strong>三年累计投入 217,062.23 万元（约 21.7 亿元），2025 年对应收入 834.59 万元。</strong> 公司对亏损原因的解释是"行业竞争激烈导致平均单价逐年下降、销量下降，且受下游客户规格参数持续加严及公司资金流动性压力的影响，产能未能按计划释放"，并自认"<strong>近三年的半导体业务收入规模尚小且呈下降趋势，市场占有率较低</strong>"。</p>
+<p><strong>★ 载体东尼半导体的最新状态（2026H1）</strong></p>
+<table><thead><tr><th>报表项</th><th>2025 年末</th><th>2026-06-30</th></tr></thead><tbody><tr><td>总资产</td><td>165,825.02 万元</td><td>160,663.75 万元</td></tr><tr><td><strong>净资产</strong></td><td><strong>+8,024.06 万元</strong></td><td><strong>-8,363.29 万元（转负）</strong></td></tr><tr><td>营业收入</td><td>843.22 万元</td><td>1,227.20 万元</td></tr><tr><td>净利润</td><td>-19,883.73 万元</td><td><strong>-16,387.35 万元</strong></td></tr><tr><td>少数股东权益余额</td><td>2,606.22 万元</td><td><strong>-2,716.40 万元（转负）</strong></td></tr></tbody></table>
+<p><strong>上市公司对东尼半导体的其他应收款（合并范围内关联方资金往来）2026-06-30 为 1,258,200,998.50 元＝12.58 亿元，占其他应收款期末余额合计数的 87.98%</strong>（2026 半年报附注）。<strong>⇒ 上市公司已通过往来款向碳化硅业务输血 12.58 亿元，占公司总资产 43.25 亿元的 29.1%。</strong></p>
+<details class="fold"><summary>为什么说碳化硅是"黑洞"而不是"暂时困难"——三层商业逻辑的解释</summary><div class="fold-body">
+
+<p><strong>第一层：这是一个"卖一亏四"的商业模式，而不是"规模不够所以亏"。</strong> 2025 年半导体业务营业成本 4,174.40 万元对应收入 834.59 万元，即每实现 1 元收入要耗费 5 元成本，毛利率 -400.17%。规模效应在某些制造业里可以解释初期亏损，但<strong>当单价以每年约 15%—20% 的速度下滑（2,712.98 → 2,279.95 → 1,268.37 元/PCS）、而销量下滑得更快（47.70 → 31.06 → 6.58 KPCS）时，扩大规模只会同比放大亏损</strong> —— 这是"量价齐跌 + 成本刚性"的组合，不是产能爬坡的正常代价。</p>
+<p><strong>第二层：产品结构与客户认证都没有落地。</strong> 公司 2026-02-03 在互动易明确答复"<strong>目前公司碳化硅衬底没有通过中车时代、华为等认证</strong>"；半年报自述"已向客户小批量交付 8 英寸导电型衬底""向士兰微等多家碳化硅器件客户陆续交付 6 英寸和 8 英寸导电型衬底"，但<strong>未披露任何一家客户的名称、订单量或框架协议金额</strong>。对照同行业上市公司（天岳先进 2025 年碳化硅衬底收入在数十亿元量级），本公司的"小批量"与"陆续交付"属于<strong>样品/试产阶段</strong>的经济体量。</p>
+<p><strong>第三层：资金被抽干，形成负向循环。</strong> 三年 21.7 亿元投入的资金来源，一部分来自银行借款（体现为 12.67 亿元短期债务与 18.32 亿元受限资产），一部分来自上市公司对子公司的往来款（<strong>其他应收款 12.58 亿元</strong>）。而公司自己在问询函回复中把亏损原因归结为"<strong>受资金流动性压力，产能未能按计划释放</strong>" —— 这构成一个闭环：<strong>投入越多 → 债务与往来款越大 → 流动性越紧 → 产能越放不出来 → 收入越小 → 越需要继续输血</strong>。东尼半导体 2026 年 6 月末净资产已转负（-8,363.29 万元），少数股东权益亦转负（-2,716.40 万元），是这一循环已经走到的位置。</p>
+<p><strong>三条反向读数（必须并列写出，避免一边倒）</strong>：① 公司在 8 英寸／12 英寸上确有技术动作（8 英寸已小批量交付、12 英寸导电型与半绝缘型已部分送样），若行业价格触底，存在修复可能；② 2026H1 东尼半导体收入 1,227.20 万元已高于 2025 年全年的 834.59 万元，公司称"毛利亏损逐步收窄"；③ 该业务对应的固定资产与在建工程已大量抵押（受限资产中固定资产抵押 11.06 亿元、在建工程抵押 2.67 亿元），<strong>其处置本身也会受限于抵押权</strong>，这既说明沉没成本高，也说明"简单关停"并非零代价选项。</p>
+
+</div></details>
+<details class="fold"><summary>公司对碳化硅的全部公开口径（互动易原文，含证伪项）</summary><div class="fold-body">
+
+<p><strong>公司对碳化硅的关键问答（按时间降序）</strong></p>
+<table><thead><tr><th>时点</th><th>投资者提问要点</th><th>公司答复要点</th><th>判读</th></tr></thead><tbody><tr><td>2026-07-03</td><td>"据传公司的碳化硅已全面复产，是否为真"</td><td>"公司半导体材料的产销情况请以后续披露的定期报告为准"</td><td>回避</td></tr><tr><td>2026-06-29</td><td>询问 SiC 业务的产线、规格、产能、良率、产能利用率、下游占比</td><td>答"主要产品为碳化硅单晶衬底，具体情况可详见 2025 年年度报告"</td><td>零增量</td></tr><tr><td>2026-05-22</td><td>碳化硅是否适用于 AI 电源及先进封装、有无实质进展</td><td>指引 2025 年年度报告</td><td>零增量</td></tr><tr><td><strong>2026-02-03</strong></td><td><strong>"公司衬底是否通过了中车时代、华为等认证？8 英寸衬底目前什么进度？"</strong></td><td><strong>"目前公司碳化硅衬底没有通过上述企业认证"</strong></td><td><strong>★ 硬否认</strong></td></tr><tr><td>2025-12-25</td><td>碳化硅项目是否已实现量产</td><td>指引年报</td><td>回避</td></tr><tr><td>2025-12-11</td><td>"公司官网已删除碳化硅不良率相关内容，是否意味着仍达不到行业标准"</td><td>"公司碳化硅项目具体情况请关注后续披露的年度报告"</td><td>回避</td></tr></tbody></table>
+<p><strong>★ 其他被公司明确否认的题材（可直接用于证伪）</strong></p>
+<table><thead><tr><th>题材</th><th>公司口径</th><th>时点</th></tr></thead><tbody><tr><td>复合集流体（含"已获宁德时代、亿纬锂能订单"传闻）</td><td>"<strong>尚处于研发阶段</strong>"，由母公司实施</td><td>2025-12-04 至 2026-04-24 共 5 次</td></tr><tr><td>机器人</td><td>"目前公司<strong>没有产品</strong>应用于该领域"</td><td>2026-01-15</td></tr><tr><td>航空航天</td><td>"目前公司<strong>没有产品</strong>应用于该领域"</td><td>2026-01-15</td></tr><tr><td>脑机接口电极丝</td><td>"目前公司<strong>没有研发、生产</strong>上述产品"</td><td>2026-01-07（两次）</td></tr><tr><td>AI 眼镜</td><td>"目前公司<strong>产品未应用</strong>在该领域"</td><td>2025-12-03</td></tr><tr><td>金刚石散热片</td><td>"目前公司业务<strong>不涉及</strong>金刚石散热片"</td><td>2026-06-29</td></tr><tr><td>SpaceX 供货</td><td>"目前公司<strong>没有产品供货</strong>该公司"</td><td>2025-12-25</td></tr><tr><td>英伟达合作</td><td>"目前公司与该公司<strong>未有业务合作</strong>"</td><td>2025-12-18</td></tr><tr><td>清纯半导体、派恩杰</td><td>"目前公司与上述公司<strong>无业务往来</strong>"</td><td>2025-12-03</td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec13">3.4 东尼新能源：被卖掉的那块好资产</h3>
+<p><strong>结论先行：2026H1 的"扭亏为盈"完全建立在一笔处置收益上——把公司增速最快、最赚钱的子公司（东尼新能源，2025 年营收 6.63 亿元、净利 0.66 亿元）的控制权卖了出去，回笼约 2.63 亿元现金。</strong></p>
+<table><thead><tr><th>交易要素</th><th>内容</th></tr></thead><tbody><tr><td>标的</td><td>湖州东尼新能源有限公司（FPC／CCS，曾用名东尼藤森新材料）</td></tr><tr><td>交易前持股</td><td>65.00%</td></tr><tr><td>转让比例</td><td><strong>合计 31.698%</strong>（其中 21.698% 给湖州东利与湖州人才基金二期，10% 给员工持股平台）</td></tr><tr><td>对价</td><td>21.698% 股权作价 <strong>23,000.00 万元</strong>（按评估值 10.6 亿元）；10% 股权作价 <strong>3,335.67 万元</strong>（按账面净资产 3.3357 亿元）；合计约 <strong>2.63 亿元</strong></td></tr><tr><td>净资产评估值</td><td>106,000.00 万元，较账面净资产 33,356.67 万元<strong>增值 72,643.33 万元、增值率 217.78%</strong></td></tr><tr><td>交易后持股</td><td><strong>33.302%</strong>，由控股子公司变为<strong>联营企业</strong></td></tr><tr><td>交割时点</td><td><strong>2026 年 5 月完成控制权交割，自 2026 年 6 月起不再并入合并报表</strong></td></tr><tr><td>交易对方背景</td><td>湖州东利、湖州人才基金二期执行事务合伙人均为<strong>湖州市创新创业投资有限公司</strong>（湖州国资系），构成一致行动人</td></tr><tr><td>是否关联交易</td><td>否；是否重大资产重组：否</td></tr></tbody></table>
+<p><strong>东尼新能源的经营体量（转让前）</strong>：2025 年营业收入 66,282.88 万元（6.63 亿元）、营业利润 7,031.29 万元、净利润 6,632.17 万元；2026H1（1—5 月并表期）营业收入 52,473.95 万元、净利润 2,166.91 万元。</p>
+<p><strong>★ 两条必须并列写出的反向读数</strong></p>
+<ol><li><strong>"回笼现金、聚焦主业"的正面意义有限</strong>：回笼约 2.63 亿元现金，相对公司 12.67 亿元的短期债务规模，仅覆盖约 20.8%；</li><li><strong>它把"增长最快的那条腿"从合并报表里拿走了</strong>：新能源业务 2025 年营收增速 +78.74%、毛利率提升 11.56pct，是五块业务里唯一真实成长的；出表后，公司<strong>合并报表的增长引擎只剩下消费电子（+(-2.16%)）与医疗（+6.15%）</strong>，而碳化硅仍是负贡献。</li></ol>
+<h3 id="sec14">3.5 债务、受限资产与一项被忽略的或有负债</h3>
+<p><strong>结论先行：公司流动性紧张且资产被大量抵押——受限资产 18.32 亿元、短期债务 12.67 亿元对货币资金 0.79 亿元；更被忽略的是一项"子公司少数股东回购权"，一旦行使将构成约 2.3 亿元本金＋8%/年利息的现金支出义务。</strong></p>
+<table><thead><tr><th>财务项</th><th>2026-06-30</th><th>说明</th></tr></thead><tbody><tr><td>资产负债率</td><td><strong>61.63%</strong></td><td>较 2025 年末下降 5.00pct（主因处置子公司出表）</td></tr><tr><td>短期借款＋一年内到期长期借款</td><td><strong>126,724.69 万元</strong></td><td>较上年末下降 5.95%</td></tr><tr><td>应付账款</td><td>72,259.04 万元</td><td>较上年末下降 39.65%</td></tr><tr><td>货币资金</td><td><strong>7,935.46 万元</strong></td><td>其中受限 4,362.00 万元（冻结）</td></tr><tr><td><strong>受限资产合计</strong></td><td><strong>183,230.52 万元</strong></td><td>固定资产抵押 110,564.05 万元、投资性房地产抵押 36,434.36 万元、在建工程 26,729.27 万元、无形资产 5,140.85 万元、货币资金 4,362.00 万元</td></tr><tr><td>2026H1 信用减值损失</td><td>3,406.26 万元</td><td>应收账款 770.26 万元、其他应收款 2,606.46 万元</td></tr><tr><td>2026H1 存货跌价损失</td><td><strong>10,025.83 万元</strong></td><td>其中发出商品 10,009.93 万元、库存商品 -1,294.90 万元（转回）</td></tr><tr><td>2026H1 减值合计</td><td><strong>13,432.09 万元</strong></td><td>减少利润总额 1.34 亿元</td></tr><tr><td>2025 年度存货跌价损失</td><td>15,325.91 万元</td><td>2025Q4 单季 3,850.94 万元</td></tr><tr><td>2025 年末存货</td><td>账面余额 13.13 亿元、跌价准备 6.32 亿元、账面价值 6.81 亿元</td><td>跌价准备占账面余额 <strong>48.1%</strong></td></tr></tbody></table>
+<p><strong>★ 被忽略的或有负债：东尼半导体少数股东的三年回购权</strong></p>
+<p>2023 年 4 月，顾小荣、叶佩华、钱鑫祥三人向东尼半导体增资合计 <strong>2.3 亿元</strong>（对应少数股东持股 32.48%）。据公司定期报告披露的条款：<strong>"子公司少数股东在支付增资款之日起满三年后，有权要求公司以评估金额与投资额及按 8%/年回报率（单利）计算的利息之和孰高者收购其所持子公司股权。"</strong> ⇒ 自 <strong>2026 年 4 月起</strong>该权利已可行使。</p>
+<p><strong>敏感性测算（本报告测算，非公司披露）</strong>：若三人行使该权利，公司须支付的最低金额为 <code>max(东尼半导体 32.48% 股权评估值, 2.3 亿元 × (1+8%×3))</code>。<strong>因东尼半导体 2026-06-30 净资产已为 -8,363.29 万元，其 32.48% 股权按账面值计为负值，故实际将按"本金＋利息"孰高者执行，即约 2.30 亿元 × 1.24 ≈ 2.85 亿元</strong>（若按三年整计算；实际起算日以增资款支付日为准，公司未披露具体日期）。</p>
+<p><strong>⚠️ 两条配套判读</strong>：① 该义务<strong>不在资产负债表内体现为负债</strong>（仅在定期报告"风险提示"中提及）；② 公司 2026-04-30 与 2026-06-29 两次被投资者直接问及该回购权，均以"公司将根据交易进展和相关规定及时履行信息披露义务"回应，<strong>未给出任何具体安排</strong>。</p>
+<hr>
+<h2 id="chap4">四、基本面路径（路径 C · 处罚 ST）</h2>
+<h3 id="sec15">4.1 三条修复要件</h3>
+<p><strong>结论先行：三条修复要件中，两条已客观达成（追溯重述、审计意见），一条作为"帽子依据"已在制度上无从追加——本案的"基本面路径"实际上是空的，公司没有需要做的动作，只等时间。</strong></p>
+<table><thead><tr><th>关卡</th><th>要求</th><th>现况</th><th>依据</th></tr></thead><tbody><tr><td>追溯重述</td><td>对 2022 年年报、2023 年半年报追溯调整</td><td><strong>2024 年 4 月已完成</strong></td><td>决定书原文"2024 年 4 月，公司披露……对前述事项进行追溯调整"</td></tr><tr><td>审计意见</td><td>无保留意见</td><td>2025 年财报<strong>标准无保留意见</strong>（公证天业）</td><td>2025 年年度报告"重要提示"三</td></tr><tr><td>内控意见</td><td>无保留</td><td>2025 年内控审计报告<strong>标准的无保留意见</strong>；且注明年报"报告期或上年度是否被出具内部控制非标准审计意见：否"</td><td>2025 年年度报告"十二、内部控制审计报告的相关情况说明"</td></tr><tr><td>无叠加事由</td><td>不存在其他风险警示情形</td><td>非经营性占用 0、违规担保 0、无在途立案</td><td>2026 半年报"重要提示"七、八</td></tr></tbody></table>
+<p><strong>⇒ 公司的三条"常规动作"（补制度、改流程、做培训）在 2025 年 12 月已完成一轮</strong>（《内部审计制度》《信息披露管理制度》等 12 项制度修订），但<strong>这些动作对摘帽并无必要</strong>——摘帽条件纯属客观。<strong>报告主线应当写成"等日历"，而不是"保壳动作清单"。</strong></p>
+<h3 id="sec16">4.2 投资者索赔：一项未量化的敞口</h3>
+<ul><li><strong>公司口径</strong>（2026 半年报）："报告期内，公司尚未收到投资者索赔诉讼立案通知"。</li><li><strong>法律基础</strong>：处罚决定书已下达，虚假陈述的实施日／揭露日可界定（可能的区间为 2023—2024 年相关期间）。</li><li><strong>9.8.8 附加关</strong>：申请撤销其他风险警示时，<strong>若已被提起证券虚假陈述诉讼，公司须就投资者索赔事项充分计提预计负债</strong> → <strong>该敞口一旦立案，将直接推迟或影响摘帽的时间与金额</strong>。</li><li><strong>判读</strong>：截至基准日<strong>无立案、无计提</strong>，故<strong>不构成当期资产负债表冲击</strong>；但它是摘帽时点上的一道"不确定闸门"，须列入附录 A 持续跟踪。</li></ul>
+<hr>
+<h2 id="chap5">五、炒作逻辑三支柱 + 情绪面 + 筹码面</h2>
+<h3 id="sec17">5.1 三支柱</h3>
+<p><strong>结论先行：当前最强的支柱是②"炒历史类似行为"——但它的读法恰恰反过来：本股已在同类样本的上涨组前端，"同类上涨"不是买入理由，而是"涨幅已透支"的证据；①"炒预期"只有一个公开日历；③"炒主板映射"结论为负向（主线未延伸到本股）。</strong></p>
+<p><strong>① 炒预期（未来 6—12 个月的可验证节点）</strong></p>
+<table><thead><tr><th>节点</th><th>硬／软</th><th>距今</th><th>判读</th></tr></thead><tbody><tr><td>撤销 ST 申请（2026-11-12 起）</td><td><strong>硬节点（公开日历）</strong></td><td>约 5 周</td><td>零信息差；且摘帽不改涨跌幅</td></tr><tr><td>交易所核准</td><td>硬节点</td><td>申请后约 3 周</td><td>条件客观，通过概率高</td></tr><tr><td>2026 三季报（约 2026-10 下旬）</td><td>硬节点</td><td>约 3 周</td><td>观察 Q3 扣非是否延续 -1.8 亿元量级</td></tr><tr><td>东尼半导体少数股东回购权是否行使</td><td>软</td><td>已可行使</td><td>尾部风险项</td></tr><tr><td>碳化硅业务是否止亏</td><td>软</td><td>—</td><td>决定 2027 年净资产与审计意见</td></tr></tbody></table>
+<p><strong>② 炒历史类似行为（相似股票匹配法）</strong></p>
+<p><strong>本股画像</strong>：沪主板"假 ST"（9.8.1 一款(七)）／市值 72 亿元／半导体材料＋消费电子线材／已进入"摘帽条件就位、等待申请"的末期阶段／驱动类型＝摘帽预期＋出售子公司收款／历史炒作符号＝碳化硅衬底＋消费电子（苹果）＋华为＋新能源汽车。</p>
+<p><strong>最像的样本与它们的后续走势</strong>：</p>
+<table><thead><tr><th>样本</th><th>相似点</th><th>差异点</th><th>2026 年 YTD</th></tr></thead><tbody><tr><td><strong>ST京蓝（000711）</strong></td><td>同为假 ST、同为"年报财务指标虚假记载"</td><td>京蓝有业绩补偿款＋非洲矿（"有物"）</td><td><strong>+170.76%</strong></td></tr><tr><td><strong>ST派瑞（300831）</strong></td><td>同为假 ST、摘帽同为"决定书满 12 个月"</td><td>派瑞扣非已转正、经营干净</td><td>+20.65%</td></tr><tr><td><strong>ST惠伦（300460）</strong></td><td>同为假 ST</td><td>惠伦另有控制权暗战</td><td>+16.17%</td></tr><tr><td><strong>ST司特（002538）</strong></td><td>同为假 ST、同为"决定书满 12 个月即摘帽"</td><td>司特摘帽晚（2027 年 8 月）</td><td>+7.14%</td></tr><tr><td><strong>ST京机（000821）</strong></td><td>同为假 ST＋半导体设备</td><td>京机决定书未下、计时未起算</td><td><strong>-45.82%</strong></td></tr><tr><td><strong>ST荃银（300087）</strong></td><td>同为假 ST</td><td>荃银有央企入主</td><td><strong>-51.28%</strong></td></tr></tbody></table>
+<p><strong>★ 同类样本全集（39 只"单纯假 ST"）2026 年涨跌幅：中位 −14.85%／均值 −9.48%／上涨 11/39。本股 +83.44% 排第 2。</strong></p>
+<p><strong>结论：本股落在"上涨组"的最前端。</strong> 按同型分组的经验规律，上涨组样本的共同点是"有一个可命名的载体"，而本股唯一的"物"（东尼新能源股权）是<strong>往外卖</strong>、不是往里装，方向与上涨样本相反；因此<strong>"同类都涨"不能支持"本股还便宜"，只能支持"它的相对涨幅已经领先"。另一个必须写明的反直觉读数：本股下跌样本（京机 −45.82%、荃银 −51.28%）与上涨样本在"戴帽原因"上完全相同 —— 戴帽原因不是区分变量，"有没有物"才是。</strong></p>
+<details class="fold"><summary>假 ST 同型样本 39 只完整价格序列（2026 年 YTD，腾讯自选股批量截面）</summary><div class="fold-body">
+
+<table><thead><tr><th>代码</th><th>简称</th><th>现价</th><th>PB</th><th>YTD</th></tr></thead><tbody><tr><td>000711</td><td>京蓝科技</td><td>4.63</td><td>18.73</td><td>+170.76%</td></tr><tr><td><strong>603595</strong></td><td><strong>ST东尼</strong></td><td><strong>31.02</strong></td><td><strong>4.27</strong></td><td><strong>+83.44%</strong></td></tr><tr><td>300311</td><td>任子行</td><td>6.15</td><td>6.53</td><td>+38.51%</td></tr><tr><td>002872</td><td>ST天圣</td><td>6.19</td><td>1.02</td><td>+27.37%</td></tr><tr><td>300831</td><td>ST派瑞</td><td>13.24</td><td>4.39</td><td>+20.65%</td></tr><tr><td>300460</td><td>ST惠伦</td><td>8.91</td><td>5.82</td><td>+16.17%</td></tr><tr><td>600079</td><td>ST人福</td><td>19.17</td><td>1.62</td><td>+8.74%</td></tr><tr><td>002424</td><td>ST百灵</td><td>4.69</td><td>2.11</td><td>+7.82%</td></tr><tr><td>688053</td><td>ST思科瑞</td><td>39.39</td><td>2.47</td><td>+7.18%</td></tr><tr><td>002538</td><td>ST司特</td><td>6.75</td><td>1.10</td><td>+7.14%</td></tr><tr><td>000698</td><td>ST沈化</td><td>3.72</td><td>2.09</td><td>+1.64%</td></tr><tr><td>300527</td><td>中船应急</td><td>7.89</td><td>2.74</td><td>-2.17%</td></tr><tr><td>300462</td><td>ST华铭</td><td>11.38</td><td>1.52</td><td>-3.56%</td></tr><tr><td>600169</td><td>ST太重</td><td>2.19</td><td>1.39</td><td>-3.95%</td></tr><tr><td>002122</td><td>ST汇洲</td><td>2.84</td><td>2.68</td><td>-5.33%</td></tr><tr><td>300237</td><td>ST美晨</td><td>2.41</td><td>175.41</td><td>-6.59%</td></tr><tr><td>002689</td><td>ST远智</td><td>2.93</td><td>2.49</td><td>-7.28%</td></tr><tr><td>603517</td><td>ST绝味</td><td>11.43</td><td>1.14</td><td>-10.42%</td></tr><tr><td>600624</td><td>ST复华</td><td>4.61</td><td>7.70</td><td>-12.85%</td></tr><tr><td>002193</td><td>ST如意</td><td>4.53</td><td>5.76</td><td>-14.85%</td></tr><tr><td>603825</td><td>ST华扬</td><td>7.61</td><td>-28.48</td><td>-16.00%</td></tr><tr><td>600082</td><td>ST海泰</td><td>3.32</td><td>1.28</td><td>-18.23%</td></tr><tr><td>300366</td><td>ST创意</td><td>5.56</td><td>3.11</td><td>-18.36%</td></tr><tr><td>688189</td><td>ST南新</td><td>6.44</td><td>2.28</td><td>-19.20%</td></tr><tr><td>600165</td><td>宁科生物</td><td>3.35</td><td>5.03</td><td>-19.28%</td></tr><tr><td>002586</td><td>围海股份</td><td>3.62</td><td>1.30</td><td>-19.38%</td></tr><tr><td>688076</td><td>ST诺泰</td><td>29.76</td><td>3.04</td><td>-20.32%</td></tr><tr><td>002861</td><td>瀛通通讯</td><td>14.04</td><td>2.61</td><td>-21.08%</td></tr><tr><td>300173</td><td>ST福能</td><td>3.33</td><td>3.17</td><td>-21.28%</td></tr><tr><td>603822</td><td>ST嘉澳</td><td>64.50</td><td>10.98</td><td>-33.07%</td></tr><tr><td>002598</td><td>ST章鼓</td><td>6.81</td><td>1.71</td><td>-35.69%</td></tr><tr><td>300081</td><td>ST恒信</td><td>3.23</td><td>2.68</td><td>-37.76%</td></tr><tr><td>688270</td><td>ST臻镭</td><td>53.20</td><td>6.84</td><td>-39.02%</td></tr><tr><td>002512</td><td>ST达华</td><td>3.76</td><td>12.87</td><td>-39.65%</td></tr><tr><td>601718</td><td>ST际华</td><td>1.94</td><td>0.71</td><td>-42.09%</td></tr><tr><td>000821</td><td>ST京机</td><td>7.28</td><td>1.09</td><td>-45.82%</td></tr><tr><td>002217</td><td>ST合力泰</td><td>1.53</td><td>6.12</td><td>-49.84%</td></tr><tr><td>300087</td><td>ST荃银</td><td>5.69</td><td>3.31</td><td>-51.28%</td></tr><tr><td>002759</td><td>ST天际</td><td>13.54</td><td>1.93</td><td>-70.84%</td></tr><tr><td>301139</td><td>元道退</td><td>0.91</td><td>0.06</td><td>-95.04%</td></tr></tbody></table>
+<p><strong>中位 −14.85%／均值 −9.48%／上涨 11/39。</strong>（零售额由"戴帽原因含虚假记载／事先告知书"且<strong>不叠加其他红线事由</strong>的 39 只构成本报告样本池。）</p>
+
+</div></details>
+<p><strong>③ 炒主板映射（主板在炒什么 + ST 板块可映射对象）</strong></p>
+<p><strong>结论：本股的对映主线（碳化硅）2026 年在主板是下跌的，消费电子线材整体也在下跌——只有"苹果链 PCB"（东山精密、鹏鼎控股）在涨，而本股不在那条线上。因此主板映射结论为负向。</strong></p>
+<table><thead><tr><th>主线</th><th>主板代表</th><th>YTD</th><th>ST 板块可映射对象</th><th>关联度</th></tr></thead><tbody><tr><td>碳化硅衬底／功率器件</td><td>天岳先进 +17.45%、露笑科技 -14.81%、三安光电 -18.75%、晶盛机电 -1.81%</td><td>中位约 -8%</td><td>本股自身</td><td>高（但主业占比 0.42%）</td></tr><tr><td>消费电子线材／无线充电</td><td>信维通信 -17.30%、电连技术 -17.08%、领益智造 -23.35%、瀛通通讯 -21.08%</td><td>中位约 -17%</td><td>本股自身</td><td>高（占比 50.5%）</td></tr><tr><td>苹果链 PCB</td><td>东山精密 +97.76%、鹏鼎控股 +60.45%</td><td>强</td><td>—</td><td><strong>本股不在此线</strong></td></tr></tbody></table>
+<p><strong>⇒ 本股 YTD +83.44% 与同业中位 -15.95% 的约 99 个百分点差额，不能由任何行业 β 解释，只能由"ST 摘帽预期 + 出售子公司收款"这两件公司特有事件解释。这意味着一旦事件兑现，缺乏板块承接。</strong></p>
+<h3 id="sec18">5.2 情绪面与筹码面</h3>
+<p><strong>结论先行：注意力的峰值出现在 2026 年 5—7 月（12 天 8 板、股价 19.99→36.98 元），此后已进入退潮期；龙虎榜在 6 月两次净卖出，公告自 2026-09-12 起空窗 24 天，换手率降至 0.66%。</strong></p>
+<ul><li><strong>炒作波段（韭研公社异动表 63 条，时间降序）</strong></li></ul>
+<table><thead><tr><th>行情阶段</th><th>时点区间</th><th>驱动关键词</th><th>连板极值</th><th>股价区间</th></tr></thead><tbody><tr><td>第三波（当前退潮期）</td><td>2026-05-13 至 2026-09-02</td><td>碳化硅＋收到转让款＋一季报增长＋消费电子（苹果）</td><td><strong>12 天 8 板（2026-07-01）／10 天 5 板／8 天 6 板</strong></td><td>19.99 → 36.98（高点）→ 30.24</td></tr><tr><td>第二波</td><td>2026-04-08 至 2026-04-24</td><td>股权转让＋一季报增长＋消费电子（苹果）＋碳化硅</td><td>—</td><td>15.16 → 18.58</td></tr><tr><td>第一波</td><td>2020-08 至 2023-10</td><td>无线充电材料／苹果／碳化硅衬底／华为／金刚石切割线／太阳能胶膜</td><td>5 天 3 板（2021-06）／3 天 3 板（2022-04、2023-01）</td><td>21.69 → 80.65（2023-01-11）</td></tr></tbody></table>
+<ul><li><strong>炒作符号（六年间高度稳定）</strong>：<strong>碳化硅（27 次）＋消费电子/苹果（29 次）＋收到转让款（17 次）＋新能源汽车（14 次）＋华为（13 次）</strong>。2026 年新增"股权转让／收到转让款／一季报增长"三个关键词 —— 即<strong>这一轮行情的燃料不是碳化硅产业进展，而是"卖资产拿钱 + 摘帽预期"。</strong></li><li><strong>龙虎榜（2026 年 4 次上榜）</strong>：2026-05-15 净买 +1,252.90 万元（换手 6.13%）；2026-05-26 净买 +1,729.28 万元（换手 1.10%）；<strong>2026-06-23 净卖 -1,071.72 万元（换手 0.11%，一字板）</strong>；<strong>2026-06-26 净卖 -1,034.59 万元（换手 1.45%）</strong>。⇒ <strong>上涨段有买入、高位段转为净卖出，属派发型形态。</strong></li><li><strong>注意力读数</strong>：换手率 <strong>0.66%</strong>、成交额 4,840 万元（2026-09-30）；<strong>公告自 2026-09-12 起空窗 24 天</strong>（至基准日无新公告）；最后一次异动记录 2026-09-02。</li><li><strong>雪球情绪（线索级）</strong>：2026-08 讨论出现"翻倍""第二波"等表述，也有"8 月仅实控人部分股份解质押公告，不属于利好催化，摘帽申请、业绩预盈均为 7 月旧公告"的冷静读数（雪球评论，2026-08-14）。</li></ul>
+<p><strong>★ 一条必须写出的反向读数：股价已从 2026-07-01 的高点 36.98 元回落至 31.02 元（-16.1%），但仍高于行情启动前（2026-04-08 的 15.16 元）一倍。所谓"回落"只是从极高位回到高位，不构成安全边际。</strong></p>
+<hr>
+<h2 id="chap6">六、估值与投资结论</h2>
+<h3 id="sec19">6.1 估值：只有 PB 可用，且它不便宜</h3>
+<p><strong>结论先行：公司扣非连续为负，PE 与 PS 均缺乏盈利支撑，唯一可用的 PB 为 4.27 倍、恰在同业中枢——这意味着"估值便宜"不成立；真正的定价来源是"摘帽日历＋碳化硅想象"，而这两者都不构成对 72 亿元市值的支撑。</strong></p>
+<ul><li><strong>市值 72.10 亿元、归母净资产 16.87 亿元 → PB 4.27 倍</strong>（同业 12 家中位约 4.38 倍）</li><li><strong>PS(2025) ＝ 72.10 ÷ 21.08 ＝ 3.42 倍</strong>；按 2026H1 年化营收（约 21.36 亿元）计 PS ≈ 3.38 倍</li><li><strong>扣非为负（2026H1 -1.62 亿元）→ PE 不适用</strong>；行情的 31.02 元／PE 59.91 倍是基于"含处置收益的归母净利"，不具持续性</li><li><strong>每股净资产 7.26 元</strong>，现价为其 4.27 倍</li></ul>
+<p><strong>情景表（基于 2027-04 年报的口径，概率为本报告主观赋值）</strong></p>
+<table><thead><tr><th>情景</th><th>关键假设</th><th>概率</th><th>2027-04 前可能股价区间</th><th>依据</th></tr></thead><tbody><tr><td>乐观</td><td>摘帽顺利＋碳化硅止亏＋三、四季度营收延续 +27%</td><td>20%</td><td>34—40 元</td><td>需碳化硅毛利率从 -400% 明显修复（尚无证据）</td></tr><tr><td>中性</td><td>摘帽顺利、碳化硅继续小规模亏损、主业微利</td><td>55%</td><td>24—32 元</td><td>现价已在此区间上沿</td></tr><tr><td>悲观</td><td>碳化硅继续大额减值／少数股东行使回购权／投资者索赔立案</td><td>25%</td><td>15—22 元</td><td>分别对应净资产、现金流与摘帽时点三重压力</td></tr></tbody></table>
+<p><strong>概率加权中枢 ≈ 26.4 元，低于现价 31.02 元约 14.9%。</strong></p>
+<details class="fold"><summary>估值口径说明：为什么本股只能看 PB、而 PB 也不是安全垫</summary><div class="fold-body">
+
+<p><strong>（一）为什么不能用 PE。</strong> 本股 2026-09-30 行情显示的 PE(TTM) 为 59.91 倍，其分母包含 2026H1 由处置子公司股权产生的一次性收益 3.53 亿元。<strong>扣除这笔收益后，公司最近两个完整年度的扣非归母净利润分别为 -0.85 亿元（2024）与 -0.62 亿元（2025），2026H1 进一步为 -1.62 亿元 —— PE 无意义。</strong> 按"扣非为负不入 PE"的通行做法，本股估值锚应切换至 PB 或 PS。</p>
+<p><strong>（二）为什么 PS 也不构成支撑。</strong> 本股 PS(2025) 3.42 倍，看似不高，但<strong>东尼新能源出表后，公司合并报表中营收增速最快、毛利率提升最快的那块业务（2025 年营收 7.53 亿元、+78.74%、毛利率 19.97%）已不再并表</strong>。以 2026H1 年化营收（约 21.36 亿元）计算的 PS 3.38 倍，其分子包含的是"新能源业务仅并表 5 个月"的收入，<strong>2027 年的可比口径会下移</strong>。</p>
+<p><strong>（三）为什么 PB 4.27 倍不是安全垫。</strong> PB 的分母是归母净资产 16.87 亿元。<strong>但这 16.87 亿元里，2026H1 的增量部分（较 2025 年末 +1.90 亿元）主要来自处置收益与减值计提的净额，而不是经营积累</strong>；同时，<strong>公司对东尼半导体的 12.58 亿元其他应收款占公司总资产 29.1%，其可回收性取决于碳化硅业务能否翻身</strong> —— 一旦该笔往来款需要大额计提，PB 的分母将直接缩水。<strong>因此本股的 PB 不是"破产清算价值"，而是"一个尚未被验证的账面数"。</strong></p>
+<p><strong>（四）一个可用的交叉验证。</strong> 用"外部资本对子公司股权的定价"反推公司价值：湖州国资系以 10.6 亿元评估值受让东尼新能源 21.698% 股权，说明<strong>外部资本对一块 2025 年营收 6.63 亿元、净利 0.66 亿元、净利率约 10% 的优质资产的定价是 10.6 亿元</strong>。而上市公司当前市值 72.10 亿元，其中东尼新能源 33.302% 权益对应约 3.53 亿元、归母净资产 16.87 亿元、碳化硅业务净资产为负 —— <strong>扣除可辨认净资产后，市场为"其余部分"（主要是消费电子线材主业 + 碳化硅期权 + 上市地位）支付了约 50 亿元。</strong></p>
+
+</div></details>
+<h3 id="sec20">6.2 投资结论</h3>
+<p><strong>结论：卖出（回避）</strong></p>
+<table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td><strong>结论</strong></td><td><strong>卖出（回避）</strong></td></tr><tr><td><strong>理由链（按重要性）</strong></td><td>① <strong>摘帽是公开日历，且零制度红利</strong>：最早可申请日 2026-11-12，主板 ST 自 2026-07-06 起涨跌幅已 10%，摘帽前后同幅 —— 一个无信息差的纯时间事件，不可能产生超额收益（<a href="https://data.eastmoney.com/notices/detail/603595/1224764257.html" target="_blank" rel="noopener">9.8.8 条与公司口径</a>）。<strong>② 不在低位</strong>：前复权月线 111 个月分位 <strong>61.26%</strong>、2026 年内 73.6%、YTD <strong>+83.44%</strong>，与"低位＋催化"模型相反（本报告 §1.1 三口径交叉验证）。<strong>③ 基本面并未改善</strong>：2026H1 归母 +1.43 亿元全部来自出售东尼新能源股权的一次性处置收益（3.53 亿元），<strong>扣非仍亏 1.62 亿元、同比恶化 202.47%</strong>，经营现金流 -0.77 亿元（<a href="https://data.eastmoney.com/notices/detail/603595/1225505188.html" target="_blank" rel="noopener">2026 半年报</a>）。<strong>④ 核心题材在报表上不存在</strong>：碳化硅近三年累计投入约 <strong>21.7 亿元</strong>，2025 年收入仅 <strong>834.59 万元（占主营 0.42%）、毛利率 -400.17%</strong>，载体东尼半导体 2026 年 6 月末净资产已转负 -0.84 亿元（<a href="https://data.eastmoney.com/notices/detail/603595/1225392687.html" target="_blank" rel="noopener">问询函回复</a>）。<strong>⑤ 相对涨幅已透支</strong>：假 ST 同型 39 只 2026 年 YTD 中位 <strong>-14.85%</strong>、上涨仅 11 只，<strong>本股排第 2</strong>；且上涨样本的共同点是"有可命名的载体"，本股唯一的资本动作是往<strong>外</strong>卖资产（§5.1②）。</td></tr><tr><td><strong>转买入触发条件</strong></td><td>① <strong>沈晓宇辞去董事长／总经理职务</strong>（发股通道解锁的唯一开关，最硬的一条）；② 碳化硅业务毛利率连续两季改善至 -50% 以内、且东尼半导体净资产止跌回升；③ 出现具名产业方受让控股股东股份并公告注入安排的公告；④ 股价回落至 <strong>18—22 元</strong>（对应 PB 2.5—3.0，接近同业下四分位）</td></tr><tr><td><strong>失效条件（结论作废/翻转）</strong></td><td>① 碳化硅获得明确的量产订单或通过头部器件厂商认证并形成规模收入（会显著改变想象空间加总）；② 公司公告产业投资人以现金方式收购并同步注入资产（现金路径不受发股锁限制）；③ 2026 年三季报出现主业单季显著放量（营收同比 &gt;40% 且扣非转正）</td></tr><tr><td><strong>参考区间</strong></td><td>卖出参考价：现价 31.02 元一线；若因摘帽公告冲高至 <strong>34—38 元</strong>，为更优的减持区间；重新评估买入区间 <strong>18—22 元</strong></td></tr><tr><td><strong>时间窗口</strong></td><td>本结论有效期至 2027-04（2026 年报披露）。<strong>关键窗口是 2026-11-12 前后的"摘帽申请公告"——注意这是"利好出尽"风险点，不是买点。</strong></td></tr><tr><td><strong>仓位建议</strong></td><td><strong>不建仓</strong>（已持有者建议于摘帽公告前后减出）</td></tr><tr><td><strong>最大风险（最可能让本结论出错的一件事）</strong></td><td><strong>碳化硅业务在 2026 年下半年出现超预期突破</strong>（如 8 英寸／12 英寸衬底获得规模订单或通过头部器件厂商认证），使"0.42% 营收占比"这一事实前提被推翻，想象空间加总被重新计算。次要风险为沈晓宇辞任解锁发股通道并同步公告注入安排。</td></tr></tbody></table>
+<hr>
+<h2 id="chap7">附录 A · 待核实 / 需补充清单</h2>
+<table><thead><tr><th>编号</th><th>待核实项</th><th>检索过的渠道</th><th>说明</th></tr></thead><tbody><tr><td>1</td><td><strong>《行政处罚决定书》的"作出日"</strong></td><td>决定书公告全文（仅载"2025-11-12 收到"）、底表（记 2025-11-12）、巨潮与东财公告库</td><td>9.8.8 的 12 个月自"作出之日"起算。若作出日早于收到日，最早可申请日可能提前数日；本报告按"收到日＋12 个月"给出 2026-11-12，<strong>如公司公告明确作出日须按公告调整</strong></td></tr><tr><td>2</td><td>2021—2022 年完整财务数据</td><td>2025 年年度报告（仅"近三年"）、东财 F10（未取用，避免异源混用）</td><td>本报告五年表相应格留空，不作推断</td></tr><tr><td>3</td><td>东尼半导体少数股东增资款的具体支付日</td><td>定期报告、互动易（公司未披露）</td><td>影响"本金＋8%/年"回购义务的起算与金额（本报告按三年整测算约 2.85 亿元）</td></tr><tr><td>4</td><td>东尼新能源 21.698% 股权受让方是否已完成付款</td><td>转让进展公告（2026-02-14 至 05-30 共 5 次）、2026 半年报</td><td>半年报显示"湖州兰知春序"尚欠股权转让款 30,021,001.77 元（挂其他应收款）</td></tr><tr><td>5</td><td>投资者索赔诉讼是否立案</td><td>定期报告（"尚未收到立案通知"）、巨潮公告</td><td>若立案将影响摘帽时点与预计负债计提</td></tr><tr><td>6</td><td>公司 2017 年 IPO 发行价格</td><td>2025 年年度报告（未载明）</td><td>仅用于成本锚参考，不影响结论</td></tr><tr><td>7</td><td>沈新芳 2026-06 减持的具体成交均价</td><td>减持结果公告（仅给股数与比例，未给均价）</td><td>影响控股股东成本锚判断</td></tr></tbody></table>
+<h2 id="chap8">附录 B · 关键信源链接</h2>
+<table><thead><tr><th>编号</th><th>文件（发布日）</th><th>原文地址</th></tr></thead><tbody><tr><td>1</td><td>关于实施其他风险警示暨停牌的公告（2025-10-30）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1224764257.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>2</td><td>关于收到浙江证监局《行政处罚决定书》的公告（2025-11-13）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1224800854.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>3</td><td>2025 年年度报告（2026-04-18）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1225121792.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>4</td><td>2026 年第一季度报告（2026-04-18）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1225121799.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>5</td><td>关于转让控股子公司部分股权的公告（2026-02-14）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1224981593.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>6</td><td>关于 2025 年年度报告信息披露监管问询函的回复公告（2026-06-27）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1225392687.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>7</td><td>关于控股股东减持股份结果暨权益变动触及 1% 刻度的公告（2026-06-17）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1225373356.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>8</td><td>关于控股股东部分股份解除质押的公告（2026-06-23）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1225381289.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>9</td><td>2026 年半年度业绩预盈公告（2026-07-15）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1225423996.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>10</td><td>2026 年半年度报告（2026-08-26）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1225505188.html" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>11</td><td>关于 2026 年半年度计提信用减值及资产减值准备的公告（2026-08-26）</td><td><a href="https://data.eastmoney.com/notices/detail/603595/1225505583.html" target="_blank" rel="noopener">打开原文</a></td></tr></tbody></table>
+<h2 id="chap9">附录 C · 逻辑漏洞与反方观点（5 问速版）</h2>
+<p><strong>结论：五问的回答在本股上全部指向同一侧——凡是容易被误用为利好的信息，都能在公告原文里找到反向证据；本节同时给出本报告结论的最强反方论点，供读者自行压力测试。</strong></p>
+<table><thead><tr><th>问题</th><th>本报告的回答</th></tr></thead><tbody><tr><td>① 市占率怎么来的？</td><td>公司自认半导体业务"<strong>市场占有率较低</strong>"（问询函回复原文），本报告未使用任何市占率数据作为支撑。</td></tr><tr><td>② 采购／框架协议 ≠ 收入？</td><td>已严格区分。2023-01 的 6.75 亿元合同即典型案例——<strong>至 2023-10 末仅完成 6.74%，且这正是被处罚的原因</strong>。本报告未把任何在手合同计作收入。</td></tr><tr><td>③ 中标 ≠ 订单？</td><td>本报告未使用中标信息。互动易中公司对"碳化硅是否通过华为／中车时代认证"答"<strong>没有通过</strong>"，对复合集流体订单传闻答"<strong>尚处研发阶段</strong>"。</td></tr><tr><td>④ 引用的时间点是否已过期？</td><td>全部数据截至 <strong>2026-09-30</strong> 行情与 <strong>2026-08-26</strong> 半年报；一处已标注作废的是信息库"近 20 年价格分位 20.18%"（取数日 2026-07-31／21.52 元），已改用前复权重算的 <strong>61.26%</strong>。</td></tr><tr><td>⑤ 数据来源是什么级别？</td><td>一级：定期报告与公告原文（11 份，附链接）；数据源：腾讯行情、东财龙虎榜、韭研异动表；三级线索：雪球讨论与本地旧稿 —— <strong>后者中的数字已回一手公告核实，并已纠正旧稿三处口径（详见版本记录）</strong>。</td></tr></tbody></table>
+<p><strong>★ 本报告结论的最强反方论点（自我压力测试）</strong>：<strong>"扣非亏损主要来自碳化硅业务的减值计提，而非主业失败 —— 如果 2026 年下半年碳化硅价格企稳、东尼半导体不再计提大额减值，公司扣非有可能在 2027 年转正，届时 PB 4.27 倍会被盈利改善消化。"</strong> 本报告对此的反驳是：碳化硅业务 2025 年收入 834.59 万元／毛利率 -400.17%，<strong>要让它从"卖一赚不到一分"变成"贡献利润"，需要的不是价格企稳，而是产能利用率与良率的数量级改善</strong>，而公司自述"受资金流动性压力，产能未能按计划释放" —— 在短期债务 12.67 亿元、货币资金 0.79 亿元的条件下，这一改善缺乏资金前提。<strong>但该论点确实是本结论最主要的失效路径，已写入 §6.2"失效条件"。</strong></p>
+<h2 id="chap10">版本记录</h2>
+<table><thead><tr><th>版本</th><th>修订日</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-06</td><td>首次生成。数据截至 2026 半年报与 2026-09-30 行情。投资结论：卖出（回避）。&lt;br&gt;<strong>历史材料吸收情况</strong>：本目录原无同标的 HTML 研报，已完全吸收并回一手公告核实以下两份既有材料——① <code>其他资料/ST东尼&amp;ST海泰_资讯全景报告_20260419.docx</code>（2026-04-19）；② <code>其他资料/ST东尼_603595_深度报告_20260514更新.pdf</code>（星轨拾贝，2026-05-14）。&lt;br&gt;<strong>对旧材料的更正（旧值→新值）</strong>：① "2024 年营收约 18 亿元"→<strong>19.81 亿元</strong>；② "2023 年营收约 16 亿元"→<strong>18.36 亿元</strong>；③ "2025 年营收 21.07 亿元"→<strong>21.08 亿元（2,107,795,344.05 元）</strong>；④ "2024 年归母约 0.9 亿元"→<strong>0.115 亿元（11,517,925.42 元）</strong>；⑤ "补贴/涨跌幅 5%"→现行主板 ST 日涨跌幅已为 <strong>10%</strong>（2026-07-06 起）；⑥ 旧稿"2026Q1 净利同比 +119%"正确，但<strong>未指出 2026H1 扣非仍亏 1.62 亿元、归母转正全部来自处置收益</strong>，本版已补。</td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
