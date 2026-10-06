@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ST棕榈（002431.SZ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>7 章 · 22 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断：戴的是"其他风险警示"，不是退市风险警示</a><a class="sblv3" href="#sec0">1.1 基本信息与股权结构</a><a class="sblv3" href="#sec1">1.2 王艳式颗粒度：股权历史沿革、关键人物、工商与主营</a><a class="sblv3" href="#sec2">1.3 戴帽病理：只触发"其他风险警示"，四类退市红线逐条均未触发</a><a class="sblv3" href="#sec3">1.4 摘帽展望：唯一可行路径是"赌审计师移除段落"，且公司自述悲观</a><a class="sblv3" href="#sec4">1.5 全流程进度看板（总控）</a><a class="sblv3" href="#sec5">1.6 运作特征与综合判断</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、基本面：一家"资不抵债边缘"的工程承包商</a><a class="sblv3" href="#sec6">2.1 五年 + 最新一期核心财务</a><a class="sblv3" href="#sec7">2.2 资产结构：61.33 亿元合同资产是"净资产的全部赌注"</a><a class="sblv3" href="#sec8">2.3 业务与订单：工程施工占九成，在手订单看似庞大但毛利极薄</a><a class="sblv3" href="#sec9">2.4 债务化解：动作很多，但都不增加净资产</a><a class="sblv3" href="#sec10">2.5 诉讼与处罚：诉讼密度高，处罚不涉证监会</a><a class="sblv3" href="#sec11">2.6 投资者交流要点（2025 年度业绩说明会 + 互动易，2026 年）</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、炒作逻辑：市场在赌"超聚变"，公司实际在做"修表"</a><a class="sblv3" href="#sec12">3.1 三支柱排序</a><a class="sblv3" href="#sec13">3.2 情绪与筹码：注意力已过峰值，方向朝下</a><a class="sblv3" href="#sec14">3.3 成本锚点</a><a class="sblv3" href="#sec15">3.4 "超聚变借壳"能走通吗——按"大胆假设、小心求证"四步法推演</a><a class="sblv3" href="#sec16">3.5 2025-05 主升浪复盘：注意力来过，但已经走了</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">估值与投资结论</a><a class="sblv3" href="#sec17">估值</a><a class="sblv3" href="#sec18">投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">附录</a><a class="sblv3" href="#sec19">附录 A · 待核实 / 需补充清单</a><a class="sblv3" href="#sec20">附录 B · 关键信源链接</a><a class="sblv3" href="#sec21">附录 C · 逻辑漏洞与反方观点</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">ST棕榈（002431.SZ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：卖出（回避）</strong></p>
+<ul><li><strong>红线分类</strong>：<span class="sttag sttag-orange"><a href="https://data.eastmoney.com/notices/detail/002431/AN202604241821567977.html" target="_blank" rel="noopener">连续三年扣非为负且持续经营存疑,2026-04-28</a></span> · <span class="sttag sttag-red"><a href="https://data.eastmoney.com/notices/detail/002431/AN202608261828484211.html" target="_blank" rel="noopener">2026年末净资产转负风险</a></span> · <span class="sttag sttag-red"><a href="https://data.eastmoney.com/notices/detail/002431/AN202604241821567977.html" target="_blank" rel="noopener">面退风险,距1元仅32%</a></span></li><li><strong>生死定级</strong>：命悬一线（两条归零线均在近端，且均为"不可救/零容错"型）</li><li><strong>自救空间</strong>：河南国资（豫资系）有能力也有动机救，但工具是"代偿＋额度＋降息"而非"注资"，最大障碍是归母净资产仅 1.63 亿元、而半年已亏 2.63 亿元——<strong>修表速度赶不上失血速度</strong></li><li><strong>主要看点</strong>：控股股东豫资保障房（29.99%）与间接控股股东豫资集团 2026 年内持续为公司代偿到期借款、并提供 34 亿元担保额度与 42 亿元借款额度；市场长期寄望"超聚变借壳"与"豫资体系资产注入"，但截至基准日<strong>无任何注入公告</strong>，已发生的反向动作是把海口两项目公司 80% 股权（评估 2.58 亿元）抵给控股股东换债务减免</li></ul>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>标的与基准日</td><td>棕榈生态城镇发展股份有限公司（002431.SZ，深主板）· 2026-10-05</td></tr><tr><td>现价 / 总市值</td><td>1.32 元 / 23.79 亿元（2026-09-30 收盘）</td></tr><tr><td>估值</td><td>PB 14.62 倍；PE(TTM) 为负不适用；PS(TTM) 约 1.18 倍</td></tr><tr><td>2026 年内价格区间</td><td>3.03 元（年初）— 1.18 元（2026-06-26）</td></tr><tr><td>年初至今涨跌幅</td><td>-44.77%</td></tr><tr><td>控股股东 / 实控人</td><td>河南省豫资保障房管理运营有限公司 29.99% / 河南省人民政府国有资产监督管理委员会</td></tr><tr><td>版本</td><td>初版 · 2026-10-05 · 数据截止 2026-10-05（最新已披露定期报告为 2026 中报）</td></tr><tr><td>数据质量异常</td><td>Wind 局域网代理本轮整段不可达，行情/估值/同业改用腾讯 <code>qt.gtimg.cn</code> 与新浪日 K；公告走东财公告库（二级通道，引用仍以公告原文为准）；2026 三季报尚未披露</td></tr></tbody></table>
+<blockquote><p>说明：本报告为<strong>速研档</strong>。若需对"豫资系资产注入可行性"做逐条制度推演（跨体系借壳 vs 同控整合、发股通道、审批路径），建议升<strong>资本运作档</strong>。</p></blockquote>
+<hr>
+<h2 id="chap1">一、诊断：戴的是"其他风险警示"，不是退市风险警示</h2>
+<p><strong>结论先行：ST棕榈只踩中深主板 9.8.1 第（七）项——"连续三个会计年度扣非前后净利孰低均为负，且最近一个会计年度审计报告显示持续经营能力存在不确定性"，属"其他风险警示（ST）"，本身不属于四类退市红线中的任何一条；但它距离两条真正的退市红线都只差一步：净资产 1.63 亿元即将转负（财务类），股价 1.32 元距 1 元面值线仅 32%（交易类）。</strong></p>
+<h3 id="sec0">1.1 基本信息与股权结构</h3>
+<p>公司是河南国资控股的生态城镇与园林工程施工企业，注册地已由广州迁至郑州，收入高度集中于河南省域（华北区域占 2026H1 营收 75.68%）。</p>
+<ul><li>控股股东：河南省豫资保障房管理运营有限公司，持股 <strong>5.41 亿股（29.99%）</strong>，2026-06-30 未变；间接控股股东为<strong>中原豫资投资控股集团有限公司</strong>（豫资集团）。</li><li>实际控制人：<strong>河南省国资委</strong>——2026-01-05 完成工商变更，由河南省财政厅将所持豫资集团 100% 股权无偿划转至河南省国资委，控股股东本身未变。</li><li>前十大股东合计约 43.0%，其中第二大为南京栖霞建设（9.79%，IPO 前战略股东，长期未动）。</li></ul>
+<details class="fold"><summary>前十大股东明细（2026-06-30，数据来源：东方财富 F10，异源）</summary><div class="fold-body">
+
+<table><thead><tr><th>排名</th><th>持有方</th><th>持股（万股）</th><th>占比</th><th>变动</th></tr></thead><tbody><tr><td>1</td><td>河南省豫资保障房管理运营有限公司</td><td>54,058.74</td><td>29.99%</td><td>不变</td></tr><tr><td>2</td><td>南京栖霞建设股份有限公司</td><td>17,652.37</td><td>9.79%</td><td>不变</td></tr><tr><td>3</td><td>林从孝</td><td>1,286.75</td><td>0.71%</td><td>不变</td></tr><tr><td>4</td><td>吴桂昌</td><td>1,133.11</td><td>0.63%</td><td>不变</td></tr><tr><td>5</td><td>王朝晖</td><td>931.24</td><td>0.52%</td><td>-23.98%</td></tr><tr><td>6</td><td>福建华兴润福投资合伙企业（有限合伙）</td><td>778.62</td><td>0.43%</td><td>不变</td></tr><tr><td>7</td><td>侯文华</td><td>498.48</td><td>0.28%</td><td>新进</td></tr><tr><td>8</td><td>钱富强</td><td>447.00</td><td>0.25%</td><td>新进</td></tr><tr><td>9</td><td>张洪</td><td>344.44</td><td>0.19%</td><td>新进</td></tr><tr><td>10</td><td>卢文浩</td><td>339.89</td><td>0.19%</td><td>新进</td></tr></tbody></table>
+<p>（全流通，无限售解禁压力；吴桂昌、林从孝为创始人系老股东，持股已从入主前的 14.37% 大幅稀释至合计约 1.34%。）</p>
+
+</div></details>
+<h3 id="sec1">1.2 王艳式颗粒度：股权历史沿革、关键人物、工商与主营</h3>
+<details class="fold"><summary>① 前世今生（时间｜关键事件｜股权与实控人变化｜背后的逻辑）</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>关键事件</th><th>股权与实控人变化</th><th>背后的逻辑</th></tr></thead><tbody><tr><td>2010-06</td><td>深交所中小板上市</td><td>创始人吴桂昌家族控制</td><td>园林绿化第一梯队，2014 年起转型"生态城镇"</td></tr><tr><td>2018-04 → 12</td><td>一年内三次改换股权受让方（辉瑞投资→栖霞建设→中止）</td><td>均未落地</td><td>公司 2018Q3 归母 -9,232 万元，融资渠道收紧</td></tr><tr><td><strong>2019-02</strong></td><td>豫资保障房<strong>协议受让 1.95 亿股（13.10%），价格 3.94 元/股</strong></td><td>豫资保障房成第一大股东</td><td>老股东看中豫资"城镇化投融资平台"资源；豫资承诺提供等同 10 亿元融资支持（首笔 ≤5 亿元、年息 8%）</td></tr><tr><td>2019-05</td><td>表决权委托生效，合计控制 3.55 亿股（23.88%）</td><td><strong>控股股东＝豫资保障房；实控人＝河南省财政厅</strong></td><td>国家市场监管总局对该控制权案不实施进一步审查</td></tr><tr><td>2019-06</td><td>注册地由广州迁至郑州市郑东新区</td><td>—</td><td>成为河南省第 80 家 A 股上市公司</td></tr><tr><td>2021</td><td>营收 40.46 亿元、归母 -7.52 亿元</td><td>—</td><td>行业下行叠加 PPP 项目沉淀</td></tr><tr><td>2022—2025</td><td>营收 42.45 → 30.65 → 20.18 亿元；归母连续亏损</td><td>控股股东持股增至 5.41 亿股（29.99%）</td><td>四年累计归母亏损约 44.0 亿元，净资产由 41.73 亿元消耗至 4.21 亿元</td></tr><tr><td><strong>2026-01-05</strong></td><td>豫资集团 100% 股权由河南省财政厅无偿划转至河南省国资委</td><td><strong>实控人＝河南省国资委</strong>（控股股东不变）</td><td>属正常国资管理调整，公司称"不影响存量债权债务关系"</td></tr><tr><td><strong>2026-04-28</strong></td><td>股票被实施其他风险警示，简称变为"ST棕榈"</td><td>—</td><td>连续三年（2023—2025）扣非前后净利孰低均为负 + 2025 年报带持续经营重大不确定性段落</td></tr></tbody></table>
+
+</div></details>
+<details class="fold"><summary>② 股东阵容（身份识别 + 承诺 + 筹码集中度）</summary><div class="fold-body">
+
+<ul><li><strong>河南省豫资保障房管理运营有限公司（29.99%）</strong>：省级国资平台（豫资集团 100% 子公司），<strong>2019 年受让价 3.94 元/股</strong>；2026-05-11 起承诺 <strong>12 个月内不通过二级市场主动减持</strong>。</li><li><strong>南京栖霞建设（9.79%）</strong>：IPO 前战略股东，2014 年曾参与定增，长期未变动；本次被豫资"截胡"后仍留任第二大股东。</li><li><strong>林从孝（0.71%）、吴桂昌（0.63%）</strong>：创始人系，已从控制地位退至小股东。</li><li><strong>福建华兴润福投资合伙企业（0.43%）</strong>：私募/投资平台。</li><li><strong>侯文华、钱富强、张洪、卢文浩（0.19%—0.28%）</strong>：2026-06-30 <strong>新进</strong>前十，均为自然人——需关注是否为低位布局的资金。</li><li><strong>筹码集中度</strong>：股东户数自 2026-05-20 的 62,400 户降至 2026-09-10 的 <strong>54,500 户（-12.7%）</strong>。⚠️ <strong>反向读数</strong>：同期股价自 1.68 元跌至 1.38 元，属"下跌中户数下降"，按纪律应读作<strong>散户割肉离场、接盘方未必是主力</strong>（可能为量化/游资对倒），不能读作"主力吸筹"。</li></ul>
+
+</div></details>
+<details class="fold"><summary>③ 关键人物（公告未披露完整履历，一律如实标注）</summary><div class="fold-body">
+
+<table><thead><tr><th>姓名</th><th>职务</th><th>可核实信息</th></tr></thead><tbody><tr><td>刘江华</td><td>董事长、法定代表人</td><td>2026-02-02 换届被选举；2026 年度薪酬 64.12 万元（基本 25.648 万元 + 绩效 38.472 万元），关联董事回避表决，尚需股东会审议。<strong>详细履历公告未披露</strong></td></tr><tr><td>余海军</td><td>总经理</td><td>2025 年度税前薪酬 74.19 万元。<strong>详细履历公告未披露</strong></td></tr><tr><td>李婷</td><td>董事、副总经理、财务总监</td><td>2026-02-02 换届被选举并聘任。<strong>详细履历公告未披露</strong></td></tr><tr><td>杨东平</td><td>董事会秘书</td><td>2025-11-17 起任职；2026 年度基本薪酬 32.16 万元 + 绩效 48.24 万元。<strong>详细履历公告未披露</strong></td></tr><tr><td>董焕杰</td><td>副总经理</td><td><strong>2026 年 8 月由控股股东推荐聘任</strong>；持法律职业资格与中级经济师证书；履历集中于豫资集团及关联企业的商务稽查、行政、党群、生物医药及健康投资领域。投资者在互动易连续追问其"无园林/上市公司运营经验"，公司答"基于丰富专业背景与履职经验"。</td></tr></tbody></table>
+
+</div></details>
+<details class="fold"><summary>④ 控股股东豫资系的工商与定位（公告口径 vs 实际口径）</summary><div class="fold-body">
+
+<ul><li><strong>豫资保障房</strong>：控股股东，持股 29.99%；豫资集团 100% 子公司。</li><li><strong>豫资集团（中原豫资投资控股集团）</strong>：2011-05 成立，注册资本 100 亿元，河南省国资委 100% 持股（原为省财政厅）；业务涵盖投融资及资产经营管理、政府重大建设项目投资与管理、城镇化建设投融资（据 2019 年公开报道，总资产约 2,829.57 亿元；<strong>该数据为媒体转述，未经本轮公告核实</strong>）。</li><li><strong>豫资农业服务</strong>：与公司组成联合体中标清丰县高标准农田项目。</li><li>公司自身定位：以"绿色城乡建设"为主体、"乡村振兴"与"创新业务"为两翼。</li></ul>
+
+</div></details>
+<h3 id="sec2">1.3 戴帽病理：只触发"其他风险警示"，四类退市红线逐条均未触发</h3>
+<p><strong>审计意见要旨（大信会计师事务所，2025 年度）</strong>：2023—2025 年归母净利分别为 <strong>-9.40 亿元、-15.79 亿元、-11.91 亿元</strong>，累计未分配利润 <strong>-46.14 亿元</strong>；2025-12-31 流动负债高于流动资产 <strong>53.81 亿元</strong>，资产负债率 <strong>96.57%</strong>，归母股东权益 <strong>4.21 亿元</strong>；"存在可能导致对持续经营能力产生重大疑虑的重大不确定性。<strong>该事项不影响已发表的审计意见</strong>"。→ 即<strong>带持续经营重大不确定性段落的无保留意见</strong>，<strong>不是</strong>"无法表示/否定意见"，因此<strong>不触发财务类 \*ST</strong>。</p>
+<details class="fold"><summary>四类退市红线逐条对照（截至基准日；依据深交所《股票上市规则（2026 修订）》）</summary><div class="fold-body">
+
+<table><thead><tr><th>类别</th><th>触发条件速查</th><th>本公司状态</th><th>判定</th></tr></thead><tbody><tr><td>交易类</td><td>连续 20 日收盘价 &lt;1 元</td><td>现价 1.32 元，2026-06-26 最低 1.18 元</td><td><strong>未触发，但已进入射程（距 1 元 32%）</strong></td></tr><tr><td>交易类</td><td>连续 20 日市值 &lt;5 亿元</td><td>23.79 亿元</td><td>未触发</td></tr><tr><td>交易类</td><td>股东人数 &lt;2,000 户</td><td>54,500 户</td><td>未触发</td></tr><tr><td>财务类①</td><td>孰低为负且扣除后营收 &lt;3 亿元</td><td>2025 营收 20.18 亿元</td><td>未触发</td></tr><tr><td>财务类②</td><td>最近一个会计年度审计净资产为负</td><td>2025 年末 4.21 亿元；<strong>2026-06-30 已降至 1.63 亿元</strong></td><td><strong>未触发，但年末转负概率高</strong></td></tr><tr><td>财务类③</td><td>财报审计为无法表示/否定意见</td><td>带持续经营段落之无保留意见</td><td>未触发</td></tr><tr><td>规范类</td><td>内控连续两年非标 / 处罚台账</td><td><strong>2025 年内控审计为标准无保留</strong>（大信审字〔2026〕第 16-00022 号）；无证监会立案或处罚</td><td>未触发</td></tr><tr><td>其他类</td><td>分红不达标</td><td>未分配利润为巨额负数，规则不适用</td><td>未触发</td></tr><tr><td>重大违法类</td><td>造假达量化线等</td><td>无</td><td>未触发</td></tr></tbody></table>
+<p><strong>口径提示</strong>：Andy《退市风险预警-20261005.xlsx》四张工作表（交易类/财务类/规范类/其他类）<strong>均无 002431</strong>，与本表结论一致。<strong>"戴 ST 帽"不等于"有退市风险"</strong>——这是本股分析中最易被误读的一点。</p>
+
+</div></details>
+<h3 id="sec3">1.4 摘帽展望：唯一可行路径是"赌审计师移除段落"，且公司自述悲观</h3>
+<p>因 9.8.1 第（七）项被 ST 的，撤销依据为深交所 <strong>9.8.7 条</strong>，条件是 <strong>OR 逻辑</strong>：① 最近一个会计年度经审计扣非前后净利孰低为<strong>正值</strong>；<strong>或者</strong> ② <strong>持续经营能力不确定性已消除</strong>（须披露最近一年审计报告）。</p>
+<ul><li>路径①<strong>已基本无望</strong>：2026H1 扣非归母 <strong>-2.68 亿元</strong>，H2 逆转需 2.68 亿元以上正利润，而公司扣非已连续六年为负。</li><li>路径②是<strong>唯一出口</strong>：需要 2026 年度审计报告<strong>不再带"持续经营重大不确定性"段落</strong>。其前提是净资产为正、偿债能力实质改善、债务与诉讼压力缓解。</li><li><strong>时间锚</strong>：撤销依据指向"最近一个会计年度"审计报告 → 最早只能随 <strong>2026 年年报（预计 2027-04 披露）</strong>落地，<strong>不存在提前申请</strong>。</li><li>公司在 2026 中报明确自述："<strong>公司被实施其他风险警示情形尚未消除；后续若公司经营状况未能实质改善，持续经营能力重大不确定性无法消除，公司仍可能持续实施 ST 风险警示。</strong>"</li></ul>
+<blockquote><p>制度提示：主板 ST 自 <strong>2026-07-06 起涨跌幅已由 5% 改为 10%</strong>，摘帽前后均为 10%，<strong>不再有制度性放大红利</strong>——"摘帽"本身不能作为买入理由。</p></blockquote>
+<h3 id="sec4">1.5 全流程进度看板（总控）</h3>
+<p><strong>结论：当前所有关键环节的卡点都不是"谈不拢"，而是"时间未到"——但恰恰是"时间"最不够用：从基准日到 2026 年报披露只剩约 6 个月，而净资产缺口需要在这 6 个月内补齐。</strong></p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点或条件</th><th>下一节点</th></tr></thead><tbody><tr><td>控股股东输血</td><td>持续推进</td><td>代偿/额度不增净资产</td><td>每月代偿公告</td></tr><tr><td>以股抵债（海口两项目公司）</td><td><strong>已逾期</strong></td><td>抵债先决条件（海口市园林局审批）未取得，补充协议约定 <strong>2026-09-30 前未完成变更登记则受让方可解除</strong></td><td>待双方新安排</td></tr><tr><td>债权债务重组（以房抵债）</td><td>已落地 2,096.29 万元</td><td>规模小</td><td>常态化推进</td></tr><tr><td>净资产转正</td><td><strong>未完成</strong></td><td>2026-06-30 归母净资产 1.63 亿元，H1 亏 2.63 亿元</td><td><strong>2027-01 业绩预告 / 2027-04 年报</strong></td></tr><tr><td>撤销 ST 申请</td><td>未启动</td><td>需 2026 年报审计不含持续经营段落</td><td>2027-04 后</td></tr><tr><td>资产注入</td><td><strong>零公告</strong></td><td>无任何注入预案</td><td>—</td></tr></tbody></table>
+<h3 id="sec5">1.6 运作特征与综合判断</h3>
+<ul><li><strong>手法</strong>：控股股东以"担保额度（34 亿元、3 年期、可循环）＋借款额度（42 亿元、1 年期）＋逐笔代偿到期债务＋下调借款利率"的组合维持流动性；上市公司则以"项目公司股权抵债、以房抵债、诉讼确权、应收账款清收"自救。<strong>两条线均属"修资产负债表"，不属"造利润表"。</strong></li><li><strong>节奏</strong>：2026 年 3 月续签 34 亿元担保额度；5 月降息与不减持承诺；9 月代偿密集披露（9 月 1—24 日代偿 9,478.94 万元）。<strong>动作密度高，但都是"止血"，没有"造血"。</strong></li><li><strong>交权</strong>：配合式。控股股东 2026-05-11 主动承诺 12 个月不减持；2026-08 由控股股东推荐聘任副总经理董焕杰（法律+经济师背景，履历在豫资体系）。<strong>治理层已由控股股东实质主导。</strong></li><li><strong>1 和 0 的变量</strong>：<strong>2026 年末归母净资产能否为正</strong>。这是唯一的生死开关。</li><li><strong>核心矛盾一句话</strong>：<strong>这家公司不缺股东的钱、也不缺股东的决心，缺的是"把钱变成净资产"的合法路径——而借款、担保、代偿都只是往来，不是资本。</strong></li></ul>
+<details class="fold"><summary>§1.7 控股股东"救助方式"的会计后果逐笔拆解（这是全报告最容易被误读的地方）</summary><div class="fold-body">
+
+<p>市场上"国资当亲儿子养"的说法完全没错，但<strong>"养"的方式决定了报表上有没有阳光</strong>。把豫资系 2019 年以来与 2026 年内的动作按会计后果分三类，可以看得很清楚：</p>
+<p><strong>第一类：信用支持（不改变净资产，只改变流动性）</strong></p>
+<ul><li>2019 年入主时承诺提供等同 <strong>10 亿元</strong>融资支持（首笔 ≤5 亿元、年息 8%，据中证网报道）；</li><li>2026 年续签 <strong>34 亿元担保额度</strong>（3 年期、可循环）与申请 <strong>42 亿元借款额度</strong>（1 年期）；</li><li>2026-09-01 至 09-24，豫资集团按与邮储银行的《U 保理业务两方合作协议》代公司偿付到期借款合计 <strong>9,478.94 万元</strong>，双方另签署《保理合同》由豫资集团承担<strong>无条件最终付款义务</strong>；</li><li>截至公告日，豫资集团为公司金融机构融资提供的<strong>担保余额 24.47 亿元</strong>；公司向控股股东的<strong>借款本金余额约 33 亿元</strong>。</li><li><strong>会计后果</strong>：这些操作在公司账上表现为"短期借款/其他应付款"的科目变化与"财务费用"的减少。<strong>除了降息带来的费用节约，没有任何一项进入所有者权益。</strong></li></ul>
+<p><strong>第二类：费用减免（改善利润表，不改善资产负债表）</strong></p>
+<ul><li>2026-05-28 控股股东下调对公司存量及新增借款的利率。2026H1 利息费用 1.64 亿元、同比 -9.85%，<strong>降息节约的年化金额大约在数千万元量级</strong>——相对于 1.63 亿元的净资产缺口，这只是"减速"，不是"补血"。</li></ul>
+<p><strong>第三类：权益性交易（唯一能直接增厚净资产的路径）</strong></p>
+<ul><li><strong>截至基准日，豫资系没有做过任何这一类的动作。</strong> 没有债务豁免公告、没有现金捐赠公告、没有资产赠与公告。</li><li>反向的动作倒是有一笔：公司将海口棕岛、棕海两家项目公司 <strong>80% 股权</strong>（评估值合计 <strong>2.58 亿元</strong>）转让给控股股东，转让价款<strong>不收取现金、全部用于清偿公司欠付控股股东的债务</strong>。这意味着<strong>资产从上市公司流向控股股东，换来的是负债减少</strong>——对净资产的最终影响，完全取决于这两家公司股权的账面价值与 2.58 亿元之间的差额，而<strong>该账面价值公告未披露</strong>。</li><li>更应注意：该协议约定"如甲方未能于 <strong>2026 年 9 月 30 日</strong>之前达成抵债先决条件（取得海口市园林局等审批）且未完成股权变更登记，受让方有权解除《股权抵债协议》"——<strong>截至基准日，公司 2026-08-11 的进展公告仍称海口市园林局未出具正式书面文件</strong>。这笔 2.58 亿元的"修表"动作，<strong>目前处于悬置状态</strong>。</li></ul>
+<p><strong>综合判读</strong>：三类动作里，第一类让公司"不断气"、第二类让公司"少流血"、第三类才是"补血"，而第三类至今为零。<strong>投资者若按"亲儿子"叙事给出溢价，实际上是在为一类尚未发生的会计事项付钱。</strong> 这正是本报告给出"卖出"的第一性理由。（依据：各期关联交易与代偿公告、2026-08-11 股权抵债进展公告、2026 中报）</p>
+
+</div></details>
+<hr>
+<h2 id="chap2">二、基本面：一家"资不抵债边缘"的工程承包商</h2>
+<p><strong>结论先行：主业已连续六年亏损且营收腰斩（40.51 亿元 → 20.18 亿元），归母净资产从 2021 年的 46.06 亿元一路消耗到 2026 年 6 月末的 1.63 亿元；最大资产科目是 61.33 亿元合同资产与 13.56 亿元应收账款，而这些资产恰恰是"地方政府付款能力"的函数——只要再计提约 1.6 亿元减值，净资产就转负。</strong></p>
+<h3 id="sec6">2.1 五年 + 最新一期核心财务</h3>
+<p><strong>结论：主业已在数学上无法自愈——2026H1 毛利约 0.79 亿元，而同期财务费用 1.86 亿元，仅利息一项就吞掉全部毛利并倒亏逾 1 亿元；归母净资产因此从 2021 年的 46.06 亿元被逐年打薄至 1.63 亿元，</strong>这就是"净资产即将转负"的算术来源<strong>。</strong></p>
+<table><thead><tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026H1</th></tr></thead><tbody><tr><td>营业收入（亿元）</td><td>40.46</td><td>42.45</td><td>40.51</td><td>30.65</td><td>20.18</td><td>11.12</td></tr><tr><td>归母净利（亿元）</td><td>-7.52</td><td>-6.91</td><td>-9.40</td><td>-15.79</td><td>-11.91</td><td>-2.63</td></tr><tr><td>扣非归母（亿元）</td><td>-7.08</td><td>-7.31</td><td>-6.69</td><td>-16.19</td><td>-12.07</td><td>-2.68</td></tr><tr><td>毛利率</td><td>10.69%</td><td>6.77%</td><td>9.63%</td><td>1.83%</td><td>3.87%</td><td>7.06%</td></tr><tr><td>归母净资产（亿元）</td><td>46.06</td><td>41.73</td><td>32.68</td><td>16.49</td><td>4.21</td><td><strong>1.63</strong></td></tr><tr><td>每股净资产（元）</td><td>2.56</td><td>2.32</td><td>1.81</td><td>0.91</td><td>0.23</td><td><strong>0.09</strong></td></tr><tr><td>经营活动现金流（亿元）</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>+0.16</strong></td></tr></tbody></table>
+<p>（口径：合并、归母；2025 及以前数据来源：东方财富 F10 主要指标【异源】与年报追溯数交叉，2026H1 取自中报；2021—2022 年 Wind 代理离线未取。）</p>
+<details class="fold"><summary>为什么说"主业数学上无法自愈"——三个推算</summary><div class="fold-body">
+
+<p><strong>第一个推算：毛利率回升是真的，但幅度不够。</strong> 毛利率从 2024 年的 1.83% 触底回升到 2025 年的 3.87%、再升至 2026H1 的 7.06%，趋势方向正确。但 7.06% 这个水平，在园林工程行业里仍属低位（历史高点曾达 10%—19%）。</p>
+<p><strong>第二个推算：打平线在哪里。</strong> 2026H1 财务费用 1.86 亿元（其中利息费用 1.64 亿元，同比 -9.85%，降息确实起了作用）。仅以财务费用为门槛，公司每半年需要约 1.86 亿元毛利；按 7.06% 毛利率反推，需要约 26.3 亿元营收——而实际只有 11.12 亿元，缺口超过一倍。若再计入同期计提的 7,705.75 万元减值，缺口进一步扩大。</p>
+<p><strong>第三个推算：净资产是怎样被吃掉的。</strong> 归母净资产 2021 年 46.06 亿元 → 2025 年 4.21 亿元，五年减少 41.85 亿元；其中 2025 年单年减少 12.28 亿元（16.49 → 4.21），2026 年仅半年又减少 2.58 亿元。<strong>这条曲线的斜率，是判断"还剩多少时间"的唯一依据：以 H1 的速度，1.63 亿元的净资产只够再消耗约 3.7 个月。</strong></p>
+
+</div></details>
+<h3 id="sec7">2.2 资产结构：61.33 亿元合同资产是"净资产的全部赌注"</h3>
+<details class="fold"><summary>2026-06-30 主要资产与负债科目（合并，单位：亿元）</summary><div class="fold-body">
+
+<table><thead><tr><th>科目</th><th>金额</th><th>占总资产</th></tr></thead><tbody><tr><td>合同资产</td><td>61.33</td><td>36.27%</td></tr><tr><td>长期股权投资</td><td>26.04</td><td>15.40%</td></tr><tr><td>长期应收款</td><td>23.44</td><td>13.86%</td></tr><tr><td>应收账款</td><td>13.56</td><td>8.02%</td></tr><tr><td>其他流动资产</td><td>8.78</td><td>5.19%</td></tr><tr><td>长期应收款与投资性房地产等</td><td>—</td><td>—</td></tr><tr><td>在建工程</td><td>0.14</td><td>0.09%</td></tr><tr><td>商誉</td><td>0.52</td><td>0.31%</td></tr><tr><td><strong>资产总计</strong></td><td><strong>169.08</strong></td><td>100%</td></tr><tr><td>应付账款</td><td>78.66</td><td>—</td></tr><tr><td>其他流动负债</td><td>48.66</td><td>—</td></tr><tr><td>流动负债合计</td><td>161.64</td><td>—</td></tr><tr><td>短期借款</td><td>7.33</td><td>—</td></tr><tr><td>一年内到期的非流动负债</td><td>10.16</td><td>—</td></tr><tr><td>其他应付款</td><td>13.93</td><td>—</td></tr><tr><td><strong>归属于母公司股东权益</strong></td><td><strong>1.63</strong></td><td>—</td></tr><tr><td>少数股东权益</td><td>1.80</td><td>—</td></tr></tbody></table>
+<p><strong>受限资产</strong>：期末账面余额 44.39 亿元、账面价值 41.35 亿元，受限类型涵盖冻结/保证金/共管账户、抵押（固定资产、投资性房地产）、质押（长期股权投资、应收账款）。其中<strong>应收账款受限 23.31 亿元（质押）</strong>、长期股权投资受限 13.70 亿元（质押）。</p>
+
+</div></details>
+<p><strong>判读</strong>：公司资产端几乎全是"应收性质"（合同资产 + 应收账款 + 长期应收款合计 <strong>98.33 亿元</strong>，占总资产 58.2%），而负债端 78.66 亿元应付账款对应的是已经干完活的供应商。<strong>这套结构本质上是"替地方政府垫资"——化债能否推进，取决于地方财政而非公司经营。</strong></p>
+<h3 id="sec8">2.3 业务与订单：工程施工占九成，在手订单看似庞大但毛利极薄</h3>
+<details class="fold"><summary>分业务与在手订单（2026H1 / 2026Q1）</summary><div class="fold-body">
+
+<table><thead><tr><th>口径</th><th>2026H1 金额（亿元）</th><th>占比</th><th>同比</th></tr></thead><tbody><tr><td>工程施工</td><td>10.10</td><td>90.85%</td><td>-34.91%</td></tr><tr><td>设计服务</td><td>0.30</td><td>2.69%</td><td>-21.74%</td></tr><tr><td>城市运营</td><td>0.44</td><td>3.95%</td><td>+63.34%</td></tr><tr><td>其他</td><td>0.28</td><td>2.51%</td><td>+248.01%</td></tr><tr><td>分地区：华北区域</td><td>8.41</td><td>75.68%</td><td>-35.20%</td></tr></tbody></table>
+<p>2026Q1 订单（公司经营情况简报）：一季度新签合同 9 个、<strong>2.45 亿元</strong>；截至报告期末<strong>累计已签约未完工订单 198 个、215.79 亿元</strong>；已中标尚未签约 6 个、0.89 亿元。</p>
+<p><strong>热点业务定位</strong>：高标准农田建设——公司称"已累计获取超 150 万亩高标准农田建设订单"，并以子公司河南棕榈生态科技为支撑（无人机测绘、AI 监测、农业数据底座与作物生长 AI 模型，1,010 亩试点）。<strong>该业务 2026H1 未在分业务中单独列示</strong>（并入工程施工），故<strong>无法给出其收入占比</strong>——按纪律如实标注为"未单独披露"。</p>
+
+</div></details>
+<p><strong>四类审美标签</strong>：</p>
+<ul><li>工程施工（90.85%）：<strong>业务反转</strong>（但反转的必要条件是地方政府付款能力改善，非公司可控）。</li><li>城市运营（3.95%，+63.34%）：<strong>长期价值</strong>（轻资产运营平台，占比仍极小）。</li><li>高标准农田（占比未披露）：<strong>题材炒作</strong>（政策叙事强、单价低、回款依赖地方平台）。</li><li>整体：<strong>当前不具备"长期价值"或"景气成长"属性。</strong></li></ul>
+<h3 id="sec9">2.4 债务化解：动作很多，但都不增加净资产</h3>
+<details class="fold"><summary>控股股东支持与化债动作清单（2026 年内）</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>动作</th><th>金额/规模</th><th>是否增净资产</th></tr></thead><tbody><tr><td>2026-03-30</td><td>续签为关联方提供反担保额度议案</td><td>豫资集团提供 <strong>≤34 亿元担保额度</strong>，3 年有效、可循环</td><td>否</td></tr><tr><td>2026-03-14</td><td>向控股股东及关联方申请借款额度</td><td><strong>42 亿元</strong>（1 年有效）</td><td>否</td></tr><tr><td>2026-02-14</td><td>2026 年度日常关联交易额度预计</td><td><strong>20 亿元</strong></td><td>视交易（收入端）</td></tr><tr><td>2026-05-11</td><td>控股股东承诺</td><td>12 个月内不通过二级市场主动减持</td><td>否</td></tr><tr><td>2026-05-28</td><td>控股股东下调借款利率</td><td>—</td><td>减财务费用</td></tr><tr><td>2026-09-01—24</td><td>豫资集团代偿邮储到期货款</td><td><strong>9,478.94 万元</strong></td><td>否（形成对关联方负债）</td></tr><tr><td>2026-09-24</td><td>债权债务重组（以房抵债双向）</td><td>2,096.29 万元</td><td>处置损益待定</td></tr><tr><td>2026-01→08</td><td>海口棕岛/棕海 80% 股权抵债</td><td>评估 <strong>2.58 亿元</strong></td><td>视评估值 vs 账面</td></tr><tr><td>持续</td><td>累计对外担保余额（豫资集团为公司融资担保）</td><td><strong>24.47 亿元</strong></td><td>否</td></tr><tr><td>持续</td><td>向控股股东借款本金余额（互动易口径）</td><td><strong>约 33 亿元</strong></td><td>否</td></tr></tbody></table>
+
+</div></details>
+<p><strong>判读（这一段是全报告最关键的反向读数）</strong>：<strong>控股股东给的全部是"信用与流动性"（担保、借款、代偿、降息），没有给"权益"（债务豁免、资产赠与、现金捐赠）。</strong> 前者的会计后果是"负债换负债"，公司对关联方的欠款随之增加；后者才计入资本公积、才真正补净资产。<strong>因此"国资当亲儿子养"这句话，在报表上还没有兑现成任何一个正数。</strong> 更值得注意的是，2026 年唯一一笔大额资产动作是<strong>反向的</strong>——上市公司把海口两项目公司 80% 股权评估作价 2.58 亿元<strong>抵给控股股东</strong>以清偿自身债务（且该项交易因"海口市园林局审批未取得"而<strong>未在约定 2026-09-30 前完成变更登记</strong>，补充协议已赋予受让方解除权）。</p>
+<h3 id="sec10">2.5 诉讼与处罚：诉讼密度高，处罚不涉证监会</h3>
+<ul><li><strong>诉讼</strong>：2026 年 9 月单月即有 8 份以上《重大诉讼》或《累计新增诉讼》公告；9 月 28 日新受理案件涉案 2,099.49 万元，公司自述"占最近一期（2025 年度）经审计净资产的 <strong>4.99%</strong>"——<strong>若按 2026H1 净资产 1.63 亿元计，同一金额占比已放大至约 12.9%</strong>。诉讼以建设工程施工合同纠纷为主，公司既为原告（清收）亦为被告（被索工程款）。</li><li><strong>行政处罚</strong>：2026-09-10 收到郑州市城市综合执法局《行政处罚决定书》（郑城综罚决字〔2026〕第 2630001 号），因亚洲开发银行贷款河南农村煤改气项目<strong>串通投标</strong>被罚 <strong>292.50 万元</strong>（占 2025 年归母净资产 0.69%）；<strong>转包部分待查明后再行处罚</strong>。</li><li><strong>口径提示</strong>：该项为<strong>城市综合执法部门的行政处罚，不是证监会行政处罚</strong>，因此<strong>不触发</strong>《上市公司证券发行注册管理办法》第十一条第（三）项"现任董监高最近三年受中国证监会行政处罚"——<strong>公司发行股份购买资产的通道未被锁死</strong>。这是判断"能不能装资产"的关键分界。</li></ul>
+<h3 id="sec11">2.6 投资者交流要点（2025 年度业绩说明会 + 互动易，2026 年）</h3>
+<p><strong>结论：公司对所有关键问题一律给出"模板式正面答复"，唯一实质信息是——控股股东的支持全部是额度与代偿；而投资者最关心的"重整化债""资产注入"，公司均未否认也未确认。</strong></p>
+<details class="fold"><summary>投资者问题 → 公司答复要点 → 解读（2026-09-23 至 2026-09-24 互动易）</summary><div class="fold-body">
+
+<table><thead><tr><th>投资者问题</th><th>公司答复要点（原文摘要）</th><th>解读</th></tr></thead><tbody><tr><td>即将资不抵债，有无具体化债措施？有没有考虑常规重整化债？（并提到同省 ST瑞茂、ST中岩已自行申请预重整）</td><td>"感谢您对公司的建议，<strong>若未来涉及重整等重大事项，公司将严格按照相关规定及时披露</strong>"</td><td><strong>未否认</strong>。同省已有"自己申请预重整先挂号"的先例，但公司无任何实质表述</td></tr><tr><td>净资产快转负，有无应对措施？</td><td>四条：建设业务改革、清收与资产盘活、降本增效、<strong>"继续争取控股股东及相关方支持"</strong></td><td>全部为"过程性"表述，无金额、无时间表</td></tr><tr><td>诉讼不断是否影响经营？</td><td>"主诉案件是为维护自身权益并推进结算确权；被诉案件源于项目推进或结算分歧"</td><td>未给出诉讼总敞口</td></tr><tr><td>起诉同为豫资体系的项目业主，是否"自己告自己"？</td><td>称固始县豫资建设投资"系控股股东下属<strong>联营合营企业，非控股股东控制企业</strong>"，依法行使诉讼权利</td><td>承认关联体系内互诉，但强调非控制关系</td></tr><tr><td>向控股股东借款本金余额、负债率？实控人变更是否影响债务处理？</td><td>借款本金余额约 <strong>33 亿元</strong>、资产负债率 <strong>92.85%</strong>；"该变更属正常的国资管理调整……不会对存量债权债务关系产生影响"</td><td><strong>首次量化对控股股东负债规模</strong>；但<strong>未给纾困时间表</strong></td></tr><tr><td>高管薪酬（连问 8 次以上）</td><td>反复强调"绩效薪酬与经营业绩深度绑定，未达目标则扣减或不予结算"</td><td>投资者情绪指标：<strong>散户对治理与薪酬的愤怒已高度集中</strong></td></tr><tr><td>建议"剥离非核心资产，与控股股东资产置换"</td><td>"非常感谢您的关注和建议！"</td><td>无实质回应</td></tr></tbody></table>
+
+</div></details>
+<hr>
+<h2 id="chap3">三、炒作逻辑：市场在赌"超聚变"，公司实际在做"修表"</h2>
+<h3 id="sec12">3.1 三支柱排序</h3>
+<p><strong>结论：三支柱中，①"炒预期"（豫资系资产注入/超聚变借壳）是唯一真正驱动过行情的支柱，②"炒历史类似行为"指向下跌组，③"炒主板映射"在本股身上映射方向是反的（公司是地方政府客户，不是算力供给方）。</strong></p>
+<h4>① 炒预期：节点表</h4>
+<table><thead><tr><th>节点</th><th>预计时点</th><th>判读 / 证伪点</th></tr></thead><tbody><tr><td>2026 三季报</td><td>2026-10 下旬</td><td><strong>看归母净资产是否止跌</strong>（H1 为 1.63 亿元）；若已转负，故事提前结束</td></tr><tr><td>2026 年度业绩预告</td><td>2027-01 下旬</td><td><strong>净资产是否为正的第一次公开确认</strong></td></tr><tr><td><strong>2026 年年报 + 审计意见</strong></td><td><strong>2027-04</strong></td><td><strong>生死开关</strong>：净资产为负 → 叠加财务类 \*ST；审计段落未移除 → ST 继续</td></tr><tr><td>资产注入 / 重整预案</td><td>未知</td><td><strong>当前零公告</strong>。任何"超聚变借壳""豫资资产注入"均为<strong>纯市场猜想</strong></td></tr><tr><td>海口两项目公司抵债进展</td><td>已逾期</td><td>受让方（控股股东）是否行使解除权</td></tr></tbody></table>
+<h4>② 炒历史类似行为：同型样本指向下跌组</h4>
+<p>以基准日画像（<strong>深主板 / 其他风险警示 ST / "连续三年扣非为负+持续经营存疑" / 市值 24 亿元级 / 传统工程主业 / 国资控股 / 深跌中</strong>）在当下市场找同型样本，从 ST 信息库"带帽原因"字段筛出 <strong>53 家</strong>同含该项的公司，取其中有行情数据的 <strong>25 家</strong>（含棕榈自身）计算 2026 年涨跌幅：</p>
+<table><thead><tr><th>涨跌幅区间</th><th>2026 年涨跌幅</th><th>简称（部分）</th></tr></thead><tbody><tr><td><strong>上涨组（6 只）</strong></td><td>+109.49%、+68.35%、+53.24%、+30.82%、+17.24%、+7.43%</td><td>ST雪浪、ST长方、ST海钦、ST美克、ST宏达、ST银江</td></tr><tr><td><strong>下跌组（19 只）</strong></td><td>-3.18% 至 -61.73%</td><td>ST晨鸣、ST得润、ST惠程、ST东时、ST华谊、ST中装、ST华闻、ST云动、*ST广糖、ST百利、ST易购、ST三木、ST云城、ST龙元、<strong>ST棕榈 -44.77%</strong>、ST龙大、ST亚光、*ST康佳A、*ST岭南</td></tr></tbody></table>
+<ul><li><strong>样本中位数 -24.99%、均值 -12.09%、上涨仅 6/25。</strong></li><li><strong>ST棕榈 -44.77% 落在跌幅榜第 5 位</strong>——已被市场明确归入"下跌组"。</li><li><strong>上涨组的共性</strong>：ST雪浪（PB 为负、净资产已为负）、ST长方、ST美克均已有<strong>可命名的资产动作</strong>（重整/注入/控制权变更）；ST宏达则是"定增+控制权变更"已落地。<strong>即"有物"</strong>。</li><li><strong>ST棕榈的处境</strong>：既<strong>没有可命名的注入标的</strong>（超聚变只是传闻），也<strong>没有落地的重整</strong>——只有"持续代偿"这一"有人（国资）"的特征。按纪律，<strong>"人名/股东名"属预期、可被反复消费也会被反复质疑；"物"属事实、一旦公告即重定价。</strong></li></ul>
+<h4>③ 炒主板映射：本股映射方向是反的</h4>
+<p><strong>结论：算力主线炒的是"卖铲子的人"，而本股是"被欠钱的乙方"——把算力景气映射到它身上，等于把上游的成本逻辑套在现金流最紧的下游身上，方向是反的；本股真正能接上的主线是"化债"与"高标准农田"，而这两条主线的定价权同样握在地方政府手里。</strong></p>
+<ul><li>当下主板算力主线（超聚变、液冷服务器、AI 基建）中，<strong>超聚变本身是非上市主体</strong>（总部郑州、河南国资体系持股），市场由此推导"同省国资平台可能承接"，这是本股全部题材想象力的来源。</li><li>⚠️ <strong>但方向要看清</strong>：棕榈股份是<strong>地方政府的工程服务商</strong>，其收入函数是"地方财政支付能力"，<strong>不是</strong>"算力资本开支"。把"算力景气"映射到本股，<strong>相当于把上游成本端的逻辑套在现金流最吃紧的下游乙方身上</strong>。</li><li>附加映射：<strong>高标准农田</strong>（政策主线，公司称累计超 150 万亩）+ <strong>化债</strong>（地方债务化解主线，公司是受益方）。</li></ul>
+<h3 id="sec13">3.2 情绪与筹码：注意力已过峰值，方向朝下</h3>
+<ul><li><strong>韭研公社异动表：50 条记录</strong>（2021-11 至 2026-07-02）。<strong>炒作符号演化清晰</strong>：</li><li>2021—2023：「元宇宙+VR+特色小镇+生态园林+河南国资」</li><li>2024-03 起：「资产注入猜测+河南国资」</li><li><strong>2024-10 起：「超聚变借壳猜想（河南国资）」——此符号此后从未消失</strong></li><li>2026 年：「诉讼撤诉+成立清收事业部+积极化解相关风险+足球俱乐部（被处置）+超聚变（河南国资）」</li><li><strong>连板极值</strong>：<strong>14 天 8 板</strong>（2022-05，新型城镇建设，股价至 5.39 元）；<strong>10 天 6 板</strong>（2025-05，"重组办法修订+超聚变"，2.18 → 2.97 元）。</li><li><strong>股价水位</strong>：2022-07 以来区间 <strong>1.18—3.58 元</strong>，现价 <strong>1.32 元</strong>，处区间<strong>底部约 6% 分位</strong>；2026 年内区间 1.18—3.03 元。</li><li><strong>龙虎榜</strong>：2026 年仅 5 次（04-30 净卖 394.3 万元、05-07、06-01 净买 482.0 万元、06-22、<strong>07-03 净卖 359.9 万元</strong>），<strong>最近一次为 2026-07-03，此后近 3 个月零上榜</strong>。对照 2025-05 主升期单日净买最高 6,712.2 万元——<strong>注意力强度已从"万元级"降至"零记录"</strong>。</li><li><strong>成交</strong>：2026-09-30 换手率 <strong>0.72%</strong>、成交额 <strong>1,684.76 万元</strong>、量比 0.48。</li></ul>
+<details class="fold"><summary>韭研公社异动全量明细（50 条，最新在上）</summary><div class="fold-body">
+
+<table><thead><tr><th>题材时间</th><th>题材</th><th>涨停信息</th><th>股价</th><th>涨幅</th><th>异动关键词</th></tr></thead><tbody><tr><td>2026-07-02</td><td>ST板块</td><td>—</td><td>1.32</td><td>4.76%</td><td>积极化解相关风险+足球+实控人变更+超聚变（河南国资）</td></tr><tr><td>2026-07-01</td><td>ST板块</td><td>—</td><td>1.26</td><td>4.13%</td><td>诉讼撤诉+成立清收事业部+足球+实控人变更+超聚变（河南国资）</td></tr><tr><td>2026-06-01</td><td>ST板块</td><td>3天2板</td><td>1.68</td><td>5.00%</td><td>降息支持+成立清收事业部+足球+实控人变更+超聚变（河南国资）</td></tr><tr><td>2026-05-28</td><td>ST板块</td><td>—</td><td>1.58</td><td>5.33%</td><td>成立清收事业部+足球+实控人变更+超聚变（河南国资）</td></tr><tr><td>2026-05-22</td><td>ST板块</td><td>—</td><td>1.68</td><td>5.00%</td><td>成立清收事业部+足球+实控人变更+超聚变（河南国资）</td></tr><tr><td>2026-05-18</td><td>ST板块</td><td>—</td><td>1.69</td><td>4.97%</td><td>成立清收事业部+足球+实控人变更+超聚变（河南国资）</td></tr><tr><td>2026-05-12</td><td>ST板块</td><td>—</td><td>1.79</td><td>5.29%</td><td>承诺不减持+足球+实控人变更+超聚变（河南国资）</td></tr><tr><td>2026-04-07</td><td>足球</td><td>—</td><td>2.77</td><td>9.92%</td><td>足球俱乐部（被处置）+实控人变更+超聚变（河南国资）+园林施工</td></tr><tr><td>2026-01-21</td><td>其他</td><td>—</td><td>2.84</td><td>10.08%</td><td>实控人变更+超聚变（河南国资）+园林施工</td></tr><tr><td>2026-01-12</td><td>公告</td><td>—</td><td>2.88</td><td>4.73%</td><td>实控人变更+超聚变（河南国资）</td></tr><tr><td>2026-01-09</td><td>公告</td><td>—</td><td>2.75</td><td>10.00%</td><td>实控人变更+超聚变（河南国资）</td></tr><tr><td>2025-11-05</td><td>人工智能/电力</td><td>3天2板</td><td>3.10</td><td>9.93%</td><td>超聚变借壳猜想（河南国资）</td></tr><tr><td>2025-11-03</td><td>超聚变</td><td>—</td><td>2.76</td><td>9.96%</td><td>超聚变借壳猜想（河南国资）</td></tr><tr><td>2025-09-11</td><td>人工智能相关</td><td>—</td><td>2.87</td><td>9.96%</td><td>超聚变借壳猜想</td></tr><tr><td>2025-09-01</td><td>人工智能相关</td><td>—</td><td>2.52</td><td>10.04%</td><td>超聚变借壳猜想</td></tr><tr><td>2025-05-30</td><td>重组</td><td>10天6板</td><td>2.97</td><td>10.00%</td><td>超聚变借壳猜想（河南国资）</td></tr><tr><td>2025-05-26</td><td>重组</td><td>6天5板</td><td>2.87</td><td>9.96%</td><td>超聚变借壳猜想（河南国资）</td></tr><tr><td>2025-05-22</td><td>重组</td><td>4天4板</td><td>2.90</td><td>9.85%</td><td>超聚变借壳猜想（河南国资）</td></tr><tr><td>2025-05-21</td><td>重组</td><td>3天3板</td><td>2.64</td><td>10.00%</td><td>超聚变借壳猜想（河南国资）</td></tr><tr><td>2025-05-20</td><td>重组</td><td>2天2板</td><td>2.40</td><td>10.09%</td><td>超聚变借壳猜想（河南国资）</td></tr><tr><td>2025-05-19</td><td>重组</td><td>—</td><td>2.18</td><td>10.10%</td><td>超聚变借壳猜想（河南国资）</td></tr><tr><td>2024-12-19</td><td>重组/股权变动</td><td>—</td><td>2.76</td><td>9.96%</td><td>超聚变借壳猜想（河南国资）</td></tr><tr><td>2024-12-17</td><td>足球</td><td>—</td><td>2.71</td><td>2.26%</td><td>足球俱乐部（被处置）</td></tr><tr><td>2024-12-11</td><td>地产/基建</td><td>—</td><td>2.74</td><td>10.04%</td><td>园林施工+重大项目中标+超聚变借壳猜想</td></tr><tr><td>2024-11-14</td><td>公告</td><td>—</td><td>2.54</td><td>9.96%</td><td>重大项目中标+超聚变借壳猜想</td></tr><tr><td>2024-10-28</td><td>重组/股权变动</td><td>—</td><td>2.28</td><td>10.14%</td><td>超聚变借壳猜想（河南国资）+土地流转+乡村振兴+增持</td></tr><tr><td>2024-07-02</td><td>乡村经济</td><td>2天2板</td><td>1.69</td><td>9.74%</td><td>土地流转+乡村振兴+增持+河南国资</td></tr><tr><td>2024-07-01</td><td>乡村经济</td><td>—</td><td>1.54</td><td>10.00%</td><td>土地流转+乡村振兴+增持+河南国资</td></tr><tr><td>2024-03-12</td><td>其他</td><td>—</td><td>2.59</td><td>1.57%</td><td>河南国资+生态园林+盐碱土改良+VR</td></tr><tr><td>2024-03-11</td><td>资产注入猜测</td><td>—</td><td>2.55</td><td>9.91%</td><td>河南国资+生态园林+盐碱土改良+VR</td></tr><tr><td>2023-08-28</td><td>环保</td><td>—</td><td>2.87</td><td>7.49%</td><td>生态园林+盐碱土改良+VR</td></tr><tr><td>2023-07-24</td><td>生态园林</td><td>—</td><td>2.78</td><td>0.36%</td><td>生态园林+盐碱土改良+VR</td></tr><tr><td>2023-07-21</td><td>环保</td><td>—</td><td>2.77</td><td>9.92%</td><td>盐碱土改良+生态园林+VR+职业教育</td></tr><tr><td>2022-12-27</td><td>地产基建</td><td>—</td><td>3.11</td><td>1.30%</td><td>生态园林+职业教育+VR+瓷砖胶</td></tr><tr><td>2022-12-26</td><td>其他</td><td>—</td><td>3.07</td><td>10.04%</td><td>VR+瓷砖胶+生态园林+横琴</td></tr><tr><td>2022-08-19</td><td>元宇宙</td><td>—</td><td>3.47</td><td>10.16%</td><td>VR设备、内容+瓷砖胶+生态园林+横琴</td></tr><tr><td>2022-05-23</td><td>其他</td><td>14天8板</td><td>5.39</td><td>10.00%</td><td>生态园林+生态城镇+横琴</td></tr><tr><td>2022-05-16</td><td>珠海</td><td>9天7板</td><td>4.68</td><td>10.12%</td><td>生态园林+生态城镇+横琴</td></tr><tr><td>2022-05-13</td><td>基建产业链</td><td>8天6板</td><td>4.25</td><td>10.10%</td><td>生态园林+生态城镇+河南国资</td></tr><tr><td>2022-05-12</td><td>新型城镇建设</td><td>7天4板</td><td>3.86</td><td>9.97%</td><td>生态园林+生态城镇+河南国资</td></tr><tr><td>2022-05-11</td><td>新型城镇建设</td><td>6天3板</td><td>3.51</td><td>10.03%</td><td>生态园林+生态城镇+河南国资</td></tr><tr><td>2022-05-10</td><td>新型城镇建设</td><td>—</td><td>3.19</td><td>10.00%</td><td>生态园林+生态城镇+河南国资</td></tr><tr><td>2022-05-09</td><td>新型城镇建设</td><td>4天2板</td><td>2.90</td><td>9.85%</td><td>河南园林龙头，生态城镇轻资产运营</td></tr><tr><td>2022-04-29</td><td>环境保护</td><td>—</td><td>2.81</td><td>10.20%</td><td>土壤修复+特色小镇+元宇宙+旅游</td></tr><tr><td>2022-02-17</td><td>土壤检测及修复</td><td>—</td><td>3.71</td><td>3.63%</td><td>土壤修复+特色小镇+元宇宙+旅游</td></tr><tr><td>2022-02-16</td><td>基建</td><td>—</td><td>3.58</td><td>10.15%</td><td>中标+特色小镇+元宇宙+VR</td></tr><tr><td>2022-01-26</td><td>公告</td><td>—</td><td>3.58</td><td>10.15%</td><td>中标+特色小镇+元宇宙+VR</td></tr><tr><td>2021-12-21</td><td>元宇宙</td><td>—</td><td>3.60</td><td>10.09%</td><td>元宇宙+VR+特色小镇</td></tr><tr><td>2021-11-22</td><td>元宇宙</td><td>—</td><td>3.38</td><td>10.10%</td><td>元宇宙+VR+特色小镇</td></tr></tbody></table>
+<p>（数据来源：韭研公社异动整理 parquet；该表只收录达标异动，未入库不等于无异动；最新一条停在 2026-07-02。）</p>
+
+</div></details>
+<h3 id="sec14">3.3 成本锚点</h3>
+<p><strong>结论：本股没有任何"协议转让价/司法拍卖价/重整战投价"型的市场底，唯一的成本锚是控股股东 2019 年的 3.94 元/股受让价——现价只有它的 0.33 倍。这条锚说明：控股股东"必救"的动因不是估值判断，而是国资责任与账面无退路；也正因浮亏如此之深，它更倾向选择"不新增权益风险"的信用支持，而非"直接送资产"。</strong></p>
+<table><thead><tr><th>参与方</th><th>成本（元/股）</th><th>说明</th></tr></thead><tbody><tr><td><strong>控股股东豫资保障房</strong></td><td><strong>3.94</strong></td><td>2019-02 协议受让 1.95 亿股（13.10%），《中国证券报》报道口径；<strong>现价为其 0.33 倍（浮亏约 66.5%）</strong></td></tr><tr><td>南京栖霞建设</td><td>未披露</td><td>IPO 前战略入股 + 2014 年参与定增，<strong>历史成本公告未系统披露</strong></td></tr><tr><td>现价</td><td>1.32</td><td>2026-09-30 收盘</td></tr></tbody></table>
+<p><strong>两类定价逻辑的区分</strong>：本股无"协议转让/法拍价"型市场底，也无"重整战投价"型重整底——<strong>唯一的成本锚是 2019 年的 3.94 元/股</strong>。这条锚说明：<strong>控股股东的沉没成本极深，其"必救"动因不是估值判断，而是国资的责任与账面无退路。</strong> 但也正因如此，<strong>它救的方式会优先选择"不新增权益风险"的信用支持（担保/借款），而不是"直接送资产"。</strong></p>
+<h3 id="sec15">3.4 "超聚变借壳"能走通吗——按"大胆假设、小心求证"四步法推演</h3>
+<p><strong>结论：把"资产注入"这件事的四个可能版本全部摊开后，制度上被堵死的是"纯超聚变借壳"（跨体系、控制权变更、审核等同 IPO），代价最小、最可能的是"豫资体系内同控整合"（控制权不变、不构成借壳）；但无论哪一条，都必须先跨过"2026 年末净资产不能为负"这道门——即</strong>救助的顺序必然是"先修表、后装物"，而不是反过来<strong>。</strong></p>
+<details class="fold"><summary>四步推演全文（扩大想象力 → 查制度障碍 → 排除不可能 → 留下大概率）</summary><div class="fold-body">
+
+<p><strong>第一步 · 扩大想象力（先发散，不加约束）</strong></p>
+<p>把"未来 12—24 个月内可能发生在 ST棕榈身上的资本动作"全部列出来，包括听起来极端的版本： ① 豫资系把体系内优质资产（如城乡一体化、保障房运营、农业服务类资产）注入上市公司； ② 超聚变（河南国资体系持股的算力基础设施公司）借壳棕榈股份； ③ 引入第三方产业方受让控股股东股份，构成控制权变更型重组上市； ④ 上市公司自行申请预重整/重整，用司法程序削债； ⑤ 控股股东直接豁免债务或赠与资产（权益性交易）； ⑥ 把上市公司现有工程资产整体置出，变成净壳待售； ⑦ 什么都不做，靠代偿续命，直到净资产转负、被动叠加 \*ST。 <strong>此阶段一条都不砍——哪怕是"完全看不到迹象"的第 ①②项。</strong></p>
+<p><strong>第二步 · 逐条查制度障碍（落到条文，不引"通常认为"）</strong></p>
+<ul><li><strong>① 同控资产注入（不构成借壳）</strong>：控股股东不变 → 属关联交易型发行股份购买资产。制度门槛只有《上市公司证券发行注册管理办法》第十一条第（三）项："<strong>现任</strong>董事、监事和高级管理人员<strong>最近三年</strong>受到中国证监会行政处罚"的不得向特定对象发行股票。<strong>本案核查结果：棕榈股份无证监会立案、无证监会行政处罚</strong>（2026-09-10 的 292.50 万元罚款系<strong>郑州市城市综合执法局</strong>作出，属行政执法、非证监会处罚）→ <strong>发股通道未被锁死</strong>。→ <strong>制度上可行</strong>。</li><li><strong>② 超聚变借壳</strong>：借壳 = 重组上市，前提是<strong>控制权发生变更</strong>；《重组办法》要求标的符合板块定位、审核标准等同 IPO。关键事实：<strong>超聚变与豫资集团并非同一控制人</strong>（超聚变为河南国资体系中另一平台持股），要装进来必然导致控制权变更（除非超聚变先无偿划入豫资集团，而这需要两个国资平台之间的资产划转安排）。→ <strong>制度上未被明文禁止，但需解决"跨体系+控制权变更+等同 IPO 审核"三重门槛</strong>。</li><li><strong>③ 第三方产业方受让</strong>：不限制，但需找到愿意接手一家归母净资产 1.63 亿元、年亏 10 亿元级、诉讼密集的公司的买家。</li><li><strong>④ 自行申请重整</strong>：通道存在（同省 ST瑞茂、ST中岩已先行申请预重整），且重整是<strong>唯一能一次性削掉 53.81 亿元"流动负债高于流动资产"缺口的工具</strong>；但重整会带来转增摊薄与除权，且在 2026-07-06 之后主板 ST 已无涨跌幅红利。</li><li><strong>⑤ 债务豁免/资产赠与</strong>：无制度障碍，<strong>纯看控股股东意愿与国有资产保值增值的合规路径</strong>。按《监管规则适用指引——会计类第 1 号》，此类单方面利益输送计入<strong>资本公积</strong>、直接增厚净资产。</li><li><strong>⑥ 净壳化</strong>：需先解决 78.66 亿元应付账款与 98.33 亿元应收类资产的处置，工程量巨大。</li></ul>
+<p><strong>第三步 · 排除不可能</strong></p>
+<ul><li><strong>没有一条被硬条文"直接堵死"</strong>——这是本股与"现任董监高已被证监会处罚"型标的的关键区别（后者发股买资产 3 年内做不了）。</li><li>但有<strong>一条被时间堵死</strong>：无论走哪条路，<strong>2026 年末净资产若为负，公司将立即叠加财务类 \*ST（9.3.1 第二项），此后 2027 年报再不达标即终止上市</strong>——<strong>任何资本运作的时间表都必须赶在这个开关之前，否则一切都失去意义</strong>。</li></ul>
+<p><strong>第四步 · 留下大概率（概率为主观刻度，非预测）</strong></p>
+<table><thead><tr><th>路径</th><th>主观概率</th><th>上调概率的信号</th></tr></thead><tbody><tr><td>⑦ 维持现状、靠代偿续命，不做资本动作</td><td><strong>约 50%</strong></td><td>三季报净资产继续下探且无新公告</td></tr><tr><td>⑤ 控股股东债务豁免/资产赠与（修表型）</td><td><strong>约 20%</strong></td><td>任何"豁免""赠与""无偿划转"字样的公告</td></tr><tr><td>① 豫资系同控资产注入</td><td><strong>约 15%</strong></td><td>停牌筹划重大资产重组、聘任财务顾问</td></tr><tr><td>④ 自行申请预重整/重整</td><td><strong>约 8%</strong></td><td>债权人申请、法院受理、招募管理人</td></tr><tr><td>② 超聚变借壳</td><td><strong>约 5%</strong></td><td>超聚变股权划入豫资集团、或股转/控制权变更</td></tr><tr><td>③ 第三方受让控制权</td><td><strong>约 2%</strong></td><td>权益变动报告书</td></tr></tbody></table>
+<p><strong>三条纪律（按 skill 要求）</strong>：① <strong>弱推理不得当结论</strong>——"超聚变在准备 IPO 所以不会借壳"是弱推理（存在"IPO 受阻转重组"的先例）；② <strong>同控与非同控必须分开论</strong>——A 股"以小吞大"能成的几乎都是<strong>同一实控人下的整合（控制权不变、不构成借壳）</strong>，而控制权变更型（借壳）成功率先天极低；③ <strong>概率必须写出来</strong>，让读者能反驳。</p>
+
+</div></details>
+<h3 id="sec16">3.5 2025-05 主升浪复盘：注意力来过，但已经走了</h3>
+<p><strong>结论：2025 年 5 月那波"10 天 6 板"是本股近年来最典型的一次注意力峰值，其驱动因素（《重组办法》修订 + 超聚变液冷服务器排名第一 + 海光信息吸并中科曙光）</strong>全部是外部消息<strong>，公司自身零公告；峰值即派发——5 月 23 日单日净卖 3,728.8 万元、5 月 29 日净卖 1,758.7 万元，此后股价从 2.97 元一路走到 1.18 元。这是"事件兑现即利好出尽"的教科书样本。</strong></p>
+<details class="fold"><summary>2025-05 至 2026-09 股价与资金路径（散文 + 关键位）</summary><div class="fold-body">
+
+<p><strong>起点</strong>：2025-05-16 盘后证监会修订《上市公司重大资产重组管理办法》。市场立即把这条政策与"河南国资 + 超聚变"的老故事重新缝合，5 月 19 日起连续放量上行。</p>
+<p><strong>过程</strong>：5 月 19 日 +10.10%、20 日 +10.09%（2 天 2 板）、21 日 +10.00%（3 天 3 板）、22 日 +9.85%（4 天 4 板）并登上龙虎榜、净买 <strong>4,261.4 万元</strong>；5 月 26 日再 +9.96%（6 天 5 板），龙虎榜净买 <strong>6,712.2 万元</strong>——这是全轮最大的一笔净买入；5 月 30 日 +10.00%（10 天 6 板），股价摸至 <strong>2.97 元</strong>。</p>
+<p><strong>转折与派发</strong>：5 月 23 日（第 4 板当日）龙虎榜即出现 <strong>净卖 3,728.8 万元</strong>；5 月 29 日再净卖 <strong>1,758.7 万元</strong>（当日 -9.09%）。<strong>"涨停板上的净卖出"是本轮最清晰的派发信号。</strong></p>
+<p><strong>第二轮脉冲</strong>：2025 年 9 月至 11 月，"超聚变标准液冷服务器 2025H1 国内市场排名第一"（11-01 官微）与"微软因电力短缺导致 GPU 闲置"等算力新闻反复发酵，11 月 3 日 +9.96%、11 月 5 日 +9.93%（3 天 2 板、股价 3.10 元），但 11 月 7 日即 -7.35%。<strong>此后再未回到 3 元。</strong></p>
+<p><strong>戴帽后的三次微弱异动</strong>：2026-05-12（不减持承诺）、2026-06-01（降息 + 成立清收事业部，3 天 2 板）、2026-07-01/02（诉讼撤诉 + 积极化解风险），<strong>均为 5% 涨跌幅限制下的碎片化脉冲，无连续性</strong>。2026-07-03 龙虎榜净卖 359.9 万元后，<strong>近 3 个月零上榜</strong>。</p>
+<p><strong>水位对照</strong>：现价 1.32 元 = 2025-05 峰值 2.97 元的 <strong>44.4%</strong>；2026-06-26 最低 1.18 元 = 峰值的 <strong>39.7%</strong>。</p>
+
+</div></details>
+<hr>
+<h2 id="chap4">估值与投资结论</h2>
+<h3 id="sec17">估值</h3>
+<p>亏损股不使用 PE。分口径看：</p>
+<ul><li><strong>PB 14.62 倍</strong>：看起来骇人，但分母（归母净资产 1.63 亿元）已被消耗殆尽，<strong>该指标此刻是"净资产即将消失"的警报器，而不是"贵"的度量</strong>。</li><li><strong>PS(TTM) 约 1.18 倍</strong>（23.79 亿元 ÷ 约 20 亿元年化营收）：看似不高，但该公司毛利率仅 7.06%、且毛利无法覆盖财务费用——<strong>高营收低毛利的工程承包商，PS 本就不该给高</strong>。</li><li><strong>真正有意义的锚是"市值 vs 归母净资产"</strong>：23.79 亿元市值对应 1.63 亿元归母净资产，<strong>市场给的是"国资救助期权"的定价，不是资产定价</strong>。</li></ul>
+<p><strong>情景区间</strong>（概率为主观刻度，非预测）：</p>
+<table><thead><tr><th>情景</th><th>概率</th><th>关键假设</th><th>对应股价区间</th></tr></thead><tbody><tr><td>悲观</td><td>约 40%</td><td>2026 年末净资产转负 → 叠加财务类 \*ST；或跌破 1 元触发面值退市（归零）</td><td><strong>0.50—1.00 元</strong></td></tr><tr><td>中性</td><td>约 42%</td><td>靠抵债/清收/代偿把净资产维持为正、ST 继续戴到 2027 年之后</td><td>1.10—1.60 元</td></tr><tr><td>乐观</td><td>约 18%</td><td>豫资系资产注入或超聚变相关重组落地</td><td>2.50—4.00 元</td></tr></tbody></table>
+<p><strong>概率加权约 1.34 元 ≈ 现价 1.32 元</strong> → <strong>现价基本反映了这套概率分布</strong>。但<strong>赔率极度不对称</strong>：<strong>下行最大 -100%（退市归零、本金永久损失）</strong>，上行至多 +200%（回到 2025-05 高点附近）。<strong>这不是"便宜"，这是"用本金换彩票"。</strong></p>
+<h3 id="sec18">投资结论</h3>
+<p><strong>卖出（回避）</strong></p>
+<p><strong>理由链（按重要性排序）</strong></p>
+<ol><li><strong>两条归零线都在近端，且都是"零容错/不可救"型。</strong> ① <strong>财务类</strong>：2026-06-30 归母净资产仅 1.63 亿元，而半年已亏 2.63 亿元——只要下半年亏损超 1.63 亿元（按 H1 节奏极易发生），净资产即转负，直接触发 9.3.1 第二项 \*ST；2027 年报再不达标即<strong>终止上市</strong>。② <strong>交易类</strong>：现价 1.32 元、2026-06-26 最低 1.18 元，<strong>连续 20 日收盘价 &lt;1 元即终止上市且不进入退市整理期</strong>——<strong>没有任何自救窗口</strong>。（依据：2026 中报、深交所《股票上市规则（2026 修订）》）</li><li><strong>不在真正的"低位"。</strong> 信息库给出的"近 20 年价格分位 0.99%"只说明<strong>价格位置低</strong>，不说明<strong>估值低</strong>——公司每股净资产已从 2021 年的 2.56 元缩至 0.09 元，<strong>每股对应权益消失了 96.5%</strong>。按市值/PB/PS 三个口径复核，<strong>均不构成"低位"</strong>。（依据：2026 中报、腾讯行情 2026-09-30）</li><li><strong>国资的"输血"是能力型而非注资型——这在报表上还没有兑现成一个正数。</strong> 34 亿元担保额度、42 亿元借款额度、逐笔代偿（9 月单月 9,478.94 万元）、降息、不减持承诺，<strong>会计后果全是"负债端往来"</strong>；唯一大额资产动作是<strong>反向的</strong>：把海口两项目公司 80% 股权（评估 2.58 亿元）抵给控股股东换债务减免，<strong>且因审批未取得而未在约定 2026-09-30 前完成变更登记</strong>。（依据：各期关联交易/代偿公告、2026-08-11 股权抵债进展公告）</li><li><strong>摘帽唯一路径依赖审计师，而公司自己说"无法消除"。</strong> 9.8.7 条 OR 逻辑中"扣非转正"已无望（H1 扣非 -2.68 亿元），只能赌 2026 年报审计师移除"持续经营重大不确定性"段落；而公司在 2026 中报明确写"<strong>持续经营能力重大不确定性无法消除，公司仍可能持续实施 ST 风险警示</strong>"。加之主板 ST 自 2026-07-06 起已改 10% 涨跌幅，<strong>摘帽连制度红利都没有了</strong>。（依据：2026 中报"风险警示"节、上交所《交易规则（2026 年修订）》）</li><li><strong>核心预期无公告支撑，且同型样本指向下跌组。</strong> "超聚变借壳"自 2024-10 起被反复炒作、2025-05 打出 10 天 6 板，<strong>截至基准日零公告</strong>；且超聚变体系与豫资集团并非同一主体，跨体系借壳意味着控制权变更、审核等同 IPO。53 家同型样本中 25 家有行情者，2026 年涨跌幅<strong>中位 -24.99%、上涨仅 6 只</strong>，<strong>ST棕榈 -44.77% 位居跌幅榜第 5</strong>。（依据：韭研异动表、东财龙虎榜、ST 信息库同型样本测算）</li></ol>
+<p><strong>触发条件（出现即需重新评估，甚至可转为买入）</strong></p>
+<ul><li>控股股东出具<strong>债务豁免或资产赠与</strong>公告（真正的注资型动作，直接增厚净资产）；</li><li>公告<strong>资产注入预案</strong>（豫资系资产或与超聚变相关的重组）；</li><li>2026 三季报或业绩预告显示<strong>归母净资产回升至 3 亿元以上</strong>；</li><li>股价回落至 <strong>1.05—1.15 元</strong>（此时"面值博弈"的赔率才略有改善——但仍属极高风险动作）。</li></ul>
+<p><strong>失效条件（本结论作废或翻转）</strong></p>
+<ul><li>2026 年报归母净资产为<strong>正</strong>且审计报告<strong>不再带持续经营重大不确定性段落</strong> → 应重估为"摘帽前夜"；</li><li>控股股东完成实质性资产注入并表；</li><li>控股股东变更（如引入产业方）导致借壳路径明朗。</li></ul>
+<p><strong>参考区间</strong>：<strong>回避</strong>。若坚持参与面值博弈，仅建议在 1.05—1.15 元区间以"可全损资金"极小仓位试错，<strong>止损位 0.99 元</strong>（一旦 20 日计数启动，退出窗口会被迅速关闭）。</p>
+<p><strong>时间窗口</strong>：本结论有效期至 <strong>2027-04（2026 年年报披露）</strong>；期间以 2026 三季报（10 月下旬）与业绩预告（2027-01）为两个强制复检点。</p>
+<p><strong>仓位建议</strong>：不建仓。</p>
+<p><strong>最大风险</strong>：<strong>面值退市</strong>——现价距 1 元仅 32%，而 2026 年 6 月最低已触及 1.18 元；一旦跌破 1 元并连续 20 个交易日，<strong>交易类退市不设整理期、无自救窗口，本金直接归零</strong>。</p>
+<hr>
+<h2 id="chap5">附录</h2>
+<h3 id="sec19">附录 A · 待核实 / 需补充清单</h3>
+<table><thead><tr><th>#</th><th>待核实项</th><th>说明</th></tr></thead><tbody><tr><td>1</td><td>控股股东持股由 1.95 亿股（13.10%）增至 5.41 亿股（29.99%）的<strong>逐笔路径</strong>（定增/受让/转增）</td><td>本轮以 2019 年首次受让价 3.94 元/股为唯一成本锚，中间路径未逐笔还原</td></tr><tr><td>2</td><td>南京栖霞建设的<strong>历史入股成本</strong></td><td>公告未系统披露</td></tr><tr><td>3</td><td>海口棕岛、海口棕海<strong>账面净资产</strong></td><td>公告未披露，故无法判断 2.58 亿元抵债是否产生处置损益、能否增厚净资产</td></tr><tr><td>4</td><td>高标准农田业务的<strong>收入占比</strong></td><td>2026H1 未单独列示</td></tr><tr><td>5</td><td>公司<strong>诉讼总敞口</strong>（累计涉案金额合计）</td><td>逐份公告分散披露，公司未在互动易给出总额</td></tr><tr><td>6</td><td>控股股东所持股份的<strong>质押/冻结情况</strong></td><td>本次未取得权威结果，<code>data_risk</code> 与公告检索亦未见记录，措辞为"未发现"而非"确无"</td></tr></tbody></table>
+<h3 id="sec20">附录 B · 关键信源链接</h3>
+<p><strong>结论：本报告全部关键数字与事件均可回溯至一手公告；因 Wind 局域网代理本轮整段不可达，行情与同业估值改用公开源，特此说明并以"数据来源"节登记。</strong></p>
+<table><thead><tr><th>编号</th><th>文件</th><th>发布日</th><th>原文</th></tr></thead><tbody><tr><td>1</td><td>关于公司股票被实施其他风险警示暨停复牌公告</td><td>2026-04-25</td><td><a href="https://data.eastmoney.com/notices/detail/002431/AN202604241821567977.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>2</td><td>董事会关于 2025 年度带持续经营重大不确定性段落的无保留意见审计报告涉及事项的专项说明</td><td>2026-04-25</td><td><a href="https://data.eastmoney.com/notices/detail/002431/AN202604241821567979.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>3</td><td>棕榈股份内部控制审计报告（大信审字〔2026〕第 16-00022 号）</td><td>2026-04-25</td><td><a href="https://data.eastmoney.com/notices/detail/002431/AN202604241821567990.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>4</td><td>关于未弥补亏损达到实收股本总额三分之一的公告</td><td>2026-04-25</td><td><a href="https://data.eastmoney.com/notices/detail/002431/AN202604241821567980.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>5</td><td>2025 年年度报告</td><td>2026-04-25</td><td><a href="https://data.eastmoney.com/notices/detail/002431/AN202604241821567993.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>6</td><td>关于公司实际控制人发生变更的公告</td><td>2026-01-08</td><td><a href="https://data.eastmoney.com/notices/detail/002431/AN202601081816851191.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>7</td><td>2026 年半年度报告</td><td>2026-08-27</td><td><a href="https://data.eastmoney.com/notices/detail/002431/AN202608261828484211.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>8</td><td>关于 2026 年半年度计提信用减值准备及资产减值准备的公告</td><td>2026-08-27</td><td><a href="https://data.eastmoney.com/notices/detail/002431/AN202608261828484226.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>9</td><td>关于公司进行债权债务重组的公告</td><td>2026-09-24</td><td><a href="https://data.eastmoney.com/notices/detail/002431/AN202609231829807873.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>10</td><td>关于收到郑州市城市综合执法局出具的《行政处罚决定书》的公告</td><td>2026-09-11</td><td><a href="https://data.eastmoney.com/notices/detail/002431/AN202609101829233718.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>11</td><td>关于拟转让项目公司股权抵偿债务的进展公告</td><td>2026-08-11</td><td><a href="https://data.eastmoney.com/notices/detail/002431/AN202608101827814278.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>12</td><td>关于关联方继续为公司偿还部分债务暨履行担保责任的公告</td><td>2026-09-30</td><td><a href="https://data.eastmoney.com/notices/detail/002431/AN202609291829994672.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>13</td><td>关于重大诉讼的公告（涉案 2,099.49 万元）</td><td>2026-09-30</td><td><a href="https://data.eastmoney.com/notices/detail/002431/AN202609291829994655.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>14</td><td>2025 年度网上业绩说明会投资者关系活动记录表</td><td>2026-05-19</td><td><a href="https://data.eastmoney.com/notices/detail/002431/AN202605191822452284.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>15</td><td>2026 年第一季度经营情况简报</td><td>2026-04-25</td><td><a href="https://data.eastmoney.com/notices/detail/002431/AN202604241821567978.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>16</td><td>中证网：豫资保障房受让价 3.94 元/股（权威媒体）</td><td>2019-02-12</td><td><a href="https://cs.com.cn/ssgs/gsxw/201902/t20190212_5922586.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>17</td><td>中证网：豫资入主与迁址郑州（权威媒体）</td><td>2019-06-19</td><td><a href="https://www.cs.com.cn/ssgs/gsxw/201906/t20190619_5959789.html" target="_blank" rel="noopener">原文</a></td></tr></tbody></table>
+<p>（行情与估值：腾讯 <code>qt.gtimg.cn</code>（2026-09-30 收盘）；日 K：新浪 <code>CN_MarketData.getKLineData</code>；龙虎榜：东方财富 <code>RPT_DAILYBILLBOARD_DETAILSNEW</code>；异动：韭研公社异动整理 parquet；股东与财务：东方财富 F10【异源】。）</p>
+<h3 id="sec21">附录 C · 逻辑漏洞与反方观点</h3>
+<p><strong>结论：本报告的"卖出"结论，最可能被两件事推翻——一是控股股东突然做出真正的权益性注入，二是三季报显示净资产止跌。除这两条外，"超聚变"故事本身不构成足以推翻结论的理由。</strong></p>
+<ol><li><strong>市占率/行业地位怎么来的？</strong> 本报告未使用市占率叙事。公司自称"河南园林龙头""高标准农田先发优势"，但<strong>未披露市占率数据</strong>，且 2026H1 工程施工收入同比 -34.91%——<strong>规模在收缩，谈不上龙头溢价</strong>。</li><li><strong>采购/框架协议 ≠ 收入？</strong> 已在正文处理：累计已签约未完工订单 215.79 亿元是<strong>存量合同余额</strong>，不等于未来收入，且毛利率仅 7.06%。</li><li><strong>中标 ≠ 订单？</strong> 2026Q1"已中标尚未签约"6 个、0.89 亿元——<strong>金额很小</strong>，本报告未将其计入任何乐观情景。</li><li><strong>引用的时间点是否已过期？</strong> 已复核：最新定期报告为 2026 中报（2026-08-27）；最新公告为 2026-09-30；行情截止 2026-09-30。<strong>2026 三季报尚未披露，是最大的信息缺口。</strong></li><li><strong>数据来源是什么级别？</strong> 财务与公告均取公告原文（东财公告库为二级通道，但内容为公告全文）；行情为公开源（Wind 代理离线）；同型样本涨跌幅由腾讯行情自算。<strong>"超聚变借壳"为市场传闻，无任何公告支撑，报告中已明确标注为"纯猜想"。</strong></li></ol>
+<p><strong>雪球等平台的反方观点（用于压力测试）</strong>：市场主流看法是"命悬河南国资委'当亲儿子养'，要么注入超聚变、要么注入豫资体系内优质资产"（雪球评论，2026-09）。<strong>回应</strong>：该判断的前提是"国资一定会注入"，但截至基准日，豫资系给出的全部是<strong>信用支持</strong>，且上市公司正在<strong>反向向控股股东交出项目公司股权</strong>——<strong>至少到目前为止，"亲儿子"待遇体现在"不让你断气"，尚未体现在"给你补权益"。</strong>（雪球评论，2026-09）</p>
+<hr>
+<h2 id="chap6">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-05</td><td>首次生成；数据截至 2026 中报与 2026-09-30 行情；投资结论＝卖出（回避）；归档目录 <code>/002431.SZ ST棕榈/</code>，全库检索确认无历史同名研报可吸收，属从零生成</td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
