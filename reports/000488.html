@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ST晨鸣（000488.SZ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>10 章 · 17 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断</a><a class="sblv3" href="#sec0">1.1 结论：这不是一只普通 ST，而是一只「地方国资深度介入的困境反转＋摘帽预期」标的</a><a class="sblv3" href="#sec1">1.2 结论：实控人是寿光市国资局，控股股东股份 45% 以上被冻结、且已被司法拍卖一次——"国资控制但大股东缺钱"</a><a class="sblv3" href="#sec2">1.3 结论：ST 依据是深主板 9.8.1 的第（四）（五）（七）三项（"其他风险警示"，非退市风险警示）；四类退市红线中，唯一悬顶的是"2026 年末归母净资产为负"</a><a class="sblv3" href="#sec3">1.4 结论：摘帽是"事由逐项消除"的 OR/AND 混合逻辑，2026 年三季报看经营、2026 年报看审计——最早可申请窗口落在 2027 年 4 月年报之后</a><a class="sblv3" href="#sec4">1.5 王艳式六栏目（颗粒度备查，全部就地折叠）</a><a class="sblv3" href="#sec5">1.6 全流程进度看板（总控）</a><a class="sblv3" href="#sec6">1.7 运作特征与综合判断</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、基本面路径：保壳（路径 A）</a><a class="sblv3" href="#sec7">2.1 结论：财务画像已从"断崖"转入"底部横盘"——营收全面恢复，但毛利率仍为负、扣非仍亏逾十亿</a><a class="sblv3" href="#sec8">2.2 结论：是一家"收入结构集中、周期属性极强"的浆纸一体化企业；机制纸占八成以上，热点业务（海外/特种纸）占比极小</a><a class="sblv3" href="#sec9">2.3 结论：真正的命门是债务——289.20 亿元银行借款、96.09% 资产负债率、货币资金仅 1.87 亿元</a><a class="sblv3" href="#sec10">2.4 结论：保壳的第一记重拳已经落地——2026-09-29 一次性豁免 10.44 亿元债务，全部计入资本公积，测算增厚归母净资产约 9.80 亿元</a><a class="sblv3" href="#sec11">2.5 结论：主要子公司中湛江、寿光两基地仍是亏损主体；债务豁免主要作用在寿光美伦，对湛江基地的救助尚未展开</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、炒作逻辑 + 情绪面 + 筹码面</a><a class="sblv3" href="#sec12">3.1 炒作逻辑三支柱（全部着眼未来）</a><a class="sblv3" href="#sec13">3.2 情绪面</a><a class="sblv3" href="#sec14">3.3 筹码与技术</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、主要看点</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">五、估值与投资结论</a><a class="sblv3" href="#sec15">（一）估值</a><a class="sblv3" href="#sec16">（二）投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">附录 C · 逻辑漏洞与反方观点（5 问速版）</a></div><div class="sbgrp"><a class="sblv2" href="#chap9">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">ST晨鸣（000488.SZ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：买入（事件驱动 · 轻仓 · 高波动）</strong></p>
+<p><strong>红线分类：</strong> <span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/stock?stockCode=000488&orgId=gssz0000488" target="_blank" rel="noopener">其他风险警示·停产(2025-02)</a></span>·<span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/stock?stockCode=000488&orgId=gssz0000488" target="_blank" rel="noopener">其他风险警示·内控否定(2024)</a></span>·<span class="sttag sttag-blue"><a href="http://www.cninfo.com.cn/new/disclosure/stock?stockCode=000488&orgId=gssz0000488" target="_blank" rel="noopener">连续四年扣非为负</a></span>·<span class="sttag sttag-blue"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=000488&announcementId=1225531813&orgId=gssz0000488&announcementTime=2026-08-29" target="_blank" rel="noopener">B股面值临界</a></span></p>
+<p><strong>生死定级：可救 · 国资已实质出手</strong>（自救空间中等的偏上）</p>
+<p><strong>自救空间：</strong> 寿光市国资系统（国资局＋财政局）已实质救助——控股股东与寿光市财政局平台于 <strong>2026-09-29 一次性豁免公司及控股子公司债务 10.44 亿元</strong>（全部计入资本公积）、23.10 亿元复工复产银团贷款已全额提款；五大生产基地全面复产。最大障碍是 <strong>289.20 亿元银行借款</strong>与主业持续亏损，且"摘帽"须由年审会计师确认"持续经营能力不确定性已消除"。</p>
+<p><strong>主要看点：</strong> 寿光市国资系统（国资局＋财政局双平台）于 2026-09-29 一次性豁免公司及控股子公司债务 <strong>10.44 亿元</strong>（寿光美伦 4.87 亿元、山东晨鸣纸品 3.50 亿元、控股股东 2.07 亿元），券部公告明确<strong>全部计入本年度资本公积</strong>，按持股比例（寿光美伦 86.78%、山东晨鸣纸品 100%、控股股东 100%）测算<strong>增厚归母净资产约 9.80 亿元</strong>，一举化解"2026 年末净资产转负 → 财务类 *ST"的尾部风险；同期五大基地全面复产、2025 年内控审计已回归标准无保留，公司在互动易称正"积极推进撤销其他风险警示"。</p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>标的</td><td>ST晨鸣（000488.SZ）／同源 B 股 ST晨鸣B（200488.SZ）／H 股 晨鸣纸业（01812.HK）</td></tr><tr><td>基准日</td><td><strong>2026-10-05</strong>（行情截至 2026-09-30 收盘，当日为国庆假期前最后一个交易日）</td></tr><tr><td>板块</td><td>深交所主板 · 风险警示板（ST，<strong>非 \*ST</strong>）</td></tr><tr><td>未复权现价</td><td>A 股 <strong>2.13 元</strong>（+2.40%）｜B 股 0.63 港元（+3.28%）｜H 股 0.615 港元（+3.36%）</td></tr><tr><td>总股本</td><td><strong>29.41 亿股</strong>（A 股约 16.99 亿股 · B 股 7.06 亿股 · H 股约 5.27 亿股）</td></tr><tr><td>市值</td><td>A 股流通市值 <strong>36.20 亿元</strong>；按 A 股价折算全部股本 62.65 亿元；分市场价合计约 43.26 亿元</td></tr><tr><td>版本</td><td><strong>第 1 次（初版）· 2026-10-05</strong></td></tr><tr><td>数据来源</td><td>公司公告（巨潮）／2022—2025 年报＋2026 中报 PDF／Wind 代理离线，行情改用腾讯·新浪公开源／ST 信息库</td></tr><tr><td>数据质量说明</td><td>Wind 局域网代理本轮不可达，<strong>行情、PB、同业主数据均改用腾讯 <code>qt.gtimg.cn</code> 与新浪 K 线</strong>，已在表内标注；财务以年报/中报原文为唯一口径</td></tr></tbody></table>
+<blockquote><p><strong>免责</strong>：本报告为投研分析，不构成投资建议。ST 类标的波动剧烈，请自行判断并控制仓位。</p></blockquote>
+<hr>
+<h2 id="chap1">一、诊断</h2>
+<h3 id="sec0">1.1 结论：这不是一只普通 ST，而是一只「地方国资深度介入的困境反转＋摘帽预期」标的</h3>
+<p><strong>一句话诊断：公司病根是"高杠杆＋纸业周期底＋停产"，三项戴帽事由（停产 / 内控非标 / 连续亏损）中两项已实质消除，寿光国资正以债务豁免的方式为其补净资产；现在真正决定生死的不是"能不能活"，而是"净资产够不够厚、审计认不认持续经营"。</strong></p>
+<p>估值快照显示"价格便宜、账面极贵"的背离——这正是本标的的全部张力所在。</p>
+<table><thead><tr><th>指标</th><th>数值</th><th>判读</th></tr></thead><tbody><tr><td>A 股现价</td><td>2.13 元（2026-09-30）</td><td>处 2025 年以来区间 1.74—3.05 元的 <strong>约 30% 分位</strong></td></tr><tr><td>近 20 年价格分位</td><td><strong>10.62%</strong>（ST 信息库档案）</td><td>价格维度确实是低位</td></tr><tr><td>归母净资产（2026-06-30）</td><td><strong>1.56 亿元</strong>（BPS 0.05 元）</td><td>已"薄如纸"，是最大风险源</td></tr><tr><td>PB（归母，现价）</td><td><strong>约 40.2 倍</strong></td><td>账面维度极贵；加债务豁免后仍约 5.5 倍</td></tr><tr><td>PS（A 股流通市值/年化营收）</td><td><strong>约 0.26 倍</strong></td><td>收入维度便宜</td></tr><tr><td>经营现金流（2026H1）</td><td>+3.22 亿元</td><td>已由失血转为微幅造血</td></tr></tbody></table>
+<details class="fold"><summary>估值快照的取数与口径</summary><div class="fold-body">
+
+<p>现价、涨跌幅、PB、市值取自腾讯行情接口（<code>qt.gtimg.cn/q=sz000488,sz200488,hk01812</code>，2026-09-30 收盘）。PB 按 A 股价 ÷ 归母每股净资产（2026-06-30 归母净资产 1.56 亿元 ÷ 总股本 29.41 亿股 = 0.053 元/股）计算；"加债务豁免后约 5.5 倍"按归母净资产 1.56 + 9.80 = 11.36 亿元、BPS 0.386 元测算，未计下半年损益。PS 用年化营收（2026H1 营收 68.65 亿元 × 2 = 137.30 亿元）为分母。价格分位数来自 Andy 自建 ST 信息库 <code>1.所有公司\ST晨鸣-000488.SZ.md</code> frontmatter。</p>
+
+</div></details>
+<h3 id="sec1">1.2 结论：实控人是寿光市国资局，控股股东股份 45% 以上被冻结、且已被司法拍卖一次——"国资控制但大股东缺钱"</h3>
+<p><strong>公司实控人为寿光市国有资产监督管理局，控股股东为晨鸣控股有限公司（地方国有控股，法定代表人姜言山）；晨鸣控股所持股份质押、冻结比例极高，且 2026 年已发生一次司法拍卖过户。</strong>这意味着：国资的"控制"是稳固的，但国资体系内的"现金流"是紧的——救助只能依靠<strong>债务豁免这类不花现金的权益性让渡</strong>，而非现金注入。</p>
+<p>股权结构截至 2026-06-30：</p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>控股股东</td><td>晨鸣控股有限公司，持股 15.50%（4.56 亿股）＋全资子公司晨鸣控股（香港）12.38%（3.64 亿股），合计 <strong>27.88%</strong></td></tr><tr><td>实际控制人</td><td><strong>寿光市国有资产监督管理局</strong>（地方国资管理机构）</td></tr><tr><td>晨鸣控股股东层</td><td>寿光市盛鸣投资 45.21%｜寿光市锐丰企业投资 36.14%｜寿光市恒联企业投资 18.65%</td></tr><tr><td>股东户数</td><td>93,718 户（A 股 77,810 户 · B 股 15,598 户 · H 股 310 户）</td></tr><tr><td>控股股东质押/冻结</td><td>质押 3.87 亿股；累计被冻结 4.35 亿股，占其所持 <strong>54.43%</strong>、占总股本 14.79%</td></tr><tr><td>B/H 股特殊安排</td><td>晨鸣控股（香港）将 2.11 亿股 B 股、1.53 亿股 H 股托管至境外机构作股票融资，<strong>存在无法返还风险</strong></td></tr></tbody></table>
+<details class="fold"><summary>股权与冻结事件时间线（降序）</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>事件</th><th>关键数字</th></tr></thead><tbody><tr><td>2026-09-18</td><td>控股股东部分被司法拍卖股份完成过户暨解除冻结</td><td>20,826,013 股（占总股本 0.71%）于 8/13—8/14 京东网司法拍卖，9/11 过户；持股由 8.20 亿股降至 7.99 亿股，占比 27.87%→27.17%；受让方 6 个月内不得减持</td></tr><tr><td>2026-08-14</td><td>控股股东部分股份被司法拍卖进展</td><td>起拍价 1.83 元/股（约为当时市价 1.99 元的 92%）</td></tr><tr><td>2026-07-31</td><td>股东股份被司法冻结及轮候冻结</td><td>轮候冻结 3,769.71 万股（占其所持 4.60%）</td></tr><tr><td>2025-04-12</td><td>控股股东股权结构变动的提示性公告</td><td>控股股东层面股东为寿光市三家投资平台</td></tr><tr><td>2023-07-18</td><td>晨鸣控股（香港）股票融资（托管 B/H 股）</td><td>公告编号 2023-058</td></tr></tbody></table>
+<p>来源：公司公告（巨潮），列表页 <code>http://www.cninfo.com.cn/new/disclosure/stock?stockCode=000488&amp;orgId=gssz0000488</code>。</p>
+
+</div></details>
+<h3 id="sec2">1.3 结论：ST 依据是深主板 9.8.1 的第（四）（五）（七）三项（"其他风险警示"，非退市风险警示）；四类退市红线中，唯一悬顶的是"2026 年末归母净资产为负"</h3>
+<p><strong>这是全篇最需要说清的一点：晨鸣戴的是"ST"而非"\*ST"，触发的是《深交所股票上市规则》第 9.8.1 条的其他风险警示，本身不是退市条款。</strong>真正的退市威胁来自<strong>财务类</strong>——若 2026 年末经审计归母净资产为负，2026 年报将被实施退市风险警示（\*ST）。</p>
+<p>戴帽路径（两次，均为"其他风险警示"）：</p>
+<table><thead><tr><th>时点</th><th>依据条款</th><th>事由</th></tr></thead><tbody><tr><td>2025-02-20（实施日 02-21）</td><td>深主板 <strong>9.8.1(五)</strong></td><td>生产经营活动受到严重影响且预计三个月内不能恢复正常（部分基地停产）</td></tr><tr><td>2025-04-01（叠加）</td><td>深主板 <strong>9.8.1(四)</strong> ＋ <strong>(七)</strong></td><td>2024 年度财务报告内控被出具否定意见；连续三个会计年度扣非前后孰低为负且最近一年审计报告显示持续经营存在不确定性</td></tr></tbody></table>
+<p>四类退市红线逐条对照（截至 2026 中报／最近公告）：</p>
+<table><thead><tr><th>红线类型</th><th>触发条件（速查）</th><th>本公司是否触及</th><th>依据</th></tr></thead><tbody><tr><td>交易类</td><td>收盘价&lt;1 元；市值&lt;5 亿元；股东数&lt;2000 人</td><td><strong>B 股 0.54 元&lt;1 元（折人民币）——但规则要求"A 股与 B 股同时均低于 1 元"，A 股 2.13 元 → 未触发</strong>；总市值约 43 亿元；股东 9.37 万户</td><td>深主板 9.2.1(五)(六)(八)</td></tr><tr><td>财务类</td><td>扣非前后孰低为负 <strong>且</strong> 扣后营收&lt;3 亿元；净资产为负；审计无法表示/否定</td><td>2025 年：扣后营收约 <strong>61.18 亿元</strong> &gt; 3 亿元；归母净资产 <strong>9.04 亿元</strong> &gt; 0；审计为"带强调事项段的无保留意见" → <strong>未触发</strong>。<strong>2026 年末净资产为唯一风险点（已被债务豁免对冲）</strong></td><td>深主板 9.3.1</td></tr><tr><td>规范类</td><td>资金占用/违规担保；内控连续两年非标；信披处罚</td><td>无资金占用、无违规担保；2024 内控否定、2025 已转<strong>标准无保留</strong>（未构成连续两年） → <strong>未触发</strong></td><td>深主板 9.4</td></tr><tr><td>重大违法类</td><td>欺诈发行；造假达量化线</td><td>无 → <strong>未触发</strong></td><td>深主板 9.5</td></tr></tbody></table>
+<details class="fold"><summary>★ 为什么"B 股 0.54 元"不构成退市——规则原文核实</summary><div class="fold-body">
+
+<p>深交所《股票上市规则（2026 年修订）》<strong>9.2.1 第一款</strong>规定，本所终止其股票上市交易的情形中：</p>
+<ul><li><strong>第（四）项</strong>：在本所<strong>仅</strong>发行 A 股或<strong>仅</strong>发行 B 股的公司，连续二十个交易日收盘价均低于 1 元；</li><li><strong>第（五）项</strong>：在本所<strong>既发行 A 股又发行 B 股</strong>的公司，连续二十个交易日的 <strong>A 股和 B 股股票收盘价"同时均低于 1 元"</strong>。</li></ul>
+<p>公司同时发行 A 股（000488）与 B 股（200488），适用第（五）项。B 股 200488 于 2026-09-30 收 0.63 港元（约 0.54 元人民币），确在 1 元之下，且已连续逾 100 个交易日；但 <strong>A 股 000488 收 2.13 元</strong>，远高于 1 元 → <strong>第（五）项的"同时"要件不满足，不触发退市</strong>。</p>
+<p>Andy 路径底表《退市风险预警-20261005.xlsx》交易类表把 <code>200488.SZ ST晨鸣B</code> 列在"收盘价低于 1 元"指标块（连续 100 个交易日）——该表按"单市场价"筛查，属<strong>临界预警</strong>而非"已触发"。<strong>本报告按规则原文判定：B 股面值单独不构成退市风险；但它是"警戒线"——若 A 股跌破 1 元，双侧将同时满足，风险立即升级。</strong></p>
+
+</div></details>
+<h3 id="sec3">1.4 结论：摘帽是"事由逐项消除"的 OR/AND 混合逻辑，2026 年三季报看经营、2026 年报看审计——<strong>最早可申请窗口落在 2027 年 4 月年报之后</strong></h3>
+<p><strong>撤销其他风险警示需三项戴帽事由全部消除。</strong>逐项核对（依据深主板 9.8.7）：</p>
+<table><thead><tr><th>戴帽事由</th><th>消除条件（规则）</th><th>当前状态</th></tr></thead><tbody><tr><td>9.8.1(四) 内控否定意见</td><td>最近一个会计年度<strong>无保留意见的内控审计报告</strong></td><td><strong>已满足</strong>——2025 年度内控审计为"标准无保留意见"</td></tr><tr><td>9.8.1(五) 生产经营受严重影响</td><td>该情形已消除</td><td><strong>已实质满足</strong>——五大基地全面复产，2026H1 营收同比 +225.90%</td></tr><tr><td>9.8.1(七) 连续三年扣非为负＋持续经营不确定</td><td>最近一个会计年度经审计财报显示<strong>扣非前后孰低为正值</strong>，<strong>或持续经营能力不确定性已消除</strong></td><td><strong>未满足</strong>——2026 年大概率仍亏损，只能走"持续经营不确定性已消除"这一支；<strong>取决于 2026 年度审计报告是否仍提示持续经营重大不确定性</strong></td></tr></tbody></table>
+<p><strong>因此时间锚是：2026 年度年报（预计 2027 年 4 月披露）→ 若审计意见不再就持续经营出具强调事项段，可在披露后 5 个交易日内申请撤销 → 交易所 15 个交易日内决定。</strong>这是全篇最重要的一个日期。</p>
+<details class="fold"><summary>摘帽申请与决定的程序时限（规则原文）</summary><div class="fold-body">
+
+<p>深主板 <strong>9.8.7</strong>：公司内部控制缺陷整改完成、内部控制能有效运行，申请撤销其他风险警示的，应当披露会计师事务所对其<strong>最近一个会计年度财务会计报告出具的无保留意见的内部控制审计报告</strong>；公司最近一个会计年度经审计的财务报告显示，其<strong>扣除非经常性损益前后的净利润孰低者为正值，或者持续经营能力不确定性已消除</strong>，申请撤销的，应当披露会计师事务所出具的最近一年审计报告等文件。</p>
+<p><strong>★ 前置观察信号</strong>：盯住年报披露前的《董事会关于上年度非标准审计报告涉及事项影响已消除的审核报告》/审计委员会相关意见——一旦出现，说明会计师已倾向认可公司对持续经营疑义的化解，2027-04 摘帽概率显著上台阶。2025 年报中审计委员会已明确"请求管理层采取一切必要行动消除持续经营相关强调事项的不确定因素"，2026 年这项工作是关键变量。</p>
+
+</div></details>
+<h3 id="sec4">1.5 王艳式六栏目（颗粒度备查，全部就地折叠）</h3>
+<p>正文此处只给一句结论：<strong>"人"是寿光国资、"钱"靠 10.44 亿元债务豁免、"资产"是 500 亿元浆纸产能、"时间"锁在 2027-04 年报——四要素中，只有"钱"这一环尚不足以覆盖 289 亿元债务。</strong></p>
+<details class="fold"><summary>① 前世今生（时间｜关键事件｜股权/实控人变化｜背后的逻辑）</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>关键事件</th><th>股权/实控人变化</th><th>背后的逻辑</th></tr></thead><tbody><tr><td>1997-05 / 2008-06</td><td>B 股、H 股先后上市，形成 A+B+H 三地上市结构</td><td>—</td><td>造纸龙头，浆纸一体化</td></tr><tr><td>2013—2021</td><td>湛江、黄冈基地扩张＋融资租赁业务扩张</td><td>晨鸣控股持股稳定</td><td>举债与类金融扩张，埋下高杠杆隐患</td></tr><tr><td>2021-02-18</td><td>股价峰值 <strong>11.23 元</strong>（7 天 4 板）</td><td>—</td><td>"B 股转 H 股预期＋纸价上行"驱动</td></tr><tr><td>2022</td><td>营收 320.04 亿元、归母 <strong>+1.89 亿元</strong>，但扣非已 <strong>-3.61 亿元</strong></td><td>归母净资产 190.85 亿元</td><td>周期见顶，主业已不赚钱</td></tr><tr><td>2024-11</td><td>部分生产基地临时停产</td><td>—</td><td>流动性危机爆发</td></tr><tr><td>2025-02-20</td><td>实施<strong>其他风险警示</strong>（ST），02-21 停牌后复牌</td><td>实控人＝寿光市国资局</td><td>停产触发 9.8.1(五)</td></tr><tr><td>2025-04-01</td><td><strong>叠加</strong>实施其他风险警示</td><td>—</td><td>2024 内控否定 + 连续三年扣非为负</td></tr><tr><td>2025-04</td><td>潍坊、寿光两级政府出资设 <strong>潍坊市兴晨经贸有限公司</strong>，开展 23.10 亿元复工复产银团贷款</td><td>国资平台入场</td><td>救助资金通道搭建</td></tr><tr><td>2025Q4</td><td>剥离全部融资租赁业务相关资产（经寿光市国资局批准）</td><td>—</td><td>出清类金融风险，减亏</td></tr><tr><td>2026-03-17</td><td>股价 <strong>8 天 5 板</strong> 冲高至 3.05 元</td><td>—</td><td>"新产能启动＋撤销 ST 预期"</td></tr><tr><td>2026-08-31 / 09-10</td><td>寿光市智晨资产运营有限公司成立（寿光市财政局全资）</td><td>—</td><td>债务豁免主体提前搭建</td></tr><tr><td>2026-09-29</td><td><strong>控股股东＋寿光财政局平台豁免债务 10.44 亿元</strong></td><td>—</td><td>保壳关键动作</td></tr></tbody></table>
+<p>来源：公司历年公告、2025 年报；股价数据见 §3.3。</p>
+
+</div></details>
+<details class="fold"><summary>② 股东阵容（身份识别＋取得方式＋锁定）</summary><div class="fold-body">
+
+<table><thead><tr><th>股东</th><th>性质</th><th>持股</th><th>身份识别</th><th>锁定/权属状态</th></tr></thead><tbody><tr><td>晨鸣控股有限公司</td><td>地方国有法人</td><td>15.50%</td><td>原控股股东，实控人寿光市国资局</td><td>质押 38,681.15 万股、累计冻结 43,495.53 万股（占其所持 54.43%）</td></tr><tr><td>HKSCC NOMINEES LIMITED</td><td>境外法人</td><td>12.70%</td><td>H 股名义持有人（非实质股东）</td><td>不适用</td></tr><tr><td>晨鸣控股（香港）有限公司</td><td>境外法人</td><td>12.38%</td><td>晨鸣控股全资子公司</td><td>2.11 亿股 B 股＋1.53 亿股 H 股已托管境外机构作融资，<strong>存在无法返还风险</strong></td></tr><tr><td>金幸</td><td>境内自然人</td><td>1.31%</td><td>个人投资者</td><td>无质押</td></tr><tr><td>陈洪国</td><td>境内自然人</td><td>0.65%</td><td>原体系核心人物（曾任董事长）</td><td>全部冻结（含 600 万股股权激励限制性股票待注销未果）</td></tr><tr><td>王凡亮 / 戢中秋 / 寿光市众力商贸 / 许和坤 / 潘健开</td><td>自然人/法人</td><td>0.26%—0.32%</td><td>小股东，含 B 股持有人</td><td>无质押</td></tr></tbody></table>
+<p><strong>筹码集中度</strong>：报告期末股东总数 <strong>93,718 户</strong>（A 77,810 / B 15,598 / H 310）；控股股东系合计 27.88%，<strong>上方不存在"锁仓同盟"</strong>——国资自身股份大半处于冻结/托管状态，一旦司法处置将持续稀释其持股。</p>
+
+</div></details>
+<details class="fold"><summary>③ 保壳节奏与催化（编号清单，区分硬节点与软预期）</summary><div class="fold-body">
+
+<p><strong>硬节点（可提前锁定日期）</strong> ① 2026 年三季报（预计 2026 年 10 月底）——验证 Q3 是否延续减亏、经营现金流是否为正。 ② <strong>2026 年度年报（预计 2027 年 4 月）——审计意见是否仍提示持续经营重大不确定性；这是摘帽的总开关。</strong> ③ 2026 年第二次临时股东会（审议债权债务重组议案）——2026 年 10 月内。 ④ 控股股东剩余被冻结/拟拍卖股份的处置进展——时点不可控但持续发生。</p>
+<p><strong>软预期（只决定想象空间，不决定仓位）</strong> ⑤ 非主业资产处置回笼资金（浦江国际金融广场、广东南粤银行股权、鸿泰地产等）。 ⑥ 造纸行业周期底部修复（2026H1 行业利润总额同比 +27.5%）。 ⑦ 国资进一步注资/豁免的可能（寿光智晨平台已于 2026-09 新设）。 ⑧ 定增/引入战投（ST 期间发股受限，需先摘帽或走重整程序）。</p>
+
+</div></details>
+<details class="fold"><summary>④ 资产质量与估值（星级表）</summary><div class="fold-body">
+
+<table><thead><tr><th>星级维度</th><th>大白话说明</th><th>评级</th></tr></thead><tbody><tr><td>市值/估值</td><td>价格分位 10.62% 属低位，但 PB（归母）约 40 倍、加豁免后仍约 5.5 倍，远超同业 0.55—1.88 倍</td><td>★★</td></tr><tr><td>法律合规性</td><td>无资金占用、无违规担保、无立案；内控已回归标准无保留</td><td>★★★★</td></tr><tr><td>债务与流动性</td><td>银行借款 289.20 亿元、资产负债率 96.09%、货币资金仅 1.87 亿元、流动比率 18.43%，逾期诉讼持续</td><td>★</td></tr><tr><td>主业质地</td><td>500 亿元资产、137 亿元级年收入、浆纸一体化龙头，但 2026H1 毛利率转负 <strong>-7.19%</strong></td><td>★★</td></tr><tr><td>控制权与运作</td><td>实控人寿光国资稳固，但控股股东过半股份被冻结、已发生司法拍卖</td><td>★★</td></tr><tr><td><strong>综合</strong></td><td><strong>"活着没问题、赚钱是难题"——低分项（债务、估值）无法被高分项（合规）抵消</strong></td><td>★★</td></tr></tbody></table>
+<p><strong>说明</strong>：本表是结论型表格。债务与流动性一项的 1 星<strong>不能被法律合规的 4 星抵消</strong>——这正是本标的与"干净壳"类 ST 的本质区别。</p>
+
+</div></details>
+<details class="fold"><summary>⑤ 成本锚点（逐参与方，区分两类定价逻辑）</summary><div class="fold-body">
+
+<table><thead><tr><th>参与方</th><th>成本（元/股）</th><th>说明</th></tr></thead><tbody><tr><td>司法拍卖受让方（2026-08）</td><td>1.83 元</td><td>起拍价，约为当时市价（1.99 元）的 92%；<strong>属"无稀释的市场底"</strong></td></tr><tr><td>控股股东豁免债权</td><td>—</td><td>以债权豁免换取净资产，<strong>不涉及股价定价</strong></td></tr><tr><td>寿光智晨（财政局平台）</td><td>—</td><td>以债权豁免注入资本公积，<strong>不涉及股价定价</strong></td></tr><tr><td>普通投资者（现价）</td><td>2.13 元</td><td>—</td></tr></tbody></table>
+<p><strong>两类定价逻辑的区分</strong>：本标的<strong>尚未进入重整程序</strong>，因此不存在"重整战投价＝有稀释的重整底"。仅有的价格锚是 <strong>1.83 元司法拍卖起拍价</strong>（无稀释），现价 2.13 元约为其 <strong>1.16 倍</strong>。若未来转入重整，转增将带来摊薄，价格锚需重算。</p>
+
+</div></details>
+<details class="fold"><summary>⑥ 信息来源汇总（四级分级）</summary><div class="fold-body">
+
+<table><thead><tr><th>序号</th><th>来源类型</th><th>来源与标题（日期）</th><th>链接</th></tr></thead><tbody><tr><td>1</td><td>一手·公告</td><td>关于获得控股股东债务豁免暨关联交易的公告（2026-09-29）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=000488&amp;announcementId=1225589294&amp;orgId=gssz0000488&amp;announcementTime=2026-09-30" target="_blank" rel="noopener">链接</a></td></tr><tr><td>2</td><td>一手·公告</td><td>关于控股子公司获得债务豁免的公告（2026-09-29）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=000488&amp;announcementId=1225589293&amp;orgId=gssz0000488&amp;announcementTime=2026-09-30" target="_blank" rel="noopener">链接</a></td></tr><tr><td>3</td><td>一手·公告</td><td>关于债权债务重组暨关联交易的公告（2026-09-29）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=000488&amp;announcementId=1225589295&amp;orgId=gssz0000488&amp;announcementTime=2026-09-30" target="_blank" rel="noopener">链接</a></td></tr><tr><td>4</td><td>一手·定期报告</td><td>2026 年半年度报告（2026-08-28）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=000488&amp;announcementId=1225531813&amp;orgId=gssz0000488&amp;announcementTime=2026-08-29" target="_blank" rel="noopener">链接</a></td></tr><tr><td>5</td><td>一手·公告</td><td>2026 年半年度业绩预告（2026-07-14）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=000488&amp;announcementId=1225425080&amp;orgId=gssz0000488&amp;announcementTime=2026-07-15" target="_blank" rel="noopener">链接</a></td></tr><tr><td>6</td><td>一手·公告</td><td>关于新增累计诉讼情况的公告（2026-08-14）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=000488&amp;announcementId=1225475567&amp;orgId=gssz0000488&amp;announcementTime=2026-08-15" target="_blank" rel="noopener">链接</a></td></tr><tr><td>7</td><td>一手·公告</td><td>关于控股股东部分被司法拍卖股份完成过户暨解除冻结的公告（2026-09-18）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=000488&amp;announcementId=1225572946&amp;orgId=gssz0000488&amp;announcementTime=2026-09-19" target="_blank" rel="noopener">链接</a></td></tr><tr><td>8</td><td>一手·公告列表</td><td>公司在巨潮的公告列表页（ST 实施公告等 2025 年公告见于此）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/stock?stockCode=000488&amp;orgId=gssz0000488" target="_blank" rel="noopener">链接</a></td></tr><tr><td>9</td><td>一手·定期报告</td><td>2022—2025 年年度报告（本地 PDF 全文）</td><td>见归档目录 <code>年报\</code></td></tr><tr><td>10</td><td>数据源</td><td>腾讯行情（截面估值）、新浪 K 线（价格序列）、东财龙虎榜 API</td><td>—</td></tr><tr><td>11</td><td>数据源</td><td>韭研公社异动整理（Simplified.parquet，14.34 万行）</td><td>—</td></tr><tr><td>12</td><td>数据源</td><td>Wind 局域网代理（本轮不可达，仅作历史口径参照）</td><td>—</td></tr><tr><td>13</td><td>线索级</td><td>Andy 自建 ST 信息库 <code>ST公司\1.所有公司\ST晨鸣-000488.SZ.md</code> 与每日公告/雪球日报</td><td>—</td></tr><tr><td>14</td><td>线索级</td><td>深交所互动易问答（2026-09-07／09-21）</td><td><a href="https://basic.10jqka.com.cn/000488/interactive.html" target="_blank" rel="noopener">链接</a></td></tr></tbody></table>
+<p><strong>四级判定</strong>：1—9 为<strong>一手</strong>（公告/定期报告）；10—12 为<strong>数据源</strong>；13—14 为<strong>线索级</strong>（民间整理与投资者互动，须回归前两级核实）。<strong>媒体源如实列入，不假装只有公告。</strong></p>
+
+</div></details>
+<h3 id="sec5">1.6 全流程进度看板（总控）</h3>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点或条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>停产业务恢复</td><td>五大基地<strong>全面复产</strong></td><td>—</td><td>已过</td><td>2026 中报</td></tr><tr><td>银团贷款</td><td><strong>23.10 亿元全额提款完毕</strong></td><td>—</td><td>已过</td><td>互动易 2026-09-21</td></tr><tr><td>内控整改</td><td>2025 内控审计<strong>标准无保留</strong></td><td>—</td><td>已过</td><td>2025 年报</td></tr><tr><td>债务豁免（补净资产）</td><td><strong>10.44 亿元已落地并计入资本公积</strong></td><td>—</td><td>已过</td><td>2026-09-29 三公告</td></tr><tr><td>撤销风险警示</td><td>公司称"积极推进"</td><td><strong>须 2026 年报审计确认持续经营不确定已消除</strong></td><td><strong>2027-04 年报</strong></td><td>9.8.7</td></tr><tr><td>债务化解</td><td>债务展期降息推进中</td><td><strong>"时间未到＋谈不拢"混合</strong>——289 亿元债务本金无实质削减</td><td>持续</td><td>2026 中报、互动易</td></tr><tr><td>非主业资产处置</td><td>梳理推进（浦江国际金融广场等）</td><td>处置价格与买受人未定</td><td>持续</td><td>互动易 2026-09-07</td></tr><tr><td>控股股东风险</td><td>54.43% 股份冻结</td><td><strong>被动风险</strong>（债权人处置不可控）</td><td>持续</td><td>2026-07/08/09 公告</td></tr></tbody></table>
+<p><strong>卡点性质判读</strong>：摘帽的卡点是"<strong>时间未到</strong>"（等年报、等审计），是等待不是障碍；债务化解的卡点是"<strong>谈不拢</strong>"（289 亿元本金降不下来），是实质风险。<strong>两者性质完全不同，前者可等，后者需持续验证。</strong></p>
+<h3 id="sec6">1.7 运作特征与综合判断</h3>
+<ul><li><strong>手法</strong>：<strong>"国资入股 + 不花现金的权益性让渡"</strong>——不动用现金增持，而是以<strong>债权豁免</strong>直接增厚资本公积；辅以<strong>银团贷款</strong>解决流动性、<strong>剥离类金融资产</strong>止血。</li><li><strong>节奏</strong>：2025-02 戴帽 → 2025-04 银团平台成立 → 2025Q4 剥离融资租赁 → 2026-09 债务豁免落地，<strong>历时约 19 个月</strong>，属"慢而稳"的纾困式路径。</li><li><strong>交权是配合式还是对抗式</strong>：<strong>配合式</strong>——原体系人物陈洪国已退出核心岗位（现任董事长姜言山兼任晨鸣控股董事长），国资主导经营，无对抗迹象。</li><li><strong>成败关键变量（1 和 0）</strong>：<strong>2026 年度审计报告是否仍提示"持续经营重大不确定性"</strong>。认，则摘帽；不认，则继续 ST（但<strong>不因此退市</strong>，因 2026 年末净资产经豁免后大概率为正）。</li><li><strong>核心矛盾一句话</strong>：<strong>"国资愿意救、也有办法在不花现金的前提下把净资产做正；但 289 亿元债务本金与持续亏损，决定了这是一场'持久保壳'而非'快速反转'。"</strong></li></ul>
+<hr>
+<h2 id="chap2">二、基本面路径：保壳（路径 A）</h2>
+<h3 id="sec7">2.1 结论：财务画像已从"断崖"转入"底部横盘"——营收全面恢复，但毛利率仍为负、扣非仍亏逾十亿</h3>
+<p><strong>2026 上半年是分水岭：营收同比 +225.90% 恢复至 68.65 亿元（已超 2025 全年），归母亏损收窄至 -7.86 亿元（同比减亏 79.61%），经营现金流转正；但毛利率仍为 -7.19%，扣非仍亏 10.89 亿元。</strong>这意味着"停产造成的大失血"止住了，但"经营性亏损"尚未止住。</p>
+<table><thead><tr><th>年份</th><th>营业收入</th><th>归母净利润</th><th>扣非净利润</th><th>经营活动现金流净额</th><th>归母净资产</th></tr></thead><tbody><tr><td>2022</td><td>320.04 亿元</td><td>1.89 亿元</td><td>-3.61 亿元</td><td>34.50 亿元</td><td>190.85 亿元</td></tr><tr><td>2023</td><td>266.09 亿元</td><td>-12.81 亿元</td><td>-19.42 亿元</td><td>43.90 亿元</td><td>166.92 亿元</td></tr><tr><td>2024</td><td>227.29 亿元</td><td>-74.11 亿元</td><td>-72.02 亿元</td><td>26.23 亿元</td><td>91.56 亿元</td></tr><tr><td>2025</td><td>61.87 亿元</td><td>-82.96 亿元</td><td>-76.69 亿元</td><td>2.43 亿元</td><td>9.04 亿元</td></tr><tr><td><strong>2026H1</strong></td><td><strong>68.65 亿元</strong></td><td><strong>-7.86 亿元</strong></td><td><strong>-10.89 亿元</strong></td><td><strong>+3.22 亿元</strong></td><td><strong>1.56 亿元</strong></td></tr></tbody></table>
+<p>口径：合并报表·归属于上市公司股东；数据来源：2022—2024 年取各年年报"近三年主要会计数据"列（已含追溯），2025 年取 2025 年报，2026H1 取中报。</p>
+<details class="fold"><summary>财务勾稽与口径自检</summary><div class="fold-body">
+
+<p>① <strong>勾稽</strong>：2026-06-30 资产总计 509.66 亿元；总负债 489.73 亿元（资产负债率 96.09%）；所有者权益合计 19.93 亿元 ＝ 归母 1.56 亿元 ＋ 少数股东权益 18.37 亿元。<strong>负债 + 权益 = 资产，勾稽成立。</strong> ② <strong>口径提示</strong>：Wind 代理本轮不可达，五年表以年报原文比较列为唯一口径；东财 F10 序列（<code>RPT_F10_FINANCE_MAINFINADATA</code>）数值一致，可交叉验证。 ③ <strong>2025 年营收骤降 72.78%</strong> 系主要生产基地停工停产所致，非订单流失；2026H1 已恢复至 68.65 亿元，验证复产真实。 ④ <strong>归母净利 = 净利润 − 少数股东损益</strong>（本账号取不到归母字段，按此口径核算）：2026H1 净利润 -9.19 亿元、少数股东损益 -1.32 亿元 → 归母 -7.86 亿元 ✓。</p>
+
+</div></details>
+<h3 id="sec8">2.2 结论：是一家"收入结构集中、周期属性极强"的浆纸一体化企业；机制纸占八成以上，热点业务（海外/特种纸）占比极小</h3>
+<p><strong>收入由机制纸主导（2026H1 合计约 56.38 亿元、占 82.1%），其中铜版纸、双胶纸、静电纸三项占近六成；化学浆 10.00 亿元（14.6%）。</strong>公司不存在"跨界蹭热点"——它有真实产能与收入，问题在<strong>毛利率为负</strong>。</p>
+<table><thead><tr><th>机制纸品类</th><th>2026H1 收入</th><th>占比</th></tr></thead><tbody><tr><td>铜版纸</td><td>15.19 亿元</td><td>22.1%</td></tr><tr><td>双胶纸</td><td>14.55 亿元</td><td>21.2%</td></tr><tr><td>静电纸</td><td>10.71 亿元</td><td>15.6%</td></tr><tr><td>白卡纸</td><td>5.28 亿元</td><td>7.7%</td></tr><tr><td>防粘原纸</td><td>3.59 亿元</td><td>5.2%</td></tr><tr><td>热敏纸</td><td>2.40 亿元</td><td>3.5%</td></tr><tr><td>其他机制纸</td><td>4.66 亿元</td><td>6.8%</td></tr><tr><td><strong>机制纸小计</strong></td><td><strong>约 56.38 亿元</strong></td><td><strong>约 82.1%</strong></td></tr><tr><td>化学浆</td><td>10.00 亿元</td><td>14.6%</td></tr><tr><td>电力及热力</td><td>1.21 亿元</td><td>1.8%</td></tr><tr><td>酒店及物业租金</td><td>0.72 亿元</td><td>1.1%</td></tr></tbody></table>
+<p><strong>四类审美标签</strong>：机制纸＝<strong>业务反转</strong>（复产驱动量恢复，但价格与毛利未反转）；化学浆＝<strong>景气成长</strong>（阔叶浆价格小幅上行、自给率是成本护城河）；酒店物业＝<strong>非主业待处置</strong>。</p>
+<details class="fold"><summary>行业与业务变化归因（量/价/客户/产能）</summary><div class="fold-body">
+
+<p><strong>哪些业务会变</strong>：机制纸的"量"已随复产大幅回升（这是 2026H1 收入 +225.90% 的主因）；"价"仍承压——公司口径"文化纸和铜版纸需求整体偏弱，产品价格承压运行"；"成本"端，2026H1 木浆供给宽松、国内八大港口纸浆库存长期维持 230 万吨以上高位，浆价中枢下移，<strong>对造纸成本是利好</strong>。 <strong>哪些业务不变、为什么</strong>：浆纸一体化的产能结构不变（山东、广东、湖北、江西、吉林五大基地），200 多个品种的全品类布局不变——这是公司相对同业的核心差异点，也是其在本轮周期中"能复产、能恢复"的底气。 <strong>热点业务占比定位</strong>：公司<strong>无热点业务</strong>——互动易问及的"海外合作（美国 Perez Trading）""办公文创定制"均处商务对接阶段，<strong>未形成披露级别的收入</strong>，不构成估值叙事。 来源：2026 中报"报告期内公司从事的主要业务"；公司口径未作升级引用。</p>
+
+</div></details>
+<h3 id="sec9">2.3 结论：真正的命门是债务——289.20 亿元银行借款、96.09% 资产负债率、货币资金仅 1.87 亿元</h3>
+<p><strong>"资产很多、现金很少"是这家公司的全部财务特征：总资产 509.66 亿元，但货币资金仅 1.87 亿元；短期借款 209.43 亿元、长期借款 62.41 亿元，另有逾期利息 5.45 亿元。</strong>这不是"暂时缺钱"，而是<strong>结构性的高杠杆</strong>。</p>
+<table><thead><tr><th>要点</th><th>金额（2026-06-30）</th><th>说明</th></tr></thead><tbody><tr><td>银行借款总额</td><td><strong>289.20 亿元</strong></td><td>上年末 285.12 亿元</td></tr><tr><td>资产负债率</td><td><strong>96.09%</strong></td><td>流动比率 18.43%、速动比率 8.70%</td></tr><tr><td>货币资金</td><td><strong>1.87 亿元</strong></td><td>上年末 2.10 亿元</td></tr><tr><td>短期借款</td><td>209.43 亿元</td><td>—</td></tr><tr><td>一年内到期的非流动负债</td><td>21.53 亿元</td><td>长期借款展期后重分类减少</td></tr><tr><td>长期借款</td><td>62.41 亿元</td><td>报告期展期</td></tr><tr><td>逾期利息合计</td><td>5.45 亿元</td><td>含逾期借款利息 3.16 亿元、逾期票据利息 1.88 亿元等</td></tr></tbody></table>
+<details class="fold"><summary>逾期与诉讼明细</summary><div class="fold-body">
+
+<p><strong>逾期利息（2026-06-30）</strong>：逾期借款及资金占用利息 3.16 亿元（期初 2.66 亿元）｜逾期票据利息 1.88 亿元（期初 1.39 亿元）｜逾期融资租赁款利息 0.41 亿元。</p>
+<p><strong>新增累计诉讼（2026-06-12 至 2026-08-13）</strong>：新增涉诉 56 件，公司全部为被告/被申请人，累计涉案 <strong>7.93 亿元</strong>；已判决 5 件（117.13 万元），未判决 51 件（7.92 亿元）。<strong>两项重大案件</strong>：湖北长江（黄冈）产业投资基金就基金份额转让提起仲裁 <strong>3.26 亿元</strong>；<strong>国开发展基金就增资湛江晨鸣浆纸提起股权回购类诉讼 3.87 亿元</strong>（互动易投资者亦问及此案对湛江晨鸣股权的潜在影响，公司答复"不会影响技改项目实施"）。</p>
+<p><strong>担保</strong>：为资产负债率超 70% 的被担保对象提供的担保余额 75.36 亿元，担保总额超过净资产 50% 部分 213.55 亿元。</p>
+
+</div></details>
+<h3 id="sec10">2.4 结论：保壳的第一记重拳已经落地——<strong>2026-09-29 一次性豁免 10.44 亿元债务，全部计入资本公积，测算增厚归母净资产约 9.80 亿元</strong></h3>
+<p><strong>这是本报告最核心的事实。</strong>公司及控股子公司于 2026-09-29 获得两笔债务豁免，另有 0.57 亿元债权债务抵销；豁免金额<strong>全部计入本年度资本公积</strong>（公告原文），不经过损益表。</p>
+<table><thead><tr><th>豁免方</th><th>被豁免主体</th><th>金额</th><th>计入去向</th><th>归母归属测算</th></tr></thead><tbody><tr><td>晨鸣控股有限公司（控股股东）</td><td>上市公司</td><td><strong>2.07 亿元</strong></td><td>资本公积</td><td>100% → <strong>2.07 亿元</strong></td></tr><tr><td>寿光市智晨资产运营有限公司（寿光市财政局全资）</td><td>寿光美伦纸业</td><td><strong>4.87 亿元</strong></td><td>资本公积</td><td>持股 86.78% → <strong>4.23 亿元</strong></td></tr><tr><td>寿光市智晨资产运营有限公司（寿光市财政局全资）</td><td>山东晨鸣纸品</td><td><strong>3.50 亿元</strong></td><td>资本公积</td><td>持股 100% → <strong>3.50 亿元</strong></td></tr><tr><td><strong>合计</strong></td><td>—</td><td><strong>10.44 亿元</strong></td><td>—</td><td><strong>约 9.80 亿元</strong></td></tr></tbody></table>
+<p><strong>判读</strong>：① 直接对冲"2026 年末净资产转负"的尾部风险——6 月末归母净资产 1.56 亿元，加 9.80 亿元后约 11.36 亿元（未计下半年损益），<strong>即使下半年再亏数亿元，年末归母净资产为负的概率已大幅下降</strong>；② 但<strong>它不改善净利润</strong>（计入资本公积），因此<strong>不直接满足摘帽事由 9.8.1(七)</strong>；③ 豁免方均为寿光市政府体系（国资局/财政局），属<strong>典型的"国资保壳"信号</strong>，表明地方不愿让这家就业与产能大户退市。</p>
+<details class="fold"><summary>债务豁免公告原文要点（原话引用）</summary><div class="fold-body">
+
+<p><strong>控股股东豁免（公告 2026-046）</strong>："晨鸣控股于近日向公司出具了《债务豁免函》，决定豁免其对公司享有的人民币 20,674.36 万元债权。本次债务豁免为单方面、无条件、无对价、不可撤销、不可变更之豁免……债务基准日：2026 年 8 月 31 日……本次债务豁免事项已取得寿光市国有资产监督管理局批复……根据企业会计准则相关规定，本次债务豁免金额将计入本年度资本公积。"</p>
+<p><strong>子公司豁免（公告 2026-047）</strong>："寿光市智晨资产运营有限公司……豁免寿光美伦对寿光智晨的债务人民币 48,650.00 万元，豁免山东晨鸣纸品对寿光智晨的债务人民币 35,018.50 万元……本次债务豁免事项已取得寿光市财政局批复……本次债务豁免不构成关联交易……根据企业会计准则相关规定，本次债务豁免金额将计入本年度资本公积。"</p>
+<p><strong>豁免方背景</strong>：寿光智晨<strong>成立于 2026 年 09 月 10 日</strong>（豁免落地前 19 天新设），注册资本 5 亿元，股东为寿光市智盈供应链有限公司（100%），实际控制人为<strong>寿光市财政局</strong>——典型的"为承接本次豁免而临时搭建的平台"。</p>
+<p><strong>债权债务重组（公告 2026-048）</strong>：公司以其对参股公司潍坊港区木片码头 8,609.67 万元股东借款债权，抵偿对方 2,203.66 万元港口作业费并承接代偿 3,462.28 万元售后回租债务，抵偿金额合计 <strong>5,665.94 万元</strong>；本项为债务抵销，<strong>不影响净资产</strong>。</p>
+
+</div></details>
+<h3 id="sec11">2.5 结论：主要子公司中湛江、寿光两基地仍是亏损主体；债务豁免主要作用在寿光美伦，对湛江基地的救助尚未展开</h3>
+<table><thead><tr><th>子公司</th><th>注册资本</th><th>总资产</th><th>净资产</th><th>2026H1 营收</th><th>2026H1 净利润</th></tr></thead><tbody><tr><td>湛江晨鸣浆纸</td><td>69.14 亿元</td><td>194.97 亿元</td><td>50.87 亿元</td><td>7.12 亿元</td><td><strong>-3.95 亿元</strong></td></tr><tr><td>寿光美伦纸业</td><td>48.01 亿元</td><td>165.65 亿元</td><td>62.27 亿元</td><td>37.21 亿元</td><td><strong>-4.07 亿元</strong></td></tr></tbody></table>
+<p><strong>判读</strong>：两家核心子公司 2026H1 合计亏损 8.02 亿元，接近合并归母亏损（-7.86 亿元），说明<strong>亏损集中在主业基地本身</strong>，不是母公司费用问题；债务豁免落在寿光美伦，<strong>湛江基地（正被国开基金追偿 3.87 亿元）尚无救助动作</strong>——这是下一阶段需要盯的空白点。</p>
+<details class="fold"><summary>互动易问答要点（投资者问题 → 公司答复 → 解读）</summary><div class="fold-body">
+
+<table><thead><tr><th>投资者问题</th><th>公司答复要点</th><th>本报告解读</th></tr></thead><tbody><tr><td>23.10 亿元银团贷款最后 1 亿元是否到位？（2026-09-21）</td><td>"银团贷款已全部提款完毕"</td><td><strong>救助资金通道已打通</strong>，公司口径</td></tr><tr><td>中报每股净资产仅 0.05 元，距破净一步之遥，有无化解债务方案？有无接洽潜在投资人？（2026-09-21）</td><td>"债务化解属系统性工作：立足主业经营改善、推进债务展期降息、统筹盘活存量资产"</td><td>公司<strong>未披露具体投资人</strong>；"盘活存量资产"指向非主业处置</td></tr><tr><td>ST 帽子还有哪些问题不能申请摘帽？（2026-09-21）／"为什么还不能申请摘帽"（2026-09-07）</td><td>"公司目前<strong>积极推进撤销其他风险警示的相关工作</strong>"</td><td><strong>公司口径明确指向摘帽</strong>，但未给时间表</td></tr><tr><td>下半年不能扭亏将面临退市之忧；扣非亏 10.8 亿、经营亏 7.8 亿，3 亿元怎么亏的？（2026-09-21）</td><td>仅答"非经常性损益请查阅半年报"、"管理层深知压力"</td><td>未正面解释 — <strong>公司口径回避</strong></td></tr><tr><td>湛江晨鸣 30 万吨浆板技改与国开基金诉讼是否有冲突？（2026-09-21）</td><td>"不会与相关诉讼产生冲突"</td><td>与 §2.3 的 3.87 亿元诉讼对应</td></tr><tr><td>寿光基地技改资金来源？（2026-09-21）</td><td>"主要依托经营性现金流和新增授信"</td><td>印证现金流已边际转正</td></tr></tbody></table>
+<p><strong>投资者交流价值判定</strong>：抓到了两个关键点——① <strong>公司自述"积极推进撤销风险警示"</strong>（摘帽预期的公司口径）；② <strong>银团贷款全额到账</strong>（资金面确认）。<strong>参会方为董秘办，无治理层变动迹象</strong>（公司实控人早已为寿光国资，无"换人即易主"信号）。来源：深交所互动易，2026-09-07／09-21。</p>
+
+</div></details>
+<hr>
+<h2 id="chap3">三、炒作逻辑 + 情绪面 + 筹码面</h2>
+<h3 id="sec12">3.1 炒作逻辑三支柱（全部着眼未来）</h3>
+<p><strong>当前最强的一支是 ①炒预期（摘帽＋净资产修复已实质推进）；②炒历史类似行为的样本指向"上涨组"；③主板映射（造纸周期）反而最弱——是拖累项而非助力。</strong></p>
+<p><strong>① 炒预期（最强）</strong>：未来 6—12 个月有明确的可验证事件。</p>
+<table><thead><tr><th>时点</th><th>催化内容</th><th>性质</th></tr></thead><tbody><tr><td>2026-10 下旬</td><td>2026 年三季报：验证 Q3 减亏与现金流</td><td>硬节点</td></tr><tr><td>2026-10 内</td><td>第二次临时股东会审议债权债务重组</td><td>硬节点</td></tr><tr><td><strong>2027-04</strong></td><td><strong>2026 年度年报＋审计意见（是否仍提示持续经营重大不确定性）＝摘帽总开关</strong></td><td><strong>硬节点</strong></td></tr><tr><td>持续</td><td>控股股东冻结股份处置、非主业资产处置</td><td>软预期</td></tr></tbody></table>
+<p><strong>② 炒历史类似行为（相似股票匹配法）</strong>：以基准日画像（主板 · ST（其他风险警示）· 亏损股 · 地方国资救助 · 靠"外力注资/债务豁免"补净资产 · 摘帽预期）去当下市场找最像的票。</p>
+<table><thead><tr><th>相似对象</th><th>相似点</th><th>差异点</th><th>2026 年初至今</th></tr></thead><tbody><tr><td>ST美克（600337.SH）</td><td>亏损、靠债务豁免/现金赠与补净资产、预重整</td><td>晨鸣<strong>不走重整</strong>、体量大得多</td><td><strong>+30.82%</strong></td></tr><tr><td>ST同德（002360.SZ）</td><td>现金赠与＋债务豁免、外力救助</td><td>同德走预重整</td><td><strong>+10.12%</strong></td></tr><tr><td>ST晨鸣（本标的）</td><td>—</td><td>—</td><td><strong>-3.18%</strong></td></tr></tbody></table>
+<p><strong>结论：同型样本（"外力注资保壳"型）2026 年落在"上涨组"（+10% 至 +31%），本标的同期 -3.18% 明显落后。</strong>按相似股票匹配法，<strong>本标的具备向同型样本收敛（补涨）的条件</strong>——但需注意样本量仅 2 只，只作方向参考、不作概率推断。（样本来源：ST 信息库每日公告 2026-09-23／09-27／09-28；涨跌幅取腾讯行情 YTD，2026-09-30。）</p>
+<p><strong>③ 炒主板映射（最弱）</strong>：主板造纸板块 2026 年整体下跌，<strong>本标的不在风口上</strong>。</p>
+<table><thead><tr><th>对象</th><th>2026 年初至今</th><th>PB</th></tr></thead><tbody><tr><td>太阳纸业（002078.SZ）</td><td>-11.90%</td><td>1.22</td></tr><tr><td>博汇纸业（600966.SH）</td><td>-28.75%</td><td>0.87</td></tr><tr><td>华泰股份（600308.SH）</td><td>-16.15%</td><td>0.55</td></tr><tr><td>五洲特纸（605007.SH）</td><td>+7.72%</td><td>1.88</td></tr><tr><td><strong>ST晨鸣（000488.SZ）</strong></td><td><strong>-3.18%</strong></td><td><strong>40.21</strong></td></tr></tbody></table>
+<p><strong>判读</strong>：造纸同业 2026 年普跌（-12% 至 -29%），<strong>晨鸣 -3.18% 反而显著抗跌</strong>——说明市场对它的定价已脱离"造纸 β"，转向"保壳 α"。这同时意味着一件事：<strong>"跌幅大＝有安全边际"的推论在本标的身上并不适用</strong>（它本来就没怎么跌）；同业低 PB（0.55—1.88）也提醒——<strong>晨鸣的 40 倍 PB 是"净资产被亏损打光"的产物，不能与同业 PB 直接比较</strong>。</p>
+<details class="fold"><summary>三支柱证据补充（历史炒作符号与连板极值）</summary><div class="fold-body">
+
+<p><strong>本股炒作符号（韭研异动表 30 条，2020-07 至 2026-06）</strong>：<strong>"造纸（周期/涨价）+ 复工复产推进/新产能启动 + 碳中和 + 撤销 ST 预期"</strong>。2026 年的条目已从"复工复产推进"升级为"<strong>新产能启动 + 撤销其他风险警示预期</strong>"——符号正在向摘帽迁移。</p>
+<p><strong>连板极值与回撤</strong>：2026-03-05 至 03-17 走出 <strong>8 天 5 板</strong>，股价由 2.36 元升至 <strong>3.05 元</strong>（阶段高点）；此后回落，至 2026-09-30 收 2.13 元，<strong>较 3.05 元高点回落约 30%</strong>。更早的峰值是 2021-02-18 的 <strong>11.23 元</strong>（7 天 4 板，B 股转 H 股预期）。</p>
+<p><strong>股价水位</strong>：2025-02 以来区间 1.74 元（2025-04-08 低点）—3.05 元（2026-03-17 高点），现价 2.13 元处<strong>约 30% 分位</strong>；近 20 年价格分位 10.62%。</p>
+
+</div></details>
+<h3 id="sec13">3.2 情绪面</h3>
+<p><strong>主题情绪分两段：2026 年 3 月是"摘帽预期"的情绪高峰（8 天 5 板），此后随预期迟迟不兑现而回落；2026-09-29 的债务豁免是一根新的引信，但当日（09-30）仅 +2.40%，尚未充分反应。</strong>叠加国庆长假，该利好大概率要到节后交易才开始定价。</p>
+<h3 id="sec14">3.3 筹码与技术</h3>
+<p><strong>结论：注意力已从 3 月峰值回落，现处"低位＋缩量"状态，新利好未被定价——这是筹码层面相对有利的位置。</strong></p>
+<ul><li><strong>龙虎榜</strong>：2026-03-17 上榜（"连续三个交易日内涨幅偏离值累计达 12% 的 ST 证券"），当日收 3.05 元、换手 7.15%，<strong>龙虎榜净卖出 837.24 万元</strong>（买 3,658.53 万 / 卖 4,495.77 万）；此后 D1 -0.33%、D2 -5.25%、D5 -8.52%、<strong>D10 -8.85%、D20 -11.80%、D30 -14.10%</strong>，印证"高点净卖出、其后持续阴跌"。2026-03-10 亦有上榜（净买 +14.07 万元，基本平）。</li><li><strong>量能</strong>：2026-09-30 换手 1.11%、成交额 4,088 万元，处低位缩量状态。</li><li><strong>涨跌幅规则</strong>：主板 ST 自 <strong>2026-07-06 起由 5% 改为 10%</strong>（上交所《交易规则（2026 年修订）》），当日涨停价 2.29 元 / 跌停价 1.87 元印证 → <strong>8 天 5 板那样的连板效率在当前规则下已不可简单复刻</strong>（5% 时代的 5 板≈+28%，10% 时代同样 5 板≈+61%，但触发难度同步提高）。</li></ul>
+<details class="fold"><summary>异动全量明细（韭研公社，按时间降序）</summary><div class="fold-body">
+
+<table><thead><tr><th>题材时间</th><th>题材</th><th>涨停信息</th><th>股价</th><th>异动关键词</th></tr></thead><tbody><tr><td>2026-06-10</td><td>ST板块</td><td>—</td><td>2.18</td><td>撤销其他风险警示预期+新产能启动+造纸+碳中和</td></tr><tr><td>2026-04-23</td><td>ST板块</td><td>—</td><td>2.68</td><td>新产能启动+造纸+碳中和</td></tr><tr><td>2026-03-27</td><td>ST板块</td><td>—</td><td>2.87</td><td>新产能启动+造纸+碳中和</td></tr><tr><td>2026-03-17</td><td>ST板块</td><td><strong>8 天 5 板</strong></td><td>3.05</td><td>新产能启动+造纸+碳中和</td></tr><tr><td>2026-03-16</td><td>ST板块</td><td>7 天 4 板</td><td>2.90</td><td>新产能启动+造纸+碳中和</td></tr><tr><td>2026-03-10</td><td>ST板块</td><td>3 天 3 板</td><td>2.73</td><td>新产能启动+造纸+碳中和</td></tr><tr><td>2026-03-09</td><td>ST板块</td><td>2 天 2 板</td><td>2.60</td><td>新产能启动+造纸+碳中和</td></tr><tr><td>2026-03-06</td><td>ST板块</td><td>—</td><td>2.48</td><td>新产能启动+造纸+碳中和</td></tr><tr><td>2026-02-25</td><td>ST板块</td><td>3 天 2 板</td><td>2.36</td><td>造纸+复工复产推进+碳中和</td></tr><tr><td>2026-02-13</td><td>ST板块</td><td>—</td><td>2.28</td><td>造纸+复工复产推进+碳中和</td></tr><tr><td>2025-11-13</td><td>ST板块</td><td>—</td><td>2.25</td><td>造纸+复工复产推进+碳中和</td></tr><tr><td>2025-08-07</td><td>ST板块</td><td>3 天 3 板</td><td>2.37</td><td>造纸+复工复产推进+碳中和</td></tr><tr><td>2025-08-06</td><td>ST板块</td><td>2 天 2 板</td><td>2.26</td><td>造纸+复工复产推进+碳中和</td></tr><tr><td>2025-08-05</td><td>ST板块</td><td>—</td><td>2.15</td><td>造纸+复工复产推进+碳中和</td></tr><tr><td>2025-07-28</td><td>ST板块</td><td>—</td><td>2.07</td><td>造纸+部分生产线恢复生产+碳中和</td></tr><tr><td>2025-05-20</td><td>ST板块</td><td>—</td><td>2.07</td><td>部分生产线恢复生产+终止出售御景酒股权+造纸+碳中和</td></tr><tr><td>2025-04-01</td><td>ST板块</td><td>—</td><td>1.97</td><td>终止出售御景酒股权+造纸+碳中和</td></tr><tr><td>2025-03-17</td><td>ST板块</td><td>—</td><td>2.07</td><td>终止出售御景酒股权+造纸+碳中和</td></tr><tr><td>2025-03-03</td><td>ST股</td><td>—</td><td>2.07</td><td>造纸+碳中和</td></tr><tr><td>2024-04-16</td><td>公告</td><td>—</td><td>3.72</td><td>一季报扭亏+造纸+碳中和</td></tr><tr><td>2022-05-09</td><td>林业造纸</td><td>—</td><td>5.54</td><td>造纸+碳中和+一季报增长</td></tr><tr><td>2021-09-23</td><td>造纸</td><td>—</td><td>8.84</td><td>碳中和+造纸</td></tr><tr><td>2021-03-29</td><td>碳中和</td><td>—</td><td>10.53</td><td>碳中和+造纸+业绩增长</td></tr><tr><td>2021-03-18</td><td>碳中和</td><td>—</td><td>10.51</td><td>碳中和+木浆自给率高+B 股转 H 股+造纸</td></tr><tr><td>2021-02-18</td><td>化工及其他周期股</td><td>7 天 4 板</td><td>11.23</td><td>港股上涨+B 股转 H 股+造纸</td></tr><tr><td>2021-02-10</td><td>化工及其他周期股</td><td>6 天 3 板</td><td>10.21</td><td>B 股转 H 股+造纸</td></tr><tr><td>2021-02-08</td><td>周期股</td><td>4 天 2 板</td><td>8.94</td><td>B 股转 H 股+造纸</td></tr><tr><td>2021-02-03</td><td>其他</td><td>—</td><td>8.45</td><td>B 股转 H 股+造纸+涨价</td></tr><tr><td>2020-11-23</td><td>周期股</td><td>—</td><td>6.90</td><td>铜版纸涨价+金属镁</td></tr><tr><td>2020-07-20</td><td>公告</td><td>—</td><td>5.78</td><td>寿光美伦获东兴投资 3 亿元战投；浆纸一体化</td></tr></tbody></table>
+<p><strong>炒作波段汇总</strong>：</p>
+<table><thead><tr><th>波段</th><th>时间</th><th>题材</th><th>最高连板</th><th>股价区间</th><th>驱动关键词</th></tr></thead><tbody><tr><td>摘帽预期</td><td>2026-02 至 2026-06</td><td>ST 板块</td><td>8 天 5 板</td><td>2.18—3.05</td><td>新产能启动+撤销 ST 预期</td></tr><tr><td>复产推进</td><td>2025-07 至 2025-11</td><td>ST 板块</td><td>3 天 3 板</td><td>2.07—2.37</td><td>复工复产推进</td></tr><tr><td>戴帽初期</td><td>2025-03 至 2025-05</td><td>ST 板块</td><td>—</td><td>1.97—2.07</td><td>终止出售御景酒股权</td></tr><tr><td>周期上行</td><td>2020-11 至 2021-09</td><td>造纸/周期/碳中和</td><td>7 天 4 板</td><td>5.54—11.23</td><td>B 股转 H 股+纸价涨价</td></tr></tbody></table>
+<p><strong>数据源级别</strong>：韭研公社为二级整理，仅作异动线索；连板天数、股价等已用龙虎榜与日 K 交叉验证。<strong>注</strong>：该表只收录达标异动，本股全表 30 条、最新一条为 2026-06-10——<strong>不代表 2026-07 之后没有异动</strong>。</p>
+
+</div></details>
+<hr>
+<h2 id="chap4">四、主要看点</h2>
+<p><strong>与封面第 5 行对应：本标的最值钱的一条线，是"寿光市国资系统于 2026-09-29 以债务豁免方式，一次性把约 9.80 亿元（归母口径）注入公司净资产"。</strong></p>
+<p>这条线的意义不在金额大小，而在<strong>它同时回答了两个问题</strong>：</p>
+<ol><li><strong>"会不会退市"</strong> —— 2026 年末归母净资产大概率因此保正，财务类 \*ST 的尾部风险被实质性拆除；</li><li><strong>"谁愿意救、用什么方式救"</strong> —— 救助方是<strong>寿光市国资局（控股股东层面）＋寿光市财政局（子公司层面）双平台</strong>，方式是<strong>不耗现金的权益性让渡</strong>。这为后续"持续注资/资产注入"打开了想象空间，也解释了为什么在 289 亿元债务压顶的情况下，公司仍未走重整路径。</li></ol>
+<p><strong>配套的第二条线</strong>：五大基地全面复产（2026H1 营收 +225.90%、经营现金流转正）＋内控审计回归标准无保留（2025 年度）→ <strong>摘帽的三项事由中两项已消除，第三项（持续经营）只待 2026 年度审计定音</strong>。</p>
+<p><strong>需要清醒的是</strong>：看点≠兑现。10.44 亿元相对 289.20 亿元银行借款仍是杯水车薪；它买到的是<strong>"活下去的时间"</strong>，不是"反转"。真正决定股价弹性的，是 2027-04 那份审计报告。</p>
+<hr>
+<h2 id="chap5">五、估值与投资结论</h2>
+<h3 id="sec15">（一）估值</h3>
+<p><strong>亏损股不用 PE。</strong>以 PB / PS 双口径给情景区间，前提是<strong>"2026 年末归母净资产为正 ＋ 摘帽推进"</strong>；若该前提破灭，估值区间整体作废（存在归零风险）。</p>
+<ul><li><strong>PB 口径</strong>：现价 2.13 元对 2026-06-30 归母 BPS 0.053 元 → PB <strong>约 40.2 倍</strong>；加债务豁免（归母 +9.80 亿元）后 BPS 约 0.386 元 → PB <strong>约 5.5 倍</strong>（未计下半年损益）。作为参照，造纸同业 PB 仅 0.55—1.88 倍——<strong>即便考虑豁免，本标的账面仍显著偏贵</strong>。</li><li><strong>PS 口径</strong>：按 A 股流通市值 36.20 亿元 ÷ 年化营收 137.30 亿元 → PS <strong>约 0.26 倍</strong>；按全股本 A 价折算市值 62.65 亿元 → PS 约 0.46 倍。<strong>收入维度偏便宜</strong>——这正是"困境反转"类标的的典型特征（收入在、利润不在）。</li><li><strong>定价锚</strong>：唯一无稀释价格锚是 <strong>2026-08 司法拍卖起拍价 1.83 元/股</strong>（约为当时市价 92%），现价为其 1.16 倍；<strong>本标的未进入重整，故不存在"有稀释的重整底"</strong>。</li></ul>
+<table><thead><tr><th>情景</th><th>关键假设</th><th>对应价格区间</th><th>相对现价</th></tr></thead><tbody><tr><td>保守</td><td>2026 年三季报恶化 / 摘帽落空 / 审计仍提示持续经营不确定</td><td>1.50—1.80 元</td><td>-30% 至 -15%</td></tr><tr><td>中性</td><td><strong>2026 年报净资产为正，2027-04 顺利摘帽，主业延续减亏</strong></td><td>2.60—3.00 元</td><td>+22% 至 +41%</td></tr><tr><td>乐观</td><td>摘帽 ＋ 造纸周期修复 ＋ 非主业资产处置回笼资金落地</td><td>3.50—4.20 元</td><td>+64% 至 +97%</td></tr></tbody></table>
+<blockquote><p><strong>估值前提显式标注</strong>：以上区间全部以"<strong>2026 年末归母净资产为正 ＋ 摘帽路径不被堵死</strong>"为前提。若 2026 年末净资产为负 → 财务类 \*ST → 本报告全部估值区间作废。</p></blockquote>
+<h3 id="sec16">（二）投资结论</h3>
+<p><strong>买入（事件驱动 · 轻仓 · 高波动）</strong></p>
+<p><strong>理由链（按重要性排序，每条附证据）</strong></p>
+<ol><li><strong>尾部风险已被国资真金白银拆除</strong>：寿光国资局（经晨鸣控股）＋寿光市财政局（经寿光智晨）于 2026-09-29 合计豁免 10.44 亿元债务并<strong>全部计入资本公积</strong>，按持股比例测算<strong>增厚归母净资产约 9.80 亿元</strong>——这直接对冲"2026 年末净资产转负 → 财务类 \*ST"的最大风险。证据：<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=000488&amp;announcementId=1225589294&amp;orgId=gssz0000488&amp;announcementTime=2026-09-30" target="_blank" rel="noopener">控股股东豁免公告</a>、<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=000488&amp;announcementId=1225589293&amp;orgId=gssz0000488&amp;announcementTime=2026-09-30" target="_blank" rel="noopener">子公司豁免公告</a>。<strong>这是"买入"方向的第一支撑。</strong></li><li><strong>摘帽路径清晰、时间锚确定</strong>：三项戴帽事由中，内控（2025 标准无保留）与停产（五大基地全面复产）<strong>已实质消除</strong>，第三项只待 2026 年度审计；公司在互动易明确"积极推进撤销其他风险警示"。<strong>总开关日＝2027-04 年报</strong>。若审计不再提示持续经营重大不确定性，即可申请，程序仅需 5＋15 个交易日。</li><li><strong>位置有利：低位＋缩量＋新利好未被定价</strong>：现价 2.13 元处 2025 年以来约 30% 分位、近 20 年 <strong>10.62%</strong> 分位；2026-09-30 换手仅 1.11%、成交额 4,088 万元，且债务豁免公告于 09-29 落地、09-30 当日仅 +2.40%，<strong>叠加国庆长假，利好大概率尚未定价</strong>。</li><li><strong>同型样本指向"上涨组"，本标的落后</strong>：以"地方国资救助 / 靠外力补净资产 / 摘帽预期"为画像的同型样本 ST美克 <strong>+30.82%</strong>、ST同德 <strong>+10.12%</strong>，而本标的 2026 年 <strong>-3.18%</strong>，显著落后于同型。</li><li><strong>合规面干净，无"一票否决"项</strong>：无资金占用、无违规担保、无立案；四类退市红线当前<strong>一条未实际触发</strong>（B 股面值因"A＋B 须同时&lt;1 元"而不成立）。</li></ol>
+<p><strong>触发条件</strong></p>
+<ul><li><strong>转买入（加仓）信号</strong>：2026 年三季报延续减亏且经营现金流为正；出现《非标准审计报告涉及事项影响已消除》类文件；公司披露非主业资产处置落地或国资进一步注资。</li><li><strong>转卖出信号</strong>：A 股跌破 <strong>1.50 元</strong>（逼近 B 股与面值的双重敏感区）；2026 年三季报显示 Q3 亏损环比扩大；控股股东所持股份被大规模司法处置且无接盘方。</li></ul>
+<p><strong>失效条件（本结论作废）</strong> ① 2026 年度经审计<strong>归母净资产为负</strong> → 财务类 \*ST（估值区间整体作废）； ② 2026 年度审计意见降级为<strong>保留/无法表示/否定</strong> → 直接叠加财务类红线； ③ 2026 年报仍明确提示持续经营重大不确定性 → 摘帽递延，本结论的"事件驱动"内核失效（<strong>但不因此退市</strong>）； ④ <strong>A 股收盘价跌破 1 元且持续 20 个交易日</strong> → 与 B 股同时满足面值退市要件 → 一票否决。</p>
+<p><strong>参考区间</strong></p>
+<ul><li>买入区间：<strong>1.95—2.20 元</strong>（现价及以下，贴近司法拍卖锚 1.83 元的上方）</li><li>目标区间：<strong>2.60—3.00 元</strong>（中性情景，对应 2026-03 前高 3.05 元下方）</li><li>止损位：<strong>1.72—1.76 元</strong>（跌破 2025 年低点 1.74 元则趋势破坏）</li></ul>
+<p><strong>时间窗口</strong>：本结论有效期至 <strong>2026 年三季报披露后</strong>（约 2026 年 10 月底）复核一次；核心验证点在 <strong>2027 年 4 月年报</strong>。</p>
+<p><strong>仓位建议</strong>：<strong>轻仓试错</strong>（不超过总仓位的 2%—3%）。理由：方向与赔率尚可，但标的的"退市尾部风险虽被拆除，"289 亿元债务本金未解"，属高波动事件驱动型，不宜重仓。</p>
+<p><strong>最大风险</strong>：<strong>"净资产保正"只是把公司从'可能退市'拉回'持续亏损'——如果 2026 年报仍被会计师提示持续经营重大不确定性，摘帽递延，股价将回落至 1.8—2.0 元的"无催化区间"，持有者承担时间成本。</strong></p>
+<hr>
+<h2 id="chap6">附录 A · 待核实 / 需补充清单</h2>
+<table><thead><tr><th>#</th><th>待核实项</th><th>结论</th></tr></thead><tbody><tr><td>1</td><td>2026 年三季报（尚未披露）</td><td>需在其披露后验证 Q3 是否延续减亏、经营现金流是否持续为正</td></tr><tr><td>2</td><td>2026 年度审计意见（计提时点未到）</td><td>摘帽总开关，预计 2027-03/04 揭晓</td></tr><tr><td>3</td><td>寿光智晨资产运营的后续注资计划</td><td>公告未披露</td></tr><tr><td>4</td><td>国开发展基金 3.87 亿元股权回购诉讼判决时点</td><td>2026-08-14 公告称"尚未开庭"；未披露后续</td></tr><tr><td>5</td><td>控股股东剩余被冻结股份（4.35 亿股）的处置安排</td><td>未披露具体计划</td></tr><tr><td>6</td><td>非主业资产（浦江国际金融广场等）处置进展与对价</td><td>公司仅称"统筹规划"，未披露金额</td></tr><tr><td>7</td><td>2026 年戴帽事由 9.8.1(五) 是否已获交易所认定消除</td><td>未见公司专项公告；按事实推论已实质满足</td></tr></tbody></table>
+<h2 id="chap7">附录 B · 关键信源链接</h2>
+<p>正文全部关键数字与事件的可点击溯源清单如下（均为 2026 年 10 月 5 日实测可达）。</p>
+<table><thead><tr><th>编号</th><th>文件</th><th>出处</th></tr></thead><tbody><tr><td>1</td><td>关于获得控股股东债务豁免暨关联交易的公告（2026-09-29）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=000488&amp;announcementId=1225589294&amp;orgId=gssz0000488&amp;announcementTime=2026-09-30" target="_blank" rel="noopener">链接</a></td></tr><tr><td>2</td><td>关于控股子公司获得债务豁免的公告（2026-09-29）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=000488&amp;announcementId=1225589293&amp;orgId=gssz0000488&amp;announcementTime=2026-09-30" target="_blank" rel="noopener">链接</a></td></tr><tr><td>3</td><td>关于债权债务重组暨关联交易的公告（2026-09-29）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=000488&amp;announcementId=1225589295&amp;orgId=gssz0000488&amp;announcementTime=2026-09-30" target="_blank" rel="noopener">链接</a></td></tr><tr><td>4</td><td>2026 年半年度报告（2026-08-28）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=000488&amp;announcementId=1225531813&amp;orgId=gssz0000488&amp;announcementTime=2026-08-29" target="_blank" rel="noopener">链接</a></td></tr><tr><td>5</td><td>2026 年半年度业绩预告（2026-07-14）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=000488&amp;announcementId=1225425080&amp;orgId=gssz0000488&amp;announcementTime=2026-07-15" target="_blank" rel="noopener">链接</a></td></tr><tr><td>6</td><td>关于新增累计诉讼情况的公告（2026-08-14）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=000488&amp;announcementId=1225475567&amp;orgId=gssz0000488&amp;announcementTime=2026-08-15" target="_blank" rel="noopener">链接</a></td></tr><tr><td>7</td><td>关于控股股东部分被司法拍卖股份完成过户暨解除冻结的公告（2026-09-18）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=000488&amp;announcementId=1225572946&amp;orgId=gssz0000488&amp;announcementTime=2026-09-19" target="_blank" rel="noopener">链接</a></td></tr><tr><td>8</td><td>巨潮·公司公告列表页（含 2025 年 ST 实施公告等）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/stock?stockCode=000488&amp;orgId=gssz0000488" target="_blank" rel="noopener">链接</a></td></tr><tr><td>9</td><td>深交所互动易问答（2026-09-07／09-21）</td><td><a href="https://basic.10jqka.com.cn/000488/interactive.html" target="_blank" rel="noopener">链接</a></td></tr></tbody></table>
+<h2 id="chap8">附录 C · 逻辑漏洞与反方观点（5 问速版）</h2>
+<ol><li><strong>"10.44 亿元债务豁免"会不会只是账面游戏？</strong> —— 是<strong>账面动作</strong>，但目的明确：补净资产、避 \*ST。它<strong>确不改善盈利</strong>（计入资本公积），因此本报告未把它当作"反转"证据，只当作"防退市"证据。</li><li><strong>PB 40 倍还能叫"低位"吗？</strong> —— 不能。<strong>"低位"仅在价格维度成立（分位 10.62%），账面维度是极贵的。</strong>这是本标的与"低估值蓝筹"的根本区别；因此结论用的是"事件驱动 + 轻仓"，而非"价值买入"。</li><li><strong>摘帽真的能成吗？</strong> —— 前两项事由（内控、停产）已实质消除，<strong>唯一变量是审计对"持续经营"的判断</strong>。公司 289 亿元债务、1.87 亿元货币资金意味着这个判断<strong>可能仍然是"存在不确定性"</strong> → <strong>摘帽递延是大概率风险之一，本报告已列为失效条件③</strong>。</li><li><strong>控股股东股份被拍卖、冻结，会不会导致控制权不稳？</strong> —— 短期不会（国资系合计 27.88%，第二大 HKSCC 为名义持有人），但<strong>持续司法处置会稀释国资持股比例</strong>，且晨鸣控股（香港）托管的 B/H 股"存在无法返还风险"——这是<strong>长期隐患</strong>，需持续跟踪。</li><li><strong>289 亿元债务怎么办？</strong> —— <strong>本报告坦白：无解于短期。</strong>展期、降息、债转股（需先摘帽或走重整）都是慢变量。<strong>若未来转入重整，现有股东将面临摊薄，届时应重新评估。</strong></li></ol>
+<h2 id="chap9">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-05</td><td>首次生成。基准日 2026-10-05（行情截至 2026-09-30）；吸收归档目录内 2022—2025 年报、2026 中报与 2023 问询函 PDF；结论＝买入（事件驱动·轻仓·高波动），核心依据＝国资 10.44 亿元债务豁免计入资本公积、按持股测算增厚归母净资产约 9.80 亿元，拆除 2026 年末净资产转负风险</td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
