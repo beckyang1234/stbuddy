@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ST迪瑞（300396.SZ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>11 章 · 17 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断：一家"央企控股、账很干净、唯一的病在内控"的 IVD 公司</a><a class="sblv3" href="#sec0">1.1 基本信息与股权结构</a><a class="sblv3" href="#sec1">1.2 前世今生：华润 2020 年以约 27 元/股入主，六年零注资</a><a class="sblv3" href="#sec2">1.3 全流程进度看板</a><a class="sblv3" href="#sec3">1.4 运作特征与综合判断</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、ST 路径诊断：内控非标型，三道开关、零容错</a><a class="sblv3" href="#sec4">2.1 戴帽原因与类型</a><a class="sblv3" href="#sec5">2.2 四类退市红线逐条对照</a><a class="sblv3" href="#sec6">2.3 撤销路径与三道开关：时间锚全部指向次年 4 月</a><a class="sblv3" href="#sec7">2.4 过关概率的六条判据：给"事实存疑型"一个刻度</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、基本面：财务已止血，但盈利质量尚未修复</a><a class="sblv3" href="#sec8">3.1 五年 + 最新一期：营收三年连降、2025 年一次性计提存货跌价 2.14 亿元</a><a class="sblv3" href="#sec9">3.2 收入与利润来源地图：试剂赚钱、仪器不赚钱、国内补海外</a><a class="sblv3" href="#sec10">3.3 资产质量与估值锚：三块真实资产与一条很低的溢价</a><a class="sblv3" href="#sec11">3.4 同业对照：PB 处在全行业最低一档</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、炒作逻辑三支柱（全部着眼未来）</a><a class="sblv3" href="#sec12">4.1 ① 炒预期：唯一硬节点在 2027-04，且不带制度红利</a><a class="sblv3" href="#sec13">4.2 ② 炒历史类似行为：用同型样本池直接定位方向</a><a class="sblv3" href="#sec14">4.3 ③ 炒主板映射：华润系与 IVD 主线，ST 板块内无同概念低位标的</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">五、情绪与筹码面：注意力冰点、下跌中的户数下降</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">六、估值与投资结论</a><a class="sblv3" href="#sec15">（一）估值：三档情景，概率加权期望值约等于现价</a><a class="sblv3" href="#sec16">（二）投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap9">附录 C · 逻辑漏洞与反方观点（5 问速版）</a></div><div class="sbgrp"><a class="sblv2" href="#chap10">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">ST迪瑞（300396.SZ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：卖出（回避）</strong></p>
+<p><strong>红线分类：<span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&announcementId=1225262674&orgId=9900022681&announcementTime=2026-04-30" target="_blank" rel="noopener">2025年内控否定意见</a></span>·<span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&announcementId=1225262644&orgId=9900022681&announcementTime=2026-04-30" target="_blank" rel="noopener">2025年财报保留意见</a></span>·<span class="sttag sttag-teal"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&announcementId=1225262642&orgId=9900022681&announcementTime=2026-04-30" target="_blank" rel="noopener">四类退市红线一条未踩</a></span></strong></p>
+<p><strong>生死定级：可救 · 需自身达标</strong>（无交易类、无重大违法类、无财务类"孰低为负且营收&lt;1亿元"、无"净资产为负"，唯一命门是内控审计意见这一柄"二元开关"）</p>
+<p><strong>自救空间：靠 2026 年度内控审计取得无保留意见，时间锚 2027-04；最大障碍是年审机构对 2023—2024 年会计差错更正的完整性与准确性至今未获充分证据。</strong></p>
+<p><strong>主要看点：中国华润（央企）旗下唯一医疗器械平台——2026-05-21 股东会通过《关于拟签署全面合作框架协议暨关联交易的议案》，华润健康集团 2.85 万张床位机构同等条件下优先采购公司产品，而 2026H1 实际发生额仅 450 万元、占全年预计额度 5,000 万元的 9%。</strong></p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>标的</td><td>ST迪瑞（300396.SZ），迪瑞医疗科技股份有限公司，深交所创业板，体外诊断（IVD）</td></tr><tr><td>研究基准日</td><td>2026-10-06（行情截至 2026-09-30，财务取最新已披露期 2026 年半年报）</td></tr><tr><td>现价 / 总市值</td><td>7.08 元 ／ 19.31 亿元（流通市值 19.28 亿元，总股本 2.727 亿股）</td></tr><tr><td>估值</td><td>PB 1.25（归母净资产 15.47 亿元）／PS(TTM) 约 2.23 倍／PE(TTM) 为负（-9.19）</td></tr><tr><td>控股股东 / 实控人</td><td>深圳市华德欣润股权投资企业（有限合伙）28.34% ／ <strong>中国华润有限公司</strong>（中央国资）</td></tr><tr><td>戴帽</td><td>2026-05-06 起实施其他风险警示（ST），依据创业板《股票上市规则》<strong>第 9.4 条第四项</strong></td></tr><tr><td>四类退市红线</td><td><strong>一条未踩</strong>（逐条核对见 §2.2）</td></tr><tr><td>注意力</td><td>换手 0.46%、成交额 877 万元；2026 年龙虎榜仅 2 次（均在戴帽首两日）；韭研异动表 2026 年零记录</td></tr><tr><td>股价位置</td><td>YTD −45.12%；2026 年内收盘区间 5.99—14.03 元，现价处 <strong>13.6% 分位</strong>；前复权月 K 自 2014-09 起 143 个月，价格分位 <strong>1.40%</strong>（上市以来最低区）</td></tr><tr><td>数据来源</td><td>巨潮资讯网公告原文（75 条逐月全量）／2025 年年度报告与 2026 年半年报原文／腾讯行情与新浪日 K／东方财富 F10；<strong>Wind 局域网代理本轮未启用</strong></td></tr><tr><td>数据质量异常</td><td>① 2026-08-05《进展公告》与 2026-08-04《半年度报告》巨潮"最终页"路径需按实际披露日取用；② 韭菜研公社异动表最新记录停在 2023-01-17，2026 年无记录，已用龙虎榜与日 K 交叉验证；③ 2026 年三季报尚未披露</td></tr></tbody></table>
+<hr>
+<h2 id="chap1">一、诊断：一家"央企控股、账很干净、唯一的病在内控"的 IVD 公司</h2>
+<p><strong>本股的核心画像一句话：它不是缺钱、不是缺资产、不是缺股东背景的公司——2026 年半年报归母净资产 15.47 亿元、货币资金加理财 6.43 亿元、无商誉、无质押、无立案；它的问题单一且清晰：2025 年度内控审计被出具否定意见，而下一步的生死完全取决于 2026 年度能不能拿到一份"无保留意见的内控审计报告"。</strong></p>
+<h3 id="sec0">1.1 基本信息与股权结构</h3>
+<p><strong>结论：股权高度集中且股东结构稳定——华润系 28.34%＋广东恒健 12.15%＋创始人宋勇家族 11.55% 合计过半，前十大股东无一笔质押，2026 年内无控制权变更迹象。</strong></p>
+<ul><li>控股股东 <strong>深圳市华德欣润股权投资企业（有限合伙）</strong>，持股 <strong>28.34%</strong>（7,728.84 万股），性质为"中央国有控股"，执行事务合伙人／委派代表为 <strong>深圳华润大健康投资有限公司（倪冰）</strong>；实际控制人 <strong>中国华润有限公司</strong>（法定代表人王祥明），性质"中央国资管理机构"。</li><li>第二大股东 <strong>广东恒健国际投资有限公司 12.15%</strong>（3,312.36 万股），系 2020 年与华润同步受让的财务投资人。</li><li>创始人阵营仍在：<strong>宋洁 5.40%</strong>（宋勇之妹）、<strong>易湘苹 3.21%</strong>（宋勇之妻）、<strong>宋勇 2.94%</strong>；宋勇自 2020 年股份交割日起<strong>放弃其所持股份对应表决权</strong>，以维持华德欣润的表决权领先（协议约定高 7%）。</li><li>前十大股东中 6 席为个人／基金，<strong>质押、冻结、标记均为 0</strong>；全公司无对外担保、无资金占用、无重大诉讼（仅 461.88 万元涉诉冻结货币资金）。</li><li>董事会 9 人（董事长兼总经理郎涛，职工代表董事兼财务总监刘康，董事倪冰、李光，独董余宇莹、吴清功、安明友，董事兼副总牛丹丹、安国柱，副总孙彬、汪博）。</li></ul>
+<details class="fold"><summary>前十大股东明细（2026-06-30，取数日 2026-10-06）</summary><div class="fold-body">
+
+<table><thead><tr><th>股东名称</th><th>持股比例</th><th>持股数量（万股）</th><th>质押/冻结</th></tr></thead><tbody><tr><td>深圳市华德欣润股权投资企业（有限合伙）</td><td>28.34%</td><td>7,728.84</td><td>无</td></tr><tr><td>广东恒健国际投资有限公司</td><td>12.15%</td><td>3,312.36</td><td>无</td></tr><tr><td>宋洁</td><td>5.40%</td><td>1,473.01</td><td>无</td></tr><tr><td>易湘苹</td><td>3.21%</td><td>875.85</td><td>无</td></tr><tr><td>宋勇</td><td>2.94%</td><td>801.89</td><td>无</td></tr><tr><td>UBS AG</td><td>0.83%</td><td>225.97</td><td>无</td></tr><tr><td>李建军</td><td>0.68%</td><td>186.46</td><td>无</td></tr><tr><td>黄力志</td><td>0.62%</td><td>169.96</td><td>无</td></tr><tr><td>陈培鸿</td><td>0.48%</td><td>131.56</td><td>无</td></tr><tr><td>苏晓红</td><td>0.38%</td><td>103.10</td><td>无</td></tr></tbody></table>
+<p><strong>筹码集中度</strong>：股东户数 2025-12-31 的 <strong>15,741 户</strong> → 2026-06-30 的 <strong>12,010 户</strong>（−23.7%）→ 2026-09-18 的 <strong>11,743 户</strong>；同期股价自 12.90 元跌至 7.08 元。<strong>下跌中的户数下降属"散户割肉离场"，不得读作主力吸筹。</strong></p>
+
+</div></details>
+<h3 id="sec1">1.2 前世今生：华润 2020 年以约 27 元/股入主，六年零注资</h3>
+<p><strong>结论：华润系 2020 年以协议受让方式入主（成本明显高于现价数倍），近六年只派人、不注资；2026 年的"华润协同"动作全部是小额关联交易，最强的那张牌（2.85 万张床位优先采购）尚未转化为收入。</strong></p>
+<details class="fold"><summary>① 前世今生四列表（时间｜关键事件｜股权/实控人变化｜背后的逻辑）</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>关键事件</th><th>股权／实控人变化</th><th>背后的逻辑</th></tr></thead><tbody><tr><td>1994-12</td><td>公司成立（长春），主营医疗检验仪器及配套试剂</td><td>宋勇系创办</td><td>八大产品线：尿液、生化、血细胞、化学发光免疫、妇科分泌物、凝血、集约化实验室</td></tr><tr><td>2014-09</td><td>深交所创业板挂牌（300396）</td><td>宋勇系控股</td><td>上市后扣非归母净利常年双位数增长，2019 年归母 2.32 亿元、毛利率 64.44%</td></tr><tr><td><strong>2020-08-24</strong></td><td>控股股东晋江瑞发及一致行动人宋勇、宋洁与<strong>华德欣润</strong>签《股份转让协议》</td><td>晋江瑞发转让 <strong>7,728.84 万股（28%）</strong> 给华德欣润；同日转让 3,312.36 万股（12%）给广东广恒顺（现恒健国际）；3,808.8 万股（13.80%）给易湘苹、宋洁、宋超</td><td><strong>转让价公告未披露</strong>；媒体按前 20 个交易日均价 <strong>27.18 元/股</strong>估算，28% 股份对价约 <strong>21.0 亿元</strong></td></tr><tr><td>2020-08-24</td><td>宋勇与华德欣润签《关于放弃行使表决权的协议》</td><td>华德欣润成为单一表决权最大股东</td><td>以"表决权放弃"而非"二级市场增持"完成控制权让渡，成本最低、不经交易所审核</td></tr><tr><td><strong>2020-11-26</strong></td><td>股份交割完毕</td><td>中国华润成为实际控制人</td><td>迪瑞成为<strong>华润集团大健康板块唯一医疗器械平台</strong>；2020-08-25 深交所曾发关注函</td></tr><tr><td>2021-08 起</td><td>华润先后委派财务总监、总经理</td><td>治理层换血</td><td>管理体系"深度优化"；2023-01 华润在董事会席位由 5 席增至 6 席（超过 2/3）</td></tr><tr><td>2020-07-30</td><td>宁波瑞源 11% 股权转让给宁波胜之源</td><td>持股 51%→40%，<strong>不再并表</strong></td><td>联营化——此后宁波瑞源每年以权益法贡献投资收益（2025 年净利 4,857.73 万元）</td></tr><tr><td>2022—2024</td><td>营收 12.20／11.12／9.77 亿元，归母 2.62／1.59／0.65 亿元</td><td>未变</td><td>集采与竞争加剧，利润逐年下滑，但仍在盈利</td></tr><tr><td><strong>2026-02-05</strong></td><td>收到吉林证监局《责令改正并出具警示函措施的决定》（吉证监决〔2026〕4 号）</td><td>未变</td><td>涉外销售订单收入确认不审慎（2023 年多记收入 369.30 万元、占营收 0.27%）＋资料保存不完整</td></tr><tr><td><strong>2026-04-28</strong></td><td>大信所出具 <strong>2025 年度财报保留意见</strong> ＋ <strong>内控否定意见</strong></td><td>未变</td><td>与部分客户线下签订带退换货条款的补充协议，未走审批/用印/归档流程 → 2023、2024 年财务报表前期差错更正</td></tr><tr><td><strong>2026-05-06</strong></td><td>股票简称变更为 <strong>ST迪瑞</strong></td><td>未变</td><td>依据创业板 9.4 条第四项；<strong>涨跌幅仍为 20%</strong></td></tr><tr><td>2026-05-21</td><td>年度股东会通过《拟签署全面合作框架协议暨关联交易的议案》</td><td>华润健康集团 2.85 万张床位机构同等条件优先采购</td><td><strong>2026H1 实际发生仅 450 万元、占全年预计额度 5,000 万元的 9%</strong></td></tr></tbody></table>
+<p><strong>关联方合计持股的逐年增减</strong>：华润系 28.34% 六年未增未减；恒健国际 12.15% 未动；宋勇系由 2020 年交割后的 25.47% 降至 2026-06-30 的 11.55%（宋洁 5.40%＋易湘苹 3.21%＋宋勇 2.94%），系历次减持所致（2025-04 尚有《持股 5% 以上股东减持股份预披露公告》）。</p>
+
+</div></details>
+<details class="fold"><summary>② 关键人物简历（核不到的写"公告未披露"，不用第三方填充）</summary><div class="fold-body">
+
+<table><thead><tr><th>姓名</th><th>职务</th><th>出生年月</th><th>履历与现任关联职务</th></tr></thead><tbody><tr><td><strong>郎涛</strong></td><td>董事长兼总经理</td><td>公告未披露</td><td>2026-02-27 由董事会聘任为董事长（前任郭霆 2026-02-26 因"工作调动"离任）；2026 年另任总经理。兼任迪瑞医疗科技（深圳）有限公司等关联主体职务（公告未逐项披露）</td></tr><tr><td><strong>刘康</strong></td><td>职工代表董事、副总经理兼财务总监</td><td>公告未披露</td><td>2026-05-15 由董事会聘任为副总经理兼财务总监（前任张兴艳同日解聘，事由"工作调动"）；2026-09-16 不再担任职工代表董事、改任董事序列</td></tr><tr><td><strong>倪冰</strong></td><td>董事</td><td>公告未披露</td><td>深圳华润大健康投资有限公司委派代表，代表控股股东华德欣润；2026-09-28 由董事会审计委员会委员调整为张学龙接任</td></tr><tr><td><strong>张学龙</strong></td><td>职工代表董事</td><td>公告未披露</td><td>2026-09-16 经第五届第九次职工代表大会选举，接替刘康出任第六届董事会职工代表董事；2026-09-28 起任审计委员会委员</td></tr><tr><td><strong>牛丹丹</strong></td><td>董事兼副总经理</td><td>公告未披露</td><td>2026-05-21 经股东会补选为董事（控股股东华德欣润 2026-05-06 发函提请增加临时提案）；系吉林证监局〔2026〕4 号警示函当事人之一</td></tr><tr><td><strong>宋勇</strong></td><td>创始人（未任职）</td><td>公告未披露</td><td>持股 2.94%，<strong>表决权已放弃</strong>；与宋洁为兄妹、与易湘苹为夫妻</td></tr><tr><td>离任人员</td><td>郭霆（原董事长）、张兴艳（原副总兼财务总监）、王学敏（原总经理，警示函当事人）</td><td>公告未披露</td><td>王学敏、牛丹丹、张兴艳为吉林证监局〔2026〕4 号《决定书》当事人（牛丹丹仍在任）</td></tr></tbody></table>
+<p><strong>说明</strong>：迪瑞医疗系 1992 年创办、1994 年 12 月注册成立于长春，创始人为宋勇；上述人员的出生年月与学历在巨潮全部公告中均未披露。</p>
+
+</div></details>
+<h3 id="sec2">1.3 全流程进度看板</h3>
+<p><strong>结论：整改进度属于"动作密集但缺第三方结论"——公司的制度、系统、培训都已落地，唯独缺两件事：① 年审会计师对历史会计差错更正的态度转向；② 2026 年度审计机构的聘任。这两件事都是"别人来决定"的。</strong></p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点或条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>内控缺陷整改（制度/流程）</td><td>已完成大部分</td><td>长效机制类事项原计划 2026 年下旬闭环</td><td>2026Q4 前完成</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225458045&amp;orgId=9900022681&amp;announcementTime=2026-08-05" target="_blank" rel="noopener">2026 年半年报</a></td></tr><tr><td>信息化刚性控制（智能印控系统、OA 分级授权、资金管理系统、数据库审计平台）</td><td>已上线／部署中</td><td>数据库审计平台"处于部署阶段"</td><td>部署完成</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225545765&amp;orgId=9900022681&amp;announcementTime=2026-09-03" target="_blank" rel="noopener">2026-09-03 进展公告</a></td></tr><tr><td>第三方专项核查（穿行测试）</td><td>已聘三方机构，完成关键控制点抽样验证，<strong>形成阶段性核查报告</strong></td><td>报告结论未公开</td><td>未披露</td><td>同上</td></tr><tr><td>吉林证监局〔2026〕4 号整改</td><td>已完成并披露整改报告</td><td>会计政策已于 2026-01-01 起变更</td><td>已闭环</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1224987109&amp;orgId=9900022681&amp;announcementTime=2026-02-27" target="_blank" rel="noopener">整改报告</a></td></tr><tr><td>2026 年度审计机构聘任</td><td><strong>未见公告</strong>（2025 年度为大信所，聘期一年）</td><td>需经股东会审议</td><td>未启动</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1224256182&amp;orgId=9900022681&amp;announcementTime=2025-07-23" target="_blank" rel="noopener">续聘公告</a></td></tr><tr><td>年审会计师对前期差错更正的态度</td><td><strong>无任何转向信号</strong>（保留意见的"形成基础"未被推翻）</td><td>属"他证"，公司无法自主控制</td><td>2026 年报审计（2027-04）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225262651&amp;orgId=9900022681&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">非标专项说明</a></td></tr><tr><td>撤销其他风险警示（摘 ST）</td><td>未申请</td><td>需 2026 年度内控审计报告为无保留意见</td><td><strong>2027-04</strong></td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225262640&amp;orgId=9900022681&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">戴帽公告</a></td></tr></tbody></table>
+<p><strong>卡点性质判定</strong>：<strong>不是"谈不拢"，也不是"时间未到"，而是"关键结论尚未产生"</strong>——2026 年度审计尚未进场，第三方核查报告结论未公开，审计机构尚未聘任。属于<strong>完全空白的观察期</strong>。</p>
+<h3 id="sec3">1.4 运作特征与综合判断</h3>
+<p><strong>结论：这是一次"央企被动接手的治理事故"，而非控制权博弈——华润的应对方式是"补制度、上系统、换人、做培训"，没有一分钱注资，也没有任何资产运作。</strong></p>
+<ul><li><strong>手法</strong>：以协议受让＋表决权放弃完成控制权让渡（2020），此后六年维持 28.34% 不变；对上市公司的事务性动作集中在<strong>人事（财务总监、总经理、董事长、职工代表董事、审计委员会委员）</strong>与<strong>制度（合同、印章、存货、采购、担保、薪酬、慈善等十余项）</strong>两个层面。</li><li><strong>节奏</strong>：2020-11 交割 → 2021-08 起陆续委派高管 → 2026-01 工商变更 → 2026-02 证监局措施 → 2026-04 内控否定＋差错更正 → 2026-05 戴帽 → 2026-05 至 09 逐月披露整改进展（连续 5 期）。</li><li><strong>交权是配合式还是对抗式</strong>：<strong>配合式</strong>——创始人宋勇主动放弃表决权、宋勇系持续减持让位，无控制权争夺、无董事会僵局、无诉讼对抗。</li><li><strong>成败关键变量（1 和 0）</strong>：<strong>2026 年度内控审计意见是否为"无保留"</strong>。是 → 2027-04 摘 ST；否 → 2027-04 叠加 *ST。</li><li><strong>核心矛盾一句话</strong>：<strong>公司已经把"能自己做的事"做完了，剩下的两件事（审计机构聘任、审计意见）都不在自己手里。</strong></li></ul>
+<hr>
+<h2 id="chap2">二、ST 路径诊断：内控非标型，三道开关、零容错</h2>
+<h3 id="sec4">2.1 戴帽原因与类型</h3>
+<p><strong>结论：本股属"规范类 · 内控审计否定意见（首个会计年度）"，即其他风险警示（ST），不属于四类退市红线中的任何一条。</strong></p>
+<ul><li><strong>实施依据</strong>：创业板《股票上市规则》<strong>第 9.4 条第四项</strong>——"最近一个会计年度财务报告内部控制被出具无法表示意见或者否定意见的审计报告，或者未按照规定披露财务报告内部控制审计报告"。实施起始日 <strong>2026-05-06</strong>，简称由"迪瑞医疗"变更为"ST迪瑞"，<strong>日涨跌幅限制仍为 20%</strong>。</li><li><strong>内控否定意见的两个事由</strong>（大信审字〔2026〕第 1-03647 号，2026-04-28）：</li><li><strong>销售活动内部控制缺陷</strong>——与部分客户签订销售合同时，<strong>线下签订了带承诺或保证退换货等条款的补充协议</strong>，但未按《合同管理办法》履行合同审批、用印及档案保管等内部流程，导致合同授权审批等关键控制未有效执行；</li><li><strong>财务报告内部控制缺陷</strong>——因存在前述补充协议，公司对 <strong>2023 年度、2024 年度</strong>财务报表进行前期差错更正，调整营业收入、营业成本、存货等，<strong>表明收入确认等相关内部控制未能得到有效执行</strong>。</li><li><strong>财报审计意见为"保留意见"</strong>（大信审字〔2026〕第 1-03646 号）——形成基础是：公司采用追溯重述法更正 2023、2024 年报表，会计师"实施了检查、监盘、函证、访谈等程序，但<strong>仍未能获取充分、适当的审计证据，无法判断前期会计差错更正的完整性、准确性和期间的恰当性</strong>"。</li><li><strong>前置的行政监管措施</strong>：2026-02-05 吉林证监局〔2026〕4 号——对公司<strong>采取责令改正</strong>，对时任总经理王学敏、副总经理牛丹丹、财务总监张兴艳<strong>出具警示函</strong>（涉外销售订单收入确认不审慎、资料保存不完整）。<strong>性质为行政监管措施，不是行政处罚</strong>，不触发《上市公司证券发行注册管理办法》第十一条第（三）项。</li></ul>
+<details class="fold"><summary>会计差错更正的具体影响（2023 年，追溯重述后）</summary><div class="fold-body">
+
+<table><thead><tr><th>项目</th><th>调整前</th><th>调整金额</th><th>调整后</th></tr></thead><tbody><tr><td>营业收入（元）</td><td>1,378,059,471.02</td><td><strong>−265,944,115.07</strong></td><td>1,112,115,355.95</td></tr><tr><td>营业成本（元）</td><td>681,683,965.68</td><td>−136,719,164.56</td><td>544,964,801.12</td></tr><tr><td>归母净利润（元）</td><td>275,589,641.99</td><td><strong>−116,350,710.23</strong></td><td>159,238,931.76</td></tr><tr><td>应收账款（元）</td><td>432,126,395.59</td><td>−117,813,255.06</td><td>314,313,140.53</td></tr><tr><td>存货（元）</td><td>572,935,454.69</td><td>+136,613,086.03</td><td>709,548,540.72</td></tr><tr><td>合同负债（元）</td><td>207,416,947.27</td><td>+154,652,988.77</td><td>362,069,936.04</td></tr><tr><td>未分配利润（元）</td><td>1,350,264,299.11</td><td>−116,350,710.23</td><td>1,233,913,588.88</td></tr></tbody></table>
+<p><strong>读法</strong>：把"已发货但未完成控制权转移"的收入后移，改列合同负债与存货——<strong>这是收入确认时点的修正，不是虚构交易</strong>；公司公告明确"不会导致 2023—2024 年已披露年度财务报表出现盈亏性质改变，也不会导致期末净资产为负"，会计师的专项说明亦认可该事项"<strong>不具有广泛性</strong>"。</p>
+<p><strong>但矛盾点在这里</strong>：公司认为差错更正已规范完成，而会计师在同一时点表示"<strong>仍未能获取充分、适当的审计证据</strong>"来判断更正的完整性、准确性与期间恰当性。<strong>这两句话是这一整套分析的起点。</strong></p>
+
+</div></details>
+<h3 id="sec5">2.2 四类退市红线逐条对照</h3>
+<p><strong>结论：四类退市红线一条未踩；Andy 自建《退市风险预警-20261005.xlsx》的四个工作表（交易类／财务类／规范类／其他类）逐表检索，均</strong>未收录 300396<strong>，与本文逐条核对结论一致。</strong></p>
+<table><thead><tr><th>类型</th><th>触发条件（速查）</th><th>本股情形</th><th>是否触发</th></tr></thead><tbody><tr><td><strong>交易类</strong></td><td>连续 20(60) 日收盘价&lt;1 元；市值&lt;3 亿元（双创）；成交量&lt;200 万股（双创）；股东数&lt;400 人（科创板）</td><td>股价 7.08 元；总市值 19.31 亿元；股东 11,743 户</td><td><strong>否</strong></td></tr><tr><td><strong>财务类①</strong></td><td>净利／扣非／利润总额孰低为负 <strong>且</strong> 扣除后营收&lt;1 亿元（创业板）</td><td>2025 年营收 8.07 亿元（远超 1 亿元）</td><td><strong>否</strong></td></tr><tr><td><strong>财务类②</strong></td><td>最近一个会计年度审计净资产为负</td><td>2025 年末归母净资产 <strong>15.37 亿元</strong>为正</td><td><strong>否</strong></td></tr><tr><td><strong>财务类③</strong></td><td>财报被出具<strong>无法表示／否定</strong>意见</td><td>2025 年为<strong>保留意见</strong>——不在该条列示范围内</td><td><strong>否</strong></td></tr><tr><td><strong>规范类</strong></td><td>资金占用（≥2 亿元或≥净资产 30%）、内控<strong>连续两个</strong>会计年度非标、控制权无序争夺等</td><td>占用 0、违规担保 0；内控非标为<strong>首个</strong>会计年度</td><td><strong>否</strong>（首个年度落入 9.4 第四项，属"其他风险警示"）</td></tr><tr><td><strong>其他类</strong></td><td>近三年累计分红&lt;年均净利 30% <strong>且</strong>&lt;3,000 万元（双创）</td><td>近三年（2023—2025）归母净利合计为负，该条以"最近一个会计年度净利润为正值"为前提</td><td><strong>否</strong></td></tr><tr><td><strong>重大违法类</strong></td><td>欺诈发行、造假达量化线（单年≥2 亿元且&gt;30% 等）</td><td>无立案、无行政处罚、无造假情形</td><td><strong>否</strong></td></tr></tbody></table>
+<p><strong>必须说清的一条口径</strong>：<strong>"戴 ST 帽"不属于四类退市红线中的任何一条</strong>。把"戴 ST"直接读成"有退市风险"，是本类标的最常见的分析错误。本股的退市风险来自<strong>未来可能发生的"内控连续两年非标"</strong>，而不是当下的 ST 状态。</p>
+<h3 id="sec6">2.3 撤销路径与三道开关：时间锚全部指向次年 4 月</h3>
+<p><strong>结论：这是一条"三道开关、零容错、全部由审计师裁决"的路径——2027-04 摘 ST 或叠加 *ST，2028-04 撤销 *ST 或终止上市。</strong></p>
+<table><thead><tr><th>开关</th><th>触发／解除条件</th><th>条款依据</th><th>时点</th></tr></thead><tbody><tr><td><strong>① 撤销 ST（出路）</strong></td><td>内部控制缺陷整改完成、内部控制能有效运行，且<strong>披露会计师事务所对最近一个会计年度财务会计报告出具的无保留意见内部控制审计报告</strong></td><td>创业板 <strong>9.10 条</strong>（内控款）＋ 9.9 条（每月披露义务）</td><td><strong>2027-04</strong>（2026 年报）</td></tr><tr><td><strong>② 叠加 *ST（恶化）</strong></td><td><strong>连续两个</strong>会计年度财务报告内部控制被出具无法表示／否定意见</td><td>创业板 <strong>10.4.1 条第六项</strong>；10.4.4 第五项（已履行"立即披露可能被 *ST"提示义务）</td><td><strong>2027-04</strong></td></tr><tr><td><strong>③ 终止上市（归零）</strong></td><td>因 10.4.1 第六项被 *ST 后，<strong>首个会计年度</strong>财务报告内部控制仍被出具无法表示／否定意见（或未按规定披露）</td><td>创业板 <strong>10.4.18 条第六项</strong></td><td><strong>2028-04</strong></td></tr><tr><td>④ 撤销 *ST</td><td>因 10.4.1 第六项被 *ST 后，<strong>首个会计年度</strong>内控被出具<strong>无保留意见</strong></td><td>创业板 <strong>10.4.12 条第六项</strong>＋ 10.4.13（须同时披露该报告）</td><td><strong>2028-04</strong></td></tr></tbody></table>
+<p><strong>三条判读纪律</strong>：</p>
+<ol><li><strong>时间锚不是"最早可申请日"，而是"下一个年报"</strong>——内控款的撤销依据写死了"<strong>最近一个会计年度</strong>"，触发年度（2025）的非标意见已固定不可改，<strong>不存在提前申请</strong>。因此 2027-04 是全文唯一有决定权的时间点。</li><li><strong>开关握在审计师手里（他证而非自证）</strong>——公司自述"整改已完成"不构成任何证据；必须由会计师事务所出具无保留意见的内控审计报告。</li><li><strong>一旦进入 *ST 状态，披露义务立刻升格</strong>：依 10.4.10／10.4.18 相关安排，*ST 期间须<strong>每月</strong>披露一次股票可能被终止上市的风险提示公告，且在*ST 当年会计年度结束后一个月内披露、此后至下一年内控审计报告披露前<strong>每十个交易日</strong>披露一次。</li></ol>
+<details class="fold"><summary>创业板条款原文摘录（2026 年修订，逐字核对）</summary><div class="fold-body">
+
+<ul><li><strong>9.10（第三款，内控款）</strong>："公司内部控制缺陷整改完成，内部控制能有效运行，向本所申请撤销其他风险警示的，应当披露会计师事务所对其最近一个会计年度财务会计报告出具的无保留意见的内部控制审计报告。"</li><li><strong>9.9（第一款）</strong>："上市公司因触及第 9.4 条第一项至第五项情形，其股票交易被实施其他风险警示期间，应当至少每月披露一次进展公告。"</li><li><strong>10.4.1（第六项）</strong>："连续两个会计年度财务报告内部控制被出具无法表示意见或者否定意见的审计报告，或者未按照规定披露财务报告内部控制审计报告的"，本所对其股票交易实施退市风险警示。</li><li><strong>10.4.12（第六项）</strong>："因触及第 10.4.1 条第六项情形被实施退市风险警示后，首个会计年度财务报告内部控制被出具无保留意见的审计报告"的，可以申请撤销退市风险警示。</li><li><strong>10.4.18（第六项）</strong>："因触及第 10.4.1 条第六项情形其股票交易被实施退市风险警示后，首个会计年度的财务报告内部控制被出具无法表示意见或者否定意见的审计报告，或者未按照规定披露财务报告内部控制审计报告的"，本所决定终止其股票上市交易。</li><li><strong>10.4.18（第十项）</strong>："撤销退市风险警示申请未被本所审核同意"亦为终止上市情形——<strong>"已提交撤销申请"不等于安全</strong>。</li></ul>
+
+</div></details>
+<h3 id="sec7">2.4 过关概率的六条判据：给"事实存疑型"一个刻度</h3>
+<p><strong>结论：本股内控否定事由属"流程可修补型 ＋ 财报保留意见并列"，既不是 ST章鼓式的"时间不足型"（高过关概率），也不是纯粹的"某几笔交易真实性无法验证型"（低过关概率）。综合六条判据，本报告给出 2026 年度内控审计取得无保留意见的</strong>主观概率区间 50%—65%<strong>（明确声明：这不是预测，是主观刻度）。</strong></p>
+<table><thead><tr><th>判据</th><th>方向</th><th>依据</th></tr></thead><tbody><tr><td>① 事由性质是"流程＋用印缺陷"，制度与系统层面已实质整改</td><td><strong>偏正</strong></td><td>《权责运行手册》发布、合同管理办法等十余项制度修订、智能印控系统上线（OCR 比对、内容不符自动拦截）、OA 分级授权</td></tr><tr><td>② 公司已聘第三方机构开展穿行测试并形成阶段性核查报告</td><td><strong>偏正</strong></td><td>2026-09-03 进展公告原文"配合中介机构完成了关键控制点执行情况的抽样验证与核查，形成阶段性核查报告……为整改成效提供独立评价依据"</td></tr><tr><td>③ 会计师对<strong>历史差错更正</strong>的证据链明确表示"仍未能获取充分、适当的审计证据"</td><td><strong>偏负</strong></td><td>保留意见"形成基础"原文；这是<strong>尚未解决</strong>的问题，与 2026 年新增内控的健全性可分离、但无法证明已被消除</td></tr><tr><td>④ <strong>前置信号缺位</strong>——《影响已消除的审核报告》或同类第三方结论未出现</td><td><strong>偏负</strong></td><td>截至基准日，全部 75 条公告中无此类文件</td></tr><tr><td>⑤ 公司在两次业绩说明会上对"如何让审计师认可"<strong>均模板回避</strong></td><td><strong>偏负</strong></td><td>2026-05-19 问"通过何种方式让审计机构认可前期会计差错更正的完整性与准确性、有无明确时间规划"→ 答"公司将加强与审计机构的常态化沟通……具体以公告为准"；2026-08-05 问"是否已启动补充审计或重新审计"→ 答"具体内容请以公告为准"</td></tr><tr><td>⑥ <strong>2026 年度审计机构尚未聘任</strong>（2025 年度为大信所，聘期一年）</td><td><strong>中性偏负</strong></td><td>2026-05-21 年度股东会 11 项议案中无"续聘会计师事务所"议案；截至基准日未见聘任公告。审计机构未定＝意见取向未知</td></tr></tbody></table>
+<p><strong>"监管疑虑的三类官方留痕"核查结果</strong>：<strong>会计差错更正（有，2026-04-30）</strong>；交易所监管函（未见）；年报问询函（未见）。按既定判据，三类<strong>出现其一</strong>即应下调核准／过关概率——本股已命中第一类。</p>
+<p><strong>六条中最有信息量的是③与⑤</strong>：会计师在跑了检查、监盘、函证、访谈之后仍说"拿不到证据"，说明<strong>证据链可能结构性缺失</strong>（例如补充协议散落在渠道端、无法穷尽）；而公司在被直接问到"怎么让审计师认可"时不给答案，说明<strong>这件事本身还没有答案</strong>。</p>
+<details class="fold"><summary>过关判断的完整推演：公司口径与审计师口径为什么会分叉</summary><div class="fold-body">
+
+<p>这个案子里最值得反复读的，是同一件事在两家口径里的两种说法。</p>
+<p>公司在《董事会关于 2025 年度非标准审计意见涉及事项的专项说明》里，把整改写成了六条措施：专项制度修订、全覆盖式专项自查（客户函证＋现场访谈＋合同台账梳理＋渠道库存盘点，并"锁定了问题业务的初始时间"）、治理架构与权限体系重塑、管理层培训、智能印控系统上线（与 OA 集成、OCR 比对合同原文、内容不符系统自动拦截）、常态化合规核查机制，并给出结论——"<strong>截至本说明出具日，上述整改措施已大部分落地执行，销售合规、财务核算、印章管理等关键环节控制明显加强，内部控制有效性显著提升</strong>"。</p>
+<p>会计师在《出具非标准审计意见报告的专项说明》里，复述的是另一件事：他们"对前期会计差错进行了审计，<strong>实施了检查、监盘、函证、访谈等程序，但仍未能获取充分、适当的审计证据，无法判断前期会计差错更正的完整性、准确性和期间的恰当性，以及可能对报告期财务报表产生的影响</strong>"。</p>
+<p><strong>这两段话并不矛盾——它们在说两件不同层次的事。</strong> 公司证明的是"<strong>制度与流程已经补上</strong>"；会计师说的是"<strong>过去那件事我没法验证到底</strong>"。前者可以在一两个季度内完成，后者取决于历史证据是否客观存在。举例来说：如果补充协议散落在数十家渠道商手里、部分渠道商已终止合作或拒绝回函，那么"完整性"这个要求<strong>在物理上就难以满足</strong>——公司做再多的制度补丁也补不出这份证据。</p>
+<p>对 2026 年度内控审计而言，这两层是可以分开处理的：只要 2026 年度的销售与收款循环控制在测试中被证明有效（印控系统留痕、OA 审批链完整、无新的补充协议），内控审计就有给出无保留意见的技术基础。<strong>但风险恰恰在于：同一个项目组、同一套职业判断，会不会把"历史证据缺失"这件事重新带入 2026 年内控有效性的结论里？</strong> 这没有公开信息可以回答，只能等 2026 年度审计。</p>
+<p>因此本报告把过关概率定在 50%—65%，而不是章鼓式的 75%—85%（后者的事由是"整改后的控制运行时间较短"，本质是<strong>等时间</strong>），也不是纯粹的"某几笔交易真实性无法验证"（那种情形下制度补丁完全无效）。<strong>本股处在两者之间：事由可修，但并列着一份尚未消除的保留意见。</strong> 这个判断如果被推翻（无论向哪个方向），报告结论就应当随之调整。</p>
+
+</div></details>
+<hr>
+<h2 id="chap3">三、基本面：财务已止血，但盈利质量尚未修复</h2>
+<h3 id="sec8">3.1 五年 + 最新一期：营收三年连降、2025 年一次性计提存货跌价 2.14 亿元</h3>
+<p><strong>结论：2025 年的巨亏（归母 −2.46 亿元）主因是</strong>一次性计提存货跌价准备 2.14 亿元<strong>，属"洗报表"性质；2026H1 已扭亏（归母 759.69 万元、扣非 395.15 万元），但</strong>扣非盈利的绝对额极小、经营现金流为 −1.14 亿元<strong>，盈利质量尚未修复。</strong></p>
+<table><thead><tr><th>指标</th><th>2021</th><th>2022</th><th>2023（调后）</th><th>2024（调后）</th><th>2025</th><th>2026H1</th></tr></thead><tbody><tr><td>营业收入（亿元）</td><td>9.06</td><td>12.20</td><td>11.12</td><td>9.77</td><td>8.07</td><td>4.09</td></tr><tr><td>归母净利润（亿元）</td><td>2.10</td><td>2.62</td><td>1.59</td><td>0.65</td><td><strong>−2.46</strong></td><td>0.076</td></tr><tr><td>扣非归母（亿元）</td><td>1.88</td><td>2.49</td><td>1.46</td><td>0.57</td><td><strong>−2.55</strong></td><td>0.040</td></tr><tr><td>毛利率</td><td>52.33%</td><td>51.99%</td><td>51.00%</td><td>51.66%</td><td>40.57%</td><td>45.41%</td></tr><tr><td>资产负债率</td><td>—</td><td>—</td><td>—</td><td>—</td><td>44.6%</td><td><strong>39.7%</strong></td></tr><tr><td>货币资金（亿元）</td><td>—</td><td>—</td><td>—</td><td>5.87</td><td>3.10</td><td>4.04</td></tr><tr><td>总资产（亿元）</td><td>—</td><td>—</td><td>33.96</td><td>33.70</td><td>27.72</td><td>25.66</td></tr><tr><td>归母净资产（亿元）</td><td>—</td><td>—</td><td>19.23</td><td>18.56</td><td><strong>15.37</strong></td><td><strong>15.47</strong></td></tr></tbody></table>
+<p><strong>表注</strong>：2023、2024 年为会计差错更正追溯重述后口径（2023 年营收由 13.78 亿元调减至 11.12 亿元、归母由 2.76 亿元调减至 1.59 亿元；2024 年营收由 12.18 亿元调减至 9.77 亿元、归母由 1.42 亿元调减至 0.65 亿元）。2021、2022 年未涉及本次更正。数据来源：2025 年年度报告、2026 年半年度报告；2021—2022 年序列为<strong>东财 F10【异源】</strong>，已按年报口径交叉核对。</p>
+<p><strong>2025 年亏损结构</strong>：资产减值损失 <strong>−2.14 亿元</strong>（存货跌价准备）、信用减值损失 −2,278.28 万元、投资收益 +2,009.98 万元（权益法）、其他收益（政府补助）+1,029.38 万元。<strong>即：剔除一次性存货跌价后，2025 年经营性亏损约 −0.32 亿元。</strong></p>
+<p><strong>2026H1 改善结构</strong>：毛利率由 38.91% 回升至 45.41%（试剂占比提升）；销售费用同比下降超 15%；但<strong>财务费用由上年同期 −2,321 万元变为 +1,148 万元</strong>（大额存单集中到期，利息收入由 1,783 万元降至 134 万元、叠加美元汇兑损失）。</p>
+<details class="fold"><summary>2025 年 2.14 亿元存货跌价的来龙去脉，以及 2026 年会不会再来一次</summary><div class="fold-body">
+
+<p>这是判断"扭亏是真修复还是报表游戏"的关键一笔账。</p>
+<p>数字本身很直白：存货从 2025 年初的 <strong>9.24 亿元</strong>降至年末的 <strong>5.68 亿元</strong>，减少 3.56 亿元，其中<strong>资产减值损失 2.14 亿元（主要是存货跌价准备）</strong>是主因；公司自己的表述是"主要系报告期内计提大额跌价所致"。而同期营业收入只有 8.07 亿元，同比下降 17.41%——<strong>这意味着公司选择了在一年内把老库存的账一次性做实</strong>。</p>
+<p>为什么这笔跌价与内控问题有关？回到两件事的因果链：<strong>第一</strong>，公司存在"确认收入后对应商品未实际报关并办理退货"的涉外销售情形（吉林证监局点名），以及"带承诺或保证退换货条款的补充协议"（会计师点名）——<strong>这两种安排都会把已经发出的货退回到公司手里</strong>；<strong>第二</strong>，会计差错更正把 2023 年营业收入调减 2.66 亿元、存货调增 1.37 亿元、合同负债调增 1.55 亿元，<strong>等于把早年"提前确认"的收入连同对应的存货一起还回了报表</strong>。库存因此堆积，而堆在仓库里的货又面临集采降价与试剂有效期的问题，<strong>减值几乎是必然的结局</strong>。</p>
+<p>所以 2025 年的巨亏，<strong>本质上是过去几年销售激进的一次总清算</strong>，而不是当年经营突然恶化。这也解释了为什么 2026H1 的毛利率能迅速从 38.91% 回到 45.41%：<strong>低毛利的旧库存已经出清。</strong></p>
+<p><strong>但"出清"不等于"以后不会再有"</strong>，要看三条：① 存货绝对额仍高达 <strong>5.34 亿元、占总资产 20.83%</strong>，2026H1 仍计提了 <strong>781.86 万元</strong>跌价（同比下降 34.7%，公司在说明会上被追问"存货仍处高位为何减值反而减少"，只答"各期均按会计准则充分计提"）；② 会计政策已于 <strong>2026-01-01 起变更</strong>——EXW 条款改按报关单出口日期确认收入、FOB 等条款按提单日期与报关单出口日期<strong>孰晚</strong>原则确认，<strong>这是从制度上堵住"提前确认"的口子</strong>，是实质性改善；③ 合同负债由 4.11 亿元降至 2.57 亿元，<strong>说明预收的水池在缩小</strong>，未来若收入端不继，存货去化速度会放缓。<strong>结论：2025 年的巨额跌价大概率不会重复，但"存货占总资产两成＋收入三年连降"意味着这笔账在未来两年仍有反复的压力。</strong></p>
+
+</div></details>
+<details class="fold"><summary>2026H1 现金流与合同负债的两个关键读数</summary><div class="fold-body">
+
+<ul><li><strong>经营活动现金流净额 −1.14 亿元（同比 −1,246.32%）</strong>，公司口径为"前期业务终止形成合同负债的资金支付所致"。<strong>合同负债由期初 4.11 亿元降至 2.57 亿元（−37.44%）</strong>——这意味着"预收的、未来要转收入的"水池缩小了近四成，<strong>对未来 1—2 个季度的收入转化是压力而非利好</strong>。</li><li><strong>投资活动现金流净额 +1.96 亿元</strong>（结构性存款到期大于购入）；<strong>筹资活动现金流净额 +1.18 亿元</strong>（本期未支付现金股利，上年同期 7,573.50 万元）。</li><li>受限货币资金 461.88 万元（涉诉冻结），占总资产 0.18%；<strong>短期借款 0.60 亿元、长期借款 0.81 亿元、一年内到期的非流动负债 3.26 亿元</strong>，有息负债合计约 <strong>4.68 亿元</strong>；<strong>货币资金 4.04 亿元＋交易性金融资产 1.00 亿元＋一年内到期的非流动资产 1.39 亿元＝现金类资产 6.43 亿元</strong>，<strong>净现金约 +1.75 亿元</strong>。</li></ul>
+
+</div></details>
+<h3 id="sec9">3.2 收入与利润来源地图：试剂赚钱、仪器不赚钱、国内补海外</h3>
+<p><strong>结论：这是一张"卖仪器装机、靠试剂赚钱"的典型 IVD 收入地图——2026H1 试剂收入 2.50 亿元、毛利率 65.96%（赚钱的在外资替代与集采挤压之间被压缩）；仪器收入 1.57 亿元、毛利率仅 12.63%（装机即让利）；增量全部来自国内（+50.95%），海外在缩（−2.24%）。</strong></p>
+<table><thead><tr><th>业务项</th><th>2026H1 收入</th><th>占比</th><th>毛利率</th><th>同比</th><th>审美标签</th></tr></thead><tbody><tr><td>试剂</td><td>2.50 亿元</td><td>61.2%</td><td>65.96%</td><td>+24.79%（毛利率 +5.43pct）</td><td><strong>业务反转</strong>（高毛利产品修复是 2026 年扭亏的第一驱动力）</td></tr><tr><td>仪器</td><td>1.57 亿元</td><td>38.4%</td><td>12.63%</td><td>+5.82%（毛利率 +2.95pct）</td><td>景气成长（装机是入口，本身近乎不赚钱）</td></tr><tr><td>国内</td><td>1.88 亿元</td><td>45.9%</td><td>42.11%</td><td><strong>+50.95%</strong>（毛利率 +6.66pct）</td><td>景气成长（县域医共体＋设备更新＋华润渠道）</td></tr><tr><td>国外</td><td>2.19 亿元</td><td>53.6%</td><td>48.23%</td><td><strong>−2.24%</strong>（毛利率 +7.40pct）</td><td>长期价值（120 余国、"2+2+10"国际战略，但本期收缩）</td></tr></tbody></table>
+<p><strong>变化归因（量／价／客户／产能）</strong>：</p>
+<ul><li><strong>客户</strong>：2025 年前五名客户合计销售 <strong>8,355.09 万元、占 10.41%</strong>，<strong>客户集中度极低</strong>（第一大客户 Meril Life Sciences 仅占 2.71%），<strong>关联方销售占比 0.00%</strong>——这与"华润协同 450 万元"的规模相符：<strong>华润体系目前不是主要客户</strong>。</li><li><strong>量／价</strong>：集采（安徽、江西联盟覆盖化学发光、生化、凝血试剂）与 DRG/DIP 支付改革、"套餐解绑"、跨机构结果互认共同压缩检测量；公司口径为"可能出现销量增长但难以弥补价格下行影响"。</li><li><strong>产能</strong>：在建工程仅 271.58 万元、固定资产 1.80 亿元，<strong>无重资本开支</strong>；研发投入 1.02 亿元／占营收 12.67%，研发人员 274 人（同比 −18.69%）。</li><li><strong>热点业务占比定位</strong>：公司 2026H1 反复提及"AI 智能化（实验室智能化中间件、AI 视觉样本识别）"与"智能化产品矩阵"，但<strong>半年报分产品表中无独立的 AI 收入科目</strong>——AI 目前是产品的功能属性（已搭载于 GMD-S1200 等新品），<strong>不是独立收入来源</strong>。</li></ul>
+<details class="fold"><summary>投资者交流要点（三次业绩说明会，原文口径）</summary><div class="fold-body">
+
+<table><thead><tr><th>投资者问题</th><th>公司答复要点</th><th>解读</th></tr></thead><tbody><tr><td>上半年国内收入 +50.95%、海外 −2.24%，驱动因素与可持续性？</td><td>县域医共体建设＋基层标配生化免疫设备＋设备更新政策；公司"借助华润资源及品牌影响，深度参与县域医共体建设"</td><td><strong>国内高增长确与华润渠道有关</strong>，但公司未给量化贡献</td></tr><tr><td>与华润健康签框架协议（2.85 万张床位优先采购），但上半年向华润系关联方销售仅 450 万元、占全年额度 5,000 万元的 9%，为何推进缓慢？</td><td>"框架协议于 2026-05-21 股东会审议通过，协同事项正在推进中……具体请以公告为准"</td><td><strong>未解释原因、未给时间表</strong>；450 万元／5,000 万元＝9%，落地缓慢是硬事实</td></tr><tr><td>公司已实施哪些举措改善股价？内控整改是否已得到事务所认可？中报经营现金流 −1.14 亿元是否会延续？</td><td>"已成立市值管理工作组"；"整体推进节奏与既定整改时间规划保持一致"；"剔除（合同负债清理）影响后，经营活动现金流已呈现向好态势"</td><td><strong>未回答"是否获得事务所认可"</strong>——这正是最关键的问题</td></tr><tr><td>财务费用由 −2,321 万元变为 +1,148 万元，到期资金如何安排？</td><td>大额存单到期、利息收入由 1,783 万元降至 134 万元；"将在严控风险前提下合理统筹安排闲置资金"</td><td>息差收入这一"隐性利润项"已消失，属结构性下降</td></tr><tr><td>明年有自信摘帽吗？预计盈利多少？</td><td>"公司正在积极推进内部控制整改举措，力争尽快消除相关事项影响，具体内容及业绩信息请以公司公告为准"</td><td><strong>典型模板答复</strong>，无时间表、无业绩指引</td></tr><tr><td>请告知控股股东华润与公司管理层对公司发展还有信心吗？</td><td>"公司正在加快推进相关整改，机构选聘正在推进当中。公司国内业务基本企稳，国际业务保持良性增长，公司有信心扭转当前局面"</td><td>承认"机构选聘正在推进"——<strong>印证 2026 年度审计／辅导机构尚未落定</strong></td></tr><tr><td>迪瑞是华润旗下唯一医疗器械类公司，大股东有没有支持公司发展脑机接口的打算？</td><td>"您的建议已收悉，感谢关注"</td><td>对"新赛道"一律不接</td></tr><tr><td>公司外延并购做大做强，还是以后的战略目标吗？</td><td>"公司的未来发展战略请以公司的定期报告为准"</td><td>未否认，但也未确认</td></tr><tr><td>内控解决了吗？内部治理措施怎么样？</td><td>"依据验收标准按月核查任务落地进度……聘请专业中介机构提供内控辅导"</td><td><strong>无第三方结论</strong></td></tr><tr><td>公司内控整改已全面落地，是否已启动 2025 年度财报及内控报告的补充审计或重新审计？</td><td>未正面回答</td><td><strong>最关键的一问被回避</strong></td></tr></tbody></table>
+<p><strong>参会人员名单</strong>（2026-08-05 说明会，11 人）：董事长兼总经理郎涛、职工代表董事兼副总兼财务总监刘康、董事倪冰、董事李光、独董余宇莹／吴清功／安明友、董事兼副总牛丹丹、副总孙彬、副总汪博、董事兼副总兼董秘安国柱。<strong>与 2026-05-19（仅安国柱、刘康 2 人）相比参会阵容大幅扩容，但核心团队未换人</strong>——治理层的控制权变更并未体现在人员更替上（华润 2020 年即已入主）。</p>
+
+</div></details>
+<h3 id="sec10">3.3 资产质量与估值锚：三块真实资产与一条很低的溢价</h3>
+<p><strong>结论：资产底是真实的（净资产 15.47 亿元、无商誉、无质押、净现金为正），但"资产真实"与"资产赚钱"是两件事——市值只比净资产高 3.84 亿元（17.6% 溢价），这个溢价本质上就是对"上市地位＋华润平台＋内控过关"的一次性期权定价。</strong></p>
+<details class="fold"><summary>资产质量星级表</summary><div class="fold-body">
+
+<table><thead><tr><th>星级维度</th><th>大白话说明</th><th>评级</th></tr></thead><tbody><tr><td>市值与估值</td><td>19.31 亿元市值 / 15.47 亿元净资产 → PB 1.25，为 IVD 同业最低一档</td><td>★★★★</td></tr><tr><td>法律合规性</td><td>无立案、无行政处罚（仅行政监管措施）、无资金占用、无违规担保；但内控被否、财报保留</td><td>★★</td></tr><tr><td>债务与流动性</td><td>资产负债率 39.7%；有息负债 4.68 亿元 vs 现金类资产 6.43 亿元，<strong>净现金为正</strong>；受限资金仅 461.88 万元</td><td>★★★★</td></tr><tr><td>主业质地</td><td>试剂毛利率 65.96% 尚可，但营收三年连降（12.20→11.12→9.77→8.07 亿元）、仪器毛利率仅 12.63%、海外收缩</td><td>★★</td></tr><tr><td>控制权与运作</td><td>央企实控人（中国华润），股权集中且零质押、零冻结；但<strong>入主六年零注资、协同放量仅 450 万元</strong></td><td>★★★</td></tr><tr><td><strong>综合</strong></td><td><strong>"资产干净、治理有序、但盈利未修复＋内控未过关"</strong></td><td><strong>★★★</strong></td></tr></tbody></table>
+<p><strong>必须说清的一句话</strong>：<strong>第 1、3 项的高分（低估值、净现金）不能抵消第 2、4 项的低分（内控未完关、主业萎缩）。</strong> 低 PB 在 ST 语境下常常是"对不确定性的定价"，不是"错杀"。</p>
+<p><strong>关键资产项（2026-06-30，单位：亿元）</strong>：货币资金 4.04／交易性金融资产 1.00／一年内到期的非流动资产 1.39／其他流动资产 1.69／应收账款 1.93／存货 <strong>5.34</strong>（占总资产 20.83%）／长期股权投资 <strong>4.33</strong>（联营企业宁波瑞源等，权益法）／其他权益工具投资 1.08／固定资产 1.80／<strong>商誉 0.00</strong>。</p>
+<p><strong>宁波瑞源生物科技有限公司</strong>（参股、权益法）：2025 年营收 1.77 亿元、净利 4,857.73 万元；2026H1 营收 7,938.18 万元、净利 2,374.70 万元；2026-06-30 总资产 4.37 亿元、净资产 4.01 亿元。<strong>这是公司利润表里最稳定的正贡献项</strong>（2025 年权益法投资收益 2,009.98 万元、2026H1 1,108.64 万元）。</p>
+
+</div></details>
+<h3 id="sec11">3.4 同业对照：PB 处在全行业最低一档</h3>
+<p><strong>结论：以 PB 横向对照，本股 1.25 倍处在 IVD 同业最低一档（仅高于迈克生物 0.91 与 \*ST明德 0.67），与科华生物 1.29、圣湘生物 1.37 同档；但同业中位数在 2 倍上下，说明"低 PB"本身是该股长期存在的问题（盈利下滑所致），不是戴帽后才出现的。</strong></p>
+<details class="fold"><summary>IVD 同业估值对照（2026-09-30，数据来源：腾讯行情）</summary><div class="fold-body">
+
+<table><thead><tr><th>代码</th><th>简称</th><th>现价（元）</th><th>总市值（亿元）</th><th>PB</th><th>PE(TTM)</th></tr></thead><tbody><tr><td>300760</td><td>迈瑞医疗</td><td>161.32</td><td>1,954.87</td><td>5.02</td><td>24.86</td></tr><tr><td>300832</td><td>新产业</td><td>50.37</td><td>395.77</td><td>4.41</td><td>23.05</td></tr><tr><td>688068</td><td>热景生物</td><td>94.47</td><td>87.62</td><td>3.59</td><td>−33.78</td></tr><tr><td>300642</td><td>透景生命</td><td>20.84</td><td>33.82</td><td>2.37</td><td>274.82</td></tr><tr><td>603658</td><td>安图生物</td><td>34.08</td><td>194.74</td><td>2.25</td><td>19.59</td></tr><tr><td>300406</td><td>九强生物</td><td>11.94</td><td>69.99</td><td>2.09</td><td>31.11</td></tr><tr><td>300244</td><td>迪安诊断</td><td>20.52</td><td>128.25</td><td>1.98</td><td>48.19</td></tr><tr><td>688289</td><td>圣湘生物</td><td>16.72</td><td>96.13</td><td>1.37</td><td>71.61</td></tr><tr><td>002022</td><td>科华生物</td><td>6.12</td><td>32.52</td><td>1.29</td><td>−4.63</td></tr><tr><td><strong>300396</strong></td><td><strong>ST迪瑞</strong></td><td><strong>7.08</strong></td><td><strong>19.31</strong></td><td><strong>1.25</strong></td><td><strong>−9.19</strong></td></tr><tr><td>300463</td><td>迈克生物</td><td>9.53</td><td>57.62</td><td>0.91</td><td>−161.81</td></tr><tr><td>002932</td><td>\*ST明德</td><td>15.33</td><td>35.65</td><td>0.67</td><td>−70.13</td></tr></tbody></table>
+
+</div></details>
+<hr>
+<h2 id="chap4">四、炒作逻辑三支柱（全部着眼未来）</h2>
+<h3 id="sec12">4.1 ① 炒预期：唯一硬节点在 2027-04，且不带制度红利</h3>
+<p><strong>结论：未来 12 个月没有任何"能改变估值"的硬节点；唯一的硬节点是 2027-04 的 2026 年度内控审计意见，距今约 18 个月。而创业板 ST 的涨跌幅本就是 20%，摘帽前后同幅——</strong>摘帽不带任何制度性放大<strong>。</strong></p>
+<table><thead><tr><th>时点</th><th>催化内容</th><th>性质</th><th>判读</th></tr></thead><tbody><tr><td>2026-10 下旬</td><td>2026 年三季报</td><td>硬节点（公开日历）</td><td>看两点：① H2 是否延续扣非为正（合同负债降 37.44%，收入端有压力）；② 内控整改是否披露新进展</td></tr><tr><td>2026-12 前</td><td>2026 年度审计机构聘任（若发生）</td><td>软预期→硬节点</td><td><strong>换所与否是唯一可提前观察的"审计取向"信号</strong>；若更换年审机构，须重新评估过关概率</td></tr><tr><td>2026 年 12 月—2027 年 3 月</td><td>年审进场与预审沟通</td><td>不可观测</td><td>依惯例，年报前 20 日／10 日公司会披露"年报编制及最新审计进展"公告</td></tr><tr><td><strong>2027-04</strong></td><td><strong>2026 年度内控审计意见（＝摘 ST 或叠加 *ST）</strong></td><td><strong>硬节点（公开日历、零信息差）</strong></td><td><strong>全文最重要的一个点</strong>；也是"利好出尽／利空落地"的双向开关</td></tr><tr><td>2028-04</td><td>2027 年度内控审计意见（若已叠加 *ST）</td><td>硬节点</td><td>撤销 *ST 或<strong>终止上市（归零）</strong></td></tr></tbody></table>
+<p><strong>预期差在哪一侧？</strong> 在"公司已经把能做的都做完了、但审计师态度未明"。市场对"整改完成→摘帽"的线性推演，与"保留意见基础未消除"的现实之间存在落差——<strong>这个落差的方向是负面的</strong>。</p>
+<p><strong>为什么这是"炒预期"里最弱的一类</strong>：事件时点完全公开（年报披露日）、结果取决于第三方、且<strong>没有制度红利</strong>（创业板 20% 涨跌幅不变）。按 §0.3 的注意力框架，这类事件<strong>只能产生一次性的、幅度有限的定价修正，不能产生"注意力溢价"</strong>。</p>
+<h3 id="sec13">4.2 ② 炒历史类似行为：用同型样本池直接定位方向</h3>
+<p><strong>结论：直取 ST 信息库中"带帽原因＝内控审计被出具无法表示／否定意见或未披露内控报告"的</strong>全量 23 只<strong>（含本股）做相似股票匹配——2026 年 YTD </strong>中位 −26.17%、均值 −20.23%、仅 5 只上涨<strong>；本股 </strong>−45.12%，处全组第 5 弱（倒数第 5）<strong>。</strong>本股明确落在"下跌组"一侧，且已跌得比同类更多。**</p>
+<p><strong>本股画像</strong>（基准日 2026-10-06）：创业板 ｜ ST（其他风险警示，首个年度内控非标）｜ 市值 19.31 亿元（小市值）｜ 驱动类型＝制度性事件（内控审计意见）｜ 所处阶段＝整改中、无第三方结论 ｜ 历史炒作符号＝"体外诊断／检验仪器／猴痘／新冠检测"（且 2023 年后无记录）｜ 筹码结构＝股权高度集中、无质押、机构与个人混合 ｜ 股东背景＝<strong>央企（中国华润）</strong>。</p>
+<details class="fold"><summary>同型样本全表（内控非标型 ST 23 只，2026 年 YTD，按涨跌幅升序）</summary><div class="fold-body">
+
+<table><thead><tr><th>代码</th><th>简称</th><th>YTD</th><th>备注</th></tr></thead><tbody><tr><td>000078</td><td>ST海王</td><td>−56.94%</td><td>资金占用型叠加</td></tr><tr><td>300352</td><td>ST信源</td><td>−52.85%</td><td>—</td></tr><tr><td>002198</td><td>ST嘉应</td><td>−49.08%</td><td>—</td></tr><tr><td>601010</td><td>ST文峰</td><td>−47.99%</td><td>—</td></tr><tr><td><strong>300396</strong></td><td><strong>ST迪瑞</strong></td><td><strong>−45.12%</strong></td><td><strong>本股（第 5 弱）</strong></td></tr><tr><td>002630</td><td>\*ST华西</td><td>−42.80%</td><td>净资产为负叠加</td></tr><tr><td>603922</td><td>ST金鸿顺</td><td>−42.10%</td><td>—</td></tr><tr><td>688022</td><td>ST瀚川</td><td>−39.80%</td><td>—</td></tr><tr><td>600080</td><td>ST金花</td><td>−38.86%</td><td>—</td></tr><tr><td>600302</td><td>ST标准</td><td>−35.56%</td><td>—</td></tr><tr><td>300010</td><td>ST豆神</td><td>−29.56%</td><td>同一批（内控否定＋财报保留）</td></tr><tr><td>300152</td><td>\*ST动力</td><td>−26.17%</td><td>连续两年非标已叠加 *ST</td></tr><tr><td>605199</td><td>ST葫芦娃</td><td>−25.07%</td><td>—</td></tr><tr><td>300594</td><td>ST朗进</td><td>−22.90%</td><td>—</td></tr><tr><td>002109</td><td>ST兴化</td><td>−21.13%</td><td>—</td></tr><tr><td>600107</td><td>\*ST尔雅</td><td>−19.02%</td><td>—</td></tr><tr><td>002082</td><td>ST万邦</td><td>−6.89%</td><td>—</td></tr><tr><td>300198</td><td>\*ST纳川</td><td>−5.08%</td><td>重整型叠加</td></tr><tr><td>300477</td><td>ST合纵</td><td>+5.34%</td><td><strong>上涨组</strong></td></tr><tr><td>002360</td><td>ST同德</td><td>+10.12%</td><td><strong>上涨组</strong></td></tr><tr><td>300326</td><td>ST凯利</td><td>+11.47%</td><td><strong>上涨组</strong>（内控非标已修复、2025 年财报与内控双标准无保留）</td></tr><tr><td>688184</td><td>ST帕瓦</td><td>+14.98%</td><td><strong>上涨组</strong></td></tr><tr><td>688646</td><td>逸飞激光</td><td>+99.64%</td><td><strong>上涨组</strong>（2026 年内已摘帽）</td></tr></tbody></table>
+<p><strong>中位 −26.17%｜均值 −20.23%｜上涨 5／23</strong></p>
+<p><strong>上涨组的共性（反向读数）</strong>：五只上涨样本中，<strong>逸飞激光（已摘帽）与 ST凯利（条件已由会计师确认为无保留）</strong>都属于"<strong>关键结论已经产生</strong>"的一类——即市场已能对"摘帽"给出确定答案；ST帕瓦／同德／合纵的具体载体本报告未逐一核到（<strong>如实登记，不作推断</strong>）。而本股恰好缺的正是这个"已产生的结论"。</p>
+
+</div></details>
+<h3 id="sec14">4.3 ③ 炒主板映射：华润系与 IVD 主线，ST 板块内无同概念低位标的</h3>
+<p><strong>结论：主板当下与 IVD 相关的活跃主线是"AI＋医疗／检验智能化"与"央企市值管理"，但 ST 板块内</strong>找不到<strong>与本股同概念、同逻辑的低位标的——</strong>本股在 ST 板块内是"孤票"<strong>，这也解释了它为什么没有板块资金关注。</strong></p>
+<table><thead><tr><th>主线</th><th>主板代表公司</th><th>本股关联度</th><th>判读</th></tr></thead><tbody><tr><td>AI＋医疗／检验智能化</td><td>迈瑞医疗、安图生物、透景生命</td><td><strong>中</strong>（公司在研"实验室智能化中间件"与 AI 视觉样本识别，但<strong>无独立 AI 收入科目</strong>）</td><td><strong>【纯概念】</strong>——AI 是产品功能而非收入</td></tr><tr><td>央企市值管理／中特估</td><td>华润系各平台（华润三九、华润双鹤、江中药业等）</td><td><strong>中</strong>（实控人为中国华润，是华润大健康板块唯一医疗器械平台）</td><td>概念成立，但<strong>华润系从未对上市公司做过资产运作</strong></td></tr><tr><td>国产替代／集采后周期</td><td>新产业、圣湘生物、九强生物</td><td>弱（公司试剂收入占比低于行业平均，规模小）</td><td>间接映射</td></tr><tr><td>ST 板块内同概念对象</td><td><strong>未找到</strong>（IVD 类 ST 仅本股一家）</td><td>—</td><td><strong>"孤票"意味着无板块合力</strong></td></tr></tbody></table>
+<p><strong>结论落点（选股动作）</strong>：本股<strong>不具备"主板映射"这一支柱</strong>——既无板块同伴，也无自身可被归入的主线标签。三支柱中，<strong>当前市场最认的是第②支柱（相似样本定价），方向为负</strong>。</p>
+<hr>
+<h2 id="chap5">五、情绪与筹码面：注意力冰点、下跌中的户数下降</h2>
+<p><strong>结论：本股处在"注意力真空"状态——2026 年全年仅 2 次龙虎榜（均在戴帽首两日），韭研异动表 2026 年零记录，换手率 0.46%、单日成交额 877 万元。按注意力定价框架，"无注意力则涨不动"是本股最现实的约束。</strong></p>
+<details class="fold"><summary>龙虎榜、异动与股价水位（全量，时间降序）</summary><div class="fold-body">
+
+<p><strong>龙虎榜（2026 年，东财 API 全量 35 条中属 2026 年的 2 条）</strong></p>
+<table><thead><tr><th>交易日</th><th>上榜原因</th><th>涨跌幅</th><th>净买额（万元）</th></tr></thead><tbody><tr><td>2026-05-07</td><td>连续三个交易日内跌幅偏离值累计达 30%</td><td>−10.03%</td><td>+189.45</td></tr><tr><td>2026-05-06</td><td>日跌幅达 15% 的前 5 只证券（戴帽首日）</td><td>−20.02%</td><td>+196.22</td></tr></tbody></table>
+<p><strong>2026-05-07 之后至基准日（近 5 个月）零上榜。</strong> 历史上一次利空期上榜为 2022-10-17（+19.99%、净买 5,257.81 万元，医疗器械贴息贷款主题）。</p>
+<p><strong>韭研公社异动表（全量 5 条）</strong></p>
+<table><thead><tr><th>题材时间</th><th>题材</th><th>题材催化</th><th>涨停信息</th><th>股价</th><th>异动关键词</th></tr></thead><tbody><tr><td>2023-01-17</td><td>其他</td><td>—</td><td>—</td><td>27.35</td><td>体外诊断＋检验仪器＋猴痘</td></tr><tr><td>2022-10-17</td><td>医疗器械</td><td>全国已上报超 2,000 亿元医疗设备贷款需求</td><td>2 天 2 板</td><td>23.95</td><td>医疗器械＋医疗检验仪器＋猴痘</td></tr><tr><td>2022-10-14</td><td>医疗器械</td><td>央行设立设备更新改造专项再贷款，创新医疗器械暂不纳入集采</td><td>—</td><td>19.96</td><td>医疗器械＋猴痘＋医疗检验仪器</td></tr><tr><td>2022-08-12</td><td>公告</td><td>—</td><td>—</td><td>17.45</td><td>半年报增长＋医疗器械＋新冠检测</td></tr><tr><td>2022-01-20</td><td>公告</td><td>—</td><td>—</td><td>20.77</td><td>回购＋新冠检测＋医疗器械</td></tr></tbody></table>
+<p><strong>炒作符号</strong>：高度稳定＝"<strong>体外诊断／检验仪器</strong>"为底，"<strong>猴痘／新冠检测</strong>"为弹性。<strong>连板极值仅 2 天 2 板</strong>（2022-10-17）——<strong>连板基因极弱</strong>，历史从未出现 5 板以上行情。<strong>最新一条记录停在 2023-01-17</strong>，此后近 3 年无入库（该表只收录达标异动，不等于"没炒过"，但确实说明<strong>未再触发异动阈值</strong>）。</p>
+<p><strong>股价水位</strong>：2026 年内收盘区间 5.99—14.03 元，现价 7.08 元处 <strong>13.6% 分位</strong>；2026-01-26 为本年最高收盘 14.03 元、2026-07-24 为最低 5.99 元。<strong>前复权月 K 自 2014-09 起 143 个月</strong>：最高 35.41 元、最低 6.22 元、现价 7.08 元 → <strong>前复权价格分位 1.40%（上市以来最低区）</strong>。<strong>注意：信息库档案记"近 20 年价格分位 5.65%"（不复权口径、取数日 2026-07-31／6.68 元），前复权口径更低——两个口径方向一致，均指向历史低位。</strong></p>
+
+</div></details>
+<p><strong>两条必做校验</strong>：</p>
+<ol><li><strong>戴帽≠下跌主因</strong>：IVD 同业 2026 年普遍下跌（迈瑞 −25% 量级、科华等更弱），行业估值收缩贡献了相当部分跌幅。但本股 <strong>−45.12% 显著弱于 IVD 同业中位</strong>，说明<strong>内控非标＋财报保留是独立的、额外的定价因素</strong>，不能全部归因于行业 β。</li><li><strong>股东户数下降"不含方向"</strong>：2025-12-31 的 15,741 户 → 2026-06-30 的 12,010 户（−23.7%）→ 2026-09-18 的 11,743 户，<strong>同期股价由 12.90 元跌至 7.08 元</strong>——属"<strong>下跌中户数下降＝散户割肉离场</strong>"，<strong>不得读作主力吸筹</strong>。</li></ol>
+<details class="fold"><summary>为什么"上市以来最低价"在这里只是前提、不是结论</summary><div class="fold-body">
+
+<p>把注意力定价的四个步骤逐条套在本股上，会得到一份不太舒服的答案。</p>
+<p><strong>第一步，先找低位——成立。</strong> 前复权月 K 自 2014-09 起 143 个月，价格分位 <strong>1.40%</strong>；PB <strong>1.25</strong> 是 IVD 同业最低一档；市值只比归母净资产高 <strong>3.84 亿元（17.6% 溢价）</strong>。无论用哪把尺子，这都是一只"位置很低"的票。</p>
+<p><strong>第二步，再找未来的潜在催化事件——找到了，但质量差。</strong> 本股未来的事件只有三类：<strong>① 2027-04 的 2026 年度内控审计意见</strong>（公开日历、结果由审计师裁决）；<strong>② 华润体系协同放量</strong>（2026H1 仅 450 万元，占额度 9%，无时间表）；<strong>③ 年度审计机构聘任公告</strong>（尚未发生）。<strong>三类事件里没有一类是"公司主动发起、可自行加速"的。</strong></p>
+<p><strong>第三步，等它发生——问题就出在"等"上。</strong> 按注意力定价的机制，<strong>事件未兑现前是"预期交易"、兑现瞬间是"注意力峰值"</strong>。但本股的预期交易需要 18 个月，而在这 18 个月里，公司能给市场的只有<strong>月初一条模板化的进展公告</strong>——而这条公告在过去 5 个月已经被证明不含任何增量信息（内容高度重复）。这意味着本股处在一个<strong>"时间在流逝、故事没有更新"的真空期</strong>：既没有新信息推高预期，也没有新信息压低预期，价格只能靠大盘与行业 β 漂移。</p>
+<p><strong>第四步，收益 ＝ 低位 ＋ 事件驱动的注意力溢价——这里"注意力"这个词是关键。</strong> 本股当前换手 0.46%、单日成交 877 万元、2026 年龙虎榜 2 次（都在戴帽首两日）、韭研异动表 2026 年零记录、历史连板极值仅"2 天 2 板"。<strong>这是典型的"无注意力"状态。</strong> 按既定框架，"没有注意力，再好的基本面也涨不动"，同理——<strong>没有注意力，再低的 PB 也可以长期停留在低 PB 上</strong>。</p>
+<p><strong>所以本报告的结论是自洽的：低位（真）＋ 催化（公开日历、且不带制度红利）＋ 注意力（冰点）＝ 赔率尚可、胜率不足、时间成本高。</strong> 这不是"这票不好"，而是"<strong>在当下这个位置，用 18 个月去换一个期望 13.8% 的收益，不如把仓位留给有当期信息驱动的标的</strong>"。一旦"注意力"回来了（例如前置信号出现、成交额放大、龙虎榜出现净买入），这条推理链的第三个环节就变了，结论也应随之重估。</p>
+
+</div></details>
+<hr>
+<h2 id="chap6">六、估值与投资结论</h2>
+<h3 id="sec15">（一）估值：三档情景，概率加权期望值约等于现价</h3>
+<p><strong>估值前提（必须显式标注）</strong>：<strong>本节估值以"2026 年度内控审计取得无保留意见"为前提；若被出具否定意见，则 2027-04 叠加 *ST，估值中枢整体下移。</strong></p>
+<table><thead><tr><th>情景</th><th>概率</th><th>假设</th><th>目标 PB</th><th>对应股价</th></tr></thead><tbody><tr><td><strong>乐观</strong></td><td>15%</td><td>2026 内控无保留 → 2027-04 摘 ST，且华润协同放量／主业明显改善</td><td>1.85</td><td>10.5 元</td></tr><tr><td><strong>中性</strong></td><td>55%</td><td>2026 内控无保留 → 2027-04 摘 ST，但盈利仍在低位徘徊（2026 年微利或小亏）</td><td>1.50</td><td>8.5 元</td></tr><tr><td><strong>悲观</strong></td><td>30%</td><td>2026 内控再被否定 → 2027-04 叠加 *ST，估值再压一档</td><td>1.00</td><td>5.7 元</td></tr></tbody></table>
+<p><strong>概率加权期望价</strong>：0.15×10.5 ＋ 0.55×8.5 ＋ 0.30×5.7 ＝ <strong>8.06 元</strong>（区间 7.9—8.3 元）。 <strong>对照现价 7.08 元 → 期望收益约 +13.8%，但这是"18 个月后"的目标，年化约 +9%。</strong></p>
+<blockquote><p><strong>为什么不给"买入"？</strong> 因为这条期望收益有三处硬折扣：① <strong>时间成本 18 个月</strong>；② <strong>上行被"零制度红利"压缩</strong>（创业板 ST 涨跌幅恒 20%，摘帽前后同幅，摘帽当日不产生制度性跳涨）；③ <strong>赔率的计算建立在"内控过关概率 50%—65%"这一主观刻度上</strong>——若把过关概率下调到 45%（悲观概率升至 40%），则期望价立刻降到约 7.4 元，<strong>归零于现价</strong>。</p></blockquote>
+<p><strong>辅助估值口径</strong>：</p>
+<ul><li><strong>PB 1.25</strong>（同业最低一档，见 §3.4）</li><li><strong>PS(TTM) 约 2.23 倍</strong>（TTM 营收 8.65 亿元）</li><li><strong>PE 不适用</strong>（TTM 归母为 −2.10 亿元）</li><li><strong>隐含"业务＋上市地位"定价 ＝ 市值 19.31 亿元 − 归母净资产 15.47 亿元 ＝ 3.84 亿元</strong>（占市值 17.6%）——这是一个<strong>很低的溢价</strong>，侧面印证"下行有净资产保护"，但也说明<strong>市场对该平台的想象空间几乎没有给价</strong>。</li></ul>
+<p><strong>一个必答的框架问题：这算"净现金型 ST"吗？</strong> <strong>不算。</strong> 现金类资产（货币资金 4.04＋交易性金融资产 1.00＋一年内到期的非流动资产 1.39）＝ <strong>6.43 亿元 ÷ 总市值 19.31 亿元 ＝ 33.3%</strong>，远小于 1。<strong>不适用"退市折价消除"框架</strong>，只能回到 PB／PS 定价。</p>
+<h3 id="sec16">（二）投资结论</h3>
+<p><strong>卖出（回避）</strong></p>
+<p><strong>理由链（按重要性排序）</strong></p>
+<ol><li><strong>唯一的硬催化是"公开日历 ＋ 零制度红利"，且同型样本证明"摘帽预期"在本类型上不产生超额收益。</strong> 撤销 ST 的时间锚是 2027-04（2026 年度内控审计报告），距今约 18 个月，完全公开、零信息差；而<strong>创业板 ST 涨跌幅本就是 20%，摘帽前后同幅——摘帽不带任何制度性放大</strong>。据本报告同型样本池（内控非标型 ST 23 只，2026 年 YTD），<strong>中位 −26.17%、仅 5 只上涨</strong>，而<strong>上涨的 5 只中至少有 2 只（逸飞激光已摘帽、ST凯利条件已被会计师确认为无保留）属于"关键结论已经产生"</strong> ——本股恰缺这一项。（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225262640&amp;orgId=9900022681&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">戴帽公告</a>）</li></ol>
+<ol><li><strong>走的是"三道开关、零容错"路径，而第二道开关直接指向归零。</strong> 2025 年内控否定 → ST；<strong>2026 年内控若再否定 → 2027-04 叠加 \*ST（10.4.1 第六项）</strong>；\*ST 后首个会计年度（2027 年）内控若仍非标 → <strong>2028-04 终止上市（10.4.18 第六项）</strong>。且依 10.4.18 第十项，<strong>"撤销 \*ST 申请未被交易所审核同意"本身也是终止上市情形</strong>——三道开关全部握在审计师与交易所手里，公司无法自主控制。</li></ol>
+<ol><li><strong>过关概率只有 50%—65%，且关键证据链存在结构性缺口。</strong> 会计师在实施了检查、监盘、函证、访谈之后，<strong>仍明确表示"无法判断前期会计差错更正的完整性、准确性和期间的恰当性"</strong>——这是"事实存疑"的表述，不是"整改后运行时间不足"的表述；公司对"是否已启动补充审计／如何让审计师认可"在 <strong>2026-05-19 与 2026-08-05 两次说明会上均未正面回答</strong>；截至基准日<strong>未见《影响已消除的审核报告》</strong>这一唯一前置信号；且<strong>2026 年度审计机构尚未聘任</strong>（2026-05-21 年度股东会 11 项议案中无续聘议案）。（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225262651&amp;orgId=9900022681&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">非标专项说明</a>）</li></ol>
+<ol><li><strong>PB 1.25 的"低位"是"低盈利质量"换来的，不是错杀。</strong> 营收三年连降（12.20→11.12→9.77→8.07 亿元）；2025 年一次性计提存货跌价 <strong>2.14 亿元</strong>（剔除后仍经营亏损约 −0.32 亿元）；2026H1 扣非归母仅 <strong>395.15 万元</strong>、经营现金流 <strong>−1.14 亿元</strong>；<strong>合同负债由 4.11 亿元降至 2.57 亿元（−37.44%）</strong>，意味着未来 1—2 个季度的收入转化承压；财务费用因大额存单到期由 −2,321 万元转为 +1,148 万元（息差收入这一隐形利润项已消失）。（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225458045&amp;orgId=9900022681&amp;announcementTime=2026-08-05" target="_blank" rel="noopener">2026 年半年报</a>）</li></ol>
+<ol><li><strong>"华润协同"这张最强的牌尚未落地，且六年零注资。</strong> 华润健康框架协议（2.85 万张床位优先采购）2026-05-21 才经股东会通过，<strong>2026H1 向华润系关联方销售仅 450 万元、占全年预计额度 5,000 万元的 9%</strong>；华润 2020-11 入主至今近六年，<strong>从未向上市公司注入任何资产</strong>，2026 年与华润系的可披露动作只有合计 528.5 万元的共同研发关联交易。按"人／物／表"三分法，本股属 "<strong>有人名（华润）、有物但未放量（框架协议）、有表（2027-04）</strong>"——<strong>最不缺的是时间表，最缺的是已经发生的收入</strong>。（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225458048&amp;orgId=9900022681&amp;announcementTime=2026-08-05" target="_blank" rel="noopener">2026-08-05 关联交易公告</a>）</li></ol>
+<ol><li><strong>注意力冰点。</strong> 换手率 0.46%、单日成交额 877 万元；<strong>2026 年龙虎榜仅 2 次，且都在戴帽首两日</strong>；韭研异动表 2026 年零记录，历史连板极值仅"2 天 2 板"；股东户数在下跌中由 15,741 户降至 11,743 户。<strong>"没有注意力，再干净的基本面也涨不动"</strong> 是本股最现实的约束。</li></ol>
+<p><strong>触发条件（出现下列信号应重新评估，可能转"买入"）</strong></p>
+<table><thead><tr><th>方向</th><th>信号</th></tr></thead><tbody><tr><td><strong>转买入</strong></td><td>① 出现《内控审计报告否定意见涉及事项<strong>影响已消除</strong>的审核报告》或类似第三方核查结论；② 2026 年度审计机构聘任公告落地且为知名大所；③ 2026 年三季报／年报显示内控整改进展有实质性第三方认可；④ 股价跌破 <strong>6.00 元</strong>（PB 约 1.06）而上述①已出现</td></tr><tr><td><strong>转更卖出</strong></td><td>① 2026 年内发生新的会计差错更正；② 更换年审机构且新所出具非标；③ 2026 年三季报显示 H2 重回亏损、合同负债继续大幅下降；④ 华润协同额度进一步下调或框架协议终止</td></tr></tbody></table>
+<p><strong>失效条件（本结论作废或翻转的情形）</strong></p>
+<ul><li><strong>本结论的核心前提是"内控过关概率 50%—65%＋摘帽零红利"。</strong> 若出现<strong>明确的前置信号（会计师出具影响已消除的结论）</strong>，则过关概率升至 80% 以上，期望价上移至 9—10 元，<strong>结论应翻转为"买入"</strong>。</li><li>反之，若 2026 年三季报或年报出现<strong>新的会计差错更正</strong>，则 2027-04 叠加 *ST 的概率升至 60% 以上，期望价下移至 5.5—6.0 元，结论维持"卖出"并下调止损。</li></ul>
+<p><strong>参考区间</strong></p>
+<ul><li><strong>悲观</strong>：4.8—6.0 元（PB 0.85—1.06，对应叠加 *ST 情形）</li><li><strong>中性</strong>：6.5—8.0 元（PB 1.15—1.41，对应整改进行中、结论未明）</li><li><strong>乐观</strong>：9.0—11.0 元（PB 1.59—1.94，对应顺利摘 ST ＋ 协同放量）</li><li><strong>参考</strong>：<strong>现价 7.08 元处于中性区间内偏上，概率加权期望价 8.06 元对现价仅有 13.8% 的空间，且需 18 个月等待——不足以支撑"买入"。</strong></li></ul>
+<p><strong>时间窗口</strong>：本结论有效期至 <strong>2027 年 4 月</strong>（2026 年度报告披露）；其间最需盯的是 <strong>2026 年三季报（2026-10 下旬）</strong> 与 <strong>2026 年度审计机构聘任公告</strong>。</p>
+<p><strong>仓位建议</strong>：<strong>不建仓</strong>（回避）。若已有持仓且成本在 12 元以上，建议在 7.5—8.5 元的反弹中减持，止损位 6.00 元。</p>
+<p><strong>最大风险</strong>：<strong>2026 年度内部控制审计再次被出具否定意见</strong>——它将使 2027-04 起叠加 *ST，并使本股进入"帽子叠帽子、每年一次开关"的路径，2028-04 存在终止上市（本金归零）的尾部风险。</p>
+<hr>
+<h2 id="chap7">附录 A · 待核实 / 需补充清单</h2>
+<p><strong>本清单只列"检索后仍未获确证"的事项；年报附注中已有的一律已读出，公司确未披露的一律写"未披露"。</strong></p>
+<table><thead><tr><th>#</th><th>待核实项</th><th>本报告的检索范围与结论</th></tr></thead><tbody><tr><td>1</td><td>华德欣润 2020 年受让 28% 股份的<strong>实际转让价格</strong></td><td>公告未披露。媒体按前 20 个交易日均价 <strong>27.18 元/股</strong>估算、对价约 21.0 亿元（信源为权威财经媒体，非公告）；本报告正文已标注该数字为"估算"。</td></tr><tr><td>2</td><td>公司聘请的"三方核查机构"名称与阶段性核查报告的<strong>结论</strong></td><td>2026-09-03 进展公告仅称"形成阶段性核查报告"，未披露机构名称与结论。</td></tr><tr><td>3</td><td>2022—2025 年营销业务自查中，<strong>补充协议涉及的客户与金额区间</strong></td><td>公司仅披露"问题业务的初始时间已锁定"，未披露明细；会计师亦称无法判断更正完整性。</td></tr><tr><td>4</td><td>2026 年度审计机构的<strong>聘任进度</strong></td><td>截至 2026-10-06 未见聘任公告；2026-05-21 年度股东会 11 项议案中无续聘议案。</td></tr><tr><td>5</td><td>宁波瑞源（联营，持股 40%）<strong>是否有整体上市／回购安排</strong></td><td>无相关公告。</td></tr><tr><td>6</td><td>广东恒健国际投资（12.15%）的<strong>持股意图与减持计划</strong></td><td>未披露；2020 年受让后六年未动。</td></tr><tr><td>7</td><td>同型样本中 ST帕瓦、ST同德、ST合纵（2026 年上涨组）的<strong>具体上涨驱动</strong></td><td>本报告未逐一核实，已如实登记，未据以推断。</td></tr></tbody></table>
+<h2 id="chap8">附录 B · 关键信源链接</h2>
+<p><strong>一手（公告／年报／规则）</strong></p>
+<table><thead><tr><th>编号</th><th>文件</th><th>发布日</th><th>原文</th></tr></thead><tbody><tr><td>1</td><td>2025 年年度报告</td><td>2026-04-30</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225262642&amp;orgId=9900022681&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">链接</a></td></tr><tr><td>2</td><td>2025 年年度审计报告（保留意见）</td><td>2026-04-30</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225262644&amp;orgId=9900022681&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">链接</a></td></tr><tr><td>3</td><td>内部控制审计报告（否定意见）</td><td>2026-04-30</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225262674&amp;orgId=9900022681&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">链接</a></td></tr><tr><td>4</td><td>董事会关于 2025 年度非标准审计意见涉及事项的专项说明</td><td>2026-04-30</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225262650&amp;orgId=9900022681&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">链接</a></td></tr><tr><td>5</td><td>大信所出具非标准审计意见报告的专项说明</td><td>2026-04-30</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225262651&amp;orgId=9900022681&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">链接</a></td></tr><tr><td>6</td><td>关于会计差错更正及追溯调整的公告（2026-020）</td><td>2026-04-30</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225262679&amp;orgId=9900022681&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">链接</a></td></tr><tr><td>7</td><td>前期会计差错更正专项说明的鉴证报告</td><td>2026-04-30</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225262681&amp;orgId=9900022681&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">链接</a></td></tr><tr><td>8</td><td>关于股票交易将被实施其他风险警示暨停复牌的提示性公告（2026-019）</td><td>2026-04-30</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225262640&amp;orgId=9900022681&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">链接</a></td></tr><tr><td>9</td><td>关于收到吉林证监局行政监管措施决定书的公告（2026-005）</td><td>2026-02-05</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1224969501&amp;orgId=9900022681&amp;announcementTime=2026-02-05" target="_blank" rel="noopener">链接</a></td></tr><tr><td>10</td><td>关于吉林证监局责令改正措施决定的整改报告（2026-008）</td><td>2026-02-27</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1224987109&amp;orgId=9900022681&amp;announcementTime=2026-02-27" target="_blank" rel="noopener">链接</a></td></tr><tr><td>11</td><td>2025 年年度股东会决议公告（2026-040）</td><td>2026-05-21</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225323098&amp;orgId=9900022681&amp;announcementTime=2026-05-21" target="_blank" rel="noopener">链接</a></td></tr><tr><td>12</td><td>2026 年半年度报告</td><td>2026-08-05</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225458045&amp;orgId=9900022681&amp;announcementTime=2026-08-05" target="_blank" rel="noopener">链接</a></td></tr><tr><td>13</td><td>关于与关联方开展共同研发合作暨关联交易的公告</td><td>2026-08-05</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225458048&amp;orgId=9900022681&amp;announcementTime=2026-08-05" target="_blank" rel="noopener">链接</a></td></tr><tr><td>14</td><td>关于公司股票交易被实施其他风险警示相关事项的进展公告（2026-050）</td><td>2026-09-03</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225545765&amp;orgId=9900022681&amp;announcementTime=2026-09-03" target="_blank" rel="noopener">链接</a></td></tr><tr><td>15</td><td>投资者关系管理信息（2026-002，2026-05-19 业绩说明会）</td><td>2026-05-20</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225320206&amp;orgId=9900022681&amp;announcementTime=2026-05-20" target="_blank" rel="noopener">链接</a></td></tr><tr><td>16</td><td>投资者关系管理信息（2026-003，2026-08-05 业绩说明会）</td><td>2026-08-06</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225461752&amp;orgId=9900022681&amp;announcementTime=2026-08-06" target="_blank" rel="noopener">链接</a></td></tr><tr><td>17</td><td>关于公司续聘会计师事务所的公告（2025-028）</td><td>2025-07-23</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1224256182&amp;orgId=9900022681&amp;announcementTime=2025-07-23" target="_blank" rel="noopener">链接</a></td></tr><tr><td>18</td><td>第六届董事会第十一次临时会议决议公告（2026-052）</td><td>2026-09-28</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300396&amp;announcementId=1225583939&amp;orgId=9900022681&amp;announcementTime=2026-09-28" target="_blank" rel="noopener">链接</a></td></tr><tr><td>19</td><td>《深圳证券交易所创业板股票上市规则（2026 年修订）》</td><td>—</td><td>本地规则原文库（<code>STskill\深圳证券交易所创业板股票上市规则（2026年修订）.pdf</code>）</td></tr></tbody></table>
+<p><strong>数据源（二级，仅作取数通道）</strong></p>
+<table><thead><tr><th>编号</th><th>来源</th><th>用途</th></tr></thead><tbody><tr><td>20</td><td>腾讯行情 <code>qt.gtimg.cn</code></td><td>现价／市值／PB／PE／换手／YTD／同业估值</td></tr><tr><td>21</td><td>新浪日 K <code>CN_MarketData.getKLineData</code></td><td>2026 年内股价路径与区间</td></tr><tr><td>22</td><td>腾讯月 K <code>fqkline</code>（前复权）</td><td>上市以来价格分位</td></tr><tr><td>23</td><td>东方财富 F10 <code>RPT_F10_FINANCE_MAINFINADATA</code>【异源】</td><td>2021—2022 年财务序列补缺</td></tr><tr><td>24</td><td>东方财富 <code>RPT_DAILYBILLBOARD_DETAILSNEW</code></td><td>龙虎榜全量</td></tr><tr><td>25</td><td>东方财富 <code>RPT_HOLDERNUMLATEST</code></td><td>股东户数</td></tr><tr><td>26</td><td>韭研公社异动整理（parquet）</td><td>异动全量与炒作符号</td></tr><tr><td>27</td><td>安迪自建 ST 信息库 <code>1.所有公司\</code></td><td>同型样本池筛选（内控非标型 23 只）</td></tr><tr><td>28</td><td>安迪自建《退市风险预警-20261005.xlsx》</td><td>四表逐表检索确认未收录 300396</td></tr></tbody></table>
+<p><strong>媒体（三级，仅用于控股股东入主背景）</strong></p>
+<table><thead><tr><th>编号</th><th>来源</th><th>用途</th></tr></thead><tbody><tr><td>29</td><td>中国经济网（2020-08-26）、证券时报 e 公司（2020-08-24）</td><td>2020 年华润入主的交易结构与"约 27.18 元/股"的媒体估算</td></tr><tr><td>30</td><td>迪瑞医疗官网（公司简介）</td><td>"2020 年成为华润产业基金控股企业"的公司自述</td></tr></tbody></table>
+<h2 id="chap9">附录 C · 逻辑漏洞与反方观点（5 问速版）</h2>
+<p><strong>问① 市占率／行业地位怎么来的？</strong> 公司在年报与半年报中<strong>未披露具体市占率数字</strong>，只给"产品应用于 120 多个国家和地区""30 余年自主研发"等定性表述。本报告<strong>未引用任何市占率数字</strong>；收入地图（§3.2）完全基于半年报分产品／分地区表格。<strong>这是本报告的一处信息缺口，也已如实登记。</strong></p>
+<p><strong>问② 采购／框架协议 ≠ 收入？</strong> <strong>本报告已把这一点作为核心判据。</strong> 华润健康框架协议（2.85 万张床位优先采购）是<strong>非约束性的"同等条件下优先"</strong>，2026H1 实际发生 <strong>450 万元</strong>、占全年预计额度 5,000 万元的 <strong>9%</strong>。<strong>框架协议不构成收入，本报告未将其计入任何情景区间。</strong></p>
+<p><strong>问③ 中标 ≠ 订单？</strong> 本报告未使用任何中标信息，无此风险。</p>
+<p><strong>问④ 引用的时间点是否已过期？</strong> 已逐项校准：① 主板不适用（本股为创业板，ST 涨跌幅恒 20%，<strong>不存在 2026-07-06 由 5% 改 10% 的问题</strong>）；② 2026-05-06 戴帽公告中"涨跌幅仍为 20%"的表述与现行规则一致；③ 财务数据取最新已披露期（2026 年半年报），2023／2024 年为追溯重述<strong>后</strong>口径并已逐表标注；④ 行情取 2026-09-30 收盘（基准日为非交易日 2026-10-06）。</p>
+<p><strong>问⑤ 数据来源是什么级别？</strong> 全部关键数字均可追溯到巨潮公告原文或年报／半年报正文（附录 B 编号 1—19）；行情与估值均为公开行情源并在表注标明；仅"2020 年转让价约 27.18 元/股"一项属<strong>媒体估算（三级信源）</strong>，已在正文与附录 A 中双重标注。</p>
+<p><strong>反方观点（压力测试）</strong></p>
+<table><thead><tr><th>反方论点</th><th>本报告的回应</th></tr></thead><tbody><tr><td>"PB 1.25、净资产 15.47 亿元、无商誉无质押无有息负债压力，这就是典型的低估错杀。"</td><td><strong>低位成立，但低位只是前提不是结论。</strong> 本股的 PB 低是营收三年连降、2025 年巨亏后的结果；同型样本（内控非标型 ST）2026 年中位 −26%、仅 5 只上涨，说明"跌得多"在这个类型上不构成安全边际。<strong>低位必须配上"已经发生或必然发生的催化"才成立，而本股的催化是公开日历且零红利。</strong></td></tr><tr><td>"华润是央企，绝不可能让旗下唯一医疗器械平台退市；退一步说，随便注入一块资产就解决了。"</td><td><strong>两处需拆开</strong>：① 华润确实有能力救助，但<strong>六年零注资、协同仅 450 万元</strong>是行为记录；② 更关键的是<strong>本条路径救不了"内控审计意见"</strong>——撤销 ST 要的是"最近一个会计年度的无保留意见内控审计报告"，<strong>资产注入不能替代这份报告</strong>（只有"重大资产重组无法披露内控报告"这一特殊情形会走向另一个分支）。所以"华润会救"与"内控能不能过关"是两件事。</td></tr><tr><td>"2026H1 已经扭亏（归母 759.69 万元），毛利率从 38.91% 回到 45.41%，基本面在反转。"</td><td><strong>改善属实，但质量薄。</strong> 扣非仅 <strong>395.15 万元</strong>；经营现金流 <strong>−1.14 亿元</strong>；<strong>合同负债由 4.11 亿元降至 2.57 亿元（−37.44%）</strong>，未来收入转化承压；财务费用因大额存单到期由 −2,321 万元转为 +1,148 万元。<strong>"扭亏"里含息差消失的逆风与合同负债清理的一次性因素。</strong></td></tr><tr><td>"整改动作这么密集（印控系统、权责手册、第三方穿行测试），2026 年拿无保留意见应该没问题。"</td><td><strong>这可能正是最大的认知偏差。</strong> 会计师的原话是"<strong>仍未能获取充分、适当的审计证据，无法判断前期会计差错更正的完整性、准确性和期间的恰当性</strong>"——它指向的是<strong>证据链是否存在</strong>，而不是<strong>制度是否健全</strong>。公司两次说明会均回避"如何让审计师认可"这一问题，<strong>这本身就是答案的一部分</strong>。</td></tr><tr><td>"戴帽与内控否定都是'程序性'事项，不影响经营，可以忽略。"</td><td><strong>不能忽略，因为它已经产生了现金流后果与收入后果。</strong> 2026H1 的经营现金流转负主因就是"前期业务终止形成的合同负债资金支付"；境外销售内控问题（资料保存不完整、报关与退货处理）<strong>直接来自吉林证监局点名的涉外销售环节</strong>，而这正是公司海外收入 53.6% 的命脉所在。</td></tr></tbody></table>
+<h2 id="chap10">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-06</td><td>首次生成。基准日 2026-10-06；数据截至 2026-09-30 行情与 2026 年半年度报告。投资结论：卖出（回避）。归档目录内原仅有 2026 年半年度报告等 3 份 PDF，<strong>全库检索未发现任何同标的历史研报，故从零生成</strong>。</td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
