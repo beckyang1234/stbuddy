@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>＊ST天箭（002977.SZ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>10 章 · 14 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断：为什么 ST，法律上还能不能活</a><a class="sblv3" href="#sec0">1.1 基本信息与股权结构</a><a class="sblv3" href="#sec1">1.2 ST 风险诊断：四类红线只踩一条</a><a class="sblv3" href="#sec2">1.3 王艳式颗粒度 · 六栏目</a><a class="sblv3" href="#sec3">1.4 全流程进度看板</a><a class="sblv3" href="#sec4">1.5 运作特征与综合判断</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、基本面路径 A · 保壳：唯一开关是"扣非转正"</a><a class="sblv3" href="#sec5">2.1 病理：一次军品审价，把营收做成负数</a><a class="sblv3" href="#sec6">2.2 生死开关测算：三档情景</a><a class="sblv3" href="#sec7">2.3 财务五年 + 最新一期</a><a class="sblv3" href="#sec8">2.4 摘帽／终止条件链路与时间锚</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、炒作逻辑三支柱 + 情绪面 + 筹码面</a><a class="sblv3" href="#sec9">3.1 炒作逻辑三支柱</a><a class="sblv3" href="#sec10">3.2 情绪与主题</a><a class="sblv3" href="#sec11">3.3 筹码博弈与技术位置</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、估值与投资结论</a><a class="sblv3" href="#sec12">（一）估值</a><a class="sblv3" href="#sec13">（二）投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">附录 A · 待核实与需补充</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 C · 逻辑漏洞与反方观点</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">建议升档</a></div><div class="sbgrp"><a class="sblv2" href="#chap9">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">＊ST天箭（002977.SZ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：卖出（回避）</strong>——不在现价 18.43 元参与；等到 2026 年三季报（10 月底）确认 Q3 单季扣非是否转正后再重估。</p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>红线分类</td><td><span class="sttag sttag-blue"><a href="https://data.eastmoney.com/notices/detail/002977/AN202604221821465943.html" target="_blank" rel="noopener">2025年净利为负且扣除后营收-1.71亿元</a></span>·<span class="sttag sttag-blue"><a href="https://data.eastmoney.com/notices/detail/002977/AN202604221821465943.html" target="_blank" rel="noopener">深主板9.3.1(一)实施*ST</a></span>·<span class="sttag sttag-orange"><a href="https://data.eastmoney.com/notices/detail/002977/AN202604221821465940.html" target="_blank" rel="noopener">军品审价致2025Q4单季冲回2.50亿元</a></span></td></tr><tr><td>生死定级</td><td><strong>可救 · 需自身达标</strong>（唯一开关＝2026 年报"利润总额／净利润／扣非三者孰低为正"）</td></tr><tr><td>自救空间</td><td>公司手握货币资金 5.56 亿元、零有息负债、归母净资产 8.45 亿元为正，工具齐备；<strong>但非经常性损益对过线完全无效</strong>（规则要求"三者孰低"），2026 下半年必须靠<strong>主业扣非净利 ≥ +210 万元</strong>才能跨过——而上半年营收同比 -78.28%</td></tr><tr><td>主要看点</td><td>市场在互动易反复追问、公司一律模板回复且<strong>至今零公告</strong>的"<strong>不高于 8,500 万元的对外投资／资产收购</strong>"；以及 2026-07-26 已签、<strong>09-22 终止</strong>的 19.89 元/股受让 14.77% 的协议转让是否会重启</td></tr></tbody></table>
+<ul><li>标的与基准日：＊ST天箭（002977.SZ，深主板）｜研究基准日 <strong>2026-10-05</strong>｜行情数据截至 <strong>2026-09-30</strong> 收盘</li><li>版本：<strong>初版 · 2026-10-05</strong></li><li>数据来源：公司公告原文（巨潮／东财）、2025 年年度报告、2026 年半年度报告、投资者关系活动记录表、同花顺 F10 互动易、东方财富行情与股东数据、新浪日 K、腾讯行情、韭研公社异动整理、Andy 自建退市风险预警表（20261005 版）与 ST 信息库</li><li>已知数据质量异常：① <strong>Wind 局域网代理 <code>192.168.1.20:8000</code> 本轮不可达</strong>，行情、估值与同型样本涨跌幅全部改用公开源（腾讯／新浪），属<strong>异源</strong>；② 退市风险预警表「财务类」工作表的"营业收入"列对本股显示 <strong>-1.71 亿元</strong>（与年报原文一致，为<strong>真实的负营收</strong>，非表格错误）；③ 韭研异动表最新一条停在 <strong>2026-07-23</strong>，9 月那波未入库，已用龙虎榜与日 K 交叉验证。</li></ul>
+<hr>
+<h2 id="chap1">一、诊断：为什么 ST，法律上还能不能活</h2>
+<p><strong>结论：本股只踩财务类红线一条，且踩线的直接原因不是主业萎缩，而是一次"军品审价"把 2025 年营业收入冲成 −1.71 亿元；正因净资产为正、零有息负债、内控标准无保留，它是 ST 板块里"工具最齐"的一类——问题不在"能不能活"，而在"公司今年做不做得到扣非转正"。</strong></p>
+<h3 id="sec0">1.1 基本信息与股权结构</h3>
+<p><strong>结论：控制权高度集中且稳定（楼继勇 36.01% ＋ 陈镭 23.08% ＝ 59.09%），全部股份无质押、无冻结，不存在被动易主的压力；但这也意味着"救兵"只能靠自己或大股东主动引入。</strong></p>
+<table><thead><tr><th>要点</th><th>数值</th></tr></thead><tbody><tr><td>现价／总股本／总市值</td><td>18.43 元 ／ 1.20 亿股 ／ <strong>22.14 亿元</strong></td></tr><tr><td>流通市值／流通股</td><td>12.29 亿元 ／ 0.67 亿股（限售主要为董事、高管锁定股）</td></tr><tr><td>PB（最新）</td><td><strong>2.62 倍</strong>（每股净资产 7.03 元）</td></tr><tr><td>货币资金（2026-06-30）</td><td><strong>5.56 亿元</strong>，占总资产 60.07%、占总市值 25.1%</td></tr><tr><td>有息负债</td><td><strong>0</strong>（无短期借款、无长期借款、无应付债券）</td></tr><tr><td>资产负债率（2026-06-30）</td><td><strong>8.7%</strong>（负债合计 0.81 亿元）</td></tr><tr><td>员工／研发人员</td><td>149 人 ／ 26 人（占比 17.45%）</td></tr><tr><td>上市信息</td><td>2020-03 深交所上市，首发 1,790 万股 @ <strong>29.98 元</strong>，募资净额 4.80 亿元</td></tr></tbody></table>
+<details class="fold"><summary>股权与工商信息（截至 2026-06-30）</summary><div class="fold-body">
+
+<table><thead><tr><th>持有方</th><th>性质</th><th>持股比例</th><th>持股数量</th><th>限售</th><th>质押/冻结</th></tr></thead><tbody><tr><td>楼继勇</td><td>境内自然人（董事长、实控人）</td><td>36.01%</td><td>4,326.00 万股</td><td>3,244.50 万股</td><td>无</td></tr><tr><td>陈镭</td><td>境内自然人（董事、总经理）</td><td>23.08%</td><td>2,772.00 万股</td><td>2,079.00 万股</td><td>无</td></tr><tr><td>刘永红</td><td>境内自然人</td><td>1.67%</td><td>200.00 万股</td><td>—</td><td>无</td></tr><tr><td>高盛公司有限责任公司</td><td>境外法人</td><td>0.41%</td><td>49.38 万股</td><td>—</td><td>无</td></tr><tr><td>张万发</td><td>境内自然人</td><td>0.39%</td><td>46.60 万股</td><td>—</td><td>无</td></tr><tr><td>李君康</td><td>境内自然人</td><td>0.39%</td><td>46.25 万股</td><td>—</td><td>无</td></tr><tr><td>张胜敏</td><td>境内自然人</td><td>0.33%</td><td>40.00 万股</td><td>—</td><td>无</td></tr><tr><td>管琪</td><td>境内自然人</td><td>0.33%</td><td>39.11 万股</td><td>—</td><td>无</td></tr><tr><td>沈阳语梦信息技术有限公司</td><td>境内非国有法人</td><td>0.27%</td><td>31.96 万股</td><td>—</td><td>无</td></tr><tr><td>J.P. Morgan Securities PLC－自有资金</td><td>境外法人</td><td>0.23%</td><td>27.10 万股</td><td>—</td><td>无</td></tr></tbody></table>
+<ul><li>公司全称 成都天箭科技股份有限公司，统一社会信用代码 91510100771221389K，注册及办公地址 成都高新区和茂街 333 号。</li><li>前十大股东中仅楼继勇为控股股东、实际控制人；公司称不知其余股东之间是否存在关联关系或一致行动。</li><li>2025 年末前十大股东中，自然人<strong>梅宏</strong>所持 81.76 万股被<strong>冻结</strong>（占 0.68%），2026 半年报其已不在前十大名单内。</li><li>关键人物履历：<strong>楼继勇</strong>（1955-11 生，本科）1983—1990 北京市华都集团计划财务部副处长 → 1990—1994 北京市华都食品公司副总经理 → 1994—1997 北京市华谊总公司总经理 → 1998-12—2008-07 四川鼎立投资管理董事长 → 2006-01—2017-12 天箭有限总经理、董事长 → 2017-12 起任公司董事长；<strong>陈镭</strong>（1968-03 生，研究生）1986—1990 四川省电子技术研究所 → 1990—1996 成都中视电子技术研究所所长 → 1996—2002 成都华章微电子技术研究所所长 → 2002—2006 成都布尔数据执行董事 → 2005-05—2017-12 天箭有限董事、副总经理 → 2017-12 起任公司董事、总经理。</li></ul>
+
+</div></details>
+<h3 id="sec1">1.2 ST 风险诊断：四类红线只踩一条</h3>
+<p><strong>结论：四条红线里只踩财务类①（孰低为负且扣除后营收低于 3 亿元），交易类、规范类、其他类、重大违法类</strong>全部未触及<strong>——这是把本股与"资不抵债型 ST"分开的最关键事实，也是"回避"而非"归零"的依据。</strong></p>
+<table><thead><tr><th>类型</th><th>触发条件（速查）</th><th>本股情况</th><th>判定</th></tr></thead><tbody><tr><td>交易类</td><td>连续 20 日收盘价 &lt;1 元；或市值 &lt;5 亿元（主板）；或股东数 &lt;2,000 人</td><td>18.43 元／22.14 亿元／14,102 户</td><td>未触及</td></tr><tr><td><strong>财务类①</strong></td><td>利润总额、净利润、扣非孰低为负 <strong>且</strong> 扣除后营收 &lt;3 亿元（主板）</td><td>2025 年孰低 <strong>-2.26 亿元</strong>（利润总额 -2.21／净利润 -2.26／扣非 -2.26）；扣除后营收 <strong>-1.71 亿元</strong></td><td><strong>已触及，2026-04-24 起 \*ST</strong></td></tr><tr><td>财务类②</td><td>期末净资产为负</td><td>2025 年末归母净资产 <strong>8.47 亿元</strong></td><td>未触及</td></tr><tr><td>财务类③</td><td>财报被出具无法表示／否定意见</td><td>2025 年为<strong>带强调事项段的无保留意见</strong>（＝无保留意见）</td><td>未触及</td></tr><tr><td>规范类</td><td>资金占用／内控连续非标／信披违法等</td><td>2025 年内控<strong>标准无保留</strong>；无非经营性占用；无立案</td><td>未触及</td></tr><tr><td>其他类</td><td>近三年分红不达标</td><td><strong>不适用</strong>（规则要求"最近一个会计年度净利润为正值"）</td><td>未触及</td></tr><tr><td>重大违法类</td><td>欺诈发行／造假达量化线</td><td>无</td><td>未触及</td></tr></tbody></table>
+<details class="fold"><summary>戴帽公告原文（认定该事实的那份文件）</summary><div class="fold-body">
+
+<blockquote><p>公司 2025 年度经审计的合并报表中利润总额为 -221,287,465.05 元，归属于上市公司股东的净利润为 -225,732,641.86 元、扣除非经常性损益后的净利润为 -226,059,751.24 元，<strong>且营业收入为 -171,421,984.20 元</strong>。根据《深圳证券交易所股票上市规则》第 9.3.1 条第一款第（一）项的规定……公司股票将被深圳证券交易所实施退市风险警示。</p></blockquote>
+<ul><li>实施日：<strong>2026-04-24</strong>；简称由"天箭科技"变更为"*ST 天箭"；当日公告写的涨跌幅 5% 系 2026-07-06 修订前口径，<strong>现行主板风险警示股涨跌幅已为 10%</strong>（当日涨停价 20.60 元／跌停价 16.86 元＝昨收 18.73 元的 ±10%，可直接反证）。</li><li>2025 年度审计意见为<strong>带强调事项段的无保留意见</strong>，强调事项原文即"2025 年度经审计的净利润为负值且扣除后的营业收入低于 3 亿元，触及 9.3.1 条被实施退市风险警示的情形。<strong>本段内容不影响已发表的审计意见</strong>"——故<strong>不触发</strong> 9.3.1 第一款第（三）项。</li><li>2025 年营业收入扣除项目金额为 <strong>0.00 元</strong>，即扣除后营收＝营收＝-1.71 亿元。</li></ul>
+
+</div></details>
+<h3 id="sec2">1.3 王艳式颗粒度 · 六栏目</h3>
+<p><strong>结论：六栏要素齐备，但四栏指向同一个结论——这是一家"账上很干净、业务在收缩、外部无人接、内部无动作"的公司。</strong></p>
+<details class="fold"><summary>① 前世今生（四列表：时点｜关键动作｜股权与实控人变化｜背后的逻辑）</summary><div class="fold-body">
+
+<table><thead><tr><th>时点</th><th>关键动作</th><th>股权与实控人变化</th><th>背后的逻辑</th></tr></thead><tbody><tr><td>2020-03</td><td>深交所上市</td><td>发行 1,790 万股，募资净额 4.80 亿元</td><td>发行价 29.98 元；实控人楼继勇、陈镭自 2017-12 起共同控制</td></tr><tr><td>2020-12</td><td>股价见上市以来最高 81.97 元（前复权月 K）</td><td>未变</td><td>军工景气 + 弹载固态发射机稀缺性</td></tr><tr><td>2022-05</td><td>以 1,000 万元增资<strong>南京华成微波技术有限公司</strong>，持股 7.79%</td><td>未变</td><td>联营企业，权益法核算；华成微波主业为集成电路芯片及产品制造</td></tr><tr><td>2022-12</td><td>营收创峰值 3.43 亿元</td><td>未变</td><td>弹载产品集中交付</td></tr><tr><td>2025-05</td><td>印巴冲突驱动军工行情，<strong>5 天 5 板</strong>、股价最高 48.71 元</td><td>未变</td><td>注意：这是本股历史连板极值</td></tr><tr><td>2025-12-30</td><td>发布《关于公司重大风险的提示公告》</td><td>未变</td><td>审价冲回后首次风险提示</td></tr><tr><td>2026-01-20 / 02-13 / 03-25</td><td>三次《可能被实施退市风险警示的提示性公告》</td><td>未变</td><td>预亏 → 逐级提示</td></tr><tr><td><strong>2026-04-24</strong></td><td><strong>实施退市风险警示（\*ST）</strong></td><td>未变</td><td>2025 年报 孰低为负且扣除后营收 -1.71 亿元</td></tr><tr><td><strong>2026-07-26</strong></td><td>楼继勇、陈镭与<strong>成都君祥泰瑞企业管理中心（有限合伙）</strong>签署《股份转让协议》</td><td>拟转让 1,774.50 万股（<strong>14.7727%</strong>）@ <strong>19.89 元/股</strong>，对价 <strong>3.53 亿元</strong>；转让后楼继勇 27.01%、陈镭 17.31%</td><td>价格＝签署日前一交易日收盘价的 <strong>90%</strong>；<strong>控制权不变</strong>；受让方成立仅 <strong>13 天</strong>（2026-07-13 设立）</td></tr><tr><td><strong>2026-09-22</strong></td><td>签署《股份转让协议之终止协议》</td><td>股份<strong>未办理过户</strong>，一切回到原点</td><td>公告口径"各方协商一致"；救兵来了又走</td></tr></tbody></table>
+
+</div></details>
+<details class="fold"><summary>② 股东阵容（身份识别 ＋ 取得方式与成本 ＋ 锁定与承诺）</summary><div class="fold-body">
+
+<table><thead><tr><th>持有方</th><th>身份识别</th><th>取得方式与成本</th><th>锁定与承诺</th><th>备注</th></tr></thead><tbody><tr><td>楼继勇</td><td>创始人、董事长、实控人</td><td>发起人股；2020-03 上市</td><td>任董监高期间每年转让 ≤25%；离职半年内不转让</td><td><strong>全部无质押、无冻结</strong></td></tr><tr><td>陈镭</td><td>联合创始人、董事、总经理</td><td>同上</td><td>同上</td><td>全部无质押、无冻结</td></tr><tr><td>君祥泰瑞（已终止）</td><td>外部财务／产业投资平台</td><td>拟 19.89 元/股受让 14.7727%</td><td>原承诺<strong>自交割起 36 个月不转让</strong>、<strong>36 个月内不谋求控制权</strong>、<strong>36 个月内无资产注入计划</strong></td><td><strong>协议已终止，上述承诺同步失效</strong></td></tr><tr><td>刘永红</td><td>自然人</td><td>二级市场；报告期内减持 184.59 万股（2025 年报）／再减 6.00 万股（2026H1）</td><td>—</td><td>持股由 1.71% 降至 1.67%</td></tr><tr><td>高盛、J.P. Morgan、UBS、Morgan Stanley</td><td>境外法人</td><td>二级市场</td><td>—</td><td>2025 年末四家同现前十大，2026 半年报仅高盛、J.P. Morgan 在列</td></tr></tbody></table>
+<p><strong>筹码集中度</strong>：股东户数 <strong>2025-12-31 的 27,479 户 → 2026-03-31 的 22,068 户 → 2026-06-30 的 14,102 户</strong>，半年<strong>减少 48.7%</strong>；户均持股 8,518 股、户均市值 17.91 万元。<strong>同期股价从 35.31 元跌到 21.03 元（-40%），属"下跌中户数下降"——按纪律不得读作"主力吸筹"，首要读法是散户割肉离场。</strong></p>
+
+</div></details>
+<details class="fold"><summary>③ 节奏与催化（编号清单，分硬节点与软预期）</summary><div class="fold-body">
+
+<table><thead><tr><th>编号</th><th>节点</th><th>预计时点</th><th>性质</th><th>判读／证伪点</th></tr></thead><tbody><tr><td>①</td><td>2026 年三季报</td><td><strong>2026-10 下旬</strong>（距今约 3 周）</td><td><strong>硬节点</strong></td><td>Q3 单季扣非若转正 → 保壳概率上台阶；若仍亏 → 全年几无可能</td></tr><tr><td>②</td><td>"不高于 8,500 万元对外投资／资产收购"</td><td><strong>无时间表</strong></td><td>软预期</td><td>截至基准日<strong>零公告</strong>；互动易自 2026-06-12 起被反复追问，答复一律模板</td></tr><tr><td>③</td><td>商业航天／卫星互联网主题</td><td>2026-10 月会议密集</td><td>软预期</td><td>属板块 β，非公司 α；本股在 ST 卫星线内属"实质业务"但收入贡献为 0</td></tr><tr><td>④</td><td>协议转让重启或新战投引入</td><td>无</td><td>软预期</td><td>前次终止未披露原因；现价 18.43 元已<strong>低于</strong>原拟转让价 19.89 元</td></tr><tr><td>⑤</td><td>军工新型号定型量产落地</td><td>无</td><td>软预期</td><td>公司口径"按计划推进新型号及新产品的定型与量产"</td></tr><tr><td>⑥</td><td>2026 年年度报告</td><td><strong>2027-04</strong></td><td>硬节点</td><td>孰低为正＝可申请撤销；为负＝<strong>直接终止上市</strong></td></tr></tbody></table>
+
+</div></details>
+<details class="fold"><summary>④ 资产质量与估值（星级表）</summary><div class="fold-body">
+
+<table><thead><tr><th>星级项</th><th>大白话</th><th>评级</th></tr></thead><tbody><tr><td>市值与估值</td><td>22.14 亿元市值对 8.45 亿元净资产＝PB 2.62 倍；营收为负故 PS／PE 均不适用</td><td>★★</td></tr><tr><td>法律合规性</td><td>无立案、无处罚、无非经营性占用、2025 年内控标准无保留</td><td>★★★★★</td></tr><tr><td>债务与流动性</td><td><strong>零有息负债</strong>，货币资金 5.56 亿元，负债合计仅 0.81 亿元</td><td>★★★★★</td></tr><tr><td>主业质地</td><td>2026H1 营收 -78.28%；新型相控阵中报收入为 0；募投基地"未充分发挥效能"；员工 149 人</td><td>★</td></tr><tr><td>控制权与运作</td><td>实控人合计 59.09%、全部无质押、且<strong>曾主动寻求转让 14.77%</strong>，卖壳意愿存在；但无实质动作</td><td>★★★</td></tr><tr><td><strong>综合</strong></td><td><strong>"资产负债表满分、利润表不及格"</strong>——高分的三项（合规／债务／控制权）<strong>不能抵消</strong>主业与估值的低分</td><td>★★★</td></tr></tbody></table>
+
+</div></details>
+<details class="fold"><summary>⑤ 成本锚点（逐参与方 + 两类定价逻辑）</summary><div class="fold-body">
+
+<table><thead><tr><th>参与方</th><th>成本（元/股）</th><th>说明</th></tr></thead><tbody><tr><td>楼继勇、陈镭</td><td>发起人成本，远低于现价</td><td>无质押、无融资，<strong>不构成"被套必自救"压力</strong></td></tr><tr><td>君祥泰瑞（拟受让方，已终止）</td><td><strong>19.89</strong></td><td>协议转让价＝签署日前一交易日收盘价 90%；<strong>现价 18.43 元 ＝ 该价的 0.93 倍</strong></td></tr><tr><td>二级市场</td><td>18.43</td><td>上市以来最低（前复权月 K 分位 <strong>0.00%</strong>）</td></tr></tbody></table>
+<p><strong>两类定价逻辑辨析</strong>：本股的成本锚属"<strong>协议受让价＝无稀释的市场底</strong>"一类（不存在重整转增、无除权摊薄问题）；但这条锚<strong>已随协议终止而失效</strong>——它证明的只是"7 月底有人愿意出 19.89 元"，不证明"现在还有人愿意出"。</p>
+
+</div></details>
+<details class="fold"><summary>⑥ 信息来源汇总（四列，四级分级）</summary><div class="fold-body">
+
+<table><thead><tr><th>#</th><th>来源类型</th><th>来源与标题</th><th>链接</th></tr></thead><tbody><tr><td>1</td><td>一手·公告</td><td>《关于公司股票交易被实施退市风险警示暨股票停牌的公告》2026-04-23</td><td><a href="https://data.eastmoney.com/notices/detail/002977/AN202604221821465943.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>2</td><td>一手·定期报告</td><td>2025 年年度报告（2026-04-23）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002977&amp;announcementId=1225156050&amp;orgId=9900037750&amp;announcementTime=2026-04-23" target="_blank" rel="noopener">原文</a></td></tr><tr><td>3</td><td>一手·定期报告</td><td>2026 年半年度报告（2026-08-27）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002977&amp;announcementId=1225510887&amp;orgId=9900037750&amp;announcementTime=2026-08-27" target="_blank" rel="noopener">原文</a></td></tr><tr><td>4</td><td>一手·公告</td><td>《关于2025年度计提减值准备的公告》2026-04-23</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002977&amp;announcementId=1225156070&amp;orgId=9900037750&amp;announcementTime=2026-04-23" target="_blank" rel="noopener">原文</a></td></tr><tr><td>5</td><td>一手·公告</td><td>《关于控股股东及持股5%以上股东协议转让公司部分股份暨权益变动的提示性公告》2026-07-29</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002977&amp;announcementId=1225445632&amp;orgId=9900037750&amp;announcementTime=2026-07-29" target="_blank" rel="noopener">原文</a></td></tr><tr><td>6</td><td>一手·公告</td><td>《简式权益变动报告书（受让方）》2026-07-29</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002977&amp;announcementId=1225445631&amp;orgId=9900037750&amp;announcementTime=2026-07-29" target="_blank" rel="noopener">原文</a></td></tr><tr><td>7</td><td>一手·公告</td><td>《关于控股股东及持股5%以上股东终止协议转让公司部分股份的公告》2026-09-23</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002977&amp;announcementId=1225576884&amp;orgId=9900037750&amp;announcementTime=2026-09-23" target="_blank" rel="noopener">原文</a></td></tr><tr><td>8</td><td>一手·公告</td><td>《2026年半年度业绩预告修正公告》2026-07-15</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002977&amp;announcementId=1225425185&amp;orgId=9900037750&amp;announcementTime=2026-07-15" target="_blank" rel="noopener">原文</a></td></tr><tr><td>9</td><td>一手·公告</td><td>《2026年半年度业绩预告》2026-07-03</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002977&amp;announcementId=1225407196&amp;orgId=9900037750&amp;announcementTime=2026-07-03" target="_blank" rel="noopener">原文</a></td></tr><tr><td>10</td><td>一手·交流</td><td>投资者关系活动记录表（2026 年半年度业绩说明会）2026-09-11</td><td><a href="https://data.eastmoney.com/notices/detail/002977/AN202609111829275516.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>11</td><td>一手·规则</td><td>深交所《股票上市规则（2026 年修订）》9.3.1／9.3.8／9.3.12</td><td>本地规则库 PDF</td></tr><tr><td>12</td><td>数据源</td><td>东方财富个股行情与股东研究、同花顺 F10 互动易（139 条）</td><td>—</td></tr><tr><td>13</td><td>数据源</td><td>韭研公社异动整理（46 条，2020-07—2026-07）</td><td>本地 parquet</td></tr><tr><td>14</td><td>数据源</td><td>新浪日 K（1023 根）、腾讯行情截面</td><td>—</td></tr><tr><td>15</td><td>二级·整理</td><td>Andy 自建退市风险预警表 20261005 版、ST 信息库公司档案</td><td>本地</td></tr><tr><td>16</td><td>三级·线索</td><td>雪球 ST 讨论（2026-07—10 月多日）</td><td>本地日报</td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec3">1.4 全流程进度看板</h3>
+<p><strong>结论：卡点不是"谈不拢"，而是"没开始"——保壳所需的全部动作（并购、回购、增持、豁免）截至目前</strong>零落地<strong>，公司仍停留在"聚焦主业"的口径阶段。</strong></p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点或条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>① 戴帽</td><td>2026-04-24 实施 \*ST</td><td>已发生</td><td>—</td><td>戴帽公告</td></tr><tr><td>② 保壳路径确认</td><td>只能靠"孰低为正"（营收 ≥3 亿元事实上不可能）</td><td>非经常性损益无效 → <strong>必须扣非转正</strong></td><td>2026 三季报</td><td>半年报（2026-08-27）</td></tr><tr><td>③ 主业改善</td><td>2026H1 营收 -78.28%；新型相控阵收入为 0</td><td>军品交付节奏由客户项目计划决定</td><td>三季报／年报</td><td>半年报、业绩说明会记录表</td></tr><tr><td>④ 并购／对外投资</td><td>市场传"不高于 8,500 万元"，<strong>零公告</strong></td><td>规模对 3 亿元红线杯水车薪</td><td>无</td><td>互动易 2026-06-12 起多轮问答</td></tr><tr><td>⑤ 引入战投</td><td>7-26 签约 → <strong>9-22 终止</strong></td><td>原因未披露</td><td>无</td><td>转让提示性公告／终止公告</td></tr><tr><td>⑥ 股份回购</td><td><strong>未回购</strong></td><td>投资者 2026-09-11 建议回购，公司答"审慎研究"</td><td>无</td><td>业绩说明会记录表</td></tr><tr><td>⑦ 估值提升计划</td><td>已制定市值管理制度，但<strong>未披露估值提升计划</strong></td><td>—</td><td>无</td><td>2026 半年报</td></tr><tr><td>⑧ 撤销 \*ST</td><td>未启动</td><td>须等 2026 年报</td><td>2027-04</td><td>9.3.8 条</td></tr></tbody></table>
+<h3 id="sec4">1.5 运作特征与综合判断</h3>
+<p><strong>结论：手法上"只做股权、不做资产"，节奏上"半年一动作"，且两次动作都已失败或未启动；核心矛盾一句话——</strong>公司不缺钱（5.56 亿元现金、零负债），缺的是"愿意把钱用出去"的动作<strong>。</strong></p>
+<ul><li><strong>手法</strong>：唯一实质动作是"股权转让引战"（7-26 签约），<strong>既不回购、不增持、不注入、不豁免</strong>；受让方原承诺"36 个月内无资产注入计划"，说明这次引战<strong>从一开始就不是奔着装资产去的</strong>。</li><li><strong>节奏</strong>：从戴帽（2026-04-24）到现在（2026-10-05）共 <strong>164 天</strong>，公司只有 3 份与保壳相关的公告（业绩预告、转让、终止），<strong>公告密度极低</strong>。</li><li><strong>交权是配合式还是对抗式</strong>：<strong>配合式</strong>——大股东主动出让 14.77%、并承诺 36 个月不丧失控制权；不存在原体系减持、放弃表决权、解除一致行动等对抗迹象。</li><li><strong>成败关键变量（1 和 0 问题）</strong>：<strong>2026 年报"利润总额／净利润／扣非孰低"是否为正</strong>。为一个二元开关，没有中间态。</li><li><strong>核心矛盾</strong>：<strong>账上 5.56 亿元现金与零负债，是全 A 股 ST 板块里最不缺钱的一档；但 2026 上半年营收只有 1,469 万元、主营业务尚未止血——钱的多少不决定生死，主业的交付才决定生死。</strong></li></ul>
+<hr>
+<h2 id="chap2">二、基本面路径 A · 保壳：唯一开关是"扣非转正"</h2>
+<blockquote><p>三路径中，本股属<strong>路径 A·保壳（营收不足型）</strong>；不存在重整需求（无债务危机），亦非处罚 ST（无立案、2025 年内控标准无保留）。后两条路径一句话带过。</p></blockquote>
+<h3 id="sec5">2.1 病理：一次军品审价，把营收做成负数</h3>
+<p><strong>结论：本股 ST 的直接原因是一次</strong>"特种产品审价"<strong>：军品合同先按暂定价确认收入、最终审定价格下调后于 2025 年第四季度集中冲回，单季冲回 </strong>2.50 亿元<strong>收入、归母 </strong>-2.00 亿元<strong>，直接把全年营收做成 </strong>-1.71 亿元<strong>。这是"账面事件的暴跌"，不是"经营能力的暴跌"——但也正因为它是账面事件，</strong>它可能再发生一次<strong>。</strong></p>
+<table><thead><tr><th>报告期</th><th>营业收入</th><th>归母净利</th><th>扣非净利</th><th>备注</th></tr></thead><tbody><tr><td>2025 Q1</td><td>5,262.44 万元</td><td>+1,662.70 万元</td><td>+1,641.23 万元</td><td>正常</td></tr><tr><td>2025 Q2</td><td>1,501.01 万元</td><td>-2,320.36 万元</td><td>-2,321.81 万元</td><td>开始转亏</td></tr><tr><td>2025 Q3</td><td>1,141.35 万元</td><td>-1,898.02 万元</td><td>-1,899.36 万元</td><td>亏损扩大</td></tr><tr><td><strong>2025 Q4</strong></td><td><strong>-25,047.00 万元</strong></td><td><strong>-20,017.58 万元</strong></td><td><strong>-20,026.03 万元</strong></td><td><strong>军品审价集中冲回</strong></td></tr><tr><td>2025 全年</td><td><strong>-17,142.20 万元</strong></td><td><strong>-22,573.26 万元</strong></td><td><strong>-22,605.98 万元</strong></td><td>触及 9.3.1(一)</td></tr></tbody></table>
+<details class="fold"><summary>审价机制与公司原文（含减值明细）</summary><div class="fold-body">
+
+<ul><li>公司风险提示原文：「公司产品主要服务于国家特种部门，相关合同采用<strong>暂定价格机制</strong>，最终结算价格以最终用户审定结果为准。由于最终用户审价周期较长，在审价完成前，公司按照合同暂定价格进行结算并确认收入，待取得最终审价批复后，再根据审定价格对差额进行调整。<strong>公司部分产品的暂定价格与最终审定价格之间可能出现偏差。若两者差异幅度较大，将对公司的经营产生影响</strong>」。</li><li>2025 年募投项目"微波前端产业化基地建设项目"实现效益 <strong>-22,573.26 万元</strong>、累计实现收益 -15,964.77 万元，公司解释"<strong>主要系 2025 年军品审价导致的账面亏损</strong>"。</li><li>2025 年度计提信用及资产减值准备合计 <strong>-2,971.75 万元</strong>（减少当期利润总额同额）：其中应收账款坏账准备 <strong>-5,319.89 万元</strong>、应收票据 -132.58 万元、其他应收款转回 +1,117.07 万元（信用减值小计 -4,335.41 万元）；合同资产 -62.09 万元、存货跌价转回 +554.41 万元、无形资产 +166.66 万元、固定资产 +704.67 万元（资产减值小计 +1,363.66 万元）。</li><li>关键读数：<strong>减值只贡献 0.30 亿元，其余 1.96 亿元亏损来自收入冲回本身</strong> —— 也就是说，这不是"计提减值把利润做没了"，而是"<strong>收入被追溯调减</strong>"。这条区分决定了保壳的性质：它需要的是<strong>收入重新确认</strong>，而不是"等减值消化"。</li></ul>
+
+</div></details>
+<h3 id="sec6">2.2 生死开关测算：三档情景</h3>
+<p><strong>结论：2026 年营收 ≥3 亿元事实上不可能（H1 仅 1,469 万元），因此唯一通路是"利润总额、净利润、扣非三者孰低为正值"；难点在于</strong>非经常性损益完全无效<strong>——不能靠卖资产、政府补助、利息或一次性收益过线，</strong>扣非净利必须自己转正<strong>。上半年扣非 -209 万元，下半年需扣非 ≥ +210 万元。</strong></p>
+<table><thead><tr><th>情景</th><th>2026 下半年营收假设</th><th>全年扣非推算</th><th>是否跨过开关</th><th>概率判断（主观，非预测）</th></tr></thead><tbody><tr><td>悲观</td><td>≈1,500 万元（与 H1 持平）</td><td>约 <strong>-490 万元</strong></td><td>否</td><td>—</td></tr><tr><td>中性</td><td>≈2,500 万元（H1 的 1.7 倍）</td><td>约 <strong>+160 万元</strong></td><td><strong>勉强跨过</strong></td><td>—</td></tr><tr><td>乐观</td><td>≥4,000 万元（H1 的 2.7 倍以上）</td><td>约 <strong>+1,600 万元</strong></td><td>是，且有余量</td><td>—</td></tr><tr><td><strong>综合</strong></td><td>—</td><td>—</td><td>—</td><td><strong>保壳成功概率约 35%–50%</strong></td></tr></tbody></table>
+<details class="fold"><summary>测算过程与两个关键前提（可复核）</summary><div class="fold-body">
+
+<p><strong>上半年实际（2026H1）</strong>：营业收入 1,469.22 万元；营业成本 721.97 万元（<strong>毛利率 50.86%</strong>）；税金及附加 127.41 万元；销售费用 37.75 万元；管理费用 639.25 万元；研发费用 426.95 万元；<strong>财务费用 -243.25 万元（利息收入 243.71 万元）</strong>；其他收益 10.60 万元；<strong>投资收益 -137.40 万元</strong>（联营企业南京华成微波）；<strong>信用减值损失转回 +229.73 万元</strong>；利润总额 <strong>-137.93 万元</strong>；净利润／归母 <strong>-198.72 万元</strong>；扣非 <strong>-209.05 万元</strong>；非经常性损益合计仅 <strong>10.34 万元</strong>。</p>
+<p><strong>盈亏平衡点的算法</strong>：下半年扣非 ≈ 毛利（营收 × 50.86%）− 期间费用（上半年口径的管理＋研发＋销售＝1,104 万元，税金 127 万元，<strong>再减利息收入 244 万元</strong>，净固定支出约 <strong>987 万元</strong>）＋ 投资损益（按 -137 万元）。令其 ≥ +210 万元，解得 <strong>下半年营收 ≥ 约 2,400–2,600 万元</strong>。</p>
+<p><strong>两个必须写明的前提</strong>：</p>
+<ol><li><strong>非经常性损益对过线零作用。</strong> 9.3.12 第一项要求"利润总额、净利润、扣非孰低为负"，是<strong>三者同时看</strong>——任何只做高"净利润"的手段（政府补助、处置资产、债务重组收益）都会被扣非口径抵掉。这是本股与多数 ST"卖资产保壳"路径的根本区别。</li><li><strong>历史季节性不支持"下半年更好"。</strong> 公司 2026 年口径为"较多项目在下半年完成交付"，但公司<strong>历史数据相反</strong>：2022—2024 年 H1 营收分别为 2.44 亿元／0.93 亿元／0.96 亿元，同期 H2 为 0.99 亿元／0.74 亿元／0.41 亿元，<strong>H2 全部低于 H1</strong>。故"下半年放量"目前<strong>只是公司说法，尚无数据支撑</strong>。</li><li><strong>信用减值转回是变量而非常量</strong>：2026H1 的 +229.73 万元转回（2025H1 为 -2,483.12 万元计提）若在下半年不再出现，中性情景将被抹去约 230 万元——<strong>恰好等于所需的全部余量</strong>。</li></ol>
+
+</div></details>
+<h3 id="sec7">2.3 财务五年 + 最新一期</h3>
+<p><strong>结论：营收从 2022 年的 3.43 亿元一路收缩至 2026 上半年的 1,469 万元，是</strong>连续四年的下行<strong>；同时资产负债表在 2025 年审价冲击下仍然保持了正净资产与零有息负债——"利润表塌了、资产负债表没塌"是本股最准确的一句概括。</strong></p>
+<table><thead><tr><th>报告期</th><th>营业收入</th><th>归母净利</th><th>扣非净利</th><th>毛利率</th><th>货币资金</th><th>归母净资产</th></tr></thead><tbody><tr><td>2021</td><td>2.78 亿元</td><td>1.11 亿元</td><td>1.02 亿元</td><td>49.5%</td><td>—</td><td>—</td></tr><tr><td>2022</td><td>3.43 亿元</td><td>0.73 亿元</td><td>0.71 亿元</td><td>43.0%</td><td>—</td><td>—</td></tr><tr><td>2023</td><td>1.67 亿元</td><td>0.50 亿元</td><td>0.49 亿元</td><td>44.9%</td><td>—</td><td>—</td></tr><tr><td>2024</td><td>1.37 亿元</td><td>0.16 亿元</td><td>0.16 亿元</td><td>51.3%</td><td>5.17 亿元</td><td>10.94 亿元</td></tr><tr><td>2025</td><td><strong>-1.71 亿元</strong></td><td><strong>-2.26 亿元</strong></td><td><strong>-2.26 亿元</strong></td><td>不适用</td><td>5.48 亿元</td><td>8.47 亿元</td></tr><tr><td>2026H1</td><td><strong>0.15 亿元</strong></td><td>-0.02 亿元</td><td>-0.02 亿元</td><td>50.9%</td><td>5.56 亿元</td><td>8.45 亿元</td></tr></tbody></table>
+<blockquote><p>口径：合并报表、归母口径；2021—2024 为数源缺口补数（<strong>【异源】</strong>，东方财富 F10），2025 及 2026H1 取定期报告原文。勾稽自检：2026-06-30 负债合计 0.81 亿元 ＋ 所有者权益合计 8.45 亿元 ＝ 资产总计 9.25 亿元 ✓。</p></blockquote>
+<details class="fold"><summary>资产负债结构（2026-06-30）与"干净程度"的量化</summary><div class="fold-body">
+
+<table><thead><tr><th>资产项</th><th>金额</th><th>占比</th></tr></thead><tbody><tr><td>货币资金</td><td>5.56 亿元</td><td>60.07%</td></tr><tr><td>应收账款</td><td>0.43 亿元</td><td>4.61%</td></tr><tr><td>存货</td><td>0.74 亿元</td><td>8.01%</td></tr><tr><td>其他应收款</td><td>0.13 亿元</td><td>1.41%</td></tr><tr><td>固定资产</td><td>1.71 亿元</td><td>18.53%</td></tr><tr><td>无形资产</td><td>0.41 亿元</td><td>4.38%</td></tr><tr><td>长期股权投资（南京华成微波 7.79%）</td><td>0.08 亿元</td><td>0.85%</td></tr><tr><td>资产总计</td><td><strong>9.25 亿元</strong></td><td>100%</td></tr></tbody></table>
+<table><thead><tr><th>负债项</th><th>金额</th></tr></thead><tbody><tr><td>应付账款</td><td>0.30 亿元</td></tr><tr><td>合同负债</td><td>0.17 亿元</td></tr><tr><td>应付职工薪酬</td><td>0.08 亿元</td></tr><tr><td>应付票据</td><td>0.03 亿元</td></tr><tr><td>长期应付款</td><td>0.11 亿元</td></tr><tr><td>递延收益</td><td>0.10 亿元</td></tr><tr><td><strong>负债合计</strong></td><td><strong>0.81 亿元</strong></td></tr><tr><td><strong>资产负债率</strong></td><td><strong>8.7%</strong></td></tr></tbody></table>
+<ul><li><strong>无商誉、无短期借款、无长期借款、无应付债券、无交易性金融资产。</strong></li><li>前五名客户（2025 年）合计销售 8,731.03 万元，占年度销售总额比例 <strong>-50.93%</strong>（因全年营收为负，比例失去意义）；客户以"B 单位""C 单位""D 单位"等代号披露，<strong>客户真实身份未披露</strong>。</li><li>2026 上半年<strong>新型相控阵产品收入为 0</strong>（2025 年报该板块有收入），公司在业绩说明会明确确认。</li><li>募投项目已于 2025-12 结项，节余募集资金 9,766.02 万元<strong>永久补充流动资金</strong>（含利息及理财收益），募集资金余额转出至自有资金账户 → 这笔钱已计入上表 5.56 亿元货币资金之内。</li></ul>
+
+</div></details>
+<h3 id="sec8">2.4 摘帽／终止条件链路与时间锚</h3>
+<p><strong>结论：撤销 \*ST 与终止上市共用同一份 2026 年年报，条件互为镜像、</strong>零容错<strong>；时间锚固定在 </strong>2027-04<strong>，不存在提前申请，且主板风险警示股自 2026-07-06 起涨跌幅已为 10%，</strong>摘帽前后同幅＝零制度红利<strong>。</strong></p>
+<details class="fold"><summary>条款链路（深主板原文）</summary><div class="fold-body">
+
+<ol><li><strong>实施</strong>（已发生）：9.3.1 第一款第（一）项——孰低为负且扣除后营收 &lt;3 亿元 → \*ST。</li><li><strong>撤销</strong>：<strong>9.3.8 条</strong>——次一年度（即 2026 年度）年报<strong>不存在 9.3.12 第一项至第七项任一情形</strong>，公司可在披露后 5 个交易日内申请，交易所 15 个交易日内决定。</li><li><strong>终止</strong>：<strong>9.3.12 条</strong>——（一）孰低为负且扣除后营收 &lt;3 亿元；（二）期末净资产为负；（三）财报被出具<strong>保留、无法表示或否定</strong>意见；（四）追溯重述后触及（一）（二）；（五）内控被出具无法表示或否定；（六）未按规定披露内控审计报告；（七）未在法定期限内披露年报；（八）符合 9.3.8 但未在期限申请；（九）撤销申请未被审核同意；（十）本所认定的其他情形。</li><li><strong>时间锚</strong>：<strong>2027-04</strong>（2026 年年报披露期）——<strong>不存在提前申请</strong>。</li><li><strong>制度红利</strong>：主板 ST／\*ST 自 <strong>2026-07-06</strong> 起日涨跌幅由 5% 改为 <strong>10%</strong>，与摘帽后一致，故"摘帽放大"这一传统理由在本股<strong>不成立</strong>（可由 2026-09-30 涨停价 20.60 元／跌停价 16.86 元＝昨收 18.73 元的 ±10% 直接验证）。</li></ol>
+<p><strong>对本股的具体含义</strong>：2026 年报必须同时满足"孰低为正 ＋ 净资产为正 ＋ 财报与内控意见均为无保留"；其中后两项本股已具备（净资产 8.45 亿元、2025 年内控标准无保留），<strong>全部压力集中在第一项</strong>。</p>
+
+</div></details>
+<hr>
+<h2 id="chap3">三、炒作逻辑三支柱 + 情绪面 + 筹码面</h2>
+<h3 id="sec9">3.1 炒作逻辑三支柱</h3>
+<blockquote><p><strong>排序：本股当前最强的是②（炒历史类似行为，但方向朝下）与③（主板映射，属 β），①（炒预期）因"三支柱缺件"而最弱。</strong>市场之所以不接，核心在于<strong>事件明确但无人名、无实物、无时间表</strong>——属"人／物／表三者皆缺"。</p></blockquote>
+<p><strong>① 炒预期：有硬节点，但没有"可命名"的载体。</strong></p>
+<table><thead><tr><th>节点</th><th>预计时点</th><th>性质</th><th>预期差在哪一侧</th></tr></thead><tbody><tr><td>2026 年三季报</td><td>2026-10 下旬</td><td>硬节点（公开日历）</td><td>若 Q3 单季扣非转正，保壳概率上台阶；公司至今未给任何量化指引</td></tr><tr><td>2026 年年度报告</td><td>2027-04</td><td>硬节点（公开日历）</td><td>生死开关</td></tr><tr><td>"不高于 8,500 万元对外投资"</td><td>无</td><td>软预期</td><td><strong>零公告</strong>，规模对 3 亿元红线无实质作用</td></tr><tr><td>协议转让重启／新战投</td><td>无</td><td>软预期</td><td>前次终止原因未披露</td></tr><tr><td>商业航天 10 月会议</td><td>2026-10</td><td>板块 β</td><td>公司相控阵中报收入为 0，属"概念映射"非"业绩映射"</td></tr></tbody></table>
+<blockquote><p><strong>纪律提示</strong>：本股的近端节点（三季报、年报）<strong>都是公开日历，不含信息差</strong>；市场能算的都已算过——2026-09-11 业绩说明会上已有投资者当面替公司算出"二选一"条件并追问 H1 仅 1,469 万元如何达标，这正是"预期已被充分讨论"的直接证据。</p></blockquote>
+<p><strong>② 炒历史类似行为（相似股票匹配法）：以基准日画像回看当下市场，本股落在</strong>下跌组<strong>。</strong></p>
+<details class="fold"><summary>相似股票匹配：本股画像 + 同型样本池实测</summary><div class="fold-body">
+
+<p><strong>本股画像（基准日 2026-10-05）</strong>：深主板 · 财务类①营收不足型（<strong>成因特殊：审价冲回，非主业萎缩</strong>）· 市值 22.14 亿元 · 零有息负债 · 货币资金 5.56 亿元 · 归母净资产 8.45 亿元为正 · 军工／弹载固态发射机 ＋ 商业航天／相控阵标签 · 历史炒作符号稳定（军工 → 卫星互联网 → 商业航天）· 所处阶段＝"引战失败、并购未启、信息真空"。</p>
+<p><strong>同型样本池</strong>：Andy 退市风险预警表「财务类」块①（孰低为负且营收 &lt;3 亿元）<strong>全量 45 家</strong>，一次取回 2026 年初至 09-30 的涨跌幅。</p>
+<table><thead><tr><th>分组</th><th>样本</th><th>2026 年涨跌幅</th><th>像在哪一句话</th></tr></thead><tbody><tr><td><strong>上涨组（8/45）</strong></td><td>泰诺麦博-U</td><td>+112.10%</td><td>未盈利生物医药（非 ST，仅指标入表）</td></tr><tr><td></td><td>＊ST泉为</td><td>+42.44%</td><td>重整／有明确出资方</td></tr><tr><td></td><td>＊ST皇庭</td><td>+34.33%</td><td>债权人 9.62 亿元债权抵销（<strong>有物</strong>）</td></tr><tr><td></td><td>＊ST起步</td><td>+20.55%</td><td>有重组／注入预期</td></tr><tr><td></td><td>＊ST禾信</td><td>+18.26%</td><td><strong>发行股份购买资产已过会（有物）</strong></td></tr><tr><td></td><td>＊ST景谷</td><td>+14.24%</td><td>有注入预期</td></tr><tr><td></td><td>首药控股-U</td><td>+8.52%</td><td>未盈利生物医药（非 ST）</td></tr><tr><td></td><td>＊ST中迪</td><td>+5.28%</td><td><strong>关联方无偿赠与半导体资产（有物）</strong></td></tr><tr><td><strong>最像本股的一档</strong></td><td>＊ST冀凯</td><td>-56.24%</td><td>营收贴线型、发股通道被公开谴责锁死</td></tr><tr><td></td><td>＊ST特迅</td><td>-46.59%</td><td>营收贴线型、会计差错更正削掉营收基数</td></tr><tr><td></td><td>＊ST利源</td><td>-47.79%</td><td>财务类＋面值风险型</td></tr><tr><td></td><td>＊ST东智</td><td>-44.02%</td><td>财务类①、无实质动作</td></tr><tr><td></td><td>＊ST雅博</td><td>-27.44%</td><td>国资额度型托底、"已发生额为零"</td></tr><tr><td></td><td>＊ST准油</td><td>-27.97%</td><td>国资未注资、"只有人名"</td></tr><tr><td></td><td><strong>＊ST天箭（本股）</strong></td><td><strong>-47.81%</strong></td><td>—</td></tr><tr><td><strong>商业航天同线</strong></td><td>ST达华</td><td>+20.9%（6/25→9/30）</td><td>民营 Ka 高通量轨位持有者（<strong>有物</strong>）</td></tr><tr><td></td><td>ST思科瑞</td><td>+3.6%（同期）</td><td>军工电子可靠性检测</td></tr><tr><td></td><td>＊ST天箭</td><td><strong>-14.9%（同期）</strong></td><td>微波毫米波航天配套</td></tr><tr><td></td><td>ST创意</td><td>+19.6%（同期）</td><td>卫星互联网（参股主体净资产为负）</td></tr></tbody></table>
+<p><strong>分布</strong>：45 家中位 <strong>-27.44%</strong>、均值 -23.34%、<strong>正收益仅 8 家</strong>；本股 <strong>-47.81%</strong>，处下跌组后段（第 34 名）。</p>
+<p><strong>结论</strong>：① <strong>上涨的 8 只，"有物"是共同点</strong>（重整投资协议／资产赠与／发行股份购买资产过会／要约收购方）；② <strong>下跌的一档，"没有人也没有物"是共同点</strong>（只有国资额度、只有人名、只有方案）；③ 本股属<strong>后者</strong>——引战已终止、并购零公告、无注入承诺（受让方原承诺 36 个月内不注入）；④ 商业航天线 9 月下旬集体走弱，本股 -14.9%，<strong>环境不友好</strong>。→ <strong>本股落在"下跌组"一侧，且跌幅已大于中位数 20 个百分点。</strong></p>
+<blockquote><p><strong>纪律</strong>：样本量 45 只，只作<strong>方向参考</strong>，不作概率推断；上表为前复权／不复权混合口径的区间涨跌幅，仅作横向对比。</p></blockquote>
+
+</div></details>
+<p><strong>③ 炒主板映射：商业航天／卫星互联网主线存在，但本股是"概念映射"而非"板块龙头"，且</strong>公司自己的业务占比为 0<strong>。</strong></p>
+<details class="fold"><summary>主板映射清单与关联度评级</summary><div class="fold-body">
+
+<ul><li><strong>主线状态</strong>：2026-09 中国国际信息通信展（PT 展）卫星互联网由"概念图"转为"展台产品"；工信部明确推进低轨卫星互联网系统建设；已成功发射 25 组互联网低轨卫星，"千帆"星座累计 256 颗；10 月商业航天会议密集。</li><li><strong>ST 板块可映射对象</strong>：</li></ul>
+<table><thead><tr><th>代码</th><th>简称</th><th>概念对应点</th><th>2026-09-30 价位</th><th>区间表现</th><th>关联度</th></tr></thead><tbody><tr><td>002512</td><td>ST达华</td><td>民营 Ka 高通量轨位持有者</td><td>3.76 元</td><td>+20.9%</td><td>实质</td></tr><tr><td><strong>002977</strong></td><td><strong>＊ST天箭</strong></td><td><strong>微波毫米波（航天配套）</strong></td><td><strong>18.43 元</strong></td><td><strong>-14.9%</strong></td><td><strong>实质但收入为 0</strong></td></tr><tr><td>688053</td><td>ST思科瑞</td><td>军工电子可靠性检测</td><td>39.39 元</td><td>+3.6%</td><td>部分</td></tr><tr><td>300366</td><td>ST创意</td><td>卫星互联网（参股，非并表）</td><td>5.56 元</td><td>+19.6%</td><td>【纯概念】</td></tr></tbody></table>
+<ul><li><strong>本股落点</strong>：技术实质存在（相控阵产品可用于商用卫星），但 <strong>2026 半年报新型相控阵收入为 0</strong>，公司自述民用"占公司主营业务收入比例较小"——<strong>属"情绪映射"而非"业绩映射"</strong>，不构成当期定价依据。</li><li><strong>规避提示</strong>：该线在 2026 年 9 月下旬已集体走弱，且绝对的产业龙头不在 ST 板块内；<strong>不建议以"商业航天"为唯一理由配置本股</strong>。</li></ul>
+
+</div></details>
+<h3 id="sec10">3.2 情绪与主题</h3>
+<p><strong>结论：注意力已到冰点——2026 年全年只有 1 次龙虎榜（2026-07-02）、异动表最新一条停在 2026-07-23、基准日成交额仅 1,470 万元、换手 1.19%；主题侧"保壳 vs 审价再冲回"的争论已公开化、无信息差。</strong></p>
+<ul><li><strong>成交与换手（2026-09-30）</strong>：成交额 1,470 万元、换手率 <strong>1.19%</strong>、振幅 2.51%。</li><li><strong>龙虎榜（2026 年）</strong>：仅 <strong>1 次</strong>——2026-07-02"连续三个交易日内涨幅偏离值累计达到 12% 的 ST 证券"，当日 +4.98%。2025 年上榜 6 次（05-09／05-13／05-14／05-15／07-07／12-16）。</li><li><strong>主题催化</strong>：商业航天（板块 β）；"保壳"本身不构成上涨理由（主板 ST 涨跌幅 2026-07-06 起已 10%，摘帽无红利）。</li><li><strong>雪球讨论（2026-09-30）</strong>："商业航天线，10 月份很多商业航天的会议，看渣男是否回心转意，这里的票比较多，＊ST天箭、ST达华、ST思科瑞等等"</li></ul>
+<p>（雪球评论，2026-09-30）—— 属<strong>线索级</strong>，仅作热度观测，不构成事实。</p>
+<details class="fold"><summary>雪球讨论中的多空与已验证的信息（含反面观点）</summary><div class="fold-body">
+
+<ul><li><strong>2026-08-10</strong>："受让方关联的云计算公司资质还可以，<strong>虽然不可能实现借壳</strong>，但是转让股份完成后，控股股东出钱控股算力公司，并表解决保壳问题还是不大的。"</li></ul>
+<p>（雪球评论，2026-08-10）—— 该推演<strong>已被证伪</strong>：协议 2026-09-22 终止，且受让方从未承诺注入。</p>
+<ul><li><strong>2026-08-07</strong>："航天领域 \*ST 股票，航天宏图已阵亡。你坚持住。""慎入。"</li></ul>
+<p>（雪球评论，2026-08-07）</p>
+<ul><li><strong>2026-08-07</strong>："看好朱雀上天！"（雪球评论，2026-08-10）—— 属情绪表达，无业务依据。</li><li><strong>2026-09-29</strong>："适当接了一些"（雪球评论，2026-09-29）。</li><li><strong>2026-07-28</strong>：以"君祥泰瑞刚于今年 7 月 13 日成立"为线索，推演执行事务合伙人瑞旗盛景 → 金汇恒基 → 河北中科超级云计算（手握大型智算中心项目）。<strong>该链条仅存在于媒体／雪球推演</strong>；公司公告只披露到"GP 深圳市瑞旗盛景投资有限公司（10%）＋ LP 海南崇利景科技有限公司（90%）"，<strong>未披露河北中科</strong>，标 <strong>【雪球观点·待核实】</strong>。</li><li><strong>反向读数</strong>：本股雪球讨论量自 2026-08 中旬起明显衰减，10 月日报中已多数只剩标题、无实质讨论——<strong>讨论条数本身即是注意力强度的读数</strong>。</li></ul>
+
+</div></details>
+<h3 id="sec11">3.3 筹码博弈与技术位置</h3>
+<p><strong>结论：位置是极端的低（基准日收盘 18.43 元＝上市以来月 K 最低，前复权分位 0.00%），但"低"在这里不是安全垫而是结果——2026 年跌幅 -47.81% 中，同业 β 只解释了小部分，</strong>审价冲回与引战失败是独立于行业的两记重击<strong>。</strong></p>
+<ul><li><strong>价格水位</strong>：上市以来月 K（前复权）最高 <strong>81.97 元</strong>（2020-12），最低 <strong>18.43 元</strong>（2026-09-30，即基准日）；2026 年内最高 40.42 元（01-12）、最低 18.43 元（09-30，<strong>创年内新低</strong>）；2025 年末收盘 35.31 元 → <strong>年初至今 -47.81%</strong>。</li><li><strong>近期路径</strong>：2026-09-14 的 20.24 元 → 09-22 终止转让公告后连跌 → <strong>09-30 收 18.43 元</strong>（近 12 个交易日 -8.9%）。<strong>公告当日（09-23）跌 3.5%，随后累计再跌 5.8%——市场把"终止"读成利空。</strong></li><li><strong>筹码</strong>：股东户数半年减少 48.7%（27,479 → 14,102 户），<strong>同期股价下跌</strong> → 按纪律读作"<strong>散户割肉离场</strong>"，不得读作"主力吸筹"。</li><li><strong>必做校验：戴帽≠下跌主因。</strong> 同型 45 家中位 -27.44%，本股 -47.81%，<strong>弱于同业约 20 个百分点</strong> → 跌幅中<strong>有一部分是公司特有因素</strong>（军品审价冲回 2.50 亿元 ＋ 引战失败），不能简单归因于"ST 板块普跌"。</li></ul>
+<details class="fold"><summary>炒作波段汇总（韭研公社异动，46 条，按时间降序）与连板极值</summary><div class="fold-body">
+
+<table><thead><tr><th>阶段</th><th>起止</th><th>驱动关键词</th><th>连板／极值</th><th>价格区间</th></tr></thead><tbody><tr><td>ST 板块（保壳＋商业航天）</td><td>2026-04-30 → 2026-07-23</td><td>"保壳措施＋股权转让＋商业航天"</td><td><strong>4 天 4 板</strong>（2026-07-03）</td><td>21.03 → 24.34 元</td></tr><tr><td>商业航天</td><td>2025-11-24 → 2026-01-08</td><td>卫星物联网商用试验、朱雀三号发射、长征十二号甲、箭元科技基地</td><td>2 天 2 板</td><td>37.39 → 44.41 元</td></tr><tr><td>军工（印巴冲突）</td><td>2025-05-07 → 2025-08-04</td><td>印巴空战、"新质战斗力"、九三阅兵</td><td><strong>5 天 5 板（历史极值）</strong></td><td>33.26 → <strong>48.71 元（峰值）</strong></td></tr><tr><td>商业航天</td><td>2024-07-24</td><td>"千帆星座"首批组网</td><td>—</td><td>30.09 元</td></tr><tr><td>卫星互联网／第三代半导体</td><td>2024-02-29 → 2024-06-03</td><td>卫星通信、相控阵、HBM、新质生产力、信息支援部队</td><td>3 天 2 板</td><td>26.88 → 38.34 元</td></tr><tr><td>卫星导航／相控阵</td><td>2023-07-11 → 2023-10-31</td><td>卫星互联网试验卫星、中国卫星应用大会、北斗峰会</td><td>—</td><td>35.81 → 40.70 元</td></tr><tr><td>军工</td><td>2020-07-08 → 2022-07-27</td><td>弹载发射机、卫星导航、中美对话</td><td>2 天 2 板</td><td>44.09 → 138.48 元</td></tr></tbody></table>
+<ul><li><strong>炒作符号（六年一贯）</strong>：<strong>"军工／弹载固态发射机 ＋ 相控阵 ＋ 卫星通信／商业航天 ＋ 第三代半导体"</strong>——符号本身高度稳定，<strong>当前这轮确实是同一符号的重演</strong>。</li><li><strong>连板极值</strong>：历史最高 <strong>5 天 5 板</strong>（2025-05-13，印巴冲突）；2026 年最高 <strong>4 天 4 板</strong>（2026-07-03）。当日股价 48.71 元 → 现价 18.43 元，<strong>自峰值回撤 62.2%</strong>。</li><li><strong>股价水位</strong>：异动表内历史最低 18.43 元（2026-09-30，即基准日现价），最高 138.48 元（2020-07）——<strong>现价即样本期内最低点</strong>。</li><li><strong>滞后提示</strong>：异动表最新一条停在 <strong>2026-07-23</strong>，2026-09 那波（引战终止前后）<strong>未入库</strong>；已用龙虎榜（07-02 唯一一次）与新浪日 K 交叉验证。</li></ul>
+
+</div></details>
+<hr>
+<h2 id="chap4">四、估值与投资结论</h2>
+<h3 id="sec12">（一）估值</h3>
+<p><strong>结论：本股营收为负、PE／PS 均不适用，只能用 PB 与"净现金覆盖"两条尺；PB 2.62 倍对一家</strong>营收为负、主业连续四年收缩<strong>的公司</strong>并不便宜<strong>，5.56 亿元现金占市值 25% 也不构成"半价买现金"——因为一旦终止上市，公司股票的流动性折价将远大于其账面价值。</strong></p>
+<table><thead><tr><th>估值口径</th><th>数值</th><th>判读</th></tr></thead><tbody><tr><td>总市值</td><td>22.14 亿元</td><td>按 18.43 元 × 1.20 亿股</td></tr><tr><td>PB</td><td><strong>2.62 倍</strong></td><td>对一家营收为负、四连降的公司偏高</td></tr><tr><td>PS／PE</td><td>不适用</td><td>2025 年营收为负、扣非为负</td></tr><tr><td>货币资金／市值</td><td><strong>25.1%</strong></td><td>有现金，但退市后有流动性折价</td></tr><tr><td>隐含"业务＋上市地位"定价</td><td>市值 22.14 亿元 − 归母净资产 8.45 亿元 ＝ <strong>13.69 亿元</strong></td><td>即市场为"军工业务＋壳"支付 13.69 亿元</td></tr><tr><td>每股净资产</td><td>7.03 元</td><td>理论清算托底，但<strong>不是市价托底</strong></td></tr></tbody></table>
+<blockquote><p><strong>估值前提</strong>：<strong>估值成立的前提是 2026 年报"孰低为正"；否则本股将直接终止上市，情景区间全部作废。</strong></p></blockquote>
+<details class="fold"><summary>三档情景区间与概率加权</summary><div class="fold-body">
+
+<table><thead><tr><th>情景</th><th>假设</th><th>对应市值</th><th>对应股价</th><th>概率</th></tr></thead><tbody><tr><td>乐观</td><td>保壳成功 ＋ 军工交付恢复 ＋ 主题回暖</td><td>30–36 亿元</td><td>25–30 元</td><td>15%</td></tr><tr><td>中性</td><td>保壳成功，主业维持微利，无新故事</td><td>21–25 亿元</td><td>17–21 元</td><td>30%</td></tr><tr><td>悲观</td><td>保壳失败，进入终止上市流程</td><td>6–10 亿元</td><td>5–8 元</td><td>55%</td></tr></tbody></table>
+<ul><li>概率加权中枢 ≈ <strong>10.6 亿元</strong>（约 8.8 元/股），<strong>显著低于现价 18.43 元</strong>。</li><li><strong>隐含概率反推</strong>：以"保壳成功 → 28 元、失败 → 6 元"为两端，现价 18.43 元隐含的<strong>保壳成功概率约 57%</strong>；以"成功 → 25 元、失败 → 6 元"反推则约 <strong>65%</strong>。而本报告对成功概率的判断为 <strong>35%–50%</strong> → <strong>现价隐含概率高于实际概率，构成"卖出"的量化依据。</strong></li><li>概率为主观刻度，<strong>不是预测</strong>；三档均未计入"再次军品审价冲回"这一尾部情形（若发生，乐观与中性情景同时失效）。</li></ul>
+
+</div></details>
+<h3 id="sec13">（二）投资结论</h3>
+<p><strong>卖出（回避）</strong>——不在现价 18.43 元参与；待 2026 年三季报（10 月下旬）落地后再重估。</p>
+<table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td><strong>结论</strong></td><td><strong>卖出（回避）</strong>（与封面「操作结论」一致）</td></tr><tr><td><strong>理由链</strong></td><td><strong>① 生死开关只能靠"扣非转正"，而非经常性损益完全无效</strong>：规则要求利润总额／净利润／扣非"三者孰低为正"，卖资产、补助、利息一律抵掉；2026H1 扣非 -209 万元，下半年需扣非 ≥ +210 万元（对应 H2 营收约 2,400–2,600 万元、约 H1 的 1.7 倍），而公司历史上 <strong>H2 营收历来低于 H1</strong>，"下半年放量"仅是说法、暂无数据支撑。（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002977&amp;announcementId=1225510887&amp;orgId=9900037750&amp;announcementTime=2026-08-27" target="_blank" rel="noopener">2026 半年报</a>）&lt;br&gt;<strong>② 存在一枚不可控的"审价二次冲回"炸弹</strong>：2025Q4 单季因军品审价冲回收入 <strong>2.50 亿元</strong>、归母 <strong>-2.00 亿元</strong>，把全年营收做成 <strong>-1.71 亿元</strong>；公司至今<strong>未披露尚待审定的合同批次与金额</strong>——只要再有一次同类批复，"孰低为正"立即归零。（<a href="https://data.eastmoney.com/notices/detail/002977/AN202604221821465943.html" target="_blank" rel="noopener">戴帽公告</a>）&lt;br&gt;<strong>③ 外部救兵已撤，且本就不构成注入预期</strong>：2026-07-26 签 19.89 元/股受让 14.7727%（对价 3.53 亿元），<strong>09-22 终止</strong>；原受让方承诺"<strong>36 个月内不谋求控制权、36 个月内无资产注入计划</strong>"——即使不终止也没有资产注入故事。（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002977&amp;announcementId=1225576884&amp;orgId=9900037750&amp;announcementTime=2026-09-23" target="_blank" rel="noopener">终止公告</a>）&lt;br&gt;<strong>④ 市场追问的"不高于 8,500 万元对外投资"零公告、且救不了营收</strong>：8,500 万元对 3 亿元营收红线杯水车薪，作用只在"讲一个新故事"；自 2026-06-12 起投资者多轮追问，公司答复<strong>全部为模板</strong>。（<a href="https://data.eastmoney.com/notices/detail/002977/AN202609111829275516.html" target="_blank" rel="noopener">业绩说明会记录表</a>）&lt;br&gt;<strong>⑤ 注意力冰点 ＋ 同型样本落下跌组</strong>：2026 年仅 1 次龙虎榜（07-02）、异动表最新 07-23、成交额 1,470 万元、换手 1.19%；45 家同型样本中位 <strong>-27.44%</strong>，本股 <strong>-47.81%</strong>，而上涨的 8 家<strong>全部"有物"</strong>，本股人走物无。（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002977&amp;announcementId=1225510887&amp;orgId=9900037750&amp;announcementTime=2026-08-27" target="_blank" rel="noopener">2026 半年报</a>）&lt;br&gt;<strong>⑥ 估值不便宜</strong>：PB <strong>2.62 倍</strong>对一家营收为负、主业四连降的公司；现价隐含保壳成功概率 57%–65%，<strong>高于本报告判断的 35%–50%</strong>。</td></tr><tr><td><strong>触发条件</strong></td><td><strong>转买入（三条同时满足至少两条）</strong>：① 2026 三季报 Q3 单季<strong>扣非转正</strong>（对应 Q3 营收 ≥ 约 1,200 万元）；② 出现"<strong>不高于 8,500 万元对外投资／收购</strong>"的<strong>正式公告</strong>，且标的具备实质收入；③ 新的控制权／战投安排落地且<strong>带明确资产注入方向</strong>（而非"36 个月不注入"）。&lt;br&gt;<strong>转卖出（加确认）</strong>：Q3 单季扣非仍为负且营收未回升；或年报审计出现保留／无法表示意见的任何迹象。</td></tr><tr><td><strong>失效条件</strong></td><td>① 2026 年三季报显示 Q3 单季扣非转正且全年有望达标（本结论即时失效，转观察）；② 公司披露"特种产品审价已全部完成"且无二次冲回；③ 出现带资产注入承诺的新控制权方案。</td></tr><tr><td><strong>参考区间</strong></td><td>观察区间 <strong>8–12 元</strong>（对应 PB 1.1–1.7 倍，接近净资产＋部分现金托底）；上方压力 <strong>25 元</strong>（2026-05 平台）。<strong>不给买入价。</strong></td></tr><tr><td><strong>时间窗口</strong></td><td>至 <strong>2026 年三季报披露日</strong>（预计 2026-10 下旬）；到期未出现①→结论顺延并强化</td></tr><tr><td><strong>仓位建议</strong></td><td><strong>不建仓</strong>（回避）。已持仓者建议在三季报前择机降低敞口</td></tr><tr><td><strong>最大风险</strong></td><td><strong>判断错在"低门槛可达"</strong>——若 2026 年三季报单季扣非转正，市场会迅速把"保壳成功"定价，届时现价将显得过低；本报告的三档情景会把中性／乐观档错配为悲观档。</td></tr></tbody></table>
+<hr>
+<h2 id="chap5">附录 A · 待核实与需补充</h2>
+<p><strong>结论：本股的"待核实"集中在三处，且都属于"公司未披露"而非"检索不到"——这三处恰好就是定价锚缺失的地方。</strong></p>
+<table><thead><tr><th>#</th><th>待核实项</th><th>现状</th><th>已检索渠道</th></tr></thead><tbody><tr><td>1</td><td><strong>尚待审定的军品合同批次与金额</strong>（决定 2026 是否二次冲回）</td><td><strong>公司未披露</strong>（年报／半年报仅作一般性风险提示）</td><td>2025 年报、2026 半年报、全部 2026 年公告、互动易 139 条</td></tr><tr><td>2</td><td>"<strong>不高于 8,500 万元对外投资／收购</strong>"的标的、进度与时间表</td><td><strong>公司未披露</strong>；口径为"若达披露标准将履行信披义务"</td><td>巨潮／东财 2026 年全量公告（<strong>6 月为 0 条</strong>）、业绩说明会记录表、互动易</td></tr><tr><td>3</td><td>协议转让<strong>终止的真实原因</strong></td><td>公告仅称"各方协商一致"，<strong>未披露</strong></td><td>终止公告、转让提示性公告、简式权益变动报告书</td></tr><tr><td>4</td><td>受让方上层背景（是否涉及"河北中科超算"）</td><td>公告仅穿透至 GP 瑞旗盛景（10%）与 LP 海南崇利景科技（90%）；<strong>"河北中科"仅见于媒体／雪球推演</strong></td><td>简式权益变动报告书（受让方）、ST 信息库雪球日报</td></tr><tr><td>5</td><td>前五名客户真实身份</td><td>年报以"B 单位／C 单位／D 单位"代号披露，<strong>未披露</strong></td><td>2025 年报</td></tr><tr><td>6</td><td>2021—2024 年现金流与净资产逐年数</td><td>数源缺口（<strong>异源</strong>口径）</td><td>东方财富 F10（已标注）</td></tr></tbody></table>
+<h2 id="chap6">附录 B · 关键信源链接</h2>
+<p><strong>结论：本章 12 条链接为本报告全部关键事实的落点，均指向公告原文或定期报告，可逐条点开核对。</strong></p>
+<table><thead><tr><th>编号</th><th>文件</th><th>发布日</th><th>原文</th></tr></thead><tbody><tr><td>1</td><td>股票交易被实施退市风险警示暨股票停牌公告</td><td>2026-04-23</td><td><a href="https://data.eastmoney.com/notices/detail/002977/AN202604221821465943.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>2</td><td>2025 年年度报告</td><td>2026-04-23</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002977&amp;announcementId=1225156050&amp;orgId=9900037750&amp;announcementTime=2026-04-23" target="_blank" rel="noopener">链接</a></td></tr><tr><td>3</td><td>关于 2025 年度计提减值准备的公告</td><td>2026-04-23</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002977&amp;announcementId=1225156070&amp;orgId=9900037750&amp;announcementTime=2026-04-23" target="_blank" rel="noopener">链接</a></td></tr><tr><td>4</td><td>2025 年度内部控制审计报告</td><td>2026-04-23</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002977&amp;announcementId=1225156073&amp;orgId=9900037750&amp;announcementTime=2026-04-23" target="_blank" rel="noopener">链接</a></td></tr><tr><td>5</td><td>2026 年半年度业绩预告</td><td>2026-07-03</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002977&amp;announcementId=1225407196&amp;orgId=9900037750&amp;announcementTime=2026-07-03" target="_blank" rel="noopener">链接</a></td></tr><tr><td>6</td><td>2026 年半年度业绩预告修正公告</td><td>2026-07-15</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002977&amp;announcementId=1225425185&amp;orgId=9900037750&amp;announcementTime=2026-07-15" target="_blank" rel="noopener">链接</a></td></tr><tr><td>7</td><td>协议转让部分股份暨权益变动提示性公告</td><td>2026-07-29</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002977&amp;announcementId=1225445632&amp;orgId=9900037750&amp;announcementTime=2026-07-29" target="_blank" rel="noopener">链接</a></td></tr><tr><td>8</td><td>简式权益变动报告书（受让方）</td><td>2026-07-29</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002977&amp;announcementId=1225445631&amp;orgId=9900037750&amp;announcementTime=2026-07-29" target="_blank" rel="noopener">链接</a></td></tr><tr><td>9</td><td>2026 年半年度报告</td><td>2026-08-27</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002977&amp;announcementId=1225510887&amp;orgId=9900037750&amp;announcementTime=2026-08-27" target="_blank" rel="noopener">链接</a></td></tr><tr><td>10</td><td>投资者关系活动记录表（业绩说明会）</td><td>2026-09-11</td><td><a href="https://data.eastmoney.com/notices/detail/002977/AN202609111829275516.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>11</td><td>终止协议转让部分股份公告</td><td>2026-09-23</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002977&amp;announcementId=1225576884&amp;orgId=9900037750&amp;announcementTime=2026-09-23" target="_blank" rel="noopener">链接</a></td></tr><tr><td>12</td><td>向银行申请综合授信额度的公告（4 亿元）</td><td>2026-01-07</td><td><a href="https://data.eastmoney.com/notices/detail/002977/AN202601061816144198.html" target="_blank" rel="noopener">链接</a></td></tr></tbody></table>
+<h2 id="chap7">附录 C · 逻辑漏洞与反方观点</h2>
+<p><strong>结论：本报告的"卖出"结论必须能正面回答以下五问，其中第③、④问是本结论最薄弱的两处，已如实标注。</strong></p>
+<table><thead><tr><th>#</th><th>压力测试问题</th><th>本报告的回应</th><th>强度</th></tr></thead><tbody><tr><td>①</td><td><strong>"低位"是否被当成了买入理由？</strong></td><td>是<strong>唯一被认真考虑过的多头理由</strong>。但按纪律，"低位是前提不是结论"——本股低位属"<strong>价格向零收敛</strong>"型（财务类退市为二元事件），而非"跌无可跌的深度价值"；且 45 家中位 -27.44% 而本股 -47.81%，<strong>跌幅中相当部分是公司特有因素</strong>（审价 ＋ 引战失败）。</td><td>中</td></tr><tr><td>②</td><td><strong>5.56 亿元现金是否构成真实托底？</strong></td><td>只在"公司继续上市"的前提下成立。一旦终止上市，股票流动性折价远大于账面价值；且公司<strong>至今未用这笔钱做任何事</strong>（不回购、不并购、不分红），"有钱"与"会用钱"是两回事。</td><td>中</td></tr><tr><td>③</td><td><strong>"门槛只差 209 万元"是否意味着保壳大概率成功？</strong></td><td><strong>这是本结论最薄弱的一处。</strong> 上半年扣非 -209 万元确实很接近零，且利息收入（年化约 490 万元）本身就是半个保壳；若 H2 军工交付略微放量即可跨线。本报告的回应是：<strong>① 非经常性损益无效，必须靠主业；② 历史 H2 营收历来低于 H1；③ 信用减值转回 +230 万元恰好等于所需余量，不可持续。</strong> 若读者不认同这三点，则结论应改为"买入"。</td><td><strong>弱</strong></td></tr><tr><td>④</td><td><strong>"审价二次冲回"是否被高估？</strong></td><td><strong>这是本结论第二薄弱处。</strong> 2025 年的冲回针对的是此前已按暂定价确认的历史合同；若该类合同已在 2025 年一次性清算完毕，则 2026 年不再有冲回。<strong>公司未披露相关批次信息，无法证伪。</strong> 本报告把它作为尾部情形处理（未计入三档情景）。</td><td><strong>弱</strong></td></tr><tr><td>⑤</td><td><strong>数据来源级别是否足够？</strong></td><td>关键数字（-1.71 亿元营收、-2.26 亿元净利、5.56 亿元现金、18.43 元／22.14 亿元市值、45 家样本分布）<strong>均取自公告原文、定期报告或行情原始数据</strong>；2021—2024 年历史序列为<strong>异源（东财 F10）</strong>已在表注标明；雪球信息一律标注日期与来源，未作为事实使用。</td><td>强</td></tr></tbody></table>
+<h2 id="chap8">建议升档</h2>
+<p>本股值得升到 <strong>资本运作档</strong> 深挖的理由：① 大股东（合计 59.09%、无质押）<strong>已明确表现出卖壳意愿</strong>（14.77% 转让协议虽终止，但尝试本身是信号）；② 公司账面 5.56 亿元现金、零有息负债、8.45 亿元正净资产，是"<strong>买方视角下最干净的壳</strong>"；③ 需要回答"<strong>谁会来接、以什么价、装什么</strong>"——这正是资本运作档的核心问题。<strong>建议在三季报披露后再决定是否升档。</strong></p>
+<hr>
+<h2 id="chap9">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-05</td><td>首次生成。数据截至 2026 半年报（2026-06-30）与 2026-09-30 收盘；基准日 2026-10-05。全库检索确认无既有同名研报可吸收（该目录原仅 2026 年半年度报告 PDF 一份）。</td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
