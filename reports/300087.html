@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ST荃银（300087.SZ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>10 章 · 16 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断</a><a class="sblv3" href="#sec0">1.1 基本信息与行情快照</a><a class="sblv3" href="#sec1">1.2 公司沿革与股权结构</a><a class="sblv3" href="#sec2">1.3 戴帽与处罚全链条</a><a class="sblv3" href="#sec3">1.4 四类退市红线逐条对照</a><a class="sblv3" href="#sec4">1.5 全流程进度看板</a><a class="sblv3" href="#sec5">1.6 运作特征与综合判断</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、基本面路径（处罚 ST 路径）</a><a class="sblv3" href="#sec6">2.1 商业模式与收入地图</a><a class="sblv3" href="#sec7">2.2 五年 + 最新一期财务</a><a class="sblv3" href="#sec8">2.3 募集资金、诉讼与违规担保</a><a class="sblv3" href="#sec9">2.4 摘帽展望</a><a class="sblv3" href="#sec10">2.5 主要看点：同业竞争与国资整合</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、炒作逻辑三支柱 + 情绪面 + 筹码面</a><a class="sblv3" href="#sec11">3.1 炒作逻辑三支柱</a><a class="sblv3" href="#sec12">3.2 异动与炒作符号</a><a class="sblv3" href="#sec13">3.3 筹码与注意力</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、估值与投资结论</a><a class="sblv3" href="#sec14">4.1 估值</a><a class="sblv3" href="#sec15">4.2 投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 C · 逻辑漏洞与反方观点（5 问速版）</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">附：本报告的判断不成立时要看什么</a></div><div class="sbgrp"><a class="sblv2" href="#chap9">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">ST荃银（300087.SZ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：卖出（回避）</strong></p>
+<p>红线分类：<span class="sttag sttag-orange"><a href="https://data.eastmoney.com/notices/detail/300087/AN202607101826875086.html" target="_blank" rel="noopener">2024年报虚假记载,虚增利润1,871.51万元</a></span>·<span class="sttag sttag-teal"><a href="https://data.eastmoney.com/notices/detail/300087/AN202607101826875086.html" target="_blank" rel="noopener">未触及重大违法强制退市</a></span></p>
+<p>生死定级：<strong>安全（无退市风险）</strong> —— 四类退市红线逐条核过，一条未踩；戴帽事由仅为创业板 9.4 第七项「假 ST」（其他风险警示），<strong>不属于四类退市红线中的任何一类</strong>。</p>
+<p>自救空间：<strong>摘帽只剩"等时间"</strong> —— 撤销两条件中的「追溯重述」已于 2026-01-30 完成，剩余条件仅「行政处罚决定书作出之日起满 12 个月」（决定书 2026-07-09 收到，最早可申请 <strong>2027-07</strong>）；真正的变量不是能不能摘帽，而是<strong>控股股东同业竞争整合能否从"委托管理"升级为"股权收购/资产整合"</strong>。</p>
+<p>主要看点：<strong>控股股东中国种子集团（先正达/中国中化体系，国务院国资委实控）已就同业竞争出具《关于进一步推进解决同业竞争事项的说明》，明列"股权收购、资产整合"路径，对应市场关注的 2026 年底承诺期限；2026-01 已完成中种农业科技（湖南）100% 股权受托管理（年费 60 万元），但公司口径为"仍处研究论证阶段、尚未形成具体交易方案或确定性安排、需国资审批"。</strong></p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>标的 / 板块</td><td>ST荃银（300087.SZ）· 创业板 · 种业（杂交水稻/玉米/小麦种子）</td></tr><tr><td>基准日</td><td>2026-10-05（行情截至 2026-09-30 收盘）</td></tr><tr><td>现价 / 总市值 / 流通市值</td><td>5.69 元 / 53.90 亿元 / 50.63 亿元</td></tr><tr><td>PB / PE(TTM) / PS(TTM)</td><td>3.31 / -23.88（亏损） / 约 1.20（按 2025 年营收 44.95 亿元）</td></tr><tr><td>年初至今涨跌幅</td><td><strong>-51.28%</strong>（腾讯前复权口径，2025-12-31 收盘 11.68 元 → 5.69 元）</td></tr><tr><td>控股股东 / 实控人</td><td>中国种子集团有限公司 40.51% / 国务院国有资产监督管理委员会</td></tr><tr><td>戴帽</td><td>2026-06-30 起「ST荃银」（创业板 9.4 第七项），涨跌幅仍 20%</td></tr><tr><td>版本</td><td>初版 · 2026-10-05</td></tr></tbody></table>
+<p>数据来源：公告原文（巨潮/东财公告库，链接见正文与附录 B）、公司 2026 年半年度报告、Wind 缺失处以腾讯行情（<code>qt.gtimg.cn</code>，2026-09-30 截面）与新浪日 K 补齐、东方财富 F10 财务序列（【异源】，已标注）。 已知数据质量异常：本轮 Wind 局域网代理未启用，行情/同业/同型样本涨跌幅均改用公开源并已注明口径；信息库档案「近 20 年价格分位 6.71%」为<strong>不复权口径</strong>，对曾多次送转的标的不适用，本报告改用<strong>前复权</strong>口径复核（见 §4.1）。</p>
+<hr>
+<h2 id="chap1">一、诊断</h2>
+<h3 id="sec0">1.1 基本信息与行情快照</h3>
+<p><strong>结论：这是一只"央企控股 + 无退市风险 + 主业亏损 + 已跌 51%"的处罚类 ST，风险不在存亡、而在"主业续亏 + 题材无载体"。</strong></p>
+<p>公司为国内首批"育繁推一体化"种业企业、农业农村部认定的种业"强优势"阵型企业（水稻），主营杂交水稻、杂交玉米、小麦、棉花、瓜菜、油菜等农作物种子；2026H1 种子收入占比 56.95%，另有订单粮食/青贮饲料（正压降）、皮棉与农机农化等业务。</p>
+<details class="fold"><summary>行情与估值快照（腾讯 <code>qt.gtimg.cn</code>，2026-09-30 收盘）</summary><div class="fold-body">
+
+<table><thead><tr><th>指标</th><th>数值</th><th>说明</th></tr></thead><tbody><tr><td>收盘价</td><td>5.69 元</td><td>当日 +3.08%</td></tr><tr><td>总市值 / 流通市值</td><td>53.90 亿元 / 50.63 亿元</td><td>总股本 9.47 亿股</td></tr><tr><td>PB（LF）</td><td>3.31</td><td>归母净资产 16.30 亿元（2026-06-30）</td></tr><tr><td>PE(TTM)</td><td>-23.88</td><td>亏损股，PE 无意义</td></tr><tr><td>年内高 / 低（前复权收盘）</td><td>11.69 元（2026-01-05）/ 4.79 元（2026-07-09）</td><td>现价距年内低点 +18.8%</td></tr><tr><td>年初至今</td><td>-51.28%</td><td>腾讯复权口径</td></tr><tr><td>换手率 / 成交额</td><td>0.81% / 4,061 万元</td><td>2026-09-30</td></tr><tr><td>涨停 / 跌停价</td><td>6.62 元 / 4.42 元</td><td>创业板 ST，涨跌幅 ±20%</td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec1">1.2 公司沿革与股权结构</h3>
+<p><strong>结论：控股股东几经转手，最终归于中种集团（先正达/中国中化体系）；2026-01 中种集团以 11.85 元/股要约增持至 40.51%，仅 25 天后公司即收到立案告知书——控股股东自身的账面浮亏约 52%，构成全篇最硬的成本锚。</strong></p>
+<details class="fold"><summary>① 前世今生（时间 / 关键事件 / 股权与实控人变化 / 背后的逻辑）</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>关键事件</th><th>股权 / 实控人变化</th><th>背后的逻辑</th></tr></thead><tbody><tr><td>2010-05</td><td>创业板上市（300087）</td><td>创始人张琴家族等</td><td>种业"科技先行"路线，杂交水稻为主</td></tr><tr><td>2016</td><td>联合科研院所成立"国家水稻商业化分子育种技术创新联盟"</td><td>—</td><td>布局分子设计育种，中科荃银成立</td></tr><tr><td>2018</td><td>与中化集团下属中化农业签署合作协议</td><td>—</td><td>为后续央企入主埋下伏笔</td></tr><tr><td>2021-01 / 2021-12</td><td>现代农业（中化系）取得控股权并披露详式权益变动报告书</td><td>实控人变更为<strong>国务院国资委</strong></td><td>中化系以种业平台整合思路入主</td></tr><tr><td>2021-01 起</td><td>中种集团出具《避免同业竞争承诺函》</td><td>—</td><td>承诺"自前次权益变动之日起五年内"以资产重组/业务调整/委托管理/设立合资公司等方式解决</td></tr><tr><td>2025-11-20</td><td>收到《要约收购报告书摘要》</td><td>贾桂兰、王玉林解除一致行动关系</td><td>中种集团拟主动增持</td></tr><tr><td>2025-12-04 ~ 2026-01-05</td><td>要约收购期</td><td>—</td><td><strong>要约价 11.85 元/股、拟收 1.89 亿股（20.00%）</strong></td></tr><tr><td>2026-01-09</td><td>要约收购完成过户</td><td><strong>中种集团持股 383,760,376 股 = 40.51%</strong></td><td>预受 2.98 亿股超上限，按 63.62% 比例收购；现金对价约 <strong>22.45 亿元</strong>；承诺 18 个月内不转让</td></tr><tr><td>2026-01-30</td><td>收到证监会《立案告知书》（证监立案字 0232026002 号）+ 前期会计差错更正</td><td>—</td><td>距要约完成仅 21 天</td></tr><tr><td>2026-06-29/30</td><td>停牌一天、复牌即 ST</td><td>简称变更"ST荃银"</td><td>依据《行政处罚事先告知书》（处罚字〔2026〕3 号）</td></tr><tr><td>2026-07-09</td><td>收到《行政处罚决定书》（〔2026〕3 号）</td><td>—</td><td>处罚落地，12 个月摘帽计时起算</td></tr></tbody></table>
+
+</div></details>
+<details class="fold"><summary>② 股东阵容（截至 2026-06-30，东方财富 F10 / 公司半年报）</summary><div class="fold-body">
+
+<table><thead><tr><th>排名</th><th>股东名称</th><th>持股数量</th><th>占总股本</th><th>身份识别</th><th>备注</th></tr></thead><tbody><tr><td>1</td><td>中国种子集团有限公司</td><td>3.84 亿股</td><td>40.51%</td><td>控股股东（先正达/中国中化→国务院国资委）</td><td>要约收购取得，锁定 18 个月（至约 2027-07）</td></tr><tr><td>2</td><td>张琴</td><td>4,559.45 万股</td><td>4.81%</td><td>原副董事长兼总经理</td><td><strong>本次处罚当事人</strong>（罚 150 万元）</td></tr><tr><td>3</td><td>贾桂兰</td><td>2,383.36 万股</td><td>2.52%</td><td>自然人（原一致行动人之一）</td><td>2025-11 解除一致行动关系</td></tr><tr><td>4</td><td>张银宝</td><td>1,453.41 万股</td><td>1.53%</td><td>自然人</td><td>—</td></tr><tr><td>5</td><td>张从合</td><td>889.15 万股</td><td>0.94%</td><td>自然人</td><td>履历标注"董监高"</td></tr><tr><td>6-10</td><td>胡冰 / 赵天时 / 庞寅 / 李振宇 / 李清华</td><td>合计约 2,739 万股</td><td>合计约 2.89%</td><td>自然人</td><td>李清华、香港中央结算（515.91 万股）、郭建秀为新进</td></tr></tbody></table>
+<ul><li><strong>筹码集中度</strong>：前十大股东合计 53.30%；股东户数 2026-03-31 <strong>42,155 户</strong> → 2026-06-30 <strong>34,799 户</strong> → 2026-08-10 <strong>32,000 户</strong> → 2026-09-10 <strong>34,000 户</strong>，呈"先降后微升"；东方财富口径"较分散"。</li><li>全公司质押/冻结情况：公告未披露控股股东股份质押，<strong>无质押</strong>。</li></ul>
+
+</div></details>
+<h3 id="sec2">1.3 戴帽与处罚全链条</h3>
+<p><strong>结论：这是一条"子公司单项坏账该提未提 → 2024 年报虚增利润总额 1,871.51 万元（占 10.86%）→ 立案 → 事先告知书 → 戴 ST → 决定书"的完整链条，性质为"年报虚假记载"但远低于重大违法量化线，属最轻的一档处罚类 ST。</strong></p>
+<details class="fold"><summary>处罚事实与当事人（据《行政处罚决定书》原文）</summary><div class="fold-body">
+
+<ul><li><strong>违法事实</strong>：2024 年年报未如实反映控股子公司四川荃银生物与贵州某公司的债权债务关系，且在知悉贵州某公司存在信用风险的情况下未单项计提坏账准备，按账龄组合法计提，导致 2024 年年报<strong>少计提信用减值损失 18,715,068.36 元、虚增利润总额 18,715,068.36 元，占当期披露利润总额的 10.86%</strong>。</li><li><strong>当事人与罚款</strong>：公司（警告 + 300 万元）；应敏杰（时任董事长，1983 年 2 月生，150 万元）；张琴（时任副董事长兼总经理，1963 年 6 月生，150 万元）；张庆一（时任董秘兼财务总监，1982 年 5 月生，130 万元）。当事人未提出陈述、申辩，也未要求听证。</li><li><strong>交易所纪律处分</strong>：2026-07-10 深交所对公司及相关当事人给予<strong>通报批评</strong>。</li><li><strong>口径提示</strong>：2024 年年度财务报表由<strong>毕马威华振</strong>出具<strong>保留意见</strong>（保留事项一即荃银生物酒粮业务应收账款与其他应收款）。按创业板规则，<strong>保留意见本身不触发 9.3.1 第一款第（三）项</strong>（该条只含"无法表示/否定"），故未叠加财务类 *ST；2026-04-25 公司另披露《2024 年度审计报告保留意见涉及事项影响已消除的审核报告》。</li><li><strong>2025 年年报审计意见：容诚会计师事务所出具"标准的无保留意见"</strong>（据 2025 年年度报告摘要），<strong>2025 年度内部控制审计报告亦为标准无保留</strong> —— 这是本股能被<strong>仅</strong>实施 9.4 第七项、而未叠加 9.4 第四项（内控非标）的直接证据。</li><li><strong>追溯重述已完成</strong>：2026-01-28/29 董事会通过议案，<strong>2026-01-30 披露《前期会计差错更正及追溯调整的公告》</strong>，对 2023 年度、2024 年一季/半年/三季/年度合并财务报表追溯调整（例如 2023 年归母净利由 2.74 亿元调减至 2.68 亿元、2024 年一季归母由 +1,774.45 万元调为 -645.96 万元）。</li></ul>
+
+</div></details>
+<h3 id="sec3">1.4 四类退市红线逐条对照</h3>
+<p><strong>结论：四类退市红线一条未踩，且公司公告明确"未触及重大违法强制退市"，故本标的的"生死定级"是安全——</strong>把"戴 ST 帽"读成"有退市风险"是分析本股最常见的错误<strong>。</strong></p>
+<table><thead><tr><th>类型</th><th>触发条件（速查）</th><th>本股情形</th><th>判定</th></tr></thead><tbody><tr><td>财务类</td><td>孰低为负且扣除后营收 &lt;1 亿元（创业板）；或期末净资产为负；或审计无法表示/否定</td><td>2025 年营收 44.95 亿元（扣除后仍远超 1 亿元）；2026-06-30 归母净资产 <strong>+16.30 亿元</strong>；2025 年报<strong>标准无保留</strong></td><td><strong>未踩</strong></td></tr><tr><td>交易类</td><td>连续 20 日收盘价 &lt;1 元；或连续 20 日市值 &lt;3 亿元（双创）；或连续 20 日股东数 &lt;400 人</td><td>现价 5.69 元 / 市值 53.90 亿元 / 股东约 3.4 万户</td><td><strong>未踩</strong></td></tr><tr><td>规范类</td><td>资金占用（≥2 亿元或 ≥净资产 30%）；内控连续两年非标；控制权无序争夺等</td><td>无资金占用；2025 年<strong>内控标准无保留</strong>；控制权稳定</td><td><strong>未踩</strong></td></tr><tr><td>重大违法类</td><td>欺诈发行、造假达量化线（单年虚增 ≥2 亿元且占比 ≥30%；连续两年合计 ≥3 亿元且占比 ≥20%；连续三年）</td><td>虚增利润总额 <strong>1,871.51 万元、占比 10.86%</strong>，单年且远低于 2 亿元/30%</td><td><strong>未踩</strong></td></tr></tbody></table>
+<blockquote><p>路径底表佐证：<code>退市风险预警-20261005.xlsx</code> 四张工作表（交易类/财务类/规范类/其他类）中，<strong>本股仅命中「规范类」工作表</strong>（处罚台账），交易类、财务类、其他类<strong>三表均无</strong>。</p><p>涨跌幅口径：创业板 ST 为 <strong>20%</strong>，且<strong>不受 2026-07-06 主板改 10% 的影响</strong>；2026-06-27 公告明载"实施其他风险警示后，日涨跌幅限制不变，仍为 20%"。</p></blockquote>
+<details class="fold"><summary>口径辨析：风险警示有"两顶帽子"，只有一顶与退市沾边</summary><div class="fold-body">
+
+<p>在创业板规则里，"其他风险警示（ST）"与"退市风险警示（*ST）"是<strong>两套独立的帽子</strong>，触发条件、撤销条件、后果都不同。<strong>ST 的事由（9.4 条九项）本身都不是退市情形</strong>——它只是交易所提醒投资者"这家公司有某种需关注的情形"，摘帽条件通常落在"整改完成 + 披露相应核查意见"。真正指向"终止上市"的是 <strong>10.5 节（重大违法强制退市）</strong> 与<strong>财务类/交易类</strong>的硬指标，而这些规则在 *ST 那一档才启动。</p>
+<p>本股被实施的是 <strong>9.4 第七项</strong>——"根据中国证监会行政处罚事先告知书载明的事实，公司披露的年度报告财务指标存在虚假记载，但<strong>未触及第 10.5.2 条第一款规定情形</strong>"。<strong>这一项的门槛本身就自带豁免</strong>：只要造假未达重大违法量化线，就只在这个最轻的档位里处理。公司随后在《行政处罚决定书》公告中亦重复"未触及第 10.5.1 条、第 10.5.2 条、第 10.5.3 条规定的重大违法强制退市情形"。</p>
+<p>因此，<strong>把"ST荃银"读成"荃银高科有退市风险"，是把两顶帽子混为一谈</strong>。本股的生死定级是"安全"，它的下行风险来自<strong>估值与主业</strong>，不来自<strong>退市规则</strong>。这也是本报告与"财务类 *ST（净资产为负/营收不足）"样本在分析框架上的根本分野——后者要算"缺口能不能补上"，本股只需算"值不值这个价"。</p>
+
+</div></details>
+<h3 id="sec4">1.5 全流程进度看板</h3>
+<p><strong>结论：流程上"该做的都做完了"——差错更正在前、处罚已落地、违规担保已化解、非主业已决定压降；卡点不是"谈不拢"，而是"时间未到（摘帽要等 12 个月）"与"整合尚无方案（需国资审批）"。</strong></p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点 / 条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>立案调查</td><td>已结案</td><td>—</td><td>—</td><td>《立案告知书》2026-01-30</td></tr><tr><td>会计差错更正与追溯重述</td><td><strong>已完成</strong></td><td>—</td><td>—</td><td>《前期会计差错更正及追溯调整的公告》2026-01-30</td></tr><tr><td>行政处罚</td><td><strong>已落地</strong>（2026-07-09 收到决定书）</td><td>—</td><td>—</td><td>《行政处罚决定书》公告 2026-07-11</td></tr><tr><td>违规担保化解</td><td><strong>已解决</strong></td><td>敞口 1.04 亿元由部分股东划入银行专项保证金账户</td><td>—</td><td>《关于公司涉及违规担保已解决的公告》2026-08-29</td></tr><tr><td>非主业压降</td><td><strong>决策已下</strong></td><td>执行中（含员工安置）</td><td>存量合同/库存处置</td><td>《关于聚焦种业主业优化业务结构的公告》2026-08-29</td></tr><tr><td>撤销 ST</td><td><strong>条件未满</strong></td><td>① 追溯重述 ✅ ② 决定书满 12 个月 ❌</td><td><strong>最早 2027-07 申请</strong></td><td>创业板 9.11 条</td></tr><tr><td>同业竞争解决</td><td>托管已落地，进一步整合<strong>无方案</strong></td><td>需国资审批/备案</td><td>市场关注 <strong>2026 年底</strong>承诺期限</td><td>《股权委托管理协议》2026-01-14；中种集团《进一步推进解决同业竞争事项的说明》</td></tr><tr><td>投资者索赔</td><td>尚无诉讼材料</td><td>9.11 第二款：申请撤销时若已被提起虚假陈述诉讼，须"充分计提预计负债"</td><td>待观察</td><td>互动易答复（2026-07 至 2026-09 多次）</td></tr></tbody></table>
+<h3 id="sec5">1.6 运作特征与综合判断</h3>
+<p><strong>结论：控股股东是"资金到位、但动作谨慎"的央企——它用 22.45 亿元真金白银增持到 40.51%，却至今未给增持、回购或资产注入的任何承诺；判断本股的核心矛盾必须落在"国资的资产整合意愿 vs 客观审批与合规成本"。</strong></p>
+<ul><li><strong>手法</strong>：要约收购一次性增至 40.51%（非二级市场慢慢买），并同步安排关联方（贾桂兰、王玉林）解除一致行动关系，股权结构一次性理顺。</li><li><strong>节奏</strong>：从收到要约摘要（2025-11-20）到完成过户（2026-01-09）约 50 天；但<strong>从完成过户到公司被立案仅 21 天</strong>。</li><li><strong>交权是配合式还是对抗式</strong>：<strong>配合式</strong>——原体系无减持对抗，核心人物（张琴）仍在股东名册中；新老交替体现在董事会换届（2026-01-30 第六届董事会成立）。</li><li><strong>成败关键变量（1 和 0）</strong>：<strong>控股股东是否拿出"股权收购/资产整合"的具体方案</strong>。其余（摘帽、诉讼、担保）都是时间或已闭环的程序问题。</li><li><strong>核心矛盾一句话</strong>：<strong>"央企 22.45 亿元买在 11.85 元、现价 5.69 元"的深套，与"公司明确未收到增持/回购安排、整合无时间表"之间的落差。</strong></li></ul>
+<hr>
+<h2 id="chap2">二、基本面路径（处罚 ST 路径）</h2>
+<blockquote><p>依据 §1.4，本股仅触及创业板 <strong>9.4 第七项</strong>（处罚类/假 ST），故深耕<strong>路径 C · 处罚 ST 逻辑</strong>；保壳（财务类）与重整两条路径<strong>均不适用</strong>——净资产 16.30 亿元为正、无破产重整事项。</p></blockquote>
+<h3 id="sec6">2.1 商业模式与收入地图</h3>
+<p><strong>结论：公司真金白银的利润在"种子"，但收入规模的大头被主动砍掉——2026H1 收入同比 -17.93% 中约 2.85 亿元来自订单粮食与青贮饲料的压降（该业务同比 -44.35%、毛利为负），而水稻种子收入 +26.32%、毛利率 +8.87pct，是唯一在改善的业务线。</strong></p>
+<table><thead><tr><th>分产品（2026H1）</th><th>营业收入</th><th>毛利率</th><th>同比</th><th>审美标签</th></tr></thead><tbody><tr><td>水稻种子</td><td>4.60 亿元（占 39.1%）</td><td>39.47%（+8.87pct）</td><td>+26.32%</td><td><strong>业务反转候选</strong>（价量齐升、毛利扩张）</td></tr><tr><td>玉米种子</td><td>1.35 亿元</td><td>25.27%（+1.80pct）</td><td>-0.20%</td><td>长期价值（稳）</td></tr><tr><td>订单粮食、青贮饲料</td><td>3.58 亿元（占 30.4%）</td><td><strong>-5.20%</strong>（-5.10pct）</td><td>-44.35%</td><td><strong>正在被压降</strong>（低质、占资金）</td></tr><tr><td>皮棉、棉籽、农机、农化及其他</td><td>1.49 亿元</td><td>13.33%</td><td>-31.80%</td><td>剥离/收缩中</td></tr></tbody></table>
+<ul><li><strong>热点业务占比定位</strong>：公司无"被市场热炒的跨界业务"。2025 年<strong>研发投入 2.03 亿元</strong>，占种子销售收入 7.28%；生物育种（转基因玉米）是行业级题材，但<strong>公司自身未披露转基因玉米商业化收入</strong>，属<strong>行业 β 而非个股 α</strong>。</li><li>分地区（2026H1）：华东 3.80 亿元（-22.17%）、国外 2.03 亿元（占 17.65%，毛利率 31.60%）为前两位；华北 -42.22% 降幅最大。</li></ul>
+<h3 id="sec7">2.2 五年 + 最新一期财务</h3>
+<p><strong>结论：这是一个"过去五年靠规模、近两年由盈转亏"的种业平台——2020—2023 归母净利从 1.33 亿元增至 2.68 亿元，2024 年断崖式降至 0.97 亿元，2025 年转亏 2.12 亿元，2026H1 继续亏损；亏损主因是减值计提（2025 年计提应收/存货/商誉减值）与行业高库存，而非收入坍塌。</strong></p>
+<table><thead><tr><th>指标（合并口径）</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026H1</th></tr></thead><tbody><tr><td>营业收入（亿元）</td><td>25.21</td><td>34.91</td><td>41.03</td><td>47.09</td><td>44.95</td><td>11.79</td></tr><tr><td>归母净利润（亿元）</td><td>1.69</td><td>2.33</td><td>2.68</td><td>0.97</td><td><strong>-2.12</strong></td><td><strong>-0.55</strong></td></tr><tr><td>扣非归母净利润（亿元）</td><td>1.50</td><td>1.76</td><td>2.28</td><td>0.57</td><td><strong>-3.07</strong></td><td><strong>-0.82</strong></td></tr><tr><td>毛利率</td><td>28.83%</td><td>26.84%</td><td>26.91%</td><td>25.01%</td><td>21.51%</td><td>21.14%</td></tr><tr><td>归母净资产（亿元）</td><td>—</td><td>—</td><td>—</td><td>—</td><td>16.86</td><td><strong>16.30</strong></td></tr><tr><td>资产负债率</td><td>53.34%</td><td>56.81%</td><td>61.57%</td><td>65.95%</td><td>69.00%</td><td><strong>64.78%</strong></td></tr><tr><td>经营性现金流净额（亿元）</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>-7.03</strong></td></tr></tbody></table>
+<blockquote><p>数据来源：2021—2025 年取东方财富 F10 <code>RPT_F10_FINANCE_MAINFINADATA</code>【异源，Wind 本轮未启用】，2026H1 取公司半年报原文。归母净资产 2025 年末 16.86 亿元、2026-06-30 16.30 亿元（-3.32%）。</p><p><strong>注</strong>：2024 年归母净利 0.97 亿元为<strong>追溯调整后</strong>数值；2024 年报表被出具保留意见，2025 年年报为<strong>标准无保留意见</strong>。</p></blockquote>
+<details class="fold"><summary>五年财务的读法：由盈转亏发生在 2024—2025，是"减值"而非"收入坍塌"</summary><div class="fold-body">
+
+<p>把五年序列拆成三段看，结论会清楚得多。</p>
+<p><strong>第一段（2021—2023）是"规模扩张期"</strong>：营收从 25.21 亿元增至 41.03 亿元，归母净利同步从 1.69 亿元增至 2.68 亿元，毛利率稳定在 26.8%–28.8%。这一段的增长主要来自"订单粮食与青贮饲料"这类<strong>大流水、低毛利</strong>的贸易型业务——它把营收规模迅速做大（2023 年该业务收入 8.26 亿元、占 20.13%，毛利率仅 4.56%），却几乎没有贡献利润（毛利占比 3.41%）。</p>
+<p><strong>第二段（2024）是"第一次失速"</strong>：营收继续增至 47.09 亿元（+14.77%），但归母净利从 2.68 亿元骤降至 0.97 亿元、扣非仅 0.57 亿元。这一段的收入里，订单粮食与青贮饲料已达 11.91 亿元（占 25.30%），而毛利率进一步降到 1.19%——<strong>规模增长与利润增长彻底脱钩</strong>。同时，正是这一年子公司四川荃银生物的酒粮业务应收款该单项计提而未计提，成为本次处罚的起点。</p>
+<p><strong>第三段（2025 至今）是"出清期"</strong>：2025 年营收 44.95 亿元（-4.55%），归母 <strong>-2.12 亿元</strong>、扣非 <strong>-3.07 亿元</strong>；公司在业绩预告中自述亏损主因是"对应收款项、存货以及商誉等计提了充分的减值准备"。<strong>注意扣非与归母的差额（约 0.95 亿元）</strong>——说明当年仍有约 1 亿元的政府补助等非经常性损益在托住归母口径。2026H1 这一结构延续：归母 -0.55 亿元、扣非 -0.82 亿元，差额仍由政府补助（+2,355.75 万元）等构成。</p>
+<p><strong>读法</strong>：这家公司的真问题不是"卖不动种子"（水稻种子 2026H1 收入 +26.32%、毛利率 +8.87pct，是唯一在改善的线），而是<strong>"用低质贸易业务冲规模、积累应收与存货风险、然后在两年内集中计提"</strong>。2026-08 公司决定压降订单粮食与青贮饲料业务，本质上就是在<strong>把这条曾经贡献三成营收、但毛利为负的业务线砍掉</strong>——短期营收会继续下降，长期才有可能让"毛利率—净利率"修复。<strong>这也解释了为什么 2026 全年大概率仍亏损：收入端在主动收缩，利润端的修复滞后于收入端的收缩。</strong></p>
+
+</div></details>
+<details class="fold"><summary>资产负债与减值细节（2026-06-30）</summary><div class="fold-body">
+
+<ul><li>货币资金 7.67 亿元（较年初 16.14 亿元 -9.18pct，主因支付供应商货款）；<strong>短期借款 13.66 亿元</strong>（较年初增 3.64pct），长期借款降至 0.79 亿元（重分类至一年内到期）。</li><li>存货 26.35 亿元，<strong>占总资产 41.05%</strong>（种业周期性特征，但绝对额高企）；应收账款 6.51 亿元（占总资产 10.15%）。</li><li><strong>商誉 0.71 亿元</strong>（70,695,005.31 元），与年初一致、<strong>未计提减值</strong>。</li><li><strong>资产受限</strong>：货币资金 2,725.28 万元被冻结（活期存款冻结资金），占归母净资产 0.16%。</li><li>2026H1 非主营损益：政府补助 +2,355.75 万元、信用减值损失 -1,604.68 万元、资产减值 -1,407.31 万元、营业外支出 637.46 万元（主要系罚款及滞纳金）。</li></ul>
+
+</div></details>
+<h3 id="sec8">2.3 募集资金、诉讼与违规担保</h3>
+<p><strong>结论：三件事都已落地或闭环，但都留下了"内控历史缺陷"的印记——募集资金冻结 250.83 万元已解除、12 个月累计诉讼 1.75 亿元（最大单笔 9,046.30 万元再审中）、违规担保 1.04 亿元由部分股东承接清偿，公司自认不触发 9.4 第五项叠加。</strong></p>
+<ul><li><strong>募集资金冻结</strong>：2026-06-01 收到湖南益阳资阳区法院民事裁定书，招商银行合肥分行募集资金专户被冻结 <strong>250.83 万元</strong>（种植户夏中华等人侵权责任纠纷财产保全）；<strong>2026-07-01 公告已解除冻结</strong>。</li><li><strong>累计诉讼</strong>：连续 12 个月涉案金额合计 <strong>17,487.89 万元</strong>（占最近一期经审计净资产 10.37%）；被告 15 件 / 1.26 亿元，原告 10 件 / 0.49 亿元。最大单笔为<strong>武汉经开港口诉四川荃银生物买卖合同纠纷 9,046.30 万元（湖北省高院再审中）</strong>；另有贵州宸瑞贸易等 1,011.66 万元（<strong>移送公安</strong>）、新疆豫煌 2,029.54 万元（已结案）。</li><li><strong>违规担保</strong>：子公司荃优种业 2023—2025 年反向保理业务中，公司为子公司付款义务提供<strong>未经审议、未披披露</strong>的增信安排，构成违规担保，<strong>责任敞口余额 10,381.35 万元</strong>（最早到期日 2026-11-05）；<strong>已通过部分股东将 1.0381 亿元划入银行控制的专项保证金账户</strong>解决，公司称"因违规担保承担实际清偿责任的风险敞口已消除"，且<strong>不触发 9.4 第五项叠加</strong>。</li></ul>
+<h3 id="sec9">2.4 摘帽展望</h3>
+<p><strong>结论：撤销 ST 是"教科书式的公开日历"，不是信息差——两条撤销条件里「追溯重述」已完成，只剩「决定书满 12 个月」，</strong>最早可申请日约 2027-07<strong>；且创业板 ST 涨跌幅本身就是 20%、摘帽前后同幅，</strong>零制度红利<strong>。</strong></p>
+<table><thead><tr><th>撤销条件（创业板 9.11 条）</th><th>状态</th><th>时间锚</th></tr></thead><tbody><tr><td>（一）已就处罚所涉事项对相应年度财务会计报告追溯重述</td><td><strong>已完成</strong>（2026-01-30 公告）</td><td>—</td></tr><tr><td>（二）自证监会作出《行政处罚决定书》之日起已满 12 个月</td><td><strong>未满</strong>（决定书 2026-07-09 收到）</td><td><strong>最早可申请 ≈ 2027-07</strong></td></tr><tr><td>（附加关）申请时若已被提起证券虚假陈述诉讼，须充分计提预计负债</td><td>目前<strong>未收到法院立案通知或诉讼材料</strong></td><td>待观察</td></tr></tbody></table>
+<blockquote><p>依据：创业板《股票上市规则（2026 年修订）》——<strong>实施</strong>依据 9.4 第七项；<strong>撤销</strong>依据 9.11 条（AND 逻辑，与主板 9.8.8 条口径一致）。公司 2026-09 互动易口径与之一致："自行政处罚决定书作出之日起满十二个月后……积极申请撤销其他风险警示。"</p><p><strong>制度红利核查</strong>：创业板 ST 日涨跌幅为 20%（2026-06-27 公告明载），摘帽前后不变 → <strong>摘帽不改变涨跌幅</strong>，与 2026-07-06 之后的主板 ST（同样 10%→10%）一样，<strong>不存在"摘帽放大"</strong>。</p></blockquote>
+<h3 id="sec10">2.5 主要看点：同业竞争与国资整合</h3>
+<p><strong>结论：本股唯一的"想象空间"来自控股股东同业竞争承诺的履约方式——从"委托管理（过渡）"升级为"股权收购/资产整合（终局）"。但公司口径明确停留在"研究论证、无方案、需国资审批"，属 skill 判据中的"</strong>有人名、无物<strong>"一侧，只能给期权、不能给当期定价。</strong></p>
+<ul><li><strong>承诺原文内容</strong>：中种集团《关于避免同业竞争的承诺函》——"<strong>自前次权益变动发生之日起五年内</strong>，按照相关法律、法规和监管部门的要求……综合运用<strong>资产重组、业务调整、委托管理、设立合资公司</strong>等多种方式，逐步稳妥推进相关业务整合以解决竞争问题。"</li><li><strong>已落地的一步</strong>：2026-01-14 签《股权委托管理协议》，受托管理中种农业科技（湖南）有限公司 100% 股权，<strong>年费仅 60 万元、初始期限 3 年</strong>，托管范围含经营方针、财务预算、核心人员任免、销售与定价策略；中种集团保留所有权、处分权、收益权与合并分立等重大决策权。<strong>公司明确"不发生资产权属转移、不改变合并报表范围"。</strong></li><li><strong>"进一步"的新信号</strong>：公司称近期收到<strong>中种集团《关于进一步推进解决同业竞争事项的说明》</strong>——"就中种集团水稻、小麦业务运营主体后续安排保持沟通，积极推进统一整合管理……研究论证通过<strong>股权收购、资产整合</strong>等方式进一步优化……<strong>截至目前处于研究论证阶段，尚未形成具体交易方案或确定性安排，还需结合国有资产监督管理要求履行相应的国资审批或备案等程序，进度存在不确定性</strong>"。</li><li><strong>投资者关注的时间点</strong>：市场普遍按"<strong>2026 年底</strong>承诺期限"交易（互动易高频提问），但公司未确认该日期为承诺到期日，仅重复上述"无方案"口径。</li><li><strong>反向读数</strong>：<strong>委托管理本身已构成承诺函列举的一种方式</strong>——这意味着即便 2026 年底前无进一步动作，承诺在形式上也可能被视为已履行；因此"承诺到期 = 必然整合"的推论<strong>不成立</strong>。真正能改变利润表的事件（资产注入）<strong>既无方案、也无时间表</strong>。</li></ul>
+<details class="fold"><summary>中种农科（受托管理机构）与中种集团基本工商与财务</summary><div class="fold-body">
+
+<table><thead><tr><th>主体</th><th>情况</th></tr></thead><tbody><tr><td>受托管理标的：中种农业科技（湖南）有限公司</td><td>成立 2018-09-21；注册资本 6,000 万元；中种集团 100% 持股；主营水稻、小麦种子生产经营；下辖广东金稻种业、中种集团福建农嘉种业、湖南洞庭高科种业、四川川种种业、安徽中种丰絮农业、四川省宜宾市宜字头种业、湖南中种金耘水稻育种研究等多家公司</td></tr><tr><td>委托方：中国种子集团有限公司</td><td>统一社会信用代码 91110000100000438C；法定代表人姜业奎；注册资本 12.44 亿元；成立 1981-09-14；住所海南省三亚市崖州区；控股股东先正达集团股份有限公司，实际控制人国务院国资委</td></tr><tr><td>中种集团 2024-12-31 财务</td><td>总资产 126.71 亿元、净资产 42.90 亿元、营业收入 70.03 亿元、净利润 2.62 亿元</td></tr><tr><td>中种集团 2025-09-30 财务</td><td>总资产 126.28 亿元、净资产 41.19 亿元、营业收入 35.85 亿元、<strong>净利润 -7,207.36 万元</strong></td></tr></tbody></table>
+<blockquote><p>注意：<strong>控股股东自身 2025 年前三季度已转亏</strong>——这削弱"必然注资"的判断，应作为压力测试项记入附录 C。</p></blockquote>
+
+</div></details>
+<hr>
+<h2 id="chap3">三、炒作逻辑三支柱 + 情绪面 + 筹码面</h2>
+<h3 id="sec11">3.1 炒作逻辑三支柱</h3>
+<p><strong>结论：当前市场最认的是「② 炒历史类似行为」——本股历史上两次因"先正达/中化资产整合预期"大涨 16%–20%，2025-11 那波正是中种要约收购；「① 炒预期」的支撑是 2026 年底承诺期限，但无方案；「③ 炒主板映射」落在种业/生物育种主线，可映射标的有限。</strong></p>
+<h4>① 炒预期（未来 6–12 个月的可验证事件）</h4>
+<table><thead><tr><th>时点</th><th>催化内容</th><th>性质</th><th>判读 / 证伪点</th></tr></thead><tbody><tr><td>2026-11-05</td><td>荃优种业反向保理最早到期日</td><td>硬节点</td><td>已由股东专项保证金覆盖，风险敞口已消除</td></tr><tr><td>2026 年底</td><td>控股股东同业竞争承诺期限（市场关注）</td><td><strong>硬节点</strong></td><td>若仅维持"委托管理"、无进一步方案 → 预期落空</td></tr><tr><td>2027-04</td><td>2026 年年报</td><td>硬节点</td><td>观察净资产是否维持正、审计意见是否维持标准无保留</td></tr><tr><td><strong>2027-07</strong></td><td><strong>撤销 ST 最早可申请日</strong></td><td><strong>硬节点（公开日历）</strong></td><td>无信息差；创业板摘帽不改涨跌幅 → 零制度红利</td></tr></tbody></table>
+<blockquote><p>排序：<strong>"2026 年底整合"是唯一有想象空间的节点，"2027-07 摘帽"只是程序</strong>。</p></blockquote>
+<h4>② 炒历史类似行为（相似股票匹配法）</h4>
+<p><strong>本股画像</strong>：创业板 · 处罚类 ST（假 ST）· 市值约 54 亿元 · <strong>央企控股 40.51%</strong> · 驱动类型＝"大国资平台资产整合预期" · 所处阶段＝"利好已出尽、无新载体" · 历史炒作符号＝"先正达/中化系整合 + 种业/农业种植" · 筹码结构＝股东约 3.4 万户、较分散、无质押。</p>
+<p><strong>本股自身的历史同类上涨样本（仅取上涨样本）</strong>：</p>
+<table><thead><tr><th>启动日</th><th>驱动</th><th>当日 / 区间涨幅</th><th>龙虎榜</th></tr></thead><tbody><tr><td>2024-10-28</td><td>"并购六条"+先正达预期</td><td>当日 <strong>+20.04%</strong>（前复权 7.92→13.55 元区间）、净买 <strong>1.41 亿元</strong></td><td>上榜</td></tr><tr><td>2024-10-29</td><td>同上（连续三日偏离 30%）</td><td>+11.51%、净买 4,245.25 万元</td><td>上榜</td></tr><tr><td>2025-11-21</td><td><strong>要约收购 + 先正达预期</strong></td><td>当日 <strong>+16.24%</strong>、净买 <strong>1.12 亿元</strong></td><td>上榜</td></tr></tbody></table>
+<p><strong>当下最像的同型标的（基准日全特征匹配）：55 只"信披虚假记载型（假 ST）"样本，2026 年涨跌幅分布——</strong></p>
+<table><thead><tr><th>分组</th><th>代表公司</th><th>2026 YTD</th><th>共性</th></tr></thead><tbody><tr><td><strong>上涨组</strong></td><td>京蓝科技 +170.76% / *ST英飞 +130.22% / ST东尼 +83.44% / ST长方 +68.35% / ST海钦 +53.24% / 任子行 +38.51%</td><td>均为正</td><td><strong>有"物"</strong>：重整投资协议、资产注入、被收购方（可命名载体）</td></tr><tr><td><strong>下跌组</strong></td><td>元道退 -95.04% / *ST清越 -90.24% / ST天际 -70.84% / *ST岭南 -61.73% / <strong>ST荃银 -51.28%（倒数第 5）</strong> / ST合力泰 -49.84%</td><td>均为负</td><td><strong>只有"人名"或"方案"</strong></td></tr></tbody></table>
+<ul><li><strong>样本组统计</strong>：55 只中位 <strong>-16.00%</strong>、均值 -7.91%、<strong>上涨仅 17 只</strong>。</li><li><strong>结论</strong>：<strong>本股落在"下跌组"一侧，且是跌幅尾部</strong>——它的"物"（可注入的资产）尚未被公告命名，唯一的载体（中种农科）只是<strong>受托管理、不并表、年费 60 万元</strong>。</li></ul>
+<h4>③ 炒主板映射</h4>
+<p><strong>结论：主板种业板块 2026 年整体平淡且分化（中位约 -4%），"转基因/生物育种"与"央企整合"两条主线在 ST 板块内可映射的低位标的极少，本股自身即是该主线在 ST 板块的映射对象之一；但因估值不低、无业绩支撑，不构成"低位映射买点"。</strong></p>
+<table><thead><tr><th>主板 / 同业主线</th><th>代表公司</th><th>2026 YTD</th><th>与 ST 板块的可映射对象</th></tr></thead><tbody><tr><td>种业（杂交水稻/玉米）</td><td>敦煌种业 +42.81% / 登海种业 +7.23% / 国投丰乐 -4.40% / 隆平高科 -7.06%</td><td>分化</td><td>ST 板块内仅 <strong>ST荃银</strong> 自身为主线标的</td></tr><tr><td>生物育种（转基因）</td><td>大北农 -22.50% / 隆平高科 -7.06%</td><td>弱</td><td>无低位 ST 映射标的</td></tr><tr><td>央企/国资资产整合</td><td>按主题扩散</td><td>—</td><td>ST 板块可比：ST天圣 +27.37%、ST人福 +8.74%（均"有物"）</td></tr></tbody></table>
+<blockquote><p>关联度评级：本股与"种业+央企整合"主线<strong>强相关（本体标的）</strong>；与"生物育种"<strong>仅行业 β（无收入披露）</strong>。</p></blockquote>
+<h3 id="sec12">3.2 异动与炒作符号</h3>
+<p><strong>结论：本股的"炒作符号"十年未变——农业种植/种业打底，2020 年后叠加"先正达/中化国资委预期"；但韭研异动表 2026 年</strong>零记录<strong>（最新一条停在 2025-11-21），说明戴帽后资金关注度已明显退潮。</strong></p>
+<details class="fold"><summary>韭研公社异动表全量记录（共 16 条，按题材时间降序）</summary><div class="fold-body">
+
+<table><thead><tr><th>题材时间</th><th>题材</th><th>题材催化</th><th>涨停</th><th>股价</th><th>异动关键词</th></tr></thead><tbody><tr><td>2025-11-21</td><td>公告</td><td>—</td><td>—</td><td>11.81</td><td>要约收购+先正达预期+农业种植</td></tr><tr><td>2024-10-28</td><td>重组/股权变动</td><td>并购六条落地、深交所《并购重组导刊》、政治局会议支持并购重组</td><td>—</td><td>11.56</td><td>先正达预期+农业种植</td></tr><tr><td>2022-04-11</td><td>农业</td><td>总书记三亚崖州湾种子实验室考察</td><td>—</td><td>25.89</td><td>农业种植+业绩增长</td></tr><tr><td>2021-11-09</td><td>农业种业</td><td>玉米景气高位、种子价格预期</td><td>—</td><td>32.80</td><td>农业种植</td></tr><tr><td>2021-10-18</td><td>消费</td><td>—</td><td>—</td><td>31.64</td><td>农业种植</td></tr><tr><td>2021-07-19</td><td>其他</td><td>—</td><td>—</td><td>32.04</td><td>农业种植</td></tr><tr><td>2021-07-05</td><td>食品消费</td><td>—</td><td>—</td><td>26.05</td><td>先正达拟 IPO+育种+实控人国资委+农业种植</td></tr><tr><td>2021-01-25</td><td>其他</td><td>—</td><td>—</td><td>35.12</td><td><strong>实际控制人变更为国务院国资委</strong>+农业种植</td></tr><tr><td>2020-12-23</td><td>农业</td><td>农业农村部新闻发布会</td><td>—</td><td>30.92</td><td>农业种植</td></tr><tr><td>2020-12-21</td><td>农业种植</td><td>中央经济工作会议"解决好种子和耕地问题"</td><td>—</td><td>28.88</td><td>种业</td></tr><tr><td>2020-08-13</td><td>农业农机农药</td><td>—</td><td>—</td><td>21.45</td><td>育繁推一体化</td></tr><tr><td>2020-08-06</td><td>其他</td><td>—</td><td><strong>2 天 2 板</strong></td><td>23.03</td><td>与中化农业合作+转基因抗虫玉米项目</td></tr><tr><td>2020-08-05</td><td>农业</td><td>—</td><td>—</td><td>20.94</td><td>同上</td></tr><tr><td>2020-07-27</td><td>农业</td><td>新华社评论员文章《夯实粮食安全之基》</td><td>—</td><td>15.84</td><td>种业</td></tr><tr><td>2020-07-13</td><td>农业畜牧食品</td><td>上半年净利预增</td><td>—</td><td>15.58</td><td>育繁推一体化</td></tr><tr><td>2020-07-06</td><td>农业畜牧食品</td><td>—</td><td>—</td><td>15.58</td><td>育繁推一体化</td></tr></tbody></table>
+<ul><li><strong>炒作符号提炼</strong>：<strong>"种业/农业种植（底）× 中化/先正达整合预期（弹性）"</strong>；2024 年后锚点从"先正达 IPO"换成"并购重组/国资整合"。</li><li><strong>连板极值</strong>：仅 <strong>2 天 2 板（2020-08-06）</strong> —— <strong>连板基因很弱</strong>，本股历史上以"单日大涨 + 波段"为主，不以连板见长。</li><li><strong>股价水位</strong>：韭研记录中的股价区间 15.58–35.12 元（不复权口径，含送转前），与当前 5.69 元不可直接比较；<strong>前复权口径下，现价 5.69 元处 2010 年以来约 59% 分位</strong>（见 §4.1）。</li></ul>
+
+</div></details>
+<h3 id="sec13">3.3 筹码与注意力</h3>
+<p><strong>结论：注意力已从"要约收购"峰值退潮——2026 年龙虎榜仅 2 次（其中戴帽首日净卖 1,414.79 万元），异动表 2026 年零入库，换手率 0.81%；股东户数先降后微升，但在下跌中下降不构成"主力吸筹"证据。</strong></p>
+<ul><li><strong>龙虎榜（2026 年）</strong>：仅 2 次 —— <strong>2026-06-30（戴帽首日，-20.06%，净卖 1,414.79 万元）</strong>；2026-02-02（-15.93%，净买 196.01 万元）。上一次利好型上榜为 <strong>2025-11-21（+16.24%，净买 1.12 亿元）</strong>。</li><li><strong>换手与成交额</strong>：2026-09-30 换手率 <strong>0.81%</strong>、成交额 <strong>4,061 万元</strong> —— 属低关注度区间。</li><li><strong>股东户数</strong>：2026-03-31 42,155 户 → 2026-06-18 37,000 → 2026-06-30 34,799 → 2026-08-10 32,000 → <strong>2026-09-10 34,000</strong>（微升）。<strong>判读</strong>：2026-06 至 08 的下降发生在股价从 6.81 元跌至 5.37 元期间，属<strong>下跌中的割肉式下降</strong>，不得读作"主力吸筹"；9 月户数回升则对应股价自 5.12 元反弹至 5.97 元。</li><li><strong>机构参与度</strong>：2026-06-30 前十大流通股东中<strong>无公募基金、无社保、无北向（香港中央结算 515.91 万股属通道）</strong>；2026-06-27 起<strong>被调出融资融券标的证券名单</strong>。</li></ul>
+<hr>
+<h2 id="chap4">四、估值与投资结论</h2>
+<h3 id="sec14">4.1 估值</h3>
+<p><strong>结论：本股在所有可比口径上都不构成"低位"——前复权价格处自身历史约 59% 分位（并非 20 年低点）、PB 3.31 是种业可比公司中最高、且公司正在亏损，"低估值"无从谈起。</strong></p>
+<table><thead><tr><th>口径</th><th>本股</th><th>参照</th></tr></thead><tbody><tr><td><strong>前复权价格分位</strong>（2010-05 至 2026-09，月度收盘）</td><td><strong>58.95%</strong></td><td>现价 5.69 元处区间 0.64–16.60 元的中位偏上</td></tr><tr><td>不复权价格分位（信息库口径，仅供参考）</td><td>6.71%（信息库，取数日 2026-07-31 / 5.12 元）→ 实时约 1%</td><td><strong>对多次送转的标的不适用，本报告不采用</strong></td></tr><tr><td>PB（LF）</td><td><strong>3.31</strong></td><td>隆平高科 1.93 / 登海种业 2.43 / 国投丰乐 1.63 / 敦煌种业 5.77</td></tr><tr><td>PS(TTM)</td><td>约 1.20（按 2025 年营收）／约 2.29（按 2026 年化营收）</td><td>亏损企业 PS 仅作规模参照</td></tr><tr><td>归母净资产</td><td>16.30 亿元（2026-06-30）</td><td>市值 53.90 亿元 = 净资产的 3.31 倍</td></tr></tbody></table>
+<blockquote><p><strong>重要更正</strong>：信息库档案「近 20 年价格分位数 <strong>6.71%</strong>」系<strong>不复权</strong>口径。本股自 2010 年上市以来经多次送转，总股本由约 0.53 亿股扩至 9.47 亿股（约 18 倍），<strong>不复权口径会系统性低估现价的相对位置</strong>。以<strong>前复权</strong>月度序列复核，现价 5.69 元处 2010 年以来 <strong>58.95%</strong> 分位——<strong>不构成"低位"</strong>。这与 skill §0.3「低位尺子须与资本结构变化同步更新」同源（那里讲的是重整/腾壳，这里是历史送转）。</p></blockquote>
+<details class="fold"><summary>口径说明：为什么本报告不采用信息库的"6.71% 价格分位"</summary><div class="fold-body">
+
+<p><strong>两个口径差在哪</strong>：不复权序列把 2010 年的 36.19 元、2026 年的 5.69 元放在同一坐标里比，但它没有还原这 16 年间<strong>约 18 倍的股本扩张</strong>（多次 10 送 10/10 转 5）。结果是"现价低于历史绝大多数月份"——占比仅约 1%，于是档案里的月度取样落在 6.71%。<strong>这个数字衡量的是"名义股价"，不是"股东实际持仓的相对位置"。</strong></p>
+<p><strong>前复权序列</strong>把历史价格按后续送转与分红统一折算到今天的口径：2010 年 5 月的收盘价折算后是 1.748 元，2021 年 8 月的高点折算后是 16.595 元，2026-09-30 是 5.690 元。<strong>现价高于约 59% 的月份</strong>——按同一条尺子，它处在自身 16 年区间的中位偏上，而不是底部。</p>
+<p><strong>为什么必须用前复权</strong>：Andy 的框架把"低位"当作<strong>安全垫与赔率的基础</strong>。如果误用不复权口径，会把一只"从 16.6 元跌到 5.69 元、但仍在历史中枢附近"的股票读成"20 年最低点"——这是<strong>把"跌了很多"当成了"很便宜"</strong>。本报告选择前复权，并给出两者，读者可自行判断。</p>
+<p><strong>补充证据</strong>：该股在 2024-10（先正达预期）与 2025-11（要约收购）两次分别冲到前复权 13.55 元与 11.68 元；<strong>一个处在历史极低位置的股票不会在两年内两次给出接近翻倍的波段</strong>。这从另一侧面说明，1%–7% 的"不复权分位"并不能代表它的真实位置。</p>
+
+</div></details>
+<p><strong>估值前提（必须显式标注）</strong>：本股为<strong>处罚类 ST、无退市风险</strong>，故<strong>不存在"退市归零"的估值归零情形</strong>；估值的关键不在生死，而在<strong>"主业能否止亏"与"整合能否落地"</strong>两个变量。</p>
+<h3 id="sec15">4.2 投资结论</h3>
+<p><strong>卖出（回避）</strong></p>
+<table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td><strong>结论</strong></td><td><strong>卖出（回避）</strong></td></tr><tr><td><strong>理由链</strong></td><td>① <strong>不在低位</strong>：前复权价格分位 58.95%、PB 3.31 为种业可比最高（隆平 1.93 / 登海 2.43 / 丰乐 1.63）；信息库"6.71%"系不复权口径、不适用（<a href="https://data.eastmoney.com/notices/detail/300087/AN202604241821567511.html" target="_blank" rel="noopener">2025 年报摘要</a>）。&lt;br&gt;② <strong>主业仍在亏损且主动压降约三成营收</strong>：2025 年归母 -2.12 亿元、扣非 -3.07 亿元；2026H1 归母 -0.55 亿元、扣非 -0.82 亿元、经营现金流 -7.03 亿元；订单粮食与青贮饲料（H1 占营收 30.4%、毛利率 -5.20%）<strong>有序压降</strong>（<a href="https://data.eastmoney.com/notices/detail/300087/AN202608281828641878.html" target="_blank" rel="noopener">压降公告</a>）。&lt;br&gt;③ <strong>最近端催化是"公开日历"且零制度红利</strong>：撤销 ST 最早 <strong>2027-07</strong>（<a href="https://data.eastmoney.com/notices/detail/300087/AN202607101826875086.html" target="_blank" rel="noopener">决定书公告</a> + 创业板 9.11）；创业板 ST 涨跌幅本就 20%、摘帽前后同幅。<strong>"跌得多"不等于"便宜"，"摘帽"不等于"要涨"。</strong>&lt;br&gt;④ <strong>核心题材仍是"有人名、无物"</strong>：控股股东《进一步推进解决同业竞争事项的说明》仅"研究论证<strong>股权收购、资产整合</strong>"、<strong>尚未形成具体交易方案或确定性安排、需国资审批</strong>；已有落地的一步（受托管理 100% 股权）<strong>不并表、年费仅 60 万元</strong>（<a href="https://data.eastmoney.com/notices/detail/300087/AN202601141817014216.html" target="_blank" rel="noopener">同业竞争公告</a>）。&lt;br&gt;⑤ <strong>两项未定价的尾部风险</strong>：<strong>证券虚假陈述索赔</strong>（创业板 9.11 第二款要求申请撤销前"充分计提预计负债"，一旦立案将拖慢/影响摘帽）；<strong>内控历史缺陷</strong>（违规担保 1.04 亿元敞口 2026-08 才由部分股东承接清偿）。&lt;br&gt;⑥ <strong>同型样本落下跌组尾部</strong>：55 只"假 ST"2026 年中位 -16.00%，本股 <strong>-51.28% 排倒数第 5</strong>；跌幅远超同业（种业板块 2026 中位约 -4%）。</td></tr><tr><td><strong>触发条件（转买入）</strong></td><td>① 控股股东公告<strong>实质性整合方案</strong>（股权收购/资产注入预案或协议）；② 2026 年年报净资产维持为正、审计标准无保留，且主业扣非亏损显著收窄；③ 索赔事项明确无重大影响。三者至少满足其二。</td></tr><tr><td><strong>失效条件</strong></td><td>① 2026 年报审计意见降级（非标）或归母净资产转负；② 控股股东在 2026 年底前明确"以委托管理方式了结同业竞争、不再推进资产整合"；③ 证券虚假陈述诉讼大规模立案且金额重大；④ 控股股东出现减持或未履行 18 个月锁定。</td></tr><tr><td><strong>参考区间</strong></td><td>买入区间 <strong>4.50–5.00 元</strong>（对应前复权分位回落至约 45%–50%）；目标区间（若整合落地）<strong>8.00–11.00 元</strong>（要约价 11.85 元为上限参照）；止损位 <strong>4.30 元</strong></td></tr><tr><td><strong>时间窗口</strong></td><td>结论有效期 6 个月（至 2027-04 年报窗口）；期间核心观察点＝<strong>2026 年底同业竞争承诺期限前后是否出现实质方案</strong></td></tr><tr><td><strong>仓位建议</strong></td><td><strong>不建仓</strong>；已持有者建议在反弹至 6.0–6.5 元区间择机减持</td></tr><tr><td><strong>最大风险</strong></td><td><strong>控股股东以"委托管理"完成形式履约、2026 年底无进一步动作，则本股将失去唯一想象空间，仅剩"亏损主业 + 2027-07 摘帽"两项无溢价事件。</strong></td></tr></tbody></table>
+<hr>
+<h2 id="chap5">附录 A · 待核实 / 需补充清单</h2>
+<p><strong>结论：本报告的关键数字均已回公告原文核实，仅以下 3 项为公开渠道无法确证、需持续跟踪。</strong></p>
+<table><thead><tr><th>#</th><th>待核实项</th><th>现有口径</th><th>说明</th></tr></thead><tbody><tr><td>1</td><td>同业竞争承诺的<strong>确切到期日</strong></td><td>承诺函原文为"自前次权益变动发生之日起五年内"；市场与公司互动口径指向 <strong>2026 年底</strong>，但公司<strong>未在公告中确认具体日期</strong></td><td>前次权益变动公告日为 2021-01-01 与 2021-12-10 两次，起算点存疑</td></tr><tr><td>2</td><td>《行政处罚决定书》的<strong>作出日期</strong>（决定书签发日）</td><td>公司 2026-07-09 <strong>收到</strong>、2026-07-11 公告</td><td>摘帽 12 个月从"作出日"起算，若作出日早于收到日，最早可申请日相应提前</td></tr><tr><td>3</td><td>证券虚假陈述<strong>索赔规模</strong></td><td>公司称"截至目前未收到法院立案通知或诉讼材料"</td><td>无法预判</td></tr></tbody></table>
+<h2 id="chap6">附录 B · 关键信源链接</h2>
+<p><strong>结论：以下为一手信源清单（公告），全部为上市公司法定披露文件。</strong></p>
+<table><thead><tr><th>#</th><th>文件</th><th>发布日</th><th>原文</th></tr></thead><tbody><tr><td>1</td><td>关于收到中国证券监督管理委员会立案告知书的公告</td><td>2026-01-30</td><td><a href="https://data.eastmoney.com/notices/detail/300087/AN202601301818599446.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>2</td><td>关于前期会计差错更正及追溯调整的公告</td><td>2026-01-30</td><td><a href="https://data.eastmoney.com/notices/detail/300087/AN202601301818599444.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>3</td><td>关于控股股东履行承诺解决种子业务同业竞争问题暨关联交易的公告</td><td>2026-01-15</td><td><a href="https://data.eastmoney.com/notices/detail/300087/AN202601141817014216.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>4</td><td>关于中国种子集团有限公司要约收购公司股份完成过户的公告</td><td>2026-01-09</td><td><a href="https://data.eastmoney.com/notices/detail/300087/AN202601081816853651.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>5</td><td>关于中国种子集团有限公司要约收购结果暨股票复牌的公告</td><td>2026-01-09</td><td><a href="https://data.eastmoney.com/notices/detail/300087/AN202601081816853652.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>6</td><td>安徽荃银高科种业股份有限公司要约收购报告书</td><td>2025-12-03</td><td><a href="https://data.eastmoney.com/notices/detail/300087/AN202512021792583118.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>7</td><td>2025 年年度报告摘要</td><td>2026-04-25</td><td><a href="https://data.eastmoney.com/notices/detail/300087/AN202604241821567511.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>8</td><td>关于累计诉讼、仲裁事项的公告</td><td>2026-06-02</td><td><a href="https://data.eastmoney.com/notices/detail/300087/AN202606021823161634.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>9</td><td>关于公司募集资金账户部分资金被冻结的公告</td><td>2026-06-02</td><td><a href="https://data.eastmoney.com/notices/detail/300087/AN202606021823161622.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>10</td><td>关于收到《行政处罚事先告知书》的公告</td><td>2026-06-27</td><td><a href="https://data.eastmoney.com/notices/detail/300087/AN202606261824873894.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>11</td><td>关于公司股票被实施其他风险警示暨股票停复牌的提示性公告</td><td>2026-06-27</td><td><a href="https://data.eastmoney.com/notices/detail/300087/AN202606261824873895.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>12</td><td>关于收到《行政处罚决定书》的公告</td><td>2026-07-11</td><td><a href="https://data.eastmoney.com/notices/detail/300087/AN202607101826875086.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>13</td><td>2026 年半年度报告</td><td>2026-08-29</td><td><a href="https://data.eastmoney.com/notices/detail/300087/AN202608281828641871.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>14</td><td>关于公司涉及违规担保已解决的公告</td><td>2026-08-29</td><td><a href="https://data.eastmoney.com/notices/detail/300087/AN202608281828641877.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>15</td><td>关于聚焦种业主业优化业务结构的公告</td><td>2026-08-29</td><td><a href="https://data.eastmoney.com/notices/detail/300087/AN202608281828641878.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>16</td><td>关于调整公司组织架构的公告</td><td>2026-08-29</td><td><a href="https://data.eastmoney.com/notices/detail/300087/AN202608281828641872.html" target="_blank" rel="noopener">原文</a></td></tr></tbody></table>
+<h2 id="chap7">附录 C · 逻辑漏洞与反方观点（5 问速版）</h2>
+<p><strong>结论：本报告的"卖出"结论在 5 个自问下均能站住；但第 3 问（成本锚倒挂）是本结论最大的反方压力点，需读者自行权衡。</strong></p>
+<table><thead><tr><th>#</th><th>问题</th><th>本报告的回答</th></tr></thead><tbody><tr><td>①</td><td>"低位"怎么算出来的？</td><td>用<strong>前复权</strong>月度序列算 58.95% 分位，<strong>不是低位</strong>；信息库 6.71% 系不复权口径，对多次送转标的不适用。<strong>若读者采用不复权口径，会得出相反结论——这是本报告唯一需要读者自行判断的分歧点。</strong></td></tr><tr><td>②</td><td>签约/中标 ≠ 收入？</td><td>本股无大额框架/中标类叙事；唯一"整合"叙事为<strong>研究论证阶段、无方案</strong>，本报告未计入估值。</td></tr><tr><td>③</td><td>反方最强的点是什么？</td><td><strong>成本锚倒挂</strong>：控股股东 11.85 元/股要约收购（22.45 亿元）、现价 5.69 元＝<strong>0.48 倍</strong>，国资浮亏约 52%；若国资以"市值管理/避免国有资产流失"为动因推动整合或增持，本股存在<strong>超出本报告假设的上行风险</strong>。<strong>公司明确"未收到大股东增持、回购安排"，故本报告未将此计入基准情景。</strong></td></tr><tr><td>④</td><td>引用的时间点是否已过期？</td><td>关键日期均已核到最新：决定书 2026-07-09、半年报 2026-08-29、行情 2026-09-30、互动易最新 2026-09-18。</td></tr><tr><td>⑤</td><td>数据来源是什么级别？</td><td>一手公告（巨潮/东财公告库）为唯一事实依据；行情与分位为公开源（腾讯/新浪）并已注明口径；财务序列使用东方财富 F10【异源】并已标注。</td></tr></tbody></table>
+<h2 id="chap8">附：本报告的判断不成立时要看什么</h2>
+<ul><li><strong>看整合</strong>：2026 年底前后，控股股东是否公告<strong>股权收购/资产整合</strong>的具体方案（预案或协议）——这是唯一可能推翻"卖出"的单一事件。</li><li><strong>看主业</strong>：2026 年年报（2027-04）归母净资产能否维持正、扣非亏损能否显著收窄、订单粮食业务压降后营收是否止跌。</li><li><strong>看索赔</strong>：是否出现证券虚假陈述责任纠纷的法院立案公告。</li></ul>
+<hr>
+<h2 id="chap9">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-05</td><td>首次生成；基准日 2026-10-05、行情截至 2026-09-30；数据截至 2026 年半年报。结论：卖出（回避）。</td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
