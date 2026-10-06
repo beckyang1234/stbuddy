@@ -11,9 +11,9 @@
   }
   *{box-sizing:border-box}
   body{margin:0;font-family:'Microsoft YaHei',-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 20px 60px}
+  .wrap{max-width:1400px;margin:0 auto;padding:0 20px 60px}
   header{background:linear-gradient(135deg,#12283b 0%,#1a5276 60%,#22608a 100%);color:#fff;padding:44px 20px 60px;margin-bottom:-30px}
-  .head-inner{max-width:1080px;margin:0 auto}
+  .head-inner{max-width:1400px;margin:0 auto}
   .brand{font-size:30px;font-weight:800;letter-spacing:1px}
   .brand .dot{color:#e67e22}
   .sub{margin-top:8px;font-size:14.5px;color:#cfe0ee}
@@ -59,22 +59,35 @@
   .bd.buy{background:#fdecea;color:#c0392b}
   .bd.sell{background:#e8f5ee;color:#2f855a}
   .bd.path{background:#eef2f7;color:#4a6076;font-weight:500}
+  .chip.buy.active{background:#c0392b;border-color:#c0392b}
+  .chip.sell.active{background:#2f855a;border-color:#2f855a}
+  .chip.green.active{background:#2f855a;border-color:#2f855a}
+  .badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+  .bd{font-size:10.5px;padding:2px 6px;border-radius:5px;font-weight:700;white-space:nowrap}
+  .bd.buy{background:#fdecea;color:#c0392b}
+  .bd.sell{background:#e8f5ee;color:#2f855a}
+  .bd.path{background:#eef2f7;color:#4a6076;font-weight:500}
   .label{font-size:12.5px;color:var(--muted);margin:16px 2px 8px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:14px}
-  .card{display:block;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 16px 14px;text-decoration:none;color:inherit;transition:.16s;position:relative;overflow:hidden}
+  .grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:12px;margin-top:14px}
+  @media(max-width:1180px){.grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
+  @media(max-width:900px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  @media(max-width:640px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .card{display:block;background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 12px 10px;text-decoration:none;color:inherit;transition:.16s;position:relative;overflow:hidden}
   .card:hover{border-color:#b8c4d0;box-shadow:0 8px 24px rgba(20,40,60,.10);transform:translateY(-2px)}
   .card .bar{position:absolute;left:0;top:0;width:4px;height:100%}
   .bar.st{background:var(--orange)}
   .bar.xst{background:var(--red)}
-  .tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:6px}
+  .bar.unst{background:#2f855a}
+  .tag{display:inline-block;font-size:10.5px;font-weight:700;padding:1px 6px;border-radius:5px}
+  .tag.unst{background:#e8f5ee;color:#2f855a}
   .tag.xst{background:#fdedec;color:var(--red)}
   .tag.st{background:#fdf3e7;color:#b96b0a}
-  .name{font-size:19px;font-weight:700;margin-top:8px}
-  .code{font-size:13px;color:var(--muted);margin-top:2px;font-family:Consolas,Menlo,monospace}
-  .meta{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12.5px;color:#98a2ae}
-  .exch{background:#f1f4f7;padding:1px 8px;border-radius:6px}
+  .name{font-size:15px;font-weight:700;margin-top:6px;line-height:1.25;overflow-wrap:anywhere}
+  .code{font-size:11px;color:var(--muted);margin-top:2px;font-family:Consolas,Menlo,monospace}
+  .meta{display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;margin-top:8px;font-size:10.5px;color:#98a2ae}
+  .exch{background:#f1f4f7;padding:1px 6px;border-radius:5px}
   .empty{text-align:center;color:var(--muted);padding:40px 0;font-size:14.5px}
-  footer{max-width:1080px;margin:40px auto 0;padding:0 20px;color:#9aa4b0;font-size:12.5px;text-align:center}
+  footer{max-width:1400px;margin:40px auto 0;padding:0 20px;color:#9aa4b0;font-size:12.5px;text-align:center}
 </style>
 </head>
 <body><script id="sbgatescript">
@@ -131,6 +144,7 @@
       <div class="chip active" data-val="all">全部</div>
       <div class="chip red" data-val="xst">＊ST（退市风险）</div>
       <div class="chip orange" data-val="st">ST（其他风险）</div>
+      <div class="chip green" data-val="unst">已摘帽</div>
     </div>
     <div class="label">上市市场</div>
     <div class="chips" id="exchChips">
@@ -165,210 +179,214 @@
 
 <script>
 const STOCKS = [
-  {code:"000010", name:"美丽", prefix:"", exch:"深", date:"2026-10-05", py:"meili"},
-  {code:"000056", name:"皇庭", prefix:"", exch:"深", date:"2026-10-05", py:"huangting"},
-  {code:"000078", name:"海王", prefix:"", exch:"深", date:"2026-10-05", py:"haiwang"},
-  {code:"000488", name:"晨鸣", prefix:"", exch:"深", date:"2026-10-05", py:"chenming"},
-  {code:"000609", name:"中迪", prefix:"", exch:"深", date:"2026-10-05", py:"zhongdi"},
-  {code:"000610", name:"西旅", prefix:"", exch:"深", date:"2026-10-05", py:"xilv"},
-  {code:"000615", name:"美谷", prefix:"", exch:"深", date:"2026-10-05", py:"meigu"},
-  {code:"000632", name:"三木", prefix:"", exch:"深", date:"2026-10-05", py:"sanmu"},
-  {code:"000639", name:"西王", prefix:"", exch:"深", date:"2026-10-05", py:"xiwang"},
-  {code:"000669", name:"金鸿", prefix:"", exch:"深", date:"2026-10-05", py:"jinhong"},
-  {code:"000677", name:"海龙", prefix:"", exch:"深", date:"2026-10-05", py:"hailong"},
-  {code:"000698", name:"沈化", prefix:"", exch:"深", date:"2026-10-05", py:"shenhua"},
-  {code:"000752", name:"西发", prefix:"", exch:"深", date:"2026-10-05", py:"xifa"},
-  {code:"000793", name:"华闻", prefix:"", exch:"深", date:"2026-10-05", py:"huawen"},
-  {code:"000821", name:"京机", prefix:"", exch:"深", date:"2026-10-05", py:"jingji"},
-  {code:"000826", name:"启环", prefix:"", exch:"深", date:"2026-10-04", py:"sqh"},
-  {code:"000838", name:"发展", prefix:"", exch:"深", date:"2026-10-05", py:"fazhan"},
-  {code:"000903", name:"云动", prefix:"", exch:"深", date:"2026-10-05", py:"yundong"},
-  {code:"000909", name:"数源", prefix:"", exch:"深", date:"2026-10-05", py:"shuyuan"},
-  {code:"000911", name:"广糖", prefix:"", exch:"深", date:"2026-10-05", py:"guangtang"},
-  {code:"002024", name:"易购", prefix:"", exch:"深", date:"2026-10-05", py:"yigou"},
-  {code:"002055", name:"得润", prefix:"", exch:"深", date:"2026-10-04", py:"derun"},
-  {code:"002082", name:"万邦", prefix:"", exch:"深", date:"2026-09-30", py:"wanbang"},
-  {code:"002102", name:"能特", prefix:"", exch:"深", date:"2026-10-05", py:"nengte"},
-  {code:"002109", name:"兴化", prefix:"", exch:"深", date:"2026-10-06", py:"xinghua"},
-  {code:"002122", name:"汇洲", prefix:"", exch:"深", date:"2026-10-04", py:"huizhou"},
-  {code:"002168", name:"惠程", prefix:"", exch:"深", date:"2026-10-05", py:"huicheng"},
-  {code:"002175", name:"东智", prefix:"", exch:"深", date:"2026-10-04", py:"dongzhi"},
-  {code:"002193", name:"如意", prefix:"", exch:"深", date:"2026-10-05", py:"ruyi"},
-  {code:"002198", name:"嘉应", prefix:"", exch:"深", date:"2026-10-05", py:"jiaying"},
-  {code:"002207", name:"准油", prefix:"", exch:"深", date:"2026-10-05", py:"zhunyou"},
-  {code:"002211", name:"宏达", prefix:"", exch:"深", date:"2026-10-05", py:"hongda"},
-  {code:"002217", name:"合力泰", prefix:"", exch:"深", date:"2026-10-06", py:"helitai"},
-  {code:"002227", name:"特迅", prefix:"", exch:"深", date:"2026-10-05", py:"texun"},
-  {code:"002305", name:"南置", prefix:"", exch:"深", date:"2026-10-05", py:"nanzhi"},
-  {code:"002306", name:"云网", prefix:"", exch:"深", date:"2026-10-06", py:"yunwang"},
-  {code:"002323", name:"雅博", prefix:"", exch:"深", date:"2026-10-05", py:"yabo"},
-  {code:"002360", name:"同德", prefix:"", exch:"深", date:"2026-10-06", py:"tongde"},
-  {code:"002424", name:"百灵", prefix:"", exch:"深", date:"2026-10-06", py:"bailing"},
-  {code:"002431", name:"棕榈", prefix:"", exch:"深", date:"2026-10-05", py:"zonglv"},
-  {code:"002485", name:"雪发", prefix:"", exch:"深", date:"2026-10-05", py:"xuefa"},
-  {code:"002501", name:"利源", prefix:"", exch:"深", date:"2026-10-04", py:"liyuan"},
-  {code:"002512", name:"达华", prefix:"", exch:"深", date:"2026-10-01", py:"dahua"},
-  {code:"002514", name:"宝馨", prefix:"", exch:"深", date:"2026-10-05", py:"baoxin"},
-  {code:"002528", name:"英飞", prefix:"", exch:"深", date:"2026-10-05", py:"yingfei"},
-  {code:"002538", name:"司特", prefix:"", exch:"深", date:"2026-10-05", py:"site"},
-  {code:"002542", name:"中岩", prefix:"", exch:"深", date:"2026-10-05", py:"zhongyan"},
-  {code:"002547", name:"春兴", prefix:"", exch:"深", date:"2026-10-05", py:"chunxing"},
-  {code:"002569", name:"步森", prefix:"", exch:"深", date:"2026-10-05", py:"busen"},
-  {code:"002581", name:"未名", prefix:"", exch:"深", date:"2026-10-05", py:"weiming"},
-  {code:"002592", name:"八菱", prefix:"", exch:"深", date:"2026-10-01", py:"baling"},
-  {code:"002598", name:"章鼓", prefix:"", exch:"深", date:"2026-10-05", py:"zhanggu"},
-  {code:"002620", name:"瑞和", prefix:"", exch:"深", date:"2026-10-05", py:"ruihe"},
-  {code:"002630", name:"华西", prefix:"", exch:"深", date:"2026-10-05", py:"huaxi"},
-  {code:"002634", name:"棒杰", prefix:"", exch:"深", date:"2026-10-05", py:"bangjie"},
-  {code:"002650", name:"加加", prefix:"", exch:"深", date:"2026-10-05", py:"jiajia"},
-  {code:"002667", name:"威领", prefix:"", exch:"深", date:"2026-10-05", py:"weiling"},
-  {code:"002689", name:"远智", prefix:"", exch:"深", date:"2026-10-05", py:"yuanzhi"},
-  {code:"002691", name:"冀凯", prefix:"", exch:"深", date:"2026-10-05", py:"jikai"},
-  {code:"002694", name:"顾地", prefix:"", exch:"深", date:"2026-10-05", py:"gudi"},
-  {code:"002717", name:"岭南", prefix:"", exch:"深", date:"2026-10-05", py:"lingnan"},
-  {code:"002719", name:"麦趣", prefix:"", exch:"深", date:"2026-10-05", py:"maiqu"},
-  {code:"002726", name:"龙大", prefix:"", exch:"深", date:"2026-10-05", py:"longda"},
-  {code:"002731", name:"萃华", prefix:"", exch:"深", date:"2026-10-06", py:"cuihua"},
-  {code:"002743", name:"富煌", prefix:"", exch:"深", date:"2026-10-04", py:"fuhuang"},
-  {code:"002759", name:"天际", prefix:"", exch:"深", date:"2026-10-05", py:"tianji"},
-  {code:"002789", name:"建艺", prefix:"", exch:"深", date:"2026-10-05", py:"jianyi"},
-  {code:"002816", name:"和科", prefix:"", exch:"深", date:"2026-10-05", py:"heke"},
-  {code:"002822", name:"中装", prefix:"", exch:"深", date:"2026-10-05", py:"zhongzhuang"},
-  {code:"002856", name:"美芝", prefix:"", exch:"深", date:"2026-10-05", py:"meizhi"},
-  {code:"002872", name:"天圣", prefix:"", exch:"深", date:"2026-10-05", py:"tiansheng"},
-  {code:"002883", name:"中设", prefix:"", exch:"深", date:"2026-10-05", py:"zhongshe"},
-  {code:"002932", name:"明德", prefix:"", exch:"深", date:"2026-10-05", py:"mingde"},
-  {code:"002977", name:"天箭", prefix:"", exch:"深", date:"2026-10-05", py:"tianjian"},
-  {code:"300010", name:"豆神", prefix:"", exch:"深", date:"2026-10-05", py:"doushen"},
-  {code:"300020", name:"银江", prefix:"", exch:"深", date:"2026-10-05", py:"yinjiang"},
-  {code:"300027", name:"华谊", prefix:"", exch:"深", date:"2026-10-05", py:"huayi"},
-  {code:"300044", name:"赛为", prefix:"", exch:"深", date:"2026-10-05", py:"saiwei"},
-  {code:"300068", name:"南都", prefix:"", exch:"深", date:"2026-10-06", py:"nandou"},
-  {code:"300076", name:"宁视", prefix:"", exch:"深", date:"2026-10-05", py:"ningshi"},
-  {code:"300081", name:"恒信", prefix:"", exch:"深", date:"2026-10-05", py:"hengxin"},
-  {code:"300087", name:"荃银", prefix:"", exch:"深", date:"2026-10-05", py:"quanyin"},
-  {code:"300091", name:"金灵", prefix:"", exch:"深", date:"2026-10-05", py:"jinling"},
+  {code:"000010", name:"美丽", prefix:"*ST", exch:"深", date:"2026-10-05", py:"meili"},
+  {code:"000016", name:"康佳A", prefix:"*ST", exch:"深", date:"2026-10-06", py:"kangjiaa"},
+  {code:"000056", name:"皇庭", prefix:"*ST", exch:"深", date:"2026-10-05", py:"huangting"},
+  {code:"000078", name:"海王", prefix:"ST", exch:"深", date:"2026-10-05", py:"haiwang"},
+  {code:"000488", name:"晨鸣", prefix:"ST", exch:"深", date:"2026-10-05", py:"chenming"},
+  {code:"000609", name:"中迪", prefix:"*ST", exch:"深", date:"2026-10-05", py:"zhongdi"},
+  {code:"000610", name:"西旅", prefix:"*ST", exch:"深", date:"2026-10-05", py:"xilv"},
+  {code:"000615", name:"美谷", prefix:"*ST", exch:"深", date:"2026-10-05", py:"meigu"},
+  {code:"000632", name:"三木", prefix:"ST", exch:"深", date:"2026-10-05", py:"sanmu"},
+  {code:"000639", name:"西王", prefix:"ST", exch:"深", date:"2026-10-05", py:"xiwang"},
+  {code:"000669", name:"金鸿", prefix:"ST", exch:"深", date:"2026-10-05", py:"jinhong"},
+  {code:"000677", name:"海龙", prefix:"ST", exch:"深", date:"2026-10-05", py:"hailong"},
+  {code:"000698", name:"沈化", prefix:"ST", exch:"深", date:"2026-10-05", py:"shenhua"},
+  {code:"000752", name:"西发", prefix:"*ST", exch:"深", date:"2026-10-05", py:"xifa"},
+  {code:"000793", name:"华闻", prefix:"ST", exch:"深", date:"2026-10-05", py:"huawen"},
+  {code:"000821", name:"京机", prefix:"ST", exch:"深", date:"2026-10-05", py:"jingji"},
+  {code:"000826", name:"启环", prefix:"*ST", exch:"深", date:"2026-10-04", py:"sqh"},
+  {code:"000838", name:"发展", prefix:"*ST", exch:"深", date:"2026-10-05", py:"fazhan"},
+  {code:"000903", name:"云动", prefix:"ST", exch:"深", date:"2026-10-05", py:"yundong"},
+  {code:"000909", name:"数源", prefix:"*ST", exch:"深", date:"2026-10-05", py:"shuyuan"},
+  {code:"000911", name:"广糖", prefix:"*ST", exch:"深", date:"2026-10-05", py:"guangtang"},
+  {code:"002024", name:"易购", prefix:"ST", exch:"深", date:"2026-10-05", py:"yigou"},
+  {code:"002055", name:"得润", prefix:"ST", exch:"深", date:"2026-10-04", py:"derun"},
+  {code:"002082", name:"万邦", prefix:"ST", exch:"深", date:"2026-09-30", py:"wanbang"},
+  {code:"002102", name:"能特", prefix:"ST", exch:"深", date:"2026-10-05", py:"nengte"},
+  {code:"002109", name:"兴化", prefix:"ST", exch:"深", date:"2026-10-06", py:"xinghua"},
+  {code:"002122", name:"汇洲", prefix:"ST", exch:"深", date:"2026-10-04", py:"huizhou"},
+  {code:"002168", name:"惠程", prefix:"ST", exch:"深", date:"2026-10-05", py:"huicheng"},
+  {code:"002175", name:"东智", prefix:"*ST", exch:"深", date:"2026-10-04", py:"dongzhi"},
+  {code:"002193", name:"如意", prefix:"ST", exch:"深", date:"2026-10-05", py:"ruyi"},
+  {code:"002198", name:"嘉应", prefix:"ST", exch:"深", date:"2026-10-05", py:"jiaying"},
+  {code:"002207", name:"准油", prefix:"*ST", exch:"深", date:"2026-10-05", py:"zhunyou"},
+  {code:"002211", name:"宏达", prefix:"ST", exch:"深", date:"2026-10-05", py:"hongda"},
+  {code:"002217", name:"合力泰", prefix:"ST", exch:"深", date:"2026-10-06", py:"helitai"},
+  {code:"002227", name:"特迅", prefix:"*ST", exch:"深", date:"2026-10-05", py:"texun"},
+  {code:"002305", name:"南置", prefix:"*ST", exch:"深", date:"2026-10-05", py:"nanzhi"},
+  {code:"002306", name:"云网", prefix:"ST", exch:"深", date:"2026-10-06", py:"yunwang"},
+  {code:"002323", name:"雅博", prefix:"*ST", exch:"深", date:"2026-10-05", py:"yabo"},
+  {code:"002360", name:"同德", prefix:"ST", exch:"深", date:"2026-10-06", py:"tongde"},
+  {code:"002424", name:"百灵", prefix:"ST", exch:"深", date:"2026-10-06", py:"bailing"},
+  {code:"002431", name:"棕榈", prefix:"ST", exch:"深", date:"2026-10-05", py:"zonglv"},
+  {code:"002485", name:"雪发", prefix:"ST", exch:"深", date:"2026-10-05", py:"xuefa"},
+  {code:"002501", name:"利源", prefix:"*ST", exch:"深", date:"2026-10-04", py:"liyuan"},
+  {code:"002512", name:"达华", prefix:"ST", exch:"深", date:"2026-10-01", py:"dahua"},
+  {code:"002514", name:"宝馨", prefix:"*ST", exch:"深", date:"2026-10-05", py:"baoxin"},
+  {code:"002528", name:"英飞", prefix:"*ST", exch:"深", date:"2026-10-05", py:"yingfei"},
+  {code:"002538", name:"司特", prefix:"ST", exch:"深", date:"2026-10-05", py:"site"},
+  {code:"002542", name:"中岩", prefix:"*ST", exch:"深", date:"2026-10-05", py:"zhongyan"},
+  {code:"002547", name:"春兴", prefix:"*ST", exch:"深", date:"2026-10-05", py:"chunxing"},
+  {code:"002569", name:"步森", prefix:"*ST", exch:"深", date:"2026-10-05", py:"busen"},
+  {code:"002581", name:"未名", prefix:"*ST", exch:"深", date:"2026-10-05", py:"weiming"},
+  {code:"002592", name:"八菱", prefix:"ST", exch:"深", date:"2026-10-01", py:"baling"},
+  {code:"002598", name:"章鼓", prefix:"ST", exch:"深", date:"2026-10-05", py:"zhanggu"},
+  {code:"002620", name:"瑞和", prefix:"*ST", exch:"深", date:"2026-10-05", py:"ruihe"},
+  {code:"002630", name:"华西", prefix:"*ST", exch:"深", date:"2026-10-05", py:"huaxi"},
+  {code:"002634", name:"棒杰", prefix:"*ST", exch:"深", date:"2026-10-05", py:"bangjie"},
+  {code:"002650", name:"加加", prefix:"ST", exch:"深", date:"2026-10-05", py:"jiajia"},
+  {code:"002667", name:"威领", prefix:"*ST", exch:"深", date:"2026-10-05", py:"weiling"},
+  {code:"002689", name:"远智", prefix:"ST", exch:"深", date:"2026-10-05", py:"yuanzhi"},
+  {code:"002691", name:"冀凯", prefix:"*ST", exch:"深", date:"2026-10-05", py:"jikai"},
+  {code:"002694", name:"顾地", prefix:"*ST", exch:"深", date:"2026-10-05", py:"gudi"},
+  {code:"002717", name:"岭南", prefix:"*ST", exch:"深", date:"2026-10-05", py:"lingnan"},
+  {code:"002719", name:"麦趣", prefix:"ST", exch:"深", date:"2026-10-05", py:"maiqu"},
+  {code:"002726", name:"龙大", prefix:"ST", exch:"深", date:"2026-10-05", py:"longda"},
+  {code:"002731", name:"萃华", prefix:"*ST", exch:"深", date:"2026-10-06", py:"cuihua"},
+  {code:"002743", name:"富煌", prefix:"ST", exch:"深", date:"2026-10-04", py:"fuhuang"},
+  {code:"002759", name:"天际", prefix:"ST", exch:"深", date:"2026-10-05", py:"tianji"},
+  {code:"002789", name:"建艺", prefix:"*ST", exch:"深", date:"2026-10-05", py:"jianyi"},
+  {code:"002816", name:"和科", prefix:"*ST", exch:"深", date:"2026-10-05", py:"heke"},
+  {code:"002822", name:"中装", prefix:"ST", exch:"深", date:"2026-10-05", py:"zhongzhuang"},
+  {code:"002856", name:"美芝", prefix:"*ST", exch:"深", date:"2026-10-05", py:"meizhi"},
+  {code:"002872", name:"天圣", prefix:"ST", exch:"深", date:"2026-10-05", py:"tiansheng"},
+  {code:"002883", name:"中设", prefix:"*ST", exch:"深", date:"2026-10-05", py:"zhongshe"},
+  {code:"002932", name:"明德", prefix:"*ST", exch:"深", date:"2026-10-05", py:"mingde"},
+  {code:"002977", name:"天箭", prefix:"*ST", exch:"深", date:"2026-10-05", py:"tianjian"},
+  {code:"300010", name:"豆神", prefix:"ST", exch:"深", date:"2026-10-05", py:"doushen"},
+  {code:"300020", name:"银江", prefix:"ST", exch:"深", date:"2026-10-05", py:"yinjiang"},
+  {code:"300027", name:"华谊", prefix:"ST", exch:"深", date:"2026-10-05", py:"huayi"},
+  {code:"300044", name:"赛为", prefix:"*ST", exch:"深", date:"2026-10-05", py:"saiwei"},
+  {code:"300068", name:"南都", prefix:"ST", exch:"深", date:"2026-10-06", py:"nandou"},
+  {code:"300076", name:"宁视", prefix:"*ST", exch:"深", date:"2026-10-05", py:"ningshi"},
+  {code:"300081", name:"恒信", prefix:"ST", exch:"深", date:"2026-10-05", py:"hengxin"},
+  {code:"300087", name:"荃银", prefix:"ST", exch:"深", date:"2026-10-05", py:"quanyin"},
+  {code:"300091", name:"金灵", prefix:"*ST", exch:"深", date:"2026-10-05", py:"jinling"},
   {code:"300096", name:"易联众", prefix:"", exch:"深", date:"2026-10-04", py:"yilianzhong"},
-  {code:"300123", name:"亚光", prefix:"", exch:"深", date:"2026-10-05", py:"yaguang"},
+  {code:"300123", name:"亚光", prefix:"ST", exch:"深", date:"2026-10-05", py:"yaguang"},
   {code:"300125", name:"聆达股份", prefix:"", exch:"深", date:"2026-10-04", py:"lingda"},
-  {code:"300147", name:"香雪", prefix:"", exch:"深", date:"2026-10-06", py:"xiangxue"},
-  {code:"300152", name:"动力", prefix:"", exch:"深", date:"2026-10-05", py:"dongli"},
-  {code:"300173", name:"福能", prefix:"", exch:"深", date:"2026-10-06", py:"funeng"},
-  {code:"300198", name:"纳川", prefix:"", exch:"深", date:"2026-10-05", py:"nachuan"},
-  {code:"300205", name:"天喻", prefix:"", exch:"深", date:"2026-10-06", py:"tianyu"},
-  {code:"300212", name:"易录", prefix:"", exch:"深", date:"2026-10-04", py:"yilu"},
-  {code:"300237", name:"美晨", prefix:"", exch:"深", date:"2026-10-06", py:"meichen"},
-  {code:"300245", name:"天玑", prefix:"", exch:"深", date:"2026-10-01", py:"tianji2"},
-  {code:"300290", name:"荣科", prefix:"", exch:"深", date:"2026-10-05", py:"rongke"},
-  {code:"300295", name:"三六五", prefix:"", exch:"深", date:"2026-10-05", py:"sanliuwu"},
-  {code:"300301", name:"长方", prefix:"", exch:"深", date:"2026-10-06", py:"changfang"},
-  {code:"300326", name:"凯利", prefix:"", exch:"深", date:"2026-10-05", py:"kaili"},
-  {code:"300338", name:"开元", prefix:"", exch:"深", date:"2026-10-06", py:"kaiyuan"},
-  {code:"300352", name:"信源", prefix:"", exch:"深", date:"2026-10-01", py:"xinyuan"},
-  {code:"300366", name:"创意", prefix:"", exch:"深", date:"2026-09-30", py:"chuangyi"},
-  {code:"300385", name:"雪浪", prefix:"", exch:"深", date:"2026-10-06", py:"xuelang"},
-  {code:"300396", name:"迪瑞", prefix:"", exch:"深", date:"2026-10-06", py:"dirui"},
-  {code:"300419", name:"浩丰", prefix:"", exch:"深", date:"2026-10-06", py:"haofeng"},
-  {code:"300430", name:"益通", prefix:"", exch:"深", date:"2026-10-06", py:"yitong"},
-  {code:"300460", name:"惠伦", prefix:"", exch:"深", date:"2026-10-06", py:"huilun"},
-  {code:"300462", name:"华铭", prefix:"", exch:"深", date:"2026-10-05", py:"huaming"},
-  {code:"300472", name:"新元", prefix:"", exch:"深", date:"2026-10-04", py:"xinyuan2"},
-  {code:"300477", name:"合纵", prefix:"", exch:"深", date:"2026-10-06", py:"hezong"},
-  {code:"300555", name:"路通", prefix:"", exch:"深", date:"2026-10-04", py:"lutong"},
-  {code:"300594", name:"朗进", prefix:"", exch:"深", date:"2026-10-04", py:"langjin"},
-  {code:"300716", name:"泉为", prefix:"", exch:"深", date:"2026-10-06", py:"quanwei"},
-  {code:"300831", name:"派瑞", prefix:"", exch:"深", date:"2026-10-06", py:"pairui"},
-  {code:"301030", name:"仕净", prefix:"", exch:"深", date:"2026-10-06", py:"shijing"},
-  {code:"301117", name:"佳缘", prefix:"", exch:"深", date:"2026-10-04", py:"jiayuan"},
-  {code:"600053", name:"九鼎", prefix:"", exch:"沪", date:"2026-10-06", py:"jiuding"},
-  {code:"600079", name:"人福", prefix:"", exch:"沪", date:"2026-10-06", py:"renfu"},
-  {code:"600080", name:"金花", prefix:"", exch:"沪", date:"2026-10-06", py:"jinhua"},
-  {code:"600082", name:"海泰", prefix:"", exch:"沪", date:"2026-10-06", py:"haitai"},
-  {code:"600084", name:"尼雅", prefix:"", exch:"沪", date:"2026-10-06", py:"niya"},
-  {code:"600107", name:"尔雅", prefix:"", exch:"沪", date:"2026-10-04", py:"erya"},
-  {code:"600119", name:"长投", prefix:"", exch:"沪", date:"2026-10-06", py:"zhangtou"},
-  {code:"600136", name:"明诚", prefix:"", exch:"沪", date:"2026-10-06", py:"mingcheng"},
-  {code:"600169", name:"太重", prefix:"", exch:"沪", date:"2026-10-06", py:"taizhong"},
-  {code:"600180", name:"瑞茂", prefix:"", exch:"沪", date:"2026-10-06", py:"ruimao"},
-  {code:"600187", name:"国中", prefix:"", exch:"沪", date:"2026-10-06", py:"guozhong"},
-  {code:"600238", name:"椰岛", prefix:"", exch:"沪", date:"2026-10-06", py:"yedao"},
-  {code:"600239", name:"云城", prefix:"", exch:"沪", date:"2026-10-06", py:"yuncheng"},
-  {code:"600243", name:"海华", prefix:"", exch:"沪", date:"2026-10-06", py:"haihua"},
-  {code:"600265", name:"景谷", prefix:"", exch:"沪", date:"2026-10-06", py:"jinggu"},
-  {code:"600289", name:"信通", prefix:"", exch:"沪", date:"2026-10-06", py:"xintong"},
-  {code:"600302", name:"标准", prefix:"", exch:"沪", date:"2026-10-06", py:"biaozhun"},
-  {code:"600337", name:"美克", prefix:"", exch:"沪", date:"2026-10-06", py:"meike"},
-  {code:"600340", name:"华幸", prefix:"", exch:"沪", date:"2026-10-06", py:"huaxing"},
-  {code:"600363", name:"联光", prefix:"", exch:"沪", date:"2026-10-06", py:"lianguang"},
-  {code:"600365", name:"通葡", prefix:"", exch:"沪", date:"2026-10-06", py:"tongpu"},
-  {code:"600370", name:"三房", prefix:"", exch:"沪", date:"2026-10-06", py:"sanfang"},
-  {code:"600381", name:"春天", prefix:"", exch:"沪", date:"2026-10-06", py:"chuntian"},
-  {code:"600423", name:"柳化", prefix:"", exch:"沪", date:"2026-10-06", py:"liuhua"},
-  {code:"600439", name:"瑞贝卡", prefix:"", exch:"沪", date:"2026-10-06", py:"ruibeika"},
-  {code:"600476", name:"湘邮", prefix:"", exch:"沪", date:"2026-10-06", py:"xiangyou"},
-  {code:"600491", name:"龙元", prefix:"", exch:"沪", date:"2026-10-06", py:"longyuan"},
-  {code:"600530", name:"交昂", prefix:"", exch:"沪", date:"2026-10-06", py:"jiaoang"},
-  {code:"600537", name:"亿晶", prefix:"", exch:"沪", date:"2026-10-06", py:"yijing"},
-  {code:"600543", name:"莫高", prefix:"", exch:"沪", date:"2026-10-06", py:"mogao"},
-  {code:"600568", name:"中珠", prefix:"", exch:"沪", date:"2026-10-06", py:"zhongzhu"},
-  {code:"600581", name:"八钢", prefix:"", exch:"沪", date:"2026-10-06", py:"bagang"},
-  {code:"600624", name:"复华", prefix:"", exch:"沪", date:"2026-10-06", py:"fuhua"},
-  {code:"600678", name:"金顶", prefix:"", exch:"沪", date:"2026-10-06", py:"jinding"},
-  {code:"600730", name:"高科", prefix:"", exch:"沪", date:"2026-10-06", py:"gaoke"},
-  {code:"600734", name:"实达", prefix:"", exch:"沪", date:"2026-10-04", py:"shida"},
-  {code:"600735", name:"新华锦", prefix:"", exch:"沪", date:"2026-10-06", py:"xinhuajin"},
-  {code:"600745", name:"闻泰", prefix:"", exch:"沪", date:"2026-10-04", py:"wentai"},
-  {code:"600753", name:"海钦", prefix:"", exch:"沪", date:"2026-10-06", py:"haiqin"},
-  {code:"600759", name:"洲际", prefix:"", exch:"沪", date:"2026-10-06", py:"zhouji"},
-  {code:"600818", name:"中路", prefix:"", exch:"沪", date:"2026-10-06", py:"zhonglu"},
-  {code:"600889", name:"京化", prefix:"", exch:"沪", date:"2026-10-04", py:"jinghua"},
-  {code:"600965", name:"福成", prefix:"", exch:"沪", date:"2026-10-06", py:"fucheng"},
-  {code:"601010", name:"文峰", prefix:"", exch:"沪", date:"2026-10-06", py:"wenfeng"},
-  {code:"601718", name:"际华", prefix:"", exch:"沪", date:"2026-10-06", py:"jihua"},
-  {code:"603008", name:"喜临门", prefix:"", exch:"沪", date:"2026-10-06", py:"xilinmen"},
-  {code:"603021", name:"华鹏", prefix:"", exch:"沪", date:"2026-10-04", py:"huapeng"},
-  {code:"603189", name:"网达", prefix:"", exch:"沪", date:"2026-10-06", py:"wangda"},
-  {code:"603272", name:"联翔", prefix:"", exch:"沪", date:"2026-10-06", py:"lianxiang"},
-  {code:"603359", name:"东珠", prefix:"", exch:"沪", date:"2026-10-06", py:"dongzhu"},
-  {code:"603377", name:"东时", prefix:"", exch:"沪", date:"2026-10-06", py:"dongshi"},
-  {code:"603378", name:"亚士", prefix:"", exch:"沪", date:"2026-10-06", py:"yashi"},
-  {code:"603398", name:"沐邦", prefix:"", exch:"沪", date:"2026-10-06", py:"mubang"},
-  {code:"603429", name:"集友", prefix:"", exch:"沪", date:"2026-10-06", py:"jiyou"},
-  {code:"603517", name:"绝味", prefix:"", exch:"沪", date:"2026-10-06", py:"juewei"},
-  {code:"603557", name:"起步", prefix:"", exch:"沪", date:"2026-10-06", py:"qibu"},
-  {code:"603595", name:"东尼", prefix:"", exch:"沪", date:"2026-10-06", py:"dongni"},
-  {code:"603718", name:"海利", prefix:"", exch:"沪", date:"2026-10-06", py:"haili"},
-  {code:"603729", name:"龙韵", prefix:"", exch:"沪", date:"2026-10-06", py:"longyun"},
-  {code:"603789", name:"星农", prefix:"", exch:"沪", date:"2026-10-06", py:"xingnong"},
-  {code:"603822", name:"嘉澳", prefix:"", exch:"沪", date:"2026-10-06", py:"jiaao"},
-  {code:"603825", name:"华扬", prefix:"", exch:"沪", date:"2026-10-06", py:"huayang"},
-  {code:"603828", name:"利达", prefix:"", exch:"沪", date:"2026-09-30", py:"lida"},
-  {code:"603838", name:"四通", prefix:"", exch:"沪", date:"2026-10-06", py:"sitong"},
-  {code:"603843", name:"正平", prefix:"", exch:"沪", date:"2026-10-06", py:"zhengping"},
-  {code:"603869", name:"智知", prefix:"", exch:"沪", date:"2026-10-06", py:"zhizhi"},
-  {code:"603922", name:"金鸿顺", prefix:"", exch:"沪", date:"2026-10-06", py:"jinhongshun"},
-  {code:"603959", name:"百利", prefix:"", exch:"沪", date:"2026-10-06", py:"baili"},
-  {code:"605199", name:"葫芦娃", prefix:"", exch:"沪", date:"2026-10-06", py:"huluwa"},
-  {code:"605336", name:"帅电", prefix:"", exch:"沪", date:"2026-10-06", py:"shuaidian"},
-  {code:"688033", name:"天宜", prefix:"", exch:"沪", date:"2026-10-06", py:"tianyi"},
-  {code:"688053", name:"思科瑞", prefix:"", exch:"沪", date:"2026-10-06", py:"sikerui"},
-  {code:"688066", name:"航图", prefix:"", exch:"沪", date:"2026-10-06", py:"hangtu"},
-  {code:"688076", name:"诺泰", prefix:"", exch:"沪", date:"2026-10-06", py:"nuotai"},
-  {code:"688089", name:"嘉必优", prefix:"", exch:"沪", date:"2026-10-04", py:"jiabiyou"},
-  {code:"688121", name:"卓然", prefix:"", exch:"沪", date:"2026-10-06", py:"zhuoran"},
-  {code:"688184", name:"帕瓦", prefix:"", exch:"沪", date:"2026-10-06", py:"pawa"},
-  {code:"688189", name:"南新", prefix:"", exch:"沪", date:"2026-10-06", py:"nanxin"},
-  {code:"688201", name:"信安", prefix:"", exch:"沪", date:"2026-10-06", py:"xinan"},
-  {code:"688270", name:"臻镭", prefix:"", exch:"沪", date:"2026-10-04", py:"zhenlei"},
-  {code:"688496", name:"清越", prefix:"", exch:"沪", date:"2026-10-06", py:"qingyue"},
-  {code:"688622", name:"禾信", prefix:"", exch:"沪", date:"2026-10-04", py:"hexin"},
-  {code:"920023", name:"田野", prefix:"", exch:"北", date:"2026-10-06", py:"tianye"},
-  {code:"920090", name:"同辉", prefix:"", exch:"北", date:"2026-10-06", py:"tonghui"},
-  {code:"920575", name:"康乐", prefix:"", exch:"北", date:"2026-10-06", py:"kangle"}
+  {code:"300147", name:"香雪", prefix:"*ST", exch:"深", date:"2026-10-06", py:"xiangxue"},
+  {code:"300152", name:"动力", prefix:"*ST", exch:"深", date:"2026-10-05", py:"dongli"},
+  {code:"300167", name:"迪威迅", prefix:"ST", exch:"深", date:"2026-10-06", py:"diweixun"},
+  {code:"300173", name:"福能", prefix:"ST", exch:"深", date:"2026-10-06", py:"funeng"},
+  {code:"300198", name:"纳川", prefix:"*ST", exch:"深", date:"2026-10-05", py:"nachuan"},
+  {code:"300205", name:"天喻", prefix:"*ST", exch:"深", date:"2026-10-06", py:"tianyu"},
+  {code:"300212", name:"易录", prefix:"*ST", exch:"深", date:"2026-10-04", py:"yilu"},
+  {code:"300237", name:"美晨", prefix:"ST", exch:"深", date:"2026-10-06", py:"meichen"},
+  {code:"300245", name:"天玑", prefix:"ST", exch:"深", date:"2026-10-01", py:"tianji2"},
+  {code:"300290", name:"荣科", prefix:"ST", exch:"深", date:"2026-10-05", py:"rongke"},
+  {code:"300295", name:"三六五", prefix:"*ST", exch:"深", date:"2026-10-05", py:"sanliuwu"},
+  {code:"300301", name:"长方", prefix:"ST", exch:"深", date:"2026-10-06", py:"changfang"},
+  {code:"300326", name:"凯利", prefix:"ST", exch:"深", date:"2026-10-05", py:"kaili"},
+  {code:"300338", name:"开元", prefix:"*ST", exch:"深", date:"2026-10-06", py:"kaiyuan"},
+  {code:"300352", name:"信源", prefix:"ST", exch:"深", date:"2026-10-01", py:"xinyuan"},
+  {code:"300366", name:"创意", prefix:"ST", exch:"深", date:"2026-09-30", py:"chuangyi"},
+  {code:"300385", name:"雪浪", prefix:"ST", exch:"深", date:"2026-10-06", py:"xuelang"},
+  {code:"300396", name:"迪瑞", prefix:"ST", exch:"深", date:"2026-10-06", py:"dirui"},
+  {code:"300419", name:"浩丰", prefix:"ST", exch:"深", date:"2026-10-06", py:"haofeng"},
+  {code:"300430", name:"益通", prefix:"*ST", exch:"深", date:"2026-10-06", py:"yitong"},
+  {code:"300460", name:"惠伦", prefix:"ST", exch:"深", date:"2026-10-06", py:"huilun"},
+  {code:"300462", name:"华铭", prefix:"ST", exch:"深", date:"2026-10-05", py:"huaming"},
+  {code:"300472", name:"新元", prefix:"*ST", exch:"深", date:"2026-10-04", py:"xinyuan2"},
+  {code:"300477", name:"合纵", prefix:"ST", exch:"深", date:"2026-10-06", py:"hezong"},
+  {code:"300555", name:"路通", prefix:"ST", exch:"深", date:"2026-10-04", py:"lutong"},
+  {code:"300594", name:"朗进", prefix:"ST", exch:"深", date:"2026-10-04", py:"langjin"},
+  {code:"300716", name:"泉为", prefix:"*ST", exch:"深", date:"2026-10-06", py:"quanwei"},
+  {code:"300831", name:"派瑞", prefix:"ST", exch:"深", date:"2026-10-06", py:"pairui"},
+  {code:"301030", name:"仕净", prefix:"*ST", exch:"深", date:"2026-10-06", py:"shijing"},
+  {code:"301117", name:"佳缘", prefix:"ST", exch:"深", date:"2026-10-04", py:"jiayuan"},
+  {code:"600053", name:"九鼎", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"jiuding"},
+  {code:"600079", name:"人福", prefix:"ST", exch:"沪", date:"2026-10-06", py:"renfu"},
+  {code:"600080", name:"金花", prefix:"ST", exch:"沪", date:"2026-10-06", py:"jinhua"},
+  {code:"600082", name:"海泰", prefix:"ST", exch:"沪", date:"2026-10-06", py:"haitai"},
+  {code:"600084", name:"尼雅", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"niya"},
+  {code:"600107", name:"尔雅", prefix:"*ST", exch:"沪", date:"2026-10-04", py:"erya"},
+  {code:"600119", name:"长投", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"zhangtou"},
+  {code:"600136", name:"明诚", prefix:"ST", exch:"沪", date:"2026-10-06", py:"mingcheng"},
+  {code:"600169", name:"太重", prefix:"ST", exch:"沪", date:"2026-10-06", py:"taizhong"},
+  {code:"600180", name:"瑞茂", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"ruimao"},
+  {code:"600187", name:"国中", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"guozhong"},
+  {code:"600238", name:"椰岛", prefix:"ST", exch:"沪", date:"2026-10-06", py:"yedao"},
+  {code:"600239", name:"云城", prefix:"ST", exch:"沪", date:"2026-10-06", py:"yuncheng"},
+  {code:"600243", name:"海华", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"haihua"},
+  {code:"600265", name:"景谷", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"jinggu"},
+  {code:"600289", name:"信通", prefix:"ST", exch:"沪", date:"2026-10-06", py:"xintong"},
+  {code:"600302", name:"标准", prefix:"ST", exch:"沪", date:"2026-10-06", py:"biaozhun"},
+  {code:"600337", name:"美克", prefix:"ST", exch:"沪", date:"2026-10-06", py:"meike"},
+  {code:"600340", name:"华幸", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"huaxing"},
+  {code:"600363", name:"联光", prefix:"ST", exch:"沪", date:"2026-10-06", py:"lianguang"},
+  {code:"600365", name:"通葡", prefix:"ST", exch:"沪", date:"2026-10-06", py:"tongpu"},
+  {code:"600370", name:"三房", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"sanfang"},
+  {code:"600381", name:"春天", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"chuntian"},
+  {code:"600423", name:"柳化", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"liuhua"},
+  {code:"600439", name:"瑞贝卡", prefix:"ST", exch:"沪", date:"2026-10-06", py:"ruibeika"},
+  {code:"600476", name:"湘邮", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"xiangyou"},
+  {code:"600491", name:"龙元", prefix:"ST", exch:"沪", date:"2026-10-06", py:"longyuan"},
+  {code:"600530", name:"交昂", prefix:"ST", exch:"沪", date:"2026-10-06", py:"jiaoang"},
+  {code:"600537", name:"亿晶", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"yijing"},
+  {code:"600543", name:"莫高", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"mogao"},
+  {code:"600568", name:"中珠", prefix:"ST", exch:"沪", date:"2026-10-06", py:"zhongzhu"},
+  {code:"600581", name:"八钢", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"bagang"},
+  {code:"600624", name:"复华", prefix:"ST", exch:"沪", date:"2026-10-06", py:"fuhua"},
+  {code:"600678", name:"金顶", prefix:"ST", exch:"沪", date:"2026-10-06", py:"jinding"},
+  {code:"600730", name:"高科", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"gaoke"},
+  {code:"600734", name:"实达", prefix:"*ST", exch:"沪", date:"2026-10-04", py:"shida"},
+  {code:"600735", name:"新华锦", prefix:"ST", exch:"沪", date:"2026-10-06", py:"xinhuajin"},
+  {code:"600745", name:"闻泰", prefix:"*ST", exch:"沪", date:"2026-10-04", py:"wentai"},
+  {code:"600753", name:"海钦", prefix:"ST", exch:"沪", date:"2026-10-06", py:"haiqin"},
+  {code:"600759", name:"洲际", prefix:"ST", exch:"沪", date:"2026-10-06", py:"zhouji"},
+  {code:"600818", name:"中路", prefix:"ST", exch:"沪", date:"2026-10-06", py:"zhonglu"},
+  {code:"600889", name:"京化", prefix:"*ST", exch:"沪", date:"2026-10-04", py:"jinghua"},
+  {code:"600965", name:"福成", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"fucheng"},
+  {code:"601010", name:"文峰", prefix:"ST", exch:"沪", date:"2026-10-06", py:"wenfeng"},
+  {code:"601718", name:"际华", prefix:"ST", exch:"沪", date:"2026-10-06", py:"jihua"},
+  {code:"603008", name:"喜临门", prefix:"ST", exch:"沪", date:"2026-10-06", py:"xilinmen"},
+  {code:"603021", name:"华鹏", prefix:"*ST", exch:"沪", date:"2026-10-04", py:"huapeng"},
+  {code:"603189", name:"网达", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"wangda"},
+  {code:"603272", name:"联翔", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"lianxiang"},
+  {code:"603359", name:"东珠", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"dongzhu"},
+  {code:"603377", name:"东时", prefix:"ST", exch:"沪", date:"2026-10-06", py:"dongshi"},
+  {code:"603378", name:"亚士", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"yashi"},
+  {code:"603398", name:"沐邦", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"mubang"},
+  {code:"603429", name:"集友", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"jiyou"},
+  {code:"603517", name:"绝味", prefix:"ST", exch:"沪", date:"2026-10-06", py:"juewei"},
+  {code:"603557", name:"起步", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"qibu"},
+  {code:"603595", name:"东尼", prefix:"ST", exch:"沪", date:"2026-10-06", py:"dongni"},
+  {code:"603718", name:"海利", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"haili"},
+  {code:"603729", name:"龙韵", prefix:"ST", exch:"沪", date:"2026-10-06", py:"longyun"},
+  {code:"603789", name:"星农", prefix:"ST", exch:"沪", date:"2026-10-06", py:"xingnong"},
+  {code:"603822", name:"嘉澳", prefix:"ST", exch:"沪", date:"2026-10-06", py:"jiaao"},
+  {code:"603825", name:"华扬", prefix:"ST", exch:"沪", date:"2026-10-06", py:"huayang"},
+  {code:"603828", name:"利达", prefix:"*ST", exch:"沪", date:"2026-09-30", py:"lida"},
+  {code:"603838", name:"四通", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"sitong"},
+  {code:"603843", name:"正平", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"zhengping"},
+  {code:"603869", name:"智知", prefix:"ST", exch:"沪", date:"2026-10-06", py:"zhizhi"},
+  {code:"603922", name:"金鸿顺", prefix:"ST", exch:"沪", date:"2026-10-06", py:"jinhongshun"},
+  {code:"603959", name:"百利", prefix:"ST", exch:"沪", date:"2026-10-06", py:"baili"},
+  {code:"605199", name:"葫芦娃", prefix:"ST", exch:"沪", date:"2026-10-06", py:"huluwa"},
+  {code:"605336", name:"帅电", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"shuaidian"},
+  {code:"688022", name:"瀚川", prefix:"ST", exch:"沪", date:"2026-10-06", py:"hanchuan"},
+  {code:"688033", name:"天宜", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"tianyi"},
+  {code:"688053", name:"思科瑞", prefix:"ST", exch:"沪", date:"2026-10-06", py:"sikerui"},
+  {code:"688066", name:"航图", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"hangtu"},
+  {code:"688076", name:"诺泰", prefix:"ST", exch:"沪", date:"2026-10-06", py:"nuotai"},
+  {code:"688089", name:"嘉必优", prefix:"ST", exch:"沪", date:"2026-10-04", py:"jiabiyou"},
+  {code:"688121", name:"卓然", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"zhuoran"},
+  {code:"688184", name:"帕瓦", prefix:"ST", exch:"沪", date:"2026-10-06", py:"pawa"},
+  {code:"688189", name:"南新", prefix:"ST", exch:"沪", date:"2026-10-06", py:"nanxin"},
+  {code:"688201", name:"信安", prefix:"ST", exch:"沪", date:"2026-10-06", py:"xinan"},
+  {code:"688270", name:"臻镭", prefix:"ST", exch:"沪", date:"2026-10-04", py:"zhenlei"},
+  {code:"688496", name:"清越", prefix:"*ST", exch:"沪", date:"2026-10-06", py:"qingyue"},
+  {code:"688622", name:"禾信", prefix:"*ST", exch:"沪", date:"2026-10-04", py:"hexin"},
+  {code:"920023", name:"田野", prefix:"*ST", exch:"北", date:"2026-10-06", py:"tianye"},
+  {code:"920090", name:"同辉", prefix:"*ST", exch:"北", date:"2026-10-06", py:"tonghui"},
+  {code:"920575", name:"康乐", prefix:"*ST", exch:"北", date:"2026-10-06", py:"kangle"}
 ];
 
 const META = {
   "000010":{c:"卖出", p:"重整逻辑"},
+  "000016":{c:"卖出", p:"保壳逻辑"},
   "000056":{c:"卖出", p:"保壳逻辑"},
   "000078":{c:"卖出", p:"处罚ST"},
   "000488":{c:"买入", p:"保壳逻辑"},
@@ -456,6 +474,7 @@ const META = {
   "300125":{c:"卖出", p:"重整逻辑"},
   "300147":{c:"卖出", p:"重整逻辑"},
   "300152":{c:"卖出", p:"处罚ST"},
+  "300167":{c:"卖出", p:"处罚ST"},
   "300173":{c:"卖出", p:"处罚ST"},
   "300198":{c:"卖出", p:"重整逻辑"},
   "300205":{c:"卖出", p:"处罚ST"},
@@ -553,6 +572,7 @@ const META = {
   "603959":{c:"卖出", p:"重整逻辑"},
   "605199":{c:"卖出", p:"处罚ST"},
   "605336":{c:"卖出", p:"保壳逻辑"},
+  "688022":{c:"卖出", p:"处罚ST"},
   "688033":{c:"卖出", p:"重整逻辑"},
   "688053":{c:"卖出", p:"处罚ST"},
   "688066":{c:"卖出", p:"保壳逻辑"},
@@ -583,6 +603,7 @@ function matches(s){
   }
   if(state.cat === "xst" && s.prefix !== "*ST") return false;
   if(state.cat === "st" && s.prefix !== "ST") return false;
+  if(state.cat === "unst" && s.prefix !== "") return false;
   if(state.exch !== "all" && s.exch !== state.exch) return false;
   const m = metaOf(s.code);
   if(state.concl !== "all" && m.c !== state.concl) return false;
@@ -608,28 +629,33 @@ function render(){
   list.forEach(s=>{
     const isXst = s.prefix === "*ST";
     const m = metaOf(s.code);
+    const kind = s.prefix === "" ? "unst" : (isXst ? "xst" : "st");
+    const tag = s.prefix
+      ? '<span class="tag ' + kind + '">' + s.prefix + '</span>'
+      : '<span class="tag unst">已摘帽</span>';
     const a = document.createElement("a");
     a.className = "card";
     a.href = "reports/" + s.code + ".html";
     a.innerHTML =
-      '<div class="bar ' + (isXst?"xst":"st") + '"></div>' +
-      (s.prefix ? '<span class="tag ' + (isXst?"xst":"st") + '">' + s.prefix + '</span>' : '') +
+      '<div class="bar ' + kind + '"></div>' +
+      tag +
       '<div class="name">' + fullName(s) + '</div>' +
       '<div class="code">' + s.code + (s.exch==="深"?".SZ":(s.exch==="沪"?".SH":".BJ")) + '</div>' +
       '<div class="badges">' +
         (m.c ? '<span class="bd ' + (m.c==="买入"?"buy":"sell") + '">' + m.c + '</span>' : '') +
         (m.p ? '<span class="bd path">' + m.p + '</span>' : '') +
       '</div>' +
-      '<div class="meta"><span>更新 ' + s.date + '</span><span class="exch">' + s.exch + '交所</span></div>';
+      '<div class="meta"><span>' + s.date.slice(5) + '</span><span class="exch">' + s.exch + '</span></div>';
     grid.appendChild(a);
   });
 }
 
 function bindChips(containerId, key){
   const cont = document.getElementById(containerId);
+  if(!cont) return;
   cont.addEventListener("click", e=>{
     const chip = e.target.closest(".chip");
-    if(!chip) return;
+    if(!chip || !chip.dataset.val) return;
     state[key] = chip.dataset.val;
     Array.from(cont.children).forEach(c=>c.classList.remove("active"));
     chip.classList.add("active");
