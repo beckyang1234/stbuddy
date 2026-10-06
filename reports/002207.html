@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>＊ST准油（002207.SZ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>11 章 · 15 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断</a><a class="sblv3" href="#sec0">1.1 基本盘与股权：一个"净资产已被消耗干净"的国资小壳</a><a class="sblv3" href="#sec1">1.2 控股权沿革与股东阵容：城投"18% 持股 + 12% 受托表决权"的控制权是脆的</a><a class="sblv3" href="#sec2">1.3 运作特征与进度看板：换的是"资本运作型"班子，但动作只到"内部整编"</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、ST 风险诊断</a><a class="sblv3" href="#sec3">2.1 戴帽原因：单一财务类红线，审计意见干净</a><a class="sblv3" href="#sec4">2.2 四类退市红线逐条对照：只踩一条，但"净资产"这条自己会长大</a><a class="sblv3" href="#sec5">2.3 摘帽展望：2027-04 是"零容错"关卡，三项必须同时达标</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、公司运营</a><a class="sblv3" href="#sec6">3.1 财务全景：营收在恢复，但每一元收入都在亏毛利</a><a class="sblv3" href="#sec7">3.2 子公司与业务：三家子公司中两家微利/微亏，主业无第二增长曲线</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、基本面路径：保壳逻辑（财务类①·营收不足）</a><a class="sblv3" href="#sec8">4.1 营收线：大概率能过，且"关联交易"是明牌工具</a><a class="sblv3" href="#sec9">4.2 净资产线：这才是真正的"归零开关"</a><a class="sblv3" href="#sec10">4.3 制度约束：发股通道被"现任总经理被公开谴责"锁到 2027-06-12</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">五、炒作逻辑、情绪与筹码</a><a class="sblv3" href="#sec11">5.1 炒作逻辑三支柱：只有"炒预期"这一支柱还在，且预期被公司自己否认过两次</a><a class="sblv3" href="#sec12">5.2 注意力与筹码：峰值已过，且是被"高位派发"结束的</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">六、估值与投资结论</a><a class="sblv3" href="#sec13">6.1 估值：净资产口径已失效，只能做"壳价值 + 事件概率"的想象力定价</a><a class="sblv3" href="#sec14">6.2 投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap9">附录 C · 逻辑漏洞与反方观点（对买入理由的压力测试）</a></div><div class="sbgrp"><a class="sblv2" href="#chap10">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">＊ST准油（002207.SZ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：卖出（回避）</strong></p>
+<p><strong>红线分类</strong>：<span class="sttag sttag-blue"><a href="https://data.eastmoney.com/notices/detail/002207/AN202604271821635601.html" target="_blank" rel="noopener">2025年净利为负且扣除后营收2.95亿元</a></span>·<span class="sttag sttag-orange"><a href="https://data.eastmoney.com/notices/detail/002207/AN202606121823516414.html" target="_blank" rel="noopener">2026-06公开谴责,发股受限</a></span>·<span class="sttag sttag-teal"><a href="https://data.eastmoney.com/notices/detail/002207/AN202604271821635605.html" target="_blank" rel="noopener">财报与内控审计均标准无保留</a></span></p>
+<p><strong>生死定级</strong>：可救·需外力——四类退市红线只踩财务类①一条，但<strong>真正的归零开关是"期末净资产为负"</strong>，而 2026-06-30 归母净资产只剩 859.60 万元，靠自身经营守不住，必须由控股股东实际出资（豁免/赠与），目前尚无任何动作。</p>
+<p><strong>自救空间</strong>：营收线大概率能过（H1 已 1.57 亿元）；净资产线是死穴——缺口只有一千余万元，克拉玛依城投完全拿得出，但"拿得出"不等于"会拿"，且即便解决，真正的资产注入因"现任总经理被公开谴责"被制度性堵到 <strong>2027-06-12</strong> 之后。</p>
+<p><strong>主要看点</strong>：克拉玛依市国资委唯一 A 股上市平台，控股股东<strong>克拉玛依城投 2026-08-10 控股已满 3 年</strong>（借壳窗口届满，注入关联资产不再按 IPO 标准审核），市场预期注入<strong>富城能源油砂矿资产</strong>（"打造百万吨地方油公司"）。看点与风险同源：窗口已开两个月，至今零公告。</p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>标的</td><td>＊ST准油（002207.SZ）· 深主板 · 石油天然气采掘服务业</td></tr><tr><td>基准日 / 数据截止</td><td>2026-10-05 / 行情截至 2026-09-30 收盘</td></tr><tr><td>现价 · 总市值 · 股本</td><td>5.33 元 · 13.97 亿元 · 2.62 亿股</td></tr><tr><td>版本</td><td>初版 · 2026-10-05</td></tr><tr><td>仓位建议</td><td>不建仓</td></tr></tbody></table>
+<p><strong>数据来源</strong>：公告原文（东财公告库取用、链接可点）· 2025 年报与 2026 半年报 PDF 原文 · 深交所文件 · 东财 F10 · 腾讯行情 · 新浪日 K · 东财龙虎榜 API · 韭研公社异动表 · ST 信息库（每日公告/雪球评论）· 全景网投资者关系平台。</p>
+<p><strong>已知数据质量异常</strong>：① 本机 Wind 局域网代理整段不可达，行情与同业 PB 改用腾讯 <code>qt.gtimg.cn</code>，日 K 用新浪接口，年初至今涨跌幅按不复权口径自算（本公司 2026 年内无分红，两口径一致）；② 巨潮 <code>topSearch</code>/<code>hisAnnouncement</code> 本轮大面积 5xx，公告 id 一律改由东财公告库取得，链接为东财详情页（稳定可点），<strong>故本报告未使用巨潮四参数深链</strong>；③ 同花顺 F10 互动页返回空白，投资者交流改用全景网 <code>ir.p5w.net</code> 与公司《投资者关系活动记录表》原文。</p>
+<hr>
+<h2 id="chap1">一、诊断</h2>
+<h3 id="sec0">1.1 基本盘与股权：一个"净资产已被消耗干净"的国资小壳</h3>
+<p><strong>一句话结论：14 亿市值是真低位，但"低"来自净资产被六年亏损吃掉，不是来自估值折价——PB 162.49 这个数字本身就说明它没有净资产可估值。</strong></p>
+<p>公司系 2001 年由中石油新疆油田分公司准东采油厂测试中心等五个单位整建制改制设立，2008-01-28 上市，主营油田技术服务（工业/施工/运输三大块），客户集中于中石油、中石化在新疆的各大油田。控股股东<strong>克拉玛依市城市建设投资发展有限责任公司</strong>（成立于 2001-12，注册资本 30 亿元），实际控制人<strong>克拉玛依市国有资产监督管理委员会</strong>。</p>
+<ul><li>现价 5.33 元（2026-09-30 收盘），总市值 13.97 亿元，全流通。</li><li>近 20 年价格分位约 <strong>14%</strong>（ST 信息库 2026-07-31 记为 18.07%，股价已进一步回落）；以近 1023 个交易日不复权区间 3.79–15.03 元衡量，现价处于 <strong>13.7% 分位</strong>。</li><li><strong>PB 162.49</strong>（归母净资产几乎为零所致），PE 为负；换手率 1.52%、成交额 2,129 万元/日。</li><li>2026 年最高 16.01 元（03-05 盘中）→ 现价 <strong>-66.7%</strong>；2026 年最低 4.78 元 → 现价 <strong>+11.5%</strong>。</li></ul>
+<details class="fold"><summary>近三个报告期资产负债表关键项（口径：合并；来源：2025 年报、2026 半年报原文）</summary><div class="fold-body">
+
+<table><thead><tr><th>科目</th><th>2026-06-30</th><th>2025-12-31</th><th>2024-12-31</th></tr></thead><tbody><tr><td>货币资金</td><td>3,032.70 万元</td><td>8,538.26 万元</td><td>—</td></tr><tr><td>应收账款</td><td>6,056.25 万元</td><td>10,941.81 万元</td><td>—</td></tr><tr><td>合同资产</td><td>9,298.83 万元</td><td>2,861.61 万元</td><td>—</td></tr><tr><td>存货</td><td>1,479.25 万元</td><td>4,861.90 万元</td><td>—</td></tr><tr><td>总资产</td><td>3.53 亿元</td><td>4.26 亿元</td><td>4.09 亿元</td></tr><tr><td>负债合计</td><td>3.43 亿元</td><td>3.98 亿元</td><td>—</td></tr><tr><td>归母净资产</td><td><strong>859.60 万元</strong></td><td>2,699.50 万元</td><td>6,729.37 万元</td></tr><tr><td>股本 / 资本公积</td><td>2.62 亿股 / <strong>0</strong></td><td>2.62 亿股 / 0</td><td>—</td></tr><tr><td>未分配利润</td><td>-2.35 亿元</td><td>-2.16 亿元</td><td>—</td></tr><tr><td>其他综合收益</td><td>-1,922.50 万元</td><td>-1,922.50 万元</td><td>—</td></tr><tr><td>资产负债率</td><td><strong>97.2%</strong></td><td>93.4%</td><td>—</td></tr></tbody></table>
+<p>勾稽自检：负债 3.43 亿元 + 所有者权益合计 984.79 万元 = 总资产 3.53 亿元 ✓；归母权益 859.60 万元 + 少数股东权益 125.19 万元 = 984.79 万元 ✓。</p>
+<p><strong>两点必须点破</strong>：① <strong>资本公积为 0</strong> —— 意味着"公积金弥补亏损"这条常规保壳工具不可用，破产重整常用的"资本公积转增股本"亦无基础；② 负债几乎全为流动负债（3.4284 亿元，占 99.8%），而货币资金仅 3,032.70 万元。</p>
+
+</div></details>
+<h3 id="sec1">1.2 控股权沿革与股东阵容：城投"18% 持股 + 12% 受托表决权"的控制权是脆的</h3>
+<p><strong>一句话结论：城投只花 18% 的钱拿了 30% 的表决权，控制权的稳定性完全押在"中植系那 12% 的表决权委托不失效"上，而这 12% 已被全部质押+司法冻结、正随中植 316 家实质合并破产进入处置程序。</strong></p>
+<p><strong>股东阵容的三个读数</strong>：① 前十大合计持股约 <strong>34.6%</strong>，其中控股股东与二股东合计 30%，其余 8 位（自然人与外资）合计不足 4.6%——<strong>筹码高度集中于"国资 + 中植"两方</strong>；② 二股东湖州燕润是中植系 2018 年司法拍卖以 9.08 亿元拿下的老股东，<strong>12% 股份已全部质押并司法冻结</strong>；③ 股东户数三个月净减 8.7%，<strong>但股价同步下跌，属"下跌中被动集中"，不是"主力吸筹"</strong>——明细与判读见下。</p>
+<details class="fold"><summary>股东阵容明细：前十大股东（2026-06-30，口径：合并）与股东户数走势</summary><div class="fold-body">
+
+<table><thead><tr><th>排名</th><th>股东</th><th>持股（万股）</th><th>比例</th><th>身份识别</th></tr></thead><tbody><tr><td>1</td><td>克拉玛依市城市建设投资发展有限责任公司</td><td>4,716.99</td><td>18.00%</td><td>控股股东·市国资委</td></tr><tr><td>2</td><td>湖州燕润投资管理合伙企业（有限合伙）</td><td>3,144.63</td><td>12.00%</td><td><strong>中植系</strong>（2018 司法拍卖取得）</td></tr><tr><td>3</td><td>王耀</td><td>262.47</td><td>1.00%</td><td>自然人</td></tr><tr><td>4</td><td>J.P.Morgan Securities PLC-自有资金</td><td>216.45</td><td>0.83%</td><td>外资</td></tr><tr><td>5</td><td>陈建勇</td><td>183.34</td><td>0.70%</td><td>自然人</td></tr><tr><td>6</td><td>单宗正</td><td>147.69</td><td>0.56%</td><td>自然人</td></tr><tr><td>7</td><td>万红星</td><td>133.33</td><td>0.51%</td><td>自然人</td></tr><tr><td>8</td><td>胡祖平</td><td>133.00</td><td>0.51%</td><td>自然人</td></tr><tr><td>9</td><td>BARCLAYS BANK PLC</td><td>132.32</td><td>0.50%</td><td>外资</td></tr><tr><td>10</td><td>任海荣</td><td>130.00</td><td>0.50%</td><td>自然人</td></tr></tbody></table>
+<p><strong>股东户数（筹码集中度）</strong>：2026-06-30 <strong>24,703 户</strong> → 2026-08-31 22,565 户 → 2026-09-10 22,827 户 → <strong>2026-09-18 22,542 户</strong>。三个月净减 2,161 户（-8.7%）。</p>
+<p><strong>判读（必须点破的"筹码错觉"）</strong>：ST 股讨论里常把"股东户数下降 = 主力吸筹"当作看多依据，但<strong>户数下降本身不含方向</strong>——上涨中户数下降＝散户被震出、筹码向主力集中（看多）；<strong>下跌中户数下降＝散户割肉离场，而接盘方未必是主力（可能是量化或游资对倒）</strong>。本公司自 2026-05 高点以来股价腰斩、成交萎缩至 2,129 万元/日，<strong>属后者</strong>。互动易上投资者反复追问"是不是量化在对倒"（雪球评论，2026-09-02），公司未回应。</p>
+
+</div></details>
+<details class="fold"><summary>控股权历史沿革（四列表，含每股价格与资金来源）</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>关键事件</th><th>股权/实控人变化</th><th>背后的逻辑</th></tr></thead><tbody><tr><td>2001</td><td>中石油新疆油田准东采油厂五个单位改制设立</td><td>油田改制企业</td><td>成立时即为"三产剥离"型油服公司</td></tr><tr><td>2008-01-28</td><td>深交所上市</td><td>民营控股</td><td>—</td></tr><tr><td>2016-12 / 2017-01</td><td>创越集团、秦勇将合计 5,573.83 万股表决权委托国浩科技</td><td>国浩科技为控股股东，高居伟为实控人</td><td>表决权委托，非股权转让</td></tr><tr><td>2018-02-03</td><td>深圳福田法院淘宝司法拍卖，湖州燕润以 <strong>9.08 亿元</strong>竞得 5,573.83 万股（23.30%）</td><td>燕润成为控股股东，<strong>解直锟</strong>为实控人</td><td><strong>折合 16.29 元/股，较前收盘溢价 94.36%</strong>；资金来自合伙人自有及自筹。燕润执行事务合伙人为常州星汉资本、普通合伙人为中泰创展（珠海横琴），均系中植系</td></tr><tr><td>2018-02-09 / 02-13</td><td>股份分别过户至燕润名下</td><td>—</td><td>—</td></tr><tr><td><strong>2023-08-10</strong></td><td>燕润将 <strong>18.0000%</strong>（4,716.9968 万股）协议转让过户至克拉玛依城投，同时将剩余 <strong>11.9999%</strong>（3,144.631 万股）表决权独家委托城投行使</td><td><strong>控股股东变更为克拉玛依城投，实控人变更为克拉玛依市国资委</strong>；公司类型改为"国有控股"</td><td><strong>城投以 18% 股权 + 12% 表决权取得控制权，直接经济权益仅 18%</strong></td></tr><tr><td>2024-04-28</td><td>总部机关入驻克拉玛依揭牌</td><td>—</td><td>时任董事长林军称"打通克拉玛依市优良资产证券化的主渠道"，市国资委主任董立奎、城投党委书记石勇出席</td></tr><tr><td>2026-03-26</td><td>高管吕占民预披露减持不超 22.18 万股</td><td>—</td><td>至 07-19 期限届满<strong>实际未减持</strong></td></tr><tr><td>2026-06-17</td><td>董事长林军、财务总监张敏辞职</td><td>—</td><td>见 §1.5</td></tr><tr><td>2026-07-16</td><td>补选<strong>隋卓明、张子敬</strong>为非独立董事</td><td>隋卓明任董事长</td><td>中小股东同意率仅 <strong>49.88% / 48.06%</strong></td></tr></tbody></table>
+
+</div></details>
+<details class="fold"><summary>关键人物详细简历（公告口径，核不到的写"公告未披露"）</summary><div class="fold-body">
+
+<p><strong>隋卓明</strong>（董事长、非独立董事，2026-07-16 起）：男，汉族，1974 年 11 月生，中共党员，大学学历，高级物业管理师。1995 年 7 月参加工作，历任克拉玛依市中级人民法院助理审判员，克拉玛依区人民法院审判员、审判长，克拉玛依市文化局文化市场科科长，克拉玛依融汇文化旅游发展有限责任公司经理、执行董事，克拉玛依融汇物业服务有限责任公司执行董事、经理、法定代表人，新疆融汇城市生态环境服务有限责任公司经理。2023-04 至 2025-04 任克拉玛依市华旗守押有限责任公司董事长、总经理；2025-04 至今任<strong>克拉玛依城投</strong>党委委员、副经理；2025-06 至今任克拉玛依市投资控股有限责任公司党委委员、副总经理。<strong>履历为法院系统→文旅→物业→守押→城投，无油气与资本市场从业经历。</strong></p>
+<p><strong>张子敬</strong>（财务总监/财务负责人，2026-06-29 起；非独立董事，2026-07-16 起）：女，汉族，1984 年 11 月生，本科学历，中级会计师、注册会计师，具证券从业资格。2006-01 起在河南鑫华、信和鑫会计师事务所任审计师；<strong>2015-07 至 2025-08 在中原证券股份有限公司任投资银行高级项目经理（约 10 年投行经历）</strong>；2025-09 至 2026-06 在克拉玛依市水务有限责任公司任工程子公司财务总监、克拉玛依市供水环保科技有限责任公司财务总监。<strong>路径为审计师→投行→国资水务平台→上市公司财务负责人，"资本运作型"履历特征明显。</strong></p>
+<p><strong>林军</strong>（原董事长，2026-06-17 辞任，辞职后不在公司及子公司任职）：公告未披露其出生年月与完整履历。<strong>张敏</strong>（原董事、副总经理兼财务总监，2026-06-17 辞任，辞职后继续在公司工作）：女，汉族，1966 年 1 月生，注册会计师、高级会计师。1987 年 8 月参加工作，曾任新疆大西部旅游股份有限公司财务总监、新疆天山水泥东疆/华东事业部总会计师，2023-08 至今任新疆金兰植物蛋白有限公司董事长。</p>
+<p><strong>简伟</strong>（董事、总经理，<strong>被公开谴责且仍在任</strong>）：公告未披露其出生年月与完整履历（2024-02 起为法定代表人）。<strong>吕占民</strong>（董事、董事会秘书兼副总经理）：2026 年减持计划期满实际未减持，期末持股 88.72 万股（0.3385%）。</p>
+
+</div></details>
+<h3 id="sec2">1.3 运作特征与进度看板：换的是"资本运作型"班子，但动作只到"内部整编"</h3>
+<p><strong>一句话结论：2026 年 6–7 月的人事与组织变动，是一次典型的"国资接管 + 资本运作准备"型换血（投行背景财务总监上任、撤销事业部设 6 个项目部），但截至基准日，</strong>没有任何一项指向资产端的实质动作**。</p>
+<ul><li><strong>手法</strong>：先司法拍卖拿 18%、再表决权委托拿 12%（2023）→ 两年后换董事长与财务负责人（2026-06/07）→ 同期做组织机构扁平化。<strong>属"配合式"而非"对抗式"交权</strong>（原体系无人减持、无表决权放弃、无反对票记录）。</li><li><strong>卡点性质</strong>：<strong>是"时间未到"，不是"谈不拢"</strong>——发股通道被制度锁死至 2027-06-12（见 §4.3），控股股东即便想注入股份类资产也做不了。</li><li><strong>成败关键变量（1 和 0）</strong>：<strong>2026 年末归母净资产能否守住正值</strong>。守住 → 只是活过一年，仍需 2027 年再战；守不住 → 直接终止上市。</li></ul>
+<details class="fold"><summary>全流程进度看板（环节 / 现状 / 卡点或条件 / 下一节点 / 印证文件）</summary><div class="fold-body">
+
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点或条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>控制权稳定</td><td>城投 18% + 受托 12% 表决权</td><td>中植 12% 已全部质押+司法冻结，处置主体为破产管理人</td><td>燕润 3,144.63 万股拍卖落地</td><td>《投资者关系活动记录表》2026-06-26</td></tr><tr><td>中植体系破产</td><td>2026-06-18 北京高院终审驳回 78 名债权人复议，维持 316 家实质合并破产</td><td>处置节奏由管理人定</td><td>上市公司股权变现方案落地</td><td>—</td></tr><tr><td>董事会改组</td><td>2026-07-16 补选隋卓明、张子敬；隋任董事长</td><td>总经理简伟仍被公开谴责在任</td><td>简伟是否辞任</td><td>股东会决议 2026-07-17</td></tr><tr><td>组织整编</td><td>2026-07-23 撤销事业部，设 6 个一线项目部，取消二级机关</td><td>—</td><td>降本效果反映在三季报/年报</td><td>董事会决议 2026-07-23</td></tr><tr><td>营收保壳</td><td>2026H1 1.57 亿元（+28.85%）</td><td>全年扣除后需 ≥3 亿元</td><td>三季报（2026-10 底）</td><td>2026 半年报</td></tr><tr><td><strong>净资产保壳</strong></td><td>2026-06-30 归母 859.60 万元</td><td><strong>需 H2 亏损 &lt; 859.60 万元，或控股股东豁免/赠与</strong></td><td>年报（2027-04）</td><td>2026 半年报</td></tr><tr><td>资产注入</td><td>零公告</td><td>发股受"简伟在任"限制至 2027-06-12；现金方式不受限</td><td>现金收购/关联交易公告</td><td>业绩说明会记录 2026-06-26</td></tr><tr><td>撤销退市风险警示</td><td>未启动</td><td>需 2026 年报三项同时达标（见 §2.3）</td><td>2027-04 年报后申请</td><td>—</td></tr></tbody></table>
+
+</div></details>
+<h2 id="chap2">二、ST 风险诊断</h2>
+<h3 id="sec3">2.1 戴帽原因：单一财务类红线，审计意见干净</h3>
+<p><strong>一句话结论：这是"最干净的一种 *ST"——只踩财务类①一条，财报与内控审计均为标准无保留意见，没有资金占用、没有违规担保、没有被立案。</strong></p>
+<p>2026-04-28 公告，因 2025 年度利润总额、净利润、扣非净利润孰低为负值，<strong>且扣除后营业收入低于 3 亿元</strong>（实际 2.9510 亿元），依据深交所《股票上市规则》<strong>第 9.3.1 条</strong>，自 <strong>2026-04-29</strong> 起被实施退市风险警示。</p>
+<ul><li>2025 年营业收入 2.9666 亿元，<strong>扣除金额仅 155.60 万元</strong>（煤炭贸易收入、出租固定资产及修理劳务），<strong>扣除后 2.9510 亿元</strong>——距 3 亿元红线<strong>仅差 489.68 万元</strong>。</li><li>2025 年归母净利 <strong>-4,029.87 万元</strong>（同比 -156.10%），扣非 <strong>-4,144.05 万元</strong>（同比 -144.02%）。</li><li><strong>2025 年财务报告审计意见：标准无保留</strong>（北京国府嘉盈会计师事务所）；<strong>内部控制审计报告：标准无保留意见</strong>、非财务报告不存在重大缺陷。年报"最近三个会计年度扣非前后孰低者均为负值，且最近一年审计报告显示持续经营能力存在不确定性"一栏勾选<strong>否</strong>——即审计报告<strong>未含</strong>持续经营重大不确定性段落。</li></ul>
+<details class="fold"><summary>戴帽全链条的时间线（含"业绩预告修正"这一被谴责事由）</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>事件</th><th>关键数字</th></tr></thead><tbody><tr><td>2026-01-30</td><td>披露《2025 年度业绩预告》</td><td>预亏 3,700–4,300 万元；营收 3.30–3.60 亿元；<strong>扣除后营收 3.27–3.57 亿元</strong>（未提示退市风险）</td></tr><tr><td>2026-03-26</td><td>高管吕占民预披露减持</td><td>不超 22.18 万股</td></tr><tr><td>2026-04-04</td><td>《2025 年度业绩预告修正公告》+《可能被实施退市风险警示的提示性公告》</td><td>修正后营收 2.70–2.95 亿元；<strong>扣除后 2.695–2.945 亿元</strong>；<strong>首次提示退市风险</strong></td></tr><tr><td>2026-04-09 / 04-16 / 04-23</td><td>三次风险提示公告</td><td>—</td></tr><tr><td>2026-04-28</td><td>2025 年报：净利 -4,029.87 万元、营收 2.9666 亿元、<strong>扣除后 2.9510 亿元</strong></td><td>—</td></tr><tr><td>2026-04-29</td><td><strong>实施退市风险警示</strong></td><td>—</td></tr><tr><td>2026-06-12</td><td>深交所公开谴责（深证上〔2026〕797 号）</td><td>见 §4.3</td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec4">2.2 四类退市红线逐条对照：只踩一条，但"净资产"这条自己会长大</h3>
+<p><strong>一句话结论：交易类、规范类、重大违法类全部未踩；财务类只踩"营收不足"一条——但若 2026 年末净资产转负，就会从"一条"变成"两条"，且两条都是终止上市情形。</strong></p>
+<p>依据 Andy 自建路径底表《退市风险预警-20261005.xlsx》：「交易类」表、「规范类」表、「其他类」表<strong>均无 002207</strong>；「财务类」表命中 002207.SZ *ST准油（2025-12-31，营收 2.95 亿元、三项孰低为负）→ <strong>路径 A · 保壳（营收不足）</strong>。</p>
+<table><thead><tr><th>红线类型</th><th>触发条件（速查）</th><th>本公司核对</th><th>可救性</th></tr></thead><tbody><tr><td>交易类</td><td>连续 20 日收盘价 &lt;1 元 / 市值 &lt;5 亿元（主板）/ 股东数 &lt;2,000 人</td><td>现价 5.33 元、市值 13.97 亿元、股东 22,542 户 → <strong>均未触及</strong></td><td>不可救（未踩）</td></tr><tr><td>财务类</td><td>孰低为负 <strong>且</strong> 扣除后营收 &lt;3 亿元（主板）；或期末净资产为负</td><td><strong>第一条已踩</strong>（2025 年）；<strong>第二条 2026 年末有实质风险</strong>（2026-06-30 归母净资产仅 859.60 万元）</td><td>可救，1 年整改期</td></tr><tr><td>规范类</td><td>资金占用 ≥2 亿元或 ≥净资产 30%、内控连续两年非标、控制权无序争夺等</td><td>内控审计标准无保留；年报"非经营性资金占用及其他关联资金往来"未发现占用；控股股东仅提供借款</td><td>可救（未踩）</td></tr><tr><td>重大违法类</td><td>欺诈发行、财务造假达量化线</td><td>未被立案、未受行政处罚；仅受交易所公开谴责（自律监管，非行政处罚）</td><td>一票否决（未踩）</td></tr></tbody></table>
+<blockquote><p>涨跌幅口径：主板风险警示股自 <strong>2026-07-06 起为 10%</strong>（此前 5%）。本公司 2026-05 的 9 连板即按 5% 涨跌幅计算，引用历史公告时须还原时点。</p></blockquote>
+<h3 id="sec5">2.3 摘帽展望：2027-04 是"零容错"关卡，三项必须同时达标</h3>
+<p><strong>一句话结论：撤销 *ST 走的是"不存在任一终止情形"的 AND 逻辑，不是"营收达标 </strong>或<strong> 净利为正"的 OR 逻辑——三项（营收/净资产/审计意见）必须同时达标，任何一项不达标即直接终止上市，没有中间态。</strong></p>
+<p>依据深交所《股票上市规则（2026 修订）》<strong>9.3.8 / 9.3.12</strong>：因 9.3.1 第一款情形被实施退市风险警示后，<strong>次一年度</strong>（即 2026 年度）出现下列任一情形即终止上市——（一）孰低为负且扣除后营收 &lt;3 亿元；（二）<strong>经审计的期末净资产为负值</strong>；（三）财报被出具<strong>保留</strong>、无法表示或否定意见；（五）内控被出具无法表示或否定意见；（六）未按规定披露内控审计报告。</p>
+<table><thead><tr><th>关卡</th><th>2026 年达标要求</th><th>现状与判断</th></tr></thead><tbody><tr><td>营收</td><td>扣除后 ≥3 亿元</td><td>H1 1.5672 亿元，需 H2 ≥1.4328 亿元；2025H2 为 1.7503 亿元 → <strong>大概率可过</strong></td></tr><tr><td><strong>净资产</strong></td><td><strong>期末归母净资产 ≥0</strong></td><td>2026-06-30 仅 859.60 万元；H1 亏损 1,868.96 万元；2025H2 亏损 2,137.08 万元 → <strong>不靠外力则极可能转负</strong></td></tr><tr><td>审计意见</td><td>财报 + 内控<strong>双双标准无保留</strong></td><td>2025 年两项均标准无保留；无内控缺陷事由 → <strong>基础较好</strong></td></tr></tbody></table>
+<p><strong>最早可申请日</strong>：2026 年年度报告披露后（通常 2027-04 下旬）。注：主板 ST 自 2026-07-06 起涨跌幅已为 10%，<strong>摘帽前后涨跌幅不变 → 无制度性"板子红利"</strong>。</p>
+<hr>
+<h2 id="chap3">三、公司运营</h2>
+<h3 id="sec6">3.1 财务全景：营收在恢复，但每一元收入都在亏毛利</h3>
+<p><strong>一句话结论：营收连续两期高增（2026H1 +28.85%），但毛利率为负（-2.95%）——规模增长不产生利润，只加速消耗净资产。</strong></p>
+<table><thead><tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026H1</th></tr></thead><tbody><tr><td>营业收入（亿元）</td><td>1.92</td><td>1.97</td><td>2.72</td><td>3.42</td><td>2.97</td><td>1.57</td></tr><tr><td>归母净利润（万元）</td><td>+766.72</td><td>-970.76</td><td>-1,857.91</td><td>-1,573.54</td><td>-4,029.87</td><td>-1,868.96</td></tr><tr><td>扣非净利润（万元）</td><td>-4,660.90</td><td>-4,580.67</td><td>-1,928.64</td><td>-1,698.26</td><td>-4,144.05</td><td>-1,945.27</td></tr><tr><td>毛利率</td><td>-7.92%</td><td>-12.83%</td><td>2.83%</td><td>3.12%</td><td>-1.92%</td><td><strong>-2.95%</strong></td></tr><tr><td>归母净资产（万元）</td><td>—</td><td>—</td><td>8,302.91</td><td>6,729.37</td><td>2,699.50</td><td><strong>859.60</strong></td></tr><tr><td>总资产（亿元）</td><td>—</td><td>—</td><td>3.37</td><td>4.09</td><td>4.26</td><td>3.53</td></tr><tr><td>经营现金流净额（万元）</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>-6,496.10</td></tr></tbody></table>
+<p>（口径：合并·归母；2021–2025 取自东财 F10 主要指标，与年报原文核对一致；2026H1 取自半年报原文）</p>
+<p><strong>三条读数</strong>：① <strong>连续 6 年扣非孰低为负</strong>（公司 2026-05-17 公告自认）；② 净资产从 2023 年末 8,302.91 万元一路降至 2026-06-30 的 859.60 万元，<strong>三年消耗 7,443.31 万元</strong>；③ 2026 年单季亏损呈"Q1 -1,570.73 万元 → Q2 -298.23 万元"的快速收窄（Q2 环比少亏 1,272.50 万元），是唯一偏正面的边际信号。</p>
+<details class="fold"><summary>分季度损益拆解与"净资产守不守得住"的测算</summary><div class="fold-body">
+
+<p><strong>分季度归母净利（万元）</strong></p>
+<table><thead><tr><th>季度</th><th>2025</th><th>2026</th></tr></thead><tbody><tr><td>Q1</td><td>-1,555.10</td><td>-1,570.73</td></tr><tr><td>Q2</td><td>-337.69</td><td><strong>-298.23</strong></td></tr><tr><td>Q3</td><td>-1,294.05</td><td>待披露</td></tr><tr><td>Q4</td><td>-843.03</td><td>待披露</td></tr><tr><td>全年</td><td>-4,029.87</td><td>—</td></tr></tbody></table>
+<p><strong>净资产测算（三档情景，起点＝2026-06-30 归母净资产 859.60 万元）</strong></p>
+<table><thead><tr><th>情景</th><th>假设 H2 亏损</th><th>2026 年末归母净资产</th><th>结论</th></tr></thead><tbody><tr><td>乐观</td><td>复现 Q2 水平（约 -600 万元）</td><td><strong>+259.60 万元</strong></td><td>勉强为正</td></tr><tr><td>中性</td><td>约为 2025H2 的一半（约 -1,068 万元）</td><td><strong>-208.40 万元</strong></td><td><strong>转负 → 终止上市</strong></td></tr><tr><td>悲观</td><td>复现 2025H2（-2,137.08 万元）</td><td><strong>-1,277.48 万元</strong></td><td><strong>转负 → 终止上市</strong></td></tr></tbody></table>
+<p><strong>关键变量是 Q4 的资产减值计提</strong>（2025Q4 单季亏 843.03 万元，主因即减值与信用损失）。<strong>测算结论：只要 H2 亏损超过 859.60 万元，净资产即为负</strong>——按中性假设，转负是大概率事件。这也是本报告给出"卖出（回避）"的第一条理由。</p>
+
+</div></details>
+<h3 id="sec7">3.2 子公司与业务：三家子公司中两家微利/微亏，主业无第二增长曲线</h3>
+<p><strong>一句话结论：三家子公司体量都极小（合计净资产不足 2,500 万元），"智慧矿山/新能源"等新业务尚处起步甚至仅停留在年报措辞里，不构成第二增长曲线。</strong></p>
+<table><thead><tr><th>子公司</th><th>2026-06-30 总资产</th><th>净资产</th><th>2026H1 营收</th><th>2026H1 净利</th></tr></thead><tbody><tr><td>准油运输</td><td>9,066.50 万元</td><td>2,186.96 万元</td><td>2,199.49 万元</td><td>-249.98 万元（由盈转亏）</td></tr><tr><td>准油建设</td><td>4,099.63 万元</td><td>153.18 万元</td><td>2,124.53 万元</td><td>+36.72 万元（扭亏为盈）</td></tr><tr><td>准油智慧</td><td>—</td><td>—</td><td>收入规模较小</td><td>尚未实现盈利</td></tr></tbody></table>
+<p><strong>分产品口径（2026H1）</strong>：工业（含石油技术、油田管理）1.2034 亿元（76.79%，+32.21%）；运输业 1,729.92 万元（11.04%）；施工 1,867.30 万元（11.91%，+38.17%）；其他业务 40.76 万元（0.26%）。<strong>全部收入来自国内，100% 属石油天然气采掘服务业——无油气生产业务、无海外业务收入。</strong></p>
+<p><strong>审美标签</strong>：主业（油服）＝<strong>题材炒作</strong>（周期弹性 + 壳预期，非长期价值）；"新质生产力/新能源/储能/算力"＝<strong>概念阶段</strong>（年报仅有措辞，无投入、无订单、无收入，公司在 2026-09-09 互动易明确"没有应披露未披露信息"）。</p>
+<hr>
+<h2 id="chap4">四、基本面路径：保壳逻辑（财务类①·营收不足）</h2>
+<h3 id="sec8">4.1 营收线：大概率能过，且"关联交易"是明牌工具</h3>
+<p><strong>一句话结论：营收过 3 亿元这一关问题不大——H1 已完成 1.57 亿元，且控股股东体系内还有 4,500 万元/年的日常关联交易额度可用。</strong></p>
+<ul><li>2026H1 营收 1.5672 亿元（+28.85%），其中 Q1 5,481.26 万元（+81.63%）贡献主要增量（连续油管与钻井业务满足收入确认条件）。</li><li>全年扣除后需 ≥3 亿元 → <strong>H2 需 ≥1.4328 亿元</strong>。2025H2 实际为 1.7503 亿元，<strong>同比持平即可达标</strong>。</li><li>可用工具：① <strong>2026 年度预计收入类日常关联交易规模约 4,500 万元</strong>（较 2025 年增加）；② 控股股东及其下属企业持续开展油砂矿开发技术服务、维护维修、生产运维等业务协同；③ 2025 年新接订单约 2.64 亿元，因资金紧张未全部转化为收入（"有订单、无收入确认"）。</li><li><strong>反向读数</strong>：营收达标不等于脱险。<strong>2025 年营收 3.42 亿元（2024 年）都能过线，公司照样因 2025 年降至 2.97 亿元而戴帽</strong>——营收是"一年一验"的，不构成长期安全垫。</li></ul>
+<h3 id="sec9">4.2 净资产线：这才是真正的"归零开关"</h3>
+<p><strong>一句话结论：营收是"难但能过"，净资产是"易但没人做"——缺口只有一千余万元，克拉玛依城投完全拿得出，但截至目前它只给了"要还的借款"，没给"不用还的注资"。</strong></p>
+<ul><li>2026-06-30 归母净资产 <strong>859.60 万元</strong>，较年初 2,699.50 万元下降 68.16%。</li><li>按 §3.1 三档测算，<strong>中性情景下 2026 年末净资产即转负</strong>。</li><li><strong>可用的增净资产工具</strong>：① 控股股东<strong>债务豁免</strong>（按《监管规则适用指引——会计类第 1 号》，股东对上市公司的债务豁免具资本投入性质，计入<strong>资本公积</strong>）；② 关联方<strong>无偿赠与资产</strong>（按评估值计入资本公积）；③ 政府补助（计入损益，可同时改善净利与净资产）；④ 处置资产收益（需评估增值）。</li><li><strong>不可用/受限的工具</strong>：<strong>公积金弥补亏损不可用（资本公积为 0）</strong>；发行股份购买资产受"简伟在任"限制（见 §4.3）；破产重整需以资本公积为基础转增，<strong>当前无转增基础</strong>。</li></ul>
+<details class="fold"><summary>控股股东"输血"的实际形态：只有借款，没有注资</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>事项</th><th>金额</th><th>性质</th></tr></thead><tbody><tr><td>2025-08-26 / 2025-09-25</td><td>董事会、股东大会审议《关于向关联方融资的议案》</td><td>一年内不超 <strong>8,000 万元</strong></td><td>通过中小融担办理委托贷款、售后回租等</td></tr><tr><td>2026-07-17</td><td>办理两笔银行委托贷款</td><td>1,000 万元（至 2026-10-13）+ 1,500 万元（至 2026-12-04）= <strong>2,500 万元</strong></td><td>年化利率均 6%</td></tr><tr><td>2025-08-04</td><td>子公司准油运输哈密商行短期借款</td><td>1,000 万元</td><td>中小融担提供担保</td></tr><tr><td>2026-04-21</td><td>子公司准油运输中国银行短期借款</td><td>52 万元</td><td>中小融担提供担保</td></tr></tbody></table>
+<p><strong>读数：全部为"借款"形态——增加负债，不增加净资产；且要付 6% 利息，反而加重损益。</strong> 真正能救净资产的"豁免/赠与"，至基准日<strong>一例都没有</strong>。</p>
+
+</div></details>
+<h3 id="sec10">4.3 制度约束：发股通道被"现任总经理被公开谴责"锁到 2027-06-12</h3>
+<p><strong>一句话结论：市场热炒的"资产注入"在制度上被卡死——不是卡在"想不想"，而是卡在"总经理简伟还在任"。《上市公司证券发行注册管理办法》第十一条第（三）项明确：现任董事、高级管理人员最近一年受到证券交易所公开谴责的，上市公司不得向特定对象发行股票。</strong></p>
+<ul><li><strong>被公开谴责的人</strong>：董事长林军、总经理简伟、财务总监张敏（深交所深证上〔2026〕797 号，2026-06-12）。<strong>林军、张敏已于 2026-06-17 辞任；简伟仍在任总经理。</strong></li><li><strong>后果</strong>：自 2026-06-12 起一年内（<strong>至 2027-06-12</strong>），只要简伟仍为现任高管，公司<strong>不得向特定对象发行股票</strong> → <strong>发行股份购买资产类重组做不了</strong>。2026-06-26 业绩说明会上，投资者已直接追问这一点，公司未作实质回应。</li><li><strong>不受限的路径</strong>：<strong>现金收购、合资、参股、关联交易</strong>均可正常进行（互动易中亦被投资者指出）。</li><li><strong>另一条已打开的窗口</strong>：城投 <strong>2026-08-10 控股满 3 年</strong>，此后向上市公司注入关联资产不再适用"重组上市（借壳）"标准（即无需按 IPO 标准审核），降为一般重大资产重组标准。<strong>但窗口已开两个月，零公告。</strong></li></ul>
+<details class="fold"><summary>公开谴责的原文事实与"12 个月"的真实口径</summary><div class="fold-body">
+
+<p><strong>深交所〔2026〕797 号认定的事实</strong>：2026-01-30 业绩预告预计净利亏 3,700–4,300 万元、扣除后营收 3.27–3.57 亿元；2026-04-04 修正为扣除后营收 2.695–2.945 亿元并首次提示退市风险；2026-04-28 年报实际扣除后 2.9510 亿元。<strong>违规点：未在业绩预告中披露"预计净利为负且扣除后营收低于 3 亿元"的情形，且未在会计年度结束后一个月内披露可能被实施退市风险警示的风险提示公告。</strong> 分别违反《股票上市规则（2025 年修订）》第 1.4 条、第 2.1.1 条第一款、第 5.1.3 条第一款、第 5.1.9 条第二款、第 9.3.3 条第一款。对公司、林军、简伟、张敏分别给予公开谴责，并记入证券期货市场诚信档案数据库。</p>
+<p><strong>必须区分的两个口径</strong>（易被市场混用）：</p>
+<ol><li><strong>《发行注册办法》第十一条第（三）项</strong>（2025 年修正）原文为"<strong>现任董事、高级管理人员最近三年受到中国证监会行政处罚，或者最近一年受到证券交易所公开谴责</strong>"——<strong>公开谴责对应"最近一年"，行政处罚对应"最近三年"</strong>。本公司属前者，故 <strong>12 个月</strong> 而非 3 年。</li><li><strong>限制对象是"现任"</strong> —— 简伟辞任即可消除该情形（借壳/重组本身就要交权，属方案内可解动作）。</li></ol>
+
+</div></details>
+<details class="fold"><summary>公司原话：保壳口径、"新业务方向"与注入预期的官方答复（2026-06 至 2026-09 原文摘录）</summary><div class="fold-body">
+
+<p><strong>关于保壳路径（2026-06-26 新疆辖区集体接待日，财务副总监兼财务经理宗振江答复）</strong>：</p>
+<blockquote><p>"公司采取的降本增效的措施主要为：1. 加强与现有客户的沟通、交流，巩固维护传统市场；积极拓展新客户及非常规油气等领域市场实现非油田市场收入的有质量增长。2. 加大亏损项目、亏损业务的治理力度，分类施策，部分项目调整运营方式，通过劳务分包、合作运营等方式降低成本，实现扭亏为盈。3. 进行内部资源优化整合……"</p></blockquote>
+<p><strong>关于净资产（2026-09-04 互动易，投资者直接质问"半年度净资产只剩 800 多万、就剩四个月怎么保壳"）</strong>：</p>
+<blockquote><p>"公司将努力做好各项经营管理工作、认真落实各项措施，识别各项风险事项、做好防控和处理。以上涉及未来计划等前瞻性陈述，不构成公司对投资者的实质承诺……"</p></blockquote>
+<p><strong>判读</strong>：对"怎么保壳"这一唯一关键问题，公司两次答复都是<strong>降本增效的通用清单</strong>，<strong>没有一个字提到净资产如何补足</strong>——既未提债务豁免、也未提资产赠与或现金收购。这本身就是信息：<strong>在净资产生死线上，公司公开口径里没有准备好动作。</strong></p>
+<p><strong>关于塔里木油田"新业务方向"（2026-09-09 互动易）</strong>：</p>
+<blockquote><p>问：贵司 9 月 4 日公众号提到"隋卓明介绍了公司近期发展情况，并对新业务方向进行了重点介绍……"其中新业务方向与贵司 25 年年报和 26 年中报里提到的"新质生产力"有关系吗？</p><p>答："塔里木油田公司为公司现有油气田技术服务业务的重要客户，截至目前公司为其提供服务的项目未发生重大变化。"</p></blockquote>
+<p><strong>判读</strong>：新任董事长出访塔里木油田被市场解读为"新业务/第二曲线"的信号，但公司明确限定为"<strong>现有油气田技术服务业务</strong>""项目未发生重大变化"。<strong>即：这仍是油服，不是转型。</strong>（雪球上亦有投资者追问"新业务是啥"，未获正面回答。）</p>
+<p><strong>关于新质生产力/第二增长曲线（2026-09-09 互动易）</strong>：</p>
+<blockquote><p>问：年报说的新质生产力，半年报说的接上第二条腿、第二增长曲线，主业目前做多亏多，这些年报提的工作到底什么时候落实！</p><p>答："截至目前，公司没有应披露未披露信息。公司在定期报告中所做的前瞻性表述，不构成公司对投资者的实质承诺……"</p></blockquote>
+<p><strong>判读</strong>：年报中的"新质生产力/新能源/储能/算力"表述，公司在被直接质询时退回到"没有应披露未披露信息"。<strong>按"公司自己说的阶段必须原文引用"的纪律，本报告只能把这些方向登记为"概念表述"，不给任何估值权重。</strong></p>
+
+</div></details>
+<hr>
+<h2 id="chap5">五、炒作逻辑、情绪与筹码</h2>
+<h3 id="sec11">5.1 炒作逻辑三支柱：只有"炒预期"这一支柱还在，且预期被公司自己否认过两次</h3>
+<p><strong>一句话结论：三支柱中，"炒主板映射"最弱（油服主线今年不在风口）、"炒历史类似行为"指向下跌组、"炒预期"仅剩一个尚未公告的国资注入故事——而公司已在 2026-05-17 明确否认算力注入、在 2026-09-09 表示无应披露事项。</strong></p>
+<p><strong>① 炒预期（未来 6–12 个月的可验证节点）</strong></p>
+<table><thead><tr><th>时点</th><th>催化内容</th><th>性质</th><th>判读</th></tr></thead><tbody><tr><td>2026-10 底</td><td>2026 三季报</td><td>软预期</td><td>只反映营收与亏损收窄，<strong>不解决净资产</strong></td></tr><tr><td>2026Q4–2027Q1</td><td>控股股东豁免/赠与/现金收购关联资产</td><td><strong>硬节点（未发生）</strong></td><td>决定净资产生死，目前零公告</td></tr><tr><td>待定</td><td>中植系 3,144.63 万股司法拍卖</td><td>硬节点（时点不明）</td><td>落地即"利空出尽"，城投或其指定方接盘则为控制权加固</td></tr><tr><td><strong>2027-04</strong></td><td><strong>2026 年年度报告</strong></td><td><strong>硬节点（生死判）</strong></td><td>营收/净资产/审计意见三项同时达标方可摘帽</td></tr><tr><td><strong>2027-06-12 后</strong></td><td>发股通道解锁</td><td>硬节点</td><td>真正的股份类资产注入最早在此之后</td></tr></tbody></table>
+<p><strong>② 炒历史类似行为（相似股票匹配法）</strong></p>
+<p>以基准日全部特征为画像——<strong>深主板 / 财务类①*ST（净利为负且扣除后营收&lt;3 亿）/ 总市值约 14 亿元 / 地方国资壳 / 无任何具体注入标的公告 / 营收在红线临界</strong>——在 Andy 路径底表「财务类①」块取同型样本 40 家，剔无非 ST 的 <code>-U</code> 生物医药标的后 38 家有行情，计算 2026 年初至 09-30 涨跌幅：</p>
+<ul><li><strong>中位数约 -26.4%，均值约 -26.6%；上涨仅 5 家（13.2%）</strong>。</li><li><strong>本标的 -27.97%，与同型中位数基本持平</strong>——既未超跌，也无相对优势。</li><li><strong>5 只上涨样本（*ST泉为 +42.44% / *ST起步 +20.55% / *ST禾信 +18.26% / *ST景谷 +14.24% / *ST中迪 +5.28%）全部"有物"</strong>（具体的标的资产或已完成的重组方案）；<strong>下跌组则普遍"只有人名或方案"</strong>。</li><li><strong>结论：准油属"只有人名"型（克拉玛依国资 / 富城能源预期，无任何具体标的公告）→ 落"下跌组"。</strong></li></ul>
+<details class="fold"><summary>同型样本 2026 年涨跌幅全表（38 家，按涨幅降序）</summary><div class="fold-body">
+
+<table><thead><tr><th>简称</th><th>涨幅</th><th>简称</th><th>涨幅</th><th>简称</th><th>涨幅</th></tr></thead><tbody><tr><td>*ST泉为</td><td>+42.44%</td><td>*ST高科</td><td>-21.85%</td><td>*ST特迅</td><td>-46.59%</td></tr><tr><td>*ST起步</td><td>+20.55%</td><td>*ST京化</td><td>-21.18%</td><td>*ST利源</td><td>-47.79%</td></tr><tr><td>*ST禾信</td><td>+18.26%</td><td>*ST发展</td><td>-20.71%</td><td>*ST天箭</td><td>-47.81%</td></tr><tr><td>*ST景谷</td><td>+14.24%</td><td>*ST明德</td><td>-20.07%</td><td>*ST海利</td><td>-49.34%</td></tr><tr><td>*ST中迪</td><td>+5.28%</td><td>*ST尔雅</td><td>-19.02%</td><td>*ST国中</td><td>-50.20%</td></tr><tr><td>*ST三六五</td><td>-4.39%</td><td>*ST中设</td><td>-16.45%</td><td>*ST网达</td><td>-51.03%</td></tr><tr><td>*ST纳川</td><td>-5.08%</td><td>*ST尼雅</td><td>-15.24%</td><td>*ST宁视</td><td>-51.20%</td></tr><tr><td>*ST数源</td><td>-5.75%</td><td>*ST集友</td><td>-8.27%</td><td>*ST冀凯</td><td>-56.24%</td></tr><tr><td>*ST柳化</td><td>-28.23%</td><td>*ST中岩</td><td>—</td><td>*ST宝馨</td><td>-59.01%</td></tr><tr><td><strong>＊ST准油</strong></td><td><strong>-27.97%</strong></td><td>*ST雅博</td><td>-27.44%</td><td>*ST实达</td><td>-59.57%</td></tr><tr><td>*ST莫高</td><td>-23.35%</td><td>*ST联翔</td><td>-25.41%</td><td>*ST九鼎</td><td>-60.90%</td></tr><tr><td>*ST帅电</td><td>-24.71%</td><td>*ST长投</td><td>-39.62%</td><td>*ST岭南</td><td>-61.73%</td></tr><tr><td>*ST未名</td><td>-32.00%</td><td>*ST东智</td><td>-44.02%</td><td>*ST东珠</td><td>-78.72%</td></tr></tbody></table>
+<p>（口径：腾讯行情年初至今涨跌幅＝复权口径；本公司 2026 年内无分红，与不复权口径一致。数据源为同型样本池全量，非选择性列举。）</p>
+
+</div></details>
+<p><strong>③ 炒主板映射（ST 板块内的可映射低位标的）</strong></p>
+<p><strong>一句话结论：油服主线 2026 年不在风口，ST 板块内缺乏与本标的形成板块效应的同概念标的，映射支柱最弱。</strong></p>
+<table><thead><tr><th>对象</th><th>概念对应点</th><th>2026 年表现</th><th>关联度</th></tr></thead><tbody><tr><td>中曼石油</td><td>民营油服/油田工程</td><td>主板，非 ST</td><td>【纯概念】</td></tr><tr><td>贝肯能源</td><td>新疆油服</td><td>主板，非 ST</td><td>【纯概念】</td></tr><tr><td>*ST同辉 / *ST康乐</td><td>同型财务类①ST，非油服</td><td>北交所</td><td>无产业关联</td></tr></tbody></table>
+<p><strong>主线判读</strong>：2026 年驱动本股的是"ST 板块情绪 + 油价事件"，而非"油服景气"。2026-02/03 那一波（美以袭击伊朗、霍尔木兹海峡关闭预期）把它从 9 元推到 16.01 元，<strong>但公司自己在 2026-05-18 公告中提示"油价上涨同时会推高设备用汽柴油运营成本，实际业绩提升需依赖工作量和服务价格的同步改善"</strong> —— 油价弹性对本公司是<strong>双向</strong>的，不是单向利好。</p>
+<h3 id="sec12">5.2 注意力与筹码：峰值已过，且是被"高位派发"结束的</h3>
+<p><strong>一句话结论：注意力来过两次、都被高位放量派发终结；当前换手率 1.52%、日成交 2,129 万元、7 月以来零龙虎榜——这是一个"没有注意力"的状态，按注意力定价机制，再好听的消息也推不动。</strong></p>
+<ul><li><strong>第一波（2026-02–03）</strong>：股价 9.02 → 16.01 元（+77.5%）。<strong>2026-03-04 涨停日成交 1.21 亿股、2026-03-05 成交 1.09 亿股（天量），龙虎榜 03-04 净卖 -6,836.10 万元、03-05 净卖 -5,631.23 万元</strong> → 典型的顶部派发。</li><li><strong>第二波（2026-04-30–05-20）</strong>：戴帽后反抽，9 连板至 10.15 元（05-15），05-20 盘中 10.63 元收 9.61 元、成交 4,803.34 万股；<strong>龙虎榜 05-22 净卖 -2,998.76 万元</strong>。此波驱动是"算力资产注入"传闻，<strong>公司 2026-05-17 公告明确否认</strong>。</li><li><strong>第三波（2026-06）</strong>：反弹至 9.55 元后回落，<strong>龙虎榜 06-22 净卖 -3,030.66 万元</strong>。</li><li><strong>此后（2026-07 至今）</strong>：零龙虎榜；韭研公社异动表最新一条停在 <strong>2026-07-23（5.37 元）</strong>，2026 年 9 月 28 日那次逆势大涨未入库（已按纪律用日 K 交叉验证）。</li><li><strong>筹码</strong>：股东户数 06-30 24,703 户 → 09-18 22,542 户（-8.7%），<strong>下跌中被动集中</strong>。</li></ul>
+<details class="fold"><summary>韭研公社异动全量记录（90 条，按题材时间降序）与炒作波段汇总</summary><div class="fold-body">
+
+<p><strong>炒作波段汇总</strong></p>
+<table><thead><tr><th>波段</th><th>时间</th><th>题材</th><th>最高连板</th><th>股价区间</th><th>驱动关键词</th></tr></thead><tbody><tr><td>① 戴帽前主升</td><td>2026-01–03</td><td>油服/地缘</td><td>7 天 4 板</td><td>9.02 → <strong>16.01</strong></td><td>美以袭击伊朗、霍尔木兹海峡、资产注入猜想</td></tr><tr><td>② 戴帽后反抽</td><td>2026-04-30–05-19</td><td>ST 板块</td><td><strong>19 天 12 板</strong></td><td>6.87 → 10.15</td><td>退市风险 + 算力注入传闻（后被否认）</td></tr><tr><td>③ 惯性与衰减</td><td>2026-05-25–07-23</td><td>ST 板块</td><td>—</td><td>9.12 → 5.37</td><td>补选董事、管理层换届、资产注入猜想</td></tr><tr><td>历史极值</td><td>2022-03</td><td>俄乌地缘</td><td>7 天 7 板</td><td>6.91 → 12.24</td><td>石油采掘 + 智慧矿山</td></tr><tr><td>历史极值</td><td>2025-06</td><td>伊以冲突</td><td>10 天 7 板</td><td>6.24 → 10.58</td><td>石油采掘 + 资产注入猜想（克拉玛依国资）</td></tr></tbody></table>
+<p><strong>炒作符号（关键字组合的稳定内核）</strong>：<strong>石油采掘 + 资产注入猜想（克拉玛依国资）+ 天然气 + 智慧矿山</strong>。该符号自 2024-09 首次出现后连续沿用至今，2026 年只新增了"退市风险"与"管理层换届"两个前缀 —— <strong>即当前这轮本质上仍是同一符号的重演，只是符号本身已被市场消化过两轮</strong>。</p>
+<p><strong>全量异动记录（部分，完整 90 条见 ST 信息库与韭研原始表）</strong></p>
+<table><thead><tr><th>题材时间</th><th>简称</th><th>题材</th><th>题材催化</th><th>涨停信息</th><th>股价</th><th>异动关键词</th></tr></thead><tbody><tr><td>2026-07-23</td><td>*ST准油</td><td>ST板块</td><td>—</td><td>—</td><td>5.37</td><td>管理层换届+资产注入猜想（克拉玛依国资）+石油采掘+天然气</td></tr><tr><td>2026-07-01</td><td>*ST准油</td><td>ST板块</td><td>—</td><td>—</td><td>6.72</td><td>补选董事+资产注入猜想（克拉玛依国资）+石油采掘+天然气</td></tr><tr><td>2026-06-30</td><td>*ST准油</td><td>ST板块</td><td>—</td><td>—</td><td>6.40</td><td>补选董事+资产注入猜想（克拉玛依国资）+石油采掘+天然气</td></tr><tr><td>2026-06-03</td><td>*ST准油</td><td>ST板块</td><td>—</td><td>—</td><td>9.55</td><td>资产注入猜想+退市风险+石油采掘+天然气+智慧矿山</td></tr><tr><td>2026-05-29</td><td>*ST准油</td><td>ST板块</td><td>—</td><td>19天12板</td><td>8.85</td><td>同左</td></tr><tr><td>2026-05-15</td><td>*ST准油</td><td>ST板块</td><td>—</td><td>9天9板</td><td>10.15</td><td>退市风险+石油采掘+资产注入猜想+天然气+智慧矿山</td></tr><tr><td>2026-04-30</td><td>*ST准油</td><td>ST板块</td><td>—</td><td>—</td><td>6.87</td><td>退市风险+石油采掘+资产注入猜想（克拉玛依国资）+天然气+智慧矿山</td></tr><tr><td>2026-03-04</td><td>准油股份</td><td>油气</td><td>美以袭击伊朗→伊朗宣布关闭霍尔木兹海峡、卡塔尔能源停产 LNG、欧洲气价一日暴涨 50%</td><td>7天4板</td><td>15.03</td><td>石油采掘+资产注入猜想（克拉玛依国资）+天然气+智慧矿山</td></tr><tr><td>2026-01-29</td><td>准油股份</td><td>油气</td><td>WTI 涨 2.9%、布伦特涨 3.02%；冬季风暴推升美国气价创三年新高</td><td>2天2板</td><td>11.18</td><td>同左</td></tr><tr><td>2025-06-23</td><td>准油股份</td><td>伊以冲突</td><td>伊朗议会认为应关闭霍尔木兹海峡；WTI 早盘一度涨超 6%</td><td>7天6板</td><td>10.58</td><td>同左</td></tr><tr><td>2025-06-16</td><td>准油股份</td><td>伊以冲突</td><td>WTI 今早高开逾 6%</td><td>2天2板</td><td>7.55</td><td>同左</td></tr><tr><td>2024-09-13</td><td>准油股份</td><td>国企改革/重组预期</td><td>证监会称并购重组进入"活跃期"；双成药业收购奥拉半导体引发"大股东优质资产注入"联想</td><td>—</td><td>4.91</td><td>资产注入猜想（克拉玛依国资）+石油采掘+天然气+智慧矿山</td></tr><tr><td>2022-03-04</td><td>准油股份</td><td>俄乌地缘</td><td>布伦特涨超 2% 报 109.41 美元；WTI 站上 108 美元（2013 年首次）</td><td>7天7板</td><td>12.24</td><td>石油采掘+智慧矿山</td></tr><tr><td>2021-03-08</td><td>准油股份</td><td>其他</td><td>—</td><td>3天3板</td><td>7.48</td><td>采掘服务+新疆振兴+业绩亏损</td></tr></tbody></table>
+
+</div></details>
+<hr>
+<h2 id="chap6">六、估值与投资结论</h2>
+<h3 id="sec13">6.1 估值：净资产口径已失效，只能做"壳价值 + 事件概率"的想象力定价</h3>
+<p><strong>一句话结论：PB 162.49 与负 PE 都没有估值意义；本标的只能按"壳价值 × 保壳概率"定价，而这个定价的分子（壳价值 20–25 亿元）与分母（归零风险）都由同一件事——2026 年末净资产——决定。</strong></p>
+<ul><li><strong>可比 PE 参照</strong>：公司自认所属"开采专业及辅助性活动"行业静态 PE 20.62 倍（中证指数，2026-05-14），<strong>而本公司 PE 为负</strong>——无盈利基础，PE 法不适用。</li><li><strong>想象力加总（无收入/无利润资产的定价方式）</strong>：</li><li><strong>壳价值</strong>：作为克拉玛依市国资委唯一 A 股上市平台，保壳成功后的壳本身即有价值；参考同型国资壳摘帽后市值中枢，给 <strong>20–25 亿元</strong>（对应股价 7.63–9.54 元）。</li><li><strong>富城能源油砂矿资产注入（未计入基准情景）</strong>：属"有想象空间但不给单点数值"的期权——注入需发股（受限至 2027-06）或现金（未公告），<strong>并入期权折价而非价值折价</strong>；不将其作为买入依据。</li><li><strong>三档情景</strong>：</li></ul>
+<table><thead><tr><th>情景</th><th>概率</th><th>关键假设</th><th>对应市值</th><th>对应股价</th><th>相对现价</th></tr></thead><tbody><tr><td>保壳成功 + 摘帽</td><td>中性偏乐观</td><td>2026 年末净资产转正、审计标准无保留</td><td>20–25 亿元</td><td>7.63–9.54 元</td><td><strong>+43% ~ +79%</strong></td></tr><tr><td>仅"活过一年"</td><td>中性</td><td>净资产勉强为正但无注入，2027 年再来一轮</td><td>14–18 亿元</td><td>5.34–6.87 元</td><td>-0% ~ +29%</td></tr><tr><td><strong>终止上市</strong></td><td><strong>不可忽略</strong></td><td><strong>2026 年末净资产为负</strong></td><td>→ 0</td><td>→ 0</td><td><strong>-100%</strong></td></tr></tbody></table>
+<h3 id="sec14">6.2 投资结论</h3>
+<p><strong>卖出（回避）</strong></p>
+<p><strong>理由链（按重要性排序）</strong></p>
+<ol><li><strong>归零开关是"净资产"，而不是市场盯着的"营收"</strong> —— 2026-06-30 归母净资产仅 <strong>859.60 万元</strong>，H1 亏损 1,868.96 万元，2025 年同期 H2 亏损 2,137.08 万元。按中性情景测算，<strong>2026 年末归母净资产为 -208.40 万元 → 直接触发 9.3.12 第（二）项终止上市，本金归零</strong>。营收线（H1 1.57 亿元）大概率能过，<strong>恰恰是市场最放心的那一条</strong>。（来源：<a href="https://data.eastmoney.com/notices/detail/002207/AN202608171828053631.html" target="_blank" rel="noopener">2026 半年报</a>、<a href="https://data.eastmoney.com/notices/detail/002207/AN202604271821635605.html" target="_blank" rel="noopener">2025 年报</a>）</li><li><strong>最硬的"资产注入"催化被制度锁到 2027-06-12 之后</strong> —— 2026-06-12 深交所公开谴责（林军、简伟、张敏）。据《上市公司证券发行注册管理办法》第十一条第（三）项，<strong>现任董事、高管最近一年受证券交易所公开谴责的，不得向特定对象发行股票</strong>。林军、张敏已辞任，<strong>总经理简伟仍在任</strong> → 发行股份购买资产最早 2027-06-12 之后。（来源：<a href="https://data.eastmoney.com/notices/detail/002207/AN202606121823516414.html" target="_blank" rel="noopener">公开谴责决定书</a>）</li><li><strong>注意力已两次被高位派发终结，当前处于无关注状态</strong> —— 2026-03-04/05 天量（1.21/1.09 亿股）对应龙虎榜净卖 -6,836.10/-5,631.23 万元；05-22 净卖 -2,998.76 万元；06-22 净卖 -3,030.66 万元。此后零龙虎榜、换手 1.52%、日成交 2,129 万元。<strong>在注意力低谷，除年报级事件外没有能推动股价的燃料。</strong>（来源：东财龙虎榜 API）</li><li><strong>"相似股票匹配"落下跌组，且无相对优势</strong> —— 同型 38 家 2026 年涨跌幅中位约 <strong>-26.4%</strong>，本标的 <strong>-27.97% 与中位持平</strong>；5 只上涨样本全部"有物"（具体标的资产），本标的只有"人名"（国资/富城预期）。（来源：路径底表「财务类」块 + 腾讯行情）</li><li><strong>自身无造血能力，全靠外部输血；而外部输血至今只是"要还的借款"</strong> —— 连续 6 年扣非孰低为负；2026H1 毛利率 <strong>-2.95%</strong>；资产负债率 97.2%、货币资金 3,032.70 万元对流动负债 3.4284 亿元；担保余额 4,700 万元占净资产 <strong>174.11%</strong>；<strong>资本公积为 0</strong>（无法公积金弥补亏损、无重整转增基础）。控股股东仅通过中小融担提供 8,000 万元<strong>借款额度</strong>（2026-07-17 已放款 2,500 万元、年化 6%）——借款不增净资产。（来源：<a href="https://data.eastmoney.com/notices/detail/002207/AN202607161827030207.html" target="_blank" rel="noopener">关联交易进展公告</a>）</li></ol>
+<p><strong>触发条件（出现以下任一，本结论需重估）</strong></p>
+<ul><li>控股股东/关联方公告<strong>债务豁免或无偿赠与资产</strong>（直接增厚净资产）；</li><li>公告<strong>现金收购关联方资产</strong>（不受发股限制）；</li><li><strong>简伟辞任</strong>总经理（解开发股限制）；</li><li>中植系 3,144.63 万股由城投或其指定方<strong>拍得</strong>（控制权加固 + 利空出尽）；</li><li>2026 三季报显示净资产较 Q2 显著回升或亏损大幅收窄。</li></ul>
+<p><strong>失效条件（本结论作废/翻转）</strong></p>
+<ul><li>2026 年末归母净资产实际转正<strong>且</strong>年报审计标准无保留 → 摘帽逻辑成立，届时须按摘帽行情框架重估；</li><li>出现上述任一"触发条件"且股价仍在 5.5 元以下 → 赔率结构改变，应转为"买入（事件驱动·轻仓）"。</li></ul>
+<p><strong>参考区间</strong></p>
+<ul><li>买入区间：<strong>4.80 元以下</strong>（2026 年低点附近，对应市值 &lt;12.6 亿元）——<strong>且必须在出现上述触发信号之后</strong>；</li><li>目标区间（保壳成功情景）：7.63–9.54 元（20–25 亿元市值）；</li><li>止损位：<strong>不建议建仓，故不设止损</strong>。</li></ul>
+<p><strong>时间窗口</strong>：至 2026 年年度报告披露（预计 2027-04 下旬）。</p>
+<p><strong>仓位建议</strong>：不建仓。</p>
+<p><strong>最大风险（若结论出错）</strong>：克拉玛依城投在 Q4 通过债务豁免或资产赠与一次性补足净资产缺口——这在一周内即可完成，且<strong>完全不会被提前披露</strong>，意味着"卖出"者可能错过一次无预告的一次性重估。</p>
+<hr>
+<h2 id="chap7">附录 A · 待核实 / 需补充清单</h2>
+<table><thead><tr><th>#</th><th>待核实项</th><th>已检索渠道与结论</th></tr></thead><tbody><tr><td>1</td><td>中植系 3,144.63 万股的具体拍卖时点</td><td>公司 2026-06-26、2026-09-09 两次答复均为"尚未收到处置及相关进展信息"；股吧流传"7 月 25 日上拍"<strong>属传言，未见司法拍卖平台公告，不予采信</strong></td></tr><tr><td>2</td><td>富城能源（油砂矿）的资产规模与财务数据</td><td>公告未披露；仅知其为克拉玛依城投全资、"打造百万吨地方油公司"为市级战略定位（<strong>媒体/雪球口径，待核实</strong>）</td></tr><tr><td>3</td><td>林军、简伟的出生年月与完整履历</td><td><strong>公告未披露</strong></td></tr><tr><td>4</td><td>2026 年政府补助金额</td><td>半年报未单列大额政府补助；Q3/Q4 是否落地待观察</td></tr><tr><td>5</td><td>2026 年新签订单的确切金额</td><td>互动易提及"已到手订单较上年同期有所增加"，无具体数字；雪球称 2025 年新接订单约 2.64 亿元（<strong>雪球观点·待核实</strong>）</td></tr></tbody></table>
+<h2 id="chap8">附录 B · 关键信源链接</h2>
+<table><thead><tr><th>#</th><th>来源类型</th><th>来源与标题（日期）</th><th>链接</th></tr></thead><tbody><tr><td>1</td><td>一手·公告</td><td>关于公司股票交易被实施退市风险警示暨停牌的公告（2026-04-28）</td><td><a href="https://data.eastmoney.com/notices/detail/002207/AN202604271821635601.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>2</td><td>一手·公告</td><td>2025 年年度报告（2026-04-28）</td><td><a href="https://data.eastmoney.com/notices/detail/002207/AN202604271821635605.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>3</td><td>一手·公告</td><td>2025 年度营业收入扣除情况表的专项核查报告（2026-04-28）</td><td><a href="https://data.eastmoney.com/notices/detail/002207/AN202604271821635607.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>4</td><td>一手·监管</td><td>深交所关于对新疆准东石油技术股份有限公司及相关当事人给予公开谴责处分的决定 深证上〔2026〕797 号（2026-06-12）</td><td><a href="https://data.eastmoney.com/notices/detail/002207/AN202606121823516414.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>5</td><td>一手·公告</td><td>关于董事长、财务总监辞职的公告（2026-06-18）</td><td><a href="https://data.eastmoney.com/notices/detail/002207/AN202606171823638460.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>6</td><td>一手·公告</td><td>2026 年第二次临时股东会决议公告（2026-07-17）</td><td><a href="https://data.eastmoney.com/notices/detail/002207/AN202607161827030210.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>7</td><td>一手·公告</td><td>关联交易进展公告（2026-07-17）</td><td><a href="https://data.eastmoney.com/notices/detail/002207/AN202607161827030207.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>8</td><td>一手·公告</td><td>股东减持股份实施情况公告（2026-07-21）</td><td><a href="https://data.eastmoney.com/notices/detail/002207/AN202607201827154569.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>9</td><td>一手·公告</td><td>第八届董事会第十八次（临时）会议决议公告·组织机构优化调整（2026-07-24）</td><td><a href="https://data.eastmoney.com/notices/detail/002207/AN202607231827289018.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>10</td><td>一手·公告</td><td>2026 年半年度业绩预告（2026-07-15）</td><td><a href="https://data.eastmoney.com/notices/detail/002207/AN202607141826961762.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>11</td><td>一手·公告</td><td>2026 年半年度报告（2026-08-18）</td><td><a href="https://data.eastmoney.com/notices/detail/002207/AN202608171828053631.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>12</td><td>一手·公告</td><td>股票交易异常波动暨风险提示性公告·算力注入澄清（2026-05-18）</td><td><a href="https://data.eastmoney.com/notices/detail/002207/AN202605171822383259.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>13</td><td>一手·交流</td><td>投资者关系活动记录表（2026-06-26 新疆辖区集体接待日）</td><td><a href="https://data.eastmoney.com/notices/detail/002207/AN202606301826566611.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>14</td><td>一手·交流</td><td>2025 年年报暨 2026 年一季报业绩说明会投资者活动记录表（2026-05-09）</td><td><a href="https://data.eastmoney.com/notices/detail/002207/AN202605091822101754.html" target="_blank" rel="noopener">原文</a></td></tr><tr><td>15</td><td>一手·交流</td><td>全景网投资者关系互动平台·问答（2026-08/09）</td><td><a href="https://ir.p5w.net/question/361e1c925c99418dae2b6ca84034a559.shtml" target="_blank" rel="noopener">原文</a></td></tr><tr><td>16</td><td>数据源</td><td>东财 F10 主要财务指标（2026-10-05 取）</td><td><a href="https://emweb.securities.eastmoney.com/PC_HSF10/NewFinanceAnalysis/Index?type=web&amp;code=SZ002207" target="_blank" rel="noopener">链接</a></td></tr><tr><td>17</td><td>数据源</td><td>东财龙虎榜明细（2024-02 至 2026-06-22）</td><td><a href="https://data.eastmoney.com/stock/lhb/002207.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>18</td><td>数据源</td><td>腾讯行情（2026-09-30 截面）+ 新浪日 K（近 1023 个交易日）</td><td>—</td></tr><tr><td>19</td><td>数据源</td><td>韭研公社异动整理（全表 90 条，最后一条 2026-07-23）</td><td>本地 <code>0-垦禾投研\自动化输出\异动\</code></td></tr><tr><td>20</td><td>一手·规则</td><td>深交所《股票上市规则（2026 修订）》9.3.1 / 9.3.8 / 9.3.12</td><td>本地 <code>STskill\</code></td></tr><tr><td>21</td><td>一手·规则</td><td>《上市公司证券发行注册管理办法》（2025 年修正）第十一条</td><td><a href="https://neris.csrc.gov.cn/falvfagui/rdqsHeader/mainbody?navbarId=3&amp;secFutrsLawId=f923bf85fc45453d8960336a54f728a6" target="_blank" rel="noopener">原文</a></td></tr><tr><td>22</td><td>三级·线索</td><td>雪球/东财股吧讨论（2026-07-24 至 2026-10-05，多处引用已标"（雪球评论，YYYY-MM-DD）"）</td><td>—</td></tr></tbody></table>
+<h2 id="chap9">附录 C · 逻辑漏洞与反方观点（对买入理由的压力测试）</h2>
+<p><strong>本报告结论为"卖出"，以下五问用于测试"买入方"最常见的五个论据是否站得住：</strong></p>
+<ol><li><strong>"国资不会让它退市"</strong> → 国资保壳意愿 ≠ 保壳必然发生；<strong>判断依据必须是"已发生的动作"而非"合理的推断"</strong>。截至基准日，控股股东提供的唯一支持是 8,000 万元<strong>借款额度</strong>（要还、付 6% 利息），<strong>没有一分钱注资</strong>。更关键的是：<strong>2026-08-10 借壳窗口届满后已过去近两个月，零公告。</strong></li><li><strong>"营收过 3 亿就保住了"</strong> → <strong>口径错误。</strong> 财务类 *ST 的撤销是"不存在任一终止情形"的 AND 逻辑，营收达标只是三项之一；<strong>净资产为负与审计非标同样是终止上市情形</strong>。2025 年营收 3.42 亿元（2024 年）公司照样戴帽，说明营收安全垫并不存在。</li><li><strong>"借壳窗口打开了，注入就在眼前"</strong> → 窗口只降低"是否构成重组上市"的认定门槛，<strong>不解决"能不能发股"</strong>。后者被《发行注册办法》第十一条第（三）项与"简伟在任"共同锁死至 2027-06-12。</li><li><strong>"算力/富城资产一定会注入"</strong> → <strong>公司已两次明确否认或不予确认</strong>：2026-05-17 公告"公司、控股股东和实际控制人并无注入算力资产的计划"；2026-09-09 互动易"没有应披露未披露信息"。<strong>"拟注入标的"的高度不确定性，本身就是本标的与"上涨组"样本的分水岭。</strong></li><li><strong>"股价已经跌了 67%，跌无可跌"</strong> → 跌幅大不代表有安全边际。同型 38 家中跌幅超过 60% 的就有 6 家（东珠 -78.72%、岭南 -61.73%、九鼎 -60.90%、实达 -59.57%、宝馨 -59.01%、宁视 -51.20%）；<strong>而真正的下行底是 0，不是 4.78 元。</strong></li></ol>
+<p><strong>反方最强的一条（须诚实列出）</strong>：净资产缺口仅一千余万元，对注册资本 30 亿元的城投平台微不足道，且<strong>债务豁免/资产赠与属可在一周内完成的动作、无需提前披露</strong>。因此"净资产转负"虽为最大的下行风险，其发生概率也<strong>内生地受制于地方国资的意志</strong>——这是本报告"卖出（回避）"结论最大的不确定来源，也是设"触发条件"章节的原因。</p>
+<h2 id="chap10">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-05</td><td>首次生成。该标的目录此前仅有 2026 年半年报 PDF，无任何历史研报可吸收，本版为从零构建。数据截至 2026 中报 + 2026-09-30 行情；覆盖控股权沿革、公开谴责与发股限制、净资产归零测算、同型样本匹配、异动全量表。投资结论＝<strong>卖出（回避）</strong>。</td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
