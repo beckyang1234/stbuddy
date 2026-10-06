@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ST人福（600079.SH）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>8 章 · 16 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断</a><a class="sblv3" href="#sec0">1.1 基本信息与股权结构</a><a class="sblv3" href="#sec1">1.2 股权沿革、控制权变更与关键人物</a><a class="sblv3" href="#sec2">1.3 ST 风险诊断</a><a class="sblv3" href="#sec3">1.4 公司运营情况</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、基本面路径：把"帽子"变成"引擎"</a><a class="sblv3" href="#sec4">2.1 定增：33.47 亿元的摊薄算术</a><a class="sblv3" href="#sec5">2.2 招商局平台化：软预期与硬约束</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、炒作逻辑三支柱</a><a class="sblv3" href="#sec6">3.1 炒预期：未来 6—12 个月的节点</a><a class="sblv3" href="#sec7">3.2 炒历史类似行为：相似股票匹配法</a><a class="sblv3" href="#sec8">3.3 炒主板映射</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、情绪面与筹码面</a><a class="sblv3" href="#sec9">4.1 注意力读数</a><a class="sblv3" href="#sec10">4.2 筹码结构</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">五、估值与投资结论</a><a class="sblv3" href="#sec11">5.1 估值</a><a class="sblv3" href="#sec12">5.2 投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录</a><a class="sblv3" href="#sec13">附录 A · 待核实与需补充清单</a><a class="sblv3" href="#sec14">附录 B · 关键信源</a><a class="sblv3" href="#sec15">附录 C · 逻辑漏洞与反方观点（5 问速版）</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">ST人福（600079.SH）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：卖出（回避）</strong></p>
+<ul><li><strong>红线分类</strong>：<span class="sttag sttag-orange"><a href="http://static.cninfo.com.cn/finalpage/2025-12-13/1224874140.PDF" target="_blank" rel="noopener">2025年处罚ST·2020—2022年报虚假记载</a></span>·<span class="sttag sttag-blue"><a href="http://static.cninfo.com.cn/finalpage/2025-12-30/1224904927.PDF" target="_blank" rel="noopener">原控股股东非经营性占用累计127.85亿元·已全额归还</a></span></li><li><strong>生死定级</strong>：<strong>安全</strong>——四类退市红线一条未踩；ST 属"其他风险警示"，撤销未获核准的后果仅是继续戴 ST，不构成终止上市情形</li><li><strong>自救空间</strong>：<strong>不需要自救</strong>。FY2025 营收 239.62 亿元、归母 18.55 亿元，2026-06-30 资产负债率 39.66%、财报与内控审计均为标准无保留意见；唯一的时间锁是"行政处罚决定书满 12 个月"，最早可申请撤销日为 <strong>2026-12-30</strong></li><li><strong>主要看点</strong>：控股股东<strong>招商生命科技（武汉）有限公司</strong>（实控人招商局集团有限公司，2025-07 入主）拟以<strong>不超过 33.47 亿元</strong>现金认购定增（发行价按发行期首日前 20 交易日均价 8 折、锁定期 36 个月），招商局将人福定位为集团"<strong>生命科技</strong>"平台；核心资产宜昌人福的<strong>麻醉精神类药品 2026H1 收入约 41 亿元</strong>，2026H1 归母净利同比 +15.15%</li></ul>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>标的</td><td>ST人福（600079.SH），上海证券交易所主板，医药制造业</td></tr><tr><td>基准日</td><td>2026-10-06（行情与股东数据截至 2026-09-30，财务数据截至 2026-06-30）</td></tr><tr><td>版本</td><td>初版 · 2026-10-06</td></tr><tr><td>数据来源</td><td>巨潮资讯网公告原文、公司 2025 年年度报告与 2026 年半年度报告、上交所《股票上市规则（2026 年 4 月修订）》、腾讯自选股与新浪财经行情、东方财富 F10（异源，已标注）、安迪自建 ST 信息库</td></tr><tr><td>数据质量异常</td><td>① Wind 局域网代理本轮不可用，行情/估值/同型样本改用腾讯与新浪公开源，财务以一手年报与半年报为准，2018—2022 年序列用东方财富 F10 交叉核对并标【异源】；② 上证 e 互动接口本轮返回 500/404，投资者交流以公司两份业绩说明会公告的<strong>参会人员名单</strong>为准，<strong>未取到问答记录原文</strong>；③ ST 信息库档案记载的"近 20 年价格分位数 44.23%"取数日为 2026-07-31（当日 17.91 元），现价已上行，本报告一律采用自行复算口径</td></tr></tbody></table>
+<blockquote><p><strong>报告结论与文末「投资结论」完全一致；本报告为速研档，未按深度档展开九段。</strong></p></blockquote>
+<hr>
+<h2 id="chap1">一、诊断</h2>
+<h3 id="sec0">1.1 基本信息与股权结构</h3>
+<p><strong>结论：这是一家由央企接手的真盈利医药集团，股权结构呈"招商局系 26.70% 表决权 vs 宜昌产投系 12.35% 表决权"的双极格局，原实控人李杰（处罚当事人之一）5.31% 的表决权已委托给宜昌产投行使。</strong></p>
+<table><thead><tr><th>指标</th><th>数值</th><th>判读</th></tr></thead><tbody><tr><td>现价 / 总市值</td><td>19.17 元 / <strong>312.90 亿元</strong></td><td>2026-09-30 收盘</td></tr><tr><td>总股本</td><td><strong>16.32 亿股</strong>（1,632,225,965 股）</td><td>报告期内无变动</td></tr><tr><td>归母净资产（2026-06-30）</td><td><strong>193.09 亿元</strong></td><td>每股 11.83 元</td></tr><tr><td>PB / PE(TTM) / PS(2025 营收)</td><td><strong>1.62</strong> / 15.41 / 1.31</td><td>均为医药大市值股低位一档</td></tr><tr><td>资产负债率（2026-06-30）</td><td><strong>39.66%</strong></td><td>负债合计 147.49 亿元</td></tr><tr><td>货币资金 / 交易性金融资产</td><td>42.42 亿元 / 9.08 亿元</td><td>非受限货币资金 41.25 亿元</td></tr><tr><td>年初至今涨跌幅（前复权）</td><td><strong>+8.74%</strong></td><td>同期沪深300 <strong>−5.88%</strong>、上证50 <strong>−6.86%</strong></td></tr><tr><td>2026 年内区间</td><td>16.03—20.28 元</td><td>现价处区间 <strong>73.9%</strong> 分位，距年内高点仅 <strong>−5.5%</strong></td></tr></tbody></table>
+<p><strong>股权与控制关系</strong>：控股股东招商生科（直接 6.00% ＋ 通过生科投资发展间接 6.00% ＋ 受春泥1号 11.70% 表决权委托）<strong>合计控制 435,734,105 股 = 26.70% 表决权</strong>，并与武汉高科（1.60%）签有一致行动《协议书》，合计 28.30%。相对阵营为宜昌产投系——李杰、陈小清、徐华斌合计 141,768,007 股表决权委托给宜昌产投，加其全资子公司间接控制的芜湖信福 59,829,636 股，<strong>合计 12.35%</strong>。招商生科处于相对控股而非绝对控股地位。</p>
+<details class="fold" id="fold-share"><summary>前十大股东与表决权阵营（2026-06-30 中报口径）</summary><div class="fold-body">
+
+<p><strong>前十大股东（不含转融通出借）</strong></p>
+<table><thead><tr><th>持有方</th><th>持股数（股）</th><th>比例</th><th>质押/冻结</th><th>性质</th></tr></thead><tbody><tr><td>中粮信托—春泥1号破产重整服务信托</td><td>190,900,277</td><td>11.70%</td><td>无</td><td>当代集团重整服务信托</td></tr><tr><td>招商生命科技（武汉）有限公司</td><td>146,900,270</td><td>9.00%</td><td>质押 97,933,558 股</td><td>国有法人</td></tr><tr><td>招商生科投资发展（武汉）合伙企业</td><td>97,933,558</td><td>6.00%</td><td>无</td><td>有限合伙</td></tr><tr><td>李杰</td><td>86,747,204</td><td>5.31%</td><td>质押 52,000,000 股</td><td>境内自然人</td></tr><tr><td>芜湖信福股权投资合伙企业</td><td>59,829,636</td><td>3.67%</td><td>无</td><td>有限合伙</td></tr><tr><td>陈小清</td><td>43,000,087</td><td>2.63%</td><td>质押 42,856,758 股</td><td>境内自然人</td></tr><tr><td>武汉高科国有控股集团有限公司</td><td>26,187,208</td><td>1.60%</td><td>无</td><td>国有法人</td></tr><tr><td>沈阳森木投资—森木价值发现1号私募基金</td><td>20,901,334</td><td>1.28%</td><td>无</td><td><strong>报告期内新进 20,841,334 股</strong></td></tr><tr><td>中国银行—鹏华匠心精选混合型基金</td><td>15,229,252</td><td>0.93%</td><td>无</td><td>减持 2,912,000 股</td></tr><tr><td>徐华斌</td><td>12,020,716</td><td>0.74%</td><td>质押 3,000,000 股</td><td>境内自然人</td></tr></tbody></table>
+<p><strong>两大表决权阵营</strong></p>
+<table><thead><tr><th>阵营</th><th>构成</th><th>合计表决权</th></tr></thead><tbody><tr><td>招商局系</td><td>招商生科直接＋生科投资发展间接＋春泥1号委托</td><td>435,734,105 股 = <strong>26.70%</strong>（另与武汉高科一致行动 1.60%，合计 28.30%）</td></tr><tr><td>宜昌产投系</td><td>李杰＋陈小清＋徐华斌委托 141,768,007 股 ＋ 芜湖信福 59,829,636 股</td><td>201,597,643 股 = <strong>12.35%</strong></td></tr></tbody></table>
+<p><strong>结构事实三则</strong>：① <strong>春泥1号是当代集团破产重整设立的信托计划</strong>（委托人为当代科技、受托人中粮信托），招商生科为其<strong>优先受益人</strong>且在该信托受益人大会享有绝对决策权，信托预计存续期 5 年——即这 11.70% 是"重整资产处置通道"，不是长期战略持股；② 招商生科将其直接持股中的 9,793.36 万股（占其直接持股 66.7%）质押；③ <strong>李杰、陈小清、徐华斌三人将表决权委托给宜昌产投</strong>，而李杰正是本次处罚中罚款最重的个人当事人之一（390 万元），已于 2025-07-02 起不再担任公司董事。</p>
+
+</div></details>
+<h3 id="sec1">1.2 股权沿革、控制权变更与关键人物</h3>
+<p><strong>结论：控制权在 2025 年 6—8 月完成实质性移交——2025-04-25 法院裁定批准当代集团重整计划，2025-06-26 当代科技所持 23.70% 经司法划过户，2025-07-30 董事会换届（9 席中 5 席非独立董事由招商生科提名），实控人变更为招商局集团有限公司。旧的当代集团体系是本次处罚的根源，新体系接管后内控与占用问题均已清零。</strong></p>
+<details class="fold" id="fold-history"><summary>前世今生（年份｜关键动作｜股权与实控人变化｜背后的逻辑）</summary><div class="fold-body">
+
+<table><thead><tr><th>年份</th><th>关键动作</th><th>股权与实控人变化</th><th>背后的逻辑</th></tr></thead><tbody><tr><td>1997-06</td><td>人福医药在上交所上市</td><td>早期为武汉高校系药企</td><td>传统医药工业起家</td></tr><tr><td>2005—2019</td><td>通过并购与自建形成"医药工业＋医药商业＋国际化"三大板块</td><td>当代科技逐步成为控股股东</td><td>当代系以资本运作方式整合湖北医药资产</td></tr><tr><td>2020—2022-03</td><td><strong>当代集团指使上市公司为其提供资金，非经营性占用累计发生额 127.85 亿元</strong>（2020 年 25.02 亿元＝净资产 17.58%；2021 年 81.79 亿元＝62.97%；2022 年 1—3 月 21.04 亿元＝13.44%）</td><td>未及时披露，2020 年报重大遗漏</td><td>占用金额以"累计发生额"计，非余额；<strong>截至 2022-04-15 已归还全部本金及占用期间利息</strong></td></tr><tr><td>2022-03</td><td>4 家子公司向珂美立德购买物业，合计 16.45 亿元（占 2022 年报净资产 9.17%），未按关联交易披露</td><td>当代集团隐瞒关联关系</td><td>关联方识别被控股股东故意阻断</td></tr><tr><td>2022-12-22</td><td>第十届董事会第四十四次会议通过《前期会计差错更正及追溯调整》：对 2017—2021 年度合并及母公司报表追溯调整，并对 2022 年 1—3 季度更正</td><td>无</td><td><strong>这是本次处罚项下"追溯重述"义务的完成动作，也是日后摘帽的两个必要条件之一</strong></td></tr><tr><td>2023—2024</td><td>当代集团陷入债务危机</td><td>持股被质押、冻结</td><td>控股股东自身丧失偿付能力</td></tr><tr><td>2024-10-22</td><td>公司及当代科技收到证监会《立案告知书》（证监立案字 0052024007 号）</td><td>无</td><td>立案事由：涉嫌信息披露违法违规</td></tr><tr><td>2025-04-25</td><td>武汉中院（2024）鄂 01 破 22 号之四《民事裁定书》裁定<strong>批准当代科技《重整计划》</strong>并终止重整程序</td><td>重整计划确立"信托＋现金/股票分配"结构</td><td>控股股东风险通过司法重整出清</td></tr><tr><td>2025-04-30—06-11</td><td><strong>招商生科二级市场集中竞价增持 16,322,215 股（1.00%），金额约 3.46 亿元，均价约 21.20 元/股</strong>（价格上限 25.53 元）</td><td>招商生科持股由 0 升至 1.00%</td><td>以专项贷款承诺函支持，先建仓再接管</td></tr><tr><td>2025-06-26</td><td>当代科技所持 <strong>386,767,393 股（23.70%）经司法划转过户</strong>：招商生科直接持 97,933,558 股（6%）、生科投资发展持 97,933,558 股（6%）、<strong>春泥1号持 190,900,277 股（11.70%）并全部表决权委托给招商生科</strong></td><td>招商生科合计控制 23.70% 表决权</td><td><strong>对价未在公告中披露</strong>（重整计划项下分配），属真实的成本锚缺失</td></tr><tr><td>2025-07-11</td><td>与武汉高科签署一致行动《协议书》，合计 26.30%</td><td>一致行动关系确立</td><td>引入武汉东湖高新区国资作为本地协作者</td></tr><tr><td>2025-07-30</td><td>2025 年第三次临时股东会完成董事会换届：<strong>9 席中 5 席非独立董事由招商生科提名</strong></td><td><strong>控股股东变更为招商生科、实际控制人变更为招商局集团有限公司</strong>（2025-08-01 公告确认，合计控制 26.62%）</td><td>控制权移交完成，早于一切资产动作</td></tr><tr><td>2025-12-12 / 12-13</td><td>收到湖北证监局《行政处罚事先告知书》（鄂处罚字〔2025〕8 号）；披露《实施其他风险警示暨停牌》公告</td><td>2025-12-15 停牌 1 天，<strong>2025-12-16 起简称变更为 ST人福</strong></td><td>戴帽依据为沪主板 <strong>9.8.1 第一款第（七）项</strong></td></tr><tr><td>2025-12-29 / 12-30</td><td>公司及相关责任人<strong>收到《行政处罚决定书》（〔2025〕10 号）</strong>，公司罚款 850 万元</td><td>无</td><td><strong>该日即为"12 个月计时"起点</strong></td></tr><tr><td>2026-02-24</td><td>第十一届董事会第五次会议通过定增预案，与招商生科签署《附条件生效的股份认购协议》</td><td>无</td><td>定增初始价 14.95 元/股（＝首次董事会决议公告日前 20 交易日均价的 80%）、金额 30—35 亿元、锁定 36 个月</td></tr><tr><td>2026-05-01 / 06-18</td><td>2026 年第一次临时股东会、第十一届董事会第十次会议通过定增相关议案</td><td>无</td><td>程序推进</td></tr><tr><td>2026-08-05</td><td><strong>定增申请获上交所受理</strong></td><td>无</td><td>保荐机构中信证券、招商证券；律师中伦；审计大信</td></tr><tr><td>2026-09-24</td><td>披露《审核问询函之回复报告》及修订后的募集说明书</td><td>无</td><td>上交所问询聚焦募资必要性（第 7 问）与存贷双高合理性（第 2、8 问）</td></tr><tr><td>2026-09-29 / 09-30</td><td>第十一届董事会第十二次会议<strong>调整发行方案</strong>：募集总额由"30—35 亿元"改为"<strong>不超过 334,729.94 万元</strong>"；<strong>定价机制由固定价 14.95 元改为"发行期首日前 20 交易日均价 8 折"的浮动价</strong>；认购数量改为"按募集总额÷发行价格确定，不超过 234,113,712 股且不超过发行前总股本 30%"</td><td>无</td><td><strong>调整原因公告原文</strong>："根据中国证监会及上海证券交易所关于'上市公司存在财务性投资比例较高情形的，须相应调减本次再融资募集资金金额'的要求"——补充流动资金由 8.17 亿元砍至 6.65 亿元</td></tr></tbody></table>
+
+</div></details>
+<p><strong>关键人物（现任管理层）</strong></p>
+<table><thead><tr><th>姓名</th><th>现任职务</th><th>任职起点</th><th>背景与判读</th></tr></thead><tbody><tr><td>邓伟栋</td><td>董事长、非独立董事</td><td>2025-07-30</td><td>招商局系提名；2026-09-29 定增议案表决中作为关联董事回避</td></tr><tr><td>杜文涛</td><td>总经理、法定代表人、财务负责人</td><td>2025-06-10</td><td>一人兼任总经理与财务负责人</td></tr><tr><td>刘南鸿</td><td>副总经理、董事会秘书</td><td>2025-04-22</td><td>招商生科增持期内到任</td></tr><tr><td>李俊</td><td>副总经理</td><td>2025-07-31</td><td>换届后到任</td></tr><tr><td>尹强</td><td>副总经理</td><td>2020-04-28</td><td>唯一留任的旧体系高管，<strong>不在处罚当事人名单内</strong></td></tr><tr><td>周爱强、黄晓华、许薇娜、常黎、张杰</td><td>非独立董事</td><td>2025-07-30</td><td>招商局系提名，定增议案中全部回避表决</td></tr><tr><td>余玉苗、田卫星、向海龙</td><td>独立董事</td><td>2025-07-30</td><td>换届后全部更换</td></tr></tbody></table>
+<blockquote><p><strong>判据：本届董事会与高级管理人员中，无一人是《行政处罚决定书》当事人</strong>（当事人为李杰、吴亚君、邓霞飞、郑承刚、夏渊、张红杰、李前伦、王学海、艾路明，均为"时任"职务）。这一条直接决定《上市公司证券发行注册管理办法》第十一条第（三）项<strong>不构成对本次向特定对象发行股票的障碍</strong>——这也是定增能被上交所受理的制度前提。</p></blockquote>
+<details class="fold" id="fold-punish"><summary>处罚事实、当事人与罚款明细（〔2025〕10 号）</summary><div class="fold-body">
+
+<p><strong>四项违法事实</strong>：① 2020—2022 年 3 月与当代集团非经营性资金占用累计发生额 <strong>127.85 亿元</strong>，未及时披露，2020 年年报遗漏披露 25.02 亿元（占该年报净资产 19.26%）；② 2022 年 3 月 4 家子公司向珂美立德购买物业合计 <strong>16.45 亿元</strong>（占 2022 年报净资产 9.17%），未按关联交易及时披露，2022 年年报重大遗漏；③ <strong>通过设立金科瑞达承接剥离资产、未将武汉睿成与智盈新成纳入合并报表</strong>，导致 2020 年年报虚增归母净利 <strong>1.43 亿元</strong>（占 12.43%）、2021 年年报虚增 <strong>0.72 亿元</strong>（占 5.21%）、2022 年半年报虚增 <strong>0.91 亿元</strong>（占 5.71%）；④ 当代集团隐瞒关联关系（遥星医药、珂美立德）。</p>
+<p><strong>罚款总额</strong></p>
+<table><thead><tr><th>受罚主体</th><th>罚款（万元）</th><th>附加</th></tr></thead><tbody><tr><td>人福医药集团股份公司</td><td><strong>850</strong></td><td>警告</td></tr><tr><td>武汉当代科技产业集团股份有限公司</td><td>900</td><td>—</td></tr><tr><td>艾路明（时任当代集团董事，实际履行董事长职责）</td><td>390</td><td><strong>七年证券市场禁入</strong></td></tr><tr><td>李杰（时任董事长）</td><td>390</td><td>警告；2025-07-02 起不再任董事</td></tr><tr><td>吴亚君（时任财务总监）</td><td>340</td><td>警告</td></tr><tr><td>邓霞飞（时任董事、总裁）</td><td>250</td><td>警告</td></tr><tr><td>李前伦（时任董事会秘书）</td><td>200</td><td>警告</td></tr><tr><td>王学海（时任董事）</td><td>200</td><td>警告</td></tr><tr><td>郑承刚（时任监事）</td><td>50</td><td>警告</td></tr><tr><td>夏渊（时任职工监事）</td><td>50</td><td>警告</td></tr><tr><td>张红杰（时任副总裁）</td><td>50</td><td>警告</td></tr></tbody></table>
+<p><strong>逐条核过 9.5.2 量化线，确认不构成重大违法强制退市</strong>：第（四）项单年 ≥2 亿元且 &gt;30%——最大单年虚增 1.43 亿元 &lt;2 亿元，<strong>不命中</strong>；连续两年合计 ≥3 亿元且 &gt;20%——1.43＋0.72＝2.15 亿元 &lt;3 亿元，<strong>不命中</strong>；"年度报告财务指标连续三年存在虚假记载"——虚假记载涉及 2020 年报、2021 年报、<strong>2022 年半年报</strong>（半年报不计入"年度报告"），<strong>不命中</strong>。公司公告亦明确表述"未触及第 9.5.2 条规定的重大违法类强制退市情形"。另注：9.5.2 第（四）项在沪主板 2026 年 4 月修订版中的适用年度为 <strong>2020 年度至 2024 年度</strong>。</p>
+
+</div></details>
+<p><strong>全流程进度看板</strong></p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点或条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>处罚程序</td><td><strong>已终结</strong></td><td>—</td><td>—</td><td>决定书〔2025〕10 号，2025-12-29 收到</td></tr><tr><td>追溯重述</td><td><strong>已完成</strong></td><td>—</td><td>—</td><td>2022-12-22 董事会决议及 2022-12-23 公告（临 2022-161）</td></tr><tr><td>占用与担保整改</td><td><strong>已清零</strong></td><td>2026 中报勾选"非经营性占用：否""违规担保：否"</td><td>—</td><td>2026 年半年度报告</td></tr><tr><td>摘帽申请</td><td><strong>未提交</strong>（倒计时中）</td><td>需"决定书满 12 个月"，即 <strong>2026-12-30 起</strong></td><td>2026-12-30 后提交 → 交易所 15 个交易日内决定</td><td>沪主板 9.8.8、9.8.10</td></tr><tr><td>定增审核</td><td>已受理，处<strong>问询回复后修订阶段</strong></td><td>需上交所审核通过＋证监会同意注册</td><td>审核通过时点未披露</td><td>2026-08-05 受理公告；2026-09-30 预案二次修订稿</td></tr><tr><td>董事会/管理层改组</td><td><strong>已完成</strong></td><td>—</td><td>—</td><td>2025-07-30 股东会决议、2025-08-01 控制权变更完成公告</td></tr><tr><td>定增交割并表</td><td>未发生</td><td>发行期首日定价，时点取决于注册进度</td><td>注册生效后启动发行</td><td>认购协议之补充协议（二）</td></tr></tbody></table>
+<blockquote><p><strong>卡点性质判定</strong>：摘帽是<strong>"时间未到"</strong>（纯计时，无实质障碍）；定增是<strong>"时间未到 + 监管口径调整"</strong>（募资额被要求调减，公司已按要求调整，属可解决的规范性事项）。<strong>两条线都不存在"谈不拢"的实质分歧。</strong></p></blockquote>
+<p><strong>运作特征</strong>：手法＝"<strong>先司法重整清洗控股股东、再二级市场增持建仓、再由法院划转过户、最后董事会改组</strong>"的四步接力，控制权移交<strong>先于</strong>任何资产动作；节奏＝2025-04 至 2025-08 共 4 个月完成从重整裁定到实控人变更，属<strong>快速且合规</strong>；交权方式＝<strong>配合式</strong>（原体系的春泥1号把表决权委托给招商生科、李杰系表决权转向宜昌产投但未对抗）；成败关键变量＝1 和 0 的变量只有一个：<strong>摘帽申请是否被交易所核准</strong>（而项目前不存在否决性障碍）；核心矛盾一句话：<strong>"制度性的 ST 折价"与"已被市场修复的相对涨幅"之间的差，正在收敛为零。</strong></p>
+<h3 id="sec2">1.3 ST 风险诊断</h3>
+<p><strong>结论：这是一顶"纯程序性"的帽子——戴帽依据是沪主板 9.8.1 第一款第（七）项（处罚事先告知书载明年报虚假记载但未触及重大违法强制退市），四类退市红线逐条核对一条未踩，"戴 ST"不等于"有退市风险"。</strong></p>
+<p><strong>戴帽沿革</strong>：2025-12-12 收到事先告知书 → 2025-12-13 公告 → 2025-12-15 停牌 1 天 → <strong>2025-12-16 起简称由"人福医药"变更为"ST人福"</strong>。戴帽公告原文明确适用《上海证券交易所股票上市规则（2025 年 4 月修订）》<strong>第 9.8.1 条第一款第（七）项</strong>，并写明实施后<strong>股票价格日涨跌幅限制为 5%</strong>（该口径为当时规则；<strong>2026-07-06 起主板风险警示股已改为 10%</strong>）。</p>
+<p><strong>四类退市红线逐条对照</strong></p>
+<table><thead><tr><th>类型</th><th>触发条件（速查）</th><th>本标的</th><th>判定</th></tr></thead><tbody><tr><td>交易类</td><td>连续 20 日收盘价 &lt;1 元；连续 20 日市值 &lt;5 亿元（主板）；连续 20 日股东数 &lt;2000 人</td><td>股价 19.17 元、市值 312.90 亿元、股东 78,868 户</td><td><strong>不触发</strong></td></tr><tr><td>财务类</td><td>孰低为负且扣除后营收 &lt;3 亿元；期末净资产为负；审计无法表示/否定意见</td><td>2025 营收 239.62 亿元、孰低为正 17.62 亿元、归母净资产 193.09 亿元、2025 年财报<strong>标准无保留意见</strong></td><td><strong>不触发</strong></td></tr><tr><td>规范类</td><td>资金占用 ≥2 亿元或 ≥净资产 30%、内控连续两年非标、控制权无序争夺等</td><td>占用余额 <strong>0</strong>（中报勾选"否"）；2025 年内控审计<strong>标准无保留</strong>（大信审字［2026］第 2-00461 号）；控制权移交平稳</td><td><strong>不触发</strong></td></tr><tr><td>重大违法类</td><td>欺诈发行；造假达量化线</td><td>9.5.2 第（四）（五）（六）（七）项逐条测算均不命中（见上文罚款明细折叠块）</td><td><strong>不触发</strong></td></tr></tbody></table>
+<blockquote><p><strong>两个必须纠正的常见误读</strong>：① <strong>"戴 ST 帽"不属于四类退市红线中的任何一条</strong>——本公司在安迪自建《退市风险预警-20261005.xlsx》中<strong>仅命中「规范类」工作表的处罚台账</strong>，交易类、财务类、其他类三张表均无 600079；② <strong>沪主板 9.8.12 规定"本所决定不予撤销其他风险警示的"只需公司公告</strong>——即<strong>撤销申请被否决的后果仅仅是继续戴 ST，不存在"本金归零"的尾部情形</strong>。这与财务类 \*ST（撤销申请未获核准本身即终止上市情形）是<strong>完全不同的定价结构</strong>。</p></blockquote>
+<p><strong>摘帽展望：时间锚与三条通路</strong></p>
+<p><strong>结论：最早可申请日为 2026-12-30（决定书 2025-12-29 收到 ＋ 满 12 个月），这是纯公开日历、零信息差；更关键的是——自 2026-07-06 起主板风险警示股涨跌幅已由 5% 改为 10%，摘帽前后同为 10%，"摘帽放大"的制度红利在本标的身上已彻底消失。</strong></p>
+<table><thead><tr><th>通路</th><th>依据</th><th>本股适用性</th><th>判定</th></tr></thead><tbody><tr><td>① 主通路：决定书满 12 个月 ＋ 已追溯重述</td><td>沪主板 9.8.8 第一款</td><td>追溯重述已完成（2022-12-23 公告）；决定书 2025-12-29 收到</td><td><strong>适用</strong>，最早 <strong>2026-12-30</strong> 可申请</td></tr><tr><td>② 附加关：已被提起证券虚假陈述诉讼须充分计提预计负债</td><td>沪主板 9.8.8 第二款</td><td>基准日前<strong>未见</strong>投资者索赔立案公告</td><td><strong>未触发，但须持续跟踪</strong></td></tr><tr><td>③ 即时撤销通路：ST 期间收到决定书/结案通知书显示"未触及 9.8.1(七)"</td><td>沪主板 9.8.8 第三款</td><td>决定书<strong>已认定</strong>虚假记载</td><td><strong>不适用</strong></td></tr></tbody></table>
+<p><strong>程序</strong>：提交申请后交易所 <strong>15 个交易日内</strong>决定（9.8.10）→ 决定撤销的，公告披露日停牌 1 天、复牌日起撤销（9.8.11）。据此推演：若 2026-12-30 即提交，理论核准窗口在 <strong>2027 年 1 月中下旬</strong>。</p>
+<blockquote><p><strong>一条必须写明的判读：摘帽本身不构成上涨理由。</strong> 详见证监会口径与本报告第五节的同型样本对照。</p></blockquote>
+<h3 id="sec3">1.4 公司运营情况</h3>
+<p><strong>结论：这是一家毛利率 50%、ROE 10%、经营现金流 25 亿元量级的真实盈利公司，2026H1 归母净利同比 +15.15% 且毛利率同比提升近 2 个百分点；唯一的结构性隐忧是应收账款达 101.64 亿元、占总资产 27.33%。</strong></p>
+<table><thead><tr><th>财务指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026H1</th></tr></thead><tbody><tr><td>营业收入（亿元）</td><td>205.49</td><td>223.38</td><td>245.25</td><td>254.35</td><td><strong>239.62</strong></td><td>120.61（−0.03%）</td></tr><tr><td>归母净利润（亿元）</td><td>13.17</td><td>24.84</td><td>21.34</td><td>13.30</td><td><strong>18.55</strong></td><td>13.30（＋15.15%）</td></tr><tr><td>扣非归母净利（亿元）</td><td>10.06</td><td>15.48</td><td>18.22</td><td>11.39</td><td><strong>17.62</strong></td><td>12.89（＋14.02%）</td></tr><tr><td>毛利率</td><td>42.75%</td><td>43.53%</td><td>45.81%</td><td>44.55%</td><td>48.21%</td><td><strong>50.15%</strong></td></tr><tr><td>加权 ROE</td><td>10.90%</td><td>17.63%</td><td>13.32%</td><td>7.67%</td><td>10.16%</td><td>6.82%</td></tr><tr><td>归母净资产（亿元）</td><td>129.42</td><td>150.32</td><td>170.42</td><td>176.24</td><td>189.13</td><td><strong>193.09</strong></td></tr><tr><td>经营现金流（亿元）</td><td>—</td><td>—</td><td>19.67</td><td>21.64</td><td>25.19</td><td>10.02（＋16.78%）</td></tr><tr><td>基本每股收益（元）</td><td>0.83</td><td>1.54</td><td>1.32</td><td>0.82</td><td>1.14</td><td>0.81</td></tr></tbody></table>
+<blockquote><p>口径说明：2021—2026H1 数据来源为东方财富 F10 主要指标（<strong>异源</strong>），2025 年与 2026H1 已回公司 2025 年年度报告与 2026 年半年度报告原文核对；2022 年高基数含非经常性损益（当年扣非仅 15.48 亿元）。</p></blockquote>
+<p><strong>几个关键读数</strong>：① <strong>营收已连续两年横盘</strong>（2024 年 254.35 亿元 → 2025 年 239.62 亿元 → 2026H1 −0.03%），增长来自结构与效率而非放量；② <strong>利润改善质量高</strong>——2026H1 毛利率 50.15%（同比 +1.97 个百分点）、管理费用 −7.37%、利息支出同比减少 4,591 万元（财务费用整体 +74.70% 系<strong>汇兑损失同比增加 1.32 亿元</strong>所致，非经营性恶化）；③ <strong>2025 年一次性计提减值合计 4.92 亿元</strong>（其中商誉减值 <strong>3.32 亿元</strong>、信用减值 0.72 亿元、无形资产及开发支出减值 0.62 亿元），商誉账面价值已由年初 7.29 亿元降至 <strong>3.56 亿元</strong>，被市场视为"财务出清"；④ <strong>应收账款 101.64 亿元（同比 +8.18%，占总资产 27.33%）</strong>、应收款项融资 14.51 亿元、存货 34.42 亿元——医药商业板块的应收账期是持续关注点。</p>
+<details class="fold" id="fold-business"><summary>业务结构、子公司与核心竞争力</summary><div class="fold-body">
+
+<p><strong>2025 年主营业务结构（年报口径）</strong></p>
+<table><thead><tr><th>业务项</th><th>营业收入（亿元）</th><th>毛利率</th><th>收入同比</th></tr></thead><tbody><tr><td>制造业（医药工业）</td><td>142.14</td><td><strong>72.31%</strong></td><td>−0.23%（毛利率 +4.12 个百分点）</td></tr><tr><td>批发及其他（医药商业）</td><td>97.04</td><td>12.90%</td><td>−12.89%</td></tr><tr><td>分地区：国内</td><td>206.57</td><td>51.13%</td><td>−6.74%</td></tr><tr><td>分地区：国外</td><td>32.61</td><td>29.67%</td><td>＋0.80%</td></tr><tr><td>分产品：药品及其他</td><td>200.14</td><td>54.11%</td><td>−3.99%</td></tr><tr><td>分产品：医疗器械</td><td>39.05</td><td>17.95%</td><td>−14.00%</td></tr></tbody></table>
+<p><strong>细分赛道与同业对照（年报自述）</strong>：① <strong>中枢神经</strong>（主要载体宜昌人福、武汉人福、Paion Pharma）——芬太尼系列、盐酸氢吗啡酮、盐酸纳布啡、苯磺酸瑞马唑仑等麻醉镇痛与精神类药品，受严格管制、生产集中度高，宜昌人福在国内处于领导地位，<strong>同业为恒瑞医药、恩华药业</strong>；② <strong>甾体激素及两性健康</strong>（葛店人福、黄冈人福）；③ <strong>维吾尔药</strong>（新疆维药）；④ <strong>美国仿制药</strong>（Epic Pharma 等，拥有 230 余个 FDA 批准的 ANDA 文号）；⑤ <strong>医药流通</strong>（湖北人福、北京医疗）。</p>
+<p><strong>核心资产的量化定位</strong>：宜昌人福（公司持股 80%）2026H1 <strong>麻醉精神类药品收入约 41 亿元</strong>（占公司 H1 营收 120.61 亿元的 34.0%），是利润的绝对主力。</p>
+<p><strong>研发</strong>：2025 年研发投入合计 <strong>16.76 亿元</strong>（占营收 6.99%，其中费用化 14.93 亿元、资本化 1.83 亿元、资本化比重 10.90%），研发人员 2,054 人（占员工 11.97%，其中博士 141 人）；2026H1 研发费用 6.40 亿元（同比 −13.91%）。2025 年申请专利 437 项、新增授权 121 项，期末拥有授权专利 924 项（发明 493 项）。重点管线包括 HW201877 胶囊（<strong>全球首个进入临床阶段用于炎性肠病治疗的 15-PGDH 抑制剂</strong>）等。</p>
+<p><strong>经营资质</strong>：600 余个药品生产批文，其中 38 个独家品规、146 个品规进入国家基药目录、342 个品规进入国家医保目录；14 家企业纳入环境信息依法披露名单。</p>
+<p><strong>风险自述（2026 中报"可能面对的风险"）</strong>：政策风险（医药卫生体制改革、集采常态化、医保支付方式改革）、行业竞争格局固化、税收优惠变化等。公司明确"重点子公司作为国家麻醉药品定点研发生产企业……在麻醉镇痛细分领域具备较稳固地位"，但<strong>未给出增长指引</strong>。</p>
+<p><strong>分红</strong>：2025 年度每 10 股派现 4.80 元（含税），以总股本 16.32 亿股计<strong>约 7.83 亿元</strong>，2026-07-25 实施权益分派；近三年（2023—2025）累计现金分红约 <strong>23.01 亿元</strong>，占三年平均归母净利（17.73 亿元）的 <strong>130%</strong>，<strong>远高于"近三年累计分红 &lt; 年均净利 30% 且 &lt;5000 万元"的其他类风险警示线</strong>。</p>
+
+</div></details>
+<hr>
+<h2 id="chap2">二、基本面路径：把"帽子"变成"引擎"</h2>
+<p><strong>结论：本标的走的是「路径 C · 处罚 ST」——但与其他处罚 ST 不同，它不缺钱、不缺盈利、不缺主业，缺的只是一个"制度性折价消除"的动作。因此真正的引擎不是保壳，而是两件事：① 2026-12-30 之后提交摘帽申请；② 33.47 亿元定增落地。前者是公开日历，后者是摊薄。</strong></p>
+<h3 id="sec4">2.1 定增：33.47 亿元的摊薄算术</h3>
+<p><strong>结论：定增是"发行价约市价 8 折、新增 2.19 亿股、摊薄约 11.8%"的一次控股股东注资——它增厚每股净资产（发行价 15.30 元 &gt; 每股净资产 11.83 元），但摊薄每股收益；且募资必要性的论证已被上交所问询，公司最终按"财务性投资比例较高须调减募集资金"的要求把补充流动资金由 8.17 亿元砍到 6.65 亿元。</strong></p>
+<table><thead><tr><th>定增要素</th><th>内容</th></tr></thead><tbody><tr><td>发行对象</td><td>控股股东招商生命科技（武汉）有限公司（<strong>单一认购方，构成关联交易</strong>）</td></tr><tr><td>募集总额</td><td><strong>不超过 334,729.94 万元</strong>（原为 30—35 亿元，2026-09-29 调减）</td></tr><tr><td>定价机制</td><td><strong>2026-09-29 由"固定价 14.95 元/股"改为"发行期首日前 20 交易日均价的 80%（且不低于每股面值）"的浮动价</strong></td></tr><tr><td>发行数量</td><td>按募集总额÷发行价格确定，不超过 234,113,712 股且不超过发行前总股本的 30%</td></tr><tr><td>锁定期</td><td><strong>发行结束之日起 36 个月</strong></td></tr><tr><td>募投项目</td><td>创新药研发—宜昌人福 10.42 亿元；创新药研发—总部研究院 6.39 亿元；两性健康及复杂制剂制造基地 7.90 亿元；数智化建设 2.12 亿元；补充流动资金 <strong>6.65 亿元</strong></td></tr><tr><td>进度</td><td>2026-02-24 董事会议案 → 2026-04-30 股东会 → 2026-06-18 修订 → <strong>2026-08-05 上交所受理</strong> → 2026-09-24 问询回复 → 2026-09-30 二次修订</td></tr><tr><td>保荐/中介</td><td>中信证券、招商证券（联合保荐）；中伦律师事务所；大信会计师事务所</td></tr></tbody></table>
+<p><strong>摊薄测算（按现价 19.17 元的 8 折即约 15.30 元假设发行价）</strong></p>
+<table><thead><tr><th>情景</th><th>发行价假设</th><th>新增股数</th><th>发行后总股本</th><th>摊薄比例</th><th>发行后每股净资产</th><th>2026E EPS</th></tr></thead><tbody><tr><td>按现价 8 折</td><td>15.30 元</td><td>2.19 亿股</td><td>18.51 亿股</td><td><strong>11.8%</strong></td><td>12.24 元（＋3.5%）</td><td>1.12 元（−11.8%）</td></tr><tr><td>若股价上行至 24 元</td><td>19.20 元</td><td>1.74 亿股</td><td>18.06 亿股</td><td>9.6%</td><td>12.37 元</td><td>1.15 元</td></tr><tr><td>若股价下行至 16 元</td><td>12.80 元</td><td>2.34 亿股（触股数上限）</td><td>18.66 亿股</td><td>12.5%</td><td>12.14 元</td><td>1.11 元</td></tr></tbody></table>
+<blockquote><p>三档都指向同一结论：<strong>定增对每股净资产是小幅增厚、对每股收益是两位数摊薄</strong>。且因发行对象只有控股股东一家、发行价按市价 8 折，<strong>二级市场持有者在发行价上处于相对让利方</strong>。公司在预案中亦自认"本次发行可能短期摊薄即期回报"，并配套了填补回报措施与相关主体承诺。</p></blockquote>
+<details class="fold" id="fold-need"><summary>募资必要性的问询焦点（公司自己的两个数字不能同时成立）</summary><div class="fold-body">
+
+<p>上交所审核问询函第 7 问要求说明本次融资规模的合理性。公司回复（募集说明书 7-1-62 至 7-1-63 页）给出的测算如下：</p>
+<table><thead><tr><th>测算项</th><th>金额（万元）</th></tr></thead><tbody><tr><td>现有资金：2026-06-30 非受限货币资金</td><td>412,459.22</td></tr><tr><td>现有资金：交易性金融资产</td><td>90,824.26</td></tr><tr><td><strong>可自由支配现金 A</strong></td><td><strong>503,283.48</strong></td></tr><tr><td>未来期间经营活动现金流量净额 B（2026—2028 三年，每年 215,897.71）</td><td>647,693.13</td></tr><tr><td>未来资金流出：<strong>最低现金保有量 ③</strong></td><td><strong>884,756.88</strong></td></tr><tr><td>未来期间新增最低现金保有量 ④</td><td><strong>0.00</strong></td></tr><tr><td>未来期间偿还有息债务利息 ⑤</td><td>97,654.77</td></tr><tr><td>未来期间现金分红 ⑥</td><td>181,656.00</td></tr><tr><td>重大投资项目支出 ⑦</td><td>467,762.22</td></tr><tr><td>总体流动资金需求 C＝③＋④＋⑤＋⑥＋⑦</td><td>1,631,829.87</td></tr><tr><td><strong>流动资金缺口 D＝C−A−B</strong></td><td><strong>480,853.26</strong></td></tr></tbody></table>
+<p><strong>同样的口径在公司自己的两处表述里不能同时成立</strong>：审核问询函第 2 问，公司称"货币资金余额较高同时维持大规模有息负债……<strong>存贷规模均处于行业合理水平</strong>"；而第 7 问论证募资必要性时，公司自己测算的<strong>最低现金保有量为 88.48 亿元</strong>，而 2026-06-30 货币资金 <strong>42.42 亿元</strong>、非受限仅 <strong>41.25 亿元</strong> —— 按公司自己的口径，现状现金只相当于"最低营运需求"的 <strong>48%</strong>。</p>
+<p><strong>另一处方法论争议</strong>："最低现金保有量"是<strong>需要常驻的存量</strong>（＝年付现成本 ÷ 现金周转率，2025 年付现成本 190.61 亿元 ÷ 现金周转率 2.1544），而公司在测算式里同时设了"未来期间<strong>新增</strong>最低现金保有量 ④＝0"，即承认该存量并不增加——把一笔不流出的存量全额计入"未来资金流出"，同时又在来源端扣一遍现有的 50.33 亿元可支配现金。<strong>这两个动作使缺口被系统性地放大。</strong></p>
+<p><strong>更值得记的是监管方的实际落脚点</strong>：公司在 2026-09-30《关于调整向特定对象发行股票发行方案的公告》与董事会决议公告中写明，调整的原因是"<strong>根据中国证监会及上海证券交易所关于'上市公司存在财务性投资比例较高情形的，须相应调减本次再融资募集资金金额'的要求</strong>"——这是<strong>本轮定增被削减的直接监管口径</strong>，也是比"结合资本市场环境"更具体的事实。补充流动资金由 81,746.55 万元调减至 66,476.49 万元（减少 15,270.06 万元），其他四个募投项目金额不变。</p>
+
+</div></details>
+<h3 id="sec5">2.2 招商局平台化：软预期与硬约束</h3>
+<p><strong>结论：市场对本案最大的想象是"招商局把人福做成生命科技平台并注入集团资产"。这是一个</strong>只有人名、没有标的<strong>的软预期——截至基准日，公司</strong>没有任何一份公告<strong>提及招商局集团的生命科技资产注入安排、时间表或标的；而 26.70% 的相对控股结构，决定了任何大规模资产注入都需先解决持股比例问题。</strong></p>
+<p><strong>支持方的三条事实</strong>：① 2025 年年度报告开篇自述"2025 年成为百年央企招商局集团旗下企业"，并以"打造具有全球竞争力的世界一流<strong>生命科技</strong>企业"为目标；② 招商局系在 2026 年第一次临时股东会授权范围内，以 33.47 亿元现金参与定增且锁定 36 个月，是"<strong>用真金白银买转型期权</strong>"；③ 招商局集团旗下设有招商局创新科技（集团）有限公司（招商创科）与招商生命科技（招商生科），已在集团内形成生命科技的管理框架。</p>
+<p><strong>约束方的三条事实</strong>：① <strong>26.70% 的相对控股</strong>——若向自身或关联方注入大额资产，持股比例会被稀释或需先增持；② <strong>定增尚未注册</strong>，在融资工具未到位之前，任何资产动作都缺乏资金基础；③ <strong>公司自身的口径是"归核聚焦"</strong>——2025 年报明确"以医药工业为主、医药商业为辅"，2026H1 又完成了一笔非核心资产处置（全资子公司出售资产，2026-06-05 公告、2026-09-05 完成公告）。<strong>即公司的动作方向是"做减法"而不是"做加法"。</strong></p>
+<blockquote><p><strong>按"人 / 物 / 表"三分法定位</strong>：<strong>人</strong>＝有（招商局集团，央企、明确的控股股东与实际控制人）；<strong>物</strong>＝<strong>无</strong>（无任何公告指明拟注入的资产或赛道）；<strong>表</strong>＝<strong>无</strong>（无时间表）。属"<strong>只有人名</strong>"一侧——这与本报告第五节同型样本中"上涨组全部有物、下跌组只有人名"的规律正好相反，是<strong>重要的减分项</strong>。</p></blockquote>
+<hr>
+<h2 id="chap3">三、炒作逻辑三支柱</h2>
+<h3 id="sec6">3.1 炒预期：未来 6—12 个月的节点</h3>
+<p><strong>结论：本标的的全部可验证节点都指向同一件事——"把制度性的 ST 折价消掉"。其中真正可锁定日期的只有一个：2026-12-30 起可提交摘帽申请。其余节点都依赖他人的审核节奏。</strong></p>
+<table><thead><tr><th>时点</th><th>催化内容</th><th>性质</th><th>距基准日</th></tr></thead><tbody><tr><td>2026-10 下旬</td><td>2026 年三季报（验证 H2 增速、毛利率与减值节奏）</td><td>软节点（业绩）</td><td>约 20 天</td></tr><tr><td><strong>2026-12-30</strong></td><td><strong>最早可提交撤销其他风险警示申请</strong>（决定书 2025-12-29 收到 ＋ 满 12 个月）</td><td><strong>硬节点（公开日历）</strong></td><td>约 85 天</td></tr><tr><td>2026Q4—2027Q1</td><td>定增获上交所审核通过并取得证监会同意注册</td><td>时点不确定</td><td>—</td></tr><tr><td>2027-01（若按期申请）</td><td>交易所 15 个交易日内决定是否撤销 ST（9.8.10）</td><td>硬节点（派生）</td><td>约 100—115 天</td></tr><tr><td>2027-04</td><td>2026 年年度报告（摘帽后首份年报，验证"摘帽首年"经营）</td><td>硬节点</td><td>约 180 天</td></tr><tr><td>无时点</td><td>招商局集团生命科技资产注入 / 平台化整合</td><td><strong>软预期（无公告支撑）</strong></td><td>—</td></tr></tbody></table>
+<blockquote><p><strong>本节点的定价含义：2026-12-30 是"公开日历"——所有投资者同时知道这个日期，不存在信息差，因此它大概率已被定价；而"利好出尽"的风险点恰恰落在这个日期附近。</strong> 另需注意：公司自 2025-12-16 起戴帽时涨跌幅为 5%，<strong>2026-07-06 起主板风险警示股已改为 10%，摘帽后同为 10%</strong>——<strong>摘帽在涨跌幅层面零红利</strong>。</p></blockquote>
+<h3 id="sec7">3.2 炒历史类似行为：相似股票匹配法</h3>
+<p><strong>结论：把 2026-09-30 当基准日给人福画像（沪主板 / 处罚型假 ST / 市值 312.90 亿元大盘股 / 央企控股 / 真实盈利 / 摘帽为纯公开日历 / 2026 年相对强势），在当下市场里最像它的是 "决定书满 12 个月 → 摘帽" 型标的；而这一组</strong>整体走平至下跌<strong>，人福却是组内最强——这不是"低位滞涨"，而是"相对涨幅已经领先"。</strong></p>
+<p><strong>样本池与结果</strong>（从安迪自建 ST 信息库逐户档案中，按"带帽原因含虚假记载/事先告知书"筛出全量 <strong>55 只</strong>假 ST 型标的，以腾讯行情计算 2026 年至今前复权涨跌幅）：</p>
+<table><thead><tr><th>组别</th><th>结果</th></tr></thead><tbody><tr><td>全样本 55 只</td><td>中位数 <strong>−16.00%</strong>、均值 <strong>−7.91%</strong>、上涨仅 <strong>17 只</strong></td></tr><tr><td>上涨组前 10 名</td><td>京蓝科技 ＋170.76%、\*ST英飞 ＋130.22%、ST东尼 ＋83.44%、ST长方 ＋68.35%、ST海钦 ＋53.24%、任子行 ＋38.51%、ST天圣 ＋27.37%、ST派瑞 ＋20.65%、ST惠伦 ＋16.17%、ST星农 ＋9.77%</td></tr><tr><td><strong>ST人福</strong></td><td><strong>＋8.74%，排第 11/55</strong></td></tr><tr><td>与"决定书满 12 个月"最像的 5 只</td><td>ST司特 ＋7.14%、ST沈化 ＋1.64%、中船应急 −2.17%、ST汇洲 −5.33%、ST远智 −7.28%（<strong>中位约 −2.2%</strong>）</td></tr></tbody></table>
+<p><strong>相似点 / 差异点对照</strong></p>
+<table><thead><tr><th>对照对象</th><th>相似点</th><th>差异点</th><th>后续实际走势</th></tr></thead><tbody><tr><td>ST司特（002538）</td><td>同为"决定书满 12 个月 → 摘帽"的纯计时型；同为无保壳压力的干净标的</td><td>司特净资产仅 3.56 亿元、无央企股东、无定增</td><td><strong>＋7.14%</strong></td></tr><tr><td>ST沈化（000698）</td><td>同为"决定书满 12 个月"型</td><td>造假年份早年不适用、无央企股东</td><td>＋1.64%</td></tr><tr><td>ST远智（002689）</td><td>同为"两条件满足但发股被锁"</td><td>现任董事长等三人是处罚当事人，发股锁至 2028-12</td><td>−7.28%</td></tr><tr><td>ST派瑞（300831）</td><td>同为"无退市红线、摘帽为公开日历"的干净壳</td><td>创业板假 ST、小市值 42 亿元、无实业平台</td><td>＋20.65%</td></tr><tr><td>\*ST英飞（002528）</td><td>同为 2026 年上涨组</td><td>有明确重整投资协议与产业投资人（<strong>"有物"</strong>）</td><td>＋130.22%</td></tr></tbody></table>
+<blockquote><p><strong>结论落点：人福落在"上涨组"而非"下跌组"，其超额收益的来源是"央企入主 ＋ 真实盈利 ＋ 定增输血"三项基本面事实，而不是任何 ST 博弈叙事。</strong> 由于它已经在上涨组第 11 位，<strong>"它还便宜/还没涨"这个推论不成立——正确的读法是"它已经涨了（在下跌的 2026 年市场里涨了 8.74%）"。</strong></p></blockquote>
+<h3 id="sec8">3.3 炒主板映射</h3>
+<p><strong>结论：人福本身即"麻醉/中枢神经"赛道的映射对象，映射关系真实、关联度最高；但 2026 年医药板块整体在杀估值（恒瑞 −20.50%、华东医药 −28.12%），而人福逆势上涨——</strong>映射的方向是对的，超额部分已经完成。**</p>
+<table><thead><tr><th>对照公司</th><th>现价</th><th>PE(TTM)</th><th>PB</th><th>总市值（亿元）</th><th>2026 年至今</th></tr></thead><tbody><tr><td>恩华药业（002262）</td><td>22.73</td><td>20.98</td><td>2.75</td><td>230.25</td><td>−4.21%</td></tr><tr><td>恒瑞医药（600276）</td><td>47.20</td><td>40.55</td><td>4.86</td><td>3,132.76</td><td>−20.50%</td></tr><tr><td>丽珠集团（000513）</td><td>32.90</td><td>17.45</td><td>2.19</td><td>292.12</td><td>−0.39%</td></tr><tr><td>华东医药（000963）</td><td>27.69</td><td>14.03</td><td>1.96</td><td>485.61</td><td>−28.12%</td></tr><tr><td>科伦药业（002422）</td><td>40.85</td><td>35.53</td><td>2.64</td><td>649.83</td><td>＋41.44%</td></tr><tr><td>海思科（002653）</td><td>62.18</td><td>74.73</td><td>13.02</td><td>709.41</td><td>＋23.06%</td></tr><tr><td>复星医药（600196）</td><td>24.02</td><td>18.92</td><td>1.32</td><td>641.44</td><td>−7.98%</td></tr><tr><td>吉林敖东（000623）</td><td>17.41</td><td>6.58</td><td>0.65</td><td>208.21</td><td>−9.49%</td></tr><tr><td><strong>ST人福（600079）</strong></td><td><strong>19.17</strong></td><td><strong>15.41</strong></td><td><strong>1.62</strong></td><td><strong>312.90</strong></td><td><strong>＋8.74%</strong></td></tr></tbody></table>
+<p>（口径：2026-09-30 收盘，数据来源腾讯自选股；涨跌幅为前复权口径，与本报告第二节的 YTD 口径一致。）</p>
+<p><strong>三条读法</strong>：① <strong>估值确实在同业低位</strong>——PE 15.41 仅高于华东医药、PB 1.62 仅高于复星医药与吉林敖东；② <strong>但 2026 年的板块 β 是向下的</strong>（8 只对照股中 5 只下跌，中位约 −6.1%），人福跑赢板块中位约 <strong>14.8 个百分点</strong>；③ <strong>排序上目前最强的一支柱是"① 炒预期"</strong>（摘帽与定增的确定性），而"②③"两支在本标的上<strong>已无超额</strong>——因为它们要解释的涨幅已经发生。</p>
+<hr>
+<h2 id="chap4">四、情绪面与筹码面</h2>
+<h3 id="sec9">4.1 注意力读数</h3>
+<p><strong>结论：注意力处于冰点——2026 年全年龙虎榜 0 次、韭研异动表全年仅 1 条、换手率 0.78%。对一家 312.90 亿元市值的 ST 蓝筹而言，这不是"被低估"，而是"被机构与游资同时放在一边"。</strong></p>
+<table><thead><tr><th>观察项</th><th>读数</th><th>判读</th></tr></thead><tbody><tr><td>龙虎榜</td><td>2026 年 <strong>0 次</strong>（最近一次为 2023-07-31，跌幅偏离 7% 上榜，净卖出 9,965.28 万元）</td><td>2026 年无一日触发 ST 股上榜阈值</td></tr><tr><td>韭研公社异动表</td><td>全表 <strong>13 条</strong>，2026 年仅 <strong>1 条</strong>（2026-06-23，关键词"创新药＋洛索洛芬钠贴剂首仿＋招商局旗下公司参与重组＋麻药＋HPV疫苗"）</td><td>连板极值仅 <strong>"3 天 2 板"</strong>（2025-12-19，ST 复牌后），连板基因极弱</td></tr><tr><td>换手率 / 成交额</td><td><strong>0.78%</strong> / <strong>2.31 亿元</strong>（2026-09-30）</td><td>大盘 ST 低换手属常态，但对短线资金无吸引力</td></tr><tr><td>单日波动</td><td>2026-07-06 涨跌幅改为 10% 之后，<strong>未出现一次涨停</strong>，最大单日涨幅为 2026-06-23 的 ＋3.75%</td><td>放宽涨跌幅后反而无波动，说明无资金主动做多</td></tr></tbody></table>
+<blockquote><p><strong>炒作符号的六年演变（异动表关键词）</strong>："阿比多尔片（抗疫）→ 定增/宜昌人福业绩超预期/麻醉领域龙头 → 麻药＋维药 → 复方薏薢颗粒＋麻药＋HPV疫苗 → <strong>招商局旗下公司参与重组＋麻药＋HPV疫苗</strong> → ST复牌＋药品获注册证书 → <strong>创新药＋洛索洛芬钠贴剂首仿</strong>"。<strong>近两年的符号稳定在"招商局入主 ＋ 麻药 ＋ 创新药"三条，说明市场对该股的叙事框架已经高度一致——叙事一致意味着预期差缩小。</strong></p></blockquote>
+<h3 id="sec10">4.2 筹码结构</h3>
+<p><strong>结论：筹码高度集中于两大阵营（招商局系 28.30%＋宜昌产投系 12.35%），二级市场可流通筹码少；股东户数 78,868 户（2026-06-30，较上期 −2.44%）只小幅集中，不构成"主力吸筹"的证据。</strong></p>
+<table><thead><tr><th>观察项</th><th>读数</th><th>判读</th></tr></thead><tbody><tr><td>股东户数</td><td>2026-06-30 <strong>78,868 户</strong>（较上期 −2.44%）</td><td>同期股价上涨（2026-06-30 收 16.44 元 → 2026-09-30 收 19.17 元），<strong>上涨中户数小幅下降</strong>，方向中性偏正面，但幅度很小</td></tr><tr><td>两大阵营合计表决权</td><td>招商局系 28.30%（含武汉高科）＋ 宜昌产投系 12.35%</td><td>约 <strong>40.65%</strong> 表决权已被锁定立场</td></tr><tr><td>股权质押</td><td>招商生科质押 97,933,558 股（占其直接持股 66.7%）；李杰质押 5,200 万股、陈小清质押 4,285.68 万股</td><td>存在质押但不构成平仓压力（现价 19.17 元，招商生科增持均价约 21.20 元，<strong>质押价格临界需持续跟踪</strong>）</td></tr><tr><td>可对比价格锚</td><td>见下方折叠块的"成本锚点"</td><td>—</td></tr></tbody></table>
+<details class="fold" id="fold-cost"><summary>成本锚点：逐方对价与两类定价逻辑</summary><div class="fold-body">
+
+<table><thead><tr><th>参与方</th><th>成本（元/股）</th><th>说明</th></tr></thead><tbody><tr><td>招商生科（二级集中竞价增持）</td><td><strong>约 21.20 元</strong></td><td>2025-04-30～06-11 增持 16,322,215 股、金额约 3.46 亿元；价格上限 25.53 元。<strong>现价 19.17 元＝其成本的 0.90 倍（浮亏约 9.6%）</strong></td></tr><tr><td>招商生科（本次定增认购）</td><td><strong>约 15.30 元</strong>（按现价 8 折测算，实际以发行期首日前 20 交易日均价 ×80% 为准）</td><td>金额 ≤33.47 亿元、锁 36 个月</td></tr><tr><td>招商生科（司法划转过户）</td><td><strong>未披露</strong></td><td>2025-06-26 受让 386,767,393 股（含直接 6%＋生科投资发展 6%＋春泥1号 11.70%），系当代集团重整计划项下分配，<strong>对价未公开披露</strong></td></tr><tr><td>招商生科综合成本（增持＋定增，加权）</td><td><strong>约 15.70 元</strong></td><td>(16,322,215×21.20 ＋ 218,900,000×15.30) ÷ 235,222,215；<strong>现价 19.17 元＝其 1.22 倍</strong></td></tr><tr><td>二级市场现价</td><td><strong>19.17 元</strong></td><td>2026-09-30 收盘</td></tr></tbody></table>
+<p><strong>两类定价逻辑必须分开</strong>：① <strong>协议受让/法拍/二级增持价＝"无稀释的市场底"</strong>（招商生科 21.20 元的增持价属于这一类）；② <strong>定增认购价＝"有摊薄的发行底"</strong>（15.30 元，对应发行后总股本被扩大 11.8%）。<strong>因此"现价 19.17 元 ÷ 增持成本 21.20 元 ＝ 0.90 倍"看起来便宜，而"现价 ÷ 定增发行价 ＝ 1.25 倍"看起来不便宜——这两个数字必须并列读，不能只取对自己有利的那一个。</strong></p>
+<p><strong>结构性事实</strong>：① 招商生科增持部分的浮亏（约 9.6%）是真实存在的护盘动机，<strong>但其核心筹码来自成本仅约 15.30 元的定增</strong>，两者对冲后综合成本约 15.70 元、现价仍有 1.22 倍——<strong>"新主被套所以必然护盘"这个推论在本案并不成立</strong>；② <strong>占表决权 23.70% 的 3.87 亿股无公开对价，"成本锚缺失"本身是一条硬信息</strong>，不得臆造价格；③ <strong>春泥1号（11.70%）是当代集团重整设立的 5 年期信托</strong>，其定位是资产处置通道，长期持有意愿存疑。</p>
+
+</div></details>
+<hr>
+<h2 id="chap5">五、估值与投资结论</h2>
+<h3 id="sec11">5.1 估值</h3>
+<p><strong>结论：现价 19.17 元对应 PB 1.62、PE(TTM) 15.41，在医药大市值股中确属低位；但按 2026 年预测归母净利 20.80 亿元、发行后股本 18.51 亿股的摊薄口径计算，三种方法给出的中性区间都落在 19—20 元，即现价已等于中性估值。</strong></p>
+<p><strong>2026 年盈利预测的基础</strong>：2026H1 归母净利 13.30 亿元；历史 H2 归母净利为 2023 年 8.10 亿元、2024 年 2.19 亿元、2025 年 7.00 亿元。取 2026H2 为 6.5—8.5 亿元（中性 7.50 亿元）→ <strong>2026E 归母净利 19.80—21.80 亿元，中性 20.80 亿元</strong>。</p>
+<p><strong>三档情景区间（发行后股本 18.51 亿股）</strong></p>
+<table><thead><tr><th>情景区间</th><th>关键假设</th><th>预测归母净利</th><th>估值倍数</th><th>对应市值</th><th>对应股价</th></tr></thead><tbody><tr><td>保守（30%）</td><td>医药板块继续杀估值；H2 减值超预期</td><td>19.80 亿元</td><td>PE 13×</td><td>257 亿元</td><td><strong>13.90 元</strong></td></tr><tr><td>中性（50%）</td><td>毛利率维持 50%、减值正常、摘帽按期推进</td><td>20.80 亿元</td><td>PE 17×</td><td>354 亿元</td><td><strong>19.11 元</strong></td></tr><tr><td>乐观（20%）</td><td>摘帽获准＋定增注册＋创新药管线催化＋央企重估</td><td>21.80 亿元</td><td>PE 21×</td><td>458 亿元</td><td><strong>24.74 元</strong></td></tr></tbody></table>
+<p><strong>交叉验证（PB 法）</strong>：发行后每股净资产 12.24 元。保守 PB 1.20→14.69 元；中性 PB 1.60→19.58 元；乐观 PB 2.00→24.48 元。<strong>与 PE 法结论一致。</strong></p>
+<p><strong>概率加权</strong>：257×0.30 ＋ 354×0.50 ＋ 458×0.20 ＝ <strong>345.20 亿元 → 18.65 元/股，较现价 −2.7%</strong>。</p>
+<p><strong>隐含概率倒推</strong>：现价 19.17 元 × 18.51 亿股 ＝ 354.8 亿元。设 <code>19.17 = p × 24.74 ＋ (1−p) × 13.90</code>，解得 <strong>p ≈ 48.6%</strong>——即<strong>现价隐含市场认为"乐观情景"发生的概率接近一半</strong>，而本报告判断为 <strong>20%</strong>。<strong>隐含概率高于实际判断，这是"卖出"的第一条量化依据。</strong></p>
+<blockquote><p><strong>估值前提必须显式标注</strong>：本估值前提是"摘帽在 2027 年内完成 ＋ 定增注册落地 ＋ 主业毛利率维持 50% 以上"。<strong>由于四类退市红线一条未踩，本案不存在"退市归零"的尾部情形，悲观档是"估值回落"而非"本金归零"</strong>——这是本标的与多数 ST 在定价结构上最大的不同。</p></blockquote>
+<h3 id="sec12">5.2 投资结论</h3>
+<p><strong>卖出（回避）</strong></p>
+<p><strong>理由链（按重要性排序）</strong></p>
+<ol><li><strong>不在低位——相对涨幅已显著透支。</strong> 2026 年 A 股整体下跌（沪深300 −5.88%、上证50 −6.86%、上证指数 −3.19%），而本标的<strong>上涨 8.74%</strong>，跑赢沪深300 约 <strong>14.6 个百分点</strong>、跑赢医药对照股中位约 <strong>14.8 个百分点</strong>；假 ST 同型 55 只中位数 −16.00%，本标的<strong>排第 11 位（上涨组前列）</strong>；现价处 2026 年区间 <strong>73.9% 分位</strong>、距年内高点仅 <strong>−5.5%</strong>。<strong>"跌得多所以便宜"的读法在此不成立，事实相反。</strong>（证据：腾讯自选股与新浪行情复算，见第三节 3.2、3.3）</li><li><strong>唯一的硬催化是"公开日历 ＋ 零制度红利"，已被定价。</strong> 撤销 ST 的两个条件中，"追溯重述"已于 2022-12-23 完成，剩下"决定书满 12 个月"（最早 <strong>2026-12-30</strong>）；且<strong>主板风险警示股自 2026-07-06 起涨跌幅已由 5% 改为 10%，摘帽前后同为 10%</strong>，涨跌幅层面无任何放大效应。同型"决定书满 12 个月"样本（ST司特、ST沈化、中船应急、ST汇洲、ST远智）中位约 −2.2%。（证据：沪主板 9.8.8／9.8.10／9.8.11；同型样本行情）</li><li><strong>定增是"摊薄 ＋ 8 折认购"，且募资必要性论证存在口径争议。</strong> 发行价按发行期首日前 20 交易日均价 8 折（现价对应约 15.30 元），新增约 2.19 亿股、<strong>摊薄约 11.8%</strong>；监管已要求按"财务性投资比例较高"调减募资规模，补充流动资金由 8.17 亿元削减至 6.65 亿元；公司自认"可能短期摊薄即期回报"。（证据：2026-09-30 调整发行方案公告、董事会决议公告、问询函回复 7-1-62／7-1-63）</li><li><strong>估值已等于中性区间。</strong> PE 15.41／PB 1.62 虽为同业低位，但按摊薄后口径的 PE 法与 PB 法，中性区间均落在 19—20 元；<strong>概率加权 18.65 元低于现价 19.17 元</strong>；隐含概率倒推显示市场已按接近一半的概率给"乐观情景"定价，而本报告判断仅 20%。（证据：本报告 5.1 测算）</li><li><strong>"平台化注入"是只有人名、没有标的的软预期，而经营方向在做减法。</strong> 截至基准日<strong>无任何公告</strong>提及招商局集团生命科技资产的注入标的或时间表；公司 2026H1 反而完成了一笔非核心资产处置，且年报口径为"以医药工业为主、医药商业为辅"的<strong>归核聚焦</strong>。按"人 / 物 / 表"三分法属"只有人名"一侧——与同型样本中"上涨组全部有物"的规律相反。（证据：2025 年年报、2026-06-05 与 2026-09-05 出售资产公告）</li></ol>
+<p><strong>触发条件（出现即应重新评估）</strong></p>
+<ul><li>转买入信号：① 股价回落至 <strong>15.0—16.5 元</strong>（对应 PE 12.7—14.0、PB 1.23—1.35，亦接近定增发行价区间）；② 定增获证监会注册并明确发行期首日（消除摊薄时点的不确定性）；③ 摘帽申请获交易所核准（2027-01 前后）<strong>且</strong>伴随机构放量（换手率与成交额同步放大）；④ 出现真正的资产注入公告（"人"变"物"）。</li><li>转卖出信号（已有持仓者）：① 定增注册后发行价低于 15 元（进一步扩大摊薄）；② 2026 年报毛利率跌破 48% 或 H2 计提减值超过 8 亿元；③ 麻醉药品价格或医保支付政策出现不利于宜昌人福的变化。</li></ul>
+<p><strong>失效条件</strong>：本结论在以下情形下作废——① 本报告对 2026E 归母净利的判断被证伪（实际低于 18 亿元或高于 23 亿元）；② 出现本报告未预期的重大资产注入或控制权进一步集中的公告；③ 医药板块整体估值中枢出现 20% 以上的系统性抬升。</p>
+<p><strong>参考区间</strong>：买入区间 <strong>15.0—16.5 元</strong>；目标区间 <strong>19—25 元</strong>（摘帽兑现＋定增落地后的中性至乐观区间）；止损位 <strong>15.0 元</strong>。</p>
+<p><strong>时间窗口</strong>：6—12 个月（覆盖 2026-12-30 摘帽申请窗口、定增注册与 2026 年年报）。</p>
+<p><strong>仓位建议</strong>：<strong>不建仓</strong>（现价不具备赔率；若用于底仓配置，应等待 15.0—16.5 元区间）。</p>
+<p><strong>最大风险</strong>：<strong>麻醉药品政策与集采环境超预期收紧，或 2026 年年报减值/审计意见超预期</strong>——这一条会从根部破坏"低估值＋确定性事件"的买入逻辑；次大风险是定增注册节奏延后至 2027 年以后，使"注资→转型"叙事进一步空转。</p>
+<hr>
+<h2 id="chap6">附录</h2>
+<h3 id="sec13">附录 A · 待核实与需补充清单</h3>
+<p><strong>结论：本报告的三个关键缺口都是"信息未必公开"，而非"检索不够"——它们本身就是定价前提的一部分，应在跟踪中优先补齐。</strong></p>
+<table><thead><tr><th>待核实项</th><th>现状与缺口</th></tr></thead><tbody><tr><td>招商生科受让 386,767,393 股（23.70%）的对价</td><td>系当代科技重整计划项下司法划转，<strong>公告未披露每股价格</strong>；这是本案最大的成本锚缺失，不得臆造</td></tr><tr><td>上证 e 互动问答原文</td><td>本轮接口返回 500/404，<strong>未取到问答记录原文</strong>；投资者交流以 2026-04-16 年度说明会与 2026-09-04 半年度说明会的参会人员名单为准</td></tr><tr><td>股东户数历史序列</td><td>东方财富仅返回 2026-06-30 一期（78,868 户），<strong>无法构成完整趋势</strong>；中报口径显示较上期 −2.44%</td></tr><tr><td>定增发行价</td><td>采用"发行期首日前 20 交易日均价 ×80%"的浮动定价，<strong>发行期首日尚未确定</strong>，故摊薄测算为假设情景</td></tr><tr><td>是否已被提起证券虚假陈述诉讼</td><td>基准日前未见公司相关公告；9.8.8 第二款要求"申请时已被提起的须充分计提预计负债"，须在摘帽申请窗口前复核</td></tr><tr><td>春泥1号后续处置安排</td><td>信托预计存续期 5 年，<strong>退出方式与时间表未披露</strong></td></tr></tbody></table>
+<h3 id="sec14">附录 B · 关键信源</h3>
+<p><strong>结论：本报告全部关键数字均落到公告原文直链，可逐条点开核对。</strong></p>
+<table><thead><tr><th>编号</th><th>文件</th><th>发布日</th><th>原文</th></tr></thead><tbody><tr><td>1</td><td>《关于收到湖北监管局〈行政处罚决定书〉的公告》（临 2025-133，〔2025〕10 号）</td><td>2025-12-30</td><td><a href="http://static.cninfo.com.cn/finalpage/2025-12-30/1224904927.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>2</td><td>《关于实施其他风险警示暨停牌的公告》（2025-129）</td><td>2025-12-13</td><td><a href="http://static.cninfo.com.cn/finalpage/2025-12-13/1224874140.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>3</td><td>《关于收到湖北监管局〈行政处罚事先告知书〉的公告》（临 2025-128）</td><td>2025-12-13</td><td><a href="http://static.cninfo.com.cn/finalpage/2025-12-13/1224874156.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>4</td><td>《2025 年年度报告》</td><td>2026-03-31</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-03-31/1225050708.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>5</td><td>《关于计提资产减值准备的公告》（临 2026-025）</td><td>2026-03-31</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-03-31/1225050724.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>6</td><td>《2026 年半年度报告》</td><td>2026-08-26</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-08-26/1225503101.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>7</td><td>《关于控股股东、实际控制人变更完成的公告》（临 2025-097）</td><td>2025-08-01</td><td><a href="http://static.cninfo.com.cn/finalpage/2025-08-01/1224353960.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>8</td><td>《详式权益变动报告书》</td><td>2025-07-11</td><td><a href="http://static.cninfo.com.cn/finalpage/2025-07-11/1224130365.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>9</td><td>《关于招商生科增持计划实施完毕暨增持股份结果公告》（2025-074）</td><td>2025-06-13</td><td><a href="http://static.cninfo.com.cn/finalpage/2025-06-13/1223858369.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>10</td><td>《关于调整向特定对象发行股票发行方案的公告》（临 2026-082）</td><td>2026-09-30</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-09-30/1225586844.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>11</td><td>《第十一届董事会第十二次会议决议公告》（临 2026-080）</td><td>2026-09-30</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-09-30/1225586848.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>12</td><td>《2026 年度向特定对象发行 A 股股票预案（二次修订稿）》</td><td>2026-09-30</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-09-30/1225586854.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>13</td><td>《向特定对象发行 A 股股票募集说明书（申报稿）》</td><td>2026-09-24</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-09-24/1225578195.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>14</td><td>《审核问询函之回复报告》</td><td>2026-09-24</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-09-24/1225578197.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>15</td><td>《关于召开 2026 年半年度业绩说明会的公告》（临 2026-074）</td><td>2026-08-27</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-08-27/1225507929.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>16</td><td>《关于召开 2025 年年度业绩说明会的公告》</td><td>2026-04-09</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-04-09/1225084101.PDF" target="_blank" rel="noopener">原文</a></td></tr><tr><td>17</td><td>《上海证券交易所股票上市规则（2026 年 4 月修订）》（沪主板第 9.8 节其他风险警示）</td><td>2026-04-24</td><td><a href="https://www.sse.com.cn/lawandrules/sselawsrules2025/stocks/mainipo/c/c_20260424_10816589.shtml" target="_blank" rel="noopener">规则</a></td></tr><tr><td>18</td><td>《上海证券交易所融资融券交易实施细则（2023 年修订）》第二十五条、第三十二条</td><td>2023-02-17</td><td><a href="https://www.sse.com.cn/lawandrules/sselawsrules2025/trade/specific/margin/c/c_20250616_10782015.shtml" target="_blank" rel="noopener">原文</a></td></tr></tbody></table>
+<h3 id="sec15">附录 C · 逻辑漏洞与反方观点（5 问速版）</h3>
+<p><strong>结论：本报告的"卖出"结论建立在"相对涨幅已领先 ＋ 催化是公开日历"两条之上；以下 5 问中，第 1、2 问是最大的潜在漏洞，若被证伪则结论需上修。</strong></p>
+<table><thead><tr><th>自查问题</th><th>本报告的回答</th><th>反方可能的主张</th></tr></thead><tbody><tr><td>① "低位"的支撑是什么？</td><td><strong>支撑不成立</strong>——价格位置处 2026 年区间 73.9% 分位；估值低位（PB 1.62／PE 15.41）只解释"跌不动"，不解释"会涨"</td><td>反方：央企平台＋麻醉药牌照稀缺性属于"价值折价"而非"期权折价"，PB 1.62 对一个 ROE 10% 的央企平台过低，应给 PB 2.0 以上</td></tr><tr><td>② 摘帽会不会带来超出涨跌幅的资金面红利？</td><td>本报告只承认"可能"，未计入估值——<strong>因上证细则第三十二条仅对"注册制下首次公开发行的股票"规定"撤销风险警示当日调入标的证券范围"，主板存量股需交易所按条件另选</strong>；指数样本空间虽排除风险警示证券，但调整有定期窗口</td><td>反方：摘帽后两融恢复、指数回补、公募与保险可正常配置，被动资金流入可带来 5%—10% 的估值抬升，本报告低估了这部分</td></tr><tr><td>③ 定增是利好还是利空？</td><td><strong>中性偏空</strong>——发行价约市价 8 折、摊薄约 11.8%、EPS 两位数摊薄；但每股净资产增厚 3.5%，且 33.47 亿元现金对创新药管线是实质性支撑</td><td>反方：控股股东以真金白银 33.47 亿元入股并锁 36 个月，是最强的信心背书；且募投项目落地将打开长期成长</td></tr><tr><td>④ 引用的时间点是否已过期？</td><td>全部行情与股东数据为 <strong>2026-09-30</strong>；财务为 <strong>2026-06-30</strong>（半年报未经审计）；规则为 <strong>2026 年 4 月修订版</strong></td><td>—</td></tr><tr><td>⑤ 数据来源是什么级别？</td><td>一手：巨潮公告原文、年报与半年报、上交所规则原文；二级：腾讯自选股与新浪财经行情；三级：东方财富 F10（标【异源】）、安迪自建 ST 信息库</td><td>—</td></tr></tbody></table>
+<p><strong>额外压力测试（反方最强的三条）</strong></p>
+<ol><li><strong>"央企入主 ＋ 首年改善"往往有第二段行情。</strong> 招商局 2025-07 入主，2026 是第一个完整年度；公司 2026H1 归母 +15.15%、毛利率 +1.97 个百分点、管理费用 −7.37%，若三季报延续这一趋势，市场可能给出"央企效率改造"的额外溢价。</li><li><strong>麻醉药赛道具备行政准入壁垒，不参与集采。</strong> 宜昌人福是国内麻醉药品定点研发生产企业，2026H1 麻醉精神类收入约 41 亿元；政府指导价与严格管制意味着这条现金流可预测性高于一般医药资产——这是本报告将其归入"真实盈利"而非"题材"的原因，也可能支撑更高的估值倍数。</li><li><strong>定增发行价的不确定性是双刃剑。</strong> 若发行期首日股价上行，发行价随之提高、摊薄下降，对老股东反而有利；本报告采用"现价 8 折"是中性假设，若取"股价涨至 24 元"情景，摊薄降至 9.6%。</li></ol>
+<hr>
+<h2 id="chap7">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-06</td><td>首次生成。基准日 2026-10-06，行情与股东数据截至 2026-09-30，财务数据截至 2026-06-30。完成封面五行结论、诊断翼（股权与控制关系、股权沿革与关键人物、处罚事实、四类红线对照、摘帽三条通路、财务与业务）、基本面路径（定增摊薄算术与募资必要性问询焦点）、炒作逻辑三支柱（含 55 只假 ST 同型样本与 8 只医药同业对照）、情绪与筹码（含成本锚点）、估值三档与投资结论、附录 A/B/C。投资结论为<strong>卖出（回避）</strong></td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
