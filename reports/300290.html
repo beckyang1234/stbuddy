@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ST荣科（300290.SZ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>12 章 · 25 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断</a><a class="sblv3" href="#sec0">1.1 基本信息与股权：河南国资平本持有 20.01%，无质押无冻结</a><a class="sblv3" href="#sec1">1.2 王艳式六栏目（干货备齐，正文不展开）</a><a class="sblv3" href="#sec2">1.3 全流程进度追踪总表：卡点是"时间未到"还是"谈不拢"？</a><a class="sblv3" href="#sec3">1.4 运作特征与综合判断</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、ST 风险诊断</a><a class="sblv3" href="#sec4">2.1 戴帽时间、原因与类型（微标签）</a><a class="sblv3" href="#sec5">2.2 违规担保：7.85 亿元、6 笔、债权人全部为抚顺银行</a><a class="sblv3" href="#sec6">2.3 立案、处罚与诉讼</a><a class="sblv3" href="#sec7">2.4 四类退市红线逐条对照</a><a class="sblv3" href="#sec8">2.5 摘帽展望：没有"最早可申请日"，只有"情形消除日"</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、公司运营情况</a><a class="sblv3" href="#sec9">3.1 财务状况：营收横盘 7—8 亿元、三年两亏，2026H1 因计提预计负债归母大亏</a><a class="sblv3" href="#sec10">3.2 业务结构：医疗信息化是主体，2026H1 整体收缩 17%</a><a class="sblv3" href="#sec11">3.3 应收账款与资产质量：4.29 亿元应收、其中 3 年以上占三成</a><a class="sblv3" href="#sec12">3.4 股票回购与股东回报</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、基本面路径：路径 C（规范类 · 违规担保 ST）</a><a class="sblv3" href="#sec13">4.1 为什么选路径 C，另两条为什么一句话带过</a><a class="sblv3" href="#sec14">4.2 路径 C 的四条可行动作与各自量级</a><a class="sblv3" href="#sec15">4.3 一条必须写清的会计事实：计提 10% ≠ 认输</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">五、炒作逻辑三支柱</a><a class="sblv3" href="#sec16">5.1 支柱① 炒预期：两个窗口——"判决"（无日期）与"承诺到期"（2026-11-26）</a><a class="sblv3" href="#sec17">5.2 支柱② 相似股票匹配法：本股落在"下跌组"，且是同组最差</a><a class="sblv3" href="#sec18">5.3 支柱③ 主板映射：主板在炒算力/国产替代，但本股的映射是"纯概念"</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">六、情绪面与筹码面</a><a class="sblv3" href="#sec19">6.1 炒作史与炒作符号：超聚变借壳是贯穿四年的主符号</a><a class="sblv3" href="#sec20">6.2 筹码：戴帽后连续两日 20CM 跌停，9 月反弹属"派发型"</a><a class="sblv3" href="#sec21">6.3 必做校验：戴帽不是下跌主因，但本股跌幅远超同业</a><a class="sblv3" href="#sec22">6.4 投资者交流要点（互动易 465 条，最近 2026-09-22）</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">七、估值与投资结论</a><a class="sblv3" href="#sec23">7.1 估值：亏损股不用 PE，PB 7.10 是"或有负债出清后仍不便宜"</a><a class="sblv3" href="#sec24">7.2 投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap9">附录 B · 关键信源链接（正文引用清单）</a></div><div class="sbgrp"><a class="sblv2" href="#chap10">附录 C · 逻辑漏洞与反方观点（5 问压力测试）</a></div><div class="sbgrp"><a class="sblv2" href="#chap11">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">ST荣科（300290.SZ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：卖出（回避）</strong></p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>红线分类</td><td><span class="sttag sttag-teal"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&announcementId=1225393205&orgId=9900021761&announcementTime=2026-06-27" target="_blank" rel="noopener">未摘帽,2026-06-30戴帽</a></span>·<span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&announcementId=1225393206&orgId=9900021761&announcementTime=2026-06-27" target="_blank" rel="noopener">违规担保余额7.85亿元</a></span>·<span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&announcementId=1225393206&orgId=9900021761&announcementTime=2026-06-27" target="_blank" rel="noopener">占最近一期经审计净资产94.47%</a></span></td></tr><tr><td>生死定级</td><td>可救·需外力（四类退市红线<strong>当前一条未踩</strong>；唯一归零开关是违规担保诉讼一旦大额败诉，2026 年末净资产转负 → 财务类 \*ST → 2027 年报终止上市）</td></tr><tr><td>自救空间</td><td>唯一路径＝让 7.85 亿元担保"情形消除"（判免责／债权人放弃／前任股东清偿置换）；<strong>无固定时间表</strong>，4 宗案件全部未开庭，334 号 2026-08-05 开庭已因原告追加被告而延期</td></tr><tr><td>主要看点</td><td>公司账面 <strong>7.85 亿元违规担保</strong>能否被法院认定"对上市公司不发生效力"——这既是约 8 亿元量级的损益开关，也是<strong>唯一</strong>能拆掉 ST 帽子的动作；控股股东河南国资 2021 年以 <strong>6.66 元/股</strong>受让 1.28 亿股，现价 6.68 元几乎平本</td></tr><tr><td>结论要点</td><td>不在低位（PB 7.10 为医疗信息化同业最高）；摘帽无制度红利（创业板 ST 与正常股同为 20%）；最大想象力（超聚变借壳）已被公司 2026-01-13 公告正式否定；主业连续失血、注意力已于 2026-09-10/11 拉高后净卖出</td></tr></tbody></table>
+<ul><li><strong>标的</strong>：荣科科技股份有限公司（ST荣科，300290.SZ），深圳证券交易所<strong>创业板</strong></li><li><strong>研究基准日</strong>：2026-10-05；<strong>行情数据截止时点</strong>：2026-09-30 收盘</li><li><strong>版本</strong>：<strong>第 1 次修改</strong> · 2026-10-05</li><li><strong>数据来源清单</strong>：公司公告（巨潮资讯网／东方财富公告库）、2026 年半年度报告（163 页）、2025 年年度报告（192 页）、《详式权益变动报告书》（2021-106，42 页）、《深圳证券交易所创业板股票上市规则（2026 年修订）》、腾讯行情 <code>qt.gtimg.cn</code>、新浪日 K <code>CN_MarketData.getKLineData</code>、东方财富龙虎榜 API、韭研公社异动整理（parquet）、同花顺 F10 互动易、<code>windproxy</code> 环境（本轮<strong>未</strong>取得 Wind 截面与年度序列）</li><li><strong>已吸收的同标的既有分析稿</strong>：<code>WorkBuddy/2026-08-13-10-49-47/</code> 下《ST荣科_避免同业竞争承诺函_核查摘要.md》《ST荣科_同业竞争重叠主体与解决措施分析.md》《ST荣科_实控不并表结构分析与含义.md》——三稿核心事实（承诺函签署／起算／到期日、2021 年重叠主体清单、2025 年并表评估、2026-06-05 战略协议）<strong>已逐项回 2021-106 号报告书与互动易核实后吸收</strong>，并据其<strong>修正本报告初版对"承诺已实质化解"的过乐观判断</strong>（详见 §5.3 与版本记录）</li><li><strong>已知数据质量异常</strong>：① Wind 局域网代理未使用（行情／估值全部改用公开源，正文已注明）；② 韭研异动表最新一条停在 2026-07-28，2026-09 那波未入库，已用龙虎榜与日 K 交叉验证；③ 部分媒体称"公司 2026-06-26 收到辽宁证监局《行政处罚事先告知书》"，经<strong>巨潮 2026 年全年 66 条公告全量核实为误报</strong>（2026 年无任何立案／处罚／问询类文件），实为 2023-04-28 的〔2023〕2 号决定书，详见 §2.2。</li></ul>
+<hr>
+<h2 id="chap1">一、诊断</h2>
+<h3 id="sec0">1.1 基本信息与股权：河南国资平本持有 20.01%，无质押无冻结</h3>
+<p><strong>结论：控股股东是河南国资体系的私募基金，2021 年 11 月以 6.66 元/股受让 1.28 亿股（8.53 亿元），现价 6.68 元 —— 国资既未深套也无浮盈，"必自救"的价格压力不存在，但 8.53 亿元投资 + 7.85 亿元担保包袱使其有强烈动机解决此事。</strong></p>
+<table><thead><tr><th>要点</th><th>数值</th></tr></thead><tbody><tr><td>现价／总市值／流通市值</td><td>6.68 元／<strong>42.73 亿元</strong>／42.72 亿元（全流通）</td></tr><tr><td>总股本</td><td>6.3973 亿股（639,732,569 股）</td></tr><tr><td>PB／PS(TTM)</td><td><strong>7.10</strong>／约 <strong>6.06</strong> 倍（营收 TTM 7.05 亿元）</td></tr><tr><td>2026 年初至今</td><td><strong>-75.74%</strong>（2025-12-31 收盘 27.53 元 → 6.68 元）</td></tr><tr><td>2026 年区间</td><td>最高 28.75 元（01-06）／最低 3.91 元（07-22）；现价处区间 <strong>11.2%</strong> 分位</td></tr><tr><td>换手率／成交额</td><td>3.86%／1.67 亿元</td></tr><tr><td>控股股东</td><td>河南信产数创私募股权投资基金合伙企业（有限合伙）<strong>20.01%</strong>（1.28 亿股，无质押、无冻结）</td></tr><tr><td>实际控制人</td><td>河南省人民政府国有资产监督管理委员会（上层为豫信电子科技集团有限公司）</td></tr><tr><td>股东户数</td><td>53,780（2025-12-31）→ 67,911（2026-03-31，+26.3%）→ 57,477（2026-06-30，-15.4%）→ 54,000（08-10）→ <strong>51,000（08-31）</strong></td></tr><tr><td>涨跌幅规则</td><td><strong>20%</strong>（创业板风险警示股，摘帽前后同幅 → 无制度红利）</td></tr></tbody></table>
+<blockquote><p><strong>★ 关于「低位」的口径提示</strong>：ST 信息库档案记「近 20 年价格分位数 <strong>7.77%</strong>」，但该值取数日为 2026-07-31、当日价 5.15 元，现价 6.68 元较之<strong>已上涨 29.7%</strong>；且该字段为不复权纵向口径，在 2024—2025 年"超聚变借壳"行情把股价推到 32 元后<strong>已不构成有效的"低位"证据</strong>（与"历史高价区间污染"同一类陷阱）。本报告改以<strong>市值／PB／PS 横截面口径</strong>判断：PB 7.10 为医疗信息化同业最高一档，<strong>不构成低位</strong>。</p></blockquote>
+<details class="fold"><summary>股东与股权穿透（含信产数创基金合伙人结构）</summary><div class="fold-body">
+
+<p><strong>前十大股东（2026-06-30，数据来源：2026 年半年度报告、东方财富 F10）</strong></p>
+<table><thead><tr><th>持有方</th><th>性质</th><th>持股比例</th><th>持股数量</th><th>质押/冻结</th></tr></thead><tbody><tr><td>河南信产数创私募股权投资基金合伙企业（有限合伙）</td><td>境内非国有法人</td><td>20.01%</td><td>1.28 亿股</td><td>无</td></tr><tr><td>香港中央结算有限公司</td><td>境外法人</td><td>1.67%</td><td>1,067.21 万股</td><td>无</td></tr><tr><td>J.P.Morgan Securities PLC－自有资金</td><td>境外法人</td><td>0.66%</td><td>424.41 万股</td><td>无</td></tr><tr><td>谭静</td><td>境内自然人</td><td>0.48%</td><td>306.53 万股</td><td>无</td></tr><tr><td>基本养老保险基金八零五组合</td><td>其他</td><td>0.42%</td><td>266.57 万股</td><td>无</td></tr><tr><td>石成</td><td>境内自然人</td><td>0.39%</td><td>248.83 万股</td><td>无</td></tr><tr><td>BARCLAYS BANK PLC</td><td>境外法人</td><td>0.39%</td><td>248.28 万股</td><td>无</td></tr><tr><td>广发证券－华宝创业板人工智能 ETF</td><td>其他</td><td>0.30%</td><td>193.75 万股</td><td>无</td></tr><tr><td>周睛日</td><td>境内自然人</td><td>0.30%</td><td>189.00 万股</td><td>无</td></tr><tr><td>吴胜群</td><td>境内自然人</td><td>0.26%</td><td>167.57 万股</td><td>无</td></tr></tbody></table>
+<p><strong>信产数创基金合伙人份额（2025-01-13 变更后，合计认缴 8.80 亿元）</strong></p>
+<table><thead><tr><th>合伙人</th><th>变更后份额</th><th>比例</th></tr></thead><tbody><tr><td>豫信电子科技集团有限公司</td><td>33,854.19 万元</td><td>38.47%</td></tr><tr><td>河南信息产业投资有限公司</td><td>34,664.64 万元</td><td>39.39%</td></tr><tr><td>豫信电子科技集团（河南）有限公司</td><td>4,333.67 万元</td><td>4.92%</td></tr><tr><td>河南信息产业私募基金管理有限公司</td><td>2,498.91 万元</td><td>2.84%</td></tr><tr><td>海南铭润文化传媒有限公司</td><td>5,363.59 万元</td><td>6.09%</td></tr><tr><td>屿崇（海南）投资合伙企业（有限合伙）</td><td>4,125.00 万元</td><td>4.69%</td></tr><tr><td>大连盛益通企业管理合伙企业（有限合伙）</td><td>3,160.00 万元</td><td>3.59%</td></tr><tr><td><strong>河南国科晟源科技有限公司（原 37.50%）</strong></td><td><strong>退出</strong></td><td>—</td></tr></tbody></table>
+<p><strong>读法</strong>：本次变更把原持股 37.50% 的"河南国科晟源科技"清出，豫信电科系合计升至约 82.8%，<strong>国资控制权更集中</strong>；公告明确"不会导致公司实际控制人发生变化"。基金执行事务合伙人为河南信息产业基金管理有限公司；据 2021 年公告，基金营业期限为 <strong>2021-10-14 至 2026-10-14</strong>，基准日前<strong>未见延期公告</strong>（上市公司不必然披露基金存续期变化，列为本报告观察项）。</p>
+
+</div></details>
+<h3 id="sec1">1.2 王艳式六栏目（干货备齐，正文不展开）</h3>
+<p><strong>结论：六栏目中最硬的两条是——① 成本锚：河南国资 6.66 元/股，现价几乎平本（1.003 倍）；② 催化清单：近端只有"担保情形消除"一项，且它不是日历事件而是诉讼事件。</strong></p>
+<details class="fold"><summary>① 前世今生（四列表：时点｜关键动作｜股权／实控人变化｜背后的逻辑）</summary><div class="fold-body">
+
+<table><thead><tr><th>时点</th><th>关键动作</th><th>股权／实控人变化</th><th>背后的逻辑</th></tr></thead><tbody><tr><td>2005-11-18</td><td>公司成立；2012-02-16 创业板上市</td><td>—</td><td>智慧医疗信息化＋智维云</td></tr><tr><td>2020-06-10～12-16</td><td><strong>在辽宁国科实业管控期间，以公司名义为 6 家企业提供违规担保（本金合计 7.9 亿元）</strong></td><td>控股股东：辽宁国科实业（何任晖实控）</td><td>债权人全部为抚顺银行；未经董事会／股东会审议、未披露</td></tr><tr><td>2021-05-26</td><td>国科实业与河南信息产业基金管理有限公司签《股份转让意向协议》</td><td>拟引入河南国资</td><td>"上市公司纾困＋产业落地"</td></tr><tr><td>2021-10-19</td><td>签正式《股份转让协议》</td><td><strong>转让价 6.66 元/股</strong>、1.28 亿股（20.02%）、对价 <strong>8.53 亿元</strong></td><td>国科实业持股降至 8,529,042 股（1.33%）</td></tr><tr><td>2021-11-26</td><td><strong>完成过户登记</strong></td><td>控股股东变更为信产数创基金；实控人由何任晖变更为河南省财政厅（现半年报口径为<strong>河南省国资委</strong>）</td><td>出资来源含国科实业在东北证券的信用账户还款</td></tr><tr><td>2023-01-10</td><td>公司及董事、原实控人何任晖被证监会立案（证监立案字 0022023001／0022023002 号）</td><td>—</td><td>2021 年三笔担保未按规定披露</td></tr><tr><td>2023-04-28</td><td>收到辽宁证监局〔2023〕2 号《行政处罚决定书》</td><td>公司罚 50 万元、何任晖罚 130 万元、崔万田罚 30 万元</td><td>认定"不触及重大违法强制退市"</td></tr><tr><td>2024-04-01</td><td>管理人上层豫信电科股东结构调整</td><td>河南省国资委 66.04%／河南投资集团 28.3%／河南国有资本运营 5.63%</td><td>河南省国资国企改革</td></tr><tr><td>2024-10-25</td><td>披露《发行股份及支付现金购买资产预案》</td><td>标的＝上海敬在信息技术有限公司控股权</td><td>交易对方：杨佳木等 5 方</td></tr><tr><td>2025-01-13</td><td>控股股东合伙人份额变更</td><td>河南国科晟源退出，豫信电科系升至约 82.8%</td><td>国资控制权集中</td></tr><tr><td>2025-04-26</td><td><strong>终止</strong>发行股份及支付现金购买资产</td><td>—</td><td>"未来另行筹划以现金方式收购"</td></tr><tr><td>2025-08</td><td>豫信电科发布《荣科并表评估项目谈判采购公告》（中同华资产评估以 16 万元中标，评估"可辨认净资产公允价值及商誉"）</td><td>—</td><td>启动<strong>"会计并表"评估</strong>（线索级：媒体报道＋采购公告）</td></tr><tr><td>2025-09-02</td><td>董秘回复确认"国资股东将公司纳入合并财务报表范围，属正常管理行为"</td><td>从"实控但不并表"→<strong>会计并表</strong></td><td>2021 年为保留上市独立性而未并表</td></tr><tr><td>2025-12-05</td><td>首次披露银行账户部分资金被冻结（建行基本户 115.30 万元）</td><td>—</td><td>名义事由为湛江疾控买卖合同纠纷</td></tr><tr><td>2026-06-05</td><td>与豫信电科、北京中科闻歌、河南智能医学科技签<strong>医疗 AI 战略合作协议</strong></td><td>—</td><td>用"产业链合作"重新定性重叠关系</td></tr><tr><td>2026-10-14</td><td>信产数创基金经营期限届满（2021 年公告口径）</td><td>待观察</td><td><strong>未见延期公告</strong></td></tr><tr><td>2026-11-26</td><td>豫信电科《避免同业竞争承诺函》5 年期届满</td><td>待观察</td><td>硬处置（注入／转让／注销）截至基准日<strong>未见落地</strong></td></tr><tr><td>2026-01-13</td><td><strong>公告确认超聚变数字技术股份有限公司已启动独立 IPO、进入券商辅导备案，"与公司无关"</strong></td><td>—</td><td>借壳叙事正式破灭；股价自 32 元起崩</td></tr><tr><td>2026-05-27</td><td>部分银行账户被冻结（中行／建行／兴业合计约 2.24 亿元）</td><td>—</td><td>追查知悉违规担保事项</td></tr><tr><td>2026-05-29</td><td>披露《涉及重大诉讼》《涉及违规担保暨可能被实施其他风险警示的提示性公告》（2026-023／024）</td><td>—</td><td>首笔 1.36 亿元担保浮出</td></tr><tr><td>2026-06-26</td><td>公告新增 5 笔违规担保、余额合计 <strong>7.85 亿元</strong></td><td>—</td><td>抚顺银行函复</td></tr><tr><td><strong>2026-06-30</strong></td><td><strong>股票被实施其他风险警示（ST）</strong></td><td>简称：荣科科技 → <strong>ST荣科</strong></td><td>依据创业板 9.4(五)＋9.5(二)</td></tr><tr><td>2026-08-27</td><td>董事会通过对违规担保按 10% 计提预计负债 <strong>1.0873 亿元</strong></td><td>—</td><td>2026H1 归母 <strong>-1.52 亿元</strong></td></tr></tbody></table>
+
+</div></details>
+<details class="fold"><summary>② 股东阵容（身份识别＋成本＋锁定＋筹码集中度）</summary><div class="fold-body">
+
+<table><thead><tr><th>持有方</th><th>身份识别</th><th>取得方式与成本</th><th>锁定／承诺</th><th>质押冻结</th></tr></thead><tbody><tr><td>河南信产数创基金</td><td><strong>国资基金（现控股股东）</strong></td><td>2021-11-26 协议受让 1.28 亿股 <strong>@6.66 元/股＝8.53 亿元</strong></td><td>无限售；无公开锁定承诺</td><td><strong>无</strong></td></tr><tr><td>辽宁国科实业</td><td>原控股股东（自然人实控）</td><td>2021-11-26 后剩 852.90 万股（1.33%）；<strong>2025／2026 两年末前十大股东名单均未见其名</strong></td><td>—</td><td>曾 91.5% 质押</td></tr><tr><td>徐州瀚举创业投资合伙企业（有限合伙）</td><td>财务投资者</td><td>2025-12-31 持 1,000 万股（1.56%）；2026-06-30 已退出前十大</td><td>—</td><td>质押＋冻结 1,000 万股</td></tr><tr><td>谭静／石成／周睛日／吴胜群</td><td><strong>职业法拍客／自然人</strong>（均通过信用账户两融持股）</td><td>二级市场</td><td>—</td><td>无</td></tr><tr><td>香港中央结算／J.P.Morgan／BARCLAYS</td><td>外资</td><td>二级市场</td><td>—</td><td>无</td></tr><tr><td>基本养老保险基金八零五组合</td><td>社保</td><td>二级市场</td><td>—</td><td>无</td></tr></tbody></table>
+<p><strong>筹码集中度</strong>：股东户数 2026-03-31 的 67,911 户 → 08-31 的 51,000 户（-24.9%），同期股价<strong>大幅下跌</strong>。<strong>按本 skill 纪律，"下跌中户数下降＝散户割肉离场"，不得读作主力吸筹。</strong></p>
+
+</div></details>
+<details class="fold"><summary>③ 保壳／化解节奏与催化（编号清单：硬节点 vs 软预期）</summary><div class="fold-body">
+
+<table><thead><tr><th>编号</th><th>催化内容</th><th>性质</th><th>判读／证伪点</th></tr></thead><tbody><tr><td>①</td><td>334 号案开庭日期</td><td><strong>软预期</strong></td><td>原定 2026-08-05 已延期，法院另行通知；<strong>无日期＝无节点</strong></td></tr><tr><td>②</td><td>333／335／336 号案送达与开庭</td><td>软预期</td><td>截至基准日公司称"尚未开庭"，无排期</td></tr><tr><td>③</td><td>一审判决"担保对公司不发生效力"</td><td><strong>硬节点（但不可预测）</strong></td><td>判决落地日＝唯一实质催化；亦是最可能的"利好出尽"点</td></tr><tr><td>④</td><td>债权人（抚顺银行）书面免除</td><td>软预期</td><td>抚顺银行为国资背景银行，控股股东称正协调豫辽两地国资对话</td></tr><tr><td>⑤</td><td>前任控股股东清偿或资产置换</td><td>软预期</td><td>公司 2026-06-16 已函告辽宁国科实业、辽宁国科能源、何任晖；<strong>至今无回应动作披露</strong></td></tr><tr><td>⑥</td><td>撤销 ST 申请</td><td>硬节点（依附③④⑤）</td><td>依创业板 9.10 第三款，须先取得<strong>律师事务所法律意见书</strong>证明情形消除</td></tr><tr><td>⑦</td><td><strong>豫信电科"避免同业竞争"承诺 5 年期到期</strong></td><td><strong>硬节点（2026-11-26）</strong></td><td>承诺函第 3 条要求"注入上市公司，或采取其他合法的方式解决"；截至基准日<strong>只有"业务划分＋战略合作"的软动作，硬处置未见落地</strong> → <strong>双向催化</strong></td></tr><tr><td>⑧</td><td>信产数创基金存续期届满</td><td><strong>硬节点（2026-10-14）</strong></td><td>2021 年公告口径的 5 年基金期限；未见延期公告；与⑦几乎同期＝"过渡性控股载体"的设计痕迹</td></tr><tr><td>⑨</td><td>证券虚假陈述索赔</td><td>负面</td><td>律师已公开征集（区间 2022-06-01～2026-05-27 买入）</td></tr><tr><td>⑩</td><td>2026-06-05 四方医疗 AI 战略合作协议的后续落地</td><td>软预期</td><td>协议为软性安排，不含股权／资产权属变更</td></tr></tbody></table>
+<p><strong>区分</strong>：硬节点有 ③⑥⑦⑧ —— 其中 ③（判决）不可预测、⑥ 依附 ③、<strong>⑦⑧ 有确定日期且同期，是本股最被市场关注的时间窗</strong>（2026-10-14 / 2026-11-26，距基准日分别 9 天 / 52 天）。</p>
+
+</div></details>
+<details class="fold"><summary>④ 资产质量与估值（星级表）</summary><div class="fold-body">
+
+<table><thead><tr><th>星级维度</th><th>大白话说明</th><th>评级</th></tr></thead><tbody><tr><td>市值／估值</td><td>42.73 亿元市值对 6.02 亿元归母净资产＝PB 7.10，同业最高一档；PS 约 6.06</td><td>★</td></tr><tr><td>法律合规性</td><td>四类红线未踩，但 7.85 亿元违规担保＋4 宗未开庭诉讼＋索赔征集</td><td>★</td></tr><tr><td>债务与流动性</td><td>货币资金 1.62 亿元（含司法冻结 2,459.80 万元）＋交易性金融资产 0.45 亿元；短期借款 1.59 亿元；经营现金流 -1.09 亿元</td><td>★★</td></tr><tr><td>主业质地</td><td>2026H1 营收 -16.97%、扣非 -0.45 亿元；应收账款 4.29 亿元占总资产 28.1%、3 年以上账龄占 31.7%</td><td>★</td></tr><tr><td>控制权与运作</td><td>河南国资 20.01% 无质押无冻结、成本 6.66 元；发股通道未被锁死</td><td>★★★</td></tr><tr><td><strong>综合</strong></td><td><strong>下行有底（国资在、红线未踩），但上行缺引擎（借壳否定、摘帽无红利）</strong></td><td><strong>★★</strong></td></tr></tbody></table>
+<p><strong>说明</strong>：控制权一项的 ★★★ <strong>不能抵消</strong>估值一项的 ★ —— 国资在场只降低"归零"的尾部概率，不提高"重估"的确定性。</p>
+
+</div></details>
+<details class="fold"><summary>⑤ 成本锚点（逐方成本 ＋ 两类定价逻辑）</summary><div class="fold-body">
+
+<table><thead><tr><th>参与方</th><th>成本（元/股）</th><th>说明</th></tr></thead><tbody><tr><td>河南信产数创基金</td><td><strong>6.66</strong></td><td>2021-10-19 协议、2021-11-26 过户；1.28 亿股／8.53 亿元</td></tr><tr><td>辽宁国科实业（历史）</td><td>不明</td><td>无公开转让底价；其 91.5% 股份曾质押，2021 年 11 月解押过户</td></tr><tr><td>徐州瀚举创投</td><td>不明</td><td>2025 年末持 1,000 万股，质押＋冻结</td></tr><tr><td>二级市场现价</td><td><strong>6.68</strong></td><td>＝国资成本 <strong>1.003 倍</strong></td></tr></tbody></table>
+<p><strong>两类定价逻辑必须分开</strong>：本案<strong>没有</strong>"重整／战投价"（无稀释型底价），只有<strong>协议受让价这一条"无稀释的市场底"</strong>。含义：国资平本意味着<strong>它不需要靠股价上涨解套</strong>，但也意味着<strong>8.53 亿元本金＋7.85 亿元或有负债同时暴露</strong>，解决问题的动机来自风险而非浮亏。</p>
+
+</div></details>
+<details class="fold"><summary>⑥ 信息来源汇总（四级分级）</summary><div class="fold-body">
+
+<table><thead><tr><th>编号</th><th>信源级别</th><th>信源与文件（日期）</th><th>出处</th></tr></thead><tbody><tr><td>1</td><td>一手·监管规则</td><td>《深圳证券交易所创业板股票上市规则（2026 年修订）》9.4／9.5／9.9／9.10／9.3／10.5.2</td><td>本地 PDF 原文提取</td></tr><tr><td>2</td><td>一手·公告</td><td>关于公司股票被实施其他风险警示暨停复牌的公告（2026-06-27）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225393205&amp;orgId=9900021761&amp;announcementTime=2026-06-27" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>3</td><td>一手·公告</td><td>关于公司涉及违规担保的公告（2026-06-27）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225393206&amp;orgId=9900021761&amp;announcementTime=2026-06-27" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>4</td><td>一手·定期报告</td><td>2026 年半年度报告（2026-08-27，163 页）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225514270&amp;orgId=9900021761&amp;announcementTime=2026-08-27" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>5</td><td>一手·定期报告</td><td>2025 年年度报告（2026-04-24，192 页）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225159747&amp;orgId=9900021761&amp;announcementTime=2026-04-24" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>6</td><td>一手·公告</td><td>关于计提预计负债的公告（2026-08-27）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225514273&amp;orgId=9900021761&amp;announcementTime=2026-08-27" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>7</td><td>一手·公告</td><td>关于公司股票被实施其他风险警示相关事项的进展公告（2026-09-28）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225584997&amp;orgId=9900021761&amp;announcementTime=2026-09-28" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>8</td><td>一手·公告</td><td>关于公司收到《民事起诉书》的公告（2026-09-10、2026-09-28）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225558386&amp;orgId=9900021761&amp;announcementTime=2026-09-10" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>9</td><td>一手·公告</td><td>关于公司重大诉讼的进展公告（2026-08-03，延期开庭）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225453745&amp;orgId=9900021761&amp;announcementTime=2026-08-03" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>10</td><td>一手·公告</td><td>关于股票交易异常波动公告的补充公告（2026-01-13，超聚变 IPO 澄清）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1224932607&amp;orgId=9900021761&amp;announcementTime=2026-01-13" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>11</td><td>一手·公告</td><td>关于收到《中国证监会辽宁监管局行政处罚决定书》的公告（2023-04-28）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1216700063&amp;orgId=9900021761&amp;announcementTime=2023-04-28" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>12</td><td>一手·公告</td><td>关于控股股东、实际控制人签订《股份转让协议》的公告（2021-10-19）</td><td><a href="https://data.eastmoney.com/notices/detail/300290/AN202110191523761540.html" target="_blank" rel="noopener">东财</a></td></tr><tr><td>13</td><td>一手·公告</td><td>关于原控股股东部分股票解除质押暨协议转让完成过户登记的公告（2021-11-29）</td><td><a href="https://data.eastmoney.com/notices/detail/300290/AN202111291531855185.html" target="_blank" rel="noopener">东财</a></td></tr><tr><td>14</td><td>一手·公告</td><td>关于终止发行股份及支付现金购买资产事项的公告（2025-04-26）</td><td><a href="https://data.eastmoney.com/notices/detail/300290/AN202504261662488246.html" target="_blank" rel="noopener">东财</a></td></tr><tr><td>15</td><td>一手·投资者交流</td><td>投资者关系管理信息（2026-09-10）／互动易问答 465 条（最近 2026-09-22）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225558386&amp;orgId=9900021761&amp;announcementTime=2026-09-10" target="_blank" rel="noopener">巨潮</a>／同花顺 F10</td></tr><tr><td>16</td><td>数据源</td><td>腾讯行情 <code>qt.gtimg.cn/q=sz300290</code>（2026-09-30 收盘）</td><td>腾讯财经</td></tr><tr><td>17</td><td>数据源</td><td>新浪日 K <code>CN_MarketData.getKLineData</code>（1,023 个交易日）</td><td>新浪财经</td></tr><tr><td>18</td><td>数据源</td><td>东方财富龙虎榜 API <code>RPT_DAILYBILLBOARD_DETAILSNEW</code>（81 条）</td><td>东方财富</td></tr><tr><td>19</td><td>数据源</td><td>韭研公社异动整理（parquet，33 条）</td><td>二级整理</td></tr><tr><td>20</td><td>三级·线索</td><td>爱企查"超聚变与荣科科技关系"（2026-09-18）、东方财富股吧讨论（2026-09）</td><td>工商信息聚合／股吧</td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec2">1.3 全流程进度追踪总表：卡点是"时间未到"还是"谈不拢"？</h3>
+<p><strong>结论：既不是"谈不拢"也不是"时间未到"，而是"等法院排期"——这是本案最大的特殊性：公司能做的事基本做完，胜负手在第三方的诉讼节奏。</strong></p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点或条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>违规担保自查</td><td>完成（6 笔全部识别）</td><td>—</td><td>—</td><td>2026-030 公告</td></tr><tr><td>内部追责函告</td><td>完成（2026-06-16 函告前任股东及何任晖）</td><td>对方<strong>至今无回应动作</strong></td><td>是否回复／是否提出方案</td><td>2026-031 公告</td></tr><tr><td>司法应诉</td><td>4 案受理、<strong>均未开庭</strong></td><td>334 号原定 08-05 开庭因原告追加被告延期</td><td>法院另行通知开庭</td><td>2026-036／047 公告</td></tr><tr><td>协商化解</td><td>控股股东协调豫辽两地国资对话</td><td>无公开实质进展</td><td>—</td><td>互动易 2026-09-10</td></tr><tr><td>计提预计负债</td><td>完成（按 10% 计提 1.0873 亿元）</td><td>10% 比例是公司自主判断，<strong>不代表最终赔付</strong></td><td>判决后调整</td><td>2026-041 公告</td></tr><tr><td>撤销 ST 申请</td><td><strong>未启动</strong></td><td>需先证明"担保情形消除"并取得律所法律意见书</td><td>判决／和解落地后</td><td>创业板 9.10 第三款</td></tr><tr><td>主业经营改善</td><td>推进中（四条措施）</td><td>行业预算收缩、项目验收延后</td><td>2026 三季报</td><td>互动易 2026-09-22</td></tr></tbody></table>
+<p><strong>判读</strong>：卡点属"<strong>时间未到</strong>"偏中性，但<strong>这个"时间"不由公司控制</strong>——4 宗案件排期与判决可能拖数月至数年，期间 ST 帽子与诉讼不确定性持续压制估值。</p>
+<h3 id="sec3">1.4 运作特征与综合判断</h3>
+<p><strong>结论：这是一次"国资接盘＋历史包袱追偿"的被动式运作，不是控制权争夺，也不是产业整合。</strong></p>
+<ul><li><strong>手法</strong>：协议受让（一次性 20.02%），非拍卖、非定增；后续只动上层（管理人股东、基金合伙人份额）。</li><li><strong>节奏</strong>：2021-05 意向 → 2021-11 过户，历时约 6 个月；此后 5 年未在上市公司层面做任何注入。</li><li><strong>交权方式</strong>：<strong>配合式</strong>——国科实业清仓式转让并解押，无表决权放弃、无一致行动、无对抗迹象。</li><li><strong>成败关键变量（1 和 0）</strong>：<strong>担保是否被判对公司不发生效力</strong>（1）／判担责（0）。中间态（部分担责）反而最麻烦：既不摘帽、又吃掉净资产。</li><li><strong>核心矛盾一句话</strong>：<strong>国资在成本线附近持有 20.01%，手里最有价值的资产是"一个干净但不赚钱的创业板壳"；而账上挂着一笔相当于净资产 94.47% 的违规担保——壳的价值完全取决于这笔或有负债能否清掉。</strong></li><li><strong>一个必须补上的结构判断</strong>：控股股东信产数创是一只<strong>设立于 2021-10-14、经营期限 5 年（至 2026-10-14）的并购基金</strong>，而《避免同业竞争承诺函》的 5 年期限恰至 <strong>2026-11-26</strong>——<strong>两个截止日几乎同期</strong>，说明它更像"专为完成 5 年同业竞争方案而设的过渡性控股载体"，而非长期经营主体。<strong>因此 2026 年 10—11 月是"结构收口窗口"</strong>：要么资产层面有实质安排，要么以延期／重新定性收场。<strong>这一点与违规担保诉讼叠加，构成本股 2026 年 Q4 的双重不确定性。</strong></li></ul>
+<hr>
+<h2 id="chap2">二、ST 风险诊断</h2>
+<h3 id="sec4">2.1 戴帽时间、原因与类型（微标签）</h3>
+<p><strong>结论：单帽、单事由——只因违规担保被实施"其他风险警示"（ST），不属四类退市红线中的任何一条。</strong></p>
+<ul><li><strong>戴帽日</strong>：2026-06-30（2026-06-29 停牌 1 天）</li><li><strong>简称变更</strong>：荣科科技 → <strong>ST荣科</strong>；<strong>涨跌幅不变，仍 20%</strong></li><li><strong>法律依据</strong>：创业板《股票上市规则（2026 年修订）》<strong>第 9.4 条第（五）项</strong>（向控股股东或其关联人提供资金或违反规定程序对外提供担保且情形严重）＋<strong>第 9.5 条第（二）项</strong>（违规担保余额在 1,000 万元以上，或占最近一期经审计净资产绝对值 5% 以上）</li><li><strong>触发表述（原文）</strong>："公司因前任控股股东违规担保涉约 1.36 亿元诉讼，该违规担保事项未能在 2026 年 6 月 29 日前解决。"</li><li><strong>类型判定</strong>：<strong>规范类 · 其他风险警示（ST）</strong>，非 \*ST、非财务类、非重大违法类</li><li><strong>重要澄清</strong>：<strong>"戴 ST 帽"不等于"有退市风险"</strong> —— 本股四类退市红线当前<strong>一条未踩</strong>（见 §2.4）。</li></ul>
+<h3 id="sec5">2.2 违规担保：7.85 亿元、6 笔、债权人全部为抚顺银行</h3>
+<p><strong>结论：6 笔违规担保全部发生在 2020 年 6—12 月、前任控股股东辽宁国科实业管控期间，余额 7.85 亿元＝2025 年末经审计净资产的 94.47%、＝经审计货币资金的 536.55%；已按 10% 计提预计负债 1.0873 亿元，这个 10% 是公司自主判断、不构成对判决结果的预测。</strong></p>
+<details class="fold"><summary>违规担保 6 笔明细（数据来源：2026 年半年度报告"违规对外担保情况"、2026-030 公告）</summary><div class="fold-body">
+
+<table><thead><tr><th>编号</th><th>借款人</th><th>与上市公司关系</th><th>担保本金（万元）</th><th>担保余额（万元）</th><th>占最近一期经审计净资产</th><th>到期日</th><th>当前状态</th></tr></thead><tbody><tr><td>1</td><td>辽宁国科能源有限公司</td><td><strong>原控股股东／原董事长关联方</strong></td><td>10,000</td><td>10,000</td><td>13.11%</td><td>2024-05-22</td><td>已收到法律文书，(2026)辽 01 民初 334 号，未开庭</td></tr><tr><td>2</td><td>沈阳致远石油化工有限公司</td><td>无关联关系</td><td>14,000</td><td>13,500</td><td>18.35%</td><td>2024-04-29</td><td>(2026)辽 01 民初 333 号</td></tr><tr><td>3</td><td>沈阳致远石油化工有限公司</td><td>无关联关系</td><td>7,500</td><td>7,496.99</td><td>9.83%</td><td>2025-04-25</td><td>(2026)辽 01 民初 335 号</td></tr><tr><td>4</td><td>沈阳锦乾能源科技有限公司</td><td>无关联关系</td><td>20,000</td><td>20,000</td><td>26.22%</td><td>2025-04-25</td><td>(2026)辽 01 民初 336 号</td></tr><tr><td>5</td><td>辽宁国科能源有限公司</td><td>原控股股东关联方</td><td>5,500</td><td>5,500</td><td>7.21%</td><td>2025-06-05</td><td>二审发回重审，抚顺银行<strong>未向公司主张</strong>担保责任</td></tr><tr><td>6</td><td>沈阳硕源石油化工有限公司</td><td>无关联关系</td><td>22,000</td><td>22,000</td><td>28.84%</td><td>2025-06-05</td><td>二审发回重审，抚顺银行<strong>未向公司主张</strong>担保责任</td></tr><tr><td><strong>合计</strong></td><td>—</td><td>—</td><td><strong>79,000</strong></td><td><strong>78,496.99</strong></td><td><strong>102.91%</strong></td><td>—</td><td>涉诉担保本金合计 <strong>50,996.99 万元</strong></td></tr></tbody></table>
+<p><strong>或有事项原文（2026 年半年度报告附注"十六、承诺及或有事项"）</strong>："上述担保均发生于前任控股股东管控期间，未经公司董事会、股东会审议，擅自以上市公司名义对外提供的违规担保，相关债权人同为抚顺银行。"</p>
+<p><strong>欠息与计提口径（2026-041 公告）</strong></p>
+<table><thead><tr><th>编号</th><th>借款人</th><th>担保余额（万元）</th><th>欠息（万元，未含复息）</th><th>本息合计（万元）</th></tr></thead><tbody><tr><td>1</td><td>辽宁国科能源有限公司</td><td>10,000.00</td><td>4,424.00</td><td>14,424.00</td></tr><tr><td>2</td><td>沈阳致远石油化工有限公司</td><td>13,500.00</td><td>7,176.00</td><td>20,676.00</td></tr><tr><td>3</td><td>沈阳致远石油化工有限公司</td><td>7,496.99</td><td>3,179.77</td><td>10,676.76</td></tr><tr><td>4</td><td>沈阳锦乾能源科技有限公司</td><td>20,000.00</td><td>9,061.00</td><td>29,061.00</td></tr><tr><td>5</td><td>辽宁国科能源有限公司</td><td>5,500.00</td><td>1,214.90</td><td>6,714.90</td></tr><tr><td>6</td><td>沈阳硕源石油化工有限公司</td><td>22,000.00</td><td>5,176.60</td><td>27,176.60</td></tr><tr><td><strong>小计</strong></td><td>—</td><td><strong>78,496.99</strong></td><td><strong>30,232.27</strong></td><td><strong>108,729.26</strong></td></tr></tbody></table>
+<p>公司按本息合计 <strong>108,729.26 万元的 10%</strong> 计提预计负债 <strong>10,872.93 万元</strong>（"公司结合银行反馈及借款合同约定测算得出，可能与未来实际数据存在偏差"）。<strong>这个 10% 是管理层自主判断，既不等于公司对败诉概率的判断，也不构成任何法律结论。</strong></p>
+<p><strong>★ 一条关键的反向证据</strong>：公司称"现任控股股东收购上市公司尽调时及在公司 2021-2025 年历次年审发出的银行询证函中，<strong>抚顺银行回函分别显示荣科科技不存在</strong>为其他单位提供的以前述债权人为担保权人的担保"——即<strong>抚顺银行出具了不实询证回函</strong>，致 2025 年报"违规对外担保情况"栏勾选"不适用"、审计机构立信亦出具标准无保留意见。这一点是公司主张"债权人非善意"的核心事实，也直接关系到后续是否会被认定为<strong>年报重大遗漏</strong>。</p>
+
+</div></details>
+<h3 id="sec6">2.3 立案、处罚与诉讼</h3>
+<p><strong>结论：2023 年曾被证监会立案并处罚（针对 2021 年三笔担保），但已认定"不触及重大违法强制退市"；2026 年全年 66 条公告中无任何新增立案／处罚／问询文件，发股通道未被锁死。</strong></p>
+<details class="fold"><summary>立案与处罚原文要点（2023-01-10 立案；2023-04-28 决定书）</summary><div class="fold-body">
+
+<ul><li><strong>立案</strong>：2023-01-10 公司及董事、原实际控制人何任晖收到证监会《立案告知书》（证监立案字 0022023001 号、0022023002 号），事由为信息披露违法违规。</li><li><strong>决定书〔2023〕2 号</strong>（辽宁证监局）：2021 年三笔担保未按规定及时披露——① 2021-06-21 为控股股东国科实业对中汇传媒 <strong>1,062.97 万元</strong>债务提供连带责任担保；② 2021-07-21 为时任董事崔万田对中汇传媒 <strong>1,520 万元</strong>债务提供担保；③ 2021-10-19 为盘锦捷能实业对盘锦银行兴建支行 <strong>2.3 亿元</strong>债务提供担保（占最近一期经审计净资产 16.84%）。</li><li><strong>处罚</strong>：公司责令改正、警告、罚 <strong>50 万元</strong>；何任晖（1973 年 7 月生，时任董事长／总裁、案涉期间实际控制人）警告、罚 <strong>130 万元</strong>（直管人员 50 万元＋实控人 80 万元）；崔万田（1973 年 5 月生，时任董事）警告、罚 <strong>30 万元</strong>。</li><li><strong>结论表述（原文）</strong>："本次涉及的信息披露违法行为<strong>不触及</strong>《深圳证券交易所创业板股票上市规则（2023 年修订）》第 10.5.1 条、10.5.2 条和 10.5.3 条规定的<strong>重大违法强制退市</strong>的情形。"</li><li><strong>对当前的意义</strong>：① 当事人何任晖、崔万田均为"<strong>时任</strong>"，且距今已逾 3 年 → <strong>不触发《上市公司证券发行注册管理办法》第十一条第（三）项</strong>（现任董监高最近三年受证监会行政处罚）→ <strong>发股通道未被锁死</strong>，这是本股少有的制度性正面因素；② 但 2020 年那 6 笔担保（7.9 亿元）<strong>从未被处罚、也未被披露</strong>，理论上仍有被新增立案的可能——须列为尾部风险。</li></ul>
+
+</div></details>
+<details class="fold"><summary>2026 年诉讼时间线（时间降序）</summary><div class="fold-body">
+
+<table><thead><tr><th>时点</th><th>诉讼事件</th><th>结果／状态</th></tr></thead><tbody><tr><td>2026-09-28</td><td>收到《民事起诉书》（案号 (2026)辽 01 民初 333 号）：原告抚顺银行，被告 22 名，本息合计 <strong>1.96195 亿元</strong>（本金 1.35 亿元，系第 1 笔）</td><td>未开庭</td></tr><tr><td>2026-09-10</td><td>收到《民事起诉书》（案号 (2026)辽 01 民初 336 号）：原告抚顺银行开发区支行，被告 15 名，本息合计 <strong>2.75011 亿元</strong>（本金 2 亿元，系第 3 笔）</td><td>未开庭</td></tr><tr><td>2026-09-03</td><td>收到《民事起诉书》及《民事裁定书》（案号 (2026)辽 01 民初 335 号）：本息合计 <strong>1.00921 亿元</strong>（本金 7,496.99 万元）；新增 1 个账户被冻结、2 个账户增加轮候冻结，新增冻结 21,625.67 元</td><td>未开庭</td></tr><tr><td>2026-08-03</td><td>334 号案（本息 1.36440 亿元）<strong>延期开庭</strong>，原定 2026-08-05；法院另行通知</td><td>延期</td></tr><tr><td>2026-06-25</td><td>重大诉讼进展公告（2026-028）</td><td>未开庭</td></tr><tr><td>2026-05-29</td><td>披露《涉及重大诉讼的公告》（2026-023）——首次公开第 1 笔 1.36 亿元担保</td><td>未开庭</td></tr></tbody></table>
+<p><strong>被告名单特征</strong>：除上市公司与前控股股东辽宁国科实业外，还包含抚顺银行另外主张的抵押／质押主体——成都洲际宜科商业管理（房屋 359 套）、成都志诚艺邦商贸（成都青羊区 20 处不动产）、沈阳诚大国奥商业管理（沈阳于洪区 4 处房产，建筑面积 29,108.02 ㎡）、以及<strong>辽宁国科实业原持荣科 136,529,042 股</strong>（该股数系其 2020 年提供质押时的历史持股；2021-11-26 已将其中 1.28 亿股过户给现控股股东，剩余 852.90 万股此后未见于前十大股东名单）。<strong>存在第三方房产抵押担保，是公司主张"债权人有其他受偿来源"的有利事实。</strong></p>
+
+</div></details>
+<h3 id="sec7">2.4 四类退市红线逐条对照</h3>
+<p><strong>结论：四类红线当前一条未踩，定级"可救·需外力"。唯一能把公司推向退市的是"担保大额败诉"这一条传导链。</strong></p>
+<table><thead><tr><th>类型</th><th>触发条件（创业板口径）</th><th>本股实况</th><th>是否触及</th></tr></thead><tbody><tr><td><strong>交易类</strong></td><td>连续 20 日收盘价 &lt;1 元；或连续 20 日市值 &lt;3 亿元；或连续 20 日股东 &lt;400 人</td><td>6.68 元；42.73 亿元；51,000 户</td><td><strong>未触及</strong></td></tr><tr><td><strong>财务类①</strong></td><td>利润总额／净利／扣非孰低为负 <strong>且</strong> 扣除后营收 &lt;1 亿元</td><td>2025 孰低 -0.50 亿元（负），但<strong>扣除后营收 7.54 亿元</strong> &gt;1 亿元</td><td><strong>未触及</strong></td></tr><tr><td><strong>财务类②</strong></td><td>最近一个会计年度<strong>期末净资产为负</strong></td><td>2026-06-30 归母净资产 6.02 亿元（正）；2025 年末 7.63 亿元</td><td><strong>未触及</strong></td></tr><tr><td><strong>财务类③</strong></td><td>最近一年审计意见为无法表示／否定</td><td>2025 年审计意见<strong>标准的无保留意见</strong>（立信，信会师报字[2026]第 ZB10502 号，2026-04-22）</td><td><strong>未触及</strong></td></tr><tr><td><strong>规范类</strong></td><td>资金占用、内控连续非标、控制权无序争夺等</td><td>2025 年内控审计<strong>标准无保留意见</strong>；公司称"不存在控股股东非经营性占用资金"</td><td><strong>未触及</strong></td></tr><tr><td><strong>重大违法类</strong></td><td>造假达量化线／欺诈发行等</td><td>2023 年处罚已认定"不触及"；2026 年无新增立案</td><td><strong>未触及</strong></td></tr></tbody></table>
+<p><strong>（另：Andy 自建《退市风险预警-20261005.xlsx》中 300290 未列入交易类／财务类；规范类处罚台账可查到其历史处罚记录，属台账口径、不等于退市风险。）</strong></p>
+<details class="fold"><summary>★ 唯一的归零传导链（把"或有负债"翻译成"退市路径"）</summary><div class="fold-body">
+
+<pre><code>违规担保 7.85 亿元（＋欠息 3.02 亿元，本息合计 10.87 亿元）
+   ↓ 若法院判决上市公司承担连带保证责任（部分或全部）
+一次性赔付 → 2026 年报表归母净资产（现 6.02 亿元）可能转负
+   ↓
+触发创业板 9.3.1 第一款第（二）项「期末净资产为负」
+   ↓
+2026 年报披露后叠加 *ST（退市风险警示）
+   ↓ 若 2027 年年报净资产仍为负
+触发 9.3.12 第（二）项 → 终止上市（本金归零）</code></pre>
+<p><strong>这条件传导链的量化敏感度</strong>：涉诉担保本金合计 5.10 亿元；若全部败诉并全额赔付本息约 7.1 亿元，扣掉已计提的 1.09 亿元预计负债，<strong>需额外消化约 6.0 亿元 ≈ 全部归母净资产</strong> → 净资产归零。<strong>即：全败＝净资产归零；半败＝净资产腰斩。</strong></p>
+
+</div></details>
+<h3 id="sec8">2.5 摘帽展望：没有"最早可申请日"，只有"情形消除日"</h3>
+<p><strong>结论：本股的 ST 属"违规担保型"，撤销依据是创业板 9.10 第三款——</strong>情形消除即可申请，不绑定年报、无 12 个月计时<strong>；但也因此</strong>没有可预测的日期<strong>，完全取决于诉讼或和解的落地时点。</strong></p>
+<details class="fold"><summary>撤销条款原文（创业板 9.10／9.3）</summary><div class="fold-body">
+
+<ul><li><strong>9.10 第一款</strong>："上市公司认为其出现的第 9.4 条规定的相应情形已消除的，应当及时公告……公司拟申请撤销其他风险警示的，应当在披露之日起<strong>五个交易日内</strong>向本所提交申请。"</li><li><strong>9.10 第三款</strong>："公司<strong>违规对外担保事项已消除</strong>，向本所申请撤销其他风险警示的，应当披露<strong>律师事务所出具的法律意见书</strong>等文件。"</li><li><strong>9.3</strong>："上市公司同时存在两项以上其他风险警示情形的，<strong>须满足全部其他风险警示情形的撤销条件</strong>，方可撤销。"（本股<strong>只有一项</strong>事由，不涉及此条）</li><li><strong>9.13</strong>：公司提交完备申请材料后，本所在<strong>十五个交易日</strong>内决定；要求补充材料的，补充材料期间不计入决定期限。</li><li><strong>9.14</strong>：决定撤销的，公司于次一交易日披露，股票<strong>停牌一天</strong>，自复牌之日起撤销。</li></ul>
+<p><strong>三条可能的"情形消除"路径及各自时间账</strong></p>
+<table><thead><tr><th>路径</th><th>时间账</th><th>前置条件</th></tr></thead><tbody><tr><td>① 法院生效判决担保对公司不发生效力</td><td>一审 3—12 个月＋二审 3—6 个月；<strong>334 号尚未排期</strong></td><td>需认定债权人非善意</td></tr><tr><td>② 债权人（抚顺银行）书面免除</td><td>不可预测（协商事项）</td><td>抚顺银行与河南国资均为国资体系，存在协调基础</td></tr><tr><td>③ 前任控股股东清偿或资产置换</td><td>不可预测（对方 2026-06-16 收到函告后<strong>无回应</strong>）</td><td>辽宁国科系自身偿债能力存疑</td></tr></tbody></table>
+<p><strong>★ 两条口径纪律</strong>：① <strong>"公司说整改完毕"无任何法律效力</strong>，撤销依据必须落在<strong>律所法律意见书</strong>（他证，非自证）；② <strong>创业板 ST 与正常股同为 20% 涨跌幅 → 摘帽本身零制度红利</strong>，因此摘帽是"不确定性消除"而非"制度套利"。</p>
+
+</div></details>
+<hr>
+<h2 id="chap3">三、公司运营情况</h2>
+<h3 id="sec9">3.1 财务状况：营收横盘 7—8 亿元、三年两亏，2026H1 因计提预计负债归母大亏</h3>
+<p><strong>结论：主业体量五年横盘（7.05—8.17 亿元）且盈利反复；2026H1 归母 -1.52 亿元中，</strong>1.09 亿元来自违规担保计提（非经常性）<strong>、主业自身亏损约 0.43 亿元 —— 真正的问题是"主业不赚钱＋应收账款老账多"这两条同时存在。</strong></p>
+<table><thead><tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026H1</th></tr></thead><tbody><tr><td>营业收入（亿元）</td><td>8.17</td><td>7.05</td><td>7.98</td><td>7.67</td><td>7.55</td><td>2.42</td></tr><tr><td>归母净利（亿元）</td><td>-4.05</td><td>-2.25</td><td><strong>+0.27</strong></td><td>-0.03</td><td>-0.45</td><td><strong>-1.52</strong></td></tr><tr><td>扣非归母（亿元）</td><td>-3.58</td><td>-2.84</td><td>+0.08</td><td>-0.20</td><td>-0.50</td><td>-0.45</td></tr><tr><td>毛利率</td><td>28.76%</td><td>32.50%</td><td>43.38%</td><td>38.80%</td><td>39.75%</td><td>36.02%</td></tr><tr><td>ROE（加权）</td><td>-33.43%</td><td>-24.47%</td><td>+3.24%</td><td>-0.35%</td><td>-5.69%</td><td>-22.19%</td></tr><tr><td>归母净资产（亿元）</td><td>—</td><td>—</td><td>8.26</td><td>8.22</td><td>7.63</td><td>6.02</td></tr><tr><td>总资产（亿元）</td><td>—</td><td>—</td><td>15.10</td><td>15.21</td><td>15.47</td><td>15.26</td></tr><tr><td>经营现金流（亿元）</td><td>—</td><td>—</td><td>+0.53</td><td>-0.25</td><td>-0.47</td><td>-1.09</td></tr><tr><td>资产负债率</td><td>—</td><td>—</td><td>—</td><td>46.0%（约）</td><td>46.28%</td><td><strong>56.48%</strong></td></tr></tbody></table>
+<p><strong>口径说明</strong>：2023—2025 及 2026H1 取自 2025 年年度报告与 2026 年半年度报告原文；2021／2022 年取自东方财富 F10（<strong>【异源】</strong>，仅作趋势参照）。2026H1 非经常性损益合计 <strong>-1.0749 亿元</strong>，其中"与公司正常经营业务无关的或有事项产生的损益"单项即 <strong>-1.0873 亿元</strong>（＝违规担保预计负债计提）。</p>
+<details class="fold"><summary>2026H1 关键资产项与勾稽自检</summary><div class="fold-body">
+
+<table><thead><tr><th>观察项</th><th>2026-06-30</th><th>2025-12-31</th><th>判读</th></tr></thead><tbody><tr><td>货币资金</td><td><strong>1.62 亿元</strong></td><td>1.46 亿元</td><td>其中因违规担保／合同诉讼／劳动仲裁<strong>被冻结 2,459.80 万元</strong>；另有 350.70 万元履约保证金、10.00 万元质押存单</td></tr><tr><td>交易性金融资产</td><td>0.45 亿元</td><td>—</td><td>结构性存款理财</td></tr><tr><td>应收账款</td><td><strong>4.29 亿元</strong></td><td>4.61 亿元</td><td>占总资产 <strong>28.10%</strong></td></tr><tr><td>存货</td><td>3.94 亿元</td><td>3.52 亿元</td><td>增长 11.8%，与收入下滑方向相反</td></tr><tr><td>商誉</td><td><strong>1.91 亿元</strong></td><td>1.91 亿元</td><td><strong>未计提减值</strong></td></tr><tr><td>短期借款</td><td><strong>1.59 亿元</strong></td><td>0.76 亿元</td><td>半年翻倍，财务费用同比 +898.92%</td></tr><tr><td>预计负债</td><td><strong>1.13 亿元</strong></td><td>0.04 亿元</td><td>H1 计提 1.0873 亿元</td></tr><tr><td>负债合计／资产总计</td><td>8.62／15.26 亿元</td><td>7.16／15.47 亿元</td><td><strong>勾稽自检：负债 8.62 ＋ 所有者权益 6.64 ＝ 15.26 ✓</strong></td></tr><tr><td>归母／少数股东权益</td><td>6.02／0.63 亿元</td><td>7.63／0.68 亿元</td><td>所有者权益合计 6.64 亿元 ✓</td></tr></tbody></table>
+<p><strong>★ 一处口径提醒</strong>：<strong>违规担保公告里的"最近一期经审计净资产 83,090.67 万元"用的是"所有者权益合计"（含少数股东权益），而 2025 年末归母净资产为 76,277.32 万元</strong>——两者相差 6,813.35 万元（少数股东权益）。报告引用时须注明口径，否则会出现"净资产 8.31 亿元 vs 7.63 亿元"的表面矛盾。</p>
+
+</div></details>
+<h3 id="sec10">3.2 业务结构：医疗信息化是主体，2026H1 整体收缩 17%</h3>
+<p><strong>结论：收入地图清晰但缺乏增长点——自主产品及服务（占 66%）下滑 25.13%，靠系统集成（+5.37%）对冲；健康医疗及社保板块下滑 26.22%，只有"政府及公共事业"小幅增长；"AI 医疗"是产品标签，不是独立收入科目。</strong></p>
+<table><thead><tr><th>拆分口径</th><th>业务项</th><th>2026H1 收入</th><th>占比</th><th>同比</th><th>毛利率</th></tr></thead><tbody><tr><td>分产品</td><td>自主产品及服务</td><td>1.60 亿元</td><td>66.1%</td><td><strong>-25.13%</strong></td><td>43.87%</td></tr><tr><td>分产品</td><td>系统集成</td><td>0.82 亿元</td><td>33.8%</td><td>+5.37%</td><td>20.72%</td></tr><tr><td>分客户行业</td><td>健康医疗及社保</td><td>1.47 亿元</td><td>60.7%</td><td><strong>-26.22%</strong></td><td>46.31%</td></tr><tr><td>分客户行业</td><td>政府及公共事业</td><td>0.90 亿元</td><td>37.0%</td><td>+9.40%</td><td>19.58%</td></tr><tr><td>分地区</td><td>东北地区</td><td>1.11 亿元</td><td>45.9%</td><td>-10.43%</td><td>24.49%</td></tr><tr><td>分地区</td><td>华东地区</td><td>0.43 亿元</td><td>17.6%</td><td>-14.39%</td><td>52.63%</td></tr></tbody></table>
+<p><strong>审美标签</strong>：智慧医疗信息化＝<strong>业务反转（未成立）</strong>；系统集成＝<strong>景气成长（低毛利、增长有限）</strong>；"AI 电子病历质控／智能编码／信创适配"＝<strong>题材炒作（目前无独立收入科目）</strong>。</p>
+<p><strong>公司自述的行业风险（2026 半年报原文）</strong>："传统标准化信息化项目同质化低价竞争态势明显，公司面临产品价格下降、市场份额下滑与盈利空间收窄的风险"；竞争格局点名"东软集团、卫宁健康、创业慧康等传统厂商市占率提升趋势明显，华为、阿里、腾讯等科技大厂大规模进入"。</p>
+<details class="fold"><summary>子公司与利润归属（做利润来源拆解）</summary><div class="fold-body">
+
+<table><thead><tr><th>主体</th><th>2025 年营收</th><th>2025 年净利</th><th>上市公司持股</th><th>备注</th></tr></thead><tbody><tr><td>上海今创信息技术有限公司</td><td>1.23 亿元</td><td><strong>+0.1543 亿元</strong></td><td><strong>85.1064%</strong></td><td>DRG/DIP 医院端；2026-05 以未分配利润转增注册资本 260 万元至 1,200 万元（构成关联共同投资，总裁王功学持 5.3191%）</td></tr><tr><td>米健医疗、神州视翰</td><td>未单独披露</td><td>未单独披露</td><td>—</td><td>医疗健康板块主力子公司</td></tr><tr><td>辽宁智维云</td><td>未单独披露</td><td>未单独披露</td><td>—</td><td>智慧城市／云服务；同时是<strong>超聚变经销商</strong></td></tr></tbody></table>
+<p><strong>员工与研发</strong>：2025 年末在职员工 <strong>1,387 人</strong>（母公司 120 人）；研发人员 489 人；2025 年研发投入 <strong>8,944.43 万元</strong>（占营收 11.85%），其中资本化 2,354.63 万元（占研发投入 26.33%）。<strong>资本化率连续三年上行（2023 年 22.00%→2024 年 20.50%→2025 年 26.33%），是利润质量的一个折价因子。</strong></p>
+<p><strong>客户集中度</strong>：2025 年前五名客户合计销售 1.4882 亿元、占 19.72%，<strong>关联方销售 0.00%</strong>——客户分散，但也意味着没有抓手。</p>
+
+</div></details>
+<h3 id="sec11">3.3 应收账款与资产质量：4.29 亿元应收、其中 3 年以上占三成</h3>
+<p><strong>结论：应收账款占总资产 28.1%、3 年以上账龄占 31.71%、已计提坏账 37.39% —— 老账比例高，是"信用减值损失"反复吞噬利润的根源，也是"营收数字好看但现金收不回"的原因。</strong></p>
+<details class="fold"><summary>应收账款账龄与坏账计提</summary><div class="fold-body">
+
+<table><thead><tr><th>观察项</th><th>数值</th></tr></thead><tbody><tr><td>应收账款账面价值</td><td><strong>4.2889 亿元</strong>（占总资产 28.10%）</td></tr><tr><td>其中 3 年以上账龄</td><td><strong>2.17 亿元</strong>（占应收账款 31.71%）</td></tr><tr><td>已累计计提坏账准备</td><td><strong>2.56 亿元</strong>（计提比例 <strong>37.39%</strong>）</td></tr><tr><td>2026H1 信用减值损失</td><td>1,202.45 万元（管理层讨论引用）</td></tr><tr><td>2025 年计提信用减值损失</td><td>同比大幅增加，为 2025 年由盈转亏主因（业绩预告原文）</td></tr></tbody></table>
+<p><strong>判读</strong>：即使未来订单回暖，这笔 4.29 亿元应收（其中 2.17 亿元三年以上）仍将持续产生减值压力；<strong>公司"回款管理"的可改善空间＝真实利润弹性所在，但也说明近三年的亏损并非一次性事件。</strong></p>
+
+</div></details>
+<h3 id="sec12">3.4 股票回购与股东回报</h3>
+<p><strong>结论：没有回购计划；2025 年度分红 959.60 万元（每 10 股派 0.15 元）已于 2026 年 7 月实施——象征意义大于实质。</strong></p>
+<ul><li>2026-05-28 股东会通过 2025 年度利润分配预案：以总股本 639,732,569 股为基数，每 10 股派现金 <strong>0.15 元（含税）</strong>，合计派发 <strong>959.60 万元</strong>；2026-07-03 分红派息实施公告，7 月初实施完毕。</li><li><strong>无股份回购计划、无股份回购专户</strong>（2025 年报"前 10 名股东中存在回购专户的特别说明"＝无）。</li></ul>
+<hr>
+<h2 id="chap4">四、基本面路径：路径 C（规范类 · 违规担保 ST）</h2>
+<p><strong>结论：只需深耕一条路径——"违规担保情形消除"；另两条路径（保壳·重整）在本案</strong>不适用<strong>：公司没有营收／净资产缺口，也没有破产重整基础（无资不抵债、无重整申请）。</strong></p>
+<h3 id="sec13">4.1 为什么选路径 C，另两条为什么一句话带过</h3>
+<ul><li><strong>路径 A（保壳）不适用</strong>：扣除后营收 7.54 亿元（红线 1 亿元）、归母净资产 6.02 亿元为正、审计与内控均标准无保留 —— <strong>没有营收／净资产／审计意见缺口可保</strong>。</li><li><strong>路径 B（重整）不适用</strong>：截至基准日<strong>零重整／预重整公告</strong>（2026 半年报"破产重整相关事项"栏勾"不适用"）；公司资产负债率 56.48%，不属资不抵债。</li><li><strong>路径 C（规范类）是唯一</strong>：全部问题收敛到一件事——让 7.85 亿元违规担保"情形消除"。</li></ul>
+<h3 id="sec14">4.2 路径 C 的四条可行动作与各自量级</h3>
+<p><strong>结论：四条动作里，①（司法应诉）是唯一有实质量级的路径，②③ 依赖第三方让步、④ 只解决"形式"；而 ①③ 的节奏都不在公司手里。</strong></p>
+<table><thead><tr><th>动作</th><th>量级／可能性</th><th>关键约束</th></tr></thead><tbody><tr><td>① <strong>司法应诉主张担保无效</strong>（主路径）</td><td>涉诉本金 5.10 亿元；公司主张＝越权代表＋未披露＋债权人非善意</td><td>4 案均未开庭；334 号延期；判决时间不可控</td></tr><tr><td>② <strong>推动债权人免除</strong>（辅路径）</td><td>需抚顺银行让步</td><td>抚顺银行为国资背景银行；控股股东称正协调豫、辽两地国资对话</td></tr><tr><td>③ <strong>督促前任股东清偿／资产置换</strong></td><td>覆盖本息 10.87 亿元</td><td>辽宁国科系自身偿债能力存疑；2026-06-16 函告后<strong>无回应</strong></td></tr><tr><td>④ <strong>内控整改与追责</strong></td><td>制度层面</td><td>属"他证"事项，须由律所出具法律意见书；对"情形消除"本身无直接效果</td></tr></tbody></table>
+<blockquote><p><strong>★ 关键判别：本案的胜负手不在公司手里。</strong> ①③ 都由第三方（法院、前任股东）控制节奏；公司能做的是应诉、函告、协调——<strong>已经做完</strong>。这意味着"催化何时来"不可预测。</p></blockquote>
+<h3 id="sec15">4.3 一条必须写清的会计事实：计提 10% ≠ 认输</h3>
+<p>公司按本息合计 10% 计提预计负债 1.0873 亿元，属<strong>会计上的审慎估计</strong>，其效果是：① 一次性压低 2026H1 归母净利 1.09 亿元；② 使归母净资产从 7.63 亿元降至 6.02 亿元；③ <strong>不影响现金流、不构成对判决结果的预判</strong>。<strong>若最终免责，该笔预计负债可回冲（增厚净资产）；若判担责比例高于 10%，则需补提。</strong></p>
+<hr>
+<h2 id="chap5">五、炒作逻辑三支柱</h2>
+<h3 id="sec16">5.1 支柱① 炒预期：两个窗口——"判决"（无日期）与"承诺到期"（2026-11-26）</h3>
+<p><strong>结论：当前最强的一支是①，但它的"强度"被两个事实压住——最有含金量的催化（一审判决）没有日期；有日期的那个（同业竞争承诺到期）</strong>硬处置尚未落地<strong>，且</strong>创业板 ST 摘帽不改涨跌幅、零制度红利<strong>。</strong></p>
+<table><thead><tr><th>节点</th><th>性质</th><th>距今</th><th>判读／证伪点</th></tr></thead><tbody><tr><td>334 号案开庭</td><td>软预期</td><td>无日期</td><td>原定 2026-08-05 已延期；<strong>无排期＝无节点</strong></td></tr><tr><td>333／335／336 号案开庭</td><td>软预期</td><td>无日期</td><td>公司称尚未开庭</td></tr><tr><td>一审判决（免责）</td><td><strong>硬节点但不可预测</strong></td><td>不可预测</td><td>落地日＝最可能的"利好出尽"点</td></tr><tr><td>撤 ST 申请</td><td>硬节点（依附判决）</td><td>依附判决</td><td>需律所法律意见书</td></tr><tr><td><strong>豫信电科同业竞争承诺 5 年期到期</strong></td><td><strong>硬节点</strong></td><td><strong>2026-11-26（52 天）</strong></td><td>硬处置（注入／转让／注销）截至基准日未落地；<strong>双向催化</strong>（注入＝向上；延期／豁免＝向下），详见 §5.3</td></tr><tr><td>信产数创基金存续期届满</td><td><strong>硬节点</strong></td><td><strong>2026-10-14（9 天）</strong></td><td>2021 年公告口径的 5 年基金期限，未见延期公告；与上一行几乎同期＝过渡性控股载体</td></tr></tbody></table>
+<p><strong>预期差在哪一侧？</strong> 答案偏<strong>下方</strong>：市场把"和解／判决免责 → 摘帽 → 国资注入"读成一条自动链条，但 ① 判决不可预测、② 摘帽无制度红利、③ 注入无公告支撑（见 §5.3）。</p>
+<h3 id="sec17">5.2 支柱② 相似股票匹配法：本股落在"下跌组"，且是同组最差</h3>
+<p><strong>结论：以基准日为原点，本股画像＝"创业板 · 其他风险警示（违规担保型）· 市值 42.73 亿元 · 驱动＝债务/诉讼解除预期 · 阶段＝戴帽后 3 个月内 · 历史炒作符号＝超聚变借壳+AI算力+河南国资"；把当下最像的票找出来比对，</strong>它们后来多数下跌，而本股跌幅为同组最深<strong>。</strong></p>
+<details class="fold"><summary>同型样本对照（2026 年初至今涨跌幅，按跌幅降序）</summary><div class="fold-body">
+
+<table><thead><tr><th>对照对象</th><th>像在哪一句话</th><th>年初至今</th><th>现价</th></tr></thead><tbody><tr><td><strong>ST荣科（本股）</strong></td><td>—</td><td><strong>-75.74%</strong></td><td>6.68 元</td></tr><tr><td>ST喜临门（603008）</td><td>同为"其他风险警示·违规担保/占资型"</td><td>-48.24%</td><td>10.60 元</td></tr><tr><td>ST八菱（002592）</td><td>同为"控股股东关联方占资或违规担保"型</td><td>-24.70%</td><td>6.25 元</td></tr><tr><td>ST惠程（002168）</td><td>同为"多事由并发"的创业板/中小盘 ST</td><td>-15.24%</td><td>3.56 元</td></tr><tr><td>ST银江（300020）</td><td>同为"违规担保＋占用"型创业板 ST</td><td>+7.43%</td><td>3.76 元</td></tr><tr><td>\*ST正平（603843）</td><td>同为"违规担保超净资产 5%"型</td><td>+10.84%</td><td>6.34 元</td></tr><tr><td>ST新华锦（600735）</td><td>同为"违规担保超净资产 5%"型</td><td>+40.00%</td><td>6.65 元</td></tr></tbody></table>
+<p><strong>分组统计</strong>：该组 7 只，<strong>中位数 -15.24%、均值 -15.09%、上涨 3/7</strong>。作为对照，<strong>创业板 ST 全体 42 只</strong>：中位数 <strong>-19.82%</strong>、均值 -15.67%、上涨 13/42 —— 本股 <strong>-75.74% 为两组中最差</strong>。</p>
+<p><strong>★ 上涨组反查共性</strong>：ST新华锦（+40.00%）、\*ST正平（+10.84%）、ST银江（+7.43%）三只上涨样本，共同点是<strong>"有一个已被公告确认的、可命名的下一步动作"</strong>（资产／方案／股权层面的具体安排）；而本股<strong>只有"等法院排期"</strong>——这是"人名／程序"与"物"的差别，也正是本股落在下跌组的原因。</p>
+<p><strong>结论</strong>：<strong>本标的落在下跌组</strong>；参照组幅度（-15%～-20% 中位）说明<strong>"戴帽公告"这类事件在 2026 年是被系统性折价的</strong>，而本股已跑输该折价近 4 倍——<strong>这既说明市场已把"归零尾部"定进去一部分，也说明"跌得多"本身不构成安全边际</strong>（本报告不采用"跌幅大＝有安全边际"的推论）。</p>
+
+</div></details>
+<h3 id="sec18">5.3 支柱③ 主板映射：主板在炒算力/国产替代，但本股的映射是"纯概念"</h3>
+<p><strong>结论：本股最常被贴的标签是"超聚变借壳+AI算力"，但该叙事已被公司</strong>书面否定<strong>——属【纯概念】，不得据此定价。</strong></p>
+<table><thead><tr><th>主板在炒的主线</th><th>代表公司</th><th>本股关联度</th><th>判读</th></tr></thead><tbody><tr><td>算力基础设施／服务器</td><td>超聚变（拟独立 IPO）</td><td><strong>【纯概念】</strong></td><td>公司 2026-01-13 明确"超聚变自身现有资本证券化路径与公司无关"；且 2025-04《董事会工作报告》所称"优质资产"指<strong>智慧医疗赛道资产</strong>、"而非超聚变或其他算力服务器类型资产"</td></tr><tr><td>医疗信息化／医疗 AI</td><td>卫宁健康、创业慧康、久远银海</td><td><strong>实质性（主业即此）</strong></td><td>但同业全部在跌（见 §6.3），本股跌幅远大于同业</td></tr><tr><td>河南国资整合</td><td>豫信电科体系（中原算力、河南智医、超聚变）</td><td><strong>有制度通道、有到期日，但无注入公告</strong></td><td>2021 年收购报告书<strong>自己勾选"存在同业竞争＝是"</strong>；承诺 5 年内（至 <strong>2026-11-26</strong>）注入或另法解决，<strong>截至基准日硬处置未见落地</strong></td></tr></tbody></table>
+<p><strong>三条纪律落地</strong>：① 本股的"AI"是产品标签（AI 电子病历质控／智能编码／信创适配），<strong>2026 半年报分产品表中无对应的独立收入科目</strong>；② "超聚变"已由公司书面否定，<strong>标【纯概念】</strong>；③ <strong>映射是选股动作</strong>——若认可"医疗信息化＋国资壳"这条线，创业板上还有估值更低（PB 1.42—2.85）且不在 ST 状态的选择。</p>
+<details class="fold"><summary>★ 同业竞争承诺的真实状态（本条为吸收同标的既有分析稿后的修正）</summary><div class="fold-body">
+
+<p><strong>此前市场（含部分研报）常把"承诺到期"直接读成"资产注入"。逐份核对 2021-106 号《详式权益变动报告书》后，实际情况是"形式上有动作、硬要求未落地"。</strong></p>
+<p><strong>（一）承诺函的官方四条（报告书第 26 页引述，法定披露文本）</strong></p>
+<ol><li>采取积极措施避免发生与上市公司主营业务构成竞争的业务，并促使所控制企业避免；</li><li>如获得与上市公司构成竞争的新业务机会，将在条件许可前提下"<strong>首先提供给上市公司</strong>"；</li><li>就目前已存在业务重叠的资产（或业务），承诺在信产数创成为控股股东之日起 <strong>5 年内</strong>，按届时合法方式（"包括但不限于现金或发行股份收购的方式"）<strong>注入上市公司</strong>，<strong>或采取其他合法的方式解决</strong>同业竞争问题；</li><li>承诺自信产数创成为控股股东之日起至其不再为控股股东之日期间有效。</li></ol>
+<blockquote><p><strong>★ 日期口径纠偏</strong>：承诺函<strong>签署日为 2021-10-22</strong>，起算日为 <strong>2021-11-26</strong>（成为控股股东之日），<strong>5 年期至 2026-11-26</strong>。市场常把 11-26 说成"出具日"，属混淆签署日与生效日。</p><p><strong>★ 网传"扩写版"纠偏</strong>：广泛流传的"第一条禁止新增同业竞争业务／第二条同业商业机会优先无偿让渡""点名超聚变、中原算力、河南智医""三条刚性红线"等措辞，<strong>在官方 2021-106 报告书正文引述中并不存在</strong>（官方文本只表述为"信产数创、信产基金及河南信产投及其控制企业"，未点名任何具体子公司）。引用须以交易所备查原件为准。</p></blockquote>
+<p><strong>（二）2021 年报告书自己勾选"存在同业竞争"</strong></p>
+<p>报告书<strong>附表</strong>勾选项："与上市公司之间是否存在同业竞争：<strong>是 ☑</strong>"；第 26 页正文："河南信产投控制的企业<strong>存在与上市公司业务重叠</strong>的情形。"——<strong>即"同业竞争"是河南国资在监管申报文件中的自我认定，不是市场单方面质疑。</strong></p>
+<p><strong>（三）重叠主体清单（2021 年报告书披露的 18 家主要子公司中，按领域归类）</strong></p>
+<table><thead><tr><th>领域</th><th>主体（持股）</th></tr></thead><tbody><tr><td>医疗（直接重叠）</td><td>河南云康数据科技（100%，2023-05 已变更经营范围、现名豫信数智）</td></tr><tr><td>智慧城市／政务云／系统集成</td><td>河南数字中原数据（100%）、河南云政数据管理（100%）、河南汇融科技服务（100%）、河南信产软件（70%）、河南电子口岸（66.67%）、河南中原云大数据集团（60%）</td></tr><tr><td>算力／通信／安防</td><td><strong>中原算力科技发展（100%）</strong>、河南智慧时空信息技术（34%）、漯河市大数据运营（51%）、河南云政信安信息技术（34%）</td></tr><tr><td>地市信产投平台</td><td>鹤壁／许昌／安阳／周口市信息产业投资（各 51%）</td></tr></tbody></table>
+<p><strong>两个必须点出的时点问题</strong>：① <strong>超聚变不在 2021 年清单内</strong>（2021 年 11 月华为剥离服务器业务后才进入豫信体系），属"承诺期开始后<strong>新增的体系内主体</strong>"；② <strong>河南智能医学科技（河南智医）也不在清单内</strong>（2025-04-14 新设，注册资本 2 亿元，中原算力持股 50%），属"承诺期<strong>末段新设</strong>的医疗 AI 主体"，与荣科智慧医疗高度重叠——这两项正是"承诺期内新增同业业务"争议的来源。</p>
+<p><strong>（四）5 年期内实际动作：以"软"为主</strong></p>
+<table><thead><tr><th>时点</th><th>动作</th><th>性质</th></tr></thead><tbody><tr><td>2023-05</td><td>云康数据变更经营范围，剥离医疗大数据重叠</td><td><strong>唯一较硬的动作</strong></td></tr><tr><td>2025-08</td><td>豫信电科启动"荣科并表评估"</td><td>财务并表准备（非资产处置）</td></tr><tr><td>2025-09-02</td><td>董秘确认纳入合并财务报表范围</td><td><strong>会计并表</strong>（非承诺履行）</td></tr><tr><td>2025-12</td><td>中原算力变更经营范围"与超聚变基本一致"</td><td>体系内整合，被市场质疑"<strong>人为制造同业竞争</strong>"</td></tr><tr><td>2026-06-05</td><td>荣科＋豫信电科＋中科闻歌＋河南智医签医疗 AI 战略合作协议</td><td><strong>软性合作，不含股权／资产权属变更</strong></td></tr></tbody></table>
+<p><strong>（五）公司口径怎么变的</strong></p>
+<table><thead><tr><th>时点</th><th>官方表述</th></tr></thead><tbody><tr><td>2021-10／11</td><td>"存在与上市公司业务重叠的情形"；附表勾选"同业竞争＝是"（2021-106）</td></tr><tr><td>2026-09-10</td><td>"豫信电科 2021-11-26《避免同业竞争承诺函》<strong>尚在有效期内</strong>，控股股东正按承诺约定积极推进……重叠主体豫信数智 2023-05 已变更经营范围，<strong>现已不存在重叠的业务</strong>"（互动易）</td></tr><tr><td>2026-09-22</td><td>"从主营业务、目标客户、应用场景、核心技术、经营模式、销售渠道等维度，公司与超聚变<strong>均不构成同业竞争</strong>"（互动易）</td></tr></tbody></table>
+<p><strong>（六）判读</strong></p>
+<ul><li><strong>承诺的第 3 条留了大活口</strong>："或采取其他合法的方式解决"——<strong>用"业务划分＋战略合作"重新定性，在文本上可以解释为"已解决"</strong>；但这与"注入／转让／注销"的硬要求差距明显。</li><li><strong>因此 2026-11-26 是"双向催化"</strong>：向上，若公告注入方案（市场预期中原算力／河南智医／超聚变的某种组合），可能带来实质重估；向下，若到期仍无硬动作，可能引发监管问询、承诺延期或豁免——<strong>而延期／豁免本身对"注入预期"是负向的</strong>。</li><li><strong>本条不改变"不应据此定价"的纪律</strong>：截至基准日<strong>零注入公告</strong>（2026 年全年 66 条公告中无任何资产注入／重大资产重组预案），故仍标【纯概念·有到期日的期权】，不计入基准情景估值。</li></ul>
+
+</div></details>
+<hr>
+<h2 id="chap6">六、情绪面与筹码面</h2>
+<h3 id="sec19">6.1 炒作史与炒作符号：超聚变借壳是贯穿四年的主符号</h3>
+<p><strong>结论：本股炒作符号高度稳定——"超聚变借壳猜想＋AI 边缘算力盒＋河南国资＋AI 电子病例"，而</strong>这个符号已随超聚变 INDEPENDENT IPO 而失效<strong>；连板基因弱（历史最高"6 天 3 板"）。</strong></p>
+<details class="fold"><summary>韭研异动全量 33 条（时间降序；数据来源：韭研公社异动整理 parquet）</summary><div class="fold-body">
+
+<table><thead><tr><th>题材时间</th><th>题材</th><th>涨停信息</th><th>股价</th><th>异动关键词</th></tr></thead><tbody><tr><td>2026-07-28</td><td>ST板块</td><td>—</td><td>4.88</td><td>AI医疗+超聚变+河南国资</td></tr><tr><td>2025-12-08</td><td>AI硬件</td><td>—</td><td>31.50</td><td>超聚变+资产评估进展（豫信电子项目）+拟购买资产+鸿蒙</td></tr><tr><td>2025-08-13</td><td>人工智能</td><td>—</td><td>22.92</td><td>资产评估进展（豫信电子项目）+股权变动+拟购买资产+鸿蒙+国资</td></tr><tr><td>2024-11-04</td><td>公告</td><td>—</td><td>25.09</td><td>股权变动+拟购买资产+鸿蒙+国资</td></tr><tr><td>2024-10-15</td><td>重组相关</td><td>—</td><td>22.54</td><td>超聚变借壳猜想+AI边缘算力盒</td></tr><tr><td>2024-10-14</td><td>国改/重组</td><td><strong>6天3板</strong></td><td>20.89</td><td>超聚变借壳猜想+AI边缘算力盒</td></tr><tr><td>2024-10-08</td><td>泛科技</td><td>2天2板</td><td>16.13</td><td>超聚变借壳猜想+PC(曾经项目)+AI边缘算力盒</td></tr><tr><td>2024-09-30</td><td>国企改革/重组预期</td><td>—</td><td>13.44</td><td>超聚变借壳猜想+PC(曾经项目)+AI边缘算力盒</td></tr><tr><td>2024-05-31</td><td>其他</td><td>—</td><td>12.93</td><td>超聚变借壳猜想+PC(曾经项目)+AI边缘算力盒</td></tr><tr><td>2024-05-28</td><td>其他</td><td>—</td><td>11.47</td><td>超聚变+AI边缘算力盒</td></tr><tr><td>2024-05-22</td><td>算力</td><td>—</td><td>10.46</td><td>超聚变猜想+AI边缘算力盒+超聚变</td></tr><tr><td>2024-05-21</td><td>AI</td><td>—</td><td>8.72</td><td>超聚变猜想+AI边缘算力盒+超聚变</td></tr><tr><td>2024-04-24</td><td>军工（信息支援）</td><td>—</td><td>8.45</td><td>一季报增长+股权变更+超聚变+边缘算力盒</td></tr><tr><td>2024-04-02</td><td>公告</td><td>—</td><td>10.76</td><td>股权变更+超聚变+边缘算力盒</td></tr><tr><td>2024-03-19</td><td>医疗医药</td><td>—</td><td>9.63</td><td>AI电子病例+超聚变+边缘算力盒</td></tr><tr><td>2024-03-06</td><td>资产注入猜测</td><td>3天2板</td><td>10.04</td><td>超聚变+边缘算力盒+借壳预期+AI电子病例</td></tr><tr><td>2024-03-05</td><td>算力</td><td>—</td><td>8.37</td><td>边缘算力盒+借壳预期+超聚变+AI电子病例</td></tr><tr><td>2024-03-04</td><td>算力</td><td>—</td><td>7.43</td><td>边缘算力盒+借壳预期+超聚变+AI电子病例</td></tr><tr><td>2024-02-27</td><td>算力</td><td>—</td><td>6.64</td><td>借壳预期+边缘算力盒+河南国资+超聚变+AI电子病例</td></tr><tr><td>2024-02-23</td><td>央国企AI</td><td>—</td><td>5.99</td><td>边缘算力盒+国资+超聚变+互联网医疗</td></tr><tr><td>2024-02-22</td><td>央国企AI</td><td>—</td><td>5.20</td><td>边缘算力盒+国资+超聚变+互联网医疗</td></tr><tr><td>2023-10-25</td><td>华为</td><td>—</td><td>8.52</td><td>和超聚变同一大股东+华为合作+互联网医疗</td></tr><tr><td>2023-10-24</td><td>其他</td><td>—</td><td>7.42</td><td>和超聚变同一大股东+华为合作+互联网医疗</td></tr><tr><td>2023-10-23</td><td>华为</td><td>4天2板</td><td>7.08</td><td>和超聚变同一大股东+华为合作+互联网医疗</td></tr><tr><td>2023-10-19</td><td>算力存储</td><td>—</td><td>6.93</td><td>和超聚变同一大股东+华为合作+互联网医疗</td></tr><tr><td>2023-10-18</td><td>算力存储</td><td>—</td><td>5.96</td><td>和超聚变同一大股东+华为合作+互联网医疗</td></tr><tr><td>2021-12-08</td><td>其他</td><td>—</td><td>6.99</td><td>互联网医疗+股权转让</td></tr><tr><td>2021-11-08</td><td>其他</td><td>—</td><td>6.14</td><td>互联网医疗+专精特新</td></tr><tr><td>2021-10-20</td><td>公告</td><td>—</td><td>6.89</td><td>股权转让+互联网医疗+专精特新</td></tr><tr><td>2021-09-08</td><td>医疗医疗</td><td>—</td><td>7.37</td><td>专精特新+互联网医疗</td></tr><tr><td>2021-09-07</td><td>北交所</td><td>—</td><td>6.77</td><td>专精特新+互联网医疗</td></tr><tr><td>2021-09-03</td><td>其他</td><td>—</td><td>5.78</td><td>专精特新+互联网医疗</td></tr><tr><td>2021-04-06</td><td>公告</td><td>—</td><td>7.62</td><td>定增过会+互联网医疗</td></tr></tbody></table>
+<p><strong>炒作波段汇总</strong></p>
+<table><thead><tr><th>阶段</th><th>起止区间</th><th>主符号</th><th>最高连板</th><th>股价区间</th><th>驱动力</th></tr></thead><tbody><tr><td>一</td><td>2021-04～2021-12</td><td>专精特新＋互联网医疗＋控制权变更</td><td>4天2板（2021-09）</td><td>5.78→7.62</td><td>定增过会、河南国资入主</td></tr><tr><td>二</td><td>2023-10</td><td>华为＋"和超聚变同一大股东"</td><td>4天2板（2023-10-23）</td><td>5.96→8.52</td><td>华为 ICT 峰会、高新发展收购华鲲振宇</td></tr><tr><td>三</td><td>2024-02～2025-12</td><td><strong>超聚变借壳猜想＋AI边缘算力盒＋河南国资＋AI电子病例</strong></td><td><strong>6天3板（2024-10-14）</strong></td><td>5.20→<strong>历史高点 33.33（前复权，2025-12-09）</strong></td><td>央行/国资委 AI 政策、拟购买资产、资产评估进展</td></tr><tr><td>四</td><td>2026-07～</td><td>AI医疗＋超聚变＋河南国资（ST板块）</td><td>—</td><td>3.91→8.71</td><td>违规担保和解预期</td></tr></tbody></table>
+<p><strong>连板极值与回撤</strong>：历史最高 <strong>"6 天 3 板"</strong>（2024-10-14）——即使在 20% 涨跌幅的创业板，本股的连板基因也偏弱；股价自 2025-12-09 峰值 <strong>33.33 元</strong>（前复权）跌至 2026-07-03 的 <strong>4.62 元</strong>，回撤 <strong>-86.1%</strong>（媒体口径），本公司日 K 口径 32.01→3.91＝<strong>-87.8%</strong>。</p>
+
+</div></details>
+<h3 id="sec20">6.2 筹码：戴帽后连续两日 20CM 跌停，9 月反弹属"派发型"</h3>
+<p><strong>结论：2026 年 11 次龙虎榜中，</strong>戴帽复牌（06-30、07-01）连吃两日 20CM 跌停<strong>；9 月 10—11 日的拉升（+18.31%／+15.62%）在</strong>次日即遭净卖出 3,410 万元<strong>，随后 09-15 跌 15.38%、净卖 1,807 万元 —— 这是一次"派发型"反弹，不是主力建仓。</strong></p>
+<details class="fold"><summary>2026 年龙虎榜明细（11 次，时间降序；数据来源：东方财富龙虎榜 API）</summary><div class="fold-body">
+
+<table><thead><tr><th>交易日</th><th>上榜原因</th><th>涨跌幅</th><th>净买额</th><th>换手率</th><th>成交额</th></tr></thead><tbody><tr><td>2026-09-15</td><td>日跌幅达 15% 前 5</td><td>-15.38%</td><td><strong>-1,806.83 万元</strong></td><td>11.27%</td><td>5.71 亿元</td></tr><tr><td>2026-09-11</td><td>日涨幅达 15% 前 5</td><td>+15.62%</td><td><strong>-3,409.91 万元</strong></td><td>13.80%</td><td>7.03 亿元</td></tr><tr><td>2026-09-10</td><td>日涨幅达 15% 前 5</td><td>+18.31%</td><td>+568.48 万元</td><td>10.85%</td><td>4.81 亿元</td></tr><tr><td>2026-09-10</td><td>连续三日涨幅偏离达 30%</td><td>+18.31%</td><td>+2,575.05 万元</td><td>10.85%</td><td>9.40 亿元</td></tr><tr><td>2026-07-30</td><td>连续三日涨幅偏离达 30%</td><td>+9.09%</td><td>-1,661.17 万元</td><td>11.50%</td><td>9.74 亿元</td></tr><tr><td>2026-07-28</td><td>日涨幅达 15% 前 5</td><td>+19.90%</td><td>-131.69 万元</td><td>10.87%</td><td>3.25 亿元</td></tr><tr><td>2026-07-01</td><td>日跌幅达 15% 前 5</td><td>-20.00%</td><td>+85.60 万元</td><td>0.66%</td><td>0.22 亿元</td></tr><tr><td>2026-07-01</td><td>连续三日跌幅偏离达 30%</td><td>-20.00%</td><td>+90.61 万元</td><td>0.66%</td><td>0.34 亿元</td></tr><tr><td>2026-06-30</td><td>日跌幅达 15% 前 5（戴帽复牌首日）</td><td>-19.98%</td><td>-48.01 万元</td><td>0.26%</td><td>0.11 亿元</td></tr><tr><td>2026-01-09</td><td>连续三日跌幅偏离达 30%</td><td>-7.67%</td><td><strong>-1.64 亿元</strong></td><td>13.68%</td><td>54.99 亿元</td></tr><tr><td>2026-01-07</td><td>日跌幅达 15% 前 5</td><td>-20.00%</td><td>-5,277.39 万元</td><td>14.67%</td><td>21.90 亿元</td></tr></tbody></table>
+<p><strong>读法</strong>：① 2026-01-07／09 的两笔巨额净卖出（合计 -2.17 亿元）对应"超聚变独立 IPO"信息扩散 → 借壳叙事破灭；② <strong>09-10 的净买入（+2,575 万元）在次日即被 -3,410 万元的净卖出覆盖</strong>，两日合计仍为净流出；③ 06-30／07-01 跌停日成交额仅 0.11／0.22 亿元 ＝ <strong>缩量跌停</strong>（无承接）；④ 2026-06-29 公司被<strong>调出融资融券标的证券名单</strong>，杠杆资金通道关闭。</p>
+
+</div></details>
+<h3 id="sec21">6.3 必做校验：戴帽不是下跌主因，但本股跌幅远超同业</h3>
+<p><strong>结论：医疗信息化同业 2026 年普跌，行业 β 解释了一部分；但本股 -75.74% 远超同业（PB 中位约 2.85 的同业多数在 -10%～-30%），</strong>跌幅中的大部分是"违规担保＋退市尾部"的独立定价，而非行业收缩** —— 因此不能推出"跌得多＝有安全边际"。（Wind 代理本轮未取数，同业估值改用腾讯 <code>qt.gtimg.cn</code>，数据截止 2026-09-30。）</p>
+<table><thead><tr><th>对照对象</th><th>现价</th><th>PB</th><th>总市值</th></tr></thead><tbody><tr><td><strong>ST荣科（300290）</strong></td><td><strong>6.68 元</strong></td><td><strong>7.10</strong></td><td><strong>42.73 亿元</strong></td></tr><tr><td>卫宁健康（300253）</td><td>6.98 元</td><td>2.85</td><td>153.65 亿元</td></tr><tr><td>创业慧康（300451）</td><td>3.49 元</td><td>1.42</td><td>54.06 亿元</td></tr><tr><td>东软集团（600718）</td><td>7.91 元</td><td>1.09</td><td>94.64 亿元</td></tr><tr><td>久远银海（002777）</td><td>12.65 元</td><td>3.08</td><td>51.64 亿元</td></tr><tr><td>和仁科技（300550）</td><td>13.84 元</td><td>3.27</td><td>36.34 亿元</td></tr><tr><td>地纬智能（688579）</td><td>7.84 元</td><td>2.31</td><td>31.36 亿元</td></tr></tbody></table>
+<p><strong>PD/PS 口径</strong>：本股 PS(TTM) 约 <strong>6.06 倍</strong>（营收 TTM 7.05 亿元；同业多在 2—6 倍区间）——<strong>PB 与 PS 双双处同业最高一档</strong>。</p>
+<h3 id="sec22">6.4 投资者交流要点（互动易 465 条，最近 2026-09-22）</h3>
+<p><strong>结论：公司口径高度一致但</strong>零增量<strong>：对"担保何时解决""是否追责到人"的回答全部是"将持续推进"，唯一含具体信息的答复是"8 月 5 日开庭因原告申请追加被告而延期，目前暂未通知具体开庭日期"；投资者已在酝酿"罢免现任董事长"提案。</strong></p>
+<table><thead><tr><th>投资者问题</th><th>公司答复要点</th><th>解读（公司口径 vs 本报告判断）</th></tr></thead><tbody><tr><td>8 月 5 日开庭为何突然延期？</td><td>"因原告申请追加被告，法院依法定程序延期开庭，目前暂未通知具体开庭日期"</td><td><strong>公司口径</strong>；本报告判断：追加被告延长了流程，也间接说明原告在补强证据</td></tr><tr><td>违规担保何时能化解？有无时间表？</td><td>"坚持'司法应诉＋协商化解'双线并行……推动以资产置换等方式解除公司担保责任"</td><td>无时间表；<strong>"资产置换"未指明置换方与资产</strong></td></tr><tr><td>是否对何任晖刑事报案／内部追责？</td><td>"若复盘过程中确实发现涉嫌违法违规的线索，公司将依法向有关机关报案或移送线索"</td><td>属<strong>条件式表述</strong>，截至基准日无实质动作披露</td></tr><tr><td>与超聚变是否同业竞争？</td><td>"从主营业务、目标客户、应用场景、核心技术、经营模式、销售渠道等维度，公司与超聚变均不构成同业竞争事项"</td><td>公司否认；超聚变已独立 IPO</td></tr><tr><td>控股股东承诺的同业竞争问题进展？</td><td>"豫信电科 2021 年 11 月 26 日《避免同业竞争承诺函》尚在有效期内，控股股东正按承诺约定积极推进……重叠主体河南豫信数智科技（原云康数据）已于 2023 年 5 月变更经营范围，现已不存在重叠的业务"</td><td><strong>公司口径</strong>；本报告判断：<strong>"重叠主体之一已整改" ≠ "承诺已履行完毕"</strong> —— 2021-106 报告书自己勾选"存在同业竞争＝是"，重叠主体清单不止一家，且承诺期内新增了超聚变、河南智医；<strong>2026-06-05 四方战略合作协议是"合作关系"定性的公开支撑，但属软性安排</strong>。详见 §5.3</td></tr><tr><td>2026 年报业绩预期？</td><td>"上半年归母 -1.52 亿元（预计负债 1.09 亿元＋主业亏损约 0.43 亿元）；下半年聚焦四条措施"</td><td>无量化指引</td></tr><tr><td>截止目前股东人数？</td><td>"截至 2026 年 8 月 31 日股东人数 5.1 万人"</td><td>与东财口径一致</td></tr><tr><td>是否反诉抚顺银行？</td><td>"已向法院提交全套询证函回函，证明银行明知担保没有上市公司公开披露，属于非善意债权人"</td><td>这是<strong>公司最有力的一条抗辩事实</strong>；但"反诉"本身公司未明确承诺</td></tr></tbody></table>
+<p><strong>★ 必抓四个点的核对结果</strong>：① <strong>参会人员是否换人</strong> → 2026-09-10 半年度业绩说明会与 2026-09-22 互动易回复均为现任董事长<strong>段刚</strong>、董秘<strong>周原</strong>口径，<strong>治理层未换人</strong>（＝控制权未实际易主）；② 未来盈利驱动自述 → 四条措施（深耕医疗信息化／回款管理／信创适配／费用管控），<strong>无新赛道</strong>；③ 摘帽时间表自述 → <strong>无</strong>；④ 分红与股东人数 → 已核对一致。</p>
+<hr>
+<h2 id="chap7">七、估值与投资结论</h2>
+<h3 id="sec23">7.1 估值：亏损股不用 PE，PB 7.10 是"或有负债出清后仍不便宜"</h3>
+<p><strong>结论：以 2026-09-30 计，PB 7.10、PS(TTM) 6.06 —— 均为医疗信息化同业最高一档；即便假设 7.85 亿元担保全部免责、1.0873 亿元预计负债全额回冲，归母净资产仅恢复至约 7.10 亿元，PB 仍为 6.02。</strong></p>
+<details class="fold"><summary>三档情景与概率加权（关键假设逐项标注）</summary><div class="fold-body">
+
+<table><thead><tr><th>情景</th><th>关键假设（标注口径）</th><th>估值锚</th><th>对应股价</th></tr></thead><tbody><tr><td><strong>乐观（保守假设下的乐观）</strong></td><td>① 法院认定担保对公司不发生效力（本报告主观概率 35%）；② 预计负债回冲、净资产恢复至约 7.10 亿元；③ 摘帽但<strong>无制度红利</strong>；④ 国资注入仅存想象空间、无公告支撑</td><td>给予同业上限 PB 约 9—10 倍（对应"国资壳＋医疗AI"期权溢价）</td><td><strong>9.0—11.0 元</strong>（中值 10.0）</td></tr><tr><td><strong>中性（最可能）</strong></td><td>① 诉讼久拖、或小额补充赔偿；② ST 维持 1—2 年；③ 摘帽无红利、注入无公告；④ 主业继续小幅下滑</td><td>给予同业上限 PB 约 6—7 倍</td><td><strong>4.5—6.0 元</strong>（中值 5.2）</td></tr><tr><td><strong>悲观（尾部）</strong></td><td>① 全部或大部分败诉；② 追加赔付约 6.0 亿元 → 2026 年末归母净资产归零或为负；③ 2026 年报叠加 \*ST；④ 2027 年报仍为负 → 终止上市</td><td>面值／清算思维，参考同型最坏样本</td><td><strong>1.5—2.5 元</strong>（中值 2.0）</td></tr></tbody></table>
+<p><strong>概率加权期望值</strong> ＝ 0.35×10.0 ＋ 0.50×5.2 ＋ 0.15×2.0 ＝ <strong>6.40 元</strong>；若把乐观概率下调至 25%（考虑"借壳已否定＋摘帽无红利＋无注入公告"三条同时成立），期望值降至 <strong>5.40 元</strong>。<strong>区间 5.40—6.40 元低于现价 6.68 元，隐含下行 4%—19%。</strong></p>
+<p><strong>★ 隐含概率倒推（另一种视角）</strong>：现价 6.68 元 = p × 10.0（免责并重估）＋ (1-p) × 2.0（判责归零）⇒ <strong>p ≈ 58.5%</strong>。即市场已把"完全免责"当成约六成概率的事件来定价——<strong>而本案 4 宗案件全部未开庭、连开庭日期都没有</strong>。<strong>隐含概率高于本报告主观判断（35%），这是给出"卖出"的量化依据之一。</strong></p>
+
+</div></details>
+<h3 id="sec24">7.2 投资结论</h3>
+<p><strong>卖出（回避）</strong></p>
+<p><strong>理由链（按重要性排序）</strong></p>
+<ol><li><strong>赔率不对称且下行是"归零型"。</strong> 7.85 亿元担保余额＝2025 年末净资产 8.31 亿元的 <strong>94.47%</strong>；涉诉本金 5.10 亿元，若全部败诉并全额赔付（本息约 7.1 亿元），<strong>需额外消化约 6.0 亿元 ≈ 全部归母净资产</strong> → 2026 年末净资产转负 → 财务类 \*ST → 2027 年报终止上市。而上行端：即便全额免责，PB 仍为 6.02，且<strong>创业板 ST 摘帽不改涨跌幅（前后同为 20%）、零制度红利</strong>。（依据：<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225514270&amp;orgId=9900021761&amp;announcementTime=2026-08-27" target="_blank" rel="noopener">2026 半年报</a>、<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225393206&amp;orgId=9900021761&amp;announcementTime=2026-06-27" target="_blank" rel="noopener">违规担保公告</a>、<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225393205&amp;orgId=9900021761&amp;announcementTime=2026-06-27" target="_blank" rel="noopener">创业板上市规则 9.4/9.5</a>）</li></ol>
+<ol><li><strong>不在低位。</strong> PB <strong>7.10</strong>、PS(TTM) <strong>6.06</strong>，双双为医疗信息化同业最高一档（卫宁 2.85／创业慧康 1.42／东软 1.09／久远银海 3.08／和仁 3.27）；ST 信息库"近 20 年价格分位 7.77%"取数于 2026-07-31（当日 5.15 元），现价 6.68 元已较之上涨 29.7%，该字段在"超聚变借壳"行情把股价推到 32 元后已不构成有效低位证据。</li></ol>
+<ol><li><strong>唯一近端催化没有日期，且不排除"利好出尽"结构。</strong> 4 宗案件全部未开庭，334 号原定 2026-08-05 开庭已延期且新日期未定；撤销 ST 依据创业板 <strong>9.10 第三款</strong>（"情形消除"＋律所法律意见书），<strong>无固定日历</strong>。判决落地日若被市场抢跑，反而是卖点。（依据：<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225453745&amp;orgId=9900021761&amp;announcementTime=2026-08-03" target="_blank" rel="noopener">重大诉讼进展</a>、<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225584997&amp;orgId=9900021761&amp;announcementTime=2026-09-28" target="_blank" rel="noopener">最新进展公告</a>）</li></ol>
+<ol><li><strong>最大的想象力已被公司自己书面关闭；唯一有日期的窗口含金量有限。</strong> 2026-01-13 补充公告明确"<strong>超聚变数字技术股份有限公司已启动独立自主的首次公开发行股票（IPO）相关工作，现已进入券商机构辅导备案过程。超聚变自身现有资本证券化路径与公司无关</strong>"；2025-04《董事会工作报告》所称"优质资产"指<strong>智慧医疗赛道资产</strong>、"而非超聚变或其他算力服务器类型资产"。至于有确定日期的 <strong>2026-11-26 同业竞争承诺到期</strong>：2021-106 号报告书<strong>自己勾选"存在同业竞争＝是"</strong>，承诺第 3 条要求"注入或采取其他合法方式解决"，但 <strong>5 年期内落地的硬动作只有 2023-05 云康数据变更经营范围一项</strong>，其余为"业务划分＋2026-06-05 战略合作协议"等软性安排，<strong>且 2026 年全年 66 条公告中零资产注入／重组预案</strong> → 应计为【<strong>有到期日的期权</strong>】而非基准情景。（依据：<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1224932607&amp;orgId=9900021761&amp;announcementTime=2026-01-13" target="_blank" rel="noopener">异动补充公告</a>、<a href="http://static.cninfo.com.cn/finalpage/2021-10-22/1211363291.PDF" target="_blank" rel="noopener">2021 详式权益变动报告书（2021-106）</a>、互动易 2026-09-10／09-22）</li></ol>
+<ol><li><strong>主业失血 + 注意力已过峰值。</strong> 2026H1 营收 -16.97%、扣非 <strong>-0.45 亿元</strong>、经营现金流 <strong>-1.09 亿元</strong>；应收账款 4.29 亿元（占总资产 28.10%）、3 年以上账龄占 31.71%；2026-09-10／11 两日大涨后<strong>次日即净卖 3,410 万元</strong>，09-15 再跌 15.38%、净卖 1,807 万元——<strong>派发型反弹</strong>；同型样本中本股 <strong>-75.74%</strong> 为"违规担保型 ST"（中位 -15.24%）与"创业板 ST 全体"（中位 -19.82%）两组<strong>最差</strong>。</li></ol>
+<p><strong>触发条件（出现什么可验证信号 → 转买入）</strong></p>
+<ul><li>法院一审判决书明确"担保合同对上市公司不发生效力、且不承担赔偿责任"（且<strong>在判决落地前后 5 个交易日内未见放巨量派发</strong>）；</li><li>或抚顺银行出具书面免除，公司披露律所法律意见书并提交撤 ST 申请；</li><li>且配合条件：股价回落至 <strong>PB 4.0 以下</strong>（对应股价约 <strong>3.8 元</strong>，即接近 2026 年最低点 3.91 元），或明确公告国资资产注入方案（预案级，非"探索"）。</li></ul>
+<p><strong>失效条件（本结论作废／翻转）</strong></p>
+<ul><li>① 公司公告新增证监会立案，或 2020 年 6 笔担保被认定为年报重大遗漏并触及量化标准；</li><li>② 2026 年报审计意见降级为非标，或 2026 年末归母净资产转负（叠加 \*ST）；</li><li>③ 控股股东（信产数创基金）存续期届满后发生股份处置并导致控制权变更，且新主曝光为强产业方（需重新评估）。</li></ul>
+<p><strong>参考区间</strong></p>
+<ul><li><strong>买入区间</strong>：3.60—4.20 元（PB 约 3.8—4.5，接近 2026 年最低点；仅在"担保已免责"事实落地后适用）</li><li><strong>目标区间（卖出方视角）</strong>：现价上方不设目标；<strong>若持有，反弹至 8.0—8.7 元（2026-09 高点区）宜减</strong></li><li><strong>止损位</strong>：不适用（本报告建议不建仓）</li></ul>
+<p><strong>时间窗口</strong>：本结论有效期 <strong>3 个月</strong>（至 2027-01-05）；若 334 号案在此窗口内开庭并出现实质进展，本结论须即时复核。</p>
+<p><strong>仓位建议</strong>：<strong>不建仓</strong>。已持有者建议在反弹中减至观察仓或清仓，不建议在判决前增加敞口。</p>
+<p><strong>最大风险（最可能让本结论出错的一件事）</strong>：</p>
+<blockquote><p><strong>法院在 334 号案中判定担保合同对公司不发生效力、且公司不承担赔偿责任，同时控股股东推动其余案件以资产置换方式一次性和解</strong> —— 若此事在 2026 年内落地，公司可能在 2026 年报前完成撤 ST 申请，届时"退市折价"快速收敛，股价存在短期翻倍的可能。<strong>本报告对此给出的主观概率为 35%，低于现价隐含的约 58.5%</strong>；若投资者认为该概率被低估，则应把本结论视为"不参与"，而非"看空"。</p></blockquote>
+<hr>
+<h2 id="chap8">附录 A · 待核实 / 需补充清单</h2>
+<table><thead><tr><th>编号</th><th>待核实项</th><th>结论</th></tr></thead><tbody><tr><td>1</td><td>辽宁国科实业<strong>当前</strong>持股数量</td><td>2021-11-26 过户后余 852.90 万股（1.33%）；<strong>2025 年末与 2026 年中前十大股东名单均未见其名</strong>，判断已在 2022—2025 年间处置完毕，<strong>具体处置价格与受让方未取到</strong>（抚顺银行诉请中"136,529,042 股"系其 2020 年质押时的历史持股数，非当前持股）</td></tr><tr><td>2</td><td>信产数创基金的<strong>当前存续期限</strong></td><td>2021 年公告载"2021-10-14 至 <strong>2026-10-14</strong>"；基准日前未见上市公司披露延期公告（基金存续期变化不必然触发上市公司披露义务）。<strong>该日期未获公司口径确认</strong></td></tr><tr><td>3</td><td>2020 年 6 笔担保是<strong>否会被新增立案</strong></td><td>2026 年全年 66 条公告中<strong>无任何立案／处罚／问询文件</strong>（巨潮全量核实）；但 2025 年报"违规对外担保情况"栏勾"不适用"＋立信出具标准无保留意见，存在事后被追问的可能</td></tr><tr><td>4</td><td>抚顺银行<strong>不实询证回函</strong>的书面证据</td><td>公司称"公司已经向法院提交全套询证函回函"（互动易 2026-09-10），<strong>回函原文未公开披露</strong></td></tr><tr><td>5</td><td>334／333／335／336 号案件的<strong>新开庭日期</strong></td><td>未确定，公司称"法院另行通知"</td></tr><tr><td>6</td><td>6 笔担保项下<strong>第三方抵押物的评估值</strong></td><td>已披露不动产坐落与面积（沈阳于洪区 29,108.02 ㎡＋成都温江 359 套 24,006.08 ㎡＋成都青羊区 20 处），<strong>未披露评估值</strong></td></tr><tr><td>7</td><td>证券虚假陈述<strong>索赔案件的立案情况</strong></td><td>律师已公开征集（区间 2022-06-01～2026-05-27 买入），<strong>未见法院受理或公司计提的披露</strong></td></tr><tr><td>8</td><td>2024-10-25 购买资产标的"上海敬在信息"的具体情况</td><td>预案正文未取全；终止原因公司表述为"资本市场环境发生变化"</td></tr><tr><td>9</td><td>豫信电科同业竞争承诺 <strong>2026-11-26 到期的处置方式</strong></td><td>截至基准日<strong>未见注入／转让／注销的硬动作公告</strong>；2026-06-05 四方战略合作协议属软性安排（不含股权／资产权属变更）</td></tr><tr><td>10</td><td>2025 年"荣科并表评估"与董秘"纳入合并财务报表范围"的<strong>正式文件</strong></td><td>仅见采购公告（线索级）与董秘互动易回复；<strong>未见公司正式公告或豫信电科审计报告</strong></td></tr><tr><td>11</td><td>2021-106 号报告书<strong>备查的承诺函原件全文</strong></td><td>本报告 PDF 正文仅引述四条，未附原件全文；网传"扩写版"（点名超聚变／中原算力、"第一条／第二条""刚性红线"）<strong>在官方文本中不存在</strong></td></tr><tr><td>12</td><td>中原算力科技发展有限公司 2025-12 <strong>变更经营范围</strong>的具体内容</td><td>见市场报道（"与超聚变基本一致"），<strong>未取到工商登记原件</strong></td></tr></tbody></table>
+<h2 id="chap9">附录 B · 关键信源链接（正文引用清单）</h2>
+<table><thead><tr><th>编号</th><th>文件</th><th>发布日</th><th>原文</th></tr></thead><tbody><tr><td>1</td><td>关于公司涉及违规担保的公告（2026-030）</td><td>2026-06-27</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225393206&amp;orgId=9900021761&amp;announcementTime=2026-06-27" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>2</td><td>关于公司股票被实施其他风险警示暨停复牌的公告（2026-031）</td><td>2026-06-27</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225393205&amp;orgId=9900021761&amp;announcementTime=2026-06-27" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>3</td><td>2026 年半年度报告</td><td>2026-08-27</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225514270&amp;orgId=9900021761&amp;announcementTime=2026-08-27" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>4</td><td>关于计提预计负债的公告（2026-041）</td><td>2026-08-27</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225514273&amp;orgId=9900021761&amp;announcementTime=2026-08-27" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>5</td><td>关于公司股票被实施其他风险警示相关事项的进展公告（2026-048）</td><td>2026-09-28</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225584997&amp;orgId=9900021761&amp;announcementTime=2026-09-28" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>6</td><td>关于公司收到《民事起诉书》的公告（2026-047）</td><td>2026-09-28</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225584998&amp;orgId=9900021761&amp;announcementTime=2026-09-28" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>7</td><td>关于公司收到《民事起诉书》的公告（2026-045）</td><td>2026-09-10</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225558386&amp;orgId=9900021761&amp;announcementTime=2026-09-10" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>8</td><td>关于公司股票交易异常波动的公告</td><td>2026-09-10</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225558385&amp;orgId=9900021761&amp;announcementTime=2026-09-10" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>9</td><td>关于公司收到《民事起诉书》及部分银行账户被冻结的公告（2026-044）</td><td>2026-09-03</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225546774&amp;orgId=9900021761&amp;announcementTime=2026-09-03" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>10</td><td>关于公司重大诉讼的进展公告（2026-036，延期开庭）</td><td>2026-08-03</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225453745&amp;orgId=9900021761&amp;announcementTime=2026-08-03" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>11</td><td>关于公司股票交易异常波动公告的补充公告（超聚变澄清）</td><td>2026-01-13</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1224932607&amp;orgId=9900021761&amp;announcementTime=2026-01-13" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>12</td><td>2025 年年度报告</td><td>2026-04-24</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225159747&amp;orgId=9900021761&amp;announcementTime=2026-04-24" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>13</td><td>2025 年年度审计报告</td><td>2026-04-24</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225159749&amp;orgId=9900021761&amp;announcementTime=2026-04-24" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>14</td><td>关于“质量回报双提升”行动方案的进展公告</td><td>2026-08-27</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225514274&amp;orgId=9900021761&amp;announcementTime=2026-08-27" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>15</td><td>关于部分银行账户被冻结的公告</td><td>2026-05-27</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225334174&amp;orgId=9900021761&amp;announcementTime=2026-05-27" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>16</td><td>关于控股子公司增加注册资本暨关联交易的公告</td><td>2026-05-21</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1225323730&amp;orgId=9900021761&amp;announcementTime=2026-05-21" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>17</td><td>关于收到《行政处罚决定书》的公告</td><td>2023-04-28</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1216700063&amp;orgId=9900021761&amp;announcementTime=2023-04-28" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>18</td><td>关于公司及董事、原实际控制人何任晖收到立案告知书的公告</td><td>2023-01-10</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=300290&amp;announcementId=1215567225&amp;orgId=9900021761&amp;announcementTime=2023-01-10" target="_blank" rel="noopener">巨潮</a></td></tr><tr><td>19</td><td>关于控股股东、实际控制人签订《股份转让协议》的公告</td><td>2021-10-19</td><td><a href="https://data.eastmoney.com/notices/detail/300290/AN202110191523761540.html" target="_blank" rel="noopener">东财</a></td></tr><tr><td>20</td><td>关于原控股股东部分股票解除质押暨协议转让完成过户登记的公告</td><td>2021-11-29</td><td><a href="https://data.eastmoney.com/notices/detail/300290/AN202111291531855185.html" target="_blank" rel="noopener">东财</a></td></tr><tr><td>21</td><td>关于终止发行股份及支付现金购买资产事项的公告</td><td>2025-04-26</td><td><a href="https://data.eastmoney.com/notices/detail/300290/AN202504261662488246.html" target="_blank" rel="noopener">东财</a></td></tr><tr><td>22</td><td>关于收到控股股东《告知函》暨控股股东合伙人份额发生变更的公告</td><td>2025-01-13</td><td><a href="https://data.eastmoney.com/notices/detail/300290/AN202501131641907194.html" target="_blank" rel="noopener">东财</a></td></tr><tr><td>23</td><td>澄清说明公告（否认资产注入／借壳超聚变）</td><td>2024-06-03</td><td><a href="https://data.eastmoney.com/notices/detail/300290/AN202406031635266134.html" target="_blank" rel="noopener">东财</a></td></tr><tr><td>24</td><td>关于银行账户部分资金被冻结的公告</td><td>2025-12-05</td><td><a href="https://data.eastmoney.com/notices/detail/300290/AN202512051794464164.html" target="_blank" rel="noopener">东财</a></td></tr><tr><td>25</td><td>详式权益变动报告书（2021-106，含《关于避免同业竞争的承诺函》引述，42 页）</td><td>2021-10-22</td><td><a href="http://static.cninfo.com.cn/finalpage/2021-10-22/1211363291.PDF" target="_blank" rel="noopener">巨潮 PDF</a></td></tr></tbody></table>
+<h2 id="chap10">附录 C · 逻辑漏洞与反方观点（5 问压力测试）</h2>
+<table><thead><tr><th>编号</th><th>反问</th><th>本报告的回答</th></tr></thead><tbody><tr><td>1</td><td><strong>"7.85 亿元担保占比 94.47%"这个比例怎么来的？会不会算错？</strong></td><td>分子为 6 笔担保<strong>本金余额</strong>合计 78,496.99 万元（不含欠息、罚息）；分母为"最近一期经审计净资产"<strong>83,090.67 万元</strong>——注意该分母是<strong>所有者权益合计（含少数股东权益 6,813.35 万元）</strong>，若改用归母口径 76,277.32 万元，比例升至 <strong>102.91%</strong>。两个口径均已列明，<strong>口径不同不影响结论方向</strong>。</td></tr><tr><td>2</td><td><strong>公司主张"担保合同对公司不发生效力"，胜算到底有多大？会不会是自我安慰？</strong></td><td>抗辩基础扎实：① 未经董事会／股东会审议；② 未公开披露（《担保制度解释》第九条第二款明确此情形下上市公司主张不生效力应予支持）；③ <strong>抚顺银行在 2021—2025 年年审询证中回函称"不存在担保"，构成"非善意"的直接证据</strong>。<strong>但</strong>：九民纪要第 20 条只排除"合同无效后的民事责任"，法院仍可能判令承担一定比例的<strong>补充赔偿责任</strong>；且公司自己披露"部分法院在类似情形下依法判决上市公司不承担保证责任，也有部分法院仍判令承担一定比例的补充赔偿责任"。<strong>故本报告给免责概率 35%，而非 60% 以上。</strong></td></tr><tr><td>3</td><td><strong>计提预计负债 1.09 亿元，是不是说明公司已经认了？</strong></td><td><strong>不是。</strong> 按本息合计 108,729.26 万元的 <strong>10%</strong> 计提，是《企业会计准则第 13 号——或有事项》下的<strong>审慎估计</strong>，公司原文即写明"因复息难以准确测算，本测算未纳入复息影响"且"可能与未来实际数据存在偏差"。会计估计 ≠ 法律结论。</td></tr><tr><td>4</td><td><strong>"国资在成本线，必然救"——这个推论成立吗？</strong></td><td><strong>不成立为买入理由。</strong> 河南国资 2021 年以 6.66 元/股受让 1.28 亿股，现价 6.68 元<strong>几乎平本</strong>，不属"深套必自救"结构；其动机来自<strong>风险暴露（7.85 亿元或有负债＋8.53 亿元投资）</strong>，而非浮亏。参考同类教训：＊ST中岩控股股东 2019 年 23.46 亿元入主、浮亏 63.1%，<strong>七年零减持、零增持、零注资</strong> —— <strong>行为记录 &gt; 单笔公告</strong>。截至基准日，河南国资除"协调豫辽两地国资对话"外，<strong>未见任何第③类权益性交易动作（债务豁免／现金捐赠／资产赠与）</strong>。</td></tr><tr><td>5</td><td><strong>数据来源是什么级别？有没有把股吧传闻当事实？</strong></td><td>核心事实（担保金额、诉讼案号、财务数据、条款文号）<strong>全部来自公告原文与规则原文</strong>（巨潮／东财公告库＋本地规则 PDF 逐条提取）。市场预期类内容（"中原算力注入""豫信电科装资产""实控人变更"）<strong>均标【纯概念】或（雪球评论／股吧，日期）</strong>，并已用 2026-01-13 公司澄清公告、互动易 2026-09-10 回复逐条证伪。<strong>媒体误报已纠正</strong>：多家媒体称"2026-06-26 收到《行政处罚事先告知书》"，经巨潮 2026 年全年 66 条公告全量核实<strong>为误报</strong>（详见封面"数据质量异常"）。</td></tr><tr><td>6</td><td><strong>"2026-11-26 同业竞争承诺到期 ⇒ 必然资产注入"这个推论成立吗？</strong></td><td><strong>不成立为买入理由，但应登记为"有到期日的期权"。</strong> 承诺第 3 条确实要求 5 年内"注入上市公司，<strong>或采取其他合法的方式解决</strong>"——后半句是活口；5 年期内落地的硬动作只有 <strong>2023-05 云康数据变更经营范围</strong>，其余为并表（会计行为）、业务划分与 <strong>2026-06-05 战略合作协议</strong>（软性安排，无股权／资产权属变更）；且 <strong>2026 年全年零重组预案</strong>。参照同类教训："承诺到期"在 A 股经常以"延期／豁免／重新定性"收场。<strong>故计入上行期权、不计入基准情景。</strong>另须纠偏网传"扩写版承诺函"（点名超聚变／"刚性红线"等）——<strong>官方 2021-106 报告书正文中不存在该措辞</strong>。</td></tr></tbody></table>
+<h2 id="chap11">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-05</td><td>首次生成。基准日 2026-10-05，行情截至 2026-09-30 收盘；数据源：公司公告原文（巨潮＋东财）、2026 半年报／2025 年报 PDF 全文、创业板《股票上市规则（2026 年修订）》原文、2021-106 详式权益变动报告书、腾讯行情、新浪日 K、东方财富龙虎榜、韭研异动 parquet、同花顺 F10 互动易。结论：卖出（回避）</td></tr><tr><td>第 1 次修改</td><td>2026-10-05</td><td><strong>吸收同标的既有分析稿三份</strong>（<code>WorkBuddy/2026-08-13-10-49-47/</code> 的《避免同业竞争承诺函核查摘要》《同业竞争重叠主体与解决措施分析》《实控不并表结构分析与含义》）。<strong>修正三处</strong>：① 原写"同业竞争承诺已实质化解"，改为"<strong>只有软性动作（业务划分＋战略合作）、硬处置未落地</strong>"，并新增 §5.3 折叠区《同业竞争承诺的真实状态》；② 原写"近端只剩判决一个非日历事件"，改为"<strong>两个窗口</strong>：判决（无日期）＋承诺到期 <strong>2026-11-26</strong>（硬日期）"，并在催化清单中把 ⑦⑧ 升为<strong>硬节点</strong>；③ 补入 <strong>2025 年"荣科并表评估"与 2025-09-02 董秘确认会计并表</strong>、<strong>2026-06-05 四方医疗 AI 战略合作协议</strong>、<strong>信产数创基金 5 年期至 2026-10-14</strong> 三项新事实；同时订正承诺函口径（<strong>签署日 2021-10-22／起算日 2021-11-26／到期 2026-11-26</strong>），并在附录 A（+4 条待核实）、附录 B（+1 条 2021-106 PDF 链接）、附录 C（+第 6 问，含网传"扩写版承诺函"纠偏）同步更新</td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
