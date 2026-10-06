@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>＊ST西发（000752.SZ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>9 章 · 14 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断</a><a class="sblv3" href="#sec0">1.1 基本情况与股权</a><a class="sblv3" href="#sec1">1.2 ST 风险诊断</a><a class="sblv3" href="#sec2">1.3 王艳式六栏目</a><a class="sblv3" href="#sec3">1.4 全流程进度看板</a><a class="sblv3" href="#sec4">1.5 运作特征与综合判断</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、基本面路径（路径 B · 重整）</a><a class="sblv3" href="#sec5">2.1 重整方案四读法</a><a class="sblv3" href="#sec6">2.2 ★ 转增除权测算：本报告最重要的一个数字</a><a class="sblv3" href="#sec7">2.3 重大资产重组与资产捐赠</a><a class="sblv3" href="#sec8">2.4 财务状况</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、炒作逻辑 · 情绪面 · 筹码面</a><a class="sblv3" href="#sec9">3.1 炒作逻辑三支柱</a><a class="sblv3" href="#sec10">3.2 情绪与异动</a><a class="sblv3" href="#sec11">3.3 筹码与技术</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">估值与投资结论</a><a class="sblv3" href="#sec12">（一）估值</a><a class="sblv3" href="#sec13">（二）投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 C · 逻辑漏洞与反方观点（5 问）</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">＊ST西发（000752.SZ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：卖出（回避）</strong></p>
+<ul><li><strong>红线分类</strong>：<span class="sttag sttag-orange"><a href="https://data.eastmoney.com/notices/detail/000752/AN202604261821591760.html" target="_blank" rel="noopener">裁定重整</a></span>·<span class="sttag sttag-blue"><a href="https://data.eastmoney.com/notices/detail/000752/AN202609111829282384.html" target="_blank" rel="noopener">原2022年净资产为负</a></span>·<span class="sttag sttag-orange"><a href="https://data.eastmoney.com/notices/detail/000752/AN202609111829282384.html" target="_blank" rel="noopener">原2022年报无法表示意见</a></span>·<span class="sttag sttag-teal"><a href="https://data.eastmoney.com/notices/detail/000752/AN202607101826881225.html" target="_blank" rel="noopener">原资金占用已整改</a></span>·<span class="sttag sttag-teal"><a href="https://data.eastmoney.com/notices/detail/000752/AN202606221823742534.html" target="_blank" rel="noopener">原实控人留置已解除</a></span></li><li><strong>生死定级</strong>：<strong>可救 · 自救空间大</strong>——四类退市红线一条未踩，重整计划（草案）已获债权人会议与出资人组会议双双通过（2026-09-28），仅待拉萨中院裁定批准。</li><li><strong>自救空间</strong>：靠已投入 <strong>22.94 亿元</strong>的重整投资人与已 100% 控股的核心子公司拉萨啤酒，最大障碍不是"能不能救活"，而是<strong>资本公积转增的除权摊薄</strong>。</li><li><strong>主要看点</strong>：上市公司已完成对核心子公司<strong>西藏拉萨啤酒</strong>的 100% 控股（2026-08-20 交割），且控股股东<strong>盛邦控股</strong>承诺重整计划获批后 6 个月内，将<strong>拉萨市经开区 30 万吨啤酒产业基地（含约 111.97 亩国有土地使用权及已建土建工程）无偿捐赠</strong>给上市公司。</li></ul>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>标的 / 基准日</td><td>＊ST西发（000752.SZ）／2026-10-05（数据截止 2026-09-30 收盘）</td></tr><tr><td>现价 / 总市值</td><td>8.72 元 ／ 23.00 亿元（全流通）</td></tr><tr><td>估值</td><td>PE(TTM) 16.41 ×／PB 3.62 ×／PS 5.27 ×（数据来源：Wind）</td></tr><tr><td>版本</td><td>初版 · 2026-10-05</td></tr><tr><td>数据源</td><td>公司公告（巨潮/东财）、2025 年报与 2026 中报原文、Wind、东财 F10、韭研公社异动表、互动易、深交所上市规则（2026 修订）</td></tr><tr><td>数据质量</td><td>Wind 年度财务序列 2022/2023 缺失（代理端库窗口缺口），已用东财 F10 补齐并标【异源】</td></tr></tbody></table>
+<hr>
+<h2 id="chap1">一、诊断</h2>
+<h3 id="sec0">1.1 基本情况与股权</h3>
+<p><strong>结论：这是一家"病根已除、程序未走完"的重整型 *ST——控股股东从未变更、控制权在重整前后保持 12.74%，重整只是用来出清历史债务与信用瑕疵的工具。</strong></p>
+<p>公司成立于 1997-06-20，1997-06-25 在深交所上市，注册资本 2.64 亿元，主营业务为啤酒（"拉萨啤酒"）的生产与销售，法定代表人罗希。注册地在拉萨市金珠西路格桑林卡 A 区 28-5，<strong>办公地却在成都市高新区天府大道北段 966 号</strong>——这是一个值得注意的细节：上市公司总部实际在成都，生产实体在西藏。</p>
+<p>控股股东为西藏盛邦控股有限公司（持股 12.74%），实际控制人罗希持有盛邦控股 100% 股权。前十大股东中<strong>第二大股东为西藏国有资本投资运营有限公司（6.09%）</strong>，其余 8 席均为自然人（2026-06-30 口径，单一持股 0.53%–1.97%）。股东户数 15,295 户（2026-08-20，公司互动易答复），户均持股市值约 15.04 万元。</p>
+<details class="fold"><summary>前十大股东明细与股权结构（截至 2026-06-30）</summary><div class="fold-body">
+
+<table><thead><tr><th>排名</th><th>股东</th><th>股数</th><th>比例</th></tr></thead><tbody><tr><td>1</td><td>西藏盛邦控股有限公司</td><td>3,361.32 万股</td><td>12.74%</td></tr><tr><td>2</td><td>西藏国有资本投资运营有限公司</td><td>1,607.23 万股</td><td>6.09%</td></tr><tr><td>3</td><td>张寿春</td><td>520.00 万股</td><td>1.97%</td></tr><tr><td>4</td><td>汪新文</td><td>409.96 万股</td><td>1.55%</td></tr><tr><td>5</td><td>刘选云</td><td>359.50 万股</td><td>1.36%</td></tr><tr><td>6</td><td>张敏</td><td>303.97 万股</td><td>1.15%</td></tr><tr><td>7</td><td>张晓秋</td><td>238.01 万股</td><td>0.90%</td></tr><tr><td>8</td><td>张旭</td><td>209.96 万股</td><td>0.80%</td></tr><tr><td>9</td><td>吴刚</td><td>204.17 万股</td><td>0.77%</td></tr><tr><td>10</td><td>汪永华</td><td>139.29 万股</td><td>0.53%</td></tr><tr><td>—</td><td>合计</td><td>7,353.41 万股</td><td>27.86%</td></tr></tbody></table>
+<p>来源：《西藏发展股份有限公司重整计划（草案）》"一、（二）股权情况"，<a href="https://data.eastmoney.com/notices/detail/000752/AN202609111829282384.html" target="_blank" rel="noopener">公告原文</a>。</p>
+
+</div></details>
+<h3 id="sec1">1.2 ST 风险诊断</h3>
+<p><strong>结论：四类退市红线一条未踩——唯一红线是"法院受理重整"，属可撤销的程序性警示，不是财务或合规病灶。</strong></p>
+<p>戴帽时间与原因：拉萨市中级人民法院于 2026-04-24 裁定受理债权人对公司的重整申请，公司股票自 <strong>2026-04-28</strong> 起被实施退市风险警示（《深交所股票上市规则》9.4.1 第九项）。此前公司已于 2026-07-11 撤销其他风险警示（原因为历史资金占用），<strong>继续被实施退市风险警示</strong>。</p>
+<p>四类红线逐条对照：<strong>交易类</strong>——现价 8.72 元、总市值 23.00 亿元、日均成交与股东户数均远超阈值，<strong>未踩</strong>；<strong>财务类</strong>——2025 年营收 4.33 亿元（&gt;3 亿元）、归母净利 1.44 亿元、归母净资产 6.14 亿元（为正）、财报审计意见为"带持续经营重大不确定性段落的<strong>无保留意见</strong>"（非保留/无法表示），<strong>未踩</strong>；<strong>规范类</strong>——2025 年度内控审计意见为<strong>标准无保留意见</strong>，<strong>未踩</strong>；<strong>重大违法类</strong>——2024-11-15 证监会〔2024〕132 号行政处罚为资金占用类信披违法，<strong>未触及量化退市线</strong>，且已于 2025-09-15 整改完毕。</p>
+<details class="fold"><summary>戴帽与摘帽路径的关键公告时间轴（时间降序）</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>事项</th></tr></thead><tbody><tr><td>2026-09-28</td><td>第二次债权人会议、出资人组会议双双通过重整计划（草案）</td></tr><tr><td>2026-09-11</td><td>披露重整计划（草案）＋出资人权益调整方案＋经营方案</td></tr><tr><td>2026-07-11</td><td>撤销其他风险警示，继续被实施退市风险警示（仍为 \*ST）</td></tr><tr><td>2026-06-23</td><td>实控人、董事长罗希<strong>解除留置</strong></td></tr><tr><td>2026-06-08</td><td>第一次债权人会议召开</td></tr><tr><td>2026-04-24</td><td>拉萨中院裁定受理重整（（2023）藏 01 破申 4 号）</td></tr><tr><td>2026-04-08</td><td>实控人、董事长罗希<strong>被留置</strong></td></tr><tr><td>2025-09-15</td><td>前任控股股东及关联方资金占用整改完毕</td></tr><tr><td>2024-11-15</td><td>证监会〔2024〕132 号《行政处罚决定书》（资金占用）</td></tr><tr><td>2024-07-19</td><td>深交所撤销退市风险警示（2023 年报净资产转正）</td></tr></tbody></table>
+<p>来源：<a href="https://data.eastmoney.com/notices/detail/000752/AN202604261821591760.html" target="_blank" rel="noopener">法院裁定受理重整暨实施退市风险警示公告</a>、<a href="https://data.eastmoney.com/notices/detail/000752/AN202606221823742534.html" target="_blank" rel="noopener">解除留置公告</a>、<a href="https://data.eastmoney.com/notices/detail/000752/AN202607101826881225.html" target="_blank" rel="noopener">撤销其他风险警示公告</a>。</p>
+
+</div></details>
+<p><strong>摘帽展望（★ 本条与"财务类 *ST"完全不同）</strong>：因触及《深交所股票上市规则》9.4.1 <strong>第九项</strong>（法院受理重整）被 *ST 的，撤销依据是 <strong>9.4.14 条</strong>——只要出现"<strong>重整计划执行完毕</strong>"等四种情形之一即可申请撤销，<strong>不需要等下一个完整会计年度</strong>。而重整计划自身的执行期限是"自法院裁定批准之日起 3 个月"，执行完毕标准仅为两项（① 重整投资人股票受让对价 12.62 亿元足额到账；② 转增股票已登记至管理人指定账户）。</p>
+<p><strong>因此时间表是：法院裁定批准（预计近期）→ 3 个月执行期 → 申请撤销 *ST → 交易所审核。最早可撤销窗口落在 2027 年一季度附近。</strong> 但必须同时指出：<strong>撤销 *ST 在 2026-07-06 之后已无制度红利</strong>——沪深主板风险警示股涨跌幅已于该日起由 5% 统一放宽至 10%，摘帽前后均为 10%，不再有"板上放大"。</p>
+<h3 id="sec2">1.3 王艳式六栏目</h3>
+<p><strong>结论：本标的的运作特征是"原实控人自救式重整"——罗希系既出钱（22.94 亿元重整投资人中的产业方）又保权（重整后仍合计持股 12.74%），全程控制权不转移，属于教科书式的"存量股东自掏腰包换流动性"。</strong></p>
+<p>① <strong>前世今生</strong>——四列表（时间｜关键事件｜股权与实控人变化｜背后的逻辑）。</p>
+<details class="fold"><summary>① 前世今生（含金额 / 每股价格 / 资金来源）</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>关键事件</th><th>股权与实控人变化</th><th>背后的逻辑</th></tr></thead><tbody><tr><td>1997-06</td><td>深交所上市</td><td>—</td><td>西藏第一家啤酒类上市公司</td></tr><tr><td>2018 年前</td><td>天易隆兴等关联担保形成（8,000.00 万元）</td><td>—</td><td>历史违规担保的源头</td></tr><tr><td>2021-06-16</td><td>控股股东、实控人认定公告</td><td>盛邦控股成为控股股东，罗希成为实控人</td><td>控制权自原体系转移</td></tr><tr><td>2022-12-31</td><td>期末归母净资产 <strong>-3,078.19 万元</strong>（差错更正后 <strong>-5,239.44 万元</strong>）</td><td>—</td><td>拉萨啤酒对青稞啤酒、福地产业、福地包装、绿色饮品的应收款项本息 <strong>43,932.16 万元</strong>无法回收，全额计提</td></tr><tr><td>2023-04</td><td>2022 年报披露，被实施退市风险警示</td><td>—</td><td>净资产为负 ＋ 无法表示意见双触发</td></tr><tr><td>2023-07-24</td><td>拉萨中院决定对公司进行预重整</td><td>—</td><td>债权人达州百益 2023-07-18 提出申请</td></tr><tr><td>2023-09-26</td><td>重整投资人遴选：盛邦发展联合体正选</td><td>—</td><td>5 家报名、2 家合格；2023-12-06 备选恒溱公司联合体放弃</td></tr><tr><td>2023-12-18</td><td>盛邦控股<strong>无条件豁免</strong>对上市公司 18,953.34 万元债权</td><td>—</td><td>资金来自投资人 23,000.00 万元受让西藏源耀债权</td></tr><tr><td>2023-12-31</td><td>重整投资人累计支出 <strong>66,834.66 万元</strong></td><td>—</td><td>其中 43,834.66 万元供盛邦控股代相关主体向拉萨啤酒清偿大额应收款</td></tr><tr><td>2024-04-25</td><td>2023 年报出具"带持续经营重大不确定性强调事项段的无保留意见"</td><td>2023 年末归母净资产 <strong>1.1161 亿元</strong>（转正）</td><td>会计障碍解除</td></tr><tr><td>2024-07-19</td><td>深交所撤销退市风险警示</td><td>简称变更为"ST 西发"</td><td>—</td></tr><tr><td>2024-11-15</td><td>证监会〔2024〕132 号《行政处罚决定书》</td><td>—</td><td>现任实控人罗希、前任实控人储某、前任实控人王某及关联方曾占用上市公司资金</td></tr><tr><td>2025-09-15</td><td>资金占用整改完毕</td><td>—</td><td>撤销其他风险警示的前置条件</td></tr><tr><td>2026-04-08 / 06-23</td><td>罗希<strong>被留置</strong> / <strong>解除留置</strong></td><td>控制权未变</td><td>期间股价 4 月出现 6 天 3 板</td></tr><tr><td>2026-04-24</td><td>拉萨中院裁定受理重整</td><td>—</td><td>自 2026-04-28 起 *ST</td></tr><tr><td>2026-08-20</td><td>现金 29,200.00 万元受让嘉士伯所持拉萨啤酒 50% 股权交割完成</td><td>—</td><td>核心子公司实现 100% 控股</td></tr></tbody></table>
+<p>来源：重整计划（草案）"一、（三）预重整阶段已完成的各项工作"、<a href="https://data.eastmoney.com/notices/detail/000752/AN202609111829282309.html" target="_blank" rel="noopener">出资人权益调整方案</a>。</p>
+
+</div></details>
+<p>② <strong>股东阵容</strong>——存量股东高度分散（除控股股东外无 5% 以上股东），第二大股东为西藏国资；筹码在 2026 年 4 月先分散后集中（户数 3 月 16,055 户 → 4 月 16,252 户 → 8 月 15,295 户）；新增筹码全部来自 <strong>24 家重整投资人</strong>，锁定期产业方 36 个月、财务方 12 个月。</p>
+<details class="fold"><summary>② 股东阵容与筹码（身份识别 / 取得成本 / 锁定）</summary><div class="fold-body">
+
+<table><thead><tr><th>阵营</th><th>主体</th><th>受让股数</th><th>每股对价</th><th>每股平均投入</th><th>锁定期</th><th>身份识别</th></tr></thead><tbody><tr><td>产业投资人</td><td>西藏盛邦发展</td><td>4,705.85 万股</td><td>3.50 元</td><td><strong>约 9.06 元</strong></td><td>36 个月</td><td>实控人罗希控制的平台</td></tr><tr><td>第一批财务投资人（17 家）</td><td>上海仕善、深圳恒泰源、海南启明信等</td><td>27,481.08 万股（含产业方）</td><td>3.50 元</td><td>约 6.14 元</td><td>12 个月</td><td>财务投资人，均非关联方</td></tr><tr><td>第二批财务投资人（6 家）</td><td>启高鑫源、启航创勤、上海志立等</td><td>6,393.65 万股</td><td>4.70 元</td><td>约 7.34 元</td><td>12 个月</td><td>2026 年补充协议新增</td></tr></tbody></table>
+<ul><li><strong>筹码集中度</strong>：股东户数由 2026-03-31 的 16,055 户升至 04-30 的 16,252 户（留置事件后），再降至 08-20 的 15,295 户。</li><li><strong>产业投资人成本倒挂</strong>：盛邦发展"平均每股投入约 9.06 元"高于基准日现价 8.72 元（≈0.96 倍），意味着<strong>实控人自身处于浮亏状态，自救动机强</strong>；但需注意该 9.06 元包含其代偿子公司应收款的非直接购股支出，不能简单等同于二级市场成本。</li><li>全体财务投资人已承诺<strong>任何时候均不单独或共同谋求上市公司控制权</strong>。</li></ul>
+<p>来源：重整计划（草案）"四、重整投资人情况"。</p>
+
+</div></details>
+<p>③ <strong>节奏与催化</strong>——编号清单（区分硬节点与软预期）。</p>
+<details class="fold"><summary>③ 催化节点清单（①–⑨）</summary><div class="fold-body">
+
+<table><thead><tr><th>#</th><th>节点</th><th>预计时点</th><th>性质</th><th>判读 / 证伪点</th></tr></thead><tbody><tr><td>①</td><td>拉萨中院<strong>裁定批准重整计划</strong></td><td>已具备条件（两会议已过），预计 2026Q4</td><td><strong>硬节点</strong></td><td>一旦批准，执行时钟启动</td></tr><tr><td>②</td><td>重整投资人 12.62 亿元对价到账</td><td>批准后 3 个月内</td><td><strong>硬节点</strong></td><td>执行完毕的核心标准</td></tr><tr><td>③</td><td>资本公积转增实施（<strong>除权日</strong>）</td><td>随执行进度，预计 2026Q4–2027Q1</td><td><strong>硬节点</strong></td><td>除权参考价测算约 5.73 元</td></tr><tr><td>④</td><td>重整计划执行完毕 → 申请<strong>撤销 *ST</strong></td><td>最早 2027Q1</td><td><strong>硬节点</strong></td><td>依 9.4.14 条，无需等年报</td></tr><tr><td>⑤</td><td>30 万吨啤酒产业基地<strong>无偿捐赠</strong></td><td>批准之日起 6 个月内</td><td><strong>硬节点</strong></td><td>约 111.97 亩；提升产能但增加后续资本开支</td></tr><tr><td>⑥</td><td>拉萨啤酒 100% 并表贡献全年利润</td><td>2026 年报起</td><td>半硬</td><td>少数股东损益消除，归母增厚</td></tr><tr><td>⑦</td><td>虚假陈述索赔诉讼进展</td><td>无时间表</td><td>软预期</td><td>敞口未定</td></tr><tr><td>⑧</td><td>重整衍生的债权确认纠纷（(2026)藏 01 民初 39 号等）</td><td>未开庭</td><td>软预期</td><td>公司称"重整流程中常见衍生纠纷"</td></tr><tr><td>⑨</td><td>啤酒行业高端化 / 青稞系列新品</td><td>1–2 年</td><td>软预期</td><td>与 30 万吨产能配套</td></tr></tbody></table>
+<p>来源：<a href="https://data.eastmoney.com/notices/detail/000752/AN202609281829965565.html" target="_blank" rel="noopener">第二次债权人会议表决结果公告</a>、<a href="https://data.eastmoney.com/notices/detail/000752/AN202609111829282385.html" target="_blank" rel="noopener">经营方案</a>、互动易答复（2026-08-26）。</p>
+
+</div></details>
+<p>④ <strong>资产质量与估值</strong>——星级表。</p>
+<table><thead><tr><th>星级维度</th><th>大白话说明</th><th>评级</th></tr></thead><tbody><tr><td>市值与估值</td><td>23.00 亿元市值对应 2025 年扣非仅 0.24 亿元，PB 3.62 为啤酒同业最高</td><td>★★</td></tr><tr><td>法律合规性</td><td>四类退市红线一条未踩；重整受理型警示可撤销；虚假陈述索赔敞口未定</td><td>★★★★</td></tr><tr><td>债务与流动性</td><td>资产负债率 18.70%，货币资金 10.06 亿元，重整后现金更充裕</td><td>★★★★★</td></tr><tr><td>主业质地</td><td>拉萨啤酒西藏市占率约 21%、2025 销量 7.2 万吨（+35.85%），但规模小、增速慢</td><td>★★★</td></tr><tr><td>控制权与运作</td><td>控制权不变更（罗希 12.74%），产业方自身浮亏，运作动机与稳定性均可</td><td>★★★★</td></tr><tr><td><strong>综合</strong></td><td><strong>"生存无虞、估值不便宜、摊薄在即"</strong></td><td><strong>★★★</strong></td></tr></tbody></table>
+<p>说明：<strong>"债务与流动性"的五颗星不能抵消"估值"的两颗星</strong>——账上有钱是事实，但钱属于全体股东（含新进投资人），不构成对现有股东的保护。</p>
+<p>⑤ <strong>成本锚点</strong>——逐参与方列示，并区分两类定价逻辑。</p>
+<details class="fold"><summary>⑤ 成本锚点：两类定价逻辑的区分</summary><div class="fold-body">
+
+<table><thead><tr><th>参与方</th><th>成本（元/股）</th><th>现价倍数</th><th>定价逻辑</th></tr></thead><tbody><tr><td>产业投资人盛邦发展（含代偿）</td><td>约 9.06</td><td>0.96×</td><td><strong>有稀释的重整底</strong>（含代偿子公司款）</td></tr><tr><td>产业投资人 + 第一批财务投资人（受让对价）</td><td>3.50</td><td>2.49×</td><td>受让对价（前 20 交易日均价 6.37 元 × 55%）</td></tr><tr><td>第二批财务投资人（受让对价）</td><td>4.70</td><td>1.86×</td><td>受让对价（前 120 交易日均价 8.56 元 × 55%）</td></tr><tr><td>第一批财务投资人（含前期投入）</td><td>约 6.14</td><td>1.42×</td><td>含预重整期间投入摊薄后</td></tr><tr><td>第二批财务投资人（含前期投入）</td><td>约 7.34</td><td>1.19×</td><td>含预重整期间投入摊薄后</td></tr><tr><td>债权人以股抵债</td><td>重整计划生效日收盘价</td><td>≈1.00×</td><td>无稀释的市场底（按生效日市价）</td></tr></tbody></table>
+<p><strong>判读</strong>：财务投资人的真实成本集中在 <strong>6.14–7.34 元</strong>，低于现价 8.72 元 16%–30%；产业方 9.06 元虽略高于现价，但含代偿非购股支出。<strong>现价已高于全部财务投资人成本——二级市场在此位置没有成本优势，只有产业方一家的"倒挂"。</strong></p>
+
+</div></details>
+<p>⑥ <strong>信息来源汇总</strong>——四列表、四级分级。</p>
+<details class="fold"><summary>⑥ 信息来源汇总（沿用四级分级，媒体源如实列出）</summary><div class="fold-body">
+
+<table><thead><tr><th>#</th><th>来源类型</th><th>来源与标题（日期）</th><th>链接</th></tr></thead><tbody><tr><td>1</td><td>一手·规则</td><td>《深圳证券交易所股票上市规则（2026 年修订）》9.4.1/9.4.12/9.4.13/9.4.14</td><td>本地规则库</td></tr><tr><td>2</td><td>一手·公告</td><td>重整计划（草案）（2026-09-11）</td><td><a href="https://data.eastmoney.com/notices/detail/000752/AN202609111829282384.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>3</td><td>一手·公告</td><td>出资人权益调整方案（2026-09-11）</td><td><a href="https://data.eastmoney.com/notices/detail/000752/AN202609111829282309.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>4</td><td>一手·公告</td><td>经营方案（2026-09-11）</td><td><a href="https://data.eastmoney.com/notices/detail/000752/AN202609111829282385.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>5</td><td>一手·公告</td><td>第二次债权人会议表决结果（2026-09-28）</td><td><a href="https://data.eastmoney.com/notices/detail/000752/AN202609281829965565.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>6</td><td>一手·公告</td><td>出资人组会议决议公告（2026-09-28）</td><td><a href="https://data.eastmoney.com/notices/detail/000752/AN202609281829965540.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>7</td><td>一手·公告</td><td>法院裁定受理重整暨实施退市风险警示（2026-04-26）</td><td><a href="https://data.eastmoney.com/notices/detail/000752/AN202604261821591760.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>8</td><td>一手·公告</td><td>实控人、董事长被留置（2026-04-07）</td><td><a href="https://data.eastmoney.com/notices/detail/000752/AN202604071821048006.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>9</td><td>一手·公告</td><td>实控人、董事长解除留置（2026-06-22）</td><td><a href="https://data.eastmoney.com/notices/detail/000752/AN202606221823742534.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>10</td><td>一手·公告</td><td>撤销其他风险警示暨继续被实施退市风险警示（2026-07-10）</td><td><a href="https://data.eastmoney.com/notices/detail/000752/AN202607101826881225.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>11</td><td>一手·公告</td><td>重大资产重组进展暨股权交割完成（2026-08-19）</td><td><a href="https://data.eastmoney.com/notices/detail/000752/AN202608191828161923.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>12</td><td>一手·定期报告</td><td>2025 年年度报告、2025 年度内部控制审计报告</td><td><a href="https://data.eastmoney.com/notices/detail/000752/AN202604261821593249.html" target="_blank" rel="noopener">年报</a></td></tr><tr><td>13</td><td>一手·定期报告</td><td>2026 年半年度报告（2026-08-21）</td><td><a href="https://data.eastmoney.com/notices/detail/000752/AN202608210006743804.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>14</td><td>一手·互动</td><td>深交所互动易公司答复（2026-08-26 / 09-18 等）</td><td>同花顺 F10 转载</td></tr><tr><td>15</td><td>数据源</td><td>Wind（截面估值、财务序列、周 K）</td><td>—</td></tr><tr><td>16</td><td>数据源</td><td>东方财富 F10 主要指标（补扣非、多年序列）</td><td>—</td></tr><tr><td>17</td><td>数据源</td><td>韭研公社异动整理（155 条）、东财龙虎榜 API</td><td>—</td></tr><tr><td>18</td><td>权威媒体（二级）</td><td>财闻／证券时报系对重整与重组的报道</td><td>二级整理</td></tr></tbody></table>
+<p>说明：媒体源如实列出，不假装只有公告；雪球评论属"线索"级，本报告仅在情绪与预期处引用。</p>
+
+</div></details>
+<h3 id="sec3">1.4 全流程进度看板</h3>
+<p><strong>结论：卡点全部属于"时间未到"，没有一处是"谈不拢"——这是本标的与多数重整股最本质的区别。</strong></p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点或条件</th><th>下一节点</th></tr></thead><tbody><tr><td>预重整 → 受理</td><td>已完成</td><td>—</td><td>—</td></tr><tr><td>债权申报与审查</td><td>32 家申报、24 家过审、11 家已确认（4.28 亿元）</td><td>3 家在审、10 家不予确认（部分已诉讼）</td><td>诉讼结果</td></tr><tr><td>投资人招募与协议</td><td>已完成</td><td>24 家投资人已签约、10.32 亿元已到账</td><td>—</td></tr><tr><td><strong>重整计划表决</strong></td><td><strong>已通过（2026-09-28 债权人会议 100% ＋出资人组）</strong></td><td>—</td><td>法院裁定批准</td></tr><tr><td>法院裁定批准</td><td><strong>待完成</strong></td><td>无一票否决项</td><td>时间未到</td></tr><tr><td>计划执行（3 个月）</td><td>未启动</td><td>12.62 亿元到账 ＋ 转增登记</td><td>—</td></tr><tr><td>撤销 *ST</td><td>未申请</td><td>重整计划执行完毕</td><td>最早 2027Q1</td></tr><tr><td>30 万吨基地捐赠</td><td>未实施</td><td>法院批准之日起 6 个月内</td><td>—</td></tr><tr><td>拉萨啤酒 100% 并表</td><td>已完成交割（2026-08-20）</td><td>—</td><td>2026 年报体现</td></tr></tbody></table>
+<h3 id="sec4">1.5 运作特征与综合判断</h3>
+<p><strong>结论：交权是"配合式"、手法是"原体系自掏腰包保壳"，成败关键变量只有一个——法院裁定批准并顺利执行完毕；这是一个大概率能走通的"1 和 0"问题，而不是"能不能谈成"的问题。</strong></p>
+<ul><li><strong>手法</strong>：先由原实控人体系（盛邦发展联合体）在预重整阶段胜出，再用"投资人代偿子公司应收款 + 债权豁免"把净资产做正、把退市风险摘掉，最后才推进司法重整。<strong>这是一个"先治病、后办手续"的顺序</strong>，与常见"先戴帽、后找钱"相反。</li><li><strong>节奏</strong>：2023-07 预重整 → 2026-04 受理 → 2026-09 计划通过，<strong>历时约 3 年 2 个月</strong>，明显偏慢（预重整阶段多次延期），主要卡在核心子公司股权争议（嘉士伯/西藏道合优先购买权诉讼）与资金占用整改。</li><li><strong>交权方式</strong>：<strong>配合式</strong>——无原体系减持、无表决权放弃、无对抗诉讼；重整后罗希通过盛邦控股（5.31%）＋盛邦发展（7.43%）合计仍为 12.74%。</li><li><strong>成败关键变量</strong>：法院裁定批准 ＋ 12.62 亿元足额到账。二者均有较高确定性（债权人 100% 同意、投资人已完成预重整投入）。</li><li><strong>核心矛盾一句话</strong>：<strong>公司不缺钱、不缺业务、不缺实控人，缺的只是"程序走完"；而程序走完的那一天，原股东会被转增除权摊薄掉约三成权益。</strong></li></ul>
+<hr>
+<h2 id="chap2">二、基本面路径（路径 B · 重整）</h2>
+<blockquote><p>三条路径中只深耕<strong>路径 B（重整）</strong>：Path A（保壳）不适用——营收与净资产均已达标；Path C（处罚 ST）已在 2026-07-11 结案，仅作历史处理。</p></blockquote>
+<h3 id="sec5">2.1 重整方案四读法</h3>
+<p><strong>结论：这是一份"投资人结构极分散、对价按 55% 下限定价、原股东只分到 6.2% 转增"的方案——最需要警惕的不是重整失败，而是转增除权的摊薄幅度。</strong></p>
+<p><strong>读法一 · 逐户建表并按阵营汇总</strong>：重整投资人为"产业投资人盛邦发展 ＋ 23 家财务投资人"组成的盛邦发展联合体，<strong>合计 24 家</strong>，合计投入 <strong>22.94 亿元</strong>（其中 10.32 亿元已于预重整期间投入，剩余 12.62 亿元为受让 338,747,358 股的对价）。24 家总计取得转增股票 3.3875 亿股。</p>
+<p><strong>读法二 · 核价格的监管锚</strong>：《上市公司监管指引第 11 号》第八条要求受让价不低于市场参考价的 50%。本方案：产业投资人及第一批 17 家财务投资人按协议签订日前 20 交易日均价 6.37 元/股定价 <strong>3.50 元/股</strong>（≈55%）；第二批 6 家财务投资人按补充协议签订日前 120 交易日均价 8.56 元/股定价 <strong>4.70 元/股</strong>（≈55%）。<strong>两批均为下限上方 5 个百分点，属"顶格压价"结构。</strong></p>
+<p><strong>读法三 · "内部人点火"识别</strong>：债权人申请人为达州百益企业管理有限公司与新疆日广通远投资有限公司，均非上市公司参股/联营企业；产业投资人盛邦发展为实控人控制平台，属<strong>关联方参与重整</strong>（已在出资人组会议中回避表决）。这是"被安排好的重整"的典型结构——<strong>它只证明重整能快速推进，不证明重整必然成功</strong>。</p>
+<p><strong>读法四 · 清偿方案</strong>：职工债权（64.09 万元）与税款债权现金全额一次性清偿；普通债权中<strong>每家债权人 6,000 万元（含）以下部分现金全额一次性清偿，6,000 万元以上部分以转增股票清偿</strong>（以股抵债价格按重整计划生效日收盘价确定）。<strong>已确认债权仅 4.28 亿元、11 家</strong>，与公司 10.06 亿元货币资金相比，现金清偿压力很小。</p>
+<details class="fold"><summary>债权审查全景与偿债能力分析</summary><div class="fold-body">
+
+<table><thead><tr><th>项目</th><th>家数</th><th>申报金额</th><th>认定金额</th></tr></thead><tbody><tr><td>已审查确认</td><td>11 家</td><td>8.38 亿元</td><td>4.28 亿元（均普通债权）</td></tr><tr><td>不予确认</td><td>10 家</td><td>21.76 亿元</td><td>—</td></tr><tr><td>正在审查</td><td>3 家</td><td>0.48 亿元</td><td>—</td></tr><tr><td>职工债权</td><td>—</td><td>—</td><td>64.09 万元</td></tr><tr><td>税款债权</td><td>—</td><td>无</td><td>—</td></tr><tr><td>账面未申报</td><td>30 家</td><td>—</td><td>0.40 亿元</td></tr><tr><td>虚假陈述索赔</td><td>—</td><td>—</td><td>无生效判决，按实际判决受偿</td></tr></tbody></table>
+<ul><li><strong>清算状态偿债能力</strong>：管理人委托北京中企华出具《偿债能力分析报告》（中企华评咨字(2026)第 5206 号），若破产清算，普通债权清偿率预计约 <strong>44.52%</strong>。</li><li><strong>不予确认的 21.76 亿元中有两家已提起债权确认之诉</strong>（诉请合计 3.61 亿元），另有 1 家就已确认金额提起增加之诉（诉请增加 688.53 万元）——<strong>这是重整计划执行过程中的潜在"漏网之债"风险</strong>，但公司称金额以法院生效裁判为准。</li><li><strong>执行完毕标准</strong>（两条同时满足）：① 重整投资人应付的 1,262,339,609.40 元已足额支付至管理人账户；② 资本公积转增股票已登记至管理人指定证券账户。</li><li><strong>执行期限</strong>：自拉萨中院裁定批准之日起 3 个月，可申请延长。</li></ul>
+<p>来源：重整计划（草案）"二、资产负债情况""五、债权分类及清偿方案""八、重整计划的执行"。</p>
+
+</div></details>
+<h3 id="sec6">2.2 ★ 转增除权测算：本报告最重要的一个数字</h3>
+<p><strong>结论：公司自身测算（供本报告判断）——资本公积转增的除权参考价约为 5.73 元，较基准日现价 8.72 元低约 34%；原股东（除控股股东外）持股比例将由 87.26% 降至 40.0%，</strong>除权后股价须再涨约 38% 才能回到买入成本<strong>。</strong></p>
+<p>出资人权益调整的核心数据：以现有总股本 26,375.85 万股为基数，<strong>每 10 股转增 14 股</strong>（转增比例 140%，未超"每十股转增十五股"上限），共转增 36,926.19 万股，总股本增至 <strong>63,302.04 万股</strong>。转增股票的分配是"<strong>六二二分</strong>"结构：</p>
+<table><thead><tr><th>分配去向</th><th>股数</th><th>占比</th><th>说明</th></tr></thead><tbody><tr><td>无偿分配给除盛邦控股外全部股东</td><td>2,301.45 万股</td><td>6.2%</td><td>每 10 股仅得 1 股</td></tr><tr><td>分配给债权人抵债</td><td>750.00 万股</td><td>2.0%</td><td>—</td></tr><tr><td>重整投资人有条件受让</td><td>33,874.74 万股</td><td>91.8%</td><td>对价 3.50 / 4.70 元</td></tr></tbody></table>
+<details class="fold"><summary>除权参考价的测算过程（公式 / 参数 / 结果）</summary><div class="fold-body">
+
+<p>按《深交所交易规则（2026 年修订）》4.4.2 条通用公式，并将"转增股份平均价格"作为配股价代入（最终以财务顾问专项意见为准）：</p>
+<ul><li><strong>转增股份平均价格</strong> =（重整投资人现金对价 12.62 亿元 ＋ 抵债股票对应债务金额 6,540.00 万元）÷ 转增股数 36,926.19 万股 = <strong>约 3.60 元/股</strong></li><li><strong>股份变动比例</strong> = 36,926.19 万股 ÷ 26,375.85 万股 = 1.40</li><li><strong>除权参考价</strong> =（前收盘价 8.72 ＋ 3.60 × 1.40）÷（1 ＋ 1.40）= <strong>约 5.73 元</strong></li></ul>
+<p><strong>关键推论（三条）</strong>：</p>
+<ol><li><strong>原股东（除控股股东外）持股比例 87.26% → 40.0%</strong>（股数由 23,014.53 万股增至 25,316.00 万股，仅 +10%，但分母扩大 140%）。</li><li><strong>原股东保本价 = 8.72 ÷ 1.1 = 7.93 元</strong>，即除权后股价须自 5.73 元上涨 <strong>约 38.4%</strong> 方能保本。</li><li>控股股东阵营不受摊薄：盛邦控股 33,613,192 股（不参与分配）＋盛邦发展 47,058,468 股 = 8,067.17 万股，占新总股本 <strong>12.74%</strong>，与重整前一致。</li></ol>
+<p>⚠️ 上述除权参考价为<strong>测算值</strong>，公司已披露"财务顾问将对除权参考价计算公式进行论证并可能调整"，<strong>最终以公司公告的除权参考价为准</strong>；除权日随重整计划执行进度确定。</p>
+
+</div></details>
+<h3 id="sec7">2.3 重大资产重组与资产捐赠</h3>
+<p><strong>结论：两块"增量资产"都是真实且已落地的，但它们改变的是"公司值多少"，不改变"原股东被摊薄多少"——前者是想象力来源，后者是收益结构的硬约束。</strong></p>
+<p><strong>（一）已完成：现金 2.92 亿元收购拉萨啤酒 50%，实现 100% 控股。</strong> 交易对手为嘉士伯国际有限公司（Carlsberg International A/S）；因嘉士伯 2023-03-23 与西藏道合签订股权转让协议，公司以侵犯优先购买权起诉，一审胜诉、二审调解，公司最终向西藏道合支付 <strong>3,500.00 万元和解金</strong>。2026-06-12 股东会通过，<strong>2026-08-20 交割完成</strong>。意义有二：① 少数股东损益消除，归母利润增厚；② 消除核心子公司治理僵局。</p>
+<p><strong>（二）待实施：控股股东无偿捐赠 30 万吨啤酒产业基地。</strong> 盛邦控股承诺在重整计划获拉萨中院批准之日起 <strong>6 个月内</strong>，将位于拉萨市经开区的 30 万吨啤酒产业基地（含约 <strong>111.97 亩</strong>国有土地使用权及已动工土建工程）<strong>无偿捐赠</strong>给上市公司。该地块已于 2022-12 录入《拉萨市企业投资项目备案表》，已取得《建设用地规划许可证》《不动产权证》《建设工程规划许可证》《建设工程施工许可证》，列入拉萨市重点建设项目名单。</p>
+<details class="fold"><summary>拉萨啤酒经营数据与行业口径</summary><div class="fold-body">
+
+<table><thead><tr><th>指标</th><th>预重整前（2022）</th><th>2025</th><th>说明</th></tr></thead><tbody><tr><td>啤酒销量</td><td>5.3 万吨</td><td>7.2 万吨</td><td>+35.85%</td></tr><tr><td>营业收入</td><td>约 2.77 亿元</td><td>约 4.3 亿元</td><td>重整计划口径</td></tr><tr><td>西藏自治区市占率</td><td>—</td><td>约 21%</td><td>公司口径</td></tr><tr><td>中国啤酒行业产量</td><td>—</td><td>3,536 万吨</td><td>国家统计局，规模以上企业</td></tr></tbody></table>
+<ul><li>2026H1 分行业：主营啤酒占营收 <strong>99.71%</strong>；分地区：藏区内 <strong>93.66%</strong>、藏区外 6.34%（同比 +44.31%）。</li><li>产品结构：628ml 大瓶、355ml 听装、"3650"小瓶、青稞系列、欢畅 330/500/628 全麦、9.6°P 卡卓、8°P 魅影等；<strong>尚无全国性大单品</strong>。</li><li>行业审美标签定位：<strong>"业务反转"（成本端改善显著）＋"题材炒作"（西藏/援藏/重整），非"景气成长"</strong>——2026H1 营收同比仅 +1.39%。</li></ul>
+<p>来源：<a href="https://data.eastmoney.com/notices/detail/000752/AN202609111829282385.html" target="_blank" rel="noopener">经营方案</a>、2026 年半年度报告。</p>
+
+</div></details>
+<h3 id="sec8">2.4 财务状况</h3>
+<p><strong>结论：财务上"脱胎换骨"是真的——资产负债率三年从 54.82% 降至 18.70%、归母净资产由负转正至 6.14 亿元；但利润质量很差——2025 年 1.44 亿元归母净利中，扣非仅 0.24 亿元，其余 1.20 亿元来自"投资人代偿关联方占款后转回的坏账准备"，属一次性。</strong></p>
+<table><thead><tr><th>指标（亿元 / 归母口径）</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026H1</th></tr></thead><tbody><tr><td>营业收入</td><td>3.93</td><td>2.77</td><td>3.37</td><td>4.21</td><td>4.33</td><td>2.00</td></tr><tr><td>归母净利润</td><td>-0.14</td><td>-0.79</td><td>-0.26</td><td>0.26</td><td>1.44</td><td>0.22</td></tr><tr><td><strong>扣非归母净利润</strong></td><td>-0.02</td><td>-0.58</td><td>-0.01</td><td>0.27</td><td><strong>0.24</strong></td><td>0.20</td></tr><tr><td>毛利率</td><td>23.61%</td><td>14.98%</td><td>30.09%</td><td>38.81%</td><td>42.06%</td><td>40.88%</td></tr><tr><td>归母净资产</td><td>0.13</td><td>-0.52</td><td>1.12</td><td>1.38</td><td>6.14</td><td>6.36</td></tr><tr><td>资产负债率</td><td>54.82%</td><td>—</td><td>—</td><td>37.31%</td><td>18.72%</td><td>18.70%</td></tr><tr><td>货币资金</td><td>0.30</td><td>—</td><td>—</td><td>6.19</td><td>9.70</td><td>10.06</td></tr></tbody></table>
+<blockquote><p>口径与来源：2021 年与 2024–2026H1 为 Wind；<strong>2022、2023 两年 Wind 年度序列缺失（代理端财务库滚动窗口缺口，非取数问题），已用东方财富 F10 补齐并标【异源】</strong>；2025 年数据经 2025 年年度报告原文复核一致。归母净利润 = 净利润 − 少数股东损益。</p></blockquote>
+<details class="fold"><summary>2025 年利润的"一次性"成分拆解（★ 理解估值的关键）</summary><div class="fold-body">
+
+<table><thead><tr><th>科目</th><th>2025 金额</th><th>性质</th></tr></thead><tbody><tr><td>营业收入</td><td>4.33 亿元</td><td>经常性</td></tr><tr><td>营业成本</td><td>2.51 亿元</td><td>经常性（毛利率 42.06%）</td></tr><tr><td>销售费用 / 管理费用 / 研发费用</td><td>0.30 / 0.54 / 0.004 亿元</td><td>经常性</td></tr><tr><td>财务费用</td><td>-0.04 亿元</td><td>经常性（利息收入 483.03 万元）</td></tr><tr><td><strong>信用减值损失（转回）</strong></td><td><strong>＋1.83 亿元</strong></td><td><strong>一次性</strong> ——"收到投资人代偿前期其他关联方资金占用款转回的坏账准备金"</td></tr><tr><td>其他收益（政府补助）</td><td>0.11 亿元</td><td>经常性偏弱</td></tr><tr><td>投资收益</td><td>-0.05 亿元</td><td>联营企业权益法</td></tr><tr><td>营业利润</td><td>2.89 亿元</td><td>—</td></tr><tr><td>归母净利润</td><td>1.44 亿元</td><td>其中非经常性损益 <strong>1.20 亿元</strong></td></tr></tbody></table>
+<p><strong>判读</strong>：剔除 1.83 亿元坏账转回后，公司<strong>经常性经营利润约 1.0 亿元（少数股东前）</strong>，归母口径对应扣非 0.24 亿元。<strong>这意味着按 2025 年扣非口径，23.00 亿元市值的 PE 高达约 96 倍</strong>。若按 2026H1 扣非（0.20 亿元）年化 0.39 亿元计，PE 约 59 倍；若假设拉萨啤酒 100% 并表后可多获得约 0.26 亿元/半年（2026H1 少数股东损益），年化归母约 0.97 亿元，PE 约 24 倍（<strong>除权后按 36.27 亿元市值计约 37 倍</strong>）。</p>
+<p>来源：2025 年年度报告"六、主要会计数据""九、非经常性损益项目及金额"、2026 年半年度报告。</p>
+
+</div></details>
+<hr>
+<h2 id="chap3">三、炒作逻辑 · 情绪面 · 筹码面</h2>
+<h3 id="sec9">3.1 炒作逻辑三支柱</h3>
+<p><strong>结论：当前三支柱中，"炒预期"最弱（硬催化已基本兑现）、"炒历史类似行为"指向下跌组、"炒主板映射"提供的只是"啤酒"这个弱概念——三支柱合力偏空。</strong></p>
+<p><strong>① 炒预期——弱。</strong> 三大事件均已在 2026 年落地：实控人留置解除（06-23）、拉萨啤酒 100% 交割（08-20）、重整计划双会议通过（09-28）。剩下的"重整获批→执行完毕→撤销 *ST"是<strong>程序性、无信息差的公开日历</strong>，且撤销 *ST 在 2026-07-06 后已无涨跌幅红利。<strong>"利好出尽"风险集中在法院裁定批准公告当日。</strong></p>
+<p><strong>② 炒历史类似行为（相似股票匹配法）——指向下跌组。</strong> 以基准日特征做画像（<strong>重整/预重整型 ST ＋ 主板 ＋ 小市值 ＋ 传统消费 ＋ 高转增摊薄在即 ＋ 预重整阶段已投入巨资</strong>），在当下市场检索同型样本，其 2026 年（2025-12-31→2026-09-30）表现如下：</p>
+<details class="fold"><summary>同型样本（重整型 *ST）2026 年区间涨跌幅</summary><div class="fold-body">
+
+<table><thead><tr><th>代码</th><th>简称</th><th>起（2025-12-31）</th><th>止（2026-09-30）</th><th>区间涨跌</th><th>像在哪</th></tr></thead><tbody><tr><td>300212</td><td>＊ST易录</td><td>17.45</td><td>7.94</td><td><strong>-54.5%</strong></td><td>重整投资协议已签、待法院裁定</td></tr><tr><td>300125</td><td>聆达股份</td><td>7.63</td><td>8.56</td><td>+12.2%</td><td>重整已完成、已摘帽</td></tr><tr><td>002743</td><td>ST富煌</td><td>5.44</td><td>4.43</td><td><strong>-18.6%</strong></td><td>重整投资人招募中</td></tr><tr><td>603021</td><td>＊ST华鹏</td><td>4.67</td><td>4.46</td><td>-4.5%</td><td>净资产为负、待方案</td></tr><tr><td>600734</td><td>＊ST实达</td><td>4.60</td><td>1.86</td><td><strong>-59.6%</strong></td><td>重整预期＋立案</td></tr><tr><td>600107</td><td>＊ST尔雅</td><td>6.94</td><td>5.62</td><td>-19.0%</td><td>财务＋规范双红线</td></tr><tr><td>002055</td><td>ST得润</td><td>6.74</td><td>6.43</td><td>-4.6%</td><td>摘帽时间锚清晰</td></tr><tr><td>300555</td><td>ST路通</td><td>14.66</td><td>12.28</td><td>-16.2%</td><td>内控否定型</td></tr><tr><td>002592</td><td>ST八菱</td><td>8.30</td><td>6.25</td><td>-24.7%</td><td>事件驱动型</td></tr></tbody></table>
+<ul><li><strong>中位数 -18.6%，均值 -21.1%，9 只中仅 1 只上涨。</strong></li><li><strong>本标的 2026 年至今 +1.51%，显著强于同型样本组</strong>——按"抗跌即补跌空间未释放"的读数，<strong>本标的落在"潜在补跌"一侧</strong>。</li><li>样本仅 9 只，<strong>只作方向参考，不作概率推断</strong>。</li></ul>
+<p>来源：Wind 月度收盘序列（2025-12-31 与 2026-09-30）。样本库随使用逐步健全。</p>
+
+</div></details>
+<p><strong>③ 炒主板映射——提供的是弱概念。</strong> 主板啤酒板块当前并无强主题：青岛啤酒、燕京啤酒、重庆啤酒、珠江啤酒均为低估值、稳增长的传统消费标的，2026 年板块整体平淡。"拉萨啤酒"的可映射点是<strong>西藏区域 ＋ 援藏政策 ＋ 西部大开发</strong>，但公司自身即为映射对象，且<strong>已不是低位</strong>（见 3.3）。关联度评级：<strong>弱（【纯概念】级）</strong>。</p>
+<p><strong>三支柱排序：③ 弱＜① 弱＜② 偏空。当前市场最认的其实是"重整落地"这一程序性预期（即 ①），而它已被 2026 年三季度的公告消化。</strong></p>
+<h3 id="sec10">3.2 情绪与异动</h3>
+<p><strong>结论：注意力已明显退潮——龙虎榜自 2026 年 5 月起断档、韭研异动表记录止于 2026-05-19，六月以来无任何资金关注痕迹。</strong></p>
+<p>本标的炒作史极为丰富：韭研公社异动表收录 <strong>155 条</strong>（2020-08-26 至 2026-05-19），<strong>连板极值 44 天 26 板</strong>（2023-09-21，驱动＝"招募重整投资人 ＋ 啤酒"）。炒作符号随阶段演变：2020–2022 年"啤酒＋业绩预增／债务和解"→ 2023 年"拟重整＋百威＋啤酒"→ 2024 年"预重整＋申请摘帽"→ 2025 年"无偿受赠现金资产 1.82 亿元＋拟收购拉萨啤酒 50% 股权"→ 2026 年"引入投资人＋拟全资控股拉萨啤酒＋<strong>实控人被留置</strong>"。</p>
+<details class="fold"><summary>炒作波段汇总（时间降序）</summary><div class="fold-body">
+
+<table><thead><tr><th>波段</th><th>最高连板</th><th>股价区间</th><th>驱动关键词</th></tr></thead><tbody><tr><td>2026-04 至 2026-05</td><td>6 天 3 板</td><td>9.28–10.65</td><td>实控人被留置＋引入投资人＋拟全资控股拉萨啤酒＋债权转让</td></tr><tr><td>2025-07 至 2025-09</td><td>8 天 4 板</td><td>8.57–12.56</td><td>拟收购拉萨啤酒 50%＋无偿受赠现金 1.82 亿元</td></tr><tr><td>2024-11</td><td>8 天 4 板</td><td>7.53–8.88</td><td>申请摘帽＋预重整＋啤酒</td></tr><tr><td>2024-02</td><td>5 天 5 板</td><td>5.66–6.88</td><td>预重整＋啤酒</td></tr><tr><td>2023-08 至 2023-09</td><td><strong>44 天 26 板</strong></td><td>4.70–12.88</td><td>招募重整投资人＋拟重整＋<strong>百威</strong></td></tr><tr><td>2022-05</td><td>14 天 7 板</td><td>3.39–5.24</td><td>啤酒</td></tr><tr><td>2021-06 至 2021-07</td><td>27 天 17 板</td><td>4.25–8.12</td><td>啤酒＋业绩预增</td></tr><tr><td>2020-11 至 2020-12</td><td>6 天 3 板</td><td>3.20–4.14</td><td>啤酒</td></tr></tbody></table>
+<p>来源：韭研公社异动整理（Simplified.parquet，155 条）。</p>
+
+</div></details>
+<p>龙虎榜（东财 API）：最新一条为 <strong>2026-05-06</strong>（三日跌幅偏离 12%，净卖出 1,483.00 万元）；此前 2026-04-03 净卖出 1,691.91 万元。<strong>2026 年上榜记录全部为净卖出，且六月以后无任何龙虎榜记录。</strong></p>
+<h3 id="sec11">3.3 筹码与技术</h3>
+<p><strong>结论：股价已在"高位回落后的震荡区"而非低位——现价 8.72 元处于 2026 年内区间 7.33–12.59 的中上部，且四类退市红线虽未踩，但估值（PB 3.62）已是啤酒同业最高。</strong></p>
+<p>股价水位：历史极值区间 3.20 元（2020-11）—12.88 元（2023-09）；2026 年内最高 12.59 元（约 5 月）、最低 7.33 元（约 8 月）、现价 8.72 元。<strong>现价较 5 月高点回落 30.7%，但仍高于 8 月低点 19.0%。</strong></p>
+<p>同业对照（2026-09-30）：</p>
+<table><thead><tr><th>对象</th><th>收盘</th><th>总市值</th><th>PE(TTM)</th><th>PB</th><th>PS</th></tr></thead><tbody><tr><td><strong>＊ST西发</strong></td><td><strong>8.72</strong></td><td><strong>23.00 亿元</strong></td><td>16.41</td><td><strong>3.62</strong></td><td><strong>5.27</strong></td></tr><tr><td>青岛啤酒</td><td>50.02</td><td>682.37 亿元</td><td>14.82</td><td>2.18</td><td>2.16</td></tr><tr><td>燕京啤酒</td><td>11.00</td><td>310.04 亿元</td><td>15.70</td><td>1.90</td><td>1.96</td></tr><tr><td>重庆啤酒</td><td>38.03</td><td>184.05 亿元</td><td>15.84</td><td>11.62</td><td>1.27</td></tr><tr><td>珠江啤酒</td><td>8.39</td><td>185.70 亿元</td><td>19.24</td><td>1.64</td><td>3.08</td></tr><tr><td>惠泉啤酒</td><td>10.42</td><td>26.05 亿元</td><td>29.21</td><td>1.89</td><td>3.96</td></tr><tr><td>兰州黄河</td><td>9.40</td><td>17.46 亿元</td><td>-16.65</td><td>5.14</td><td>3.90</td></tr></tbody></table>
+<p><strong>判读：西发 PB 3.62 居同业第二（仅次于结构特殊的重庆啤酒）、PS 5.27 居同业第一；PE(TTM) 16.41 看似合理，但分母含 1.20 亿元一次性收益，按扣非口径实为 96 倍。"戴帽 ≠ 下跌主因"的校验结论是：本标的不存在"跌得多所以有安全边际"的逻辑。</strong></p>
+<hr>
+<h2 id="chap4">估值与投资结论</h2>
+<h3 id="sec12">（一）估值</h3>
+<p><strong>结论：现价已把"重整成功 ＋ 拉萨啤酒 100% 并表"的乐观情形打完，且没有为转增除权留下空间。</strong></p>
+<ul><li>亏损股不用 PE？<strong>本标的已扭亏，但扣非极薄</strong>——因此以 <strong>PB / PS 为主、PE 为辅</strong>。</li><li><strong>保守情景</strong>：按 2026 年扣非年化 0.39 亿元、同业中枢 PE 17 倍 → 权益价值约 6.63 亿元；叠加净现金后接近账面净资产 6.36 亿元 → 对应除权后股价约 <strong>1.0×PB</strong>，即约 4.0 元。</li><li><strong>中性情景</strong>：假设拉萨啤酒 100% 并表后年化归母约 0.97 亿元、给予区域啤酒 22 倍 → 权益价值约 21.34 亿元＋净现金约 8.00 亿元 → 约 29.34 亿元 → 除权后 6.33 亿股对应约 <strong>4.63 元</strong>。</li><li><strong>乐观情景</strong>：30 万吨基地投产、区外市场放量，2028 年归母 2.00 亿元 × 25 倍 ＋ 净现金 → 约 58.00 亿元 → 除权后约 <strong>9.16 元</strong>。</li><li><strong>对照</strong>：现价 8.72 元对应除权后合理价 5.73 元（除权参考价测算），<strong>落在中性与乐观之间，且已透支乐观情景的一部分</strong>。<strong>估值前提 = 重整计划获法院批准并执行完毕、拉萨啤酒 100% 并表兑现；否则存在退市归零风险。</strong></li></ul>
+<h3 id="sec13">（二）投资结论</h3>
+<p><strong>卖出（回避）</strong></p>
+<table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td><strong>结论</strong></td><td><strong>卖出（回避）</strong></td></tr><tr><td><strong>理由链</strong></td><td>① <strong>除权摊薄是确定的近端负收益</strong>：转增 140%（顶格区间）配"六二二分"结构，除权参考价测算约 5.73 元（较现价 -34%），原股东（除控股股东）持股比例 87.26%→40.0%，除权后须涨约 38.4% 才保本。② <strong>估值已在高位</strong>：PB 3.62 为啤酒同业最高、PS 5.27 同业第一；按扣非口径 PE 约 96 倍。③ <strong>注意力已退潮</strong>：龙虎榜断档于 2026-05-06、韭研异动记录止于 2026-05-19，六月以来零资金痕迹。④ <strong>催化已兑现完毕</strong>：留置解除、重组交割、重整双会议通过三大事件全部落地，仅剩程序性节点，"利好出尽"风险集中在法院批准公告日。⑤ <strong>同型样本指向下跌组</strong>：9 只重整型 *ST 2026 年中位数 -18.6%，而本标的 +1.51% 显著抗跌，补跌空间未释放。</td></tr><tr><td><strong>触发条件（转买入）</strong></td><td>出现以下任一：<strong>除权后股价回落至 5.70 元以下并企稳</strong>（对应除权后 PB≈2.4）；法院裁定批准重整计划后<strong>未出现除权前抢权行情</strong>、且除权后出现缩量止跌；互动易/公告出现<strong>明确的资产注入或产能落地</strong>信号。</td></tr><tr><td><strong>失效条件（结论作废）</strong></td><td>① 法院<strong>驳回</strong>重整申请或重整计划未获批准；② 出现重大违法/立案等一票否决事项；③ 除权后公司披露<strong>实质性的新主业或大额订单</strong>，使中性情景年化归母显著超过 1.50 亿元。</td></tr><tr><td><strong>参考区间</strong></td><td>除权后合理区间 <strong>4.60–6.00 元</strong>（对应中性情景附近）；除权前不建议参与，<strong>除权前参考压力位 9.50–10.50 元</strong>。</td></tr><tr><td><strong>时间窗口</strong></td><td>至<strong>法院裁定批准重整计划并实施转增除权</strong>为止（预计 2026Q4–2027Q1）。</td></tr><tr><td><strong>仓位建议</strong></td><td><strong>不建仓</strong>；已持有者建议在除权前减出，回避除权摊薄。</td></tr><tr><td><strong>最大风险（对"卖出"结论而言）</strong></td><td>法院裁定批准前后，市场借"重整成功 ＋ 摘帽在即"情绪把股价<strong>先炒一段再除权</strong>，使"卖出"结论在短期踏空。</td></tr></tbody></table>
+<hr>
+<h2 id="chap5">附录 A · 待核实 / 需补充清单</h2>
+<table><thead><tr><th>#</th><th>待核实项</th><th>结论</th></tr></thead><tbody><tr><td>1</td><td>2022、2023 年 Wind 年度财务缺失</td><td>已用东方财富 F10 补齐并标【异源】，不与 Wind 混用</td></tr><tr><td>2</td><td>拉萨啤酒单体财务（2024/2025）</td><td>已随重大资产购买报告书披露审计报告（2026-05-28），本报告未逐项展开，<strong>未披露 → 建议补充</strong></td></tr><tr><td>3</td><td>除权参考价最终值</td><td>公司称财务顾问将另行论证，<strong>以公司公告为准</strong></td></tr><tr><td>4</td><td>虚假陈述索赔敞口</td><td>尚<strong>无生效判决</strong>，金额未披露 → 无法量化</td></tr><tr><td>5</td><td>30 万吨基地的账面/评估价值</td><td><strong>未披露</strong>（仅披露面积 111.97 亩与证照情况）</td></tr></tbody></table>
+<h2 id="chap6">附录 B · 关键信源链接</h2>
+<p>见封面「信息来源汇总」折叠区（18 条，含规则、公告、定期报告、互动易、数据源与媒体）。关键公告均已在正文以 Markdown 链接形式给出。</p>
+<h2 id="chap7">附录 C · 逻辑漏洞与反方观点（5 问）</h2>
+<table><thead><tr><th>#</th><th>问题</th><th>自查结论</th></tr></thead><tbody><tr><td>1</td><td>"22.94 亿元投入"是否等于"公司拿到 22.94 亿元"？</td><td><strong>不等于</strong>。其中 10.32 亿元已于预重整期间投入且大部分用于代偿子公司应收款与债权收购，公司实际在重整执行阶段收到的是 <strong>12.62 亿元</strong>。</td></tr><tr><td>2</td><td>"重整计划通过"是否等于"重整成功"？</td><td><strong>不等于</strong>。仍需法院裁定批准；且"执行完毕"才算落地，期间存在债权人提起确认之诉的"漏网之债"风险。</td></tr><tr><td>3</td><td>"摘帽"是否构成买入理由？</td><td><strong>不构成</strong>。撤销条件为"重整计划执行完毕"，属公开日历无信息差；且主板 ST 涨跌幅自 2026-07-06 起已为 10%，摘帽无制度红利。</td></tr><tr><td>4</td><td>引用的时间点是否已过期？</td><td>已核：基准日 2026-10-05，最新公告为 2026-09-28，最新财务为 2026 中报，<strong>在有效期内</strong>。</td></tr><tr><td>5</td><td>数据来源是什么级别？</td><td>关键数字均回公告/年报原文核对；2022/2023 年财务为<strong>异源（东财 F10）已标注</strong>；韭研异动为二级整理，股价与连板事实已与 Wind 行情交叉。</td></tr></tbody></table>
+<h2 id="chap8">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-05</td><td>首次生成；数据截至 2026 年半年报与 2026-09-28 公告</td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
