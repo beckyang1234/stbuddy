@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>＊ST步森（002569.SZ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>12 章 · 15 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断</a><a class="sblv3" href="#sec0">1.1 基本信息与股权：王波用"协议受让 14.81% ＋ 司法裁定 500 万股"两条路拿了壳，且已把董事会全部换血</a><a class="sblv3" href="#sec1">1.2 ST 风险诊断：四类退市红线当前一条未踩，真正的风险在 2026 年报这一关</a><a class="sblv3" href="#sec2">1.3 全流程进度看板：卡点是"时间未到"还是"谈不拢"？——本案是两个"卡在外"，都不由公司决定</a><a class="sblv3" href="#sec3">1.4 运作特征：交权是"配合式"，但新主的手法更像"先拿壳、再想事"</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、基本面路径：保壳（营收不足＋净资产薄）</a><a class="sblv3" href="#sec4">2.1 病因：营收不足是主病，净资产薄是并发症</a><a class="sblv3" href="#sec5">2.2 自救动作盘点：能做的都做了，但都不直接补"净资产"和"营收"</a><a class="sblv3" href="#sec6">2.3 2026 年报生死线测算：三档情景，两档不踩线、一档直接归零</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、公司运营情况</a><a class="sblv3" href="#sec7">3.1 业务结构：男装主业没长，"信息化业务"是新故事但占比未披露</a><a class="sblv3" href="#sec8">3.2 子公司与订单</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、炒作逻辑三支柱</a><a class="sblv3" href="#sec9">4.1 炒预期：未来 6—12 个月只有"两个被动等待"，没有"主动催化"</a><a class="sblv3" href="#sec10">4.2 炒历史类似行为：本标的落在"上涨组"一侧，但这恰好是补跌未释放的信号</a><a class="sblv3" href="#sec11">4.3 炒主板映射：主板当下在炒"算力／信创"，步森只有"名字像"，没有业务对应</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">五、情绪分析与筹码博弈</a><a class="sblv3" href="#sec12">5.1 注意力：从"峰值"到"退潮"，2026 年 5 月是分水岭</a><a class="sblv3" href="#sec13">5.2 筹码博弈：筹码在往少数人手里集中，但方向朝下</a><a class="sblv3" href="#sec14">5.3 投资者交流：以公司法定公告替代（F10 互动页本轮无有效载荷）</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">六、估值</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">七、投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">附录 A · 待核实／需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap9">附录 B · 关键信源链接（简版）</a></div><div class="sbgrp"><a class="sblv2" href="#chap10">附录 C · 逻辑漏洞与反方观点（5 问）</a></div><div class="sbgrp"><a class="sblv2" href="#chap11">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">＊ST步森（002569.SZ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：卖出（回避）</strong></p>
+<p>红线分类：<span class="sttag sttag-teal"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002569&announcementId=1225259077&orgId=9900019034&announcementTime=2026-04-29" target="_blank" rel="noopener">撤销申请中,2026-04-29</a></span>·<span class="sttag sttag-blue"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002569&announcementId=1225241844&orgId=9900019034&announcementTime=2026-04-28" target="_blank" rel="noopener">原2024年孰低为负且扣除后营收1.32亿元</a></span>·<span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002569&announcementId=1225241844&orgId=9900019034&announcementTime=2026-04-28" target="_blank" rel="noopener">原9.8.1(七)持续经营能力存疑</a></span>·<span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002569&announcementId=1225447147&orgId=9900019034&announcementTime=2026-07-29" target="_blank" rel="noopener">重大诉讼,3,296.59万元</a></span></p>
+<p>生死定级：<strong>可救 · 但开关不在公司手里</strong>（截至 2026-10-05，四类退市红线<strong>一条未踩</strong>——Andy《退市风险预警-20261005.xlsx》四张表均无 002569；但 2026 年报是"归零开关"）</p>
+<p>自救空间：实控人王波以 <strong>2,500 万元无息借款</strong>（2026-09-16）＋已完成的<strong>陕西步森减资回笼 4,900 万元</strong>托底，但这两笔钱<strong>既不增净资产、也不增营收</strong>；真正的开关是深交所放行撤销 *ST（已搁置 5 个月零 6 天）与法院对那笔 2,125 万元借款的定性，<strong>两者都不在公司手里</strong>。</p>
+<p>主要看点：<strong>实控人王波（2026-06-17 以 14.136 元/股、3.02 亿元受让 14.81%）入主后，近端全部看点压在两件事上——① 深交所能否放行已搁置 5 个多月的撤销 *ST 申请；② 2026-07-29 起诉的那笔 2022 年 2,125 万元借款会不会把 3,056.88 万元的净资产击穿。公司已承诺 36 个月内不注入资产、不借壳。</strong></p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>标的</td><td>浙江步森服饰股份有限公司（＊ST步森，002569.SZ，深主板）</td></tr><tr><td>基准日</td><td>2026-10-05</td></tr><tr><td>行情截止</td><td>2026-09-30 收盘 12.06 元；总市值 17.37 亿元、流通市值 16.89 亿元</td></tr><tr><td>总股本</td><td>1.44 亿股（全流通，无限售股）</td></tr><tr><td>数据来源</td><td>Wind（代理本轮不可达）、巨潮公告、腾讯行情、新浪日 K、东财 F10／龙虎榜、韭研公社异动表、ST 信息库</td></tr><tr><td>数据质量异常</td><td>① Wind 局域网代理 <code>192.168.1.20:8000</code> 整段不可达（未反复重试），财务与行情改用公开源，异源数据已标【异源】；② 巨潮 <code>topSearch</code> 正常（orgId=9900019034、zwjc=＊ST步森），<code>hisAnnouncement</code> 按月分窗可用；③ 同花顺 F10 互动问答页本轮无有效载荷，投资者交流以公司法定公告替代</td></tr><tr><td>版本</td><td>初版 · 2026-10-05</td></tr><tr><td>档位</td><td>速研档</td></tr><tr><td>本文档为投资研究分析，不构成投资建议。</td><td></td></tr></tbody></table>
+<hr>
+<h2 id="chap1">一、诊断</h2>
+<h3 id="sec0">1.1 基本信息与股权：王波用"协议受让 14.81% ＋ 司法裁定 500 万股"两条路拿了壳，且已把董事会全部换血</h3>
+<p><strong>结论：公司已从"宝鸡市财政局一家独大"变成"自然人王波一人控盘"，但这位新主旗下企业全部是空壳，且他承诺 36 个月内不注入资产、不借壳——这意味着"换主人"这件事本身不带来任何资产。</strong></p>
+<p>2026-06-17，宝鸡方维同创（有限合伙）将 21,333,760 股（14.81%）过户给广州延丰数字科技有限公司，每股 <strong>14.136 元</strong>（经宝鸡市财政局批复〔2026-05-27〕）、总价 <strong>3.02 亿元</strong>；公司控股股东由方维同创变更为延丰数字，<strong>实际控制人由宝鸡市财政局变更为王波</strong>。王波此前已直接持有 501.02 万股（3.48%，其中 <strong>500 万股来自法院执行裁定、10,200 股为 2025-11-26 二级市场买入</strong>），合计算来王波方持股 <strong>18.29%</strong>。</p>
+<p><strong>王波是一个"资本运作型"买家，不是产业经营者。</strong> 履历为：北京联创诺信科技副总经理（2008–2011）→ 北京金刚游戏科技副总裁（2012–2015）→ 金汇博林（天津）商业保理总经理（2016–2021）→ <strong>聆达集团股份有限公司副总裁（2023-12–2024-07）</strong>→ 北京中关村科技发展（控股）副总裁（2024-07–2024-12）→ 现任<strong>金宝云峰控股集团有限公司（注册于香港）董事长</strong>。其名下核心企业<strong>均无实体经营</strong>：收购主体延丰数字<strong>成立于 2025-08-18、尚未实际开展经营活动、无下属企业</strong>；其上层<strong>嘉新润注册资本仅 100 万元、除延丰数字外无其他对外投资</strong>；另有海南星泰杰丰贸易（70%）。</p>
+<p>控制权交接在治理层已"做完"：2026-07-26 原董事长、非独立董事、独立董事集体辞职并补选 → 2026-08-11 第七届董事会由 7 名董事组成（<strong>5 名新任、2 名留任</strong>），<strong>王波当选董事长兼总经理</strong> → 2026-09-09 完成工商变更、法定代表人变更为王波。新董事会另有多名成员带<strong>聆达股份</strong>印记（独董林善浪 2023-05–2026-02 任聆达股份独立董事），与王波在聆达的任职期存在重叠。</p>
+<details class="fold"><summary>王艳式六栏目 · ① 前世今生（控制权四次更迭 + 每股价格与资金来源）</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>关键事件</th><th>股权／实控人变化</th><th>背后的逻辑</th></tr></thead><tbody><tr><td>1993—2011</td><td>步森集团创立"步森男装"；2011-04 深交所上市（002569）</td><td>步森集团控股</td><td>传统男装，上市募资扩产</td></tr><tr><td>2015</td><td>首次易主</td><td>控股股东变更为上海睿鸷资产管理中心</td><td>主业增长失速，股东背景转向资管</td></tr><tr><td>2019</td><td>第二次易主</td><td>实控人变更为王春江、王建霞</td><td>期间发生资金占用与违规担保</td></tr><tr><td>2021-02</td><td>第三次易主</td><td>控股股东变更为东方恒正</td><td>—</td></tr><tr><td>2024-03</td><td><strong>原实控人及其他关联方非经营性占用大额资金</strong>（当年 4-30 前全部收回，含利息）</td><td>—</td><td>成为 2024 年度内控审计"带强调事项段"的原因</td></tr><tr><td>2024-09-30</td><td>向<strong>陕西中匠</strong>借款 299 万元（无息，后补 3.1%）</td><td>—</td><td>陕西中匠为参股公司陕西步森持股 65% 的股东，构成关联方</td></tr><tr><td>2024-11-08／11-29</td><td>向<strong>先华房地产</strong>（原董事艾绍远实际控制）借款 250 万元＋200 万元</td><td>—</td><td>关联方资金支持，利率 6.9%／5%</td></tr><tr><td>2025-04-28</td><td><strong>被实施退市风险警示（\*ST）＋继续实施其他风险警示（ST）</strong></td><td>—</td><td>2024 年报触及 9.3.1(一)＋9.8.1(七)</td></tr><tr><td>2025-08-04</td><td>向宝鸡方维同创借款 <strong>2,000 万元</strong>（年息 5%）</td><td>控股股东已为宝鸡方维同创（实控人宝鸡市财政局）</td><td>国资入主后的流动性支持</td></tr><tr><td>2025-12-15</td><td>申请展期至 2026-01-31，并谈成"<strong>2025-12-31 前还本息则利率降至 1%</strong>"</td><td>—</td><td>公司随后提前还款，省下利息</td></tr><tr><td>2025-12-31</td><td><strong>提前偿还</strong>方维同创 2,000 万元本息</td><td>—</td><td>降低财务成本，为控制权转让清理资产负债</td></tr><tr><td>2026-01-22</td><td>先华房地产 450 万元、陕西中匠 299 万元借款<strong>展期至 2026-09-30、利率降至 2.1%、豁免 2024—2025 年全部利息</strong></td><td>—</td><td>关联方让利，改善当期损益</td></tr><tr><td>2026-03-20</td><td>方维同创与延丰数字签署《股份转让协议》，转让 14.81%</td><td>控制权拟变更</td><td>—</td></tr><tr><td>2026-03-30</td><td>完成对参股公司<strong>陕西步森服饰智造有限公司 4,900 万元定向减资</strong>，持股比例降至 13.91%</td><td>—</td><td>回笼现金、瘦身</td></tr><tr><td>2026-06-17</td><td><strong>过户完成，实控人变更为王波</strong></td><td>宝鸡市财政局 → 王波</td><td>每股 14.136 元、总价 3.02 亿元</td></tr><tr><td>2026-07-26</td><td>原董事长、非独立董事、独立董事辞职并补选</td><td>—</td><td>交权（配合式，未见对抗）</td></tr><tr><td>2026-08-11</td><td>第七届董事会完成改选，<strong>王波任董事长兼总经理</strong></td><td>—</td><td>治理层实质易主</td></tr><tr><td>2026-09-09</td><td>完成工商变更、法定代表人变更为王波</td><td>—</td><td>控制权在工商层面落地</td></tr><tr><td>2026-09-16</td><td>控股股东延丰数字提供 <strong>2,500 万元无息借款</strong>（无固定期限、无担保、额度内循环）</td><td>—</td><td>兜底保壳，但<strong>不增净资产</strong></td></tr></tbody></table>
+<p><strong>关联方合计持股的增减</strong>：出让方宝鸡方维同创 14.81% <strong>清零退出</strong>；新主方合计 18.29%（延丰数字 14.81%＋王波 3.48%）；前十名其余股东均为自然人／私募，<strong>无一家持股超 5%</strong>，且<strong>报告期末全部无质押、无冻结</strong>。</p>
+
+</div></details>
+<details class="fold"><summary>王艳式六栏目 · ② 股东阵容（逐户身份识别＋取得成本＋锁定承诺＋筹码集中度）</summary><div class="fold-body">
+
+<p><strong>2026-06-30 前十大股东</strong>（总股本 1.44 亿股；来源：2026 年半年度报告）</p>
+<table><thead><tr><th>排名</th><th>股东</th><th>性质</th><th>持股比例</th><th>持股数量（万股）</th><th>报告期增减（万股）</th><th>身份识别</th></tr></thead><tbody><tr><td>1</td><td>广州延丰数字科技有限公司</td><td>境内非国有法人</td><td>14.81%</td><td>2,133.38</td><td>+2,133.38</td><td><strong>新控股股东</strong>，成本 14.136 元/股</td></tr><tr><td>2</td><td>孟祥龙</td><td>自然人</td><td>4.19%</td><td>604.00</td><td>0</td><td>二级市场自然人</td></tr><tr><td>3</td><td>张庆北</td><td>自然人</td><td>4.08%</td><td>586.90</td><td>−85.10</td><td>二级市场自然人（减持中）</td></tr><tr><td>4</td><td>张旭</td><td>自然人</td><td>3.57%</td><td>514.00</td><td>0</td><td>二级市场自然人</td></tr><tr><td>5</td><td>王波</td><td>自然人</td><td>3.48%</td><td>501.02</td><td>0</td><td><strong>实控人</strong>；500 万股来自司法裁定、1.02 万股二级买入</td></tr><tr><td>6</td><td>重庆信三威投资咨询中心（有限合伙）－昌盛十一号私募基金</td><td>其他</td><td>2.84%</td><td>408.57</td><td>0</td><td>私募基金通道</td></tr><tr><td>7</td><td>步森集团有限公司</td><td>境内非国有法人</td><td>1.85%</td><td>267.00</td><td>0</td><td><strong>原发起人股东</strong>，仅余 1.85%</td></tr><tr><td>8</td><td>韩伟</td><td>自然人</td><td>1.75%</td><td>252.73</td><td>−247.27</td><td>二级市场自然人（大额减持）</td></tr><tr><td>9</td><td>黄四妹</td><td>自然人</td><td>1.31%</td><td>187.96</td><td>−11.94</td><td>二级市场自然人</td></tr><tr><td>10</td><td>沈志刚</td><td>自然人</td><td>0.89%</td><td>128.53</td><td>+128.53</td><td>新进自然人</td></tr></tbody></table>
+<p><strong>锁定期与承诺</strong>：延丰数字、王波分别承诺所持股份<strong>60 个月内不转让</strong>（同一实控人控制的不同主体之间转让不受限）；嘉新润（持延丰数字 71.19%）承诺 60 个月不转让延丰数字股份；广东磐塔游（11.87%）、复朴长粤（16.94%）承诺 36 个月不转让；<strong>延丰数字与王波另承诺 60 个月内不质押所获上市公司股份</strong>。</p>
+<p><strong>筹码集中度</strong>：报告期末股东总数 <strong>4,295 户</strong>（较上期减少 79 户、−1.81%），户均持股 33,529.69 股。筹码高度集中（前十名合计约 38.77%），<strong>但股价同期在下跌</strong>——按"户数下降不含方向"的读法，这属于"下跌中散户割肉离场"型，<strong>不构成"主力吸筹"的证据</strong>。</p>
+
+</div></details>
+<details class="fold"><summary>王艳式六栏目 · ⑥ 信息来源汇总（四级分级）</summary><div class="fold-body">
+
+<table><thead><tr><th>序号</th><th>来源类型</th><th>来源与标题（日期）</th><th>链接</th></tr></thead><tbody><tr><td>1</td><td>一手·公告</td><td>《关于申请撤销退市风险警示及其他风险警示的公告》（2026-04-29）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002569&amp;announcementId=1225259077&amp;orgId=9900019034&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">原文</a></td></tr><tr><td>2</td><td>一手·公告</td><td>《关于申请撤销退市风险警示及其他风险警示的进展公告》（2026-06-01）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002569&amp;announcementId=1225343362&amp;orgId=9900019034&amp;announcementTime=2026-06-01" target="_blank" rel="noopener">原文</a></td></tr><tr><td>3</td><td>一手·公告</td><td>《关于重大诉讼暨风险提示的公告》（2026-07-29）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002569&amp;announcementId=1225447147&amp;orgId=9900019034&amp;announcementTime=2026-07-29" target="_blank" rel="noopener">原文</a></td></tr><tr><td>4</td><td>一手·公告</td><td>《关于控股股东协议转让公司股份完成过户暨公司控制权发生变更的提示性公告》（2026-06-17）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002569&amp;announcementId=1225376135&amp;orgId=9900019034&amp;announcementTime=2026-06-17" target="_blank" rel="noopener">原文</a></td></tr><tr><td>5</td><td>一手·公告</td><td>《关于控股股东签署〈股份转让协议〉暨控制权拟发生变更的提示性公告》（2026-03-20）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002569&amp;announcementId=1225023344&amp;orgId=9900019034&amp;announcementTime=2026-03-20" target="_blank" rel="noopener">原文</a></td></tr><tr><td>6</td><td>一手·公告</td><td>《浙江步森服饰股份有限公司详式权益变动报告书》（2026-03-26）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002569&amp;announcementId=1225035615&amp;orgId=9900019034&amp;announcementTime=2026-03-26" target="_blank" rel="noopener">原文</a></td></tr><tr><td>7</td><td>一手·公告</td><td>《关于完成董事改选、变更高级管理人员的公告》（2026-08-11）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002569&amp;announcementId=1225469235&amp;orgId=9900019034&amp;announcementTime=2026-08-11" target="_blank" rel="noopener">原文</a></td></tr><tr><td>8</td><td>一手·公告</td><td>《关于控股股东向公司提供无息借款暨关联交易的公告》（2026-09-16）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002569&amp;announcementId=1225568783&amp;orgId=9900019034&amp;announcementTime=2026-09-16" target="_blank" rel="noopener">原文</a></td></tr><tr><td>9</td><td>一手·公告</td><td>《关于2025年年度报告的补充更正公告》（2026-07-22）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002569&amp;announcementId=1225437015&amp;orgId=9900019034&amp;announcementTime=2026-07-22" target="_blank" rel="noopener">原文</a></td></tr><tr><td>10</td><td>一手·公告</td><td>《关于向关联方办理借款展期暨关联交易的公告》（2026-01-23）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002569&amp;announcementId=1224948934&amp;orgId=9900019034&amp;announcementTime=2026-01-23" target="_blank" rel="noopener">原文</a></td></tr><tr><td>11</td><td>一手·公告</td><td>《关于向宝鸡方维同创企业管理合伙企业(有限合伙)提前还款暨关联交易的进展公告》（2026-01-04）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002569&amp;announcementId=1224913984&amp;orgId=9900019034&amp;announcementTime=2026-01-04" target="_blank" rel="noopener">原文</a></td></tr><tr><td>12</td><td>一手·定期报告</td><td>《2025 年年度报告》（2026-04-28）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002569&amp;announcementId=1225241844&amp;orgId=9900019034&amp;announcementTime=2026-04-28" target="_blank" rel="noopener">原文</a></td></tr><tr><td>13</td><td>一手·定期报告</td><td>《2026 年半年度报告》（2026-08-19）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002569&amp;announcementId=1225483745&amp;orgId=9900019034&amp;announcementTime=2026-08-19" target="_blank" rel="noopener">原文</a></td></tr><tr><td>14</td><td>一手·公告</td><td>《2025 年年度业绩预告》（2026-01-26）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002569&amp;announcementId=1224950969&amp;orgId=9900019034&amp;announcementTime=2026-01-26" target="_blank" rel="noopener">原文</a></td></tr><tr><td>15</td><td>一手·公告</td><td>《关于公司、子公司及孙公司部分银行账户被冻结的公告》（2026-09-07）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002569&amp;announcementId=1225552601&amp;orgId=9900019034&amp;announcementTime=2026-09-07" target="_blank" rel="noopener">原文</a></td></tr><tr><td>16</td><td>一手·公告</td><td>《关于完成工商变更并换发营业执照的公告》（2026-09-09）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002569&amp;announcementId=1225556547&amp;orgId=9900019034&amp;announcementTime=2026-09-09" target="_blank" rel="noopener">原文</a></td></tr><tr><td>17</td><td>数据源</td><td>腾讯行情截面（2026-09-30）：价格／市值／PB</td><td><code>qt.gtimg.cn/q=sz002569</code></td></tr><tr><td>18</td><td>数据源</td><td>新浪日 K 序列（1023 个交易日，2022-07-07 起）</td><td><code>CN_MarketData.getKLineData</code></td></tr><tr><td>19</td><td>数据源</td><td>东财龙虎榜（2026 年 6 次上榜）</td><td><code>RPT_DAILYBILLBOARD_DETAILSNEW</code></td></tr><tr><td>20</td><td>数据源</td><td>韭研公社异动整理（全表 139 条，2020-07—2026-09-17）</td><td>本地 parquet</td></tr><tr><td>21</td><td>数据源</td><td>东财 F10 主要财务指标（2016—2026H1，【异源】）</td><td><code>RPT_F10_FINANCE_MAINFINADATA</code></td></tr><tr><td>22</td><td>数据源</td><td>Andy《退市风险预警-20261005.xlsx》（四表均无 002569）</td><td>本地 xlsx</td></tr><tr><td>23</td><td>三级·线索</td><td>雪球 ST 讨论日报（2026-08-07 至 2026-09-28 多期）</td><td>ST 信息库 <code>3.重要消息</code></td></tr><tr><td>24</td><td>三级·线索</td><td>ST 信息库逐公司档案《＊ST步森-002569.SZ.md》</td><td>本地 md</td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec1">1.2 ST 风险诊断：四类退市红线当前一条未踩，真正的风险在 2026 年报这一关</h3>
+<p><strong>结论：公司当前戴的是"待摘"的双帽（\*ST＋ST），2025 年报已符合撤销条件并已于 2026-04-29 提交申请；但 2026 年报大概率重新触及"孰低为负且扣除后营收低于 3 亿元"，届时若 \*ST 尚未撤销，将直接终止上市。</strong></p>
+<p><strong>戴帽的两个依据（2025-04-28 起）</strong>：</p>
+<ul><li><strong>\*ST</strong>：2024 年度财务数据触及深交所《股票上市规则》<strong>9.3.1 条第一款第（一）项</strong>——"最近一个会计年度经审计的利润总额、净利润、扣除非经常性损益后的净利润三者孰低为负值，<strong>且扣除后的营业收入低于 3 亿元</strong>"（2024 年营收 1.32 亿元、归母 −5,139.74 万元）。</li><li><strong>ST（其他风险警示）</strong>：触及 <strong>9.8.1 条第（七）项</strong>——"最近三个会计年度扣除非经常性损益前后净利润孰低者均为负值，且最近一年审计报告显示公司持续经营能力存在不确定性"。</li></ul>
+<p><strong>四类退市红线逐条对照（基准日）</strong>：</p>
+<table><thead><tr><th>类型</th><th>触发条件（速查）</th><th>步森现状</th><th>可救性</th></tr></thead><tbody><tr><td>财务类</td><td>孰低为负 <strong>且</strong> 扣除后营收&lt;3 亿元；或净资产为负；或审计无法表示／否定</td><td><strong>2025 年报已不触发</strong>（营收 1.40 亿元、归母 +867.27 万元、标准无保留）；<strong>2026 年报是开关</strong></td><td>可救，1 年整改期</td></tr><tr><td>交易类</td><td>连续 20 日收盘价&lt;1 元／市值&lt;5 亿元／股东数&lt;2,000 人</td><td>现价 12.06 元、市值 17.37 亿元、股东 4,295 户，<strong>三条均安全</strong></td><td>—</td></tr><tr><td>规范类</td><td>资金占用、内控连续非标、造假不整改等</td><td><strong>2026 半年报明确：无非经营性占用、无违规担保、无处罚及整改事项</strong>；2025 年<strong>内控审计为标准无保留意见</strong></td><td>—</td></tr><tr><td>重大违法类</td><td>欺诈发行、造假达量化线</td><td><strong>无立案、无处罚</strong>（公告检索亦未发现）</td><td>—</td></tr></tbody></table>
+<p><strong>摘帽展望</strong>：适用 <strong>9.3.8 条</strong>（被实施退市风险警示后，次一年度年报不存在 9.3.12 第一至第七项任一情形即可申请）＋<strong>9.8.7 条</strong>（其他风险警示撤销）。公司 2026-04-29 同时提交两项撤销申请，<strong>并已于 2026-06-01 进入"审核和补充材料阶段"</strong>（9.1.12 条，补充材料期间不计入交易所作出决定的期限）。<strong>截至基准日，申请已搁置 5 个月零 6 天，仍未见批准</strong>。</p>
+<details class="fold"><summary>撤销申请的三项支撑证据（公司自查口径）与"程序性风险"</summary><div class="fold-body">
+
+<p>公司自查并提交的三项支撑：① 2026-04-27 北京国府嘉盈会计师事务所（普通合伙）出具<strong>标准无保留意见</strong>的《审计报告》（国府审字（2026）第 01010091 号，签字会计师魏健、于蕾）；② 该所同时出具《<strong>财务报表审计报告非标准审计意见所涉及事项已消除的专项说明</strong>》；③ 出具<strong>标准意见的内部控制审计报告</strong>（国府专审字（2026）第 01010003 号）及《内部控制审计报告非标准审计意见所涉及事项<strong>已消除</strong>的专项说明》。</p>
+<p><strong>但"程序性风险"客观存在且被公司自己写进了公告</strong>：2026-07-29 重大诉讼公告的风险提示第 1 条——"相关诉讼事项尚待进一步核实，<strong>不排除诉讼结果对公司造成不利影响，并对公司申请撤销退市风险警示及其他风险警示事项产生影响</strong>"；同段又写"公司作为被告，认为上述债务纠纷的<strong>具体性质有待核实</strong>"。</p>
+<p><strong>另一项削弱事项</strong>：2025 年年度报告在披露后<strong>被更正两次</strong>——2026-05-16《关于 2025 年年度报告、2025 年年度报告摘要的更正公告》（2026-044），2026-07-22《关于 2025 年年度报告的补充更正公告》（2026-054，将员工专业构成中"技术人员 0 人"更正为 30 人、并修正合并与母公司营收成本分解表填列）。公司称"系工作人员疏忽而填报错误，并非会计差错"，但<strong>信披质量本身就是交易所审核的考察项</strong>。</p>
+
+</div></details>
+<h3 id="sec2">1.3 全流程进度看板：卡点是"时间未到"还是"谈不拢"？——本案是两个"卡在外"，都不由公司决定</h3>
+<p><strong>结论：本案的卡点不是"谈不拢"，而是"两件事都停在第三方手里"——深交所的审核时钟、法院的开庭排期；公司能做的动作（改选董事会、借款、减资）都已经做完。</strong></p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点或条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>2024 年报触红线</td><td>已完成（2025-04-28 戴帽）</td><td>—</td><td>—</td><td>撤销申请公告 2026-038</td></tr><tr><td>2025 年报达标</td><td>已完成（2026-04-27 审计报告）</td><td>—</td><td>—</td><td>撤销申请公告 2026-038</td></tr><tr><td><strong>撤销 \*ST 与 ST 申请</strong></td><td><strong>审核＋补充材料中，已 5 个月零 6 天</strong></td><td><strong>深交所决定；补充材料期间不计入期限</strong></td><td>交易所批复（日期不可测）</td><td>进展公告 2026-046</td></tr><tr><td>控制权变更</td><td>已完成（2026-06-17 过户）</td><td>—</td><td>—</td><td>过户公告 2026-050</td></tr><tr><td>董事会改选与工商变更</td><td>已完成（2026-08-11／09-09）</td><td>—</td><td>—</td><td>董事改选公告 2026-063</td></tr><tr><td><strong>2,125 万元借款诉讼</strong></td><td><strong>已受理、一审未开庭</strong></td><td><strong>法院排期与认定"债务性质"</strong></td><td>开庭（日期未披露）</td><td>诉讼公告 2026-060</td></tr><tr><td>陕西步森减资</td><td>已完成（2026-03-30）</td><td>—</td><td>—</td><td>半年报</td></tr><tr><td>控股股东无息借款</td><td>已批准（2026-09-16）</td><td>已批准的 2,500 万元额度，<strong>实际提用金额未披露</strong></td><td>提用与关联交易累计金额更新</td><td>无息借款公告 2026-070</td></tr><tr><td><strong>2026 年报</strong></td><td>未到</td><td><strong>营收能否 ≥3 亿元／孰低能否为正／净资产能否为正</strong></td><td>2027-04 前披露</td><td>—</td></tr></tbody></table>
+<h3 id="sec3">1.4 运作特征：交权是"配合式"，但新主的手法更像"先拿壳、再想事"</h3>
+<p><strong>结论：原控股股东是配合式退出（先清债、后交权、董事会一次性换血、工商快速落地），而新主的手法呈现"法拍＋协议双路低成本建仓、承诺长期不减持不质押"的特征——他把壳锁死了，但没带资产进来。</strong></p>
+<ul><li><strong>手法</strong>：王波先以<strong>司法裁定取得 500 万股</strong>（占 3.48% 的大头）在二级市场之外建立低成本仓位，再通过<strong>协议受让 14.81%</strong> 取得控制权；收购资金 3.02 亿元，其中自有资金比例<strong>不低于 50%</strong>，剩余拟通过银行并购贷款筹集（截至报告书签署日<strong>尚未签署借款协议</strong>）。</li><li><strong>节奏</strong>：2026-03-12 宝鸡市财政局批复 → 03-15 停牌筹划 → 03-20 签约 → 03-26 披露权益变动报告书 → 05-27 财政局价格批复（14.136 元/股）→ 05-31 补充协议 → 06-09 深交所确认书 → <strong>06-17 过户完成，全程 97 天</strong>；随后 39 天完成董事会改选、84 天完成工商变更——<strong>节奏偏快，属配合式交权</strong>（原系未减持、未放弃表决权、未设对抗性安排）。</li><li><strong>成败关键变量（1 和 0）</strong>：<strong>"撤销 \*ST 能否获批"是 1，"2026 年报能否不踩 9.3.12"是 0</strong>——过不了任何一关，股价逻辑归零。</li><li><strong>核心矛盾一句话</strong>：<strong>新主花了 3.02 亿元买壳、并把股份锁死 60 个月，却承诺 36 个月内不注入资产、不借壳——他买的是"时间"和"平台"，但市场现在就要求兑现"资产"。</strong></li></ul>
+<details class="fold"><summary>王艳式六栏目 · ⑤ 成本锚点（逐参与方成本 vs 现价，并区分两类定价逻辑）</summary><div class="fold-body">
+
+<table><thead><tr><th>参与方</th><th>成本（元/股）</th><th>取得方式</th><th>说明</th></tr></thead><tbody><tr><td>广州延丰数字（控股股东）</td><td><strong>14.136</strong></td><td>协议受让 21,333,760 股，总价 3.02 亿元</td><td>经宝鸡市财政局批复（2026-05-27）；<strong>现价 12.06 元＝其成本的 85.3%（浮亏 14.7%）</strong></td></tr><tr><td>王波直接持有</td><td>未披露</td><td><strong>500 万股为法院执行裁定</strong>；10,200 股为 2025-11-26 二级市场买入</td><td>取得对价公告未披露</td></tr><tr><td>延丰数字股东（嘉新润 71.19%／广东磐塔游 11.87%／复朴长粤 16.94%）</td><td>—</td><td>增资实缴至 1.492 亿元</td><td>复朴长粤为股权投资基金，<strong>存续期与退出要求未知</strong></td></tr></tbody></table>
+<p><strong>两类定价逻辑必须分开</strong>：本案成本锚属<strong>"协议受让 ＝ 有交易所合规审核、无稀释的市场底"</strong>（不同于重整战投价那种"有稀释的重整底"）——因为它不伴随转增摊薄，14.136 元是<strong>真实的、不含权稀释的二级市场等价成本</strong>。</p>
+<p><strong>反向读数</strong>：现价低于实控人成本 14.7%，读作"安全垫"是<strong>弱推理</strong>——因为：① 王波的成本结构是"500 万股法拍（低成本，价格未披露）＋14.81% 协议（14.136 元）"的加权，<strong>其综合成本大概率低于 14.136 元</strong>；② 他的股份<strong>锁定 60 个月</strong>，短期没有"被套自救"的减持压力，也就没有拉抬股价的紧迫性；③ 3.02 亿元中有一半拟用<strong>银行并购贷款</strong>，<strong>利息压力指向"尽快理顺基本面"而非"股价短期涨多高"</strong>。</p>
+
+</div></details>
+<details class="fold"><summary>王艳式六栏目 · ④ 资产质量与估值（星级表）</summary><div class="fold-body">
+
+<table><thead><tr><th>星级维度</th><th>大白话说明</th><th>评级</th></tr></thead><tbody><tr><td>市值与估值</td><td>市值 17.37 亿元／归母净资产 3,056.88 万元＝<strong>PB 56.81 倍</strong>；TTM 归母 581.72 万元＝PE 约 298.6 倍</td><td>★</td></tr><tr><td>法律合规性</td><td>无立案、无处罚、无违规担保、无资金占用；但<strong>存在一笔"性质待核实"的 2,125 万元借款诉讼</strong>，且年报被两次更正</td><td>★★</td></tr><tr><td>债务与流动性</td><td>负债合计 1.26 亿元、资产负债率 <strong>81.3%</strong>；货币资金 2,553.49 万元（半年内减少 5,047.23 万元）；银行账户被冻结合计 269 万元</td><td>★★</td></tr><tr><td>主业质地</td><td>男装主业收入 1.40 亿元量级、毛利率 31.33%；2026H1 营收 +55.62% 靠信息化业务新增，但<strong>净利仍亏 1,331.57 万元</strong></td><td>★★</td></tr><tr><td>控制权与运作</td><td>新主明确、交权已完成、股份锁定 60 个月不减持不质押；<strong>但新主无产业资产，且承诺 36 个月不注入</strong></td><td>★★</td></tr><tr><td><strong>综合</strong></td><td><strong>"壳"是干净的（无占用、无违规担保、无处罚），但"壳"里也没有东西——定价完全建立在"将来会不会装"上</strong></td><td><strong>★★</strong></td></tr></tbody></table>
+<p><strong>哪一项高分不能抵消哪一项低分</strong>：① "无立案、无占用"的高分<strong>不能抵消</strong>"2,125 万元借款性质待核实"——后者可能同时冲击财报真实性与摘帽审核；② "新主锁定 60 个月"的高分<strong>不能抵消</strong>"承诺 36 个月不注入资产"——锁定长恰恰意味着"不急"。</p>
+
+</div></details>
+<details class="fold"><summary>关键信号：公司、子公司、孙公司共用一套"基本户冻结"信息，且同一笔冻结在 3 个月内先解后冻</summary><div class="fold-body">
+
+<p><strong>现象</strong>：2026-08-27 公告"部分银行账户<strong>解除冻结</strong>（约 120 万元）"；12 天后 2026-09-07 公告"公司、子公司及孙公司部分银行账户<strong>被冻结</strong>（合计 188 万元，涉及建行、招行、中信的基本户）"，累计冻结额度 269 万元、占 2025 年经审计货币资金 3.53%。原因是<strong>买卖合同纠纷</strong>。</p>
+<p><strong>反向读数（必须写）</strong>：① <strong>证明什么</strong>——公司账户层面的债务纠纷仍在滚动发生，"解除冻结"是逐笔对个别案件的回应，<strong>不是债务压力的整体解除</strong>；② <strong>不证明什么</strong>——269 万元相对 2,553.49 万元货币资金、1.26 亿元负债<strong>比例很小，不构成流动性危机</strong>，也不能据此推断公司即将违约；③ <strong>是否天然形成</strong>——基本户被冻结属<strong>债权人诉讼保全的自然结果</strong>（买卖合同纠纷→保全→冻结基本户），<strong>不是刻意构造</strong>，无需过度解读；④ 但要注意<strong>同一时段账上货币资金只剩 2,553.49 万元</strong>，基本户被冻结会<strong>直接卡住日常收付</strong>。</p>
+
+</div></details>
+<hr>
+<h2 id="chap2">二、基本面路径：保壳（营收不足＋净资产薄）</h2>
+<h3 id="sec4">2.1 病因：营收不足是主病，净资产薄是并发症</h3>
+<p><strong>结论：公司病根是"营收长期停在 1.4 亿元量级、离 3 亿元红线差一倍以上"，2025 年靠应收账款坏账转回 981.93 万元"压线扭亏"，属</strong>一次性<strong>；净资产只剩 3,056.88 万元，被任何一笔千万元级的损失击穿。</strong></p>
+<p><strong>2025 年扭亏的"含金量"必须拆开看</strong>：全年归母 +867.27 万元、扣非 +851.23 万元，看似稳健；但利润表显示 <strong>2025 年信用减值损失为 +981.93 万元（即坏账准备净转回）</strong>——若剔除这一项，营业利润将由 +912.00 万元变为 <strong>−69.95 万元</strong>。公司业绩预告对扭亏的解释也是"加大应收账款催收力度、成立专项催收小组"——<strong>与坏账转回相互印证</strong>。</p>
+<p><strong>而 2026H1 已回到"计提"状态</strong>：信用减值损失 −397.33 万元、资产减值损失 −164.99 万元，半年归母 −1,331.57 万元。<strong>说明"催收转回"这条路径不可持续。</strong></p>
+<details class="fold"><summary>五年＋最新一期核心财务表（合并口径；2021—2024 为【异源】东财 F10，2025—2026H1 为年报／半年报）</summary><div class="fold-body">
+
+<table><thead><tr><th>报告期</th><th>营业收入（亿元）</th><th>归母净利（亿元）</th><th>扣非净利（亿元）</th><th>毛利率</th><th>归母净资产（亿元）</th><th>资产负债率</th></tr></thead><tbody><tr><td>2021</td><td>2.59</td><td>+0.40</td><td>+0.03</td><td>50.63%</td><td>未取</td><td>—</td></tr><tr><td>2022</td><td>1.55</td><td>−0.78</td><td>−0.69</td><td>44.03%</td><td>未取</td><td>—</td></tr><tr><td>2023</td><td>1.44</td><td>−0.67</td><td>−0.51</td><td>31.01%</td><td>0.92</td><td>—</td></tr><tr><td>2024</td><td>1.32</td><td>−0.51</td><td>−0.51</td><td>27.23%</td><td>0.34</td><td>—</td></tr><tr><td>2025</td><td>1.40</td><td><strong>+0.09</strong></td><td><strong>+0.09</strong></td><td>31.33%</td><td>0.44</td><td>82.3%</td></tr><tr><td>2026H1</td><td>0.81</td><td>−0.13</td><td>−0.12</td><td>19.56%</td><td><strong>0.31</strong></td><td><strong>81.3%</strong></td></tr></tbody></table>
+<p><strong>勾稽自检</strong>：2026-06-30 负债合计 12,630.93 万元＋所有者权益合计 2,914.31 万元 ＝ 资产总计 15,545.23 万元 ✓；归母净资产 ＝ 所有者权益合计 − 少数股东权益（−142.58 万元）＝ <strong>3,056.88 万元</strong> ✓。</p>
+<p><strong>2025 年分季度（关键：全年利润集中在 Q4）</strong></p>
+<table><thead><tr><th>季度</th><th>营业收入（万元）</th><th>归母净利（万元）</th><th>扣非净利（万元）</th><th>经营现金流（万元）</th></tr></thead><tbody><tr><td>Q1</td><td>3,234.53</td><td>−416.60</td><td>−375.53</td><td>+99.24</td></tr><tr><td>Q2</td><td>1,960.61</td><td>−629.42</td><td>−631.74</td><td>−202.58</td></tr><tr><td>Q3</td><td>3,703.83</td><td>+479.54</td><td>+544.45</td><td>−2,168.73</td></tr><tr><td>Q4</td><td>5,106.78</td><td><strong>+1,433.75</strong></td><td><strong>+1,314.05</strong></td><td>+2,735.68</td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec5">2.2 自救动作盘点：能做的都做了，但都不直接补"净资产"和"营收"</h3>
+<p><strong>结论：公司过去 12 个月完成了一整套"瘦身＋输血"动作，但拆开看，</strong>没有一项直接增加扣除后营业收入<strong>，只有"减资回笼现金"和"控股股东无息借款"两项改善了流动性，而</strong>无息借款是负债不是权益，不增净资产<strong>。</strong></p>
+<table><thead><tr><th>自救动作</th><th>实施时点</th><th>对"净资产"的影响</th><th>对"营收"的影响</th></tr></thead><tbody><tr><td>提前偿还方维同创 2,000 万元借款（利率由 5% 降至 1%）</td><td>2025-12-31</td><td>减少利息支出（很小）</td><td>无</td></tr><tr><td>关联方借款展期＋豁免 2024—2025 年全部利息（450 万＋299 万）</td><td>2026-01-22</td><td>减少利息支出</td><td>无</td></tr><tr><td><strong>陕西步森定向减资 4,900 万元</strong>（持股降至 13.91%）</td><td>2026-03-30</td><td>长期股权投资由 6,899.82 万元降至 1,978.44 万元，<strong>回笼现金</strong></td><td><strong>无</strong>（参股公司，本不并表）</td></tr><tr><td><strong>控股股东提供 2,500 万元无息借款</strong></td><td>2026-09-16</td><td><strong>不增净资产</strong>（增负债，仅省利息）</td><td>无</td></tr><tr><td>重启"信息化业务"作为第二增长曲线</td><td>2025 年起</td><td>—</td><td>2026H1 营收 +55.62% 的主要来源（<strong>占比未单独披露</strong>）</td></tr></tbody></table>
+<p><strong>"经营性"自救的成色</strong>：2026H1 营收同比 +55.62%，但<strong>营业成本同比 +79.26%</strong>（6,503.25 万元 vs 3,627.85 万元），毛利率由 30.17% 降至 <strong>19.56%</strong>——<strong>增收不增利，且毛利被摊薄</strong>。这是"保壳型放量"的典型特征：用低毛利业务把营收做上去，但离 3 亿元仍差一倍以上。</p>
+<h3 id="sec6">2.3 2026 年报生死线测算：三档情景，两档不踩线、一档直接归零</h3>
+<p><strong>结论：营收这一关，三档情景都过不了 3 亿元；因此</strong>2026 年报是否终止上市，完全取决于"孰低者能否为正"与"净资产能否为正"——而这两项都寄望于 2025 年那种坏账转回再现，以及诉讼不败。**</p>
+<p><strong>营收测算（基准：2025 年 H1 占全年 37.09%）</strong>：</p>
+<ul><li>H1 实际 8,084.69 万元 → 按同季节性外推，全年约 <strong>2.18 亿元</strong>；</li><li>即使 H2 同比再增 55.62%（＝8,810.14 万元 × 1.5562 ＝ 1.37 亿元），全年约 <strong>2.18 亿元</strong>；</li><li><strong>要跨过 3 亿元，H2 需做到 2.19 亿元——是 2025 年 H2 实际值（8,810.14 万元）的 2.49 倍。以现有主业与新增信息化业务的量级，概率极低。</strong></li></ul>
+<p><strong>净资产三档情景</strong>：</p>
+<table><thead><tr><th>情景</th><th>关键假设</th><th>全年归母净利</th><th>2026 年末归母净资产</th><th>是否触及 9.3.12</th></tr></thead><tbody><tr><td>乐观</td><td>H2 完整复制 2025H2（含坏账转回路径打通，归母 +1,913.29 万元）</td><td>约 +0.06 亿元</td><td>约 0.36 亿元</td><td>否</td></tr><tr><td>中性</td><td>H2 小幅减亏（假设亏 500 万元），坏账转回未再现</td><td>约 −0.18 亿元</td><td>约 0.12 亿元</td><td>否（但极薄）</td></tr><tr><td>悲观</td><td>H2 亏损 500 万元 <strong>且</strong> 2,125 万元借款诉讼败诉并计提（本金＋利息 3,296.59 万元）</td><td>约 −0.51 亿元</td><td><strong>约 −0.21 亿元（转负）</strong></td><td><strong>是，触及 9.3.12 第（二）项</strong></td></tr></tbody></table>
+<p><strong>这一关的"零容错"性质</strong>：按 9.3.8（撤销 \*ST）与 9.3.12（终止上市）互为镜像的条款结构，<strong>不存在"部分达标"</strong>。公司目前仍处 \*ST 状态，<strong>只要 2026 年报落入上述任一条终止情形，即为终止上市、本金归零</strong>；若撤销申请先获批复，则 2026 年报再触发的结果是"重新戴帽 \*ST"，而非退市——<strong>这就是"撤销获批"为什么是本案的一号变量。</strong></p>
+<hr>
+<h2 id="chap3">三、公司运营情况</h2>
+<h3 id="sec7">3.1 业务结构：男装主业没长，"信息化业务"是新故事但占比未披露</h3>
+<p><strong>结论：公司收入仍由男装（衬衫、裤装、西服、茄克衫等）主导，2025 年主营收入 1.3952 亿元；2026H1 报出 +55.62% 的增长，公司归因于"重拾信息化业务"，但</strong>半年报未单独披露信息化业务的收入与占比<strong>，无法验证其体量与可持续性。</strong></p>
+<p>按 2025 年报分销售渠道的收入构成：卖断式经销商销售 4,155.41 万元、团体定制销售 5,018.77 万元、线下店铺零售 2,050.15 万元、出口外销 2,019.50 万元、线下联营寄售 175.49 万元、线上电商平台零售 533.06 万元（合计 1.3952 亿元）。</p>
+<p><strong>四类审美标签</strong>：</p>
+<ul><li><strong>服装业务 ＝ 业务反转（弱）</strong>：团购定制与出口是主力，毛利率 31.33%，但收入五年横盘在 1.3—1.6 亿元，<strong>无成长性</strong>；</li><li><strong>信息化业务 ＝ 题材炒作</strong>：公司口径为"重拾信息化业务""创造第二增长曲线"，与控股股东名称"延丰<strong>数字科技</strong>"呼应，<strong>但无收入明细、无客户名单、无在手订单披露</strong>；</li><li>无"长期价值"与"景气成长"标签。</li></ul>
+<details class="fold"><summary>母公司 vs 合并口径的差异（判断"利润从哪来"）</summary><div class="fold-body">
+
+<p>2025 年母公司营业收入 1.3899 亿元、母公司净利润 <strong>+5,475.52 万元</strong>，而同年度<strong>合并</strong>归母净利仅 +867.27 万元。差异主要来自子公司（如杭州步森服饰、杭州步信云科技、杭州创展步森服饰）的亏损，以及少数股东损益 −56.30 万元。<strong>含义：母公司（服装主业的经营主体）是赚钱的，合并层面被子公司拖累</strong>——这解释了公司为何在 2026-03 对参股公司陕西步森做减资、并持续处置/收缩低效主体。</p>
+<p><strong>参股公司陕西步森服饰智造有限公司</strong>：2026-03-30 完成定向减资 4,900 万元后，公司持股比例降至 <strong>13.91%</strong>；其 65% 股东为关联方陕西中匠文化产业发展有限公司（公司曾于 2024-09-30 向其借款 299 万元）。<strong>该标的的财务数据未在半年报单独披露。</strong></p>
+
+</div></details>
+<h3 id="sec8">3.2 子公司与订单</h3>
+<p><strong>结论：公司未披露在手订单；子公司层面 2026H1 出现"孙公司也进入冻结/解冻名单"的情况，说明债务纠纷已穿透到下层主体。</strong></p>
+<p>半年报未披露在手订单金额。子公司涉及杭州步森服饰有限公司、杭州步信云科技有限公司、杭州创展步森服饰有限公司等，2026 年的账户冻结公告已覆盖"公司、子公司及孙公司"三个层级。</p>
+<hr>
+<h2 id="chap4">四、炒作逻辑三支柱</h2>
+<h3 id="sec9">4.1 炒预期：未来 6—12 个月只有"两个被动等待"，没有"主动催化"</h3>
+<p><strong>结论：这可能是全市场最"被动"的一只 ST——未来 12 个月的所有看点都不是公司能推动的：交易所批复、法院开庭、年报审计，全是外部时钟。</strong></p>
+<table><thead><tr><th>时点</th><th>催化内容</th><th>性质</th></tr></thead><tbody><tr><td>不可测（已 5 个月零 6 天）</td><td><strong>深交所批复撤销 \*ST 与 ST 申请</strong></td><td>硬节点（但日期不可测）；获批＝摘帽，被否／久拖＝负面</td></tr><tr><td>未披露（已受理、一审未开庭）</td><td><strong>2,125 万元借款诉讼开庭与一审判决</strong></td><td>硬节点；败诉并计提＝净资产可能转负</td></tr><tr><td>2026-10 下旬</td><td>2026 年三季报</td><td>硬节点；验证 H2 营收与毛利率能否改善</td></tr><tr><td>2027-04 前</td><td><strong>2026 年年报</strong></td><td><strong>归零开关</strong></td></tr><tr><td>承诺约束期</td><td>36 个月内不注入资产、不借壳；60 个月内不减持、不质押</td><td>约束性（压制上行想象）</td></tr></tbody></table>
+<p><strong>注意：本案</strong>没有"预期差"可交易<strong>——"撤销申请已提交、控制权已变更、董事会已改选"都已是公开事实，</strong>不存在信息不对称**；剩下的全是"等待结果"。</p>
+<h3 id="sec10">4.2 炒历史类似行为：本标的落在"上涨组"一侧，但这恰好是补跌未释放的信号</h3>
+<p><strong>结论：按基准日全部特征（深主板 ST、财务类摘帽在审、控制权已变更、小市值、新主无产业）去当下市场找最像的样本，步森 2026 年 YTD </strong>−3.13%<strong>，而同期"财务类"同型样本组 </strong>68 只中位数 −30.26%、仅 13 只上涨<strong>——</strong>步森排在前列，属"相对抗跌"，而非"低位"**。</p>
+<p><strong>步森画像</strong>：深主板｜\*ST＋ST 双帽（财务类①已消除、申请撤销中）｜市值 17.37 亿元｜新实控人 2026-06 入主、无产业资产｜历史炒作符号＝"控制权变更＋业绩扭亏＋提前还款＋减资＋信息服务"｜历史连板极值"18 天 9 板"（2025-05）、"15 天 8 板"（2026-01）、"10 天 5 板"（2026-05）｜筹码高度集中（4,295 户）。</p>
+<p><strong>最像的样本与后续走势</strong>：</p>
+<table><thead><tr><th>样本</th><th>像在哪一句话</th><th>2026 年 YTD</th></tr></thead><tbody><tr><td>＊ST天喻（300205）</td><td>"财务类已消除、申请撤销 \*ST 后长期未获批"——与步森处境最像</td><td>需按同板块对照（见折叠区）</td></tr><tr><td>＊ST美芝（002856）</td><td>"控制权变更＋重整方案落地"</td><td><strong>+71.21%</strong></td></tr><tr><td>＊ST英飞（002528）</td><td>"预重整＋重整投资协议"</td><td><strong>+130.22%</strong></td></tr><tr><td>＊ST赛为（300044）</td><td>"控制权变更＋资产运作预期"</td><td><strong>+47.87%</strong></td></tr><tr><td>＊ST泉为（300716）</td><td>"重整＋新主入场"</td><td><strong>+42.44%</strong></td></tr><tr><td>＊ST中迪（000609）</td><td>"半导体入主＋关联方赠与资产"</td><td>+5.28%</td></tr><tr><td>＊ST尔雅（600107）</td><td>"控股股东股权被司法冻结、无人接壳"</td><td><strong>−19.02%</strong></td></tr><tr><td>＊ST实达（600734）</td><td>"审计意见为归零开关＋立案"</td><td><strong>−59.57%</strong></td></tr><tr><td>＊ST岭南（002717）</td><td>"多重风险警示叠加、面值退风险"</td><td><strong>−61.73%</strong></td></tr></tbody></table>
+<p><strong>判断</strong>：上涨组（英飞、美芝、赛为、泉为）的共同点是<strong>"有物"——有可命名的标的资产或重整出资方</strong>；下跌组的共同点是<strong>"只有人名或一份方案"</strong>。步森目前<strong>既没有可命名的标的资产（承诺 36 个月不注入），也没有重整出资方</strong>，唯一"有物"的是那笔 2,125 万元的<strong>诉讼与 3,056.88 万元的净资产</strong>——<strong>这是负向的"物"</strong>。因此<strong>本标的落在"相对抗跌但有补跌空间"的一侧</strong>。</p>
+<details class="fold"><summary>同型样本全表（财务类 78 家，2026 年 YTD，含未戴帽生物医药 -U）</summary><div class="fold-body">
+
+<p><strong>口径</strong>：Andy《退市风险预警-20261005.xlsx》「财务类」工作表全部证券代码 → 腾讯批量行情取 <code>GP-A</code> 后第一个数（复权 YTD）。<strong>样本 78 家、有行情 78 家</strong>；中位数 <strong>−30.26%</strong>、均值 <strong>−24.53%</strong>、<strong>上涨 13 家</strong>。<strong>步森 −3.13%，在 78 家中排第 14 位（剔 -U 样本后约第 12 位）。</strong></p>
+<table><thead><tr><th>证券代码</th><th>简称</th><th>YTD</th><th></th><th>证券代码</th><th>简称</th><th>YTD</th></tr></thead><tbody><tr><td>002528</td><td>＊ST英飞</td><td>+130.22%</td><td></td><td>002694</td><td>＊ST顾地</td><td>−26.60%</td></tr><tr><td>002856</td><td>＊ST美芝</td><td>+71.21%</td><td></td><td>002323</td><td>＊ST雅博</td><td>−27.44%</td></tr><tr><td>002667</td><td>＊ST威领</td><td>+69.52%</td><td></td><td>603378</td><td>＊ST亚士</td><td>−27.90%</td></tr><tr><td>300044</td><td>＊ST赛为</td><td>+47.87%</td><td></td><td>002207</td><td>＊ST准油</td><td>−27.97%</td></tr><tr><td>300716</td><td>＊ST泉为</td><td>+42.44%</td><td></td><td>600423</td><td>＊ST柳化</td><td>−28.23%</td></tr><tr><td>000056</td><td>＊ST皇庭</td><td>+34.33%</td><td></td><td>300338</td><td>＊ST开元</td><td>−30.53%</td></tr><tr><td>603557</td><td>＊ST起步</td><td>+20.55%</td><td></td><td>002634</td><td>＊ST棒杰</td><td>−30.62%</td></tr><tr><td>688622</td><td>＊ST禾信</td><td>+18.26%</td><td></td><td>002581</td><td>＊ST未名</td><td>−32.00%</td></tr><tr><td>600265</td><td>＊ST景谷</td><td>+14.24%</td><td></td><td>300147</td><td>＊ST香雪</td><td>−35.16%</td></tr><tr><td>002620</td><td>＊ST瑞和</td><td>+5.95%</td><td></td><td>600476</td><td>＊ST湘邮</td><td>−38.04%</td></tr><tr><td>000609</td><td>＊ST中迪</td><td>+5.28%</td><td></td><td>600370</td><td>＊ST三房</td><td>−39.38%</td></tr><tr><td><strong>002569</strong></td><td><strong>＊ST步森</strong></td><td><strong>−3.13%</strong></td><td></td><td>600119</td><td>＊ST长投</td><td>−39.62%</td></tr><tr><td>300295</td><td>＊ST三六五</td><td>−4.39%</td><td></td><td>000610</td><td>＊ST西旅</td><td>−39.81%</td></tr><tr><td>603021</td><td>＊ST华鹏</td><td>−4.50%</td><td></td><td>600340</td><td>＊ST华幸</td><td>−40.64%</td></tr><tr><td>300198</td><td>＊ST纳川</td><td>−5.08%</td><td></td><td>002630</td><td>＊ST华西</td><td>−42.80%</td></tr><tr><td>000909</td><td>＊ST数源</td><td>−5.75%</td><td></td><td>002175</td><td>＊ST东智</td><td>−44.02%</td></tr><tr><td>603429</td><td>＊ST集友</td><td>−8.27%</td><td></td><td>002547</td><td>＊ST春兴</td><td>−44.75%</td></tr><tr><td>600084</td><td>＊ST尼雅</td><td>−15.24%</td><td></td><td>002227</td><td>＊ST特迅</td><td>−46.59%</td></tr><tr><td>300091</td><td>＊ST金灵</td><td>−15.60%</td><td></td><td>002501</td><td>＊ST利源</td><td>−47.79%</td></tr><tr><td>002883</td><td>＊ST中设</td><td>−16.45%</td><td></td><td>002977</td><td>＊ST天箭</td><td>−47.81%</td></tr><tr><td>600107</td><td>＊ST尔雅</td><td>−19.02%</td><td></td><td>600537</td><td>＊ST亿晶</td><td>−49.28%</td></tr><tr><td>002932</td><td>＊ST明德</td><td>−20.07%</td><td></td><td>600187</td><td>＊ST国中</td><td>−50.20%</td></tr><tr><td>000838</td><td>＊ST发展</td><td>−20.71%</td><td></td><td>000016</td><td>＊ST康佳A</td><td>−50.50%</td></tr><tr><td>600889</td><td>＊ST京化</td><td>−21.18%</td><td></td><td>002542</td><td>＊ST中岩</td><td>−50.90%</td></tr><tr><td>600730</td><td>＊ST高科</td><td>−21.85%</td><td></td><td>603189</td><td>＊ST网达</td><td>−51.03%</td></tr><tr><td>000826</td><td>＊ST启环</td><td>−22.52%</td><td></td><td>300212</td><td>＊ST易录</td><td>−54.50%</td></tr><tr><td>600543</td><td>＊ST莫高</td><td>−23.35%</td><td></td><td>600745</td><td>＊ST闻泰</td><td>−55.93%</td></tr><tr><td>600581</td><td>＊ST八钢</td><td>−26.05%</td><td></td><td>600734</td><td>＊ST实达</td><td>−59.57%</td></tr><tr><td>000911</td><td>＊ST广糖</td><td>−26.13%</td><td></td><td>600053</td><td>＊ST九鼎</td><td>−60.90%</td></tr><tr><td>—</td><td>—</td><td>—</td><td></td><td>002717</td><td>＊ST岭南</td><td>−61.73%</td></tr><tr><td>—</td><td>—</td><td>—</td><td></td><td>688121</td><td>＊ST卓然</td><td>−90.66%</td></tr></tbody></table>
+<p>（另含 6 只未戴帽生物医药 -U 样本：泰诺麦博-U +112.10%、首药控股-U +8.52%、益方生物-U −29.99%、海创药业-U −32.19%、禾元生物-U −42.35% 等，已计入统计、未全列。）</p>
+
+</div></details>
+<h3 id="sec11">4.3 炒主板映射：主板当下在炒"算力／信创"，步森只有"名字像"，没有业务对应</h3>
+<p><strong>结论：控股股东叫"延丰数字科技"、经营范围是"软件和信息技术服务业"，公司也称"重拾信息化业务"，但</strong>半年报未披露信息化业务的收入、客户与订单<strong>——</strong>属【纯概念】映射，不给买入依据。**</p>
+<ul><li><strong>主板正在炒的主线</strong>：算力硬件（服务器、光模块）、信创（数据库／操作系统）、AI 应用。2026 年主板同主线个股多数大涨，<strong>而步森作为"名字像"的 ST 映射标的，YTD 仅 −3.13%</strong>——这是"<strong>没有注意力，再好的赛道也涨不动</strong>"的又一实证。</li><li><strong>ST 板块可映射标的</strong>：与"信息服务／算力"有<strong>实际业务</strong>对应的 ST 标的（如 ＊ST天玑的 PBData 数据库一体机、ST达华的量子技术概念等）属<strong>真实业务映射</strong>；<strong>步森的信息化业务无明细披露，关联度评级：低（【纯概念】）。</strong></li><li><strong>无法落到"可买清单与价位"</strong>：因为公司自己的承诺（36 个月内不注入资产）已经排除了"装算力资产"这条路径。</li></ul>
+<hr>
+<h2 id="chap5">五、情绪分析与筹码博弈</h2>
+<h3 id="sec12">5.1 注意力：从"峰值"到"退潮"，2026 年 5 月是分水岭</h3>
+<p><strong>结论：注意力在 2026 年 5 月 13 日见顶（10 天 5 板、股价 17.26 元），此后单边退潮至 9 月 15 日低点 9.75 元；9 月下旬出现反弹（至 9-30 收 12.06 元），但</strong>2026 年 7 月 2 日之后再无龙虎榜记录、异动表最新一条停在 9-17**，属"无量反弹"。</p>
+<p><strong>关键观测值</strong>：</p>
+<ul><li><strong>换手率 1.56%、成交额 2,656 万元</strong>（2026-09-30）——<strong>没有资金关注</strong>；</li><li><strong>龙虎榜</strong>：2026 年上榜 6 次，<strong>最近一次 2026-07-02</strong>（净买 +326.68 万元）；此前 2026-05-12 净买 +835.69 万元、<strong>2026-04-14 净卖 −1,158.79 万元</strong>；</li><li><strong>股价水位</strong>：2026 年最高 18.12 元（05-14）、最低 9.75 元（09-15）、现价 12.06 元；<strong>较年内高点回撤 −33.4%</strong>；</li><li>按天计算：2025-12-31 收盘前复权 12.45 元 → 2026-09-30 收 12.06 元，<strong>YTD −3.13%</strong>。</li></ul>
+<details class="fold"><summary>炒作波段汇总与全量异动明细（139 条，2020-07—2026-09-17；时间降序）</summary><div class="fold-body">
+
+<p><strong>炒作波段汇总（按驱动关键词聚类，时间降序）</strong></p>
+<table><thead><tr><th>时间波段</th><th>题材</th><th>最高连板</th><th>股价区间（元）</th><th>驱动关键词</th></tr></thead><tbody><tr><td>2026-07</td><td>ST板块</td><td>3 天 3 板</td><td>14.08→15.52</td><td>控制权变更＋业绩扭亏</td></tr><tr><td>2026-04—05</td><td>ST板块</td><td><strong>10 天 5 板</strong></td><td>13.17→<strong>17.26</strong></td><td>控制权变更＋业绩扭亏</td></tr><tr><td>2026-03</td><td>ST板块</td><td>2 天 2 板</td><td>13.97→14.67</td><td>控制权变更（签约停牌）</td></tr><tr><td>2025-12—2026-01</td><td>ST板块</td><td><strong>15 天 8 板</strong></td><td>10.29→15.79</td><td><strong>提前还款＋财务总监任副总＋减资陕西步森</strong></td></tr><tr><td>2025-11</td><td>ST板块</td><td>3 天 2 板</td><td>10.85→11.91</td><td>拟出售资产</td></tr><tr><td>2025-09</td><td>ST板块</td><td>2 天 2 板</td><td>9.65→10.13</td><td>出售资产＋董事会换血</td></tr><tr><td>2025-05—06</td><td>ST板块</td><td><strong>18 天 9 板</strong></td><td>6.75→9.91</td><td>25Q1 减亏＋银行账户解冻＋实控人拟变更＋信息服务</td></tr><tr><td>2025-01—04</td><td>ST板块</td><td>3 天 2 板</td><td>6.96→10.71</td><td>银行账户解冻＋股权拍卖＋实控人拟变更</td></tr></tbody></table>
+<p><strong>炒作符号的演变（三段式）</strong>：① 2025 年＝"<strong>股权拍卖＋实控人拟变更＋信息服务</strong>"；② 2025-12—2026-01＝"<strong>提前还款＋减资陕西步森＋财务总监任副总</strong>"；③ 2026-03 至今＝"<strong>控制权变更＋业绩扭亏</strong>"。<strong>当前这一轮（③）就是②的延续与升级——同一个"控制权变更"符号的第二波。</strong></p>
+<p><strong>全量异动明细（139 条，2020-07-01—2026-09-17，时间降序；代码恒为 002569，故省略）</strong></p>
+<table><thead><tr><th>题材时间</th><th>题材</th><th>涨停信息</th><th>股价</th><th>异动关键词</th></tr></thead><tbody><tr><td>2026-09-17</td><td>ST板块</td><td>—</td><td>11.04</td><td>控制权变更＋业绩扭亏＋财务总监任副总经理＋减资陕西步森＋零售</td></tr><tr><td>2026-07-02</td><td>ST板块</td><td>3 天 3 板</td><td>15.52</td><td>控制权变更＋业绩扭亏＋财务总监任副总经理＋减资陕西步森＋零售</td></tr><tr><td>2026-07-01</td><td>ST板块</td><td>2 天 2 板</td><td>14.78</td><td>控制权变更＋业绩扭亏＋财务总监任副总经理＋减资陕西步森＋零售</td></tr><tr><td>2026-06-30</td><td>ST板块</td><td>—</td><td>14.08</td><td>控制权变更＋业绩扭亏＋财务总监任副总经理＋减资陕西步森＋零售</td></tr><tr><td>2026-05-26</td><td>ST板块</td><td>—</td><td>16.88</td><td>控制权变更＋业绩扭亏＋财务总监任副总经理＋减资陕西步森＋零售</td></tr><tr><td>2026-05-13</td><td>ST板块</td><td>10 天 5 板</td><td>17.26</td><td>控制权变更＋业绩扭亏＋财务总监任副总经理＋减资陕西步森＋零售</td></tr><tr><td>2026-05-11</td><td>ST板块</td><td>8 天 4 板</td><td>15.87</td><td>业绩扭亏＋控制权变更＋财务总监任副总经理＋减资陕西步森＋零售</td></tr><tr><td>2026-05-08</td><td>ST板块</td><td>—</td><td>15.11</td><td>控制权变更＋提前还款＋财务总监任副总经理＋减资陕西步森＋零售</td></tr><tr><td>2026-04-28</td><td>ST板块</td><td>2 天 2 板</td><td>14.01</td><td>控制权变更＋提前还款＋财务总监任副总经理＋减资陕西步森＋零售</td></tr><tr><td>2026-04-27</td><td>ST板块</td><td>—</td><td>13.34</td><td>控制权变更＋提前还款＋财务总监任副总经理＋减资陕西步森＋零售</td></tr><tr><td>2026-04-15</td><td>ST板块</td><td>—</td><td>13.17</td><td>控制权变更＋提前还款＋财务总监任副总经理＋减资陕西步森＋零售</td></tr><tr><td>2026-03-27</td><td>ST板块</td><td>2 天 2 板</td><td>14.67</td><td>控制权变更＋提前还款＋财务总监任副总经理＋减资陕西步森＋零售</td></tr><tr><td>2026-03-26</td><td>ST板块</td><td>—</td><td>13.97</td><td>控制权变更＋提前还款＋财务总监任副总经理＋减资陕西步森＋零售</td></tr><tr><td>2026-03-05</td><td>ST板块</td><td>—</td><td>14.13</td><td>提前还款＋财务总监任副总经理＋减资陕西步森＋信息服务＋零售</td></tr><tr><td>2026-01-23</td><td>ST板块</td><td>2 天 2 板</td><td>15.71</td><td>提前还款＋财务总监任副总经理＋减资陕西步森＋信息服务＋零售</td></tr><tr><td>2026-01-22</td><td>ST板块</td><td>—</td><td>14.96</td><td>提前还款＋财务总监任副总经理＋减资陕西步森＋信息服务＋零售</td></tr><tr><td>2026-01-13</td><td>ST板块</td><td>15 天 8 板</td><td>15.79</td><td>提前还款＋财务总监任副总经理＋减资陕西步森＋信息服务＋零售</td></tr><tr><td>2026-01-12</td><td>ST板块</td><td>14 天 7 板</td><td>15.04</td><td>提前还款＋财务总监任副总经理＋减资陕西步森＋信息服务＋零售</td></tr><tr><td>2026-01-09</td><td>ST板块</td><td>6 天 3 板</td><td>14.32</td><td>提前还款＋财务总监任副总经理＋减资陕西步森＋信息服务＋零售</td></tr><tr><td>2026-01-06</td><td>ST板块</td><td>10 天 5 板</td><td>13.69</td><td>提前还款＋财务总监任副总经理＋减资陕西步森＋信息服务＋零售</td></tr><tr><td>2026-01-05</td><td>ST板块</td><td>—</td><td>13.04</td><td>提前还款＋财务总监任副总经理＋减资陕西步森＋信息服务＋零售</td></tr><tr><td>2025-12-31</td><td>ST板块</td><td>8 天 4 板</td><td>12.45</td><td>财务总监任副总经理＋减资陕西步森＋信息服务＋零售</td></tr><tr><td>2025-12-25</td><td>ST板块</td><td>4 天 3 板</td><td>11.82</td><td>财务总监任副总经理＋减资陕西步森＋信息服务＋零售</td></tr><tr><td>2025-12-23</td><td>ST板块</td><td>2 天 2 板</td><td>10.80</td><td>财务总监任副总经理＋减资陕西步森＋信息服务＋零售</td></tr><tr><td>2025-12-22</td><td>ST板块</td><td>—</td><td>10.29</td><td>财务总监任副总经理＋减资陕西步森＋信息服务＋零售</td></tr><tr><td>2025-11-14</td><td>ST板块</td><td>3 天 2 板</td><td>11.91</td><td>拟出售资产＋信息服务＋零售</td></tr><tr><td>2025-11-13</td><td>ST板块</td><td>—</td><td>11.34</td><td>拟出售资产＋信息服务＋零售</td></tr><tr><td>2025-11-12</td><td>ST板块</td><td>—</td><td>10.85</td><td>拟出售资产＋信息服务＋零售</td></tr><tr><td>2025-09-09</td><td>ST板块</td><td>2 天 2 板</td><td>10.13</td><td>出售资产＋董事会换血＋信息服务＋零售</td></tr><tr><td>2025-09-08</td><td>ST板块</td><td>—</td><td>9.65</td><td>出售资产＋董事会换血＋信息服务＋零售</td></tr><tr><td>2025-07-01</td><td>ST板块</td><td>—</td><td>10.27</td><td>董事会换血＋股权拍卖＋信息服务＋零售</td></tr><tr><td>2025-06-10</td><td>ST板块</td><td>2 天 2 板</td><td>9.91</td><td>董事会换血＋股权拍卖＋信息服务＋零售</td></tr><tr><td>2025-06-09</td><td>ST板块</td><td>—</td><td>9.44</td><td>董事会换血＋股权拍卖＋信息服务＋零售</td></tr><tr><td>2025-05-28</td><td>ST板块</td><td>18 天 9 板</td><td>9.65</td><td>25Q1 减亏＋银行账户解冻＋实控人拟变更＋信息服务＋零售</td></tr><tr><td>2025-05-23</td><td>ST板块</td><td>15 天 8 板</td><td>9.07</td><td>25Q1 减亏＋银行账户解冻＋信息服务＋零售</td></tr><tr><td>2025-05-21</td><td>ST板块</td><td>—</td><td>8.58</td><td>25Q1 减亏＋银行账户解冻＋信息服务＋零售</td></tr><tr><td>2025-05-15</td><td>ST板块</td><td>13 天 8 板</td><td>8.75</td><td>25Q1 减亏＋银行账户解冻＋实控人拟变更＋信息服务＋零售</td></tr><tr><td>2025-05-12</td><td>ST板块</td><td>10 天 7 板</td><td>8.61</td><td>25Q1 减亏＋银行账户解冻＋实控人拟变更＋信息服务＋零售</td></tr><tr><td>2025-05-09</td><td>ST板块</td><td>—</td><td>8.20</td><td>25Q1 减亏＋银行账户解冻＋实控人拟变更＋信息服务＋零售</td></tr><tr><td>2025-05-08</td><td>ST板块</td><td>8 天 5 板</td><td>7.81</td><td>25Q1 减亏＋银行账户解冻＋实控人拟变更＋信息服务＋零售</td></tr><tr><td>2025-05-07</td><td>ST板块</td><td>7 天 4 板</td><td>7.44</td><td>25Q1 减亏＋银行账户解冻＋实控人拟变更＋信息服务＋零售</td></tr><tr><td>2025-05-06</td><td>ST板块</td><td>6 天 3 板</td><td>7.09</td><td>25Q1 减亏＋银行账户解冻＋实控人拟变更＋信息服务＋零售</td></tr><tr><td>2025-04-30</td><td>ST板块</td><td>—</td><td>6.75</td><td>25Q1 减亏＋银行账户解冻＋实控人拟变更＋信息服务＋零售</td></tr><tr><td>2025-04-24</td><td>ST板块</td><td>—</td><td>6.96</td><td>银行账户解冻＋股权拍卖＋实控人拟变更＋信息服务＋零售</td></tr><tr><td>2025-04-02</td><td>ST板块</td><td>—</td><td>7.31</td><td>银行账户解冻＋股权拍卖＋实控人拟变更＋信息服务＋零售</td></tr><tr><td>2025-03-26</td><td>ST板块</td><td>—</td><td>7.20</td><td>银行账户解冻＋股权拍卖＋实控人拟变更＋信息服务＋零售</td></tr><tr><td>2025-02-26</td><td>ST板块</td><td>2 天 2 板</td><td>9.20</td><td>银行账户解冻＋股权拍卖＋实控人拟变更＋信息服务＋零售</td></tr><tr><td>2025-02-25</td><td>ST板块</td><td>—</td><td>8.76</td><td>银行账户解冻＋股权拍卖＋实控人拟变更＋信息服务＋零售</td></tr><tr><td>2025-02-14</td><td>ST板块</td><td>—</td><td>8.28</td><td>银行账户解冻＋股权拍卖＋实控人拟变更＋信息服务＋零售</td></tr><tr><td>2025-01-03</td><td>ST板块</td><td>3 天 2 板</td><td>10.71</td><td>银行账户解冻＋股权拍卖＋实控人拟变更＋信息服务＋零售</td></tr></tbody></table>
+<p>（2020—2024 年另有 88 条记录，关键词以"控制权不稳定＋服装设计"、"服装设计＋股权冻结"、"股权拍卖"为主，篇幅所限不再全列；<strong>该表只收录达到异动阈值的题材，未入库≠无价格异动</strong>。<strong>数据源级别：韭研公社为二级整理，连板与股价事实须与行情源交叉验证。</strong>）</p>
+
+</div></details>
+<h3 id="sec13">5.2 筹码博弈：筹码在往少数人手里集中，但方向朝下</h3>
+<p><strong>结论：股东户数下降（4,295 户）、前十名合计约 38.77%、全部无质押——筹码结构"干净且集中"；但对照同期股价下跌，这属于"下跌中散户离场"型，</strong>不构成"主力吸筹"的看多依据<strong>。</strong></p>
+<ul><li><strong>户数</strong>：2026-06-30 为 4,295 户（−79 户、−1.81%），户均持股 33,529.69 股。</li><li><strong>质押与冻结</strong>：报告期末前十名股东<strong>全部"不适用"质押、标记或冻结</strong>；延丰数字承诺 60 个月内不质押。</li><li><strong>北向／两融</strong>：前十名股东报告期内<strong>未进行约定购回交易、未参与转融通出借</strong>，公司未披露估值提升计划。</li><li><strong>技术位置</strong>：现价 12.06 元处于 2026 年区间（9.75—18.12）的 <strong>27.6% 分位</strong>、处 2022-07 以来前复权区间的中位附近；<strong>2026-09-15 低点 9.75 元后已反弹 23.7%</strong>。</li></ul>
+<h3 id="sec14">5.3 投资者交流：以公司法定公告替代（F10 互动页本轮无有效载荷）</h3>
+<p><strong>结论：本轮</strong>未能从同花顺 F10 互动问答页抓取到有效数据<strong>（页面返回 200 但无问答载荷），因此</strong>以公司法定公告与投资者关系相关披露替代<strong>；从雪球讨论可观察到投资者最关心的问题是"</strong>诉讼会不会影响摘帽<strong>"，而公司对"借款用途是否为收购资产"一类追问</strong>未作正面回应**。</p>
+<p>可确认的公司口径（来自公告，非互动问答）：① 2026-09-16 无息借款公告的目的表述为"<strong>为支持公司业务发展，保证公司经营业务发展的资金需求</strong>"，<strong>未提及收购资产</strong>；② 详式权益变动报告书明确"<strong>36 个月内不存在通过上市公司重组上市或注入关联方资产的计划或安排</strong>"；③ 2026-07-29 诉讼公告称"案件所涉债务纠纷的<strong>具体性质尚待核实</strong>"。</p>
+<details class="fold"><summary>雪球讨论摘要（线索级；引用格式「（雪球评论，YYYY-MM-DD，@用户名）」）</summary><div class="fold-body">
+
+<ul><li><strong>（雪球评论，2026-08-24，@四月麦香）</strong>："摘星遥遥无期，一是公司信息披露做的很差，连续的更正；二是出来个诉讼案件，不知道公司治理上还有多少缺陷。这些都是监管在合法合规方面需要考虑的，<strong>大概率就是一拖再拖，遥遥无期</strong>。"</li><li><strong>（雪球评论，2026-08-24，@美满的致富小海螺）</strong>："买这票就是看实控人价格十四块多，摘帽预期，加上股东人数极少，十二块二附近买成重仓，今天亏的抑郁了。"——<strong>印证"实控人成本 14 元"是散户的主要买入理由</strong>。</li><li><strong>（雪球评论，2026-08-31，@某用户）</strong>："步森 7.01% <strong>前股东的诉讼可能影响摘帽</strong>。"</li><li><strong>（雪球评论，2026-08-31，@哈哈渔夫）</strong>："短短 10 年，步森的实控人就换了 6 次，每换一次就会有新的幻想，去年的这个时候还在讨论宝鸡国资西凤借壳的梦，现在王波拿到手了，又开始了新的意淫。"</li><li><strong>（雪球评论，2026-09-01，@灵活的股市小银河）</strong>："ST步森，重大诉讼把价格打的很低了，价格合适。<strong>新实控人有算力转型预期</strong>。"</li><li><strong>（雪球评论，2026-09-18，@ST鸭鸭神）</strong>："接下来预估能走出一段修复的趋势……还有前几天 9.8 的低点算是<strong>提前 price in 了无法摘帽以及诉讼风险</strong>。前天开始延丰数字借款 2500 万，无论目的如何，算是兜底保壳，无论怎么说，一个<strong>干净的市值 16 亿的壳</strong>还是值得一搏的。"</li><li><strong>（雪球评论，2026-09-28，@某用户）</strong>："步森 13.84% 低位反弹（跌透了）＋大股东借款 2500 万＋摘帽？16.46 亿。"</li></ul>
+<p><strong>引用纪律</strong>：以上均为<strong>线索级</strong>内容，其中"诉讼影响摘帽"的判断与公司 2026-07-29 公告的表述<strong>方向一致</strong>（已回源核实）；"算力转型预期"<strong>无任何公告支撑</strong>，公司承诺 36 个月内不注入资产，<strong>标为【雪球观点·待核实】</strong>。</p>
+
+</div></details>
+<hr>
+<h2 id="chap6">六、估值</h2>
+<p><strong>结论：亏损股不能用 PE；本案的合理口径是 PB 与 PS，而两个口径都指向"不便宜"——PB 56.81 倍的定价，等于把"壳价值＋未来注入期权"全部提前打进了价格，而注入已被承诺排除 36 个月。财务类 \*ST 还须显式标注前提：估值前提是"保壳/撤销成功"，否则存在终止上市归零风险。</strong></p>
+<table><thead><tr><th>估值口径</th><th>数值</th><th>判读</th></tr></thead><tbody><tr><td>总市值</td><td>17.37 亿元</td><td>对应归母净资产 3,056.88 万元</td></tr><tr><td>PB（归母）</td><td><strong>56.81 倍</strong></td><td>净资产被亏损与减资掏空，PB 已失去参考意义，实际是"壳定价"</td></tr><tr><td>PS（TTM）</td><td>约 <strong>10.28 倍</strong>（市值 ÷ TTM 营收 1.6895 亿元）</td><td>服装同业 PS 普遍在 1—2 倍区间，<strong>显著高估</strong></td></tr><tr><td>PE（TTM）</td><td>约 298.6 倍</td><td>TTM 归母仅 581.72 万元，PE 无意义</td></tr><tr><td>资产负债率</td><td>81.3%</td><td>偏高但绝对负债仅 1.26 亿元</td></tr></tbody></table>
+<p><strong>壳价值的量化锚</strong>：</p>
+<ul><li><strong>可比参照</strong>：实控人自己出的价就是最硬的锚——<strong>3.02 亿元买 14.81%</strong>，隐含<strong>公司整体估值约 20.37 亿元</strong>（3.02 ÷ 14.81%）。当前市值 17.37 亿元<strong>低于</strong>这个隐含估值 14.7%，<strong>这是多头最强的论据</strong>。</li><li><strong>反向读数</strong>：该隐含估值包含<strong>控制权溢价</strong>（协议转让通常含控制权溢价 20%—30%），扣除后对应"无控制权"市值约 15.7—17.0 亿元——<strong>与当前市值基本相当，即"控制权溢价已回归零"</strong>。</li><li><strong>净资产口径的下行保护</strong>：若按"壳＋净资产"清算视角，3,056.88 万元净资产几乎不提供任何下跌保护（诉讼一项即可击穿）。</li></ul>
+<p><strong>三档情景区间（基于 2026 年报三种结果，概率为研究员主观赋值、非预测）</strong>：</p>
+<table><thead><tr><th>情景</th><th>概率</th><th>关键假设</th><th>对应市值区间</th><th>相对现价</th></tr></thead><tbody><tr><td>乐观</td><td>25%</td><td>撤销获批（摘帽）＋2026 年报未触终止情形</td><td>22—28 亿元</td><td>+27%—+61%</td></tr><tr><td>中性</td><td>45%</td><td>撤销获批但拖延至 2027；2026 年报踩线后重新戴帽</td><td>12—17 亿元</td><td>−31%—−2%</td></tr><tr><td>悲观</td><td>30%</td><td>诉讼败诉致净资产转负，或撤销被否＋2026 年报触及 9.3.12</td><td>3—8 亿元（含终止上市归零风险）</td><td>−83%—−54%</td></tr></tbody></table>
+<p><strong>概率加权的期望市值 ≈ 15.5 亿元，低于现价 17.37 亿元约 11%</strong>——<strong>这是"卖出"结论的量化落点。</strong></p>
+<hr>
+<h2 id="chap7">七、投资结论</h2>
+<p><strong>卖出（回避）</strong></p>
+<p><strong>理由链（按重要性排序）</strong></p>
+<ol><li><strong>2026 年报是"归零开关"，而公司大概率过不了营收关。</strong> 2026H1 营收 8,084.69 万元、归母 −1,331.57 万元；按 2025 年 H1/全年 37.09% 的季节性外推，全年营收约 <strong>2.18 亿元</strong>，离 3 亿元红线差 0.82 亿元；要跨过红线，H2 需做到 2.19 亿元、是 2025 年 H2 实际值的 2.49 倍。<strong>在仍处 \*ST 状态的前提下，2026 年报一旦触及 9.3.12 任一项即为终止上市、本金归零。</strong></li></ol>
+<ol><li><strong>撤销 \*ST 的时钟被一笔"性质待核实"的借款卡住了。</strong> 申请自 2026-04-29 提交、2026-06-01 进入"审核和补充材料阶段",<strong>已搁置 5 个月零 6 天未见批复</strong>；而 2026-07-29 公司自己在公告里写明"<strong>不排除诉讼结果……对公司申请撤销退市风险警示及其他风险警示事项产生影响</strong>"。因此"<strong>撤销获批</strong>"这一本案唯一的正向变量<strong>不在公司控制之内</strong>。</li></ol>
+<ol><li><strong>那笔 2,125 万元借款足以击穿净资产。</strong> 归母净资产仅 <strong>3,056.88 万元</strong>，而诉讼请求合计 <strong>3,296.59 万元</strong>（本金 2,125 万元＋借期内利息 157.25 万元＋逾期利息暂计 1,014.35 万元）。<strong>若一审败诉并计提，净资产直接转负</strong>，同时叠加 9.3.12 第（二）项与摘帽障碍——<strong>这是一个"一笔官司决定生死"的结构，不可定价。</strong></li></ol>
+<ol><li><strong>估值没有资产支撑，且新主已排除近端注入。</strong> 市值 17.37 亿元对应 PB <strong>56.81 倍</strong>、PS(TTM) 约 <strong>10.28 倍</strong>；控股股东延丰数字<strong>成立于 2025-08-18、尚未开展经营、无下属企业</strong>，其上层嘉新润注册资本仅 100 万元，并承诺<strong>36 个月内不注入资产、不借壳</strong>、60 个月内不减持不质押。<strong>"换主人"不带来资产，也不带来业绩。</strong></li></ol>
+<ol><li><strong>同型样本显示相对涨幅已透支、补跌空间未释放。</strong> 财务类同型样本 68 只 2026 年 YTD <strong>中位数 −30.26%、仅 13 只上涨</strong>，而步森 <strong>−3.13%</strong> 排在前列；上涨组样本（＊ST英飞 +130.22%、＊ST美芝 +71.21%）<strong>全部"有物"（可命名的标的资产或重整出资方）</strong>，而步森目前只有"人名与方案"。</li></ol>
+<p><strong>触发条件（转买入的信号）</strong>：</p>
+<ul><li>① <strong>深交所批复撤销 \*ST 与 ST</strong>（最直接的转多信号）；</li><li>② 2,125 万元借款诉讼<strong>以公司不承担或极小金额结案</strong>（和解／撤诉均可，需公告确认）；</li><li>③ 2026 年三季报显示<strong>营收同比继续大幅增长且毛利率不再下滑</strong>（证明"信息化业务"是真实增量）；</li><li>④ 出现<strong>现任董监高履新后首次披露实质业务动作</strong>（如信息化业务客户/订单落地公告）。</li></ul>
+<blockquote><p>上述 ① 与 ② 任一落地，本结论须立即重估。</p></blockquote>
+<p><strong>失效条件（本结论作废/翻转）</strong>：</p>
+<ul><li>若 <strong>2026 年报经审计后"孰低者为正"或"扣除后营收 ≥3 亿元"</strong>，则"归零开关"风险解除，本卖出结论的核心前提失效；</li><li>若 <strong>控股股东在 36 个月承诺期内提前披露资产注入方案</strong>（即对承诺作出变更或豁免），则"无资产支撑"这一条失效；</li><li>若 <strong>股价跌至 8—9 元区间</strong>（对应实控人成本的 60% 上下），则赔率结构改变，需重新评估。</li></ul>
+<p><strong>参考区间</strong>：观察区间 <strong>8.0—9.5 元</strong>（2026-09-15 低点 9.75 元下方）；若因诉讼利空击穿 9.75 元且成交量放大，止损位设 <strong>8.0 元</strong>；不建议在 12 元上方建仓。</p>
+<p><strong>时间窗口</strong>：本结论有效期至 <strong>2026 年年度报告披露（2027-04 前）</strong>；期间每出现一次撤销进展公告或诉讼进展公告，须重新评估。</p>
+<p><strong>仓位建议</strong>：<strong>不建仓</strong>。已持有者建议在<strong>诉讼进展或撤销批复落地前的反弹中减仓</strong>。</p>
+<p><strong>最大风险</strong>：<strong>2,125 万元借款诉讼在 2026 年报前被判公司败诉并全额计提</strong>——这将同时击穿净资产与摘帽申请，是本结论最可能"看错方向"的单点（因为公司目前自称"债务性质待核实"，若最终查明该笔资金确未进入公司账户，则该诉讼可能以公司免责结案，届时股价将大幅反弹）。</p>
+<hr>
+<h2 id="chap8">附录 A · 待核实／需补充清单</h2>
+<table><thead><tr><th>#</th><th>待核实项</th><th>结论</th></tr></thead><tbody><tr><td>1</td><td>2,125 万元借款的资金去向与账务定性</td><td><strong>公告未披露</strong>。原告称 2022-09-30 已全额转账至公司指定账户；公司称"债务纠纷的具体性质有待核实"。<strong>未查到公司对"是否收到该款项"的正面说明。</strong></td></tr><tr><td>2</td><td>王波 500 万股司法裁定的<strong>取得对价</strong></td><td><strong>公告未披露</strong>（详式权益变动报告书仅列"执行法院裁定 5,000,000 股"，未载对价与裁定案号）。</td></tr><tr><td>3</td><td>延丰数字并购贷款的<strong>审批结果</strong></td><td>公告称"正在与银行洽谈申请并购贷款"（截至 2026-03-25），<strong>此后未见进展披露</strong>。</td></tr><tr><td>4</td><td>2,500 万元无息借款的<strong>实际提用金额</strong></td><td>公告仅写"累计关联交易金额 0 万元"（截至 2026-09-16），<strong>提用情况未更新</strong>。</td></tr><tr><td>5</td><td>信息化业务的<strong>收入、客户、订单</strong></td><td><strong>半年报未单独披露</strong> → 无法验证 2026H1 营收 +55.62% 的质量与可持续性。</td></tr><tr><td>6</td><td>陕西步森 13.91% 股权的<strong>账面价值与减值测试</strong></td><td><strong>未披露</strong>；合并长期股权投资已由 6,899.82 万元降至 1,978.44 万元。</td></tr><tr><td>7</td><td>2026 年半年报<strong>未审计</strong></td><td>半年度财务报告未经审计，不构成对全年的背书。</td></tr></tbody></table>
+<h2 id="chap9">附录 B · 关键信源链接（简版）</h2>
+<p>见封面下方「⑥ 信息来源汇总」的 24 条分级清单；正文引用均已就地附链接。</p>
+<h2 id="chap10">附录 C · 逻辑漏洞与反方观点（5 问）</h2>
+<p><strong>结论：本报告给出"卖出"，但也必须承认反方最有力的三点——实控人成本高于现价、实控人已用真金白银 3.02 亿元押注、诉讼可能以公司免责结案；下面逐条做压力测试。</strong></p>
+<ol><li><strong>市占率／增长怎么来的？</strong> ——2026H1 营收 +55.62% 由"信息化业务"驱动，但<strong>半年报无收入明细、无客户名单</strong>；同时毛利率由 30.17% 降至 19.56%。<strong>这是"低毛利放量"，不能等同于"成长"。</strong></li><li><strong>"借款 2,500 万元＝兜底保壳"是否成立？</strong> ——<strong>部分成立</strong>：它确实缓解流动性、且是无息无担保的纯支持。<strong>但它是负债而非权益，不增净资产、不增营收</strong>；对照 3 亿元营收缺口与 2,125 万元诉讼缺口，2,500 万元的量级只够"周转"，不够"保壳"。</li><li><strong>"现价低于实控人成本"是否构成安全垫？</strong> ——<strong>弱推理</strong>。理由：① 王波的部分筹码来自<strong>法拍（500 万股，成本未披露）</strong>，综合成本大概率低于 14.136 元；② 其股份<strong>锁定 60 个月</strong>，短期无被套自救压力；③ 3.02 亿元中约一半拟用<strong>并购贷款</strong>，偿还压力指向"理顺基本面"而非"拉抬股价"。</li><li><strong>引用的时间点是否过期？</strong> —— 本报告核心事实均截至 2026-09-16（最近一次公告）。<strong>2026-09-16 至基准日 2026-10-05 存在 19 天公告空窗</strong>，期间公司未披露任何公告；若空窗期结束后出现撤销批复或诉讼进展，本报告结论须即时更新。</li><li><strong>数据来源是什么级别？</strong> —— 公告与年报为一手（已附巨潮深链）；行情为腾讯／新浪（二级，用于价格与市值）；财务 2021—2024 为<strong>东财 F10【异源】</strong>；雪球内容为<strong>线索级</strong>（已逐条标注并回源核实）。<strong>Wind 代理本轮不可达，未使用 Wind 数据。</strong></li></ol>
+<h2 id="chap11">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-05</td><td>首次生成；数据截至 2026-09-30 行情、2026-09-16 公告；结论＝卖出（回避）</td></tr></tbody></table>
+<p>*本报告为投资研究分析，不构成投资建议。市场有风险，决策需独立。*</p>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
