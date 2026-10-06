@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ST龙元（600491.SH）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>11 章 · 16 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断：四类红线一条未踩，但三重困局同时压在头上</a><a class="sblv3" href="#sec0">1.1 基本信息与股权：控制权"半边悬空"</a><a class="sblv3" href="#sec1">1.2 ST 风险诊断与摘帽展望：帽子是"制度性"的，撤销钥匙在审计师手里</a><a class="sblv3" href="#sec2">1.3 全流程进度看板：卡点性质是"谈不拢"还是"时间未到"</a><a class="sblv3" href="#sec3">1.4 运作特征</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、基本面路径：预重整＋国资纾困，但"卖资产"不等于"装资产"</a><a class="sblv3" href="#sec4">2.1 债务与流动性：逾期的方向在恶化</a><a class="sblv3" href="#sec5">2.2 PPP 资产处置：最硬的抓手，也藏着最大的减值风险</a><a class="sblv3" href="#sec6">2.3 三条路径对比</a><a class="sblv3" href="#sec7">2.4 杭州交投的承诺是否构成"催化"——一个必须纠正的误读</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、公司运营：主业已收缩到"只剩 PPP 投资收益"</a><a class="sblv3" href="#sec8">3.1 五年与最新一期财务</a><a class="sblv3" href="#sec9">3.2 分板块：利润来源只剩 PPP 投资收益</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、炒作逻辑三支柱</a><a class="sblv3" href="#sec10">4.1 炒预期：事件已在 7–9 月密集兑现，剩下的是"负向事件"</a><a class="sblv3" href="#sec11">4.2 炒历史类似行为（相似股票匹配）</a><a class="sblv3" href="#sec12">4.3 炒主板映射：负向</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">五、筹码与情绪</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">六、估值与投资结论</a><a class="sblv3" href="#sec13">6.1 估值：三个价格锚与一个被忽略的分母问题</a><a class="sblv3" href="#sec14">6.2 投资结论</a><a class="sblv3" href="#sec15">6.3 与反方观点的对照</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap9">附录 C · 逻辑漏洞与反方观点（5 问速版）</a></div><div class="sbgrp"><a class="sblv2" href="#chap10">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">ST龙元（600491.SH）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：卖出（回避）</strong></p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td><strong>红线分类</strong></td><td><span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&announcementId=1225263031&orgId=gssh0600491&announcementTime=2026-04-30" target="_blank" rel="noopener">连续三年扣非为负</a></span>·<span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&announcementId=1225263031&orgId=gssh0600491&announcementTime=2026-04-30" target="_blank" rel="noopener">2025年报持续经营存疑</a></span>·<span class="sttag sttag-blue"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&announcementId=1225555807&orgId=gssh0600491&announcementTime=2026-09-10" target="_blank" rel="noopener">预重整已受理</a></span></td></tr><tr><td><strong>生死定级</strong></td><td><strong>可救·需外力</strong> —— 四类退市红线<strong>一条未踩</strong>（净资产 62.79 亿元为正、营收 44.31 亿元、审计为无保留意见、无立案/占用/违规担保），但亏损与债务逾期仍在扩大、重整方案与产业投资人<strong>均未出现</strong></td></tr><tr><td><strong>自救空间</strong></td><td>宁波市国资已实质介入（2026-07-02 新设 SPV 以 1.25 元/股要约 6%；PPP 资产处置对手方为"宁波象山国资"），宁波中院 2026-09-09 决定预重整、<strong>期限六个月至 2027-03-09</strong>；最大障碍是 PPP 资产尚未签约、重整作价零披露</td></tr><tr><td><strong>主要看点</strong></td><td>地方国资纾困的<strong>载体与价格</strong>：宁波开投（60%）＋象山海投（40%）于 2026-07-02 新设"宁波开海自有资金投资发展有限公司"（实控人宁波市国资委）以 <strong>1.25 元/股</strong>向全体股东发出 6% 部分要约；同一地方国资体系是公司 PPP 资产处置的对手方</td></tr></tbody></table>
+<ul><li><strong>标的</strong>：ST龙元（600491.SH，原简称"龙元建设"，2026-05-06 变更）｜上交所主板</li><li><strong>基准日</strong>：2026-10-06｜<strong>数据截止</strong>：2026-09-30 收盘、2026-09-23 最后一份公告</li><li><strong>版本</strong>：初版 · 2026-10-06</li><li><strong>数据来源</strong>：巨潮资讯网公告原文（30 份 PDF 全文精读）、公司 2025 年年度报告与 2026 年半年度报告、要约收购报告书、上海证券交易所《股票上市规则（2026 年 4 月修订）》、腾讯行情与新浪日 K、东方财富龙虎榜、韭研公社异动整理、同花顺 F10 互动易</li><li><strong>已知数据质量异常</strong>：《2025 年度审计报告》与《内部控制审计报告》PDF 为图片型（文本层仅 166／6 字符），审计意见类型改以年度报告正文与戴帽公告表述为准；控股股东股份司法拍卖的<strong>最终是否重启</strong>未披露</li></ul>
+<hr>
+<h2 id="chap1">一、诊断：四类红线一条未踩，但三重困局同时压在头上</h2>
+<p><strong>结论：这是一只"账面干净、流动性崩坏"的沪主板 ST —— 它的帽子来自"连续三年扣非为负＋持续经营存疑"（沪主板 9.8.1 第一款第（六）项），而不是任何一条退市红线；真正的压力来自债务逾期、控制权不稳与重整作价空白，而不是"会不会退市"。</strong></p>
+<h3 id="sec0">1.1 基本信息与股权：控制权"半边悬空"</h3>
+<p><strong>结论：实控人赖振元家族的 23.74% 股份已质押 99.78%、冻结/标记 62.91%，第二大股东杭州交投 8.40% 是无质押的国资——"控制权不稳"不是风险提示，而是已发生的事实。</strong></p>
+<p>现价 1.57 元（2026-09-30）／总市值 <strong>24.02 亿元</strong>／总股本 15.30 亿股／<strong>PB 0.38</strong>（归母净资产 62.79 亿元）／YTD <strong>-40.53%</strong>（2025-12-31 收 2.64 元）／2026 年内区间 <strong>0.92–3.38 元</strong>。</p>
+<p>股权结构（2026-06-30）：赖振元 16.61%（质押 253,900,000 股）、<strong>杭州市交通投资集团 8.40%（国有法人、零质押零冻结）</strong>、赖朝辉 7.10%（质押 108,500,000＋标记 108,500,000＋冻结 67,090＋轮候冻结 315,392,671 股）。控股家族合计 23.74%，<strong>质押率 99.78%</strong>。</p>
+<details class="fold"><summary>股东阵容与质押冻结明细（2025 年报 / 监管工作函回复 / 半年度报告）</summary><div class="fold-body">
+
+<table><thead><tr><th>持有方</th><th>身份</th><th>持股</th><th>质押</th><th>冻结/标记</th><th>取得方式与成本</th></tr></thead><tbody><tr><td>赖振元</td><td>实控人、家族</td><td>16.61%（254,119,182 股）</td><td>253,900,000 股（99.91%）</td><td>冻结 119,919,182 股（47.19%）</td><td>原始股东；浙商银行宁波分行已胜诉待执行</td></tr><tr><td>杭州市交通投资集团</td><td>国有法人（杭州市国资委）</td><td>8.40%（128,499,668 股）</td><td><strong>0</strong></td><td><strong>0</strong></td><td>2023-06-27 签约、2024-01-17 过户；对价未在本次核查文件中披露</td></tr><tr><td>赖朝辉</td><td>家族（赖振元之子）</td><td>7.10%（108,567,090 股）</td><td>108,500,000 股</td><td>标记 108,500,000＋冻结 67,090＋轮候 315,392,671 股</td><td>原始股东</td></tr><tr><td>赖晔鋆</td><td>家族</td><td>0.03%（500,000 股）</td><td>—</td><td>—</td><td>原始股东</td></tr><tr><td>石丽云／张莹／虞荣方等 6 名自然人</td><td>未知（半年度报告未列关联）</td><td>合计 5.08%</td><td>无</td><td>无</td><td>二级市场</td></tr></tbody></table>
+<p><strong>控股家族股份的司法处置已经启动过一次</strong>：2026-07-01 公告，杭州市临安区人民法院定于 2026-08-04 至 08-05 在淘宝网拍卖赖振元所持 <strong>119,700,000 股</strong>（占家族持股 32.96%、总股本 7.82%），<strong>评估价 246,013,000 元（＝2.055 元/股，评估基准日 2026-04-30）、起拍价 1.7237 亿元（评估价 70%，＝1.44 元/股）</strong>；后因浙商银行宁波分行申请，<strong>拍卖已中止</strong>（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&amp;announcementId=1225403102&amp;orgId=gssh0600491&amp;announcementTime=2026-07-02" target="_blank" rel="noopener">公告</a>）。</p>
+
+</div></details>
+<p><strong>判读</strong>：两个价格锚值得记住 —— 法院委托评估的 <strong>2.055 元/股</strong>（高于现价 31%）与司法拍卖起拍价 <strong>1.44 元/股</strong>（低于现价 8%）。同时杭州交投 8.40% 是唯一"干净"的大额股份，它既是最可能的整合发起方，也是控制权博弈的核心变量。</p>
+<h3 id="sec1">1.2 ST 风险诊断与摘帽展望：帽子是"制度性"的，撤销钥匙在审计师手里</h3>
+<p><strong>结论：戴帽事由是沪主板 9.8.1 第一款第（六）项（非退市红线）；撤销走 9.8.7 第三款的 OR 逻辑——"扣非孰低者为正值"或"持续经营不确定性已消除"。2026 上半年扣非 -8.54 亿元已使第一条腿彻底无望，唯一出路是赌 2026 年报审计师移除"与持续经营相关的重大不确定性"段落，而时间锚落在 2027 年 4 月。</strong></p>
+<ul><li>戴帽依据：立信会计师事务所出具<strong>带持续经营相关重大不确定性段落的无保留意见</strong>审计报告（信会师报字[2026]第 ZA13104 号），触及 <strong>9.8.1 第一款第（六）项</strong>"最近连续 3 个会计年度扣除非经常性损益前后净利润孰低者均为负值，且最近一个会计年度财务会计报告的审计报告显示公司持续经营能力存在不确定性"；2026-04-30 停牌一天、<strong>2026-05-06 起实施</strong>，简称变更为"ST 龙元"（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&amp;announcementId=1225263031&amp;orgId=gssh0600491&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">戴帽公告</a>）。</li><li><strong>涨跌幅</strong>：戴帽公告写"5%"系 2026-07-06 修订前口径，<strong>现行主板风险警示股为 10%</strong>（以 2026-09-30 涨停 1.71 元／跌停 1.40 元反证）。</li><li><strong>四类退市红线逐条对照（本报告按规则原文逐条核，结论：一条未踩）</strong>：</li></ul>
+<table><thead><tr><th>类型</th><th>触发条件</th><th>本股实际</th><th>是否触发</th></tr></thead><tbody><tr><td>交易类</td><td>连续 20 个交易日收盘价 &lt;1 元；或市值 &lt;5 亿元；或股东 &lt;2,000 人</td><td>现价 1.57 元（<strong>曾于 2026-06-29～07-01 连续 3 日收盘 &lt;1 元、最低 0.92 元，未满 20 日即回升</strong>）；市值 24.02 亿元；股东 3.69 万户</td><td><strong>否</strong></td></tr><tr><td>财务类</td><td>孰低为负且扣除后营收 &lt;3 亿元；或净资产为负；或审计无法表示/否定</td><td>2025 年营收 44.31 亿元；归母净资产 70.71 亿元（2025 年末）／62.79 亿元（2026-06-30）；审计为<strong>无保留意见</strong></td><td><strong>否</strong></td></tr><tr><td>规范类</td><td>资金占用 ≥2 亿元或 ≥净资产 30%；内控连续非标；控制权无序争夺</td><td>专项自查确认<strong>无非经营性占用、无违规担保</strong>；2025 年<strong>内控审计为标准无保留</strong></td><td><strong>否</strong></td></tr><tr><td>重大违法</td><td>欺诈发行；造假达量化线</td><td><strong>无证监会立案、无行政处罚</strong>；自查确认不存在欺诈发行与重大信披违法</td><td><strong>否</strong></td></tr></tbody></table>
+<blockquote><p>交叉验证：Andy 自建路径底表《退市风险预警-20261005.xlsx》<strong>交易类／财务类／规范类／其他类四张工作表均未收录 600491</strong>，与本报告逐条核对结果一致。</p></blockquote>
+<ul><li><strong>面值退市的真实状态（常被误读）</strong>：2026-06-29 收盘 0.97 元，为上市以来首次低于 1 元，公司当日发布《股票存在可能因股价低于面值被终止上市的风险提示公告》（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&amp;announcementId=1225397916&amp;orgId=gssh0600491&amp;announcementTime=2026-06-30" target="_blank" rel="noopener">公告</a>）；连续低于 1 元的交易日为 <strong>6-29（0.97）、6-30（0.92）、7-01（0.97）共 3 日</strong>，7-02 收 1.02 元即已脱险。<strong>距 20 日门槛尚有 17 日缺口，该风险在当前价位（1.57 元，距 1 元 36%）不构成近期主导矛盾</strong>；但需注意 <strong>交易类强制退市不进入退市整理期</strong>（9.6.1 第二款），因此一旦真的破位，持仓者没有"退市后卖出"的窗口。</li></ul>
+<p><strong>摘帽时间锚</strong>：沪主板 <strong>9.8.7 第三款</strong>——"公司最近一年经审计的财务报告显示，其扣除非经常性损益前后的净利润孰低者为正值 <strong>或者</strong> 持续经营能力不确定性已消除"。2026H1 扣非 -8.54 亿元 → 第一条腿无望；第二条腿要求 2026 年年度审计报告<strong>不再带持续经营重大不确定性段落</strong>，判定时点<strong>必然落在 2027 年 4 月</strong>，不存在提前申请。<strong>本报告判断该段落 2026 年报大概率保留</strong>（理由见 §2.1）。</p>
+<details class="fold"><summary>沪主板 9.8.1 与 9.8.7 的条款原文要点</summary><div class="fold-body">
+
+<ul><li><strong>9.8.1 第一款第（六）项</strong>（实施）："最近连续 3 个会计年度扣除非经常性损益前后净利润孰低者均为负值，且最近一个会计年度财务会计报告的审计报告显示公司持续经营能力存在不确定性。"</li><li><strong>9.8.7 第三款</strong>（撤销）："公司最近一年经审计的财务报告显示，其扣除非经常性损益前后的净利润孰低者为正值或者持续经营能力不确定性已消除的，可以向本所申请撤销对其股票实施的其他风险警示。"</li><li><strong>本条为 OR 逻辑</strong>（与财务类 \*ST 的"孰低为正且营收达标"合取条件不同）；<strong>"带强调事项段/持续经营段落的无保留意见"仍是"无保留意见"</strong>，故它不触发 9.3.2 第一款第（三）项的财务类 \*ST，<strong>但单独构成 9.8.1 第一款第（六）项的 ST 事由</strong>——把两者混读是本类标的最常见的分析错误。</li><li><strong>本股 9.8.1 第一款第（六）项不在 9.8.5 条的"每月至少披露一次"范围内</strong>（9.8.5 仅覆盖第一款第（二）至（五）项），故公司无月度披露义务，程序性沉默不构成合规瑕疵。</li></ul>
+
+</div></details>
+<h3 id="sec2">1.3 全流程进度看板：卡点性质是"谈不拢"还是"时间未到"</h3>
+<p><strong>结论：预重整程序本身走得很快（申请到指定管理人仅 41 天），但</strong>最关键的"投资人"与"作价"两项完全空白<strong>——因此真正的卡点不是"时间未到"，而是"方案未成形"。</strong></p>
+<table><thead><tr><th>环节</th><th>现状</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>地方国资介入</td><td>已完成</td><td>是否转为重整产业投资人（<strong>未有任何公告</strong>）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&amp;announcementId=1225439326&amp;orgId=gssh0600491&amp;announcementTime=2026-07-24" target="_blank" rel="noopener">要约收购报告书</a></td></tr><tr><td>PPP 资产处置（首批 14 个项目）</td><td>已获股东会授权，<strong>尚未签约</strong></td><td>签署具备法律约束力的正式协议</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&amp;announcementId=1225262977&amp;orgId=gssh0600491&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">授权公告</a></td></tr><tr><td>债权人申请重整</td><td>2026-08-13 立案审查</td><td>—</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&amp;announcementId=1225472188&amp;orgId=gssh0600491&amp;announcementTime=2026-08-14" target="_blank" rel="noopener">提示性公告</a></td></tr><tr><td>法院决定预重整</td><td><strong>2026-09-09</strong>，期限 6 个月</td><td>2027-03-09 前完成或申请延长</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&amp;announcementId=1225555807&amp;orgId=gssh0600491&amp;announcementTime=2026-09-10" target="_blank" rel="noopener">决定公告</a></td></tr><tr><td>指定预重整管理人</td><td><strong>2026-09-23</strong>（浙江京衡、浙江和义观达）</td><td>债权申报→投资人招募→重组协议</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&amp;announcementId=1225579593&amp;orgId=gssh0600491&amp;announcementTime=2026-09-24" target="_blank" rel="noopener">管理人公告</a></td></tr><tr><td>投资人招募与作价</td><td><strong>零披露</strong></td><td>—</td><td>—</td></tr><tr><td>法院裁定受理重整</td><td><strong>未发生</strong>（一旦发生即叠加 \*ST）</td><td>不确定</td><td>—</td></tr></tbody></table>
+<h3 id="sec3">1.4 运作特征</h3>
+<p><strong>结论：这是一次"地方国资出手、原实控人挨打"的纾困式运作——国资不是来接盘的，是来托底的。</strong></p>
+<ul><li><strong>手法</strong>：宁波市国资<strong>新设 SPV</strong>（宁波开海，成立于 2026-07-02，注册资本仅 1.2 亿元）发出部分要约，<strong>同时</strong>以地方国资体系为 PPP 资产处置对手方；两步都在"给流动性、不给控制权"的框架内。</li><li><strong>交权是配合式还是对抗式</strong>：<strong>原实控人被动</strong>（99.78% 质押、62.91% 冻结、股份被司法拍卖后中止），杭州交投（8.40%）持股两年多<strong>未进入董事会核心</strong>，定增终止后接受"继续作为重要战略股东"。无对抗痕迹。</li><li><strong>核心矛盾一句话</strong>：<strong>国资给的是"价格托底"与"资产受让"，不是"资产注入"——市场期待的"注资故事"在公告层面不存在。</strong></li></ul>
+<hr>
+<h2 id="chap2">二、基本面路径：预重整＋国资纾困，但"卖资产"不等于"装资产"</h2>
+<h3 id="sec4">2.1 债务与流动性：逾期的方向在恶化</h3>
+<p><strong>结论：公司不属于"资不抵债"，而属于"短债长投、流动性断裂"——2026-06-30 归母净资产 62.79 亿元为正，但短期借款 40.77 亿元中已有 9.35 亿元逾期，金融机构逾期总额由 4 月的 12.06 亿元升至 8 月的 12.65 亿元，且经营现金流虽大幅转正，仍不足以覆盖一年内到期债务。</strong></p>
+<ul><li>2025 年末：现金及现金等价物 <strong>5.77 亿元</strong>；短期借款 41.01 亿元、一年内到期的非流动负债（PPP 项目贷款）29.60 亿元；<strong>有息负债合计 100.35 亿元、其中逾期 19.06 亿元</strong>（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&amp;announcementId=1225541854&amp;orgId=gssh0600491&amp;announcementTime=2026-09-02" target="_blank" rel="noopener">年报问询函回复</a>）。</li><li>2026 年到期节奏（公司自述）：二季度 13.09 亿元、三季度 13.99 亿元、四季度 9.94 亿元，<strong>全年合计 37.02 亿元</strong>。</li><li>2026H1：<strong>经营活动现金流净额 +9.64 亿元（上年同期 +1.49 亿元，+547.37%）</strong>——这是全篇最正面的一个数字，主要来自应收清收而非新增业务。</li><li>但资产端已被大面积锁定：<strong>受限资产账面价值合计 280.43 亿元，占总资产 476.14 亿元的 58.9%</strong>，其中其他非流动资产（PPP 金融资产）受限 222.80 亿元、一年内到期的非流动资产受限 47.58 亿元。</li></ul>
+<details class="fold"><summary>2026H1 资产负债表关键科目（合并，元）</summary><div class="fold-body">
+
+<table><thead><tr><th>报表项</th><th>2026-06-30</th><th>2025-12-31</th></tr></thead><tbody><tr><td>货币资金</td><td>786,689,292.78</td><td>887,865,974.64</td></tr><tr><td>应收账款</td><td>5,078,989,174.22</td><td>5,285,641,717.99</td></tr><tr><td>其他应收款</td><td>2,681,310,475.29</td><td>—</td></tr><tr><td><strong>其他非流动资产（PPP 金融资产为主）</strong></td><td><strong>25,486,036,844.15</strong></td><td>25,459,666,671.26</td></tr><tr><td>资产总计</td><td>47,614,266,365.65</td><td>49,773,838,600.21</td></tr><tr><td>短期借款</td><td>4,076,578,864.71</td><td>4,101,359,866.30</td></tr><tr><td>应付账款</td><td>8,101,669,051.01</td><td>8,867,199,931.46</td></tr><tr><td>其他应付款</td><td>5,594,194,220.53</td><td>5,486,239,533.48</td></tr><tr><td>流动负债合计</td><td>25,478,599,129.57</td><td>26,801,849,765.90</td></tr><tr><td>长期借款</td><td>14,696,507,244.39</td><td>14,750,732,573.54</td></tr><tr><td><strong>归属于上市公司股东的净资产</strong></td><td><strong>6,278,595,705.59</strong></td><td>7,071,182,650.89</td></tr></tbody></table>
+<ul><li>其中<strong>已逾期未偿还的短期借款 9.35 亿元</strong>（半年度报告附注 32）。</li><li><strong>担保余额 109.33 亿元＝最近一期净资产的 174.13%</strong>；另对部分子公司贷款存在<strong>差额补足、共同偿债及回购承诺合计余额 68.98 亿元</strong>（半年度报告"担保情况说明"）——这两项是资产负债表之外的敞口。</li><li>资产负债率：2025 年末 83.5%（415.54 亿／497.74 亿元）、2026-03-31 为 83.2%（401.86 亿／482.95 亿元）；2026-06-30 按总资产 476.14 亿元与测算负债合计约 401.8 亿元计 <strong>约 84.4%</strong>〔测算值，半年报未直接披露〕。</li></ul>
+
+</div></details>
+<details class="fold"><summary>为什么"经营现金流 +9.64 亿元"仍不足以解决问题——PPP 模式下的现金流结构</summary><div class="fold-body">
+
+<p><strong>先看 2025 年的三张表</strong>：经营活动现金流净额 <strong>+17.97 亿元</strong>、投资活动 <strong>+1.47 亿元</strong>、筹资活动 <strong>-22.86 亿元</strong>，合计净额 -3.42 亿元。<strong>经营与投资都是净流入，唯一大额流出在筹资端</strong>——公司自述原因是"PPP 项目公司贷款还款、付息及金融机构压贷致使筹资性现金流大额流出"。</p>
+<p><strong>这条结构决定了它的困境不是"赚不到钱"，而是"还不起钱"</strong>：龙元以"社会资本方"身份投资了 400 亿元以上的 PPP 项目，项目建设期需持续投入资本金与股东借款，运营期则形成对政府的长期应收（报表列示于"其他非流动资产"，2026-06-30 为 254.86 亿元）。项目贷款由各 PPP 项目公司（SPV）承接，<strong>上市公司需对项目公司融资提供担保或差额补足</strong>——这正是担保余额 109.33 亿元（＝净资产 174.13%）与"差额补足、共同偿债及回购承诺余额 68.98 亿元"的来源。</p>
+<p><strong>于是形成一个自我强化链条</strong>：行业下行 → 政府付款节奏放缓 → PPP 项目公司现金流不足 → 上市公司需垫资或代偿 → 上市公司自身流动性紧张 → 金融机构压贷、抽贷 → 新增项目无法承接（2025 年新签合同仅 17.07 亿元）→ 营收与毛利进一步下滑 → 担保与被诉风险上升。2026H1 经营现金流之所以能大幅转正至 +9.64 亿元，主要靠<strong>应收账款清收与项目回款节奏</strong>（而非新增业务），属"存量变现"，不可外推为持续能力。</p>
+<p><strong>对判断的意义</strong>：<strong>它是"资产厚、现金薄"的典型形态</strong>——账面上有 254.86 亿元的长期应收与 62.79 亿元净资产，但只要金融机构对新增授信保持审慎、政府付款节奏不放缓，报表就能维持；一旦其中任一环节继续恶化，净资产就会被减值快速侵蚀。<strong>这就是"重整而非清算"成为唯一出路的根本原因，也是"净资产为正"这一条安全垫的真实厚度。</strong></p>
+
+</div></details>
+<h3 id="sec5">2.2 PPP 资产处置：最硬的抓手，也藏着最大的减值风险</h3>
+<p><strong>结论：这是全篇最值得重视的一条 —— 公司自己的处置口径就是"按不低于项目净资产 70% 的折扣率"测算，而首批 14 个项目的目标回笼额（15–20 亿元）仅相当于其净资产（31.67 亿元）的 47%–63%。这意味着"卖出去"本身就在确认减值，而不是在创造价值。</strong></p>
+<ul><li>累计投资运营 PPP 项目资产<strong>超 400 亿元</strong>，公司自述"底层资产质量良好，但资金回笼周期长"。</li><li>首批拟处置 <strong>14 个 PPP 项目</strong>（浙江 5 个、省外 9 个）：截至 2025 年末<strong>总资产 114.70 亿元、净资产 31.67 亿元、2025 年净利 -0.66 亿元</strong>；未来运营期内预计可实现净利约 12 亿元。</li><li><strong>交易对象：宁波象山国资及其他潜在合作方</strong>。</li><li>定价："以合理的折价率进行对价核算，<strong>按不低于项目净资产 70% 的折扣率测算</strong>，公司 2026 年目标回收资金 <strong>15 亿元至 20 亿元</strong>"。</li><li>授权额度：2026 年度处置交易金额<strong>不超过 30 亿元</strong>；尚需股东会审议（公司 2026-05-21 年度股东会已召开）。</li><li>影响自述："<strong>阶段性对公司当期净利润造成一定的折损影响</strong>"。</li><li><strong>截至基准日尚未签署任何具备法律约束力的正式交易协议</strong>（互动易 2026-06-26 投资者追问"PPP 项目何时能出售成功"，公司答复"请及时关注公司公告"）。</li></ul>
+<p><strong>判读</strong>：若把"首批按净资产 47%–63% 变现"这一口径外推到全部 PPP 金融资产（254.86 亿元），对应的账面减值幅度是量级巨大的。<strong>因此 PB 0.38 的"破净"不能读作安全垫——它的分母（62.79 亿元归母净资产）本身就建立在"PPP 资产按账面计价"的假设上。</strong></p>
+<h3 id="sec6">2.3 三条路径对比</h3>
+<p><strong>结论：走"重整＋国资纾困"，不走"破产清算"，也不靠主业自愈——因为主业已停摆式收缩（2025 年新签合同 17.07 亿元，仅为 2023 年的 22.5%）。</strong></p>
+<table><thead><tr><th>路径</th><th>启动条件</th><th>时长</th><th>强制力</th><th>本股适配度</th></tr></thead><tbody><tr><td><strong>预重整＋司法重整</strong>（主路径）</td><td>已满足（宁波中院已决定预重整）</td><td>预重整 6 个月（至 2027-03-09）＋重整"受理→执行完毕"常规 6–12 个月</td><td><strong>强</strong>（法院裁定、可强裁）</td><td><strong>在走</strong>；但投资人、作价、转增比例全部未披露</td></tr><tr><td>庭外重组</td><td>债权人协商</td><td>不可控</td><td><strong>弱</strong>（无司法强制力）</td><td>已被司法程序吸收</td></tr><tr><td>主业自愈</td><td>新签合同与回款恢复</td><td>数年</td><td>—</td><td><strong>不可行</strong>（新签 17.07 亿元、土建施工毛利率 -101.22%）</td></tr></tbody></table>
+<h3 id="sec7">2.4 杭州交投的承诺是否构成"催化"——一个必须纠正的误读</h3>
+<p><strong>结论：不构成。杭州交投《解决同业竞争承诺》的注入义务以"取得上市公司控制权后三年内"为前提，而它从未取得控制权（仅受让 8.40%、定增已于 2026-04-30 终止）——即该承诺的触发条件自始未成立。市场把"杭州国资要注入交通工程类资产"当作支撑股价的理由，在公告层面找不到依据。</strong></p>
+<p>公司 2026-08-20 专项自查报告披露的杭州交投承诺原文要点：</p>
+<details class="fold"><summary>杭州交投承诺原文（摘自 2026-08-20 专项自查报告）</summary><div class="fold-body">
+
+<ul><li><strong>2023-06-25 承诺</strong>："本公司承诺将在<strong>取得上市公司控制权后三年内</strong>……与上市公司达成合意并履行相关合法程序后，将本公司持有的<strong>杭州市交通工程集团有限公司</strong>控制权转让给上市公司，稳妥推进与上市公司相关业务的整合。"</li><li><strong>2023-09-27 补充承诺</strong>：除上述外，还将<strong>杭州交投建设工程有限公司、杭州路达公路工程总公司、杭州公路工程监理咨询有限公司</strong>的控制权转让给上市公司；"如上市公司未就上述资产注入形成同意决议，本公司承诺将采取<strong>委托经营、合作经营</strong>等合理方式，减少和避免与上市公司的同业竞争"；另对杭州交投二航院设计咨询、杭州交通建设管理、杭州市工程咨询中心三家"如在取得上市公司控制权三年后仍与上市公司存在相同或相似业务，则……<strong>促使上述公司不再开展相关业务</strong>"。</li><li><strong>公司自查结论</strong>：上述承诺"<strong>是否及时严格履行：是</strong>"（即公司认为因控制权未发生变更，承诺期尚未起算）。</li></ul>
+<p>对照事实链：2024-01-17 赖振元家族过户 128,499,668 股（8.40%）给杭州交投 → 定增拟认购 458,927,386 股（完成后合计 29.54%）→ 2025-05-26 证监会同意注册 → <strong>2026-04-28 董事会决定终止定增（证监会批复 2026-05-15 到期）</strong> → <strong>2026-04-30 控股家族函告终止"控股股东股份转让＋定增"的控制权变更方案</strong>（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&amp;announcementId=1225273896&amp;orgId=gssh0600491&amp;announcementTime=2026-05-01" target="_blank" rel="noopener">终止公告</a>）。监管工作函回复中公司亦确认："终止后杭州交通投资集团将不再通过认购公司非公开发行的 A 股股票取得上市公司控制权。对公司未来的生产经营与持续稳定发展将造成不利影响。"</p>
+
+</div></details>
+<p><strong>判读</strong>：<strong>"杭州交投注入资产"是零公告支撑的想象</strong>。若未来真的发生，前置动作必然是杭州交投重新取得控制权（受让股份或重整投资），这应当列为观察信号而非当前定价依据。</p>
+<hr>
+<h2 id="chap3">三、公司运营：主业已收缩到"只剩 PPP 投资收益"</h2>
+<h3 id="sec8">3.1 五年与最新一期财务</h3>
+<p><strong>结论：营收四年腰斩再腰斩（91.05 亿元 → 44.31 亿元 → 2026H1 19.38 亿元），2025 年因三笔项目判决追溯调减与分供商诉讼计提，亏损扩大至 25.86 亿元；2026H1 继续亏 8.05 亿元，唯一亮点是经营现金流回正至 9.64 亿元。</strong></p>
+<table><thead><tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026H1</th></tr></thead><tbody><tr><td>营业收入（亿元）</td><td>—</td><td>—</td><td>—</td><td>91.18</td><td><strong>44.31</strong></td><td><strong>19.38</strong></td></tr><tr><td>归母净利（亿元）</td><td>—</td><td>—</td><td>—</td><td>-6.63</td><td><strong>-25.86</strong></td><td><strong>-8.05</strong></td></tr><tr><td>扣非归母（亿元）</td><td>—</td><td>—</td><td>—</td><td>-7.41</td><td>—</td><td><strong>-8.54</strong></td></tr><tr><td>经营活动现金流净额（亿元）</td><td>—</td><td>—</td><td>—</td><td>14.23</td><td><strong>+17.97</strong></td><td><strong>+9.64</strong></td></tr><tr><td>归母净资产（亿元）</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>70.71</strong></td><td><strong>62.79</strong></td></tr><tr><td>资产负债率（%）</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>83.5</strong></td><td>约 84.4〔测算〕</td></tr></tbody></table>
+<blockquote><p>口径：合并报表、归母口径；2024 年数据取自 2025 年年报"上年同期"列；2021–2023 年三年数字本轮未逐项取到（Wind 代理离线、东财 F10 未覆盖到该股），以"连续三年扣非为负"的定性表述为准（公司戴帽公告自述连续 3 个会计年度扣非前后孰低者为负）。</p></blockquote>
+<details class="fold"><summary>2025 年亏损拆解：三笔判决追溯调减 + 减值</summary><div class="fold-body">
+
+<table><thead><tr><th>项目</th><th>金额</th><th>说明</th></tr></thead><tbody><tr><td>江苏泗洪文体小镇项目</td><td><strong>调减收入 17,963 万元</strong></td><td>2026-03-17 才收到判决，法院将违约责任判给公司，仅判补偿 9,187 万元</td></tr><tr><td>贵州六枝医院项目</td><td><strong>调减收入 22,688 万元</strong></td><td>2026-04-10 贵州高院二审判决，按判决结果账务调整</td></tr><tr><td>沈阳龙之梦项目</td><td><strong>调减收入 13,648 万元</strong></td><td>2025-10-10 辽宁高院终审，判令对方支付约 2 亿元工程款</td></tr><tr><td>分供商诉讼判决利息</td><td><strong>调增成本 7,197.10 万元</strong></td><td>大量分供商主张违约金及利息</td></tr><tr><td>信用减值损失</td><td><strong>-7.08 亿元</strong>（上年 -3.65 亿元）</td><td>主要为应收账款坏账</td></tr><tr><td>资产减值损失</td><td><strong>-1.05 亿元</strong>（上年 -0.14 亿元）</td><td>—</td></tr><tr><td>资产处置收益</td><td><strong>+2.77 亿元</strong></td><td>处置资产（单边正贡献）</td></tr><tr><td>财务费用</td><td><strong>17.09 亿元</strong>（同比 +12.41%）</td><td>含逾期利息与违约金</td></tr></tbody></table>
+<p>新签合同额断崖：<strong>2023 年 107 个/75.91 亿元 → 2024 年 98 个/32.57 亿元 → 2025 年 59 个/17.07 亿元</strong>。2025 年分季度营收：Q1 13.93、Q2 12.59、Q3 12.14、Q4 5.65 亿元（四季度异常低亦与上述判决调整集中于年末有关）。</p>
+
+</div></details>
+<h3 id="sec9">3.2 分板块：利润来源只剩 PPP 投资收益</h3>
+<p><strong>结论：土建施工板块已进入"接单即亏"状态（2026H1 毛利率 -88.07%），唯一贡献利润的是存量 PPP 项目投资（毛利率 99.56%）——而 PPP 资产正是本轮要处置的对象，处置完成后公司将失去唯一的利润来源。</strong></p>
+<table><thead><tr><th>分项（2026H1）</th><th>营业收入</th><th>毛利率</th></tr></thead><tbody><tr><td>土建施工</td><td>4.32 亿元</td><td><strong>-88.07%</strong></td></tr><tr><td>装饰与钢结构</td><td>6.18 亿元</td><td>7.93%</td></tr><tr><td>水利施工</td><td>0.96 亿元</td><td>5.43%</td></tr><tr><td><strong>PPP 项目投资</strong></td><td><strong>6.54 亿元</strong></td><td><strong>99.56%</strong></td></tr><tr><td>其他</td><td>1.31 亿元</td><td>4.86%</td></tr><tr><td>合计</td><td>19.31 亿元</td><td>17.15%</td></tr></tbody></table>
+<p>2025 年三板块：建筑总包 14.17 亿元（毛利率 <strong>-64.16%</strong>）／基建投资 14.73 亿元（85.75%）／绿色建筑 15.28 亿元（1.39%）。</p>
+<p><strong>热点业务占比定位</strong>：市场把本股与"装配式建筑／BIPV"绑定，但 2026 半年报分行业表中并无独立对应科目，建材类（装饰与钢结构＋水利）合计占比约 37%，且<strong>装配式载体的经营主体处于净资产为负状态</strong>——子公司<strong>龙元明筑净资产 -7,816.17 万元</strong>、<strong>信安幕墙净资产 -3.23 亿元</strong>。</p>
+<details class="fold"><summary>主要子公司（2026H1，万元）</summary><div class="fold-body">
+
+<table><thead><tr><th>公司</th><th>主营</th><th>总资产</th><th>净资产</th><th>营业收入</th><th>净利润</th></tr></thead><tbody><tr><td>大地钢构</td><td>建筑施工</td><td>185,603.37</td><td>39,636.06</td><td>58,681.65</td><td>+2,220.62</td></tr><tr><td>龙元盛宏</td><td>水利工程</td><td>128,294.13</td><td>28,136.03</td><td>16,360.88</td><td>+441.14</td></tr><tr><td>杭州城投</td><td>工程管理</td><td>15,256.70</td><td>11,763.67</td><td>4,955.84</td><td>+655.70</td></tr><tr><td>龙元明城</td><td>实业投资（PPP 平台）</td><td>705,941.43</td><td>28,596.91</td><td>495.87</td><td><strong>-4,553.56</strong></td></tr><tr><td>上海龙元</td><td>建筑施工</td><td>167,155.49</td><td>24,870.52</td><td>55.24</td><td>-2,600.26</td></tr><tr><td>信安幕墙</td><td>建筑施工</td><td>34,344.82</td><td><strong>-32,321.26</strong></td><td>2,715.34</td><td>+453.61</td></tr><tr><td>龙元明筑</td><td>其他建筑业</td><td>5,828.67</td><td><strong>-7,816.17</strong></td><td>0.00</td><td>-193.09</td></tr></tbody></table>
+
+</div></details>
+<hr>
+<h2 id="chap4">四、炒作逻辑三支柱</h2>
+<h3 id="sec10">4.1 炒预期：事件已在 7–9 月密集兑现，剩下的是"负向事件"</h3>
+<p><strong>结论：近端最硬的三件事（要约收购、预重整受理、管理人指定）都已落地；下一个可预期的事件是"法院裁定受理重整"，而它是负向的（叠加 \*ST）——这是本股当前赔率结构的核心问题。</strong></p>
+<table><thead><tr><th>时点</th><th>关键动作</th><th>性质</th></tr></thead><tbody><tr><td>2026-10 下旬</td><td>2026 年三季度报告</td><td>中性</td></tr><tr><td>2026-11～2027-03</td><td>预重整进展（债权申报／投资人招募／重组协议）</td><td><strong>硬节点</strong>（决定有无"物"）</td></tr><tr><td>不确定</td><td>法院裁定受理重整 → <strong>叠加 \*ST</strong></td><td><strong>负向</strong></td></tr><tr><td>不确定</td><td>PPP 资产处置首批签约</td><td>正向（但伴随减值确认）</td></tr><tr><td>2027-04</td><td>2026 年年度报告与审计意见</td><td><strong>决定 ST 帽能否摘</strong></td></tr></tbody></table>
+<details class="fold"><summary>要约收购的完整时间线、原文条款与"为什么只有 42 户接受"</summary><div class="fold-body">
+
+<p><strong>时间线</strong>：2026-07-01 公司披露控股家族 119,700,000 股将被司法拍卖（同日公告拍卖已中止）；2026-07-02 因"筹划重大事项"停牌，当日成立"宁波开海自有资金投资发展有限公司"；2026-07-06 继续停牌；<strong>2026-07-09 披露《要约收购报告书摘要》并公告复牌</strong>；2026-07-24 披露《要约收购报告书》；07-28 至 08-26 为要约期（30 个自然日）；08-05／08-12／08-20 三次提示性公告；08-12 披露董事会致全体股东报告书与中信建投独立财务顾问报告；08-26 要约期满停牌；08-28 披露要约结果并复牌；09-02 公告交割完成。</p>
+<p><strong>收购人</strong>：宁波开海自有资金投资发展有限公司，成立日期 <strong>2026-07-02</strong>（与停牌同日，即为本次交易新设），注册资本人民币 12,000 万元，法定代表人黄观中，注册地址"浙江省宁波市象山县丹西街道滨海大道 929 号（主楼）2702-6"；<strong>股东为宁波开发投资集团有限公司 60%（注册资本 561,352 万元、国有控股、成立于 1992-11-12）与宁波象山海洋产业投资集团有限公司 40%</strong>；<strong>实际控制人为宁波市人民政府国有资产监督管理委员会</strong>。公告载明"开海投资<strong>未实际开展经营活动</strong>，不存在控制的核心企业"。</p>
+<p><strong>条款原文</strong>："本次要约收购系开海投资向 ST 龙元全体股东发出部分要约。本次要约收购股份数量为 91,786,000 股，要约收购价格为 1.25 元/股……本次要约收购完成后，开海投资将最多持有 ST 龙元 91,786,000 股股份，占 ST 龙元已发行股份总数的 6.00%，ST 龙元将不会面临股权分布不具备上市条件的风险。要约收购报告书公告前，开海投资已将 114,732,500.00 元存入中国证券登记结算有限责任公司上海分公司指定账户，作为本次要约收购的履约保证金。""开海投资进行本次要约收购的资金<strong>全部来源于其自有资金</strong>，主要由开海投资股东实缴出资形成。"</p>
+<p><strong>"后续计划"七项全部为"暂无"</strong>：未来 12 个月内不改变主营业务或作重大调整、无资产出售/合并/合资/合作或购买置换资产的重组计划、无对现任董事与高管的重大变动计划、无修改章程中可能阻碍控制权条款的计划、无员工聘用重大变动计划、无分红政策重大调整计划、无其他重大影响计划。同时明确"<strong>本次要约收购不以终止上市公司上市地位为目的，亦不以取得上市公司控制权为目的</strong>""收购人预计仅作为上市公司持股 6.00% 的股东依法享有股东权利，<strong>不会成为上市公司控股股东或实际控制人</strong>"；报告书附表另勾选"<strong>收购人是否拟于未来 12 个月内继续增持：否</strong>"。</p>
+<p><strong>为什么只有 42 户接受（预受率仅 0.46%）</strong>：要约价 1.25 元是在股价刚刚跌破面值后给出的"溢价托底价"（7-10 复牌收盘 1.12 元，1.25 元溢价 11.6%）；但<strong>要约期恰好赶上重整预期发酵</strong>——8-12 收 1.36 元、8-13 收 1.50 元、8-21 收 1.81 元、8-26 要约期满当日收 1.63 元，<strong>要约期内绝大多数交易日的市价都在 1.25 元之上</strong>，理性的股东自然选择在二级市场卖出而非接受要约。结果：预受股东账户 42 户、预受股份 418,699 股（占总股本 0.0274%），全部被收购，开海投资最终仅持股 <strong>0.0274%</strong>。</p>
+<p><strong>判读（这条比预受率本身更重要）</strong>：地方国资用 1.25 元/股给出了<strong>一个公开的价格底线</strong>，但因同时声明"12 个月内不增持、不取得控制权"，<strong>它买到的是"托底信号"，不是"控制权"</strong>。因此这次要约对股价的作用在 8 月已被消化完毕——<strong>它是一次"事件已兑现"，而不是"故事刚开始"</strong>。</p>
+
+</div></details>
+<h3 id="sec11">4.2 炒历史类似行为（相似股票匹配）</h3>
+<p><strong>结论：本标的落在"下跌组"一侧——同期 41 只"连续三年扣非为负＋持续经营存疑"型 ST 的中位跌幅为 -24.23%，本股 -40.53% 排第 32 位（偏弱）；而 11 只上涨样本的共性是"手里有物"（重整投资协议已签、资产注入已披露、要约方已定），本股恰恰只有"人名与程序"。</strong></p>
+<p>取 Andy 自建 ST 信息库中带帽原因含"连续三年扣非前后净利均为负"的 <strong>53 只</strong>同型样本，剔除无行情者后 <strong>41 只有效</strong>，按 2026 年年初至今涨跌幅排序：</p>
+<details class="fold"><summary>同型样本 2026 年涨跌幅全量（41 只有效）</summary><div class="fold-body">
+
+<p><strong>上涨组（11 只）</strong>：\*ST英飞 +130.22%、\*ST美芝 +71.21%、ST海钦 +53.24%、\*ST建艺 +42.65%、\*ST皇庭 +34.33%、ST美克 +30.82%、ST宏达 +17.24%、\*ST景谷 +14.24%、\*ST正平 +10.84%、ST云网 +6.03%、\*ST瑞和 +5.95%。</p>
+<p><strong>下跌组（30 只）</strong>，与本股相邻者：\*ST棒杰 -30.62%、ST易购 -31.76%、ST三木 -32.74%、\*ST湘邮 -38.04%、ST云城 -38.72%、<strong>ST龙元 -40.53%</strong>、\*ST华幸 -40.64%、\*ST华西 -42.80%、\*ST春兴 -44.75%、ST棕榈 -44.77%、ST龙大 -45.99%。</p>
+<p><strong>统计</strong>：中位数 <strong>-24.23%</strong>、均值 <strong>-12.73%</strong>、上涨 <strong>11/41</strong>。</p>
+<p><strong>上涨组共性反查</strong>：11 只中，\*ST英飞（重整投资协议已签、投资人含国科微实控人平台）、\*ST美芝（"10 转 15＋产投 8.725 元/股"方案已披露）、ST海钦、\*ST建艺、\*ST皇庭（10.73 亿元关联债权抵销落地）、ST美克（8.60 亿元债务豁免落地）——<strong>全部具备"可命名、可定价的载体"</strong>。</p>
+
+</div></details>
+<p><strong>本股落在哪一组</strong>：它是<strong>"已进入预重整、但方案与投资人皆未披露"</strong>的中间态。与它最接近的三只可作参照：\*ST华幸（-40.64%，预重整已受理但重整申请未被裁定受理、重整投资协议已签）、\*ST春兴（-44.75%，庭外重组推进 4 个月无遴选进展）、ST棕榈（-44.77%）。<strong>方向落在下跌组。</strong></p>
+<h3 id="sec12">4.3 炒主板映射：负向</h3>
+<p><strong>结论：主板建筑板块 2026 年全线下跌（10 只代表股中位约 -16.9%），本股 -40.53% 是"行业 β ＋ 个股退市风险"的叠加，不存在"板块好、ST 映射补涨"的正向逻辑。</strong></p>
+<table><thead><tr><th>代表公司</th><th>代码</th><th>2026 YTD</th><th>PB</th></tr></thead><tbody><tr><td>中国建筑</td><td>601668</td><td>-10.66%</td><td>0.36</td></tr><tr><td>上海建工</td><td>600170</td><td>-14.34%</td><td>0.63</td></tr><tr><td>隧道股份</td><td>600820</td><td>-16.14%</td><td>0.53</td></tr><tr><td>中国铁建</td><td>601186</td><td>-18.32%</td><td>0.29</td></tr><tr><td>陕建股份</td><td>600248</td><td>-17.66%</td><td>0.39</td></tr><tr><td>北新路桥</td><td>002307</td><td>-41.19%</td><td>1.20</td></tr><tr><td>安徽建工</td><td>600502</td><td>-4.30%</td><td>0.61</td></tr><tr><td>中国交建</td><td>601800</td><td>-26.17%</td><td>0.33</td></tr><tr><td>中材国际</td><td>600970</td><td>-22.10%</td><td>0.90</td></tr><tr><td>浙江交科</td><td>002061</td><td>-13.44%</td><td>0.56</td></tr></tbody></table>
+<p><strong>关键一条（容易被忽略）</strong>：<strong>本股 PB 0.38 与建筑央企（中国铁建 0.29、中国交建 0.33、中国建筑 0.36、陕建股份 0.39）基本持平</strong> —— 建筑板块本来就普遍破净，<strong>"破净 62%"不是本股独有的错杀</strong>。这一点直接削弱了"跌到底了"的直觉。</p>
+<hr>
+<h2 id="chap5">五、筹码与情绪</h2>
+<p><strong>结论：注意力已在 7 月中旬至 9 月中旬被充分消耗，两次高位均伴随龙虎榜净卖出——这是"利好出尽"的典型形态。</strong></p>
+<ul><li><strong>股价路径</strong>：三段行情已走完 —— 「破面值段」6-24 至 7-02（1.12 元 → 最低 <strong>0.92 元</strong>）、「要约段」7-10 至 8-24（1.12 元 → <strong>1.91 元</strong>）、「预重整段」9-09 至 9-14（1.57 元 → 1.91 元）；<strong>9-14 见顶后回落至 9-30 的 1.57 元（较 9-14 高点 -17.8%、较 6-30 低点 +70.7%）</strong>。</li><li><strong>龙虎榜</strong>：2026 年共 15 次上榜，<strong>净卖出集中在两次冲高日</strong>（8-13 约 -358.65 万元、9-14 两笔合计约 -681.06 万元），净买入最大一次仅 9-10 的 +381.47 万元。</li><li><strong>换手与成交</strong>：2026-09-30 换手率 2.20%、成交额 5,238 万元。</li></ul>
+<details class="fold"><summary>三段行情的逐段归因、龙虎榜全量（2026 年）与股东户数序列</summary><div class="fold-body">
+
+<p><strong>第一段｜破面值段（6-24 → 7-02，-8.9%）</strong>：6-24 收 1.12 元、6-25 跌至 1.06 元、6-26 收 1.02 元、6-29 收 <strong>0.97 元（上市以来首次跌破 1 元）</strong>、6-30 收 <strong>0.92 元（年内最低）</strong>、7-01 收 0.97 元、7-02 停牌收 1.02 元。驱动因素并非新增利空，而是<strong>持续阴跌触发面值退市的自我实现机制</strong>——越是接近 1 元，抛压越集中。龙虎榜 6-22 单笔净卖 <strong>-1,603.10 万元</strong>（近三月最大），6-29 净卖 -208.06 万元。同一天（6-29）公司发布面值退市风险提示公告，互动易上 6-26 集中出现 8 条呼吁"回购/增持/二股东出手"的投资者提问，公司仅答"感谢您的建议"。</p>
+<p><strong>第二段｜要约段（7-09 → 8-26，+29.1%）</strong>：7-10 复牌（要约摘要 7-09 披露）收 1.12 元、7-13 收 1.23 元、7-14 收 1.35 元、7-16 收 <strong>1.42 元</strong>（12 天 6 板）后横盘于 1.23–1.25 元共 15 个交易日；8-12 放量拉至 1.36 元（当日成交 1.55 亿股，为 7 月以来最大）、8-13 收 1.50 元（被申请重整公告日）、8-17 收 1.64 元、8-21 收 1.81 元、8-24 盘中触 <strong>1.91 元</strong>；8-26 要约期满当日收 1.63 元、8-28 复牌收 1.68 元。<strong>这一段的关键是：要约期（7-28–8-26）内市价从 1.23 元涨到 1.91 元，远高于要约价 1.25 元——这正是预受率只有 0.46% 的原因。</strong></p>
+<p><strong>第三段｜预重整段（9-09 → 9-14，+21.7%）</strong>：9-09 收 1.57 元（当日收到宁波中院预重整决定书）、9-10 涨 10.19% 收 1.73 元（并上龙虎榜，净买 +381.47 万元）、9-11 收 1.76 元、9-14 收 <strong>1.91 元</strong>（第二次触顶）。此后 9-15 至 9-30 回落至 1.57 元。</p>
+<p><strong>龙虎榜全量（2026 年，时间降序）</strong></p>
+<table><thead><tr><th>上榜日</th><th>上榜原因</th><th>当日涨跌幅</th><th>净买额（元）</th></tr></thead><tbody><tr><td>2026-09-14</td><td>日价格振幅达 15%</td><td>+8.52%</td><td><strong>-1,126,161.99</strong></td></tr><tr><td>2026-09-14</td><td>连续三日涨幅偏离达 20%</td><td>+8.52%</td><td><strong>-5,684,391.08</strong></td></tr><tr><td>2026-09-10</td><td>日涨幅偏离达 7%</td><td>+10.19%</td><td>+3,814,688.00</td></tr><tr><td>2026-08-26</td><td>日跌幅偏离达 7%</td><td>-9.44%</td><td>+607,855.72</td></tr><tr><td>2026-08-17</td><td>日涨幅偏离达 7%</td><td>+10.07%</td><td>-203,330.00</td></tr><tr><td>2026-08-13</td><td>日价格振幅达 15%</td><td>+10.29%</td><td>-2,203,096.00</td></tr><tr><td>2026-08-13</td><td>日涨幅偏离达 7%</td><td>+10.29%</td><td>-2,203,096.00</td></tr><tr><td>2026-08-13</td><td>连续三日涨幅偏离达 20%</td><td>+10.29%</td><td>-1,383,467.00</td></tr><tr><td>2026-07-16</td><td>日涨幅偏离达 7%</td><td>+10.08%</td><td>-1,528,469.84</td></tr><tr><td>2026-07-13</td><td>连续三日涨幅偏离达 20%</td><td>+9.82%</td><td>-3,012,940.23</td></tr><tr><td>2026-07-02</td><td>ST 股连续三日涨幅偏离达 12%</td><td>+5.15%</td><td>+430,477.00</td></tr><tr><td>2026-06-29</td><td>ST 股连续三日跌幅偏离达 12%</td><td>-4.90%</td><td>-2,080,619.00</td></tr><tr><td>2026-06-22</td><td>ST 股连续三日跌幅偏离达 12%</td><td>-4.13%</td><td><strong>-16,030,999.30</strong></td></tr><tr><td>2026-06-01</td><td>ST 股连续三日涨幅偏离达 12%</td><td>+5.26%</td><td>+1,417,140.87</td></tr><tr><td>2026-05-08</td><td>ST 股连续三日跌幅偏离达 12%</td><td>-5.00%</td><td>-2,135,277.00</td></tr></tbody></table>
+<p><strong>股东户数序列</strong>：2026-04-30 <strong>43,100 户</strong> → 2026-06-20 37,211 户 → 2026-06-30 36,858 户 → 2026-07-20 <strong>39,079 户</strong>。四至五月下跌途中的户数下降（-13.7%）属<strong>散户割肉</strong>（同期股价从 1.39 元跌至 0.92 元）；七月反弹后户数回升 6.0%，属<strong>追涨回补</strong>——两个方向都不构成"主力吸筹"的证据。</p>
+
+</div></details>
+<ul><li><strong>股东户数</strong>：4-30 的 <strong>43,100 户</strong> → 6-20 的 37,211 户 → 6-30 的 36,858 户 → 7-20 的 <strong>39,079 户</strong>（随反弹小幅回升）。<strong>下跌加伴随户数下降（4-5 月）、反弹时户数回升 —— 属"割肉后又追回"的形态，不是主力吸筹。</strong></li><li><strong>炒作符号</strong>：2021–2024 年为"建筑施工＋装配式建筑＋BIPV＋杭州交投拟控股"；2026 年三年符号演变为"<strong>退市风险＋面值退市博弈＋司法拍卖中止＋要约收购＋预重整＋建筑总包</strong>"。<strong>韭研异动表 27 条记录，连板极值 12 天 6 板（2026-07-16）、10 天 5 板（2026-07-14）</strong>；异动表<strong>最新一条停在 2026-09-10，9 月中旬那一波未入库</strong>（已用日 K 与龙虎榜交叉验证）。</li></ul>
+<details class="fold"><summary>韭研公社异动全量（27 条，时间降序摘要）</summary><div class="fold-body">
+
+<table><thead><tr><th>题材时间</th><th>股价</th><th>涨停信息</th><th>异动关键词</th></tr></thead><tbody><tr><td>2026-09-10</td><td>1.73</td><td>—</td><td>预重整＋要约收购＋司法拍卖中止＋建筑总包</td></tr><tr><td>2026-08-17</td><td>1.64</td><td>4天3板</td><td>重整＋要约收购＋司法拍卖中止＋建筑总包</td></tr><tr><td>2026-08-13</td><td>1.50</td><td>2天2板</td><td>要约收购＋司法拍卖中止＋面值退市博弈＋建筑总包</td></tr><tr><td>2026-08-12</td><td>1.36</td><td>—</td><td>要约收购＋司法拍卖中止＋面值退市博弈＋建筑总包</td></tr><tr><td>2026-07-16</td><td>1.42</td><td>12天6板</td><td>要约收购＋司法拍卖中止＋面值退市博弈＋建筑总包</td></tr><tr><td>2026-07-14</td><td>1.35</td><td>10天5板</td><td>要约收购＋司法拍卖中止＋面值退市博弈＋建筑总包</td></tr><tr><td>2026-07-13</td><td>1.23</td><td>2天2板</td><td>要约收购＋司法拍卖中止＋面值退市博弈＋建筑总包</td></tr><tr><td>2026-07-10</td><td>1.12</td><td>—</td><td>要约收购＋司法拍卖中止＋面值退市博弈＋建筑总包</td></tr><tr><td>2026-07-02</td><td>1.02</td><td>2天2板</td><td>司法拍卖中止＋面值退市博弈＋建筑总包</td></tr><tr><td>2026-07-01</td><td>0.97</td><td>—</td><td>面值退市博弈＋司法冻结＋建筑总包＋杭州交投拟控股</td></tr><tr><td>2026-06-04</td><td>1.44</td><td>6天3板</td><td>司法冻结＋建筑总包＋退市风险＋杭州交投拟控股</td></tr><tr><td>2026-06-01</td><td>1.40</td><td>3天2板</td><td>建筑总包＋退市风险＋杭州交投拟控股</td></tr><tr><td>2026-05-29</td><td>1.33</td><td>—</td><td>建筑总包＋退市风险＋杭州交投拟控股</td></tr><tr><td>2026-05-28</td><td>1.30</td><td>—</td><td>退市风险＋建筑总包＋基建投资＋杭州交投拟控股</td></tr><tr><td>2026-05-19</td><td>1.39</td><td>—</td><td>退市风险＋建筑总包＋基建投资＋杭州交投拟控股</td></tr><tr><td>2026-01-05</td><td>2.90</td><td>—</td><td>建筑总包＋基建投资＋杭州交投拟控股</td></tr><tr><td>2024-12-02</td><td>4.14</td><td>—</td><td>杭州交投拟控股＋基建投资＋绿色建筑＋工程总包</td></tr><tr><td>2024-11-05</td><td>4.30</td><td>—</td><td>杭州交投拟控股＋基建投资＋绿色建筑＋工程总包</td></tr><tr><td>2024-10-21</td><td>3.58</td><td>—</td><td>杭州交投拟控股＋基建投资＋绿色建筑＋工程总包</td></tr><tr><td>2024-06-21</td><td>2.82</td><td>3天2板</td><td>杭州交投拟控股＋基建投资＋绿色建筑＋工程总包</td></tr><tr><td>2024-06-19</td><td>2.71</td><td>—</td><td>杭州交投拟控股＋基建投资＋绿色建筑＋工程总包</td></tr><tr><td>2024-02-08</td><td>2.72</td><td>—</td><td>建筑施工＋实控人拟变更为杭州国资＋装配式建筑＋BIPV</td></tr><tr><td>2023-06-28</td><td>5.16</td><td>—</td><td>实控人拟变更为杭州国资＋建筑施工＋装配式建筑＋BIPV</td></tr><tr><td>2021-12-15</td><td>7.11</td><td>—</td><td>建筑施工＋装配式建筑＋BIPV</td></tr><tr><td>2021-11-11</td><td>6.91</td><td>—</td><td>建筑施工＋装配式建筑＋BIPV</td></tr><tr><td>2021-10-13</td><td>6.60</td><td>—</td><td>装配式建筑＋BIPV</td></tr><tr><td>2021-08-26</td><td>4.75</td><td>—</td><td>超跌＋大额中标＋装配式建筑</td></tr></tbody></table>
+<p><strong>判读</strong>：六年炒作符号从未离开"<strong>建筑施工底仓＋国资入主弹性</strong>"这一组合。2026 年新增的"面值退市博弈／预重整"是同一符号的极端化版本，而非新故事。</p>
+
+</div></details>
+<p><strong>投资者交流（互动易 35 条）</strong>：投资者最关心的三件事——面值退市、是否引进上海国资、PPP 处置进度——公司答复均为"感谢您的建议"或"以公告为准"，<strong>唯一给出的增量信息是股东户数</strong>（4-30 43,100 户、6-20 37,211 户、7-20 39,079 户）。</p>
+<hr>
+<h2 id="chap6">六、估值与投资结论</h2>
+<h3 id="sec13">6.1 估值：三个价格锚与一个被忽略的分母问题</h3>
+<p><strong>结论：现价 1.57 元高于宁波国资的要约价（1.25 元，1.26 倍）与司法拍卖起拍价（1.44 元，1.09 倍），低于法院评估价（2.055 元，0.76 倍）；PB 0.38 看似深度破净，但分母所依赖的 PPP 资产正被以"不低于净资产 70% 折扣"的口径处置。</strong></p>
+<table><thead><tr><th>价格锚</th><th>价格</th><th>与现价（1.57 元）关系</th><th>含义</th></tr></thead><tbody><tr><td>司法拍卖评估价</td><td><strong>2.055 元/股</strong></td><td>现价为其 0.76 倍</td><td>法院委托评估（基准日 2026-04-30）</td></tr><tr><td>司法拍卖起拍价</td><td>1.44 元/股</td><td>现价为其 1.09 倍</td><td>评估价 70%</td></tr><tr><td><strong>宁波国资要约价</strong></td><td><strong>1.25 元/股</strong></td><td>现价为其 <strong>1.26 倍</strong></td><td>地方国资认可的价格底线</td></tr><tr><td>PB（归母净资产 62.79 亿元）</td><td>0.38 倍</td><td>建筑央企 PB 区间 0.29–0.39</td><td><strong>行业常态，非独有错杀</strong></td></tr></tbody></table>
+<p><strong>除权测算（重整方案未披露，按中性假设推演）</strong>：若转增比例为"每 10 股转增 12 股"（转增 18.36 亿股）、重整投资款假设 15 亿元、抵债部分按 0 计，则按深沪通行的除权参考价公式计算：</p>
+<p><code>除权参考价 =（1.57 × 15.30 亿股 + 15 亿元）÷（15.30 + 18.36 亿股）≈ 1.16 元</code></p>
+<p>即<strong>现价买入者将承担约 -26% 的价格除权</strong>，而重整投资人的股份来自转增、不承担该损失。<strong>除权不等于损失（市值不变），但也不等于必然填权</strong>；本股不存在任何关于"注入资产"的公告，因此<strong>填权在基准情景中不可假设</strong>。</p>
+<details class="fold"><summary>除权参考价的公式、参数取法与三档敏感性</summary><div class="fold-body">
+
+<p><strong>为什么必须算</strong>：重整转增"不向原股东分配"，原股东股份数不变而总股本扩大，<strong>每股对应权益被机械摊薄，转增股份上市日即除权</strong>。依《上海证券交易所上市公司自律监管指引第 13 号——破产重整等事项》，重整涉及权益调整方案的应按交易规则作除权处理（唯一例外是"转增股份价格高于股票价格"）。<strong>只要投资人受让价低于市价，除权就是确定的。</strong></p>
+<p><strong>公式</strong>（各公司公告口径一致，可直接套用）：</p>
+<p><code>除权参考价 = [（前收盘价 − 现金红利）× 转增前总股本 + 重整投资人受让转增股份支付的现金 + 转增股份抵偿债务的金额] ÷ [转增前总股本 + 投资人受让的转增股份数 + 抵偿债务的转增股份数]</code></p>
+<p>其中末项"向原股东分配导致的股份增加数"在重整转增中为 0（重整转增股通常不向原股东分配）。</p>
+<p><strong>本股参数</strong>：转增前总股本 15.30 亿股；前收盘价取基准价 1.57 元；<strong>转增比例、投资人受让股数、受让价、抵债作价四项全部未披露</strong>——这是本测算的最大约束。</p>
+<p><strong>三档敏感性</strong>（假设抵债部分按 0 计，仅计入投资人现金）：</p>
+<table><thead><tr><th>情景</th><th>转增比例</th><th>转增股数</th><th>重整投资款假设</th><th>除权参考价</th><th>对现价</th></tr></thead><tbody><tr><td>保守</td><td>10 转 8</td><td>12.24 亿股</td><td>12 亿元</td><td>1.27 元</td><td><strong>-19%</strong></td></tr><tr><td>中性</td><td>10 转 12</td><td>18.36 亿股</td><td>15 亿元</td><td><strong>1.16 元</strong></td><td><strong>-26%</strong></td></tr><tr><td>激进</td><td>10 转 15（规则上限）</td><td>22.95 亿股</td><td>18 亿元</td><td>1.09 元</td><td><strong>-31%</strong></td></tr></tbody></table>
+<p><strong>线性式（便于读者自行替换参数）</strong>：<code>除权参考价 / 现价 = 原总股本占比 + 常量 / 现价</code>。本股在"10 转 12、投资款 15 亿元"情形下为 <code>0.4545 + 0.9790 / 现价</code>——<strong>现价越低，除权后的相对位置越差</strong>，因此"赌重整成功"与"这笔投资赚钱"是两件事。</p>
+<p><strong>判据一句话</strong>：<strong>认购价 ÷ 除权参考价低于 1 的投资人，除权对他是收益；高于 1 的现价买家，除权对他是损失。</strong> 本股现价 1.57 元 ÷ 除权参考价 1.16 元 ＝ <strong>1.35 倍</strong>，即现价买家承担全部除权损失。</p>
+
+</div></details>
+<blockquote><p>⚠️ 上述为测算而非预测：转增比例、投资人受让价与抵债作价<strong>全部未披露</strong>，一旦披露必须重算。这正是本报告给出"回避"的技术理由之一 —— <strong>在作价空白期买入，等于为不可测算的摊薄付钱。</strong></p></blockquote>
+<h3 id="sec14">6.2 投资结论</h3>
+<p><strong>结论：卖出（回避）。</strong></p>
+<table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td><strong>结论</strong></td><td><strong>卖出（回避）</strong></td></tr><tr><td><strong>理由链</strong></td><td>① <strong>主催化已密集兑现、股价已走完"破面值→要约→预重整"三段行情</strong>：自 6-30 低点 0.92 元至 9-14 高点 1.91 元涨幅 +107%，现价 1.57 元仍较底部高 70.7%，而两次冲高日（8-13、9-14）龙虎榜均为净卖出（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&amp;announcementId=1225518255&amp;orgId=gssh0600491&amp;announcementTime=2026-08-28" target="_blank" rel="noopener">要约收购结果公告</a>）。&lt;br&gt;② <strong>下一步的确定性事件是负向的、且作价不可测</strong>：法院一旦裁定受理重整即叠加 \*ST（沪主板 9.4.1 第九项），而转增比例与投资人受让价零披露；按中性假设测算，理论除权参考价约 1.16 元＝现价 -26%（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&amp;announcementId=1225555807&amp;orgId=gssh0600491&amp;announcementTime=2026-09-10" target="_blank" rel="noopener">预重整决定公告</a>）。&lt;br&gt;③ <strong>"无物"</strong>：宁波国资在要约报告书中明确"<strong>未来 12 个月内不继续增持</strong>""<strong>不以取得公司控制权为目的</strong>"；PPP 资产处置是"<strong>卖</strong>资产"（与注入方向相反）；杭州交投的同业竞争注入承诺以"取得控制权后三年内"为前提，而<strong>控制权从未取得</strong>。&lt;br&gt;④ <strong>ST 帽撤销遥远</strong>：沪主板 9.8.7 第三款 OR 逻辑中"扣非转正"已无望（2026H1 扣非 -8.54 亿元），只能赌 2026 年报审计师移除持续经营段落，而 H1 仍亏 8.05 亿元、金融机构逾期由 4 月的 12.06 亿元升至 8 月的 12.65 亿元。&lt;br&gt;⑤ <strong>同型样本偏弱</strong>：41 只有效样本 2026 年中位 -24.23%，本股 -40.53% 排第 32；上涨的 11 只<strong>全部"有物"</strong>。</td></tr><tr><td><strong>触发条件</strong></td><td><strong>转买入</strong>：① 宁波国资或其指定主体<strong>以重整产业投资人身份披露投资方案</strong>（含受让价、转增比例、业务导入安排）；② <strong>PPP 资产处置首批签署正式协议并披露对价与减值影响</strong>；③ 股价回落至 <strong>1.00–1.15 元</strong>（距面值线 15% 以内、且低于国资要约价）区间。&lt;br&gt;<strong>转卖出（对已持仓者）</strong>：法院裁定受理重整后出现放量下跌，或 2026 年报审计意见降级为保留/无法表示。</td></tr><tr><td><strong>失效条件</strong></td><td>① 宁波市国资在重整中转为<strong>产业投资人并承诺注入资产/业务导入</strong> → 本结论作废，须按"注入后市值"重估；② 2026 年报审计意见移除持续经营段落（ST 帽可提前解除）；③ PPP 资产处置以显著高于"净资产 70%"的价格成交。</td></tr><tr><td><strong>参考区间</strong></td><td><strong>买入区间 1.00–1.15 元</strong>（低于国资要约价、贴近面值缓冲）；<strong>目标区间 2.00–2.50 元</strong>（重整成功并填权的乐观情景，对应法院评估价 2.055 元上方）；<strong>止损位 0.95 元</strong>（进入面值倒计时）</td></tr><tr><td><strong>时间窗口</strong></td><td>至 2026 年年度报告（2027-04）或法院裁定受理重整之日，以先到者为准</td></tr><tr><td><strong>仓位建议</strong></td><td><strong>不建仓</strong>；已持仓者建议在 1.50–1.70 元区间减持</td></tr><tr><td><strong>最大风险</strong></td><td><strong>宁波市国资（或其指定主体）以重整产业投资人身份进场并披露资产注入／业务导入方案</strong> —— 这会同时补齐"物"与"表"，使本股从下跌组直接切换至上涨组（对照 \*ST英飞 +130.22%）</td></tr></tbody></table>
+<h3 id="sec15">6.3 与反方观点的对照</h3>
+<p>本报告的三条"卖出"理由必须能正面回答附录 C 的质询：<strong>"宁波国资都出手了，为什么还卖？"</strong> —— 答案在公告原文里：<strong>国资出手的方式是"给价格底线（要约 1.25 元）"与"接走资产（PPP）"，而不是"装进资产"</strong>；且其在要约报告书中自陈不取得控制权、12 个月内不增持。<strong>"国资出手"与"国资注入"是两件事，市场把前者当后者定价。</strong></p>
+<hr>
+<h2 id="chap7">附录 A · 待核实 / 需补充清单</h2>
+<p><strong>结论：以下 6 项在本轮公开信息中未见披露，且都会实质影响估值判断，须待公司公告或进一步核查。</strong></p>
+<table><thead><tr><th>编号</th><th>待核实项</th><th>说明</th></tr></thead><tbody><tr><td>1</td><td>杭州交投 2024-01 受让 8.40% 股份的<strong>每股价格</strong></td><td>本轮核查文件未含该对价；影响"国资成本锚"测算</td></tr><tr><td>2</td><td>控股家族 119,700,000 股司法拍卖<strong>是否重启</strong></td><td>2026-07-01 公告称已中止，此后无进展披露</td></tr><tr><td>3</td><td>PPP 资产处置<strong>首批签约对象、对价与减值金额</strong></td><td>公司仅披露"目标回笼 15–20 亿元"，无正式协议</td></tr><tr><td>4</td><td>重整投资人<strong>招募安排与受让作价</strong></td><td>预重整管理人已指定（2026-09-23），尚无招募公告</td></tr><tr><td>5</td><td>2021–2023 年营收／归母净利明细</td><td>Wind 代理离线、东财 F10 未覆盖，本轮以"连续三年扣非为负"定性代替</td></tr><tr><td>6</td><td>2025 年扣非归母净利润的<strong>确切数值</strong></td><td>年报正文已下载但本轮未逐项提取，需复核</td></tr></tbody></table>
+<h2 id="chap8">附录 B · 关键信源链接</h2>
+<p><strong>结论：全部关键结论均可溯源至一手公告；下表 7 条为本文引用频次最高的原文。</strong></p>
+<table><thead><tr><th>编号</th><th>信源类型</th><th>文件（发布日）</th><th>原文地址</th></tr></thead><tbody><tr><td>1</td><td>一手·戴帽</td><td>《关于实施其他风险警示暨股票停牌的公告》（2026-04-30）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&amp;announcementId=1225263031&amp;orgId=gssh0600491&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>2</td><td>一手·年报</td><td>《2025 年年度报告》（2026-04-30）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&amp;announcementId=1225262861&amp;orgId=gssh0600491&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>3</td><td>一手·半年报</td><td>《2026 年半年度报告》（2026-08-31）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&amp;announcementId=1225535165&amp;orgId=gssh0600491&amp;announcementTime=2026-08-31" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>4</td><td>一手·要约</td><td>《要约收购报告书》（2026-07-24）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&amp;announcementId=1225439326&amp;orgId=gssh0600491&amp;announcementTime=2026-07-24" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>5</td><td>一手·预重整</td><td>《关于法院决定对公司进行预重整的公告》（2026-09-10）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&amp;announcementId=1225555807&amp;orgId=gssh0600491&amp;announcementTime=2026-09-10" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>6</td><td>一手·问询函</td><td>《关于 2025 年年度报告的信息披露监管问询函回复的公告》（2026-09-02）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&amp;announcementId=1225541854&amp;orgId=gssh0600491&amp;announcementTime=2026-09-02" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>7</td><td>一手·自查</td><td>《关于被债权人申请重整及预重整的专项自查报告》（2026-08-21）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600491&amp;announcementId=1225485835&amp;orgId=gssh0600491&amp;announcementTime=2026-08-21" target="_blank" rel="noopener">打开原文</a></td></tr></tbody></table>
+<p>其余引用（面值风险提示、控制权变更终止、PPP 授权处置、监管工作函回复、业绩预告及更正、要约结果与交割、司法拍卖、详式/简式权益变动报告书等）见正文内嵌链接。</p>
+<h2 id="chap9">附录 C · 逻辑漏洞与反方观点（5 问速版）</h2>
+<p><strong>结论：本报告的"卖出"结论在"国资由托底转为注入"这一单一情形下会失效，其余四条质询均不足以推翻结论。</strong></p>
+<ol><li><strong>"宁波国资出手了，为什么还卖？"</strong> —— 国资出手的方式是<strong>要约给价格底线（1.25 元）＋PPP 资产接走</strong>，要约报告书明确"不以取得控制权为目的""未来 12 个月内不继续增持"。<strong>托底 ≠ 注入。</strong>（若其转为产业投资人，则本结论失效 —— 已写入失效条件。）</li><li><strong>"PB 只有 0.38，跌无可跌了吧？"</strong> —— 建筑央企 PB 普遍 0.29–0.39，<strong>本股并未显著低估</strong>；且分母中 254.86 亿元"其他非流动资产"（PPP 金融资产）正被以"不低于净资产 70% 折扣"处置，<strong>分母本身待验证</strong>。</li><li><strong>"预重整都受理了，重整成功不就是利好？"</strong> —— <strong>受理重整是负向事件</strong>（叠加 \*ST）；且重整方案零披露，<strong>除权摊薄不可测算</strong>（中性假设约 -26%）。</li><li><strong>"杭州交投不是承诺注入了吗？"</strong> —— 承诺原文以"<strong>取得上市公司控制权后三年内</strong>"为前提，而控制权从未取得、方案已于 2026-04-30 终止；公司自查亦确认该承诺"已及时严格履行"（意指触发条件未成立）。</li><li><strong>"股价从 0.92 涨到 1.91，不是说明资金看好吗？"</strong> —— 涨幅已在 9-14 见顶回落 17.8%，且<strong>两次冲高日的龙虎榜均为净卖出</strong>（8-13、9-14）；同型样本中位 -24.23%、本股排 32/41，"涨得多"不等于"还没涨完"。</li></ol>
+<h2 id="chap10">版本记录</h2>
+<table><thead><tr><th>版本</th><th>修订日</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-06</td><td>首次生成；基准日 2026-10-06、数据截止 2026-09-30 收盘。全库检索确认无同名既有研报可吸收（<code>其他资料\ST公司历史沿革分析报告_完整版.html</code> 中仅有本标的一行占位卡片"详细历史沿革数据待补充"）。投资结论首次落地下手＝<strong>卖出（回避）</strong></td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
