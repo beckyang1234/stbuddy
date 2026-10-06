@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>＊ST美芝（002856.SZ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>9 章 · 14 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断</a><a class="sblv3" href="#sec0">1.1 基本信息与股权</a><a class="sblv3" href="#sec1">1.2 ST 风险诊断</a><a class="sblv3" href="#sec2">1.3 公司运营情况</a><a class="sblv3" href="#sec3">1.4 王艳式六栏目（完整颗粒度）</a><a class="sblv3" href="#sec4">1.5 全流程进度看板与运作特征</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、基本面路径：重整逻辑（路径 B）</a><a class="sblv3" href="#sec5">2.1 方案拆解：每 10 股转增 15 股（触上限），全部不向原股东分配</a><a class="sblv3" href="#sec6">2.2 时间账：真正的生死开关在 2026-12-31</a><a class="sblv3" href="#sec7">2.3 为什么"资产注入"这条最主流的想象在近端做不了</a><a class="sblv3" href="#sec8">2.4 营收红线：3 亿元额度型托底</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、炒作逻辑 · 情绪 · 筹码</a><a class="sblv3" href="#sec9">3.1 炒作逻辑三支柱（全部着眼未来）</a><a class="sblv3" href="#sec10">3.2 炒作符号与连板极值</a><a class="sblv3" href="#sec11">3.3 筹码与龙虎榜</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、估值与投资结论</a><a class="sblv3" href="#sec12">4.1 估值</a><a class="sblv3" href="#sec13">4.2 投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 C · 逻辑漏洞与反方观点（5 问速版）</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">＊ST美芝（002856.SZ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：卖出（回避）</strong></p>
+<p>红线分类：<span class="sttag sttag-blue"><a href="https://data.eastmoney.com/notices/detail/002856/AN202604281821714311.html" target="_blank" rel="noopener">2025年净资产为负</a></span>·<span class="sttag sttag-orange"><a href="https://data.eastmoney.com/notices/detail/002856/AN202604281821714311.html" target="_blank" rel="noopener">连续三年扣非为负且持续经营存疑</a></span>·<span class="sttag sttag-orange"><a href="https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-05-18/ce70d5c9-7ffa-45ff-b06c-3fe6593cd7f0.PDF" target="_blank" rel="noopener">公开谴责,2026-05-15</a></span></p>
+<p>生死定级：<strong>可救·需外力</strong>（重整方案已成型且债权人已通过，但"2026 年内执行完毕"这一步能否走完是唯一开关）</p>
+<p>自救空间：靠深朴智能联合体 <strong>18.09 亿元</strong>投资款 ＋ 每 10 股转增 15 股化解 7.59 亿元普通债务；最大障碍是<strong>时间</strong>——司法重整尚未受理，而净资产必须体现在 2026 年报表上。</p>
+<p>主要看点：具身智能创业公司<strong>北京深朴智能科技有限公司</strong>（创始人兼 CEO 李晓飞，清华本硕博、曾任自动驾驶独角兽智行者联合创始人）以 <strong>8.725 元/股认购 9,285.84 万股（8.10 亿元）</strong>、联合体合计出资 <strong>18.09 亿元</strong>成为控股股东，持股 54.9%——这是一单典型的"<strong>具身智能产业资本借壳</strong>"，也是 A 股目前极少数能被直接定价的具身智能资产入口。</p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>基准日 / 数据截止</td><td>2026-10-05；行情 2026-09-30 收盘</td></tr><tr><td>最新收盘价</td><td>20.22 元（+10.01%，09-30 涨停）</td></tr><tr><td>总市值 / 总股本</td><td>27.36 亿元 / 1.35 亿股</td></tr><tr><td>年初至今</td><td>+71.21%（同型 33 只样本中位 −27.90%）</td></tr><tr><td>2026H1 归母净资产</td><td><strong>−7,428.53 万元</strong>；资产负债率 102.65%</td></tr><tr><td>2026H1 营业收入</td><td>1.17 亿元（同比 −4.40%）</td></tr><tr><td>当前简称</td><td>＊ST美芝（2026-04-30 起）</td></tr></tbody></table>
+<blockquote><p>数据来源：腾讯行情（2026-09-30 截面）、2026 年半年度报告。<strong>Wind 局域网代理本轮整段不可达</strong>（connect timeout），截面估值与同型样本改用腾讯 <code>qt.gtimg.cn</code>、日 K 改用新浪接口，财务以年报/半年报原文为准。</p></blockquote>
+<hr>
+<h2 id="chap1">一、诊断</h2>
+<h3 id="sec0">1.1 基本信息与股权</h3>
+<p><strong>结论：这是一家由佛山南海国资控股、主业连续五年失血、已资不抵债的建筑装饰公司；国资自身进入成本 18.4757 元/股，现价 20.22 元仅浮盈 9.4%——"国资自救"的动机存在，但能力已被证明有限。</strong></p>
+<p>公司全称深圳市美芝装饰设计工程股份有限公司，2017-03-20 于深交所主板上市，发行价 11.61 元，主营建筑装饰工程设计与施工（行业代码 E50），2025 年装饰装修收入 1.15 亿元、装饰设计 39.09 万元。</p>
+<p>控股股东为<strong>广东怡建股权投资合伙企业（有限合伙）</strong>，持股 29.99%，向上穿透实际控制人为<strong>佛山市南海区国有资产监督管理局</strong>。第二大股东李苏华（原实控人）11.24%，其全部 15,211,153 股被冻结。报告期末股东户数 <strong>10,679 户</strong>（2026-06-30），较 2025 年末的 11,420 户与 2026-03-31 的 9,337 户呈"先降后升"。</p>
+<details class="fold"><summary>国资入主成本与股权沿革（含沿革四列表）</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>关键事件</th><th>股权/实控人变化</th><th>背后的逻辑</th></tr></thead><tbody><tr><td>2020-12-12</td><td>李苏华、上海天识与广东怡建签署《股份转让协议》及《表决权放弃协议》</td><td>李苏华 11.24% ＋ 上海天识 18.75% 合计 29.99% 转让给广东怡建</td><td>转让价 <strong>18.4757 元/股</strong>、总价约 <strong>7.50 亿元</strong>，较 2020-12-11 收盘价 16.15 元溢价 14.4%</td></tr><tr><td>2020-12-28</td><td>40,580,300 股完成过户</td><td>广东怡建成为控股股东，佛山南海国资成为实控人</td><td>李苏华同时不可撤销放弃 27,062,562 股（20%）表决权；约定 18 个月内不得转让</td></tr><tr><td>2021-03-29～2022-03-28</td><td>李苏华因股票质押式回购违约，通过 4 笔协议转让累计减持 19,100,000 股（14.12%）</td><td>持股降至 11.24%</td><td>减持已放弃表决权的股份累计达 5% 时未及时报告公告，2022-08-02 被深交所出具监管函</td></tr><tr><td>2022-03-11</td><td>怡浩投资拟以现金认购非公开发行不超过 40,593,842 股</td><td>完成后权益将超 30%，触发要约收购义务并申请豁免</td><td>该次定增最终未落地（见后文），国资增持通道关闭</td></tr><tr><td>2026-06-23</td><td>董事长何伏信离任</td><td>—</td><td>何伏信系 2026-05-15 公开谴责当事人之一</td></tr><tr><td>2026-07-07</td><td>何申健当选董事长（原董事、总经理兼董秘）</td><td>治理层换血</td><td>何申健同为公开谴责当事人</td></tr><tr><td>2026-07-28</td><td>控股股东提名徐嘉炜（武汉大学硕士，兼南海多家国资基建/投资平台管理职务）为非独立董事</td><td>国资继续派驻</td><td>换人组合＝"国资平台干部"，非产业背景</td></tr></tbody></table>
+<p><strong>关联方合计持股</strong>：广东怡建 29.99% ＋ 李苏华 11.24% ＝ 41.23%；若庭外重组方案执行完毕，广东怡建被摊薄至 <strong>12.00%</strong>（40,580,300 ÷ 338,282,020），控股地位让渡给深朴智能。</p>
+<p><strong>股东阵容（身份识别）</strong></p>
+<table><thead><tr><th>股东</th><th>身份</th><th>持股</th><th>状态</th></tr></thead><tbody><tr><td>广东怡建（山汇投资管理）</td><td>国有法人（南海国资）</td><td>29.99% / 40,580,300 股</td><td>无质押无冻结</td></tr><tr><td>李苏华</td><td>原实控人</td><td>11.24% / 15,211,153 股</td><td><strong>全额冻结</strong>（其中 11,408,365 股为有限售条件）</td></tr><tr><td>何文钜</td><td>境内自然人</td><td>1.44% / 1,950,000 股</td><td>报告期内减持 20,000 股</td></tr><tr><td>J.P. Morgan Securities PLC－自有资金</td><td>外资经纪</td><td>1.20% / 1,625,867 股</td><td>报告期内增持 1,304,xxx 股</td></tr><tr><td>BARCLAYS BANK PLC</td><td>外资经纪</td><td>约 0.77% / 1,037,xxx 股</td><td>—</td></tr></tbody></table>
+<p><strong>筹码集中度</strong>：股东户数 2025-12-31 11,420 户 → 2026-03-31 9,337 户 → 2026-06-30 <strong>10,679 户</strong>。<strong>3→6 月户数上升 14.4%，而同期股价从 10.49 元升至 26.99 元</strong> —— 属"上涨中户数增加"，是<strong>筹码分散、散户涌入</strong>的读数，<strong>不得读作主力吸筹</strong>。</p>
+
+</div></details>
+<h3 id="sec1">1.2 ST 风险诊断</h3>
+<p><strong>结论：双帽并发，但四类退市红线只踩中财务类一条——2025 年末归母净资产 −5,246.62 万元（深主板 9.3.1 第一款第（二）项）。真正的归零开关只有一个：9.3.12 第（二）项"2026 年末经审计净资产仍为负"。</strong></p>
+<p>戴帽依据：<span class="sttag sttag-blue"><a href="https://data.eastmoney.com/notices/detail/002856/AN202604281821714311.html" target="_blank" rel="noopener">2025年净资产为负</a></span>（深主板 9.3.1 第一款第（二）项，2026-04-30 起实施 \*ST）＋<span class="sttag sttag-orange"><a href="https://data.eastmoney.com/notices/detail/002856/AN202604281821714311.html" target="_blank" rel="noopener">连续三年扣非为负且持续经营存疑</a></span>（9.8.1 第（七）项，叠加其他风险警示 ST）。</p>
+<p><strong>四类退市红线逐条对照</strong></p>
+<table><thead><tr><th>类型</th><th>触发条件（速查）</th><th>本股情形</th><th>判定</th></tr></thead><tbody><tr><td>交易类</td><td>连续 20 日收盘价 &lt;1 元；市值 &lt;5 亿元（主板）；股东数 &lt;2,000 户</td><td>现价 20.22 元；市值 27.36 亿元；股东 10,679 户</td><td><strong>未踩</strong></td></tr><tr><td>财务类①</td><td>孰低为负 <strong>且</strong> 扣除后营收 &lt;3 亿元</td><td>2025 扣除后营收 <strong>3.29 亿元</strong> &gt;3 亿元</td><td><strong>未踩（缓冲 2,926 万元）</strong></td></tr><tr><td>财务类②</td><td>期末经审计净资产为负</td><td>2025 年末归母 <strong>−5,246.62 万元</strong></td><td><strong>★已踩</strong></td></tr><tr><td>财务类③</td><td>审计意见为无法表示/否定</td><td>2025 年报为"<strong>带持续经营重大不确定性段落的无保留意见</strong>"（中审亚太审字（2026）005449 号）</td><td><strong>未踩</strong></td></tr><tr><td>规范类</td><td>资金占用、内控连续非标、信披重大缺陷</td><td>2026H1 非经营性资金占用 0；<strong>2025 年内控审计为标准无保留意见</strong>；无证监会立案；有 2026-05-15 深交所公开谴责</td><td><strong>未踩红线</strong></td></tr><tr><td>其他类</td><td>近三年分红不达标</td><td>母公司未分配利润 −7.19 亿元，规则要求"最近一年净利为正"故不适用</td><td><strong>未踩</strong></td></tr><tr><td>重大违法类</td><td>欺诈发行、造假达量化线</td><td>无</td><td><strong>未踩</strong></td></tr></tbody></table>
+<blockquote><p>口径提示：路径底表《退市风险预警-20261005.xlsx》「财务类」块②（"最近一个会计年度审计净资产为负值的有 34 家企业"）已收录本股（净资产 −0.52 亿元、去年同期 1.06 亿元），与年报一致。该表<strong>只作路径索引</strong>，数字已全部回年报原文核实。</p></blockquote>
+<p><strong>摘帽展望（两张帽子、两条申请、同一份年报）</strong></p>
+<table><thead><tr><th>帽子</th><th>撤销条款</th><th>条件</th><th>最早可申请日</th></tr></thead><tbody><tr><td>\*ST（退市风险警示）</td><td>深主板 <strong>9.3.8</strong></td><td>2026 年度年报不存在 9.3.12 第（一）—（七）项任一情形</td><td><strong>2027-04</strong>（2026 年报披露后）</td></tr><tr><td>ST（其他风险警示）</td><td>深主板 <strong>9.8.7</strong></td><td>最近一年审计报告显示"扣非前后孰低者为正值"<strong>或者</strong>"持续经营能力不确定性已消除"（<strong>OR 逻辑</strong>）</td><td>同上</td></tr></tbody></table>
+<blockquote><p><strong>9.3.8 与 9.3.12 互为镜像 → 不存在"部分达标"</strong>，本质是一道零容错的 AND 关卡。另注：<strong>主板风险警示股自 2026-07-06 起涨跌幅已由 5% 改为 10%</strong>（09-30 当日 +10.01% 即为实证），<strong>摘帽前后同为 10% → 摘帽不含任何制度红利</strong>。</p></blockquote>
+<h3 id="sec2">1.3 公司运营情况</h3>
+<p><strong>结论：主业已无内生修复能力——营收从 2022 年的 16.67 亿元萎缩到 2025 年的 3.53 亿元，五年累计归母亏损约 9.69 亿元，2026H1 毛利率 −10.43%，资产负债率 102.65%。保壳只能靠资本运作，不可能靠经营。</strong></p>
+<table><thead><tr><th>报告期</th><th>营业收入（亿元）</th><th>归母净利（亿元）</th><th>扣非归母（亿元）</th><th>毛利率</th><th>归母净资产（亿元）</th><th>资产负债率</th></tr></thead><tbody><tr><td>2026H1</td><td>1.17</td><td>−0.30</td><td>−0.35</td><td>−10.43%</td><td><strong>−0.74</strong></td><td>102.65%</td></tr><tr><td>2025</td><td>3.53</td><td>−2.14</td><td>−2.65</td><td>−11.19%</td><td><strong>−0.52</strong></td><td>100.65%</td></tr><tr><td>2024</td><td>7.04</td><td>−2.57</td><td>−2.82</td><td>−12.45%</td><td>1.06</td><td>94.25%</td></tr><tr><td>2023</td><td>8.78</td><td>−1.74</td><td>−2.07</td><td>−4.99%</td><td>3.56</td><td>—</td></tr><tr><td>2022</td><td>16.67【异源】</td><td>−1.43【异源】</td><td>−1.55【异源】</td><td>6.35%【异源】</td><td>5.34【异源】</td><td>—</td></tr><tr><td>2021</td><td>5.88【异源】</td><td>−1.61【异源】</td><td>−1.69【异源】</td><td>−15.59%【异源】</td><td>6.65【异源】</td><td>—</td></tr></tbody></table>
+<blockquote><p>口径：合并报表、归母口径。2023—2025 与 2026H1 取年报/半年报原文；<strong>2021—2022 标【异源】，取自东方财富 F10（<code>RPT_F10_FINANCE_MAINFINADATA</code>），归母净资产＝BPS×总股本估算</strong>。数据来源：2025 年年度报告、2026 年半年度报告、东方财富 F10。勾稽自检：2026H1 所有者权益合计 −3,011.77 万元 ＋ 少数股东权益 4,416.77 万元 ＋ 负债 11.68 亿元 ＝ 总资产 11.38 亿元 ✓。</p></blockquote>
+<p><strong>资产质量三个硬事实</strong></p>
+<table><thead><tr><th>资产项</th><th>2026-06-30</th><th>判读</th></tr></thead><tbody><tr><td>货币资金</td><td>4,098.38 万元</td><td>其中 <strong>2,672.15 万元被诉讼冻结</strong> → <strong>可动用约 1,426 万元</strong></td></tr><tr><td>应收账款</td><td>5.22 亿元（占总资产 45.86%）</td><td>另有 <strong>1.52 亿元账面余额已质押</strong>给长期借款担保</td></tr><tr><td>合同资产</td><td>2.09 亿元</td><td>2026H1 计提减值 2,262.51 万元（其中应收账款坏账 2,177.82 万元）</td></tr><tr><td>短期借款 / 长期借款</td><td>45.90 万元 / 7,424.65 万元</td><td>应付账款 4.46 亿元、其他应付款 5.34 亿元</td></tr></tbody></table>
+<details class="fold"><summary>2026H1 亏损与减值的构成（"失血"来自哪里）</summary><div class="fold-body">
+
+<p>2026H1 营业收入 1.17 亿元、营业成本 1.29 亿元 → <strong>毛利为负 −1,224.63 万元</strong>；同期计提资产减值准备 2,262.51 万元。母公司未分配利润由 2025 年末的 −6.91 亿元进一步降至 <strong>−7.19 亿元</strong>，母公司所有者权益 −5,325.06 万元。</p>
+<p><strong>关键读数：这是一家"没有毛利"的公司。</strong> 2025 年装饰装修业务毛利率降至 <strong>−37.25%</strong>（南方+报道，2026-07-08），即接单即亏；公司自述已"主动放弃回款风险较高的地产项目"，但这等于同时放弃了收入。<strong>在毛利率为负的前提下，做大营收只会放大亏损</strong>——这也是"国资用关联交易额度冲 3 亿元营收"这条路径的内在矛盾（详见 §2.4）。</p>
+
+</div></details>
+<h3 id="sec3">1.4 王艳式六栏目（完整颗粒度）</h3>
+<p><strong>结论：公司的资本运作史是一部"国资入主—增持受阻—债务缠身—引入外人接盘"的完整链条；广东怡建进入六年、期间一次定增未成、一条借款线加码到底，最终把控制权让给了半导体/具身智能的新主人。</strong></p>
+<details class="fold"><summary>① 前世今生（四列表，含金额·每股价格·资金来源）</summary><div class="fold-body">
+
+<p>见 §1.1 折叠区"国资入主成本与股权沿革"。</p>
+
+</div></details>
+<details class="fold"><summary>② 股东阵容（身份识别＋成本＋锁定＋筹码集中度）</summary><div class="fold-body">
+
+<p>见 §1.1 折叠区"股东阵容"与"筹码集中度"。</p>
+<p><strong>关键补充——数字债权的处置</strong>：公司 2025-12-26 起推动"债务重组"与"公开挂牌转让债权"（对广东英聚建筑工程有限公司的债权、朱涛对广东英聚 7,632.24 万元债权），2026-01-05 / 02-13 / 03-10 多轮进展公告；2025-10-13 至 12-30 完成公开挂牌转让广东英聚 51% 股权。<strong>含义：在引入外部投资人之前，国资先自行做了一轮"处置非核心资产＋变现债权"的动作，但量级远不足以覆盖缺口。</strong></p>
+
+</div></details>
+<details class="fold"><summary>③ 关键人物详细简历（核不到即写"公告未披露"）</summary><div class="fold-body">
+
+<table><thead><tr><th>人物</th><th>出生年月</th><th>履历</th><th>现任关联职务</th></tr></thead><tbody><tr><td><strong>李晓飞</strong>（深朴智能实控人）</td><td>公告未披露</td><td>本科及博士毕业于<strong>清华大学汽车工程系</strong>，博士研究方向为智能汽车环境感知及人工智能算法；曾任自动驾驶独角兽<strong>智行者</strong>联合创始人、高级副总裁兼机器人事业部总经理，主导搭建 L4 级无人驾驶技术架构，推动清扫、物流等多款机器人产品商业化</td><td>深朴智能创始人兼 CEO；直接持股 21.25%，通过北京深朴智达（担任三家员工/投资平台 GP）合计控制约 <strong>46.74%</strong> 表决权</td></tr><tr><td><strong>何申健</strong>（董事长）</td><td><strong>1981 年</strong></td><td>广东财经大学法学学士；历任佛山市南海区交通系统公职及国资平台管理岗位；2021 年进入美芝股份</td><td>董事长、董事；<strong>2026-05-15 为深交所公开谴责当事人</strong>；未持有公司股份</td></tr><tr><td><strong>何伏信</strong>（原董事长）</td><td>公告未披露</td><td>公告未披露</td><td>2026-06-23 离任；<strong>2026-05-15 公开谴责当事人</strong>；离任未满一年，其曾任董事的广东构建仍被认定为关联方</td></tr><tr><td><strong>古定文</strong>（财务总监）</td><td>公告未披露</td><td>公告未披露</td><td>财务总监（半年报任"主管会计工作负责人"）；<strong>2026-05-15 公开谴责当事人</strong></td></tr><tr><td><strong>徐嘉炜</strong></td><td>公告未披露</td><td>武汉大学硕士，身兼南海多家国资基建、投资平台管理职务</td><td>2026-07-28 由控股股东提名为非独立董事；未持有公司股份</td></tr></tbody></table>
+<blockquote><p><strong>判读：三名公开谴责当事人中，何申健（董事长）与古定文（财务总监）截至基准日均在任，何伏信已于 2026-06-23 离任。</strong> 这一事实直接触发《上市公司证券发行注册管理办法》第十一条第（三）项第②腿（现任董监高最近一年受证券交易所公开谴责 → 不得向特定对象发行股票），<strong>把"发股购买资产"这条通道锁到 2027-05-15 前后</strong>（详见 §2.3）。</p></blockquote>
+
+</div></details>
+<details class="fold"><summary>④ 重要公司/主体的主营与财务（查不到即写"未披露"）</summary><div class="fold-body">
+
+<p><strong>北京深朴智能科技有限公司</strong>：成立 <strong>2024-10-18</strong>，注册资本仅 <strong>202.2216 万元</strong>，法定代表人李晓飞，企业类型"有限责任公司（港澳台投资、非独资）"，注册地址北京市朝阳区北辰东路 8 号院 1 号楼 21 层；经营范围为人工智能理论与算法软件、智能机器人研发、服务消费机器人制造与销售等。定位"AI 原生具身智能系统服务商"，以酒店、康养等类家庭商业场景为切入点（2026 世界机器人大会展出服务机器人"小朴"与 HiFi-UMI 数据生产引擎，已与中旅酒店在北京丽都维景酒店开展 POC）。</p>
+<table><thead><tr><th>项目（单位：万元）</th><th>2024 年度/末（经审计）</th><th>2025 年度/末（经审计）</th><th>2026-09-14（未经审计）</th></tr></thead><tbody><tr><td>资产总额</td><td>460.74</td><td>13,160.17</td><td>57,107.63</td></tr><tr><td>负债总额</td><td>518.59</td><td>567.54</td><td>7,331.59</td></tr><tr><td>所有者权益</td><td>−57.85</td><td>12,592.62</td><td><strong>49,776.04</strong></td></tr><tr><td>营业收入</td><td>0</td><td><strong>1,098.02</strong></td><td><strong>700.00</strong></td></tr><tr><td>净利润</td><td>−57.85</td><td><strong>−1,009.57</strong></td><td><strong>−3,525.25</strong></td></tr></tbody></table>
+<blockquote><p><strong>判读：这家公司"钱多、收入少、还在亏"。</strong> 截至 2026-09-14，资产总额 5.71 亿元、净资产 4.98 亿元、银行账户非受限货币资金 <strong>5.12 亿元</strong>（正是它满足招募"非受限货币资金 ≥5 亿元"门槛的底气），但 2026 年前 9 个月营收仅 700 万元、净利 −3,525.25 万元。<strong>资产与货币资金的快速膨胀来自 2025-10 以来五轮融资（天使轮百度、种子轮顺为/创世伙伴、种子+轮钧山、Pre-A 轮滴滴领投、Pre-A+ 轮珂玺资本等，最近一轮"数亿元"）。</strong></p><p>股东名单含 <strong>宁波柯力传感科技股份有限公司（603662.SH，持股 0.63%）</strong>、Astrend V (Hong Kong) Beta Limited、CYBER CREATION VENTURES、青岛华函系多支基金、三亚百川致新、普华中小二期等。<strong>含义：深朴智能的"净资产"主要是刚募到的现金，不是经营性资产</strong> —— 它是"人（明确的产业方）＋ 表（2026-12-21 硬节点）齐备，但<strong>物（可注入的经营性资产）尚未成形</strong>"。</p></blockquote>
+
+</div></details>
+<details class="fold"><summary>⑤ 成本锚点（逐参与方 ＋ 两类定价逻辑）</summary><div class="fold-body">
+
+<table><thead><tr><th>参与方</th><th>成本（元/股）</th><th>说明</th><th>现价倍数</th></tr></thead><tbody><tr><td>佛山南海国资（广东怡建）</td><td><strong>18.4757</strong></td><td>2020-12 协议受让 4,058.03 万股，总价 7.50 亿元</td><td><strong>1.09 倍</strong></td></tr><tr><td>深朴智能（产业投资人）</td><td><strong>8.725</strong></td><td>2026-09-22 签约，认购 9,285.84 万股＝8.10 亿元</td><td><strong>2.32 倍</strong></td></tr><tr><td>14 家财务投资人</td><td><strong>10.765</strong></td><td>合计认购约 9,281 万股＝9.99 亿元</td><td><strong>1.88 倍</strong></td></tr><tr><td>普通债权人（以股抵债）</td><td>待定（重整计划中明确）</td><td>不超过 1,730.00 万股，用于抵偿 7.59 亿元普通债务</td><td>待定</td></tr><tr><td>理论除权参考价</td><td><strong>13.4–14.3</strong></td><td>见 §2.1 测算</td><td><strong>1.41–1.50 倍</strong></td></tr></tbody></table>
+<blockquote><p><strong>两类定价逻辑必须分开</strong>：国资 18.4757 元/股属"<strong>无稀释的市场底</strong>"（协议受让，无摊薄）；产业/财务投资人的 8.725 / 10.765 元属"<strong>有稀释的重整底</strong>"——他们拿的是转增股份，<strong>而原股东拿不到转增股却被摊薄，除权是必然的</strong>。因此"现价 ÷ 投资人成本＝2.32 倍"不能单独读，必须与"现价 ÷ 除权参考价＝1.46 倍"并列看，<strong>后者才是真实赔率</strong>。</p></blockquote>
+
+</div></details>
+<details class="fold"><summary>⑥ 信息来源汇总（四级分级）</summary><div class="fold-body">
+
+<table><thead><tr><th>序号</th><th>来源类型</th><th>来源与标题（日期）</th><th>链接</th></tr></thead><tbody><tr><td>1</td><td>一手·公告</td><td>关于公司股票交易被实施退市风险警示及其他风险警示暨停牌的公告（2026-04-29）</td><td>https://data.eastmoney.com/notices/detail/002856/AN202604281821714311.html</td></tr><tr><td>2</td><td>一手·公告</td><td>关于与投资人签署《庭外重组/重整投资协议》暨公司庭外重组进展的公告（2026-09-23）</td><td>https://data.eastmoney.com/notices/detail/002856/AN202609221829766962.html</td></tr><tr><td>3</td><td>一手·公告</td><td>关于庭外重组第一次债权人会议表决结果的公告（2026-09-29）</td><td>https://data.eastmoney.com/notices/detail/002856/AN202609281829965462.html</td></tr><tr><td>4</td><td>一手·公告</td><td>关于公开招募和遴选投资人的公告（2026-09-04）</td><td>https://data.eastmoney.com/notices/detail/002856/AN202609031828973231.html</td></tr><tr><td>5</td><td>一手·公告</td><td>2025 年年度报告（2026-04-29）</td><td>https://data.eastmoney.com/notices/detail/002856/AN202604281821714284.html</td></tr><tr><td>6</td><td>一手·公告</td><td>中审亚太审字（2026）005451 号营业收入扣除事项的专项审核报告</td><td>https://data.eastmoney.com/notices/detail/002856/AN202604281821714700.html</td></tr><tr><td>7</td><td>一手·公告</td><td>2026 年半年度报告（2026-08-28）</td><td>https://data.eastmoney.com/notices/detail/002856/AN202608270006754602.html</td></tr><tr><td>8</td><td>一手·公告</td><td>第五届董事会第三十次会议决议公告（2026-09-30）</td><td>https://data.eastmoney.com/notices/detail/002856/AN202609291830001509.html</td></tr><tr><td>9</td><td>一手·公告</td><td>关于 2026 年度日常关联交易预计的公告（2026-09-30）</td><td>https://data.eastmoney.com/notices/detail/002856/AN202609291830001507.html</td></tr><tr><td>10</td><td>一手·公告</td><td>关于有限责任公司召开 2026 年第三次临时股东会的通知（2026-09-30）</td><td>https://data.eastmoney.com/notices/detail/002856/AN202609291830001516.html</td></tr><tr><td>11</td><td>一手·监管</td><td>深交所公开谴责处分决定（深证上〔2026〕687 号）转述公告（2026-05-15）</td><td>https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-05-18/ce70d5c9-7ffa-45ff-b06c-3fe6593cd7f0.PDF</td></tr><tr><td>12</td><td>一手·法定披露媒体</td><td>中国证券报电子报《庭外重组/重整投资协议》公告全文（2026-09-23）</td><td>https://epaper.cs.com.cn/zgzqb/html/2026-09/23/nw.D110000zgzqb_20260923_1-B057.htm</td></tr><tr><td>13</td><td>数据源</td><td>腾讯行情截面（2026-09-30）／新浪日 K 序列</td><td>http://qt.gtimg.cn/q=sz002856</td></tr><tr><td>14</td><td>数据源</td><td>韭研公社异动整理（Simplified.parquet，58 条）</td><td>—</td></tr><tr><td>15</td><td>数据源</td><td>路径底表《退市风险预警-20261005.xlsx》</td><td>—</td></tr><tr><td>16</td><td>权威媒体（二级）</td><td>中国证券报《*ST美芝公布重组进展 具身智能创业公司深朴智能拟入主》（2026-09-23）</td><td>https://jnzstatic.cs.com.cn/zzb/htmlInfo/133935.html</td></tr><tr><td>17</td><td>权威媒体（二级）</td><td>南方+《遭交易所处分高管升任董事长，*ST美芝迎保壳大考》（2026-07-08）</td><td>https://www.nfnews.com/content/voAp94Yq6R.html</td></tr><tr><td>18</td><td>权威媒体（二级）</td><td>证券时报《深朴智能获 2 亿元融资，加速具身机器人落地》</td><td>https://www.stcn.com/article/detail/3483663.html</td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec4">1.5 全流程进度看板与运作特征</h3>
+<p><strong>结论：重整流程已走到"庭外重组投资人已定、债权人已通过"这一步，卡点是"时间未到"而非"谈不拢"——但"时间未到"在这里恰恰是最致命的卡点。</strong></p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点/条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>① 庭外重组申请</td><td>2026-05-15 债权人南海金盾申请</td><td>—</td><td>已完成</td><td>公告 2026-040</td></tr><tr><td>② 重组中心受理</td><td>2026-06-12 获受理，金杜（深圳）＋深圳诚信为协调人</td><td>—</td><td>已完成</td><td>公告 2026-044</td></tr><tr><td>③ 债权申报</td><td>2026-07-24 截止</td><td>申报总额未公告</td><td>—</td><td>公告 2026-051</td></tr><tr><td>④ 公开招募投资人</td><td>2026-09-03 发布，09-21 截止</td><td>仅 1 家适格 → 依深圳中院指引第 82 条直接确定</td><td>已完成</td><td>公告 2026-066</td></tr><tr><td>⑤ 签署投资协议</td><td>2026-09-22 签署</td><td>保证金 1 亿元已缴</td><td>已完成</td><td>公告 2026-073</td></tr><tr><td>⑥ 债权人会议表决《投资方案》</td><td>2026-09-24 召开，<strong>92.85% 金额同意，表决通过</strong></td><td>—</td><td>已完成</td><td>公告 2026-075</td></tr><tr><td>⑦ <strong>转入司法重整（法院受理）</strong></td><td><strong>尚未申请/尚未受理</strong></td><td>需法院裁定受理</td><td><strong>关键缺位</strong></td><td>—</td></tr><tr><td>⑧ 重整计划表决</td><td>未开始</td><td>协议约定 <strong>2026-12-21 前</strong>若未通过，产业投资人捐赠 6,542.43 万元</td><td>2026-12-21 前</td><td>投资协议 §7.2</td></tr><tr><td>⑨ 法院裁定批准 ＋ 执行（转增登记、投资款到账）</td><td>未开始</td><td>需在 <strong>2026-12-31 前</strong>完成，2026 年报净资产才能转正</td><td><strong>生死开关</strong></td><td>—</td></tr><tr><td>⑩ 2026 年报 ＋ 摘帽申请</td><td>未开始</td><td>2027-04 披露</td><td>2027-04</td><td>—</td></tr></tbody></table>
+<p><strong>运作特征</strong>：手法是"<strong>先国资自救（借款＋担保＋处置资产）→ 自救不足 → 引入外部产业投资人接盘</strong>"；节奏上是<strong>外部投资人在两个月内完成从招募到签约到债权人表决的全流程（09-03 → 09-24，仅 21 天）</strong>，速度快；交权属<strong>配合式</strong>——原控股股东未减持、未对抗，通过摊薄被动让位；<strong>成败关键变量（1 和 0 问题）＝法院能否在 2026 年内裁定批准重整计划并完成执行</strong>；核心矛盾一句话：<strong>"方案已经谈成，但时间可能不够"。</strong></p>
+<hr>
+<h2 id="chap2">二、基本面路径：重整逻辑（路径 B）</h2>
+<blockquote><p>三路径对比：路径 A（保壳·经营改善）<strong>不成立</strong>——毛利率为负、五年连亏，主业无内生修复能力；路径 C（处罚 ST）<strong>不适用</strong>——本股非因处罚戴帽。故只深耕<strong>路径 B · 重整</strong>。</p></blockquote>
+<h3 id="sec5">2.1 方案拆解：每 10 股转增 15 股（触上限），全部不向原股东分配</h3>
+<p><strong>结论：这套方案对原股东是"确定的价格除权、不确定的资产注入"——转增的 2.03 亿股全部不向原股东分配，原股东持股比例由 100% 被摊薄至 40.0%；理论除权参考价约 13.4–14.3 元，比现价 20.22 元低 29%–34%。这是</strong>机械确定<strong>的近端负收益。</strong></p>
+<p>方案要点（均出自《庭外重组/重整投资协议》原文）：</p>
+<table><thead><tr><th>条款</th><th>内容</th></tr></thead><tbody><tr><td>转增比例</td><td><strong>每 10 股转增 15 股</strong>（＝规则上限，摊薄到极致）</td></tr><tr><td>转增数量</td><td>202,969,212 股（2.03 亿股），按现有总股本 135,312,808 股测算</td></tr><tr><td>转增后总股本</td><td><strong>338,282,020 股（3.38 亿股）</strong></td></tr><tr><td>转增股份分配</td><td><strong>全部不向原股东分配</strong>：≤17,299,993 股用于普通债权人以股抵债；其余约 185,669,219 股由投资人联合体支付对价后受让</td></tr><tr><td>产业投资人</td><td>深朴智能 <strong>8.725 元/股 × 92,858,414 股 ＝ 810,189,662.15 元（8.10 亿元）</strong></td></tr><tr><td>财务投资人</td><td>14 家，<strong>10.765 元/股 × 约 92,810,805 股 ≈ 9.99 亿元</strong></td></tr><tr><td>联合体合计</td><td><strong>约 18.09 亿元，持股 54.9%</strong></td></tr><tr><td>锁定期</td><td>产业投资人 <strong>60 个月</strong>不减持＋<strong>36 个月内不得质押</strong>；财务投资人 <strong>12 个月</strong></td></tr><tr><td>修改权</td><td>转增股份用途与数量可在重整计划中调整；认购价可因监管要求与市场参考价变化协商调整</td></tr></tbody></table>
+<p><strong>理论除权参考价测算</strong>（口径：<code>(前收盘价 × 原总股本 ＋ 重整投资款 ＋ 抵债股份作价) ÷ (原总股本 ＋ 转增股数)</code>）</p>
+<table><thead><tr><th>情景</th><th>抵债作价假设</th><th>除权参考价</th><th>较现价 20.22 元</th></tr></thead><tbody><tr><td>保守（只计投资款）</td><td>0</td><td><strong>13.44 元</strong></td><td><strong>−33.5%</strong></td></tr><tr><td>中性（抵债按投资人价 8.725 元）</td><td>1.51 亿元</td><td><strong>13.88 元</strong></td><td><strong>−31.4%</strong></td></tr><tr><td>激进（抵债按市场参考价 17.15 元）</td><td>2.97 亿元</td><td><strong>14.33 元</strong></td><td><strong>−29.1%</strong></td></tr></tbody></table>
+<blockquote><p>转增前后总市值不变式验证：20.22 × 1.3531 亿股 ＝ 27.36 亿元；除权参考价 13.88 × 3.3828 亿股 ＝ 46.95 亿元 ≈ 27.36 ＋ 18.09（投资款）＝ 45.45 亿元，差额来自抵债作价 ✓。<strong>注：抵债作价未在公告披露</strong>（协议 §6.2(3)"以股抵债价格将在重整计划中予以明确"），故只给区间、不给单点。</p></blockquote>
+<details class="fold"><summary>除权公式与"谁受益、谁受损"的线性拆解</summary><div class="fold-body">
+
+<p>把公式整理成线性式更直观：<code>除权参考价 / 现价 = 原总股本占比 + 常量 / 现价</code>。 本例：原总股本占比 ＝ 135,312,808 ÷ 338,282,020 ＝ <strong>0.4000</strong>；常量 ＝ (重整投资款 18.09 亿 ＋ 抵债作价) ÷ 338,282,020 ≈ <strong>5.348 元</strong>（抵债作价按 8.725 元计）。 → <code>除权参考价 / 现价 = 0.400 + 5.348 / 现价</code></p>
+<table><thead><tr><th>买入方</th><th>买入价（元）</th><th>除权参考价 ÷ 买入价</th><th>含义</th></tr></thead><tbody><tr><td>产业投资人（深朴智能）</td><td>8.725</td><td>1.59</td><td><strong>除权对它是 +59% 的收益</strong></td></tr><tr><td>财务投资人</td><td>10.765</td><td>1.29</td><td><strong>除权对它是 +29% 的收益</strong></td></tr><tr><td><strong>现价买入者</strong></td><td><strong>20.22</strong></td><td><strong>0.69</strong></td><td><strong>除权对它是 −31% 的损失</strong></td></tr></tbody></table>
+<p><strong>判据一句话：「认购价 ÷ 除权参考价」低于 1 的投资人从除权中受益；高于 1 的现价买家承担全部除权损失。</strong> 因此"现价 ÷ 产业投资人成本 ＝ 2.32 倍"这个数字，必须与"现价 ÷ 除权参考价 ＝ 1.46 倍"并列读。<strong>除权 ≠ 账面幻觉，它是实打实的价格下移；而投资人的股份来自转增，不承担该损失。</strong></p>
+
+</div></details>
+<h3 id="sec6">2.2 时间账：真正的生死开关在 2026-12-31</h3>
+<p><strong>结论：净资产转正有两条路、都不缺钱，但都必须在 2026-12-31 前落地；从基准日算起只剩约 2.5 个月，而司法重整程序尚未启动——这是本股最大的、也是唯一的不确定性。</strong></p>
+<p><strong>缺口算法</strong>：最近一期归母净资产 <strong>−7,428.53 万元</strong>（2026-06-30）＋ 2026 下半年预计亏损。按 2025H2 归母亏损约 1.79 亿元推算，<strong>需在年内增厚约 2.5 亿元以上</strong>（若按 2026H1 亏损节奏年化，缺口约 1.0–1.8 亿元）。</p>
+<table><thead><tr><th>路径</th><th>量级</th><th>能否当年生效</th><th>判读</th></tr></thead><tbody><tr><td>① 重整执行完毕（投资款 18.09 亿元到账＋转增登记）</td><td><strong>18.09 亿元</strong></td><td><strong>只有 2026-12-31 前完成才可以</strong></td><td>量级最充足，但程序最长：法院受理 → 债权人会议表决重整计划 → 裁定批准 → 执行</td></tr><tr><td>② 数字城发 4.93 亿元借款豁免</td><td><strong>4.93 亿元</strong></td><td>豁免公告即生效</td><td>量级足够且最快；2026-07-07 该笔借款已展期至 2027-01-07、免息、无担保，是现成的"弹药"</td></tr><tr><td>③ 主业扭亏</td><td>不成立</td><td>—</td><td>毛利率为负，越做越亏</td></tr><tr><td>④ 处置资产</td><td>量级不足</td><td>—</td><td>2025-10～12 已处置广东英聚 51% 股权、转让房产、挂牌债权，均未改变净资产方向</td></tr><tr><td>⑤ 关联交易冲收入</td><td>只影响营收、不影响净资产</td><td>—</td><td>见 §2.4</td></tr></tbody></table>
+<blockquote><p><strong>两条路并非互斥</strong>：国资豁免很可能被设计成重整方案的"前置条件"。<strong>但因本股不是"重整受理型 \*ST"（撤销依据 9.4.14），而是"财务类 \*ST"（撤销依据 9.3.8）——所以它不能靠"重整计划执行完毕"直接摘帽，必须让 2026 年报的净资产为正。</strong> 这个区分极关键：<strong>重整成功 ≠ 摘帽，摘帽必须落在年报上。</strong></p></blockquote>
+<details class="fold"><summary>为什么"重整受理型"与"财务类"的摘帽口径完全不同</summary><div class="fold-body">
+
+<ul><li><strong>重整受理型 \*ST</strong>（深主板 9.4.1 第九项，因法院受理重整/和解/破产清算被警示）：撤销依据是 <strong>9.4.14</strong>，只列四种情形（重整计划执行完毕／和解协议执行完毕／驳回破产申请／终结破产程序），<strong>与年报无关</strong>。</li><li><strong>财务类 \*ST</strong>（本股，9.3.1 第一款第（二）项，净资产为负）：撤销依据是 <strong>9.3.8</strong> —— "次一年度年报不存在 9.3.12 第（一）—（七）项任一情形"，<strong>与年报强绑定</strong>。</li></ul>
+<p><strong>本股现状是后者</strong>。若未来法院受理重整，公司会<strong>叠加</strong>实施一个"重整受理型"的 \*ST（9.4.1 第九项），届时会同时存在两顶 \*ST 帽子 —— 但<strong>财务类那顶仍必须靠 2026 年报的净资产转正来摘</strong>，重整计划执行完毕只解决另一顶。</p>
+
+</div></details>
+<h3 id="sec7">2.3 为什么"资产注入"这条最主流的想象在近端做不了</h3>
+<p><strong>结论：协议没有承诺注入任何具体资产，而"发股购买资产"这条通道被现任董监高的公开谴责记录锁到 2027-05-15 前后——晚于 2026 年报生死线，所以</strong>"装入具身智能资产救 2026 年报"在制度上不成立<strong>。</strong></p>
+<ul><li><strong>协议里只有"产业赋能"，没有"资产注入"</strong>：投资协议 §8 承诺的是技术赋能、资源导入、人才支持、管理提升，推动"主营业务向新兴支柱产业和新兴产业方向转型升级"；<strong>全文没有"36 个月内不注入资产"的限制，但也没有任何注入安排或时间表</strong>。</li><li><strong>发股通道是否被锁</strong>：《上市公司证券发行注册管理办法》第十一条第（三）项第②腿 —— <strong>"现任董事、监事和高级管理人员最近一年受到证券交易所公开谴责"的，上市公司不得向特定对象发行股票</strong>。本股 2026-05-15 被深交所公开谴责，当事人为公司及<strong>何伏信、何申健、古定文</strong>；其中<strong>何申健现任董事长、古定文现任财务总监</strong> → <strong>锁至约 2027-05-15</strong>。</li><li><strong>含义</strong>：即使深朴智能日后要把资产装进来，<strong>"发行股份购买资产"要等到 2027-05 中旬之后</strong>（现金收购不受此限，但深朴智能自身净资产 4.98 亿元、收入 700 万元，现金收购的量级与标的都无从谈起）。<strong>而 2026 年报的生死判定在 2027-04 —— 装资产救不了当年。</strong></li><li><strong>化解方式</strong>：条款限"现任"，<strong>相关董监高辞任即可消除该情形</strong>——因此真正该盯的信号是"<strong>何申健、古定文是否辞去董事/高管职务</strong>"，而不是"公司会不会被处罚"。</li></ul>
+<blockquote><p>反向读数：<strong>产业投资人承诺的是"成为控股股东＋产业赋能"，不是"注入资产"</strong>。市场把"深朴智能入主"直接读成"具身智能借壳"，是对协议条款的<strong>超额解读</strong>。这一条与 sklil 的"人 / 物 / 表"三分法对应：<strong>人（深朴智能，明确）＋ 表（2026-12-21 硬节点）齐备，但"物"（可定价的经营性资产）尚未成形。</strong></p></blockquote>
+<h3 id="sec8">2.4 营收红线：3 亿元额度型托底</h3>
+<p><strong>结论：营收线（2025 扣除后 3.29 亿元）本身是过的，2026 年大概率也能过；但 2026-09-30 新增的 3 亿元关联交易额度恰好等于红线值，这是"为保壳量身设计"的痕迹，同时暴露了主业的真实处境。</strong></p>
+<ul><li>2026-09-30 董事会通过《关于 2026 年度日常关联交易预计的议案》：拟与关联方<strong>广东省构建工程建设有限公司</strong>（间接控股股东数字城发持股 40% 的参股子公司）发生日常关联交易，类别为"向广东构建提供建筑装饰装修相关工程服务"，预计合同金额<strong>不超过 3 亿元</strong>，尚需 2026-10-27 临时股东会审议。</li><li><strong>额度倍数标尺</strong>：3 亿元 ≈ 2025 年营业收入（3.53 亿元）的 <strong>0.85 倍</strong> ≈ 3 亿元红线的 <strong>1.00 倍</strong> —— <strong>额度本身就是为红线刻度设计的</strong>。</li><li><strong>会计风险</strong>：关联交易做出来的营收若被认定"不具备商业实质/显失公允"，将在<strong>扣除后营业收入</strong>中被扣除。参照同型案例（\*ST雅博），工程承包类关联交易<strong>目前按正常主业处理、未被扣除</strong>，但额度在戴帽当年突然放大到红线量级，被认定为"构造性交易"的风险显著上升。</li><li><strong>额度 ≠ 订单 ≠ 收入确认</strong>：2026H1 营收仅 1.17 亿元（同比 −4.40%），全年要靠 H2 做出 1.83 亿元才能守住 3 亿元（H2/H1 ＝ 1.56 倍）；2025 年 H2/H1 为 1.87 倍，季节性上可行，但<strong>承包商毛利率为负意味着这部分收入会同时放大亏损</strong>。</li></ul>
+<hr>
+<h2 id="chap3">三、炒作逻辑 · 情绪 · 筹码</h2>
+<h3 id="sec9">3.1 炒作逻辑三支柱（全部着眼未来）</h3>
+<p><strong>结论：当前最强的是第①支柱"炒预期"——2026-12-21 与 2027-04 两个硬节点；第②支柱显示本股已在"上涨组"且涨幅接近透支；第③支柱（具身智能映射）是唯一能支撑高估值的理由，但因"无注入承诺"而只停留在想象力层面。</strong></p>
+<p><strong>① 炒预期：未来 6–12 个月的可验证节点</strong></p>
+<table><thead><tr><th>时点</th><th>关键动作</th><th>性质</th><th>判读/证伪点</th></tr></thead><tbody><tr><td>2026-10-27</td><td>2026 年第三次临时股东会（审议 3 亿元日常关联交易额度）</td><td>硬节点</td><td>中小股东同意率＝治理分歧读数</td></tr><tr><td>2026-10 月底</td><td>2026 年三季报</td><td>硬节点</td><td>Q3 单季营收能否 ≥1 亿元；净资产是否改善</td></tr><tr><td><strong>2026-12-21</strong></td><td>投资协议约定：若重整计划未在此前经债权人会议表决通过，产业投资人向上市公司<strong>无偿捐赠 6,542.43 万元</strong></td><td><strong>硬节点（协议明文）</strong></td><td>这是最确定的"时间戳"——它反向说明重整计划预计在年内提交表决</td></tr><tr><td>2026-12-31</td><td><strong>2026 年报截止日</strong>：净资产、营收、审计意见三项的计量截止</td><td><strong>生死线</strong></td><td>重整执行是否完成，决定 2026 年报净资产能否转正</td></tr><tr><td>2027-01</td><td>2026 年度业绩预告</td><td>硬节点</td><td>预告净资产为正＝保壳基本落地</td></tr><tr><td><strong>2027-04</strong></td><td>2026 年年度报告 ＋ 审计意见 ＋ 内控审计意见</td><td><strong>终局判定</strong></td><td>四条件全满足 → 申请撤销风险警示；任一不满足 → 终止上市</td></tr><tr><td>待定</td><td>法院裁定受理司法重整 → 转增股份登记 → <strong>除权日</strong></td><td>软预期</td><td>除权通常先于/紧随摘帽，是价格下移的时点</td></tr></tbody></table>
+<p><strong>② 炒历史类似行为（相似股票匹配法）</strong></p>
+<p>以基准日画像（深主板 · 财务类 \*ST · 净资产为负 · 20–30 亿元市值 · 重整型驱动 · 已有明确产业投资人 · 历史炒作符号＝"装饰装修＋国资＋资本运作"）在当下市场找最像的票：<strong>直接以路径底表「财务类·净资产为负」块的 33 家（剔除无行情者）为样本池</strong>，2026 年涨跌幅分布为：</p>
+<table><thead><tr><th>名次</th><th>本股对照</th><th>YTD</th></tr></thead><tbody><tr><td>第 1</td><td>＊ST英飞</td><td><strong>+130.22%</strong></td></tr><tr><td><strong>第 2</strong></td><td><strong>＊ST美芝（本股）</strong></td><td><strong>+71.21%</strong></td></tr><tr><td>第 3</td><td>＊ST威领</td><td>+69.52%</td></tr><tr><td>—</td><td>中位数</td><td><strong>−27.90%</strong></td></tr><tr><td>末位</td><td>＊ST航图</td><td>−72.97%</td></tr></tbody></table>
+<blockquote><p><strong>判读：33 家中仅 8 家上涨，本股排第 2 —— 属"上涨组"，但也意味着相对涨幅已严重透支。</strong> 上涨组 8 只（英飞、美芝、威领、赛为、泉为、皇庭、瑞和、中迪）<strong>全部"有物"</strong>（重整投资协议已签／要约收购方已明确／资产赠与已落地），本股亦属"有物"一侧（协议＋投资人已明确）。</p></blockquote>
+<details class="fold"><summary>上涨组 vs 下跌组的分界线："人有 vs 有物"</summary><div class="fold-body">
+
+<ul><li><strong>上涨组</strong>的共同点是有<strong>可命名的载体</strong>：＊ST英飞（湖南国科控股牵头 6 家、2.61 元/股）、＊ST威领（西藏山南锑金 18 元/股要约）、＊ST皇庭（关联债权抵销 9.62 亿元）、＊ST中迪（广西天微 70% 股权赠与）——<strong>物（标的资产/新赛道公司/大股东赠与资产）一旦公告即重定价</strong>。</li><li><strong>下跌组</strong>的共同点是只有<strong>人名或一份方案</strong>：＊ST西旅（产投 2026-09-10 新设 SPV、无注入公告）−39.81%、＊ST春兴 −44.75%、＊ST易录 −54.50%、＊ST宝馨 −59.01%。</li><li><strong>本股落点</strong>：有"人"（深朴智能，实控人、履历、融资股东名单全部可查）＋有"表"（2026-12-21）＋<strong>但"物"仅为"具身智能"这一赛道名，没有一克资产进入上市公司</strong> → <strong>介于两组之间、偏向"有物但物在体外"</strong>。这是本股估值最大的不确定来源。</li></ul>
+
+</div></details>
+<p><strong>③ 炒主板映射：具身智能／人形机器人主线</strong></p>
+<ul><li>主板当下主线之一是<strong>具身智能与人形机器人</strong>（2026 世界机器人大会后产业进入"追求落地与商业闭环"阶段；A 股尚无纯正具身智能上市公司）。</li><li><strong>本股自身即是映射对象</strong>：深朴智能创始人李晓飞出自自动驾驶独角兽智行者，股东含百度、滴滴、顺为、钧山、线性资本与上市公司柯力传感（603662.SH）；若市场按"具身智能第一壳"定价，弹性极大。</li><li><strong>关联度评级：中（题材真、资产虚）</strong> —— 深朴智能与美芝股份的业务协同为零（建筑装饰 vs 具身机器人），协议只给"技术赋能/资源导入"的定性表述，<strong>无一项可量化的注入安排</strong>。<strong>这意味着第③支柱目前只能"给想象力"，不能"给定价"。</strong></li><li><strong>本股若作为映射标的的可买区间</strong>：见 §4 估值。</li></ul>
+<h3 id="sec10">3.2 炒作符号与连板极值</h3>
+<p><strong>结论：本股的炒作符号六年来高度稳定地围绕"资本运作"，2026 年新增"庭外重组"与"公开招募投资人"；连板极值达「41 天 21 板」，说明游资关注度极高，但也意味着筹码结构脆弱。</strong></p>
+<p>韭研公社异动表共收录本股 <strong>58 条</strong>（2020-11-02 至 2026-09-10）。符号四段演变：</p>
+<table><thead><tr><th>阶段</th><th>时段</th><th>炒作符号</th></tr></thead><tbody><tr><td>一</td><td>2020-11～2022-09</td><td>建筑装饰＋垃圾分类＋<strong>佛山国资</strong>＋精装修＋轨交工程</td></tr><tr><td>二</td><td>2022-09～2024-12</td><td><strong>资产注入猜想（佛山国资）</strong>＋建筑装饰＋项目中标</td></tr><tr><td>三</td><td>2024-12～2026-04</td><td>退市风险警示＋<strong>资本运作预期</strong>＋粤港澳＋装饰装修</td></tr><tr><td>四</td><td>2026-05～2026-09</td><td><strong>庭外重组（仲裁/借款展期/公开招募）＋资本运作预期</strong></td></tr></tbody></table>
+<p><strong>连板极值</strong>：<strong>41 天 21 板</strong>（2026-07-02，收盘 21.29 元）；此前 28 天 18 板（2026-06-11，25.58 元）。<strong>股价峰值 26.99 元（2026-06-08）→ 低点 13.37 元（2026-07-23），回撤 −50.5%</strong>；其后 8 月再度上冲至 25.67 元（2026-09-14），<strong>再回落至 17.79 元（2026-09-24），回撤 −30.7%</strong>。</p>
+<p><strong>股价水位</strong>：现价 20.22 元处 2022-07 以来全序列区间（6.01–26.99 元）的 <strong>67.7% 分位</strong>；2026 年内区间 10.49–26.99 元，现价居 <strong>58.8% 分位</strong>。<strong>不构成"低位"。</strong></p>
+<h3 id="sec11">3.3 筹码与龙虎榜</h3>
+<p><strong>结论：9 月的"利好出尽"已被龙虎榜完整记录——签协议当日跌 7.26%、公告日跌 10.01%、债权人会议当日跌 10.02%；此后 09-30 涨停（未上榜）属反弹而非新趋势。</strong></p>
+<p><strong>关键价格路径（2026 年 9 月）</strong></p>
+<table><thead><tr><th>交易日</th><th>收盘（元）</th><th>涨跌幅</th><th>关键动作</th><th>龙虎榜净买（万元）</th></tr></thead><tbody><tr><td>09-30</td><td>20.22</td><td><strong>+10.01%</strong></td><td>—</td><td>未上榜</td></tr><tr><td>09-29</td><td>18.38</td><td>+2.00%</td><td>债权人会议表决结果公告</td><td>—</td></tr><tr><td>09-28</td><td>18.02</td><td>+1.29%</td><td>异动公告</td><td>—</td></tr><tr><td><strong>09-24</strong></td><td><strong>17.79</strong></td><td><strong>−10.02%</strong></td><td><strong>债权人会议召开当日</strong></td><td><strong>+1,378.56</strong></td></tr><tr><td>09-23</td><td>19.77</td><td><strong>−10.01%</strong></td><td><strong>《投资协议》公告日</strong></td><td>—</td></tr><tr><td>09-22</td><td>21.97</td><td><strong>−7.26%</strong></td><td><strong>签署《投资协议》当日</strong></td><td>—</td></tr><tr><td>09-16</td><td>24.98</td><td>+8.14%</td><td>振幅异动</td><td>+2,017.70</td></tr><tr><td>09-11</td><td>25.36</td><td>+8.24%</td><td>三日涨幅偏离 20%</td><td><strong>−1,831.08</strong></td></tr><tr><td>09-14</td><td>25.67</td><td>+1.22%</td><td>阶段高点</td><td>—</td></tr></tbody></table>
+<blockquote><p><strong>判读</strong>：从 09-14 高点 25.67 元到 09-24 的 17.79 元，<strong>6 个交易日跌 30.7%</strong>，恰好覆盖"签协议→公告→债权人会议"三个最硬的利好节点 —— 这是教科书式的<strong>"利好出尽＋派发"</strong>。2026 年共 13 次龙虎榜，其中 07-07 净卖 <strong>−2,593.29 万元</strong>、09-11 净卖 −1,831.08 万元；<strong>09-30 涨停未上榜</strong>（未达深主板 ST 股"3 日偏离 12%"的披露阈值），成交亦未显著放大。</p></blockquote>
+<details class="fold"><summary>2026 年龙虎榜全量（时间降序）</summary><div class="fold-body">
+
+<table><thead><tr><th>交易日</th><th>上榜原因</th><th>涨跌幅</th><th>净买（万元）</th></tr></thead><tbody><tr><td>2026-09-24</td><td>连续三日跌幅偏离累计 20%</td><td>−10.02%</td><td>+1,378.56</td></tr><tr><td>2026-09-16</td><td>日振幅达 15% 前 5</td><td>+8.14%</td><td>+2,017.70</td></tr><tr><td>2026-09-11</td><td>连续三日涨幅偏离累计 20%</td><td>+8.24%</td><td>−1,831.08</td></tr><tr><td>2026-09-08</td><td>连续三日涨幅偏离累计 20%</td><td>+3.00%</td><td>+543.16</td></tr><tr><td>2026-07-07</td><td>连续三日跌幅偏离累计 20%</td><td>−9.99%</td><td>−2,593.29</td></tr><tr><td>2026-07-01</td><td>连续三日涨幅偏离累计 12%（ST 类）</td><td>+5.02%</td><td>+2,656.49</td></tr><tr><td>2026-06-18</td><td>连续三日跌幅偏离累计 12%（ST 类）</td><td>−4.99%</td><td>−3,557.00</td></tr><tr><td>2026-06-15</td><td>连续三日跌幅偏离累计 12%（ST 类）</td><td>−4.98%</td><td>−3,164.13</td></tr><tr><td>2026-06-08</td><td>连续三日涨幅偏离累计 12%（ST 类）</td><td>+5.02%</td><td>+122.12</td></tr><tr><td>2026-06-01</td><td>连续三日涨幅偏离累计 12%（ST 类）</td><td>+4.99%</td><td>−11.69</td></tr><tr><td>2026-05-27</td><td>连续三日涨幅偏离累计 12%（ST 类）</td><td>+5.00%</td><td>+2,822.48</td></tr><tr><td>2026-05-15</td><td>连续三日涨幅偏离累计 12%（ST 类）</td><td>+5.02%</td><td>+2,015.46</td></tr><tr><td>2026-05-13</td><td>连续三日涨幅偏离累计 12%（ST 类）</td><td>+5.03%</td><td>−2,474.97</td></tr></tbody></table>
+<blockquote><p>数据来源：东方财富龙虎榜 API <code>RPT_DAILYBILLBOARD_DETAILSNEW</code>。<strong>注：6 月及以前的"12% 偏离"表述系当时主板 ST 涨跌幅为 5% 的口径；2026-07-06 起主板 ST 已改为 10%。</strong></p></blockquote>
+
+</div></details>
+<p><strong>投资者交流要点</strong>（同花顺 F10 互动易，全量 23 条）</p>
+<table><thead><tr><th>提问（投资者）</th><th>公司答复要点</th><th>解读</th></tr></thead><tbody><tr><td>公告的重组方案"拟资本公积大幅转增股本不对原股东进行"（2026-09-29）</td><td>"<strong>本次资本公积金转增股本是公司庭外重组方案的核心环节，转增股份不向全体原股东（包括控股股东、中小散户及机构投资者）分配</strong>，专项用于以股抵债化解存量债务、引入重整投资人注入资金与产业资源……该安排并非针对中小投资者设置差异化（对待）"</td><td><strong>公司口径明确承认"不向原股东分配"＝除权必然发生</strong>。这是本报告 §2.1 除权测算的直接依据</td></tr><tr><td>新董事长就任后战略方向与摘帽举措（2026-08-24）</td><td>"董事会将全力以赴采取一切必要措施……力争撤销风险警示；庭外重组事项亦在如期推进中，相关方案尚在磋商阶段"</td><td>无实质增量</td></tr><tr><td>债权申报 7-24 已结束为何无消息（2026-08-13）</td><td>"债权申报相关情况可向重组协调人致电咨询"</td><td><strong>回避</strong></td></tr><tr><td>股价断崖下跌、为何不维护股价（2026-07-23）</td><td>"股价波动受……诸多因素影响，敬请理性投资"</td><td>模板答复</td></tr><tr><td>截至 5/20、5/29、4/30 股东户数（多轮）</td><td>一律要求提供持股证明文件后予以提供</td><td><strong>长期不披露户数</strong></td></tr><tr><td>公司曾承诺"以美芝股份为产业载体整合南海城建投资源、打造南海大建工平台"（2026-01-12）</td><td>"近年来营收下降、亏损扩大，主要受行业整体下行、公司主动收缩高风险业务、以及为化解历史包袱计提大额减值等因素影响"</td><td><strong>国资此前的产业承诺未兑现</strong></td></tr></tbody></table>
+<blockquote><p><strong>关键读数</strong>：①<strong>公司自己在 2026-09-29 确认了"转增不向原股东分配"</strong>，这是原股东必被摊薄的权威口径；②国资"打造南海大建工平台"的承诺已过去五年无进展，<strong>"国资救壳"叙事在本次是由外力接盘、而非国资继续加注</strong>；③公司对股东户数长期不予披露，属<strong>应关注的信息取得障碍</strong>。</p></blockquote>
+<hr>
+<h2 id="chap4">四、估值与投资结论</h2>
+<h3 id="sec12">4.1 估值</h3>
+<p>亏损股不用 PE（2025 年 pe_ttm 为负），一律用 PB / PS 与"重整后情景"口径。</p>
+<table><thead><tr><th>口径</th><th>数值</th><th>说明</th></tr></thead><tbody><tr><td>现价 PB</td><td><strong>−36.83</strong></td><td>分母为负，指标失效</td></tr><tr><td>现价 PS（TTM）</td><td>约 <strong>4.3 倍</strong></td><td>市值 27.36 亿元 ÷ 2025 年营收 3.53 亿元</td></tr><tr><td>重整后归母净资产（估算）</td><td><strong>约 17.35 亿元</strong></td><td>−0.74 亿元 ＋ 18.09 亿元投资款（未计下半年亏损与抵债作价）</td></tr><tr><td>重整后每股净资产（估算）</td><td><strong>约 5.13 元</strong></td><td>17.35 亿元 ÷ 3.3828 亿股</td></tr><tr><td>除权参考价对应 PB</td><td><strong>约 2.7 倍</strong></td><td>13.88 元 ÷ 5.13 元</td></tr><tr><td>现价对应重整后 PB</td><td><strong>约 3.9 倍</strong></td><td>20.22 元 ÷ 5.13 元</td></tr></tbody></table>
+<p><strong>估值前提（必须显式标注）</strong>：<strong>估值成立的前提是"重整成功 + 2026 年报净资产转正"；若重整未在 2026 年内执行完毕，则存在终止上市、本金归零风险，一切估值作废。</strong></p>
+<p><strong>三情景（以除权后为基准）</strong></p>
+<table><thead><tr><th>情景</th><th>概率</th><th>关键假设</th><th>除权后股价</th><th>对应市值</th></tr></thead><tbody><tr><td>悲观</td><td>35%</td><td>重整未在 2026 年内执行完毕 → 2026 年报净资产仍为负 → <strong>2027-04 终止上市</strong></td><td>归零（退市整理期残值极低）</td><td>—</td></tr><tr><td>中性</td><td>50%</td><td>重整如期完成、除权后回归参考价附近，具身智能仍无实质注入</td><td><strong>12–16 元</strong></td><td>40.6–54.1 亿元</td></tr><tr><td>乐观</td><td>15%</td><td>除权后＋具身智能资产注入预期发酵（如公司披露具体规划）＋机器人主线持续</td><td><strong>20–26 元</strong></td><td>67.7–88.0 亿元</td></tr></tbody></table>
+<blockquote><p><strong>概率加权（除权前等值）约 12.6–14.7 元，较现价 20.22 元下行 27%–38%</strong> —— <strong>以现价买入，超额收益为负</strong>。</p></blockquote>
+<h3 id="sec13">4.2 投资结论</h3>
+<p><strong>卖出（回避）</strong></p>
+<p><strong>理由链（按重要性排序）</strong></p>
+<ol><li><strong>除权摊薄是机械确定的近端负收益，与"重整成不成功"无关。</strong> 每 10 股转增 15 股（规则上限）、2.03 亿股<strong>全部不向原股东分配</strong>，原股东持股比例由 100% 摊薄至 <strong>40.0%</strong>；理论除权参考价 <strong>13.4–14.3 元</strong>，较现价 20.22 元低 <strong>29%–34%</strong>。公司已在 2026-09-29 互动易确认这一安排。（依据：<a href="https://data.eastmoney.com/notices/detail/002856/AN202609221829766962.html" target="_blank" rel="noopener">投资协议公告</a>）</li><li><strong>现价对投资人成本溢价过高，赔率已被规则性削弱。</strong> 现价 ＝ 产业投资人成本 8.725 元的 <strong>2.32 倍</strong>、财务投资人 10.765 元的 <strong>1.88 倍</strong>、理论除权参考价的 <strong>1.46 倍</strong>。按"认购价 ÷ 除权参考价"，产投 1.59、财投 1.29 <strong>两项均为除权受益方</strong>，而现价买入者仅 0.69 —— <strong>除权损失全部由二级市场承担。</strong>（依据：同上）</li><li><strong>本股是同型样本里的"涨幅榜第 2 名"，相对涨幅已透支。</strong> 33 只"财务类·净资产为负"型 \*ST 2026 年涨跌幅中位数 <strong>−27.90%</strong>、仅 8 家上涨，本股 <strong>+71.21% 排第 2</strong>；现价处 2022-07 以来价格分位的 <strong>67.7%</strong>，<strong>不构成低位买入的前提</strong>。（依据：路径底表＋腾讯行情批量测算）</li><li><strong>"利好出尽"已在 9 月完整发生且被龙虎榜记录。</strong> 09-14 高点 25.67 元 → 09-22 签协议当日 −7.26% → 09-23 公告日 −10.01% → 09-24 债权人会议当日 −10.02%，<strong>6 个交易日跌 30.7%</strong>；09-11 龙虎榜净卖 1,831.08 万元、07-07 净卖 2,593.29 万元。（依据：新浪日 K＋东财龙虎榜 API）</li><li><strong>"物"未成形，且"发股装资产"的通道被现任董监高的公开谴责记录锁到 2027-05——救不了 2026 年报。</strong> 深朴智能 2026-09-14 营收仅 700 万元、净利 −3,525.25 万元，其净资产主要是刚募到的现金；协议<strong>只承诺"产业赋能"、无任何资产注入安排</strong>；而《上市公司证券发行注册管理办法》第十一条第（三）项第②腿因<strong>现任董事长何申健、财务总监古定文为 2026-05-15 公开谴责当事人</strong>而触发，<strong>发股购买资产受限至约 2027-05-15</strong>，晚于 2027-04 的年报生死判定。（依据：<a href="https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-05-18/ce70d5c9-7ffa-45ff-b06c-3fe6593cd7f0.PDF" target="_blank" rel="noopener">公开谴责决定书</a>）</li></ol>
+<p><strong>触发条件（转买入信号，需同时满足 ≥2 项）</strong></p>
+<ul><li>除权实施后股价回落至 <strong>13–14 元</strong>区间（即除权参考价附近）并站稳；</li><li>公司披露<strong>具体的具身智能资产注入方案</strong>（而非仅"产业赋能"定性表述）；</li><li><strong>何申健、古定文辞去现任董事/高管职务</strong> → 发股通道解锁信号；</li><li>法院正式裁定受理司法重整，且转增登记与投资款到账在 2026-12-31 前完成。</li></ul>
+<p><strong>失效条件（本结论作废/翻转）</strong></p>
+<ul><li>若公司在 2026-12-31 前完成重整执行、2026 年报净资产转正且审计意见为标准无保留，<strong>"退市归零"这一悲观情景消失</strong>，本结论的"回避"部分需重新评估（但除权摊薄这一条仍独立成立）；</li><li>若深朴智能在 2027-05 通道解锁后迅速启动大规模资产注入并获受理，<strong>"物"由虚转实</strong>，估值锚将从"壳"切换为"具身智能平台"。</li></ul>
+<p><strong>参考区间与仓位</strong></p>
+<table><thead><tr><th>要素</th><th>区间</th></tr></thead><tbody><tr><td>不建议买入区间</td><td>17 元以上（现价 20.22 元即在此区间）</td></tr><tr><td>除权后观察区间</td><td>13–14 元（除权参考价附近，需配合注入进展）</td></tr><tr><td>除权后乐观目标</td><td>20–26 元（仅在"注入落地 + 主线持续"双条件下）</td></tr><tr><td><strong>仓位建议</strong></td><td><strong>不建仓</strong>（已持有者：在除权实施前择机减持）</td></tr></tbody></table>
+<p><strong>时间窗口</strong>：本结论有效期至 <strong>2026-12-21</strong>（投资协议自设的重整计划表决时限）或司法重整受理公告日，以先到者为准。</p>
+<p><strong>最大风险（一句话）</strong>：<strong>重整程序未能在 2026-12-31 前走完，导致 2026 年报净资产仍为负 → 2027-04 终止上市，本金归零。</strong></p>
+<hr>
+<h2 id="chap5">附录 A · 待核实 / 需补充清单</h2>
+<p><strong>结论：本报告的三个关键参数（以股抵债价格、市场参考价数值、债权申报总额）均未在基准日前的公开公告中披露，属"方案已成型但细节待重整计划明确"——这三点直接决定除权参考价与清偿结构，是本报告结论中最需要后续补充的部分。</strong></p>
+<table><thead><tr><th>#</th><th>待核实项</th><th>说明</th></tr></thead><tbody><tr><td>1</td><td>债权申报总额与债权结构</td><td>申报已于 2026-07-24 截止，公司未公告申报结果（总额、金融/经营性/关联方占比）。数字城发 4.93 亿元借款是否已作为债权申报，决定重整清偿结构</td></tr><tr><td>2</td><td>以股抵债价格</td><td>投资协议 §6.2(3) 明示"将在重整计划中予以明确"，故除权参考价只能给区间</td></tr><tr><td>3</td><td>市场参考价具体数值</td><td>协议 §五 仅称"不低于市场参考价的 50%"，未披露 20/60/120 日均价数值。按认购价反推：产投对应约 17.45 元、财投对应约 21.53 元</td></tr><tr><td>4</td><td>2026 年三季报</td><td>未披露，需以 2026 年 10 月底三季报测算全年营收与净资产</td></tr><tr><td>5</td><td>司法重整受理时点</td><td>尚未申请/未受理，属路径成立的前置条件</td></tr><tr><td>6</td><td>深朴智能"最新一轮融资"的完整股东与金额</td><td>公告仅称"完成投资协议签署及交割、正在办理工商变更"，未披露具体金额与投后估值</td></tr></tbody></table>
+<h2 id="chap6">附录 B · 关键信源链接</h2>
+<table><thead><tr><th>编号</th><th>文件</th><th>发布日</th><th>原文</th></tr></thead><tbody><tr><td>1</td><td>关于公司股票交易被实施退市风险警示及其他风险警示暨停牌的公告</td><td>2026-04-29</td><td><a href="https://data.eastmoney.com/notices/detail/002856/AN202604281821714311.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>2</td><td>关于被债权人申请庭外重组事项获得受理的公告</td><td>2026-06-13</td><td><a href="https://data.eastmoney.com/notices/detail/002856/AN202606121823515641.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>3</td><td>关于庭外重组债权申报的公告</td><td>2026-06-25</td><td><a href="https://data.eastmoney.com/notices/detail/002856/AN202606241823815757.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>4</td><td>关于公开招募和遴选投资人的公告</td><td>2026-09-04</td><td><a href="https://data.eastmoney.com/notices/detail/002856/AN202609031828973231.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>5</td><td>关于与投资人签署《庭外重组/重整投资协议》暨公司庭外重组进展的公告</td><td>2026-09-23</td><td><a href="https://data.eastmoney.com/notices/detail/002856/AN202609221829766962.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>6</td><td>关于庭外重组第一次债权人会议表决结果的公告</td><td>2026-09-29</td><td><a href="https://data.eastmoney.com/notices/detail/002856/AN202609281829965462.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>7</td><td>第五届董事会第三十次会议决议公告</td><td>2026-09-30</td><td><a href="https://data.eastmoney.com/notices/detail/002856/AN202609291830001509.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>8</td><td>关于 2026 年度日常关联交易预计的公告</td><td>2026-09-30</td><td><a href="https://data.eastmoney.com/notices/detail/002856/AN202609291830001507.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>9</td><td>2025 年年度报告</td><td>2026-04-29</td><td><a href="https://data.eastmoney.com/notices/detail/002856/AN202604281821714284.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>10</td><td>营业收入扣除事项的专项审核报告</td><td>2026-04-29</td><td><a href="https://data.eastmoney.com/notices/detail/002856/AN202604281821714700.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>11</td><td>2026 年半年度报告</td><td>2026-08-28</td><td><a href="https://data.eastmoney.com/notices/detail/002856/AN202608270006754602.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>12</td><td>深交所公开谴责处分决定（深证上〔2026〕687 号）转述</td><td>2026-05-15</td><td><a href="https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-05-18/ce70d5c9-7ffa-45ff-b06c-3fe6593cd7f0.PDF" target="_blank" rel="noopener">链接</a></td></tr><tr><td>13</td><td>中国证券报电子报：《庭外重组/重整投资协议》公告全文</td><td>2026-09-23</td><td><a href="https://epaper.cs.com.cn/zgzqb/html/2026-09/23/nw.D110000zgzqb_20260923_1-B057.htm" target="_blank" rel="noopener">链接</a></td></tr></tbody></table>
+<h2 id="chap7">附录 C · 逻辑漏洞与反方观点（5 问速版）</h2>
+<ol><li><strong>"具身智能借壳"这个市占率/稀缺性从哪来？</strong> —— 深朴智能 2026 年前 9 个月营收 700 万元、净利 −3,525.25 万元，<strong>尚无可衡量的市占率</strong>；"具身智能第一壳"是市场给的叙事标签，<strong>不是可核实的经营事实</strong>。</li><li><strong>协议里的"产业赋能"是否等于收入？</strong> —— <strong>不等于。</strong> 协议 §8 承诺的是技术赋能、资源导入、人才支持、管理提升，<strong>属定性表述，无金额、无时间表、无资产</strong>。<strong>"框架/赋能 ≠ 收入"。</strong></li><li><strong>债权人会议通过《投资方案》是否等于重整成功？</strong> —— <strong>不等于。</strong> 庭外重组"以各方自愿协商为基础、无法律强制约束力"，重组中心不属司法机关；真正的清偿与权益调整仍需落到<strong>司法重整计划</strong>上，而法院尚未受理。</li><li><strong>引用的时间点是否已过期？</strong> —— 核心数据截至 <strong>2026-09-30 收盘</strong>与 <strong>2026-09-30 公告</strong>；旧稿（2026-09-17《重整时间线与未来展望》）写作时"2026-09-16 收盘 24.98 元、标注为 5% 涨跌幅限制标的"——<strong>该 5% 口径已过期</strong>（主板 ST 自 2026-07-06 起为 10%），本报告已更正。</li><li><strong>数据来源是什么级别？</strong> —— 方案条款（转增比例、认购价格、股数、锁定期）取<strong>法定披露媒体中国证券报电子报的公告全文</strong>，与巨潮公告一致；行情/龙虎榜/异动为<strong>数据源级</strong>；深朴智能业务背景（五轮融资、智行者履历、中旅酒店 POC）来自<strong>证券时报、中国证券报、南方+等权威媒体（二级）</strong>，已在正文标注。</li></ol>
+<p><strong>反方观点（压力测试，须正面回答）</strong></p>
+<ul><li><strong>"具身智能是 2026 年最强主线，A 股没有第二个纯正标的，稀缺性可以支撑溢价。"</strong> —— 反驳：稀缺性确实存在，但<strong>稀缺的是"深朴智能"，不是"美芝股份"</strong>。深朴智能的资产尚未进入上市公司，而二级市场已按"装入后"定价（现价对应重整后 PB 约 3.9 倍）。<strong>若未来真注入，注入对价与股数还会再摊薄一次。</strong></li><li><strong>"产业投资人锁 60 个月、36 个月不得质押，是真产业投资，不是套利。"</strong> —— 接受这一事实（这是本股少有的强承诺），但<strong>锁定期长只说明它不是快进快出，不改变"现价 = 其成本 2.32 倍"这一赔率事实</strong>。</li><li><strong>"国资 4.93 亿元借款随时可豁免，净资产转正是确定事件。"</strong> —— 反驳：借款豁免属<strong>权益性交易</strong>（计入资本公积、增净资产），量级足够；但<strong>"能否 2026 年内落地"仍取决于公司是否决定走这条路</strong>——截至基准日<strong>无任何豁免公告</strong>，且公司 2026-07-07 的动作是"再展期一年"（展期≠豁免），<strong>行为记录未支持"即将豁免"的推论</strong>。</li></ul>
+<h2 id="chap8">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-05</td><td>首次生成。吸收 2026-09-17《ST美芝002856-重整时间线与未来展望》全部内容（重整时间线、招募条件、三条路径推演、风险排序），并<strong>回一手公告全面核实与更新</strong>：① 新增 2026-09-22 签署《投资协议》全部条款（深朴智能 8.725 元/股×9,285.84 万股、14 家财务投资人 10.765 元/股、合计 18.09 亿元、联合体持股 54.9%）；② 新增 2026-09-24 债权人会议表决结果（92.85% 金额同意通过）；③ 新增每 10 股转增 15 股的转增方案与<strong>理论除权参考价测算 13.4–14.3 元（−29%~−34%）</strong>；④ 新增"发股通道被公开谴责锁至 2027-05"判据；⑤ 更正旧稿"5% 涨跌幅限制标的"的口径错误（主板 ST 自 2026-07-06 起为 10%）；⑥ 首次给出明确的<strong>卖出（回避）</strong>结论（旧稿无二选一）。数据截至 2026-09-30 收盘</td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
