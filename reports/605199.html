@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ST葫芦娃（605199.SH）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>12 章 · 17 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断</a><a class="sblv3" href="#sec0">1.1 基本信息与股权</a><a class="sblv3" href="#sec1">1.2 关键人物与治理</a><a class="sblv3" href="#sec2">1.3 全流程进度看板</a><a class="sblv3" href="#sec3">1.4 运作特征与综合判断</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、ST 风险诊断</a><a class="sblv3" href="#sec4">2.1 戴帽时间、原因与类型</a><a class="sblv3" href="#sec5">2.2 立案、处罚与关联交易违规</a><a class="sblv3" href="#sec6">2.3 四类退市红线逐条对照</a><a class="sblv3" href="#sec7">2.4 摘帽展望（两顶帽子、两套规则）</a><a class="sblv3" href="#sec8">2.5 发股通道：已锁至 2029 年 7 月</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、公司运营情况</a><a class="sblv3" href="#sec9">3.1 财务状况：一条"营收腰斩、净资产快速变薄"的曲线</a><a class="sblv3" href="#sec10">3.2 收入地图：呼吸系统药物一枝独大，且毛利率正在塌</a><a class="sblv3" href="#sec11">3.3 回购、募投与再融资</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、基本面路径：处罚 ST ＋ 内控非标（路径 C）</a><a class="sblv3" href="#sec12">4.1 假 ST 的撤销条件拆解（沪主板 9.8.8 条）</a><a class="sblv3" href="#sec13">4.2 内控那顶帽子：为什么"能摘而不摘"才是本报告最值得写的一条</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">五、炒作逻辑 + 情绪面 + 筹码面</a><a class="sblv3" href="#sec14">5.1 炒作逻辑三支柱</a><a class="sblv3" href="#sec15">5.2 情绪面</a><a class="sblv3" href="#sec16">5.3 筹码面与技术面</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">六、估值</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap9">附录 B · 关键信源清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap10">附录 C · 逻辑漏洞与反方观点（5 问速版）</a></div><div class="sbgrp"><a class="sblv2" href="#chap11">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">ST葫芦娃（605199.SH）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>结论：卖出（回避）——这是一只"四类退市红线当前一条未踩、但两顶 ST 帽子最早 2027 年 7 月才可能摘完，而真正压着它的是 2026 年末净资产"的标的。</strong></p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>操作结论</td><td><strong>卖出（回避）</strong></td></tr><tr><td>红线分类</td><td><span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&announcementId=1223387305&orgId=9900039731&announcementTime=2025-04-29" target="_blank" rel="noopener">内控否定意见,2024</a></span>·<span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&announcementId=1225431003&orgId=9900039731&announcementTime=2026-07-18" target="_blank" rel="noopener">假ST,2023年报虚增利润总额66.11%</a></span>·<span class="sttag sttag-teal"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&announcementId=1225250962&orgId=9900039731&announcementTime=2026-04-29" target="_blank" rel="noopener">四类退市红线当前零踩线</a></span></td></tr><tr><td>生死定级</td><td><strong>安全</strong>（四类退市红线当前一条未踩，依据《退市风险预警-20261005.xlsx》「规范类」处罚台账仅命中两行）——但<strong>2026 年末净资产是待验证开关</strong></td></tr><tr><td>自救空间</td><td>两顶「其他风险警示」帽子：内控那顶（沪主板 9.8.1(三)）撤销条件<strong>已于 2026-04-28 全部具备而公司尚未提交申请</strong>；假 ST 那顶（9.8.1(七)）绑定《行政处罚决定书》满 12 个月、<strong>最早可申请 2027-07-19</strong>。同期发股通道被《发行注册办法》第十一条(三)锁至约 2029-07</td></tr><tr><td><strong>主要看点</strong></td><td><strong>两顶 ST 帽子的摘除时间账</strong>：帽①（内控）撤销条件已于 2026-04-28 具备、公司却 5 个多月未申请；帽②（假 ST）绑定决定书满 12 个月（最早 2027-07-19）。<strong>同期真正的看点（负面）是 2026 年末归母净资产 2.99 亿元能否扛住下半年亏损——2025 年 Q4 单季曾亏 2.76 亿元。</strong></td></tr></tbody></table>
+<p><strong>版本</strong>：初版 · 2026-10-06　<strong>基准日</strong>：2026-10-06（行情截面 2026-09-30 收盘）</p>
+<p><strong>标的</strong>：海南葫芦娃药业集团股份有限公司（ST葫芦娃，605199.SH，沪主板，C27 医药制造业，儿童药／中成药／化学药）</p>
+<p><strong>数据截止时点</strong>：公告截至 2026-10-01；财务为 2025 年年报（政旦志远审计）与 2026 年半年报（未审计）；行情为 2026-09-30 收盘。</p>
+<p><strong>数据来源</strong>：公司公告原文（巨潮四参数深链，逐条可点）、2025 年年度报告、2026 年半年度报告、2025 年度审计与内控审计报告、行政处罚决定书、《2025 年年度报告信息披露监管问询函》回复、同花顺 F10 互动易、东方财富 F10 与龙虎榜、巨潮／东财 K 线、韭研公社异动整理表、ST 信息库、Andy 路径底表《退市风险预警-20261005.xlsx》。</p>
+<p><strong>数据质量异常</strong>：① 《2024 年度审计报告》《2024 年度内部控制审计报告》《2024 年非标准审计意见专项说明》三份 PDF 为图片型、无文本层，审计意见类型与内控缺陷事由改从 <strong>2025 年年报正文、董事会专项说明、2026 年半年报</strong>三处互证读取，均一致；② 2026 年 9 月巨潮按月分窗返 0 条（经东财公告库交叉核对确认为该月无公告，非接口故障）；③ 信息库档案所记"带帽日期 2025-04-30、带帽原因含内控非标与虚假记载"经公告核实<strong>正确</strong>，但档案未记录"2026-05-21 叠加第二顶帽子"，本报告以公告原文为准。</p>
+<hr>
+<h2 id="chap1">一、诊断</h2>
+<h3 id="sec0">1.1 基本信息与股权</h3>
+<p><strong>结论：这是一家流通盘 100%、由创始人家族合计控制 69.36% 的高度集中小市值公司；控股股东刚经历一轮司法处置（持股由 41.76% 降至 35.79%），冻结已全部解除，但一致行动人整体质押率仍达 50.50%。</strong></p>
+<table><thead><tr><th>指标</th><th>数值</th><th>判读</th></tr></thead><tbody><tr><td>现价／总市值</td><td>5.71 元／<strong>22.85 亿元</strong></td><td>小市值，全流通（流通市值同 22.85 亿元）</td></tr><tr><td>总股本</td><td>4.0011 亿股</td><td>上市以来未变（无送转）</td></tr><tr><td>PB</td><td><strong>7.64</strong></td><td>同业（儿童药／中药 13 只）中位约 2.1 —— 极端偏高</td></tr><tr><td>PE(TTM)</td><td>−5.67</td><td>亏损，不适用</td></tr><tr><td>PS(TTM，2025 年营收)</td><td>2.54 倍</td><td>按 2026 年化营收 4.82 亿元则 <strong>4.74 倍</strong>，同业中位约 2.5 倍</td></tr><tr><td>换手率／成交额</td><td><strong>0.20%／461 万元</strong></td><td>注意力冰点</td></tr><tr><td>年初至今</td><td><strong>−25.07%</strong></td><td>弱于同业中位约 14.7 个百分点</td></tr><tr><td>上市以来价格分位</td><td><strong>1.33%</strong>（前复权月线 75 个月，2020-07 起）</td><td>历史最低区；不复权同为 1.33% ⇒ 无送转失真，分位可信</td></tr><tr><td>2026 年内区间</td><td>5.19—7.70 元，现价处 <strong>9.9% 分位</strong></td><td>年内亦在低位</td></tr></tbody></table>
+<details class="fold"><summary>股权结构与质押冻结明细（截至 2026-06-30 与 2026-07-16）</summary><div class="fold-body">
+
+<p><strong>控股股东</strong>：海南葫芦娃投资发展有限公司 <strong>35.79%</strong>（143,179,000 股），其股东为<strong>刘景萍 60%＋汤旭东 40%</strong>。</p>
+<table><thead><tr><th>持有方</th><th>持股比例</th><th>质押</th><th>冻结</th><th>身份</th></tr></thead><tbody><tr><td>海南葫芦娃投资发展有限公司</td><td>35.79%</td><td>112,203,130 股</td><td>0（2026-07-16 全解）</td><td>控股股东</td></tr><tr><td>浙江孚旺钜德健康发展有限公司</td><td>14.38%</td><td>0</td><td>0</td><td>一致行动人</td></tr><tr><td>杭州中嘉瑞管理合伙企业（有限合伙）</td><td>6.88%</td><td>17,000,000 股</td><td>0</td><td>一致行动人（员工持股平台，刘景萍／汤旭东合计持其 67.50% 份额）</td></tr><tr><td>卢锦华</td><td>4.89%</td><td>0</td><td>0</td><td>一致行动人</td></tr><tr><td>汤杰丞</td><td>4.70%</td><td>0</td><td>0</td><td>一致行动人</td></tr><tr><td>汤旭东</td><td>2.74%</td><td>10,956,000 股（100%）</td><td>0</td><td>一致行动人</td></tr><tr><td><strong>合计</strong></td><td><strong>69.36%</strong></td><td><strong>140,159,130 股（50.50%）</strong></td><td><strong>0</strong></td><td>—</td></tr></tbody></table>
+<p><strong>实际控制人</strong>：刘景萍、汤旭东夫妇，直接及通过葫芦娃投资间接合计持有 <strong>38.53%</strong>。</p>
+<p><strong>质押／冻结／司法处置沿革（时间降序）</strong></p>
+<table><thead><tr><th>披露日</th><th>关键动作</th><th>结果</th></tr></thead><tbody><tr><td>2026-07-16</td><td>控股股东及实控人《未来 12 个月内不减持葫芦娃股份及不转让公司控制权的承诺函》</td><td>锁定至 2027-07-15</td></tr><tr><td>2026-07-18</td><td>控股股东冻结股份<strong>全部解除</strong>（本次解冻 800 万股）</td><td>前期质押纠纷结案，一致行动人无被冻结股份</td></tr><tr><td>2026-05-30</td><td>葫芦娃投资质押 2,400 万股给<strong>自然人杨志刚</strong>（用途：偿还债务）</td><td>葫芦娃投资质押率 78.37%</td></tr><tr><td>2026-05-12</td><td>葫芦娃投资 1,700 万股被海口秀英区法院司法冻结（2026-05-08 至 2029-05-07）；公司、广西维威、中嘉瑞、葫芦娃投资及实控人与<strong>中信金融租赁</strong>签《执行和解协议》</td><td>分期还款＋中嘉瑞以股份质押担保</td></tr><tr><td>2026-04-30</td><td>葫芦娃投资 2,390 万股（5.97%）<strong>司法拍卖于 2026-04-28 完成过户</strong></td><td>持股 41.76% → <strong>35.79%</strong></td></tr><tr><td>2024-10-30</td><td>葫芦娃投资将 2,390 万股质押给<strong>山东省国际信托</strong>（该笔质押触发提前赎回条款，为后续冻结与拍卖起因）</td><td>—</td></tr></tbody></table>
+<p><strong>该表说明什么</strong>：控股股东的流动性问题在 2026 年 4—7 月间以"司法拍卖＋补充冻结＋和解解冻"的方式<strong>阶段性收口</strong>，且随后主动承诺 12 个月不减持、不转让控制权 —— 这既是<strong>一个正向读数（大股东选择留守而非退出）</strong>，也<strong>恰恰堵住了"外部产业资本受让股份 → 换实控人 → 重组"这条最主流的想象</strong>。</p>
+
+</div></details>
+<ul><li><strong>信息来源汇总</strong>（四级分级）：一手（公告／规则原文／审计报告）占绝对多数，详见附录 B。</li></ul>
+<h3 id="sec1">1.2 关键人物与治理</h3>
+<p><strong>结论：处罚认定的三名当事人全部仍在现任董监高名单中，其中刘景萍一人身兼董事长、总经理、法定代表人、代理董事会秘书四职 —— 这直接决定了"发股注入资产"这条路在 2029 年前走不通。</strong></p>
+<details class="fold"><summary>治理层关键人物与现任名单</summary><div class="fold-body">
+
+<ul><li><strong>刘景萍</strong>（女，1970 年 3 月生）：<strong>实际控制人之一、时任及现任董事长兼总经理</strong>，2019-03-04 起任职；2026-07-31 董秘王清涛离任后<strong>由其代行董事会秘书职责</strong>（公司在其被罚 1,050 万元后仍由其代理信披负责人，是本报告认定的<strong>治理信号</strong>）。</li><li><strong>汤旭东</strong>：实际控制人之一，持葫芦娃投资 40%、直接持上市公司 2.74%（100% 质押）。</li><li><strong>于汇</strong>（女，1984 年 7 月生）：<strong>时任及现任非独立董事、财务总监</strong>，2022-07-08 起任职；处罚 250 万元。</li><li><strong>王清涛</strong>（男，1982 年 9 月生）：<strong>时任董事会秘书</strong>，2026-07-31 离任董秘，但公告明确"<strong>继续在上市公司任职，具体职务：职工代表董事</strong>"；处罚 150 万元。</li><li><strong>独立董事</strong>：王世贤、刘秋云、林慧（均 2025-10-17 起）；<strong>2026-05-21 一名独立董事离任，2026-09-30 补选王文学</strong>（公告当日）。</li><li>现任董监高共 <strong>11 人</strong>（东方财富 F10 2026-10-06 实测）。</li></ul>
+
+</div></details>
+<h3 id="sec2">1.3 全流程进度看板</h3>
+<p><strong>结论：四个环节里，两个已经闭合（财务内控整改、追溯重述），一个"条件已具备但按钮没按"（内控那顶帽子的撤销申请），一个"时间没到"（假 ST 那顶的 12 个月）。没有一处是"谈不拢"。</strong></p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点或条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>2024 年度内控否定意见整改</td><td><strong>已完成</strong></td><td>已取得政旦志远《影响已消除的审核报告》</td><td>—</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225250935&amp;orgId=9900039731&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">审核报告</a></td></tr><tr><td>2025 年度内控审计</td><td><strong>标准无保留（有效）</strong></td><td>撤销帽①的形式条件</td><td><strong>注销申请尚未提交</strong></td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225250966&amp;orgId=9900039731&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">内控审计报告</a></td></tr><tr><td>会计差错追溯重述</td><td><strong>已完成</strong></td><td>2025-04-29 差错更正＋2026-04-29 更正补充；2023 年度报表已由政旦志远重新审计（标准无保留）</td><td>—</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225250960&amp;orgId=9900039731&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">差错更正补充</a></td></tr><tr><td>行政处罚</td><td><strong>已终结</strong></td><td>决定书 2026-07-17 收到</td><td>满 12 个月（<strong>2027-07-19</strong>）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225431003&amp;orgId=9900039731&amp;announcementTime=2026-07-18" target="_blank" rel="noopener">决定书公告</a></td></tr><tr><td>摘帽（帽①内控）</td><td>条件已具备</td><td><strong>公司未提交申请</strong></td><td>提交申请公告</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225592295&amp;orgId=9900039731&amp;announcementTime=2026-10-01" target="_blank" rel="noopener">风险警示进展</a></td></tr><tr><td>摘帽（帽②假 ST）</td><td>时间未到</td><td>决定书满 12 个月（AND 逻辑）</td><td>2027-07-19 后</td><td>同上</td></tr><tr><td>发股购买资产</td><td><strong>制度上关闭</strong></td><td>《发行注册办法》第十一条(三)：三名处罚当事人全部在任</td><td>当事人辞去董监高职务</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225431003&amp;orgId=9900039731&amp;announcementTime=2026-07-18" target="_blank" rel="noopener">决定书公告</a></td></tr><tr><td>控股股东流动性</td><td><strong>阶段性收口</strong></td><td>拍卖完成、冻结解除、承诺不减持</td><td>—</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225431004&amp;orgId=9900039731&amp;announcementTime=2026-07-18" target="_blank" rel="noopener">解除冻结</a></td></tr></tbody></table>
+<h3 id="sec3">1.4 运作特征与综合判断</h3>
+<p><strong>结论：这家公司的资本运作特征是"被动应对、只做减法不做加法" —— 2026 年唯一可称主动的动作是终止两个研发子项目并转让其中一个，方向是"往外卖"而不是"往里装"。</strong></p>
+<ul><li><strong>手法</strong>：无一次协议受让、无一次定增、无一次资产注入；2026 年的两笔权益变动（司法拍卖过户、执行和解）均为<strong>被动</strong>；唯一的重大交易是 <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225447439&amp;orgId=9900039731&amp;announcementTime=2026-07-30" target="_blank" rel="noopener">终止两个募投研发子项目并转让其中一个</a>（回购总价 1,760 万元）。</li><li><strong>交权是配合式还是对抗式</strong>：<strong>既非交权也非对抗 —— 是"留守式"</strong>。大股东在持股被动降至 35.79%、质押率 78.37% 的情况下，选择 <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225426890&amp;orgId=9900039731&amp;announcementTime=2026-07-16" target="_blank" rel="noopener">承诺 12 个月不减持、不转让控制权</a>，并以个人股份为上市公司债务提供质押担保（中嘉瑞）。</li><li><strong>成败关键变量（1 和 0）</strong>：<strong>2026 年度归母净资产是否为正</strong>。其余都是过程，这一个数是终点。</li><li><strong>核心矛盾一句话</strong>：<strong>帽子能摘但摘了也没用（零制度红利），真正会要命的是净资产，而净资产的敌人是每年 Q4 集中确认的费用与减值。</strong></li></ul>
+<hr>
+<h2 id="chap2">二、ST 风险诊断</h2>
+<h3 id="sec4">2.1 戴帽时间、原因与类型</h3>
+<p><strong>结论：ST葫芦娃头上是两顶"其他风险警示"帽子 —— 帽①财务内控否定意见、帽②年报虚假记载（假 ST），两顶都不是四类退市红线中的任何一条。</strong></p>
+<table><thead><tr><th>帽子</th><th>起始日</th><th>沪主板条款</th><th>认定事实</th><th>认定文件</th></tr></thead><tbody><tr><td><strong>帽① ST</strong></td><td>2025-04-30</td><td><strong>9.8.1 第一款第（三）项</strong></td><td>2024 年度财务报告内部控制被立信出具<strong>否定意见</strong></td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1223387331&amp;orgId=9900039731&amp;announcementTime=2025-04-29" target="_blank" rel="noopener">实施其他风险警示暨停牌公告</a></td></tr><tr><td><strong>帽② 叠加 ST</strong></td><td>2026-05-21</td><td><strong>9.8.1 第一款第（七）项</strong></td><td>2023 年年报、2024 年半年报财务指标虚假记载，未触及 9.5.2 条</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225321685&amp;orgId=9900039731&amp;announcementTime=2026-05-21" target="_blank" rel="noopener">叠加实施其他风险警示公告</a></td></tr></tbody></table>
+<details class="fold"><summary>帽①的病因原文：2024 年度内控否定意见的两项重大缺陷，以及同期财报"保留意见"为何没有叠加 *ST</summary><div class="fold-body">
+
+<p><strong>内控否定意见的两项重大缺陷</strong>（审计机构：立信会计师事务所（特殊普通合伙），信会师报字[2025]第 ZA12625 号）：</p>
+<ol><li>公司根据海南证监局要求对 <strong>2023 年度财务报表进行了重述</strong>，表明公司的财务报告内部控制存在重大缺陷；</li><li><strong>部分外购研发项目审批流程不规范</strong> —— 存在立项审批日期晚于总经理办公会审议及合同签订日期的情形。</li></ol>
+<p><strong>同期 2024 年度财务报告审计意见为"保留意见"</strong>（信会师报字[2025]第 ZA12624 号），三项保留事由：</p>
+<ul><li>2023 年度财务报表重述事项，截至 2024 年度审计报告日公司未提供与重述相关的完整财务资料及原始资料；</li><li><strong>资金支持及应收账款回款异常</strong> —— 公司控股股东通过<strong>个人（非葫芦娃员工）名下银行账户</strong>向公司客户提供资金支持；2024 年末应收账款余额前 10 名的部分客户期后无回款或回款金额较小；</li><li><strong>外购研发项目</strong> —— 2024 年度向海南中旺医疗科技开发有限公司外购 8 个研发项目、支付 4,205.37 万元，而海南中旺法定代表人兼总经理与公司实际控制人之一存在亲属关系。</li></ul>
+<p><strong>关键口径（常被误读）</strong>：<strong>"保留意见"不触发沪主板 9.3.2 第一款第（三）项</strong>（该条只含"无法表示意见／否定意见"）—— 因此 2024 年度财报非标<strong>没有</strong>带来 ＊ST。这一点在 2024 年度审计报告与 <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1223387325&amp;orgId=9900039731&amp;announcementTime=2025-04-29" target="_blank" rel="noopener">董事会专项说明</a> 中均有对应表述。</p>
+
+</div></details>
+<h3 id="sec5">2.2 立案、处罚与关联交易违规</h3>
+<p><strong>结论：处罚链条已完整闭环（立案 → 事先告知书 → 决定书），造假金额与占比虽高但远未触及重大违法量化线；另有一条独立的"关联交易未披露"违规，性质是行政监管措施＋交易所通报批评，不构成发股障碍。</strong></p>
+<details class="fold"><summary>立案与处罚全链条（原文摘录）</summary><div class="fold-body">
+
+<table><thead><tr><th>时点</th><th>文件</th><th>内容</th></tr></thead><tbody><tr><td>2025-03-14</td><td>海南证监局《责令改正措施的决定》〔2025〕7 号</td><td>要求整改</td></tr><tr><td>2025-04-29</td><td>《关于前期会计差错更正的公告》</td><td>追溯调整 2023 年报、2024 半年报</td></tr><tr><td>2025-06-28</td><td>《关于延期披露会计差错更正审计报告的提示性公告》</td><td>延期</td></tr><tr><td>2025-12-26</td><td>《立案告知书》证监立案字 0292025008 号、0292025009 号</td><td>公司及董事长刘景萍涉嫌信息披露违法违规被立案</td></tr><tr><td>2026-05-20</td><td>《行政处罚事先告知书》〔2026〕3 号</td><td>拟罚公司 700 万元、刘景萍 1,050 万元、于汇 250 万元、王清涛 150 万元</td></tr><tr><td><strong>2026-07-17</strong></td><td><strong>《行政处罚决定书》〔2026〕4 号</strong></td><td><strong>上述罚款金额维持不变；当事人未提出陈述申辩、未要求听证</strong></td></tr><tr><td>2026-07-17</td><td>海南证监局《警示函》〔2026〕26 号</td><td>2023—2025 年与关联方<strong>海南中旺医疗科技开发有限公司</strong>的交易未履行关联交易审议程序与信息披露（迟至 2026 年 4 月才审议披露）</td></tr><tr><td>2026-07-17</td><td>上交所《通报批评决定》〔2026〕109 号</td><td>同一事由，对公司及刘景萍予以<strong>通报批评</strong></td></tr><tr><td>2026-09-16</td><td>中证投服中心《股东建议函》（行权函〔2026〕126 号）</td><td>质疑 2025 年前五大客户江西五雲销售额陡增与应收账款同步增长；建议对造假责任人追索绩效薪酬</td></tr></tbody></table>
+<p><strong>违法事实原文（决定书）</strong>：公司部分销售业务提前确认收入，部分销售业务存在通过虚增药品价格虚增营业收入，未准确计提配送费、仓储费、运输费等，导致：</p>
+<ul><li><strong>2023 年年度报告虚增营业收入 11,001.96 万元（占当期 5.77%）、虚增利润总额 8,958.03 万元（占当期 66.11%）</strong>；</li><li><strong>2024 年半年度报告虚减营业收入 4,260.10 万元（占当期 5.03%）、虚减利润总额 2,766.11 万元（占当期 29.35%）</strong>；</li><li>2024-05-14《向不特定对象发行可转换公司债券募集说明书》引用 2023 年年报虚假数据；该次可转债已于 2024-09-06 被上交所终止审核、<strong>未实际发行</strong>。</li></ul>
+<p><strong>重大违法量化线逐项自算（沪主板 9.5.2 第一款）</strong>：(四) 单年虚增 ≥2 亿元 —— 2023 年利润总额虚增 0.90 亿元，<strong>不命中</strong>；(五) 连续两年合计 ≥3 亿元且占比 &gt;20% —— 合计不足 1.1 亿元，且 2024 年为<strong>半年报</strong>、方向相反，<strong>不命中</strong>；(六) 连续三年虚假记载（适用 2020 年度及以后）—— 仅 2023、2024 两个年度，<strong>不命中</strong>；(七) 连续两年合计 ≥5 亿元且 &gt;50% —— <strong>不命中</strong>。<strong>公司公告亦明确"未触及第 9.5.2 条规定的重大违法类强制退市情形"，与自算一致。</strong></p>
+
+</div></details>
+<h3 id="sec6">2.3 四类退市红线逐条对照</h3>
+<p><strong>结论：四类退市红线当前一条未踩 —— 底表《退市风险预警-20261005.xlsx》中的 605199 只出现在「规范类」处罚台账（两行），交易类／财务类／其他类三张表均未收录，与本报告逐条回规则原文核对的结果一致。</strong></p>
+<table><thead><tr><th>类型</th><th>触发条件（沪主板）</th><th>本股现状</th><th>结论</th></tr></thead><tbody><tr><td>交易类</td><td>连续 20 日收盘 &lt;1 元；连续 20 日市值 &lt;5 亿元；连续 20 日股东数 &lt;2,000 户</td><td>5.71 元／22.85 亿元／<strong>19,488 户</strong></td><td><strong>未触发</strong></td></tr><tr><td>财务类①</td><td>孰低为负 <strong>且</strong> 扣除后营收 &lt;3 亿元</td><td>2025 年孰低为负 ✓；<strong>扣除后营收 9.00 亿元</strong>（扣除额仅 49.02 万元），为红线的 <strong>3.0 倍</strong></td><td><strong>未触发</strong></td></tr><tr><td>财务类②</td><td>期末净资产为负</td><td>2025 年末归母净资产 <strong>4.1270 亿元</strong>为正</td><td><strong>未触发</strong>（但 2026-06-30 降至 <strong>2.9911 亿元</strong>）</td></tr><tr><td>财务类③</td><td>财报被出具无法表示／否定意见</td><td>2025 年财报为<strong>标准无保留意见</strong>（政旦志远）</td><td><strong>未触发</strong></td></tr><tr><td>规范类</td><td>资金占用 ≥2 亿元或 ≥净资产 30%；不披露／不保真；控制权无序争夺；内控连续两年非标</td><td>2025 年报明确"不存在被控股股东及其他关联方<strong>非经营性占用资金</strong>：否"、"不存在违反规定决策程序<strong>对外提供担保</strong>：否"；2025 年内控已转<strong>标准无保留</strong></td><td><strong>未触发</strong></td></tr><tr><td>其他类</td><td>三年累计分红 &lt;年均净利 30% <strong>且</strong> &lt;5,000 万元</td><td>该条前提为"最近一个会计年度净利润为正值 <strong>且</strong> 母公司报表年末未分配利润为正值"，公司 2025 年归母净利为负 ⇒ <strong>整条不适用</strong></td><td><strong>未触发</strong></td></tr><tr><td>重大违法类</td><td>9.5.2 各量化线</td><td>逐项自算均不命中，公司明确"未触及"</td><td><strong>未触发</strong></td></tr></tbody></table>
+<details class="fold"><summary>三条容易被读错的对照口径（本股专用）</summary><div class="fold-body">
+
+<ol><li><strong>营收红线看"扣除后"，且扣除额极小</strong>：2025 年营业收入 90,083.52 万元，扣除"与主营业务无关的业务收入"仅 49.02 万元（2024 年为 659.38 万元），<strong>扣除后 90,034.50 万元</strong>。即使 2026 年营收较 2025 年再降 45%（年化约 4.8 亿元），扣除后仍远超 3 亿元红线 ⇒ <strong>营收线在 2026 年不构成风险</strong>。</li><li><strong>"母公司未分配利润"与"合并未分配利润"方向相反</strong>：截至 2026-06-30，合并未分配利润 <strong>−4.4930 亿元</strong>，而<strong>母公司未分配利润 +1.1596 亿元</strong> ⇒ 母公司分红能力不受 <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225250961&amp;orgId=9900039731&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">未弥补亏损公告</a> 所述"合并未弥补亏损超过实收股本三分之一"的限制。</li><li><strong>交易类退市的"股东人数线"是底表盲区</strong>：本股 19,488 户，距 2,000 户极远，无风险；但做其他标的时必须单独核。</li></ol>
+
+</div></details>
+<h3 id="sec7">2.4 摘帽展望（两顶帽子、两套规则）</h3>
+<p><strong>结论：帽①（内控）的撤销条件已于 2026-04-28 全部具备而公司 5 个多月未提交申请；帽②（假 ST）是 AND 逻辑、绑定决定书满 12 个月，完全摘帽最早落在 2027-07-19 之后 —— 且主板 ST 自 2026-07-06 起涨跌幅已恢复 10%，摘帽不带来任何放大效应。</strong></p>
+<details class="fold"><summary>两顶帽子逐条对照、三条判断与两条先例</summary><div class="fold-body">
+
+<table><thead><tr><th>项目</th><th>帽①（内控非标，9.8.1(三)）</th><th>帽②（假 ST，9.8.1(七)）</th></tr></thead><tbody><tr><td>撤销依据</td><td>沪主板 <strong>9.8.7 第二款</strong></td><td>沪主板 <strong>9.8.8 条</strong></td></tr><tr><td>条件</td><td>内控缺陷整改完成、内控有效运行，并披露会计师对<strong>最近一个会计年度</strong>财报出具的<strong>标准无保留意见</strong>的内部控制审计报告</td><td>① 已就处罚所涉事项对相应年度财报<strong>追溯重述</strong>；② 自证监会<strong>作出</strong>行政处罚决定书之日起<strong>已满 12 个月</strong>（AND）</td></tr><tr><td>现状</td><td>2025 年度内控审计报告＝<strong>标准的无保留意见</strong>（政旦志远内字第 260000030 号）✓；已取得《2024 年度内控审计报告非标准意见涉及事项影响已消除的审核报告》✓</td><td>追溯重述 ✓；满 12 个月 ✗（决定书 2026-07-17 收到）</td></tr><tr><td>最早可申请</td><td><strong>已可申请（2026-04-28 起）</strong></td><td><strong>2027-07-19</strong>（2027-07-17 为周六顺延）</td></tr><tr><td>公司口径</td><td><a href="http://irm.cninfo.com.cn/" target="_blank" rel="noopener">互动易 2026-05-13</a>："公司将在各项准备工作全部完成、确认满足撤销其他风险警示的条件后，及时向上海证券交易所提交"</td><td>—</td></tr><tr><td>附加关</td><td>—</td><td>申请时若已被提起证券虚假陈述诉讼，须就投资者索赔<strong>充分计提预计负债</strong>；2025 年报与 2026 半年报均勾"<strong>无重大诉讼</strong>" ⇒ 暂未触发</td></tr></tbody></table>
+<p><strong>判断一：帽①"条件满足却不申请"最可能的解释是"等帽②一起摘"。</strong> 撤销帽①后简称仍为"ST葫芦娃"、涨跌幅仍为 10%，二级市场<strong>零可见变化</strong>；而帽②要到 2027-07-19 才满 12 个月。一次性摘完两顶，是唯一能在简称上产生"ST → 葫芦娃"变化的方式。</p>
+<p><strong>判断二：两顶帽子全部消失的最早时点是 2027-07-19，距今约 9.6 个月。</strong> 这是<strong>公开日历、零信息差</strong>，不宜按"即将摘帽"定价。</p>
+<p><strong>判断三：撤销"其他风险警示"未获核准 ≠ 终止上市。</strong> 沪主板 <strong>9.8.12</strong> 规定不予撤销的只需公告，<strong>不构成终止上市情形</strong>（这与财务类 ＊ST 的"撤销未获核准即终止上市"完全不同）⇒ 本股的悲观档是<strong>估值回落</strong>而非本金归零。</p>
+<p><strong>同类先例（沪主板 9.8.1(七) 假 ST，均按"决定书 + 12 个月"计时）</strong></p>
+<table><thead><tr><th>标的</th><th>决定书收到日</th><th>最早可申请日</th><th>2026 年 YTD</th></tr></thead><tbody><tr><td>ST太重（600169）</td><td>2025-12-26</td><td>2026-12-28</td><td>−3.95%</td></tr><tr><td>ST复华（600624）</td><td>2025-12-26</td><td>2026-12-28</td><td>−12.85%</td></tr><tr><td><strong>ST葫芦娃（605199）</strong></td><td><strong>2026-07-17</strong></td><td><strong>2027-07-19</strong></td><td><strong>−25.07%</strong></td></tr></tbody></table>
+<p><strong>读法</strong>：两顶帽子、两套规则、AND／独立计时，<strong>摘帽时间的确定性很高，但确定性本身不产生超额收益</strong>。</p>
+
+</div></details>
+<h3 id="sec8">2.5 发股通道：已锁至 2029 年 7 月</h3>
+<p><strong>结论：三名处罚当事人（刘景萍、于汇、王清涛）全部仍在现任董监高名单中，直接触发《发行注册办法》第十一条第（三）项 —— 向特定对象发行股票受限至约 2029-07-17，"易主／注入资产"这条 A 股 ST 最主流的重估引擎在制度上做不了 3 年。</strong></p>
+<details class="fold"><summary>条款比对手法（本案属"最强形态"：一二把手本人被罚）</summary><div class="fold-body">
+
+<p><strong>条款原文（《上市公司证券发行注册管理办法》第十一条第（三）项）</strong>：现任董事、监事和高级管理人员<strong>最近三年受到中国证监会行政处罚</strong>，或者<strong>最近一年受到证券交易所公开谴责</strong>的，上市公司不得向特定对象发行股票。</p>
+<p><strong>两条腿逐条核</strong>：</p>
+<table><thead><tr><th>腿</th><th>内容</th><th>本案是否触发</th></tr></thead><tbody><tr><td>①</td><td>现任董监高最近三年受<strong>证监会行政处罚</strong></td><td><strong>触发</strong>：刘景萍（董事长、总经理、法定代表人、代理董秘，罚 1,050 万元）、于汇（非独立董事、财务总监，罚 250 万元）、王清涛（<strong>职工代表董事</strong>，罚 150 万元）三人均在 <a href="https://emweb.securities.eastmoney.com/PC_HSF10/CompanyManagement/PageAjax?code=SH605199" target="_blank" rel="noopener">现任董监高 11 人名单</a> 内</td></tr><tr><td>②</td><td>现任董监高最近一年受<strong>交易所公开谴责</strong></td><td><strong>不触发</strong>：公司收到的是上交所<strong>通报批评</strong>〔2026〕109 号（"通报批评"≠"公开谴责"）</td></tr></tbody></table>
+<p><strong>⚠️ 必查的假信号</strong>：《行政处罚决定书》对每位当事人都写"<strong>时任</strong> XX"职务（处罚文书标准写法，追责针对行为发生时职务），<strong>不能据此推断其已不在任</strong>。本案若只看"时任"就会漏掉"现任董事长兼总经理即被罚人本人"这一决定性事实。</p>
+<p><strong>唯一的解锁动作</strong>：相关当事人<strong>辞去董监高职务</strong>（条款限"现任"）。<strong>监控信号应写成"被罚董监高何时辞去董事及高管职务"，而不是"公司会不会被处罚"。</strong></p>
+
+</div></details>
+<hr>
+<h2 id="chap3">三、公司运营情况</h2>
+<h3 id="sec9">3.1 财务状况：一条"营收腰斩、净资产快速变薄"的曲线</h3>
+<p><strong>结论：这家公司的核心财务事实不是"亏损"，而是"净资产只剩 2.99 亿元、且以每半年 1 亿元以上的速度在缩水" —— 一年 1.2 亿元的刚性研发投入相当于净资产的 29%，这是同业最高一档。</strong></p>
+<table><thead><tr><th>年度</th><th>营业收入</th><th>归母净利</th><th>扣非净利</th><th>归母净资产</th><th>资产负债率</th></tr></thead><tbody><tr><td>2023（调整后）</td><td>17.95 亿元</td><td>+1.04 亿元</td><td>−0.17 亿元</td><td>10.24 亿元</td><td>—</td></tr><tr><td>2024（调整后）</td><td>14.14 亿元</td><td>−2.74 亿元</td><td>−3.25 亿元</td><td>7.00 亿元</td><td>—</td></tr><tr><td>2025</td><td><strong>9.01 亿元（−36.27%）</strong></td><td><strong>−2.87 亿元</strong></td><td><strong>−3.20 亿元</strong></td><td><strong>4.13 亿元（−41.06%）</strong></td><td>—</td></tr><tr><td>2026H1</td><td><strong>2.41 亿元（−52.55%）</strong></td><td><strong>−1.13 亿元</strong></td><td><strong>−1.19 亿元</strong></td><td><strong>2.99 亿元（−27.52%）</strong></td><td><strong>85.71%</strong></td></tr></tbody></table>
+<p><strong>2025 年分季度：Q4 单季亏损占全年 96%。</strong></p>
+<table><thead><tr><th>季度</th><th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th></tr></thead><tbody><tr><td>营业收入</td><td>3.3683 亿元</td><td>1.7084 亿元</td><td>1.7505 亿元</td><td>2.1812 亿元</td></tr><tr><td>归母净利</td><td><strong>+2,434.70 万元</strong></td><td>−2,193.72 万元</td><td>−1,362.37 万元</td><td><strong>−27,616.00 万元</strong></td></tr></tbody></table>
+<p><strong>2026H1 关键指标</strong>：利润总额 −1.1227 亿元；信用减值损失 −394.19 万元、资产减值损失 −2,125.76 万元；<strong>经营活动现金流 +4,449.34 万元（同比 +214.35%，主因经营性付款减少）</strong>。</p>
+<details class="fold"><summary>2026-06-30 资产负债表与资产质量</summary><div class="fold-body">
+
+<table><thead><tr><th>报表项</th><th>2026-06-30</th><th>2025-12-31</th></tr></thead><tbody><tr><td>货币资金</td><td><strong>3,891.26 万元</strong></td><td>7,820.98 万元</td></tr><tr><td>应收账款</td><td>3.6544 亿元</td><td>4.1801 亿元</td></tr><tr><td>存货</td><td>2.0640 亿元</td><td>2.5434 亿元</td></tr><tr><td>其他应收款</td><td>3,818.53 万元</td><td>2,022.61 万元</td></tr><tr><td>短期借款</td><td>3.7424 亿元</td><td>4.3388 亿元</td></tr><tr><td>一年内到期的非流动负债</td><td>1.7217 亿元</td><td>—</td></tr><tr><td>长期借款</td><td>5.0505 亿元</td><td>5.4540 亿元</td></tr><tr><td>负债合计</td><td><strong>20.7332 亿元</strong></td><td>21.4493 亿元</td></tr><tr><td>归属母公司所有者权益</td><td><strong>2.9911 亿元</strong></td><td>4.1270 亿元</td></tr><tr><td>其中：资本公积</td><td><strong>2.9056 亿元</strong></td><td>2.9056 亿元</td></tr><tr><td>其中：未分配利润</td><td><strong>−4.4930 亿元</strong></td><td>−3.3591 亿元</td></tr><tr><td>少数股东权益</td><td>4,653.90 万元</td><td>4,532.10 万元</td></tr><tr><td>总资产</td><td>24.1897 亿元</td><td>26.0295 亿元</td></tr></tbody></table>
+<p><strong>有息负债约 10.51 亿元</strong>（短期借款 3.7424＋一年内到期非流动负债 1.7217＋长期借款 5.0505），<strong>货币资金 3,891.26 万元</strong> —— 净有息负债约 10.12 亿元。<strong>2026-06-27 公司使用闲置募集资金临时补流</strong>（截至 2026-06-30 IPO 募集资金余额仅 1,188.07 万元），是资金面偏紧的直接读数。</p>
+<p><strong>受限资产合计 11.6195 亿元</strong>：固定资产 10.9286 亿元（借款抵押）、无形资产 6,546.88 万元（借款抵押）、货币资金 362.66 万元（开票及冻结）—— <strong>受限资产占总资产 48.0%，其中固定资产基本已被抵押完毕</strong>。</p>
+<p><strong>研发投入是刚性支出</strong>：2025 年研发投入 1.2026 亿元（占营收 <strong>13.35%</strong>），费用化 9,386.42 万元、资本化 2,639.31 万元（资本化比重 <strong>21.95%</strong>）；<strong>研发投入占净资产比例 29.14%</strong>，而同业可比公司（葵花药业、康恩贝、太极集团、振东制药、康芝药业、ST百灵）该比例在 <strong>1.92%—7.89%</strong> 之间 —— 差异的根源不是研发更激进，而是<strong>分母（净资产）太小</strong>。</p>
+
+</div></details>
+<h3 id="sec10">3.2 收入地图：呼吸系统药物一枝独大，且毛利率正在塌</h3>
+<p><strong>结论：这是一家"单一治疗领域占比 62%、且该领域毛利率半年内掉了 17.5 个百分点"的公司；2026 上半年"其他药物"已经做到毛利为负。</strong></p>
+<table><thead><tr><th>产品（2025 年）</th><th>收入</th><th>占比</th><th>毛利率</th><th>毛利率同比</th></tr></thead><tbody><tr><td>呼吸系统药物</td><td>5.6291 亿元</td><td>62.5%</td><td>27.57%</td><td><strong>−20.93pct</strong></td></tr><tr><td>消化系统药物</td><td>1.3972 亿元</td><td>15.5%</td><td>45.62%</td><td>−12.30pct</td></tr><tr><td>全身用抗感染药物</td><td>0.9211 亿元</td><td>10.2%</td><td>16.56%</td><td>−16.49pct</td></tr><tr><td>其他药物</td><td>0.6075 亿元</td><td>6.7%</td><td>19.64%</td><td>−26.37pct</td></tr><tr><td>原料药</td><td>0.4534 亿元</td><td>5.0%</td><td>40.24%</td><td>−7.21pct</td></tr><tr><td><strong>合计</strong></td><td><strong>9.0084 亿元</strong></td><td>100%</td><td><strong>29.35%</strong></td><td><strong>−18.50pct</strong></td></tr></tbody></table>
+<p><strong>2026 上半年进一步恶化</strong>：综合毛利率降至 <strong>16.44%</strong>（成本 2.0127 亿元／收入 2.4087 亿元）；其中 <strong>"其他药物"成本 2,976.29 万元 &gt; 收入 2,828.57 万元，毛利率 −5.22%</strong>；呼吸系统药物毛利率降至 <strong>10.02%</strong>（上年同期该板块全年为 27.57%）。</p>
+<p><strong>政策与业务驱动</strong>：2026 年 4 月核心产品<strong>小儿肺热咳喘颗粒（4g）中选第四批全国中成药采购联盟集中带量采购</strong>（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225280820&amp;orgId=9900039731&amp;announcementTime=2026-05-07" target="_blank" rel="noopener">拟中选公示</a>）——<strong>中选带来放量机会、同时直接压价</strong>；公司 2026H1 自述"主动开展营销体系变革、优化组织架构、整合渠道资源、调整销售模式，阶段性地影响了销售规模"。</p>
+<details class="fold"><summary>收入地图的第二层：客户结构、关联方与投服中心质疑</summary><div class="fold-body">
+
+<p><strong>2025 年前五大客户合计 2.9648 亿元（占营收 32.9%）</strong></p>
+<table><thead><tr><th>客户</th><th>2025 年销售</th><th>同比</th><th>模式</th><th>2025 年回款</th><th>备注</th></tr></thead><tbody><tr><td>一心堂药业集团</td><td>7,453.23 万元</td><td>+19.73%</td><td>直销</td><td>6,239.39 万元</td><td>合作 10 年</td></tr><tr><td><strong>江西五雲药业</strong></td><td><strong>7,209.35 万元</strong></td><td><strong>+1,697.57%</strong></td><td>配送</td><td>6,080.04 万元</td><td>2024 年新增客户，2025 年成为主要产品<strong>全国总代</strong></td></tr><tr><td>华润医药控股</td><td>5,210.48 万元</td><td>−50.82%</td><td>直销／经销／配送</td><td>1,814.93 万元</td><td>集采影响</td></tr><tr><td>益丰大药房连锁</td><td>5,188.04 万元</td><td>−5.27%</td><td>直销</td><td>4,506.95 万元</td><td>合作 9 年</td></tr><tr><td>湖南康全医药</td><td>4,586.98 万元</td><td>−33.08%</td><td>直销</td><td>4,756.20 万元</td><td>医保统筹影响</td></tr><tr><td><strong>合计</strong></td><td><strong>2.9648 亿元</strong></td><td>+0.32%</td><td>—</td><td>2.3398 亿元</td><td>—</td></tr></tbody></table>
+<p><strong>投服中心 2026-09-16《股东建议函》的两点质疑</strong>（公司 2026-10-01 回复）：</p>
+<ul><li>应收账款周转天数由 2024 年约 102 天增至 2025 年约 160 天（周转率 3.53→2.26），而五家可比公司（葵花、康恩贝、太极、振东、康芝）2025 年周转天数为 21—78 天、均值 54 天，<strong>且与 2024 年基本持平 —— 同行业没有出现同类变化</strong>；</li><li>对江西五雲销售额与应收账款<strong>同时大幅增长</strong>：2024 年 401.06 万元 → 2025 年 7,209.35 万元（+1,697.57%），2025 年末应收账款 2,428.11 万元、占两年累计销售额的 31.91%。</li></ul>
+<p><strong>公司回复要点</strong>：① 公司销售模式含"配送"（批量供货＋周期性信用结算），与可比公司以现款／短账期经销为主的结构不同；② 2025 年对优质客户将标准 3 个月账期适度延长至 4—6 个月并上调授信额度；③ 江西五雲 2025 年末的 2,428.11 万元应收账款<strong>截至 2026 年 6 月末已全部收回</strong>、不存在坏账风险。</p>
+<p><strong>反向读数（必写）</strong>：该笔款项<strong>确已收回</strong>（有 2026 半年报"上半年应收账款余额较 2025 年末回落"与公司按月披露的台账佐证），<strong>但"同行业未出现同类变化"这一对比客观存在</strong> —— 它与公司 2023 年那份"提前确认收入"的处罚决定书指向同一类操作空间。本报告的处理是：<strong>把它登记为"需要持续跟踪的收入质量问题"，不据此推断 2025 年业绩不实（收入真实性的最终认定权不在本报告）。</strong></p>
+
+</div></details>
+<h3 id="sec11">3.3 回购、募投与再融资</h3>
+<p><strong>结论：无股票回购、无在途再融资，IPO 募集资金已用掉 92.8%，2026 年 7 月还主动终止了两个研发子项目并转让其中一个 —— 所有资本动作的方向都是"收缩"而非"扩张"。</strong></p>
+<details class="fold"><summary>回购、募集资金与审计机构明细</summary><div class="fold-body">
+
+<ul><li><strong>股票回购</strong>：无（截至基准日未见回购方案）。</li><li><strong>IPO 募集资金</strong>：2020-07-03 到账净额 <strong>1.5104 亿元</strong>，截至 2026-06-30 累计投入 1.40098 亿元、余额 1,188.07 万元；2026-07 终止"药品研发项目"下两个子项目（盐酸左旋沙丁胺醇异丙托溴铵雾化吸入溶液、酒石酸阿福特罗雾化吸入溶液）并将前者对外转让，<strong>回购总价 1,760 万元</strong>、分三期支付。</li><li><strong>再融资</strong>：2024 年那次可转债已于 2024-09-06 被上交所终止审核、未发行；<strong>当前无在途再融资</strong>（且发股通道被锁至 2029-07）。</li><li><strong>审计机构</strong>：2026 年度续聘<strong>政旦志远（深圳）会计师事务所</strong>（<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225422629&amp;orgId=9900039731&amp;announcementTime=2026-07-14" target="_blank" rel="noopener">2026-07-14 公告</a>）；2025 年度审计机构由立信变更为政旦志远。</li></ul>
+
+</div></details>
+<hr>
+<h2 id="chap4">四、基本面路径：处罚 ST ＋ 内控非标（路径 C）</h2>
+<p><strong>结论：本股走的是"处罚 ST（假 ST）＋ 内控非标"叠加的路径 C —— 它的病不在主业丧失，而在"内控与信披被监管定性"；因此保壳路径不是重整，也不是资产注入，而是"把两顶帽子按规则摘掉"。而这条路的问题在于：第一顶帽子已经能摘、公司却不摘；第二顶帽子 2027 年 7 月才到点；同时 2026 年末的净资产是另一条独立赛道上的开关。</strong></p>
+<p><strong>另两条路径一句话带过</strong>：</p>
+<ul><li><strong>路径 A（保壳：营收不足／净资产为负）</strong>：营收线不成立（扣除后 9.00 亿元 &gt;&gt; 3 亿元）；净资产线<strong>当前成立但需盯 2026 年末</strong>（见 §5.4）—— 故本报告不把它作为第二翼主线，而把净资产放在"生死开关"位置单独测算。</li><li><strong>路径 B（重整）</strong>：<strong>完全无路径</strong> —— 无预重整、无重整申请、公司 2026-07-04 异动公告逐项否认"破产重整"；且即使做重整，亏损主要来自经营而非债务结构。</li></ul>
+<h3 id="sec12">4.1 假 ST 的撤销条件拆解（沪主板 9.8.8 条）</h3>
+<p><strong>结论：两个条件里"追溯重述"已完成、"满 12 个月"未到，因此摘帽是纯粹的日历问题，无技术障碍 —— 但"确定"本身不构成买入理由。</strong></p>
+<ul><li><strong>条件①（追溯重述）已完成</strong>：2025-04-29《关于前期会计差错更正的公告》＋2026-04-29《关于前期会计差错更正补充的公告》；政旦志远对 2023 年度财务报表全面审计并出具<strong>标准无保留意见</strong>（政旦志远审字第 260000744 号）；<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225250955&amp;orgId=9900039731&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">专项说明</a> 与 <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225250935&amp;orgId=9900039731&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">审核报告</a> 齐备。</li><li><strong>条件②（满 12 个月）未到</strong>：决定书 2026-07-17 收到 ⇒ 满 12 个月落在 <strong>2027-07-17（周六）</strong>，顺延 <strong>2027-07-19</strong>。</li><li><strong>附加关未触发</strong>：2025 年报与 2026 半年报均勾"无重大诉讼、仲裁事项"（虚假陈述索赔尚无重大案件）。</li><li><strong>⚠️ 起算日口径</strong>：公告仅载"2026 年 7 月 17 日<strong>收到</strong>"，<strong>未披露决定书落款（作出）日</strong>。沪主板 9.8.8 的 12 个月自"<strong>作出</strong>之日"起算，若作出日早于收到日，理论上可提前数日 —— 已列入附录 A【待核实】。</li></ul>
+<h3 id="sec13">4.2 内控那顶帽子：为什么"能摘而不摘"才是本报告最值得写的一条</h3>
+<p><strong>结论：2025 年度内控审计报告已是标准无保留意见、且已取得"影响已消除"审核报告，撤销帽①的形式条件 100% 具备，但公司自 2026-04-28 起 5 个多月未提交申请 —— 这不是"程序没走完"，而是公司主动选择不申请。</strong></p>
+<p>支持"已具备条件"的三份文件：</p>
+<table><thead><tr><th>文件</th><th>编号</th><th>日期</th><th>出具方</th></tr></thead><tbody><tr><td>2025 年度内部控制审计报告（<strong>标准无保留、内控有效</strong>）</td><td>政旦志远内字第 260000030 号</td><td>2026-04-28</td><td>政旦志远</td></tr><tr><td>2024 年度内部控制审计报告非标准意见涉及事项影响已消除的审核报告</td><td>政旦志远核字第 260000152 号</td><td>2026-04-28</td><td>政旦志远</td></tr><tr><td>2025 年年度报告（第四节载明"内控审计报告意见类型：标准的无保留意见"）</td><td>—</td><td>2026-04-28</td><td>公司</td></tr></tbody></table>
+<p><strong>最可能的解释</strong>：撤销帽①后简称仍是"ST葫芦娃"、涨跌幅仍是 10%，二级市场零可见变化；而帽②要到 2027-07-19 才满 12 个月。<strong>"一次摘完两顶"是唯一能改简称的做法，所以公司选择等。</strong> 公司 2026-05-13 在互动易的口径与此吻合："将在各项准备工作全部完成、确认满足撤销其他风险警示的条件后，及时向上海证券交易所提交撤销其他风险警示的申请"。</p>
+<p><strong>这一条的投资含义是负向的</strong>：它说明本股"近期摘帽"的可能性<strong>低于</strong>规则读出来的可能性，<strong>不应按"随时可能公告摘帽"来定价</strong>。</p>
+<hr>
+<h2 id="chap5">五、炒作逻辑 + 情绪面 + 筹码面</h2>
+<h3 id="sec14">5.1 炒作逻辑三支柱</h3>
+<p><strong>结论：三支柱里最强的是"炒历史类似行为"（这支票历史上靠"海南／流感／儿童药主题＋低位"走出过 3 次大波段），但"炒预期"这一支在 2026 年是空的、"炒主板映射"这一支是负向的 —— 所以本股当前处于"有符号、无新事、板块还在跌"的状态。</strong></p>
+<p><strong>① 炒预期：近端事件全是公开日历，没有"新增物"。</strong></p>
+<table><thead><tr><th>时点</th><th>催化内容</th><th>性质</th></tr></thead><tbody><tr><td>2026-10 下旬</td><td>2026 年三季报</td><td>硬节点（可验证 H2 亏损速度）</td></tr><tr><td>2027-04</td><td>2026 年年报（决定净资产开关）</td><td>硬节点（生死判定）</td></tr><tr><td>2027-07-19 后</td><td>假 ST 帽子满 12 个月、可申请撤销</td><td>硬节点（公开日历）</td></tr><tr><td>—</td><td>资产注入／控制权变更／重整</td><td><strong>2026-07-04 异动公告逐项否认、发股锁至 2029-07</strong></td></tr></tbody></table>
+<p><strong>② 炒历史类似行为（本股自身历史先例，质量高于外部对标）。</strong></p>
+<details class="fold"><summary>本股自身历史大波段全表（时间降序）</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>行情</th><th>驱动</th><th>备注</th></tr></thead><tbody><tr><td>2024-11 下旬—12-10</td><td><strong>11 天 8 板</strong>（15.62 → 20.17 元）</td><td>儿童药止咳药＋医保国谈新增 91 个药品</td><td>峰值 25.16 元（7 天 7 板）</td></tr><tr><td>2025-01-03—01-17</td><td>2 天 2 板（17.49 → 19.24 元）</td><td>北京疾控提示呼吸道传染病上升、流感</td><td>—</td></tr><tr><td>2025-03-14</td><td>单日 +10.03%（龙虎榜净买 4,972.29 万元）</td><td>育儿补贴细则（婴童／乳业主题）</td><td>—</td></tr><tr><td>2025-04-14</td><td>单日异动（15.62 元）</td><td>海南《提振和扩大消费三年行动方案》</td><td>戴帽前最后一波</td></tr><tr><td>2026-03-31—04-01</td><td>2 天 2 板（6.83 → 7.17 元）</td><td><strong>摘帽预期</strong></td><td>符号首次切换</td></tr><tr><td>2026-05-18—05-21</td><td>4 天 2 板（6.70 → 6.94 元）</td><td>摘帽预期（叠加 ST 生效）</td><td>—</td></tr><tr><td>2026-07-01—07-03</td><td><strong>3 天 3 板</strong>（5.45 → 6.01 元）</td><td><strong>利空出尽</strong>（决定书落地前抢跑）</td><td>7-15 仍在上榜</td></tr></tbody></table>
+
+</div></details>
+<p><strong>共同点（这是本股最重要的"炒历史"结论）</strong>：<strong>四次大波段全部是"主题（海南／流感／儿童药／摘帽）＋ 当时位置不高"驱动，没有一次是业绩驱动</strong>；连板极值由 2024-12 的"11 天 8 板"收缩到 2026-07 的"3 天 3 板"，<strong>炒作基因在衰减</strong>。</p>
+<p><strong>同型样本对照（2026 年 YTD）</strong></p>
+<table><thead><tr><th>样本池</th><th>只数</th><th>中位</th><th>上涨只数</th><th>本股位置</th></tr></thead><tbody><tr><td>内控非标型（沪主板 9.8.1(三) 同类）</td><td>60</td><td><strong>−27.88%</strong></td><td>13</td><td>−25.07%，第 36/60（中位偏上）</td></tr><tr><td>假 ST 型（9.8.1(七) 同类）</td><td>55</td><td><strong>−16.00%</strong></td><td>17</td><td>−25.07%，第 17/55（下跌组）</td></tr></tbody></table>
+<p><strong>上涨组的共性（第 21 次验证）</strong>：逸飞激光 +99.64%（已摘帽）、＊ST威领 +69.52%（要约收购）、＊ST泉为 +42.44%（重整协议）、ST新华锦 +40.00%、长园集团 +37.68%（已摘帽）、京蓝科技 +170.76%、ST东尼 +83.44%、ST长方 +68.35% —— <strong>全部"有物"（可命名的资产／要约方／重整方案／已摘帽结果）</strong>。<strong>ST葫芦娃是"有人名（实控人夫妇）、有日历（2027-07-19）、无物" ⇒ 落下跌组一侧。</strong></p>
+<p><strong>③ 炒主板映射：方向为负。</strong> 儿科药／中药可比 13 只 2026 年 YTD <strong>中位 −10.33%、上涨仅 3 只</strong>（亚宝药业 +14.81%、莱美药业 +8.17%、康恩贝 0.00%），而 ST葫芦娃 <strong>−25.07% 跑输同业中位 14.7 个百分点</strong> ⇒ <strong>跌幅超出行业 β，属"退市风险＋业绩腰斩"的独立定价，主板映射判"负向"。</strong></p>
+<h3 id="sec15">5.2 情绪面</h3>
+<p><strong>结论：无新增主题催化，支撑性政策只剩长期背景（海南自贸港、儿童药优先审评），公司对"何时申请摘帽"的答复 4 个月内三次口径完全一致 —— 属模板答复，无新增信息。</strong></p>
+<ul><li>无新增主题催化；集采"中选"是双刃（放量 vs 压价），公司自己把营收下滑归因于"主动营销体系变革"。</li><li>支撑性政策仅剩"海南自贸港零关税／低税率／简税制"与儿童药优先审评 —— 皆为<strong>长期背景</strong>，非事件。</li><li>公司对"何时申请摘帽"的回答在 4 个月内<strong>口径完全一致</strong>（2026-03-05、03-27、05-13 三次），属<strong>模板答复</strong>，无新增信息。</li></ul>
+<h3 id="sec16">5.3 筹码面与技术面</h3>
+<p><strong>结论：筹码高度集中在实控人家族手中、且外部几乎没有机构或产业资本；注意力处于冰点（2026 年仅 1 次龙虎榜、换手 0.20%）；股东户数一年降 55% 而股价同跌，属"割肉式集中"而非主力吸筹。</strong></p>
+<details class="fold"><summary>龙虎榜、股东户数与股东构成明细</summary><div class="fold-body">
+
+<ul><li><strong>龙虎榜（时间降序）</strong>：2026-07-03（上海资金买入，+5.07%，<strong>净卖 137.999 万元</strong>，换手 1.06%）；2025-12-31（−4.63%，<strong>净买 1,045.44 万元</strong>）；2025-05-07（−5.00%，2 家机构卖出）；2025-04-23（−9.99%，净卖 278.39 万元）；2025-03-14（+10.03%，净买 4,972.29 万元）。<strong>2026 年全年仅 1 次上榜。</strong></li><li><strong>股东户数（时间降序）</strong>：2026-06-30 <strong>19,488 户</strong> → 2026-03-31 22,210 → 2025-12-31 24,862 → 2025-06-30 31,588 → 2025-03-31 43,449。<strong>一年内 −55.1%，同期股价约 −63% ⇒ 割肉式下降（看空读法）。</strong></li><li><strong>前十大股东构成</strong>：除控股股东系六名一致行动人（合计 69.36%）外，其余席位为<strong>自然人</strong>（徐立华 0.27%、苏美 0.23%、方波 0.17%、罗瑞 0.16%），<strong>无一家机构、无一家产业资本</strong>。</li><li><strong>技术位置</strong>：现价 5.71 元处 2026 年内区间（5.19—7.70 元）的 <strong>9.9% 分位</strong>；处上市以来前复权月线 <strong>1.33% 分位</strong>。</li><li><strong>2026 年三次"涨幅偏离"事件</strong>：03-31—04-01（摘帽预期）、05-18—05-21（叠加 ST）、<strong>07-01—07-03（利空出尽，触发 <a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225410231&amp;orgId=9900039731&amp;announcementTime=2026-07-04" target="_blank" rel="noopener">股票交易异常波动公告</a>）</strong>。</li></ul>
+
+</div></details>
+<hr>
+<h2 id="chap6">六、估值</h2>
+<p><strong>结论：两把尺子给出的答案是一致的"不便宜" —— PB 7.64 是同业中位（约 2.1）的 3.6 倍；按 2026 年化营收算 PS 约 4.74 倍、是同业中位（约 2.5）的 1.9 倍。"上市以来 1.33% 的价格分位"只说明股价在历史最低区，不能当安全垫。</strong></p>
+<table><thead><tr><th>估值口径</th><th>本股</th><th>同业中位</th><th>判读</th></tr></thead><tbody><tr><td>PB</td><td><strong>7.64</strong></td><td>约 2.1</td><td>分母是没有盈利支撑的 2.99 亿元净资产</td></tr><tr><td>PS（2025 年营收 9.01 亿元）</td><td>2.54 倍</td><td>约 2.5</td><td>持平，但 2025 营收已 −36%</td></tr><tr><td>PS（2026 年化营收 4.82 亿元）</td><td><strong>4.74 倍</strong></td><td>约 2.5</td><td>显著偏贵</td></tr><tr><td>价格分位（上市以来，前复权 75 个月）</td><td><strong>1.33%</strong></td><td>—</td><td>历史最低区，但<strong>不是估值指标</strong></td></tr><tr><td>现金类资产 ÷ 总市值</td><td><strong>1.7%</strong>（3,891.26 万元 ÷ 22.85 亿元）</td><td>—</td><td><strong>不适用"净现金型 ST 的退市折价消除"框架</strong></td></tr></tbody></table>
+<details class="fold"><summary>情景区间（关键假设与前提）</summary><div class="fold-body">
+
+<p><strong>前提（不成立则区间作废）</strong>：2026 年度归母净资产保持为正。</p>
+<table><thead><tr><th>情景</th><th>关键假设</th><th>归母净资产（2026 年末）</th><th>对应市值</th><th>对应股价</th></tr></thead><tbody><tr><td><strong>乐观（15%）</strong></td><td>H2 亏损收窄至 0.6 亿元（Q3 −0.2／Q4 −0.4，无大额减值）；集采放量＋控本见效</td><td>约 2.39 亿元</td><td>20—26 亿元</td><td>5.0—6.5 元</td></tr><tr><td><strong>中性（50%）</strong></td><td>H2 亏损 1.6 亿元（重演 2025 年下半年的费用集中确认节奏，但无大额减值）</td><td>约 1.39 亿元</td><td>14—19 亿元</td><td>3.5—4.75 元</td></tr><tr><td><strong>悲观（35%）</strong></td><td>H2 亏损 ≥3.0 亿元（Q4 重演 2025 年 Q4 的 2.76 亿元量级） ⇒ <strong>净资产转负</strong>，2027-04 叠加 ＊ST</td><td><strong>转负</strong></td><td>8—20 亿元（叠加 ＊ST 后波动极大）</td><td>2.0—5.0 元</td></tr></tbody></table>
+<p><strong>概率加权期望价 ≈ 4.1 元（较现价 5.71 元 −28%）。</strong></p>
+<p><strong>隐含概率倒推</strong>：以"成功后 6.5 元／失败残值 2.5 元"代入 <code>5.71 = p × 6.5 + (1−p) × 2.5</code> ⇒ <strong>市场隐含"2026 年末净资产为正且不被叠加 ＊ST"的概率约 80%</strong>，而本报告的判断是 <strong>65%（即悲观档 35%）</strong> ⇒ 市场<strong>高估</strong>了安全边际。</p>
+<p><strong>★ 一处口径提醒</strong>：本股不适用"想象力加总"框架。它的利润<strong>算得出来</strong>（儿童药是成熟业务，收入与成本可预测），问题不是"想象空间不足"，而是"分母太薄"；因此估值函数是<strong>二元开关型</strong>（净资产正／负），应给三档情景区间而非单点目标价。</p>
+
+</div></details>
+<hr>
+<h2 id="chap7">投资结论</h2>
+<p><strong>结论：卖出（回避）。</strong></p>
+<p><strong>理由链（按重要性排序）</strong></p>
+<p><strong>① 上行是"零制度红利的公开日历"。</strong> 两顶 ST 帽子全部消失的最早时点是 <strong>2027-07-19</strong>（帽②绑定决定书满 12 个月），而主板风险警示股日涨跌幅自 <strong>2026-07-06</strong> 起已由 5% 改为 10%，<strong>摘帽前后同幅</strong> ⇒ 摘帽不带来任何放大效应。更反常的是：<strong>帽①（内控）的撤销条件已于 2026-04-28 全部具备（2025 年度内控审计报告为标准无保留意见），公司却 5 个多月未提交申请</strong> —— 这说明"随时可能公告摘帽"的概率低于规则读出来的概率。<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225592295&amp;orgId=9900039731&amp;announcementTime=2026-10-01" target="_blank" rel="noopener">依据</a></p>
+<p><strong>② 发股通道被锁至约 2029-07，"易主／注入资产"这条引擎在制度上做不了 3 年。</strong> 处罚决定书的三名当事人（刘景萍＝董事长兼总经理、于汇＝财务总监、王清涛＝职工代表董事）<strong>全部仍在现任董监高名单内</strong>，直接触发《发行注册办法》第十一条第（三）项；公司同时<strong>没有任何</strong>筹划中的重组、注入或控制权变更（2026-07-04 异动公告逐项否认），控股股东更在 2026-07-16 <strong>承诺 12 个月内不减持、不转让控制权</strong>。<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225431003&amp;orgId=9900039731&amp;announcementTime=2026-07-18" target="_blank" rel="noopener">依据</a></p>
+<p><strong>③ 真正的生死开关是 2026 年末净资产，而且它不是尾部情形。</strong> 2026-06-30 归母净资产 <strong>2.9911 亿元</strong>、H1 已亏 <strong>1.1339 亿元</strong>；而 <strong>2025 年 Q4 单季曾亏 2.76 亿元（占全年亏损 96%）</strong> —— 只要 2026 年下半年亏掉 2.99 亿元（约等于 2025 年下半年 −2.898 亿元的同等幅度），年末净资产即转负，2027-04 直接叠加财务类 ＊ST。收入已同比腰斩（H1 −52.55%）、固定费用与 1.2 亿元研发投入刚性 ⇒ <strong>该阈值可由"Q4 常规减值＋费用集中确认"单独触发</strong>。<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225515498&amp;orgId=9900039731&amp;announcementTime=2026-08-27" target="_blank" rel="noopener">依据</a></p>
+<p><strong>④ 两把估值尺子都不便宜。</strong> PB <strong>7.64</strong>（同业中位约 2.1）、按 2026 年化营收算 PS 约 <strong>4.74 倍</strong>（同业中位约 2.5）；"上市以来 1.33% 的价格分位"只说明股价在历史最低区，<strong>不能当安全垫</strong> —— 因为分母是已被亏损掏空、且没有盈利支撑的 2.99 亿元净资产。且现金类资产仅占市值 <strong>1.7%</strong>，<strong>不适用"净现金型 ST 的退市折价消除"框架</strong>。</p>
+<p><strong>⑤ 同型样本落下跌组、注意力冰点。</strong> 内控非标型 60 只 2026 年 YTD 中位 <strong>−27.88%</strong>（本股 −25.07%，第 36/60）；假 ST 型 55 只中位 <strong>−16.00%</strong>（本股第 17/55）；<strong>上涨组全部"有物"</strong>，本股"有人名、有日历、无物"。同业 13 只中位 −10.33%，本股跑输 14.7 个百分点。2026 年龙虎榜仅 1 次、换手 0.20%、成交 461 万元、股东户数一年降 55.1%（割肉式）。</p>
+<table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td><strong>触发条件（转买入）</strong></td><td>① <strong>提交撤销申请</strong>的公告（尤其一次性申请两顶）；② 2026 年三季报／年报显示 H2 亏损显著收窄（全年亏损 ≤2 亿元）且年末净资产 &gt;2.5 亿元；③ 三名处罚当事人<strong>辞去董监高职务</strong>（解除发股锁）并同步公告具体资产运作；④ 股价回落至 <strong>4.2—4.5 元</strong>（对应市值 16.8—18.0 亿元）</td></tr><tr><td><strong>失效条件（结论作废／翻转）</strong></td><td>① 2026 年报归母净资产为负 ⇒ 结论从"回避"强化为"归零通道已开启"；② 控股股东以<strong>现金</strong>方式（不受发股锁限制）注入体系内盈利资产并表，且金额足以改变利润表结构；③ 经营出现趋势性反转（H1 营收已腰斩，当前无迹象）</td></tr><tr><td><strong>参考区间</strong></td><td>卖出（回避）；<strong>4.2—5.0 元</strong>为"开始具备研究意义"的区域；<strong>2.0—3.5 元</strong>为"净资产转负情景"的目标位</td></tr><tr><td><strong>时间窗口</strong></td><td>至 2026 年三季报（约 2026-10-31）前；最终决策锚为 2026 年年报（2027-04）</td></tr><tr><td><strong>仓位建议</strong></td><td>不建仓</td></tr><tr><td><strong>最大风险（让本结论出错的那一件事）</strong></td><td><strong>2026 年三季报／年报显示 H2 亏损大幅收窄（例如靠集采放量＋控本增效把单季亏损压到 2,000 万元以内），年末归母净资产站上 3 亿元 ⇒ "净资产转负"这一核心卖出理由被证伪，股价可能向 6.5—7.0 元修复。</strong> 次要风险是创新药管线（小儿麻龙止咳平喘颗粒 III 期、百苓止咳颗粒 II 期）或流感季／海南封关细则带来的主题性脉冲。</td></tr></tbody></table>
+<hr>
+<h2 id="chap8">附录 A · 待核实 / 需补充清单</h2>
+<ol><li>《行政处罚决定书》〔2026〕4 号的<strong>作出（落款）日</strong> —— 公告仅载"2026 年 7 月 17 日收到"，未披露落款日；沪主板 9.8.8 的 12 个月自"作出之日"起算，若早于收到日，最早可申请日可能前移数日。</li><li>2026 年三季报的单季营收与亏损（<strong>验证本报告"净资产开关"判断的第一个窗口</strong>）。</li><li>证券虚假陈述索赔案件的实际立案情况（2025 年报与 2026 半年报均勾"无重大诉讼"，是否存在未达重大标准的小额索赔）。</li><li>江西五雲药业 2026 年下半年的销售与回款（投服中心质疑的后续）。</li><li>2026 年度内控审计机构的聘任情况 —— 2026-07-14 已续聘政旦志远，但其对 2026 年的审计口径尚未可知。</li><li>刘景萍、于汇、王清涛是否会辞去董监高职务（发股锁的唯一解）。</li><li>控股股东葫芦娃投资质押率 78.37% 的平仓／处置安排。</li><li>独立董事王文学补选的股东会召开与通过情况（2026-09-30 通知）。</li></ol>
+<h2 id="chap9">附录 B · 关键信源清单</h2>
+<table><thead><tr><th>编号</th><th>文件</th><th>发布日</th><th>原文地址</th></tr></thead><tbody><tr><td>1</td><td>关于实施其他风险警示暨停牌的公告</td><td>2025-04-29</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1223387331&amp;orgId=9900039731&amp;announcementTime=2025-04-29" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>2</td><td>信会师报字[2025]第 ZA12625 号 2024 年度内部控制审计报告</td><td>2025-04-29</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1223387305&amp;orgId=9900039731&amp;announcementTime=2025-04-29" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>3</td><td>信会师报字[2025]第 ZA12624 号 2024 年度审计报告</td><td>2025-04-29</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1223387169&amp;orgId=9900039731&amp;announcementTime=2025-04-29" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>4</td><td>董事会审计委员会关于 2024 年度保留意见及内控否定意见的专项说明</td><td>2025-04-29</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1223387325&amp;orgId=9900039731&amp;announcementTime=2025-04-29" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>5</td><td>2025 年年度报告</td><td>2026-04-29</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225250962&amp;orgId=9900039731&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>6</td><td>政旦志远内字第 260000030 号 2025 年度内部控制审计报告</td><td>2026-04-29</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225250966&amp;orgId=9900039731&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>7</td><td>关于 2024 年度审计报告保留意见涉及事项影响已消除的专项说明</td><td>2026-04-29</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225250955&amp;orgId=9900039731&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>8</td><td>政旦志远核字第 260000152 号 影响已消除的审核报告</td><td>2026-04-29</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225250935&amp;orgId=9900039731&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>9</td><td>关于前期会计差错更正补充的公告</td><td>2026-04-29</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225250960&amp;orgId=9900039731&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>10</td><td>关于未弥补亏损达到实收股本总额三分之一的公告</td><td>2026-04-29</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225250961&amp;orgId=9900039731&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>11</td><td>关于控股股东所持部分股份被司法拍卖完成过户暨权益变动的提示性公告</td><td>2026-04-30</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225266235&amp;orgId=9900039731&amp;announcementTime=2026-04-30" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>12</td><td>关于公司药品拟中选第四批全国中成药采购联盟集中带量采购的公告</td><td>2026-05-07</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225280820&amp;orgId=9900039731&amp;announcementTime=2026-05-07" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>13</td><td>关于控股股东部分股份被司法冻结暨强制执行进展及签署和解协议的公告</td><td>2026-05-12</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225292926&amp;orgId=9900039731&amp;announcementTime=2026-05-12" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>14</td><td>关于收到海南监管局《行政处罚事先告知书》的公告</td><td>2026-05-21</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225321686&amp;orgId=9900039731&amp;announcementTime=2026-05-21" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>15</td><td>关于公司股票叠加其他风险警示的公告</td><td>2026-05-21</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225321685&amp;orgId=9900039731&amp;announcementTime=2026-05-21" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>16</td><td>关于控股股东部分股份质押的公告</td><td>2026-05-30</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225340533&amp;orgId=9900039731&amp;announcementTime=2026-05-30" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>17</td><td>关于使用部分闲置募集资金临时补充流动资金的公告</td><td>2026-06-27</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225392406&amp;orgId=9900039731&amp;announcementTime=2026-06-27" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>18</td><td>股票交易异常波动的公告</td><td>2026-07-04</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225410231&amp;orgId=9900039731&amp;announcementTime=2026-07-04" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>19</td><td>关于变更部分募集资金投资子项目及转让原募集资金投资子项目的公告</td><td>2026-07-14</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225422630&amp;orgId=9900039731&amp;announcementTime=2026-07-14" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>20</td><td>关于续聘 2026 年度会计师事务所的公告</td><td>2026-07-14</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225422629&amp;orgId=9900039731&amp;announcementTime=2026-07-14" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>21</td><td>2026 年半年度业绩预告</td><td>2026-07-15</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225425183&amp;orgId=9900039731&amp;announcementTime=2026-07-15" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>22</td><td>关于控股股东及实际控制人承诺不减持公司股票的公告</td><td>2026-07-16</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225426890&amp;orgId=9900039731&amp;announcementTime=2026-07-16" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>23</td><td>关于公司及相关责任人收到行政处罚决定书的公告</td><td>2026-07-18</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225431003&amp;orgId=9900039731&amp;announcementTime=2026-07-18" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>24</td><td>关于公司及相关责任人收到海南证监局警示函的公告</td><td>2026-07-18</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225431005&amp;orgId=9900039731&amp;announcementTime=2026-07-18" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>25</td><td>关于控股股东冻结股份全部解除冻结的公告</td><td>2026-07-18</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225431004&amp;orgId=9900039731&amp;announcementTime=2026-07-18" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>26</td><td>关于 2025 年年度报告的信息披露监管问询函的回复公告</td><td>2026-07-22</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225436128&amp;orgId=9900039731&amp;announcementTime=2026-07-22" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>27</td><td>关于公司签订合同暨募投子项目实施进展的公告</td><td>2026-07-30</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225447439&amp;orgId=9900039731&amp;announcementTime=2026-07-30" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>28</td><td>关于董事会秘书离任暨董事长代行董事会秘书职责的公告</td><td>2026-08-01</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225452709&amp;orgId=9900039731&amp;announcementTime=2026-08-01" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>29</td><td>2026 年半年度报告</td><td>2026-08-27</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225515498&amp;orgId=9900039731&amp;announcementTime=2026-08-27" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>30</td><td>关于中证中小投资者服务中心《股东建议函》回复的公告</td><td>2026-10-01</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225592298&amp;orgId=9900039731&amp;announcementTime=2026-10-01" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>31</td><td>关于公司股票被实施其他风险警示相关事项的进展公告</td><td>2026-10-01</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=605199&amp;announcementId=1225592295&amp;orgId=9900039731&amp;announcementTime=2026-10-01" target="_blank" rel="noopener">打开原文</a></td></tr></tbody></table>
+<blockquote><p>数据源类：同花顺 F10 投资者互动（<code>basic.10jqka.com.cn/605199/interactive.html</code>，40 条，最近 2026-05-13）；东方财富 F10 公司管理层（<code>CompanyManagement/PageAjax</code>，11 名现任董监高）；东方财富龙虎榜（<code>RPT_DAILYBILLBOARD_DETAILSNEW</code>）；巨潮／腾讯 K 线；韭研公社异动整理表（605199 共 68 条，最新 2026-07-15）；Andy 路径底表《退市风险预警-20261005.xlsx》；ST 信息库 <code>1.所有公司\ST葫芦娃-605199.SH.md</code>。</p></blockquote>
+<h2 id="chap10">附录 C · 逻辑漏洞与反方观点（5 问速版）</h2>
+<p><strong>结论：五问中第②③⑤问对本股不构成威胁，第①④问构成的威胁已在本报告"最大风险"中单列 —— 本报告的卖出结论在"净资产"这一环上最脆弱。</strong></p>
+<ol><li><strong>"净资产转负"的判断是否过于悲观？</strong> —— <strong>这是本报告最薄弱的一环。</strong> 反方可见：2026H1 已计提信用＋资产减值 2,519.95 万元、H2 若只是经营性亏损（0.5—1.0 亿元/半年），年末净资产可稳在 2.0—2.5 亿元；公司自 2024 年起已连续两年做减值出清，2026 年"再计提一轮"未必重演。<strong>本报告的对冲方式是给 35% 的悲观概率与明确的失效条件（§投资结论"最大风险"）。</strong></li><li><strong>"摘帽无红利"是否忽略了两融/机构准入门槛的放宽？</strong> —— 沪主板存量股摘帽<strong>不自动恢复两融标的</strong>（需交易所按条件另选），且本股 2026 年龙虎榜仅 1 次、换手 0.20%，资金关注度本身不支持"摘帽带来资金面红利"的叙事。</li><li><strong>"发股锁"是否会因当事人辞任而快速解除？</strong> —— 存在这个可能，但条款限"现任"，<strong>辞任即解除</strong>。当前无任何辞任迹象（刘景萍反而在 2026-07-31 代行了董秘职责）；若出现辞任公告，须立即重估。</li><li><strong>"1.33% 价格分位"是否构成安全边际？</strong> —— <strong>部分反方观点成立</strong>：绝对市值 22.85 亿元、流通盘 100%、无质押平仓的直接压力点，理论上存在"小市值＋低位"的博弈价值。但支撑它的是<strong>已无盈利能力的 2.99 亿元净资产</strong>与 <strong>4.74 倍 PS</strong>，<strong>低位不等于低估</strong>。</li><li><strong>数据来源是否达标？</strong> —— 全文关键数字均回公告原文（含 2025 年年报、2025 年度内控／审计报告、行政处罚决定书、问询函回复、2026 半年报），并附巨潮四参数深链逐条可点；雪球类线索<strong>未在本报告中采用</strong>（信息库档案的带帽原因已逐条回公告核实）。唯一的口径缺口是<strong>决定书落款日未披露</strong>，已在附录 A 列明。</li></ol>
+<h2 id="chap11">版本记录</h2>
+<p><strong>结论：本报告为初版，全库检索确认无同标的既有研报可吸收，故无历史版本合并。</strong></p>
+<table><thead><tr><th>版本</th><th>修订日</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-06</td><td>首次生成。经全库检索（<code>个股研究\</code> 全目录含 <code>其他资料\</code>、<code>WorkBuddy\</code> 会话目录、<code>Desktop\ST选股\.research\</code>、<code>ST信息库\</code>）确认<strong>无同标的既有研报可吸收</strong>；精读公告原文 51 份（含 2025 年年报 257 页、2026 年半年报 185 页、行政处罚决定书、2025 年度内控审计报告、问询函回复、投服中心股东建议函回复等）。</td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
