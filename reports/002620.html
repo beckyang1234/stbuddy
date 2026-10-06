@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>＊ST瑞和（002620.SZ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>9 章 · 18 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断：为什么 ST、法律上还能不能活</a><a class="sblv3" href="#sec0">1.1 基本信息：一家净资产已为负、账户被冻结的建筑装饰公司，28 年来第一次站到退市红线前</a><a class="sblv3" href="#sec1">1.2 股权结构：实控人系持股全部质押冻结，且正被 8.91 亿元银团查封所困</a><a class="sblv3" href="#sec2">1.3 王艳式六栏目（料齐备、正文从简）</a><a class="sblv3" href="#sec3">1.4 全流程进度看板：卡点属于"时间未到"还是"谈不拢"</a><a class="sblv3" href="#sec4">1.5 运作特征与综合判断</a><a class="sblv3" href="#sec5">1.6 ST 风险诊断：踩中财务类两条（一条退市风险、一条其他风险），一条都不可交易性退市</a><a class="sblv3" href="#sec6">1.7 立案、占用、担保、诉讼：无证监会立案，但"欠薪移送公安"与诉讼雪球需持续跟踪</a><a class="sblv3" href="#sec7">1.8 公司运营：五年营收缩水 88.7%，唯一亮点是光伏发电子公司</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、基本面路径：重整（唯一生路）</a><a class="sblv3" href="#sec8">2.1 路径判定：不是"保壳三选一"，而是"只有重整一条路"</a><a class="sblv3" href="#sec9">2.2 重整方案拆解：18.73 亿元现金换 26% 股权，转增比例逼近监管上限</a><a class="sblv3" href="#sec10">2.3 时间窗口与生死线：2026 年报净资产必须转正，只剩不到 3 个月</a><a class="sblv3" href="#sec11">2.4 卡点与风险：为什么"重整可能赶不上"</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、炒作逻辑 ＋ 情绪面 ＋ 筹码面</a><a class="sblv3" href="#sec12">3.1 炒作逻辑三支柱（全部着眼未来）</a><a class="sblv3" href="#sec13">3.2 情绪与注意力：从 4 月峰值的"13 天 7 板"退潮到日成交不足 2,000 万元</a><a class="sblv3" href="#sec14">3.3 筹码博弈与技术面：4 月见顶、7 月见底、当前处区间下沿</a><a class="sblv3" href="#sec15">3.4 投资者交流要点：公司对"重整进度"与"重整外保壳"一律模板答复、零增量，并主动否认算力概念</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、估值与投资结论</a><a class="sblv3" href="#sec16">4.1 估值：净资产为负，PE/PB 均失效，只能用"重整后情景"定价</a><a class="sblv3" href="#sec17">4.2 投资结论（★ 二选一）</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 C · 逻辑漏洞与反方观点（5 问）</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">＊ST瑞和（002620.SZ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：卖出（回避）</strong></p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td><strong>操作结论</strong></td><td><strong>卖出（回避）</strong></td></tr><tr><td><strong>红线分类</strong></td><td><span class="sttag sttag-blue"><a href="-0.56亿元|http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&announcementId=1225251988&orgId=9900021475&announcementTime=2026-04-29" target="_blank" rel="noopener">2025年净资产为负</a></span>·<span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&announcementId=1223380983&orgId=9900021475&announcementTime=2025-04-29" target="_blank" rel="noopener">连续三年扣非为负且持续经营存疑</a></span>·<span class="sttag sttag-orange"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&announcementId=1225251988&orgId=9900021475&announcementTime=2026-04-29" target="_blank" rel="noopener">主要银行账户被冻结1.06亿元</a></span>·<span class="sttag sttag-teal"><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&announcementId=1224215560&orgId=9900021475&announcementTime=2025-07-18" target="_blank" rel="noopener">预重整</a></span></td></tr><tr><td><strong>生死定级</strong></td><td><strong>命悬一线</strong>（净资产为负 → 2026 年报须转正，否则终止上市）</td></tr><tr><td><strong>自救空间</strong></td><td>只有一条路：<strong>重整在 2026 年内执行完毕</strong>。截止基准日（2026-10-05）法院仍未裁定受理，重整草案未出、债权人会议未开，距 2026-12-31 仅约 2 个月 26 天——<strong>时间窗口极可能不足</strong></td></tr><tr><td><strong>主要看点</strong></td><td>产业投资人<strong>深圳市槟城电子股份有限公司</strong>（过压保护/ESD 半导体元器件厂商，2025 年营收 3.55 亿元、净利 −0.25 亿元）拟以 <strong>9.51 亿元</strong>受让 2.44 亿股、占重整后总股本 <strong>26%</strong> 成为控股股东，实控人<strong>蔡锦波</strong>将成新实控人；但转增比例 <strong>10 转 14.85</strong>（逼近 15 股上限）使原股东稀释至 <strong>40.3%</strong>、理论除权参考价约 <strong>4.48 元</strong>（较现价 −16%），且市场对"槟城＝二极管公司"的质疑持续</td></tr></tbody></table>
+<p><strong>标的与基准日</strong>：深圳瑞和建筑装饰股份有限公司（*ST 瑞和，002620.SZ，深主板·建筑装饰）｜ 研究基准日 <strong>2026-10-05</strong> ｜ 行情数据截止 <strong>2026-09-30</strong> 收盘 ｜ <strong>版本：初版 · 2026-10-05</strong></p>
+<p><strong>已知数据质量异常</strong>：① 本机 Wind 局域网代理（192.168.1.20:8000）整段不可达，行情/估值改用腾讯 <code>qt.gtimg.cn</code> 与新浪 <code>CN_MarketData</code>，五源交叉核对；② 巨潮 <code>topSearch</code>/<code>hisAnnouncement</code> 本轮可用（orgId=9900021475），部分公告正文经东财公告库补取；③ 半年报未经审计，分业务数据按中报口径。</p>
+<hr>
+<h2 id="chap1">一、诊断：为什么 ST、法律上还能不能活</h2>
+<h3 id="sec0">1.1 基本信息：一家净资产已为负、账户被冻结的建筑装饰公司，28 年来第一次站到退市红线前</h3>
+<p><strong>结论：公司主业（公共/住宅装修装饰）2023 年起断崖式收缩，五年累计亏损约 24.9 亿元，2025 年末归母净资产首次转负（−0.56 亿元），2026 年中报进一步恶化至 −0.97 亿元——已直接踩中深主板 9.3.1 第一款第二项（期末净资产为负值）。</strong></p>
+<table><thead><tr><th>指标</th><th>数值</th></tr></thead><tbody><tr><td>证券简称 / 代码</td><td>＊ST 瑞和 / 002620（原简称"瑞和股份"）</td></tr><tr><td>板块 / 行业</td><td>深主板 · 建筑装饰（公共装修、住宅装修、设计、光伏发电）</td></tr><tr><td>总股本</td><td>3.77 亿股（377,494,000 股）</td></tr><tr><td>收盘价（2026-09-30）</td><td><strong>5.34 元</strong></td></tr><tr><td>总市值 / 流通市值</td><td><strong>20.16 亿元 / 16.88 亿元</strong></td></tr><tr><td>市净率（PB）</td><td><strong>为负</strong>（归母净资产 −0.97 亿元，PB 无意义）</td></tr><tr><td>市销率（PS，2025 年营收）</td><td>约 <strong>5.09 倍</strong></td></tr><tr><td>年初至今涨跌幅</td><td><strong>+5.95%</strong>（2025-12-31 收 5.04 元）</td></tr><tr><td>2026 年区间</td><td>最低 <strong>3.89 元</strong>（2026-07-21）／最高 <strong>10.97 元</strong>（2026-04-24），现价处区间 <strong>20.5% 分位</strong>（自高点 −51.3%）</td></tr><tr><td>涨跌幅限制</td><td><strong>10%</strong>（主板 ST 自 2026-07-06 起由 5% 调为 10%，已核对涨停价 5.93/跌停价 4.85 元）</td></tr><tr><td>控股股东 / 实控人</td><td>李介平（直接 20.21% ＋ 通过瑞展实业 19.54%×95%，<strong>合计约 38.77%，全部质押、全部冻结</strong>）</td></tr></tbody></table>
+<blockquote><p>（数据来源：腾讯 <code>qt.gtimg.cn</code>、新浪 <code>CN_MarketData</code>；股本与股权见 2026 半年度报告；涨跌幅规则见上交所《交易规则（2026 年修订）》）</p></blockquote>
+<h3 id="sec1">1.2 股权结构：实控人系持股全部质押冻结，且正被 8.91 亿元银团查封所困</h3>
+<p><strong>结论：控股股东李介平及一致行动人瑞展实业合计 38.77% 股份已 100% 质押、几乎全部冻结，公司自身亦被中国银行牵头 11 家银行组成的项目银团申请查封 8.91 亿元财产——原体系"既无筹码可押、又无资产可换"，这正是重整成为唯一出路的原因。</strong></p>
+<table><thead><tr><th>持有方</th><th>身份</th><th>持股比例</th><th>持股数</th><th>质押 / 冻结状态</th></tr></thead><tbody><tr><td>李介平</td><td>境内自然人（实控人）</td><td>20.21%</td><td>7,630.59 万股</td><td><strong>质押、冻结 100%</strong>（7,630.59 万股）</td></tr><tr><td>深圳市瑞展实业发展有限公司</td><td>境内非国有法人（李介平持股 95%）</td><td>19.54%</td><td>7,377.01 万股</td><td><strong>质押 100%</strong>（7,377.01 万股）、冻结 5,855.01 万股</td></tr><tr><td>王维忠</td><td>境内自然人</td><td>0.79%</td><td>299.61 万股</td><td>无</td></tr><tr><td>喻汉林</td><td>境内自然人</td><td>0.79%</td><td>299.54 万股</td><td>无</td></tr><tr><td>李中朝</td><td>境内自然人</td><td>0.66%</td><td>248.50 万股</td><td>无</td></tr><tr><td>陈晟然</td><td>境内自然人</td><td>0.53%</td><td>200.98 万股</td><td>无</td></tr><tr><td>林洲</td><td>境内自然人</td><td>0.51%</td><td>193.70 万股</td><td>无</td></tr><tr><td>CITIGROUP GLOBAL MARKETS LIMITED</td><td>境外法人</td><td>0.42%</td><td>159.42 万股</td><td>无</td></tr><tr><td>罗洪礼</td><td>境内自然人</td><td>0.37%</td><td>138.78 万股</td><td>无</td></tr><tr><td>陈淑霞</td><td>境内自然人</td><td>0.35%</td><td>132.53 万股</td><td>无</td></tr></tbody></table>
+<blockquote><p>另：2026-02-27 公司公告收到深圳中院《执行裁定书》，因银团（中国银行牵头 11 家银行）借款合同纠纷，<strong>查封、冻结、扣押公司及相关担保人财产，以人民币 890,957,852.18 元（约 8.91 亿元）及迟延履行期间债务利息为限</strong>（来源：<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225528437&amp;orgId=9900021475&amp;announcementTime=2026-08-29" target="_blank" rel="noopener">2026 年半年度报告</a>）。</p></blockquote>
+<h3 id="sec2">1.3 王艳式六栏目（料齐备、正文从简）</h3>
+<p><strong>结论：这是一家"上市 28 年、实控人一手做大又一手做塌、原体系已被质押冻结锁死、靠外部产业资本接盘重整"的典型壳；筹码高度集中在已冻结的原实控人手中，二级市场流通盘小（16.88 亿元），无历史牛散/财投成本锚可参照。</strong></p>
+<details class="fold"><summary>① 前世今生（时间｜关键事件｜股权 / 实控人变化｜背后的逻辑）</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>关键事件</th><th>股权 / 实控人变化</th><th>背后的逻辑</th></tr></thead><tbody><tr><td>1992</td><td>公司前身成立，深圳装饰行业老牌企业</td><td>—</td><td>建筑装饰"深圳系"企业群之一</td></tr><tr><td>2012-09</td><td>深交所中小板上市</td><td>李介平为实控人</td><td>上市募资扩产，公共装修主业</td></tr><tr><td>2019-03～06</td><td>限制性股票激励计划</td><td>授予 72 人、1,613 万股，价格 3.59 元/股</td><td>行业上行期的激励安排</td></tr><tr><td>2021</td><td>巨亏 <strong>−18.43 亿元</strong></td><td>归母净资产由 2020 年末 24.9 亿元降至 6.23 亿元</td><td>恒大等房企暴雷，应收账款/合同资产大额减值（一次性出清）</td></tr><tr><td>2022</td><td>微利 +0.10 亿元（扣非仍 −1.02 亿元）</td><td>未变</td><td>减值出清后的账面修复</td></tr><tr><td>2023</td><td>再亏 <strong>−3.73 亿元</strong>（扣非 −4.47 亿元）</td><td>未变</td><td>订单萎缩、回款恶化</td></tr><tr><td>2024</td><td>亏 <strong>−1.86 亿元</strong>（扣非 −2.55 亿元）；161 个银行账户被冻结 1.49 亿元</td><td>未变</td><td><strong>2025-04-30 被实施其他风险警示（ST）</strong></td></tr><tr><td>2025-02-17</td><td>债权人<strong>深圳市环亚石材供应链有限公司</strong>申请重整及预重整</td><td>未变</td><td>债权人对公司"不能清偿到期债务、明显缺乏清偿能力但有重整价值"的认定</td></tr><tr><td>2025-07-16</td><td>深圳中院决定<strong>预重整</strong>，指定佛山市贝思特会计师事务所为管理人</td><td>未变</td><td>(2025)粤 03 破申 661 号</td></tr><tr><td>2025</td><td>亏 −0.89 亿元（扣非 −1.09 亿元）；180 个账户被冻结 1.06 亿元</td><td>未变</td><td>净资产首次转负</td></tr><tr><td>2026-03-25</td><td>公开招募和遴选重整投资人</td><td>未变</td><td>门槛：近三年净资产 ≥5 亿元、资产负债率 ≤50%、实缴资本 ≥5,000 万元</td></tr><tr><td>2026-04-23</td><td>报名截止，<strong>仅 1 家</strong>意向投资人提交方案</td><td>未变</td><td>单一投资人可直接确定</td></tr><tr><td>2026-04-30</td><td><strong>叠加实施退市风险警示（*ST）</strong></td><td>简称变 *ST 瑞和</td><td>2025 年末净资产为负</td></tr><tr><td><strong>2026-05-13</strong></td><td>与管理人、重整产业投资人及财务投资人签署<strong>《重整投资协议》</strong></td><td>拟由槟城电子入主，蔡锦波成新实控人</td><td>产投 3.9025 元/股受让 2.44 亿股（26%）</td></tr><tr><td>2026-08-25</td><td>预重整案<strong>公开选聘资产服务信托受托人</strong>（未发上市公司公告）</td><td>未变</td><td>为剥离高风险子公司 / 历史债务设计信托隔离架构</td></tr><tr><td>2026-08-08</td><td>公告"欠薪移送公安机关立案"事项</td><td>未变</td><td>深圳市光明区人力资源局移送，公司称未收到书面法律文书</td></tr></tbody></table>
+
+</div></details>
+<details class="fold"><summary>② 股东阵容（身份识别 ＋ 取得成本 ＋ 锁定承诺 ＋ 筹码集中度）</summary><div class="fold-body">
+
+<ul><li><strong>李介平系（37.75%，合计）</strong>：原体系，全部质押冻结；<strong>无成本锚意义</strong>（其成本已随 2021 年巨亏归零）。</li><li><strong>瑞展实业</strong>：李介平持股 95% 的持股平台，已质押 100%、冻结 5,855.01 万股。</li><li><strong>散户化特征明显</strong>：除前二大股东外，第三至第十大股东持股均 ≤0.79%，全部为自然人（含 CITIGROUP 境外法人 0.42%），<strong>无公募、无私募、无社保、无牛散踪迹</strong>——说明 2026 年这轮行情由游资与散户驱动，缺乏机构锁仓。</li><li><strong>股东户数（筹码集中度）</strong>：2025-10-10 约 1.13 万户 → 2026-03-20 <strong>1.19 万户</strong> → 2026-04-10 <strong>1.70 万户（峰值）</strong> → 2026-05-08 1.52 万户 → 2026-06-18 1.52 万户 → 2026-07-20 1.38 万户 → <strong>2026-09-10 约 1.34 万户</strong>。</li><li><strong>反向读数（必写）</strong>：4 月户数暴增（+0.51 万户）对应股价从 7 元区间冲上 10.97 元高点，是<strong>散户追高进场</strong>；此后 5 个月户数下降 3,600 户、同期股价自 10.97 元跌至 5.34 元（−51%），属<strong>下跌中散户割肉离场，接盘方未必是主力</strong>——<strong>不能读作"主力吸筹"</strong>。</li><li><strong>全公司质押比例</strong>：实控人系 100% 质押，二级市场质押盘已冻结、不构成增量抛压，但也不提供任何支撑。</li></ul>
+<blockquote><p>数据来源：2026 半年度报告"第六节 股份变动及股东情况"；股东户数来自公司在深交所互动易"公司声音"栏目的主动披露（见 §3.3）。</p></blockquote>
+
+</div></details>
+<details class="fold"><summary>③ 保壳 / 重整节奏与催化（编号清单，分硬节点与软预期）</summary><div class="fold-body">
+
+<table><thead><tr><th>编号</th><th>节点</th><th>预计时点</th><th>判读 / 证伪点</th></tr></thead><tbody><tr><td>①</td><td>法院裁定<strong>受理重整</strong></td><td><strong>未发生</strong></td><td><strong>硬节点</strong>：一经受理即再叠加一道 *ST（9.4.1 第九项），且是重整全流程的起跑线</td></tr><tr><td>②</td><td>《重整计划（草案）》披露</td><td>未发生</td><td><strong>硬节点</strong>：须明确以股抵债价格、清偿率、原股东配售安排</td></tr><tr><td>③</td><td>债权人会议表决</td><td>未发生</td><td><strong>硬节点</strong>：2025-12-11 公司已明确"尚未召开债权人会议"，至基准日仍未召开</td></tr><tr><td>④</td><td>法院裁定<strong>批准重整计划</strong></td><td>未发生</td><td><strong>硬节点</strong>：批准后投资人 18.73 亿元现金才实际到账</td></tr><tr><td>⑤</td><td>转增股份登记 ＋ 除权</td><td>未发生</td><td><strong>硬节点</strong>：除权参考价约 4.32–4.60 元</td></tr><tr><td>⑥</td><td><strong>重整计划执行完毕</strong></td><td>未发生</td><td><strong>硬节点、也是唯一解</strong>：debt 重组收益 ＋ 现金注入使 2026 年末净资产转正</td></tr><tr><td>⑦</td><td>2026 年报审计意见</td><td>2027-04</td><td><strong>零容错</strong>：出现"保留意见"即触发 9.3.12(三) 终止上市</td></tr><tr><td>⑧</td><td>银团 8.91 亿元查封解除</td><td>视重整清偿安排</td><td>软预期：与重整方案绑定，清偿后解除</td></tr><tr><td>⑨</td><td>180（或更少）个银行账户解冻</td><td>视重整进展</td><td>软预期：ST 撤销条件之一（9.8.1(六) 情形消除）</td></tr><tr><td>⑩</td><td>槟城电子产业资源导入 / 资产出售</td><td>重整后</td><td>软预期：协议仅约定"为甲方导入优质资产"，<strong>无时点、无标的、无估值方式</strong></td></tr><tr><td>⑪</td><td>欠薪移送公安事项结论</td><td>不确定</td><td>软预期：若升级为行政处罚并且当事人为现任董监高，将影响后续发股</td></tr><tr><td>⑫</td><td>新一届董事会改选</td><td>重整计划执行完毕后</td><td>硬节点：9 人董事会（3 独董），乙乙方提名 4 名非独董、李介平提名 2 名非独董，董事长由乙方提名董事担任</td></tr></tbody></table>
+
+</div></details>
+<details class="fold"><summary>④ 资产质量与估值（五维星级）</summary><div class="fold-body">
+
+<table><thead><tr><th>星级维度</th><th>大白话说明</th><th>评级</th></tr></thead><tbody><tr><td>市值 / 估值</td><td>20.16 亿元市值对应 −0.97 亿元归母净资产、3.96 亿元年营收（PS 5.09 倍），<strong>PB 无意义、PE 为负</strong>；市值已隐含"重整成功 + 半导体注入"期权，属<strong>期权定价而非价值定价</strong></td><td>★☆（2/5）</td></tr><tr><td>法律合规性</td><td>无证监会立案、无资金占用、无违规担保、无行政处罚；<strong>但有欠薪移送公安事项</strong>（2026-08）、累计诉讼仲裁持续新增（超净资产 10%）</td><td>★★★（3/5）</td></tr><tr><td>债务与流动性</td><td>资产负债率 <strong>95.2%</strong>（2026H1），负债合计 27.61 亿元、一年内到期的非流动负债 8.52 亿元、货币资金仅 1.13 亿元（其中受限 0.69 亿元）；<strong>8.91 亿元银团财产查封</strong></td><td>★（1/5）</td></tr><tr><td>主业质地</td><td>2025 年营收 3.96 亿元（较 2021 年 35.17 亿元缩水 88.7%）、扣非连亏；应收账款 11.39 亿元（3 年以上占比约 70%）、合同资产 8.84 亿元；光伏发电子公司（信义光能(六安)）净资产 4.73 亿元、2026H1 净利 0.13 亿元是唯一亮点</td><td>★☆（2/5）</td></tr><tr><td>控制权与运作</td><td>原实控人系已全额质押冻结、无自救能力；<strong>外部产业资本（槟城电子）已签协议但尚未交割</strong>；控制权归属在重整计划批准前仍存"协议被终止/无效"风险</td><td>★★☆（2.5/5）</td></tr><tr><td><strong>综合</strong></td><td><strong>命悬一线型重整壳</strong>：唯一价值来自"重整能否在 2026 年内走完"，而非资产本身</td><td><strong>★☆（2/5）</strong></td></tr></tbody></table>
+<blockquote><p><strong>哪一项的高分不能抵消哪一项的低分</strong>：法律合规性的 3 分<strong>不能</strong>抵消债务与流动性的 1 分——只要 2026 年报净资产仍为负，合规面再干净也一样终止上市；反之，重整若顺利完成，债务项的 1 分会大幅改善。<strong>星级表是"现状快照"，不是"重整后预测"。</strong></p></blockquote>
+
+</div></details>
+<details class="fold"><summary>⑤ 成本锚点（逐参与方列，两类定价逻辑分开）</summary><div class="fold-body">
+
+<table><thead><tr><th>参与方</th><th>成本（元/股）</th><th>说明</th></tr></thead><tbody><tr><td>重整产业投资人 深圳市槟城电子股份有限公司</td><td><strong>3.9025</strong></td><td>受让 2.44 亿股、出资 9.51 亿元，占重整后 26%，<strong>锁 36 个月</strong></td></tr><tr><td>重整财务投资人 深圳市城芯管理咨询合伙企业</td><td><strong>3.9025</strong></td><td>槟城电子员工赋能平台（2026-04-27 成立），755 万股、0.29 亿元</td></tr><tr><td>重整财务投资人 深圳前海力汇基金（力汇聚智储蕴壹号）</td><td><strong>3.9025</strong></td><td>4,570 万股、1.78 亿元，锁 12 个月</td></tr><tr><td>重整财务投资人 深圳市恒融实业</td><td><strong>3.9025</strong></td><td>4,500 万股、1.76 亿元，锁 12 个月</td></tr><tr><td>重整财务投资人 徐唯洁 / 袁银欢 / 朱德龙</td><td><strong>3.9025</strong></td><td>各 4,600 万股、各 1.80 亿元，锁 12 个月</td></tr><tr><td>市场参考价（协议签订日前 120 交易日均价）</td><td><strong>7.8049</strong></td><td>投资人价 3.9025 ＝ 市场参考价的<strong>恰好 50%</strong>（监管指引 11 号下限）</td></tr><tr><td><strong>现价（2026-09-30）</strong></td><td><strong>5.34</strong></td><td>＝ 投资人成本的 <strong>1.37 倍</strong>、市场参考价的 <strong>0.68 倍</strong></td></tr></tbody></table>
+<ul><li><strong>两类定价逻辑的区分</strong>：本案属<strong>"重整战投价＝有稀释的重整底"</strong>——投资人股份全部来自资本公积转增、<strong>不承担除权损失</strong>，而现价持有人持股比例被稀释至 40.3%。据此，<strong>"现价 ÷ 投资人受让价"的 1.37 倍不能与"协议受让/法拍价＝无稀释市场底"直接类比</strong>。</li><li><strong>反向读数</strong>：<strong>投资人 3.9025 元是"折价下限"，不是"价值底部"</strong>——它恰好卡在监管 50% 下限，只能说明"按规则不能再低"，不能说明"股价就该在 3.90 元附近"。</li></ul>
+
+</div></details>
+<details class="fold"><summary>⑥ 信息来源汇总（四级分级）</summary><div class="fold-body">
+
+<table><thead><tr><th>序号</th><th>来源类型</th><th>来源与标题（日期）</th><th>链接</th></tr></thead><tbody><tr><td>1</td><td>一手·公告</td><td>《关于公司股票交易将被实施退市风险警示和继续叠加其他风险警示暨股票停牌的公告》（2026-04-28）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225251988&amp;orgId=9900021475&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">原文</a></td></tr><tr><td>2</td><td>一手·公告</td><td>《2025 年年度报告》（2026-04-29）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225251990&amp;orgId=9900021475&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">原文</a></td></tr><tr><td>3</td><td>一手·公告</td><td>《2025 年度营业收入扣除事项及扣除后营业收入金额的专项核查报告》</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225251994&amp;orgId=9900021475&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">原文</a></td></tr><tr><td>4</td><td>一手·公告</td><td>《2025 年度财务报告非标准审计意见的专项说明》</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225252011&amp;orgId=9900021475&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">原文</a></td></tr><tr><td>5</td><td>一手·公告</td><td>《董事会关于 2025 年度无保留意见审计报告中带有解释性说明有关事项的专项说明》</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225251998&amp;orgId=9900021475&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">原文</a></td></tr><tr><td>6</td><td>一手·公告</td><td>《关于本次预重整与重整投资人签订〈重整投资协议〉的公告》（2026-05-14）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225307829&amp;orgId=9900021475&amp;announcementTime=2026-05-15" target="_blank" rel="noopener">原文</a></td></tr><tr><td>7</td><td>一手·公告</td><td>《关于收到启动预重整及指定管理人决定书的公告》（2025-07-18）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1224215560&amp;orgId=9900021475&amp;announcementTime=2025-07-18" target="_blank" rel="noopener">原文</a></td></tr><tr><td>8</td><td>一手·公告</td><td>《关于公司股票交易将被实施其他风险警示暨股票停牌的提示性公告》（2025-04-29）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1223380983&amp;orgId=9900021475&amp;announcementTime=2025-04-29" target="_blank" rel="noopener">原文</a></td></tr><tr><td>9</td><td>一手·公告</td><td>《2026 年半年度报告》（2026-08-29）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225528437&amp;orgId=9900021475&amp;announcementTime=2026-08-29" target="_blank" rel="noopener">原文</a></td></tr><tr><td>10</td><td>一手·公告</td><td>《关于公司被立案事项的说明公告》（2026-08-07）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225464983&amp;orgId=9900021475&amp;announcementTime=2026-08-08" target="_blank" rel="noopener">原文</a></td></tr><tr><td>11</td><td>一手·规则</td><td>深交所《股票上市规则（2026 年修订）》9.3.1 / 9.3.8 / 9.3.12 / 9.8.1 / 9.8.7</td><td>本地 PDF（STskill 目录）</td></tr><tr><td>12</td><td>数据源</td><td>腾讯 <code>qt.gtimg.cn</code>、新浪 <code>CN_MarketData</code>（行情/日 K）</td><td>—</td></tr><tr><td>13</td><td>数据源</td><td>韭研公社异动整理（14.3 万行 parquet）</td><td>—</td></tr><tr><td>14</td><td>数据源</td><td>东方财富龙虎榜 API <code>RPT_DAILYBILLBOARD_DETAILSNEW</code></td><td>—</td></tr><tr><td>15</td><td>数据源</td><td>深交所互动易（经同花顺 F10 抓取，78 条问答）</td><td>—</td></tr><tr><td>16</td><td>三级·线索</td><td>雪球 ST 讨论（经 Andy ST 信息库同步）</td><td>—</td></tr><tr><td>17</td><td>三级·线索</td><td>ST 信息库晨会记录（2026-08-25 预重整选聘信托受托人）</td><td>—</td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec3">1.4 全流程进度看板：卡点属于"时间未到"还是"谈不拢"</h3>
+<p><strong>结论：卡点更接近"谈不拢 + 时间未到"叠加——重整投资协议已签 4.7 个月，但重整草案、债权人会议、法院受理三项全未发生，而这恰好是 2026 年内完成的必经环节；从预重整启动（2025-07-16）算起已 14.6 个月，进度显著慢于同类样本。</strong></p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点或条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>预重整受理</td><td><strong>已完成</strong>（2025-07-16）</td><td>—</td><td>—</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1224215560&amp;orgId=9900021475&amp;announcementTime=2025-07-18" target="_blank" rel="noopener">启动预重整决定书公告</a></td></tr><tr><td>债权申报</td><td>已完成（截止 2025-09-08）</td><td>申报后仍有"漏网之债"风险</td><td>草案中确认债权总额</td><td>预重整债权申报公告</td></tr><tr><td>投资人招募</td><td><strong>已完成</strong>（2026-04-23 截止，仅 1 家）</td><td>门槛高（净资产≥5 亿、负债率≤50%、实缴≥5,000 万）</td><td>—</td><td>招募进展公告</td></tr><tr><td>重整投资协议</td><td><strong>已签署</strong>（2026-05-13）</td><td>协议可能被终止、解除、认定未生效</td><td>—</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225307829&amp;orgId=9900021475&amp;announcementTime=2026-05-15" target="_blank" rel="noopener">重整投资协议公告</a></td></tr><tr><td>资产服务信托受托人招募</td><td>已启动（2026-08-25，未发上市公司公告）</td><td>需"建筑装饰上市公司预重整+破产服务信托联动经验"</td><td>信托架构落地</td><td>破产重整案件信息网招募</td></tr><tr><td><strong>重整申请受理</strong></td><td><strong>未发生</strong></td><td><strong>法院裁定</strong>；预重整非受理前置承诺</td><td>★ 受理公告</td><td>—</td></tr><tr><td>重整计划草案</td><td><strong>未发生</strong></td><td>需与债权人谈成清偿率、以股抵债价格</td><td>草案披露</td><td>—</td></tr><tr><td>债权人会议</td><td><strong>未召开</strong></td><td>2025-12-11 公司已确认"尚未召开"</td><td>会议通知</td><td>互动易答复</td></tr><tr><td>批准与执行</td><td><strong>未发生</strong></td><td>批准后投资人 18.73 亿元到账</td><td>执行完毕公告</td><td>—</td></tr><tr><td>2026 年报净资产转正</td><td>未确定</td><td><strong>唯一生死线</strong></td><td>2027-04 年报</td><td>9.3.12(二)</td></tr></tbody></table>
+<h3 id="sec4">1.5 运作特征与综合判断</h3>
+<p><strong>结论：操盘手法是"预重整—公开招募—单一投资人—信托隔离"这一套慢节奏打法，交权属</strong>配合式<strong>（原体系全额质押冻结、无对抗能力）；成败关键变量是 1 和 0 的</strong>法院受理并在 2026 年内执行完毕<strong>；核心矛盾一句话——</strong>重整是唯一的生路，但这条生路的时间成本正好卡在年内生死线上。****</p>
+<ul><li><strong>手法</strong>：先由债权人申请 → 法院决定预重整（非直接受理重整，留出协商空间）→ 公开招募（门槛高、单一投资人）→ 签投资协议 → 选聘资产服务信托受托人（剥离高风险子公司 / 历史债务）。</li><li><strong>节奏</strong>：预重整启动至投资人招募 <strong>8 个月</strong>；协议签署至今 <strong>4.7 个月</strong>无受理。整体偏慢。</li><li><strong>交权方式</strong>：<strong>配合式</strong>——原实控人系股份 100% 质押冻结，协议已明确"乙方提名 4 名非独董、董事长由乙方提名董事担任，李介平方仅提名 2 名非独董、任副董事长"，<strong>原体系已让出控制权</strong>。</li><li><strong>关键变量（1 和 0）</strong>：<strong>法院是否受理 + 重整计划能否在 2026-12-31 前执行完毕</strong>。其余变量（账户解冻、诉讼、立案）都是"程度问题"，唯有这一项是"生死问题"。</li><li><strong>核心矛盾</strong>：<strong>债务规模巨大（负债 27.61 亿元）、债权人众多（含 11 家银行银团）＋ 诉讼持续新增</strong>，与<strong>不足 3 个月的时间窗口</strong>之间的冲突。</li></ul>
+<h3 id="sec5">1.6 ST 风险诊断：踩中财务类两条（一条退市风险、一条其他风险），一条都不可交易性退市</h3>
+<p><strong>结论：公司同时戴着 *ST（退市风险警示，因 2025 年末净资产为负）和 ST（其他风险警示，因连续三年扣非为负且持续经营存疑 ＋ 主要银行账户被冻结）两顶帽子；四类退市红线中只踩"财务类"一条，但该条已直接连接到 9.3.12 终止上市条款，属于"可救但时间极紧"。</strong></p>
+<details class="fold"><summary>戴帽时间线与公告依据（原文引用）</summary><div class="fold-body">
+
+<table><thead><tr><th>帽子</th><th>起始日</th><th>依据条款</th><th>认定事实</th></tr></thead><tbody><tr><td><strong>ST（其他风险警示）</strong></td><td>2025-04-30</td><td>深主板 <strong>9.8.1（六）、（七）</strong></td><td>① 最近三个会计年度扣非前后净利孰低者均为负，且最近一个会计年度审计报告显示持续经营能力存在不确定性；② 截至 2024-12-31 共 <strong>161 个银行账户被冻结、合计 1.49 亿元</strong></td></tr><tr><td><strong>\*ST（退市风险警示）</strong></td><td>2026-04-30</td><td>深主板 <strong>9.3.1 第一款第（二）项</strong></td><td>2025 年度期末经审计归母净资产 <strong>−5,599.13 万元</strong>（负值）</td></tr><tr><td>ST 继续叠加</td><td>2026-04-30</td><td><strong>9.8.1（六）、（七）</strong></td><td>2025 年末 <strong>180 个银行账户被冻结、1.06 亿元</strong>；2023–2025 连续三年扣非为负；2025 年度审计报告为"带解释性说明的无保留意见"（含"与持续经营相关的重大不确定性"＋"强调事项"）</td></tr></tbody></table>
+<p><strong>★ 一处关键澄清</strong>：<strong>2025 年度审计意见是"带解释性说明的</strong>无保留意见<strong>"，不是"无法表示意见/否定意见"</strong> —— 因此<strong>不触发</strong> 9.3.1 第一款第（三）项（审计意见型 *ST），也<strong>不构成</strong> 9.3.12 第（三）项的终止情形。<strong>它单独构成 9.8.1（七）其他风险警示的事由。</strong> 把"有非标说明"直接读成"财务类 *ST 叠加"是常见错误。</p>
+
+</div></details>
+<p>四条退市红线逐条对照（<strong>先查 Andy 路径底表，再回规则原文核对</strong>）：</p>
+<table><thead><tr><th>类型</th><th>触发条件</th><th>本公司情况</th><th>是否踩线</th></tr></thead><tbody><tr><td><strong>财务类</strong></td><td>① 孰低为负 <strong>且</strong> 扣除后营收 &lt;3 亿元；② <strong>期末净资产为负</strong>；③ 审计无法表示/否定</td><td>① 2025 年营收 3.96 亿元（扣除后口径未触发底表块①）；② <strong>2025 年末归母净资产 −0.56 亿元 → 已触发</strong>；③ 2025 年度为无保留意见</td><td><strong>★ 踩线（②）</strong></td></tr><tr><td>交易类</td><td>连续 20 日收盘价 &lt;1 元；市值 &lt;5 亿元；股东数 &lt;2,000 人</td><td>现价 5.34 元、市值 20.16 亿元、股东户数约 1.34 万户</td><td>否</td></tr><tr><td>规范类</td><td>资金占用、内控连续非标、控制权无序争夺等</td><td>无资金占用、无违规担保、内控未非标</td><td>否</td></tr><tr><td>重大违法类</td><td>欺诈发行、造假达量化线</td><td>无证监会立案、无处罚</td><td>否</td></tr></tbody></table>
+<blockquote><p><strong>路径底表核对</strong>：<code>退市风险预警-20261005.xlsx</code>「财务类」工作表第②块（"最近一个会计年度审计净资产为负值的有 34 家企业"）第 62 行即 <code>002620.SZ *ST瑞和 2025-12-31 净资产 −0.56 亿元 同比 −237.83% 上年同期 0.41 亿元</code>；交易类、规范类、其他类三表均无 002620。<strong>主路径＝路径 A·保壳（净资产为负）＋ 路径 B·重整</strong>（重整是保壳的手段）。</p></blockquote>
+<h3 id="sec6">1.7 立案、占用、担保、诉讼：无证监会立案，但"欠薪移送公安"与诉讼雪球需持续跟踪</h3>
+<p><strong>结论：公司当前无证监会立案、无资金占用、无违规担保，三项"规范类"致命项均干净；但 2026-08 出现"欠薪移送公安机关立案侦查"事项、且累计诉讼仲裁持续新增（已超净资产绝对值 10%），是两条需要盯住的负面增量。</strong></p>
+<ul><li><strong>无证监会立案</strong>：核查 2026 年全部公告，无《立案告知书》《行政处罚事先告知书》《决定书》。<strong>注意区分</strong>：2026-08-07 的立案是<strong>公安机关</strong>针对<strong>用工单位欠付劳动报酬</strong>的立案，<strong>不是证监会针对信息披露的立案</strong>，两者法律后果完全不同。</li><li><strong>资金占用 / 违规担保</strong>：2026 半年度报告明确"公司报告期不存在控股股东及其他关联方对公司的非经营性占用资金""无违规对外担保情况"。</li><li><strong>诉讼仲裁</strong>：连续十二个月累计涉诉<strong>持续新增</strong>——2026-08-13 累计 6 件 / 1,180.69 万元；2026-09-07 累计超净资产 10%、含单笔超 1,000 万元案件；2026-09-28 累计 <strong>12 件 / 1,164.31 万元</strong>。<strong>单笔金额均未超 1,000 万元，但"超净资产绝对值 10% 即须披露"的门槛在净资产为负时会反复被触发</strong>。</li></ul>
+<h3 id="sec7">1.8 公司运营：五年营收缩水 88.7%，唯一亮点是光伏发电子公司</h3>
+<p><strong>结论：主业（公共装修、住宅装修）已从 2021 年的 35.17 亿元营收萎缩至 2025 年的 3.96 亿元（−88.7%），且 2026H1 继续下滑 25.57%；账面唯一"能赚钱"的资产是参股/控股的光伏发电平台"信义光能(六安)"（2026H1 净利 0.13 亿元），占总营收 20.36%。</strong></p>
+<table><thead><tr><th>报告期</th><th>营业收入</th><th>归母净利润</th><th>扣非净利润</th><th>毛利率</th><th>资产负债率</th><th>归母净资产</th></tr></thead><tbody><tr><td>2021</td><td>35.17 亿元</td><td>−18.43 亿元</td><td>−18.51 亿元</td><td>11.9%</td><td>—</td><td>6.23 亿元</td></tr><tr><td>2022</td><td>21.50 亿元</td><td>+0.10 亿元</td><td>−1.02 亿元</td><td>13.3%</td><td>—</td><td>6.15 亿元</td></tr><tr><td>2023</td><td>15.52 亿元</td><td>−3.73 亿元</td><td>−4.47 亿元</td><td>12.6%</td><td>—</td><td>2.36 亿元</td></tr><tr><td>2024</td><td>7.83 亿元</td><td>−1.86 亿元</td><td>−2.55 亿元</td><td>15.6%</td><td>—</td><td>0.41 亿元</td></tr><tr><td>2025</td><td>3.96 亿元</td><td>−0.89 亿元</td><td>−1.09 亿元</td><td>20.1%</td><td><strong>94.3%</strong></td><td><strong>−0.56 亿元</strong></td></tr><tr><td><strong>2026H1</strong></td><td><strong>1.72 亿元（−25.57%）</strong></td><td><strong>−0.42 亿元（−80.95%）</strong></td><td><strong>−0.42 亿元（−34.66%）</strong></td><td>15.2%</td><td><strong>95.2%</strong></td><td><strong>−0.97 亿元</strong></td></tr></tbody></table>
+<blockquote><p>口径：合并报表、归母；2021–2025 数据来源为东方财富 F10 主要财务指标（【异源】Wind 代理离线，已用 2025 年报原文核对 2025 年归母净资产 −5,599.13 万元一致）；2026H1 来自半年度报告。资产负债率按"负债合计 ÷ 资产总计"计算。</p></blockquote>
+<details class="fold"><summary>分业务结构（2026H1，业务"会变 / 不变"归因 ＋ 审美标签）</summary><div class="fold-body">
+
+<table><thead><tr><th>业务</th><th>2026H1 收入</th><th>占比</th><th>同比</th><th>变化归因</th><th>审美标签</th></tr></thead><tbody><tr><td>装饰业务</td><td>1.30 亿元</td><td>75.58%</td><td>−21.82%</td><td>公共装修从 1.36 亿元降至 0.57 亿元（−58.23%），住宅装修从 0.30 亿元升至 0.73 亿元（+140.04%）；<strong>从政府/公建向地产精装切换</strong></td><td>业务反转（弱）</td></tr><tr><td>光伏发电</td><td>0.35 亿元</td><td><strong>20.36%</strong></td><td>−30.26%</td><td>信义光能(六安)发电量/电价下滑，所得税费用下降的主因</td><td>长期价值</td></tr><tr><td>设计业务</td><td>0.02 亿元</td><td>1.19%</td><td>−61.33%</td><td>随装饰业务收缩</td><td>长期价值（弱）</td></tr><tr><td>其他业务</td><td>0.05 亿元</td><td>2.87%</td><td>−46.92%</td><td>—</td><td>—</td></tr></tbody></table>
+<p><strong>热点业务占比定位（必写）</strong>：公司在互动易被问"电力项目有计划与算力中心合作吗"时<strong>明确答复"目前没有与算力中心合作的计划"</strong>（2026-03-31）——<strong>"光伏＋算力"是纯概念，无业务支撑</strong>；光伏发电本身占营收 20.36%，但处于收入下滑通道，且<strong>不构成"算力/绿电"叙事的载体</strong>。</p>
+<p><strong>主要控股参股公司</strong>：① <strong>信义光能(六安)有限公司</strong>（注册资本 2.5 亿元，总资产 5.65 亿元、净资产 4.73 亿元，2026H1 营收 0.35 亿元、净利 0.125 亿元）；② <strong>深圳市深汕特别合作区瑞和产业园发展有限公司</strong>（注册资本 4,000.35 万元，总资产 1.60 亿元、净资产 <strong>−0.50 亿元</strong>，2026H1 营收 0.03 亿元、净利 −0.04 亿元）。</p>
+
+</div></details>
+<details class="fold"><summary>资产受限与可用现金（读年报附注得）</summary><div class="fold-body">
+
+<ul><li>2026-06-30 货币资金 <strong>1.13 亿元</strong>，其中<strong>因法院冻结、农民工工资专户、开立商业汇票及保函保证金而使用受限的货币资金合计 6,851.18 万元</strong>（较 2025 年末 1.06 亿元下降 35.1%）→ <strong>可动用现金约 4,453 万元</strong>。</li><li>对照：一年内到期的非流动负债 <strong>8.52 亿元</strong>、应付账款 15.11 亿元 → <strong>可用现金对短期债务覆盖率不足 5.2%</strong>。</li></ul>
+
+</div></details>
+<hr>
+<h2 id="chap2">二、基本面路径：重整（唯一生路）</h2>
+<h3 id="sec8">2.1 路径判定：不是"保壳三选一"，而是"只有重整一条路"</h3>
+<p><strong>结论：财务类 *ST（净资产为负）的理论自救路径有"债务豁免/重组/重整/资产赠与"四条，但本案原体系（李介平系）股份已 100% 质押冻结、公司被 8.91 亿元银团查封、无可用现金，</strong>外部产业资本注入是唯一可行的净资产转正路径<strong>——即路径 B·重整，且必须由第三方完成。</strong></p>
+<ul><li><strong>路径 A（原体系自救）不成立</strong>：控股股东自身即被冻结，无力豁免债务或赠与资产；公司账面可动用现金仅 4,453 万元。</li><li><strong>路径 C（处罚 ST）不适用</strong>：无证监会立案、无资金占用、无违规担保、内控未非标。</li><li><strong>路径 B（重整）是主路径</strong>：预重整已启动、投资人已签协议、信托架构在设计中。</li></ul>
+<h3 id="sec9">2.2 重整方案拆解：18.73 亿元现金换 26% 股权，转增比例逼近监管上限</h3>
+<p><strong>结论：产业投资人槟城电子以 3.9025 元/股（恰为市场参考价的 50%）受让 2.44 亿股、取得重整后 26% 股权并成为控股股东；全案 7 名投资人合计出资 18.73 亿元、受让 4.80 亿股。代价是</strong>每 10 股转增 14.85 股（接近 15 股上限）<strong>，转增后总股本由 3.77 亿股增至 9.37 亿股，</strong>原股东持股比例被稀释至 40.3%<strong>。</strong></p>
+<table><thead><tr><th>要点</th><th>数值</th></tr></thead><tbody><tr><td>转增基数 / 比例</td><td>3.77 亿股 / <strong>每 10 股转增不超过 15 股</strong>（实际测算约 14.85 股）</td></tr><tr><td>预计转增股数</td><td><strong>5.60 亿股</strong>（不向原股东分配）</td></tr><tr><td>转增后总股本</td><td>约 <strong>9.37 亿股</strong></td></tr><tr><td>├ 用于引进产业投资人</td><td>2.44 亿股（26.00%）</td></tr><tr><td>├ 用于引进财务投资人</td><td>2.36 亿股</td></tr><tr><td>└ 用于清偿债务 / 其他</td><td>约 0.80 亿股</td></tr><tr><td>投资人合计现金出资</td><td><strong>18.73 亿元</strong></td></tr><tr><td>产业投资人单价</td><td><strong>3.9025 元/股</strong></td></tr><tr><td>市场参考价（前 120 交易日均价）</td><td><strong>7.8049 元/股</strong></td></tr><tr><td>原股东稀释后持股</td><td><strong>40.3%</strong>（3.77 亿 ÷ 9.37 亿）</td></tr><tr><td>产业投资人锁定期</td><td><strong>36 个月</strong></td></tr><tr><td>财务投资人锁定期</td><td>12 个月；且<strong>不可撤销放弃全部表决权</strong></td></tr></tbody></table>
+<blockquote><p>（来源：<a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225307829&amp;orgId=9900021475&amp;announcementTime=2026-05-15" target="_blank" rel="noopener">《关于本次预重整与重整投资人签订〈重整投资协议〉的公告》</a>）</p></blockquote>
+<details class="fold"><summary>除权参考价测算（回答"现价贵不贵"最硬的一把尺）</summary><div class="fold-body">
+
+<p>深交所破产重整转增口径：<strong>除权参考价 ＝（前收盘价 × 原总股本 ＋ 转增股份抵偿债务的金额 ＋ 重整投资人受让转增股份支付的现金）÷（原总股本 ＋ 转增股份数）</strong></p>
+<p>以 2026-09-30 收盘价 5.34 元、原总股本 3.7749 亿股、转增 5.60 亿股、投资人现金 18.732 亿元、抵债股 0.80 亿股代入（<strong>抵债作价须待《重整计划（草案）》披露，故给三档区间，不给单点</strong>）：</p>
+<table><thead><tr><th>抵债作价假设</th><th>除权参考价</th><th>对现价（5.34 元）</th></tr></thead><tbody><tr><td>2.00 元（保守）</td><td><strong>4.32 元</strong></td><td><strong>−19.1%</strong></td></tr><tr><td>3.9025 元（中性，同投资人价）</td><td><strong>4.48 元</strong></td><td><strong>−16.1%</strong></td></tr><tr><td>5.34 元（激进，按现价计值）</td><td><strong>4.60 元</strong></td><td><strong>−13.9%</strong></td></tr></tbody></table>
+<p><strong>→ 结论句式</strong>：<strong>重整成功本身对现价持有人是"价格除权"的负向事件，不是利好</strong>；除权后须上涨 16%–19% 方能回到现价成本。除权 ≠ 损失（每股对应权益增加），但<strong>除权 ≠ 必然填权</strong>——2026 年同类重整样本（＊ST 聆达 2025-12-29 复牌、＊ST 西旅、＊ST 易录）复牌后普遍未能立即填权。</p>
+
+</div></details>
+<h3 id="sec10">2.3 时间窗口与生死线：2026 年报净资产必须转正，只剩不到 3 个月</h3>
+<p><strong>结论：公司唯一生死线是"2026 年经审计期末净资产为正"（否则触发 9.3.12 第一款第二项终止上市），而净资产转正只能靠重整在</strong>本会计年度内<strong>执行完毕（确认债务重组收益 ＋ 投资人 18.73 亿元现金入账）。以基准日计，距 2026-12-31 仅约 2 个月 26 天，且重整受理、草案、债权人会议三项</strong>均未启动<strong>。</strong></p>
+<p><strong>深主板规则的"零容错"结构（已逐字核对规则 PDF）</strong>：</p>
+<table><thead><tr><th>条款</th><th>内容</th><th>与本公司关系</th></tr></thead><tbody><tr><td>9.3.1 第一款第（二）项</td><td>最近一个会计年度经审计的<strong>期末净资产为负值</strong> → 实施退市风险警示</td><td><strong>已触发</strong>（2025 年末 −0.56 亿元）</td></tr><tr><td>9.3.8</td><td>撤销 *ST ＝ 次一年度年报<strong>不存在</strong> 9.3.12 第一项至第七项任一情形</td><td>2026 年报须"全科及格"</td></tr><tr><td>9.3.12 第（二）项</td><td>经审计的<strong>期末净资产为负值</strong> → <strong>终止上市</strong></td><td><strong>2026 年末净资产若仍为负 → 归零</strong></td></tr><tr><td>9.3.12 第（三）项</td><td>财报被出具<strong>保留意见、无法表示或否定</strong> → 终止上市</td><td>2025 年为无保留（带说明）→ 2026 须维持</td></tr><tr><td>9.3.12 第（五）项</td><td>内控被出具无法表示/否定 → 终止上市</td><td>目前内控审计为标准</td></tr></tbody></table>
+<p><strong>判读</strong>：2026H1 归母净资产已由 −0.56 亿元降至 <strong>−0.97 亿元</strong>，且下半年为建筑装饰行业传统亏损季（2025H2 归母亏约 0.66 亿元）。<strong>若重整未在年内执行完毕，则 2026 年末归母净资产大概率落在 −2 亿元附近 → 直接终止上市。</strong></p>
+<h3 id="sec11">2.4 卡点与风险：为什么"重整可能赶不上"</h3>
+<p><strong>结论：三项硬节点（受理、草案、债权人会议）全未启动，其中"债权人会议"公司 2025-12 已确认未召开、至基准日仍未召开；重整涉及 27.61 亿元负债、11 家银行银团、持续新增的诉讼，谈判成本高——</strong>年内完成的概率偏低<strong>。</strong></p>
+<ul><li><strong>时间对照</strong>：预重整启动至投资人招募 8 个月；协议签署至基准日 4.7 个月无受理。同类样本中，"协议签署 → 受理"通常 1–3 个月。</li><li><strong>投资人出资尚未到账</strong>：协议约定投资款在<strong>法院裁定批准《重整计划》后</strong>支付；在此之前，18.73 亿元不入账、净资产不改善。</li><li><strong>协议本身可终止</strong>：公告明确"可能存在协议被终止、解除、撤销、认定为未生效、无效或不能履行等风险"。</li><li><strong>唯一进度亮点</strong>：2026-08-25 预重整案启动<strong>资产服务信托受托人</strong>招募（要求"建筑装饰上市公司预重整+破产服务信托联动经验"），指向"应收/历史债务隔离"的方案设计，属<strong>方案在推进</strong>的信号，但<strong>不等于时间表提前</strong>。</li></ul>
+<hr>
+<h2 id="chap3">三、炒作逻辑 ＋ 情绪面 ＋ 筹码面</h2>
+<h3 id="sec12">3.1 炒作逻辑三支柱（全部着眼未来）</h3>
+<h4>① 炒预期：未来 6–12 个月的事件节点</h4>
+<p><strong>结论：当前最强的一支是"炒重整完成的预期"，且预期已被 2026 年 3–4 月那波"13 天 7 板"充分交易过一次；剩下的节点全部押在 2026Q4，属于"要么全赢、要么归零"的二元结构。</strong></p>
+<table><thead><tr><th>时点</th><th>催化内容</th><th>性质</th><th>距今</th></tr></thead><tbody><tr><td>2026Q4</td><td>法院裁定<strong>受理重整</strong></td><td>硬节点</td><td>随时可能</td></tr><tr><td>2026Q4</td><td>《重整计划（草案）》披露</td><td>硬节点</td><td>随时可能</td></tr><tr><td>2026Q4</td><td>债权人会议表决</td><td>硬节点</td><td>随时可能</td></tr><tr><td>2026-12-31</td><td><strong>重整计划执行完毕（净资产转正）</strong></td><td>硬节点·生死线</td><td>约 3 个月</td></tr><tr><td>2027-04</td><td>2026 年报 ＋ 摘帽申请窗口</td><td>硬节点</td><td>约 6 个月</td></tr></tbody></table>
+<h4>② 炒历史类似行为：相似股票匹配法（以基准日全部特征为画像）</h4>
+<p><strong>结论：本标的画像＝"深主板 · 财务类净资产为负 · 预重整已签投资协议 · 半导体产业投资人入主 · 尚未受理 · 市值约 20 亿元"。用这套特征在当下市场找最像的票，</strong>20 只同型样本 2026 年涨跌幅中位数 −16.9%<strong>，本标的 </strong>+5.95% 排第 7 位（相对抗跌）<strong>——按"相对抗跌＝补跌空间未释放"的同型规律，</strong>落在偏弱一侧<strong>。</strong></p>
+<table><thead><tr><th>对象</th><th>像在哪</th><th>2026 年涨跌幅</th></tr></thead><tbody><tr><td>＊ST 瑞和（本标的）</td><td>—</td><td><strong>+5.95%</strong></td></tr><tr><td>＊ST 威领</td><td>财务类净资产为负＋外部资本入主（矿业收购方）</td><td>+69.52%</td></tr><tr><td>ST 金鸿</td><td>预重整已签投资协议、尚未受理</td><td>+37.29%</td></tr><tr><td>＊ST 皇庭</td><td>净资产为负＋关联债权抵销保壳</td><td>+34.33%</td></tr><tr><td>＊ST 禾信</td><td>财务类＋发股买半导体并于年内过会</td><td>+18.26%</td></tr><tr><td>ST 宏达</td><td>定增入主＋控制权变更</td><td>+17.24%</td></tr><tr><td>聆达股份</td><td>重整完成＋摘帽</td><td>+12.19%</td></tr><tr><td>＊ST 南置</td><td>腾壳完成待撤销</td><td>−6.28%</td></tr><tr><td>ST 富煌</td><td>预重整招募零投资人信息</td><td>−18.57%</td></tr><tr><td>＊ST 西发</td><td>重整计划已过双会议</td><td>−20.66%</td></tr><tr><td>＊ST 西旅</td><td>预重整已签协议、尚未受理</td><td>−39.81%</td></tr><tr><td>＊ST 易录</td><td>重整已签协议、法院未受理</td><td>−54.50%</td></tr><tr><td>＊ST 宝馨</td><td>控股股东股权被司法拍卖</td><td>−59.01%</td></tr><tr><td>＊ST 实达</td><td>营收不达标＋立案</td><td>−59.57%</td></tr><tr><td><strong>20 只样本</strong></td><td><strong>中位数 −16.9% / 均值 −11.5%</strong></td><td><strong>本标的排第 7</strong></td></tr></tbody></table>
+<p><strong>反向读数（必须写）</strong>：上涨组（威领 +69.5%、金鸿 +37.3%、皇庭 +34.3%、禾信 +18.3%）的共同点是<strong>有一个已被公告确认的"可命名载体或已发生的实质动作"</strong>（矿业收购方、重整协议、债权抵销、并购过会）；而<strong>瑞和的载体（槟城电子）恰是市场公开质疑的对象</strong>——雪球上出现"槟城电子就是个二极管公司，和半导体没有关系"（雪球评论，2026-06-03）、"英飞 130 亿的半导体老板站台，这几个看着都比瑞和的二极管好点"（雪球评论，2026-09-24）。<strong>即：瑞和属于"有人名、有公司名，但载体质量被市场打折"的一侧。</strong></p>
+<h4>③ 炒主板映射：主板在炒什么、ST 板块里谁能对上</h4>
+<p><strong>结论：当前主板"半导体/算力/绿电"三条主线中，与瑞和能形成业务映射的只有"半导体（槟城电子的过压保护器件）"一条，且是</strong>重整后的注入预期<strong>、非现有业务；"光伏"虽占营收 20.36%，但公司已公开否认与算力中心合作。</strong></p>
+<table><thead><tr><th>主板主线</th><th>代表公司（2026 年表现）</th><th>ST 板块可映射对象</th><th>关联度</th></tr></thead><tbody><tr><td>半导体 / 功率器件</td><td>中芯国际、韦尔股份等</td><td><strong>本标的</strong>（槟城电子为过压保护/ESD 器件厂商，重整后拟成控股股东）</td><td><strong>中</strong>（重组预期，非现有业务）</td></tr><tr><td>算力 / 智算中心</td><td>中际旭创、寒武纪等</td><td>—</td><td><strong>无</strong>（公司明确答复"没有与算力中心合作的计划"）</td></tr><tr><td>绿电 / 光伏</td><td>特锐德等</td><td>本标的（光伏发电占营收 20.36%）</td><td>弱（收入下滑通道）</td></tr><tr><td>地产 / 保交楼</td><td>—</td><td>住宅装修占比升至 42.61%</td><td>弱</td></tr></tbody></table>
+<blockquote><p><strong>注意</strong>：③ 是"选股动作"——若要在 ST 板块找"半导体重整"映射，本标的之外还有 ＊ST 英飞（深圳国资主导、招募条件明确要求集成电路产业背景），<strong>与瑞和构成同题材竞争关系</strong>；本条不构成买入理由。</p></blockquote>
+<h4>三支柱排序</h4>
+<p><strong>当前市场最认的是②（重整完成的博弈）与③（半导体映射），①（预期）已被 2026 年 3–4 月那波行情定价过一轮。</strong> 换言之，<strong>价格里已经装进了"重整会成功"的假设。</strong></p>
+<h3 id="sec13">3.2 情绪与注意力：从 4 月峰值的"13 天 7 板"退潮到日成交不足 2,000 万元</h3>
+<p><strong>结论：注意力已明确退潮且方向朝下——股价自 2026-04-24 高点 10.97 元回撤 51.3%，换手率 1.18%、成交额 1,999 万元、2026 年最近一次龙虎榜停在 2026-07-02；股东户数自 4 月峰值 1.70 万户降至 9 月的 1.34 万户。</strong></p>
+<table><thead><tr><th>注意力代理变量</th><th>读数（截至 2026-09-30）</th></tr></thead><tbody><tr><td>成交额 / 换手率</td><td>1,999 万元 / <strong>1.18%</strong></td></tr><tr><td>2026 年龙虎榜次数</td><td>10 次（最近 2026-07-02），<strong>净买卖交替、无持续性净买入</strong></td></tr><tr><td>最密集净卖</td><td>2026-05-19 <strong>净卖 3,817.20 万元</strong>；2026-03-27 净卖 2,182.46 万元；2026-03-24 净卖 1,633.59 万元</td></tr><tr><td>股东户数</td><td>4 月峰值 1.70 万户 → 9 月 1.34 万户（−21.2%）</td></tr><tr><td>韭研异动记录</td><td>2026 年 26 条，<strong>最新一条停在 2026-08-24</strong></td></tr><tr><td>券商覆盖</td><td>2026 年无新增覆盖</td></tr></tbody></table>
+<h3 id="sec14">3.3 筹码博弈与技术面：4 月见顶、7 月见底、当前处区间下沿</h3>
+<p><strong>结论：股价形态为"预重整行情脉冲式见顶（10.97 元）→ 5 个月阴跌至 3.89 元 → 低位反弹 37% 至 5.34 元"；现价处 2026 年区间 20.5% 分位，属</strong>低位区间<strong>，但"低位"在净资产为负、面临归零风险的标的上</strong>不构成安全垫<strong>。</strong></p>
+<table><thead><tr><th>时点</th><th>关键动作</th><th>结果</th></tr></thead><tbody><tr><td>2025-11～12</td><td>"6 天 5 板"驱动</td><td>股价 5.15 → 7.25 元</td></tr><tr><td>2026-03-23～04-24</td><td><strong>招募重整投资人 → "13 天 7 板"</strong></td><td>股价 7.15 → <strong>10.97 元（2026 年最高）</strong></td></tr><tr><td>2026-05-13～06-22</td><td>重整投资协议签署后"利好出尽"</td><td>10.89 → 7.34 → 5.93 元，龙虎榜 05-19 净卖 3,817 万元</td></tr><tr><td>2026-07-21</td><td>阶段低点</td><td><strong>3.89 元</strong>（较 4 月高点 −64.5%）</td></tr><tr><td>2026-09-28</td><td>单日大跌</td><td>5.72 → 5.20 元（−9.09%），换手 2.5%</td></tr><tr><td>2026-09-30</td><td>收 5.34 元</td><td>2026 年区间 20.5% 分位</td></tr></tbody></table>
+<details class="fold"><summary>全量异动明细（韭研公社，103 条，时间降序）</summary><div class="fold-body">
+
+<table><thead><tr><th>题材时间</th><th>题材</th><th>题材催化</th><th>涨停信息</th><th>股价</th><th>异动关键词</th></tr></thead><tbody><tr><td>2026-08-24</td><td>ST板块</td><td></td><td></td><td>5.71</td><td>预重整+光伏+8.91亿元财产被查封+建筑装饰</td></tr><tr><td>2026-08-03</td><td>ST板块</td><td></td><td></td><td>4.93</td><td>重整投资协议+光伏+8.91亿元财产被查封+建筑装饰</td></tr><tr><td>2026-07-02</td><td>ST板块</td><td></td><td>2天2板</td><td>5.63</td><td>重整投资协议+光伏+8.91亿元财产被查封+建筑装饰</td></tr><tr><td>2026-07-01</td><td>ST板块</td><td></td><td></td><td>5.36</td><td>重整投资协议+光伏+8.91亿元财产被查封+建筑装饰</td></tr><tr><td>2026-06-15</td><td>ST板块</td><td></td><td></td><td>5.93</td><td>重整投资协议+光伏+8.91亿元财产被查封+建筑装饰</td></tr><tr><td>2026-06-01</td><td>ST板块</td><td></td><td></td><td>7.34</td><td>重整投资协议+光伏+8.91亿元财产被查封+建筑装饰</td></tr><tr><td>2026-05-14</td><td>ST板块</td><td></td><td>6天3板</td><td>10.89</td><td>重整投资人+光伏+8.91亿元财产被查封+建筑装饰</td></tr><tr><td>2026-05-13</td><td>ST板块</td><td></td><td></td><td>10.37</td><td>重整投资人+光伏+8.91亿元财产被查封+建筑装饰</td></tr><tr><td>2026-05-07</td><td>ST板块</td><td></td><td></td><td>9.95</td><td>重整投资人+光伏+8.91亿元财产被查封+建筑装饰</td></tr><tr><td>2026-04-24</td><td>ST板块</td><td></td><td>5天4板</td><td>10.97</td><td>招募重整投资人+光伏+8.91亿元财产被查封+建筑装饰</td></tr><tr><td>2026-04-22</td><td>ST板块</td><td></td><td>3天3板</td><td>10.31</td><td>招募重整投资人+光伏+8.91亿元财产被查封+股份冻结+建筑装饰</td></tr><tr><td>2026-04-21</td><td>ST板块</td><td></td><td>2天2板</td><td>9.82</td><td>招募重整投资人+光伏+8.91亿元财产被查封+股份冻结+建筑装饰</td></tr><tr><td>2026-04-20</td><td>ST板块</td><td></td><td></td><td>9.35</td><td>招募重整投资人+光伏+8.91亿元财产被查封+股份冻结+建筑装饰</td></tr><tr><td>2026-04-09</td><td>ST板块</td><td></td><td>13天7板</td><td>9.92</td><td>招募重整投资人+光伏+8.91亿元财产被查封+股份冻结+建筑装饰</td></tr><tr><td>2026-04-01</td><td>ST板块</td><td></td><td></td><td>9.21</td><td>招募重整投资人+光伏+8.91亿元财产被查封+股份冻结+建筑装饰</td></tr><tr><td>2026-03-30</td><td>ST板块</td><td></td><td></td><td>9.12</td><td>招募重整投资人+光伏+8.91亿元财产被查封+股份冻结+建筑装饰</td></tr><tr><td>2026-03-27</td><td>ST板块</td><td></td><td>11天6板</td><td>8.69</td><td>招募重整投资人+光伏+8.91亿元财产被查封+股份冻结+建筑装饰</td></tr><tr><td>2026-03-26</td><td>ST板块</td><td></td><td></td><td>8.28</td><td>招募重整投资人+光伏+8.91亿元财产被查封+股份冻结+建筑装饰</td></tr><tr><td>2026-03-25</td><td>ST板块</td><td></td><td>3天3板</td><td>7.89</td><td>招募重整投资人+光伏+8.91亿元财产被查封+股份冻结+建筑装饰</td></tr><tr><td>2026-03-24</td><td>ST板块</td><td></td><td>2天2板</td><td>7.51</td><td>启动预重整+光伏+8.91亿元财产被查封+股份冻结+建筑装饰</td></tr><tr><td>2026-03-23</td><td>ST板块</td><td></td><td></td><td>7.15</td><td>启动预重整+8.91亿元财产被查封+股份冻结+建筑装饰+光伏</td></tr><tr><td>2026-03-13</td><td>ST板块</td><td></td><td></td><td>7.12</td><td>8.91亿元财产被查封+股份冻结+建筑装饰+预重整+光伏</td></tr><tr><td>2026-02-27</td><td>ST板块</td><td></td><td></td><td>7.07</td><td>8.91亿元财产被查封+股份冻结+建筑装饰+预重整+光伏</td></tr><tr><td>2026-01-12</td><td>ST板块</td><td></td><td>6天3板</td><td>6.01</td><td>股份冻结+公布诉讼金额+建筑装饰+预重整+光伏</td></tr><tr><td>2026-01-09</td><td>ST板块</td><td></td><td></td><td>5.72</td><td>股份冻结+公布诉讼金额+建筑装饰+预重整+光伏</td></tr><tr><td>2026-01-05</td><td>ST板块</td><td></td><td></td><td>5.29</td><td>股份冻结+公布诉讼金额+建筑装饰+预重整+光伏</td></tr><tr><td>2025-12-18</td><td>ST板块</td><td></td><td></td><td>5.15</td><td>公布诉讼金额+建筑装饰+预重整+光伏</td></tr><tr><td>2025-12-04</td><td>ST板块</td><td></td><td></td><td>5.95</td><td>建筑装饰+预重整+光伏</td></tr><tr><td>2025-11-18</td><td>ST板块</td><td></td><td>6天5板</td><td>7.25</td><td>光伏+建筑装饰+预重整</td></tr><tr><td>2025-11-17</td><td>ST板块</td><td></td><td>5天4板</td><td>6.9</td><td>光伏+建筑装饰+预重整</td></tr><tr><td>2025-11-14</td><td>ST板块</td><td></td><td>4天3板</td><td>6.57</td><td>光伏+建筑装饰+预重整</td></tr><tr><td>2025-11-13</td><td>ST板块</td><td></td><td>3天2板</td><td>6.26</td><td>光伏+建筑装饰+预重整</td></tr><tr><td>2025-11-11</td><td>ST板块</td><td></td><td></td><td>5.91</td><td>光伏+建筑装饰+预重整</td></tr><tr><td>2025-10-15</td><td>ST板块</td><td></td><td></td><td>6.06</td><td>建筑装饰+预重整+分布式光伏</td></tr><tr><td>2025-09-26</td><td>ST板块</td><td></td><td>2天2板</td><td>6.27</td><td>建筑装饰+预重整+分布式光伏</td></tr><tr><td>2025-09-25</td><td>ST板块</td><td></td><td></td><td>5.97</td><td>建筑装饰+预重整+分布式光伏</td></tr><tr><td>2025-09-08</td><td>ST板块</td><td></td><td>12天6板</td><td>6.18</td><td>建筑装饰+预重整+分布式光伏</td></tr><tr><td>2025-09-02</td><td>ST板块</td><td></td><td>8天5板</td><td>6.14</td><td>建筑装饰+预重整+分布式光伏</td></tr><tr><td>2025-09-01</td><td>ST板块</td><td></td><td>7天4板</td><td>5.85</td><td>建筑装饰+预重整+分布式光伏</td></tr><tr><td>2025-08-29</td><td>ST板块</td><td></td><td>6天3板</td><td>5.57</td><td>建筑装饰+预重整+分布式光伏</td></tr><tr><td>2025-08-27</td><td>ST板块</td><td></td><td></td><td>5.35</td><td>建筑装饰+预重整+分布式光伏</td></tr><tr><td>2025-08-25</td><td>ST板块</td><td></td><td>2天2板</td><td>4.92</td><td>建筑装饰+预重整+分布式光伏</td></tr><tr><td>2025-08-22</td><td>ST板块</td><td></td><td></td><td>4.69</td><td>建筑装饰+预重整+分布式光伏</td></tr><tr><td>2025-06-19</td><td>ST板块</td><td></td><td></td><td>3.91</td><td>建筑装饰+预重整+分布式光伏</td></tr><tr><td>2025-06-04</td><td>ST板块</td><td></td><td></td><td>3.83</td><td>年报减亏+建筑装饰+预重整+分布式光伏</td></tr><tr><td>2025-05-12</td><td>ST板块</td><td></td><td>6天5板</td><td>4.39</td><td>年报减亏+建筑装饰+预重整+分布式光伏</td></tr><tr><td>2025-05-09</td><td>ST板块</td><td></td><td></td><td>4.18</td><td>年报减亏+建筑装饰+预重整+分布式光伏</td></tr><tr><td>2025-05-08</td><td>ST板块</td><td></td><td>4天4板</td><td>4.1</td><td>年报减亏+建筑装饰+预重整+分布式光伏</td></tr><tr><td>2025-05-07</td><td>ST板块</td><td></td><td>3天3板</td><td>3.9</td><td>年报减亏+建筑装饰+预重整+分布式光伏</td></tr><tr><td>2025-05-06</td><td>ST板块</td><td></td><td>2天2板</td><td>3.71</td><td>年报减亏+建筑装饰+预重整+分布式光伏</td></tr><tr><td>2025-04-30</td><td>ST板块</td><td></td><td></td><td>3.53</td><td>年报减亏+建筑装饰+预重整+分布式光伏</td></tr><tr><td>2025-04-09</td><td>地产/基建</td><td>多个一线城市正研究储备推动房地产市场进一步止跌回稳相关政策举措</td><td></td><td>3.43</td><td>建筑装饰+预重整+分布式光伏</td></tr><tr><td>2025-02-18</td><td>公告</td><td></td><td></td><td>3.51</td><td>预重整+分布式光伏+建筑装饰</td></tr><tr><td>2025-01-07</td><td>光伏</td><td>1月6日盘后消息华为周涛表示，光风储发电机已实现规模应用，加速光伏成为主力能源</td><td>6天3板</td><td>3.72</td><td>分布式光伏+建筑装饰</td></tr><tr><td>2024-12-31</td><td>绿电</td><td>工信部等三部门印发《加快工业领域清洁低碳氢应用实施方案》提到开发低成本、高可靠、可离网运行的“光伏+储能”技术及产品；</td><td>2天2板</td><td>4.49</td><td>分布式光伏+建筑装饰</td></tr><tr><td>2024-12-30</td><td>其他</td><td></td><td></td><td>4.08</td><td>建筑装饰+分布式光伏</td></tr><tr><td>2024-10-31</td><td>光伏</td><td>2024年10月30日，国家发展改革委等六部门发布《关于大力实施可再生能源替代行动的指导意见》</td><td></td><td>3.8</td><td>分布式光伏+建筑装饰</td></tr><tr><td>2024-10-22</td><td>绿色能源</td><td>广东粤东海上风电公司成立，注册资本55亿人民币，经营范围含海水养殖和海洋生物资源利用装备制造、新兴能源技术研发、发电技术</td><td></td><td>3.3</td><td>分布式光伏+建筑装饰</td></tr><tr><td>2024-08-07</td><td>光伏</td><td>2024年8月5日SMM报价显示硅料价格在连续5-6周见底企稳后，报价上调1-1.5元，涨幅2.8%-3.9% ，硅料涨</td><td></td><td>2.88</td><td>分布式光伏+建筑装饰</td></tr><tr><td>2024-08-06</td><td>光伏</td><td>2024年8月5日SMM报价显示硅料价格在连续5-6周见底企稳后，报价上调1-1.5元，涨幅2.8%-3.9% ，硅料涨</td><td></td><td>2.94</td><td>分布式光伏+微盘股+建筑装饰</td></tr><tr><td>2024-06-07</td><td>光伏</td><td>广东省日前印发推进分布式光伏高质量发展行动方案，力争新建厂房屋顶光伏覆盖率到2025年达到50%、2030年实现全覆盖。</td><td></td><td>2.63</td><td>分布式光伏+微盘股+城中村改造（深圳）+建筑装饰</td></tr><tr><td>2024-05-31</td><td>绿色电力</td><td>机构人士认为，伴随成本高企、技术落后的产能加速出清以及相关政策落地和市场需求恢复，行业有望逐步回到良性健康发展轨道。</td><td></td><td>3.03</td><td>分布式光伏+城中村改造（深圳）+建筑装饰</td></tr><tr><td>2024-05-29</td><td>光伏</td><td>机构人士认为，伴随成本高企、技术落后的产能加速出清以及相关政策落地和市场需求恢复，行业有望逐步回到良性健康发展轨道。</td><td></td><td>3.16</td><td>分布式光伏+城中村改造（深圳）+建筑装饰</td></tr><tr><td>2024-05-20</td><td>房地产产业链</td><td>国务院新闻办公室于2024年5月17日下午4时举行国务院政策例行吹风会。 2024年5月17日盘后，央行表示将设立300</td><td></td><td>3.91</td><td>城中村改造+装配式建筑+光伏</td></tr><tr><td>2024-03-05</td><td>其他</td><td></td><td>3天2板</td><td>3.99</td><td>光伏+城中村改造（深圳）+装配式建筑</td></tr><tr><td>2024-03-01</td><td>其他</td><td></td><td></td><td>3.89</td><td>光伏+城中村改造（深圳）+装配式建筑</td></tr><tr><td>2024-02-21</td><td>绿色能源</td><td>江苏科技大学、隆基绿能、澳大利亚科廷大学三方合作，在国际上首次制造出高柔韧性、高功率重量比的晶硅异质结太阳能电池。</td><td></td><td>3.31</td><td>光伏+城中村改造（深圳）+装配式建筑</td></tr><tr><td>2024-01-12</td><td>光伏/储能</td><td>2024年1月24日华为将举办2024智能光伏十大趋势发布会。 根据集邦咨询预测，预计2024年全球光伏新增装机474G</td><td></td><td>6.26</td><td>光伏+城中村改造（深圳）+装配式建筑</td></tr><tr><td>2024-01-11</td><td>光伏/储能</td><td>2024年1月8日盘前网传消息，中国将光伏硅片技术从修订后限制出口技术目录中剔除； 近日工信部党组在《求是》杂志撰文称，</td><td>3天2板</td><td>6.12</td><td>光伏+城中村改造（深圳）+装配式建筑</td></tr><tr><td>2024-01-09</td><td>房地产产业链</td><td>2024年1月5日盘后讯，深圳拟出城中村改造新规，拟分三类改造城中村，涉全市约40%建面。  近期监管部门已向地方预下达</td><td></td><td>6.18</td><td>城中村改造（深圳）+装配式建筑+光伏</td></tr><tr><td>2023-03-07</td><td>基建</td><td>天风证券：消费建材基本面及预期或进入反转通道。</td><td></td><td>6.85</td><td>装配式建筑+光伏</td></tr><tr><td>2022-09-19</td><td>绿色电力</td><td></td><td></td><td>7.27</td><td>光伏+BIPV+装配式建筑</td></tr><tr><td>2022-09-08</td><td>风光储</td><td></td><td></td><td>7.08</td><td>光伏+中标+BIPV+装配式建筑</td></tr><tr><td>2022-08-09</td><td>光伏产业链</td><td></td><td></td><td>6.72</td><td>光伏+中标+BIPV+装配式建筑</td></tr><tr><td>2022-07-18</td><td>公告</td><td></td><td>4天2板</td><td>6.28</td><td>中标+光伏+BIPV+装配式建筑</td></tr><tr><td>2022-07-13</td><td>基建</td><td></td><td></td><td>6.09</td><td>新型城镇化+光伏+BIPV+装配式建筑</td></tr><tr><td>2022-06-20</td><td>光伏及储能</td><td>根据能源局数据，5月国内光伏新增装机6.83GW，同比+141%，环比+86%；1-5月光伏新增装机23.71GW，同比</td><td></td><td>5.81</td><td>光伏+BIPV+装配式建筑</td></tr><tr><td>2022-05-19</td><td>光伏</td><td>欧盟委员会公布名为“RepowerEU”的能源计划，计划到2025年将太阳能光伏发电能力翻一番，到2030年安装600G</td><td>9天6板</td><td>6.42</td><td>BIPV+装配式建筑</td></tr><tr><td>2022-05-17</td><td>光伏产业链</td><td>英媒：欧盟计划为所有新建筑安装屋顶太阳能装置</td><td>7天5板</td><td>6.09</td><td>BIPV+装配式建筑</td></tr><tr><td>2022-05-12</td><td>房产产业链</td><td></td><td>4天4板</td><td>6.84</td><td>装配式建筑+BIPV+恒大</td></tr><tr><td>2022-05-11</td><td>光伏产业链</td><td></td><td>3天3板</td><td>6.22</td><td>装配式建筑+BIPV+恒大</td></tr><tr><td>2022-05-10</td><td>房产产业链</td><td></td><td>2天2板</td><td>5.65</td><td>装配式建筑+BIPV+恒大</td></tr><tr><td>2022-05-09</td><td>房产产业链</td><td></td><td></td><td>5.14</td><td>装配式建筑+BIPV+恒大</td></tr><tr><td>2022-03-18</td><td>光伏风电</td><td></td><td></td><td>7.68</td><td>光伏+装配式建筑+BIPV</td></tr><tr><td>2022-03-14</td><td>其他</td><td></td><td></td><td>7.19</td><td>光伏+装配式建筑+BIPV</td></tr><tr><td>2022-03-10</td><td>清洁能源</td><td>国家能源局：推动第一批1亿千瓦规模风、光基地项目尽快建成投产，加快第二批基地项目组织。</td><td>10天5板</td><td>7.34</td><td>光伏+装配式建筑+BIPV</td></tr><tr><td>2022-03-09</td><td>清洁能源</td><td>3月9日消息，国家能源局：推动第一批1亿千瓦规模风、光基地项目尽快建成投产 加快第二批基地项目组织</td><td></td><td>6.67</td><td>光伏+装配式建筑+BIPV</td></tr><tr><td>2022-03-02</td><td>光伏产业链</td><td></td><td>4天3板</td><td>7.08</td><td>装配式建筑+BIPV+光伏</td></tr><tr><td>2022-03-01</td><td>光伏产业链</td><td>德国经济部提出了一份待立法的草案，该国计划加速风能和太阳能基础设施的扩张，将100%可再生能源供电目标提前15年（至20</td><td>3天2板</td><td>6.44</td><td>装配式建筑+BIPV+光伏</td></tr><tr><td>2022-02-25</td><td>新城建</td><td>22年2月24日，住建部部长王蒙徽在新闻发布会上表示，大力推进基于数字化、网络化、智能化的新型城市基础设施建设，大力发展</td><td></td><td>6.01</td><td>装配式建筑+BIPV+光伏</td></tr><tr><td>2021-12-07</td><td>光伏电力</td><td>港股电力股普涨。</td><td>4天2板</td><td>7.17</td><td>BIPV+光伏+建筑装饰</td></tr><tr><td>2021-12-02</td><td>其他</td><td></td><td></td><td>6.72</td><td>BIPV+光伏+建筑装饰</td></tr><tr><td>2021-09-02</td><td>光伏BIPV</td><td>9月1日，河南全省屋顶光伏发电开发行动启动会议暨集中签约活动在郑州举行。全省共有66个县（市、区）开展屋顶光伏整县开发试</td><td></td><td>8.42</td><td>BIPV+光伏+建筑装饰</td></tr><tr><td>2021-07-15</td><td>光伏</td><td></td><td>4天3板</td><td>9.52</td><td>BIPV+光伏+建筑装饰</td></tr><tr><td>2021-07-13</td><td>光伏</td><td></td><td>2天2板</td><td>8.62</td><td>BIPV+光伏+建筑装饰</td></tr><tr><td>2021-07-12</td><td>光伏</td><td></td><td></td><td>7.84</td><td>BIPV+光伏+建筑装饰</td></tr><tr><td>2021-06-30</td><td>光伏</td><td></td><td>5天4板</td><td>7.48</td><td>BIPV+光伏+建筑装饰</td></tr><tr><td>2021-06-28</td><td>光伏</td><td></td><td>3天3板</td><td>7.43</td><td>BIPV+光伏+建筑装饰</td></tr><tr><td>2021-06-25</td><td>BIPV</td><td></td><td>2天2板</td><td>6.75</td><td>BIPV+光伏+建筑装饰</td></tr><tr><td>2021-06-24</td><td>BIPV</td><td>近日，国家能源局拟在全国组织开展整县（市、区）推进屋顶分布式光伏开发试点工作；6月23日消息，据国外媒体报道，当地时间周</td><td></td><td>6.14</td><td>BIPV+光伏+建筑装饰</td></tr><tr><td>2021-03-09</td><td>BIPV相关</td><td>BIPV未来或有千亿空间。</td><td>2天2板</td><td>6.6</td><td>幕墙施工+光伏+建筑装饰</td></tr><tr><td>2021-03-08</td><td>装饰幕墙</td><td>隆基入股森特股份发力BIPV</td><td></td><td>6.0</td><td>幕墙施工+光伏+建筑装饰</td></tr><tr><td>2020-08-10</td><td>装配式建筑家居装饰</td><td>全国规划2020年装配式建筑面积渗透率达到15%（2019年为13.4%），2025年达到30%，未来五年行业需求空间在</td><td></td><td>6.91</td><td>7月30日瑞和股份披露2020年第二季度装修装饰业务主要经营情况简报。2020年第二季度装修装饰业务新签订单金额10.43亿元；截至2020年6月30日累计已签约未完工的合同金额(含已完工部分)65.14亿元；2020年第二季度已中标尚未签约订单金额3.36亿元。</td></tr></tbody></table>
+
+</div></details>
+<details class="fold"><summary>炒作符号演变（四阶段）</summary><div class="fold-body">
+
+<ol><li><strong>2019–2023｜"BIPV ＋ 光伏 ＋ 装配式建筑"</strong>：以"幕墙施工+光伏"为主线，2021-06「5 天 4 板」、2022-03「10 天 5 板」、2022-05「9 天 6 板」，股价区间 5.14–9.52 元。</li><li><strong>2024｜"城中村改造（深圳）＋ 分布式光伏"</strong>：地产政策驱动，股价下探至 2.63 元（2024-06）为 4 年低点。</li><li><strong>2025｜"预重整 ＋ 年报减亏 ＋ 分布式光伏"</strong>：重整预期登场，2025-05「6 天 5 板」、2025-09「12 天 6 板」、2025-11「6 天 5 板」。</li><li><strong>2026｜"招募重整投资人 → 重整投资协议 ＋ 8.91 亿元财产被查封 ＋ 股份冻结"</strong>：核心符号锁定"重整"，2026-03～04「13 天 7 板」为历史最大级别连板。</li></ol>
+<p><strong>连板极值与回撤</strong>：历史最大连板 <strong>13 天 7 板（2026-03-23～04-24）</strong>，区间股价 7.15 → 10.97 元（+53.4%）；<strong>此后回撤至 3.89 元（−64.5%）</strong>，回撤幅度<strong>大于涨幅</strong>——反映重整预期兑现为"协议签署"后，市场转为担忧摊薄与进度。</p>
+
+</div></details>
+<details class="fold"><summary>龙虎榜明细（30 次，时间降序）</summary><div class="fold-body">
+
+<table><thead><tr><th>上榜日</th><th>上榜原因</th><th>当日涨跌幅</th><th>龙虎榜净买额</th></tr></thead><tbody><tr><td>2026-07-02</td><td>连续三日涨幅偏离 12%</td><td>+5.04%</td><td>−362.89 万元</td></tr><tr><td>2026-06-22</td><td>连续三日跌幅偏离 12%</td><td>−4.83%</td><td>−926.20 万元</td></tr><tr><td>2026-06-04</td><td>连续三日跌幅偏离 12%</td><td>−4.68%</td><td>+153.07 万元</td></tr><tr><td>2026-05-22</td><td>连续三日跌幅偏离 12%</td><td>−4.98%</td><td>+444.84 万元</td></tr><tr><td>2026-05-19</td><td>连续三日跌幅偏离 12%</td><td>−4.98%</td><td><strong>−3,817.20 万元</strong></td></tr><tr><td>2026-05-14</td><td>连续三日涨幅偏离 12%</td><td>+5.01%</td><td>+653.36 万元</td></tr><tr><td>2026-05-06</td><td>连续三日跌幅偏离 12%</td><td>−5.01%</td><td>−443.81 万元</td></tr><tr><td>2026-04-22</td><td>连续三日涨幅偏离 12%</td><td>+4.99%</td><td>+2,040.88 万元</td></tr><tr><td>2026-03-27</td><td>连续三日涨幅偏离 12%</td><td>+4.95%</td><td>−2,182.46 万元</td></tr><tr><td>2026-03-24</td><td>连续三日涨幅偏离 12%</td><td>+5.04%</td><td>−1,633.59 万元</td></tr></tbody></table>
+<blockquote><p>2025 年及更早另有 20 次上榜（2025-11-17 净卖 602.26 万元、2025-09-26 净买 237.90 万元、2025-09-02 净卖 929.31 万元、2025-08-27 净买 579.03 万元、2025-05-07 净卖 710.98 万元、2025-01-09 净卖 1,169.48 万元、2025-01-07 净买 3,335.01 万元等）。<strong>特征：上涨途中龙虎榜多为净卖出（游资出货），下跌途中净卖出更集中。</strong></p></blockquote>
+
+</div></details>
+<hr>
+<h3 id="sec15">3.4 投资者交流要点：公司对"重整进度"与"重整外保壳"一律模板答复、零增量，并主动否认算力概念</h3>
+<p><strong>结论：这是一条"负发现"——公司对"重整之外有无保壳措施""重整草案为何不出""债权人会议为何不开"三类核心追问，回答完全一致且不涉及任何实质信息；唯一新增信息是</strong>明确否认算力中心合作<strong>（反向证伪）与</strong>主动披露股东户数<strong>。以下摘录属"公司口径"，须与本报告判断分开读。</strong></p>
+<details class="fold"><summary>关键问答摘录（深交所互动易，经同花顺 F10 抓取，78 条，时间降序）</summary><div class="fold-body">
+
+<table><thead><tr><th>投资者问题（日期）</th><th>公司答复要点</th><th>解读</th></tr></thead><tbody><tr><td>"净资产为负，如若今年重整未完结，将面临退市……除了重整以外有无其他措施来避免退市？"（2026-07-16）</td><td>"若触及信息披露要求将严格按规定披露……目前依法依规配合管理人开展预重整"</td><td><strong>模板答复、未正面回应</strong>；对应 §1.4"重整外无保壳方案"的负发现</td></tr><tr><td>"重整草案为什么迟迟不出来？债权人会议为什么不召开？"（2026-07-06）</td><td>同上模板</td><td>印证债权人会议未召开</td></tr><tr><td>"槟城电子是个纯粹的二极管公司，和半导体没有关系；转增股 10 转 15 太高、未来市值太大"（2026-06-03）</td><td>复述"通过公开招募和遴选成为重整产业投资人"</td><td><strong>未正面回应载体质量与摊薄质疑</strong></td></tr><tr><td>"是否向 ST 东易、ST 中迪学习，向公司捐赠部分资产？"（2026-06-03）</td><td>同上模板</td><td>公司未承诺任何赠与 / 债务豁免</td></tr><tr><td>"贵公司的电力项目有计划与算力中心合作吗？"（2026-03-31）</td><td><strong>"目前没有与算力中心合作的计划"</strong></td><td><strong>公司主动否认算力概念（反向证伪原文）</strong></td></tr><tr><td>"3 年以上应收账款占应收账款比例达到 199.97%……"（2026-05-13）</td><td>"2025 年报中 3 年以上应收账款占应收账款比例为 <strong>69.72%</strong>，主要系早年存量项目形成"</td><td>投资者引数有误、公司澄清；<strong>应收质量差是事实</strong></td></tr><tr><td>"贵公司大股东是否配合重整？"（2026-06-26）</td><td>"依法依规配合……不存在应披露而未披露的重大事项"</td><td>与"配合式交权"一致</td></tr><tr><td>股东户数系列追问</td><td>主动在平台"公司声音"栏目披露</td><td>1.70 万户（2026-04-10）→ 1.34 万户（2026-09-10）</td></tr></tbody></table>
+<p><strong>四个必抓点</strong>：</p>
+<ol><li><strong>治理层变动</strong>：2026 半年度报告称"董事和高级管理人员在报告期没有发生变动"；但 <strong>2026-09-08 公告副总经理杨斌因个人原因辞职</strong>（辞任后仍留在公司、持 517,500 股）——属需跟踪的治理信号，但<strong>尚无董事集中离任或控制权实际易主的迹象</strong>，与"配合式交权"一致（对比：治理层实质易主通常更早于股权过户暴露）。</li><li><strong>盈利驱动自述</strong>：2026 半年度业绩预告口径仅为"行业宏观环境影响、市场竞争激烈、收入下降"，<strong>未提及任何新业务方向</strong>。</li><li><strong>摘帽 / 退市自述</strong>：公司自述"已被实施退市风险警示"并反复提示"若 2026 年度触及 9.3.12 情形将被终止上市"，<strong>无公司层面的时间表承诺</strong>。</li><li><strong>股东人数</strong>：见上表末行。</li></ol>
+
+</div></details>
+<h2 id="chap4">四、估值与投资结论</h2>
+<h3 id="sec16">4.1 估值：净资产为负，PE/PB 均失效，只能用"重整后情景"定价</h3>
+<p><strong>结论：本标的属"算不出利润"的类型，不能用 PE/PB 证伪或肯定，只能用</strong>情景区间<strong>定价；核心参数是"重整是否在年内完成"与"重整后股本/净资产"，而非当期盈利。</strong></p>
+<p><strong>估值前提（必须显式标注）</strong>：<strong>本报告全部估值区间的前提是"重整在 2026 年内执行完毕并完成转增"；若重整未完成，公司将因 2026 年末净资产为负而终止上市，估值归零。</strong></p>
+<table><thead><tr><th>情景</th><th>概率</th><th>关键假设</th><th>对应市值 / 股价</th></tr></thead><tbody><tr><td><strong>乐观</strong></td><td>约 20%</td><td>2026Q4 完成受理→批准→执行；槟城电子产业赋能落地，半导体资产注入预期发酵</td><td>重整后总股本 9.37 亿股 × 5.5–6.5 元 ＝ <strong>51.5–60.9 亿元</strong>（较现价口径 +? 见下注）</td></tr><tr><td><strong>中性</strong></td><td>约 30%</td><td>重整在 2027 年完成（错过年内生死线则无效）；或年内完成但市场按"除权参考价 ＋ 小幅填权"定价</td><td>除权参考价 4.32–4.60 元为中枢，对应 <strong>40.5–43.1 亿元</strong></td></tr><tr><td><strong>悲观（归零）</strong></td><td>约 50%</td><td>重整未在 2026 年内执行完毕 → 2026 年报净资产为负 → <strong>终止上市</strong></td><td><strong>归零</strong></td></tr></tbody></table>
+<blockquote><p><strong>口径注</strong>：表内市值为"重整后股本 × 假设股价"，与现价直接比较会失真——<strong>正确对照是"现价 5.34 元 vs 除权参考价 4.32–4.60 元"</strong>（即现价已高于除权参考价 16%–24%），而非"现价 vs 重整后市值"。概率为主观判断，<strong>不是预测</strong>，读者可据"触发条件"自行调整。</p></blockquote>
+<details class="fold"><summary>参数取值的保守/中性/激进标注</summary><div class="fold-body">
+
+<table><thead><tr><th>参数</th><th>保守</th><th>中性</th><th>激进</th><th>依据</th></tr></thead><tbody><tr><td>抵债股作价（元/股）</td><td>2.00</td><td>3.9025</td><td>5.34</td><td>待《重整计划（草案）》披露；投资人价为已知锚</td></tr><tr><td>除权参考价（元）</td><td>4.32</td><td>4.48</td><td>4.60</td><td>深交所重整转增除权公式</td></tr><tr><td>重整完成时点</td><td>2027 年（→ 归零）</td><td>2026-12</td><td>2026-11</td><td>受理/草案/债权人会议三节点均未启动</td></tr><tr><td>槟城电子赋能强度</td><td>无实质注入</td><td>维持现有半导体业务</td><td>注入半导体资产</td><td>协议仅约定"导入优质资产"，无时点与标的</td></tr><tr><td>2026 年末归母净资产（未重整）</td><td>—</td><td>−2.0 亿元</td><td>−1.5 亿元</td><td>2026H1 已 −0.97 亿元 ＋ H2 季节性亏损</td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec17">4.2 投资结论（★ 二选一）</h3>
+<p><strong>卖出（回避）</strong></p>
+<table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td><strong>结论</strong></td><td><strong>卖出（回避）</strong></td></tr><tr><td><strong>理由链</strong></td><td><strong>① 赔率极端不对称</strong>：2026 年报净资产必须转正，否则 9.3.12(二) 终止上市、本金归零；而上行即便成功也只有"除权参考价 4.48 元 ＋ 有限填权"，<strong>下行是 100% 损失、上行是 −16% 起步</strong>（依据：深主板 9.3.8/9.3.12、除权测算）。&lt;br&gt;<strong>② 重整进度严重滞后，时间窗口不足 3 个月</strong>：预重整已 14.6 个月、协议签署已 4.7 个月，<strong>受理、草案、债权人会议三项全未启动</strong>，其中债权人会议公司 2025-12 已确认"尚未召开"（依据：重整投资协议公告、互动易答复）。&lt;br&gt;<strong>③ 除权摊薄是确定的近端负收益</strong>：10 转 14.85（逼近 15 股上限），原股东稀释至 40.3%，除权参考价约 4.32–4.60 元 ＝ 现价 −14%～−19%（依据：重整投资协议、深交所除权公式）。&lt;br&gt;<strong>④ 现价无成本优势</strong>：现价 5.34 元 ＝ 产业投资人成本 3.9025 元的 <strong>1.37 倍</strong>，投资人股份来自转增、不承担除权损失（依据：重整投资协议定价条款）。&lt;br&gt;<strong>⑤ 注意力已过峰值且方向朝下</strong>：户数 1.70 万（4 月）→ 1.34 万（9 月）；成交额 1,999 万元、换手 1.18%；同型样本 2026 年中位 −16.9%，本标的 +5.95%（相对抗跌 ＝ 补跌空间未释放）（依据：互动易、腾讯行情、新浪日 K、韭研异动）。</td></tr><tr><td><strong>触发条件（转买入信号）</strong></td><td>出现以下<strong>可验证</strong>信号可重新评估：① 法院公告<strong>裁定受理重整</strong>；② 《重整计划（草案）》披露且以股抵债价格 / 清偿率好于预期；③ <strong>债权人会议表决通过</strong>；④ 出现重整外的兜底方案（控股股东或第三方<strong>债务豁免 / 资产赠与</strong>，使 2026 年报净资产确定转正）。</td></tr><tr><td><strong>失效条件（本结论作废/翻转）</strong></td><td>① 重整计划在 <strong>2026-12-31 前执行完毕</strong>且转增除权落地（本结论的核心理由①③④同时失效）；② 公司披露明确的"重整外保壳方案"并经会计师事务所认可可使 2026 年末净资产转正。</td></tr><tr><td><strong>参考区间</strong></td><td>回避；若已持有，反弹至 <strong>5.8–6.3 元</strong>（2026-04 反弹的 0.5–0.55 分位）为减仓区；<strong>不建议设置"抄底位"</strong>——因下行是归零而非价格波动，<strong>任何止损位在退市面前都无效</strong>。</td></tr><tr><td><strong>时间窗口</strong></td><td>至 <strong>2026-12-31</strong>（年内重整执行完毕的截止日）；若 2026Q4 仍无受理，本结论升级为"确定性回避"。</td></tr><tr><td><strong>仓位建议</strong></td><td><strong>不建仓</strong>；已持有者逢反弹减至零。</td></tr><tr><td><strong>最大风险</strong></td><td><strong>重整在本结论之后快速落地并超预期</strong>（法院受理 + 债权人会议一次通过 + 批准执行，同期股价在除权前"抢权"上涨）——这会同时打掉理由①③④。<strong>但该风险的另一面是：若未落地，代价是本金归零，风险收益比不支持参与。</strong></td></tr></tbody></table>
+<hr>
+<h2 id="chap5">附录 A · 待核实 / 需补充清单</h2>
+<table><thead><tr><th>#</th><th>待核实项</th><th>结论</th></tr></thead><tbody><tr><td>1</td><td>以股抵债的具体价格与股数</td><td><strong>未披露</strong>，须待《重整计划（草案）》；本报告按 0.80 亿股 × 三档作价测算</td></tr><tr><td>2</td><td>确认债权总额与各类债权清偿率</td><td><strong>未披露</strong>（债权人会议未召开）</td></tr><tr><td>3</td><td>重整受理时间表</td><td><strong>未披露</strong>；仅"预重整正在推进"</td></tr><tr><td>4</td><td>槟城电子"导入优质资产"的具体标的、时点、估值方式</td><td><strong>未披露</strong>；协议原文仅作原则性约定</td></tr><tr><td>5</td><td>欠薪移送公安事项的最终结论</td><td>公司称"尚未收到任何书面法律文书"，<strong>待核实</strong></td></tr><tr><td>6</td><td>信义光能(六安)的持股比例与少数股东权益构成</td><td>中报列示其净资产 4.73 亿元，而公司归母净资产为负 → 少数股东权益 2.37 亿元，<strong>具体持股比例未在正文披露</strong>，需查年报附注</td></tr><tr><td>7</td><td>2025 年度营业收入"扣除后"金额</td><td>专项核查报告正文未列具体金额（仅附表），<strong>建议索取附表核对</strong>（本报告据底表判断未触发 9.3.1(一)）</td></tr></tbody></table>
+<h2 id="chap6">附录 B · 关键信源链接</h2>
+<p><strong>结论：本报告全部关键数字与事件均可点开原文核对——12 份一手公告覆盖戴帽、年报、营收扣除、审计意见、重整协议、半年报、立案、诉讼、股权冻结全过程；未附链接的仅为交易所规则（本地 PDF）与行情数据源。</strong></p>
+<table><thead><tr><th>#</th><th>信源</th><th>出处</th></tr></thead><tbody><tr><td>1</td><td>实施退市风险警示公告（2026-04-28）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225251988&amp;orgId=9900021475&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">原文</a></td></tr><tr><td>2</td><td>2025 年年度报告</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225251990&amp;orgId=9900021475&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">原文</a></td></tr><tr><td>3</td><td>2025 年度营业收入扣除专项核查报告</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225251994&amp;orgId=9900021475&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">原文</a></td></tr><tr><td>4</td><td>2025 年度财务报告非标准审计意见专项说明</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225252011&amp;orgId=9900021475&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">原文</a></td></tr><tr><td>5</td><td>董事会关于带解释性说明的专项说明</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225251998&amp;orgId=9900021475&amp;announcementTime=2026-04-29" target="_blank" rel="noopener">原文</a></td></tr><tr><td>6</td><td>关于本次预重整与重整投资人签订《重整投资协议》的公告</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225307829&amp;orgId=9900021475&amp;announcementTime=2026-05-15" target="_blank" rel="noopener">原文</a></td></tr><tr><td>7</td><td>收到启动预重整及指定管理人决定书的公告（2025-07-18）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1224215560&amp;orgId=9900021475&amp;announcementTime=2025-07-18" target="_blank" rel="noopener">原文</a></td></tr><tr><td>8</td><td>被实施其他风险警示暨停牌提示性公告（2025-04-29）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1223380983&amp;orgId=9900021475&amp;announcementTime=2025-04-29" target="_blank" rel="noopener">原文</a></td></tr><tr><td>9</td><td>2026 年半年度报告</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225528437&amp;orgId=9900021475&amp;announcementTime=2026-08-29" target="_blank" rel="noopener">原文</a></td></tr><tr><td>10</td><td>关于公司被立案事项的说明公告</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225464983&amp;orgId=9900021475&amp;announcementTime=2026-08-08" target="_blank" rel="noopener">原文</a></td></tr><tr><td>11</td><td>关于累计诉讼、仲裁情况的公告（2026-09-28）</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225583915&amp;orgId=9900021475&amp;announcementTime=2026-09-29" target="_blank" rel="noopener">原文</a></td></tr><tr><td>12</td><td>关于控股股东股份解除冻结及被司法再冻结的公告</td><td><a href="http://www.cninfo.com.cn/new/disclosure/detail?stockCode=002620&amp;announcementId=1225345724&amp;orgId=9900021475&amp;announcementTime=2026-06-03" target="_blank" rel="noopener">原文</a></td></tr></tbody></table>
+<h2 id="chap7">附录 C · 逻辑漏洞与反方观点（5 问）</h2>
+<p><strong>结论：市场对本案最常见的五个看多理由，逐一压测后均不能成立——协议≠落地、注入款未到账、跌幅≠安全边际、题材已被公司否认、数据源可核。</strong></p>
+<table><thead><tr><th>#</th><th>追问</th><th>本报告的回答</th></tr></thead><tbody><tr><td>1</td><td>"重整协议都签了，成功概率应该很高吧？"</td><td><strong>协议 ≠ 受理 ≠ 批准 ≠ 执行</strong>。协议公告自身列明可被终止/解除/认定未生效；截至基准日法院未受理、草案未出、债权人会议未开。<strong>合同签订与实际落地之间隔着三道关卡。</strong></td></tr><tr><td>2</td><td>"18.73 亿元注入，净资产不就转正了吗？"</td><td><strong>钱要等法院批准重整计划后才到账</strong>，能否在 2026-12-31 前到账是全部问题所在；<strong>且除权会把现价持有人的每股权益摊薄</strong>——转增不向原股东分配。</td></tr><tr><td>3</td><td>"股价从 10.97 跌到 5.34，跌这么多了，是不是有安全边际？"</td><td><strong>跌幅大 ≠ 有安全边际</strong>。① 同型 20 只样本 2026 年中位 −16.9%，本标的 +5.95% 属"相对抗跌"，补跌空间未释放；② 在净资产为负、面临归零的标的上，<strong>价格低不改变"可能变零"的性质</strong>。</td></tr><tr><td>4</td><td>"光伏/半导体概念是不是可以炒？"</td><td><strong>"光伏＋算力"公司已明确否认</strong>（互动易 2026-03-31）；半导体映射的载体是槟城电子，属<strong>重整后注入预期</strong>、且市场对其"二极管"定位有公开质疑（雪球评论，2026-06-03 / 2026-09-24）。<strong>热点业务占比须以现有业务定位，不能以预期替代事实。</strong></td></tr><tr><td>5</td><td>"数据来源可靠吗？"</td><td>关键数字均取自公告原文与交易所规则 PDF 逐字核对；行情因 Wind 代理离线改用腾讯/新浪公开源（已标注）；雪球内容仅作<strong>线索级</strong>引用并标注日期；东财 F10 财务序列标【异源】。<strong>唯一未取到的是《重整计划（草案）》与债权总额，均已列入附录 A。</strong></td></tr></tbody></table>
+<h2 id="chap8">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-05</td><td>首次生成。经全库检索（<code>个股研究</code>／<code>其他资料</code>／<code>Desktop</code>／<code>WorkBuddy</code> 会话目录）确认<strong>本标的此前无任何同名研究报告</strong>，故从零创建；数据截至 2026 中报、行情截至 2026-09-30 收盘；投资结论＝卖出（回避）</td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
