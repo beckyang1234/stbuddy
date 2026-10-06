@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ST海王（000078.SZ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>9 章 · 14 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断：一句判断</a><a class="sblv3" href="#sec0">1.1 基本信息与股权</a><a class="sblv3" href="#sec1">1.2 ST 风险诊断：双线加帽 + 一条随时会合的 *ST 通道</a><a class="sblv3" href="#sec2">1.3 摘帽展望：时间锚落在 2027 年 4 月</a><a class="sblv3" href="#sec3">1.4 公司运营情况</a><a class="sblv3" href="#sec4">1.5 关键人物与实控人</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、路径：规范类 · 资金占用清收（唯一主路径）</a><a class="sblv3" href="#sec5">2.1 资金占用来龙去脉：一笔"过桥"如何变成 12.56 亿元</a><a class="sblv3" href="#sec6">2.2 控股股东的还款能力：这是全篇最硬的一问</a><a class="sblv3" href="#sec7">2.3 经营自救：真在做，但救不了这一局</a><a class="sblv3" href="#sec8">2.4 全流程进度看板</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、炒作逻辑 + 情绪面 + 筹码面</a><a class="sblv3" href="#sec9">3.1 炒作逻辑三支柱（全部着眼未来）</a><a class="sblv3" href="#sec10">3.2 情绪面：注意力来过，而且朝下</a><a class="sblv3" href="#sec11">3.3 筹码与估值位置：价格低，但"贵"</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、估值与投资结论</a><a class="sblv3" href="#sec12">4.1 估值：三条情景，全部以"占款能否收回"为开关</a><a class="sblv3" href="#sec13">4.2 投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录 B · 关键信源清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 C · 逻辑漏洞与反方观点（压力测试）</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">ST海王（000078.SZ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：卖出（回避）</strong></p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>红线分类</td><td><span class="sttag sttag-orange"><a href="https://data.eastmoney.com/notices/detail/000078/AN202604291821787542.html" target="_blank" rel="noopener">内控否定意见,2025年度</a></span>·<span class="sttag sttag-red"><a href="https://data.eastmoney.com/notices/detail/000078/AN202608281828636843.html" target="_blank" rel="noopener">变相资金占用,12.56亿元</a></span>·<span class="sttag sttag-red"><a href="https://data.eastmoney.com/notices/detail/000078/AN202608280006757998.html" target="_blank" rel="noopener">归母净资产仅10.23亿元</a></span>·<span class="sttag sttag-red"><a href="https://data.eastmoney.com/notices/detail/000078/AN202609291829998162.html" target="_blank" rel="noopener">面退风险,现价1.49元</a></span></td></tr><tr><td>生死定级</td><td><strong>可救 · 需外力</strong>（双线 *ST 悬顶，生死取决于控股股东能否在 2026-12-31 前拿出 12.56 亿元现金）</td></tr><tr><td>自救空间</td><td>靠控股股东清偿 12.56 亿元占款 ＋ 2026 年度内控审计转为标准无保留意见；<strong>最大障碍＝控股股东所持 46.23% 股份中 99.83% 已质押，自身几无变现能力，全部增信仅一笔海王星辰 12% 股权质押</strong></td></tr><tr><td><strong>主要看点</strong></td><td>实际控制人张思民控制的<strong>海合投资已将山东海王星辰 12% 股权质押给上市公司</strong>，为 12.56 亿元占款提供履约担保（2026-09-04 完成质押登记）；海王星辰＝覆盖全国 78 城、近 5,000 家门店、2023 年营收 147.04 亿元的头部连锁药房。<strong>「大股东还不还得出钱」本身就是本标的唯一的核心看点。</strong></td></tr></tbody></table>
+<ul><li><strong>标的</strong>：深圳市海王生物工程股份有限公司（000078.SZ，深主板，简称 ST海王；实施前简称 海王生物）</li><li><strong>基准日</strong>：2026-10-05；<strong>行情/公告数据截止</strong>：2026-09-30 收盘及当日最新公告</li><li><strong>版本</strong>：初版 · 2026-10-05</li><li><strong>数据来源</strong>：Wind 代理（2026-10-01 起不可达，行情改用腾讯 <code>qt.gtimg.cn</code> 公开源）、公司公告（东财/巨潮）、Andy《退市风险预警-20261005.xlsx》、韭研公社异动整理、ST 信息库</li><li><strong>已知数据质量异常</strong>：① Wind 局域网代理整段不可达，截面估值与同业数据取自腾讯公开接口（已标注）；② 巨潮 <code>hisAnnouncement/query</code> 接口本轮返回 HTTP 504，公告链接改用东财公告页地址。</li></ul>
+<hr>
+<h2 id="chap1">一、诊断：一句判断</h2>
+<blockquote><p><strong>ST海王是一家"壳还在、血已干"的全国第十大医药流通商：2025 年营收 266.68 亿元却只换来 12.27 亿元归母净资产，三年累计亏损 34.46 亿元把家底烧掉三分之二；更致命的是控股股东海王集团通过第三方资金过桥，把上市公司 12.56 亿元现金"变相占用"，而这笔钱相当于公司全部归母净资产的 122.8%，且控股股东手里 99.83% 的持股早已质押，唯一能拿出的只有一笔海王星辰股权质押。它同时踩在资金占用与内控非标两条 *ST 红线上，而 2026 年半年报又亏掉 2.04 亿元。这不是"低位机会"，是"倒计时"。</strong></p></blockquote>
+<h3 id="sec0">1.1 基本信息与股权</h3>
+<p><strong>结论：这是一家被控股股东高度控制、但控股股东自己已经"弹尽粮绝"的公司。</strong> 海王集团持股 46.23%（12.16 亿股），其中 <strong>12.14 亿股已质押（质押率 99.83%）</strong>，另无任何减持记录——既不能通过二级市场减持套现还债，也没有别的股权可押。</p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>现价 / 总市值</td><td>1.49 元 / <strong>39.20 亿元</strong>（2026-09-30 收盘，腾讯公开源）</td></tr><tr><td>流通市值</td><td>39.18 亿元（近乎全流通）</td></tr><tr><td>总股本</td><td>26.31 亿股</td></tr><tr><td>PB</td><td><strong>3.83 倍</strong>（同业中位 0.6–1.0，见 §3.3）</td></tr><tr><td>近 20 年价格分位</td><td><strong>4.61%</strong>（Andy《退市风险预警》信息库口径）</td></tr><tr><td>年初至今涨跌幅</td><td><strong>-56.94%</strong>（2026-09-30）</td></tr><tr><td>控股股东</td><td>深圳海王集团股份有限公司（张思民实际控制），<strong>46.23%，质押 12.14 亿股</strong></td></tr><tr><td>股东户数</td><td>2026-06-30 <strong>149,613 户</strong>（较 03-31 的 185,069 户 <strong>-19.16%</strong>）</td></tr></tbody></table>
+<details class="fold"><summary>股权结构、前十名股东与筹码集中度（2026-06-30）</summary><div class="fold-body">
+
+<table><thead><tr><th>排名</th><th>股东名称</th><th>持股比例</th><th>持股数量</th><th>变动</th><th>质押/冻结</th></tr></thead><tbody><tr><td>1</td><td>深圳海王集团股份有限公司</td><td>46.23%</td><td>12.16 亿股</td><td>不变</td><td><strong>质押 12.14 亿股</strong></td></tr><tr><td>2</td><td>香港中央结算有限公司</td><td>1.00%</td><td>2,644.12 万股</td><td>+1,348.29 万股</td><td>不适用</td></tr><tr><td>3</td><td>MORGAN STANLEY &amp; CO. INTERNATIONAL PLC.</td><td>0.29%</td><td>757.45 万股</td><td>+721.39 万股</td><td>不适用</td></tr><tr><td>4</td><td>胡刚</td><td>0.28%</td><td>738.08 万股</td><td>+20.08 万股</td><td>不适用</td></tr><tr><td>5</td><td>UBS AG</td><td>0.24%</td><td>626.02 万股</td><td>+624.86 万股</td><td>不适用</td></tr><tr><td>6</td><td>上海申宸私募基金－申宸辉耀私募证券投资基金</td><td>0.23%</td><td>615.49 万股</td><td>新进</td><td>不适用</td></tr><tr><td>7</td><td>孙银锁</td><td>0.22%</td><td>580.01 万股</td><td>不变</td><td>不适用</td></tr><tr><td>8</td><td>中信证券股份有限公司</td><td>0.19%</td><td>506.75 万股</td><td>+466.40 万股</td><td>不适用</td></tr><tr><td>9</td><td>史笑难</td><td>0.11%</td><td>277.00 万股</td><td>新进</td><td>不适用</td></tr><tr><td>10</td><td>李俊逸</td><td>0.10%</td><td>268.75 万股</td><td>新进</td><td>不适用</td></tr></tbody></table>
+<blockquote><p><strong>筹码集中度判读</strong>：股东户数 2025-09-30 的 124,206 户 → 2025-12-31 的 175,448 户（<strong>+41.26%</strong>）→ 2026-03-31 的 185,069 户（+5.48%）→ 2026-06-30 的 <strong>149,613 户（-19.16%）</strong>。<strong>2025 年四季度户数暴增 41%，对应"流感行情"连板吸引的散户入场；2026 年二季度户数回落约两成。</strong>但户均持股市值从 2025-12-31 的 5.19 万元一路降到 2026-06-30 的 <strong>2.27 万元（腰斩）</strong>——户数减少的主因是<strong>股价下跌造成的市值缩水</strong>，而非筹码实质性向少数人集中。二至十名股东全部是港资、外资与量化/私募小仓位（合计不足 3%），<strong>没有任何产业资本或"锁仓同盟"</strong>。</p></blockquote>
+
+</div></details>
+<details class="fold"><summary>王艳式六栏目 · ① 前世今生（时间降序，含金额、每股价格与资金来源）</summary><div class="fold-body">
+
+<table><thead><tr><th>时点</th><th>关键事件</th><th>股权 / 实控人变化</th><th>背后的逻辑（金额 · 价格 · 资金来源 · 背景）</th></tr></thead><tbody><tr><td>2026-09-04</td><td>实控人质押海王星辰股份增信</td><td>无变化（张思民仍为实控人）</td><td>海合投资（张思民控制）将所持山东海王星辰 <strong>12% 股权</strong>质押给上市公司，为 12.56 亿元占款履约担保；<strong>不构成以股抵债，不豁免现金偿还义务</strong></td></tr><tr><td>2026-08-31</td><td>叠加实施其他风险警示</td><td>无变化</td><td>因资金占用被叠加 ST（9.8.1 一项），简称仍为 ST海王，涨跌幅仍 10%，不停牌</td></tr><tr><td>2026-08-28</td><td>资金占用被揭盖</td><td>无变化</td><td>深圳证监局〔2026〕170 号责令改正：占用本金余额 <strong>12.56 亿元</strong>，要求<strong>六个月内（≤2027-02-28）归还</strong></td></tr><tr><td>2026-05-06</td><td>首次戴帽 ST</td><td>无变化</td><td>2025 年度内控被致同出具<strong>否定意见</strong> → 9.8.1（四）项其他风险警示</td></tr><tr><td>2025-10</td><td>董事局换届</td><td><strong>张思民卸任董事局主席，张锋接任</strong></td><td>实控人退出上市公司治理层（张思民 64 岁，现仅在关联方取酬）</td></tr><tr><td>2025-09 / 12</td><td>向金伊医疗、长春感通提供财务资助</td><td>无变化</td><td>合计 <strong>12.95 亿元</strong>，经银行受托支付直接划入两家"无关联第三方"账户——<strong>后经证实为海王集团占款的过桥通道</strong></td></tr><tr><td>2025-06 → 2026-06</td><td>持续剥离子公司</td><td>无变化</td><td>2026H1 出售河南东森医药、深圳深业医药、海王（韶关）医药等 <strong>10 家</strong>子公司股权；河南东森医药交易价 <strong>2.48 亿元</strong></td></tr><tr><td>2022-03-04</td><td>公告混改引战</td><td><strong>拟引入战略投资者，可能涉及实控人变更</strong>（后终止）</td><td>控股股东筹划海王生物混合所有制改革——<strong>四年后仍未落地</strong></td></tr><tr><td>2015-06 / 11</td><td>解决同业竞争</td><td>无变化</td><td>海王集团受让海王药业、杭州海王、三亚海王等股权；张思民出具避免同业竞争承诺，此后<strong>三次延期至 2026-12-31</strong></td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec1">1.2 ST 风险诊断：双线加帽 + 一条随时会合的 *ST 通道</h3>
+<p><strong>结论：ST海王不是"一次戴帽"，而是「内控非标（已戴 ST）＋ 资金占用（已叠加 ST）＋ 两条 *ST 通道同时点亮」，且第三条财务类红线（净资产转负）正在逼近。</strong> 三条线里任何一条走到底都是终止上市。</p>
+<p><strong>（一）已生效的两条 ST（其他风险警示）</strong></p>
+<table><thead><tr><th>类型</th><th>触发条款</th><th>本公司情形</th><th>可救性</th></tr></thead><tbody><tr><td>内控非标</td><td>深主板 9.8.1（四）：最近一个会计年度财务报告内控被出具无法表示/否定意见</td><td>致同对 <strong>2025 年度内控出具否定意见</strong>（2 项财务报告重大缺陷）→ <strong>2026-05-06 起 ST</strong></td><td>可救，须 2026 年度内控审计转标准无保留</td></tr><tr><td>资金占用</td><td>深主板 9.8.1（一）＋9.8.2：占用余额 ≥1,000 万元或 ≥净资产 5% 且无可行方案</td><td>占用 <strong>12.56 亿元</strong>（= 2025 年末归母净资产的 <strong>102.4%</strong>）→ <strong>2026-08-31 起叠加 ST</strong></td><td>可救，须清偿并披露会计师专项核查意见</td></tr></tbody></table>
+<p><strong>（二）尚未实施、但已点亮的 *ST 通道（退市风险警示）</strong></p>
+<table><thead><tr><th>通道</th><th>触发条款</th><th>本公司距离触发还差什么</th></tr></thead><tbody><tr><td>资金占用型 *ST</td><td>9.4.1（五）：占用 ≥2 亿元或 ≥净资产 30%，<strong>被证监会责令改正但未在要求期限内完成整改，且停牌两个月内仍未完成</strong></td><td>前两个要件<strong>已全部满足</strong>（12.56 亿元 ≥ 2 亿元；已被〔2026〕170 号责令改正）。<strong>只差"逾期未整改"这一时间条件</strong>——整改期限为收到决定书起 6 个月（≤2027-02-28），公司自设更早节点 2026-12-31</td></tr><tr><td>内控连续非标型 *ST</td><td>9.4.1（六）：<strong>连续两个会计年度</strong>财务报告内控被出具无法表示/否定意见</td><td>2025 年度已非标；<strong>若 2026 年度再非标即触发</strong>（公司已在公告中明确提示此项风险）</td></tr></tbody></table>
+<blockquote><p><strong>两条通道的后果分级</strong>：资金占用型 *ST 逾期 → 停牌 → <strong>停牌两个月内仍未整改则实施 *ST</strong> → 此后两个月内仍未整改 → <strong>交易所决定终止上市</strong>；内控型 *ST 则须在实施当年会计年度结束后逐月/逐十日披露风险提示，直到次年内控审计报告披露。</p></blockquote>
+<p><strong>（三）四类退市红线逐条对照（★ 先查路径底表再回规则原文核实）</strong></p>
+<blockquote><p><strong>路径底表结论</strong>：在 Andy《退市风险预警-20261005.xlsx》（4 表 / 9 指标块 / 282 行）中，<strong>000078 未命中交易类、财务类、规范类、其他类任何一张表</strong>——这与"资金占用/内控非标属其他风险警示、尚未实施退市风险警示"的定性一致。底表规范类表一的 8 家企业是"<strong>内控连续两个会计年度</strong>非标"（已实施 *ST），ST海王目前只有 2025 一年，<strong>尚未入表</strong>；若 2026 年度再非标，将进入该表。</p></blockquote>
+<table><thead><tr><th>类型</th><th>触发条件（速查）</th><th>本公司情形</th><th>可救性</th></tr></thead><tbody><tr><td>财务类</td><td>净利/扣非/利润总额孰低为负 <strong>且</strong> 扣除后营收 &lt;3 亿元；或<strong>期末净资产为负</strong>；或审计意见为无法表示/否定</td><td>营收 266.68 亿元（2025）远超 3 亿元红线；<strong>归母净资产 10.23 亿元仍为正</strong>，但已从 2023 年的 30.03 亿元缩水 66%；2025 年度财务报告为<strong>保留意见</strong>（非无法表示/否定，故不触发）</td><td><strong>可救，但净资产转负是最大近忧</strong></td></tr><tr><td>交易类</td><td>连续 20 日收盘价 &lt;1 元；或连续 20 日市值 &lt;5 亿元；或连续 20 日股东数 &lt;2,000</td><td>现价 <strong>1.49 元</strong>（距 1 元 <strong>-33%</strong>）、市值 39.20 亿元、股东 14.96 万户——<strong>当前均未触及，但面值距离已很近</strong></td><td><strong>不可救</strong></td></tr><tr><td>规范类</td><td>资金占用 ≥2 亿元或 ≥净资产 30% 被责令改正未整改；内控连续两年非标；控制权无序争夺等</td><td><strong>两条同时点亮</strong>（见上表）</td><td>可救，看控股股东配合</td></tr><tr><td>重大违法类</td><td>欺诈发行、造假达量化线、重大信披违法涉刑</td><td>未见相关立案或认定；保留意见/内控否定均属"无法取得充分证据"，<strong>未表述为虚假记载</strong></td><td><strong>一票否决</strong>（当前未触发）</td></tr></tbody></table>
+<details class="fold"><summary>深主板 9.4.1 与 9.4.4 条原文摘录（本报告引用的全部依据）</summary><div class="fold-body">
+
+<p><strong>9.4.1</strong>（退市风险警示情形，节选）：</p>
+<blockquote><p>（五）公司被控股股东（无控股股东，则为第一大股东）或者控股股东关联人非经营性占用资金的余额达到 2 亿元以上或者占公司最近一期经审计净资产绝对值的 30% 以上，<strong>被中国证监会责令改正但未在要求期限内完成整改，且在公司股票停牌两个月内仍未完成整改</strong>；</p><p>（六）<strong>连续两个会计年度财务报告内部控制被出具无法表示意见或者否定意见的审计报告</strong>，或者未按照规定披露财务报告内部控制审计报告。</p></blockquote>
+<p><strong>9.4.4</strong>（应立即披露风险提示公告的情形，节选）：</p>
+<blockquote><p>（五）首个会计年度财务报告内部控制被出具无法表示意见或者否定意见的审计报告……</p><p>（六）公司被控股股东或者控股股东关联人非经营性占用资金的余额达到 2 亿元以上或者占公司最近一期经审计净资产绝对值的 30% 以上，<strong>被中国证监会责令改正</strong>；</p><p>公司按照前款第一项至第四项、第六项、第七项规定披露风险提示公告后，<strong>应当至少每十个交易日披露一次</strong>相关进展情况和风险提示公告……</p></blockquote>
+<p><strong>9.8.2</strong>（"资金占用且情形严重"的定义）：</p>
+<blockquote><p>上市公司被控股股东或者控股股东关联人非经营性占用资金的余额在 <strong>1,000 万元以上</strong>，或者占公司最近一期经审计净资产绝对值的 <strong>5% 以上</strong>，且无可行的解决方案或者虽提出解决方案但预计无法在一个月内解决。</p></blockquote>
+<p><strong>9.8.7</strong>（撤销其他风险警示的条件，节选）：</p>
+<blockquote><p>上市公司资金占用情形已消除，向本所申请对其股票交易撤销其他风险警示的，应当披露<strong>会计师事务所出具的专项核查意见</strong>等文件。</p><p>公司内部控制缺陷整改完成，内部控制能有效运行，向本所申请撤销的，应当披露会计师事务所对其<strong>最近一个会计年度</strong>财务会计报告出具的<strong>无保留意见的内部控制审计报告</strong>。</p></blockquote>
+<p>（规则依据：《深圳证券交易所股票上市规则（2026 年修订）》；原文库：<code>STskill\深圳证券交易所股票上市规则（2026年修订）.pdf</code>）</p>
+
+</div></details>
+<h3 id="sec2">1.3 摘帽展望：时间锚落在 2027 年 4 月</h3>
+<p><strong>结论：内控这条线锁死了摘帽的下限时点——最早也要等到 2026 年度内控审计报告出炉（2027 年 4 月年报披露），而且主板摘帽已无制度红利。</strong> 资金占用这条线可以更早消除，但<strong>摘帽要两条同时消</strong>，所以实际摘帽日必然在 <strong>2027 年 4 月之后</strong>。</p>
+<table><thead><tr><th>环节</th><th>条件</th><th>最早时点</th><th>依据</th></tr></thead><tbody><tr><td>资金占用解除</td><td>12.56 亿元本息清偿完毕 ＋ 会计师专项核查意见</td><td>取决于控股股东，公司承诺 ≤2026-12-31</td><td>9.8.7 第一款</td></tr><tr><td>内控缺陷整改</td><td>2026 年度内控审计报告为<strong>标准无保留</strong></td><td><strong>2027 年 4 月</strong>（2026 年报披露后）</td><td>9.8.7 第三款"最近一个会计年度"</td></tr><tr><td>交易所审核</td><td>披露后 5 个交易日内可申请，交易所 15 个交易日内决定</td><td>2027 年 5 月前后</td><td>沪深《股票上市规则》9.4.10–9.4.13 程序</td></tr></tbody></table>
+<blockquote><p><strong>★ 无制度红利</strong>：2026-07-06 起主板 ST/*ST 涨跌幅已由 5% 放宽至 10%，<strong>摘帽前后均为 10%，不再有"涨跌幅放大"的制度性红利</strong>——因此"摘帽"本身不构成上涨理由（详见 §3.1 支柱二）。</p></blockquote>
+<details class="fold"><summary>摘帽的两个前置信号（可提前一个季度以上验证）</summary><div class="fold-body">
+
+<ol><li><strong>《关于 XX 年度内部控制审计报告否定意见涉及事项影响已消除的审核报告》</strong>——若在 2026 年报披露前出现，说明会计师已接受公司对存疑事项的解释，2027 年 4 月摘帽概率大幅上台阶；<strong>始终未见则应高度警惕再次非标</strong>。</li><li><strong>资金占用清偿的实际资金到账公告</strong>——这是"看得见"的硬信号，比任何"承诺"都可靠。截至本报告基准日（2026-10-05），<strong>2026-09-30 的最新进展公告通篇只讲内控整改，对 12.56 亿元的偿还进度一字未提</strong>。</li></ol>
+
+</div></details>
+<h3 id="sec3">1.4 公司运营情况</h3>
+<p><strong>结论：主业还在跑，但"规模"换不来"利润"——营收三年从 364 亿元掉到 267 亿元，归母净资产同期从 30 亿元掉到 10 亿元；亏损的主因不是经营现金流断裂，而是</strong>连续大额资产减值<strong>。</strong> 2025 年经营现金流净额仍为正（+1.04 亿元），说明流通主业的"造血"尚未停摆，<strong>真正在流血的是资产负债表</strong>。</p>
+<table><thead><tr><th>报告期</th><th>营业收入（亿元）</th><th>归母净利（亿元）</th><th>扣非归母（亿元）</th><th>毛利率</th><th>总资产（亿元）</th><th>归母净资产（亿元）</th></tr></thead><tbody><tr><td>2023</td><td>364.19</td><td>-16.90</td><td>-17.40</td><td>9.76%</td><td>323.05</td><td>30.03</td></tr><tr><td>2024</td><td>303.17</td><td>-11.93</td><td>-12.38</td><td>9.48%</td><td>287.98</td><td>17.95</td></tr><tr><td>2025</td><td>266.68</td><td>-5.63</td><td>-6.15</td><td>9.22%</td><td>263.33</td><td>12.27</td></tr><tr><td><strong>2026H1</strong></td><td><strong>112.99</strong></td><td><strong>-2.04</strong></td><td><strong>-2.08</strong></td><td>9.29%</td><td><strong>237.66</strong></td><td><strong>10.23</strong></td></tr></tbody></table>
+<blockquote><p>口径：合并报表，归母净利润＝Wind「净利润」− 少数股东损益；数据来源 Wind（年度）与公司 2026 年半年度报告。2025 年资产负债率 <strong>91.7%</strong>（负债 241.56 亿元 / 总资产 263.33 亿元）。三年（2023–2025）累计归母亏损 <strong>34.46 亿元</strong>。</p></blockquote>
+<details class="fold"><summary>2025 年分季度利润拆解：钱是怎么亏掉的</summary><div class="fold-body">
+
+<table><thead><tr><th>季度</th><th>营业收入（亿元）</th><th>归母净利（亿元）</th><th>扣非归母（亿元）</th></tr></thead><tbody><tr><td>2025Q1</td><td>73.76</td><td>+0.24</td><td>-0.75</td></tr><tr><td>2025Q2</td><td>69.36</td><td>+0.08</td><td>+0.04</td></tr><tr><td>2025Q3</td><td>72.01</td><td>-0.06</td><td>-0.07</td></tr><tr><td><strong>2025Q4</strong></td><td><strong>51.55</strong></td><td><strong>-5.89</strong></td><td><strong>-5.37</strong></td></tr></tbody></table>
+<blockquote><p><strong>判读</strong>：全年 -5.63 亿元的亏损里，<strong>Q4 单季就亏掉 5.89 亿元</strong>——公司自述系"计提商誉减值和信用减值"。<strong>风险点在于：这种"平时微利、年末一次性计提"的节奏若在 2026 年重演，归母净资产（10.23 亿元）存在被打穿、转为负值的现实可能</strong>，而期末净资产为负直接触发财务类 *ST（9.3.1 二项）。2026H1 已亏 2.04 亿元，其中 Q2 单季亏 2.18 亿元（Q1 尚盈利 0.14 亿元）。</p></blockquote>
+
+</div></details>
+<details class="fold"><summary>2026H1 收入与利润来源地图（分行业，含毛利率）</summary><div class="fold-body">
+
+<table><thead><tr><th>分行业</th><th>2026H1 收入（亿元）</th><th>占比</th><th>同比</th><th>毛利率</th></tr></thead><tbody><tr><td>医药流通</td><td>64.26</td><td>56.88%</td><td><strong>-27.76%</strong></td><td>8.44%</td></tr><tr><td>医疗器械</td><td>44.98</td><td>39.81%</td><td>-9.78%</td><td>—</td></tr><tr><td>医药制造</td><td>2.37</td><td>2.09%</td><td>-15.67%</td><td>—</td></tr><tr><td>食品、保健品</td><td>0.91</td><td>0.80%</td><td>+9.08%</td><td>—</td></tr><tr><td>其他</td><td>0.48</td><td>0.42%</td><td>-28.25%</td><td>—</td></tr><tr><td><strong>合计</strong></td><td><strong>112.99</strong></td><td>100%</td><td><strong>-21.05%</strong></td><td>9.29%</td></tr></tbody></table>
+<blockquote><p><strong>哪块在变、为什么变</strong>：收入下滑几乎全部来自<strong>医药流通（-27.76%）</strong>——公司自述为"主动放弃部分低毛利、资金周转周期长的低效业务"，属于<strong>主动收缩</strong>；医疗器械（-9.78%）相对稳定。<strong>热点业务占比必须定位</strong>：市场热炒的"光通信/前沿新材料"投入仅 <strong>510 万元</strong>（2026 年 7 月与昆腾智算合资设立深圳市海王光通信科技，注册资本 1,000 万元、公司持股 51%），<strong>占归母净资产的 0.05%</strong>——属题材布局，不构成基本面变量。创新药 HW130（化药 1 类抗肿瘤）处 Ⅱa 期临床、NEP018 处 Ⅰ 期准备，<strong>均无收入</strong>。</p><p><strong>四类审美标签</strong>：医药流通＝<strong>长期价值（微利、区域壁垒）</strong>；医疗器械（与迈瑞、强生、美敦力合作）＝<strong>景气成长（相对稳定）</strong>；创新药 HW130/NEP018＝<strong>题材炒作</strong>（无收入）；光通信/前沿新材料＝<strong>题材炒作（占比 0.05%）</strong>。</p></blockquote>
+
+</div></details>
+<details class="fold"><summary>资产受限明细：钱和资产都被"押"住了</summary><div class="fold-body">
+
+<p><strong>2025 年末受限资产合计 132.50 亿元</strong>（2026-06-30 降至 112.77 亿元）：</p>
+<table><thead><tr><th>受限项目</th><th>2025 年末（亿元）</th><th>2026-06-30（亿元）</th></tr></thead><tbody><tr><td>应收账款（质押）</td><td>106.39</td><td>88.59</td></tr><tr><td>货币资金（票据保证金）</td><td>12.91</td><td>12.28</td></tr><tr><td>货币资金（履约保证金）</td><td>1.81</td><td>1.67</td></tr><tr><td>应收票据（未终止确认贴现）</td><td>4.81</td><td>2.11</td></tr><tr><td>应收票据（票据质押）</td><td>2.29</td><td>2.36</td></tr><tr><td>固定资产（抵押）</td><td>2.23</td><td>3.50</td></tr><tr><td>无形资产（抵押）</td><td>0.63</td><td>0.75</td></tr><tr><td>货币资金（法院冻结）</td><td>0.09</td><td>0.56</td></tr><tr><td>存货、投资性房地产等</td><td>0.86</td><td>0.78</td></tr><tr><td><strong>合计</strong></td><td><strong>132.50</strong></td><td><strong>112.77</strong></td></tr></tbody></table>
+<blockquote><p><strong>判读</strong>：公司 2025 年末账面货币资金 29.81 亿元，但其中 <strong>15.26 亿元已因票据保证金/履约保证金/质押/法院冻结而受限</strong>，可动用部分约 14.55 亿元——而这还是 2025 年末的口径。<strong>106.39 亿元的应收账款被质押</strong>，意味着公司主要资产已被用于融资抵押，进一步腾挪空间极其有限。</p></blockquote>
+
+</div></details>
+<h3 id="sec4">1.5 关键人物与实控人</h3>
+<p><strong>结论：实控人张思民已于 2025 年 10 月换届时卸任上市公司董事局主席，现任主席兼总裁为张锋——实控人从上市公司治理层的"退出"，与随后暴露的资金占用问题在时间上高度吻合。</strong> 此外，公司近三年有过两次行政监管措施记录。</p>
+<table><thead><tr><th>姓名</th><th>年龄</th><th>现任职务</th><th>2025 年税前报酬</th></tr></thead><tbody><tr><td><strong>张锋</strong></td><td>54</td><td><strong>董事局主席、总裁</strong></td><td>414 万元</td></tr><tr><td>张翼飞</td><td>53</td><td>董事局副主席、常务副总裁</td><td>215 万元</td></tr><tr><td>金锐</td><td>42</td><td>董事、副总裁</td><td>135 万元</td></tr><tr><td>王云雷</td><td>55</td><td>董事、副总裁、董事局秘书</td><td>105.43 万元</td></tr><tr><td>王焕军</td><td>49</td><td>独立董事</td><td>15 万元</td></tr><tr><td>张巍松</td><td>53</td><td>独立董事</td><td>15 万元</td></tr><tr><td>车汉澍</td><td>59</td><td>董事</td><td>15 万元</td></tr><tr><td>吴野</td><td>51</td><td>独立董事</td><td>2.84 万元</td></tr><tr><td>刘德举</td><td>56</td><td>董事（在关联方取酬）</td><td>2.84 万元</td></tr><tr><td><strong>张思民</strong></td><td>64</td><td><strong>（已离任）原董事局主席</strong></td><td>12.23 万元（在关联方取酬）</td></tr><tr><td>沈大凯</td><td>61</td><td>（已离任）原董事、副总裁、财务总监</td><td>168.93 万元</td></tr></tbody></table>
+<details class="fold"><summary>关键人物简历与监管记录（公告未披露详细履历者已如实标注）</summary><div class="fold-body">
+
+<ul><li><strong>张思民</strong>（男，64 岁）：海王集团创始人、实际控制人。<strong>2025 年 10 月公司董事局换届前担任上市公司董事局主席，换届后离任</strong>，2025 年在上市公司仅领取 12.23 万元报酬且注明"在关联方获取报酬"。<strong>公告未披露其出生年月以外的详细履历</strong>（本报告不引用第三方内容填充）。</li><li><strong>张锋</strong>（男，54 岁）：现任董事局主席、总裁，2025 年 10 月接任主席。薪酬含其兼任控股子公司海王英特龙（08329.HK）董事领取的报酬。<strong>公告未披露其详细履历。</strong></li><li><strong>监管记录（公告披露）</strong>：① <strong>2023 年 7 月</strong>深圳证监局对时任董事局主席张思民、总裁张锋、时任副总裁兼财务总监沈大凯采取<strong>监管谈话</strong>，事由为"个别长期股权投资事项核算不准确、个别子公司商誉减值测试参数指标选择不审慎"；② <strong>2024 年 10 月</strong>深圳证监局对张思民、张锋、沈大凯、王云雷采取<strong>出具警示函</strong>，事由为"信息披露、财务会计核算不规范"。<strong>两次均为行政监管措施，非行政处罚。</strong></li></ul>
+
+</div></details>
+<details class="fold"><summary>王艳式六栏目 · ② 股东阵容与 ⑥ 关键信号</summary><div class="fold-body">
+
+<p><strong>② 股东阵容（2026-06-30）</strong></p>
+<table><thead><tr><th>股东</th><th>身份识别</th><th>取得方式与成本</th><th>锁定/质押</th></tr></thead><tbody><tr><td>深圳海王集团</td><td><strong>原体系·控股股东</strong></td><td>上市前取得并长期持有</td><td><strong>质押 12.14 亿股（99.83%）</strong>，无减持记录</td></tr><tr><td>香港中央结算、Morgan Stanley、UBS AG、中信证券</td><td><strong>外资/机构通道</strong></td><td>2026H1 增持（陆股通 +1,348 万股）</td><td>无限售</td></tr><tr><td>上海申宸辉耀私募基金</td><td><strong>私募基金</strong></td><td>2026H1 新进 615.49 万股</td><td>无限售</td></tr><tr><td>胡刚、孙银锁、史笑难、李俊逸</td><td><strong>自然人（含疑似牛散/游资）</strong></td><td>部分新进（各 268–738 万股）</td><td>无限售</td></tr></tbody></table>
+<blockquote><p>除控股股东外，<strong>二至十名合计不足 3%，无产业资本、无控制权争夺方、无"锁仓同盟"</strong>。</p></blockquote>
+<p><strong>⑥ 关键信号：四家"无关联第三方"高度可疑，且必须写反向读数</strong></p>
+<p>海王集团欠付的"无关联第三方"为<strong>长春市金伊医疗器械有限公司、长春市感通贸易有限公司</strong>；2025 年度保留意见还涉及以定期存款质押为<strong>新疆辰发商贸有限公司、新疆森利先卓建筑工程有限公司</strong>银行借款提供的 <strong>6.50 亿元</strong>担保。</p>
+<ul><li><strong>它证明了什么</strong>：① 12.95 亿元资金经由这四家"第三方"流转后形成对控股股东的实质占用，"无关联"仅是公告口径；② 采用"银行受托支付 + 第三方过桥"而非直接划转，说明<strong>当事方明知该行为不合规</strong>（若合规，无需绕道）；③ 四家主体分处长春、新疆，与公司医药流通主业（华东为主）无业务交集，<strong>"业务合作"解释的合理性存疑</strong>。</li><li><strong>它不证明什么</strong>：<strong>不证明这些主体与海王集团存在股权关联</strong>（会计师与监管均未如此认定）；<strong>不证明已经造成实际损失</strong>（本金 12.56 亿元仍在账上，只是收不回）；<strong>也不证明四家主体是为本次占款临时设立</strong>——会计师明确表示"无法判断是否存在资金占用"，说明<strong>这些主体的形成可能是"天然存在、后被借用"</strong>，而非专门构造。</li><li><strong>反向读数的价值</strong>：如果四家是"天然存在的老合作方"，那么还款路径依赖的是<strong>海王集团自身的资产变现能力</strong>，而不是"把过桥公司的钱退回来"这么简单——<strong>这加重了还款的不确定性</strong>。</li></ul>
+
+</div></details>
+<hr>
+<h2 id="chap2">二、路径：规范类 · 资金占用清收（唯一主路径）</h2>
+<blockquote><p>ST海王同时是"规范类·资金占用"与"规范类·内控非标"，但<strong>两条线共用同一个生死开关——控股股东的偿债能力</strong>。因此本报告只深耕「<strong>资金占用清收路径</strong>」这一条；内控整改已在 §1.3 交代（属程序性整改，公司已成立董事局主席挂帅的整改工作小组、补制度、解除质押担保），另两条路径（保壳·重整）一句话带过：<strong>公司营收 266.68 亿元、净资产为正，不构成财务类保壳需求；亦无任何重整/预重整迹象。</strong></p></blockquote>
+<h3 id="sec5">2.1 资金占用来龙去脉：一笔"过桥"如何变成 12.56 亿元</h3>
+<p><strong>结论：这不是"大股东借钱不还"，而是一次典型的"上市公司出钱、协助大股东还债"的通道操作。</strong> 完整链条是：海王集团欠金伊医疗/长春感通 13.09 亿元 → 两家被银行抽贷、要求海王集团还钱 → 海王集团原打算靠资产变现还，但"<strong>既定合作项目暂缓推进、资产变现事项进程搁置</strong>" → 于是上市公司以"财务资助"名义向两家第三方出借 12.95 亿元，款项<strong>经银行受托支付直接划入两家账户、未进集团账户</strong> → 客观形成海王集团对上市公司的<strong>变相占用</strong>。</p>
+<details class="fold"><summary>资金占用公告原文要点（2026-08-28，公告编号 2026-072）</summary><div class="fold-body">
+
+<blockquote><p>"公司于 2025 年 9 月及 12 月向无关联第三方长春市金伊医疗器械有限公司、长春市感通贸易有限公司提供财务资助本金合计 <strong>12.95 亿元</strong>。近期公司获悉，公司控股股东深圳海王集团股份有限公司与金伊医疗、长春感通多年存在业务合作关系及资金拆借往来，截至 2025 年 12 月 31 日，海王集团欠付金伊医疗、长春感通 <strong>13.09 亿元</strong>。2025 年 9 月、12 月金伊医疗、长春感通自身银行贷款被贷款行收贷，需要大额资金归还银行贷款，因此要求海王集团偿还前期借款以归还贷款。海王集团原计划依托旗下资产变现快速回笼资金……后因海王集团相关既定合作项目暂缓推进，导致海王集团旗下资产变现事项进程搁置，海王集团也因此无法按预计时间归还金伊医疗、长春感通借款。……公司为金伊医疗、长春感通提供财务资助后，相关款项直接划转至金伊医疗和长春感通账户，并未划入海王集团账户，但<strong>客观上形成了海王集团对公司的变相资金占用</strong>。截至本公告披露日，<strong>资金占用余额为本金 12.56 亿元</strong>。"</p></blockquote>
+<p><strong>深圳证监局〔2026〕170 号另查明四项额外违规</strong>：</p>
+<blockquote><p>① 2025 年 9 月至 2026 年 4 月期间，<strong>未经审议程序</strong>对外提供 <strong>2 笔财务资助和 4 笔质押担保</strong>，直至 2026 年 4 月底才补充审议、披露；② <strong>2025 年年度报告中披露的财务资助还款情况不实</strong>；③ <strong>重大合同未及时披露进展</strong>；④ <strong>融资费用摊销不规范</strong>。</p></blockquote>
+
+</div></details>
+<h3 id="sec6">2.2 控股股东的还款能力：这是全篇最硬的一问</h3>
+<p><strong>结论：从公开信息看，控股股东</strong>没有<strong>任何可见的、确定的还款来源；唯一新增的增信是一笔海王星辰 12% 股权质押，而"质押"不等于"变现"，更不等于"已筹到钱"。</strong> 三条路径中，"产业基金受让资产"尚在"积极推进中"、"资产质押/股权变现"未见落地公告、<strong>距离 2026-12-31 的自我承诺仅剩不到 3 个月</strong>。</p>
+<table><thead><tr><th>可动用资源</th><th>状态</th><th>判读</th></tr></thead><tbody><tr><td>海王集团所持上市公司股份</td><td>12.16 亿股（46.23%），<strong>已质押 12.14 亿股（99.83%）</strong></td><td><strong>几乎无剩余可质押/可减持空间</strong>；且质押中的股份若被处置需先解押还贷</td></tr><tr><td>海王星辰 12% 股权</td><td>2026-09-04 完成质押登记给上市公司</td><td><strong>增信≠变现</strong>；公司明确"不构成以股抵债、不豁免现金足额偿还义务"；海王星辰未上市，处置需司法程序</td></tr><tr><td>与战投/地方产业平台设立产业基金受让资产</td><td>公告口径"正在积极推进中"</td><td><strong>无合作方、无金额、无时间表</strong>，属"软预期"</td></tr><tr><td>集团其他资产质押融资</td><td>公告口径"拟通过资产质押、持有的股权资产变现"</td><td><strong>无一项落地公告</strong></td></tr></tbody></table>
+<details class="fold"><summary>海王星辰值多少？——一笔必须自己算的账</summary><div class="fold-body">
+
+<ul><li><strong>可核实的公开数据</strong>：海王星辰覆盖全国 78 个城市、近 5,000 家门店、8,000 万会员；<strong>2023 年营收 147.04 亿元、净利润 5.61 亿元、总资产 69.47 亿元</strong>（来源：证券时报/今日头条等二级整理，<strong>属线索级，未经公告核实</strong>）。</li><li><strong>关键缺口</strong>：<strong>海王星辰的净资产与净利润最新数未在上市公司公告中披露</strong>。按 2023 年 5.61 亿元净利润、连锁药房 15–25 倍 PE 粗略估算，<strong>整体估值区间约 84–140 亿元，12% 对应 10–17 亿元</strong>——数字上勉强能覆盖 12.56 亿元，但：</li><li><strong>这是估算，不是定价</strong>（公司未披露评估报告）；</li><li><strong>质押的是"股权"，不是"现金"</strong>——若海王集团不还钱，上市公司要走司法处置程序，周期长、折价大；</li><li><strong>海王星辰 2023 年的数据，到 2026 年是否仍成立无从验证</strong>（连锁药店行业近两年受医保比价、线上分流冲击较大）。</li><li><strong>纪律</strong>：本报告<strong>不替公司给海王星辰定价</strong>，只指出<strong>"12% 股权足以覆盖占款"这句话在公开信息层面缺乏公告级证据</strong>。</li></ul>
+
+</div></details>
+<h3 id="sec7">2.3 经营自救：真在做，但救不了这一局</h3>
+<p><strong>结论：公司确实在做正确的事（剥离低效子公司、聚焦医疗器械与医药制造、推进创新药），但这些动作改善的是"长期经营质量"，</strong>解决不了<strong>"3 个月内还 12.56 亿元"和"2026 年度内控审计必须转标准"这两个当期生死题。</strong></p>
+<table><thead><tr><th>自救动作</th><th>进展</th><th>对当期生死题的作用</th></tr></thead><tbody><tr><td>剥离低效子公司</td><td>2026H1 出售 10 家（河南东森医药 2.48 亿元等）</td><td>减少亏损源，但<strong>资产处置同时产生非经常性损失</strong>（2026H1 处置损益 -4,331.79 万元）</td></tr><tr><td>聚焦高毛利业务</td><td>医疗器械 44.98 亿元、医药工业 2.37 亿元</td><td>结构优化，<strong>短期难以扭转整体亏损</strong></td></tr><tr><td>创新药推进</td><td>HW130 Ⅱa 期临床、NEP018 Ⅰ 期准备</td><td><strong>无收入、无时间表</strong>，纯题材</td></tr><tr><td>跨界光通信/新材料</td><td>2026-07 合资设立，<strong>出资 510 万元</strong></td><td>占比 0.05%，<strong>题材性布局</strong></td></tr><tr><td>内控整改</td><td>成立董事局主席挂帅整改小组、解除质押担保、追认审议、补制度</td><td><strong>直接对应 9.8.1（四）撤销条件</strong>，是少数"看得见进度"的动作</td></tr><tr><td>董监高增持</td><td>2026-09-21 完成：8 人合计 207.81 万股、<strong>313.14 万元</strong>（超计划下限 310 万元）</td><td><strong>信号意义大于实质</strong>（占市值 0.08%）</td></tr></tbody></table>
+<h3 id="sec8">2.4 全流程进度看板</h3>
+<p><strong>结论：把整件事拆成 8 个环节后可以看到——"卡点"属于</strong>「时间未到」而不是「谈不拢」的只有内控整改；而资金占用还款这一项，<strong>卡点是"钱从哪来"，属实质性障碍</strong>。**</p>
+<table><thead><tr><th>环节</th><th>现状</th><th>卡点或条件</th><th>下一节点</th><th>印证文件</th></tr></thead><tbody><tr><td>戴帽（内控）</td><td>✅ 2026-05-06 已实施 ST</td><td>—</td><td>2026 年度内控审计（2027-04）</td><td>实施公告</td></tr><tr><td>戴帽（资金占用）</td><td>✅ 2026-08-31 已叠加 ST</td><td>—</td><td>—</td><td>叠加公告</td></tr><tr><td>证监会责令改正</td><td>✅ 2026-08-28 收到</td><td>六个月内归还（≤2027-02-28）</td><td>—</td><td>〔2026〕170 号</td></tr><tr><td>增信落地</td><td>✅ 2026-09-04 海王星辰 12% 股权质押登记完成</td><td>—</td><td>—</td><td>增信进展公告</td></tr><tr><td>控股股东筹措资金</td><td>❌ 无任何落地公告</td><td><strong>钱从哪来（实质障碍）</strong></td><td>产业基金/资产变现落地</td><td>待观察</td></tr><tr><td>资金占用清偿</td><td>❌ 未见偿还进展</td><td>12.56 亿元本息</td><td>公司自设 ≤2026-12-31</td><td>待观察</td></tr><tr><td>会计师专项核查</td><td>⏳ 未开始</td><td>以清偿为前提</td><td>清偿后出具</td><td>9.8.7 第一款</td></tr><tr><td>申请撤销 ST</td><td>⏳ 未申请</td><td>须"最近一个会计年度"内控标准无保留</td><td><strong>最早 2027-04</strong></td><td>9.8.7 第三款</td></tr></tbody></table>
+<blockquote><p><strong>运作特征</strong>：① <strong>手法</strong>＝"银行受托支付 + 第三方过桥"，非直接划转，<strong>属规避式操作</strong>；② <strong>节奏</strong>＝2025-09 起出借、2026-04 追认、2026-08 被查、2026-09 才出增信，<strong>全程被动应对、无主动披露</strong>；③ <strong>交权特征</strong>＝内部治理层"配合式"过渡（实控人 2025-10 卸任主席、由原总裁张锋接任，无对抗）；④ <strong>成败关键变量（1 和 0）</strong>＝<strong>控股股东能否在 2026-12-31 前拿出 12.56 亿元现金</strong>；⑤ <strong>核心矛盾一句话</strong>＝<strong>上市公司要钱、控股股东没钱，而上市公司最值钱的资产早已抵押给了银行</strong>。</p></blockquote>
+<hr>
+<h2 id="chap3">三、炒作逻辑 + 情绪面 + 筹码面</h2>
+<h3 id="sec9">3.1 炒作逻辑三支柱（全部着眼未来）</h3>
+<table><thead><tr><th>支柱</th><th>本标的的答案</th><th>强度排序</th></tr></thead><tbody><tr><td><strong>① 炒预期</strong></td><td>未来 6–12 个月的两类节点：<strong>硬节点</strong>＝2026-12-31（清偿承诺到期）、2027-02-28（证监会整改期限）、2027-04（2026 年报及内控审计）；<strong>软预期</strong>＝产业基金落地、资产变现、光通信/新药进展</td><td><strong>较弱</strong>：硬节点全是"考问"而非"送分"，超前兑现的风险大于机会</td></tr><tr><td><strong>② 炒历史类似行为</strong></td><td>内控非标型 ST 同型样本 2026 年 <strong>7 跌 1 涨、中位数 -26.13%</strong>；且本标的今年 7 月的"摘帽预期"行情已被 8 月公告证伪</td><td><strong>指向下跌组</strong></td></tr><tr><td><strong>③ 炒主板映射</strong></td><td>主板在炒 AI 算力/光通信（公司已设合资公司，但<strong>出资仅 510 万元</strong>）、创新药（HW130 处 Ⅱa 期，<strong>无收入</strong>）——<strong>两条都属于"低位蹭概念"，非实质受益</strong></td><td><strong>最弱（纯概念）</strong></td></tr></tbody></table>
+<p><strong>→ 当前市场最认哪一支</strong>：从 7 月的行情看，市场认的是<strong>"摘帽预期"</strong>（对应支柱①的事件性预期）。但这一支在 8 月 28 日被证伪后，<strong>三支柱目前没有一支具备正向推动力</strong>。</p>
+<details class="fold"><summary>支柱② 相似股票匹配法：本标的"最像谁"，它们后来怎么样了</summary><div class="fold-body">
+
+<p><strong>本标的画像</strong>：深主板 ｜ 规范类 ST（内控非标 + 控股股东资金占用）｜ 市值 39.20 亿元 ｜ 主业持续亏损、净资产快速缩水 ｜ 历史炒作符号＝"摘帽预期 + 创新药 + 保健食品 + 医药商业" ｜ 控股股东高比例质押。</p>
+<p><strong>在当下市场里，与本标的"最像"的是路径底表【规范类】表中"内控连续两个会计年度非标"的 9 家</strong>——它们正是<strong>本标的若 2026 年度再非标后的下一个形态</strong>：</p>
+<table><thead><tr><th>代码</th><th>简称</th><th>内控意见（2025 年报）</th><th>现价（元）</th><th>PB</th><th>2026 年至今涨跌幅</th></tr></thead><tbody><tr><td>002630</td><td>*ST华西</td><td>无法表示意见</td><td>1.43</td><td>-15.08</td><td><strong>-42.80%</strong></td></tr><tr><td>002717</td><td>*ST岭南</td><td>否定意见（原实控人转出资金 2 亿元，尚欠 1.42 亿元）</td><td>0.62</td><td>-0.69</td><td><strong>-61.73%</strong></td></tr><tr><td>300152</td><td>*ST动力</td><td>否定意见</td><td>1.58</td><td>5.37</td><td>-26.17%</td></tr><tr><td>300198</td><td>*ST纳川</td><td>否定意见</td><td>2.43</td><td>5.77</td><td>-5.08%</td></tr><tr><td>300716</td><td>*ST泉为</td><td>否定意见</td><td>17.05</td><td>-11.40</td><td><strong>+42.44%</strong></td></tr><tr><td>600107</td><td>*ST尔雅</td><td>否定意见（实控人占用 1.14 亿元）</td><td>5.62</td><td>5.20</td><td>-19.02%</td></tr><tr><td>603828</td><td>*ST利达</td><td>否定意见（控股股东占用，已收回 1.60 亿元）</td><td>6.19</td><td>7.96</td><td>-26.13%</td></tr><tr><td><strong>000078</strong></td><td><strong>ST海王</strong></td><td><strong>否定意见</strong></td><td><strong>1.49</strong></td><td><strong>3.83</strong></td><td><strong>-56.94%</strong></td></tr></tbody></table>
+<blockquote><p><strong>结论</strong>：同型样本组 <strong>7 跌 1 涨，中位数 -26.13%、均值 -19.78%</strong>，属<strong>下跌组</strong>；唯一的上涨样本 *ST泉为系"净资产为负的净壳炒作"（PB -11.40），与 ST海王"有实体业务、净资产为正"的画像不同。<strong>ST海王自身的 -56.94% 已显著弱于同组中位数</strong>，说明市场对"资金占用 + 体量庞大"的定价比"单纯内控非标"更严苛。</p><p><strong>样本量说明</strong>：本组样本量偏小（8 只有效），<strong>只作方向参考、不作概率推断</strong>；且同组多为 2026 年已实施 *ST 的标的，形态上比 ST海王"更靠后一步"，<strong>ST海王若走到 *ST，参照系会更差</strong>。</p></blockquote>
+
+</div></details>
+<details class="fold"><summary>本标的自身的炒作史与连板极值（韭研公社异动整理）</summary><div class="fold-body">
+
+<p><strong>炒作符号提炼</strong>：<strong>「摘帽预期 + 创新药 + 股权转让 + 保健食品（海王金樽）+ 医药商业」</strong>——高频组合始终围绕"<strong>ST自救叙事</strong>"与"<strong>医药概念（创新药/流感/保健食品）</strong>"两条线，<strong>与主业（医药流通）关联度低</strong>。</p>
+<p><strong>连板极值</strong>：<strong>10 天 8 板</strong>（2026-07-14，股价 2.29 元）；另有 11 天 6 板（2026-06-11）、8 天 7 板（2025-12-05，流感行情）。</p>
+<p><strong>关键对照</strong>：<strong>2026 年 7 月那波"摘帽预期"行情（1.35 → 2.29 元，11 个交易日 +70%）的驱动是 7 月 2 日"借款本金已全额收回、质押担保已解除、力争尽快申请撤销风险警示"的进展公告——而 8 月 28 日 12.56 亿元资金占用一经披露，该逻辑被彻底证伪，股价由 2.29 元跌回 1.49 元（-35%）。</strong></p>
+<p><strong>股价水位（异动表口径）</strong>：2025-11 低点 2.57 元 → 2025-12 高点 5.29 元 → 2026-01 高点 4.49 元 → 2026-04 高点 3.84 元 → 2026-05 戴帽后 1.60 元附近 → 2026-07 反弹高点 2.29 元 → <strong>现价 1.49 元（2026-09-30）</strong>。</p>
+
+</div></details>
+<details class="fold"><summary>全量异动明细（35 条，时间降序）</summary><div class="fold-body">
+
+<table><thead><tr><th>交易日</th><th>题材</th><th>涨停信息</th><th>股价（元）</th><th>涨幅</th><th>异动关键词</th></tr></thead><tbody><tr><td>2026-09-07</td><td>ST板块</td><td>—</td><td>1.60</td><td>+10.34%</td><td>资金占用整改+股权转让+创新药+保健食品+医药商业</td></tr><tr><td>2026-07-14</td><td>ST板块</td><td>10天8板</td><td>2.29</td><td>+10.10%</td><td>摘帽预期+股权转让+创新药+保健食品+医药商业</td></tr><tr><td>2026-07-13</td><td>ST板块</td><td>9天7板</td><td>2.08</td><td>+10.05%</td><td>摘帽预期+…</td></tr><tr><td>2026-07-08</td><td>ST板块</td><td>6天6板</td><td>1.98</td><td>+10.00%</td><td>摘帽预期+…</td></tr><tr><td>2026-07-07</td><td>ST板块</td><td>5天5板</td><td>1.80</td><td>+9.76%</td><td>摘帽预期+…</td></tr><tr><td>2026-07-06</td><td>ST板块</td><td>4天4板</td><td>1.64</td><td>+10.07%</td><td>摘帽预期+…</td></tr><tr><td>2026-07-03</td><td>ST板块</td><td>3天3板</td><td>1.49</td><td>+4.93%</td><td>摘帽预期+…</td></tr><tr><td>2026-07-02</td><td>ST板块</td><td>2天2板</td><td>1.42</td><td>+5.19%</td><td>摘帽预期+…</td></tr><tr><td>2026-07-01</td><td>ST板块</td><td>—</td><td>1.35</td><td>+4.65%</td><td>摘帽预期+…</td></tr><tr><td>2026-06-11</td><td>ST板块</td><td>11天6板</td><td>1.61</td><td>+5.23%</td><td>摘帽预期+股权转让+创新药+保健食品</td></tr><tr><td>2026-06-05</td><td>ST板块</td><td>7天5板</td><td>1.77</td><td>+4.73%</td><td>股权转让+创新药+感冒药+保健食品</td></tr><tr><td>2026-06-02</td><td>ST板块</td><td>4天4板</td><td>1.85</td><td>+5.11%</td><td>股权转让+创新药+感冒药</td></tr><tr><td>2026-06-01</td><td>ST板块</td><td>3天3板</td><td>1.76</td><td>+4.76%</td><td>股权转让+创新药+感冒药</td></tr><tr><td>2026-05-29</td><td>ST板块</td><td>2天2板</td><td>1.68</td><td>+5.00%</td><td>股权转让+创新药+感冒药</td></tr><tr><td>2026-05-28</td><td>ST板块</td><td>—</td><td>1.60</td><td>+5.26%</td><td>股权转让+创新药+感冒药</td></tr><tr><td>2026-04-09</td><td>医疗医药</td><td>—</td><td>3.84</td><td>+10.03%</td><td>创新药+感冒药+保健食品（AACR 年会催化）</td></tr><tr><td>2026-04-01</td><td>医疗医药</td><td>—</td><td>3.45</td><td>+9.87%</td><td>创新药+感冒药+保健食品</td></tr><tr><td>2026-01-26</td><td>医药</td><td>—</td><td>4.20</td><td>+9.95%</td><td>医药商业+创新药（尼帕病毒）</td></tr><tr><td>2026-01-14</td><td>其他</td><td>2天2板</td><td>4.49</td><td>+10.05%</td><td>创新药+感冒药+保健食品+生物药</td></tr><tr><td>2026-01-13</td><td>医疗医药</td><td>—</td><td>4.08</td><td>+9.97%</td><td>感冒药+保健食品+生物药</td></tr><tr><td>2025-12-05</td><td>医药</td><td>8天7板</td><td>5.29</td><td>+9.98%</td><td>感冒药+保健食品（流感）</td></tr><tr><td>2025-12-04</td><td>医药</td><td>—</td><td>4.81</td><td>+6.42%</td><td>感冒药+保健食品（流感）</td></tr><tr><td>2025-12-03</td><td>医药</td><td>6天6板</td><td>4.52</td><td>+9.98%</td><td>感冒药+保健食品（流感）</td></tr><tr><td>2025-12-02</td><td>流感</td><td>5天5板</td><td>4.11</td><td>+9.89%</td><td>感冒药+保健食品（流感高峰）</td></tr><tr><td>2025-12-01</td><td>其他</td><td>4天4板</td><td>3.74</td><td>+10.00%</td><td>感冒药+保健食品（流感）</td></tr><tr><td>2025-11-28</td><td>医药</td><td>3天3板</td><td>3.40</td><td>+10.03%</td><td>感冒药+保健食品（流感流行季）</td></tr><tr><td>2025-11-27</td><td>医药</td><td>2天2板</td><td>3.09</td><td>+9.96%</td><td>感冒药+保健食品</td></tr><tr><td>2025-11-26</td><td>医药</td><td>—</td><td>2.81</td><td>+10.20%</td><td>感冒药+保健食品</td></tr><tr><td>2025-07-02</td><td>海洋经济</td><td>—</td><td>2.72</td><td>+10.12%</td><td>海洋谐音+保健食品+药物合成（海洋经济政策）</td></tr><tr><td>2025-05-27</td><td>消费</td><td>—</td><td>2.57</td><td>+9.83%</td><td>保健食品+生物药+医疗器械</td></tr><tr><td>2024-01-04</td><td>其它</td><td>—</td><td>3.51</td><td>+10.03%</td><td>药物合成+生物药+医疗</td></tr><tr><td>2023-12-25</td><td>合成生物</td><td>—</td><td>3.25</td><td>+10.17%</td><td>药物合成+生物药（合成生物学）</td></tr><tr><td>2022-05-16</td><td>新冠防疫</td><td>—</td><td>3.91</td><td>+4.55%</td><td>疫情防护+医疗</td></tr><tr><td>2022-03-10</td><td>新冠防疫</td><td>—</td><td>3.70</td><td>+10.12%</td><td>疫情防护+医疗（辉瑞 Paxlovid）</td></tr><tr><td>2022-03-04</td><td>公告</td><td>—</td><td>3.89</td><td>+9.89%</td><td><strong>筹划资产重组+混改引战+实控人可能变更</strong></td></tr></tbody></table>
+<blockquote><p>该表只收录达到异动阈值的题材条目；<strong>2026-07-15 之后至 09-07 之间、以及 09-07 之后未再录入</strong>（异动表存在滞后，另经龙虎榜交叉验证见下）。</p></blockquote>
+
+</div></details>
+<h3 id="sec10">3.2 情绪面：注意力来过，而且朝下</h3>
+<p><strong>结论：这只票不缺注意力，缺的是"向上的注意力"。</strong> 2026 年 7 月的"摘帽预期"曾把它推上 10 天 8 板，但 8 月的资金占用公告让注意力方向反转——<strong>8 月 31 日叠加 ST 当日跌停，龙虎榜净卖出</strong>。</p>
+<table><thead><tr><th>交易日</th><th>上榜原因</th><th>收盘价</th><th>涨跌幅</th><th>龙虎榜净买额</th><th>次日 / D5 / D10 表现</th></tr></thead><tbody><tr><td>2026-08-31</td><td>日跌幅偏离值达 7% 的前 5 只证券</td><td>1.45</td><td><strong>-9.94%</strong></td><td><strong>-500.37 万元</strong></td><td>+1.38% / +10.34% / +6.90%</td></tr><tr><td>2026-07-21</td><td>日跌幅偏离值达 7%；连续三日跌幅偏离值累计达 20%</td><td>1.58</td><td><strong>-10.23%</strong></td><td><strong>-913.88 万元</strong></td><td>+6.33% / +5.70% / +5.70%（D30 -6.96%）</td></tr></tbody></table>
+<blockquote><p><strong>判读</strong>：两次上榜<strong>均为净卖出</strong>，且 <strong>2026 年全年未见净买入的龙虎榜记录</strong>；8 月 31 日（叠加 ST 生效日）的跌停与净卖出，与 7 月 21 日的跌停形成"预期—证伪"的一组对照。换手率常年在 1%–7% 区间，<strong>并未出现"底部放量"式的资金介入迹象</strong>。</p></blockquote>
+<h3 id="sec11">3.3 筹码与估值位置：价格低，但"贵"</h3>
+<p><strong>结论：1.49 元的绝对价格与 4.61% 的历史价格分位看起来"很便宜"，但 PB 3.83 倍是同业的 4–6 倍——低价格是净资产被亏损打薄的结果，不是安全垫。</strong> 换句话说，<strong>它在"绝对价格"上是低位，在"资产定价"上是高位</strong>。</p>
+<table><thead><tr><th>公司</th><th>代码</th><th>现价（元）</th><th>PB</th><th>总市值（亿元）</th><th>2026 年涨跌幅</th></tr></thead><tbody><tr><td><strong>ST海王</strong></td><td><strong>000078.SZ</strong></td><td><strong>1.49</strong></td><td><strong>3.83</strong></td><td><strong>39.20</strong></td><td><strong>-56.94%</strong></td></tr><tr><td>国药一致</td><td>000028.SZ</td><td>19.66</td><td>0.64</td><td>120.36</td><td>-9.68%</td></tr><tr><td>国药股份</td><td>600511.SH</td><td>26.10</td><td>1.05</td><td>196.93</td><td>-6.62%</td></tr><tr><td>上海医药</td><td>601607.SH</td><td>16.22</td><td>0.77</td><td>601.50</td><td>-6.19%</td></tr><tr><td>华东医药</td><td>000963.SZ</td><td>27.69</td><td>1.96</td><td>485.61</td><td>-28.12%</td></tr></tbody></table>
+<blockquote><p><strong>"戴帽 ≠ 下跌主因"的校验</strong>：同业年初至今跌幅在 <strong>-6% 至 -28%</strong> 区间，而 ST海王 <strong>-56.94%</strong>——<strong>行业估值收缩只能解释其中一小部分，超额跌幅来自公司自身治理风险</strong>，因此<strong>不能以"跌得多＝有安全边际"为由买入</strong>。</p><p><strong>估值锚</strong>：亏损股不用 PE（pe_ttm -4.91）。用 PB 看，3.83 倍对应的是一个<strong>即将被亏损侵蚀殆尽的净资产</strong>；用 PS 看，39.20 亿元 / 266.68 亿元营收 = <strong>0.15 倍</strong>——对医药流通企业而言，PS 0.15 倍<strong>并不低于同业</strong>（国药一致约 0.15 倍、上海医药约 0.15 倍），说明<strong>市场并未给出"壳折价"以外的额外想象力</strong>。</p></blockquote>
+<hr>
+<h2 id="chap4">四、估值与投资结论</h2>
+<h3 id="sec12">4.1 估值：三条情景，全部以"占款能否收回"为开关</h3>
+<p><strong>结论：ST海王的估值不是一个"基本面估值"问题，而是一个"或然权益（contingent claim）"问题——它的价值几乎完全取决于 12.56 亿元占款能否收回、以及净资产会不会被 2026 年的减值打穿。</strong> 因此本报告不给 PE，只给三档情景下的<strong>净资产与市值区间</strong>。</p>
+<table><thead><tr><th>情景</th><th>关键假设</th><th>归母净资产</th><th>对应 PB / 市值</th><th>对应股价</th></tr></thead><tbody><tr><td><strong>悲观（概率约 40%）</strong></td><td>控股股东未能按期清偿；或 2026 年报再次大额减值致<strong>净资产转负</strong> → 财务类/规范类 *ST 乃至终止上市</td><td>≤0</td><td>无法定价（归零风险）</td><td>0–0.75 元</td></tr><tr><td><strong>中性（概率约 45%）</strong></td><td>占款在 2026-12-31 前后解决（含以质押股权处置抵偿）；2026 年度内控转标准无保留，2027-04 后摘帽；主业继续微亏</td><td>8–10 亿元</td><td>2.0–2.5 倍 / 16–25 亿元</td><td>0.61–0.95 元</td></tr><tr><td><strong>乐观（概率约 15%）</strong></td><td>占款全额收回并冲回；主业止血 ＋ 医疗器械/创新药出现实质进展或资产注入</td><td>12–15 亿元</td><td>3.0–3.7 倍 / 36–55 亿元</td><td>1.37–2.09 元</td></tr></tbody></table>
+<blockquote><p><strong>前提标注</strong>：以上情景<strong>全部以"公司不退市"为前提</strong>；若落入悲观情景，净资产转负即触发 9.3.1（二），<strong>存在退市归零风险</strong>。</p><p><strong>定价锚交叉验证</strong>：① <strong>控股股东持股成本</strong>——海王集团 12.16 亿股长期未动、无减持记录，<strong>无法据以计算"成本锚"</strong>；② <strong>董监高增持价</strong>——2026-06-24 至 2026-09-21 增持 207.81 万股、3,131,357 元，<strong>均价约 1.51 元/股</strong>，略高于现价 1.49 元；③ <strong>海王星辰 12% 股权质押</strong>——无评估值披露。<strong>结论：本标的缺乏"资本方成本锚"这一最硬的定价参考，这本身就是信息缺口。</strong></p></blockquote>
+<h3 id="sec13">4.2 投资结论</h3>
+<blockquote><p><strong>卖出（回避）</strong></p></blockquote>
+<p><strong>理由链（按重要性排序，每条带证据来源）</strong></p>
+<ol><li><strong>控股股东已丧失还款能力，且这条路是唯一的生路。</strong> 海王集团持股 46.23%（12.16 亿股）中 <strong>12.14 亿股已质押（99.83%）</strong>，无剩余可质押/可减持空间；集团自述"资产变现事项进程搁置"；唯一增信是一笔海王星辰 12% 股权质押，而<strong>公司明确"不构成以股抵债"</strong>。截至 2026-09-30 的最新进展公告<strong>对 12.56 亿元的偿还进度一字未提</strong>。（来源：<a href="https://data.eastmoney.com/notices/detail/000078/AN202604291821787567.html" target="_blank" rel="noopener">2025 年报</a>、<a href="https://data.eastmoney.com/notices/detail/000078/AN202608281828636843.html" target="_blank" rel="noopener">资金占用及整改方案</a>、<a href="https://data.eastmoney.com/notices/detail/000078/AN202609041829024306.html" target="_blank" rel="noopener">实控人质押增信</a>、<a href="https://data.eastmoney.com/notices/detail/000078/AN202609291829998162.html" target="_blank" rel="noopener">9-30 进展公告</a>）</li><li><strong>三条退市通道同时点亮，且都不是"远期风险"。</strong> 资金占用型（9.4.1 五）只差"逾期未整改"这一时间条件，逾期即停牌→*ST→终止上市；内控连续非标型（9.4.1 六）只等 2026 年度内控审计；财务类（9.3.1 二）的开关是"净资产转不负"——2026H1 归母净资产已降至 <strong>10.23 亿元</strong>。（来源：<a href="https://data.eastmoney.com/notices/detail/000078/AN202604291821787542.html" target="_blank" rel="noopener">实施其他风险警示公告</a>、<a href="https://data.eastmoney.com/notices/detail/000078/AN202608281828647837.html" target="_blank" rel="noopener">叠加实施风险警示公告</a>、<a href="https://data.eastmoney.com/notices/detail/000078/AN202608280006757998.html" target="_blank" rel="noopener">2026 半年报</a>）</li><li><strong>"低位"是伪命题。</strong> 价格分位 4.61% 的低位，对应 <strong>PB 3.83 倍</strong>（国药一致 0.64、上海医药 0.77、国药股份 1.05）——三年累计亏损 34.46 亿元把净资产从 30.03 亿元打薄到 10.23 亿元，<strong>低价格是净资产消失的结果，不是赔率</strong>。</li><li><strong>同型样本指向下跌组。</strong> 内控连续两年非标型 9 家样本 2026 年 <strong>7 跌 1 涨、中位数 -26.13%</strong>；ST海王自身 <strong>-56.94%</strong>（同期同业 -6% 至 -28%），<strong>超额跌幅来自治理风险而非行业 β</strong>。</li><li><strong>注意力方向朝下、筹码无同盟。</strong> 7 月"摘帽预期"行情（10 天 8 板，1.35→2.29 元）被 8 月 28 日公告<strong>证伪</strong>；8 月 31 日叠加 ST 当日跌停且龙虎榜净卖出 500.37 万元；<strong>2026 年无一次净买入龙虎榜</strong>；户均持股市值从 5.19 万元腰斩至 2.27 万元，<strong>除控股股东外无产业资本、无锁仓同盟</strong>。</li></ol>
+<p><strong>触发条件（出现即需重估）</strong></p>
+<table><thead><tr><th>方向</th><th>信号</th></tr></thead><tbody><tr><td>转"买入"方向</td><td>① 出现<strong>实际资金到账</strong>的清偿公告（而非承诺/增信）；② 出现《内控否定意见涉及事项<strong>影响已消除</strong>的审核报告》；③ 产业基金/资产处置<strong>完成签约并披露金额</strong></td></tr><tr><td>转"卖出/回避加深"</td><td>① 2026-12-31 前无实质还款进展；② 出现停牌或"可能被实施退市风险警示"的实施公告；③ 2026 年报预亏且期末净资产接近零</td></tr></tbody></table>
+<p><strong>失效条件</strong>：若控股股东在 2026 年内<strong>全额清偿 12.56 亿元本息</strong>并出具会计师专项核查意见，且 2026 年度内控审计转为标准无保留意见——则本报告"卖出"结论失效，需重新评估。</p>
+<p><strong>参考区间</strong>：<strong>当前 1.49 元不具备赔率优势</strong>。参与区间建议 <strong>≤0.75 元</strong>（对应悲观/中性交界、PB 1.9 倍一线）并<strong>仅在"清偿落地"信号出现后</strong>考虑；<strong>止损位</strong>：跌穿 1.00 元进入面值风险区即无条件离场。</p>
+<p><strong>时间窗口</strong>：本结论有效期至 <strong>2026-12-31</strong>（公司自我承诺的清偿截止日）。届时若未见清偿公告，结论应升级为"<strong>回避并防范退市</strong>"。</p>
+<p><strong>仓位建议</strong>：<strong>不建仓</strong>。</p>
+<p><strong>最大风险（一句话）</strong>：<strong>控股股东最终拿不出 12.56 亿元现金——那么公司在 2027 年上半年将依次经历停牌、*ST 与退市风险，本金损失概率显著。</strong></p>
+<hr>
+<h2 id="chap5">附录 A · 待核实 / 需补充清单</h2>
+<table><thead><tr><th>#</th><th>待核实项</th><th>当前结论</th></tr></thead><tbody><tr><td>1</td><td>海王星辰 12% 股权的<strong>评估值与净资产</strong></td><td>公司公告<strong>未披露</strong>（本报告仅给出基于 2023 年净利润的粗略估算区间，不作定价）</td></tr><tr><td>2</td><td>控股股东 12.56 亿元的具体资金来源与时间表</td><td>公告仅列"产业基金合作/资产质押/股权变现"三项方向，<strong>无金额、无对手方、无时间表</strong></td></tr><tr><td>3</td><td>金伊医疗、长春感通、新疆辰发、新疆森利先卓四家主体与海王集团的真实关系</td><td>会计师明确"无法判断是否存在资金占用"；<strong>未获关联关系认定</strong></td></tr><tr><td>4</td><td>海王英特龙（08329.HK）的最新财务与股权</td><td>本报告未及展开，建议升档补充</td></tr><tr><td>5</td><td>2026-07 出资 510 万元设立光通信合资公司的后续（是否增资、有无实质订单）</td><td><strong>公告未披露后续进展</strong></td></tr></tbody></table>
+<h2 id="chap6">附录 B · 关键信源清单</h2>
+<p>本报告全部关键数字与事件均可点击溯源至一手文件；媒体来源仅用于背景补全，不作事实认定依据。公告地址经东财公告库给出（巨潮 <code>hisAnnouncement/query</code> 接口本轮返回 HTTP 504，未能生成四参数深链）。</p>
+<details class="fold"><summary>信源清单（一手公告 / 监管规则 / 数据源 / 权威媒体 四级）</summary><div class="fold-body">
+
+<table><thead><tr><th>层级</th><th>文件与标题（日期）</th><th>地址</th></tr></thead><tbody><tr><td>一手·公告</td><td>2025 年年度报告（2026-04-30）</td><td><a href="https://data.eastmoney.com/notices/detail/000078/AN202604291821787567.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>一手·公告</td><td>关于公司股票被实施其他风险警示暨停复牌的公告（2026-04-30）</td><td><a href="https://data.eastmoney.com/notices/detail/000078/AN202604291821787542.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>一手·公告</td><td>关于追认对外财务资助及担保事项的公告（2026-04-30）</td><td><a href="https://data.eastmoney.com/notices/detail/000078/AN202604291821787552.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>一手·公告</td><td>董事局关于 2025 年度非标准财务报表审计意见和非标准内部控制审计意见涉及事项专项说明（2026-04-30）</td><td><a href="https://data.eastmoney.com/notices/detail/000078/AN202604291821787543.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>一手·公告</td><td>关于控股股东资金占用情况及其整改方案的公告（2026-08-28）</td><td><a href="https://data.eastmoney.com/notices/detail/000078/AN202608281828636843.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>一手·公告</td><td>关于收到深圳证监局责令改正措施决定的公告（2026-08-28）</td><td><a href="https://data.eastmoney.com/notices/detail/000078/AN202608281828647836.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>一手·公告</td><td>关于公司股票交易被叠加实施其他风险警示的风险提示公告（2026-08-28）</td><td><a href="https://data.eastmoney.com/notices/detail/000078/AN202608281828647837.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>一手·公告</td><td>2026 年半年度报告（2026-08-29）</td><td><a href="https://data.eastmoney.com/notices/detail/000078/AN202608280006757998.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>一手·公告</td><td>关于实际控制人质押海王星辰股份增信暨资金占用整改方案的进展公告（2026-09-05）</td><td><a href="https://data.eastmoney.com/notices/detail/000078/AN202609041829024306.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>一手·公告</td><td>关于股票交易被实施其他风险警示相关事项的进展公告（2026-09-30）</td><td><a href="https://data.eastmoney.com/notices/detail/000078/AN202609291829998162.html" target="_blank" rel="noopener">链接</a></td></tr><tr><td>一手·规则</td><td>《深圳证券交易所股票上市规则（2026 年修订）》9.3.1 / 9.4.1 / 9.4.4 / 9.8.1 / 9.8.2 / 9.8.7</td><td>本地规则原文库 <code>STskill\</code></td></tr><tr><td>数据源</td><td>Andy《退市风险预警-20261005.xlsx》（4 表 / 282 行）</td><td>本地</td></tr><tr><td>数据源</td><td>Wind（年度财务，2026-10-01 起代理不可达）；腾讯 <code>qt.gtimg.cn</code>（截面行情，2026-09-30）</td><td>—</td></tr><tr><td>数据源</td><td>韭研公社异动整理（35 条）</td><td>本地 parquet</td></tr><tr><td>数据源</td><td>ST 信息库 <code>1.所有公司\ST海王-000078.SZ.md</code>、<code>2.重要公告\</code>、<code>3.重要消息\</code></td><td>本地</td></tr><tr><td>权威媒体</td><td>证券时报《ST海王：力争年底前解决大股东占款》、中证报《ST海王：积极解决大股东资金占用问题》、上证报《占款整改取得新进展》、南方+《证监局责令整改》</td><td>二级来源，仅作背景</td></tr></tbody></table>
+
+</div></details>
+<h2 id="chap7">附录 C · 逻辑漏洞与反方观点（压力测试）</h2>
+<p>以下 6 问是"若要做多 ST海王"必须先推翻的六道关卡——本报告逐条给出回答，<strong>六条全部未能被推翻</strong>，这正是"卖出"结论的底气所在。</p>
+<table><thead><tr><th>#</th><th>质疑</th><th>本报告的回答</th></tr></thead><tbody><tr><td>1</td><td>"海王星辰近 5,000 家门店，12% 股权足够覆盖 12.56 亿元，怎么会还不上？"</td><td><strong>未披露评估值</strong>，估算区间 10–17 亿元仅勉强覆盖；且<strong>质押≠变现</strong>（公司自述"不构成以股抵债"），处置需司法程序、周期长、折价大；海王星辰最新财务未在公告中披露。</td></tr><tr><td>2</td><td>"公司承诺 2026-12-31 前解决，还有近 3 个月。"</td><td>承诺≠资金。<strong>2026-09-30 的最新进展公告只讲内控、不讲还款</strong>，是"无进展"的间接证据。</td></tr><tr><td>3</td><td>"1.49 元、4.61% 分位，跌无可跌。"</td><td>PB <strong>3.83 倍</strong>远高于同业（0.6–1.0）；<strong>且若净资产转负，1.49 元也不构成下限</strong>（面值退市线 1.00 元距现价仅 -33%）。</td></tr><tr><td>4</td><td>"主业还有 266 亿元营收、经营现金流为正，不会倒。"</td><td>营收不等于利润（毛利率仅 9.22%）；2025 年 Q4 单季靠减值亏掉 5.89 亿元——<strong>"现金还能转"与"净资产会归零"可以同时成立</strong>。</td></tr><tr><td>5</td><td>"引用的海王星辰数据是 2023 年的，会不会过期？"</td><td><strong>确实过期</strong>，本报告已标注为线索级、未获公告核实；<strong>这本身就是一条负面证据：连增信资产的成色都无法核验。</strong></td></tr><tr><td>6</td><td>"光通信、AI、创新药，题材不是很强吗？"</td><td>光通信投入 <strong>510 万元</strong>（占净资产 0.05%）；创新药 Ⅱa 期、无收入。<strong>按"热点业务占比必须定位"的纪律，均不构成基本面变量。</strong></td></tr></tbody></table>
+<h2 id="chap8">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-05</td><td>首次生成。基准日 2026-10-05、数据截止 2026-09-30；覆盖 2023–2026H1 财务、控股股东资金占用 12.56 亿元全链条、双线 ST/三条 *ST 通道、同型样本 8 只对照、韭研异动 35 条、龙虎榜、股东户数、内控与保留意见原文；投资结论＝<strong>卖出（回避）</strong>；已成文 HTML（含左侧目录栏与折叠区）。</td></tr></tbody></table>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+</body>
+</html>
