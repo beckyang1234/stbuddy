@@ -84,16 +84,18 @@ async function addNote(body, kv, code) {
   const rowText = String(body.rowText || '').trim().slice(0, 200);
   let user = String(body.user || '').trim().slice(0, MAX_USER);
 
-  if (!/^[0-9a-f]{4,32}$/.test(rowKey)) return bad('bad rowKey');
+  // 锚点两种形态：行 = <8位hex>；句子 = <8位hex>-<句序>（见 annotate.js v2）
+  if (!/^[0-9a-f]{4,32}(?:-\d{1,3})?$/.test(rowKey)) return bad('bad anchor');
   if (!text || text.length > MAX_TEXT) return bad('text length 1-' + MAX_TEXT);
   if (user) user = user.replace(/[\u0000-\u001f\u007f]/g, '');
+  const kind = body.kind === 'sent' ? 'sent' : 'row';
 
   const count = (await kv.list({ prefix: `n:${code}:`, limit: 1000 })).keys.length;
   if (count >= MAX_PER_REPORT) return bad('too many notes on this report', 429);
 
   const ts = Date.now();
   const id = ts.toString(36) + Math.random().toString(36).slice(2, 8);
-  const item = { id, rowKey, rowText, text, user, ts };
+  const item = { id, rowKey, kind, rowText, text, user, ts };
   await kv.put(`n:${code}:${id}`, JSON.stringify(item));
   return out({ ok: true, item });
 }
