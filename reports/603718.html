@@ -463,5 +463,309 @@ a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!impor
 })();
 </script>
 <a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+<script id="sbanotscript">
+/* stbuddy 行级批注 —— 注入到每篇研报页。
+   功能：点击研报里任意表格的「数据行」→ 打开批注面板，能看/写/删该行的批注；
+        批注存在 Cloudflare KV（经 /api/notes），所有持密码者共享可见。
+   约束：不改研报正文；不依赖外部资源；后端不可用时静默降级为只读提示。
+
+   ★ 维护提醒：本文件被 stbuddy.py 内联进每篇研报（<script id="sbanotscript">）。
+     改完必须重跑 inject + verify（verify 会校验本段是否存在）。
+*/
+(function () {
+  'use strict';
+
+  var TOKEN = '9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  var API = '/api/notes';
+  var NICKEY = 'sb_nick';
+
+  var m = /\/(\d{6})(?:\.html)?\/?$/.exec(location.pathname);
+  if (!m) return;
+  var CODE = m[1];
+
+  // ---------------------------------------------------------------- 工具
+  // 行指纹：对行的归一化文本做 FNV-1a 32 位哈希 → 内容不变则锚点不变。
+  function fingerprint(el) {
+    var t = (el.textContent || '').replace(/\s+/g, ' ').trim();
+    var h = 0x811c9dc5;
+    for (var i = 0; i < t.length; i++) {
+      h ^= t.charCodeAt(i);
+      h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0;
+    }
+    return ('0000000' + h.toString(16)).slice(-8);
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function fmt(ts) {
+    var d = new Date(ts);
+    function p(n) { return (n < 10 ? '0' : '') + n; }
+    return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()) +
+           ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
+  }
+  function isDataRow(tr) {
+    if (!tr || tr.tagName !== 'TR') return false;
+    if (tr.closest('.sbn-panel, .sbn-bar, nav, header, footer, #sbgate')) return false;
+    return tr.children.length > 0 &&
+           (tr.children[0].tagName === 'TD' || tr.children[0].tagName === 'td');
+  }
+
+  // ---------------------------------------------------------------- 样式
+  var css = '' +
+    '.sbn-row{cursor:pointer}' +
+    '.sbn-row:hover>td{background:rgba(230,126,34,.07)!important}' +
+    '.sbn-row.sbn-on>td{background:rgba(230,126,34,.12)!important}' +
+    '.sbn-badge{display:inline-block;min-width:15px;height:15px;line-height:15px;text-align:center;' +
+      'font-size:10px;font-weight:700;color:#fff;background:#e67e22;border-radius:8px;padding:0 4px;' +
+      'margin-left:5px;vertical-align:middle;font-family:-apple-system,"Microsoft YaHei",sans-serif}' +
+    '.sbn-bar{position:fixed;right:20px;bottom:70px;z-index:9998;display:flex;gap:8px}' +
+    '.sbn-btn{border:none;border-radius:20px;padding:9px 15px;font-size:13px;cursor:pointer;' +
+      'font-family:-apple-system,"Microsoft YaHei",sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.2)}' +
+    '.sbn-btn.main{background:#e67e22;color:#fff}' +
+    '.sbn-btn.ghost{background:#1a5276;color:#fff}' +
+    '.sbn-panel{position:absolute;z-index:9999;width:330px;max-width:92vw;background:#fff;' +
+      'border:1px solid #d9dee5;border-radius:12px;box-shadow:0 10px 34px rgba(20,40,60,.22);' +
+      'font-family:-apple-system,"Microsoft YaHei",sans-serif;color:#1c2733;font-size:13px;' +
+      'line-height:1.55;overflow:hidden}' +
+    '.sbn-head{padding:9px 12px;background:#f6f8fa;border-bottom:1px solid #e9edf2;font-weight:700;' +
+      'font-size:12.5px;display:flex;justify-content:space-between;align-items:center}' +
+    '.sbn-head .x{cursor:pointer;color:#8b96a3;font-size:16px;line-height:1;padding:0 2px}' +
+    '.sbn-anchor{padding:7px 12px;background:#fffdf8;border-bottom:1px solid #f0e6d8;color:#7a6a55;' +
+      'font-size:11.5px;max-height:52px;overflow:auto}' +
+    '.sbn-list{max-height:230px;overflow:auto;padding:4px 0}' +
+    '.sbn-item{padding:7px 12px;border-bottom:1px dashed #eef1f5}' +
+    '.sbn-item:last-child{border-bottom:none}' +
+    '.sbn-meta{font-size:11px;color:#98a2ae;display:flex;justify-content:space-between;gap:8px}' +
+    '.sbn-who{font-weight:700;color:#1a5276}' +
+    '.sbn-del{cursor:pointer;color:#c0392b;font-size:11px}' +
+    '.sbn-body{margin-top:3px;white-space:pre-wrap;word-break:break-word}' +
+    '.sbn-empty{padding:10px 12px;color:#98a2ae;font-size:12px}' +
+    '.sbn-form{padding:9px 12px;background:#fbfcfd;border-top:1px solid #e9edf2}' +
+    '.sbn-form input,.sbn-form textarea{width:100%;box-sizing:border-box;border:1px solid #dfe4ea;' +
+      'border-radius:7px;padding:6px 8px;font-size:12.5px;font-family:inherit;outline:none;color:#1c2733}' +
+    '.sbn-form textarea{min-height:54px;resize:vertical;margin-top:6px}' +
+    '.sbn-form input:focus,.sbn-form textarea:focus{border-color:#e67e22}' +
+    '.sbn-foot{display:flex;justify-content:space-between;align-items:center;margin-top:7px;gap:8px}' +
+    '.sbn-msg{font-size:11.5px;color:#98a2ae;flex:1}' +
+    '.sbn-msg.err{color:#c0392b}' +
+    '.sbn-msg.ok{color:#2f855a}' +
+    '.sbn-save{border:none;border-radius:7px;background:#e67e22;color:#fff;padding:6px 14px;' +
+      'font-size:12.5px;cursor:pointer;white-space:nowrap}' +
+    '.sbn-save[disabled]{background:#c9d2dc;cursor:default}';
+
+  var style = document.createElement('style');
+  style.id = 'sbn-style';
+  style.textContent = css;
+  document.head.appendChild(style);
+
+  // ---------------------------------------------------------------- 状态
+  var notes = [];          // 全部批注
+  var byRow = {};          // rowKey -> [note]
+  var rows = {};           // rowKey -> tr
+  var panel = null, curRow = null, curKey = '';
+  var online = false;
+
+  function group() {
+    byRow = {};
+    notes.forEach(function (n) {
+      (byRow[n.rowKey] = byRow[n.rowKey] || []).push(n);
+    });
+  }
+
+  // ---------------------------------------------------------------- 标记行
+  function decorate() {
+    rows = {};
+    var all = document.querySelectorAll('table tr');
+    for (var i = 0; i < all.length; i++) {
+      var tr = all[i];
+      if (!isDataRow(tr)) continue;
+      var badge = tr.querySelector('.sbn-badge');
+      if (badge) badge.parentNode.removeChild(badge);
+      var k = fingerprint(tr);
+      rows[k] = tr;
+      tr.classList.add('sbn-row');
+      tr.setAttribute('data-sbn', k);
+    }
+    paint();
+  }
+  function paint() {
+    Object.keys(rows).forEach(function (k) {
+      var tr = rows[k], list = byRow[k];
+      var old = tr.querySelector('.sbn-badge');
+      if (old) old.parentNode.removeChild(old);
+      tr.classList.remove('sbn-on');
+      if (!list || !list.length) return;
+      tr.classList.add('sbn-on');
+      var cell = tr.children[0];
+      if (cell && cell.tagName === 'TD') {
+        var b = document.createElement('span');
+        b.className = 'sbn-badge';
+        b.textContent = list.length;
+        cell.appendChild(b);
+      }
+    });
+    var btn = document.getElementById('sbn-count');
+    if (btn) {
+      var orphan = notes.filter(function (n) { return !rows[n.rowKey]; }).length;
+      btn.textContent = '批注 ' + notes.length + (orphan ? '（' + orphan + ' 条未锚定）' : '');
+    }
+  }
+
+  // ---------------------------------------------------------------- 面板
+  function close() {
+    if (panel && panel.parentNode) panel.parentNode.removeChild(panel);
+    if (curRow) curRow.classList.remove('sbn-picked');
+    panel = null; curRow = null; curKey = '';
+  }
+  function open(tr) {
+    close();
+    curRow = tr;
+    curKey = tr.getAttribute('data-sbn') || '';
+    var rect = tr.getBoundingClientRect();
+    panel = document.createElement('div');
+    panel.className = 'sbn-panel';
+    panel.innerHTML =
+      '<div class="sbn-head"><span>行批注</span><span class="x" id="sbn-x">×</span></div>' +
+      '<div class="sbn-anchor" id="sbn-anchor"></div>' +
+      '<div class="sbn-list" id="sbn-list"></div>' +
+      '<div class="sbn-form">' +
+        '<input id="sbn-nick" maxlength="20" placeholder="你的名字（留空为「匿名」）">' +
+        '<textarea id="sbn-text" maxlength="1000" placeholder="对这一行的批注…（Ctrl+Enter 提交）"></textarea>' +
+        '<div class="sbn-foot"><span class="sbn-msg" id="sbn-msg"></span>' +
+        '<button class="sbn-save" id="sbn-save">提交</button></div>' +
+      '</div>';
+    document.body.appendChild(panel);
+    var top = Math.max(8, rect.top + window.scrollY - 8);
+    var left = Math.min(rect.left + window.scrollX + 12,
+                        window.scrollX + document.documentElement.clientWidth - panel.offsetWidth - 14);
+    panel.style.top = top + 'px';
+    panel.style.left = Math.max(8, left) + 'px';
+
+    var anchor = tr.textContent.replace(/\s+/g, ' ').trim();
+    document.getElementById('sbn-anchor').textContent =
+      (anchor.length > 130 ? anchor.slice(0, 130) + '…' : anchor);
+    try { document.getElementById('sbn-nick').value = localStorage.getItem(NICKEY) || ''; } catch (e) {}
+    document.getElementById('sbn-x').addEventListener('click', close);
+    document.getElementById('sbn-save').addEventListener('click', save);
+    document.getElementById('sbn-text').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) save();
+    });
+    renderList();
+    if (online) document.getElementById('sbn-text').focus();
+  }
+  function renderList() {
+    var box = document.getElementById('sbn-list');
+    var list = (byRow[curKey] || []).slice().sort(function (a, b) { return a.ts - b.ts; });
+    if (!list.length) {
+      box.innerHTML = '<div class="sbn-empty">这一行还没有批注' +
+        (online ? '，写下第一条。' : '。批注服务未启用。') + '</div>';
+      return;
+    }
+    box.innerHTML = list.map(function (n) {
+      return '<div class="sbn-item"><div class="sbn-meta"><span class="sbn-who">' + esc(n.user || '匿名') +
+        '</span><span>' + fmt(n.ts) +
+        (online ? ' · <span class="sbn-del" data-id="' + esc(n.id) + '">删除</span>' : '') +
+        '</span></div><div class="sbn-body">' + esc(n.text) + '</div></div>';
+    }).join('');
+    Array.prototype.forEach.call(box.querySelectorAll('.sbn-del'), function (d) {
+      d.addEventListener('click', function () { del(d.getAttribute('data-id')); });
+    });
+  }
+  function msg(t, kind) {
+    var el = document.getElementById('sbn-msg');
+    if (!el) return;
+    el.className = 'sbn-msg' + (kind ? ' ' + kind : '');
+    el.textContent = t;
+    if (kind === 'ok') setTimeout(function () { if (el.textContent === t) el.textContent = ''; }, 2200);
+  }
+  function save() {
+    if (!online) { msg('批注服务未启用', 'err'); return; }
+    var t = document.getElementById('sbn-text').value.trim();
+    var u = document.getElementById('sbn-nick').value.trim();
+    if (!t) { msg('内容不能为空', 'err'); return; }
+    try { localStorage.setItem(NICKEY, u); } catch (e) {}
+    var btn = document.getElementById('sbn-save');
+    btn.disabled = true; msg('提交中…');
+    fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-stb-token': TOKEN },
+      body: JSON.stringify({ code: CODE, rowKey: curKey, rowText:
+        (curRow ? curRow.textContent.replace(/\s+/g, ' ').trim().slice(0, 160) : ''),
+        text: t, user: u })
+    }).then(function (r) { return r.json().then(function (j) { return { s: r.status, j: j }; }); })
+      .then(function (res) {
+        btn.disabled = false;
+        if (!res.j || !res.j.ok) { msg((res.j && res.j.error) || ('失败 ' + res.s), 'err'); return; }
+        notes.push(res.j.item);
+        group(); paint(); renderList();
+        document.getElementById('sbn-text').value = '';
+        msg('已提交', 'ok');
+      })
+      .catch(function () { btn.disabled = false; msg('网络不可用', 'err'); });
+  }
+  function del(id) {
+    if (!id || !online) return;
+    if (!confirm('删除这条批注？')) return;
+    fetch(API + '?code=' + CODE + '&id=' + encodeURIComponent(id),
+          { method: 'DELETE', headers: { 'x-stb-token': TOKEN } })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (j && j.ok) {
+          notes = notes.filter(function (n) { return n.id !== id; });
+          group(); paint(); renderList();
+        } else { msg((j && j.error) || '删除失败', 'err'); }
+      })
+      .catch(function () { msg('网络不可用', 'err'); });
+  }
+
+  // ---------------------------------------------------------------- 交互
+  document.addEventListener('click', function (e) {
+    var tr = e.target.closest ? e.target.closest('tr') : null;
+    if (tr && isDataRow(tr)) {
+      // 单元格里的链接照常点击（研报里大量「一句话可点」的出处链接）
+      if (e.target.closest('a')) return;
+      if (panel && curRow === tr) { close(); return; }
+      if (e.target.closest('.sbn-panel')) return;
+      e.preventDefault();
+      open(tr);
+      return;
+    }
+    if (panel && !e.target.closest('.sbn-panel')) close();
+  }, true);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  window.addEventListener('resize', close);
+
+  // ---------------------------------------------------------------- 启动
+  function boot() {
+    decorate();
+    var bar = document.createElement('div');
+    bar.className = 'sbn-bar';
+    bar.innerHTML = '<button class="sbn-btn ghost" id="sbn-count">批注 0</button>';
+    document.body.appendChild(bar);
+    document.getElementById('sbn-count').addEventListener('click', function () {
+      var first = null;
+      Object.keys(rows).forEach(function (k) { if (!first && byRow[k]) first = rows[k]; });
+      if (first) { first.scrollIntoView({ block: 'center' }); open(first); }
+      else { alert('本页暂无已锚定的批注。'); }
+    });
+    fetch(API + '?code=' + CODE, { headers: { 'x-stb-token': TOKEN } })
+      .then(function (r) { return r.ok ? r.json() : { ok: false }; })
+      .then(function (j) {
+        if (j && j.ok && j.items) { notes = j.items; online = true; }
+        else { online = false; }
+        group(); paint();
+      })
+      .catch(function () { online = false; paint(); });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+})();
+
+</script>
 </body>
 </html>
