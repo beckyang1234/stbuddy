@@ -453,11 +453,12 @@
     }
     // 2) 正文句子
     if (e.target.closest && e.target.closest('a,button,input,textarea,select,summary,label,.sbn-bar')) {
-      close(); return;
+      if (e.isTrusted) close();          // 只有真人点击才算"点到了别处"；页面脚本的合成点击不关面板
+      return;
     }
     if (window.getSelection && String(window.getSelection()).length) return;  // 用户在选词，别抢
     var block = pickBlock(e.target);
-    if (!block) { close(); return; }
+    if (!block) { if (e.isTrusted) close(); return; }
     var off = offsetAtPoint(e.clientX, e.clientY, block);
     if (off < 0) { close(); return; }
     var txt = blockText(block), ss = sentences(txt), bh = hash32(norm(txt)), idx = -1;
@@ -475,7 +476,8 @@
   }, true);
 
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
-  window.addEventListener('resize', function () { close(); paint(); });
+  // resize 只重画高亮覆盖层，**不要关面板**（布局变化时把用户正在写的面板关掉是纯伤害）
+  window.addEventListener('resize', function () { paint(); });
   document.addEventListener('toggle', function () { setTimeout(paint, 30); }, true);
 
   // ================================================================ 启动
