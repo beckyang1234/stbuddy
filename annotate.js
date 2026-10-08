@@ -191,12 +191,15 @@
         })
         .then(function (j) {
           if (j) { notes = mergeServer(j.items); online = true; offline = ''; }
+          else { notes = mergeServer([]); }      // 503（后端没绑）也要露出本机自己写的
           group(); paint();
           return online;
         })
         .catch(function () {
           if (n < max) return new Promise(function (res) { setTimeout(res, 700 * n); }).then(attempt);
-          online = false; offline = 'network'; paint();
+          online = false; offline = 'network';
+          notes = mergeServer([]);               // ★ 连不上时也别让"自己刚写的"凭空消失
+          group(); paint();
           return false;
         });
     }
