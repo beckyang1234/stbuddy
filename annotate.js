@@ -414,7 +414,10 @@
           }
           notes.push(res.j.item);
           mineAdd(res.j.item);          // 落本机缓存：KV 的 list 有延迟，作者自己要立刻看得见
-          group(); paint(); renderList();
+          // ★ 重新 scan 再 paint：保证"刚提交的那条"立刻锚定并画出高亮。
+          //   只 group+paint 有时会画不出来（sentMap 与当前 DOM 之间存在漂移），
+          //   表现是"提交成功但高亮要刷新才出现"。
+          group(); scan(); renderList();
           document.getElementById('sbn-text').value = '';
           msg('已提交', 'ok');
         })
