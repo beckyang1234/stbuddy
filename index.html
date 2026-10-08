@@ -99,6 +99,16 @@
   .bd.buy{background:#fdecea;color:#c0392b}
   .bd.sell{background:#e8f5ee;color:#2f855a}
   .bd.path{background:#eef2f7;color:#4a6076;font-weight:500}
+  .chip.buy.active{background:#c0392b;border-color:#c0392b}
+  .chip.sell.active{background:#2f855a;border-color:#2f855a}
+  .chip.green.active{background:#2f855a;border-color:#2f855a}
+  .chip.delist.active{background:#5a6472;border-color:#5a6472}
+  .badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+  .bd{font-size:10.5px;padding:2px 6px;border-radius:5px;font-weight:700;white-space:nowrap}
+  .bd.buy{background:#fdecea;color:#c0392b}
+  .bd.sell{background:#e8f5ee;color:#2f855a}
+  .bd.path{background:#eef2f7;color:#4a6076;font-weight:500}
+  .bd.path.delist{background:#e3e5e9;color:#39414d;font-weight:700}
   .label{font-size:12.5px;color:var(--muted);margin:16px 2px 8px}
   .grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:12px;margin-top:14px}
   @media(max-width:1180px){.grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
@@ -108,12 +118,8 @@
   .card:hover{border-color:#b8c4d0;box-shadow:0 8px 24px rgba(20,40,60,.10);transform:translateY(-2px)}
   .card .bar{position:absolute;left:0;top:0;width:4px;height:100%}
   .bar.st{background:var(--orange)}
+  .bar.unst{background:#2f855a}
   .bar.xst{background:var(--red)}
-  .bar.unst{background:#2f855a}
-  .bar.unst{background:#2f855a}
-  .bar.unst{background:#2f855a}
-  .bar.unst{background:#2f855a}
-  .bar.unst{background:#2f855a}
   .tag{display:inline-block;font-size:10.5px;font-weight:700;padding:1px 6px;border-radius:5px}
   .tag.unst{background:#e8f5ee;color:#2f855a}
   .tag.xst{background:#fdedec;color:var(--red)}
@@ -181,10 +187,6 @@
       <div class="chip red" data-val="xst">＊ST（退市风险）</div>
       <div class="chip orange" data-val="st">ST（其他风险）</div>
       <div class="chip green" data-val="unst">已摘帽</div>
-      <div class="chip green" data-val="unst">已摘帽</div>
-      <div class="chip green" data-val="unst">已摘帽</div>
-      <div class="chip green" data-val="unst">已摘帽</div>
-      <div class="chip green" data-val="unst">已摘帽</div>
     </div>
     <div class="label">上市市场</div>
     <div class="chips" id="exchChips">
@@ -205,6 +207,7 @@
       <div class="chip" data-val="保壳逻辑">保壳逻辑</div>
       <div class="chip" data-val="重整逻辑">重整逻辑</div>
       <div class="chip" data-val="处罚ST">处罚ST</div>
+      <div class="chip delist" data-val="退市执行">退市执行</div>
     </div>
   </div>
 
@@ -427,7 +430,7 @@ const STOCKS = [
 
 const META = {
   "000010":{c:"卖出", p:"重整逻辑"},
-  "000016":{c:"卖出", p:"保壳逻辑"},
+  "000016":{c:"卖出", p:"退市执行"},
   "000056":{c:"卖出", p:"保壳逻辑"},
   "000078":{c:"卖出", p:"处罚ST"},
   "000488":{c:"买入", p:"保壳逻辑"},
@@ -487,10 +490,10 @@ const META = {
   "002689":{c:"卖出", p:"处罚ST"},
   "002691":{c:"卖出", p:"保壳逻辑"},
   "002694":{c:"卖出", p:"保壳逻辑"},
-  "002717":{c:"卖出", p:"保壳逻辑"},
+  "002717":{c:"卖出", p:"退市执行"},
   "002719":{c:"卖出", p:"保壳逻辑"},
   "002726":{c:"卖出", p:"重整逻辑"},
-  "002731":{c:"卖出", p:"保壳逻辑"},
+  "002731":{c:"卖出", p:"退市执行"},
   "002743":{c:"卖出", p:"处罚ST"},
   "002759":{c:"卖出", p:"处罚ST"},
   "002789":{c:"卖出", p:"保壳逻辑"},
@@ -619,12 +622,12 @@ const META = {
   "688066":{c:"卖出", p:"保壳逻辑"},
   "688076":{c:"卖出", p:"处罚ST"},
   "688089":{c:"买入", p:"处罚ST"},
-  "688121":{c:"卖出", p:"处罚ST"},
+  "688121":{c:"卖出", p:"退市执行"},
   "688184":{c:"卖出", p:"处罚ST"},
   "688189":{c:"卖出", p:"处罚ST"},
   "688201":{c:"卖出", p:"处罚ST"},
   "688270":{c:"卖出", p:"处罚ST"},
-  "688496":{c:"卖出", p:"处罚ST"},
+  "688496":{c:"卖出", p:"退市执行"},
   "688622":{c:"卖出", p:"保壳逻辑"},
   "920023":{c:"卖出", p:"保壳逻辑"},
   "920090":{c:"卖出", p:"保壳逻辑"},
@@ -684,7 +687,7 @@ function render(){
       '<div class="code">' + s.code + (s.exch==="深"?".SZ":(s.exch==="沪"?".SH":".BJ")) + '</div>' +
       '<div class="badges">' +
         (m.c ? '<span class="bd ' + (m.c==="买入"?"buy":"sell") + '">' + m.c + '</span>' : '') +
-        (m.p ? '<span class="bd path">' + m.p + '</span>' : '') +
+        (m.p ? '<span class="bd path' + (m.p==="退市执行" ? ' delist' : '') + '">' + m.p + '</span>' : '') +
       '</div>' +
       '<div class="meta"><span>' + s.date.slice(5) + '</span><span class="exch">' + s.exch + '</span></div>';
     grid.appendChild(a);
