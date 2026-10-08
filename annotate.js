@@ -56,7 +56,10 @@
     '.sbn-hl-tag{position:absolute;pointer-events:none;z-index:2;font-size:9px;line-height:13px;' +
       'min-width:13px;height:13px;text-align:center;color:#fff;background:#e67e22;border-radius:7px;' +
       'font-weight:700;font-family:-apple-system,"Microsoft YaHei",sans-serif}' +
-    '.sbn-bar{position:fixed;right:20px;bottom:70px;z-index:9998;display:flex;gap:8px}' +
+    // ★ 右下角是一条「悬浮控件竖排轨道」，自下而上实测占位：
+    //   回到顶部 #totop（26–72，报告模板自带，未滚动时隐藏）→ 返回首页（84–126，模板用 !important 钉在右下）
+    //   → 本条「批注 N」（140 起）。2026-10-08 前放在 bottom:70，正好插进中间把返回首页压住 → 已上移让位。
+    '.sbn-bar{position:fixed;right:20px;bottom:140px;z-index:9998;display:flex;gap:8px}' +
     '.sbn-btn{border:none;border-radius:20px;padding:9px 15px;font-size:13px;cursor:pointer;' +
       'font-family:-apple-system,"Microsoft YaHei",sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.2)}' +
     '.sbn-btn.ghost{background:#1a5276;color:#fff}' +
