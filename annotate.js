@@ -14,6 +14,8 @@
   var TOKEN = '9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
   var API = '/api/notes';
   var NICKEY = 'sb_nick';
+  var MINEKEY = 'sb_mine';     // 本机刚写的批注：KV 是最终一致（list 有几十秒延迟），
+                               // 靠它保证"作者自己刚写完刷新也看得见"
 
   var m = /\/(\d{6})(?:\.html)?\/?$/.exec(location.pathname);
   if (!m) return;
@@ -188,7 +190,7 @@
           return r.json();
         })
         .then(function (j) {
-          if (j) { notes = j.items || []; online = true; offline = ''; }
+          if (j) { notes = mergeServer(j.items); online = true; offline = ''; }
           group(); paint();
           return online;
         })
@@ -202,6 +204,23 @@
   }
   function errText() {
     return offline === 'network' ? '连不上批注服务，请重试' : '批注服务未启用';
+  }
+
+  // ---- 本机缓存（对抗 KV 最终一致性：自己刚写的必须马上看得见）
+  function mineAll() { try { return JSON.parse(localStorage.getItem(MINEKEY) || '{}'); } catch (e) { return {}; } }
+  function mineGet() { return mineAll()[CODE] || []; }
+  function mineSet(l) { var a = mineAll(); a[CODE] = l; try { localStorage.setItem(MINEKEY, JSON.stringify(a)); } catch (e) {} }
+  function mineAdd(n) { var l = mineGet(); if (!l.some(function (x) { return x.id === n.id; })) l.push(n); mineSet(l); }
+  function mineDrop(id) { mineSet(mineGet().filter(function (x) { return x.id !== id; })); }
+  function mergeServer(items) {
+    var now = Date.now(), srv = items || [];
+    // 服务端已经能看到 → 出缓存；超过 10 分钟的也清掉（避免长期保留已被他人删除的）
+    var keep = mineGet().filter(function (m) {
+      if (srv.some(function (s) { return s.id === m.id; })) return false;
+      return now - m.ts < 600000;
+    });
+    mineSet(keep);
+    return srv.concat(keep);
   }
 
   function group() {
@@ -394,6 +413,7 @@
             return;
           }
           notes.push(res.j.item);
+          mineAdd(res.j.item);          // 落本机缓存：KV 的 list 有延迟，作者自己要立刻看得见
           group(); paint(); renderList();
           document.getElementById('sbn-text').value = '';
           msg('已提交', 'ok');
@@ -410,6 +430,7 @@
       .then(function (j) {
         if (j && j.ok) {
           notes = notes.filter(function (n) { return n.id !== id; });
+          mineDrop(id);
           group(); paint(); renderList();
         } else { msg((j && j.error) || '删除失败', 'err'); }
       })
