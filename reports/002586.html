@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>围海股份（002586.SZ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>9 章 · 6 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、诊断</a><a class="sblv3" href="#sec0">1.1 基本信息与估值</a><a class="sblv3" href="#sec1">1.2 戴帽与摘帽全流程</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、基本面：主业收缩是唯一真问题</a><a class="sblv3" href="#sec2">2.1 经营现状</a><a class="sblv3" href="#sec3">2.2 在手订单与近期中标</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、炒作逻辑三支柱</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、估值与投资结论</a><a class="sblv3" href="#sec4">4.1 估值</a><a class="sblv3" href="#sec5">4.2 投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">附录 A · 待核实 / 需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 C · 逻辑漏洞与反方观点（5 问速版）</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">围海股份（002586.SZ）研究报告</h1>
+<blockquote><p>研究基准日 <strong>2026-10-13</strong> ｜ 行情截至 2026-10-13 ｜ 财务截至 2026 年半年报（2026-08-25 披露）｜ 公告截至 2026-10-10</p><p><strong>★ 本标的已于 2026-08-28 撤销其他风险警示（摘帽）</strong> —— 简称由「ST 围海」恢复为「<strong>围海股份</strong>」（巨潮 <code>topSearch</code> 的 <code>zwjc</code> 已为「围海股份」）。本报告按"<strong>已摘帽标的</strong>"生成，<strong>不套用 ST 框架</strong>。</p></blockquote>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>操作结论：卖出（回避）</strong></p>
+<p>红线分类：<span class="sttag sttag-orange"><a href="http://static.cninfo.com.cn/finalpage/2026-08-28/1225522023.PDF" target="_blank" rel="noopener">2025年因年报财务指标虚假记载被实施其他风险警示</a></span>·<span class="sttag sttag-teal"><a href="http://static.cninfo.com.cn/finalpage/2026-08-28/1225522023.PDF" target="_blank" rel="noopener">2026-08-28已撤销风险警示（摘帽）</a></span></p>
+<p>生死定级：<strong>已脱离风险警示</strong>（摘帽完成，无退市红线）</p>
+<p>自救空间：<strong>无需自救</strong>——2026H1 营业收入 <strong>6.12 亿元</strong>、归母净利润 <strong>+744.47 万元</strong>（微盈）、归母净资产 <strong>31.86 亿元</strong>，<strong>财务类三项指标（营收/净资产/审计意见）全部安全</strong>；公司属"<strong>财务健康、仅因历史虚假记载被戴帽</strong>"的典型<strong>假 ST</strong>，摘帽后已回到正常交易状态。</p>
+<p>主要看点：<strong>这是一起"假 ST 摘帽"的完整闭环样本</strong>——2025-04-21 因收到证监会《行政处罚事先告知书》（涉年报财务指标虚假记载）被实施其他风险警示，<strong>2026-08-13 申请撤销 → 2026-08-28 正式撤销</strong>（决定书送达满 12 个月的法定条件成就）。<strong>摘帽利好已于 8 月末兑现</strong>；当前真正的看点是<strong>主业能否止住收缩</strong>（2026H1 营收同比 <strong>−26.26%</strong>、扣非净利仅 <strong>88.49 万元</strong>、经营活动现金流 <strong>−1.56 亿元</strong>）与<strong>在手订单的转化</strong>（10 月连续披露中标与预中标）。</p>
+<table><thead><tr><th>要点</th><th>内容</th></tr></thead><tbody><tr><td>标的</td><td>浙江省围海建设集团股份有限公司（围海股份，002586.SZ，深交所主板）</td></tr><tr><td>行业</td><td>建筑装饰（水利水电工程、市政、生态治理）</td></tr><tr><td>研究基准日</td><td><strong>2026-10-13</strong></td></tr><tr><td>现价 · 市值</td><td><strong>3.53 元</strong>（2026-10-13，当日 +1.73%）· 总市值 <strong>40.39 亿元</strong>（流通 38.39 亿元）</td></tr><tr><td>估值</td><td>PB <strong>1.27</strong> · PE(TTM) 约 <strong>14.8 倍</strong></td></tr><tr><td>归母净资产</td><td><strong>31.86 亿元</strong>（2026-06-30，每股约 2.78 元）</td></tr><tr><td>状态</td><td><strong>已摘帽</strong>（2026-08-28 撤销其他风险警示）</td></tr><tr><td>数据来源</td><td>巨潮资讯（公告原文）· 公司 2026 年半年度报告（187 页）· 腾讯行情</td></tr><tr><td>版本</td><td>初版 · 2026-10-13</td></tr></tbody></table>
+<hr>
+<h2 id="chap1">一、诊断</h2>
+<h3 id="sec0">1.1 基本信息与估值</h3>
+<p><strong>结论：这是一只"财务健康、但主业持续收缩"的已摘帽建筑股——PB 1.27 倍对建筑行业属合理区间，而不构成"低估"；价格分位 10.46% 反映的是"长期阴跌后的低位"，不是"折价错杀"。</strong></p>
+<p>公司主营水利水电工程、市政工程与生态治理，是浙江省内老牌水利施工企业。<strong>2026-10-13 现价 3.53 元、总市值 40.39 亿元、PB 1.27 倍、PE(TTM) 约 14.8 倍</strong>；信息库档案所记「近 20 年价格分位数 10.46%」（取数日 2026-07-31、当日价 3.45 元）指向长期低位。</p>
+<details class="fold"><summary>估值快照</summary><div class="fold-body">
+
+<table><thead><tr><th>指标</th><th>数值</th><th>判读</th></tr></thead><tbody><tr><td>现价（2026-10-13）</td><td><strong>3.53 元</strong></td><td>当日 +1.73%（昨收 3.47）</td></tr><tr><td>总市值 / 流通市值</td><td><strong>40.39 亿元 / 38.39 亿元</strong></td><td>中小市值</td></tr><tr><td>换手率</td><td>1.01%</td><td>成交清淡（成交额约 3,834 万元）</td></tr><tr><td><strong>PB</strong></td><td><strong>1.27 倍</strong></td><td>建筑行业合理区间，非低估</td></tr><tr><td>PE(TTM)</td><td>约 14.8 倍</td><td>微利状态下参考意义有限</td></tr><tr><td>归母净资产（2026-06-30）</td><td><strong>31.86 亿元</strong>（每股约 2.78 元）</td><td>净资产厚、无资不抵债风险</td></tr><tr><td>近 20 年价格分位</td><td>10.46%（2026-07-31 口径）</td><td>长期低位</td></tr><tr><td>涨停 / 跌停价</td><td>3.82 / 3.12 元（±10%，主板）</td><td>——</td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec1">1.2 戴帽与摘帽全流程</h3>
+<p><strong>结论：本标的是"假 ST"的标准闭环——因年报财务指标虚假记载被戴帽（2025-04-21），在收到行政处罚决定书满 12 个月后申请并获准撤销（2026-08-13 申请 → 2026-08-28 撤销），全程约 16 个月。</strong></p>
+<pre><code class="lang-text">围海股份（002586.SZ）：已摘帽。[原*因年报财务指标虚假记载被实施其他风险警示（2025-04-21）] → 2026-08-13 申请撤销 → 2026-08-28 撤销</code></pre>
+<details class="fold"><summary>戴帽—摘帽时间线（公告原文）</summary><div class="fold-body">
+
+<table><thead><tr><th>日期</th><th>事项</th><th>原文</th></tr></thead><tbody><tr><td>2025-04-21</td><td>收到《行政处罚事先告知书》，年报财务指标虚假记载 → 实施其他风险警示</td><td>——</td></tr><tr><td>2026-08-13</td><td><strong>《关于申请撤销对公司股票交易实施其他风险警示的公告》</strong></td><td><a href="http://static.cninfo.com.cn/finalpage/2026-08-13/1225470994.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td><strong>2026-08-28</strong></td><td><strong>《关于公司股票交易撤销其他风险警示暨停复牌的公告》—— 正式摘帽</strong></td><td><a href="http://static.cninfo.com.cn/finalpage/2026-08-28/1225522023.PDF" target="_blank" rel="noopener">打开原文</a></td></tr></tbody></table>
+<blockquote><p><strong>口径提示</strong>：因"年报财务指标虚假记载"被实施的其他风险警示，其撤销条件是<strong>收到行政处罚决定书之日起满 12 个月</strong>（深交所《股票上市规则》相应条款，<strong>具体条款号待核</strong>）。围海 2025-04 戴帽、2026-08 撤销，<strong>时间上与该条件吻合</strong>。摘帽即意味着<strong>该行政处罚事项已依法处理完毕</strong>。</p></blockquote>
+
+</div></details>
+<hr>
+<h2 id="chap2">二、基本面：主业收缩是唯一真问题</h2>
+<h3 id="sec2">2.1 经营现状</h3>
+<p><strong>结论：财务安全但主业失血——2026H1 营收 6.12 亿元（同比 −26.26%）、归母净利 744.47 万元（−10.60%）、扣非仅 88.49 万元（−80.32%），经营活动现金流净额 −1.56 亿元（虽同比改善 51.51%，仍是净流出）。这是一家"账面微利、现金造血不足"的施工企业。</strong></p>
+<table><thead><tr><th>指标（2026H1）</th><th>数值</th><th>同比</th></tr></thead><tbody><tr><td>营业收入</td><td><strong>6.12 亿元</strong></td><td><strong>−26.26%</strong></td></tr><tr><td>归母净利润</td><td><strong>+744.47 万元</strong></td><td>−10.60%</td></tr><tr><td><strong>扣非归母净利润</strong></td><td><strong>+88.49 万元</strong></td><td><strong>−80.32%</strong></td></tr><tr><td>经营活动现金流净额</td><td><strong>−1.56 亿元</strong></td><td>改善 51.51%</td></tr><tr><td>基本每股收益</td><td>0.0065 元</td><td>−10.96%</td></tr><tr><td>加权平均 ROE</td><td>0.23%</td><td>−0.05pct</td></tr><tr><td>总资产</td><td>61.22 亿元</td><td>−4.30%</td></tr><tr><td><strong>归母净资产</strong></td><td><strong>31.86 亿元</strong></td><td>−0.90%</td></tr></tbody></table>
+<blockquote><p>数据来源：公司 2026 年半年度报告（2026-08-25）。<strong>扣非仅 88 万元且同比 −80%</strong>，说明利润中含约 656 万元非经常性损益（政府补助 383.39 万元、金融资产公允价值变动 271.07 万元等）。</p></blockquote>
+<h3 id="sec3">2.2 在手订单与近期中标</h3>
+<p><strong>结论：10 月连续披露中标与预中标，说明主业仍在正常接单，但单笔金额有限、尚不足以扭转营收下滑趋势。</strong></p>
+<ul><li><strong>2026-10-10 关于工程项目中标的公告</strong>（<a href="http://static.cninfo.com.cn/finalpage/2026-10-10/1225598697.PDF" target="_blank" rel="noopener">原文</a>）</li><li><strong>2026-10-08 关于工程项目预中标公示的公告</strong>（<a href="http://static.cninfo.com.cn/finalpage/2026-10-08/1225589869.PDF" target="_blank" rel="noopener">原文</a>）</li><li>2026-09-11 关于签订重大合同的进展公告、2026-08-11 关于签订重大合同的公告</li></ul>
+<blockquote><p><strong>判读</strong>：中标属"事件驱动"的正面信息，但建筑行业的订单→收入转化周期长、且<strong>单笔中标金额未达重大标准</strong>（公司未在标题中标注"重大"）。<strong>"预中标"尤须注意不等于"订单"</strong>（公示期内仍可能生变）。</p></blockquote>
+<hr>
+<h2 id="chap3">三、炒作逻辑三支柱</h2>
+<p><strong>结论：本标的已摘帽，"三支柱"中</strong>①炒预期最弱<strong>（无明确未来事件节点）、②炒历史类似行为</strong>指向摘帽兑现后回落<strong>、③炒主板映射</strong>为中性偏弱<strong>——</strong>摘帽这一天本身就是注意力峰值，而峰值已在 2026-08-28 过去。<strong> </strong></p>
+<table><thead><tr><th>支柱</th><th>判断</th><th>依据</th></tr></thead><tbody><tr><td><strong>① 炒预期</strong></td><td><strong>弱</strong> —— 摘帽已兑现；未来可验证节点主要是<strong>三季报（10 月下旬）与年报</strong>，但公司未给业绩指引；<strong>2026H1 营收 −26.26% 已揭示压力</strong></td><td>无重大重组/注入公告；股东会已换届（2026-08-13 第八届董事会第一次会议）</td></tr><tr><td><strong>② 炒历史类似行为</strong></td><td><strong>偏负</strong> —— <strong>摘帽行情"提前 1.5–2 个月打、摘帽前一两周卖出"</strong>（星轨拾贝口径）；围海摘帽日 2026-08-28，<strong>按此规律，8 月中旬即已是出货窗口</strong></td><td>现价 3.53 元 vs 摘帽前（8 月中）水平</td></tr><tr><td><strong>③ 炒主板映射</strong></td><td><strong>中性偏弱</strong> —— 对应"水利/基建"板块；2026 年基建投资增速平稳，<strong>无强势主线映射</strong></td><td>——</td></tr></tbody></table>
+<blockquote><p><strong>附（各家方法论交叉检验）</strong>：<strong>路由白云尽</strong>强调"<strong>超跌才是 ST 的灵魂</strong>"——围海长期低位（分位 10.46%）符合；但他同时指出"<strong>若公司主营没发生重大变化、未来依然经营困难，持续经营能力这顶帽子就不一定会摘</strong>"，而围海是<strong>财务健康型的假 ST</strong>，不适用该风险。<strong>香山老张</strong>提醒"<strong>估值水位整体上移、不能刻舟求剑</strong>"，对围海体现为：<strong>40 亿市值对一家年营收 12 亿元、扣非近零的施工企业，已不算便宜</strong>。</p></blockquote>
+<hr>
+<h2 id="chap4">四、估值与投资结论</h2>
+<h3 id="sec4">4.1 估值</h3>
+<p><strong>结论：PB 1.27 倍是"建筑行业的中位水平"，而非"低位折价"——公司净资产厚（31.86 亿元）但回报极低（ROE 0.23%），属"资产闲置型"而非"错杀型"。</strong></p>
+<ul><li><strong>PB 口径</strong>：40.39 亿元 ÷ 31.86 亿元 ＝ <strong>1.27 倍</strong>——对照建筑装饰行业（多数 0.5–1.5 倍），<strong>处区间中上部</strong>；</li><li><strong>低 PB ＋ 极低 ROE</strong>：ROE 仅 0.23% ⇒ <strong>"低 PB 不能读作错杀，而要读作'资产不产生回报'的定价"</strong>（本 skill §0.3 判据）；</li><li><strong>现金类资产 ÷ 总市值</strong>：需以半年报货币资金核（<strong>待补</strong>）；</li><li><strong>PS 口径</strong>：按 2026H1 年化营收约 12.2 亿元计，PS ≈ <strong>3.3 倍</strong>。</li></ul>
+<h3 id="sec5">4.2 投资结论</h3>
+<p><strong>卖出（回避）</strong></p>
+<table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td><strong>结论</strong></td><td><strong>卖出（回避）</strong></td></tr><tr><td><strong>理由链</strong></td><td>① <strong>摘帽利好已兑现</strong>：2026-08-28 撤销风险警示，<strong>注意力峰值已过</strong>，此后股价缺乏新叙事支撑（现价 3.53 元、成交清淡）；② <strong>主业持续收缩</strong>：2026H1 营收 −26.26%、扣非仅 88.49 万元（−80.32%）、经营现金流 −1.56 亿元——<strong>微利且不造血</strong>；③ <strong>估值不构成低位</strong>：PB 1.27 倍处行业区间中上部，而 ROE 仅 0.23%（低 PB ＋ 极低 ROE ＝ 资产闲置型，非折价）；④ <strong>无明确催化</strong>：无重组/注入/重整公告，近期仅"中标/预中标"类常规经营公告，单笔金额有限；⑤ <strong>换手率 1.01%、成交额约 3,834 万元</strong>，注意力已退潮。</td></tr><tr><td><strong>触发条件（转买入）</strong></td><td>① 三季报显示<strong>单季营收环比显著回升</strong>且扣非转正；② 出现<strong>金额达重大标准的订单</strong>（如单笔 ≥ 上年营收 30%）；③ 股价回落至 <strong>2.8–3.0 元</strong>（对应 PB ≈ 1.0，接近净资产）。</td></tr><tr><td><strong>失效条件</strong></td><td>出现实质性<strong>资产注入/重组/控制权变更</strong>公告（本报告基于"无此安排"给出结论）。</td></tr><tr><td><strong>参考区间</strong></td><td>回避区间：<strong>3.40–3.65 元</strong>；观察买点：<strong>2.80–3.00 元</strong>；止损位：<strong>2.60 元</strong>。</td></tr><tr><td><strong>时间窗口</strong></td><td>至 <strong>2026 年三季报</strong>（预计 10 月下旬）——届时营收与现金流能否改善将决定是否重估。</td></tr><tr><td><strong>仓位建议</strong></td><td><strong>不建仓</strong>。</td></tr><tr><td><strong>最大风险</strong></td><td><strong>订单转化不及预期 + 工程款回收恶化</strong>（经营现金流已连续净流出），导致微利转为亏损。</td></tr></tbody></table>
+<hr>
+<h2 id="chap5">附录 A · 待核实 / 需补充清单</h2>
+<ol><li><strong>行政处罚决定书的作出日期与文号</strong>（决定摘帽"12 个月"起算点，本报告按"时间吻合"推断，<strong>须回原文核</strong>）；</li><li><strong>撤销风险警示所依据的具体条款号</strong>（深交所《股票上市规则》，待核）；</li><li><strong>2026H1 货币资金</strong>（用于计算"现金类资产 ÷ 总市值"，判断是否属净现金型）；</li><li><strong>实际控制人与前十大股东</strong>（信息库档案该栏为空，须以半年报「第六节 股份变动及股东情况」为准）；</li><li><strong>2026-10-10 中标/10-08 预中标的具体金额与工期</strong>（判断对营收的贡献量级）；</li><li><strong>第八届董事会换届后的管理层构成</strong>（2026-08-13 公告）；</li><li>公司负责人<strong>陈晖</strong>的任职起止与历史职务。</li></ol>
+<h2 id="chap6">附录 B · 关键信源链接</h2>
+<p><strong>结论：本报告核心事实均可点击溯源至巨潮公告原文。</strong></p>
+<table><thead><tr><th>编号</th><th>文件</th><th>发布日</th><th>原文</th></tr></thead><tbody><tr><td>1</td><td><strong>关于公司股票交易撤销其他风险警示暨停复牌的公告</strong>（<strong>摘帽</strong>）</td><td><strong>2026-08-28</strong></td><td><a href="http://static.cninfo.com.cn/finalpage/2026-08-28/1225522023.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>2</td><td>关于申请撤销对公司股票交易实施其他风险警示的公告</td><td>2026-08-13</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-08-13/1225470994.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>3</td><td>2026 年半年度报告</td><td>2026-08-25</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-08-25/1225498462.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>4</td><td>关于工程项目中标的公告</td><td>2026-10-10</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-10-10/1225598697.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>5</td><td>关于工程项目预中标公示的公告</td><td>2026-10-08</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-10-08/1225589869.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>6</td><td>关于签订重大合同的进展公告</td><td>2026-09-11</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-09-11/1225556900.PDF" target="_blank" rel="noopener">打开原文</a></td></tr><tr><td>7</td><td>第八届董事会第一次会议决议公告</td><td>2026-08-13</td><td><a href="http://static.cninfo.com.cn/finalpage/2026-08-13/1225470995.PDF" target="_blank" rel="noopener">打开原文</a></td></tr></tbody></table>
+<h2 id="chap7">附录 C · 逻辑漏洞与反方观点（5 问速版）</h2>
+<p><strong>结论：本报告"卖出"结论面临的最强反驳是"已摘帽 + 净资产厚 + PB 仅 1.27，跌无可跌"——正面回答如下。</strong></p>
+<ol><li><strong>市占率怎么来的？</strong> —— 本报告未引用市占率；公司为浙江省内水利施工企业，<strong>2026H1 营收同比 −26.26%</strong>，主业在收缩。</li><li><strong>采购/框架协议 ≠ 收入？</strong> —— 报告未据框架协议定价；<strong>"预中标"（10-08）尤其不等于订单</strong>，公示期内仍可能生变。</li><li><strong>中标 ≠ 订单？</strong> —— <strong>同意</strong>，故本报告仅把"中标"列为常规经营信息，未据此上调估值。</li><li><strong>引用的时间点是否已过期？</strong> —— 行情至 <strong>2026-10-13</strong>、财务至 <strong>2026H1（08-25 披露）</strong>、公告至 <strong>2026-10-10</strong>。<strong>已是最新。</strong></li><li><strong>数据来源是什么级别？</strong> —— 财务与事件均来自<strong>半年报与巨潮公告原文</strong>；行情来自腾讯（Wind 本轮未使用）。</li></ol>
+<p><strong>反方最强论点与回应</strong>：</p>
+<blockquote><p><strong>反方</strong>："已摘帽 + 归母净资产 31.86 亿元 + PB 仅 1.27 倍，向下空间有限，是典型的'低估值修复'标的。"</p><p><strong>回应</strong>：<strong>① PB 1.27 倍是建筑行业区间中上部、不是低位</strong>（同业多在 0.5–1.5 倍）；<strong>② 低 PB 必须与 ROE 并读</strong>——ROE 仅 <strong>0.23%</strong> ⇒ 这是"<strong>资产不产生回报</strong>"的定价，不是"错杀"；<strong>③ 摘帽是"事件兑现"而非"价值重估"</strong>——本 skill 通用铁律：摘帽利好提前 1.5–2 个月定价、摘帽前一两周即应卖出，<strong>围海摘帽日 2026-08-28，出货窗口在 8 月中</strong>。</p></blockquote>
+<hr>
+<h2 id="chap8">版本记录</h2>
+<table><thead><tr><th>次数</th><th>日期</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-10-13</td><td>首次生成（速研档）。归档目录 <code>002586.SZ 围海股份</code> 内原仅有 2026 年半年度报告 PDF、<strong>无任何既有研报</strong>，故从零生成。数据截至 2026H1 财务、2026-10-13 行情、2026-10-10 公告。<strong>核心事实：已于 2026-08-28 撤销其他风险警示（摘帽）</strong>，本报告按"已摘帽标的"生成、不套用 ST 框架；结论 = <strong>卖出（回避）</strong>。</td></tr></tbody></table>
+<blockquote><p><strong>★ 摘帽改名说明</strong>：因标的已于 2026-08-28 摘帽，本报告按项目约定<strong>同步四处</strong>——归档目录名 <code>002586.SZ ST围海</code> → <strong><code>002586.SZ 围海股份</code></strong>、文件名 <code>围海股份-002586-研究报告</code>、HTML <code>&lt;title&gt;</code>、本 md 首行；站点首页卡片 <code>prefix</code> 由 <code>ST</code> <strong>置空</strong>（显示"围海股份"）。</p></blockquote>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+<script src="/annotate.js?v=20261013a" defer></script>
+</body>
+</html>
