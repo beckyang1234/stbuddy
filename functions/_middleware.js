@@ -18,10 +18,11 @@ export async function onRequest(context) {
   const res = await context.next();
   try {
     const path = new URL(context.request.url).pathname;
-    if (path !== '/annotate.js') return res;          // 其余请求一律透传，不做任何加工
-    if (!res || !res.ok) return res;
     const headers = new Headers(res.headers);
-    headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
+    headers.set('X-Sbn-Mw', '1');                     // 诊断用标记（确认中间件是否真的被调用）
+    if (path === '/annotate.js' && res && res.ok) {
+      headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
+    }
     return new Response(res.body, { status: res.status, statusText: res.statusText, headers });
   } catch (e) {
     return res;                                        // 中间件自身出问题也不影响响应
