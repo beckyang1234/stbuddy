@@ -150,13 +150,15 @@
   style.textContent = CSS;
   document.head.appendChild(style);
 
-  // ---- 文本节点收集（跳过本插件自己的节点，避免指纹被自己的徽章污染）
+  // ---- 文本节点收集（只跳过本插件自己注入的节点，避免指纹被自己的徽章/面板污染）
+  // ★ 必须用 data-sbn 精确标记，**不能用 class 前缀**：`.sbn-cell`（我加在单元格上的可点标记）
+  //   同样以 sbn- 开头，用前缀判断会把单元格里的正文一起吃掉 →
+  //   行指纹算错（v2 老批注永远无法迁移）、且重扫时纯文本单元格的锚点会凭空消失（踩过）。
   function textNodes(el) {
     var out = [], walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false), n;
     while ((n = walker.nextNode())) {
       var p = n.parentNode;
-      if (!p || !p.className || typeof p.className !== 'string' ||
-          p.className.indexOf('sbn-') !== 0) out.push(n);
+      if (!p || !p.closest || !p.closest('[data-sbn]')) out.push(n);
     }
     return out;
   }
@@ -235,6 +237,7 @@
   var cellMap = {};      // 单元格锚点 → td/th
   var sentMap = {};      // 句锚点 → {el, s, e, text}
   var alias = {};        // 旧「整行」锚点 → 该行首个单元格的锚点（v2 老批注迁移，不让它脱锚）
+  var rowTexts = [];     // 现行各行的「前 24 字 → 首格锚点」，applyFallback 用
   var panel = null, cur = null;
   var online = false;
   var offline = '';        // '' | 'not-configured'（后端没绑定）| 'network'（连不上/抖动）
@@ -277,6 +280,7 @@
         if (!pageNote || n.ts > pageNote.ts) pageNote = n;
       } else { notes.push(n); }
     });
+    applyFallback();               // ★ 批注到手后才做"改版重锚"（首屏 scan 时 notes 为空）
     group(); paint(); syncNote();
   }
 
@@ -300,6 +304,29 @@
   // v2 老批注用的是「整行」锚点；v3 改单元格后它会脱锚。
   // 这里把 老行锚点 → 该行第一个单元格锚点 做一次别名映射，老批注照旧看得见。
   function effKey(n) { return alias[n.rowKey] || n.rowKey; }
+  /* ★ 报告改版兜底：行内容变了 → 老行指纹（hash32）必然匹配不上，批注就成了"未锚定"。
+     用批注自带的「写入时的整行原文 rowText」按**前 24 字相同**再匹配一次
+     （改版时行首标签通常不变，动的多是数值/日期）。
+     ⚠️ 必须在批注拉回来之后调用 —— 首屏 scan() 时 notes 还是空的，放那里等于没跑。 */
+  function applyFallback() {
+    if (!notes.length || !rowTexts.length) return;
+    notes.forEach(function (n) {
+      if (alias[n.rowKey]) return;
+      if (n.kind !== 'row' || !n.rowText) return;
+      var head = norm(n.rowText).slice(0, 24);
+      if (head.length < 8) return;                       // 太短不敢猜，宁可显示"未锚定"
+      for (var i = 0; i < rowTexts.length; i++) {
+        if (rowTexts[i][0] === head) { alias[n.rowKey] = rowTexts[i][1]; return; }
+      }
+    });
+  }
+  // 脱锚批注（报告改写后行/句都没了对不上）——必须能被看到，绝不允许"看不到内容"
+  function orphanOf() {
+    return notes.filter(function (n) {
+      var k = effKey(n);
+      return !cellMap[k] && !sentMap[k];
+    });
+  }
   function group() {
     byKey = {};
     notes.forEach(function (n) { (byKey[effKey(n)] = byKey[effKey(n)] || []).push(n); });
@@ -333,14 +360,32 @@
     }
     // 1b) v2 老「整行」锚点 → 首格锚点（迁移用；行锚点不再参与新交互）
     var trs = document.querySelectorAll('table tr');
+    // ★ 取「该行第一个有锚点的单元格」——不能死认 children[0]：有些行的首格是空的
+    //   （标签在别的格里），那样会整行被跳过，兜底就永远匹配不到。
+    function firstKeyOf(tr) {
+      for (var c = 0; c < tr.children.length; c++) {
+        var k = tr.children[c].getAttribute && tr.children[c].getAttribute('data-sbn-key');
+        if (k) return k;
+      }
+      return '';
+    }
     for (var t = 0; t < trs.length; t++) {
       var tr = trs[t];
       if (!tr.children.length) continue;
-      var first = tr.children[0];
-      var fk = first.getAttribute && first.getAttribute('data-sbn-key');
+      var fk = firstKeyOf(tr);
       if (!fk) continue;
       alias[hash32(anchorText(tr))] = fk;
     }
+    // 1c) 兜底用的现行整行文本表（真正执行见 applyFallback()，必须在批注拉回来之后调用）
+    rowTexts = [];
+    for (var t2 = 0; t2 < trs.length; t2++) {
+      var tr2 = trs[t2];
+      if (!tr2.children.length) continue;
+      var fk2 = firstKeyOf(tr2);
+      if (!fk2) continue;
+      rowTexts.push([anchorText(tr2).slice(0, 24), fk2]);
+    }
+    applyFallback();
     // 2) 句子（只扫文本块；表格内的 td/th 一律走单元格锚点，不再参与断句）
     var all = document.querySelectorAll('p,li,div,dd,dt,blockquote,caption,figcaption,h1,h2,h3,h4,h5,h6');
     for (var j = 0; j < all.length; j++) {
@@ -370,6 +415,7 @@
       td.classList.add('sbn-on');
       var sp = document.createElement('span');
       sp.className = 'sbn-badge';
+      sp.setAttribute('data-sbn', '1');
       sp.textContent = list.length;
       td.appendChild(sp);
     });
@@ -398,6 +444,7 @@
         if (i === 0 && cnt) {
           var t = document.createElement('div');
           t.className = 'sbn-hl-tag';
+          t.setAttribute('data-sbn', '1');
           t.textContent = cnt;
           t.style.left = (rc.left + window.scrollX - 15) + 'px';
           t.style.top = (rc.top + window.scrollY - 1) + 'px';
@@ -407,8 +454,10 @@
     });
     var btn = document.getElementById('sbn-count');
     if (btn) {
-      var orphan = notes.filter(function (n) { return !cellMap[effKey(n)] && !sentMap[effKey(n)]; }).length;
+      var orphan = orphanOf().length;
       btn.textContent = '批注 ' + notes.length + (orphan ? '（' + orphan + ' 未锚定）' : '');
+      btn.title = orphan ? '有 ' + orphan + ' 条批注失去了锚点 —— 点击查看内容' : '点击跳到本页第一条批注';
+      btn.style.background = orphan ? '#b3261e' : '';
     }
   }
 
@@ -425,6 +474,7 @@
     cur = anchor;
     panel = document.createElement('div');
     panel.className = 'sbn-panel';
+    panel.setAttribute('data-sbn', '1');
     panel.innerHTML =
       '<div class="sbn-head"><span>' + (anchor.kind === 'sent' ? '句子批注' : '单元格批注') +
       '</span><span class="x" id="sbn-x">×</span></div>' +
@@ -450,13 +500,19 @@
     document.getElementById('sbn-text').addEventListener('keydown', function (e) {
       if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) save();
     });
+    if (anchor.kind === 'orphan') {          // 未锚定列表：只读/可删，没有"写在哪"这回事
+      var f = panel.querySelector('.sbn-form');
+      if (f) f.style.display = 'none';
+    }
     renderList();
     paint();
-    if (online) document.getElementById('sbn-text').focus();
+    if (online && anchor.kind !== 'orphan') document.getElementById('sbn-text').focus();
   }
+  var ORPHAN_KEY = '__orphan__';       // 「未锚定批注」列表用的伪锚点
   function renderList() {
     var box = document.getElementById('sbn-list');
-    var list = (byKey[cur.key] || []).slice().sort(function (a, b) { return a.ts - b.ts; });
+    var list = (cur.key === ORPHAN_KEY ? orphanOf() : (byKey[cur.key] || [])).slice()
+      .sort(function (a, b) { return a.ts - b.ts; });
     if (!list.length) {
       box.innerHTML = '<div class="sbn-empty">这里还没有批注' +
         (online ? '，写下第一条。' : '。' + errText() + '。') + '</div>';
@@ -464,6 +520,9 @@
     }
     box.innerHTML = list.map(function (n) {
       return '<div class="sbn-item"><div class="sbn-meta"><span>' + fmt(n.ts) + '</span>' +
+        (n.rowText && cur.key === ORPHAN_KEY ?
+          '<span style="color:#b9c1cb;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;' +
+          'max-width:170px">原文：' + esc(String(n.rowText).slice(0, 24)) + '…</span>' : '') +
         (n.kind === 'row' ? '<span style="color:#b9c1cb">整行批注（旧）</span>' : '') +
         (online ? '<span class="sbn-del" data-id="' + esc(n.id) + '">删除</span>' : '') +
         '</div><div class="sbn-body">' + esc(n.text) + '</div></div>';
@@ -610,6 +669,7 @@
   function buildNote() {
     var d = document.createElement('div');
     d.id = 'sbn-note';
+    d.setAttribute('data-sbn', '1');
     d.innerHTML =
       '<div id="sbn-note-head"><b>我的笔记</b><span class="cnt" id="sbn-note-cnt">0 / ' + NOTE_MAX + '</span>' +
         // 手机端「保存」放标题栏：锚在顶部，软键盘弹出时不会被顶掉（footer 那枚在窄屏被隐藏）
@@ -715,6 +775,7 @@
     buildNote();
     var bar = document.createElement('div');
     bar.className = 'sbn-bar';
+    bar.setAttribute('data-sbn', '1');
     bar.innerHTML = '<button class="sbn-btn ghost" id="sbn-count">批注 0</button>' +
                     '<button class="sbn-btn ghost" id="sbn-note-toggle">笔记</button>';
     document.body.appendChild(bar);
@@ -722,6 +783,15 @@
       setNoteOpen(!document.body.classList.contains('sbn-note-open'));
     });
     document.getElementById('sbn-count').addEventListener('click', function () {
+      // 有「未锚定」批注时优先打开它 —— 那些批注没有任何落点可点，不在这里列出就永远读不到
+      var orph = orphanOf();
+      if (orph.length) {
+        var b = document.getElementById('sbn-count').getBoundingClientRect();
+        open({ key: ORPHAN_KEY, kind: 'orphan',
+               anchorText: '本页有 ' + orph.length + ' 条批注因报告改版失去了锚点（内容仍在，可查看或删除）。' },
+             { top: b.top - 44, bottom: b.top - 44, left: b.left - 250 });
+        return;
+      }
       var hit = findFirstAnchored();
       if (hit) { openAt(hit[0], hit[1]); return; }
       alert(notes.length ? '本页 ' + notes.length + ' 条批注均未锚定（正文已改写），可在批注面板里查看。'
@@ -738,5 +808,6 @@
                    get cells() { return Object.keys(cellMap).length; },
                    get rows() { return Object.keys(cellMap).length; },
                    get sents() { return Object.keys(sentMap).length; },
-                   get alias() { return alias; } };
+                   get alias() { return alias; },
+                   get rowTexts() { return rowTexts; } };
 })();
