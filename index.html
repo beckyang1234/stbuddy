@@ -224,7 +224,10 @@
 
 <script>
 const STOCKS = [
-  {code:"000010", name:"美丽", prefix:"*ST", exch:"深", date:"2026-10-05", py:"meili"},
+  {code:"300326", name:"凯利", prefix:"ST", exch:"深", date:"2026-10-19", py:"kaili"},
+  {code:"301117", name:"佳缘", prefix:"ST", exch:"深", date:"2026-10-19", py:"jiayuan"},
+  {code:"688022", name:"瀚川", prefix:"ST", exch:"沪", date:"2026-10-17", py:"hanchuan"},
+  {code:"688189", name:"南新", prefix:"ST", exch:"沪", date:"2026-10-17", py:"nanxin"},
   {code:"000016", name:"康佳A", prefix:"*ST", exch:"深", date:"2026-10-16", py:"kangjiaa"},
   {code:"000056", name:"皇庭", prefix:"*ST", exch:"深", date:"2026-10-16", py:"huangting"},
   {code:"000078", name:"海王", prefix:"ST", exch:"深", date:"2026-10-16", py:"haiwang"},
@@ -321,11 +324,9 @@ const STOCKS = [
   {code:"300212", name:"易录", prefix:"*ST", exch:"深", date:"2026-10-16", py:"yilu"},
   {code:"300237", name:"美晨", prefix:"ST", exch:"深", date:"2026-10-16", py:"meichen"},
   {code:"300245", name:"天玑", prefix:"ST", exch:"深", date:"2026-10-16", py:"tianji2"},
-  {code:"300257", name:"开山股份", prefix:"", exch:"深", date:"2026-10-13", py:"kaishan"},
   {code:"300290", name:"荣科", prefix:"ST", exch:"深", date:"2026-10-16", py:"rongke"},
   {code:"300295", name:"三六五", prefix:"*ST", exch:"深", date:"2026-10-16", py:"sanliuwu"},
   {code:"300301", name:"长方", prefix:"ST", exch:"深", date:"2026-10-16", py:"changfang"},
-  {code:"300326", name:"凯利", prefix:"ST", exch:"深", date:"2026-10-19", py:"kaili"},
   {code:"300338", name:"开元", prefix:"*ST", exch:"深", date:"2026-10-16", py:"kaiyuan"},
   {code:"300352", name:"信源", prefix:"ST", exch:"深", date:"2026-10-16", py:"xinyuan"},
   {code:"300366", name:"创意", prefix:"ST", exch:"深", date:"2026-10-16", py:"chuangyi"},
@@ -342,7 +343,6 @@ const STOCKS = [
   {code:"300716", name:"泉为", prefix:"*ST", exch:"深", date:"2026-10-16", py:"quanwei"},
   {code:"300831", name:"派瑞", prefix:"ST", exch:"深", date:"2026-10-16", py:"pairui"},
   {code:"301030", name:"仕净", prefix:"*ST", exch:"深", date:"2026-10-16", py:"shijing"},
-  {code:"301117", name:"佳缘", prefix:"ST", exch:"深", date:"2026-10-19", py:"jiayuan"},
   {code:"600053", name:"九鼎", prefix:"*ST", exch:"沪", date:"2026-10-16", py:"jiuding"},
   {code:"600079", name:"人福", prefix:"ST", exch:"沪", date:"2026-10-16", py:"renfu"},
   {code:"600080", name:"金花", prefix:"ST", exch:"沪", date:"2026-10-16", py:"jinhua"},
@@ -413,7 +413,6 @@ const STOCKS = [
   {code:"603959", name:"百利", prefix:"ST", exch:"沪", date:"2026-10-16", py:"baili"},
   {code:"605199", name:"葫芦娃", prefix:"ST", exch:"沪", date:"2026-10-16", py:"huluwa"},
   {code:"605336", name:"帅电", prefix:"*ST", exch:"沪", date:"2026-10-16", py:"shuaidian"},
-  {code:"688022", name:"瀚川", prefix:"ST", exch:"沪", date:"2026-10-17", py:"hanchuan"},
   {code:"688033", name:"天宜", prefix:"*ST", exch:"沪", date:"2026-10-16", py:"tianyi"},
   {code:"688053", name:"思科瑞", prefix:"ST", exch:"沪", date:"2026-10-16", py:"sikerui"},
   {code:"688066", name:"航图", prefix:"*ST", exch:"沪", date:"2026-10-16", py:"hangtu"},
@@ -421,14 +420,14 @@ const STOCKS = [
   {code:"688089", name:"嘉必优", prefix:"ST", exch:"沪", date:"2026-10-16", py:"jiabiyou"},
   {code:"688121", name:"卓然", prefix:"*ST", exch:"沪", date:"2026-10-16", py:"zhuoran"},
   {code:"688184", name:"帕瓦", prefix:"ST", exch:"沪", date:"2026-10-16", py:"pawa"},
-  {code:"688189", name:"南新", prefix:"ST", exch:"沪", date:"2026-10-17", py:"nanxin"},
   {code:"688201", name:"信安", prefix:"ST", exch:"沪", date:"2026-10-16", py:"xinan"},
   {code:"688270", name:"臻镭", prefix:"ST", exch:"沪", date:"2026-10-16", py:"zhenlei"},
   {code:"688496", name:"清越", prefix:"*ST", exch:"沪", date:"2026-10-16", py:"qingyue"},
   {code:"688622", name:"禾信", prefix:"*ST", exch:"沪", date:"2026-10-16", py:"hexin"},
   {code:"920023", name:"田野", prefix:"*ST", exch:"北", date:"2026-10-16", py:"tianye"},
   {code:"920090", name:"同辉", prefix:"*ST", exch:"北", date:"2026-10-16", py:"tonghui"},
-  {code:"920575", name:"康乐", prefix:"*ST", exch:"北", date:"2026-10-16", py:"kangle"}
+  {code:"920575", name:"康乐", prefix:"*ST", exch:"北", date:"2026-10-16", py:"kangle"},
+  {code:"000010", name:"美丽", prefix:"*ST", exch:"深", date:"2026-10-05", py:"meili"}
 ];
 
 const META = {
@@ -529,7 +528,6 @@ const META = {
   "300212":{c:"卖出", p:"重整逻辑"},
   "300237":{c:"卖出", p:"处罚ST"},
   "300245":{c:"卖出", p:"处罚ST"},
-  "300257":{c:"买入", p:"保壳逻辑"},
   "300290":{c:"卖出", p:"处罚ST"},
   "300295":{c:"卖出", p:"保壳逻辑"},
   "300301":{c:"卖出", p:"保壳逻辑"},
