@@ -1,1073 +1,2146 @@
 <!DOCTYPE html>
 
+
+
 <html lang="zh">
+
+
 
 <head>
 
+
+
 <meta charset="utf-8">
+
+
 
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
+
+
 <title>ST Buddy · 个股深度研究</title>
+
+
 
 <style>
 
+
+
   :root{
+
+
 
     --bg:#f4f5f7; --card:#ffffff; --ink:#1c2733; --muted:#6b7684;
 
+
+
     --line:#e6e8ec; --accent:#1a5276; --red:#c0392b; --orange:#e67e22;
 
+
+
   }
+
+
 
   *{box-sizing:border-box}
 
+
+
   body{margin:0;font-family:'Microsoft YaHei',-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+
+
 
   .wrap{max-width:1400px;margin:0 auto;padding:0 20px 60px}
 
+
+
   header{background:linear-gradient(135deg,#12283b 0%,#1a5276 60%,#22608a 100%);color:#fff;padding:44px 20px 60px;margin-bottom:-30px}
+
+
 
   .head-inner{max-width:1400px;margin:0 auto}
 
+
+
   .brand{font-size:30px;font-weight:800;letter-spacing:1px}
+
+
 
   .brand .dot{color:#e67e22}
 
+
+
   .sub{margin-top:8px;font-size:14.5px;color:#cfe0ee}
+
+
 
   .stats{margin-top:18px;display:flex;gap:26px;font-size:13.5px;color:#bcd0e0}
 
+
+
   .stats b{color:#fff;font-size:18px;font-weight:700;margin-right:4px}
+
+
 
   .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 4px 18px rgba(20,40,60,.06);padding:20px 22px;margin-top:30px}
 
+
+
   .search-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+
+
 
   .search-box{flex:1;min-width:220px;position:relative}
 
+
+
   .search-box input{width:100%;padding:12px 14px 12px 40px;font-size:15px;border:1px solid var(--line);border-radius:10px;outline:none;background:#fafbfc;transition:.15s}
+
+
 
   .search-box input:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(26,82,118,.12)}
 
+
+
   .search-box .ico{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:#9aa4b0}
+
+
 
   .chips{display:flex;gap:8px;flex-wrap:wrap}
 
+
+
   .chip{padding:8px 15px;font-size:13.5px;border:1px solid var(--line);border-radius:999px;background:#fff;color:#4a5560;cursor:pointer;user-select:none;transition:.12s}
+
+
 
   .chip:hover{border-color:#b8c4d0}
 
+
+
   .chip.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+
 
   .chip.red.active{background:var(--red);border-color:var(--red)}
 
+
+
   .chip.orange.active{background:var(--orange);border-color:var(--orange)}
 
+
+
   .chip.buy.active{background:#c0392b;border-color:#c0392b}
 
+
+
   .chip.sell.active{background:#2f855a;border-color:#2f855a}
+
+
 
   .badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
 
+
+
   .bd{font-size:11.5px;padding:2px 8px;border-radius:6px;font-weight:700}
+
+
 
   .bd.buy{background:#fdecea;color:#c0392b}
 
+
+
   .bd.sell{background:#e8f5ee;color:#2f855a}
+
+
 
   .bd.path{background:#eef2f7;color:#4a6076;font-weight:500}
 
+
+
   .chip.buy.active{background:#c0392b;border-color:#c0392b}
 
+
+
   .chip.sell.active{background:#2f855a;border-color:#2f855a}
+
+
 
   .badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
 
+
+
   .bd{font-size:11.5px;padding:2px 8px;border-radius:6px;font-weight:700}
+
+
 
   .bd.buy{background:#fdecea;color:#c0392b}
 
+
+
   .bd.sell{background:#e8f5ee;color:#2f855a}
+
+
 
   .bd.path{background:#eef2f7;color:#4a6076;font-weight:500}
 
+
+
   .chip.buy.active{background:#c0392b;border-color:#c0392b}
 
+
+
   .chip.sell.active{background:#2f855a;border-color:#2f855a}
+
+
 
   .badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
 
+
+
   .bd{font-size:11.5px;padding:2px 8px;border-radius:6px;font-weight:700}
+
+
 
   .bd.buy{background:#fdecea;color:#c0392b}
 
+
+
   .bd.sell{background:#e8f5ee;color:#2f855a}
+
+
 
   .bd.path{background:#eef2f7;color:#4a6076;font-weight:500}
 
+
+
   .chip.buy.active{background:#c0392b;border-color:#c0392b}
 
+
+
   .chip.sell.active{background:#2f855a;border-color:#2f855a}
+
+
 
   .badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
 
+
+
   .bd{font-size:11.5px;padding:2px 8px;border-radius:6px;font-weight:700}
 
+
+
   .bd.buy{background:#fdecea;color:#c0392b}
+
+
 
   .bd.sell{background:#e8f5ee;color:#2f855a}
 
+
+
   .bd.path{background:#eef2f7;color:#4a6076;font-weight:500}
+
+
 
   .chip.buy.active{background:#c0392b;border-color:#c0392b}
 
+
+
   .chip.sell.active{background:#2f855a;border-color:#2f855a}
 
+
+
   .chip.green.active{background:#2f855a;border-color:#2f855a}
+
+
 
   .badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
 
+
+
   .bd{font-size:10.5px;padding:2px 6px;border-radius:5px;font-weight:700;white-space:nowrap}
+
+
 
   .bd.buy{background:#fdecea;color:#c0392b}
 
+
+
   .bd.sell{background:#e8f5ee;color:#2f855a}
+
+
 
   .bd.path{background:#eef2f7;color:#4a6076;font-weight:500}
 
+
+
   .chip.buy.active{background:#c0392b;border-color:#c0392b}
+
+
 
   .chip.sell.active{background:#2f855a;border-color:#2f855a}
 
+
+
   .chip.green.active{background:#2f855a;border-color:#2f855a}
+
+
 
   .badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
 
+
+
   .bd{font-size:10.5px;padding:2px 6px;border-radius:5px;font-weight:700;white-space:nowrap}
+
+
 
   .bd.buy{background:#fdecea;color:#c0392b}
 
+
+
   .bd.sell{background:#e8f5ee;color:#2f855a}
+
+
 
   .bd.path{background:#eef2f7;color:#4a6076;font-weight:500}
 
+
+
   .chip.buy.active{background:#c0392b;border-color:#c0392b}
+
+
 
   .chip.sell.active{background:#2f855a;border-color:#2f855a}
 
+
+
   .chip.green.active{background:#2f855a;border-color:#2f855a}
+
+
 
   .badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
 
+
+
   .bd{font-size:10.5px;padding:2px 6px;border-radius:5px;font-weight:700;white-space:nowrap}
+
+
 
   .bd.buy{background:#fdecea;color:#c0392b}
 
+
+
   .bd.sell{background:#e8f5ee;color:#2f855a}
+
+
 
   .bd.path{background:#eef2f7;color:#4a6076;font-weight:500}
 
+
+
   .chip.buy.active{background:#c0392b;border-color:#c0392b}
+
+
 
   .chip.sell.active{background:#2f855a;border-color:#2f855a}
 
+
+
   .chip.green.active{background:#2f855a;border-color:#2f855a}
+
+
 
   .badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
 
+
+
   .bd{font-size:10.5px;padding:2px 6px;border-radius:5px;font-weight:700;white-space:nowrap}
+
+
 
   .bd.buy{background:#fdecea;color:#c0392b}
 
+
+
   .bd.sell{background:#e8f5ee;color:#2f855a}
+
+
 
   .bd.path{background:#eef2f7;color:#4a6076;font-weight:500}
 
+
+
   .chip.buy.active{background:#c0392b;border-color:#c0392b}
+
+
 
   .chip.sell.active{background:#2f855a;border-color:#2f855a}
 
+
+
   .chip.green.active{background:#2f855a;border-color:#2f855a}
+
+
 
   .badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
 
+
+
   .bd{font-size:10.5px;padding:2px 6px;border-radius:5px;font-weight:700;white-space:nowrap}
+
+
 
   .bd.buy{background:#fdecea;color:#c0392b}
 
+
+
   .bd.sell{background:#e8f5ee;color:#2f855a}
+
+
 
   .bd.path{background:#eef2f7;color:#4a6076;font-weight:500}
 
+
+
   .chip.buy.active{background:#c0392b;border-color:#c0392b}
+
+
 
   .chip.sell.active{background:#2f855a;border-color:#2f855a}
 
+
+
   .chip.green.active{background:#2f855a;border-color:#2f855a}
+
+
 
   .chip.delist.active{background:#5a6472;border-color:#5a6472}
 
+
+
   .badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+
+
 
   .bd{font-size:10.5px;padding:2px 6px;border-radius:5px;font-weight:700;white-space:nowrap}
 
+
+
   .bd.buy{background:#fdecea;color:#c0392b}
+
+
 
   .bd.sell{background:#e8f5ee;color:#2f855a}
 
+
+
   .bd.path{background:#eef2f7;color:#4a6076;font-weight:500}
+
+
 
   .bd.path.delist{background:#e3e5e9;color:#39414d;font-weight:700}
 
+
+
   .label{font-size:12.5px;color:var(--muted);margin:16px 2px 8px}
+
+
 
   .grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:12px;margin-top:14px}
 
+
+
   @media(max-width:1180px){.grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
+
+
 
   @media(max-width:900px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 
+
+
   @media(max-width:640px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
 
   .card{display:block;background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 12px 10px;text-decoration:none;color:inherit;transition:.16s;position:relative;overflow:hidden}
 
+
+
   .card:hover{border-color:#b8c4d0;box-shadow:0 8px 24px rgba(20,40,60,.10);transform:translateY(-2px)}
+
+
 
   .card .bar{position:absolute;left:0;top:0;width:4px;height:100%}
 
+
+
   .bar.st{background:var(--orange)}
+
+
 
   .bar.unst{background:#2f855a}
 
+
+
   .bar.xst{background:var(--red)}
+
+
 
   .tag{display:inline-block;font-size:10.5px;font-weight:700;padding:1px 6px;border-radius:5px}
 
+
+
   .tag.unst{background:#e8f5ee;color:#2f855a}
+
+
 
   .tag.xst{background:#fdedec;color:var(--red)}
 
+
+
   .tag.st{background:#fdf3e7;color:#b96b0a}
+
+
 
   .name{font-size:15px;font-weight:700;margin-top:6px;line-height:1.25;overflow-wrap:anywhere}
 
+
+
   .code{font-size:11px;color:var(--muted);margin-top:2px;font-family:Consolas,Menlo,monospace}
+
+
 
   .meta{display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;margin-top:8px;font-size:10.5px;color:#98a2ae}
 
+
+
   .exch{background:#f1f4f7;padding:1px 6px;border-radius:5px}
+
+
 
   .empty{text-align:center;color:var(--muted);padding:40px 0;font-size:14.5px}
 
+
+
   footer{max-width:1400px;margin:40px auto 0;padding:0 20px;color:#9aa4b0;font-size:12.5px;text-align:center}
+
+
 
 </style>
 
+
+
 </head>
+
+
 
 <body><script id="sbgatescript">
 
+
+
 (function(){
+
+
 
   var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
 
+
+
   try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+
+
 
   function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
 
+
+
   function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+
+
 
   function build(){
 
+
+
     var ov=document.createElement('div');
+
+
 
     ov.id='sbgate';
 
+
+
     ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+
+
 
     ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
 
+
+
     document.body.appendChild(ov);
+
+
 
     document.getElementById('sbgo').addEventListener('click',go);
 
+
+
     document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
 
+
+
   }
+
+
 
   function go(){
 
+
+
     var v=document.getElementById('sbpwd').value;
+
+
 
     if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
 
+
+
     try{
+
+
 
       sha(v).then(function(h){
 
+
+
         if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+
+
 
         else document.getElementById('sberr').textContent='密码错误';
 
+
+
       });
+
+
 
     }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
 
+
+
   }
+
+
 
   if(document.body) build();
 
+
+
   else document.addEventListener('DOMContentLoaded', build);
+
+
 
 })();
 
+
+
 </script>
+
+
 
 <header>
 
+
+
   <div class="head-inner">
+
+
 
     <div class="brand">ST Buddy<span class="dot">.</span></div>
 
+
+
     <div class="sub">ST个股深度研究 · 寻找十倍</div>
+
+
 
     <div class="stats">
 
+
+
       <div><b id="count">0</b>篇研报</div>
+
+
 
       <div>最近更新 <b id="latest">-</b></div>
 
+
+
       <div>买入 <b id="buyN">0</b> · 卖出 <b id="sellN">0</b></div>
+
+
 
     </div>
 
+
+
   </div>
+
+
 
 </header>
 
 
 
+
+
+
+
 <div class="wrap">
+
+
 
   <div class="panel">
 
+
+
     <div class="search-row">
+
+
 
       <div class="search-box">
 
+
+
         <span class="ico">🔍</span>
+
+
 
         <input id="q" type="text" placeholder="搜索股票代码 / 名称 / 拼音，例如 600107 或 尔雅">
 
+
+
       </div>
 
+
+
     </div>
+
+
 
     <div class="label">风险类别</div>
 
+
+
     <div class="chips" id="catChips">
 
+
+
       <div class="chip active" data-val="all">全部</div>
+
+
 
       <div class="chip red" data-val="xst">＊ST（退市风险）</div>
 
+
+
       <div class="chip orange" data-val="st">ST（其他风险）</div>
+
+
 
       <div class="chip green" data-val="unst">已摘帽</div>
 
+
+
     </div>
+
+
 
     <div class="label">上市市场</div>
 
+
+
     <div class="chips" id="exchChips">
 
+
+
       <div class="chip active" data-val="all">全部</div>
+
+
 
       <div class="chip" data-val="深">深交所</div>
 
+
+
       <div class="chip" data-val="沪">上交所</div>
+
+
 
       <div class="chip" data-val="北">北交所</div>
 
+
+
     </div>
+
+
 
     <div class="label">买入 / 卖出（研报结论）</div>
 
+
+
     <div class="chips" id="conclChips">
 
+
+
       <div class="chip active" data-val="all">全部</div>
+
+
 
       <div class="chip buy" data-val="买入">买入</div>
 
+
+
       <div class="chip sell" data-val="卖出">卖出</div>
 
+
+
     </div>
+
+
 
     <div class="label">分析路径</div>
 
+
+
     <div class="chips" id="pathChips">
+
+
 
       <div class="chip active" data-val="all">全部</div>
 
+
+
       <div class="chip" data-val="保壳逻辑">保壳逻辑</div>
+
+
 
       <div class="chip" data-val="重整逻辑">重整逻辑</div>
 
+
+
       <div class="chip" data-val="处罚ST">处罚ST</div>
+
+
 
       <div class="chip delist" data-val="退市执行">退市执行</div>
 
+
+
     </div>
+
+
 
   </div>
 
 
 
+
+
+
+
   <div class="grid" id="grid"></div>
 
+
+
   <div class="empty" id="empty" style="display:none">未找到匹配的个股，试试其他关键词。</div>
+
+
 
 </div>
 
 
 
+
+
+
+
 <footer>
+
+
 
   本站内容为客观信息梳理，不构成任何投资建议。数据基准日以各研报内标注为准。
 
+
+
   <br>批注：点表格里的某格、或点正文任意一句话即可写批注；右侧「笔记」栏写整篇想法（200–5000 字）。
+
+
 
   <br>批注与笔记均所有持密码者共享。
 
+
+
   <br>ST Buddy · 个股深度研究
+
+
 
 </footer>
 
 
 
+
+
+
+
 <script>
 
+
+
 const STOCKS = [
+
   {code:"300301", name:"长方", prefix:"ST", exch:"深", date:"2026-10-29", py:"changfang"},
+  {code:"603398", name:"沐邦", prefix:"*ST", exch:"沪", date:"2026-10-29", py:"mubang"},
+
   {code:"002082", name:"万邦", prefix:"ST", exch:"深", date:"2026-10-28", py:"wanbang"},
+
   {code:"002569", name:"步森", prefix:"*ST", exch:"深", date:"2026-10-28", py:"busen"},
+
   {code:"002667", name:"威领", prefix:"*ST", exch:"深", date:"2026-10-28", py:"weiling"},
+
   {code:"002789", name:"建艺", prefix:"*ST", exch:"深", date:"2026-10-28", py:"jianyi"},
+
   {code:"300237", name:"美晨", prefix:"ST", exch:"深", date:"2026-10-28", py:"meichen"},
+
   {code:"600079", name:"人福", prefix:"ST", exch:"沪", date:"2026-10-28", py:"renfu"},
+
   {code:"600365", name:"通葡", prefix:"ST", exch:"沪", date:"2026-10-28", py:"tongpu"},
+
   {code:"603021", name:"华鹏", prefix:"*ST", exch:"沪", date:"2026-10-28", py:"huapeng"},
-  {code:"603398", name:"沐邦", prefix:"*ST", exch:"沪", date:"2026-10-28", py:"mubang"},
+
+
   {code:"603429", name:"集友", prefix:"*ST", exch:"沪", date:"2026-10-28", py:"jiyou"},
+
   {code:"603828", name:"利达", prefix:"*ST", exch:"沪", date:"2026-10-28", py:"lida"},
+
   {code:"603838", name:"四通", prefix:"*ST", exch:"沪", date:"2026-10-28", py:"sitong"},
+
   {code:"603869", name:"智知", prefix:"ST", exch:"沪", date:"2026-10-28", py:"zhizhi"},
+
   {code:"603959", name:"百利", prefix:"ST", exch:"沪", date:"2026-10-28", py:"baili"},
+
   {code:"688201", name:"信安", prefix:"ST", exch:"沪", date:"2026-10-28", py:"xinan"},
+
   {code:"920575", name:"康乐", prefix:"*ST", exch:"北", date:"2026-10-28", py:"kangle"},
+
   {code:"000010", name:"美丽", prefix:"*ST", exch:"深", date:"2026-10-27", py:"meili"},
+
   {code:"000016", name:"康佳A", prefix:"*ST", exch:"深", date:"2026-10-27", py:"kangjiaa"},
+
   {code:"000056", name:"皇庭", prefix:"*ST", exch:"深", date:"2026-10-27", py:"huangting"},
+
   {code:"000078", name:"海王", prefix:"ST", exch:"深", date:"2026-10-27", py:"haiwang"},
+
   {code:"000488", name:"晨鸣", prefix:"ST", exch:"深", date:"2026-10-27", py:"chenming"},
+
   {code:"000609", name:"中迪", prefix:"*ST", exch:"深", date:"2026-10-27", py:"zhongdi"},
+
   {code:"000610", name:"西旅", prefix:"*ST", exch:"深", date:"2026-10-27", py:"xilv"},
+
   {code:"000615", name:"美谷", prefix:"*ST", exch:"深", date:"2026-10-27", py:"meigu"},
+
   {code:"000632", name:"三木", prefix:"ST", exch:"深", date:"2026-10-27", py:"sanmu"},
+
   {code:"000639", name:"西王", prefix:"ST", exch:"深", date:"2026-10-27", py:"xiwang"},
+
   {code:"000669", name:"金鸿", prefix:"ST", exch:"深", date:"2026-10-27", py:"jinhong"},
+
   {code:"000677", name:"海龙", prefix:"ST", exch:"深", date:"2026-10-27", py:"hailong"},
+
   {code:"000698", name:"沈化", prefix:"ST", exch:"深", date:"2026-10-27", py:"shenhua"},
+
   {code:"000752", name:"西发", prefix:"*ST", exch:"深", date:"2026-10-27", py:"xifa"},
+
   {code:"000793", name:"华闻", prefix:"ST", exch:"深", date:"2026-10-27", py:"huawen"},
+
   {code:"000821", name:"京机", prefix:"ST", exch:"深", date:"2026-10-27", py:"jingji"},
+
   {code:"000826", name:"启环", prefix:"*ST", exch:"深", date:"2026-10-27", py:"sqh"},
+
   {code:"000838", name:"发展", prefix:"*ST", exch:"深", date:"2026-10-27", py:"fazhan"},
+
   {code:"000903", name:"云动", prefix:"ST", exch:"深", date:"2026-10-27", py:"yundong"},
+
   {code:"000909", name:"数源", prefix:"*ST", exch:"深", date:"2026-10-27", py:"shuyuan"},
+
   {code:"000911", name:"广糖", prefix:"*ST", exch:"深", date:"2026-10-27", py:"guangtang"},
+
   {code:"002024", name:"易购", prefix:"ST", exch:"深", date:"2026-10-27", py:"yigou"},
+
   {code:"002055", name:"得润", prefix:"ST", exch:"深", date:"2026-10-27", py:"derun"},
+
   {code:"002102", name:"能特", prefix:"ST", exch:"深", date:"2026-10-27", py:"nengte"},
+
   {code:"002109", name:"兴化", prefix:"ST", exch:"深", date:"2026-10-27", py:"xinghua"},
+
   {code:"002122", name:"汇洲", prefix:"ST", exch:"深", date:"2026-10-27", py:"huizhou"},
+
   {code:"002168", name:"惠程", prefix:"ST", exch:"深", date:"2026-10-27", py:"huicheng"},
+
   {code:"002175", name:"东智", prefix:"*ST", exch:"深", date:"2026-10-27", py:"dongzhi"},
+
   {code:"002193", name:"如意", prefix:"ST", exch:"深", date:"2026-10-27", py:"ruyi"},
+
   {code:"002198", name:"嘉应", prefix:"ST", exch:"深", date:"2026-10-27", py:"jiaying"},
+
   {code:"002207", name:"准油", prefix:"*ST", exch:"深", date:"2026-10-27", py:"zhunyou"},
+
   {code:"002211", name:"宏达", prefix:"ST", exch:"深", date:"2026-10-27", py:"hongda"},
+
   {code:"002217", name:"合力泰", prefix:"ST", exch:"深", date:"2026-10-27", py:"helitai"},
+
   {code:"002227", name:"特迅", prefix:"*ST", exch:"深", date:"2026-10-27", py:"texun"},
+
   {code:"002305", name:"南置", prefix:"*ST", exch:"深", date:"2026-10-27", py:"nanzhi"},
+
   {code:"002306", name:"云网", prefix:"ST", exch:"深", date:"2026-10-27", py:"yunwang"},
+
   {code:"002323", name:"雅博", prefix:"*ST", exch:"深", date:"2026-10-27", py:"yabo"},
+
   {code:"002360", name:"同德", prefix:"ST", exch:"深", date:"2026-10-27", py:"tongde"},
+
   {code:"002424", name:"百灵", prefix:"ST", exch:"深", date:"2026-10-27", py:"bailing"},
+
   {code:"002431", name:"棕榈", prefix:"ST", exch:"深", date:"2026-10-27", py:"zonglv"},
+
   {code:"002485", name:"雪发", prefix:"ST", exch:"深", date:"2026-10-27", py:"xuefa"},
+
   {code:"002501", name:"利源", prefix:"*ST", exch:"深", date:"2026-10-27", py:"liyuan"},
+
   {code:"002512", name:"达华", prefix:"ST", exch:"深", date:"2026-10-27", py:"dahua"},
+
   {code:"002514", name:"宝馨", prefix:"*ST", exch:"深", date:"2026-10-27", py:"baoxin"},
+
   {code:"002528", name:"英飞", prefix:"*ST", exch:"深", date:"2026-10-27", py:"yingfei"},
+
   {code:"002538", name:"司特", prefix:"ST", exch:"深", date:"2026-10-27", py:"site"},
+
   {code:"002542", name:"中岩", prefix:"*ST", exch:"深", date:"2026-10-27", py:"zhongyan"},
+
   {code:"002547", name:"春兴", prefix:"*ST", exch:"深", date:"2026-10-27", py:"chunxing"},
+
   {code:"002581", name:"未名", prefix:"*ST", exch:"深", date:"2026-10-27", py:"weiming"},
+
   {code:"002586", name:"围海股份", prefix:"", exch:"深", date:"2026-10-27", py:"weihaigufen"},
+
   {code:"002592", name:"八菱", prefix:"ST", exch:"深", date:"2026-10-27", py:"baling"},
+
   {code:"002598", name:"章鼓", prefix:"ST", exch:"深", date:"2026-10-27", py:"zhanggu"},
+
   {code:"002620", name:"瑞和", prefix:"*ST", exch:"深", date:"2026-10-27", py:"ruihe"},
+
   {code:"002630", name:"华西", prefix:"*ST", exch:"深", date:"2026-10-27", py:"huaxi"},
+
   {code:"002634", name:"棒杰", prefix:"*ST", exch:"深", date:"2026-10-27", py:"bangjie"},
+
   {code:"002650", name:"加加", prefix:"ST", exch:"深", date:"2026-10-27", py:"jiajia"},
+
   {code:"002689", name:"远智", prefix:"ST", exch:"深", date:"2026-10-27", py:"yuanzhi"},
+
   {code:"002691", name:"冀凯", prefix:"*ST", exch:"深", date:"2026-10-27", py:"jikai"},
+
   {code:"002694", name:"顾地", prefix:"*ST", exch:"深", date:"2026-10-27", py:"gudi"},
+
   {code:"002717", name:"岭南", prefix:"*ST", exch:"深", date:"2026-10-27", py:"lingnan"},
+
   {code:"002719", name:"麦趣", prefix:"ST", exch:"深", date:"2026-10-27", py:"maiqu"},
+
   {code:"002726", name:"龙大", prefix:"ST", exch:"深", date:"2026-10-27", py:"longda"},
+
   {code:"002731", name:"萃华", prefix:"*ST", exch:"深", date:"2026-10-27", py:"cuihua"},
+
   {code:"002743", name:"富煌", prefix:"ST", exch:"深", date:"2026-10-27", py:"fuhuang"},
+
   {code:"002759", name:"天际", prefix:"ST", exch:"深", date:"2026-10-27", py:"tianji"},
+
   {code:"002816", name:"和科", prefix:"*ST", exch:"深", date:"2026-10-27", py:"heke"},
+
   {code:"002822", name:"中装", prefix:"ST", exch:"深", date:"2026-10-27", py:"zhongzhuang"},
+
   {code:"002856", name:"美芝", prefix:"*ST", exch:"深", date:"2026-10-27", py:"meizhi"},
+
   {code:"002872", name:"天圣", prefix:"ST", exch:"深", date:"2026-10-27", py:"tiansheng"},
+
   {code:"002883", name:"中设", prefix:"*ST", exch:"深", date:"2026-10-27", py:"zhongshe"},
+
   {code:"002932", name:"明德", prefix:"*ST", exch:"深", date:"2026-10-27", py:"mingde"},
+
   {code:"002977", name:"天箭", prefix:"*ST", exch:"深", date:"2026-10-27", py:"tianjian"},
+
   {code:"300010", name:"豆神", prefix:"ST", exch:"深", date:"2026-10-27", py:"doushen"},
+
   {code:"300020", name:"银江", prefix:"ST", exch:"深", date:"2026-10-27", py:"yinjiang"},
+
   {code:"300027", name:"华谊", prefix:"ST", exch:"深", date:"2026-10-27", py:"huayi"},
+
   {code:"300044", name:"赛为", prefix:"*ST", exch:"深", date:"2026-10-27", py:"saiwei"},
+
   {code:"300068", name:"南都", prefix:"ST", exch:"深", date:"2026-10-27", py:"nandou"},
+
   {code:"300076", name:"宁视", prefix:"*ST", exch:"深", date:"2026-10-27", py:"ningshi"},
+
   {code:"300081", name:"恒信", prefix:"ST", exch:"深", date:"2026-10-27", py:"hengxin"},
+
   {code:"300087", name:"荃银", prefix:"ST", exch:"深", date:"2026-10-27", py:"quanyin"},
+
   {code:"300091", name:"金灵", prefix:"*ST", exch:"深", date:"2026-10-27", py:"jinling"},
+
   {code:"300096", name:"易联众", prefix:"ST", exch:"深", date:"2026-10-27", py:"yilianzhong"},
+
   {code:"300123", name:"亚光", prefix:"ST", exch:"深", date:"2026-10-27", py:"yaguang"},
+
   {code:"300125", name:"聆达股份", prefix:"", exch:"深", date:"2026-10-27", py:"lingda"},
+
   {code:"300147", name:"香雪", prefix:"*ST", exch:"深", date:"2026-10-27", py:"xiangxue"},
+
   {code:"300152", name:"动力", prefix:"*ST", exch:"深", date:"2026-10-27", py:"dongli"},
+
   {code:"300167", name:"迪威迅", prefix:"ST", exch:"深", date:"2026-10-27", py:"diweixun"},
+
   {code:"300173", name:"福能", prefix:"ST", exch:"深", date:"2026-10-27", py:"funeng"},
+
   {code:"300198", name:"纳川", prefix:"*ST", exch:"深", date:"2026-10-27", py:"nachuan"},
+
   {code:"300205", name:"天喻", prefix:"*ST", exch:"深", date:"2026-10-27", py:"tianyu"},
+
   {code:"300212", name:"易录", prefix:"*ST", exch:"深", date:"2026-10-27", py:"yilu"},
+
   {code:"300245", name:"天玑", prefix:"ST", exch:"深", date:"2026-10-27", py:"tianji2"},
+
   {code:"300290", name:"荣科", prefix:"ST", exch:"深", date:"2026-10-27", py:"rongke"},
+
   {code:"300295", name:"三六五", prefix:"*ST", exch:"深", date:"2026-10-27", py:"sanliuwu"},
+
   {code:"300326", name:"凯利", prefix:"ST", exch:"深", date:"2026-10-27", py:"kaili"},
+
   {code:"300338", name:"开元", prefix:"*ST", exch:"深", date:"2026-10-27", py:"kaiyuan"},
+
   {code:"300352", name:"信源", prefix:"ST", exch:"深", date:"2026-10-27", py:"xinyuan"},
+
   {code:"300366", name:"创意", prefix:"ST", exch:"深", date:"2026-10-27", py:"chuangyi"},
+
   {code:"300385", name:"雪浪", prefix:"ST", exch:"深", date:"2026-10-27", py:"xuelang"},
+
   {code:"300396", name:"迪瑞", prefix:"ST", exch:"深", date:"2026-10-27", py:"dirui"},
+
   {code:"300419", name:"浩丰", prefix:"ST", exch:"深", date:"2026-10-27", py:"haofeng"},
+
   {code:"300430", name:"益通", prefix:"*ST", exch:"深", date:"2026-10-27", py:"yitong"},
+
   {code:"300460", name:"惠伦", prefix:"ST", exch:"深", date:"2026-10-27", py:"huilun"},
+
   {code:"300462", name:"华铭", prefix:"ST", exch:"深", date:"2026-10-27", py:"huaming"},
+
   {code:"300472", name:"新元", prefix:"*ST", exch:"深", date:"2026-10-27", py:"xinyuan2"},
+
   {code:"300477", name:"合纵", prefix:"ST", exch:"深", date:"2026-10-27", py:"hezong"},
+
   {code:"300555", name:"路通", prefix:"ST", exch:"深", date:"2026-10-27", py:"lutong"},
+
   {code:"300594", name:"朗进", prefix:"ST", exch:"深", date:"2026-10-27", py:"langjin"},
+
   {code:"300716", name:"泉为", prefix:"*ST", exch:"深", date:"2026-10-27", py:"quanwei"},
+
   {code:"300831", name:"派瑞", prefix:"ST", exch:"深", date:"2026-10-27", py:"pairui"},
+
   {code:"301030", name:"仕净", prefix:"*ST", exch:"深", date:"2026-10-27", py:"shijing"},
+
   {code:"301117", name:"佳缘", prefix:"ST", exch:"深", date:"2026-10-27", py:"jiayuan"},
+
   {code:"600053", name:"九鼎", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"jiuding"},
+
   {code:"600080", name:"金花", prefix:"ST", exch:"沪", date:"2026-10-27", py:"jinhua"},
+
   {code:"600082", name:"海泰", prefix:"ST", exch:"沪", date:"2026-10-27", py:"haitai"},
+
   {code:"600084", name:"尼雅", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"niya"},
+
   {code:"600107", name:"尔雅", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"erya"},
+
   {code:"600119", name:"长投", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"zhangtou"},
+
   {code:"600136", name:"明诚", prefix:"ST", exch:"沪", date:"2026-10-27", py:"mingcheng"},
+
   {code:"600169", name:"太重", prefix:"ST", exch:"沪", date:"2026-10-27", py:"taizhong"},
+
   {code:"600180", name:"瑞茂", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"ruimao"},
+
   {code:"600187", name:"国中", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"guozhong"},
+
   {code:"600238", name:"椰岛", prefix:"ST", exch:"沪", date:"2026-10-27", py:"yedao"},
+
   {code:"600239", name:"云城", prefix:"ST", exch:"沪", date:"2026-10-27", py:"yuncheng"},
+
   {code:"600243", name:"海华", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"haihua"},
+
   {code:"600265", name:"景谷", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"jinggu"},
+
   {code:"600289", name:"信通", prefix:"ST", exch:"沪", date:"2026-10-27", py:"xintong"},
+
   {code:"600302", name:"标准", prefix:"ST", exch:"沪", date:"2026-10-27", py:"biaozhun"},
+
   {code:"600337", name:"美克", prefix:"ST", exch:"沪", date:"2026-10-27", py:"meike"},
+
   {code:"600340", name:"华幸", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"huaxing"},
+
   {code:"600363", name:"联光", prefix:"ST", exch:"沪", date:"2026-10-27", py:"lianguang"},
+
   {code:"600370", name:"三房", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"sanfang"},
+
   {code:"600381", name:"春天", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"chuntian"},
+
   {code:"600423", name:"柳化", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"liuhua"},
+
   {code:"600439", name:"瑞贝卡", prefix:"ST", exch:"沪", date:"2026-10-27", py:"ruibeika"},
+
   {code:"600476", name:"湘邮", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"xiangyou"},
+
   {code:"600491", name:"龙元", prefix:"ST", exch:"沪", date:"2026-10-27", py:"longyuan"},
+
   {code:"600530", name:"交昂", prefix:"ST", exch:"沪", date:"2026-10-27", py:"jiaoang"},
+
   {code:"600537", name:"亿晶", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"yijing"},
+
   {code:"600543", name:"莫高", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"mogao"},
+
   {code:"600568", name:"中珠", prefix:"ST", exch:"沪", date:"2026-10-27", py:"zhongzhu"},
+
   {code:"600581", name:"八钢", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"bagang"},
+
   {code:"600624", name:"复华", prefix:"ST", exch:"沪", date:"2026-10-27", py:"fuhua"},
+
   {code:"600678", name:"金顶", prefix:"ST", exch:"沪", date:"2026-10-27", py:"jinding"},
+
   {code:"600730", name:"高科", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"gaoke"},
+
   {code:"600734", name:"实达", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"shida"},
+
   {code:"600735", name:"新华锦", prefix:"ST", exch:"沪", date:"2026-10-27", py:"xinhuajin"},
+
   {code:"600745", name:"闻泰", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"wentai"},
+
   {code:"600753", name:"海钦", prefix:"ST", exch:"沪", date:"2026-10-27", py:"haiqin"},
+
   {code:"600759", name:"洲际", prefix:"ST", exch:"沪", date:"2026-10-27", py:"zhouji"},
+
   {code:"600818", name:"中路", prefix:"ST", exch:"沪", date:"2026-10-27", py:"zhonglu"},
+
   {code:"600889", name:"京化", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"jinghua"},
+
   {code:"600965", name:"福成", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"fucheng"},
+
   {code:"601010", name:"文峰", prefix:"ST", exch:"沪", date:"2026-10-27", py:"wenfeng"},
+
   {code:"601718", name:"际华", prefix:"ST", exch:"沪", date:"2026-10-27", py:"jihua"},
+
   {code:"603008", name:"喜临门", prefix:"ST", exch:"沪", date:"2026-10-27", py:"xilinmen"},
+
   {code:"603189", name:"网达", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"wangda"},
+
   {code:"603272", name:"联翔", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"lianxiang"},
+
   {code:"603359", name:"东珠", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"dongzhu"},
+
   {code:"603377", name:"东时", prefix:"ST", exch:"沪", date:"2026-10-27", py:"dongshi"},
+
   {code:"603378", name:"亚士", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"yashi"},
+
   {code:"603517", name:"绝味食品", prefix:"", exch:"沪", date:"2026-10-27", py:"juewei"},
+
   {code:"603557", name:"起步", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"qibu"},
+
   {code:"603595", name:"东尼", prefix:"ST", exch:"沪", date:"2026-10-27", py:"dongni"},
+
   {code:"603718", name:"海利", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"haili"},
+
   {code:"603729", name:"龙韵", prefix:"ST", exch:"沪", date:"2026-10-27", py:"longyun"},
+
   {code:"603789", name:"星农", prefix:"ST", exch:"沪", date:"2026-10-27", py:"xingnong"},
+
   {code:"603822", name:"嘉澳", prefix:"ST", exch:"沪", date:"2026-10-27", py:"jiaao"},
+
   {code:"603825", name:"华扬", prefix:"ST", exch:"沪", date:"2026-10-27", py:"huayang"},
+
   {code:"603843", name:"正平", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"zhengping"},
+
   {code:"603922", name:"金鸿顺", prefix:"ST", exch:"沪", date:"2026-10-27", py:"jinhongshun"},
+
   {code:"605199", name:"葫芦娃", prefix:"ST", exch:"沪", date:"2026-10-27", py:"huluwa"},
+
   {code:"605336", name:"帅电", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"shuaidian"},
+
   {code:"688022", name:"瀚川", prefix:"ST", exch:"沪", date:"2026-10-27", py:"hanchuan"},
+
   {code:"688033", name:"天宜", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"tianyi"},
+
   {code:"688053", name:"思科瑞", prefix:"ST", exch:"沪", date:"2026-10-27", py:"sikerui"},
+
   {code:"688066", name:"航图", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"hangtu"},
+
   {code:"688076", name:"诺泰", prefix:"ST", exch:"沪", date:"2026-10-27", py:"nuotai"},
+
   {code:"688089", name:"嘉必优", prefix:"ST", exch:"沪", date:"2026-10-27", py:"jiabiyou"},
+
   {code:"688121", name:"卓然", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"zhuoran"},
+
   {code:"688184", name:"帕瓦", prefix:"ST", exch:"沪", date:"2026-10-27", py:"pawa"},
+
   {code:"688189", name:"南新", prefix:"ST", exch:"沪", date:"2026-10-27", py:"nanxin"},
+
   {code:"688270", name:"臻镭", prefix:"ST", exch:"沪", date:"2026-10-27", py:"zhenlei"},
+
   {code:"688496", name:"清越", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"qingyue"},
+
   {code:"688622", name:"禾信", prefix:"*ST", exch:"沪", date:"2026-10-27", py:"hexin"},
+
   {code:"920023", name:"田野", prefix:"*ST", exch:"北", date:"2026-10-27", py:"tianye"},
+
   {code:"920090", name:"同辉", prefix:"*ST", exch:"北", date:"2026-10-27", py:"tonghui"}
+
 ];
+
+
+
+
 
 
 
 const META = {
 
+
+
   "000010":{c:"卖出", p:"重整逻辑"},
+
+
 
   "000016":{c:"卖出", p:"退市执行"},
 
+
+
   "000056":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "000078":{c:"卖出", p:"处罚ST"},
 
+
+
   "000488":{c:"买入", p:"保壳逻辑"},
+
+
 
   "000609":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "000610":{c:"卖出", p:"重整逻辑"},
+
+
 
   "000615":{c:"卖出", p:"重整逻辑"},
 
+
+
   "000632":{c:"卖出", p:"重整逻辑"},
+
+
 
   "000639":{c:"卖出", p:"处罚ST"},
 
+
+
   "000669":{c:"卖出", p:"重整逻辑"},
+
+
 
   "000677":{c:"卖出", p:"处罚ST"},
 
+
+
   "000698":{c:"卖出", p:"处罚ST"},
+
+
 
   "000752":{c:"卖出", p:"重整逻辑"},
 
+
+
   "000793":{c:"卖出", p:"重整逻辑"},
+
+
 
   "000821":{c:"卖出", p:"处罚ST"},
 
+
+
   "000826":{c:"买入", p:"重整逻辑"},
+
+
 
   "000838":{c:"卖出", p:"重整逻辑"},
 
+
+
   "000903":{c:"卖出", p:"处罚ST"},
+
+
 
   "000909":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "000911":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "002024":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "002055":{c:"买入", p:"处罚ST"},
+
+
 
   "002082":{c:"卖出", p:"处罚ST"},
 
+
+
   "002102":{c:"卖出", p:"处罚ST"},
+
+
 
   "002109":{c:"卖出", p:"处罚ST"},
 
+
+
   "002122":{c:"卖出", p:"处罚ST"},
+
+
 
   "002168":{c:"卖出", p:"重整逻辑"},
 
+
+
   "002175":{c:"买入", p:"保壳逻辑"},
+
+
 
   "002193":{c:"卖出", p:"处罚ST"},
 
+
+
   "002198":{c:"卖出", p:"处罚ST"},
+
+
 
   "002207":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "002211":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "002217":{c:"卖出", p:"处罚ST"},
 
+
+
   "002227":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "002305":{c:"卖出", p:"重整逻辑"},
 
+
+
   "002306":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "002323":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "002360":{c:"卖出", p:"重整逻辑"},
+
+
 
   "002424":{c:"卖出", p:"处罚ST"},
 
+
+
   "002431":{c:"卖出", p:"重整逻辑"},
+
+
 
   "002485":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "002501":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "002512":{c:"卖出", p:"处罚ST"},
 
+
+
   "002514":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "002528":{c:"卖出", p:"重整逻辑"},
 
+
+
   "002538":{c:"卖出", p:"处罚ST"},
+
+
 
   "002542":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "002547":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "002569":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "002581":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "002586":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "002592":{c:"买入", p:"处罚ST"},
+
+
 
   "002598":{c:"卖出", p:"处罚ST"},
 
+
+
   "002620":{c:"卖出", p:"重整逻辑"},
+
+
 
   "002630":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "002634":{c:"卖出", p:"重整逻辑"},
+
+
 
   "002650":{c:"卖出", p:"处罚ST"},
 
+
+
   "002667":{c:"买入", p:"保壳逻辑"},
+
+
 
   "002689":{c:"卖出", p:"处罚ST"},
 
+
+
   "002691":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "002694":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "002717":{c:"卖出", p:"退市执行"},
+
+
 
   "002719":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "002726":{c:"卖出", p:"重整逻辑"},
+
+
 
   "002731":{c:"卖出", p:"退市执行"},
 
+
+
   "002743":{c:"卖出", p:"处罚ST"},
+
+
 
   "002759":{c:"买入", p:"处罚ST"},
 
+
+
   "002789":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "002816":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "002822":{c:"卖出", p:"重整逻辑"},
+
+
 
   "002856":{c:"卖出", p:"重整逻辑"},
 
+
+
   "002872":{c:"卖出", p:"处罚ST"},
+
+
 
   "002883":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "002932":{c:"买入", p:"保壳逻辑"},
+
+
 
   "002977":{c:"买入", p:"保壳逻辑"},
 
+
+
   "300010":{c:"卖出", p:"处罚ST"},
+
+
 
   "300020":{c:"卖出", p:"处罚ST"},
 
+
+
   "300027":{c:"卖出", p:"重整逻辑"},
+
+
 
   "300044":{c:"卖出", p:"重整逻辑"},
 
+
+
   "300068":{c:"卖出", p:"重整逻辑"},
+
+
 
   "300076":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "300081":{c:"卖出", p:"处罚ST"},
+
+
 
   "300087":{c:"卖出", p:"处罚ST"},
 
+
+
   "300091":{c:"卖出", p:"重整逻辑"},
+
+
 
   "300096":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "300123":{c:"卖出", p:"重整逻辑"},
+
+
 
   "300125":{c:"卖出", p:"重整逻辑"},
 
+
+
   "300147":{c:"卖出", p:"重整逻辑"},
+
+
 
   "300152":{c:"卖出", p:"处罚ST"},
 
+
+
   "300167":{c:"卖出", p:"处罚ST"},
+
+
 
   "300173":{c:"卖出", p:"处罚ST"},
 
+
+
   "300198":{c:"卖出", p:"重整逻辑"},
+
+
 
   "300205":{c:"卖出", p:"处罚ST"},
 
+
+
   "300212":{c:"卖出", p:"重整逻辑"},
+
+
 
   "300237":{c:"卖出", p:"处罚ST"},
 
+
+
   "300245":{c:"卖出", p:"处罚ST"},
+
+
 
   "300290":{c:"卖出", p:"处罚ST"},
 
+
+
   "300295":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "300301":{c:"买入", p:"重整逻辑"},
 
+
+
   "300326":{c:"买入", p:"处罚ST"},
+
+
 
   "300338":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "300352":{c:"卖出", p:"处罚ST"},
+
+
 
   "300366":{c:"卖出", p:"处罚ST"},
 
+
+
   "300385":{c:"卖出", p:"重整逻辑"},
+
+
 
   "300396":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "300419":{c:"卖出", p:"处罚ST"},
+
+
 
   "300430":{c:"卖出", p:"处罚ST"},
 
+
+
   "300460":{c:"卖出", p:"处罚ST"},
+
+
 
   "300462":{c:"买入", p:"重整逻辑"},
 
+
+
   "300472":{c:"卖出", p:"重整逻辑"},
+
+
 
   "300477":{c:"卖出", p:"重整逻辑"},
 
+
+
   "300555":{c:"卖出", p:"处罚ST"},
+
+
 
   "300594":{c:"卖出", p:"处罚ST"},
 
+
+
   "300716":{c:"卖出", p:"重整逻辑"},
+
+
 
   "300831":{c:"卖出", p:"处罚ST"},
 
+
+
   "301030":{c:"卖出", p:"重整逻辑"},
+
+
 
   "301117":{c:"买入", p:"处罚ST"},
 
+
+
   "600053":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "600079":{c:"卖出", p:"处罚ST"},
 
+
+
   "600080":{c:"卖出", p:"处罚ST"},
+
+
 
   "600082":{c:"卖出", p:"处罚ST"},
 
+
+
   "600084":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "600107":{c:"卖出", p:"重整逻辑"},
 
+
+
   "600119":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "600136":{c:"卖出", p:"处罚ST"},
 
+
+
   "600169":{c:"卖出", p:"处罚ST"},
+
+
 
   "600180":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "600187":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "600238":{c:"卖出", p:"处罚ST"},
 
+
+
   "600239":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "600243":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "600265":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "600289":{c:"卖出", p:"处罚ST"},
 
+
+
   "600302":{c:"卖出", p:"处罚ST"},
+
+
 
   "600337":{c:"卖出", p:"重整逻辑"},
 
+
+
   "600340":{c:"卖出", p:"重整逻辑"},
+
+
 
   "600363":{c:"卖出", p:"处罚ST"},
 
+
+
   "600365":{c:"卖出", p:"处罚ST"},
+
+
 
   "600370":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "600381":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "600423":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "600439":{c:"卖出", p:"处罚ST"},
+
+
 
   "600476":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "600491":{c:"卖出", p:"重整逻辑"},
+
+
 
   "600530":{c:"卖出", p:"处罚ST"},
 
+
+
   "600537":{c:"卖出", p:"重整逻辑"},
+
+
 
   "600543":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "600568":{c:"卖出", p:"处罚ST"},
+
+
 
   "600581":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "600624":{c:"卖出", p:"处罚ST"},
+
+
 
   "600678":{c:"卖出", p:"处罚ST"},
 
+
+
   "600730":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "600734":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "600735":{c:"卖出", p:"处罚ST"},
+
+
 
   "600745":{c:"买入", p:"处罚ST"},
 
+
+
   "600753":{c:"卖出", p:"处罚ST"},
+
+
 
   "600759":{c:"卖出", p:"处罚ST"},
 
+
+
   "600818":{c:"卖出", p:"处罚ST"},
+
+
 
   "600889":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "600965":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "601010":{c:"卖出", p:"处罚ST"},
 
+
+
   "601718":{c:"卖出", p:"处罚ST"},
+
+
 
   "603008":{c:"卖出", p:"处罚ST"},
 
+
+
   "603021":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "603189":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "603272":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "603359":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "603377":{c:"卖出", p:"重整逻辑"},
+
+
 
   "603378":{c:"卖出", p:"重整逻辑"},
 
+
+
   "603398":{c:"卖出", p:"重整逻辑"},
+
+
 
   "603429":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "603517":{c:"卖出", p:"处罚ST"},
+
+
 
   "603557":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "603595":{c:"卖出", p:"处罚ST"},
+
+
 
   "603718":{c:"买入", p:"保壳逻辑"},
 
+
+
   "603729":{c:"卖出", p:"处罚ST"},
+
+
 
   "603789":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "603822":{c:"卖出", p:"处罚ST"},
+
+
 
   "603825":{c:"买入", p:"处罚ST"},
 
+
+
   "603828":{c:"买入", p:"处罚ST"},
+
+
 
   "603838":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "603843":{c:"卖出", p:"重整逻辑"},
+
+
 
   "603869":{c:"卖出", p:"处罚ST"},
 
+
+
   "603922":{c:"卖出", p:"处罚ST"},
+
+
 
   "603959":{c:"卖出", p:"重整逻辑"},
 
+
+
   "605199":{c:"卖出", p:"处罚ST"},
+
+
 
   "605336":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "688022":{c:"卖出", p:"处罚ST"},
+
+
 
   "688033":{c:"卖出", p:"重整逻辑"},
 
+
+
   "688053":{c:"卖出", p:"处罚ST"},
+
+
 
   "688066":{c:"卖出", p:"重整逻辑"},
 
+
+
   "688076":{c:"卖出", p:"处罚ST"},
+
+
 
   "688089":{c:"卖出", p:"处罚ST"},
 
+
+
   "688121":{c:"卖出", p:"退市执行"},
+
+
 
   "688184":{c:"卖出", p:"处罚ST"},
 
+
+
   "688189":{c:"卖出", p:"重整逻辑"},
+
+
 
   "688201":{c:"卖出", p:"处罚ST"},
 
+
+
   "688270":{c:"买入", p:"处罚ST"},
+
+
 
   "688496":{c:"卖出", p:"退市执行"},
 
+
+
   "688622":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "920023":{c:"卖出", p:"保壳逻辑"},
 
+
+
   "920090":{c:"卖出", p:"保壳逻辑"},
+
+
 
   "920575":{c:"卖出", p:"重整逻辑"}
 
+
+
 };
+
+
+
+
 
 
 
@@ -1075,41 +2148,83 @@ let state = {kw:"", cat:"all", exch:"all", concl:"all", path:"all"};
 
 
 
+
+
+
+
 function metaOf(code){ return META[code] || {c:"", p:""}; }
+
+
+
+
 
 
 
 function matches(s){
 
+
+
   const kw = state.kw.trim().toLowerCase();
+
+
 
   if(kw){
 
+
+
     const hay = (s.code + " " + s.name + " " + s.py + " " + s.prefix + s.name).toLowerCase();
+
+
 
     const hit = hay.includes(kw) || s.py.startsWith(kw) || s.code.startsWith(kw);
 
+
+
     if(!hit) return false;
+
+
 
   }
 
+
+
   if(state.cat === "xst" && s.prefix !== "*ST") return false;
+
+
 
   if(state.cat === "st" && s.prefix !== "ST") return false;
 
+
+
   if(state.cat === "unst" && s.prefix !== "") return false;
+
+
 
   if(state.exch !== "all" && s.exch !== state.exch) return false;
 
+
+
   const m = metaOf(s.code);
+
+
 
   if(state.concl !== "all" && m.c !== state.concl) return false;
 
+
+
   if(state.path !== "all" && m.p !== state.path) return false;
+
+
 
   return true;
 
+
+
 }
+
+
+
+
 
 
 
@@ -1117,120 +2232,240 @@ function fullName(s){ return s.prefix + s.name; }
 
 
 
+
+
+
+
 function render(){
+
+
 
   const list = STOCKS.filter(matches);
 
+
+
   document.getElementById("count").textContent = STOCKS.length;
+
+
 
   document.getElementById("latest").textContent = STOCKS.reduce((m,s)=> s.date > m ? s.date : m, "0");
 
+
+
   const nt = x => STOCKS.filter(s=> metaOf(s.code).c === x).length;
+
+
 
   const nb = document.getElementById("buyN"), ns = document.getElementById("sellN");
 
+
+
   if(nb) nb.textContent = nt("买入");
+
+
 
   if(ns) ns.textContent = nt("卖出");
 
+
+
   const grid = document.getElementById("grid");
+
+
 
   const empty = document.getElementById("empty");
 
+
+
   grid.innerHTML = "";
+
+
 
   if(list.length === 0){ empty.style.display = "block"; return; }
 
+
+
   empty.style.display = "none";
+
+
 
   list.forEach(s=>{
 
+
+
     const isXst = s.prefix === "*ST";
+
+
 
     const m = metaOf(s.code);
 
+
+
     const kind = s.prefix === "" ? "unst" : (isXst ? "xst" : "st");
+
+
 
     const tag = s.prefix
 
+
+
       ? '<span class="tag ' + kind + '">' + s.prefix + '</span>'
+
+
 
       : '<span class="tag unst">已摘帽</span>';
 
+
+
     const a = document.createElement("a");
+
+
 
     a.className = "card";
 
+
+
     a.href = "reports/" + s.code + ".html";
+
+
 
     a.innerHTML =
 
+
+
       '<div class="bar ' + kind + '"></div>' +
+
+
 
       tag +
 
+
+
       '<div class="name">' + fullName(s) + '</div>' +
+
+
 
       '<div class="code">' + s.code + (s.exch==="深"?".SZ":(s.exch==="沪"?".SH":".BJ")) + '</div>' +
 
+
+
       '<div class="badges">' +
+
+
 
         (m.c ? '<span class="bd ' + (m.c==="买入"?"buy":"sell") + '">' + m.c + '</span>' : '') +
 
+
+
         (m.p ? '<span class="bd path' + (m.p==="退市执行" ? ' delist' : '') + '">' + m.p + '</span>' : '') +
+
+
 
       '</div>' +
 
+
+
       '<div class="meta"><span>' + s.date.slice(5) + '</span><span class="exch">' + s.exch + '</span></div>';
+
+
 
     grid.appendChild(a);
 
+
+
   });
 
+
+
 }
+
+
+
+
 
 
 
 function bindChips(containerId, key){
 
+
+
   const cont = document.getElementById(containerId);
+
+
 
   if(!cont) return;
 
+
+
   cont.addEventListener("click", e=>{
+
+
 
     const chip = e.target.closest(".chip");
 
+
+
     if(!chip || !chip.dataset.val) return;
+
+
 
     state[key] = chip.dataset.val;
 
+
+
     Array.from(cont.children).forEach(c=>c.classList.remove("active"));
+
+
 
     chip.classList.add("active");
 
+
+
     render();
 
+
+
   });
+
+
 
 }
 
 
 
+
+
+
+
 document.getElementById("q").addEventListener("input", e=>{ state.kw = e.target.value; render(); });
+
+
 
 bindChips("catChips", "cat");
 
+
+
 bindChips("exchChips", "exch");
+
+
 
 bindChips("conclChips", "concl");
 
+
+
 bindChips("pathChips", "path");
+
+
 
 render();
 
+
+
 </script>
 
+
+
 </body>
+
+
 
 </html>
