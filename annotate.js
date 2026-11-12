@@ -50,33 +50,54 @@
 
   // ---- 样式
   var CSS = '' +
-    // ---------- 版面：正文左移、右侧让出笔记栏 ----------
-    //    报告模板是 .wrap{max-width:1080px;margin:0 auto}（居中）→ 两侧大片留白。
-    //    ★ 只在 ≥1500px 才"停靠"笔记栏（正文左靠 + 右侧 380px 常驻）；
-    //      1500px 以下一律**不动正文**（保持模板原样居中），笔记栏改为浮层，避免小屏正文被压窄。
-    //      手机上打开报告跟以前完全一样，要写笔记时点「笔记」按钮弹出全宽面板。
+    // ---------- 版面：三区并行 = 目录 │ 正文 │ 笔记，永不互相遮挡 ----------
+    //  报告模板是 .wrap{max-width:1080px;margin:0 auto}（居中）；目录 #sbtoc 是 fixed，
+    //  靠 body.toc-open{padding-left:calc(var(--sbtoc-w)+24px)} 占位。
+    //  ★ 笔记栏是「右侧固定侧栏」，**不是浮层**：展开时正文让位（body padding-right = 笔记宽 + 24），
+    //    任何宽度下都不覆盖正文。宽度分档（CSS 变量 --sbn-nw，定义在 body 上、子元素继承）：
+    //      ≥1400 → 380 ｜ 1100–1399 → 340 ｜ 768–1099 → 300 ｜ <768 → 上下分屏
+    //    <768 无法左右并列（手机屏宽 390 减去笔记只剩几十像素），改为**上下分屏**：
+    //      正文变成独立滚动区（高度 = 视口 − 笔记高），笔记占下半屏 —— 两者物理上不重叠。
+    //      横向矮屏（手机横屏，max-height 520）仍走左右并列，因为竖向空间更紧。
+    'body{--sbn-nw:380px;--sbn-nh:46vh}' +
+    '@media(max-width:1399px){body{--sbn-nw:340px}}' +
+    '@media(max-width:1099px){body{--sbn-nw:300px}}' +
     '.wrap{max-width:1080px;margin:0 0 0 28px}' +
-    '@media(max-width:1499px){.wrap{max-width:1080px;margin:0 auto}}' +
-    '#sbn-note{position:fixed;right:0;top:0;bottom:0;width:380px;z-index:9002;background:#fff;' +
+    '@media(max-width:767px){.wrap{margin:0 auto}}' +
+    '#sbn-note{position:fixed;right:0;top:0;bottom:0;width:var(--sbn-nw);z-index:9002;background:#fff;' +
       'border-left:1px solid #e3e7ee;display:none;flex-direction:column;color:#1c2733;' +
       'font-family:-apple-system,"Microsoft YaHei",sans-serif;font-size:13px}' +
-      '@media(max-width:1499px){#sbn-note{box-shadow:-8px 0 32px rgba(16,32,48,.2)}}' +
-      // 手机：全宽面板（「保存」按钮的显隐切换见样式表末尾 —— 必须排在基础规则之后才生效）
-      '@media(max-width:600px){#sbn-note{left:0;right:0;width:auto}}' +
     'body.sbn-note-open #sbn-note{display:flex}' +
-    '@media(min-width:1500px){' +
-      'body.sbn-note-open{padding-right:404px}' +
-      'body.sbn-note-open .wrap{max-width:1160px}' +
-    '}' +
-    // 右下角悬浮轨道（回到顶部 / 返回首页 / 批注）随笔记栏一起左移，别被压住
-    'body.sbn-note-open .sbn-bar{right:404px}' +
-    'body.sbn-note-open #totop{right:404px}' +
-    'body.sbn-note-open a[href$="index.html"]{right:404px!important}' +
-    // ★ 浮层模式（<1500px）：笔记栏会压住右下角那条悬浮轨道 —— 展开时直接把轨道收起，
-    //   否则手机上会出现「返回首页/批注 按钮画在笔记面板上」的怪象。收起笔记栏即自动恢复。
-    '@media(max-width:1499px){' +
-      'body.sbn-note-open .sbn-bar,body.sbn-note-open #totop,' +
+    // ★★ 并行化的核心一条：正文让位，而不是被盖住
+    'body.sbn-note-open{padding-right:calc(var(--sbn-nw) + 24px)}' +
+    // 右下角悬浮轨道（回到顶部 / 返回首页 / 批注）随笔记栏一起左移，别被笔记栏压住
+    'body.sbn-note-open .sbn-bar{right:calc(var(--sbn-nw) + 20px)}' +
+    'body.sbn-note-open #totop{right:calc(var(--sbn-nw) + 20px)}' +
+    'body.sbn-note-open a[href$="index.html"]{right:calc(var(--sbn-nw) + 20px)!important}' +
+    // <768：上下分屏。正文 = 独立滚动区（视口高 − 笔记高 − 上下留白），笔记固定下半屏。
+    '@media(max-width:767px){' +
+      'body.sbn-note-open{padding-right:24px}' +
+      'body.sbn-note-open .wrap{max-height:calc(100vh - var(--sbn-nh) - 52px);overflow-y:auto;' +
+        'overscroll-behavior:contain;-webkit-overflow-scrolling:touch}' +
+      '#sbn-note{left:0;right:0;width:auto;top:auto;bottom:0;height:var(--sbn-nh);' +
+        'border-left:none;border-top:1px solid #e3e7ee;box-shadow:0 -8px 28px rgba(16,32,48,.16)}' +
+      // 分屏时右侧轨道会被笔记栏压住 → 收起（面板自带 ×，关闭不受影响）；
+      // 返回首页改钉到「正文区」右下（原来的 bottom:84 落在笔记栏里、会被盖住，等于消失）。
+      'body.sbn-note-open .sbn-bar{display:none!important}' +
+      // 原本钉在右下（bottom:84）的「返回首页」会落进笔记栏里、被盖住；
+      // 移到正文区又会压住表格 → 分屏时直接隐藏，改由笔记栏标题栏的「← 首页」承担。
       'body.sbn-note-open a[href$="index.html"]{display:none!important}' +
+      'body.sbn-note-open #totop{display:none!important}' +
+      // 批注面板别溢出到笔记栏里
+      '.sbn-panel{max-height:calc(100vh - var(--sbn-nh) - 20px);overflow:auto}' +
+    '}' +
+    // 手机横屏（宽度 <768 但高度也矮）：左右并列更省竖向空间
+    '@media(max-width:767px) and (max-height:520px){' +
+      'body{--sbn-nw:260px}' +
+      '#sbn-note{left:auto;right:0;top:0;bottom:0;width:var(--sbn-nw);height:auto;' +
+        'border-top:none;border-left:1px solid #e3e7ee;box-shadow:-8px 0 28px rgba(16,32,48,.16)}' +
+      'body.sbn-note-open{padding-right:calc(var(--sbn-nw) + 24px)}' +
+      'body.sbn-note-open .wrap{max-height:none;overflow:visible}' +
     '}' +
     '#sbn-note-head{padding:10px 14px;border-bottom:1px solid #e9edf2;background:#f6f8fa;' +
       'display:flex;align-items:center;gap:8px}' +
@@ -142,9 +163,12 @@
     '.sbn-save{border:none;border-radius:7px;background:#e67e22;color:#fff;padding:6px 14px;' +
       'font-size:12.5px;cursor:pointer;white-space:nowrap}' +
     '.sbn-save[disabled]{background:#c9d2dc;cursor:default}' +
-    // ★ 必须放在最后：手机端把「保存」移到标题栏。
+    // ★ 必须放在最后：窄屏（含手机横屏的小侧栏）把「保存」移到标题栏
     //   同特异性(id)下**后写者胜**，若写在 #sbn-note-save-top{display:none} 之前就会被它盖掉。
-    '@media(max-width:600px){#sbn-note-save-top{display:inline-block}#sbn-note-save{display:none}}';
+    '#sbn-note-home{display:none;text-decoration:none;color:#5b6472;font-size:12px;' +
+      'padding:2px 7px;border-radius:6px;border-bottom:none;white-space:nowrap}' +
+    '@media(max-width:767px){#sbn-note-save-top{display:inline-block}#sbn-note-save{display:none}' +
+      'body.sbn-note-open #sbn-note-home{display:inline-block}}';
   var style = document.createElement('style');
   style.id = 'sbn-style';
   style.textContent = CSS;
@@ -488,9 +512,13 @@
     document.body.appendChild(panel);
     var top = rect ? rect.bottom + window.scrollY + 6 : window.scrollY + 120;
     var left = rect ? rect.left + window.scrollX : window.scrollX + 60;
-    if (top + 300 > window.scrollY + document.documentElement.clientHeight) {
+    var vh = document.documentElement.clientHeight;
+    if (top + 300 > window.scrollY + vh) {
       top = Math.max(window.scrollY + 8, (rect ? rect.top + window.scrollY : top) - panel.offsetHeight - 6);
     }
+    // ★ 夹住下溢：分屏模式下可用高度只有「视口 − 笔记栏」，面板不许压到笔记栏上
+    top = Math.max(window.scrollY + 8,
+                   Math.min(top, window.scrollY + vh - (panel.offsetHeight || 300) - 10));
     panel.style.top = top + 'px';
     panel.style.left = Math.max(8, Math.min(left,
       window.scrollX + document.documentElement.clientWidth - panel.offsetWidth - 14)) + 'px';
@@ -658,12 +686,33 @@
         });
     });
   }
+  // 笔记栏与左侧目录栏在窄屏会互相挤（目录占 314px 时正文只剩 ~240px）→
+  // 展开笔记时临时收起目录（只改 class、不写 localStorage），关上笔记自动还原。
+  // 宽屏（≥1100）两者能并存，绝不碰用户的目录状态。
+  var tocSavedByNote = false;
+  function syncTocForNote() {
+    var b = document.body;
+    if (!b) return;
+    var need = b.classList.contains('sbn-note-open') && window.innerWidth < 1100;
+    if (need) {
+      if (b.classList.contains('toc-open')) {
+        tocSavedByNote = true;
+        b.classList.remove('toc-open');
+        b.classList.add('toc-closed');
+      }
+    } else if (tocSavedByNote) {
+      tocSavedByNote = false;
+      b.classList.add('toc-open');
+      b.classList.remove('toc-closed');
+    }
+  }
   function setNoteOpen(on) {
     var open = !!on;
     document.body.classList[open ? 'add' : 'remove']('sbn-note-open');
     var tg = document.getElementById('sbn-note-toggle');
     if (tg) tg.classList[open ? 'add' : 'remove']('on');
     try { localStorage.setItem('sb_note_open', open ? '1' : ''); } catch (e) {}
+    syncTocForNote();
     setTimeout(paint, 260);          // 版面变化后重画句子高亮
   }
   function buildNote() {
@@ -671,7 +720,11 @@
     d.id = 'sbn-note';
     d.setAttribute('data-sbn', '1');
     d.innerHTML =
-      '<div id="sbn-note-head"><b>我的笔记</b><span class="cnt" id="sbn-note-cnt">0 / ' + NOTE_MAX + '</span>' +
+      '<div id="sbn-note-head"><b>我的笔记</b>' +
+        // ★ href 必须是 `../` 而不是 `../index.html`：后者匹配 a[href$="index.html"]，
+        //   会被模板的 !important 定位规则钉到右下、也会被分屏时那条 display:none 命中。
+        '<a id="sbn-note-home" href="../" title="返回首页">← 首页</a>' +
+        '<span class="cnt" id="sbn-note-cnt">0 / ' + NOTE_MAX + '</span>' +
         // 手机端「保存」放标题栏：锚在顶部，软键盘弹出时不会被顶掉（footer 那枚在窄屏被隐藏）
         '<button id="sbn-note-save-top">保存</button>' +
         '<span class="x" id="sbn-note-close" title="收起">×</span></div>' +
@@ -695,10 +748,10 @@
     noteBox.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) saveNote();
     });
-    // ★ 默认展开只在真正宽屏（≥1500px）——小屏一进来就糊一层面板会挡住报告
+    // ★ 默认展开：≥1200px 自动展开（并行布局，不遮挡）；窄屏默认收起，免得一进来就挤正文
     var want = null;
     try { want = localStorage.getItem('sb_note_open'); } catch (e) {}
-    setNoteOpen(want === null ? window.innerWidth >= 1500 : want === '1');
+    setNoteOpen(want === null ? window.innerWidth >= 1200 : want === '1');
   }
 
   // ================================================================ 交互
@@ -741,7 +794,16 @@
 
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
   // resize 只重画高亮覆盖层，**不要关面板**（布局变化时把用户正在写的面板关掉是纯伤害）
-  window.addEventListener('resize', function () { paint(); });
+  window.addEventListener('resize', function () { syncTocForNote(); paint(); });
+  // ★ 手机分屏（<768）时正文在 .wrap 内部滚动、窗口本身不滚 → 窗口 scroll 收不到，
+  //   句子高亮会错位。用捕获阶段接住容器滚动（scroll 不冒泡，但捕获能拿到），rAF 节流后重画。
+  var paintTick = 0;
+  document.addEventListener('scroll', function (e) {
+    var t = e.target;
+    if (!t || !t.classList || !t.classList.contains('wrap')) return;
+    if (paintTick) return;
+    paintTick = requestAnimationFrame(function () { paintTick = 0; paint(); });
+  }, true);
   document.addEventListener('toggle', function () { setTimeout(paint, 30); }, true);
 
   // ================================================================ 启动
