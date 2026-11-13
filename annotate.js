@@ -1,64 +1,59 @@
-/* stbuddy 批注（v3）—— 注入到每篇研报页。
-   三种落点：
-     · 表格「单个单元格」 → 点单元格即可批注（锚点 = 单元格文本指纹；同文本重复时按出现次序加 -N）
-       ★ v2 是"整行"锚点：行内多列被拼成一条，徽章只挂第一列 → 点第二列看到徽章却读不到内容（Andy 报障）。
-         v3 改为严格单格：一次点击只作用于所点的那个单元格，不再跨列、跨格。
-     · 任意一句话 → 点正文任意位置，自动落到「光标所在的那句话」（锚点 = 该段文本指纹 + 句序）
-     · 右侧笔记栏 → 逐篇自由笔记（200–5000 字），与批注同源共享
-   批注/笔记存 Cloudflare KV（经 /api/notes），所有持密码者共享可见。
-   约束：不改研报正文（高亮用绝对定位覆盖层画，不动 DOM）；不依赖外部资源；后端不可用时静默降级。
-
-   ★ 维护提醒：本文件是**外链单文件**（站点根 /annotate.js），改完跑 stbuddy.py inject/sync
-     （内部会 sync_annot_asset() 把新版拷到站点根）再推送 annotate.js 一个文件即可。
+/* stbuddy 站点脚本（v5）—— 注入到每篇研报页。功能三块：
+     1. 编辑模式：正文可人工编辑（点击元素改文字 / 双击段落编辑整段 HTML / 图片插入），
+        改动存 Cloudflare KV（经 /api/content），刷新即生效；「最终报告以人工编辑的为准」。
+     2. 笔记栏（右侧）：与正文并列、永不遮挡。**笔记 = 报告的「结论与理由」章**，
+        可整章编辑（像改文档一样），不再有"额外多出的笔记页面"。
+     3. 图片：插入后默认折叠成一个「图 N」占位条，点开才显示在正文里，保持条理清晰。
+   存储与鉴权同批注：/api/*，x-stb-token = 密码哈希，所有持密码者共享。
+   ★ 2026-11-13 起：单元格/句子批注已按 Andy 指示下线（"可以把评论这个功能去掉"）。
 */
 (function () {
   'use strict';
 
   var TOKEN = '9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
-  var API = '/api/notes';
-  var MINEKEY = 'sb_mine';     // 本机刚写的批注：KV 是最终一致（list 有几十秒延迟），
-                               // 靠它保证"作者自己刚写完刷新也看得见"
-  var PAGE_ANCHOR = 'page';    // 右侧笔记栏的锚点（一篇一条，kind='page'）
-  var NOTE_MAX = 5000;         // 笔记上限字数
-  var NOTE_MIN_HINT = 200;     // 只做提示，不强制
+  var API_NOTE = '/api/notes';      // 笔记（沿用旧接口，kind='page'）
+  var API_CONTENT = '/api/content'; // 正文编辑（新接口）
+  var PAGE_ANCHOR = 'page';
+  var NOTE_MAX = 20000;             // 笔记章上限（原 5000，改整章后放宽）
 
   var m = /\/(\d{6})(?:\.html)?\/?$/.exec(location.pathname);
   if (!m) return;
   var CODE = m[1];
-  var DRAFTKEY = 'sb_draft_' + CODE;
+  var DRAFTKEY = 'sb_note_draft_' + CODE;
+  var EDITSKEY = 'sb_edits_' + CODE;
 
   // ================================================================ 工具
-  function hash32(s) {
-    var h = 0x811c9dc5;
-    for (var i = 0; i < s.length; i++) {
-      h ^= s.charCodeAt(i);
-      h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0;
-    }
-    return ('0000000' + h.toString(16)).slice(-8);
-  }
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
     });
   }
+  function escA(s) { return esc(s).replace(/\n/g, ' '); }
   function fmt(ts) {
     var d = new Date(ts), p = function (n) { return (n < 10 ? '0' : '') + n; };
     return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()) +
            ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
   }
   function norm(s) { return String(s).replace(/\s+/g, ' ').trim(); }
+  function sha256hex(s) {
+    // 异步：crypto.subtle 在 http(s) 可用；file:// 下降级（demo 用）
+    if (location.protocol === 'https:' && window.crypto && crypto.subtle) {
+      return crypto.subtle.digest('SHA-256', new TextEncoder().encode(s))
+        .then(function (b) {
+          return Array.prototype.map.call(new Uint8Array(b), function (x) {
+            return ('0' + x.toString(16)).slice(-2);
+          }).join('');
+        });
+    }
+    return Promise.resolve(null);
+  }
 
-  // ---- 样式
+  // ================================================================ 样式
   var CSS = '' +
     // ---------- 版面：三区并行 = 目录 │ 正文 │ 笔记，永不互相遮挡 ----------
-    //  报告模板是 .wrap{max-width:1080px;margin:0 auto}（居中）；目录 #sbtoc 是 fixed，
-    //  靠 body.toc-open{padding-left:calc(var(--sbtoc-w)+24px)} 占位。
-    //  ★ 笔记栏是「右侧固定侧栏」，**不是浮层**：展开时正文让位（body padding-right = 笔记宽 + 24），
-    //    任何宽度下都不覆盖正文。宽度分档（CSS 变量 --sbn-nw，定义在 body 上、子元素继承）：
-    //      ≥1400 → 380 ｜ 1100–1399 → 340 ｜ 768–1099 → 300 ｜ <768 → 上下分屏
-    //    <768 无法左右并列（手机屏宽 390 减去笔记只剩几十像素），改为**上下分屏**：
-    //      正文变成独立滚动区（高度 = 视口 − 笔记高），笔记占下半屏 —— 两者物理上不重叠。
-    //      横向矮屏（手机横屏，max-height 520）仍走左右并列，因为竖向空间更紧。
+    //  ★ Mac Retina 上 24px 间隔看起来偏大（实际是 .wrap 内容没占满 max-width，
+    //    居中布局的对称留白被误认为"笔记栏与正文间隔大"）—— 间隔收紧为 12px，
+    //    并让 .wrap 吃满剩余宽度，紧贴笔记栏。
     'body{--sbn-nw:380px;--sbn-nh:46vh}' +
     '@media(max-width:1399px){body{--sbn-nw:340px}}' +
     '@media(max-width:1099px){body{--sbn-nw:300px}}' +
@@ -68,30 +63,25 @@
       'border-left:1px solid #e3e7ee;display:none;flex-direction:column;color:#1c2733;' +
       'font-family:-apple-system,"Microsoft YaHei",sans-serif;font-size:13px}' +
     'body.sbn-note-open #sbn-note{display:flex}' +
-    // ★★ 并行化的核心一条：正文让位，而不是被盖住
-    'body.sbn-note-open{padding-right:calc(var(--sbn-nw) + 24px)}' +
-    // 右下角悬浮轨道（回到顶部 / 返回首页 / 批注）随笔记栏一起左移，别被笔记栏压住
+    // ★ 并行核心：正文让位；间隔 12px（原 24，Mac 上显松）—— 紧贴但不粘连
+    'body.sbn-note-open{padding-right:calc(var(--sbn-nw) + 12px)}' +
+    // ★ 宽屏下 .wrap 默认 max-width 1080，右边到笔记栏之间会有大块空白 → 让正文吃满
+    '@media(min-width:768px){body.sbn-note-open .wrap{max-width:none;margin-right:0}}' +
+    // 右下角悬浮轨道随笔记栏左移
     'body.sbn-note-open .sbn-bar{right:calc(var(--sbn-nw) + 20px)}' +
     'body.sbn-note-open #totop{right:calc(var(--sbn-nw) + 20px)}' +
     'body.sbn-note-open a[href$="index.html"]{right:calc(var(--sbn-nw) + 20px)!important}' +
-    // <768：上下分屏。正文 = 独立滚动区（视口高 − 笔记高 − 上下留白），笔记固定下半屏。
+    // <768：上下分屏
     '@media(max-width:767px){' +
       'body.sbn-note-open{padding-right:24px}' +
       'body.sbn-note-open .wrap{max-height:calc(100vh - var(--sbn-nh) - 52px);overflow-y:auto;' +
         'overscroll-behavior:contain;-webkit-overflow-scrolling:touch}' +
       '#sbn-note{left:0;right:0;width:auto;top:auto;bottom:0;height:var(--sbn-nh);' +
         'border-left:none;border-top:1px solid #e3e7ee;box-shadow:0 -8px 28px rgba(16,32,48,.16)}' +
-      // 分屏时右侧轨道会被笔记栏压住 → 收起（面板自带 ×，关闭不受影响）；
-      // 返回首页改钉到「正文区」右下（原来的 bottom:84 落在笔记栏里、会被盖住，等于消失）。
       'body.sbn-note-open .sbn-bar{display:none!important}' +
-      // 原本钉在右下（bottom:84）的「返回首页」会落进笔记栏里、被盖住；
-      // 移到正文区又会压住表格 → 分屏时直接隐藏，改由笔记栏标题栏的「← 首页」承担。
       'body.sbn-note-open a[href$="index.html"]{display:none!important}' +
       'body.sbn-note-open #totop{display:none!important}' +
-      // 批注面板别溢出到笔记栏里
-      '.sbn-panel{max-height:calc(100vh - var(--sbn-nh) - 20px);overflow:auto}' +
     '}' +
-    // 手机横屏（宽度 <768 但高度也矮）：左右并列更省竖向空间
     '@media(max-width:767px) and (max-height:520px){' +
       'body{--sbn-nw:260px}' +
       '#sbn-note{left:auto;right:0;top:0;bottom:0;width:var(--sbn-nw);height:auto;' +
@@ -99,74 +89,70 @@
       'body.sbn-note-open{padding-right:calc(var(--sbn-nw) + 24px)}' +
       'body.sbn-note-open .wrap{max-height:none;overflow:visible}' +
     '}' +
+    // ---------- 笔记栏内部 ----------
     '#sbn-note-head{padding:10px 14px;border-bottom:1px solid #e9edf2;background:#f6f8fa;' +
       'display:flex;align-items:center;gap:8px}' +
     '#sbn-note-head b{font-size:13px;white-space:nowrap}' +
+    '#sbn-note-home{display:none;text-decoration:none;color:#5b6472;font-size:12px;' +
+      'padding:2px 7px;border-radius:6px;border-bottom:none;white-space:nowrap}' +
     '#sbn-note-head .cnt{margin-left:auto;font-size:11px;color:#98a2ae;white-space:nowrap}' +
-    '#sbn-note-head .x{cursor:pointer;color:#8b96a3;font-size:16px;line-height:1;padding:0 2px}' +
     '#sbn-note-save-top{display:none;border:none;border-radius:7px;background:#e67e22;color:#fff;' +
       'padding:5px 12px;font-size:12.5px;cursor:pointer;white-space:nowrap}' +
     '#sbn-note-save-top[disabled]{background:#c9d2dc;cursor:default}' +
+    '#sbn-note-head .x{cursor:pointer;color:#8b96a3;font-size:16px;line-height:1;padding:0 2px}' +
+    // 笔记栏内容区：像正文一样渲染富文本（结论/理由链/触发/失效条件）
+    '#sbn-note-body{flex:1 1 auto;overflow-y:auto;padding:14px 16px 24px;font-size:13.5px;' +
+      'line-height:1.8;color:#1c2733}' +
+    '#sbn-note-body:empty::after{content:"这一章还没有内容。点右下「编辑」写下结论与理由。";color:#98a2ae}' +
+    '#sbn-note-body h4{margin:14px 0 6px;font-size:13px;color:#1f3a5f;border-bottom:1px dashed #dbe3ee;' +
+      'padding-bottom:4px}' +
+    '#sbn-note-body h3{margin:16px 0 8px;font-size:14.5px;color:#1f3a5f}' +
+    '#sbn-note-body ol,#sbn-note-body ul{margin:4px 0;padding-left:22px}' +
+    '#sbn-note-body li{margin:6px 0}' +
+    '#sbn-note-body p{margin:8px 0}' +
+    '#sbn-note-body .lead{padding:10px 12px;border-left:3px solid #b3261e;background:#fdf3f2;' +
+      'border-radius:0 8px 8px 0;font-weight:600;margin:0 0 12px}' +
+    '#sbn-note-body .buy{border-left-color:#2f855a;background:#e8f5ee}' +
+    '#sbn-note-edit{display:none;flex:1 1 auto;flex-direction:column;overflow:hidden}' +
     '#sbn-note-text{flex:1 1 auto;width:100%;box-sizing:border-box;border:none;outline:none;' +
-      'resize:none;padding:12px 14px;font-size:13px;line-height:1.75;font-family:inherit;color:#1c2733}' +
-    '#sbn-note-text::placeholder{color:#b3bcc7}' +
+      'resize:none;padding:12px 14px;font-size:13px;line-height:1.75;font-family:inherit;color:#1c2733;' +
+      'background:#fffdf8}' +
     '#sbn-note-foot{padding:8px 14px;border-top:1px solid #e9edf2;background:#fbfcfd;' +
       'display:flex;align-items:center;gap:8px}' +
     '#sbn-note-foot .sbn-msg{flex:1}' +
+    '.sbn-save{border:none;border-radius:7px;background:#e67e22;color:#fff;padding:6px 14px;' +
+      'font-size:12.5px;cursor:pointer;white-space:nowrap}' +
+    '.sbn-save[disabled]{background:#c9d2dc;cursor:default}' +
     '#sbn-note[data-warn="1"] #sbn-note-head{background:#fff6ec}' +
-    // ---------- 单元格批注 ----------
-    '.sbn-cell{cursor:cell}' +
-    '.sbn-cell:hover{background:rgba(230,126,34,.08)!important}' +
-    '.sbn-cell.sbn-on{background:rgba(230,126,34,.13)!important;box-shadow:inset 0 0 0 1px rgba(230,126,34,.45)}' +
-    '.sbn-badge{display:inline-block;min-width:15px;height:15px;line-height:15px;text-align:center;' +
-      'font-size:10px;font-weight:700;color:#fff;background:#e67e22;border-radius:8px;padding:0 4px;' +
-      'margin-left:5px;vertical-align:middle;font-family:-apple-system,"Microsoft YaHei",sans-serif}' +
-    // ---------- 句子高亮 ----------
-    '.sbn-hl{position:absolute;pointer-events:none;z-index:1;border-radius:3px;' +
-      'background:rgba(230,126,34,.17);border-bottom:1.5px solid rgba(230,126,34,.55)}' +
-    '.sbn-hl-sel{background:rgba(230,126,34,.3);border-bottom-color:#e67e22}' +
-    '.sbn-hl-tag{position:absolute;pointer-events:none;z-index:2;font-size:9px;line-height:13px;' +
-      'min-width:13px;height:13px;text-align:center;color:#fff;background:#e67e22;border-radius:7px;' +
-      'font-weight:700;font-family:-apple-system,"Microsoft YaHei",sans-serif}' +
-    // ★ 右下角是一条「悬浮控件竖排轨道」：回到顶部 #totop（26–72，模板自带，未滚动时隐藏）
-    //   → 返回首页（84–126，模板用 !important 钉在右下）→ 本条「批注 N」（140 起）。
-    '.sbn-bar{position:fixed;right:20px;bottom:140px;z-index:9998;display:flex;gap:8px}' +
+    // ---------- 编辑模式 ----------
+    'body.sb-editing [data-sbe]{outline:1.5px dashed rgba(230,126,34,.55);outline-offset:2px;cursor:text}' +
+    'body.sb-editing [data-sbe]:hover{background:rgba(230,126,34,.06)}' +
+    '#sbe-hint{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:10000;' +
+      'background:#1f3a5f;color:#fff;padding:8px 16px;border-radius:18px;font-size:12.5px;' +
+      'box-shadow:0 6px 18px rgba(15,23,42,.3);display:none}' +
+    'body.sb-editing #sbe-hint{display:block}' +
+    '.sbe-imgbtn{position:absolute;left:0;top:-22px;z-index:9;display:none;gap:4px}' +
+    'body.sb-editing .sbe-imgbtn{display:flex}' +
+    '.sbe-imgbtn button{border:1px solid #cfd8e3;background:#fff;border-radius:6px;font-size:11px;' +
+      'padding:2px 7px;cursor:pointer;color:#33506b}' +
+    // ---------- 图片（可折叠） ----------
+    '.sbe-fig{margin:14px 0}' +
+    '.sbe-fig-toggle{display:inline-flex;align-items:center;gap:6px;border:1px solid #cfd8e3;' +
+      'background:#f6f8fa;border-radius:8px;padding:5px 12px;font-size:12.5px;cursor:pointer;color:#33506b}' +
+    '.sbe-fig-toggle:hover{background:#eef2f7}' +
+    '.sbe-fig-toggle .tri{display:inline-block;transition:transform .15s;font-size:10px;color:#98a2ae}' +
+    '.sbe-fig.open .sbe-fig-toggle .tri{transform:rotate(90deg)}' +
+    '.sbe-fig-body{display:none;margin-top:8px}' +
+    '.sbe-fig.open .sbe-fig-body{display:block!important}' +
+    '.sbe-fig img{max-width:100%;border-radius:8px;border:1px solid #e3e7ee}' +
+    '.sbe-fig figcaption{font-size:11.5px;color:#98a2ae;margin-top:5px}' +
+    // ---------- 悬浮条 ----------
+    '.sbn-bar{position:fixed;right:20px;bottom:140px;z-index:9998;display:flex;gap:8px;flex-direction:column;align-items:flex-end}' +
     '.sbn-btn{border:none;border-radius:20px;padding:9px 15px;font-size:13px;cursor:pointer;' +
       'font-family:-apple-system,"Microsoft YaHei",sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.2)}' +
     '.sbn-btn.ghost{background:#1a5276;color:#fff}' +
     '.sbn-btn.ghost.on{background:#e67e22}' +
-    '.sbn-panel{position:absolute;z-index:9999;width:330px;max-width:92vw;background:#fff;' +
-      'border:1px solid #d9dee5;border-radius:12px;box-shadow:0 10px 34px rgba(20,40,60,.22);' +
-      'font-family:-apple-system,"Microsoft YaHei",sans-serif;color:#1c2733;font-size:13px;' +
-      'line-height:1.55;overflow:hidden}' +
-    '.sbn-head{padding:9px 12px;background:#f6f8fa;border-bottom:1px solid #e9edf2;font-weight:700;' +
-      'font-size:12.5px;display:flex;justify-content:space-between;align-items:center}' +
-    '.sbn-head .x{cursor:pointer;color:#8b96a3;font-size:16px;line-height:1;padding:0 2px}' +
-    '.sbn-anchor{padding:7px 12px;background:#fffdf8;border-bottom:1px solid #f0e6d8;color:#7a6a55;' +
-      'font-size:11.5px;max-height:58px;overflow:auto}' +
-    '.sbn-list{max-height:220px;overflow:auto;padding:4px 0}' +
-    '.sbn-item{padding:7px 12px;border-bottom:1px dashed #eef1f5}' +
-    '.sbn-item:last-child{border-bottom:none}' +
-    '.sbn-meta{font-size:11px;color:#98a2ae;display:flex;justify-content:space-between;gap:8px}' +
-    '.sbn-del{cursor:pointer;color:#c0392b;font-size:11px}' +
-    '.sbn-body{margin-top:3px;white-space:pre-wrap;word-break:break-word}' +
-    '.sbn-empty{padding:10px 12px;color:#98a2ae;font-size:12px}' +
-    '.sbn-form{padding:9px 12px;background:#fbfcfd;border-top:1px solid #e9edf2}' +
-    '.sbn-form textarea{width:100%;box-sizing:border-box;border:1px solid #dfe4ea;' +
-      'border-radius:7px;padding:6px 8px;font-size:12.5px;font-family:inherit;outline:none;color:#1c2733;' +
-      'min-height:54px;resize:vertical}' +
-    '.sbn-form textarea:focus{border-color:#e67e22}' +
-    '.sbn-foot{display:flex;justify-content:space-between;align-items:center;margin-top:7px;gap:8px}' +
-    '.sbn-msg{font-size:11.5px;color:#98a2ae;flex:1}' +
-    '.sbn-msg.err{color:#c0392b}' +
-    '.sbn-msg.ok{color:#2f855a}' +
-    '.sbn-save{border:none;border-radius:7px;background:#e67e22;color:#fff;padding:6px 14px;' +
-      'font-size:12.5px;cursor:pointer;white-space:nowrap}' +
-    '.sbn-save[disabled]{background:#c9d2dc;cursor:default}' +
-    // ★ 必须放在最后：窄屏（含手机横屏的小侧栏）把「保存」移到标题栏
-    //   同特异性(id)下**后写者胜**，若写在 #sbn-note-save-top{display:none} 之前就会被它盖掉。
-    '#sbn-note-home{display:none;text-decoration:none;color:#5b6472;font-size:12px;' +
-      'padding:2px 7px;border-radius:6px;border-bottom:none;white-space:nowrap}' +
+    '.sbn-btn.danger{background:#8e2b2b;color:#fff;font-size:12px;padding:7px 12px}' +
     '@media(max-width:767px){#sbn-note-save-top{display:inline-block}#sbn-note-save{display:none}' +
       'body.sbn-note-open #sbn-note-home{display:inline-block}}';
   var style = document.createElement('style');
@@ -174,448 +160,44 @@
   style.textContent = CSS;
   document.head.appendChild(style);
 
-  // ---- 文本节点收集（只跳过本插件自己注入的节点，避免指纹被自己的徽章/面板污染）
-  // ★ 必须用 data-sbn 精确标记，**不能用 class 前缀**：`.sbn-cell`（我加在单元格上的可点标记）
-  //   同样以 sbn- 开头，用前缀判断会把单元格里的正文一起吃掉 →
-  //   行指纹算错（v2 老批注永远无法迁移）、且重扫时纯文本单元格的锚点会凭空消失（踩过）。
-  function textNodes(el) {
-    var out = [], walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false), n;
-    while ((n = walker.nextNode())) {
-      var p = n.parentNode;
-      if (!p || !p.closest || !p.closest('[data-sbn]')) out.push(n);
-    }
-    return out;
+  // ================================================================ 数据层
+  var online = false, offline = '';
+  function fetchJSON(url, opts) {
+    return fetch(url, opts).then(function (r) {
+      return r.json().then(function (j) { return { s: r.status, j: j }; });
+    });
   }
-  function blockText(el) {
-    return textNodes(el).map(function (t) { return t.data; }).join('');
-  }
-  // 锚点文本：必须走 blockText（textNodes 会跳过 .sbn-badge），
-  // 否则「先挂徽章 → 再算指纹」会把徽章数字算进去，锚点每次刷新都变。
-  function anchorText(el) { return norm(blockText(el)); }
-
-  // 断句：只按中文句末标点与换行切；**不按半角句点**（研报里 9.3.12 / 3.92 元 会被切碎）
-  function sentences(txt) {
-    var out = [], start = 0, re = /[。！？；!?;]+|\n/g, mm;
-    while ((mm = re.exec(txt))) {
-      var end = mm.index + mm[0].length;
-      if (txt.slice(start, end).trim()) out.push([start, end]);
-      start = end;
-    }
-    if (start < txt.length && txt.slice(start).trim()) out.push([start, txt.length]);
-    return out;
-  }
-  function rangeFor(nodes, s, e) {
-    var pos = 0, started = false, r = document.createRange();
-    for (var i = 0; i < nodes.length; i++) {
-      var node = nodes[i], len = node.data.length, ns = pos, ne = pos + len;
-      if (!started && ne > s) { r.setStart(node, Math.max(0, s - ns)); started = true; }
-      if (started && ne >= e) { r.setEnd(node, Math.min(len, e - ns)); break; }
-      pos = ne;
-    }
-    return started ? r : null;
-  }
-
-  // ================================================================ 落点识别
-  var BLOCK = { P: 1, LI: 1, DIV: 1, TD: 1, TH: 1, DD: 1, DT: 1, CAPTION: 1, FIGCAPTION: 1,
-                BLOCKQUOTE: 1, H1: 1, H2: 1, H3: 1, H4: 1, H5: 1, H6: 1 };
-  var SKIP_SEL = 'nav, header, footer, #sbgate, #sbn-note, .sbn-bar, .sbn-panel, aside, .toc, #toc, script, style, pre, code';
-
-  function isTextBlock(el) {          // 自身不含块级子元素（＝可直接断句的最小文本容器）
-    if (!el.textContent || !el.textContent.trim()) return false;
-    var kids = el.children;
-    for (var i = 0; i < kids.length; i++) {
-      var d = getComputedStyle(kids[i]).display;
-      if (d && d !== 'inline' && d !== 'inline-block' && d !== 'none' && d !== 'contents') return false;
-    }
-    return true;
-  }
-  function pickBlock(el) {
-    while (el && el !== document.body) {
-      if (el.matches && el.matches(SKIP_SEL)) return null;
-      if (el.tagName === 'SUMMARY') return null;      // 摘要点击要留给「折叠/展开」
-      if (BLOCK[el.tagName] && isTextBlock(el)) return el;
-      el = el.parentElement;
-    }
-    return null;
-  }
-  function offsetAtPoint(x, y, block) {   // 点击位置 → 该块内的字符偏移
-    var r = document.caretRangeFromPoint ? document.caretRangeFromPoint(x, y)
-                                         : (document.caretPositionFromPoint
-                                            ? document.caretPositionFromPoint(x, y) : null);
-    if (!r) return -1;
-    var node = r.startContainer, off = r.startOffset || 0;
-    if (!node) return -1;
-    if (node.nodeType !== 3) return 0;
-    var nodes = textNodes(block), pos = 0;
-    for (var i = 0; i < nodes.length; i++) {
-      if (nodes[i] === node) return pos + off;
-      pos += nodes[i].data.length;
-    }
-    return -1;
-  }
-
-  // ================================================================ 状态
-  var notes = [];        // 批注（不含笔记）
-  var pageNote = null;   // 右侧笔记（kind='page'）
-  var byKey = {};        // 锚点 → [note]
-  var cellMap = {};      // 单元格锚点 → td/th
-  var sentMap = {};      // 句锚点 → {el, s, e, text}
-  var alias = {};        // 旧「整行」锚点 → 该行首个单元格的锚点（v2 老批注迁移，不让它脱锚）
-  var rowTexts = [];     // 现行各行的「前 24 字 → 首格锚点」，applyFallback 用
-  var panel = null, cur = null;
-  var online = false;
-  var offline = '';        // '' | 'not-configured'（后端没绑定）| 'network'（连不上/抖动）
-
-  // 连接批注服务：带退避重试。★ 不要"一次失败就整个会话锁死"——
-  // 移动网络下首屏那一次请求很容易抖掉，实测本机也会偶发（HTTP 000）。
   function connect(tries) {
-    var n = 0, max = tries || 3;
+    var max = tries || 2, n = 0;
     function attempt() {
       n++;
-      return fetch(API + '?code=' + CODE, { headers: { 'x-stb-token': TOKEN } })
-        .then(function (r) {
-          if (r.status === 503) { offline = 'not-configured'; return null; }   // 后端未绑 KV，重试没用
-          if (!r.ok) throw new Error('HTTP ' + r.status);
-          return r.json();
-        })
-        .then(function (j) {
-          if (j) { online = true; offline = ''; ingest(j.items); }
-          else { ingest([]); }      // 503（后端没绑）也要露出本机自己写的
-          return online;
+      return fetchJSON(API_NOTE + '?code=' + CODE, { headers: { 'x-stb-token': TOKEN } })
+        .then(function (res) {
+          if (res.s === 200 && res.j && res.j.ok) { online = true; offline = ''; ingestNote(res.j.items); return true; }
+          offline = (res.s === 503) ? 'config' : 'config';
+          return false;
         })
         .catch(function () {
           if (n < max) return new Promise(function (res) { setTimeout(res, 700 * n); }).then(attempt);
           online = false; offline = 'network';
-          ingest([]);               // ★ 连不上时也别让"自己刚写的"凭空消失
           return false;
         });
     }
     return attempt();
   }
-  function errText() {
-    return offline === 'network' ? '连不上批注服务，请重试' : '批注服务未启用';
-  }
-  // 服务端返回 → 拆成「批注」与「笔记」两部分，再落到锚点
-  function ingest(items) {
-    var all = mergeServer(items || []);
-    pageNote = null; notes = [];
-    all.forEach(function (n) {
+
+  // ---- 笔记（结论与理由章）
+  var pageNote = null;
+  function ingestNote(items) {
+    pageNote = null;
+    (items || []).forEach(function (n) {
       if (n.kind === 'page' || n.rowKey === PAGE_ANCHOR) {
         if (!pageNote || n.ts > pageNote.ts) pageNote = n;
-      } else { notes.push(n); }
-    });
-    applyFallback();               // ★ 批注到手后才做"改版重锚"（首屏 scan 时 notes 为空）
-    group(); paint(); syncNote();
-  }
-
-  // ---- 本机缓存（对抗 KV 最终一致性：自己刚写的必须马上看得见）
-  function mineAll() { try { return JSON.parse(localStorage.getItem(MINEKEY) || '{}'); } catch (e) { return {}; } }
-  function mineGet() { return mineAll()[CODE] || []; }
-  function mineSet(l) { var a = mineAll(); a[CODE] = l; try { localStorage.setItem(MINEKEY, JSON.stringify(a)); } catch (e) {} }
-  function mineAdd(n) { var l = mineGet(); if (!l.some(function (x) { return x.id === n.id; })) l.push(n); mineSet(l); }
-  function mineDrop(id) { mineSet(mineGet().filter(function (x) { return x.id !== id; })); }
-  function mergeServer(items) {
-    var now = Date.now(), srv = items || [];
-    // 服务端已经能看到 → 出缓存；超过 10 分钟的也清掉（避免长期保留已被他人删除的）
-    var keep = mineGet().filter(function (m) {
-      if (srv.some(function (s) { return s.id === m.id; })) return false;
-      return now - m.ts < 600000;
-    });
-    mineSet(keep);
-    return srv.concat(keep);
-  }
-
-  // v2 老批注用的是「整行」锚点；v3 改单元格后它会脱锚。
-  // 这里把 老行锚点 → 该行第一个单元格锚点 做一次别名映射，老批注照旧看得见。
-  function effKey(n) { return alias[n.rowKey] || n.rowKey; }
-  /* ★ 报告改版兜底：行内容变了 → 老行指纹（hash32）必然匹配不上，批注就成了"未锚定"。
-     用批注自带的「写入时的整行原文 rowText」按**前 24 字相同**再匹配一次
-     （改版时行首标签通常不变，动的多是数值/日期）。
-     ⚠️ 必须在批注拉回来之后调用 —— 首屏 scan() 时 notes 还是空的，放那里等于没跑。 */
-  function applyFallback() {
-    if (!notes.length || !rowTexts.length) return;
-    notes.forEach(function (n) {
-      if (alias[n.rowKey]) return;
-      if (n.kind !== 'row' || !n.rowText) return;
-      var head = norm(n.rowText).slice(0, 24);
-      if (head.length < 8) return;                       // 太短不敢猜，宁可显示"未锚定"
-      for (var i = 0; i < rowTexts.length; i++) {
-        if (rowTexts[i][0] === head) { alias[n.rowKey] = rowTexts[i][1]; return; }
       }
     });
+    syncNote();
   }
-  // 脱锚批注（报告改写后行/句都没了对不上）——必须能被看到，绝不允许"看不到内容"
-  function orphanOf() {
-    return notes.filter(function (n) {
-      var k = effKey(n);
-      return !cellMap[k] && !sentMap[k];
-    });
-  }
-  function group() {
-    byKey = {};
-    notes.forEach(function (n) { (byKey[effKey(n)] = byKey[effKey(n)] || []).push(n); });
-  }
-
-  // ================================================================ 扫描落点 + 画高亮
-  function scan() {
-    cellMap = {}; sentMap = {}; alias = {};
-    // 先把旧徽章全摘掉：徽章会改 textContent，不摘就会污染指纹
-    Array.prototype.forEach.call(document.querySelectorAll('.sbn-badge'), function (b) {
-      b.parentNode.removeChild(b);
-    });
-    Array.prototype.forEach.call(document.querySelectorAll('.sbn-on'), function (b) {
-      b.classList.remove('sbn-on');
-    });
-
-    // 1) 表格单元格（严格单格，不再按行）
-    var cells = document.querySelectorAll('table td, table th');
-    var seen = {};
-    for (var i = 0; i < cells.length; i++) {
-      var td = cells[i];
-      if (td.closest('.sbn-panel,.sbn-bar,#sbn-note,nav,header,footer,#sbgate')) continue;
-      var txt = anchorText(td);
-      if (!txt) continue;
-      var base = hash32(txt);
-      var n2 = seen[base] = (seen[base] || 0) + 1;
-      var key = n2 === 1 ? base : base + '-' + n2;      // 同文本重复：按出现次序区分
-      cellMap[key] = td;
-      td.classList.add('sbn-cell');
-      td.setAttribute('data-sbn-key', key);
-    }
-    // 1b) v2 老「整行」锚点 → 首格锚点（迁移用；行锚点不再参与新交互）
-    var trs = document.querySelectorAll('table tr');
-    // ★ 取「该行第一个有锚点的单元格」——不能死认 children[0]：有些行的首格是空的
-    //   （标签在别的格里），那样会整行被跳过，兜底就永远匹配不到。
-    function firstKeyOf(tr) {
-      for (var c = 0; c < tr.children.length; c++) {
-        var k = tr.children[c].getAttribute && tr.children[c].getAttribute('data-sbn-key');
-        if (k) return k;
-      }
-      return '';
-    }
-    for (var t = 0; t < trs.length; t++) {
-      var tr = trs[t];
-      if (!tr.children.length) continue;
-      var fk = firstKeyOf(tr);
-      if (!fk) continue;
-      alias[hash32(anchorText(tr))] = fk;
-    }
-    // 1c) 兜底用的现行整行文本表（真正执行见 applyFallback()，必须在批注拉回来之后调用）
-    rowTexts = [];
-    for (var t2 = 0; t2 < trs.length; t2++) {
-      var tr2 = trs[t2];
-      if (!tr2.children.length) continue;
-      var fk2 = firstKeyOf(tr2);
-      if (!fk2) continue;
-      rowTexts.push([anchorText(tr2).slice(0, 24), fk2]);
-    }
-    applyFallback();
-    // 2) 句子（只扫文本块；表格内的 td/th 一律走单元格锚点，不再参与断句）
-    var all = document.querySelectorAll('p,li,div,dd,dt,blockquote,caption,figcaption,h1,h2,h3,h4,h5,h6');
-    for (var j = 0; j < all.length; j++) {
-      var el = all[j];
-      if (el.closest(SKIP_SEL) || el.closest('td,th') || el.tagName === 'SUMMARY') continue;
-      if (!isTextBlock(el)) continue;
-      var txt2 = blockText(el);
-      if (txt2.length < 4) continue;
-      var bh = hash32(norm(txt2)), ss = sentences(txt2);
-      if (ss.length > 200) continue;                     // 异常长块跳过，避免爆炸
-      for (var s = 0; s < ss.length; s++) {
-        var seg = txt2.slice(ss[s][0], ss[s][1]).trim();
-        if (seg.length < 2) continue;
-        sentMap[bh + '-' + s] = { el: el, s: ss[s][0], e: ss[s][1], text: seg };
-      }
-    }
-    paint();
-  }
-
-  function paint() {
-    // 单元格徽章
-    Object.keys(cellMap).forEach(function (k) {
-      var td = cellMap[k], list = byKey[k], old = td.querySelector('.sbn-badge');
-      if (old) old.parentNode.removeChild(old);
-      td.classList.remove('sbn-on');
-      if (!list || !list.length) return;
-      td.classList.add('sbn-on');
-      var sp = document.createElement('span');
-      sp.className = 'sbn-badge';
-      sp.setAttribute('data-sbn', '1');
-      sp.textContent = list.length;
-      td.appendChild(sp);
-    });
-    // 句子高亮（绝对定位覆盖层，不动 DOM）
-    Array.prototype.forEach.call(document.querySelectorAll('.sbn-hl'), function (n) {
-      n.parentNode.removeChild(n);
-    });
-    Object.keys(byKey).forEach(function (k) {
-      var info = sentMap[k];
-      if (!info) return;
-      var cnt = byKey[k].length;
-      var nodes = textNodes(info.el);
-      var r = rangeFor(nodes, info.s, info.e);
-      if (!r) return;
-      var rects = r.getClientRects();
-      for (var i = 0; i < rects.length; i++) {
-        var rc = rects[i];
-        if (rc.width < 1 || rc.height < 1) continue;
-        var d = document.createElement('div');
-        d.className = 'sbn-hl' + (cur && cur.key === k ? ' sbn-hl-sel' : '');
-        d.style.left = (rc.left + window.scrollX - 2) + 'px';
-        d.style.top = (rc.top + window.scrollY - 1) + 'px';
-        d.style.width = (rc.width + 4) + 'px';
-        d.style.height = (rc.height + 2) + 'px';
-        document.body.appendChild(d);
-        if (i === 0 && cnt) {
-          var t = document.createElement('div');
-          t.className = 'sbn-hl-tag';
-          t.setAttribute('data-sbn', '1');
-          t.textContent = cnt;
-          t.style.left = (rc.left + window.scrollX - 15) + 'px';
-          t.style.top = (rc.top + window.scrollY - 1) + 'px';
-          document.body.appendChild(t);
-        }
-      }
-    });
-    var btn = document.getElementById('sbn-count');
-    if (btn) {
-      var orphan = orphanOf().length;
-      btn.textContent = '批注 ' + notes.length + (orphan ? '（' + orphan + ' 未锚定）' : '');
-      btn.title = orphan ? '有 ' + orphan + ' 条批注失去了锚点 —— 点击查看内容' : '点击跳到本页第一条批注';
-      btn.style.background = orphan ? '#b3261e' : '';
-    }
-  }
-
-  // ================================================================ 批注面板
-  function close() {
-    if (panel && panel.parentNode) panel.parentNode.removeChild(panel);
-    panel = null; cur = null;
-    Array.prototype.forEach.call(document.querySelectorAll('.sbn-hl-sel'), function (n) {
-      n.classList.remove('sbn-hl-sel');
-    });
-  }
-  function open(anchor, rect) {
-    close();
-    cur = anchor;
-    panel = document.createElement('div');
-    panel.className = 'sbn-panel';
-    panel.setAttribute('data-sbn', '1');
-    panel.innerHTML =
-      '<div class="sbn-head"><span>' + (anchor.kind === 'sent' ? '句子批注' : '单元格批注') +
-      '</span><span class="x" id="sbn-x">×</span></div>' +
-      '<div class="sbn-anchor" id="sbn-anchor"></div>' +
-      '<div class="sbn-list" id="sbn-list"></div>' +
-      '<div class="sbn-form">' +
-        '<textarea id="sbn-text" maxlength="1000" placeholder="写点什么…（Ctrl+Enter 提交）"></textarea>' +
-        '<div class="sbn-foot"><span class="sbn-msg" id="sbn-msg"></span>' +
-        '<button class="sbn-save" id="sbn-save">提交</button></div>' +
-      '</div>';
-    document.body.appendChild(panel);
-    var top = rect ? rect.bottom + window.scrollY + 6 : window.scrollY + 120;
-    var left = rect ? rect.left + window.scrollX : window.scrollX + 60;
-    var vh = document.documentElement.clientHeight;
-    if (top + 300 > window.scrollY + vh) {
-      top = Math.max(window.scrollY + 8, (rect ? rect.top + window.scrollY : top) - panel.offsetHeight - 6);
-    }
-    // ★ 夹住下溢：分屏模式下可用高度只有「视口 − 笔记栏」，面板不许压到笔记栏上
-    top = Math.max(window.scrollY + 8,
-                   Math.min(top, window.scrollY + vh - (panel.offsetHeight || 300) - 10));
-    panel.style.top = top + 'px';
-    panel.style.left = Math.max(8, Math.min(left,
-      window.scrollX + document.documentElement.clientWidth - panel.offsetWidth - 14)) + 'px';
-    document.getElementById('sbn-anchor').textContent = anchor.anchorText;
-    document.getElementById('sbn-x').addEventListener('click', close);
-    document.getElementById('sbn-save').addEventListener('click', save);
-    document.getElementById('sbn-text').addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) save();
-    });
-    if (anchor.kind === 'orphan') {          // 未锚定列表：只读/可删，没有"写在哪"这回事
-      var f = panel.querySelector('.sbn-form');
-      if (f) f.style.display = 'none';
-    }
-    renderList();
-    paint();
-    if (online && anchor.kind !== 'orphan') document.getElementById('sbn-text').focus();
-  }
-  var ORPHAN_KEY = '__orphan__';       // 「未锚定批注」列表用的伪锚点
-  function renderList() {
-    var box = document.getElementById('sbn-list');
-    var list = (cur.key === ORPHAN_KEY ? orphanOf() : (byKey[cur.key] || [])).slice()
-      .sort(function (a, b) { return a.ts - b.ts; });
-    if (!list.length) {
-      box.innerHTML = '<div class="sbn-empty">这里还没有批注' +
-        (online ? '，写下第一条。' : '。' + errText() + '。') + '</div>';
-      return;
-    }
-    box.innerHTML = list.map(function (n) {
-      return '<div class="sbn-item"><div class="sbn-meta"><span>' + fmt(n.ts) + '</span>' +
-        (n.rowText && cur.key === ORPHAN_KEY ?
-          '<span style="color:#b9c1cb;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;' +
-          'max-width:170px">原文：' + esc(String(n.rowText).slice(0, 24)) + '…</span>' : '') +
-        (n.kind === 'row' ? '<span style="color:#b9c1cb">整行批注（旧）</span>' : '') +
-        (online ? '<span class="sbn-del" data-id="' + esc(n.id) + '">删除</span>' : '') +
-        '</div><div class="sbn-body">' + esc(n.text) + '</div></div>';
-    }).join('');
-    Array.prototype.forEach.call(box.querySelectorAll('.sbn-del'), function (d) {
-      d.addEventListener('click', function () { del(d.getAttribute('data-id')); });
-    });
-  }
-  function msg(t, kind) {
-    var el = document.getElementById('sbn-msg');
-    if (!el) return;
-    el.className = 'sbn-msg' + (kind ? ' ' + kind : '');
-    el.textContent = t;
-    if (kind === 'ok') setTimeout(function () { if (el.textContent === t) el.textContent = ''; }, 2200);
-  }
-  function save() {
-    var t = document.getElementById('sbn-text').value.trim();
-    if (!t) { msg('内容不能为空', 'err'); return; }
-    var btn = document.getElementById('sbn-save');
-    btn.disabled = true; msg('提交中…');
-    // 之前若没连上（或首屏那次请求抖掉了），提交前先重连一次，别让一次抖动锁死整个会话
-    var pre = online ? Promise.resolve(true) : connect(2);
-    pre.then(function (okNow) {
-      if (!okNow) { btn.disabled = false; msg(errText(), 'err'); return; }
-      return fetch(API, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-stb-token': TOKEN },
-        body: JSON.stringify({ code: CODE, rowKey: cur.key, kind: cur.kind,
-          rowText: String(cur.anchorText).slice(0, 200), text: t })
-      }).then(function (r) { return r.json().then(function (j) { return { s: r.status, j: j }; }); })
-        .then(function (res) {
-          btn.disabled = false;
-          if (!res.j || !res.j.ok) {
-            var e2 = res.j && res.j.error;
-            msg(e2 === 'notes storage not configured' ? '批注服务未启用' : ('提交失败：' + (e2 || res.s)), 'err');
-            return;
-          }
-          notes.push(res.j.item);
-          mineAdd(res.j.item);          // 落本机缓存：KV 的 list 有延迟，作者自己要立刻看得见
-          // ★ 重新 scan 再 paint：保证"刚提交的那条"立刻锚定并画出高亮。
-          group(); scan(); renderList();
-          document.getElementById('sbn-text').value = '';
-          msg('已提交', 'ok');
-        })
-        .catch(function () { btn.disabled = false; msg('连不上批注服务，请重试', 'err'); });
-    });
-  }
-  function del(id) {
-    if (!id || !online) return;
-    if (!confirm('删除这条批注？')) return;
-    fetch(API + '?code=' + CODE + '&id=' + encodeURIComponent(id),
-          { method: 'DELETE', headers: { 'x-stb-token': TOKEN } })
-      .then(function (r) { return r.json(); })
-      .then(function (j) {
-        if (j && j.ok) {
-          notes = notes.filter(function (n) { return n.id !== id; });
-          mineDrop(id);
-          group(); paint(); renderList();
-        } else { msg((j && j.error) || '删除失败', 'err'); }
-      })
-      .catch(function () { msg('网络不可用', 'err'); });
-  }
-
-  // ================================================================ 右侧笔记栏
-  var noteBox = null, noteDirty = false, noteTimer = null;
+  var noteBox = null, noteDirty = false, noteTimer = null, noteEdit = false;
   function noteMsg(t, kind) {
     var el = document.getElementById('sbn-note-msg');
     if (!el) return;
@@ -627,68 +209,376 @@
     try { if (v) localStorage.setItem(DRAFTKEY, v); else localStorage.removeItem(DRAFTKEY); } catch (e) {}
   }
   function noteCount() {
-    var v = (noteBox && noteBox.value) || '';
+    var v = noteBox ? noteBox.value : '';
     var el = document.getElementById('sbn-note-cnt');
-    if (el) el.textContent = v.length + ' / ' + NOTE_MAX + (v.length && v.length < NOTE_MIN_HINT ?
-      '（建议 200 字以上）' : '');
+    if (el) el.textContent = v.length + ' / ' + NOTE_MAX;
   }
-  // 服务端/本机内容 → 文本框（没在编辑时才覆盖，别抢用户正在敲的字）
+  function renderNoteBody(mdLike) {
+    // 渲染"类 Markdown"为 HTML：## 标题 / - 列表 / 1. 列表 / **加粗** / 首段 lead
+    var box = document.getElementById('sbn-note-body');
+    if (!box) return;
+    var src = mdLike || (pageNote && pageNote.text) || '';
+    if (!src.trim()) { box.innerHTML = ''; return; }
+    var lines = src.split(/\r?\n/), out = [], inOl = false, inUl = false, first = true;
+    function inline(s) {
+      return esc(s).replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>');
+    }
+    function closeLists() {
+      if (inOl) { out.push('</ol>'); inOl = false; }
+      if (inUl) { out.push('</ul>'); inUl = false; }
+    }
+    lines.forEach(function (raw) {
+      var l = raw.trim();
+      if (!l) { closeLists(); return; }
+      var h = /^#{2,4}\s+(.*)$/.exec(l);
+      if (h) { closeLists(); out.push('<h4>' + inline(h[1]) + '</h4>'); return; }
+      var ol = /^(\d+)[.、]\s+(.*)$/.exec(l);
+      if (ol) {
+        if (!inOl) { closeLists(); out.push('<ol>'); inOl = true; }
+        out.push('<li>' + inline(ol[2]) + '</li>'); return;
+      }
+      var ul = /^[-•]\s+(.*)$/.exec(l);
+      if (ul) {
+        if (!inUl) { closeLists(); out.push('<ul>'); inUl = true; }
+        out.push('<li>' + inline(ul[2]) + '</li>'); return;
+      }
+      closeLists();
+      if (first) { out.push('<p class="lead">' + inline(l) + '</p>'); first = false; return; }
+      out.push('<p>' + inline(l) + '</p>');
+    });
+    closeLists();
+    box.innerHTML = out.join('');
+    // 结论是买入时 lead 变绿
+    if (/^\*\*?结论[：:]*\*?\*?.{0,6}买/.test(src.trim())) {
+      var lead = box.querySelector('.lead');
+      if (lead) lead.classList.add('buy');
+    }
+  }
   function syncNote() {
     if (!noteBox) return;
     var draft = readDraft(), srv = (pageNote && pageNote.text) || '';
     if (noteDirty) { noteCount(); return; }
-    if (draft && draft !== srv) {                 // 有未保存草稿：以草稿为准，并提示
-      noteBox.value = draft; noteDirty = true;
+    renderNoteBody(draft && draft !== srv ? draft : srv);
+    if (draft && draft !== srv) {
+      noteDirty = true;
       noteMsg('有未保存的草稿', 'err');
-      document.getElementById('sbn-note').setAttribute('data-warn', '1');
+      var d = document.getElementById('sbn-note');
+      if (d) d.setAttribute('data-warn', '1');
     } else {
-      noteBox.value = srv;
       noteMsg(pageNote ? ('已存 · ' + fmt(pageNote.ts)) : '　');
-      document.getElementById('sbn-note').removeAttribute('data-warn');
+      var d2 = document.getElementById('sbn-note');
+      if (d2) d2.removeAttribute('data-warn');
     }
     noteCount();
-  }
-  function noteBtns() {
-    return [document.getElementById('sbn-note-save'), document.getElementById('sbn-note-save-top')]
-      .filter(function (b) { return !!b; });
   }
   function saveNote() {
     if (!noteBox) return;
     var t = noteBox.value;
     if (t.length > NOTE_MAX) { noteMsg('超出 ' + NOTE_MAX + ' 字上限', 'err'); return; }
     if (!t.trim()) { noteMsg('笔记为空，无需保存', 'err'); return; }
-    noteBtns().forEach(function (b) { b.disabled = true; });
+    var btns = [document.getElementById('sbn-note-save'), document.getElementById('sbn-note-save-top')]
+      .filter(function (b) { return !!b; });
+    btns.forEach(function (b) { b.disabled = true; });
     noteMsg('保存中…');
     var pre = online ? Promise.resolve(true) : connect(2);
     pre.then(function (okNow) {
-      if (!okNow) { noteBtns().forEach(function (b) { b.disabled = false; }); noteMsg(errText(), 'err'); return; }
-      return fetch(API, {
+      if (!okNow) { btns.forEach(function (b) { b.disabled = false; }); noteMsg('笔记服务未启用', 'err'); return; }
+      return fetchJSON(API_NOTE, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-stb-token': TOKEN },
         body: JSON.stringify({ code: CODE, rowKey: PAGE_ANCHOR, kind: 'page', text: t,
           baseTs: pageNote ? pageNote.ts : 0 })
-      }).then(function (r) { return r.json().then(function (j) { return { s: r.status, j: j }; }); })
-        .then(function (res) {
-          noteBtns().forEach(function (b) { b.disabled = false; });
-          if (!res.j || !res.j.ok) {
-            if (res.s === 409) { noteMsg('已被他人更新，请刷新后再改', 'err'); return; }
-            noteMsg((res.j && res.j.error) === 'notes storage not configured'
-              ? '笔记服务未启用' : ('保存失败：' + ((res.j && res.j.error) || res.s)), 'err');
-            return;
-          }
-          pageNote = res.j.item; noteDirty = false; writeDraft('');
-          document.getElementById('sbn-note').removeAttribute('data-warn');
-          noteMsg('已保存 · ' + fmt(pageNote.ts), 'ok');
-        })
-        .catch(function () {
-          noteBtns().forEach(function (b) { b.disabled = false; });
-          noteMsg('连不上服务，请重试', 'err');
-        });
+      }).then(function (res) {
+        btns.forEach(function (b) { b.disabled = false; });
+        if (!res.j || !res.j.ok) {
+          if (res.s === 409) { noteMsg('已被他人更新，请刷新后再改', 'err'); return; }
+          noteMsg('保存失败：' + ((res.j && res.j.error) || res.s), 'err');
+          return;
+        }
+        pageNote = res.j.item; noteDirty = false; writeDraft('');
+        renderNoteBody(t);
+        var d = document.getElementById('sbn-note');
+        if (d) d.removeAttribute('data-warn');
+        noteMsg('已保存 · ' + fmt(pageNote.ts), 'ok');
+      }).catch(function () {
+        btns.forEach(function (b) { b.disabled = false; });
+        noteMsg('连不上服务，请重试', 'err');
+      });
     });
   }
-  // 笔记栏与左侧目录栏在窄屏会互相挤（目录占 314px 时正文只剩 ~240px）→
-  // 展开笔记时临时收起目录（只改 class、不写 localStorage），关上笔记自动还原。
-  // 宽屏（≥1100）两者能并存，绝不碰用户的目录状态。
+
+  // ---- 正文编辑（覆盖层：selector → 新 HTML）
+  var edits = {};          // { selector: {html, ts} }
+  function loadEdits() {
+    try { edits = JSON.parse(localStorage.getItem(EDITSKEY) || '{}'); } catch (e) { edits = {}; }
+    return fetchJSON(API_CONTENT + '?code=' + CODE, { headers: { 'x-stb-token': TOKEN } })
+      .then(function (res) {
+        if (res.s === 200 && res.j && res.j.ok) {
+          var srv = {};
+          (res.j.items || []).forEach(function (it) { srv[it.sel] = it; });
+          // 合并：服务端优先，本机草稿其次
+          Object.keys(srv).forEach(function (k) { edits[k] = srv[k]; });
+        }
+        return true;
+      }).catch(function () { return false; });
+  }
+  function persistEdits() {
+    try { localStorage.setItem(EDITSKEY, JSON.stringify(edits)); } catch (e) {}
+  }
+  // 把编辑应用到正文（页面加载 & 保存后）
+  function applyEdits() {
+    var wrap = document.querySelector('.wrap');
+    if (!wrap) return;
+    Object.keys(edits).forEach(function (sel) {
+      try {
+        var el = wrap.querySelector(sel);
+        if (el) el.innerHTML = edits[sel].html;
+      } catch (e) { /* selector 失效（报告改版）→ 忽略该条 */ }
+    });
+  }
+  function selOf(el) {
+    // 生成元素在 .wrap 内的稳定 selector：tag + nth + id（有 id 用 id）
+    if (el.id) return '#' + el.id;
+    var path = [], cur = el, wrap = document.querySelector('.wrap');
+    while (cur && cur !== wrap) {
+      var tag = cur.tagName.toLowerCase(), idx = 1, sib = cur;
+      while ((sib = sib.previousElementSibling)) {
+        if (sib.tagName === cur.tagName) idx++;
+      }
+      path.unshift(tag + ':nth-of-type(' + idx + ')');
+      cur = cur.parentElement;
+    }
+    return path.join('>');
+  }
+  function saveEdit(el, html) {
+    var sel = selOf(el);
+    edits[sel] = { html: html, ts: Date.now() };
+    persistEdits();
+    applyEdits();
+    var msgEl = document.getElementById('sbe-hint');
+    if (msgEl) {
+      msgEl.textContent = '⏳ 正在上传改动…';
+      return fetchJSON(API_CONTENT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-stb-token': TOKEN },
+        body: JSON.stringify({ code: CODE, sel: sel, html: html, ts: edits[sel].ts })
+      }).then(function (res) {
+        if (res.j && res.j.ok) { msgEl.textContent = '✓ 已保存（' + fmt(edits[sel].ts) + '）'; }
+        else { msgEl.textContent = '⚠ 存本机但上传失败（' + ((res.j && res.j.error) || res.s) + '）'; }
+        setTimeout(function () { msgEl.textContent = HINT_TEXT; }, 2600);
+      }).catch(function () {
+        msgEl.textContent = '⚠ 存本机但连不上服务';
+        setTimeout(function () { msgEl.textContent = HINT_TEXT; }, 2600);
+      });
+    }
+  }
+
+  // ---- 编辑模式开关
+  var editing = false;
+  var HINT_TEXT = '编辑模式：点击正文元素改文字；双击段落编辑整段；拖图片文件进正文插入。';
+  function setEditing(on) {
+    editing = !!on;
+    document.body.classList[on ? 'add' : 'remove']('sb-editing');
+    var btn = document.getElementById('sbe-toggle');
+    if (btn) { btn.classList[on ? 'add' : 'remove']('on'); btn.textContent = on ? '完成编辑' : '编辑'; }
+    var hint = document.getElementById('sbe-hint');
+    if (hint) hint.textContent = HINT_TEXT;
+    if (!on) { closeInline(); }
+  }
+
+  // ---- 行内编辑（点击元素 → 弹小输入框改文字）
+  var inlineBox = null, inlineTarget = null;
+  function closeInline() {
+    if (inlineBox) { inlineBox.parentNode.removeChild(inlineBox); inlineBox = null; inlineTarget = null; }
+  }
+  function openInline(el) {
+    closeInline();
+    inlineTarget = el;
+    inlineBox = document.createElement('textarea');
+    inlineBox.className = 'sbe-inline';
+    inlineBox.style.cssText = 'display:block;width:calc(100% - 24px);min-height:60px;margin:6px 0;' +
+      'border:1.5px solid #e67e22;border-radius:8px;padding:8px 10px;font:inherit;color:inherit;z-index:9;position:relative;' +
+      'box-sizing:border-box;background:#fffdf8';
+    inlineBox.value = el.innerText;
+    el.parentNode.insertBefore(inlineBox, el.nextSibling);
+    inlineBox.focus();
+    // Ctrl+Enter 或失焦保存
+    inlineBox.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { commitInline(); }
+      if (e.key === 'Escape') { closeInline(); }
+    });
+    inlineBox.addEventListener('blur', function () { setTimeout(commitInline, 120); });
+  }
+  function commitInline() {
+    if (!inlineBox || !inlineTarget) return;
+    var v = inlineBox.value;
+    var el = inlineTarget;
+    closeInline();
+    if (v !== el.innerText) {
+      // 只改第一个文本节点，保留元素内的 <a>/<b> 等结构（有链接时提示用双击）
+      var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
+      var first = walker.nextNode();
+      if (first && el.querySelectorAll('a,img,table').length === 0) {
+        first.nodeValue = v;
+        saveEdit(el, el.innerHTML);
+      } else {
+        // 结构复杂 → 整段替换为纯文本
+        saveEdit(el, esc(v).replace(/\n/g, '<br>'));
+      }
+    }
+  }
+
+  // ---- 整段 HTML 编辑（双击）
+  var htmlBox = null;
+  function openHtmlEdit(el) {
+    closeHtmlEdit();
+    htmlBox = document.createElement('textarea');
+    htmlBox.style.cssText = 'display:block;width:100%;min-height:200px;margin:6px 0;' +
+      'border:1.5px solid #1a5276;border-radius:8px;padding:10px;font:12px/1.6 Consolas,monospace;' +
+      'z-index:9;box-sizing:border-box;background:#f6f8fc;color:#1c2733';
+    htmlBox.value = el.innerHTML;
+    el.parentNode.insertBefore(htmlBox, el.nextSibling);
+    el.style.display = 'none';
+    htmlBox.focus();
+    var bar = document.createElement('div');
+    bar.style.cssText = 'display:flex;gap:8px;margin:4px 0 10px';
+    bar.innerHTML = '<button class="sbn-save" style="background:#2f855a">保存整段</button>' +
+                    '<button class="sbn-save" style="background:#8e2b2b">取消</button>';
+    htmlBox.parentNode.insertBefore(bar, htmlBox.nextSibling);
+    bar.children[0].addEventListener('click', function () {
+      saveEdit(el, htmlBox.value);
+      closeHtmlEdit();
+    });
+    bar.children[1].addEventListener('click', closeHtmlEdit);
+  }
+  function closeHtmlEdit() {
+    if (htmlBox) {
+      var el = htmlBox.previousSibling;
+      if (el && el.style) el.style.display = '';
+      var bar = htmlBox.nextSibling;
+      if (bar && bar.parentNode) bar.parentNode.removeChild(bar);
+      htmlBox.parentNode.removeChild(htmlBox);
+      htmlBox = null;
+    }
+  }
+
+  // ---- 图片：拖拽/粘贴插入；默认折叠
+  function makeFig(src, caption) {
+    var fig = document.createElement('figure');
+    fig.className = 'sbe-fig';
+    var tg = document.createElement('button');
+    tg.className = 'sbe-fig-toggle';
+    tg.type = 'button';
+    tg.innerHTML = '<span class="tri">▶</span> 🖼 ' + escA(caption || '图片');
+    var body = document.createElement('div');
+    body.className = 'sbe-fig-body';
+    var img = document.createElement('img');
+    img.src = src;
+    img.alt = caption || '';
+    body.appendChild(img);
+    if (caption) {
+      var cap = document.createElement('figcaption');
+      cap.textContent = caption;
+      body.appendChild(cap);
+    }
+    fig.appendChild(tg); fig.appendChild(body);
+    return fig;
+  }
+  function insertImgAt(el, dataUrl, caption) {
+    var fig = makeFig(dataUrl, caption);
+    // 插到目标元素后面（或内部末尾）
+    if (el.tagName === 'TD' || el.tagName === 'TH') el.appendChild(fig);
+    else el.parentNode.insertBefore(fig, el.nextSibling);
+    saveEdit(el.tagName === 'TD' || el.tagName === 'TH' ? el : el.parentNode, (el.tagName === 'TD' || el.tagName === 'TH' ? el : el.parentNode).innerHTML);
+  }
+  // 图片上传到 KV（dataURL 存 KV，上限 ~380KB 过 base64 后）
+  function uploadImg(file, cb) {
+    if (!/^image\/(png|jpe?g|gif|webp)$/i.test(file.type)) { alert('只支持 png/jpg/gif/webp'); return; }
+    if (file.size > 280 * 1024) { alert('图片请压缩到 280KB 以内（截图可用 TinyPNG 或画图另存）'); return; }
+    var fr = new FileReader();
+    fr.onload = function () { cb(fr.result); };
+    fr.readAsDataURL(file);
+  }
+  document.addEventListener('dragover', function (e) {
+    if (editing && e.dataTransfer && e.dataTransfer.types.indexOf('Files') >= 0) {
+      e.preventDefault(); e.dataTransfer.dropEffect = 'copy';
+    }
+  });
+  document.addEventListener('drop', function (e) {
+    if (!editing || !e.dataTransfer || !e.dataTransfer.files.length) return;
+    e.preventDefault();
+    var f = e.dataTransfer.files[0];
+    var block = pickBlock(e.target);
+    if (!block) { alert('请拖到正文某个段落上'); return; }
+    uploadImg(f, function (dataUrl) {
+      var cap = (prompt('图片说明（可留空）') || '').trim();
+      insertImgAt(block, dataUrl, cap || ('图 ' + new Date().toISOString().slice(5, 10).replace('-', '/')));
+    });
+  });
+  document.addEventListener('paste', function (e) {
+    if (!editing) return;
+    var items = (e.clipboardData || {}).items || [];
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].type && items[i].type.indexOf('image') === 0) {
+        var f = items[i].getAsFile();
+        if (!f) continue;
+        e.preventDefault();
+        var sel = window.getSelection();
+        var node = sel && sel.anchorNode;
+        var block = node ? (node.nodeType === 1 ? node : node.parentElement) : null;
+        block = block ? pickBlock(block) : null;
+        if (!block) { alert('请先把光标点在正文某个段落里'); return; }
+        uploadImg(f, function (dataUrl) {
+          var cap = (prompt('图片说明（可留空）') || '').trim();
+          insertImgAt(block, dataUrl, cap || ('截图 ' + new Date().toISOString().slice(5, 10).replace('-', '/')));
+        });
+        return;
+      }
+    }
+  });
+
+  // 图片占位条的开合：全局事件委托（一次注册，任何 .sbe-fig-toggle 都有效，
+  // 包括编辑保存后 innerHTML 还原出来的 —— 元素级监听会丢，委托不会）
+  document.addEventListener('click', function (e) {
+    var tg = e.target.closest && e.target.closest('.sbe-fig-toggle');
+    if (!tg) return;
+    e.preventDefault();
+    var fig = tg.closest('.sbe-fig');
+    if (fig) fig.classList.toggle('open');
+  });
+
+  // ---- 编辑模式的点击分发
+  function pickBlock(el) {
+    var cur = el;
+    while (cur && cur !== document.body) {
+      if (cur.closest && cur.closest('#sbn-note,.sbn-bar,#sbgate,nav,aside,script,style')) return null;
+      var tag = cur.tagName;
+      if (/^(P|H[1-6]|LI|TD|TH|BLOCKQUOTE|PRE|FIGCAPTION)$/.test(tag)) return cur;
+      cur = cur.parentElement;
+    }
+    return null;
+  }
+  document.addEventListener('click', function (e) {
+    if (!editing) return;
+    if (e.target.closest && e.target.closest('.sbn-bar,#sbn-note,#sbe-hint,.sbe-fig-toggle,button,a,input,textarea,summary')) return;
+    // 点击图片占位条的编辑按钮在别处处理
+    var block = pickBlock(e.target);
+    if (!block) return;
+    e.preventDefault();
+    if (inlineTarget === block) return;   // 已在编辑
+    openInline(block);
+  });
+  document.addEventListener('dblclick', function (e) {
+    if (!editing) return;
+    if (e.target.closest && e.target.closest('.sbn-bar,#sbn-note,#sbe-hint,button,textarea,input,summary')) return;
+    var block = pickBlock(e.target);
+    if (!block) return;
+    e.preventDefault();
+    closeInline();
+    openHtmlEdit(block);
+  });
+
+  // ================================================================ 笔记栏 UI
   var tocSavedByNote = false;
   function syncTocForNote() {
     var b = document.body;
@@ -713,24 +603,23 @@
     if (tg) tg.classList[open ? 'add' : 'remove']('on');
     try { localStorage.setItem('sb_note_open', open ? '1' : ''); } catch (e) {}
     syncTocForNote();
-    setTimeout(paint, 260);          // 版面变化后重画句子高亮
   }
   function buildNote() {
     var d = document.createElement('div');
     d.id = 'sbn-note';
     d.setAttribute('data-sbn', '1');
     d.innerHTML =
-      '<div id="sbn-note-head"><b>我的笔记</b>' +
-        // ★ href 必须是 `../` 而不是 `../index.html`：后者匹配 a[href$="index.html"]，
-        //   会被模板的 !important 定位规则钉到右下、也会被分屏时那条 display:none 命中。
+      '<div id="sbn-note-head"><b>结论与理由</b>' +
         '<a id="sbn-note-home" href="../" title="返回首页">← 首页</a>' +
-        '<span class="cnt" id="sbn-note-cnt">0 / ' + NOTE_MAX + '</span>' +
-        // 手机端「保存」放标题栏：锚在顶部，软键盘弹出时不会被顶掉（footer 那枚在窄屏被隐藏）
+        '<span class="cnt" id="sbn-note-cnt"></span>' +
+        '<button id="sbn-note-edit-btn" title="编辑这一章">✎</button>' +
         '<button id="sbn-note-save-top">保存</button>' +
         '<span class="x" id="sbn-note-close" title="收起">×</span></div>' +
-      '<textarea id="sbn-note-text" maxlength="' + NOTE_MAX + '" ' +
-        'placeholder="在这里记录你对这份研报的想法 —— 只写结论、疑点、待验证项都行（建议 200 字以上，上限 ' +
-        NOTE_MAX + ' 字）。"></textarea>' +
+      '<div id="sbn-note-body"></div>' +
+      '<div id="sbn-note-edit">' +
+        '<textarea id="sbn-note-text" maxlength="' + NOTE_MAX + '" ' +
+          'placeholder="写下这一篇的结论与理由 —— 支持简单格式：&#10;## 小节标题&#10;1. 理由一&#10;- 要点&#10;**加粗**"></textarea>' +
+      '</div>' +
       '<div id="sbn-note-foot"><span class="sbn-msg" id="sbn-note-msg">　</span>' +
         '<button class="sbn-save" id="sbn-note-save">保存</button></div>';
     document.body.appendChild(d);
@@ -738,138 +627,65 @@
     document.getElementById('sbn-note-close').addEventListener('click', function () { setNoteOpen(false); });
     document.getElementById('sbn-note-save').addEventListener('click', saveNote);
     document.getElementById('sbn-note-save-top').addEventListener('click', saveNote);
+    document.getElementById('sbn-note-edit-btn').addEventListener('click', function () {
+      noteEdit = !noteEdit;
+      var body = document.getElementById('sbn-note-body'), ed = document.getElementById('sbn-note-edit');
+      var btn = document.getElementById('sbn-note-edit-btn');
+      if (noteEdit) {
+        noteBox.value = (pageNote && pageNote.text) || readDraft() || '';
+        body.style.display = 'none'; ed.style.display = 'flex';
+        btn.textContent = '👁'; btn.title = '预览';
+        noteDirty = true; noteCount(); noteBox.focus();
+      } else {
+        body.style.display = ''; ed.style.display = 'none';
+        btn.textContent = '✎'; btn.title = '编辑这一章';
+        noteDirty = false; renderNoteBody(noteBox.value);
+      }
+    });
     noteBox.addEventListener('input', function () {
       noteDirty = true; noteCount();
-      document.getElementById('sbn-note').setAttribute('data-warn', '1');
+      var dd = document.getElementById('sbn-note');
+      if (dd) dd.setAttribute('data-warn', '1');
       noteMsg('未保存…', 'err');
       clearTimeout(noteTimer);
-      noteTimer = setTimeout(function () { writeDraft(noteBox.value); }, 400);   // 草稿防空转
+      noteTimer = setTimeout(function () { writeDraft(noteBox.value); }, 400);
     });
     noteBox.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) saveNote();
     });
-    // ★ 默认展开：≥1200px 自动展开（并行布局，不遮挡）；窄屏默认收起，免得一进来就挤正文
     var want = null;
     try { want = localStorage.getItem('sb_note_open'); } catch (e) {}
     setNoteOpen(want === null ? window.innerWidth >= 1200 : want === '1');
   }
 
-  // ================================================================ 交互
-  document.addEventListener('click', function (e) {
-    if (e.target.closest && e.target.closest('.sbn-panel,#sbn-note')) return;   // 面板内部自理
-    // 1) 表格单元格（严格单格）
-    var td = e.target.closest && e.target.closest('td,th');
-    if (td && td.getAttribute && td.getAttribute('data-sbn-key')) {
-      if (e.target.closest('a')) return;                              // 单元格里的链接照常点
-      e.preventDefault();
-      var k = td.getAttribute('data-sbn-key');
-      if (panel && cur && cur.key === k) { close(); return; }
-      var r = td.getBoundingClientRect();
-      open({ key: k, kind: 'cell', anchorText: anchorText(td).slice(0, 160) }, r);
-      return;
-    }
-    // 2) 正文句子
-    if (e.target.closest && e.target.closest('a,button,input,textarea,select,summary,label,.sbn-bar')) {
-      if (e.isTrusted) close();          // 只有真人点击才算"点到了别处"；页面脚本的合成点击不关面板
-      return;
-    }
-    if (window.getSelection && String(window.getSelection()).length) return;  // 用户在选词，别抢
-    var block = pickBlock(e.target);
-    if (!block) { if (e.isTrusted) close(); return; }
-    var off = offsetAtPoint(e.clientX, e.clientY, block);
-    if (off < 0) { close(); return; }
-    var txt = blockText(block), ss = sentences(txt), bh = hash32(norm(txt)), idx = -1;
-    for (var i = 0; i < ss.length; i++) {
-      if (off >= ss[i][0] && off < ss[i][1]) { idx = i; break; }
-    }
-    if (idx < 0) for (var j = ss.length - 1; j >= 0; j--) { if (off >= ss[j][0]) { idx = j; break; } }
-    if (idx < 0) idx = 0;
-    var info = sentMap[bh + '-' + idx];
-    if (!info) { close(); return; }
-    var key = bh + '-' + idx;
-    if (panel && cur && cur.key === key) { close(); return; }
-    open({ key: key, kind: 'sent', anchorText: info.text.slice(0, 200) },
-         rangeFor(textNodes(block), ss[idx][0], ss[idx][1]).getBoundingClientRect());
-  }, true);
-
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
-  // resize 只重画高亮覆盖层，**不要关面板**（布局变化时把用户正在写的面板关掉是纯伤害）
-  window.addEventListener('resize', function () { syncTocForNote(); paint(); });
-  // ★ 手机分屏（<768）时正文在 .wrap 内部滚动、窗口本身不滚 → 窗口 scroll 收不到，
-  //   句子高亮会错位。用捕获阶段接住容器滚动（scroll 不冒泡，但捕获能拿到），rAF 节流后重画。
-  var paintTick = 0;
-  document.addEventListener('scroll', function (e) {
-    var t = e.target;
-    if (!t || !t.classList || !t.classList.contains('wrap')) return;
-    if (paintTick) return;
-    paintTick = requestAnimationFrame(function () { paintTick = 0; paint(); });
-  }, true);
-  document.addEventListener('toggle', function () { setTimeout(paint, 30); }, true);
-
   // ================================================================ 启动
-  function findFirstAnchored() {          // 返回 [key, kind]
-    var ks = Object.keys(byKey);
-    for (var i = 0; i < ks.length; i++) {
-      if (cellMap[ks[i]]) return [ks[i], 'cell'];
-      if (sentMap[ks[i]]) return [ks[i], 'sent'];
-    }
-    return null;
-  }
-  function openAt(key, kind) {
-    if (kind === 'cell') {
-      var td = cellMap[key];
-      td.scrollIntoView({ block: 'center' });
-      setTimeout(function () {
-        open({ key: key, kind: 'cell', anchorText: anchorText(td).slice(0, 160) },
-             td.getBoundingClientRect());
-      }, 260);
-    } else {
-      var s = sentMap[key];
-      s.el.scrollIntoView({ block: 'center' });
-      setTimeout(function () {
-        open({ key: key, kind: 'sent', anchorText: s.text.slice(0, 200) },
-             rangeFor(textNodes(s.el), s.s, s.e).getBoundingClientRect());
-      }, 260);
-    }
-  }
   function boot() {
-    scan();
     buildNote();
     var bar = document.createElement('div');
     bar.className = 'sbn-bar';
     bar.setAttribute('data-sbn', '1');
-    bar.innerHTML = '<button class="sbn-btn ghost" id="sbn-count">批注 0</button>' +
-                    '<button class="sbn-btn ghost" id="sbn-note-toggle">笔记</button>';
+    bar.innerHTML = '<button class="sbn-btn ghost" id="sbn-note-toggle">结论</button>' +
+                    '<button class="sbn-btn ghost" id="sbe-toggle">编辑</button>';
     document.body.appendChild(bar);
     document.getElementById('sbn-note-toggle').addEventListener('click', function () {
       setNoteOpen(!document.body.classList.contains('sbn-note-open'));
     });
-    document.getElementById('sbn-count').addEventListener('click', function () {
-      // 有「未锚定」批注时优先打开它 —— 那些批注没有任何落点可点，不在这里列出就永远读不到
-      var orph = orphanOf();
-      if (orph.length) {
-        var b = document.getElementById('sbn-count').getBoundingClientRect();
-        open({ key: ORPHAN_KEY, kind: 'orphan',
-               anchorText: '本页有 ' + orph.length + ' 条批注因报告改版失去了锚点（内容仍在，可查看或删除）。' },
-             { top: b.top - 44, bottom: b.top - 44, left: b.left - 250 });
-        return;
-      }
-      var hit = findFirstAnchored();
-      if (hit) { openAt(hit[0], hit[1]); return; }
-      alert(notes.length ? '本页 ' + notes.length + ' 条批注均未锚定（正文已改写），可在批注面板里查看。'
-                         : '本页暂无批注。');
-    });
+    document.getElementById('sbe-toggle').addEventListener('click', function () { setEditing(!editing); });
+
+    var hint = document.createElement('div');
+    hint.id = 'sbe-hint';
+    hint.textContent = HINT_TEXT;
+    document.body.appendChild(hint);
+
+    loadEdits().then(function () { applyEdits(); });
     connect(3);
+    window.addEventListener('resize', syncTocForNote);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
 
   // 供测试/排查用
-  window.__sbn = { get online() { return online; }, get notes() { return notes; },
-                   get pageNote() { return pageNote; },
-                   get cells() { return Object.keys(cellMap).length; },
-                   get rows() { return Object.keys(cellMap).length; },
-                   get sents() { return Object.keys(sentMap).length; },
-                   get alias() { return alias; },
-                   get rowTexts() { return rowTexts; } };
+  window.__sbn = { get online() { return online; }, get pageNote() { return pageNote; },
+                   get edits() { return edits; }, get editing() { return editing; },
+                   get noteOpen() { return document.body.classList.contains('sbn-note-open'); } };
 })();
