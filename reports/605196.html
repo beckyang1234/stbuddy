@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>华通线缆(605196.SH) 研究报告 v20261117</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>7 章 · 11 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、基本信息（先定性）</a><a class="sblv3" href="#sec0">1、企业基本信息</a><a class="sblv3" href="#sec1">2、股权结构</a><a class="sblv3" href="#sec2">3、ST 风险分析</a><a class="sblv3" href="#sec3">4、运营情况</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、基本面分析（非ST逻辑）</a><a class="sblv3" href="#sec4">1、商业模式与业务拆解</a><a class="sblv3" href="#sec5">2、竞争格局</a><a class="sblv3" href="#sec6">3、产能情况</a><a class="sblv3" href="#sec7">4、估值分析与潜在增长倍数</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、情绪分析</a><a class="sblv3" href="#sec8">1、行业、概念的主板映射</a><a class="sblv3" href="#sec9">2、主题催化（新·大·强）</a><a class="sblv3" href="#sec10">3、历史类似行为</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、技术分析</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">五、投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">华通线缆（605196.SH）研究报告</h1>
+<blockquote><p>研究基准日 2026-11-17｜数据截止 2026-11-17 收盘｜最新报告期 2026 三季报</p><p>本报告为非 ST 标的，走「非ST逻辑」路径；ST 风险相关章节标注「不适用」。</p></blockquote>
+<h2 id="chap0">封面 · 结论前置</h2>
+<table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>操作结论</td><td><strong>买入</strong>（B 类中确定性，仓位 3%—5%，上限 8%）</td></tr><tr><td>红线分类</td><td><span class="sttag sttag-teal"><a href="https://data.eastmoney.com/notices/detail/605196/AN202610271831034161.html" target="_blank" rel="noopener">非ST·经营正常</a></span></td></tr><tr><td>生死定级</td><td>不适用（非 ST 标的，未触及任何退市红线）</td></tr><tr><td>自救空间</td><td>不适用</td></tr><tr><td>主要看点</td><td>安哥拉电解铝一期 12 万吨 2026 年 1 月投产已满产，二期 24 万吨 2027 年建成；铝业成为第二增长曲线</td></tr><tr><td>潜在增长倍数</td><td>约 1.20 倍（区间 0.91—1.54）→ 中值＞1，但下限＜1，属「有安全垫但不厚」</td></tr><tr><td>基本面路径</td><td>非ST（成长＋周期混合：线缆＋油服＋铝业）</td></tr><tr><td>版本与基准日</td><td>初版 · 2026-11-17；研究基准日 2026-11-17；行情截止 2026-11-17 收盘</td></tr></tbody></table>
+<p><strong>全篇时间口径</strong>：财务＝2026 三季报累计（2026-01 至 2026-09）；季度单季＝本期累计减上期累计；行情＝2026-11-17 收盘；股东户数＝2026-09-30；子公司经营数据＝2026 中报（三季报不披露子公司明细）。默认规则：凡标「2026Q3」指前三季累计，标「Q3 单季」指 7—9 月，标日期指收盘价。</p>
+<hr>
+<h2 id="chap1">一、基本信息（先定性）</h2>
+<p><strong>华通线缆是全球布局的线缆制造商，2026 年因安哥拉电解铝投产升级为「线缆＋油服＋铝业」三板块，业绩与股价罕见背离：前三季归母增 95%，股价却从年内高点回撤 60%。</strong> 非 ST 标的，无保壳／重整／退市问题，研究重心在基本面与估值。</p>
+<h3 id="sec0">1、企业基本信息</h3>
+<table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>成立日期</td><td>2002-06-21（企业宣传口径为创建于 1993 年，以工商登记为准）</td></tr><tr><td>上市日期</td><td>2021-05-11，发行价 5.05 元</td></tr><tr><td>注册／办公地</td><td>河北省唐山市丰南经济开发区华通街 111 号</td></tr><tr><td>所属行业</td><td>电力设备—电网设备—线缆部件及其他</td></tr><tr><td>主营业务</td><td>电线电缆研发、生产、销售；油服产品；电解铝（三大板块）</td></tr><tr><td>收入结构</td><td>2026 中报：电线电缆及其他 42.1 亿元（86.9%）、连续管及作业装置 5.4 亿元（11.2%）；外销占 77.5%</td></tr></tbody></table>
+<p>主营构成来自 <a href="https://data.eastmoney.com/notices/detail/605196/AN202608281830107872.html" target="_blank" rel="noopener">2026 中报</a>，以外销为主，是公司业绩与汇率、海运、地缘高度绑定的根源。</p>
+<h3 id="sec1">2、股权结构</h3>
+<p><strong>实际控制人为张文勇、张文东、张书军、张宝龙四名自然人，合计持股 34.63%（2026Q3），家族控制、股权相对集中；但 2026 年在机构撤退的同时散户化明显，前十大股东中北向与公募齐减。</strong></p>
+<table><thead><tr><th>指标</th><th>数值（2026-11-17／2026Q3）</th></tr></thead><tbody><tr><td>收盘价／总市值</td><td>23.57 元／120.4 亿元</td></tr><tr><td>PE(TTM)／PB</td><td>22.66 倍／3.13 倍</td></tr><tr><td>实控人及一致行动</td><td>张文勇、张文东、张书军、张宝龙合计 34.63%</td></tr><tr><td>股东总数</td><td>2.42 万户（2026-09-30），较上期 +5.25%（户数）／人均流通股 +5.25%</td></tr><tr><td>总股本／流通股</td><td>5.11 亿股／5.07 亿股</td></tr></tbody></table>
+<details class="fold"><summary>股权数据与股东户数趋势（论据）</summary><div class="fold-body">
+
+<p>股东户数（万户）：2025-06 为 1.15、2025-09 为 1.59、2025-12 为 1.76、2026-03 为 2.11、2026-06 为 2.54、2026-09 为 2.42。一年间从 1.15 万户增至 2.42 万户，翻倍以上——筹码从机构向散户扩散，是股价见顶的同步信号，不是底部信号（<a href="https://emweb.securities.eastmoney.com/PC_HSF10/ShareholderResearch/index?type=web&amp;code=SH605196" target="_blank" rel="noopener">东财 F10 股东研究</a>）。</p>
+<p>2026Q3 十大流通股东中：香港中央结算持股 541.5 万股，较上期减少 2003.5 万股；摩根新兴动力减持 82.9 万股；华夏中证电网设备 ETF 减持 25.5 万股（<a href="https://finance.sina.com.cn/stock/aiassist/ggsp/2026-11-13/doc-iniyqsmz1209024.shtml" target="_blank" rel="noopener">新浪财经，2026-11-13</a>）。全国社保基金四一八组合、中信社保 17052 组合在列。</p>
+
+</div></details>
+<details class="fold"><summary>高管与治理（论据）</summary><div class="fold-body">
+
+<p>法定代表人张文东；总经理张书军；财务总监兼董事会秘书罗效愚（<a href="https://data.eastmoney.com/notices/detail/605196/AN202611171831791183.html" target="_blank" rel="noopener">2026-11-17 投资者关系活动记录表</a>）。高管多为家族成员，未见外部空降的资本运作型高管；核心简历公告未逐项披露，不作第三方填充。</p>
+
+</div></details>
+<p>一句话判读：家族控股稳定，但机构筹码在 2026 年系统性撤出，与业绩向上形成反向剪刀差。</p>
+<h3 id="sec2">3、ST 风险分析</h3>
+<p><strong>不适用。</strong> 公司为非 ST 标的，未触及净资产为负、扣除后营收不足、审计非标、违规占用、违规担保、立案调查或重大违法等任何退市风险警示情形；2026 三季报归母权益 38.4 亿元、扣非 4.7 亿元、资产负债率 69.6%，财务类红线均安全。</p>
+<details class="fold"><summary>逐项排除表（论据）</summary><div class="fold-body">
+
+<table><thead><tr><th>项目</th><th>状态</th></tr></thead><tbody><tr><td>净资产为负</td><td>❌ 归母权益 38.4 亿元（2026Q3）</td></tr><tr><td>扣除后营收踩线</td><td>❌ 扣非 4.7 亿元、营收 82.4 亿元</td></tr><tr><td>审计／内控非标</td><td>❌ 2025 年报标准无保留意见</td></tr><tr><td>违规占用／担保</td><td>❌ 对子公司担保 93 亿元属合并范围内，非违规对外担保</td></tr><tr><td>立案调查／重大违法</td><td>❌ 未见相关公告</td></tr></tbody></table>
+
+</div></details>
+<h3 id="sec3">4、运营情况</h3>
+<p><strong>业绩在 2026Q3 出现质变：前三季营收 82.4 亿元（+54.1%）、归母 5.0 亿元（+95.5%）、扣非 4.7 亿元（+90.8%）；但经营现金流 -4.1 亿元（同比 -547%），利润与现金流严重背离。</strong> 增长全部来自海外订单、油服与安哥拉铝产品，铝业是核心增量。</p>
+<details class="fold"><summary>五年财务原表（论据）</summary><div class="fold-body">
+
+<table><thead><tr><th>指标</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026Q3</th></tr></thead><tbody><tr><td>营收（亿元）</td><td>51.9</td><td>53.6</td><td>63.5</td><td>75.3</td><td>82.4</td></tr><tr><td>归母（亿元）</td><td>2.6</td><td>3.6</td><td>3.2</td><td>2.9</td><td>5.0</td></tr><tr><td>扣非（亿元）</td><td>2.4</td><td>3.6</td><td>3.2</td><td>2.8</td><td>4.7</td></tr><tr><td>毛利率（%）</td><td>14.5</td><td>17.6</td><td>14.8</td><td>15.2</td><td>18.1</td></tr><tr><td>净利率（%）</td><td>4.9</td><td>6.8</td><td>5.0</td><td>3.8</td><td>6.1</td></tr><tr><td>ROE（%）</td><td>11.1</td><td>13.8</td><td>10.7</td><td>8.8</td><td>14.0</td></tr><tr><td>资产负债率（%）</td><td>54.5</td><td>48.5</td><td>55.6</td><td>66.0</td><td>69.6</td></tr><tr><td>经营现金流（亿元）</td><td>2.5</td><td>4.0</td><td>-1.5</td><td>0.4</td><td>-4.1</td></tr></tbody></table>
+<p>来源：<a href="https://emweb.securities.eastmoney.com/PC_HSF10/FinanceAnalysis/index?type=web&amp;code=SH605196" target="_blank" rel="noopener">2022—2025 年报及 2026 三季报（东财 F10）</a>。注：归母净利 2023 年见顶 3.6 亿元后连续两年下滑，2026Q3 才反转——媒体「逐年增长」的表述不准确。</p>
+
+</div></details>
+<p><figure class="stchart" style="margin:14px 0 18px;text-align:center"><svg viewBox="0 0 660 300" width="100%" style="max-width:660px;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" role="img" aria-label="营业收入趋势（亿元）"><text x="62" y="20" font-size="13" font-weight="600" fill="#334155">营业收入趋势（亿元）</text><line x1="62" y1="254.0" x2="642" y2="254.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="257.5" font-size="10.5" fill="#334155" text-anchor="end">0</text><line x1="62" y1="199.0" x2="642" y2="199.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="202.5" font-size="10.5" fill="#334155" text-anchor="end">23.07</text><line x1="62" y1="144.0" x2="642" y2="144.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="147.5" font-size="10.5" fill="#334155" text-anchor="end">46.14</text><line x1="62" y1="89.0" x2="642" y2="89.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="92.5" font-size="10.5" fill="#334155" text-anchor="end">69.22</text><line x1="62" y1="34.0" x2="642" y2="34.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="37.5" font-size="10.5" fill="#334155" text-anchor="end">92.29</text><polyline points="70.0,130.3 220.3,126.2 370.9,102.6 521.2,74.5 634.0,57.6" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="70.0" cy="130.3" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="70.0" y="120.3" font-size="10.5" fill="#334155" text-anchor="middle">51.9</text><circle cx="220.3" cy="126.2" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="220.3" y="116.2" font-size="10.5" fill="#334155" text-anchor="middle">53.6</text><circle cx="370.9" cy="102.6" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="370.9" y="92.6" font-size="10.5" fill="#334155" text-anchor="middle">63.5</text><circle cx="521.2" cy="74.5" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="521.2" y="64.5" font-size="10.5" fill="#334155" text-anchor="middle">75.3</text><circle cx="634.0" cy="57.6" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="634.0" y="47.6" font-size="10.5" fill="#334155" text-anchor="middle">82.4</text><text x="70.0" y="272" font-size="11" fill="#334155" text-anchor="middle">22/12</text><text x="220.3" y="272" font-size="11" fill="#334155" text-anchor="middle">23/12</text><text x="370.9" y="272" font-size="11" fill="#334155" text-anchor="middle">24/12</text><text x="521.2" y="272" font-size="11" fill="#334155" text-anchor="middle">25/12</text><text x="634.0" y="272" font-size="11" fill="#334155" text-anchor="middle">26/09</text></svg><figcaption style="font-size:11.5px;color:#64748b;margin-top:4px;line-height:1.5">来源：2022—2025 年报、2026 三季报</figcaption></figure></p>
+<p><figure class="stchart" style="margin:14px 0 18px;text-align:center"><svg viewBox="0 0 660 300" width="100%" style="max-width:660px;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" role="img" aria-label="归母净利润趋势（亿元）"><text x="62" y="20" font-size="13" font-weight="600" fill="#334155">归母净利润趋势（亿元）</text><line x1="62" y1="254.0" x2="642" y2="254.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="257.5" font-size="10.5" fill="#334155" text-anchor="end">0</text><line x1="62" y1="199.0" x2="642" y2="199.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="202.5" font-size="10.5" fill="#334155" text-anchor="end">1.4</text><line x1="62" y1="144.0" x2="642" y2="144.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="147.5" font-size="10.5" fill="#334155" text-anchor="end">2.8</text><line x1="62" y1="89.0" x2="642" y2="89.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="92.5" font-size="10.5" fill="#334155" text-anchor="end">4.2</text><line x1="62" y1="34.0" x2="642" y2="34.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="37.5" font-size="10.5" fill="#334155" text-anchor="end">5.6</text><polyline points="70.0,151.9 220.3,112.6 370.9,128.3 521.2,140.1 634.0,57.6" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="70.0" cy="151.9" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="70.0" y="141.9" font-size="10.5" fill="#334155" text-anchor="middle">2.6</text><circle cx="220.3" cy="112.6" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="220.3" y="102.6" font-size="10.5" fill="#334155" text-anchor="middle">3.6</text><circle cx="370.9" cy="128.3" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="370.9" y="118.3" font-size="10.5" fill="#334155" text-anchor="middle">3.2</text><circle cx="521.2" cy="140.1" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="521.2" y="130.1" font-size="10.5" fill="#334155" text-anchor="middle">2.9</text><circle cx="634.0" cy="57.6" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="634.0" y="47.6" font-size="10.5" fill="#334155" text-anchor="middle">5</text><text x="70.0" y="272" font-size="11" fill="#334155" text-anchor="middle">22/12</text><text x="220.3" y="272" font-size="11" fill="#334155" text-anchor="middle">23/12</text><text x="370.9" y="272" font-size="11" fill="#334155" text-anchor="middle">24/12</text><text x="521.2" y="272" font-size="11" fill="#334155" text-anchor="middle">25/12</text><text x="634.0" y="272" font-size="11" fill="#334155" text-anchor="middle">26/09</text></svg><figcaption style="font-size:11.5px;color:#64748b;margin-top:4px;line-height:1.5">来源：2022—2025 年报、2026 三季报</figcaption></figure></p>
+<p>营收五年稳步扩张，归母却在 2023—2025 连续回落，2026Q3 因铝业跳升——增长质量要看铝价脸色。</p>
+<details class="fold"><summary>现金流与季度拆解（论据）</summary><div class="fold-body">
+
+<p>Q3 单季：营收 33.9 亿元（+76.9%）、归母 3.4 亿元（+184.1%）、扣非 3.4 亿元（+193.5%），单季利润已接近 2025 全年（<a href="https://data.eastmoney.com/notices/detail/605196/AN202610271831034161.html" target="_blank" rel="noopener">2026 三季报</a>）。现金流恶化主因销售增长带来的应收项目增加、原材料与产成品备货增加。资产负债率从 2023 年 48.5% 升至 69.6%，重资产扩张（安哥拉项目）是主因。</p>
+
+</div></details>
+<details class="fold"><summary>重要子公司与担保（论据）</summary><div class="fold-body">
+
+<p>2026 中报主要海外子公司：美国 Pulse Wire &amp; Cable 营收 11.0 亿元、净利 1.0 亿元；韩国 Pusan Cables 营收 9.5 亿元；巴拿马基地营收 2.8 亿元、净利 0.4 亿元；安哥拉子公司营收 3.8 亿元、净利 1.2 亿元（净利率 31.5%）。三季报不披露子公司明细，故用中报数据。</p>
+<p>担保：截至 2026-09-30 对合并范围内控股子公司担保总额约 93 亿元，其中安哥拉相关约 63 亿元、以设备出口／包销等非融资类履约担保为主，实际提款 17.8 亿元（<a href="https://data.eastmoney.com/notices/detail/605196/AN202611171831791183.html" target="_blank" rel="noopener">2026-11-17 投资者关系活动记录表</a>）。担保绝对额大，但为合并范围内且未全额提款，风险可控性取决于安哥拉项目本身。</p>
+
+</div></details>
+<hr>
+<h2 id="chap2">二、基本面分析（非ST逻辑）</h2>
+<p><strong>路径声明：本股属非ST逻辑（E 类），采用「通用部分」模板分析——商业模式、竞争格局、产能、估值汇总，最后给出与当前估值的倍数关系。</strong></p>
+<h3 id="sec4">1、商业模式与业务拆解</h3>
+<p><strong>三条业务线质地不同：线缆是低毛利规模生意，油服是高毛利技术生意，铝业是资源价差生意；2026 年利润弹性主要来自铝业，但这也意味着利润质量从「制造」转向「周期」。</strong></p>
+<details class="fold"><summary>三板块商业模式（论据）</summary><div class="fold-body">
+
+<ul><li><strong>线缆</strong>（营收占比 86.9%）：矿用、船用、光伏、数据中心专用线缆，境外销售为主，全球五大生产基地（坦桑尼亚、喀麦隆、巴拿马、韩国、安哥拉）就近交付、规避贸易壁垒。2026H1 毛利率 16.1%（同比 +5.0 个百分点）。</li><li><strong>油服</strong>（营收占比 11.2%）：潜油泵电缆、连续油管、智能管缆，子公司信达科创是全球仅六家获 API-5ST 认证企业之一，客户为哈里伯顿、贝克休斯、斯伦贝谢。2026H1 连续管毛利率 27.0%，高技术壁垒但同比 -13.5 个百分点。</li><li><strong>铝业</strong>（新增）：安哥拉电解铝，依托当地水电（电价约 0.08 元／度，国内约 0.4 元／度）与税收优惠，成本显著低于国内。下游绑定嘉能可（Glencore）、Mercuria 两大贸易商。</li></ul>
+
+</div></details>
+<h3 id="sec5">2、竞争格局</h3>
+<p><strong>线缆行业集中度低、竞争激烈，公司靠海外产能与认证构建差异化；铝业则受国内 4500 万吨产能天花板约束，出海是结构性窗口，但公司进入的是周期品赛道，定价权在大宗商品市场而非自己。</strong></p>
+<details class="fold"><summary>行业六问（论据）</summary><div class="fold-body">
+
+<ol><li><strong>供给</strong>：国内电解铝运行产能约 4400 万吨、利用率近 98%，合规新增空间不足 100 万吨；线缆行业低端产能过剩。</li><li><strong>需求</strong>：海外电力基建、油气开采、数据中心带动线缆；电解铝受全球供给阶段性收紧支撑。</li><li><strong>价格分位</strong>：铝价处于高位区间（有色金属指数 2026-11-17 为 6680 点，年内高点 6782）——价格分位＞80% 时「行业景气」是卖出理由，不是买入理由。</li><li><strong>格局</strong>：电解铝中国宏桥 PE 仅 5.9 倍、PB 更低，反映市场给周期顶部利润的低估值；线缆可比公司亨通光电 PE 16.6 倍、中天科技 17.7 倍。</li><li><strong>公司位置</strong>：铝业属后来者、成本端有优势但无定价权；线缆油服在细分领域（矿用、连续油管）有认证壁垒。</li><li><strong>结论</strong>：公司 α 来自「低成本铝＋海外线缆渠道」，但铝价周期决定利润上限，不能按成长股给高 PE。</li></ol>
+
+</div></details>
+<h3 id="sec6">3、产能情况</h3>
+<p><strong>安哥拉电解铝是全部想象空间的载体：一期 12 万吨已满产，二期 24 万吨计划 2027 年建成，远期规划五期合计 52 万吨；产能落地节奏与铝价共同决定估值。</strong></p>
+<details class="fold"><summary>安哥拉项目进度（论据，关键事实二次核实）</summary><div class="fold-body">
+
+<p>公司 2026-11-03 调研纪要明确（<a href="https://data.eastmoney.com/notices/detail/605196/AN202611031831374956.html" target="_blank" rel="noopener">投资者关系活动记录表 2026-004</a>）：一期 2026 年 1 月投产，1—9 月实际产出（合格铝锭／铝液口径）约 6.5 万吨，确认销售约 4.2 万吨，9 月末库存约 2.3 万吨。库存高于销量，说明产能爬坡快于销售节奏，需关注去化。</p>
+<p>二期 24 万吨正常推进、计划 2027 年建成；6 月已与中工国际签署二期一阶段 EPC 总包合同 17.2 亿元。一期投资 2.5 亿美元、二期追加 5 亿美元，五期合计规划 52 万吨、总投资约 16 亿美元（<a href="https://finance.sina.com.cn/wm/2026-07-27/doc-inikhuhs9548457.shtml" target="_blank" rel="noopener">浙商证券，2026-07-27</a>）。电力协议已覆盖一二期大部分产能，缺口在补签中。</p>
+
+</div></details>
+<h3 id="sec7">4、估值分析与潜在增长倍数</h3>
+<p><strong>三段估值加总，合理市值中值约 144 亿元，对应当前 120.4 亿元约 1.20 倍——中值＞1 支持买入；但下限 0.91 倍说明铝价回落或二期延迟时现价即偏高。</strong> 这是「买入但不重仓」的量化依据。</p>
+<table><thead><tr><th>估值分项</th><th>中值（亿元）</th><th>区间（亿元）</th><th>依据</th></tr></thead><tbody><tr><td>现有业务（线缆＋油服）</td><td>62</td><td>54—70</td><td>主业净利约 3.0—3.5 亿×18—20 倍 PE</td></tr><tr><td>一期电解铝（贴现＋概率）</td><td>43</td><td>35—60</td><td>满产 10.4 亿×7 倍×70% 概率×贴现</td></tr><tr><td>二期电解铝（贴现＋概率）</td><td>39</td><td>20—55</td><td>满产增量 20.7 亿×6 倍×60% 概率×贴现×铝价折扣</td></tr><tr><td>合计（分子）</td><td>144</td><td>109—185</td><td>—</td></tr><tr><td>当前市值（分母）</td><td>120.4</td><td>120.4</td><td>2026-11-17 收盘</td></tr><tr><td><strong>潜在增长倍数</strong></td><td><strong>1.20</strong></td><td><strong>0.91—1.54</strong></td><td>中值＞1</td></tr></tbody></table>
+<details class="fold"><summary>估值测算细节与纪律（论据）</summary><div class="fold-body">
+
+<p>测算遵循四条纪律：① 远期项目贴现＋打概率，不拿投资额当市值增量；② 现有业务用扣非×合理 PE（不用归母、不用 PS）；③ 「强」维≤1 的想象空间（五期 52 万吨）不进分子，只作期权写进目标区间上限；④ 隐含概率反推——按当前 120.4 亿元＝p×乐观 185＋(1−p)×保守 109，得市场隐含 p≈15%，即市场只给约 15% 概率相信乐观情景（铝价维持高位＋二期顺利），本报告的判断概率约 40%—50%，大于市场定价，故现价有修复空间但非无风险。</p>
+<p>满产利润 10.4 亿元来自浙商证券 2026-07-27 报告的中性测算（吨铝利润 8668 元）；二期增量 20.7 亿元＝36 万吨满产 31 亿元减一期 10.4 亿元，同为研报口径。周期股 PE 取 6—7 倍，参照中国宏桥 PE 5.9 倍；线缆油服取 18—20 倍，参照亨通、中天。详见 <a href="https://www.sgpjbg.com.cn/baogao/1365240.html" target="_blank" rel="noopener">浙商证券研报摘要</a>。</p>
+
+</div></details>
+<p>一句话判读：估值不便宜也不昂贵，买点是「铝价高位维持＋二期确定性提升」的预期段，不是等年报兑现的确认段。</p>
+<hr>
+<h2 id="chap3">三、情绪分析</h2>
+<p><strong>市场对华通线缆的注意力极高但方向转空：161 家机构参与 2026-10-31 调研，可北向与公募同期撤退、股东户数翻倍、股价腰斩——典型的「研究热情高、真金白银撤」背离。</strong> 主题有想象空间，但当前主导情绪是周期见顶担忧。</p>
+<h3 id="sec8">1、行业、概念的主板映射</h3>
+<p><strong>主线匹配度弱。</strong> 公司属传统线缆＋能源服务，与 AI 算力、半导体、存储等当前核心主线无直接关联；概念标签（海工装备、深海科技、油气管网、光伏、中俄贸易）多为边缘题材，缺乏强主线带动。</p>
+<details class="fold"><summary>映射扫描（论据）</summary><div class="fold-body">
+
+<p>主板同业也在下跌：亨通光电近 18 日 -15.4%、中天科技 -13.6%、云铝股份 -9.6%，所属电力设备板块 2026-11-17 跌 1.22%。<strong>主板同业普跌时是负向映射，不是补涨机会</strong>——华通难以走出独立行情，需等板块企稳。</p>
+
+</div></details>
+<h3 id="sec9">2、主题催化（新·大·强）</h3>
+<p><strong>主题评分 5/9，属「强题材」但持续性存疑：题材「大」（36 万吨产能、31 亿元利润潜力）、「新」（电解铝出海第二曲线），但「强」维偏弱——铝价周期见顶、利润尚未完全兑现，难以支撑估值继续扩张。</strong></p>
+<table><thead><tr><th>维度</th><th>得分</th><th>依据</th></tr></thead><tbody><tr><td>新</td><td>2</td><td>电解铝为 2026 年新投产业务，A 股稀缺的「铝出海」标的</td></tr><tr><td>大</td><td>2</td><td>二期后 36 万吨、研报测算利润潜力 31 亿元，远超当前市值体量</td></tr><tr><td>强</td><td>1</td><td>铝价高位、利润兑现依赖周期；一期净利已现但二期未投产，收入确认有限</td></tr><tr><td>合计</td><td>5/9</td><td>强题材下沿，情绪驱动可持续但脆弱</td></tr></tbody></table>
+<h3 id="sec10">3、历史类似行为</h3>
+<p><strong>历史异动由「铝业投产／业绩预增」驱动：2026 年 1—3 月因安哥拉预期从 11.99 元冲至 47.13 元（月线收盘，盘中最高 59.59 元），业绩兑现即见顶回落。</strong> 当前回调属同一符号反向重演，需警惕。</p>
+<details class="fold"><summary>价格与异动轨迹（论据，前复权）</summary><div class="fold-body">
+
+<p>月线收盘：2025-08 为 21.70、2025-12 为 34.74、2026-01 为 45.70、2026-02 为 47.13（阶段高点）、2026-06 为 26.10、2026-09 为 33.20、2026-11-17 为 23.57。年内最大回撤约 60%（3 月盘中 59.59 元至 11 月 16 日 22.01 元）。炒作符号＝「电解铝投产＋业绩预增」，10-15 业绩预告后股价不涨反跌，「利好出尽」特征明确。</p>
+
+</div></details>
+<p><figure class="stchart" style="margin:14px 0 18px;text-align:center"><svg viewBox="0 0 660 300" width="100%" style="max-width:660px;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" role="img" aria-label="股价月线走势（前复权，元）"><text x="62" y="20" font-size="13" font-weight="600" fill="#334155">股价月线走势（前复权，元）</text><line x1="62" y1="254.0" x2="642" y2="254.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="257.5" font-size="10.5" fill="#334155" text-anchor="end">0</text><line x1="62" y1="199.0" x2="642" y2="199.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="202.5" font-size="10.5" fill="#334155" text-anchor="end">13.19</text><line x1="62" y1="144.0" x2="642" y2="144.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="147.5" font-size="10.5" fill="#334155" text-anchor="end">26.38</text><line x1="62" y1="89.0" x2="642" y2="89.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="92.5" font-size="10.5" fill="#334155" text-anchor="end">39.56</text><line x1="62" y1="34.0" x2="642" y2="34.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="37.5" font-size="10.5" fill="#334155" text-anchor="end">52.75</text><polyline points="70.0,204.0 197.3,181.0 248.7,163.5 351.6,109.3 377.7,63.4 403.8,57.6 427.5,57.6 505.0,145.2 582.6,115.5 634.0,155.6" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="70.0" cy="204.0" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="70.0" y="194.0" font-size="10.5" fill="#334155" text-anchor="middle">12</text><circle cx="197.3" cy="181.0" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="197.3" y="171.0" font-size="10.5" fill="#334155" text-anchor="middle">17.5</text><circle cx="248.7" cy="163.5" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="248.7" y="153.5" font-size="10.5" fill="#334155" text-anchor="middle">21.7</text><circle cx="351.6" cy="109.3" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="351.6" y="99.3" font-size="10.5" fill="#334155" text-anchor="middle">34.7</text><circle cx="377.7" cy="63.4" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="377.7" y="53.4" font-size="10.5" fill="#334155" text-anchor="middle">45.7</text><circle cx="403.8" cy="57.6" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="403.8" y="47.6" font-size="10.5" fill="#334155" text-anchor="middle">47.1</text><circle cx="427.5" cy="57.6" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="427.5" y="47.6" font-size="10.5" fill="#334155" text-anchor="middle">47.1</text><circle cx="505.0" cy="145.2" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="505.0" y="135.2" font-size="10.5" fill="#334155" text-anchor="middle">26.1</text><circle cx="582.6" cy="115.5" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="582.6" y="105.5" font-size="10.5" fill="#334155" text-anchor="middle">33.2</text><circle cx="634.0" cy="155.6" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="634.0" y="145.6" font-size="10.5" fill="#334155" text-anchor="middle">23.6</text><text x="70.0" y="272" font-size="11" fill="#334155" text-anchor="middle">25/01</text><text x="197.3" y="272" font-size="11" fill="#334155" text-anchor="middle">25/06</text><text x="351.6" y="272" font-size="11" fill="#334155" text-anchor="middle">25/12</text><text x="377.7" y="272" font-size="11" fill="#334155" text-anchor="middle">26/01</text><text x="403.8" y="272" font-size="11" fill="#334155" text-anchor="middle">26/02</text><text x="427.5" y="272" font-size="11" fill="#334155" text-anchor="middle">26/03</text><text x="582.6" y="272" font-size="11" fill="#334155" text-anchor="middle">26/09</text><text x="634.0" y="272" font-size="11" fill="#334155" text-anchor="middle">26/11</text></svg><figcaption style="font-size:11.5px;color:#64748b;margin-top:4px;line-height:1.5">来源：腾讯前复权月 K 线，2026-11-17</figcaption></figure></p>
+<p><figure class="stchart" style="margin:14px 0 18px;text-align:center"><svg viewBox="0 0 660 300" width="100%" style="max-width:660px;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" role="img" aria-label="股东户数（万户）"><text x="62" y="20" font-size="13" font-weight="600" fill="#334155">股东户数（万户）</text><line x1="62" y1="254.0" x2="642" y2="254.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="257.5" font-size="10.5" fill="#334155" text-anchor="end">0</text><line x1="62" y1="199.0" x2="642" y2="199.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="202.5" font-size="10.5" fill="#334155" text-anchor="end">0.71</text><line x1="62" y1="144.0" x2="642" y2="144.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="147.5" font-size="10.5" fill="#334155" text-anchor="end">1.42</text><line x1="62" y1="89.0" x2="642" y2="89.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="92.5" font-size="10.5" fill="#334155" text-anchor="end">2.13</text><line x1="62" y1="34.0" x2="642" y2="34.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="37.5" font-size="10.5" fill="#334155" text-anchor="end">2.84</text><polyline points="70.0,165.1 183.5,131.0 295.8,117.9 406.9,90.8 520.5,57.6 634.0,66.9" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="70.0" cy="165.1" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="70.0" y="155.1" font-size="10.5" fill="#334155" text-anchor="middle">1.15</text><circle cx="183.5" cy="131.0" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="183.5" y="121.0" font-size="10.5" fill="#334155" text-anchor="middle">1.59</text><circle cx="295.8" cy="117.9" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="295.8" y="107.9" font-size="10.5" fill="#334155" text-anchor="middle">1.76</text><circle cx="406.9" cy="90.8" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="406.9" y="80.8" font-size="10.5" fill="#334155" text-anchor="middle">2.11</text><circle cx="520.5" cy="57.6" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="520.5" y="47.6" font-size="10.5" fill="#334155" text-anchor="middle">2.54</text><circle cx="634.0" cy="66.9" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="634.0" y="56.9" font-size="10.5" fill="#334155" text-anchor="middle">2.42</text><text x="70.0" y="272" font-size="11" fill="#334155" text-anchor="middle">25/06</text><text x="183.5" y="272" font-size="11" fill="#334155" text-anchor="middle">25/09</text><text x="295.8" y="272" font-size="11" fill="#334155" text-anchor="middle">25/12</text><text x="406.9" y="272" font-size="11" fill="#334155" text-anchor="middle">26/03</text><text x="520.5" y="272" font-size="11" fill="#334155" text-anchor="middle">26/06</text><text x="634.0" y="272" font-size="11" fill="#334155" text-anchor="middle">26/09</text></svg><figcaption style="font-size:11.5px;color:#64748b;margin-top:4px;line-height:1.5">来源：东财 F10 股东研究</figcaption></figure></p>
+<p>股价见顶与股东户数翻倍同步——筹码从集中走向分散，是趋势转弱的结构性证据。</p>
+<hr>
+<h2 id="chap4">四、技术分析</h2>
+<p><strong>现价 23.57 元处于下跌通道末段、月线分位约 42%（2018 年至今区间 6.5—47.1 元），筹码平均成本约 24.4 元，现价已跌破成本线；上方 26—28 元为套牢密集区，下方 22.0 元为前低支撑，跌破需止损。</strong></p>
+<details class="fold"><summary>技术细节（论据，均为前复权）</summary><div class="fold-body">
+
+<ul><li>日 K 近 20 日：10-21 收 30.99 元 → 11-16 收 22.67 元，区间跌幅约 27%，11-17 反弹 3.97% 收 23.57 元。</li><li>筹码平均成本约 24.39 元（<a href="https://finance.sina.com.cn/stock/aiassist/ggsp/2026-11-13/doc-iniyqsmz1209024.shtml" target="_blank" rel="noopener">新浪财经，2026-11-13</a>），现价低于成本线，套牢盘压制反弹。</li><li>支撑位 23.66 元附近已被跌破，下一支撑为 11-16 低点 22.01 元；压力位 26—28 元（10 月底密集成交区）。</li><li>主力资金近 20 日净流出 1.36 亿元，连续减仓，筹码分散；MACD 处于弱势区，未见明确底背离。</li><li>股东成本锚：无产投／法拍／要约价可比对；股权激励回购价 9.7 元／股（回购注销），与现价差距大，参考意义有限。</li></ul>
+
+</div></details>
+<p>一句话判读：技术面尚未转强，买入宜分批、留足向下空间，不追反弹。</p>
+<hr>
+<h2 id="chap5">五、投资结论</h2>
+<p><strong>结论：买入。</strong> 铝业带来的业绩弹性与估值修复空间（中值 1.20 倍）已覆盖现价，但周期见顶、现金流恶化与机构撤退使确定性下降，故定为 B 类中确定性、控制仓位、严格止损。</p>
+<table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td>判断</td><td><strong>买入</strong>（与封面一致；B 类中确定性）</td></tr><tr><td>主要理由</td><td>① Q3 单季归母 3.4 亿元（+184%），铝业满产兑现（<a href="https://data.eastmoney.com/notices/detail/605196/AN202610271831034161.html" target="_blank" rel="noopener">三季报</a>）；② 2026E 动态 PE 约 14 倍，低于成长股、估值有修复空间；③ 二期 24 万吨 2027 年建成、EPC 已签，成长路径清晰（<a href="https://data.eastmoney.com/notices/detail/605196/AN202611031831374956.html" target="_blank" rel="noopener">调研纪要</a>）；④ 股价自高点回撤 60%，风险已部分释放；⑤ 潜在增长倍数中值 1.20＞1</td></tr><tr><td>失效条件</td><td>铝价跌破吨铝成本线（利润显著收缩）；安哥拉二期停工／电力协议破裂；加拿大诉讼全额计提 2.5 亿元；2026 年报归母低于 6 亿元；经营现金流持续大额为负</td></tr><tr><td>参考买入区间</td><td>21.5—24.0 元（现价 23.57 元在区间内，宜分批）</td></tr><tr><td>目标区间</td><td>28—34 元（对应市值 143—174 亿元，锚「铝业满产＋二期推进」情景 × 概率；上限含五期 52 万吨期权）</td></tr><tr><td>可买卖时间窗口</td><td>3—6 个月；买点＝业绩预告前的预期段，年报披露（2027-04 前）为减仓观察点，非追高入场点</td></tr><tr><td>仓位建议</td><td>首仓 3%，铝价企稳或二期试验进展确认后加至 5%，单票上限 8%</td></tr><tr><td>最大风险</td><td>铝价见顶回落——电解铝是当前利润主引擎，一旦周期反转，估值倍数迅速跌破 1，目标区间下修</td></tr></tbody></table>
+<p><strong>交易四问</strong>：买什么——华通线缆（605196.SH）；何时买——领先档：用已披露数据可推算全年归母约 8.4 亿元（前三季 5.03＋Q4 按 Q3 满产节奏）、而年报未披露的预期段，现价分批，不满足「涨停／一字板」追高条件；买多少——首仓 3%，上限 8%；何时卖——目标 28—34 元分批减，或触发任一失效条件即离场。</p>
+<details class="fold"><summary>反方观点与评判（论据）</summary><div class="fold-body">
+
+<p><strong>反方一：周期顶部 PE 陷阱。</strong> TTM PE 22.66 倍看似不高，但铝价处高位、利润含周期水分，中国宏桥 PE 仅 5.9 倍说明市场给周期股低估值。<strong>评判</strong>：部分成立，故本报告按分部估值、铝业只给 6—7 倍 PE，已压缩周期溢价；但未完全否定——铝业成本优势是真实的 α。</p>
+<p><strong>反方二：现金流恶化、应收账款风险。</strong> 经营现金流 -4.1 亿元，加拿大客户欠款诉讼涉案 2.5 亿元（占 2025 净资产 7.35%，尚未开庭），海外应收占比高。<strong>评判</strong>：成立且是主要不确定性，已列入失效条件与仓位控制；诉讼为追讨货款、非亏损确认，暂不调整利润预测。</p>
+<p><strong>反方三：机构撤退、趋势向下。</strong> 北向 Q3 减持 2003 万股、股东户数翻倍、主力连续净流出，技术面破位。<strong>评判</strong>：成立，是「买入但不重仓、分批建仓」的直接依据；但机构撤离也可能已过度反映悲观预期，故反向构成赔率。</p>
+<p><strong>反方四：机构目标价 47.80 元、浙商预测 2028 年利润 31.6 亿元。</strong> 若采信则空间巨大。<strong>评判</strong>：不采信——目标价多在铝价高位期给出，31.6 亿元依赖五期满产且铝价维持，属乐观情景；本报告已将其放入目标区间上限而非基准。</p>
+
+</div></details>
+<p><strong>一句话结论：买入华通线缆，赚的是「铝业满产＋估值修复」的预期差，赌的是铝价不深跌、二期如期；赚不到的是周期反转的钱——严格止损、控制仓位。</strong></p>
+<blockquote><p>免责声明：本报告基于公开信息与个人研判，数据以公司公告原文为准，不构成任何投资建议。市场有风险，决策需自主。</p></blockquote>
+<hr>
+<h2 id="chap6">附录</h2>
+<details class="fold"><summary>附录 A · 关键信源链接</summary><div class="fold-body">
+
+<ul><li><a href="https://data.eastmoney.com/notices/detail/605196/AN202610271831034161.html" target="_blank" rel="noopener">2026 年第三季度报告</a></li><li><a href="https://data.eastmoney.com/notices/detail/605196/AN202610141830459889.html" target="_blank" rel="noopener">2026 年前三季度业绩预告</a></li><li><a href="https://data.eastmoney.com/notices/detail/605196/AN202611031831374956.html" target="_blank" rel="noopener">投资者关系活动记录表 2026-004（11-03）</a></li><li><a href="https://data.eastmoney.com/notices/detail/605196/AN202611171831791183.html" target="_blank" rel="noopener">投资者关系活动记录表 2026-005（11-17）</a></li><li><a href="https://www.sgpjbg.com.cn/baogao/1365240.html" target="_blank" rel="noopener">浙商证券研报摘要（2026-10-19）</a></li><li><a href="https://finance.sina.com.cn/wm/2026-07-27/doc-inikhuhs9548457.shtml" target="_blank" rel="noopener">浙商重大推荐（2026-07-27，新浪财经）</a></li><li><a href="https://emweb.securities.eastmoney.com/PC_HSF10/FinanceAnalysis/index?type=web&amp;code=SH605196" target="_blank" rel="noopener">东财 F10 财务分析</a></li></ul>
+
+</div></details>
+<details class="fold"><summary>版本记录（最新在最上）</summary><div class="fold-body">
+
+<table><thead><tr><th>版本</th><th>修订日</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-11-17</td><td>建立非ST逻辑报告；纳入 2026 三季报、安哥拉项目调研、分部估值与倍数测算</td></tr></tbody></table>
+
+</div></details>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+<script src="/annotate.js?v=20261113a" defer></script>
+</body>
+</html>
