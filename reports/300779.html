@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>惠城环保(300779.SZ) 研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>9 章 · 11 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、基本信息（先定性）</a><a class="sblv3" href="#sec0">1、企业基本信息</a><a class="sblv3" href="#sec1">2、股权结构</a><a class="sblv3" href="#sec2">3、ST 风险分析</a><a class="sblv3" href="#sec3">4、运营与财务状况</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、基本面分析（路径：非ST）</a><a class="sblv3" href="#sec4">1、商业模式与行业格局</a><a class="sblv3" href="#sec5">2、产能与项目进展</a><a class="sblv3" href="#sec6">3、估值分析（潜在增长倍数）</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、情绪分析</a><a class="sblv3" href="#sec7">1、主板／同业映射</a><a class="sblv3" href="#sec8">2、主题催化："新·大·强"打分</a><a class="sblv3" href="#sec9">3、历史异动（按题材时间倒序）</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、技术分析</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">五、投资结论</a><a class="sblv3" href="#sec10">反方观点与评判</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">附录 A · 待核实／需补充清单</a></div><div class="sbgrp"><a class="sblv2" href="#chap7">附录 B · 关键信源链接</a></div><div class="sbgrp"><a class="sblv2" href="#chap8">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">惠城环保（300779.SZ）研究报告</h1>
+<blockquote><p>全篇时间口径：研究基准日 2026-11-18；行情截止 2026-11-17 收盘；最新报告期 2026Q3（三季报，未经审计）。财务数据如无特别标注均为 2026Q3 年初至报告期末；时点数据标"2026-09-30"或"2026-11-17 收盘"。预测值标 E。</p></blockquote>
+<h2 id="chap0">封面 · 结论前置</h2>
+<p><strong>结论：卖出——估值透支、财务转亏、实控人被留置，潜在增长倍数约 0.5 倍，不满足买入。</strong></p>
+<table><thead><tr><th>项目</th><th>结论</th></tr></thead><tbody><tr><td>操作结论</td><td><strong>卖出（回避／持仓者减仓）</strong></td></tr><tr><td>红线分类</td><td><span class="sttag sttag-teal"><a href="http://static.cninfo.com.cn/finalpage/2026-10-28/1225628533.PDF" target="_blank" rel="noopener">非ST·创业板正常股</a></span> <span class="sttag sttag-blue"><a href="http://static.cninfo.com.cn/finalpage/2026-11-16/1225672421.PDF" target="_blank" rel="noopener">实控人被留置-2026-11-16</a></span></td></tr><tr><td>生死定级</td><td>不适用（非退市路径）——核心风险是估值与治理，非退市红线</td></tr><tr><td>自救空间</td><td>不适用</td></tr><tr><td>主要看点</td><td>全球首套 20 万吨废塑料化学循环（CPDCC）装置 2026-07 通过满负荷考核，但商业化营收仅 0.3 亿、公司自认"经济效益尚需验证"；2026-11-16 实控人张新功被留置，两日累计跌逾 30%。</td></tr><tr><td><strong>潜在增长倍数</strong></td><td><strong>约 0.5 倍（区间 0.4—0.6）→ ＜1，不满足"&gt;1 才买入"；估值已透支远期项目</strong></td></tr><tr><td>基本面路径</td><td>非ST（创业板正常股）</td></tr><tr><td>版本与基准日</td><td>初版 · 2026-11-18；基准日 2026-11-18；数据截止 2026-11-17 收盘</td></tr></tbody></table>
+<details class="fold"><summary>数据来源与已知数据异常</summary><div class="fold-body">
+
+<ul><li>数据源：巨潮公告原文（三季报 2026-087、留置公告 2026-090、异动公告 2026-091、20 万吨项目进展 2026-066、增持完成 2026-063、补充质押 2026-088、定增解禁 2026-084、半年报 2026）；腾讯自选股行情接口（2026-11-17 收盘）；东财 F10 五年财务；韭研公社异动整理表（题材时间排序）。</li><li>口径说明：三季报与半年报合并口径；单季＝前三季累计−半年报累计（Q3 营收＝7.473−4.968＝2.505 亿，与三季报"本报告期"2.505 亿一致，勾稽通过）。</li><li>数据异常：2026Q3 报表"本报告期归母"为 -0.32 亿、"年初至今"为 -0.55 亿，两者符号一致，无矛盾。珠海/东粤化学项目营收为子公司口径，与合并营收不可加总。</li><li>本轮未启用 Wind（健康检查超时），财务以公告原文为准。</li></ul>
+
+</div></details>
+<p><strong>一句话判读：题材是真的、财务是弱的、治理出了事、价格透支了——卖出。</strong></p>
+<hr>
+<h2 id="chap1">一、基本信息（先定性）</h2>
+<p><strong>结论：这是一家以危废催化剂／灰渣资源化为主业、押注废塑料化学循环单一项目转型的创业板公司；2026Q3 营收净利双降、由盈转亏，实控人被留置，属"高估值＋业绩下行＋治理事件"三重叠加，非退市风险标的。</strong></p>
+<h3 id="sec0">1、企业基本信息</h3>
+<table><thead><tr><th>项</th><th>内容</th></tr></thead><tbody><tr><td>成立／上市</td><td>2006-02-27 成立；2017 年创业板上市</td></tr><tr><td>注册／办公地</td><td>山东青岛（注册地报告期无变化）</td></tr><tr><td>法定代表人</td><td>李恩泉（实控人张新功被留置后由董事会正常履职，公告称治理运作正常）</td></tr><tr><td>主营业务</td><td>废催化剂资源化（FCC 催化剂）、高硫石油焦制氢灰渣综合利用（配套广东石化）、混合废塑料化学循环（CPDCC，在建爬坡）。2026H1 资源化产品营收 2.1 亿（毛利 41.6%）、危废处置服务 2.3 亿（毛利 12.1%）。</td></tr></tbody></table>
+<details class="fold"><summary>主营构成与业务模式（依据 2026 半年报）</summary><div class="fold-body">
+
+<ul><li>资源化综合利用产品：2026H1 营收 2.09 亿、成本 1.22 亿、毛利率 41.59%（同比营收+22.61%、毛利率+17.19pct）——这是公司毛利的主要来源。</li><li>危险废物处理处置服务：2026H1 营收 2.32 亿、成本 2.04 亿、毛利率 12.05%（同比营收−34.73%、毛利率−15.02pct）——受广东石化降负荷拖累。</li><li>分地区：山东省外营收 3.82 亿（占约 77%）、山东省内 0.85 亿。</li><li>商业模式：危废处置服务费＋资源化产品直销，"以废催化剂处置＋资源化产品销售"闭环；灰渣项目为广东石化配套独占装置；废塑料项目自建装置自主运营、产物为裂解轻油／液化裂解气／混合碳四／聚丙烯。</li></ul>
+
+</div></details>
+<h3 id="sec1">2、股权结构</h3>
+<p><strong>结论：实控人张新功直接持股 24.58%、通过一致行动人惠城信德合计控制 31.72%，质押率整体不高（合计质押占总股本 3.95%），无控制权变更风险；但 2026-11-16 张新功被监察机关留置，治理不确定性陡增。</strong></p>
+<table><thead><tr><th>层级</th><th>主体</th><th>关系／比例（2026-09-30）</th></tr></thead><tbody><tr><td>实控人</td><td>张新功</td><td>直接持股 24.58%（7308.5 万股），无质押</td></tr><tr><td>一致行动人</td><td>青岛惠城信德控股有限公司</td><td>7.14%（2122.4 万股），其中质押 1174 万股（占其所持 55.32%）</td></tr><tr><td>合计</td><td>张新功＋惠城信德</td><td>31.72%，控制权稳固</td></tr></tbody></table>
+<details class="fold"><summary>股本与解禁、增持、质押细节</summary><div class="fold-body">
+
+<ul><li>总股本：2026-09-30 为 2.97 亿股（297,311,512 股），因定增、可转债转股、10 转 4 权益分派增至。2026-11-03 总股本 2.97 亿股（297,313,448 股）。</li><li>定增：2026-04-10 上市，发行 1033.8 万股、发行价 82.22 元、募资净额 8.35 亿；17 名对象锁定 6 个月，1447.3 万股于 2026-10-12 解禁上市流通（占 4.87%）——定增价 82.22 元 vs 现价 25.06 元（未复权口径不可直接比，因期间 10 转 4 除权；复权后定增价约 58.7 元，仍深度浮亏）。</li><li>增持：张新功 2026-01 起计划增持 0.25—0.5 亿，实际增持 26.95 万股（转增后 37.73 万股）、金额 0.27 亿，2026-07-22 完成，超计划下限。增持均价约 99 元（转增前口径），现价大幅低于增持价。</li><li>质押：2026-11-04 惠城信德补充质押 70 万股（占总股本 0.24%），累计质押 1174 万股（占其持股 55.32%、占总股本 3.95%），质权人银河证券，公司称无平仓风险。张新功本人 0 质押。</li><li>十大股东（2026-09-30）：张新功 24.58%、惠城信德 7.14%、张敏 3.16%（质押 546 万股）、许文豪 1.13%、国联民生证券 0.62%、香港中央结算 0.51%。股东户数 31797 户。</li></ul>
+
+</div></details>
+<details class="fold"><summary>关键人物与治理事件时间线</summary><div class="fold-body">
+
+<ul><li>张新功：公司创始人、控股股东、实际控制人、董事；2026-01 起主导增持；其履历（中石化长岭炼油厂培训中心团委书记等）来自雪球讨论（雪球评论，2026-11-17），本轮未从公告原文核到完整简历，按"公告未披露"处理，不作定价依据。</li><li>2026-11-16 公告（2026-090）："近日收到控股股东、实际控制人、董事张新功先生家属通知……张新功先生被实施留置"；未披露事由、未披露进展及结论。公告称"其他董事和高管正常履职、生产经营正常、不会对公司正常生产经营产生重大影响"。</li><li>2026-11-17 公告（2026-091）：11-16、11-17 连续两日收盘跌幅偏离值累计超 30%，属异常波动；"控股股东、实际控制人处于留置状态，公司不知悉其是否存在应披露未披露事项"。</li><li>反向读数：留置是监察机关对个人的强制措施，与财务造假退市是两回事（参见 §5 反方评判），但实控人长期无法履职会压制融资、决策与再融资能力，是估值折价理由，不是退市理由。</li></ul>
+
+</div></details>
+<h3 id="sec2">3、ST 风险分析</h3>
+<p><strong>结论：标的为创业板正常股，无 ST 处理、无退市红线，逐项排除表全为"不适用"；唯一与治理相关的是实控人被留置，属事件性风险，不触发任何强制退市条款。</strong></p>
+<table><thead><tr><th>红线项</th><th>是否存在</th><th>说明</th></tr></thead><tbody><tr><td>净资产为负</td><td>❌</td><td>2026-09-30 归母权益 21.82 亿</td></tr><tr><td>违规占用／担保</td><td>❌</td><td>三季报、半年报专项报告未披露</td></tr><tr><td>审计内控非标</td><td>❌</td><td>2025 年报标准无保留（本轮未发现非标）</td></tr><tr><td>审计意见非标</td><td>❌</td><td>同上</td></tr><tr><td>违规信披／立案</td><td>❌</td><td>公告检索未发现公司被立案</td></tr><tr><td>重大违法</td><td>❌</td><td>实控人个人留置≠公司重大违法</td></tr></tbody></table>
+<p>ST 沿革：无（不适用）。</p>
+<h3 id="sec3">4、运营与财务状况</h3>
+<p><strong>结论：财务在恶化——2026Q3 营收同比转降、归母与扣非双双由盈转亏，经营现金流仍为负，有息负债约 34 亿、资产负债率 67%，而核心转型项目尚未产生有意义的收入；这不是"底部反转"，是"投入期＋主业下滑"的剪刀差。</strong></p>
+<table><thead><tr><th>指标</th><th>2026Q3（前三季）</th><th>同比</th><th>2025A</th></tr></thead><tbody><tr><td>营业收入</td><td>7.47 亿</td><td>−14.58%</td><td>11.36 亿</td></tr><tr><td>归母净利</td><td>−0.55 亿</td><td>−298.36%</td><td>0.58 亿</td></tr><tr><td>扣非净利</td><td>−0.64 亿</td><td>−434.37%</td><td>0.45 亿</td></tr><tr><td>经营现金流</td><td>−0.49 亿</td><td>+64.10%（仍为负）</td><td>—</td></tr><tr><td>毛利率</td><td>22.2%（1−5.81/7.47）</td><td>下滑</td><td>—</td></tr><tr><td>资产负债率</td><td>67.0%（49.13/73.32）</td><td>上升</td><td>73.4%（总资产 61.56 亿／负债 45.23 亿）</td></tr><tr><td>货币资金</td><td>4.07 亿（2026-09-30）</td><td>—</td><td>—</td></tr><tr><td>在建工程</td><td>22.75 亿（2026-09-30）</td><td>—</td><td>—</td></tr></tbody></table>
+<details class="fold"><summary>五年财务原表与单季拆分（亿元）</summary><div class="fold-body">
+
+<ul><li>营业收入：2021 2.85／2022 3.63／2023 10.71／2024 11.49／2025 11.36／2026E 约 10.0。</li><li>归母净利：2021 0.12／2022 0.02／2023 1.39／2024 0.42／2025 0.58／2026Q3 −0.55。</li><li>扣非净利：2021 0.05／2022 −0.08／2023 1.40／2024 0.30／2025 0.45／2026Q3 −0.64。</li><li>单季 2026Q3：营收 2.505 亿（−19.38%）、归母 −0.32 亿、扣非 −0.31 亿——Q3 单季亏损较 H1 加深。</li><li>下滑原因（三季报原文）：广东石化部分装置阶段性降负荷→灰渣接收量减 3.23 万吨＋单价降低＋蒸汽结算价折让；20 万吨装置仍在调试、效益未释放；全国布局新业务使管理／财务／研发费用增加（研发费用前三季 0.45 亿、同比+128%）。</li><li>资产负债表：总资产 73.32 亿（+19.10%）、归母权益 21.82 亿（+53.69%，主因定增 8.35 亿到账）；短期借款 4.10 亿、一年内到期非流动负债 9.52 亿、长期借款 19.90 亿、应付债券 0.84 亿——有息负债约 34.4 亿，是货币资金 4.07 亿的 8.5 倍，财务费用前三季 0.64 亿。</li><li>商誉仅 0.017 亿，无减值雷；存货 7.41 亿、应收账款 6.01 亿，占用较重。</li></ul>
+
+</div></details>
+<details class="fold"><summary>子公司经营与履约义务</summary><div class="fold-body">
+
+<ul><li>东粤环保（灰渣，配套广东石化）：2026 前三季营收 4.29 亿，因客户降负荷、灰渣接收量减 3.23 万吨＋蒸汽价折让，净利同比大降。</li><li>东粤化学（20 万吨废塑料）：2026 前三季销售塑料裂解轻油 572.42 吨、液化塑料裂解气 1098.92 吨、混合碳四 2402.99 吨、聚丙烯 1163.89 吨，营收仅 0.34 亿；装置仍"工艺持续优化、产能逐步爬升、单位成本较高、效益尚未完全释放"。</li><li>判读：20 万吨装置满负荷考核对应年处理 20 万吨，而前三季四类产物合计仅约 5238 吨——产能利用率极低（不足 4%，按销售量口径），商业化距满产有数量级差距。</li></ul>
+
+</div></details>
+<p><figure class="stchart" style="margin:14px 0 18px;text-align:center"><svg viewBox="0 0 660 300" width="100%" style="max-width:660px;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" role="img" aria-label="营业收入五年趋势与2026预测（亿元）"><text x="62" y="20" font-size="13" font-weight="600" fill="#334155">营业收入五年趋势与2026预测（亿元）</text><line x1="62" y1="254.0" x2="642" y2="254.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="257.5" font-size="10.5" fill="#334155" text-anchor="end">0</text><line x1="62" y1="199.0" x2="642" y2="199.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="202.5" font-size="10.5" fill="#334155" text-anchor="end">3.22</text><line x1="62" y1="144.0" x2="642" y2="144.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="147.5" font-size="10.5" fill="#334155" text-anchor="end">6.43</text><line x1="62" y1="89.0" x2="642" y2="89.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="92.5" font-size="10.5" fill="#334155" text-anchor="end">9.65</text><line x1="62" y1="34.0" x2="642" y2="34.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="37.5" font-size="10.5" fill="#334155" text-anchor="end">12.87</text><polyline points="110.3,205.3 207.0,191.9 303.7,70.9 400.3,57.6 497.0,59.8" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><polyline points="497.0,59.8 593.7,83.0" fill="none" stroke="#f59e0b" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 5"/><circle cx="110.3" cy="205.3" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="110.3" y="195.3" font-size="10.5" fill="#334155" text-anchor="middle">2.85</text><circle cx="207.0" cy="191.9" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="207.0" y="181.9" font-size="10.5" fill="#334155" text-anchor="middle">3.63</text><circle cx="303.7" cy="70.9" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="303.7" y="60.9" font-size="10.5" fill="#334155" text-anchor="middle">10.71</text><circle cx="400.3" cy="57.6" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="400.3" y="47.6" font-size="10.5" fill="#334155" text-anchor="middle">11.49</text><circle cx="497.0" cy="59.8" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="497.0" y="49.8" font-size="10.5" fill="#334155" text-anchor="middle">11.36</text><circle cx="593.7" cy="83.0" r="3.6" fill="#fff" stroke="#f59e0b" stroke-width="2"/><text x="593.7" y="73.0" font-size="10.5" fill="#334155" text-anchor="middle">10</text><text x="110.3" y="272" font-size="11" fill="#334155" text-anchor="middle">2021</text><text x="207.0" y="272" font-size="11" fill="#334155" text-anchor="middle">2022</text><text x="303.7" y="272" font-size="11" fill="#334155" text-anchor="middle">2023</text><text x="400.3" y="272" font-size="11" fill="#334155" text-anchor="middle">2024</text><text x="497.0" y="272" font-size="11" fill="#334155" text-anchor="middle">2025</text><text x="593.7" y="272" font-size="11" fill="#334155" text-anchor="middle">2026E</text></svg><figcaption style="font-size:11.5px;color:#64748b;margin-top:4px;line-height:1.5">来源：东财 F10 年报数据、2026 三季报，2026E 为本人按前三季年化预测</figcaption></figure></p>
+<p><figure class="stchart" style="margin:14px 0 18px;text-align:center"><svg viewBox="0 0 660 300" width="100%" style="max-width:660px;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" role="img" aria-label="归母净利五年趋势（亿元）"><text x="62" y="20" font-size="13" font-weight="600" fill="#334155">归母净利五年趋势（亿元）</text><line x1="62" y1="254.0" x2="642" y2="254.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="257.5" font-size="10.5" fill="#334155" text-anchor="end">-0.98</text><line x1="62" y1="199.0" x2="642" y2="199.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="202.5" font-size="10.5" fill="#334155" text-anchor="end">-0.33</text><line x1="62" y1="144.0" x2="642" y2="144.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="147.5" font-size="10.5" fill="#334155" text-anchor="end">0.33</text><line x1="62" y1="89.0" x2="642" y2="89.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="92.5" font-size="10.5" fill="#334155" text-anchor="end">0.99</text><line x1="62" y1="34.0" x2="642" y2="34.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="37.5" font-size="10.5" fill="#334155" text-anchor="end">1.64</text><line x1="62" y1="171.6" x2="642" y2="171.6" stroke="#64748b" stroke-width="1.2"/><rect x="87.3" y="161.6" width="46.0" height="10.0" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="110.3" y="155.6" font-size="10.5" fill="#334155" text-anchor="middle">0.12</text><rect x="184.0" y="169.9" width="46.0" height="1.7" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="207.0" y="163.9" font-size="10.5" fill="#334155" text-anchor="middle">0.02</text><rect x="280.7" y="55.3" width="46.0" height="116.3" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="303.7" y="49.3" font-size="10.5" fill="#334155" text-anchor="middle">1.39</text><rect x="377.3" y="136.5" width="46.0" height="35.1" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="400.3" y="130.5" font-size="10.5" fill="#334155" text-anchor="middle">0.42</text><rect x="474.0" y="123.1" width="46.0" height="48.5" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="497.0" y="117.1" font-size="10.5" fill="#334155" text-anchor="middle">0.58</text><rect x="570.7" y="171.6" width="46.0" height="61.1" rx="2" fill="#fcd34d" fill-opacity="0.95"/><text x="593.7" y="245.7" font-size="10.5" fill="#334155" text-anchor="middle">-0.73</text><text x="110.3" y="272" font-size="11" fill="#334155" text-anchor="middle">2021</text><text x="207.0" y="272" font-size="11" fill="#334155" text-anchor="middle">2022</text><text x="303.7" y="272" font-size="11" fill="#334155" text-anchor="middle">2023</text><text x="400.3" y="272" font-size="11" fill="#334155" text-anchor="middle">2024</text><text x="497.0" y="272" font-size="11" fill="#334155" text-anchor="middle">2025</text><text x="593.7" y="272" font-size="11" fill="#334155" text-anchor="middle">2026E</text></svg><figcaption style="font-size:11.5px;color:#64748b;margin-top:4px;line-height:1.5">来源：东财 F10 年报数据、2026 三季报，2026E 为本人按前三季年化预测</figcaption></figure></p>
+<p><strong>判读：营收 2023 年上台阶后停滞，利润 2026 年转负——规模没有转化为盈利，这是给估值时最该扣分的形状。</strong></p>
+<hr>
+<h2 id="chap2">二、基本面分析（路径：非ST）</h2>
+<p><strong>先定路径：标的非 ST，走 E「非ST逻辑」——不涉及保壳／重整／处罚 ST／退市执行。核心是判断废塑料化学循环这条第二增长曲线能不能支撑当前 74.5 亿市值。</strong></p>
+<h3 id="sec4">1、商业模式与行业格局</h3>
+<p><strong>结论：废塑料化学循环是"新＋大但不够强"的题材——技术路线全球首套、政策 TAM 千亿级，但商业化验证刚起步、公司自己反复提示"经济效益尚需验证"，短期兑现能力弱。</strong></p>
+<details class="fold"><summary>行业六问（供给／需求／价格／格局／位置／结论）</summary><div class="fold-body">
+
+<ul><li>供给：废塑料化学回收领域截至 2026-09 已投产项目仅 6 个、合计产能约 50 万吨／年，在建和规划约 143 万吨／年（新浪财经转引，产业复盘）；海外 Brightmark 投 2.6 亿美元后产能利用率仅 5%、美国多家热解厂关停——行业处洗牌期，工程化是生死线。</li><li>需求：政策端强驱动——国务院《固体废物综合治理行动计划》、发改委《循环经济发展"十五五"规划》（2026-07-03）、2030 年再生塑料年产量超 1950 万吨目标、欧盟再生料强制掺配。需求天花板高但绿色溢价兑现节奏不确定。</li><li>价格：原油价格剧烈波动影响再生料经济性；公司产物为裂解轻油／液化气／碳四／聚丙烯，属大宗化工品，价格随行就市，绿色溢价尚未验证。</li><li>格局：两条路线并存——恒誉科技（连续化热裂解→裂解油／SAF）与惠城（CPDCC 催化裂解→三烯三苯化工原料）。一步法非惠城独有，*ST 卓然已拿同路线技术鉴定（雪球讨论，已用公告核实"鉴定≠工业化"）。</li><li>公司位置：全球首套 20 万吨级 CPDCC 工业装置，72 小时满负荷考核通过（进料 24.23 吨／小时、累计投料 1744.2 吨），ISCC PLUS 全链条认证，专利 143 项（发明 65 项）。工程化落地进度国内领先。</li><li>结论：头部位置真实，但"首套"也是风险——无长周期运行先例，公司公告列 8 条风险（持续满负荷不确定、裂解气未充分利用需改造、原料波动、客户认证周期长、复制扩能不确定等）。</li></ul>
+
+</div></details>
+<h3 id="sec5">2、产能与项目进展</h3>
+<p><strong>结论：20 万吨装置已完成"从 0 到能满负荷"的跨越，但没完成"从能满负荷到赚钱"的跨越——2026-07 考核通过是技术节点，不是盈利节点；扩产 120 万吨仍是规划。</strong></p>
+<details class="fold"><summary>项目关键节点（依据公告 2026-066、半年报）</summary><div class="fold-body">
+
+<ul><li>2025-07 进入试生产；2026-07-16 正式投料；2026-07-21 至 07-23 满负荷现场考核 72 小时，累计投废塑料 1744.2 吨、平均进料 24.23 吨／小时，顺利通过。</li><li>考核后公司明确：持续"安稳长满优"仍需验证；部分塑料裂解气尚未充分利用、需设备改造后才能形成可销售产品；经济效益仍需持续验证。</li><li>满负荷＝24.23 吨／小时 × 24 小时 ≈ 581 吨／日，年化约 19 万吨（与 20 万吨／年设计一致）。但 2026 前三季实际销售四类产物合计约 5238 吨，销量／产能严重不匹配。</li><li>扩产：市场传闻 120 万吨／年规划（羊城晚报转引），属规划阶段，本轮未从公告核到立项／投资额，不计入估值。</li></ul>
+
+</div></details>
+<h3 id="sec6">3、估值分析（潜在增长倍数）</h3>
+<p><strong>结论：现有业务按 PB 给 33—44 亿。废塑料项目"强"维仅 1 分，按纪律不进分子。合计 vs 当前市值 74.5 亿，倍数约 0.5，不满足买入——价格已提前计入乐观情景。</strong></p>
+<table><thead><tr><th>估值部分</th><th>方法</th><th>区间</th></tr></thead><tbody><tr><td>现有业务（催化剂＋灰渣）</td><td>归母权益 21.82 亿 × PB 1.5—2.0（同业中位约 2.0，亏损＋高负债折价）</td><td>33—44 亿</td></tr><tr><td>远期项目（20 万吨 CPDCC）</td><td>"强"维 1 分，按估值纪律不进分子，仅作期权、进目标区间上限</td><td>0（分子）</td></tr><tr><td>合计 vs 当前市值</td><td>33—44 亿 ÷ 74.5 亿</td><td>0.44—0.59 倍</td></tr></tbody></table>
+<details class="fold"><summary>估值口径与同业对照、隐含概率反推</summary><div class="fold-body">
+
+<ul><li>为何用 PB：2026Q3 扣非 −0.64 亿，PE 为负无意义；主营未盈利但资产与收入实在，退到 PB。用归母权益而非含少数股东的所有者权益合计（24.19 亿）。</li><li>同业 PB（2026-11-17）：恒誉科技 5.36、英科再生 2.42、卓越新能 1.10、瀚蓝环境 1.64，中位约 2.03 倍；惠城 3.43 倍。考虑惠城亏损＋34 亿有息负债＋实控人留置，给 1.5—2.0 倍已属中性偏乐观。</li><li>远期项目乐观值（不计入分子、仅作上限参考）：若 20 万吨满产、单吨净利 500—700 元，年净利 1.0—1.4 亿，×25 倍 PE ＝ 25—35 亿，再按成功概率 50% × 3 年贴现 10% ≈ 9—13 亿。公司公告自认"经济效益尚需验证"，给 50% 概率不算苛刻。</li><li>隐含概率反推：当前 74.5 亿＝p × 乐观情景（现有 44＋远期 30＝74 亿）＋(1−p) × 保守情景（33 亿）→ 74.5＝33＋41p → p≈101%。即市场已按"项目完全达产"定价，而本报告判断达产概率约 50%——市场定价隐含概率远高于现实。</li><li>三档情景股价（总股本 2.97 亿股）：保守 33 亿→11.1 元／中性 44 亿→14.8 元／乐观 74 亿→24.9 元。当前 25.06 元已在乐观情景上沿。</li></ul>
+
+</div></details>
+<p><figure class="stchart" style="margin:14px 0 18px;text-align:center"><svg viewBox="0 0 660 300" width="100%" style="max-width:660px;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" role="img" aria-label="前复权月收盘价走势（元，2024-06 至 2026-11）"><text x="62" y="20" font-size="13" font-weight="600" fill="#334155">前复权月收盘价走势（元，2024-06 至 2026-11）</text><line x1="62" y1="254.0" x2="642" y2="254.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="257.5" font-size="10.5" fill="#334155" text-anchor="end">0</text><line x1="62" y1="199.0" x2="642" y2="199.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="202.5" font-size="10.5" fill="#334155" text-anchor="end">35.71</text><line x1="62" y1="144.0" x2="642" y2="144.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="147.5" font-size="10.5" fill="#334155" text-anchor="end">71.41</text><line x1="62" y1="89.0" x2="642" y2="89.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="92.5" font-size="10.5" fill="#334155" text-anchor="end">107.12</text><line x1="62" y1="34.0" x2="642" y2="34.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="37.5" font-size="10.5" fill="#334155" text-anchor="end">142.82</text><polyline points="70.0,200.9 128.8,184.3 186.9,146.7 244.4,95.6 303.1,57.6 361.9,61.3 420.0,110.8 477.5,153.5 536.3,176.7 555.4,131.7 595.0,176.9 614.2,192.8 634.0,215.4" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="70.0" cy="200.9" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="128.8" cy="184.3" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="186.9" cy="146.7" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="244.4" cy="95.6" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="303.1" cy="57.6" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="303.1" y="47.6" font-size="10.5" fill="#334155" text-anchor="middle">127.52</text><circle cx="361.9" cy="61.3" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="420.0" cy="110.8" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="477.5" cy="153.5" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="536.3" cy="176.7" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="555.4" cy="131.7" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="595.0" cy="176.9" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="614.2" cy="192.8" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="634.0" cy="215.4" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="634.0" y="205.4" font-size="10.5" fill="#334155" text-anchor="middle">25.06</text><text x="70.0" y="272" font-size="11" fill="#334155" text-anchor="middle">24/06</text><text x="186.9" y="272" font-size="11" fill="#334155" text-anchor="middle">24/12</text><text x="244.4" y="272" font-size="11" fill="#334155" text-anchor="middle">25/03</text><text x="361.9" y="272" font-size="11" fill="#334155" text-anchor="middle">25/09</text><text x="477.5" y="272" font-size="11" fill="#334155" text-anchor="middle">26/03</text><text x="555.4" y="272" font-size="11" fill="#334155" text-anchor="middle">26/07</text><text x="595.0" y="272" font-size="11" fill="#334155" text-anchor="middle">26/09</text><text x="634.0" y="272" font-size="11" fill="#334155" text-anchor="middle">26/11</text></svg><figcaption style="font-size:11.5px;color:#64748b;margin-top:4px;line-height:1.5">来源：腾讯前复权月线；2026-11 为截至 11-17 月内收盘</figcaption></figure></p>
+<p><strong>判读：2025-07 盘中高点 179.86 元（前复权）到现价 25.06 元，回撤约 86%；2026-07 满负荷考核曾反弹至 79 元，随后一路阴跌，11 月实控人留置两跌停击穿所有支撑。</strong></p>
+<hr>
+<h2 id="chap3">三、情绪分析</h2>
+<p><strong>结论：当前情绪负向。题材的注意力峰值在 2026-07 满负荷考核已兑现。8 月后负面消息密集，历史异动符号停更，暂无新催化接力。</strong></p>
+<h3 id="sec7">1、主板／同业映射</h3>
+<p><strong>结论：废塑料化学循环板块缺乏主板主线联动，同业恒誉科技估值偏高、卓越新能偏低，映射偏负，不构成补涨逻辑。</strong></p>
+<details class="fold"><summary>映射扫描</summary><div class="fold-body">
+
+<ul><li>同业（2026-11-17）：恒誉科技 688309 收 57.28 元、PE 42.55、PB 5.36、市值 45.5 亿；英科再生 688087 收 35.25 元、PE 67.38、PB 2.42；卓越新能 688196 收 26.99 元、PE 228、PB 1.10。</li><li>判读：恒誉有连续运行 10 年＋装备出口的硬证据，估值享受溢价；惠城虽有首套装置，但商业化证据弱于恒誉、财务更差，PB 3.43 高于卓越新能、接近恒誉，缺乏相对便宜的补涨理由。主板同业未见资金联动，映射为负。</li></ul>
+
+</div></details>
+<h3 id="sec8">2、主题催化："新·大·强"打分</h3>
+<table><thead><tr><th>维度</th><th>得分</th><th>依据</th></tr></thead><tbody><tr><td>新</td><td>2／3</td><td>CPDCC 一步法全球首套 20 万吨工业化装置，相对物理回收是新技术路线；但一步法为行业通用概念、非独家（*ST 卓然已获同路线鉴定）</td></tr><tr><td>大</td><td>2／3</td><td>2030 年再生塑料产量目标 1950 万吨、欧盟强制掺配，千亿级 TAM；但绿色溢价与单吨盈利未验证</td></tr><tr><td>强</td><td>1／3</td><td>72 小时满负荷考核通过，但前三季营收仅 0.34 亿、产能利用率不足 4%，公司自认"经济效益尚需验证"，商业化预计 2027 春节后</td></tr><tr><td>合计</td><td>5／9</td><td>强题材下限；"强"维 ≤1 分，想象空间不进估值分子</td></tr></tbody></table>
+<p><strong>判读：题材能讲、讲不大、更短期兑现不了——5／9 分只配给期权，不配给当期估值。</strong></p>
+<h3 id="sec9">3、历史异动（按题材时间倒序）</h3>
+<p><strong>结论：历史异动符号高度一致——"废塑料回收＋稀土＋环保"反复出现，最近一次正向异动是 2026-07-22 满负荷考核，此后无正向催化，当前负面符号（实控人留置）已切换。</strong></p>
+<details class="fold"><summary>韭研公社异动清单（倒序，仅列 2024 年后）</summary><div class="fold-body">
+
+<ul><li>2026-07-22 废塑料回收＋稀土＋环保（满负荷考核催化）</li><li>2026-07-03 废塑料回收＋稀土＋环保（装置复工、磨粉设备安装）</li><li>2026-05-25 废塑料回收＋稀土＋环保（互动易原料与负荷披露）</li><li>2025-10-13 稀土＋项目稳定运行＋废塑料回收（出口管制事件叠加）</li><li>2024-09-05／05-16／05-14／04-01 废塑料回收＋环保＋石油焦制氢灰渣</li><li>炒作符号：始终是"废塑料裂解＋稀土＋环保"三件套。当前实控人留置是新符号，与历史正向符号无关，不构成"旧符号重演"的机会。</li></ul>
+
+</div></details>
+<hr>
+<h2 id="chap4">四、技术分析</h2>
+<p><strong>结论：月线级别下跌趋势未完，2026-07 满负荷考核反弹（79 元）是最后一冲，11 月两根跌停击穿关键位；现价 25.06 元无有效支撑信号，不接飞刀。</strong></p>
+<ul><li>复权口径：一律前复权；2026-06 实施 10 转 4，前复权序列已还原。</li><li>关键位：上方套牢区 49—79 元（2026-04 至 10 月密集成交区）；下方 2024-09 平台 45 元早已击穿，月内低点 25.06 元（2026-11-17）为即时新低，无历史支撑参照。</li><li>缠论视角：自 2025-07 高点 179.86 元（前复权）以来的下跌为月线级别趋势，2026-07 反弹未触及前中枢即再度下行，属下跌中继后的第三段，无背驰信号。</li><li>筹码：股东户数 31797 户（2026-09-30）；股价从 79 元跌到 25 元过程中的"筹码集中"是套牢盘被动锁仓，不是吸筹；实控人增持均价（转增前约 99 元、复权约 71 元）远高于现价，是"股东成本锚"倒挂的直观证据。</li><li>异动放量：11-16、11-17 连续两跌停（累计偏离超 30%），量能放大属恐慌抛售，未见企稳信号。</li></ul>
+<hr>
+<h2 id="chap5">五、投资结论</h2>
+<table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td>判断</td><td><strong>卖出（回避／持仓者减仓）</strong></td></tr><tr><td>主要理由</td><td>① 估值透支：潜在增长倍数约 0.5（＜1），现价已在乐观情景上沿，隐含概率约 100% vs 达产概率约 50%（§2.3）；② 财务恶化：2026Q3 营收 −14.58%、归母 −0.55 亿、扣非 −0.64 亿、经营现金流 −0.49 亿，主业灰渣处置量价齐跌（§1.4）；③ 治理事件：实控人 2026-11-16 被留置，事由未披露，压制融资与决策（§1.2、§1.2 治理时间线）；④ 题材兑现弱：20 万吨装置销量／产能不足 4%，公司自认"经济效益尚需验证"（§2.2）；⑤ 技术破位：两跌停击穿关键位，无企稳信号（§4）。</td></tr><tr><td>失效条件</td><td>留置事项查明且与原公司业务无关、实控人恢复履职；废塑料业务单季营收突破 1 亿且毛利转正；装置签下长协订单／扩产落地；股价回落至 11—15 元价值区。任一出现需重估，改写结论。</td></tr><tr><td>参考买入区间</td><td>本结论为卖出，不给买入区间；若后续验证失效条件，11—15 元（对应 33—44 亿市值）才进入价值观察区。</td></tr><tr><td>目标区间</td><td>下行看 11—15 元（保守—中性情景）；乐观情景 24.9 元已在现价反映，无上行空间。</td></tr><tr><td>可买卖时间窗口</td><td>即时回避；持仓者可在反弹（如除权修复／消息真空）中减仓。时间窗至 2026 年报（2027-04-30）前，重点观察留置进展与 Q4 单季是否继续亏损。</td></tr><tr><td>仓位建议</td><td>卖出：持仓者减至 0—低仓位，不加仓；空仓者不参与。确定性 C 档（事件博弈），若保留观察仓不超过 1—3%、上限 5%。</td></tr><tr><td>最大风险</td><td>留置事项若查明与公司无关且快速解除，叠加废塑料项目放量超预期，股价可能 V 型反转——这是本结论最需要盯的变量。</td></tr></tbody></table>
+<h3 id="sec10">反方观点与评判</h3>
+<table><thead><tr><th>反方观点</th><th>来源</th><th>评判</th></tr></thead><tbody><tr><td>"首套 20 万吨、92% 收率、ISCC 认证，是十倍股"</td><td>雪球／产业复盘（雪球评论，2026-10-13）</td><td>技术是真的，但前三季营收 0.34 亿、产能利用率不足 4%——技术落地≠盈利，公司自己列 8 条风险证实未兑现。</td></tr><tr><td>"被对标神雾系，是造假前兆"</td><td>雪球质疑（雪球评论，2026-11-15）</td><td>类比不成立：留置是监察机关对个人措施，与财务造假退市门槛（虚增营收／利润金额＋占比）是两套逻辑；本轮公告检索未发现公司立案或造假认定。但治理不确定性仍需给折价。</td></tr><tr><td>"实控人增持 0.27 亿、定增 8.35 亿，产业资本看好"</td><td>增持／定增公告</td><td>增持均价复权约 71 元、定增价复权约 58.7 元，均高于现价 25.06 元——是"被套"不是"看好"的证据；定增股份已于 2026-10-12 解禁，有减持压力。</td></tr><tr><td>"回撤 86% 已经跌透"</td><td>雪球（雪球评论，2026-08-25）</td><td>PB 3.43 仍高于同业中位约 2.0，倍数 0.5 未到便宜；跌得多≠便宜，估值与业绩下行同步，未见基本面拐点。</td></tr></tbody></table>
+<p><strong>一句话结论：题材成色不足、财务正在恶化、实控人被留置、估值透支到乐观情景——卖出，回避，等留置查明与项目放量两个信号同时出现再重估。</strong></p>
+<blockquote><p>免责声明：本报告基于公开信息整理，数据来源已逐条标注，不保证完整与准确；不构成任何投资建议，据此操作风险自担。</p></blockquote>
+<hr>
+<h2 id="chap6">附录 A · 待核实／需补充清单</h2>
+<p><strong>结论：以下四项本轮未从公告原文核实，均未进入估值与结论依据，仅作后续跟踪。</strong></p>
+<ul><li>实控人张新功完整简历、留置事由与进展——公告未披露，待公司后续公告。</li><li>120 万吨／年扩产的立项、投资额、时间表——本轮仅见媒体转引，未从公告核到。</li><li>长协订单／客户认证进度——公司未披露具体客户与金额，互动易口径停留在"在推进"。</li><li>张新功履历（中石化背景）——仅雪球讨论，未从年报核到，未采信。</li></ul>
+<h2 id="chap7">附录 B · 关键信源链接</h2>
+<p><strong>结论：正文关键数据均可回溯至以下公告原文（巨潮资讯网），链接已按正文引用列出。</strong></p>
+<ul><li><a href="http://static.cninfo.com.cn/finalpage/2026-10-28/1225628533.PDF" target="_blank" rel="noopener">2026 年三季度报告（2026-087）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-11-16/1225672421.PDF" target="_blank" rel="noopener">关于控股股东、实际控制人被留置的公告（2026-090）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-11-17/1225676767.PDF" target="_blank" rel="noopener">股票交易异常波动公告（2026-091）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-07-27/1225442144.PDF" target="_blank" rel="noopener">20 万吨项目进展公告（2026-066）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-07-22/1225437004.PDF" target="_blank" rel="noopener">增持计划实施完成公告（2026-063）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-11-04/1225656942.PDF" target="_blank" rel="noopener">补充质押公告（2026-088）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-09-30/1225586826.PDF" target="_blank" rel="noopener">定增解禁公告（2026-084）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-08-27/1225509459.PDF" target="_blank" rel="noopener">2026 年半年度报告</a></li></ul>
+<h2 id="chap8">版本记录</h2>
+<details class="fold"><summary>版本记录（最新在最上）</summary><div class="fold-body">
+
+<table><thead><tr><th>版本</th><th>修订日</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-11-18</td><td>按五段框架成文；结论卖出；核三季报／留置公告／异动公告／项目进展／同业估值，二次核对单季与累计勾稽。</td></tr></tbody></table>
+
+</div></details>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+<script src="/annotate.js?v=20261113a" defer></script>
+</body>
+</html>
