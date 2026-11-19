@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>睿创微纳（688002.SH）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>6 章 · 10 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">一、基本信息</a><a class="sblv3" href="#sec0">1、企业基本信息</a><a class="sblv3" href="#sec1">2、股权结构</a><a class="sblv3" href="#sec2">3、ST 风险分析</a><a class="sblv3" href="#sec3">4、运营情况</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">二、基本面分析</a><a class="sblv3" href="#sec4">1、商业模式与竞争格局</a><a class="sblv3" href="#sec5">2、产能与第二曲线</a><a class="sblv3" href="#sec6">3、估值分析与潜在增长倍数</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">三、情绪分析</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">四、技术分析</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">五、投资结论</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">附录</a><a class="sblv3" href="#sec7">附录 A · 待核实清单</a><a class="sblv3" href="#sec8">附录 B · 关键信源链接</a><a class="sblv3" href="#sec9">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">睿创微纳（688002.SH）研究报告</h1>
+<p><strong>操作结论：买入</strong> ｜ <strong>潜在增长倍数：约 1.5 倍（区间 1.37—1.65）→ ＞1，满足「＞1 才买入」</strong></p>
+<p>封面时间口径：研究基准日 2026-11-19；行情截止 2026-11-18 收盘（117.20 元）；财务最新期 2026Q3（三季报 2026-10-27 披露）；版本日 2026-11-19。默认规则：财务用 2026Q3、估值用 11-18 收盘、年度对比用 2025A。</p>
+<table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>操作结论</td><td><strong>买入</strong>（现价 117.20 元，参考区间 110—118 元）</td></tr><tr><td>红线分类</td><td><span class="sttag sttag-teal"><a href="非ST·科创板" target="_blank" rel="noopener">https://data.eastmoney.com/notices/detail/688002/AN202610261830928165.html</a></span></td></tr><tr><td>生死定级</td><td>不适用（非 ST，无退市红线）</td></tr><tr><td>自救空间</td><td>不适用</td></tr><tr><td>主要看点</td><td>红外 8μm 放量驱动扣非前三季 +237%，现价回撤 36% 后贴近实控人回购成本区 113.98—116.90 元</td></tr><tr><td>潜在增长倍数</td><td><strong>约 1.5 倍（1.37—1.65）→ 现有业务合理估值 750—900 亿 ÷ 当前 545.62 亿</strong></td></tr><tr><td>基本面路径</td><td>非ST（E 类·成长兑现型）</td></tr><tr><td>版本与基准日</td><td>初版 2026-11-19 · 基准日 2026-11-19</td></tr></tbody></table>
+<details class="fold"><summary>数据来源与已知数据异常</summary><div class="fold-body">
+
+<p>行情、估值来自腾讯自选股接口（2026-11-18 收盘截面）；公告来自上交所/东财公告库，可点链接见附录 B；财务来自 2026 年三季报与 2025 年报原文。已知异常：① 三季报「营业总成本」表格中利润总额与归母净利同比率被错位排版，本文以「主要会计数据和财务指标」表为准；② 2026Q3 单季数据＝前三季减半年报口径，半年报归母 12.6 亿系倒算；③ 雪球关于「相控阵/TR 芯片竞争铖昌」等表述为线索级，未经公告证实，不采信为事实。</p>
+
+</div></details>
+<h2 id="chap0">一、基本信息</h2>
+<p>睿创微纳是科创板非 ST 标的，无退市红线，实控人结构稳定，财务健康；投资逻辑不在「保壳/摘帽」，而在红外主业业绩爆发能否穿越 2027 高基数。</p>
+<h3 id="sec0">1、企业基本信息</h3>
+<p>公司是国内非制冷红外热成像芯片龙头，红外主业占 2025 年营收 94.09%、毛利率 55.17%，是全部利润来源。</p>
+<table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>成立日期</td><td>2009 年（招股书口径，具体日未逐笔核）</td></tr><tr><td>上市日期</td><td>2019-07-22，科创板首批 25 家之一，首发募资约 12 亿</td></tr><tr><td>注册/办公地</td><td>山东省烟台市</td></tr><tr><td>所属行业</td><td>电子·半导体（证监会行业分类）</td></tr><tr><td>主营业务</td><td>红外探测器芯片、热成像机芯模组、红外热像仪整机、激光微波产品及光电系统</td></tr><tr><td>营收构成</td><td>红外热成像 59.32 亿（94.09%）／微波射频 2.02 亿（3.20%）／其他 1.71 亿（2.71%）——2025A</td></tr></tbody></table>
+<details class="fold"><summary>主营业务与股权基本盘（论据）</summary><div class="fold-body">
+
+<p>2025 年报按产品构成：红外热成像业务收入 59.32 亿、占比 94.09%、毛利率 55.17%；微波射频业务 2.02 亿、占比 3.20%、毛利率仅 4.52%；其他业务 1.28 亿、其他 0.43 亿。按地区：境内 45.04 亿（71.4%）、境外 16.73 亿（26.5%）。公司自述深耕红外、微波、激光多维感知，具备 MEMS 芯片、ASIC 处理器芯片与 AI 算法全产业链能力。</p>
+
+</div></details>
+<h3 id="sec1">2、股权结构</h3>
+<p>实控人马宏持股 15.40%，无质押、无减持计划，2026-11 主动提议并实施回购，治理端稳定。</p>
+<table><thead><tr><th>项目</th><th>数值（2026Q3 末）</th></tr></thead><tbody><tr><td>总股本</td><td>4.66 亿股</td></tr><tr><td>总市值</td><td>545.62 亿（2026-11-18 收盘）</td></tr><tr><td>实控人/董事长</td><td>马宏，持股 7170 万股（15.40%），无质押</td></tr><tr><td>第二大股东</td><td>香港中央结算 4333 万股（9.31%）</td></tr><tr><td>第三大股东</td><td>李维诚 3491 万股（7.50%）</td></tr><tr><td>机构持仓</td><td>科创 50ETF、永赢卫星通信 ETF、阿布达比投资局等</td></tr></tbody></table>
+<details class="fold"><summary>股权结构与回购细节（论据）</summary><div class="fold-body">
+
+<p>前十大股东合计稳定，无一致行动人披露。回购：2026-11-05 马宏提议，11-16 董事会通过，11-17 首次回购 12.20 万股、金额 1414 万元、成交价 113.98—116.90 元，方案总额 0.5—1.0 亿、价格上限 220 元/股、期限至 2027-02-16，用途为维护公司价值及股东权益（12 个月后可售）。按上限测算回购仅占总股本 0.10%——象征意义大于实质，但价格区间构成短期成本锚。全体董监高、控股股东、5% 以上股东承诺未来 3/6 个月无减持计划。马宏：1971 年 5 月生，华中科技大学电子科学与技术博士，2015 年 4 月起任董事长，2010—2025 年 2 月兼任总经理，现为核心技术人员、战略与发展委员会召集人。</p>
+
+</div></details>
+<h3 id="sec2">3、ST 风险分析</h3>
+<p>不适用。公司非 ST，2026Q3 归母净资产 87.53 亿、资产负债率 37.05%、无立案、无非标审计、无资金占用与违规担保，八项 ST 风险逐项排除全部为「否」。</p>
+<h3 id="sec3">4、运营情况</h3>
+<p>业绩爆发伴随现金流同步放大，含金量高——经营现金流 24.92 亿与归母净利 23.00 亿基本匹配，非纸面利润；但应收与存货增长快，需盯 2027 订单延续性。</p>
+<table><thead><tr><th>财务项</th><th>2026Q3（前三季）</th><th>2025A</th></tr></thead><tbody><tr><td>营业收入</td><td>74.5 亿（+82.2%）</td><td>63.0 亿</td></tr><tr><td>归母净利</td><td>23.0 亿（+225.4%）</td><td>11.2 亿</td></tr><tr><td>扣非归母</td><td>22.5 亿（+237.4%）</td><td>10.5 亿</td></tr><tr><td>经营现金流</td><td>24.9 亿（+224.9%）</td><td>未逐笔核</td></tr><tr><td>加权 ROE</td><td>29.18%</td><td>18.68%</td></tr><tr><td>毛利率</td><td>约 59.6%（倒算）</td><td>52.51%</td></tr><tr><td>归母净资产</td><td>87.5 亿</td><td>66.5 亿</td></tr><tr><td>资产负债率</td><td>37.05%</td><td>36.87%</td></tr></tbody></table>
+<details class="fold"><summary>资产负债表关键项与原因（论据）</summary><div class="fold-body">
+
+<p>货币资金 4.9 亿（较年初 10.3 亿下降，主因转入理财）、交易性金融资产 14.1 亿、其他债权投资 10.3 亿，合计金融资产约 28.5 亿；存货 28.1 亿（较年初 19.2 亿 +46%，备货应对订单）；应收账款 18.2 亿（较年初 14.1 亿 +29%）；应付债券 12.1 亿（睿创转债）；短期借款仅 0.1 亿。研发投入前三季 10.2 亿（+25.2%），占营收 13.65%（占比下降因营收增速更快）。业绩驱动：① 行业需求景气、在手订单充裕；② 红外 8μm 产品批量出货，规模效应与良率提升推高毛利率。</p>
+
+</div></details>
+<details class="fold"><summary>五年财务趋势（时间序列，图表）</summary><div class="fold-body">
+
+<p><figure class="stchart" style="margin:14px 0 18px;text-align:center"><svg viewBox="0 0 660 300" width="100%" style="max-width:660px;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" role="img" aria-label="五年营业收入（亿元）"><text x="62" y="20" font-size="13" font-weight="600" fill="#334155">五年营业收入（亿元）</text><line x1="62" y1="254.0" x2="642" y2="254.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="257.5" font-size="10.5" fill="#334155" text-anchor="end">0</text><line x1="62" y1="199.0" x2="642" y2="199.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="202.5" font-size="10.5" fill="#334155" text-anchor="end">17.64</text><line x1="62" y1="144.0" x2="642" y2="144.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="147.5" font-size="10.5" fill="#334155" text-anchor="end">35.28</text><line x1="62" y1="89.0" x2="642" y2="89.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="92.5" font-size="10.5" fill="#334155" text-anchor="end">52.92</text><line x1="62" y1="34.0" x2="642" y2="34.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="37.5" font-size="10.5" fill="#334155" text-anchor="end">70.56</text><rect x="97.0" y="198.5" width="46.0" height="55.5" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="120.0" y="192.5" font-size="10.5" fill="#334155" text-anchor="middle">17.8</text><rect x="213.0" y="171.4" width="46.0" height="82.6" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="236.0" y="165.4" font-size="10.5" fill="#334155" text-anchor="middle">26.5</text><rect x="329.0" y="143.0" width="46.0" height="111.0" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="352.0" y="137.0" font-size="10.5" fill="#334155" text-anchor="middle">35.6</text><rect x="445.0" y="119.3" width="46.0" height="134.7" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="468.0" y="113.3" font-size="10.5" fill="#334155" text-anchor="middle">43.2</text><rect x="561.0" y="57.6" width="46.0" height="196.4" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="584.0" y="51.6" font-size="10.5" fill="#334155" text-anchor="middle">63</text><text x="120.0" y="272" font-size="11" fill="#334155" text-anchor="middle">2021</text><text x="236.0" y="272" font-size="11" fill="#334155" text-anchor="middle">2022</text><text x="352.0" y="272" font-size="11" fill="#334155" text-anchor="middle">2023</text><text x="468.0" y="272" font-size="11" fill="#334155" text-anchor="middle">2024</text><text x="584.0" y="272" font-size="11" fill="#334155" text-anchor="middle">2025</text></svg><figcaption style="font-size:11.5px;color:#64748b;margin-top:4px;line-height:1.5">来源：2025 年报及历年年报</figcaption></figure> <figure class="stchart" style="margin:14px 0 18px;text-align:center"><svg viewBox="0 0 660 300" width="100%" style="max-width:660px;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" role="img" aria-label="五年归母净利润（亿元）"><text x="62" y="20" font-size="13" font-weight="600" fill="#334155">五年归母净利润（亿元）</text><line x1="62" y1="254.0" x2="642" y2="254.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="257.5" font-size="10.5" fill="#334155" text-anchor="end">0</text><line x1="62" y1="199.0" x2="642" y2="199.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="202.5" font-size="10.5" fill="#334155" text-anchor="end">3.14</text><line x1="62" y1="144.0" x2="642" y2="144.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="147.5" font-size="10.5" fill="#334155" text-anchor="end">6.27</text><line x1="62" y1="89.0" x2="642" y2="89.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="92.5" font-size="10.5" fill="#334155" text-anchor="end">9.41</text><line x1="62" y1="34.0" x2="642" y2="34.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="37.5" font-size="10.5" fill="#334155" text-anchor="end">12.54</text><rect x="97.0" y="173.3" width="46.0" height="80.7" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="120.0" y="167.3" font-size="10.5" fill="#334155" text-anchor="middle">4.6</text><rect x="213.0" y="199.6" width="46.0" height="54.4" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="236.0" y="193.6" font-size="10.5" fill="#334155" text-anchor="middle">3.1</text><rect x="329.0" y="166.3" width="46.0" height="87.7" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="352.0" y="160.3" font-size="10.5" fill="#334155" text-anchor="middle">5</text><rect x="445.0" y="154.0" width="46.0" height="100.0" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="468.0" y="148.0" font-size="10.5" fill="#334155" text-anchor="middle">5.7</text><rect x="561.0" y="57.6" width="46.0" height="196.4" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="584.0" y="51.6" font-size="10.5" fill="#334155" text-anchor="middle">11.2</text><text x="120.0" y="272" font-size="11" fill="#334155" text-anchor="middle">2021</text><text x="236.0" y="272" font-size="11" fill="#334155" text-anchor="middle">2022</text><text x="352.0" y="272" font-size="11" fill="#334155" text-anchor="middle">2023</text><text x="468.0" y="272" font-size="11" fill="#334155" text-anchor="middle">2024</text><text x="584.0" y="272" font-size="11" fill="#334155" text-anchor="middle">2025</text></svg><figcaption style="font-size:11.5px;color:#64748b;margin-top:4px;line-height:1.5">来源：2025 年报及历年年报</figcaption></figure> 读数：营收连续五年增长，2025 年加速至 +46%；归母净利 2022 年触底后连续三年上升，2025 年翻倍。2026 前三季营收 74.5 亿、归母 23.0 亿已超 2025 全年。</p>
+
+</div></details>
+<h2 id="chap1">二、基本面分析</h2>
+<p>路径定性：非 ST（E 类·成长兑现型）。全部投资价值集中在红外主业量增的持续性，估值核心是「2026 高基数下 2027 能否延续」；相控阵/TR 芯片是未定价的免费期权。</p>
+<h3 id="sec4">1、商业模式与竞争格局</h3>
+<p>红外芯片是「技术壁垒＋规模效应」双轮生意，公司凭 8μm 产品成本与良率优势抢占民品放量，毛利率显著高于同业，龙头地位稳固。</p>
+<p>行业六问结论：供给端国内 3—4 家具备量产能力（睿创、高德、大立、国科天成），8μm 院品性价比优势打开民用市场；需求端军用导引头/巡检＋民用车载/工业/安防共振，2026 年红外景气度高企；价格端民品降价放量但毛利率反升（规模效应抵消）；格局端睿创以 63 亿营收领先（高德 42 亿、大立亏损、国科天成 28 亿）；公司位置端红外全球龙头、国内份额第一；结论——行业 β 与公司 α 同向，但 2027 高基数下增速大概率回落。</p>
+<details class="fold"><summary>同业估值与竞争地位对照（论据）</summary><div class="fold-body">
+
+<p>2026-11-18 截面：睿创微纳 PE(TTM)20.08／PB6.37／市值 545.62 亿；高德红外 PE21.78／PB5.02／424.51 亿；国科天成 PE39.78／PB5.08／113.04 亿；大立科技 PE 为负／96.56 亿；铖昌科技 PE120.75／147.06 亿；ST臻镭 PE97.82／144.49 亿。睿创是红外三强中盈利最强、PE 最低者——不是「周期股便宜陷阱」，而是市场对其 2027 增速存疑。毛利率横比：睿创红外主业 55.17%（2025A）显著高于行业平均。</p>
+
+</div></details>
+<h3 id="sec5">2、产能与第二曲线</h3>
+<p>主业产能持续释放支撑放量；第二曲线「睿创微波（Infiwave）」相控阵/TR 芯片是新大强 5 分强题材，但「强」维仅 1 分（微波射频 2025 年收入 2.02 亿、毛利率 4.52%），按估值纪律想象空间不进分子，只作免费期权。</p>
+<p><strong>新大强评分：新 2 / 大 2 / 强 1 ＝ 5/9（相控阵·TR 芯片·商业航天）</strong></p>
+<details class="fold"><summary>新大强逐维判断（论据）</summary><div class="fold-body">
+
+<p>新 2 分：相控阵/TR 芯片对睿创是新品类，通过收购烟台芯扬聚阵切入，市场已有铖昌、臻镭对标；大 2 分：卫星互联网与低空雷达 TAM 千亿级、渗透率低；强 1 分：微波射频 2025 年收入仅 2.02 亿、毛利率 4.52%，尚未形成规模利润，且物理智能终端业务因亏损已剥离。估值对接：按纪律三「强」维≤1，想象空间不进分子，仅在目标区间上限体现；扣分项——新业务市场化不及预期、关联交易剥离亏损资产，证伪信号是相控阵订单连续两年未落地。</p>
+
+</div></details>
+<h3 id="sec6">3、估值分析与潜在增长倍数</h3>
+<p>现有业务合理估值 750—900 亿，对应当前 545.62 亿市值的潜在增长倍数约 1.5 倍，＞1 满足买入；反向隐含概率显示市场按保守情景定价，第二曲线溢价几乎为零。</p>
+<table><thead><tr><th>估值构成</th><th>测算</th><th>市值贡献</th></tr></thead><tbody><tr><td>现有业务（红外主业）</td><td>2026 全年扣非约 30 亿 × 25—30 倍 PE</td><td>750—900 亿</td></tr><tr><td>远期项目贴现</td><td>相控阵/TR 芯片「强」维 1 分，不进分子</td><td>0</td></tr><tr><td>想象空间加总</td><td>不满足「有物」，仅作期权不入分子</td><td>0</td></tr><tr><td>合计合理市值</td><td>—</td><td>750—900 亿</td></tr><tr><td>当前总市值</td><td>2026-11-18 收盘</td><td>545.62 亿</td></tr><tr><td>潜在增长倍数</td><td>750—900 ÷ 545.62</td><td><strong>1.37—1.65 倍（中值 1.5）</strong></td></tr></tbody></table>
+<details class="fold"><summary>估值假设与隐含概率反推（论据）</summary><div class="fold-body">
+
+<p>纪律二（现有业务用扣非×PE）：2026 全年扣非按前三季 22.5 亿＋Q4 约 7.5 亿＝30 亿（保守），给 25—30 倍 PE——同业国科天成 40 倍、高德 22 倍，睿创增速更高应给溢价，但 2027 高基数风险压制取中位。纪律三（强维≤1 不进分子）：相控阵/微波射频未形成利润，不计入。纪律四（隐含概率）：设保守情景（2027 增速 15%、PE18 倍、利润 32 亿→576 亿）与乐观情景（增速 35%、PE28 倍、利润 45 亿→1260 亿），当前 545.62 亿甚至低于保守情景 576 亿，反推市场给的乐观概率为负——即市场尚未为第二曲线和高增长付溢价，估值处于低位。这既可能是机会（错杀），也可能是市场已预见 2027 增速断崖（见反方观点）。</p>
+
+</div></details>
+<h2 id="chap2">三、情绪分析</h2>
+<p>当前处于「业绩兑现后注意力退潮」阶段：历史两次 20cm 涨停都发生在业绩预增公告节点，本轮三季报预增已于 10-16 落地，短期缺乏新催化，需等 2026 年报或商业航天订单重新聚拢注意力。</p>
+<p>1、主板映射：红外军工＋商业航天主线。同板块高德红外、大立科技、国科天成、铖昌科技、臻镭科技均处高位或亏损，板块景气度真实但分化明显；主板同业未同步走强时属负向映射，不构成补涨机会。</p>
+<p>2、主题催化：新大强 5/9 分（相控阵/TR 芯片/商业航天），属强题材但兑现慢——新 2、大 2、强 1；缺「强」意味着适合「等」不适合「追」，触发信号是相控阵产品拿下星载订单或微波射频毛利率显著回升。</p>
+<details class="fold"><summary>历史异动（倒序，论据）</summary><div class="fold-body">
+
+<table><thead><tr><th>日期</th><th>股价</th><th>涨幅</th><th>炒作符号</th></tr></thead><tbody><tr><td>2026-07-21</td><td>150.67</td><td>20.00%</td><td>中报预增＋商业航天＋红外热成像</td></tr><tr><td>2026-01-23</td><td>123.31</td><td>20.00%</td><td>业绩预增＋商业航天＋红外热成像</td></tr><tr><td>2024-10-08</td><td>47.32</td><td>20.01%</td><td>红外热成像芯片</td></tr><tr><td>2024-02-07</td><td>39.88</td><td>9.80%</td><td>军工＋回购＋芯片</td></tr><tr><td>2022-10-31</td><td>47.55</td><td>10.94%</td><td>三季报营收增长＋芯片＋军工</td></tr><tr><td>2022-08-08</td><td>51.62</td><td>9.83%</td><td>非制冷红外热成像芯片＋军工</td></tr></tbody></table>
+<p>来源：韭研公社异动整理表（2026-11）。反复出现的符号是「业绩预增＋商业航天＋红外」，当前处兑现后回落阶段，符号未变但注意力降温。</p>
+
+</div></details>
+<h2 id="chap3">四、技术分析</h2>
+<p>前复权月线显示股价 2026-08 见顶 184.5 元后连跌三个月至 117.2 元，回撤 36.5%；现价落在实控人回购成本区（113.98—116.90 元）与 2026-02 平台（116 元）双重支撑上，短期具备止跌条件，但趋势尚未反转。</p>
+<details class="fold"><summary>价格走势与关键位（前复权，图表）</summary><div class="fold-body">
+
+<p><figure class="stchart" style="margin:14px 0 18px;text-align:center"><svg viewBox="0 0 660 300" width="100%" style="max-width:660px;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" role="img" aria-label="前复权月线收盘价（元）"><text x="62" y="20" font-size="13" font-weight="600" fill="#334155">前复权月线收盘价（元）</text><line x1="62" y1="254.0" x2="642" y2="254.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="257.5" font-size="10.5" fill="#334155" text-anchor="end">0</text><line x1="62" y1="199.0" x2="642" y2="199.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="202.5" font-size="10.5" fill="#334155" text-anchor="end">51.66</text><line x1="62" y1="144.0" x2="642" y2="144.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="147.5" font-size="10.5" fill="#334155" text-anchor="end">103.32</text><line x1="62" y1="89.0" x2="642" y2="89.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="92.5" font-size="10.5" fill="#334155" text-anchor="end">154.98</text><line x1="62" y1="34.0" x2="642" y2="34.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="37.5" font-size="10.5" fill="#334155" text-anchor="end">206.64</text><polyline points="70.0,202.0 96.1,197.9 119.7,190.0 145.9,195.6 171.2,190.3 197.3,180.8 222.6,185.3 248.7,173.3 274.9,160.7 300.2,166.4 326.3,173.8 351.6,147.5 377.7,134.6 403.8,130.5 427.5,147.1 453.6,99.4 478.9,118.8 505.0,90.1 530.3,103.7 556.4,57.6 582.6,69.4 607.9,106.5 634.0,129.2" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="70.0" cy="202.0" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="70.0" y="192.0" font-size="10.5" fill="#334155" text-anchor="middle">48.87</text><circle cx="96.1" cy="197.9" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="119.7" cy="190.0" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="145.9" cy="195.6" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="171.2" cy="190.3" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="197.3" cy="180.8" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="222.6" cy="185.3" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="248.7" cy="173.3" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="274.9" cy="160.7" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="300.2" cy="166.4" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="326.3" cy="173.8" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="351.6" cy="147.5" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="377.7" cy="134.6" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="403.8" cy="130.5" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="427.5" cy="147.1" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="453.6" cy="99.4" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="478.9" cy="118.8" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="505.0" cy="90.1" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="530.3" cy="103.7" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="556.4" cy="57.6" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="556.4" y="47.6" font-size="10.5" fill="#334155" text-anchor="middle">184.5</text><circle cx="582.6" cy="69.4" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="607.9" cy="106.5" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="634.0" cy="129.2" r="2.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="634.0" y="119.2" font-size="10.5" fill="#334155" text-anchor="middle">117.2</text><text x="70.0" y="272" font-size="11" fill="#334155" text-anchor="middle">25/01</text><text x="145.9" y="272" font-size="11" fill="#334155" text-anchor="middle">25/04</text><text x="222.6" y="272" font-size="11" fill="#334155" text-anchor="middle">25/07</text><text x="300.2" y="272" font-size="11" fill="#334155" text-anchor="middle">25/10</text><text x="403.8" y="272" font-size="11" fill="#334155" text-anchor="middle">26/02</text><text x="478.9" y="272" font-size="11" fill="#334155" text-anchor="middle">26/05</text><text x="556.4" y="272" font-size="11" fill="#334155" text-anchor="middle">26/08</text><text x="634.0" y="272" font-size="11" fill="#334155" text-anchor="middle">26/11</text></svg><figcaption style="font-size:11.5px;color:#64748b;margin-top:4px;line-height:1.5">来源：腾讯前复权月线，截至 2026-11-18</figcaption></figure> 读数：8 月高点 184.5 元后连续三个月回落，11 月跌至 117.2 元，回撤 36.5%，接近 2 月平台与回购成本区。</p>
+
+</div></details>
+<p>关键位：支撑 113—116 元（回购成本＋2 月平台），跌破看 100 元（3 月平台）；压力 138 元（10 月）、173 元（9 月）、184.5 元（8 月高点）。现价以下筹码主要堆积在 100—140 元区间，上方 140—185 元为解套区。策略：现价附近是「领先档」买点——用三季报已披露数据算出的全年扣非 30 亿与市场保守定价之间的差，尚未被年报确认；不追反弹，跌破 113 元减仓。</p>
+<h2 id="chap4">五、投资结论</h2>
+<table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td>判断</td><td><strong>买入</strong></td></tr><tr><td>主要理由</td><td>① 扣非前三季 +237%、经营现金流 24.9 亿与利润匹配，业绩为真；② PE(TTM)20.08 倍为红外同业最低，前瞻 PE 约 16—18 倍；③ 现价回撤 36% 贴近回购成本区 113.98—116.90 元，实控人回购托底；④ 潜在增长倍数 1.5 倍＞1；⑤ 相控阵/商业航天第二曲线未定价，是免费期权</td></tr><tr><td>失效条件</td><td>2026Q4 或 2027Q1 单季扣非跌破 7 亿，或红外军品订单明显回落，或毛利率跌破 50%</td></tr><tr><td>参考买入区间</td><td>110—118 元（贴近回购成本区）</td></tr><tr><td>目标区间</td><td>中性 145—165 元（2026 全年扣非 30 亿 × 24—27 倍 PE），乐观 185 元前高</td></tr><tr><td>可买卖时间窗口</td><td>3—6 个月；2026 年报（2027-04-30 前）业绩确认是兑现/减仓节点，非入场日</td></tr><tr><td>仓位建议</td><td>B 类中确定：首仓 3%，上限 5%（2027 高基数不确定性）</td></tr><tr><td>最大风险</td><td>2026 年是军品订单周期性高点，2027 增速断崖引发杀估值</td></tr></tbody></table>
+<p>反方观点评判：①「高基数下 2027 增速必降、当前低 PE 是周期顶部假象」——部分成立，这是最大风险，但公司民品 8μm 放量提供新增长源，且市场按保守情景定价已计入大部分悲观预期，不构成否决；②「相控阵业务难成气候」——成立，微波射频毛利率仅 4.52%，但已按估值纪律排除出分子，不依赖其兑现也能算出 1.5 倍空间；③「机构调研与雪球称竞争铖昌、订单可期」——线索级，未经公告证实，不作为买入依据。</p>
+<p>一句话结论：红外主业业绩兑现真实、估值处同业低位且贴近回购成本区，潜在增长倍数 1.5 倍支持现价买入，但须以 2027 订单延续性为止盈锚，跌破 113 元止损。</p>
+<p>免责声明：本报告基于公开信息整理，仅供研究参考，不构成任何投资建议。市场有风险，投资需谨慎。</p>
+<h2 id="chap5">附录</h2>
+<h3 id="sec7">附录 A · 待核实清单</h3>
+<ol><li>公司成立日期的具体日、首发募资精确额——招股书未逐笔核，不影响结论。</li><li>2026Q2 单季数据（半年报归母 12.6 亿系倒算）——授权数据源未返回半年报原文，Q3 单季用前三季减半年报口径。</li><li>相控阵/TR 芯片订单与客户——公司未公告，按线索级处理，不进估值。</li></ol>
+<h3 id="sec8">附录 B · 关键信源链接</h3>
+<p>本节列出正文引用的全部可点信源，均为已发布公告，链接经实测可达。</p>
+<ul><li><a href="https://data.eastmoney.com/notices/detail/688002/AN202610261830928165.html" target="_blank" rel="noopener">2026 年第三季度报告（2026-10-27）</a></li><li><a href="https://data.eastmoney.com/notices/detail/688002/AN202610151830521452.html" target="_blank" rel="noopener">2026 年前三季度业绩预增公告（2026-10-16）</a></li><li><a href="https://data.eastmoney.com/notices/detail/688002/AN202611161831756427.html" target="_blank" rel="noopener">回购股份方案暨回购报告书（2026-11-17）</a></li><li><a href="https://data.eastmoney.com/notices/detail/688002/AN202611171831786808.html" target="_blank" rel="noopener">首次回购股份公告（2026-11-18）</a></li><li><a href="https://data.eastmoney.com/notices/detail/688002/AN202611161831756426.html" target="_blank" rel="noopener">关联方设立合资公司进展公告（2026-11-17）</a></li><li><a href="https://data.eastmoney.com/notices/detail/688002/AN202610301831229776.html" target="_blank" rel="noopener">投资者关系活动记录表 20261027</a></li></ul>
+<h3 id="sec9">版本记录</h3>
+<details class="fold"><summary>版本记录</summary><div class="fold-body">
+
+<table><thead><tr><th>版本</th><th>修订日</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-11-19</td><td>基于 2026Q3 报告、11 月回购与关联交易公告，按五段框架建立首次覆盖，买入结论</td></tr></tbody></table>
+
+</div></details>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+<script src="/annotate.js?v=20261113a" defer></script>
+</body>
+</html>
