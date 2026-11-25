@@ -906,6 +906,19 @@
 
   .bd.path.delist{background:#e3e5e9;color:#39414d;font-weight:700}
 
+  .chip.buy.active{background:#c0392b;border-color:#c0392b}
+  .chip.sell.active{background:#2f855a;border-color:#2f855a}
+  .chip.green.active{background:#2f855a;border-color:#2f855a}
+  .chip.delist.active{background:#5a6472;border-color:#5a6472}
+  .chip.fake.active{background:#b7791f;border-color:#b7791f}
+  .chip.real.active{background:#4a5568;border-color:#4a5568}
+  .chip.gov.active{background:#2c5282;border-color:#2c5282}
+  .badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+  .bd{font-size:10.5px;padding:2px 6px;border-radius:5px;font-weight:700;white-space:nowrap}
+  .bd.buy{background:#fdecea;color:#c0392b}
+  .bd.sell{background:#e8f5ee;color:#2f855a}
+  .bd.path{background:#eef2f7;color:#4a6076;font-weight:500}
+  .bd.path.delist{background:#e3e5e9;color:#39414d;font-weight:700}
   .label{font-size:12.5px;color:var(--muted);margin:16px 2px 8px}
 
 
@@ -984,8 +997,8 @@
 
 
 
-  .bar.unst{background:#2f855a}
 
+  .bar.unst{background:#2f855a}
   .bar.xst{background:var(--red)}
 
 
@@ -1371,7 +1384,6 @@
 
 
       <div>最近更新 <b id="latest">-</b></div>
-
       <div>买入 <b id="buyN">0</b> · 卖出 <b id="sellN">0</b></div>
 
 
@@ -1485,15 +1497,33 @@
 
 
     <div class="chips" id="catChips">
-
       <div class="chip active" data-val="all">全部</div>
-
       <div class="chip red" data-val="xst">＊ST（退市风险）</div>
-
       <div class="chip orange" data-val="st">ST（其他风险）</div>
-
       <div class="chip green" data-val="unst">已摘帽</div>
+    </div>
 
+    <div class="label">真假 ST</div>
+    <div class="chips" id="stypeChips">
+      <div class="chip active" data-val="all">全部</div>
+      <div class="chip fake" data-val="假ST">假ST（有摘帽日期）</div>
+      <div class="chip real" data-val="真ST">真ST</div>
+    </div>
+
+    <div class="label">控股属性</div>
+    <div class="chips" id="ownerChips">
+      <div class="chip active" data-val="all">全部</div>
+      <div class="chip gov" data-val="国资控股">国资控股</div>
+      <div class="chip" data-val="非国资控股">非国资控股</div>
+    </div>
+
+    <div class="label">上市板块</div>
+    <div class="chips" id="boardChips">
+      <div class="chip active" data-val="all">全部</div>
+      <div class="chip" data-val="创业板">创业板</div>
+      <div class="chip" data-val="主板">主板</div>
+      <div class="chip" data-val="科创板">科创板</div>
+      <div class="chip" data-val="其他">其他</div>
     </div>
 
 
@@ -1511,15 +1541,10 @@
 
 
     <div class="chips" id="exchChips">
-
       <div class="chip active" data-val="all">全部</div>
-
       <div class="chip" data-val="深">深交所</div>
-
       <div class="chip" data-val="沪">上交所</div>
-
       <div class="chip" data-val="北">北交所</div>
-
     </div>
 
 
@@ -1537,13 +1562,9 @@
 
 
     <div class="chips" id="conclChips">
-
       <div class="chip active" data-val="all">全部</div>
-
       <div class="chip buy" data-val="买入">买入</div>
-
       <div class="chip sell" data-val="卖出">卖出</div>
-
     </div>
 
 
@@ -1561,19 +1582,11 @@
 
 
     <div class="chips" id="pathChips">
-
       <div class="chip active" data-val="all">全部</div>
-
       <div class="chip" data-val="保壳逻辑">保壳逻辑</div>
-
       <div class="chip" data-val="重整逻辑">重整逻辑</div>
-
       <div class="chip" data-val="处罚ST">处罚ST</div>
-
       <div class="chip delist" data-val="退市执行">退市执行</div>
-
-      <div class="chip" data-val="非ST">非ST</div>
-
     </div>
 
 
@@ -1638,10 +1651,9 @@
 
 
 
-  本站内容为客观信息梳理，不构成任何投资建议。数据基准日以各研报内标注为准。<br>批注与笔记均所有持密码者共享。
-
-  <br>批注：点表格任意一行、或点正文任意一句话即可写批注，所有持密码者可互相看到。
-
+  本站内容为客观信息梳理，不构成任何投资建议。数据基准日以各研报内标注为准。
+  <br>批注：点表格里的某格、或点正文任意一句话即可写批注；右侧「笔记」栏写整篇想法（200–5000 字）。
+  <br>批注与笔记均所有持密码者共享。
   <br>ST Buddy · 个股深度研究
 
 
@@ -1675,24 +1687,21 @@
 
 
 const STOCKS = [
-  {code:"301117", name:"佳缘", prefix:"ST", exch:"深", date:"2026-11-24", py:"jiayuan"},
-  {code:"600365", name:"通葡", prefix:"ST", exch:"沪", date:"2026-11-22", py:"tongpu"},
-  {code:"603021", name:"华鹏", prefix:"*ST", exch:"沪", date:"2026-11-22", py:"huapeng"},
-  {code:"603272", name:"联翔", prefix:"*ST", exch:"沪", date:"2026-11-22", py:"lianxiang"},
-  {code:"603729", name:"龙韵", prefix:"ST", exch:"沪", date:"2026-11-22", py:"longyun"},
-  {code:"300430", name:"益通", prefix:"*ST", exch:"深", date:"2026-11-21", py:"yitong"},
-  {code:"002719", name:"麦趣", prefix:"ST", exch:"深", date:"2026-11-20", py:"maiqu"},
-  {code:"300152", name:"动力", prefix:"*ST", exch:"深", date:"2026-11-20", py:"dongli"},
   {code:"000010", name:"美丽", prefix:"*ST", exch:"深", date:"2026-11-19", py:"meili"},
+  {code:"000016", name:"康佳A", prefix:"*ST", exch:"深", date:"2026-10-27", py:"kangjiaa"},
   {code:"000056", name:"皇庭", prefix:"*ST", exch:"深", date:"2026-11-19", py:"huangting"},
   {code:"000078", name:"海王", prefix:"ST", exch:"深", date:"2026-11-19", py:"haiwang"},
   {code:"000488", name:"晨鸣", prefix:"ST", exch:"深", date:"2026-11-19", py:"chenming"},
+  {code:"000609", name:"中迪", prefix:"*ST", exch:"深", date:"2026-11-18", py:"zhongdi"},
   {code:"000610", name:"西旅", prefix:"*ST", exch:"深", date:"2026-11-19", py:"xilv"},
   {code:"000615", name:"美谷", prefix:"*ST", exch:"深", date:"2026-11-19", py:"meigu"},
+  {code:"000632", name:"三木", prefix:"ST", exch:"深", date:"2026-11-18", py:"sanmu"},
   {code:"000639", name:"西王", prefix:"ST", exch:"深", date:"2026-11-19", py:"xiwang"},
   {code:"000669", name:"金鸿", prefix:"ST", exch:"深", date:"2026-11-19", py:"jinhong"},
   {code:"000677", name:"海龙", prefix:"ST", exch:"深", date:"2026-11-19", py:"hailong"},
   {code:"000698", name:"沈化", prefix:"ST", exch:"深", date:"2026-11-19", py:"shenhua"},
+  {code:"000752", name:"西发", prefix:"*ST", exch:"深", date:"2026-11-19", py:"xifa"},
+  {code:"000793", name:"华闻", prefix:"ST", exch:"深", date:"2026-11-19", py:"huawen"},
   {code:"000821", name:"京机", prefix:"ST", exch:"深", date:"2026-11-19", py:"jingji"},
   {code:"000826", name:"启环", prefix:"*ST", exch:"深", date:"2026-11-19", py:"sqh"},
   {code:"000838", name:"发展", prefix:"*ST", exch:"深", date:"2026-11-19", py:"fazhan"},
@@ -1701,13 +1710,17 @@ const STOCKS = [
   {code:"000911", name:"广糖", prefix:"*ST", exch:"深", date:"2026-11-19", py:"guangtang"},
   {code:"000972", name:"中基", prefix:"*ST", exch:"深", date:"2026-11-19", py:"zhongjijiankang"},
   {code:"002024", name:"易购", prefix:"ST", exch:"深", date:"2026-11-19", py:"yigou"},
+  {code:"002055", name:"得润", prefix:"ST", exch:"深", date:"2026-11-18", py:"derun"},
   {code:"002082", name:"万邦", prefix:"ST", exch:"深", date:"2026-11-19", py:"wanbang"},
   {code:"002102", name:"能特", prefix:"ST", exch:"深", date:"2026-11-19", py:"nengte"},
   {code:"002109", name:"兴化", prefix:"ST", exch:"深", date:"2026-11-19", py:"xinghua"},
+  {code:"002122", name:"汇洲", prefix:"ST", exch:"深", date:"2026-11-18", py:"huizhou"},
   {code:"002168", name:"惠程", prefix:"ST", exch:"深", date:"2026-11-19", py:"huicheng"},
+  {code:"002175", name:"东智", prefix:"*ST", exch:"深", date:"2026-11-18", py:"dongzhi"},
   {code:"002193", name:"如意", prefix:"ST", exch:"深", date:"2026-11-19", py:"ruyi"},
   {code:"002198", name:"嘉应", prefix:"ST", exch:"深", date:"2026-11-19", py:"jiaying"},
   {code:"002207", name:"准油", prefix:"*ST", exch:"深", date:"2026-11-19", py:"zhunyou"},
+  {code:"002211", name:"宏达", prefix:"ST", exch:"深", date:"2026-11-18", py:"hongda"},
   {code:"002217", name:"合力泰", prefix:"ST", exch:"深", date:"2026-11-19", py:"helitai"},
   {code:"002227", name:"特迅", prefix:"*ST", exch:"深", date:"2026-11-19", py:"texun"},
   {code:"002305", name:"南置", prefix:"*ST", exch:"深", date:"2026-11-19", py:"nanzhi"},
@@ -1721,16 +1734,28 @@ const STOCKS = [
   {code:"002512", name:"达华", prefix:"ST", exch:"深", date:"2026-11-19", py:"dahua"},
   {code:"002514", name:"宝馨", prefix:"*ST", exch:"深", date:"2026-11-19", py:"baoxin"},
   {code:"002528", name:"英飞", prefix:"*ST", exch:"深", date:"2026-11-19", py:"yingfei"},
+  {code:"002538", name:"司特", prefix:"ST", exch:"深", date:"2026-11-19", py:"site"},
   {code:"002542", name:"中岩", prefix:"*ST", exch:"深", date:"2026-11-19", py:"zhongyan"},
   {code:"002547", name:"春兴", prefix:"*ST", exch:"深", date:"2026-11-19", py:"chunxing"},
   {code:"002569", name:"步森", prefix:"*ST", exch:"深", date:"2026-11-19", py:"busen"},
   {code:"002581", name:"未名", prefix:"*ST", exch:"深", date:"2026-11-19", py:"weiming"},
+  {code:"002586", name:"围海股份", prefix:"", exch:"深", date:"2026-11-18", py:"weihaigufen"},
+  {code:"002592", name:"八菱", prefix:"ST", exch:"深", date:"2026-11-18", py:"baling"},
+  {code:"002598", name:"章鼓", prefix:"ST", exch:"深", date:"2026-11-19", py:"zhanggu"},
+  {code:"002620", name:"瑞和", prefix:"*ST", exch:"深", date:"2026-11-19", py:"ruihe"},
   {code:"002630", name:"华西", prefix:"*ST", exch:"深", date:"2026-11-19", py:"huaxi"},
   {code:"002634", name:"棒杰", prefix:"*ST", exch:"深", date:"2026-11-19", py:"bangjie"},
   {code:"002650", name:"加加", prefix:"ST", exch:"深", date:"2026-11-19", py:"jiajia"},
+  {code:"002667", name:"威领", prefix:"*ST", exch:"深", date:"2026-11-18", py:"weiling"},
+  {code:"002689", name:"远智", prefix:"ST", exch:"深", date:"2026-11-18", py:"yuanzhi"},
   {code:"002691", name:"冀凯", prefix:"*ST", exch:"深", date:"2026-11-19", py:"jikai"},
   {code:"002694", name:"顾地", prefix:"*ST", exch:"深", date:"2026-11-19", py:"gudi"},
+  {code:"002717", name:"岭南", prefix:"*ST", exch:"深", date:"2026-11-03", py:"lingnan"},
+  {code:"002719", name:"麦趣", prefix:"ST", exch:"深", date:"2026-11-20", py:"maiqu"},
   {code:"002726", name:"龙大", prefix:"ST", exch:"深", date:"2026-11-19", py:"longda"},
+  {code:"002731", name:"萃华", prefix:"*ST", exch:"深", date:"2026-11-12", py:"cuihua"},
+  {code:"002743", name:"富煌", prefix:"ST", exch:"深", date:"2026-11-18", py:"fuhuang"},
+  {code:"002759", name:"天际", prefix:"ST", exch:"深", date:"2026-11-19", py:"tianji"},
   {code:"002789", name:"建艺", prefix:"*ST", exch:"深", date:"2026-11-19", py:"jianyi"},
   {code:"002816", name:"和科", prefix:"*ST", exch:"深", date:"2026-11-19", py:"heke"},
   {code:"002822", name:"中装", prefix:"ST", exch:"深", date:"2026-11-19", py:"zhongzhuang"},
@@ -1739,9 +1764,11 @@ const STOCKS = [
   {code:"002883", name:"中设", prefix:"*ST", exch:"深", date:"2026-11-19", py:"zhongshe"},
   {code:"002932", name:"明德", prefix:"*ST", exch:"深", date:"2026-11-19", py:"mingde"},
   {code:"002977", name:"天箭", prefix:"*ST", exch:"深", date:"2026-11-19", py:"tianjian"},
+  {code:"300010", name:"豆神", prefix:"ST", exch:"深", date:"2026-11-18", py:"doushen"},
   {code:"300020", name:"银江", prefix:"ST", exch:"深", date:"2026-11-19", py:"yinjiang"},
   {code:"300027", name:"华谊", prefix:"ST", exch:"深", date:"2026-11-19", py:"huayi"},
   {code:"300044", name:"赛为", prefix:"*ST", exch:"深", date:"2026-11-19", py:"saiwei"},
+  {code:"300068", name:"南都", prefix:"ST", exch:"深", date:"2026-11-18", py:"nandou"},
   {code:"300076", name:"宁视", prefix:"*ST", exch:"深", date:"2026-11-19", py:"ningshi"},
   {code:"300081", name:"恒信", prefix:"ST", exch:"深", date:"2026-11-19", py:"hengxin"},
   {code:"300087", name:"荃银", prefix:"ST", exch:"深", date:"2026-11-19", py:"quanyin"},
@@ -1750,6 +1777,7 @@ const STOCKS = [
   {code:"300123", name:"亚光", prefix:"ST", exch:"深", date:"2026-11-19", py:"yaguang"},
   {code:"300125", name:"聆达股份", prefix:"", exch:"深", date:"2026-11-19", py:"lingda"},
   {code:"300147", name:"香雪", prefix:"*ST", exch:"深", date:"2026-11-19", py:"xiangxue"},
+  {code:"300152", name:"动力", prefix:"*ST", exch:"深", date:"2026-11-20", py:"dongli"},
   {code:"300167", name:"迪威迅", prefix:"ST", exch:"深", date:"2026-11-19", py:"diweixun"},
   {code:"300173", name:"福能", prefix:"ST", exch:"深", date:"2026-11-19", py:"funeng"},
   {code:"300198", name:"纳川", prefix:"*ST", exch:"深", date:"2026-11-19", py:"nachuan"},
@@ -1764,22 +1792,31 @@ const STOCKS = [
   {code:"300338", name:"开元", prefix:"*ST", exch:"深", date:"2026-11-19", py:"kaiyuan"},
   {code:"300352", name:"信源", prefix:"ST", exch:"深", date:"2026-11-19", py:"xinyuan"},
   {code:"300366", name:"创意", prefix:"ST", exch:"深", date:"2026-11-19", py:"chuangyi"},
+  {code:"300385", name:"雪浪", prefix:"ST", exch:"深", date:"2026-11-18", py:"xuelang"},
   {code:"300396", name:"迪瑞", prefix:"ST", exch:"深", date:"2026-11-19", py:"dirui"},
   {code:"300419", name:"浩丰", prefix:"ST", exch:"深", date:"2026-11-19", py:"haofeng"},
+  {code:"300430", name:"益通", prefix:"*ST", exch:"深", date:"2026-11-21", py:"yitong"},
   {code:"300460", name:"惠伦", prefix:"ST", exch:"深", date:"2026-11-19", py:"huilun"},
+  {code:"300462", name:"华铭", prefix:"ST", exch:"深", date:"2026-11-18", py:"huaming"},
+  {code:"300472", name:"新元", prefix:"*ST", exch:"深", date:"2026-11-18", py:"xinyuan2"},
   {code:"300477", name:"合纵", prefix:"ST", exch:"深", date:"2026-11-19", py:"hezong"},
   {code:"300555", name:"路通", prefix:"ST", exch:"深", date:"2026-11-19", py:"lutong"},
   {code:"300594", name:"朗进", prefix:"ST", exch:"深", date:"2026-11-19", py:"langjin"},
   {code:"300716", name:"泉为", prefix:"*ST", exch:"深", date:"2026-11-19", py:"quanwei"},
+  {code:"300779", name:"惠城环保", prefix:"", exch:"深", date:"2026-11-18", py:"huicheng2"},
+  {code:"300831", name:"派瑞", prefix:"ST", exch:"深", date:"2026-11-18", py:"pairui"},
   {code:"301030", name:"仕净", prefix:"*ST", exch:"深", date:"2026-11-19", py:"shijing"},
+  {code:"301117", name:"佳缘", prefix:"ST", exch:"深", date:"2026-11-24", py:"jiayuan"},
   {code:"600053", name:"九鼎", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"jiuding"},
   {code:"600079", name:"人福", prefix:"ST", exch:"沪", date:"2026-11-19", py:"renfu"},
   {code:"600080", name:"金花", prefix:"ST", exch:"沪", date:"2026-11-19", py:"jinhua"},
+  {code:"600082", name:"海泰", prefix:"ST", exch:"沪", date:"2026-11-18", py:"haitai"},
   {code:"600084", name:"尼雅", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"niya"},
   {code:"600107", name:"尔雅", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"erya"},
   {code:"600119", name:"长投", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"zhangtou"},
   {code:"600136", name:"明诚", prefix:"ST", exch:"沪", date:"2026-11-19", py:"mingcheng"},
   {code:"600169", name:"太重", prefix:"ST", exch:"沪", date:"2026-11-19", py:"taizhong"},
+  {code:"600180", name:"瑞茂", prefix:"*ST", exch:"沪", date:"2026-11-18", py:"ruimao"},
   {code:"600187", name:"国中", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"guozhong"},
   {code:"600238", name:"椰岛", prefix:"ST", exch:"沪", date:"2026-11-19", py:"yedao"},
   {code:"600239", name:"云城", prefix:"ST", exch:"沪", date:"2026-11-19", py:"yuncheng"},
@@ -1788,688 +1825,377 @@ const STOCKS = [
   {code:"600289", name:"信通", prefix:"ST", exch:"沪", date:"2026-11-19", py:"xintong"},
   {code:"600302", name:"标准", prefix:"ST", exch:"沪", date:"2026-11-19", py:"biaozhun"},
   {code:"600337", name:"美克", prefix:"ST", exch:"沪", date:"2026-11-19", py:"meike"},
+  {code:"600340", name:"华幸", prefix:"*ST", exch:"沪", date:"2026-11-18", py:"huaxing"},
+  {code:"600363", name:"联光", prefix:"ST", exch:"沪", date:"2026-11-21", py:"lianguang"},
+  {code:"600365", name:"通葡", prefix:"ST", exch:"沪", date:"2026-11-22", py:"tongpu"},
   {code:"600370", name:"三房", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"sanfang"},
   {code:"600381", name:"春天", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"chuntian"},
   {code:"600423", name:"柳化", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"liuhua"},
   {code:"600439", name:"瑞贝卡", prefix:"ST", exch:"沪", date:"2026-11-19", py:"ruibeika"},
   {code:"600476", name:"湘邮", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"xiangyou"},
+  {code:"600491", name:"龙元", prefix:"ST", exch:"沪", date:"2026-11-18", py:"longyuan"},
+  {code:"600530", name:"交昂", prefix:"ST", exch:"沪", date:"2026-11-18", py:"jiaoang"},
   {code:"600537", name:"亿晶", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"yijing"},
   {code:"600543", name:"莫高", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"mogao"},
   {code:"600568", name:"中珠", prefix:"ST", exch:"沪", date:"2026-11-19", py:"zhongzhu"},
   {code:"600581", name:"八钢", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"bagang"},
   {code:"600624", name:"复华", prefix:"ST", exch:"沪", date:"2026-11-19", py:"fuhua"},
+  {code:"600678", name:"金顶", prefix:"ST", exch:"沪", date:"2026-11-18", py:"jinding"},
   {code:"600730", name:"高科", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"gaoke"},
   {code:"600734", name:"实达", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"shida"},
   {code:"600735", name:"新华锦", prefix:"ST", exch:"沪", date:"2026-11-19", py:"xinhuajin"},
+  {code:"600745", name:"闻泰", prefix:"*ST", exch:"沪", date:"2026-11-18", py:"wentai"},
   {code:"600753", name:"海钦", prefix:"ST", exch:"沪", date:"2026-11-19", py:"haiqin"},
   {code:"600759", name:"洲际", prefix:"ST", exch:"沪", date:"2026-11-19", py:"zhouji"},
   {code:"600818", name:"中路", prefix:"ST", exch:"沪", date:"2026-11-19", py:"zhonglu"},
+  {code:"600889", name:"京化", prefix:"*ST", exch:"沪", date:"2026-11-18", py:"jinghua"},
   {code:"600965", name:"福成", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"fucheng"},
   {code:"601010", name:"文峰", prefix:"ST", exch:"沪", date:"2026-11-19", py:"wenfeng"},
   {code:"601718", name:"际华", prefix:"ST", exch:"沪", date:"2026-11-19", py:"jihua"},
   {code:"603008", name:"喜临门", prefix:"ST", exch:"沪", date:"2026-11-19", py:"xilinmen"},
+  {code:"603021", name:"华鹏", prefix:"*ST", exch:"沪", date:"2026-11-22", py:"huapeng"},
+  {code:"603189", name:"网达", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"wangda"},
+  {code:"603272", name:"联翔", prefix:"*ST", exch:"沪", date:"2026-11-22", py:"lianxiang"},
+  {code:"603359", name:"东珠", prefix:"*ST", exch:"沪", date:"2026-11-18", py:"dongzhu"},
   {code:"603377", name:"东时", prefix:"ST", exch:"沪", date:"2026-11-19", py:"dongshi"},
   {code:"603378", name:"亚士", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"yashi"},
   {code:"603398", name:"沐邦", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"mubang"},
+  {code:"603429", name:"集友", prefix:"*ST", exch:"沪", date:"2026-11-18", py:"jiyou"},
+  {code:"603517", name:"绝味食品", prefix:"", exch:"沪", date:"2026-11-19", py:"juewei"},
   {code:"603557", name:"起步", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"qibu"},
+  {code:"603595", name:"东尼", prefix:"ST", exch:"沪", date:"2026-11-18", py:"dongni"},
   {code:"603718", name:"海利", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"haili"},
+  {code:"603729", name:"龙韵", prefix:"ST", exch:"沪", date:"2026-11-22", py:"longyun"},
   {code:"603789", name:"星农", prefix:"ST", exch:"沪", date:"2026-11-19", py:"xingnong"},
   {code:"603822", name:"嘉澳", prefix:"ST", exch:"沪", date:"2026-11-19", py:"jiaao"},
+  {code:"603825", name:"华扬", prefix:"ST", exch:"沪", date:"2026-11-18", py:"huayang"},
   {code:"603828", name:"利达", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"lida"},
   {code:"603838", name:"四通股份", prefix:"", exch:"沪", date:"2026-11-19", py:"sitong"},
   {code:"603843", name:"正平", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"zhengping"},
   {code:"603869", name:"智知", prefix:"ST", exch:"沪", date:"2026-11-19", py:"zhizhi"},
+  {code:"603922", name:"金鸿顺", prefix:"ST", exch:"沪", date:"2026-11-18", py:"jinhongshun"},
+  {code:"603959", name:"百利", prefix:"ST", exch:"沪", date:"2026-11-18", py:"baili"},
+  {code:"605196", name:"华通线缆", prefix:"", exch:"沪", date:"2026-11-18", py:"huatong"},
   {code:"605199", name:"葫芦娃", prefix:"ST", exch:"沪", date:"2026-11-19", py:"huluwa"},
   {code:"605336", name:"帅电", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"shuaidian"},
   {code:"688002", name:"睿创微纳", prefix:"", exch:"沪", date:"2026-11-19", py:"ruichuang"},
   {code:"688022", name:"瀚川", prefix:"ST", exch:"沪", date:"2026-11-19", py:"hanchuan"},
   {code:"688033", name:"天宜", prefix:"*ST", exch:"沪", date:"2026-11-19", py:"tianyi"},
-  {code:"688076", name:"诺泰", prefix:"ST", exch:"沪", date:"2026-11-19", py:"nuotai"},
-  {code:"688089", name:"嘉必优", prefix:"ST", exch:"沪", date:"2026-11-19", py:"jiabiyou"},
-  {code:"688189", name:"南新", prefix:"ST", exch:"沪", date:"2026-11-19", py:"nanxin"},
-  {code:"688201", name:"信安", prefix:"ST", exch:"沪", date:"2026-11-19", py:"xinan"},
-  {code:"000609", name:"中迪", prefix:"*ST", exch:"深", date:"2026-11-18", py:"zhongdi"},
-  {code:"000632", name:"三木", prefix:"ST", exch:"深", date:"2026-11-18", py:"sanmu"},
-  {code:"000752", name:"西发", prefix:"*ST", exch:"深", date:"2026-11-18", py:"xifa"},
-  {code:"000793", name:"华闻", prefix:"ST", exch:"深", date:"2026-11-18", py:"huawen"},
-  {code:"002055", name:"得润", prefix:"ST", exch:"深", date:"2026-11-18", py:"derun"},
-  {code:"002122", name:"汇洲", prefix:"ST", exch:"深", date:"2026-11-18", py:"huizhou"},
-  {code:"002175", name:"东智", prefix:"*ST", exch:"深", date:"2026-11-18", py:"dongzhi"},
-  {code:"002211", name:"宏达", prefix:"ST", exch:"深", date:"2026-11-18", py:"hongda"},
-  {code:"002538", name:"司特", prefix:"ST", exch:"深", date:"2026-11-18", py:"site"},
-  {code:"002586", name:"围海股份", prefix:"", exch:"深", date:"2026-11-18", py:"weihaigufen"},
-  {code:"002592", name:"八菱", prefix:"ST", exch:"深", date:"2026-11-18", py:"baling"},
-  {code:"002598", name:"章鼓", prefix:"ST", exch:"深", date:"2026-11-18", py:"zhanggu"},
-  {code:"002620", name:"瑞和", prefix:"*ST", exch:"深", date:"2026-11-18", py:"ruihe"},
-  {code:"002667", name:"威领", prefix:"*ST", exch:"深", date:"2026-11-18", py:"weiling"},
-  {code:"002689", name:"远智", prefix:"ST", exch:"深", date:"2026-11-18", py:"yuanzhi"},
-  {code:"002743", name:"富煌", prefix:"ST", exch:"深", date:"2026-11-18", py:"fuhuang"},
-  {code:"002759", name:"天际", prefix:"ST", exch:"深", date:"2026-11-18", py:"tianji"},
-  {code:"300010", name:"豆神", prefix:"ST", exch:"深", date:"2026-11-18", py:"doushen"},
-  {code:"300068", name:"南都", prefix:"ST", exch:"深", date:"2026-11-18", py:"nandou"},
-  {code:"300385", name:"雪浪", prefix:"ST", exch:"深", date:"2026-11-18", py:"xuelang"},
-  {code:"300462", name:"华铭", prefix:"ST", exch:"深", date:"2026-11-18", py:"huaming"},
-  {code:"300472", name:"新元", prefix:"*ST", exch:"深", date:"2026-11-18", py:"xinyuan2"},
-  {code:"300779", name:"惠城环保", prefix:"", exch:"深", date:"2026-11-18", py:"huicheng2"},
-  {code:"300831", name:"派瑞", prefix:"ST", exch:"深", date:"2026-11-18", py:"pairui"},
-  {code:"600082", name:"海泰", prefix:"ST", exch:"沪", date:"2026-11-18", py:"haitai"},
-  {code:"600180", name:"瑞茂", prefix:"*ST", exch:"沪", date:"2026-11-18", py:"ruimao"},
-  {code:"600340", name:"华幸", prefix:"*ST", exch:"沪", date:"2026-11-18", py:"huaxing"},
-  {code:"600363", name:"联光", prefix:"ST", exch:"沪", date:"2026-11-18", py:"lianguang"},
-  {code:"600491", name:"龙元", prefix:"ST", exch:"沪", date:"2026-11-18", py:"longyuan"},
-  {code:"600530", name:"交昂", prefix:"ST", exch:"沪", date:"2026-11-18", py:"jiaoang"},
-  {code:"600678", name:"金顶", prefix:"ST", exch:"沪", date:"2026-11-18", py:"jinding"},
-  {code:"600745", name:"闻泰", prefix:"*ST", exch:"沪", date:"2026-11-18", py:"wentai"},
-  {code:"600889", name:"京化", prefix:"*ST", exch:"沪", date:"2026-11-18", py:"jinghua"},
-  {code:"603189", name:"网达", prefix:"*ST", exch:"沪", date:"2026-11-18", py:"wangda"},
-  {code:"603359", name:"东珠", prefix:"*ST", exch:"沪", date:"2026-11-18", py:"dongzhu"},
-  {code:"603429", name:"集友", prefix:"*ST", exch:"沪", date:"2026-11-18", py:"jiyou"},
-  {code:"603517", name:"绝味食品", prefix:"", exch:"沪", date:"2026-11-18", py:"juewei"},
-  {code:"603595", name:"东尼", prefix:"ST", exch:"沪", date:"2026-11-18", py:"dongni"},
-  {code:"603825", name:"华扬", prefix:"ST", exch:"沪", date:"2026-11-18", py:"huayang"},
-  {code:"603922", name:"金鸿顺", prefix:"ST", exch:"沪", date:"2026-11-18", py:"jinhongshun"},
-  {code:"603959", name:"百利", prefix:"ST", exch:"沪", date:"2026-11-18", py:"baili"},
-  {code:"605196", name:"华通线缆", prefix:"", exch:"沪", date:"2026-11-18", py:"huatong"},
   {code:"688053", name:"思科瑞", prefix:"ST", exch:"沪", date:"2026-11-18", py:"sikerui"},
   {code:"688066", name:"航图", prefix:"*ST", exch:"沪", date:"2026-11-18", py:"hangtu"},
+  {code:"688076", name:"诺泰", prefix:"ST", exch:"沪", date:"2026-11-19", py:"nuotai"},
+  {code:"688089", name:"嘉必优", prefix:"ST", exch:"沪", date:"2026-11-19", py:"jiabiyou"},
+  {code:"688121", name:"卓然", prefix:"*ST", exch:"沪", date:"2026-11-13", py:"zhuoran"},
   {code:"688184", name:"帕瓦", prefix:"ST", exch:"沪", date:"2026-11-18", py:"pawa"},
+  {code:"688189", name:"南新", prefix:"ST", exch:"沪", date:"2026-11-19", py:"nanxin"},
+  {code:"688201", name:"信安", prefix:"ST", exch:"沪", date:"2026-11-19", py:"xinan"},
   {code:"688270", name:"臻镭", prefix:"ST", exch:"沪", date:"2026-11-18", py:"zhenlei"},
   {code:"688333", name:"铂力特", prefix:"", exch:"沪", date:"2026-11-18", py:"bolite"},
+  {code:"688496", name:"清越", prefix:"*ST", exch:"沪", date:"2026-11-02", py:"qingyue"},
   {code:"688622", name:"禾信", prefix:"*ST", exch:"沪", date:"2026-11-18", py:"hexin"},
   {code:"920023", name:"田野", prefix:"*ST", exch:"北", date:"2026-11-18", py:"tianye"},
   {code:"920090", name:"同辉", prefix:"*ST", exch:"北", date:"2026-11-18", py:"tonghui"},
-  {code:"920575", name:"康乐", prefix:"*ST", exch:"北", date:"2026-11-18", py:"kangle"},
-  {code:"688121", name:"卓然", prefix:"*ST", exch:"沪", date:"2026-11-13", py:"zhuoran"},
-  {code:"002731", name:"萃华", prefix:"*ST", exch:"深", date:"2026-11-12", py:"cuihua"},
-  {code:"002717", name:"岭南", prefix:"*ST", exch:"深", date:"2026-11-03", py:"lingnan"},
-  {code:"688496", name:"清越", prefix:"*ST", exch:"沪", date:"2026-11-02", py:"qingyue"},
-  {code:"000016", name:"康佳A", prefix:"*ST", exch:"深", date:"2026-10-27", py:"kangjiaa"}
+  {code:"920575", name:"康乐", prefix:"*ST", exch:"北", date:"2026-11-18", py:"kangle"}
 ];
 
-
-
 const META = {
-
-  "688002":{c:"买入", p:"非ST"},
-
-  "000010":{c:"卖出", p:"重整逻辑"},
-
-  "000016":{c:"卖出", p:"退市执行"},
-
-  "000056":{c:"卖出", p:"保壳逻辑"},
-
-  "000078":{c:"卖出", p:"处罚ST"},
-
-  "000488":{c:"卖出", p:"保壳逻辑"},
-
-  "000609":{c:"卖出", p:"保壳逻辑"},
-
-  "000610":{c:"卖出", p:"重整逻辑"},
-
-  "000615":{c:"卖出", p:"重整逻辑"},
-
-  "000632":{c:"卖出", p:"重整逻辑"},
-
-  "000639":{c:"卖出", p:"处罚ST"},
-
-  "000669":{c:"卖出", p:"重整逻辑"},
-
-  "000677":{c:"卖出", p:"处罚ST"},
-
-  "000698":{c:"卖出", p:"处罚ST"},
-
-  "000752":{c:"卖出", p:"重整逻辑"},
-
-  "000793":{c:"卖出", p:"重整逻辑"},
-
-  "000821":{c:"卖出", p:"处罚ST"},
-
-  "000826":{c:"卖出", p:"重整逻辑"},
-
-  "000838":{c:"卖出", p:"重整逻辑"},
-
-  "000903":{c:"卖出", p:"处罚ST"},
-
-  "000909":{c:"卖出", p:"保壳逻辑"},
-
-  "000911":{c:"买入", p:"保壳逻辑"},
-
-  "000972":{c:"卖出", p:"重整逻辑"},
-
-  "002024":{c:"卖出", p:"保壳逻辑"},
-
-  "002055":{c:"卖出", p:"处罚ST"},
-
-  "002082":{c:"卖出", p:"处罚ST"},
-
-  "002102":{c:"卖出", p:"处罚ST"},
-
-  "002109":{c:"卖出", p:"处罚ST"},
-
-  "002122":{c:"卖出", p:"处罚ST"},
-
-  "002168":{c:"卖出", p:"重整逻辑"},
-
-  "002175":{c:"卖出", p:"保壳逻辑"},
-
-  "002193":{c:"卖出", p:"处罚ST"},
-
-  "002198":{c:"卖出", p:"处罚ST"},
-
-  "002207":{c:"卖出", p:"保壳逻辑"},
-
-  "002211":{c:"卖出", p:"保壳逻辑"},
-
-  "002217":{c:"卖出", p:"处罚ST"},
-
-  "002227":{c:"卖出", p:"保壳逻辑"},
-
-  "002305":{c:"卖出", p:"保壳逻辑"},
-
-  "002306":{c:"卖出", p:"保壳逻辑"},
-
-  "002323":{c:"卖出", p:"保壳逻辑"},
-
-  "002360":{c:"卖出", p:"重整逻辑"},
-
-  "002424":{c:"卖出", p:"处罚ST"},
-
-  "002431":{c:"卖出", p:"保壳逻辑"},
-
-  "002485":{c:"卖出", p:"保壳逻辑"},
-
-  "002501":{c:"卖出", p:"保壳逻辑"},
-
-  "002512":{c:"卖出", p:"处罚ST"},
-
-  "002514":{c:"卖出", p:"保壳逻辑"},
-
-  "002528":{c:"卖出", p:"重整逻辑"},
-
-  "002538":{c:"卖出", p:"处罚ST"},
-
-  "002542":{c:"卖出", p:"保壳逻辑"},
-
-  "002547":{c:"卖出", p:"重整逻辑"},
-
-  "002569":{c:"卖出", p:"保壳逻辑"},
-
-  "002581":{c:"卖出", p:"保壳逻辑"},
-
-  "002586":{c:"卖出", p:"保壳逻辑"},
-
-  "002592":{c:"卖出", p:"处罚ST"},
-
-  "002598":{c:"卖出", p:"处罚ST"},
-
-  "002620":{c:"卖出", p:"重整逻辑"},
-
-  "002630":{c:"卖出", p:"保壳逻辑"},
-
-  "002634":{c:"卖出", p:"重整逻辑"},
-
-  "002650":{c:"卖出", p:"处罚ST"},
-
-  "002667":{c:"买入", p:"保壳逻辑"},
-
-  "002689":{c:"卖出", p:"处罚ST"},
-
-  "002691":{c:"卖出", p:"保壳逻辑"},
-
-  "002694":{c:"卖出", p:"保壳逻辑"},
-
-  "002717":{c:"卖出", p:"退市执行"},
-
-  "002719":{c:"卖出", p:"保壳逻辑"},
-
-  "002726":{c:"卖出", p:"重整逻辑"},
-
-  "002731":{c:"卖出", p:"退市执行"},
-
-  "002743":{c:"卖出", p:"处罚ST"},
-
-  "002759":{c:"卖出", p:"处罚ST"},
-
-  "002789":{c:"卖出", p:"重整逻辑"},
-
-  "002816":{c:"卖出", p:"保壳逻辑"},
-
-  "002822":{c:"卖出", p:"重整逻辑"},
-
-  "002856":{c:"卖出", p:"重整逻辑"},
-
-  "002872":{c:"卖出", p:"处罚ST"},
-
-  "002883":{c:"卖出", p:"保壳逻辑"},
-
-  "002932":{c:"买入", p:"保壳逻辑"},
-
-  "002977":{c:"卖出", p:"保壳逻辑"},
-
-  "300010":{c:"卖出", p:"处罚ST"},
-
-  "300020":{c:"卖出", p:"处罚ST"},
-
-  "300027":{c:"卖出", p:"重整逻辑"},
-
-  "300044":{c:"卖出", p:"重整逻辑"},
-
-  "300068":{c:"卖出", p:"重整逻辑"},
-
-  "300076":{c:"卖出", p:"保壳逻辑"},
-
-  "300081":{c:"卖出", p:"处罚ST"},
-
-  "300087":{c:"卖出", p:"处罚ST"},
-
-  "300091":{c:"卖出", p:"重整逻辑"},
-
-  "300096":{c:"卖出", p:"保壳逻辑"},
-
-  "300123":{c:"卖出", p:"重整逻辑"},
-
-  "300125":{c:"卖出", p:"重整逻辑"},
-
-  "300147":{c:"卖出", p:"重整逻辑"},
-
-  "300152":{c:"卖出", p:"处罚ST"},
-
-  "300167":{c:"卖出", p:"保壳逻辑"},
-
-  "300173":{c:"卖出", p:"处罚ST"},
-
-  "300198":{c:"卖出", p:"重整逻辑"},
-
-  "300205":{c:"卖出", p:"处罚ST"},
-
-  "300212":{c:"卖出", p:"重整逻辑"},
-
-  "300237":{c:"卖出", p:"保壳逻辑"},
-
-  "300245":{c:"卖出", p:"处罚ST"},
-
-  "300290":{c:"卖出", p:"处罚ST"},
-
-  "300295":{c:"卖出", p:"保壳逻辑"},
-
-  "300301":{c:"买入", p:"重整逻辑"},
-
-  "300326":{c:"买入", p:"处罚ST"},
-
-  "300338":{c:"卖出", p:"重整逻辑"},
-
-  "300352":{c:"卖出", p:"处罚ST"},
-
-  "300366":{c:"卖出", p:"处罚ST"},
-
-  "300385":{c:"卖出", p:"重整逻辑"},
-
-  "300396":{c:"买入", p:"保壳逻辑"},
-
-  "300419":{c:"卖出", p:"保壳逻辑"},
-
-  "300430":{c:"卖出", p:"保壳逻辑"},
-
-  "300460":{c:"卖出", p:"处罚ST"},
-
-  "300462":{c:"卖出", p:"重整逻辑"},
-
-  "300472":{c:"卖出", p:"重整逻辑"},
-
-  "300477":{c:"卖出", p:"重整逻辑"},
-
-  "300555":{c:"卖出", p:"处罚ST"},
-
-  "300594":{c:"卖出", p:"处罚ST"},
-
-  "300716":{c:"卖出", p:"重整逻辑"},
-
-  "300779":{c:"卖出", p:"非ST"},
-
-  "300831":{c:"卖出", p:"处罚ST"},
-
-  "301030":{c:"卖出", p:"重整逻辑"},
-
-  "301117":{c:"买入", p:"处罚ST"},
-
-  "600053":{c:"卖出", p:"保壳逻辑"},
-
-  "600079":{c:"卖出", p:"处罚ST"},
-
-  "600080":{c:"卖出", p:"处罚ST"},
-
-  "600082":{c:"卖出", p:"处罚ST"},
-
-  "600084":{c:"卖出", p:"保壳逻辑"},
-
-  "600107":{c:"卖出", p:"保壳逻辑"},
-
-  "600119":{c:"卖出", p:"保壳逻辑"},
-
-  "600136":{c:"卖出", p:"处罚ST"},
-
-  "600169":{c:"卖出", p:"处罚ST"},
-
-  "600180":{c:"卖出", p:"保壳逻辑"},
-
-  "600187":{c:"卖出", p:"保壳逻辑"},
-
-  "600238":{c:"卖出", p:"处罚ST"},
-
-  "600239":{c:"卖出", p:"保壳逻辑"},
-
-  "600243":{c:"卖出", p:"保壳逻辑"},
-
-  "600265":{c:"卖出", p:"保壳逻辑"},
-
-  "600289":{c:"卖出", p:"处罚ST"},
-
-  "600302":{c:"卖出", p:"处罚ST"},
-
-  "600337":{c:"卖出", p:"重整逻辑"},
-
-  "600340":{c:"卖出", p:"重整逻辑"},
-
-  "600363":{c:"卖出", p:"处罚ST"},
-
-  "600365":{c:"卖出", p:"处罚ST"},
-
-  "600370":{c:"卖出", p:"保壳逻辑"},
-
-  "600381":{c:"卖出", p:"保壳逻辑"},
-
-  "600423":{c:"卖出", p:"保壳逻辑"},
-
-  "600439":{c:"卖出", p:"处罚ST"},
-
-  "600476":{c:"卖出", p:"保壳逻辑"},
-
-  "600491":{c:"卖出", p:"重整逻辑"},
-
-  "600530":{c:"卖出", p:"处罚ST"},
-
-  "600537":{c:"卖出", p:"重整逻辑"},
-
-  "600543":{c:"卖出", p:"保壳逻辑"},
-
-  "600568":{c:"卖出", p:"保壳逻辑"},
-
-  "600581":{c:"卖出", p:"保壳逻辑"},
-
-  "600624":{c:"卖出", p:"处罚ST"},
-
-  "600678":{c:"买入", p:"处罚ST"},
-
-  "600730":{c:"卖出", p:"保壳逻辑"},
-
-  "600734":{c:"卖出", p:"保壳逻辑"},
-
-  "600735":{c:"卖出", p:"处罚ST"},
-
-  "600745":{c:"卖出", p:"保壳逻辑"},
-
-  "600753":{c:"卖出", p:"处罚ST"},
-
-  "600759":{c:"卖出", p:"处罚ST"},
-
-  "600818":{c:"卖出", p:"处罚ST"},
-
-  "600889":{c:"卖出", p:"保壳逻辑"},
-
-  "600965":{c:"卖出", p:"保壳逻辑"},
-
-  "601010":{c:"卖出", p:"处罚ST"},
-
-  "601718":{c:"卖出", p:"处罚ST"},
-
-  "603008":{c:"卖出", p:"重整逻辑"},
-
-  "603021":{c:"卖出", p:"保壳逻辑"},
-
-  "603189":{c:"卖出", p:"保壳逻辑"},
-
-  "603272":{c:"买入", p:"保壳逻辑"},
-
-  "603359":{c:"卖出", p:"保壳逻辑"},
-
-  "603377":{c:"卖出", p:"重整逻辑"},
-
-  "603378":{c:"卖出", p:"重整逻辑"},
-
-  "603398":{c:"卖出", p:"重整逻辑"},
-
-  "603429":{c:"卖出", p:"保壳逻辑"},
-
-  "603517":{c:"卖出", p:"非ST"},
-
-  "603557":{c:"卖出", p:"保壳逻辑"},
-
-  "603595":{c:"卖出", p:"处罚ST"},
-
-  "603718":{c:"买入", p:"保壳逻辑"},
-
-  "603729":{c:"卖出", p:"处罚ST"},
-
-  "603789":{c:"卖出", p:"保壳逻辑"},
-
-  "603822":{c:"卖出", p:"处罚ST"},
-
-  "603825":{c:"卖出", p:"处罚ST"},
-
-  "603828":{c:"卖出", p:"处罚ST"},
-
-  "603838":{c:"卖出", p:"非ST"},
-
-  "603843":{c:"卖出", p:"重整逻辑"},
-
-  "603869":{c:"卖出", p:"处罚ST"},
-
-  "603922":{c:"卖出", p:"处罚ST"},
-
-  "603959":{c:"卖出", p:"重整逻辑"},
-
-  "605196":{c:"买入", p:"非ST"},
-
-  "605199":{c:"卖出", p:"处罚ST"},
-
-  "605336":{c:"卖出", p:"保壳逻辑"},
-
-  "688022":{c:"卖出", p:"处罚ST"},
-
-  "688033":{c:"卖出", p:"重整逻辑"},
-
-  "688053":{c:"卖出", p:"处罚ST"},
-
-  "688066":{c:"卖出", p:"重整逻辑"},
-
-  "688076":{c:"卖出", p:"处罚ST"},
-
-  "688089":{c:"卖出", p:"处罚ST"},
-
-  "688121":{c:"卖出", p:"退市执行"},
-
-  "688184":{c:"卖出", p:"处罚ST"},
-
-  "688189":{c:"卖出", p:"处罚ST"},
-
-  "688201":{c:"卖出", p:"处罚ST"},
-
-  "688270":{c:"卖出", p:"处罚ST"},
-
-  "688333":{c:"卖出", p:"非ST"},
-
-  "688496":{c:"卖出", p:"退市执行"},
-
-  "688622":{c:"卖出", p:"保壳逻辑"},
-
-  "920023":{c:"卖出", p:"保壳逻辑"},
-
-  "920090":{c:"卖出", p:"保壳逻辑"},
-
-  "920575":{c:"卖出", p:"重整逻辑"}
-
+  "000010":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "000016":{c:"卖出", p:"退市执行", t:"真ST", o:"国资控股", b:"主板"},
+  "000056":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "000078":{c:"卖出", p:"处罚ST", t:"真ST", o:"非国资控股", b:"主板"},
+  "000488":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "000609":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "000610":{c:"卖出", p:"重整逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "000615":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "000632":{c:"卖出", p:"重整逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "000639":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "000669":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "000677":{c:"卖出", p:"处罚ST", t:"真ST", o:"非国资控股", b:"主板"},
+  "000698":{c:"卖出", p:"处罚ST", t:"假ST", o:"国资控股", b:"主板"},
+  "000752":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "000793":{c:"卖出", p:"重整逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "000821":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "000826":{c:"卖出", p:"重整逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "000838":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "000903":{c:"卖出", p:"处罚ST", t:"真ST", o:"国资控股", b:"主板"},
+  "000909":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "000911":{c:"买入", p:"保壳逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "000972":{c:"卖出", p:"重整逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "002024":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002055":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "002082":{c:"卖出", p:"处罚ST", t:"真ST", o:"非国资控股", b:"主板"},
+  "002102":{c:"卖出", p:"处罚ST", t:"假ST", o:"国资控股", b:"主板"},
+  "002109":{c:"卖出", p:"处罚ST", t:"真ST", o:"国资控股", b:"主板"},
+  "002122":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "002168":{c:"卖出", p:"重整逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "002175":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002193":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "002198":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "002207":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "002211":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002217":{c:"卖出", p:"处罚ST", t:"假ST", o:"国资控股", b:"主板"},
+  "002227":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002305":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "002306":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002323":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "002360":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002424":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "002431":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "002485":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002501":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002512":{c:"卖出", p:"处罚ST", t:"真ST", o:"非国资控股", b:"主板"},
+  "002514":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002528":{c:"卖出", p:"重整逻辑", t:"假ST", o:"国资控股", b:"主板"},
+  "002538":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "002542":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "002547":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002569":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002581":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002586":{c:"卖出", p:"保壳逻辑", t:"假ST", o:"非国资控股", b:"主板"},
+  "002592":{c:"卖出", p:"处罚ST", t:"真ST", o:"非国资控股", b:"主板"},
+  "002598":{c:"卖出", p:"处罚ST", t:"假ST", o:"国资控股", b:"主板"},
+  "002620":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002630":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002634":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002650":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "002667":{c:"买入", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002689":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "002691":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002694":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002717":{c:"卖出", p:"退市执行", t:"真ST", o:"非国资控股", b:"主板"},
+  "002719":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002726":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002731":{c:"卖出", p:"退市执行", t:"真ST", o:"非国资控股", b:"主板"},
+  "002743":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "002759":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "002789":{c:"卖出", p:"重整逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "002816":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "002822":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002856":{c:"卖出", p:"重整逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "002872":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "002883":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "002932":{c:"买入", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "002977":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "300010":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"创业板"},
+  "300020":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"创业板"},
+  "300027":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"创业板"},
+  "300044":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"创业板"},
+  "300068":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"创业板"},
+  "300076":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"国资控股", b:"创业板"},
+  "300081":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"创业板"},
+  "300087":{c:"卖出", p:"处罚ST", t:"假ST", o:"国资控股", b:"创业板"},
+  "300091":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"创业板"},
+  "300096":{c:"卖出", p:"保壳逻辑", t:"假ST", o:"国资控股", b:"创业板"},
+  "300123":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"创业板"},
+  "300125":{c:"卖出", p:"重整逻辑", t:"假ST", o:"非国资控股", b:"创业板"},
+  "300147":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"创业板"},
+  "300152":{c:"卖出", p:"处罚ST", t:"真ST", o:"非国资控股", b:"创业板"},
+  "300167":{c:"卖出", p:"保壳逻辑", t:"假ST", o:"非国资控股", b:"创业板"},
+  "300173":{c:"卖出", p:"处罚ST", t:"假ST", o:"国资控股", b:"创业板"},
+  "300198":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"创业板"},
+  "300205":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"创业板"},
+  "300212":{c:"卖出", p:"重整逻辑", t:"真ST", o:"国资控股", b:"创业板"},
+  "300237":{c:"卖出", p:"保壳逻辑", t:"假ST", o:"国资控股", b:"创业板"},
+  "300245":{c:"卖出", p:"处罚ST", t:"真ST", o:"非国资控股", b:"创业板"},
+  "300290":{c:"卖出", p:"处罚ST", t:"真ST", o:"国资控股", b:"创业板"},
+  "300295":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"创业板"},
+  "300301":{c:"买入", p:"重整逻辑", t:"假ST", o:"非国资控股", b:"创业板"},
+  "300326":{c:"买入", p:"处罚ST", t:"假ST", o:"非国资控股", b:"创业板"},
+  "300338":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"创业板"},
+  "300352":{c:"卖出", p:"处罚ST", t:"真ST", o:"非国资控股", b:"创业板"},
+  "300366":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"创业板"},
+  "300385":{c:"卖出", p:"重整逻辑", t:"真ST", o:"国资控股", b:"创业板"},
+  "300396":{c:"买入", p:"保壳逻辑", t:"真ST", o:"国资控股", b:"创业板"},
+  "300419":{c:"卖出", p:"保壳逻辑", t:"假ST", o:"非国资控股", b:"创业板"},
+  "300430":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"创业板"},
+  "300460":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"创业板"},
+  "300462":{c:"卖出", p:"重整逻辑", t:"假ST", o:"非国资控股", b:"创业板"},
+  "300472":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"创业板"},
+  "300477":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"创业板"},
+  "300555":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"创业板"},
+  "300594":{c:"卖出", p:"处罚ST", t:"真ST", o:"非国资控股", b:"创业板"},
+  "300716":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"创业板"},
+  "300779":{c:"卖出", p:"非ST", t:"真ST", o:"非国资控股", b:"创业板"},
+  "300831":{c:"卖出", p:"处罚ST", t:"假ST", o:"国资控股", b:"创业板"},
+  "301030":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"创业板"},
+  "301117":{c:"买入", p:"处罚ST", t:"假ST", o:"非国资控股", b:"创业板"},
+  "600053":{c:"卖出", p:"保壳逻辑", t:"假ST", o:"非国资控股", b:"主板"},
+  "600079":{c:"卖出", p:"处罚ST", t:"假ST", o:"国资控股", b:"主板"},
+  "600080":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "600082":{c:"卖出", p:"处罚ST", t:"假ST", o:"国资控股", b:"主板"},
+  "600084":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "600107":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "600119":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "600136":{c:"卖出", p:"处罚ST", t:"假ST", o:"国资控股", b:"主板"},
+  "600169":{c:"卖出", p:"处罚ST", t:"假ST", o:"国资控股", b:"主板"},
+  "600180":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "600187":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "600238":{c:"卖出", p:"处罚ST", t:"假ST", o:"国资控股", b:"主板"},
+  "600239":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "600243":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "600265":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "600289":{c:"卖出", p:"处罚ST", t:"真ST", o:"非国资控股", b:"主板"},
+  "600302":{c:"卖出", p:"处罚ST", t:"真ST", o:"国资控股", b:"主板"},
+  "600337":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "600340":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "600363":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "600365":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "600370":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "600381":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "600423":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "600439":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "600476":{c:"卖出", p:"保壳逻辑", t:"假ST", o:"国资控股", b:"主板"},
+  "600491":{c:"卖出", p:"重整逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "600530":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "600537":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "600543":{c:"卖出", p:"保壳逻辑", t:"假ST", o:"国资控股", b:"主板"},
+  "600568":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "600581":{c:"卖出", p:"保壳逻辑", t:"假ST", o:"国资控股", b:"主板"},
+  "600624":{c:"卖出", p:"处罚ST", t:"假ST", o:"国资控股", b:"主板"},
+  "600678":{c:"买入", p:"处罚ST", t:"假ST", o:"国资控股", b:"主板"},
+  "600730":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "600734":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "600735":{c:"卖出", p:"处罚ST", t:"真ST", o:"非国资控股", b:"主板"},
+  "600745":{c:"卖出", p:"保壳逻辑", t:"假ST", o:"非国资控股", b:"主板"},
+  "600753":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "600759":{c:"卖出", p:"处罚ST", t:"真ST", o:"非国资控股", b:"主板"},
+  "600818":{c:"卖出", p:"处罚ST", t:"真ST", o:"非国资控股", b:"主板"},
+  "600889":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"国资控股", b:"主板"},
+  "600965":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "601010":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "601718":{c:"卖出", p:"处罚ST", t:"假ST", o:"国资控股", b:"主板"},
+  "603008":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "603021":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "603189":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "603272":{c:"买入", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "603359":{c:"卖出", p:"保壳逻辑", t:"假ST", o:"非国资控股", b:"主板"},
+  "603377":{c:"卖出", p:"重整逻辑", t:"假ST", o:"非国资控股", b:"主板"},
+  "603378":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "603398":{c:"卖出", p:"重整逻辑", t:"假ST", o:"非国资控股", b:"主板"},
+  "603429":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "603517":{c:"卖出", p:"非ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "603557":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "603595":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "603718":{c:"买入", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "603729":{c:"卖出", p:"处罚ST", t:"真ST", o:"非国资控股", b:"主板"},
+  "603789":{c:"卖出", p:"保壳逻辑", t:"假ST", o:"非国资控股", b:"主板"},
+  "603822":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "603825":{c:"卖出", p:"处罚ST", t:"假ST", o:"国资控股", b:"主板"},
+  "603828":{c:"卖出", p:"处罚ST", t:"真ST", o:"非国资控股", b:"主板"},
+  "603838":{c:"卖出", p:"非ST", t:"真ST", o:"非国资控股", b:"主板"},
+  "603843":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "603869":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "603922":{c:"卖出", p:"处罚ST", t:"真ST", o:"非国资控股", b:"主板"},
+  "603959":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "605196":{c:"买入", p:"非ST", t:"真ST", o:"非国资控股", b:"主板"},
+  "605199":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"主板"},
+  "605336":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"主板"},
+  "688002":{c:"买入", p:"非ST", t:"真ST", o:"非国资控股", b:"科创板"},
+  "688022":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"科创板"},
+  "688033":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"科创板"},
+  "688053":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"科创板"},
+  "688066":{c:"卖出", p:"重整逻辑", t:"假ST", o:"非国资控股", b:"科创板"},
+  "688076":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"科创板"},
+  "688089":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"科创板"},
+  "688121":{c:"卖出", p:"退市执行", t:"真ST", o:"非国资控股", b:"科创板"},
+  "688184":{c:"卖出", p:"处罚ST", t:"真ST", o:"非国资控股", b:"科创板"},
+  "688189":{c:"卖出", p:"处罚ST", t:"假ST", o:"国资控股", b:"科创板"},
+  "688201":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"科创板"},
+  "688270":{c:"卖出", p:"处罚ST", t:"假ST", o:"非国资控股", b:"科创板"},
+  "688333":{c:"卖出", p:"非ST", t:"真ST", o:"非国资控股", b:"科创板"},
+  "688496":{c:"卖出", p:"退市执行", t:"真ST", o:"非国资控股", b:"科创板"},
+  "688622":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"科创板"},
+  "920023":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"其他"},
+  "920090":{c:"卖出", p:"保壳逻辑", t:"真ST", o:"非国资控股", b:"其他"},
+  "920575":{c:"卖出", p:"重整逻辑", t:"真ST", o:"非国资控股", b:"其他"}
 };
 
+let state = {kw:"", cat:"all", stype:"all", owner:"all", board:"all",
+             exch:"all", concl:"all", path:"all"};
 
-
-let state = {kw:"", cat:"all", exch:"all", concl:"all", path:"all"};
-
-
-
-function metaOf(code){ return META[code] || {c:"", p:""}; }
-
-
+function metaOf(code){ return META[code] || {c:"", p:"", t:"", o:"", b:""}; }
 
 function matches(s){
-
   const kw = state.kw.trim().toLowerCase();
-
   if(kw){
-
     const hay = (s.code + " " + s.name + " " + s.py + " " + s.prefix + s.name).toLowerCase();
-
     const hit = hay.includes(kw) || s.py.startsWith(kw) || s.code.startsWith(kw);
-
     if(!hit) return false;
-
   }
-
   if(state.cat === "xst" && s.prefix !== "*ST") return false;
-
   if(state.cat === "st" && s.prefix !== "ST") return false;
-
   if(state.cat === "unst" && s.prefix !== "") return false;
-
   if(state.exch !== "all" && s.exch !== state.exch) return false;
-
   const m = metaOf(s.code);
-
+  if(state.stype !== "all" && m.t !== state.stype) return false;
+  if(state.owner !== "all" && m.o !== state.owner) return false;
+  if(state.board !== "all" && m.b !== state.board) return false;
   if(state.concl !== "all" && m.c !== state.concl) return false;
-
   if(state.path !== "all" && m.p !== state.path) return false;
-
   return true;
-
 }
-
-
 
 function fullName(s){ return s.prefix + s.name; }
 
-
-
 function render(){
-
   const list = STOCKS.filter(matches);
-
   document.getElementById("count").textContent = STOCKS.length;
-
   document.getElementById("latest").textContent = STOCKS.reduce((m,s)=> s.date > m ? s.date : m, "0");
-
   const nt = x => STOCKS.filter(s=> metaOf(s.code).c === x).length;
-
   const nb = document.getElementById("buyN"), ns = document.getElementById("sellN");
-
   if(nb) nb.textContent = nt("买入");
-
   if(ns) ns.textContent = nt("卖出");
-
   const grid = document.getElementById("grid");
-
   const empty = document.getElementById("empty");
-
   grid.innerHTML = "";
-
   if(list.length === 0){ empty.style.display = "block"; return; }
-
   empty.style.display = "none";
-
   list.forEach(s=>{
-
     const isXst = s.prefix === "*ST";
-
     const m = metaOf(s.code);
-
     const kind = s.prefix === "" ? "unst" : (isXst ? "xst" : "st");
-
     const tag = s.prefix
-
       ? '<span class="tag ' + kind + '">' + s.prefix + '</span>'
-
       : '<span class="tag unst">已摘帽</span>';
-
     const a = document.createElement("a");
-
     a.className = "card";
-
     a.href = "reports/" + s.code + ".html";
-
     a.innerHTML =
-
       '<div class="bar ' + kind + '"></div>' +
-
       tag +
-
       '<div class="name">' + fullName(s) + '</div>' +
-
       '<div class="code">' + s.code + (s.exch==="深"?".SZ":(s.exch==="沪"?".SH":".BJ")) + '</div>' +
-
       '<div class="badges">' +
-
         (m.c ? '<span class="bd ' + (m.c==="买入"?"buy":"sell") + '">' + m.c + '</span>' : '') +
-
         (m.p ? '<span class="bd path' + (m.p==="退市执行" ? ' delist' : '') + '">' + m.p + '</span>' : '') +
-
       '</div>' +
-
       '<div class="meta"><span>' + s.date.slice(5) + '</span><span class="exch">' + s.exch + '</span></div>';
-
     grid.appendChild(a);
-
   });
-
 }
-
-
 
 function bindChips(containerId, key){
-
   const cont = document.getElementById(containerId);
-
   if(!cont) return;
-
   cont.addEventListener("click", e=>{
-
     const chip = e.target.closest(".chip");
-
     if(!chip || !chip.dataset.val) return;
-
     state[key] = chip.dataset.val;
-
     Array.from(cont.children).forEach(c=>c.classList.remove("active"));
-
     chip.classList.add("active");
-
     render();
-
   });
-
 }
 
-
-
 document.getElementById("q").addEventListener("input", e=>{ state.kw = e.target.value; render(); });
-
 bindChips("catChips", "cat");
-
+bindChips("stypeChips", "stype");
+bindChips("ownerChips", "owner");
+bindChips("boardChips", "board");
 bindChips("exchChips", "exch");
-
 bindChips("conclChips", "concl");
-
 bindChips("pathChips", "path");
-
 render();
-
 </script>
 
 
