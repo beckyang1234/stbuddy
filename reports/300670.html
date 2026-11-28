@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ST大烨（300670.SZ）研究报告</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>7 章 · 13 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">全篇时间口径</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">一、基本信息（先定性）</a><a class="sblv3" href="#sec0">1、企业基本信息</a><a class="sblv3" href="#sec1">2、股权结构</a><a class="sblv3" href="#sec2">3、ST风险分析</a><a class="sblv3" href="#sec3">4、运营情况</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">二、基本面分析：路径C·处罚ST</a><a class="sblv3" href="#sec4">1、逐项业务拆解</a><a class="sblv3" href="#sec5">2、未来三年规划与激励目标（前瞻口径）</a><a class="sblv3" href="#sec6">3、估值汇总与潜在增长倍数</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">三、情绪分析</a><a class="sblv3" href="#sec7">1、主板映射</a><a class="sblv3" href="#sec8">2、主题催化：新·大·强打分</a><a class="sblv3" href="#sec9">3、历史异动（倒序）</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">四、技术分析</a></div><div class="sbgrp"><a class="sblv2" href="#chap6">五、投资结论</a><a class="sblv3" href="#sec10">附录A · 待核实清单</a><a class="sblv3" href="#sec11">附录B · 关键信源</a><a class="sblv3" href="#sec12">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">ST大烨（300670.SZ）研究报告</h1>
+<h2 id="chap0">封面 · 结论前置</h2>
+<table><thead><tr><th>项</th><th>结论</th></tr></thead><tbody><tr><td>操作结论</td><td><strong>卖出</strong></td></tr><tr><td>红线分类</td><td><span class="sttag sttag-orange"><a href="http://static.cninfo.com.cn/finalpage/2025-12-26/1224900155.PDF" target="_blank" rel="noopener">因信息披露违法被立案</a></span>·<span class="sttag sttag-orange"><a href="http://static.cninfo.com.cn/finalpage/2026-11-25/1225686832.PDF" target="_blank" rel="noopener">因财务造假被实施其他风险警示</a></span></td></tr><tr><td>生死定级</td><td>可救·需外力（正式处罚决定书＋追溯重述）</td></tr><tr><td>自救空间</td><td>违法主体苏州国宇已于2024年剥离、罚款400万元可承受；但摘帽须等处罚决定书满12个月，最早2027年末，程序时间不可压缩。</td></tr><tr><td>主要看点</td><td>两艘船舶光租OOS、月租133.5万美元已兑现，撑起26H1三成营收和六成毛利；但国网业务萎缩六成、可动用现金仅702.53万元、激励目标已落空。</td></tr><tr><td><strong>潜在增长倍数</strong></td><td><strong>0.65倍</strong>（区间0.52—0.78）＜1；三法汇总合理市值6—9亿元 vs 现市值11.47亿元。</td></tr><tr><td>基本面路径</td><td>处罚ST（假ST，不触及重大违法强制退市）</td></tr><tr><td>版本与基准日</td><td>初版 · 2026-11-28；研究基准日2026-11-28；行情截至2026-11-27收盘；财务截至26Q3（2026-09-30）。</td></tr></tbody></table>
+<p>依据：<a href="http://static.cninfo.com.cn/finalpage/2025-12-26/1224900155.PDF" target="_blank" rel="noopener">立案公告</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-11-25/1225686832.PDF" target="_blank" rel="noopener">ST实施公告</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-11-25/1225686833.PDF" target="_blank" rel="noopener">处罚事先告知书</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-10-27/1225625217.PDF" target="_blank" rel="noopener">26Q3报告</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-08-22/1225488698.PDF" target="_blank" rel="noopener">26H1报告</a>。</p>
+<details class="fold"><summary>数据来源与已知数据异常</summary><div class="fold-body">
+
+<ul><li>公告：巨潮资讯网全量清单443条（2023-01—2026-11，按月分窗＋月末补齐），关键公告均取PDF直链核对，<code>adjunctUrl</code> 中 <code>finalpage/</code> 日期为准；深交所 detail 深链对非浏览器请求返回403，故全部改用PDF直链。</li><li>投资者交流：同花顺F10互动易全量17条（2025-12—2026-11，日期由 year/month/day 三字段拼接），巨潮 <code>tabName=relation</code> 全量10份调研/业绩说明会记录（2023-02—2026-05）。</li><li>行情：腾讯自选股（<code>qt.gtimg.cn</code> 2026-11-27 16:14 收盘快照、<code>fqkline</code> 前复权月线83个月）；龙虎榜取东财 <code>RPT_DAILYBILLBOARD_DETAILSNEW</code>。</li><li>财务：26Q3报告、26H1报告、2025年报原文逐项核；Wind本轮体检脚本被中断，未启用Wind，全部改用公告原文＋公开行情源，无异源混用。</li><li>已知异常：① 退市风险预警底表（2026-11-19版）未收录300670（新戴帽未纳入），路径按公告独立判定；② ST信息库无本股独立档案，仅有每日消息与异动记录；③ 26Q3货币资金9290.08万元、期末现金及现金等价物仅702.53万元，差额参照26H1附注主要为存单质押6500万元＋票据保证金3149.54万元，Q3未单独披露受限明细，按26H1结构推断并标注；④ 龙虎榜席位字段为数字编码（<code>BUY_SEAT_NEW=11111</code>），无具体营业部名称，只引用净额与资金属性描述。</li></ul>
+
+</div></details>
+<h2 id="chap1">全篇时间口径</h2>
+<table><thead><tr><th>数据</th><th>期别/时点</th><th>标注规则</th></tr></thead><tbody><tr><td>股价3.62元、市值11.47亿元、PB 2.58倍</td><td>2026-11-27收盘</td><td>时点项</td></tr><tr><td>营收2.15亿元、归母1007.65万元、扣非-903.06万元、归母净资产4.45亿元</td><td>26Q3（2026-09-30）</td><td>时点/期间分列</td></tr><tr><td>智能配电0.68亿元/毛利率6.65%、资产租赁0.38亿元/毛利率61.63%</td><td>26H1（2026-06-30）</td><td>最新分部口径，★较26Q3滞后一期</td></tr><tr><td>营收2.38亿元、归母-2.08亿元、扣非-1.84亿元</td><td>2025A</td><td>比较列</td></tr><tr><td>处罚金额400万元、虚增虚减数据</td><td>2026-11-24事先告知书</td><td>事件时点</td></tr><tr><td>光租合同4872.75万美元、租金起算</td><td>2025-11-03公告、2026-03-01起</td><td>事件时点</td></tr></tbody></table>
+<p>默认规则：正文数字不标期别时一律指26Q3；历史比较数据只在折叠块出现并保留期别。</p>
+<hr>
+<h2 id="chap2">一、基本信息（先定性）</h2>
+<p><strong>ST大烨是“假ST”：退市红线一条未踩，但摘帽最快要等正式处罚决定书满12个月，2027年末之前没有制度性重定价窗口。</strong> 戴帽原因是2021年报虚增营收3128.89万元、2022年报虚减营收1474.57万元，触发创业板上市规则9.4条第七项；公司明确未触及10.5.2条重大违法强制退市。违法主体苏州国宇100%股权已于2024年11月以1.2亿元转让、12月完成工商变更，风险源头已出表（依据：<a href="http://static.cninfo.com.cn/finalpage/2026-11-25/1225686833.PDF" target="_blank" rel="noopener">处罚事先告知书</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-11-25/1225686832.PDF" target="_blank" rel="noopener">ST实施公告</a>）。</p>
+<h3 id="sec0">1、企业基本信息</h3>
+<table><thead><tr><th>项</th><th>内容</th></tr></thead><tbody><tr><td>成立/上市</td><td>2011-12-21成立；2017-07-03创业板上市，发行价10.93元</td></tr><tr><td>注册/办公地</td><td>南京市江宁区将军大道223号</td></tr><tr><td>行业</td><td>电力设备—电网设备（智能配电）；兼营光伏、船舶租赁</td></tr><tr><td>最新主营构成</td><td>26H1：智能配电0.68亿元（54.18%）、资产租赁0.38亿元（30.13%）、新能源0.17亿元（13.82%）</td></tr><tr><td>总股本</td><td>3.1692亿股（26Q3末）</td></tr></tbody></table>
+<p>依据：<a href="http://www.daybright.cn/about.html" target="_blank" rel="noopener">公司官网</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-08-22/1225488698.PDF" target="_blank" rel="noopener">26H1报告</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-10-27/1225625217.PDF" target="_blank" rel="noopener">26Q3报告</a>。</p>
+<details class="fold"><summary>业务模式与主体结构（论据）</summary><div class="fold-body">
+
+<p>智能配电：面向国家电网省级公司招投标，产品为一二次融合柱上断路器、环网箱等，2023年调研称国网客户占该业务收入85%；2025年因国网招标模式调整、竞争加剧，中标金额与单价双降。</p>
+<p>新能源：光伏EPC＋电站运营，2025年光伏业务营收0.41亿元、同比-60.50%；海工吊装业务2026年起暂停，船舶转为光租。</p>
+<p>资产租赁：全资子公司锦华零壹/零贰持有锦华01/02两艘自升式平台船，2025-11-03与荷兰OOS签光船租赁合同，每船每日2.225万美元、两船月租133.5万美元。</p>
+<p>船舶权属：抵押权人工行南京汉府支行；原船东铧景系诉讼仍在美国最高法再审阶段（公司再审申请人），但不影响所有权与出租。</p>
+
+</div></details>
+<h3 id="sec1">2、股权结构</h3>
+<p><strong>控制权稳定但流动性隐患未消：陈杰直接持股36.39%＋通过南京明昭控制7.28%，合计43.67%；其个人质押1930万股（占其直接持股16.7%），已从2024年调研披露的“100%质押”明显下降。</strong> 原拟向中胜峥盈转让8%股份（2535万股）已于2026-10-26终止，深交所协议转让确认书过期、未过户，控制权变更预期正式落空（依据：<a href="http://static.cninfo.com.cn/finalpage/2026-10-27/1225625217.PDF" target="_blank" rel="noopener">26Q3报告</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-10-26/1225626377.PDF" target="_blank" rel="noopener">终止转让公告</a>、<a href="http://static.cninfo.com.cn/finalpage/2024-04-26/1219861138.PDF" target="_blank" rel="noopener">2024-04-26调研</a>）。</p>
+<table><thead><tr><th>股东（26Q3末）</th><th>性质</th><th>持股比例</th><th>状态</th></tr></thead><tbody><tr><td>陈杰</td><td>境内自然人</td><td>36.39%</td><td>质押1930万股</td></tr><tr><td>南京明昭投资（陈杰控制）</td><td>境内法人</td><td>7.28%</td><td>无质押</td></tr><tr><td>吕敏霞（司法拍卖受让）</td><td>境内自然人</td><td>0.95%</td><td>限售300万股</td></tr><tr><td>外资合计（UBS/摩根大通/高盛/大摩/美林）</td><td>境外法人</td><td>约3.47%</td><td>无质押</td></tr></tbody></table>
+<details class="fold"><summary>股权沿革与管理层（论据）</summary><div class="fold-body">
+
+<ul><li>2025-09-10：陈杰拟转让2535万股（8%）给中胜峥盈管理的中胜华远1号基金；2026-10-26双方签署终止协议，确认书过期、未过户，互不追责，原两份简式权益变动报告书作废。</li><li>2026Q3：吴国栋335.21万股限售股经司法拍卖过户给吕敏霞（300万股）、李石蓉（35.21万股）。</li><li>陈杰：1967年生，专科、EMBA在读；2008-09—2011-11任南京明昭总经理，2011-12至今任明昭执行董事兼总经理；现任董事长、总经理，本次拟被罚150万元，11-24公司仍披露继续提名其为第五届董事会非独立董事候选人。</li><li>任长根：1968年生，中专；2002—2012年任安能电气副总经理，2015年起历任董秘，2025-10至今代行财务总监；现任董事、副总经理、董秘。</li><li>审计委员会独董葛军：1963年生，博士、教授、高级会计师、注册会计师与注册资产评估师，金陵科技学院商学院MPAcc中心主任；2026-11-13被提名为第五届董事会独董候选人。</li></ul>
+<p>依据：<a href="http://static.cninfo.com.cn/finalpage/2026-10-27/1225625217.PDF" target="_blank" rel="noopener">26Q3报告</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-10-26/1225626377.PDF" target="_blank" rel="noopener">终止转让公告</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-04-27/1225191070.pdf" target="_blank" rel="noopener">2025年报</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-11-25/1225686834.PDF" target="_blank" rel="noopener">提名陈杰说明</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-11-14/1225670335.PDF" target="_blank" rel="noopener">董事会换届公告</a>。</p>
+
+</div></details>
+<h3 id="sec2">3、ST风险分析</h3>
+<p><strong>逐项排除后确认：本股只有“处罚ST”一项，净资产、扣除后营收、审计意见、资金占用、违规担保、立案中的重大违法退市六项均不成立；唯一需要盯的是正式处罚决定书何时落地、追溯重述能否完成。</strong>（依据：<a href="http://static.cninfo.com.cn/finalpage/2026-11-25/1225686833.PDF" target="_blank" rel="noopener">处罚事先告知书</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-04-27/1225191070.pdf" target="_blank" rel="noopener">2025年报</a>）</p>
+<table><thead><tr><th>红线项</th><th>结论</th><th>依据</th></tr></thead><tbody><tr><td>净资产为负</td><td>❌</td><td>26Q3末归母净资产4.45亿元</td></tr><tr><td>扣除后营收不足</td><td>❌</td><td>2025A扣除后营收2.38亿元，远超双创1亿元门槛</td></tr><tr><td>审计意见非标</td><td>❌</td><td>2025A为带强调事项段的无保留意见（非非标）</td></tr><tr><td>内控非标</td><td>❌</td><td>2025年度内控审计报告未见否定意见</td></tr><tr><td>资金占用/违规担保</td><td>❌</td><td>26H1专项汇总表无经营性占用；担保为正常授信担保</td></tr><tr><td>立案调查/重大违法</td><td>⚠</td><td>2025-12-26因信披违法被立案，2026-11-24事先告知书明确不触及重大违法强制退市</td></tr><tr><td>财务指标虚假记载</td><td>✅</td><td>2021—2022年报，创业板9.4(七)</td></tr></tbody></table>
+<details class="fold"><summary>ST沿革与摘帽逐关（论据）</summary><div class="fold-body">
+
+<p><figure style="margin:14px 0 6px"><svg viewBox="0 0 660 86" width="100%" style="max-width:660px;height:auto" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif"><rect x="0" y="0" width="660" height="86" fill="#fbfcfd"/><rect x="10.0" y="8" width="640.0" height="38" rx="3" fill="#d97706"/><text x="15.0" y="24" font-size="12.5" font-weight="700" fill="#fff">ST大烨</text><text x="15.0" y="38" font-size="9" fill="rgba(255,255,255,.94)">因2021—2022年报虚假记载被实施其他风险警示</text><line x1="10" y1="60" x2="650" y2="60" stroke="#d0d5dd" stroke-width="1"/><line x1="10.0" y1="60" x2="10.0" y2="64" stroke="#d0d5dd" stroke-width="1"/><text x="10.0" y="75" font-size="10" fill="#667085" text-anchor="start">2026</text></svg><figcaption style="font-size:11px;color:#667085;margin-top:4px;line-height:1.5">色块＝状态区间；<strong>同一行内互不重叠，分行即为时间重叠（叠加）</strong>。数据来源：巨潮资讯「实施/撤销 退市风险警示」及「其他风险警示」公告。块上原因受宽度所限会截断，完整表述见正文。</figcaption></figure></p>
+<p>摘帽按创业板9.11条为AND逻辑，两关必须同时满足：</p>
+<table><thead><tr><th>关卡</th><th>要求</th><th>现状</th><th>概率</th><th>依据</th></tr></thead><tbody><tr><td>①追溯重述</td><td>对处罚决定所涉年度财报追溯重述</td><td>26Q3明确“无需追溯调整或重述”，尚未启动</td><td>中（70%）</td><td>26Q3报告</td></tr><tr><td>②12个月计时</td><td>自证监会作出行政处罚决定书之日起满12个月</td><td>仅有事先告知书（11-24），决定书未下</td><td>时间确定但起点未定</td><td>ST实施公告</td></tr></tbody></table>
+<p>两关合成：假设决定书2026-12—2027-03落地，最早申请窗口2027-12—2028-03；追溯重述70%×计时确定性95%≈67%。摘帽本身不改变利润，只改变估值标签，且历史上摘帽实施后60日中位为负，不作为买入理由。</p>
+<p>会计差错检查：2021年虚增营收3128.89万元（占当期6.10%）、虚增利润总额1378.15万元（占21.88%）；2022年虚减营收1474.57万元（占5.52%）、虚减利润总额634.38万元（占3.09%）。仅连续2年、单年金额均不足2亿元，未触及“连续3年虚假记载”的一票否决阶梯；且涉事子公司苏州国宇已出表，追溯重述只影响历史比较列。</p>
+
+</div></details>
+<h3 id="sec3">4、运营情况</h3>
+<p><strong>经营层面正在发生结构性切换：船舶租金替代亏损海工成为利润来源，但智能配电毛利率从16.19%（2025A）崩到6.65%（26H1），国网收入同比腰斩六成，整体扣非仍亏。</strong> 26Q3归母1007.65万元主要靠营业外收入2373.71万元（供应商及第三方赔偿款），扣非-903.06万元才是主业真实读数（依据：<a href="http://static.cninfo.com.cn/finalpage/2026-10-27/1225625217.PDF" target="_blank" rel="noopener">26Q3报告</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-08-22/1225488698.PDF" target="_blank" rel="noopener">26H1报告</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-04-27/1225191070.pdf" target="_blank" rel="noopener">2025年报</a>）。</p>
+<table><thead><tr><th>指标</th><th>26Q3</th><th>2025A</th><th>判读</th></tr></thead><tbody><tr><td>营业收入</td><td>2.15亿元（+4.46%）</td><td>2.38亿元（-29.39%）</td><td>微增靠租金</td></tr><tr><td>归母净利润</td><td>1007.65万元（扭亏）</td><td>-2.08亿元</td><td>扭亏靠赔偿款</td></tr><tr><td>扣非净利润</td><td>-903.06万元（+86.31%）</td><td>-1.84亿元</td><td>主业仍亏</td></tr><tr><td>经营现金流</td><td>0.90亿元（+79.04%）</td><td>0.67亿元</td><td>租金现金含量真实</td></tr><tr><td>归母净资产</td><td>4.45亿元</td><td>4.33亿元</td><td>未弥补亏损-2.28亿元</td></tr><tr><td>资产负债率</td><td>72.09%</td><td>73.62%</td><td>有息负债约8.26亿元</td></tr><tr><td>可动用现金</td><td>702.53万元</td><td>—</td><td>存单质押6500万元＋保证金3149.54万元（26H1）</td></tr></tbody></table>
+<details class="fold"><summary>财务原表与重要附注（论据）</summary><div class="fold-body">
+
+<p><figure class="stchart" style="margin:14px 0 18px;text-align:center"><svg viewBox="0 0 660 300" width="100%" style="max-width:660px;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" role="img" aria-label="2021—2026Q3营业收入（亿元）"><text x="62" y="20" font-size="13" font-weight="600" fill="#334155">2021—2026Q3营业收入（亿元）</text><line x1="62" y1="254.0" x2="642" y2="254.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="257.5" font-size="10.5" fill="#334155" text-anchor="end">0</text><line x1="62" y1="199.0" x2="642" y2="199.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="202.5" font-size="10.5" fill="#334155" text-anchor="end">1.44</text><line x1="62" y1="144.0" x2="642" y2="144.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="147.5" font-size="10.5" fill="#334155" text-anchor="end">2.87</text><line x1="62" y1="89.0" x2="642" y2="89.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="92.5" font-size="10.5" fill="#334155" text-anchor="end">4.31</text><line x1="62" y1="34.0" x2="642" y2="34.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="37.5" font-size="10.5" fill="#334155" text-anchor="end">5.75</text><rect x="47.0" y="57.6" width="46.0" height="196.4" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="70.0" y="51.6" font-size="10.5" fill="#334155" text-anchor="middle">5.13</text><rect x="165.7" y="151.8" width="46.0" height="102.2" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="188.7" y="145.8" font-size="10.5" fill="#334155" text-anchor="middle">2.67</text><rect x="284.3" y="84.4" width="46.0" height="169.6" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="307.3" y="78.4" font-size="10.5" fill="#334155" text-anchor="middle">4.43</text><rect x="403.3" y="125.0" width="46.0" height="129.0" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="426.3" y="119.0" font-size="10.5" fill="#334155" text-anchor="middle">3.37</text><rect x="521.9" y="162.9" width="46.0" height="91.1" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="544.9" y="156.9" font-size="10.5" fill="#334155" text-anchor="middle">2.38</text><rect x="611.0" y="171.7" width="46.0" height="82.3" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="634.0" y="165.7" font-size="10.5" fill="#334155" text-anchor="middle">2.15</text><text x="70.0" y="272" font-size="11" fill="#334155" text-anchor="middle">21/12</text><text x="188.7" y="272" font-size="11" fill="#334155" text-anchor="middle">22/12</text><text x="307.3" y="272" font-size="11" fill="#334155" text-anchor="middle">23/12</text><text x="426.3" y="272" font-size="11" fill="#334155" text-anchor="middle">24/12</text><text x="544.9" y="272" font-size="11" fill="#334155" text-anchor="middle">25/12</text><text x="634.0" y="272" font-size="11" fill="#334155" text-anchor="middle">26/09</text></svg><figcaption style="font-size:11.5px;color:#64748b;margin-top:4px;line-height:1.5">2025年报、26Q3报告；2021/2022为处罚告知书披露口径</figcaption></figure></p>
+<p><figure class="stchart" style="margin:14px 0 18px;text-align:center"><svg viewBox="0 0 660 300" width="100%" style="max-width:660px;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" role="img" aria-label="2023—2026Q3扣非净利润（亿元）"><text x="62" y="20" font-size="13" font-weight="600" fill="#334155">2023—2026Q3扣非净利润（亿元）</text><line x1="62" y1="254.0" x2="642" y2="254.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="257.5" font-size="10.5" fill="#334155" text-anchor="end">-2.06</text><line x1="62" y1="199.0" x2="642" y2="199.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="202.5" font-size="10.5" fill="#334155" text-anchor="end">-1.49</text><line x1="62" y1="144.0" x2="642" y2="144.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="147.5" font-size="10.5" fill="#334155" text-anchor="end">-0.92</text><line x1="62" y1="89.0" x2="642" y2="89.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="92.5" font-size="10.5" fill="#334155" text-anchor="end">-0.35</text><line x1="62" y1="34.0" x2="642" y2="34.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="37.5" font-size="10.5" fill="#334155" text-anchor="end">0.22</text><line x1="62" y1="55.3" x2="642" y2="55.3" stroke="#64748b" stroke-width="1.2"/><rect x="47.0" y="55.3" width="46.0" height="146.6" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="70.0" y="214.9" font-size="10.5" fill="#334155" text-anchor="middle">-1.52</text><rect x="252.4" y="55.3" width="46.0" height="104.1" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="275.4" y="172.4" font-size="10.5" fill="#334155" text-anchor="middle">-1.08</text><rect x="457.2" y="55.3" width="46.0" height="177.4" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="480.2" y="245.7" font-size="10.5" fill="#334155" text-anchor="middle">-1.84</text><rect x="611.0" y="55.3" width="46.0" height="8.7" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="634.0" y="77.0" font-size="10.5" fill="#334155" text-anchor="middle">-0.09</text><text x="70.0" y="272" font-size="11" fill="#334155" text-anchor="middle">23/12</text><text x="275.4" y="272" font-size="11" fill="#334155" text-anchor="middle">24/12</text><text x="480.2" y="272" font-size="11" fill="#334155" text-anchor="middle">25/12</text><text x="634.0" y="272" font-size="11" fill="#334155" text-anchor="middle">26/09</text></svg><figcaption style="font-size:11.5px;color:#64748b;margin-top:4px;line-height:1.5">2025年报、26Q3报告</figcaption></figure></p>
+<ul><li>26Q3单季：营收0.88亿元（+39.41%）、归母302.14万元、扣非478.16万元（单季转正）；经营现金流0.90亿元。</li><li>26H1分部：智能配电0.68亿元/毛利率6.65%（-9.95个百分点）；资产租赁0.38亿元/毛利率61.63%；新能源0.17亿元/毛利率19.77%；国网客户收入0.31亿元（-60.51%），直销客户0.95亿元（+49.39%）。</li><li>26Q3资产端：固定资产10.35亿元（船舶为主）、在建工程从0.84亿元降至0.014亿元（雨花软件谷转固）、其他非流动金融资产0.39亿元（-35.10%，转让基金）。</li><li>26Q3负债端：短期借款3.95亿元（+46.18%）、长期借款3.71亿元、一年内到期非流动负债0.59亿元；其他应付款0.28亿元（+2147%）。</li><li>26H1流动性附注原文：“本公司管理层认为本公司期末所承担的流动风险较高”，应对措施为收租金、续贷、择机处置基金、争取供应商账期。</li><li>2026-11-19：基本账户被冻结45.87万元（占净资产0.106%、货币资金0.746%），因上海艾讯云计算技术委托开发纠纷保全，公司非合同当事人，未触及9.4(二)“主要银行账号被冻结”。</li></ul>
+<p>依据：<a href="http://static.cninfo.com.cn/finalpage/2026-08-22/1225488698.PDF" target="_blank" rel="noopener">26H1报告</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-10-27/1225625217.PDF" target="_blank" rel="noopener">26Q3报告</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-11-19/1225679427.PDF" target="_blank" rel="noopener">账户冻结公告</a>。</p>
+
+</div></details>
+<hr>
+<h2 id="chap3">二、基本面分析：路径C·处罚ST</h2>
+<p><strong>本股按“处罚ST（假ST）”处理，定价核心不是摘帽本身，而是船舶光租现金流能否覆盖高负债与主业萎缩；结论是现金流真实但不改变“倍数＜1”的卖出判断。</strong>（依据：<a href="http://static.cninfo.com.cn/finalpage/2026-11-25/1225686833.PDF" target="_blank" rel="noopener">处罚事先告知书</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-08-22/1225488698.PDF" target="_blank" rel="noopener">26H1报告</a>）</p>
+<details class="fold"><summary>全量投资者交流判读（17条互动易＋10份调研记录）</summary><div class="fold-body">
+
+<p>互动易全量17条（2025-12—2026-11）：14条为股东户数查询（2026-03-31的16536户→2026-10-30的14317户→2026-11-10的15611户，戴帽前户数回升9%），另3条关键信息——2025-12-30公司自述立案原因为信披违法、“不存在退市风险”（当时口径）；同日光租租金测算两船合计4872.75万美元；同日否认苏州国宇减资存在利益输送（评估值3.38亿元、减资对价基数3.30亿元）。2026-07-23被问5.74元授予价依据，仅答“依管理办法确定”，无实质。</p>
+<p>机构调研全量10份（2023-02—2026-05），按L1—L4判读：</p>
+<table><thead><tr><th>时间</th><th>核心信息</th><th>等级</th><th>后续验证</th></tr></thead><tbody><tr><td>2026-05-19业绩说明会</td><td>船舶2026-03起付租金；2025亏损因海工低迷＋光伏政策＋减值＋基金亏损</td><td>L4已兑现</td><td>26H1资产租赁0.38亿元、毛利61.63%，验证</td></tr><tr><td>2025-11-21特定对象调研</td><td>承租方OOS已与巴西国家石油签约；租期内海工暂停；智能配电竞争加剧、毛利率下行；负债主要为船舶借款</td><td>L4/L3</td><td>光租合同与财报均验证</td></tr><tr><td>2025-05-14业绩说明会</td><td>国网首批中标额同比大幅上升；无并购计划；储能仍在海外拓展</td><td>L2</td><td>2026-06中标1.10亿元，但26H1国网收入-60.51%</td></tr><tr><td>2024-04-29业绩说明会</td><td>2024Q1靠船舶重组营业外收入3500余万元实现利润正增长；储能“AI尽头是储能和光伏”</td><td>L1叙事</td><td>储能2026年已不再被公司提及</td></tr><tr><td>2024-04-26调研</td><td>陈杰曾100%质押（个人融资1950万股/2500万元）；储能电芯外采</td><td>L2</td><td>26Q3质押降至1930万股</td></tr><tr><td>2023-02—09六份调研</td><td>储能欧洲经销商测试订单、毛利率约30%；阳台光伏布局；国网占配电收入85%；船舶7月下水</td><td>L1—L2</td><td>测试订单三年未转化为规模收入，叙事退潮</td></tr></tbody></table>
+<p><strong>判读：公司自述的盈利驱动只有一条已兑现——船舶光租；储能/阳台光伏/低空经济均是L1—L2且近两年不再被公司主动提及，不得计入估值分子。</strong> 反向词必须同时读：2025-11调研明确“租期内海上风电业务暂停、低空经济无规划”；2026-05业绩会明确立案“尚无明确结论”（当时）；互动易对授予价与市值管理均为模板答复。</p>
+<p>依据：<a href="http://static.cninfo.com.cn/finalpage/2026-05-19/1225315822.PDF" target="_blank" rel="noopener">2026-05-19记录</a>、<a href="http://static.cninfo.com.cn/finalpage/2025-11-24/1224821859.PDF" target="_blank" rel="noopener">2025-11-24记录</a>、<a href="http://static.cninfo.com.cn/finalpage/2025-05-14/1223543193.PDF" target="_blank" rel="noopener">2025-05-14记录</a>、<a href="http://static.cninfo.com.cn/finalpage/2024-04-29/1219907939.PDF" target="_blank" rel="noopener">2024-04-29记录</a>、<a href="http://static.cninfo.com.cn/finalpage/2024-04-26/1219861138.PDF" target="_blank" rel="noopener">2024-04-26记录</a>。</p>
+
+</div></details>
+<h3 id="sec4">1、逐项业务拆解</h3>
+<p><strong>三块业务里只有船舶租赁有真实定价价值，智能配电在打价格战、新能源规模过小，储能已退潮。</strong>（依据：<a href="http://static.cninfo.com.cn/finalpage/2026-04-27/1225191070.pdf" target="_blank" rel="noopener">2025年报</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-08-22/1225488698.PDF" target="_blank" rel="noopener">26H1报告</a>）</p>
+<details class="fold"><summary>商业模式/竞争格局/产能/行业六问（论据）</summary><div class="fold-body">
+
+<p><strong>①智能配电（商业模式）</strong>：国网省级公司招投标，2025年营收1.47亿元、毛利率16.19%（同比-8.13个百分点）；26H1营收0.68亿元、毛利率6.65%（-9.95个百分点）。公司在2023-09调研称国网占该业务85%，2026-06中标/预中标1.10亿元但国网口径收入反而-60.51%，说明中标未转化为确认收入或结构转向直销。</p>
+<p><strong>②竞争格局</strong>：同业为科大智能、中能电气、双杰电气、北京科锐、合纵科技（公司2024-04-29调研自述）。2025年国网招投标模式调整、参与者增加，公司自述“中标金额和中标价格均有所下降”；国网投资高增长（2025年超6500亿元、“十五五”规划4万亿元）属行业β，公司自身毛利率崩塌说明α为负——行业β≠公司α。</p>
+<p><strong>③船舶租赁（产能与合同）</strong>：两船日租2.225万美元/船，运营期1095—1245天，自2026-03-01起算，合同总额4872.75万美元（约3.4亿元）；承租方可在到期前90天选择延长730天、费率升至2.95万美元/船/天；承租方便利终止权以巴西国家石油终止为前提，且不早于第730天（约2027-09）。承租方需提供90天租金的银行保函。26H1资产租赁毛利61.63%，但船舶对应有息负债与折旧仍重。</p>
+<p><strong>④新能源</strong>：2025年光伏0.41亿元（-60.50%）、建设0.30亿元（-67.72%）；26H1新能源0.17亿元（-51.69%）、毛利率19.77%。规模不足以撑起市值。</p>
+<p><strong>⑤储能</strong>：2023年调研称海外测试订单、储能电池毛利19%/整体30%；2024年称“布局海外户储、国内电源侧储能”；2025—2026年公司不再披露进展，互动易亦无实质回答。按L1—L2处理，“强”维≤1，不进分子。</p>
+<p><strong>行业六问结论</strong>：供给端配电设备产能过剩、价格战；需求端国网投资增长但公司份额下滑；价格分位处低位（对公司不利的低价格）；格局分散；公司位置为二线供应商；结论＝行业景气无法转化为公司利润，不给估值溢价。</p>
+<p><strong>毛利率与净利率背离</strong>：26H1资产租赁毛利率61.63%但公司整体扣非仍亏——问题不在产品、在费用与负债（26Q3财务费用0.23亿元、管理费用0.46亿元同比+51.18%），管理问题不给估值溢价。</p>
+<p>依据：<a href="http://static.cninfo.com.cn/finalpage/2026-04-27/1225191070.pdf" target="_blank" rel="noopener">2025年报</a>、<a href="http://static.cninfo.com.cn/finalpage/2025-11-03/1224781918.PDF" target="_blank" rel="noopener">光船租赁合同公告</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-08-22/1225488698.PDF" target="_blank" rel="noopener">26H1报告</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-10-27/1225625217.PDF" target="_blank" rel="noopener">26Q3报告</a>。</p>
+
+</div></details>
+<h3 id="sec5">2、未来三年规划与激励目标（前瞻口径）</h3>
+<p><strong>股权激励目标是唯一公开的前瞻锚，但已被前三季数据证伪：2026年含税营收目标5亿元，26Q3仅2.15亿元，全年即使Q4持平也仅约3.0亿元（不含税），缺口超三成。</strong>（依据：<a href="http://static.cninfo.com.cn/finalpage/2026-07-20/1225433869.PDF" target="_blank" rel="noopener">股权激励授予公告</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-10-27/1225625217.PDF" target="_blank" rel="noopener">26Q3报告</a>）</p>
+<table><thead><tr><th>归属期</th><th>考核年</th><th>含税营收目标</th><th>回款率</th><th>当前进度</th></tr></thead><tbody><tr><td>第一个</td><td>2026</td><td>5亿元</td><td>55%</td><td>26Q3营收2.15亿元，目标大概率落空</td></tr><tr><td>第二个</td><td>2027</td><td>6.5亿元</td><td>60%</td><td>需较2026目标再增30%</td></tr><tr><td>第三个</td><td>2028</td><td>8.5亿元</td><td>65%</td><td>需较2027目标再增31%</td></tr></tbody></table>
+<p>授予价5.74元/股（2026-07-20收盘5.36元），现价3.62元倒挂37%；800万股授予6名核心骨干，预留200万股；未达标即作废、不可递延。<strong>倒挂不是安全垫，是管理层增长预期被市场证伪的读数。</strong></p>
+<h3 id="sec6">3、估值汇总与潜在增长倍数</h3>
+<p><strong>三法交叉后合理市值6—9亿元，对应股价1.90—2.84元，仅为现市值11.47亿元的0.52—0.78倍，倍数＜1，不具备买入条件。</strong>（依据：<a href="http://static.cninfo.com.cn/finalpage/2026-10-27/1225625217.PDF" target="_blank" rel="noopener">26Q3报告</a>、<a href="http://static.cninfo.com.cn/finalpage/2025-11-03/1224781918.PDF" target="_blank" rel="noopener">光船租赁合同公告</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-08-22/1225488698.PDF" target="_blank" rel="noopener">26H1报告</a>）</p>
+<table><thead><tr><th>方法</th><th>口径</th><th>合理市值</th><th>对应股价</th></tr></thead><tbody><tr><td>收益法（下限）</td><td>光租剩余约27个月净现金流折现约1.3亿元＋配电PS 0.8—1.2倍（1.1—1.7亿元）＋新能源PS 1倍（0.35亿元）</td><td>2.8—3.4亿元</td><td>0.88—1.07元</td></tr><tr><td>资产法（主锚）</td><td>26Q3归母净资产4.45亿元×1.5—2.0倍PB（ST折价＋ROE 2.30%＋扣非亏损）</td><td>6.7—8.9亿元</td><td>2.11—2.81元</td></tr><tr><td>同业对标（校验）</td><td>智能配电同业PB中位2.98倍（2026-11-27收盘）×净资产，再打30% ST折价</td><td>约9.3亿元</td><td>约2.94元</td></tr><tr><td>汇总</td><td>三法并列，以资产法为主锚</td><td>6—9亿元（中值7.5亿元）</td><td>1.90—2.84元</td></tr><tr><td>当前</td><td>3.62元×3.1692亿股</td><td>11.47亿元</td><td>3.62元</td></tr><tr><td><strong>倍数</strong></td><td><strong>7.5亿元÷11.47亿元</strong></td><td><strong>0.65倍</strong></td><td><strong>＜1</strong></td></tr></tbody></table>
+<details class="fold"><summary>估值纪律说明（论据）</summary><div class="fold-body">
+
+<ul><li>光租合同按已披露金额与期限折现，不把投资额当市值增量；续租730天选择权需重新谈价，不按当前费率外推。</li><li>现有业务用扣非而非归母：26Q3扣非-903.06万元、2025A扣非-1.84亿元，PE法不适用，故主锚用资产法。</li><li>强维≤1的想象空间不进分子：储能（2023年测试订单后无进展）、阳台光伏、低空经济（公司明确“无规划”）、最高法再审赔偿506.76万元（结果未定）。</li><li>同业PB取科大智能3.14、北京科锐2.99、双杰电气2.89、中电鑫龙3.07、中元股份2.87、望变电气1.31的中位2.98；协鑫集成PB 23.75为异常值剔除。同业2026-11-27普涨6.7%—10.1%，属板块情绪高位，故再打30%折价。</li><li>隐含概率反推：现价11.47亿元对应资产法上限8.9亿元溢价29%，市场给“摘帽＋租金持续＋配电回暖”的隐含成功率约65%；自身判断三事件合成约50%（摘帽67%×租金持续85%×配电回暖70%≈40%，再计时间折价后约50%），隐含概率高于判断，无预期差。</li></ul>
+
+</div></details>
+<hr>
+<h2 id="chap4">三、情绪分析</h2>
+<p><strong>当前情绪是“戴帽踩踏后的撬板博弈”，不是题材驱动；主板同业普涨而本股独跌，属负向映射。</strong> 2026-11-26复牌跌停（-20%），11-27盘中最低3.32元后收3.62元（+0.56%）。当日换手率26.83%、成交6.03亿元；龙虎榜三日累计跌幅偏离超30%上榜，买入合计3258.86万元、卖出合计3273.44万元、净卖出14.58万元（依据：<a href="http://static.cninfo.com.cn/finalpage/2026-11-27/1225693040.PDF" target="_blank" rel="noopener">异常波动公告</a>、东财龙虎榜接口）。</p>
+<h3 id="sec7">1、主板映射</h3>
+<table><thead><tr><th>对标</th><th>2026-11-27涨幅</th><th>PB</th><th>读数</th></tr></thead><tbody><tr><td>科大智能/北京科锐/双杰电气/中电鑫龙/中元股份/望变电气</td><td>+6.70%—+10.07%</td><td>2.87—3.14（望变1.31）</td><td>主板同业普涨</td></tr><tr><td>ST大烨</td><td>+0.56%（前一日-20%）</td><td>2.58</td><td>戴帽事件盖过行业β，负向映射</td></tr></tbody></table>
+<p><strong>判读：同业在涨、本股在跌，不是补涨机会，是风险事件定价；不能拿行业景气给本股溢价。</strong></p>
+<h3 id="sec8">2、主题催化：新·大·强打分</h3>
+<table><thead><tr><th>维度</th><th>得分</th><th>依据</th></tr></thead><tbody><tr><td>新</td><td>1</td><td>戴帽是新事件但属负面；光租2025-11已公告、2026-03已收租，非新催化</td></tr><tr><td>大</td><td>2</td><td>海洋经济/深海科技为国家战略，但公司仅出租船舶，不直接参与开发</td></tr><tr><td>强</td><td>0</td><td>无机构持续买入、无连板、龙虎榜净卖出、储能叙事已退潮</td></tr><tr><td>合计</td><td><strong>3分（弱题材）</strong></td><td>不构成持续催化，不进估值分子</td></tr></tbody></table>
+<h3 id="sec9">3、历史异动（倒序）</h3>
+<p><strong>历史炒作符号是“智能电网＋储能＋光伏＋海洋经济”，最近一次真异动是2025-07-02海洋经济涨停20%，至今已间隔16个月且公司业务结构已变，不构成同一符号重演。</strong></p>
+<details class="fold"><summary>异动明细（论据，按时间倒序）</summary><div class="fold-body">
+
+<table><thead><tr><th>日期</th><th>题材</th><th>涨幅</th><th>当时股价</th><th>催化</th></tr></thead><tbody><tr><td>2025-07-02</td><td>海洋经济（海工装备＋智能电网＋电缆保护＋光伏）</td><td>20.00%</td><td>7.86元</td><td>中央财经委第六次会议强调海洋经济</td></tr><tr><td>2024-05-28</td><td>智能电网</td><td>19.93%</td><td>7.04元</td><td>迎峰度夏用电负荷增长、虚拟电厂</td></tr><tr><td>2024-05-14</td><td>电力（变压器新国标）</td><td>12.99%</td><td>6.09元</td><td>GB20052-2024发布</td></tr><tr><td>2024-03-06</td><td>光伏</td><td>20.04%</td><td>5.87元</td><td>光伏价格上涨预期</td></tr><tr><td>2023-05-17</td><td>绿色电力</td><td>20.03%</td><td>8.93元</td><td>第三监管周期输配电价＋虚拟电厂</td></tr><tr><td>2021-11-09</td><td>清洁能源产业链及储能</td><td>20.00%</td><td>11.88元</td><td>央行碳减排支持工具</td></tr></tbody></table>
+<p>数据源：韭研公社异动整理表（6位代码300670过滤，共19条，按题材时间排序）。该表明显滞后，2026-11戴帽后无异动记录；已用东财龙虎榜与日K交叉验证近期确有放量下跌。</p>
+
+</div></details>
+<hr>
+<h2 id="chap5">四、技术分析</h2>
+<p><strong>前复权分位0%——现价3.62元是上市以来最低收盘，但“便宜”不构成买点。</strong> 戴帽后两日跌幅偏离超30%；11-27放量6.03亿元、换手26.83%属新ST撬板博弈，筹码换手尚未完成。（依据：腾讯前复权月线83个月、<a href="http://static.cninfo.com.cn/finalpage/2026-11-27/1225693040.PDF" target="_blank" rel="noopener">异常波动公告</a>）</p>
+<details class="fold"><summary>关键位与筹码（论据）</summary><div class="fold-body">
+
+<p><figure class="stchart" style="margin:14px 0 18px;text-align:center"><svg viewBox="0 0 660 300" width="100%" style="max-width:660px;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" role="img" aria-label="2025-11—2026-11前复权月收盘（元）"><text x="62" y="20" font-size="13" font-weight="600" fill="#334155">2025-11—2026-11前复权月收盘（元）</text><line x1="62" y1="254.0" x2="642" y2="254.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="257.5" font-size="10.5" fill="#334155" text-anchor="end">0</text><line x1="62" y1="199.0" x2="642" y2="199.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="202.5" font-size="10.5" fill="#334155" text-anchor="end">2.55</text><line x1="62" y1="144.0" x2="642" y2="144.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="147.5" font-size="10.5" fill="#334155" text-anchor="end">5.09</text><line x1="62" y1="89.0" x2="642" y2="89.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="92.5" font-size="10.5" fill="#334155" text-anchor="end">7.64</text><line x1="62" y1="34.0" x2="642" y2="34.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="37.5" font-size="10.5" fill="#334155" text-anchor="end">10.18</text><polyline points="70.0,57.6 116.4,100.4 164.3,109.6 212.2,95.4 255.4,115.9 303.3,97.5 349.7,102.3 397.6,101.4 443.9,133.4 491.8,99.5 539.7,97.5 586.1,134.5 634.0,175.8" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="70.0" cy="57.6" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="70.0" y="47.6" font-size="10.5" fill="#334155" text-anchor="middle">9.09</text><circle cx="116.4" cy="100.4" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="164.3" cy="109.6" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="212.2" cy="95.4" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="255.4" cy="115.9" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="303.3" cy="97.5" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="349.7" cy="102.3" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="397.6" cy="101.4" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="443.9" cy="133.4" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="491.8" cy="99.5" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="539.7" cy="97.5" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="586.1" cy="134.5" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="634.0" cy="175.8" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="634.0" y="165.8" font-size="10.5" fill="#334155" text-anchor="middle">3.62</text><text x="70.0" y="272" font-size="11" fill="#334155" text-anchor="middle">25/11</text><text x="164.3" y="272" font-size="11" fill="#334155" text-anchor="middle">26/01</text><text x="212.2" y="272" font-size="11" fill="#334155" text-anchor="middle">26/02</text><text x="303.3" y="272" font-size="11" fill="#334155" text-anchor="middle">26/04</text><text x="397.6" y="272" font-size="11" fill="#334155" text-anchor="middle">26/06</text><text x="491.8" y="272" font-size="11" fill="#334155" text-anchor="middle">26/08</text><text x="539.7" y="272" font-size="11" fill="#334155" text-anchor="middle">26/09</text><text x="634.0" y="272" font-size="11" fill="#334155" text-anchor="middle">26/11</text></svg><figcaption style="font-size:11.5px;color:#64748b;margin-top:4px;line-height:1.5">腾讯自选股前复权月线</figcaption></figure></p>
+<ul><li>月线83个月：最高12.09元、最低3.62元，现价分位0%；2021-06曾出现复权异常值108.5元（异动表口径），不纳入分位计算。</li><li>日K关键位：11-26跌停收3.60元、11-27最低3.32元（二次探底）、收3.62元；上方套牢区5.53—6.28元（10月至11月中旬密集成交），反弹到5.5元附近解套压力大。</li><li>股东户数：2026-03-31的16536户→2026-09-30的14342户（下降）→2026-11-10的15611户（回升9%）；反弹段户数增＝散户接盘而非吸筹。</li><li>成本锚：股权激励授予价5.74元（倒挂37%）、2026-07-20授予日收盘5.36元、2025-09协议转让价未见披露（已终止）；现价低于全部已知成本锚。</li><li>缠论口径：日线自2026-07的5.58元起形成下跌中枢，11-26跳空跌破中枢下沿，11-27放量回抽未回补缺口，属破位后第一次反抽，不构成趋势反转。</li></ul>
+
+</div></details>
+<hr>
+<h2 id="chap6">五、投资结论</h2>
+<table><thead><tr><th>要素</th><th>结论</th></tr></thead><tbody><tr><td>判断</td><td><strong>卖出</strong></td></tr><tr><td>主要理由</td><td>①潜在增长倍数0.65倍＜1，现价较合理市值溢价约29%；②26Q3扣非仍亏903.06万元、归母转正靠2373.71万元赔偿款；③智能配电毛利率从16.19%崩至6.65%、国网收入-60.51%；④可动用现金仅702.53万元、有息负债约8.26亿元；⑤摘帽最快2027年末，时间成本不可压缩</td></tr><tr><td>失效条件</td><td>正式处罚决定书落地＋追溯重述完成且新签船舶租约或单季营收超1.5亿元；或智能配电毛利率回升至15%以上；或股价跌至1.90元以下（倍数＞1）</td></tr><tr><td>参考买入区间</td><td>不设；仅在≤1.90元且上述①②同时满足时重估，届时仍需倍数＞1</td></tr><tr><td>目标区间</td><td>1.90—2.84元（资产法合理区间，对应市值6—9亿元）</td></tr><tr><td>可买卖时间窗口</td><td>结论有效期至2027-04-30（2026年报）或处罚决定书落地后5个交易日，以先到者为准；摘帽实施日常是减仓日而非入场日</td></tr><tr><td>仓位建议</td><td>持有者清仓至0%，不设加仓；未持有者不参与撬板博弈（C档事件博弈也不适用，倍数＜1）</td></tr><tr><td>最大风险</td><td>巴西国家石油终止项目触发承租方便利终止权（不早于2027-09），年租1.1亿元现金流断流</td></tr></tbody></table>
+<p>依据：<a href="http://static.cninfo.com.cn/finalpage/2026-10-27/1225625217.PDF" target="_blank" rel="noopener">26Q3报告</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-08-22/1225488698.PDF" target="_blank" rel="noopener">26H1报告</a>、<a href="http://static.cninfo.com.cn/finalpage/2025-11-03/1224781918.PDF" target="_blank" rel="noopener">光船租赁合同公告</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-11-25/1225686832.PDF" target="_blank" rel="noopener">ST实施公告</a>。</p>
+<details class="fold"><summary>反方观点与逐条评判（论据）</summary><div class="fold-body">
+
+<table><thead><tr><th>反方观点</th><th>来源</th><th>评判</th></tr></thead><tbody><tr><td>假ST不触及重大违法退市，到点就能摘帽</td><td>公司公告、雪球解读线索</td><td>摘帽要决定书＋满12个月＋追溯重述，最早2027年末；且摘帽是标签修复不改利润，实施后常有兑现回撤</td></tr><tr><td>光租年租金1.1亿元、毛利61.63%，2026全年首次盈利</td><td>26H1报告</td><td>已兑现且已被市场定价（股价从6.28元跌至3.62元）；26Q3扣非仍-903.06万元，盈利靠赔偿款</td></tr><tr><td>历史新低＋激励价5.74元倒挂37%，安全垫厚</td><td>行情、激励公告</td><td>激励目标5亿元含税营收已落空，倒挂是预期证伪读数；PB 2.58倍高于资产法上限对应的1.99倍</td></tr><tr><td>11-27天量换手26.8%、龙虎榜有资金买入</td><td>龙虎榜</td><td>三日累计净卖出14.58万元，撬板属筹码博弈，席位无持续性；不是基本面买点</td></tr><tr><td>储能/海洋经济/深海科技想象空间大</td><td>2023—2024调研、2025异动</td><td>储能测试订单三年未转化、公司近两年不再提及，低空经济明确“无规划”；“强”维0—1分，不进分子</td></tr><tr><td>船舶诉讼最高法提审、涉案506.76万元或带来赔偿</td><td>11-26诉讼进展公告</td><td>再审结果未定、原是公司索赔且二审败诉，按不确定性资产处理，不计入估值</td></tr></tbody></table>
+
+</div></details>
+<p><strong>一句话结论：ST大烨是退市风险可控的“假ST”，但船舶租金已兑现、主业毛利率崩塌、现金被质押、摘帽要等一年以上，潜在增长倍数仅0.65倍，维持卖出。</strong></p>
+<blockquote><p>免责声明：本报告基于公开信息整理，不构成任何投资建议。市场有风险，决策需自主。</p></blockquote>
+<h3 id="sec10">附录A · 待核实清单</h3>
+<p><strong>待核实项共4条，均不改变卖出结论，但影响摘帽时点与流动性判断的精度。</strong></p>
+<ol><li>2026Q3受限货币资金明细未单独披露（9290.08万元货币资金 vs 702.53万元现金等价物），按26H1结构推断，需等2026年报确认。</li><li>董事会换届后（2026-11-13提名）第五届高管是否变更、陈杰是否继续兼任总经理，待股东会决议与工商登记。</li><li>正式行政处罚决定书落款日与追溯重述具体调整金额，待公告。</li><li>光船租赁承租方OOS的实际付款节奏与银行保函开立情况，仅有合同与“3月起收租”表述，需后续定期报告验证。</li></ol>
+<h3 id="sec11">附录B · 关键信源</h3>
+<p><strong>本报告关键事实均可由以下12份公开原文复核，链接均为巨潮PDF直链。</strong></p>
+<ol><li><a href="http://static.cninfo.com.cn/finalpage/2026-11-25/1225686833.PDF" target="_blank" rel="noopener">行政处罚事先告知书公告（2026-050）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-11-25/1225686832.PDF" target="_blank" rel="noopener">其他风险警示暨停复牌公告（2026-051）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-11-27/1225693040.PDF" target="_blank" rel="noopener">股票交易异常波动公告（2026-054）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-10-27/1225625217.PDF" target="_blank" rel="noopener">2026年三季度报告</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-08-22/1225488698.PDF" target="_blank" rel="noopener">2026年半年度报告</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-04-27/1225191070.pdf" target="_blank" rel="noopener">2025年年度报告</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2025-11-03/1224781918.PDF" target="_blank" rel="noopener">光船租赁合同公告（2025-045）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-05-19/1225315822.PDF" target="_blank" rel="noopener">投资者关系记录（2026-05-19）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2025-11-24/1224821859.PDF" target="_blank" rel="noopener">投资者关系记录（2025-11-24）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-07-20/1225433869.PDF" target="_blank" rel="noopener">限制性股票激励授予公告（2026-031）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-10-26/1225626377.PDF" target="_blank" rel="noopener">实控人终止协议转让公告（2026-042）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-11-26/1225689520.PDF" target="_blank" rel="noopener">诉讼进展公告（2026-053）</a></li></ol>
+<h3 id="sec12">版本记录</h3>
+<details class="fold"><summary>版本记录表</summary><div class="fold-body">
+
+<table><thead><tr><th>版本</th><th>修订日</th><th>主要改动</th></tr></thead><tbody><tr><td>初版</td><td>2026-11-28</td><td>首次按五段框架成文；全量17条互动易＋10份调研记录判读；处罚ST路径与9.11双关；光租现金流与三法估值；倍数0.65倍；卖出结论</td></tr></tbody></table>
+
+</div></details>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+<script src="/annotate.js?v=20261113a" defer></script>
+</body>
+</html>
