@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ST欢瑞(000892.SZ) 深度研究 v20261128</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5b6472;--line:#e3e7ee;--bg:#fff;--accent:#b3261e;--accent2:#0b6bcb;--soft:#f6f8fb;}
+*{box-sizing:border-box}
+body{margin:0;padding:40px 24px 80px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:15px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:28px;line-height:1.35;margin:0 0 6px;padding-bottom:14px;border-bottom:3px solid var(--accent)}
+h2{font-size:21px;margin:46px 0 14px;padding:10px 0 10px 14px;border-left:5px solid var(--accent);background:var(--soft)}
+h3{font-size:17px;margin:30px 0 10px;color:#111;border-bottom:1px solid var(--line);padding-bottom:7px}
+h4{font-size:15.5px;margin:22px 0 8px;color:#222}
+p{margin:10px 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(11,107,203,.32);word-break:break-all}
+a:hover{background:rgba(11,107,203,.08)}
+strong{font-weight:650;color:#000}
+code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+ font-family:"Cascadia Mono",Consolas,monospace;font-size:13px;word-break:break-all}
+pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;margin:14px 0}
+pre code{background:none;border:0;padding:0;font-size:12.8px;line-height:1.65;
+ white-space:pre;word-break:normal;display:block}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:640;white-space:nowrap}
+tr:nth-child(even) td{background:#fbfcfe}
+blockquote{margin:16px 0;padding:12px 16px;background:#fff9e8;border-left:4px solid #e0a800;border-radius:0 6px 6px 0;color:#4a3a00}
+blockquote p{margin:5px 0}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}
+li{margin:5px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+@media print{body{padding:0}h2{page-break-after:avoid}table{font-size:11.5px}}
+
+.sttag{display:inline-block;padding:1px 9px;border-radius:11px;font-size:12px;line-height:19px;
+       margin:2px 5px 2px 0;border:0.5px solid;white-space:nowrap}
+.sttag a{text-decoration:none;color:inherit;border-bottom:none}
+.sttag a:hover{text-decoration:underline;background:none}
+.sttag-red   {background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}
+.sttag-orange{background:#FAEEDA;border-color:#EF9F27;color:#854F0B}
+.sttag-blue  {background:#E6F1FB;border-color:#378ADD;color:#185FA5}
+.sttag-teal  {background:#E1F5EE;border-color:#1D9E75;color:#0F6E56}
+
+/* ===== 渐进披露：折叠区（结论在正文、证据在折叠） ===== */
+.fold{margin:10px 0;border:0.5px solid #e5e7eb;border-radius:8px;background:#fff;overflow:hidden}
+.fold>summary{cursor:pointer;padding:8px 12px;font-weight:600;font-size:13.5px;color:#1d4ed8;
+              background:#f8fafc;list-style:none;outline:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"\25B8\00a0";font-size:11px;color:#64748b}
+.fold[open]>summary::before{content:"\25BE\00a0"}
+.fold>summary:hover{background:#eef2ff}
+.fold-body{padding:4px 12px 10px;border-top:0.5px dashed #e5e7eb}
+.fold-inline{display:inline-block;margin:0 2px;vertical-align:baseline;font-size:13px}
+.fold-inline>summary{padding:0 7px;font-size:12.5px;font-weight:500;border-radius:11px;
+                     background:#eef2ff;display:inline-block}
+.fold-inline .fold-body{display:block;padding:6px 10px;margin-top:4px}
+.fold .fold-body>*:first-child{margin-top:6px}
+.fold .fold-body>*:last-child{margin-bottom:2px}
+/* 被锚点命中的折叠区高亮一瞬，提示"论据在这里" */
+.fold:target>summary{background:#fef3c7}
+
+:root{--sbtoc-w:290px}
+h1,h2,h3,h4{scroll-margin-top:16px}
+html{scroll-behavior:smooth}
+
+/* ============ 左侧目录栏 ============ */
+#sbtoc{position:fixed;left:0;top:0;bottom:0;width:var(--sbtoc-w);
+ background:#f6f8fb;border-right:1px solid #e3e7ee;z-index:900;display:flex;flex-direction:column;
+ transition:transform .24s ease, box-shadow .24s ease}
+body.toc-open #sbtoc{box-shadow:2px 0 16px rgba(16,32,48,.07)}
+body.toc-closed #sbtoc{transform:translateX(-100%)}
+body.toc-open{padding-left:calc(var(--sbtoc-w) + 24px)}
+
+#sbtoc .sbhead{display:flex;align-items:center;gap:7px;
+ padding:15px 12px 11px 16px;border-bottom:1px solid #e3e7ee;flex:0 0 auto}
+#sbtoc .sbhead b{font-size:15px;color:#111;letter-spacing:.5px}
+#sbtoc .sbhead em{font-style:normal;font-size:11.5px;color:#5b6472}
+#sbtoc .sbx{margin-left:auto;border:none;background:transparent;color:#8a93a1;font-size:16px;line-height:1;
+ cursor:pointer;padding:4px 7px;border-radius:6px;font-family:inherit}
+#sbtoc .sbx:hover{background:#e8edf5;color:#b3261e}
+
+#sbtoc .sbnav{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:10px 8px 22px}
+#sbtoc .sbnav::-webkit-scrollbar{width:8px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb{background:#ccd5e0;border-radius:4px}
+#sbtoc .sbnav::-webkit-scrollbar-thumb:hover{background:#b3bfcd}
+#sbtoc .sbgrp{margin:0 0 4px}
+#sbtoc a{display:block;text-decoration:none;border-bottom:none;border-radius:6px;
+ line-height:1.5;word-break:break-word}
+#sbtoc a.sblv2{font-weight:650;font-size:13.5px;color:#b3261e;padding:6px 8px;margin-top:3px}
+#sbtoc a.sblv3{font-size:12.7px;color:#3c4657;padding:4px 8px 4px 18px}
+#sbtoc a:hover{background:rgba(11,107,203,.10)}
+#sbtoc a.active{background:rgba(179,38,30,.10);color:#111}
+#sbtoc a.sblv3.active{color:#b3261e;font-weight:640}
+#sbtoc .sbfoot{flex:0 0 auto;border-top:1px dashed #dbe1ea;padding:9px 16px 12px;
+ font-size:11.5px;color:#6b7484;line-height:1.65}
+
+/* 关闭态：左上角露出一个把手 */
+#sbtoggle{position:fixed;left:0;top:8px;z-index:901;display:none;align-items:center;gap:6px;
+ padding:6px 13px 6px 11px;border:none;border-radius:0 8px 8px 0;background:#b3261e;color:#fff;
+ font-size:12.5px;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+body.toc-closed #sbtoggle{display:inline-flex}
+#sbtoggle:hover{background:#8e1c16}
+
+/* 小屏：目录栏改为覆盖式，点遮罩收起 */
+#sbtoc-backdrop{display:none;position:fixed;inset:0;background:rgba(10,20,30,.45);z-index:899}
+@media (max-width:900px){
+  body.toc-open{padding-left:24px}
+  #sbtoc{width:min(84vw,320px);z-index:901}
+  body.toc-open #sbtoc{box-shadow:2px 0 18px rgba(0,0,0,.22)}
+  body.toc-open #sbtoc-backdrop{display:block}
+  body.toc-open #sbtoggle{display:none}
+}
+
+/* 站点注入的「← 返回首页」原本钉在左下，会被目录栏压住 → 挪到右下（回到顶部之上）。
+   用 !important 覆盖其行内样式（作者样式表 !important 优先于非 important 行内样式）。 */
+a[href$="index.html"]{left:auto!important;right:20px!important;bottom:84px!important}
+
+#totop{position:fixed;right:20px;bottom:26px;width:46px;height:46px;border-radius:50%;background:#b3261e;
+ color:#fff;border:none;cursor:pointer;font-size:17px;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.22);
+ display:none;z-index:999;padding:0}
+#totop:hover{background:#8e1c16}
+
+@media print{
+  #totop,#sbtoc,#sbtoggle,#sbtoc-backdrop{display:none!important}
+  body.toc-open{padding-left:0!important}
+  a[href$="index.html"]{display:none!important}
+}
+</style>
+</head>
+<body>
+<script id="sbgatescript">
+(function(){
+  var H='9aa2978b32c1ffa6d0bc3b359720fb32bb45bfb677d704c7eacf714b9e82aab5';
+  try{ if(sessionStorage.getItem('sb_ok')==='1') return; }catch(e){}
+  function hex(a){var s='';for(var i=0;i<a.length;i++)s+=('0'+a[i].toString(16)).slice(-2);return s;}
+  function sha(m){ return crypto.subtle.digest('SHA-256', new TextEncoder().encode(m)).then(function(b){return hex(new Uint8Array(b));}); }
+  function build(){
+    var ov=document.createElement('div');
+    ov.id='sbgate';
+    ov.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;background:#12283b;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,"Microsoft YaHei",sans-serif;';
+    ov.innerHTML='<div style="font-size:26px;font-weight:800;letter-spacing:1px">ST Buddy<span style="color:#e67e22">.</span></div><div style="font-size:13px;color:#cfe0ee;margin:8px 0 20px">本站内容需密码访问</div><input id="sbpwd" type="password" placeholder="请输入密码" autocomplete="off" style="width:230px;padding:11px 14px;font-size:15px;border:none;border-radius:8px;outline:none;background:#fff;color:#1c2733"><button id="sbgo" style="margin-top:12px;padding:11px 30px;font-size:14px;border:none;border-radius:8px;background:#e67e22;color:#fff;cursor:pointer">进入</button><div id="sberr" style="margin-top:12px;font-size:12px;color:#ff8a80;height:16px"></div>';
+    document.body.appendChild(ov);
+    document.getElementById('sbgo').addEventListener('click',go);
+    document.getElementById('sbpwd').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  }
+  function go(){
+    var v=document.getElementById('sbpwd').value;
+    if(!v){document.getElementById('sberr').textContent='请输入密码';return;}
+    try{
+      sha(v).then(function(h){
+        if(h===H){ try{sessionStorage.setItem('sb_ok','1');}catch(e){} document.getElementById('sbgate').remove(); }
+        else document.getElementById('sberr').textContent='密码错误';
+      });
+    }catch(e){ document.getElementById('sberr').textContent='浏览器不支持，请用 Chrome 打开'; }
+  }
+  if(document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<div id="sbtoc-backdrop"></div><aside id="sbtoc"><div class="sbhead"><b>&#9776; 目录</b><em>6 章 · 12 节</em><button class="sbx" id="sbtoc-close" title="收起目录（Esc）">&#10005;</button></div><nav class="sbnav"><div class="sbgrp"><a class="sblv2" href="#chap0">封面 · 结论前置</a></div><div class="sbgrp"><a class="sblv2" href="#chap1">一、基本信息（先定性）</a><a class="sblv3" href="#sec0">1、企业基本信息</a><a class="sblv3" href="#sec1">2、股权结构</a><a class="sblv3" href="#sec2">3、ST 风险分析</a><a class="sblv3" href="#sec3">4、运营情况</a></div><div class="sbgrp"><a class="sblv2" href="#chap2">二、基本面分析（先定路径，再深挖）</a><a class="sblv3" href="#sec4">1、通用部分：四件事拆开看</a><a class="sblv3" href="#sec5">2、换所：不是利好，是审计口径的双向变量</a></div><div class="sbgrp"><a class="sblv2" href="#chap3">三、情绪分析</a><a class="sblv3" href="#sec6">1、主板映射</a><a class="sblv3" href="#sec7">2、主题催化打分：新·大·强</a><a class="sblv3" href="#sec8">3、历史异动（按题材时间倒序，取近 10 次）</a></div><div class="sbgrp"><a class="sblv2" href="#chap4">四、技术分析</a></div><div class="sbgrp"><a class="sblv2" href="#chap5">五、投资结论</a><a class="sblv3" href="#sec9">附录 A · 待核实／需补充清单</a><a class="sblv3" href="#sec10">附录 B · 关键信源链接</a><a class="sblv3" href="#sec11">版本记录</a></div></nav><div class="sbfoot">点击跳转 · 滚动时自动高亮当前章节<br>事实性陈述均标注信源并附直达链接；完整清单见「附录 B」。</div></aside><button id="sbtoggle" title="展开目录">&#9776; 目录</button>
+<script>
+(function(){
+  var body=document.body, KEY='sb_toc_v1';
+  function set(open){
+    body.classList.toggle('toc-open',open);
+    body.classList.toggle('toc-closed',!open);
+    try{ localStorage.setItem(KEY, open?'1':'0'); }catch(e){}
+  }
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var small=window.matchMedia('(max-width:900px)').matches;
+  set(saved===null ? !small : saved==='1');
+
+  var tg=document.getElementById('sbtoggle'),
+      cl=document.getElementById('sbtoc-close'),
+      bd=document.getElementById('sbtoc-backdrop');
+  if(tg){ tg.addEventListener('click',function(){ set(true); }); }
+  if(cl){ cl.addEventListener('click',function(){ set(false); }); }
+  if(bd){ bd.addEventListener('click',function(){ set(false); }); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+
+  function isSmall(){ return window.matchMedia('(max-width:900px)').matches; }
+  var links=[].slice.call(document.querySelectorAll('#sbtoc a[href^="#"]'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ if(isSmall()) set(false); });
+  });
+
+  /* 滚动时高亮当前章节（并让目录自己跟随滚动，注意只动容器 scrollTop，不用 scrollIntoView，避免与页面滚动打架） */
+  var nav=document.querySelector('#sbtoc .sbnav');
+  var items=links.map(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var t=document.getElementById(id);
+    return t ? {a:a,t:t} : null;
+  }).filter(Boolean);
+
+  function highlight(){
+    if(!items.length) return;
+    var cur=null, y=window.scrollY+130;
+    for(var i=0;i<items.length;i++){
+      if(items[i].t.getBoundingClientRect().top+window.scrollY<=y) cur=items[i];
+    }
+    for(var k=0;k<links.length;k++) links[k].classList.remove('active');
+    if(!cur) return;
+    cur.a.classList.add('active');
+    if(nav){
+      var r=cur.a.getBoundingClientRect(), nr=nav.getBoundingClientRect();
+      if(r.top<nr.top+10) nav.scrollTop += (r.top-nr.top-10);
+      else if(r.bottom>nr.bottom-10) nav.scrollTop += (r.bottom-nr.bottom+10);
+    }
+  }
+  var tick=null;
+  window.addEventListener('scroll',function(){
+    if(tick) return;
+    tick=requestAnimationFrame(function(){ tick=null; highlight(); });
+  },{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(highlight,120); });
+  highlight();
+})();
+</script>
+
+<div class="wrap">
+<h1 id="top">ST欢瑞（000892.SZ）研究报告</h1>
+<blockquote><p>研究基准日 2026-11-28；行情截止 2026-11-27 收盘 2.80 元（跌 1.41%）；最新报告期 26Q3。</p><p>一句话结论：<strong>卖出</strong>。这不是"到日期就能摘"的假 ST——12 个月计时从正式《行政处罚决定书》起算，而决定书尚未下达；现价已隐含约 41.6% 的乐观概率，高于本报告判断。</p></blockquote>
+<h2 id="chap0">封面 · 结论前置</h2>
+<table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td><strong>操作结论</strong></td><td><strong>卖出</strong></td></tr><tr><td>红线分类</td><td><span class="sttag sttag-orange"><a href="http://static.cninfo.com.cn/finalpage/2026-11-21/1225682609.PDF" target="_blank" rel="noopener">2022年报虚假记载·处罚ST</a></span> <span class="sttag sttag-orange"><a href="http://static.cninfo.com.cn/finalpage/2026-04-23/1225152137.PDF" target="_blank" rel="noopener">立案未结·决定书未下</a></span> <span class="sttag sttag-blue"><a href="http://static.cninfo.com.cn/finalpage/2026-04-30/1225261706.PDF" target="_blank" rel="noopener">连续三年扣非亏损</a></span></td></tr><tr><td>生死定级</td><td>可救·自救空间大（假 ST，未触及重大违法退市，净资产为正）</td></tr><tr><td>自救空间</td><td>追溯重述已完成（条件一达成）；只差正式决定书满 12 个月（条件二未起跑），无外力依赖但需等待</td></tr><tr><td>主要看点</td><td>两条线：① 11.78% 股份 1 元注销判决（已上诉、实际执行存重大不确定性）；② AI 漫剧《凝落青崖遇君时》红果热度 4300 万，但公司自述收入占比低、不构成重大影响</td></tr><tr><td><strong>潜在增长倍数</strong></td><td><strong>约 0.4 倍（区间 0.31—0.52）＜1</strong>——现有业务给 7—12 亿＋诉讼期权 1—2 亿 ÷ 当前市值 27.47 亿</td></tr><tr><td>基本面路径</td><td><strong>处罚 ST</strong>（深交所 9.8.1 第（八）项，其他风险警示；非退市风险警示）</td></tr><tr><td>版本与基准日</td><td>第 1 次生成 · 2026-11-28；基准日 2026-11-28；数据截止 26Q3／2026-11-27 收盘</td></tr><tr><td>全篇时间口径</td><td>财务：26Q3（2026-10-29 披露）为最新期，2025A 作对比；行情：2026-11-27 收盘；股东：26Q3 末；判决：10-13 收到、10-15 披露；处罚告知书：11-19 收到、11-21 披露</td></tr></tbody></table>
+<details class="fold"><summary>数据来源与已知数据异常</summary><div class="fold-body">
+
+<p>来源优先级：巨潮公告原文（处罚、戴帽、三季报、年报、诉讼、换所）＞同花顺 F10 投资者互动（全量 59 条，2026-01-08—09-23）＋巨潮投资者关系活动记录表（2026-09-24）＞韭研公社异动整理表（96 条命中）＞腾讯行情／前复权月线。雪球与自媒体仅作线索，数字均已回公告核。</p>
+<p>已知异常：① 底表 <code>退市风险预警.xlsx</code>（2026-10-31）无本股——10-31 尚未戴帽，属本期新增处罚 ST；② 前复权月线用腾讯 fqkline，本次正常返回 83 个月（2020-01—2026-11），分位数据此算；③ st_history 脚本把 2013-03-15 撤销"退市＋其他风险警示"误读成"ST 至今"，已回原文纠正，见 §1.3 时间轴；④ 2025 年报出具审计报告的立信中联为标准无保留，但 11-13 已决议改聘公证天业，尚需股东会审议。</p>
+
+</div></details>
+<h2 id="chap1">一、基本信息（先定性）</h2>
+<p><strong>一句话定性：这是一家 1998 年上市、历经三轮 ST 的老壳影视公司，当前因 2022 年报虚增利润 0.15 亿被实施其他风险警示，不是退市风险警示；财务底色是连亏三年、净资产快速消耗，但账上仍有 2.48 亿货币资金、短期借款仅 0.40 亿，短期不存在资金链断裂。</strong></p>
+<h3 id="sec0">1、企业基本信息</h3>
+<p><strong>1998 年上市、2016 年借壳转型影视，注册地重庆、办公地北京，主业为影视剧制作发行＋艺人经纪，2025 年营收 5.27 亿中影视剧及衍生品占 62.20%、艺人经纪占 37.73%。</strong></p>
+<table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>成立日期</td><td>1997-11-16（重庆市工商局登记）</td></tr><tr><td>上市日期</td><td>1998-10 深交所挂牌（原名星美联合；2000-06 转通信服务，2016-12-06 重大资产重组后主业影视）</td></tr><tr><td>注册／办公地</td><td>重庆市涪陵区人民东路 50 号／北京市朝阳区望京东园四区 1 号楼富泽人寿大厦 30 层</td></tr><tr><td>所属行业</td><td>影视剧制作与发行（申万传媒）</td></tr><tr><td>主营构成</td><td>2025A：影视剧及衍生品 3.28 亿（62.20%）、艺人经纪 1.99 亿（37.73%）、电商 38 万（0.07%）</td></tr></tbody></table>
+<p>（依据：<a href="http://static.cninfo.com.cn/finalpage/2026-04-30/1225261706.PDF" target="_blank" rel="noopener">2025 年年度报告</a>）</p>
+<h3 id="sec1">2、股权结构</h3>
+<p><strong>实控人赵枳程与一致行动人合计持股 19.73%，控制权比例低但相对分散的股东结构无第二方逼近；真正的风险不在控制权，而在前十大股东中多方高比例质押＋司法冻结——被判决注销的那 11.78% 股份几乎全部处于质押、冻结、被执行状态，这是"判决≠执行"的物理根源。</strong></p>
+<table><thead><tr><th>项目</th><th>数值（26Q3 末，除注明外）</th></tr></thead><tbody><tr><td>股价／总市值</td><td>2.80 元（2026-11-27 收盘）／27.47 亿</td></tr><tr><td>PB／PE</td><td>5.59 倍／TTM 为负</td></tr><tr><td>实控人</td><td>赵枳程（董事长兼总经理），与欢瑞联合、睿嘉天津、睿嘉东阳为一致行动人，合计 1.94 亿股（19.73%）</td></tr><tr><td>散户化</td><td>股东户数 81407 户（26Q3 末）vs 63141 户（26Q1 末），增加 29%</td></tr><tr><td>质押冻结</td><td>欢瑞联合质押 1.06 亿股（占其持股 99%）；钟君艳 6057 万股全额质押＋冻结；浙江欢瑞 4919 万股全额质押＋冻结</td></tr></tbody></table>
+<p>（依据：<a href="http://static.cninfo.com.cn/finalpage/2026-10-29/1225636597.PDF" target="_blank" rel="noopener">2026 年三季度报告</a>、<a href="http://qt.gtimg.cn/q=sz000892" target="_blank" rel="noopener">腾讯行情</a>）</p>
+<details class="fold"><summary>前十大股东明细（26Q3 末，降序）</summary><div class="fold-body">
+
+<table><thead><tr><th>股东</th><th>性质</th><th>持股比例</th><th>持股数量</th><th>状态</th></tr></thead><tbody><tr><td>欢瑞联合</td><td>境内非国有法人</td><td>10.87%</td><td>1.07 亿股</td><td>质押 1.06 亿股</td></tr><tr><td>钟君艳</td><td>境内自然人</td><td>6.17%</td><td>6057 万股</td><td>质押 6057 万股、冻结 6057 万股</td></tr><tr><td>睿嘉天津</td><td>境内非国有法人</td><td>5.91%</td><td>5794 万股</td><td>限售</td></tr><tr><td>浙江欢瑞</td><td>境内非国有法人</td><td>5.01%</td><td>4919 万股</td><td>质押 4919 万股、冻结 4919 万股</td></tr><tr><td>南京顺拓</td><td>境内非国有法人</td><td>3.64%</td><td>3574 万股</td><td>质押 3074 万股</td></tr><tr><td>睿嘉东阳</td><td>境内非国有法人</td><td>2.46%</td><td>2417 万股</td><td>—</td></tr><tr><td>弘道天华</td><td>境内非国有法人</td><td>2.34%</td><td>2294 万股</td><td>冻结 2294 万股</td></tr><tr><td>包头龙邦</td><td>境内非国有法人</td><td>2.19%</td><td>2147 万股</td><td>质押 2146 万股</td></tr><tr><td>深圳弘道</td><td>境内非国有法人</td><td>2.11%</td><td>2069 万股</td><td>质押 1035 万股、冻结 2069 万股</td></tr><tr><td>香港中央结算</td><td>境外法人</td><td>1.60%</td><td>1569 万股</td><td>—</td></tr></tbody></table>
+<p>一致行动关系：欢瑞联合＋睿嘉天津＋睿嘉东阳＋赵枳程＝19.73%；浙江欢瑞＋钟君艳＋陈援＋陈平＋钟金章＝12.37%；弘道天华＋深圳弘道＋弘道晋商＝5.01%。（依据：<a href="http://static.cninfo.com.cn/finalpage/2026-10-29/1225636597.PDF" target="_blank" rel="noopener">2026 年三季度报告</a>）</p>
+
+</div></details>
+<details class="fold"><summary>股权沿革与控制权关键节点</summary><div class="fold-body">
+
+<table><thead><tr><th>时间</th><th>事件</th><th>每股价格／资金</th><th>逻辑</th></tr></thead><tbody><tr><td>1998-10</td><td>星美联合上市</td><td>首发募资（年报未列具体额）</td><td>早期主业摩托车零配件</td></tr><tr><td>2000-06</td><td>重大资产重组转通信服务</td><td>公告未披露</td><td>—</td></tr><tr><td>2016-12-06</td><td>发行股份购买欢瑞世纪资产，借壳上市</td><td>定向发行价即后来补偿诉讼的 7.66 元／股锚</td><td>钟君艳等业绩承诺方由此取得股份</td></tr><tr><td>2017</td><td>更名欢瑞世纪联合股份有限公司</td><td>—</td><td>赵枳程成为实控人</td></tr><tr><td>2026-02-04</td><td>董事会换届，赵枳程任董事长兼总经理</td><td>—</td><td>第十届董事会成立，随后启动制度整改</td></tr><tr><td>2026-10-13</td><td>北京金融法院一审判 5 被告 1 元转让 11.78% 股份注销</td><td>不足部分按 7.66 元／股补偿</td><td>2016 年重组业绩补偿诉讼落地</td></tr><tr><td>2026-10-27</td><td>钟君艳、陈援上诉，请求缩减注销数量至 9014 万股</td><td>—</td><td>判决未生效</td></tr></tbody></table>
+
+</div></details>
+<details class="fold"><summary>现任高管简历</summary><div class="fold-body">
+
+<table><thead><tr><th>姓名</th><th>职务</th><th>履历（公告口径）</th></tr></thead><tbody><tr><td>赵枳程</td><td>董事长、总经理、实控人</td><td>公告未披露出生年月及详细履历；2026-02 换届续任；2022 年报虚假记载事项的直接负责主管人员，被拟罚 200 万元</td></tr><tr><td>赵会强</td><td>副董事长、副总经理</td><td>公告未披露详细履历</td></tr><tr><td>陈亚东</td><td>副总经理</td><td>公告未披露详细履历</td></tr><tr><td>周怡</td><td>财务总监</td><td>对财务报告及信披负直接责任，参与重大事项审议；公告未披露详细履历</td></tr><tr><td>杨帅</td><td>董事会秘书</td><td>深交所指定联络人；公告未披露详细履历</td></tr></tbody></table>
+<p>依据：<a href="http://static.cninfo.com.cn/finalpage/2026-02-04/1224965344.PDF" target="_blank" rel="noopener">2026-02-04 换届公告</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-09-24/1225581260.PDF" target="_blank" rel="noopener">2026-09-24 投资者关系活动记录表</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-11-21/1225682609.PDF" target="_blank" rel="noopener">处罚事先告知书公告</a>。核不到的履历写"公告未披露"，不用第三方填充。</p>
+
+</div></details>
+<h3 id="sec2">3、ST 风险分析</h3>
+<p><strong>本次戴帽是"处罚型假 ST"：依据 9.8.1 第（八）项（告知书载明年报财务指标虚假记载、但未触及 9.5.2 重大违法退市），不是财务类退市风险警示；真正的定价矛盾在于撤销条件的时间起算点被市场普遍误读。</strong></p>
+<p>（1）ST 沿革时间轴</p>
+<p><figure style="margin:14px 0 6px"><svg viewBox="0 0 660 86" width="100%" style="max-width:660px;height:auto" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif"><rect x="0" y="0" width="660" height="86" fill="#fbfcfd"/><rect x="10.0" y="8" width="67.0" height="38" rx="3" fill="#b3261e"/><text x="15.0" y="24" font-size="12.5" font-weight="700" fill="#fff">＊ST</text><text x="15.0" y="38" font-size="9" fill="rgba(255,255,255,.94)">连续两年亏损</text><rect x="135.0" y="8" width="68.1" height="38" rx="3" fill="#b3261e"/><text x="140.0" y="24" font-size="12.5" font-weight="700" fill="#fff">＊ST</text><text x="140.0" y="38" font-size="9" fill="rgba(255,255,255,.94)">连续两年亏损</text><rect x="270.8" y="8" width="27.6" height="38" rx="3" fill="#b3261e"/><rect x="649.6" y="8" width="3.0" height="38" rx="3" fill="#d97706"/><line x1="10" y1="60" x2="650" y2="60" stroke="#d0d5dd" stroke-width="1"/><line x1="10.0" y1="60" x2="10.0" y2="64" stroke="#d0d5dd" stroke-width="1"/><text x="10.0" y="75" font-size="10" fill="#667085" text-anchor="start">2007</text><line x1="64.8" y1="60" x2="64.8" y2="64" stroke="#d0d5dd" stroke-width="1"/><text x="64.8" y="75" font-size="10" fill="#667085" text-anchor="middle">2009</text><line x1="130.1" y1="60" x2="130.1" y2="64" stroke="#d0d5dd" stroke-width="1"/><text x="130.1" y="75" font-size="10" fill="#667085" text-anchor="middle">2011</text><line x1="195.5" y1="60" x2="195.5" y2="64" stroke="#d0d5dd" stroke-width="1"/><text x="195.5" y="75" font-size="10" fill="#667085" text-anchor="middle">2013</text><line x1="260.8" y1="60" x2="260.8" y2="64" stroke="#d0d5dd" stroke-width="1"/><text x="260.8" y="75" font-size="10" fill="#667085" text-anchor="middle">2015</text><line x1="326.2" y1="60" x2="326.2" y2="64" stroke="#d0d5dd" stroke-width="1"/><text x="326.2" y="75" font-size="10" fill="#667085" text-anchor="middle">2017</text><line x1="391.6" y1="60" x2="391.6" y2="64" stroke="#d0d5dd" stroke-width="1"/><text x="391.6" y="75" font-size="10" fill="#667085" text-anchor="middle">2019</text><line x1="457.0" y1="60" x2="457.0" y2="64" stroke="#d0d5dd" stroke-width="1"/><text x="457.0" y="75" font-size="10" fill="#667085" text-anchor="middle">2021</text><line x1="522.3" y1="60" x2="522.3" y2="64" stroke="#d0d5dd" stroke-width="1"/><text x="522.3" y="75" font-size="10" fill="#667085" text-anchor="middle">2023</text><line x1="587.7" y1="60" x2="587.7" y2="64" stroke="#d0d5dd" stroke-width="1"/><text x="587.7" y="75" font-size="10" fill="#667085" text-anchor="middle">2025</text></svg><figcaption style="font-size:11px;color:#667085;margin-top:4px;line-height:1.5">色块＝状态区间；<strong>同一行内互不重叠，分行即为时间重叠（叠加）</strong>。数据来源：巨潮资讯「实施/撤销 退市风险警示」及「其他风险警示」公告。块上原因受宽度所限会截断，完整表述见正文。</figcaption></figure></p>
+<p>四段 ST 中前三段均已撤销，本次是<strong>第四次戴帽、首次因处罚</strong>。上一次撤销（2016-02-24）叠加了重大资产重组，本次无重组相伴，不能类比。（依据：<a href="http://static.cninfo.com.cn/finalpage/2007-04-30/23188135.PDF" target="_blank" rel="noopener">2007 实施</a>、<a href="http://static.cninfo.com.cn/finalpage/2013-03-27/62278735.PDF" target="_blank" rel="noopener">2013 撤销</a>、<a href="http://static.cninfo.com.cn/finalpage/2015-04-22/1200882381.PDF" target="_blank" rel="noopener">2015 实施</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-11-21/1225682608.PDF" target="_blank" rel="noopener">2026 实施</a>）</p>
+<p>（2）现有 ST 原因：<strong>2022 年报财务指标虚假记载（处罚 ST）</strong>——告知书认定虚增利润总额 1548.15 万元（占当期 40.11%）、虚增净利润 1288.01 万元（占 168.20%）、虚增归母净利 1288.01 万元（占 71.75%）。</p>
+<p>（3）逐项排除表</p>
+<table><thead><tr><th>风险项</th><th>状态</th><th>简注</th></tr></thead><tbody><tr><td>净资产为负</td><td>❌</td><td>26Q3 末归母净资产 4.92 亿，为正</td></tr><tr><td>违规资金占用</td><td>❌</td><td>2025 年报专项审计说明无</td></tr><tr><td>违规担保</td><td>❌</td><td>2025 年报称无为控股股东担保</td></tr><tr><td>内控审计非标</td><td>❌</td><td>2025 年度标准无保留</td></tr><tr><td>审计意见非标</td><td>❌</td><td>2025 年度标准无保留（立信中联）</td></tr><tr><td>违规信披</td><td>✅</td><td>本次戴帽原因，2022 年报虚假记载</td></tr><tr><td>立案调查</td><td>✅</td><td>2026-04-21 立案，11-19 收到告知书，正式决定书未下</td></tr><tr><td>重大违法强制退市</td><td>❌</td><td>告知书明确"未触及 9.5.2"，公司自查亦认定不触及</td></tr></tbody></table>
+<p>（4）解决路径：<strong>撤销是 AND 逻辑，两条同时满足</strong>。9.8.8 第（一）项"已就处罚所涉年度追溯重述"✅ 已于 2026-04-22 完成；第（二）项"自证监会作出<strong>行政处罚决定书</strong>之日起已满十二个月"❌ <strong>尚未起跑——目前只有 11-19 收到的《行政处罚事先告知书》，不是决定书</strong>。</p>
+<details class="fold"><summary>摘帽时间推演（同型样本锚定）</summary><div class="fold-body">
+
+<p>依据 9.8.8，12 个月从"决定书作出之日"起算，不从告知书日、不从戴帽日、不从追溯重述日。同型样本（同为 9.8.1 第（八）项虚假记载）告知书→决定书间隔：ST 亚联约 12 天、新亚制程约 1.5 个月、ST 证通约 3 个月、ST 凯文约 2.5 个月、中利集团约 2 个月，中位约 2 个月。</p>
+<p>欢瑞 11-19 收到告知书 → 若按中位 2 个月，正式决定书约落在 2027-01；满 12 个月 → 最早摘帽申请窗口 2028-01，交易所审核再加数日至数周。乐观情形（决定书 1 个月内下达）最早也在 2027-12。<strong>结论：摘帽不是 2027-11，更不是"戴帽满一年"，而是 2027 年末至 2028 年初。</strong></p>
+<p>依据：<a href="https://epaper.cs.com.cn/zgzqb/wap/html/2025-08/26/nw.D110000zgzqb_20250826_3-B038.htm" target="_blank" rel="noopener">亚联发展撤销公告</a>、<a href="http://jjckb.xinhuanet.com/20260112/9d269c87f44249d1856339d474dafbcb/c.html" target="_blank" rel="noopener">新亚制程摘帽</a>、<a href="https://epaper.stcn.com/att/202511/29/ZQ29B072-HF_eBook.pdf" target="_blank" rel="noopener">ST 证通申请撤销公告</a>、<a href="https://www.cnfin.com/announ/detail/index.html?dannoun=lcdetail&amp;id=818641521238" target="_blank" rel="noopener">ST 凯文撤销公告</a>、<a href="https://paper.cnstock.com/html/2025-07/08/content_2090669.htm" target="_blank" rel="noopener">中利集团撤销公告</a>（均为权威证券报公告版）</p>
+
+</div></details>
+<p>（5）会计差错检查：本次差错即戴帽原因。强制退市量化标准三档逐一核对——单年虚增利润总额 1548.15 万元，远低于 2 亿元门槛；占比 40.11% 虽超 30% 但金额不达标；仅认定 2022 一年，不触及"连续三年无金额门槛"档。<strong>结论：会计差错本身不构成重大违法退市，与告知书结论一致。</strong></p>
+<p>（6）结论：退市风险低（假 ST、非面退、非财务退），摘帽确定性高但<strong>时间被拉长到 2027 年末—2028 年初</strong>，这段时间是估值的时间成本，不是"埋伏期"。</p>
+<h3 id="sec3">4、运营情况</h3>
+<p><strong>基本面在恶化：26Q3 营收 2.83 亿（同比 −17.35%）、归母净利 −1.67 亿（由盈转亏，上年同期为 +0.60 亿），扣非 −1.64 亿；传统影视剧毛利首次转负；唯一亮点是经营现金流改善 83.84%、存货去化 48.72%。</strong></p>
+<p>（1）财务状况：五年财务画成两张图，读数如下。</p>
+<p><figure class="stchart" style="margin:14px 0 18px;text-align:center"><svg viewBox="0 0 660 300" width="100%" style="max-width:660px;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" role="img" aria-label="营业收入（亿元·2023A-2025A）"><text x="62" y="20" font-size="13" font-weight="600" fill="#334155">营业收入（亿元·2023A-2025A）</text><line x1="62" y1="254.0" x2="642" y2="254.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="257.5" font-size="10.5" fill="#334155" text-anchor="end">0</text><line x1="62" y1="199.0" x2="642" y2="199.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="202.5" font-size="10.5" fill="#334155" text-anchor="end">1.48</text><line x1="62" y1="144.0" x2="642" y2="144.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="147.5" font-size="10.5" fill="#334155" text-anchor="end">2.95</text><line x1="62" y1="89.0" x2="642" y2="89.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="92.5" font-size="10.5" fill="#334155" text-anchor="end">4.43</text><line x1="62" y1="34.0" x2="642" y2="34.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="37.5" font-size="10.5" fill="#334155" text-anchor="end">5.9</text><rect x="47.0" y="128.8" width="46.0" height="125.2" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="70.0" y="122.8" font-size="10.5" fill="#334155" text-anchor="middle">3.36</text><rect x="329.4" y="110.5" width="46.0" height="143.5" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="352.4" y="104.5" font-size="10.5" fill="#334155" text-anchor="middle">3.85</text><rect x="611.0" y="57.6" width="46.0" height="196.4" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="634.0" y="51.6" font-size="10.5" fill="#334155" text-anchor="middle">5.27</text><text x="70.0" y="272" font-size="11" fill="#334155" text-anchor="middle">23/12</text><text x="352.4" y="272" font-size="11" fill="#334155" text-anchor="middle">24/12</text><text x="634.0" y="272" font-size="11" fill="#334155" text-anchor="middle">25/12</text></svg><figcaption style="font-size:11.5px;color:#64748b;margin-top:4px;line-height:1.5">来源：2025年报、26Q3报告</figcaption></figure></p>
+<p><figure class="stchart" style="margin:14px 0 18px;text-align:center"><svg viewBox="0 0 660 300" width="100%" style="max-width:660px;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" role="img" aria-label="归母净利（亿元·2023A-2025A）"><text x="62" y="20" font-size="13" font-weight="600" fill="#334155">归母净利（亿元·2023A-2025A）</text><line x1="62" y1="254.0" x2="642" y2="254.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="257.5" font-size="10.5" fill="#334155" text-anchor="end">-4.3</text><line x1="62" y1="199.0" x2="642" y2="199.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="202.5" font-size="10.5" fill="#334155" text-anchor="end">-3.11</text><line x1="62" y1="144.0" x2="642" y2="144.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="147.5" font-size="10.5" fill="#334155" text-anchor="end">-1.92</text><line x1="62" y1="89.0" x2="642" y2="89.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="92.5" font-size="10.5" fill="#334155" text-anchor="end">-0.73</text><line x1="62" y1="34.0" x2="642" y2="34.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="37.5" font-size="10.5" fill="#334155" text-anchor="end">0.46</text><line x1="62" y1="55.3" x2="642" y2="55.3" stroke="#64748b" stroke-width="1.2"/><rect x="47.0" y="55.3" width="46.0" height="177.4" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="70.0" y="245.7" font-size="10.5" fill="#334155" text-anchor="middle">-3.84</text><rect x="329.4" y="55.3" width="46.0" height="111.3" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="352.4" y="179.6" font-size="10.5" fill="#334155" text-anchor="middle">-2.41</text><rect x="611.0" y="55.3" width="46.0" height="116.4" rx="2" fill="#3b82f6" fill-opacity="0.88"/><text x="634.0" y="184.7" font-size="10.5" fill="#334155" text-anchor="middle">-2.52</text><text x="70.0" y="272" font-size="11" fill="#334155" text-anchor="middle">23/12</text><text x="352.4" y="272" font-size="11" fill="#334155" text-anchor="middle">24/12</text><text x="634.0" y="272" font-size="11" fill="#334155" text-anchor="middle">25/12</text></svg><figcaption style="font-size:11.5px;color:#64748b;margin-top:4px;line-height:1.5">来源：2025年报、26Q3报告</figcaption></figure></p>
+<table><thead><tr><th>财务项</th><th>2025A</th><th>26Q3（前三季）</th><th>变动读数</th></tr></thead><tbody><tr><td>营业收入</td><td>5.27 亿</td><td>2.83 亿</td><td>同比 −17.35%；Q3 单季 0.35 亿、同比 −75.73%</td></tr><tr><td>归母净利</td><td>−2.52 亿</td><td>−1.67 亿</td><td>由盈转亏（上年同期 +0.60 亿；−376.14% 是扭亏型口径，不是亏损扩大 3.76 倍）</td></tr><tr><td>扣非净利</td><td>−5.05 亿</td><td>−1.64 亿</td><td>由盈转亏（上年同期 +1.12 亿）</td></tr><tr><td>经营现金流</td><td>−1.23 亿</td><td>−0.23 亿</td><td>同比改善 83.84%</td></tr><tr><td>归母净资产</td><td>6.35 亿</td><td>4.92 亿</td><td>−22.59%，一年消耗 1.43 亿</td></tr><tr><td>总资产</td><td>13.98 亿</td><td>10.01 亿</td><td>−28.41%</td></tr><tr><td>货币资金</td><td>3.19 亿</td><td>2.48 亿</td><td>短借仅 0.40 亿，无逾期</td></tr><tr><td>存货</td><td>3.63 亿</td><td>1.86 亿</td><td>−48.72%，影视剧销售结转</td></tr><tr><td>合同负债</td><td>1.65 亿</td><td>370 万</td><td>−97.75%，预收几乎清空＝后续收入能见度低</td></tr></tbody></table>
+<p>（依据：<a href="http://static.cninfo.com.cn/finalpage/2026-04-30/1225261706.PDF" target="_blank" rel="noopener">2025 年年度报告</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-10-29/1225636597.PDF" target="_blank" rel="noopener">2026 年三季度报告</a>）</p>
+<p>判读：现金流改善与存货去化是同一件事的两面——把存货卖掉结转成本、收回现金，但售价低于投入导致毛利转负。<strong>这是"收缩求生"而非"困境反转"：合同负债归零意味着未来收入没有预收支撑。</strong></p>
+<details class="fold"><summary>投资者交流全量要点（59 条，2026-01-08—09-23）</summary><div class="fold-body">
+
+<p>按四级判读（L4 兑现／L3 落地在即／L2 在研／L1 概念）：</p>
+<table><thead><tr><th>主题</th><th>级别</th><th>公司口径（原话要点）</th><th>反向词</th></tr></thead><tbody><tr><td>AI 漫剧《凝落青崖遇君时》</td><td>L3→L1</td><td>截至 9-18 红果热度 4300 万；打通剧本—数字艺人采集授权—AI 成片—上线全流程；首次将签约艺人数字形象用于漫剧</td><td>"相关业务收入占比低，对公司短期经营业绩不构成重大影响"（同一回复中出现 4 次以上）</td></tr><tr><td>阶跃星辰"麟跃"AI 联合实验室</td><td>L2</td><td>2025 年报披露共建，多模态模型覆盖剧本—制作—后期；《十州三境》AI 短剧先导概念片</td><td>未披露收入、未披露订单</td></tr><tr><td>互动影游（凤麟工作室）</td><td>L3</td><td>已上线《代号三国：龙起》《冰点之下》《主角》《隐藏侦探试玩版》《江山北望》，覆盖 Steam／TapTap／腾讯视频／iOS</td><td>未单列收入成本；"归集在影视剧及衍生品"</td></tr><tr><td>剧集储备</td><td>L3</td><td>《佳偶天成》播放 6 亿、《千香》7 亿；《天下长安》《封神之天启》"积极推进播出，具体排播关注公开信息"</td><td>十年老剧无排期＝L1</td></tr><tr><td>业绩补偿诉讼</td><td>L3→L1</td><td>6-24 开庭、一审审理中（9-23 口径）</td><td>10-13 已收到判决书、10-27 已上诉——互动信息滞后于公告，以公告为准</td></tr><tr><td>立案调查</td><td>L3</td><td>截至 9-23 未收到最终结论</td><td>11-19 告知书已下，互动口径已被公告取代</td></tr><tr><td>内控整改</td><td>L2</td><td>修订 30 余项制度、审计委员会前置审核、培训</td><td>公司在立信中联已出标准无保留的前提下仍换所</td></tr></tbody></table>
+<p>参会人员：董事长兼总经理赵枳程、财务总监周怡、董秘杨帅（2026-09-23 业绩说明会）——<strong>一把手亲自答，说明公司重视预期管理，但答法高度模板化、对收入量化问题集体回避。</strong></p>
+<p>（依据：<a href="http://static.cninfo.com.cn/finalpage/2026-09-24/1225581260.PDF" target="_blank" rel="noopener">投资者关系活动记录表 2026-001</a>、同花顺 F10 互动全量抓取）</p>
+
+</div></details>
+<p>（2）重要子公司与订单：年报未披露子公司明细表，履约义务金额未单列；互动中披露"短剧、互动影游收入成本归集在影视剧及衍生品"，无法拆分——<strong>信息缺口，不写成"无订单"</strong>。</p>
+<details class="fold"><summary>重大诉讼：11.78% 股份注销判决全貌</summary><div class="fold-body">
+
+<table><thead><tr><th>节点</th><th>事实</th></tr></thead><tbody><tr><td>2025-10-20</td><td>北京金融法院立案（2025）京 74 民初 2055 号，公司为原告</td></tr><tr><td>2026-06-24</td><td>开庭审理</td></tr><tr><td>2026-10-13</td><td>收到一审判决：钟君艳 5543 万股、陈援 862 万股、钟金章 231 万股、陈平 106 万股、浙江欢瑞 4814 万股，合计 1.16 亿股（11.78%）以总价 1 元转让过户后注销；不足部分按 7.66 元／股支付现金补偿（上限 8.85 亿）</td></tr><tr><td>2026-10-27</td><td>钟君艳、陈援上诉，请求把注销数缩减至 3343 万股＋520 万股（合计约 9014 万股，9.19%），或发回重审</td></tr><tr><td>执行障碍</td><td>被判股份存在质押、司法冻结、被执行案件；一审未生效；二审受理及开庭时间未定</td></tr></tbody></table>
+<p>依据：<a href="http://static.cninfo.com.cn/finalpage/2026-10-15/1225605108.PDF" target="_blank" rel="noopener">2026-10-15 重大诉讼进展</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-10-31/1225650111.PDF" target="_blank" rel="noopener">2026-10-31 重大诉讼进展</a>。</p>
+
+</div></details>
+<h2 id="chap2">二、基本面分析（先定路径，再深挖）</h2>
+<p><strong>路径判定：处罚 ST 逻辑（路径 C）——假 ST，到日期即可申请撤销，无保壳压力、无重整不确定性。因此基本面的核心不是"能不能活"，而是"值不值这个价"。</strong></p>
+<h3 id="sec4">1、通用部分：四件事拆开看</h3>
+<p><strong>（1）商业模式：靠影视剧和艺人经纪吃饭，新业务都在"有产品、无收入"阶段。</strong> 2025A 营收 5.27 亿中影视剧 3.28 亿、艺人经纪 1.99 亿；艺人经纪毛利率 47.53%、影视剧 34.01%。AI 漫剧、互动影游有上线产品但公司明确"收入占比低、不构成重大影响"，收入成本并入影视剧科目不单列。（依据：<a href="http://static.cninfo.com.cn/finalpage/2026-04-30/1225261706.PDF" target="_blank" rel="noopener">2025 年报</a>、<a href="http://static.cninfo.com.cn/finalpage/2026-09-24/1225581260.PDF" target="_blank" rel="noopener">投资者关系活动记录表</a>）</p>
+<p><strong>（2）竞争格局：传统长剧承压是真、AI 漫剧爆发也是真，但公司不在任何一端的头部。</strong> 2026 全国电影票房同比降约三成、上半年降 40.6%；AI 剧漫剧市场 2026 年预计 400 亿（同比 +138%），但<strong>稳定盈利的漫剧不足 1%</strong>，新增数量激增导致绝大多数播放量难破百万。欢瑞的《凝落青崖遇君时》热度 4300 万属头部，但单部爆款不等于可持续收入。（依据：<a href="https://news.cnr.cn/native/gd/20260329/t20260329_527566315.shtml" target="_blank" rel="noopener">央广网 2026-03-29</a>、<a href="https://stcn.com/article/detail/4331026.html" target="_blank" rel="noopener">证券时报 2026-11</a>、<a href="http://www.ce.cn/cysc/newmain/yc/jsxw/202611/t20261119_3299169.shtml" target="_blank" rel="noopener">中国经济网 2026-11-19</a>）</p>
+<p><strong>（3）产能／资产：存货从 3.63 亿压到 1.86 亿，IP 储备 40 余部，无重资产扩张。</strong> 26Q3 末总资产 10.01 亿、净资产 4.92 亿，无在建工程扩张；研发费用 623 万元（同比 +171.92%，因研发人员增加），体量小。（依据：<a href="http://static.cninfo.com.cn/finalpage/2026-10-29/1225636597.PDF" target="_blank" rel="noopener">26Q3 报告</a>）</p>
+<p><strong>（4）估值分析：现价没有任何折价，倍数＜1。</strong></p>
+<table><thead><tr><th>估值路径</th><th>计算</th><th>估值区间</th></tr></thead><tbody><tr><td>现有业务（PB 法）</td><td>净资产 4.92 亿 × 1.5—2.5 倍 PB（连续亏损、ROE −30%，给同业折价）</td><td>7.4—12.3 亿</td></tr><tr><td>现有业务（PS 交叉）</td><td>TTM 营收 4.67 亿 × 1.5—2.5 倍 PS</td><td>7.0—11.7 亿</td></tr><tr><td>诉讼注销期权</td><td>现金补偿上限 8.85 亿 × 执行概率 12%—23%（已上诉＋全额质押冻结）</td><td>1—2 亿</td></tr><tr><td>AI 漫剧／互动影游</td><td>"强"维仅 1 分（无收入、无订单），按纪律三不进分子</td><td>0（仅进目标上限）</td></tr><tr><td><strong>合计分子</strong></td><td>现有业务 7—12 亿＋期权 1—2 亿</td><td><strong>8—14 亿</strong></td></tr><tr><td>当前市值</td><td>9.81 亿股 × 2.80 元</td><td>27.47 亿</td></tr><tr><td><strong>潜在增长倍数</strong></td><td>8—14 亿 ÷ 27.47 亿</td><td><strong>约 0.4 倍（0.31—0.52）＜1</strong></td></tr></tbody></table>
+<p>同业 PB 当日横比：华策影视 2.02、芒果超媒 2.46、光线传媒 3.35、慈文传媒 3.66、果麦文化 7.23（中文在线 102 倍异常剔除），中位约 3.35 倍。<strong>欢瑞 5.59 倍不但不折价，反而高于同业中位 67%</strong>——"跌了 71% 所以便宜"是错觉，跌之前更贵。（依据：<a href="http://qt.gtimg.cn/q=sz002343,sz300133,sz300413" target="_blank" rel="noopener">腾讯行情批量取数 2026-11-27</a>）</p>
+<p>隐含概率反推：设乐观情景（摘帽顺利＋注销部分执行＋AI 漫剧放量）市值 45 亿、保守情景（继续亏损＋摘帽延期）市值 15 亿，则 <code>27.47 = p × 45 + (1−p) × 15</code> ⇒ <strong>市场隐含 p≈41.6%</strong>。本报告判断乐观概率＜25%（执行障碍＋时间窗口＋收入占比低）⇒ 现价已透支。</p>
+<h3 id="sec5">2、换所：不是利好，是审计口径的双向变量</h3>
+<p><strong>换所是负面信号，不改摘帽日期。</strong> 前任立信中联连续 5 年、2025 年财报与内控均标准无保留，仍被改聘属换审计口径、不默认利好；新所近三年受行政处罚 4 次、监管措施 6 次、纪律处分 5 次，且在宏达新材虚假陈述案中被判 20% 连带赔偿。</p>
+<details class="fold"><summary>换所细节与判读</summary><div class="fold-body">
+
+<p>11-13 董事会决议改聘公证天业。按判据，前任已出标准无保留却仍换＝换审计口径，方向由市场裁决、不预设利好。新所近三年受行政处罚 4 次、监管措施 6 次、纪律处分 5 次，在宏达新材虚假陈述案中被判 20% 连带赔偿——对一个刚因虚假记载戴帽的公司，这个履历是负面信号。换所不改 9.8.8 摘帽日期，只改 2026 年报能否顺利过审的概率；尚需 2026 年第二次临时股东会审议。</p>
+<p>（依据：<a href="http://static.cninfo.com.cn/finalpage/2026-11-14/1225671881.PDF" target="_blank" rel="noopener">2026-11-14 拟聘任会计师事务所公告</a>）</p>
+
+</div></details>
+<h2 id="chap3">三、情绪分析</h2>
+<p><strong>情绪结论：AI 漫剧是当前唯一有注意力的主线，但这个符号已被反复交易至少 10 次、节点走完大半，主板同业也在同步回调——属于负向映射，不是补涨机会。</strong></p>
+<h3 id="sec6">1、主板映射</h3>
+<p>AI 漫剧概念 10 月强势（慈文传媒 5 连板、果麦文化区间涨超 52%、欢瑞 5 天 3 板），催化是腾讯"绿泡泡短剧"上线＋红果日活 1.68 亿＋广电总局 9-17 披露前 8 月上线微短剧 43 万部（AI 剧占九成）。但 11 月以来板块退潮，欢瑞 11-11 见 5.18 后连跌，戴帽后两个一字跌停。<strong>主板同业也在跌时是负向映射。</strong>（依据：<a href="https://m.cls.cn/detail/2505419" target="_blank" rel="noopener">财联社 2026-10-15</a>、<a href="http://www.ce.cn/cysc/newmain/yc/jsxw/202611/t20261119_3299169.shtml" target="_blank" rel="noopener">中国经济网 2026-11-19</a>）</p>
+<h3 id="sec7">2、主题催化打分：新·大·强</h3>
+<table><thead><tr><th>维度</th><th>得分</th><th>依据</th></tr></thead><tbody><tr><td>新</td><td>2</td><td>AI 漫剧是真技术形态（剧本—采集—成片—上线全流程），非划时代；已有果麦、慈文等对标</td></tr><tr><td>大</td><td>2</td><td>行业 400 亿、用户 8.5 亿，全国级市场；但欢瑞份额不可测</td></tr><tr><td>强</td><td>1</td><td>有产品上线、热度 4300 万，但公司反复自述"收入占比低、不构成重大影响"，无收入／订单</td></tr><tr><td><strong>合计</strong></td><td><strong>5</strong></td><td>强题材；但"强"维≤1 ⇒ 想象空间不进估值分子，只作目标上限</td></tr></tbody></table>
+<p>扣分：旧主业正在被审计质疑（2022 年报虚假记载）−1 分已体现在"强"维给 1。</p>
+<h3 id="sec8">3、历史异动（按题材时间倒序，取近 10 次）</h3>
+<p><figure class="stchart" style="margin:14px 0 18px;text-align:center"><svg viewBox="0 0 660 300" width="100%" style="max-width:660px;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" role="img" aria-label="欢瑞世纪前复权月线收盘（元·2025-10—2026-11）"><text x="62" y="20" font-size="13" font-weight="600" fill="#334155">欢瑞世纪前复权月线收盘（元·2025-10—2026-11）</text><line x1="62" y1="254.0" x2="642" y2="254.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="257.5" font-size="10.5" fill="#334155" text-anchor="end">0</text><line x1="62" y1="199.0" x2="642" y2="199.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="202.5" font-size="10.5" fill="#334155" text-anchor="end">2.25</text><line x1="62" y1="144.0" x2="642" y2="144.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="147.5" font-size="10.5" fill="#334155" text-anchor="end">4.5</text><line x1="62" y1="89.0" x2="642" y2="89.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="92.5" font-size="10.5" fill="#334155" text-anchor="end">6.75</text><line x1="62" y1="34.0" x2="642" y2="34.0" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.28"/><text x="54" y="37.5" font-size="10.5" fill="#334155" text-anchor="end">9</text><polyline points="70.0,79.6 114.2,57.6 156.9,83.5 201.0,67.3 245.2,79.6 285.1,105.7 329.2,132.8 371.9,147.2 416.1,172.6 458.8,163.8 503.0,148.9 547.1,143.3 589.8,156.0 634.0,185.6" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="70.0" cy="79.6" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="114.2" cy="57.6" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="114.2" y="47.6" font-size="10.5" fill="#334155" text-anchor="middle">8.04</text><circle cx="156.9" cy="83.5" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="201.0" cy="67.3" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="245.2" cy="79.6" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="285.1" cy="105.7" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="329.2" cy="132.8" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="371.9" cy="147.2" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="416.1" cy="172.6" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="458.8" cy="163.8" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="503.0" cy="148.9" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="547.1" cy="143.3" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="589.8" cy="156.0" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><circle cx="634.0" cy="185.6" r="3.6" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="634.0" y="175.6" font-size="10.5" fill="#334155" text-anchor="middle">2.8</text><text x="70.0" y="272" font-size="11" fill="#334155" text-anchor="middle">25/10</text><text x="156.9" y="272" font-size="11" fill="#334155" text-anchor="middle">25/12</text><text x="245.2" y="272" font-size="11" fill="#334155" text-anchor="middle">26/02</text><text x="329.2" y="272" font-size="11" fill="#334155" text-anchor="middle">26/04</text><text x="371.9" y="272" font-size="11" fill="#334155" text-anchor="middle">26/05</text><text x="458.8" y="272" font-size="11" fill="#334155" text-anchor="middle">26/07</text><text x="547.1" y="272" font-size="11" fill="#334155" text-anchor="middle">26/09</text><text x="634.0" y="272" font-size="11" fill="#334155" text-anchor="middle">26/11</text></svg><figcaption style="font-size:11.5px;color:#64748b;margin-top:4px;line-height:1.5">来源：腾讯 fqkline 前复权月线</figcaption></figure></p>
+<table><thead><tr><th>题材时间</th><th>题材</th><th>当日价</th><th>涨幅</th><th>连板</th><th>炒作符号</th></tr></thead><tbody><tr><td>2026-11-02</td><td>AI 影视／传媒</td><td>4.41</td><td>+9.98%</td><td>—</td><td>AI 漫剧＋案件进展＋阶跃星辰＋互动影游</td></tr><tr><td>2026-10-15</td><td>公告</td><td>5.45</td><td>+6.24%</td><td>—</td><td>案件进展＋AI 短剧＋阶跃星辰</td></tr><tr><td>2026-10-12</td><td>AI 影视</td><td>5.34</td><td>+10.10%</td><td>2 天 2 板</td><td>AI 短剧＋阶跃星辰＋互动影游</td></tr><tr><td>2026-10-09</td><td>AI 短剧</td><td>4.85</td><td>+9.98%</td><td>—</td><td>AI 短剧＋阶跃星辰＋参演盛世天下</td></tr><tr><td>2026-09-04</td><td>AI 应用</td><td>5.59</td><td>+10.04%</td><td>5 天 4 板</td><td>AI 短剧＋阶跃星辰＋互动影游</td></tr><tr><td>2026-09-02</td><td>短剧</td><td>5.20</td><td>+9.94%</td><td>3 板</td><td>AI 短剧＋阶跃星辰</td></tr><tr><td>2026-08-04</td><td>AI 应用</td><td>4.17</td><td>+10.03%</td><td>3 板</td><td>AI 短剧＋阶跃星辰</td></tr><tr><td>2026-07-10</td><td>AI 应用</td><td>4.20</td><td>+9.95%</td><td>4 板</td><td>AI 短剧＋参演盛世天下</td></tr><tr><td>2026-02-11</td><td>AI 应用</td><td>9.87</td><td>+10.03%</td><td>3 板</td><td>AI 短剧＋漫剧＋重大诉讼进展</td></tr><tr><td>2025-11-26</td><td>AI 应用／阿里</td><td>9.75</td><td>+10.05%</td><td>4 板</td><td>互动影游＋漫剧＋重大诉讼</td></tr></tbody></table>
+<p>（依据：韭研公社异动整理表，000892 命中 96 条，按题材时间倒序）</p>
+<p>判读：炒作符号一年未变（AI 短剧＋阶跃星辰＋互动影游＋诉讼），2026-02 见顶 9.87 后单边下行至 2.80，跌幅 71.6%——<strong>同一符号重演但边际效应递减，当前是退潮末端而非新一轮起点。</strong></p>
+<h2 id="chap4">四、技术分析</h2>
+<p><strong>技术结论：戴帽后两个一字跌停已完成第一轮出清，11-26 放量撬板（成交 193 万手、振幅 18%）是换手不是反转；现价处于 2020 年以来前复权 13.3% 分位，低位成立但没有买点信号。</strong></p>
+<ul><li><strong>新 ST 撬板评估</strong>：戴帽 11-24（4 天，属一个月内新 ST），复牌后 11-24、11-25 连续一字跌停（3.22／2.90），11-26 放量撬板（开 2.61、收 2.84、成交 193 万手，前一日仅 6.9 万手），11-27 收 2.80（−1.41%、换手 16.99%）。<strong>撬板后未站上 3.22 第一压力位，符合"撬板反弹后回落"形态。</strong></li><li><strong>位置与分位</strong>：前复权月线 83 个月中仅 11 个月收盘低于 2.80，分位 13.3%；2024 年以来分位 8.6%。低分位属实，但"低位"是前提不是结论。</li><li><strong>筹码</strong>：股东户数从 26Q1 的 63141 户增至 26Q3 末的 81407 户（+29%），<strong>下跌中户数增＝散户接盘，不是吸筹</strong>。</li><li><strong>关键位</strong>：上方 3.22（首个一字跌停价）、3.58（停牌前收盘）、4.01（10-30 平台）；下方 2.61（11-26 撬板低点）、2.41（2024-06 月线低点）。</li><li><strong>成本锚</strong>：判决现金补偿价 7.66 元／股是 2016 年重组发行价的成本锚，现价仅为该价的 36.6%——<strong>但补偿是"公司收钱"而非"股东拿回成本"，不能当成持股成本支撑。</strong></li></ul>
+<h2 id="chap5">五、投资结论</h2>
+<p><strong>判断：卖出。</strong> 理由链如下——</p>
+<table><thead><tr><th>要素</th><th>内容</th></tr></thead><tbody><tr><td><strong>判断</strong></td><td><strong>卖出</strong></td></tr><tr><td>主要理由</td><td>① 摘帽 12 个月从正式决定书起算，决定书未下，最早窗口 2027 年末—2028 年初；② 潜在增长倍数约 0.4＜1，PB 5.59 倍高于同业中位 3.35 倍；③ 26Q3 由盈转亏、Q3 单季营收 −75.73%、合同负债清零；④ 11.78% 注销判决已上诉且股份全额质押冻结，执行概率低；⑤ 换所前任标准无保留仍换、新所履历带虚假陈述连带责任</td></tr><tr><td>失效条件</td><td>正式《行政处罚决定书》下达且明确起算日；或二审维持原判且股份实际过户注销；或 AI 漫剧／互动影游开始单列收入且单季超 5000 万；或扣非净利转正。任一出现需重估结论</td></tr><tr><td>参考买入区间</td><td>当前不建议买入。失效条件出现后，重估区间 2.20—2.40 元（对应当年 PB 4.4—4.8 倍、接近 2024 年月线低点 2.41）</td></tr><tr><td>目标区间</td><td>12 个月 1.90—2.40 元（PB 回落至同业中位附近）；乐观上限 4.00—4.50 元仅在注销执行＋漫剧放量同时兑现时成立</td></tr><tr><td>可买卖时间窗</td><td>卖出窗口即当下（撬板反弹至 3.22—3.58 是减持窗口）；结论有效期至 2027Q4 正式决定书下达前后，再评估摘帽交易</td></tr><tr><td>仓位建议</td><td>卖出档：空仓者不参与；持仓者反弹至 3.22—3.58 区间减持，跌破 2.61 无holders则止损。上限 0%</td></tr><tr><td>最大风险</td><td>AI 漫剧突然单列大额收入或注销判决快速执行，使"无收入不进分子"的前提作废，估值重估</td></tr></tbody></table>
+<p><strong>反方观点评判：五条看多逻辑全部站不住，不改变卖出判断。</strong></p>
+<table><thead><tr><th>反方观点</th><th>来源</th><th>评判</th></tr></thead><tbody><tr><td>"假 ST 必摘帽，戴帽满一年就炒摘帽行情"</td><td>雪球／股吧常见叙事</td><td>时间口径错：12 个月从决定书起算，最早 2027 年末；且同型样本摘帽实施后普遍回落（金花样本摘帽后 60 日中位 −7.6%），摘帽日常是兑现日</td></tr><tr><td>"11.78% 股份注销增厚 EPS 13.35%，价值重估"</td><td>异动表"大额注销预期"</td><td>一审已上诉、股份全额质押冻结被执行、公司自述"执行存在重大不确定性"；注销不改善损益、只改股本，且执行概率低</td></tr><tr><td>"AI 漫剧 4300 万热度＝第二增长曲线"</td><td>互动问答、异动简析</td><td>公司自己在同一段回复里 4 次强调"收入占比低、不构成重大影响"；行业稳定盈利漫剧不足 1%；热度不等于收入</td></tr><tr><td>"跌了 71% 足够便宜"</td><td>技术派叙事</td><td>PB 5.59 倍仍高于同业中位 3.35 倍；下跌释放的是泡沫不是低估</td></tr><tr><td>"换所＝审计口径改善、摘帽加速"</td><td>市场惯例</td><td>前任已标准无保留仍换，且新所近三年 4 次行政处罚＋虚假陈述连带责任；换所不改 9.8.8 日期</td></tr></tbody></table>
+<p><strong>一句话结论：ST欢瑞是"确定性摘帽、不确定性时间、透支性定价"的组合——假 ST 属性保住了退市底线，但现价已把乐观情景按 41.6% 概率计价，而注销执行与 AI 漫剧收入都还没兑现，因此卖出。</strong></p>
+<p>免责声明：本报告基于公开信息整理，仅供研究参考，不构成任何投资建议。市场有风险，决策需谨慎。</p>
+<h3 id="sec9">附录 A · 待核实／需补充清单</h3>
+<p><strong>以下是四处待核实项，均不影响卖出结论，但影响后续重估时点。</strong></p>
+<ul><li>2026 年报审计机构改聘的股东会表决结果（截至基准日尚未召开）；</li><li>二审受理及开庭时间（公告明确"尚未明确"）；</li><li>短剧／互动影游单列收入（公司口径为并入影视剧，无法拆分）；</li><li>2026 年 IPO／再融资计划（年报未披露）。</li></ul>
+<h3 id="sec10">附录 B · 关键信源链接</h3>
+<p><strong>以下 10 条为正文引用的核心公告原文，均可点开核对。</strong></p>
+<details class="fold"><summary>核心公告原文链接（10 条）</summary><div class="fold-body">
+
+<ol><li><a href="http://static.cninfo.com.cn/finalpage/2026-11-21/1225682609.PDF" target="_blank" rel="noopener">行政处罚事先告知书公告（2026-056）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-11-21/1225682608.PDF" target="_blank" rel="noopener">实施其他风险警示暨停复牌公告（2026-057）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-04-23/1225152138.PDF" target="_blank" rel="noopener">前期会计差错更正及追溯调整公告（2026-021）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-04-23/1225152137.PDF" target="_blank" rel="noopener">立案告知书公告（2026-023）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-10-29/1225636597.PDF" target="_blank" rel="noopener">2026 年三季度报告（2026-051）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-04-30/1225261706.PDF" target="_blank" rel="noopener">2025 年年度报告</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-10-15/1225605108.PDF" target="_blank" rel="noopener">重大诉讼进展·一审判决（2026-048）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-10-31/1225650111.PDF" target="_blank" rel="noopener">重大诉讼进展·上诉（2026-052）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-11-14/1225671881.PDF" target="_blank" rel="noopener">拟聘任会计师事务所公告（2026-054）</a></li><li><a href="http://static.cninfo.com.cn/finalpage/2026-09-24/1225581260.PDF" target="_blank" rel="noopener">投资者关系活动记录表 2026-001</a></li></ol>
+
+</div></details>
+<h3 id="sec11">版本记录</h3>
+<details class="fold"><summary>版本记录表</summary><div class="fold-body">
+
+<table><thead><tr><th>版本</th><th>修订日</th><th>主要改动</th></tr></thead><tbody><tr><td>第 1 次生成</td><td>2026-11-28</td><td>首次生成五段框架报告：全量 59 条投资者交流＋270 条公告清单＋16 份关键公告全文核实；定路径为处罚 ST；确立"12 个月从决定书起算"核心判据；倍数 0.4 倍、结论卖出</td></tr></tbody></table>
+
+</div></details>
+</div>
+<script>
+(function(){
+  function openTarget(){
+    var h = location.hash;
+    if(!h || h.length < 2) return;
+    var el = document.getElementById(h.slice(1));
+    if(!el) return;
+    var d = el;
+    while(d && d.tagName !== 'DETAILS'){ d = d.parentElement; }
+    if(d){ d.open = true; }
+  }
+  window.addEventListener('hashchange', openTarget);
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', openTarget); }
+  else { openTarget(); }
+})();
+</script>
+
+<button id="totop" title="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+(function(){
+  var b=document.getElementById('totop');
+  window.addEventListener('scroll',function(){ b.style.display = window.scrollY>600 ? 'block':'none'; });
+})();
+</script>
+<a href="../index.html" style="position:fixed;left:20px;bottom:24px;background:#1a5276;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:9999">← 返回首页</a>
+<script src="/annotate.js?v=20261113a" defer></script>
+</body>
+</html>
